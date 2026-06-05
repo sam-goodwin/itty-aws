@@ -4,31 +4,29 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const DownloadGroupClusterLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    logName: Schema.Literals([
-      "mongodb",
-      "mongos",
-      "mongodb-audit-log",
-      "mongos-audit-log",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    endDate: Schema.optional(Schema.Number),
-    startDate: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz",
-    }),
-  );
+export const DownloadGroupClusterLogInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  logName: Schema.Literals([
+    "mongodb",
+    "mongos",
+    "mongodb-audit-log",
+    "mongos-audit-log",
+  ]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  endDate: Schema.optional(Schema.Number),
+  startDate: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz",
+  }),
+);
 export type DownloadGroupClusterLogInput =
   typeof DownloadGroupClusterLogInput.Type;
 
 // Output Schema
-export const DownloadGroupClusterLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DownloadGroupClusterLogOutput = /*@__PURE__*/ Schema.Void;
 export type DownloadGroupClusterLogOutput =
   typeof DownloadGroupClusterLogOutput.Type;
 
@@ -47,10 +45,8 @@ export type DownloadGroupClusterLogOutput =
  * @param endDate - Specifies the date and time for the ending point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours after the start date. If the start date is also unspecified, the value will default to the time of the request.
  * @param startDate - Specifies the date and time for the starting point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours prior to the end date. If the end date is also unspecified, the value will default to 24 hours prior to the time of the request.
  */
-export const downloadGroupClusterLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DownloadGroupClusterLogInput,
-    outputSchema: DownloadGroupClusterLogOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const downloadGroupClusterLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DownloadGroupClusterLogInput,
+  outputSchema: DownloadGroupClusterLogOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

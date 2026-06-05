@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsPropertiesAtTimeRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsPropertiesAtTimeRetrieveInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     debug: Schema.optional(Schema.Boolean),
     distinct_id: Schema.optional(Schema.String),
@@ -13,18 +13,19 @@ export const PersonsPropertiesAtTimeRetrieveInput =
     include_set_once: Schema.optional(Schema.Boolean),
     person_id: Schema.optional(Schema.String),
     timestamp: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/properties_at_time/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/persons/properties_at_time/",
+  }),
+);
 export type PersonsPropertiesAtTimeRetrieveInput =
   typeof PersonsPropertiesAtTimeRetrieveInput.Type;
 
 // Output Schema
 export const PersonsPropertiesAtTimeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     distinct_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -78,9 +79,8 @@ export type PersonsPropertiesAtTimeRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param timestamp - ISO datetime string for the point in time (e.g., '2023-06-15T14:30:00Z')
  */
-export const personsPropertiesAtTimeRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PersonsPropertiesAtTimeRetrieveInput,
-    outputSchema: PersonsPropertiesAtTimeRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const personsPropertiesAtTimeRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsPropertiesAtTimeRetrieveInput,
+  outputSchema: PersonsPropertiesAtTimeRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

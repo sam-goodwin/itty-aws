@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupHostFtsMetricMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     granularity: Schema.String,
@@ -25,7 +25,7 @@ export type ListGroupHostFtsMetricMeasurementsInput =
 
 // Output Schema
 export const ListGroupHostFtsMetricMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupHostFtsMetricMeasurementsOutput =
   typeof ListGroupHostFtsMetricMeasurementsOutput.Type;
 
@@ -46,9 +46,10 @@ export type ListGroupHostFtsMetricMeasurementsOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param metrics - List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don't set this parameter, this resource returns all hardware and status metrics for the associated data series.
  */
-export const listGroupHostFtsMetricMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupHostFtsMetricMeasurements = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupHostFtsMetricMeasurementsInput,
     outputSchema: ListGroupHostFtsMetricMeasurementsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

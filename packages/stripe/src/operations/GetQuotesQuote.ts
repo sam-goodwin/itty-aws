@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesQuoteInput = /*@__PURE__*/ Schema.Struct({
   quote: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetQuotesQuoteInput = typeof GetQuotesQuoteInput.Type;
 
 // Output Schema
-export const GetQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesQuoteOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.Unknown,
@@ -566,7 +566,7 @@ export type GetQuotesQuoteOutput = typeof GetQuotesQuoteOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetQuotesQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetQuotesQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetQuotesQuoteInput,
   outputSchema: GetQuotesQuoteOutput,
 }));

@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuditLogsRetentionControllerAuditLogsRetentionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{id}/audit_logs_retention" }),
@@ -15,7 +15,7 @@ export type AuditLogsRetentionControllerAuditLogsRetentionInput =
 
 // Output Schema
 export const AuditLogsRetentionControllerAuditLogsRetentionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
   });
 export type AuditLogsRetentionControllerAuditLogsRetentionOutput =
@@ -30,7 +30,7 @@ export type AuditLogsRetentionControllerAuditLogsRetentionOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const AuditLogsRetentionControllerAuditLogsRetention =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogsRetentionControllerAuditLogsRetentionInput,
     outputSchema: AuditLogsRetentionControllerAuditLogsRetentionOutput,
     errors: [NotFound] as const,

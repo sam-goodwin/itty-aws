@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const VolumeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -13,7 +13,7 @@ export const VolumeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VolumeDeleteInput = typeof VolumeDeleteInput.Type;
 
 // Output Schema
-export const VolumeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeDeleteOutput = /*@__PURE__*/ Schema.Struct({
   attached_alloc_id: Schema.optional(Schema.String),
   attached_machine_id: Schema.optional(Schema.String),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
@@ -49,7 +49,7 @@ export type VolumeDeleteOutput = typeof VolumeDeleteOutput.Type;
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const VolumeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeDeleteInput,
   outputSchema: VolumeDeleteOutput,
   errors: [Forbidden, NotFound] as const,

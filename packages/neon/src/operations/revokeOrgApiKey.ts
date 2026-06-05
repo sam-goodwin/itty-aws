@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RevokeOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
   key_id: Schema.Number.pipe(T.PathParam()),
 }).pipe(
@@ -15,7 +15,7 @@ export const RevokeOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RevokeOrgApiKeyInput = typeof RevokeOrgApiKeyInput.Type;
 
 // Output Schema
-export const RevokeOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeOrgApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
   created_at: Schema.String,
@@ -41,7 +41,7 @@ export type RevokeOrgApiKeyOutput = typeof RevokeOrgApiKeyOutput.Type;
  * @param org_id - The Neon organization ID
  * @param key_id - The API key ID
  */
-export const revokeOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const revokeOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RevokeOrgApiKeyInput,
   outputSchema: RevokeOrgApiKeyOutput,
 }));

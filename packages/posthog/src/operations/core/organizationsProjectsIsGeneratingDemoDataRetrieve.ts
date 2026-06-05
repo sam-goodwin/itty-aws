@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const OrganizationsProjectsIsGeneratingDemoDataRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -20,7 +20,7 @@ export type OrganizationsProjectsIsGeneratingDemoDataRetrieveInput =
 
 // Output Schema
 export const OrganizationsProjectsIsGeneratingDemoDataRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export const OrganizationsProjectsIsGeneratingDemoDataRetrieveOutput =
     live_events_token: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
-    api_token: Schema.optional(SensitiveString),
+    api_token: Schema.optional(SensitiveOutputString),
     app_urls: Schema.optional(Schema.Array(Schema.NullOr(Schema.String))),
     anonymize_ips: Schema.optional(Schema.Boolean),
     completed_snippet_onboarding: Schema.optional(Schema.Boolean),
@@ -829,7 +829,7 @@ export type OrganizationsProjectsIsGeneratingDemoDataRetrieveOutput =
  * @param id - A unique value identifying this project.
  */
 export const organizationsProjectsIsGeneratingDemoDataRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsIsGeneratingDemoDataRetrieveInput,
     outputSchema: OrganizationsProjectsIsGeneratingDemoDataRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

@@ -29,11 +29,10 @@ export interface Groups {
   kind?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responseCode: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Groups" });
+export const Groups: Schema.Schema<Groups> = /*@__PURE__*/ Schema.Struct({
+  responseCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Groups" });
 
 // ==========================================================================
 // Errors
@@ -94,7 +93,7 @@ export interface InsertArchiveRequest {
   groupId: string;
 }
 
-export const InsertArchiveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertArchiveRequest = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.HttpPath("groupId")),
 }).pipe(
   T.Http({
@@ -106,7 +105,7 @@ export const InsertArchiveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<InsertArchiveRequest>;
 
 export type InsertArchiveResponse = Groups;
-export const InsertArchiveResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
+export const InsertArchiveResponse = /*@__PURE__*/ Groups;
 
 export type InsertArchiveError =
   | DefaultErrors
@@ -121,7 +120,7 @@ export const insertArchive: API.OperationMethod<
   InsertArchiveResponse,
   InsertArchiveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertArchiveRequest,
   output: InsertArchiveResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

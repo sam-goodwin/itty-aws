@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDatabaseInput = typeof DeleteDatabaseInput.Type;
 
 // Output Schema
-export const DeleteDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   database: Schema.optional(Schema.String),
 });
 export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
@@ -30,7 +30,7 @@ export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const deleteDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDatabaseInput,
   outputSchema: DeleteDatabaseOutput,
   errors: [NotFound] as const,

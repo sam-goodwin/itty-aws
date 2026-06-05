@@ -10,7 +10,7 @@ import {
 
 // Input Schema
 export const UserlandUsersControllerConfirmEmailChangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     code: Schema.optional(Schema.String),
   }).pipe(
@@ -24,7 +24,7 @@ export type UserlandUsersControllerConfirmEmailChangeInput =
 
 // Output Schema
 export const UserlandUsersControllerConfirmEmailChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     user: Schema.Struct({
       object: Schema.String,
@@ -53,9 +53,10 @@ export type UserlandUsersControllerConfirmEmailChangeOutput =
  *
  * @param id - The unique ID of the user.
  */
-export const UserlandUsersControllerConfirmEmailChange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandUsersControllerConfirmEmailChange = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandUsersControllerConfirmEmailChangeInput,
     outputSchema: UserlandUsersControllerConfirmEmailChangeOutput,
     errors: [BadRequest, NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);

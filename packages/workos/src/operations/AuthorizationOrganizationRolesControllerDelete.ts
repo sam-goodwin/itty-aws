@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationOrganizationRolesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type AuthorizationOrganizationRolesControllerDeleteInput =
 
 // Output Schema
 export const AuthorizationOrganizationRolesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizationOrganizationRolesControllerDeleteOutput =
   typeof AuthorizationOrganizationRolesControllerDeleteOutput.Type;
 
@@ -33,7 +33,7 @@ export type AuthorizationOrganizationRolesControllerDeleteOutput =
  * @param slug - The slug of the role.
  */
 export const AuthorizationOrganizationRolesControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationOrganizationRolesControllerDeleteInput,
     outputSchema: AuthorizationOrganizationRolesControllerDeleteOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

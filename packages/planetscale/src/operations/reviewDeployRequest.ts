@@ -4,36 +4,34 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ReviewDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    number: Schema.Number.pipe(T.PathParam()),
-    state: Schema.optional(Schema.Literals(["commented", "approved"])),
-    body: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
-    }),
-  );
+export const ReviewDeployRequestInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  number: Schema.Number.pipe(T.PathParam()),
+  state: Schema.optional(Schema.Literals(["commented", "approved"])),
+  body: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
+  }),
+);
 export type ReviewDeployRequestInput = typeof ReviewDeployRequestInput.Type;
 
 // Output Schema
-export const ReviewDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReviewDeployRequestOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  body: Schema.String,
+  html_body: Schema.String,
+  state: Schema.Literals(["commented", "approved"]),
+  created_at: Schema.String,
+  updated_at: Schema.String,
+  actor: Schema.Struct({
     id: Schema.String,
-    body: Schema.String,
-    html_body: Schema.String,
-    state: Schema.Literals(["commented", "approved"]),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    actor: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  });
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+});
 export type ReviewDeployRequestOutput = typeof ReviewDeployRequestOutput.Type;
 
 // The operation
@@ -48,7 +46,7 @@ export type ReviewDeployRequestOutput = typeof ReviewDeployRequestOutput.Type;
  * @param state - Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`)
  * @param body - Deploy request review comments
  */
-export const reviewDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const reviewDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReviewDeployRequestInput,
   outputSchema: ReviewDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

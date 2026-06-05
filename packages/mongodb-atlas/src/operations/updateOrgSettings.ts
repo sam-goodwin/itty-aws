@@ -4,19 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateOrgSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    orgId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const UpdateOrgSettingsInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({ method: "PATCH", path: "/api/atlas/v2/orgs/{orgId}/settings" }),
 );
 export type UpdateOrgSettingsInput = typeof UpdateOrgSettingsInput.Type;
 
 // Output Schema
-export const UpdateOrgSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateOrgSettingsOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateOrgSettingsOutput = typeof UpdateOrgSettingsOutput.Type;
 
 // The operation
@@ -29,7 +27,7 @@ export type UpdateOrgSettingsOutput = typeof UpdateOrgSettingsOutput.Type;
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateOrgSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrgSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgSettingsInput,
   outputSchema: UpdateOrgSettingsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

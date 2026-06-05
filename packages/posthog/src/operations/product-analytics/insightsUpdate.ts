@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InsightsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsightsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -96,7 +96,7 @@ export const InsightsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsightsUpdateInput = typeof InsightsUpdateInput.Type;
 
 // Output Schema
-export const InsightsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsightsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   short_id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -194,7 +194,7 @@ export type InsightsUpdateOutput = typeof InsightsUpdateOutput.Type;
  * @param id - Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const insightsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InsightsUpdateInput,
   outputSchema: InsightsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

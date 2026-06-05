@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const UpgradeGroupClusterTenantUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -25,8 +25,7 @@ export type UpgradeGroupClusterTenantUpgradeInput =
   typeof UpgradeGroupClusterTenantUpgradeInput.Type;
 
 // Output Schema
-export const UpgradeGroupClusterTenantUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpgradeGroupClusterTenantUpgradeOutput = /*@__PURE__*/ Schema.Void;
 export type UpgradeGroupClusterTenantUpgradeOutput =
   typeof UpgradeGroupClusterTenantUpgradeOutput.Type;
 
@@ -43,15 +42,8 @@ export type UpgradeGroupClusterTenantUpgradeOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const upgradeGroupClusterTenantUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpgradeGroupClusterTenantUpgradeInput,
-    outputSchema: UpgradeGroupClusterTenantUpgradeOutput,
-    errors: [
-      BadRequest,
-      PaymentRequired,
-      Forbidden,
-      NotFound,
-      Conflict,
-    ] as const,
-  }));
+export const upgradeGroupClusterTenantUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpgradeGroupClusterTenantUpgradeInput,
+  outputSchema: UpgradeGroupClusterTenantUpgradeOutput,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,
+}));

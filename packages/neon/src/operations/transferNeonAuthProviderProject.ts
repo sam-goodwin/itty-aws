@@ -3,8 +3,8 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const TransferNeonAuthProviderProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransferNeonAuthProviderProjectInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String,
     auth_provider: Schema.Literals([
       "mock",
@@ -12,15 +12,14 @@ export const TransferNeonAuthProviderProjectInput =
       "stack_v2",
       "better_auth",
     ]),
-  }).pipe(
-    T.Http({ method: "POST", path: "/projects/auth/transfer_ownership" }),
-  );
+  },
+).pipe(T.Http({ method: "POST", path: "/projects/auth/transfer_ownership" }));
 export type TransferNeonAuthProviderProjectInput =
   typeof TransferNeonAuthProviderProjectInput.Type;
 
 // Output Schema
 export const TransferNeonAuthProviderProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.String,
   });
 export type TransferNeonAuthProviderProjectOutput =
@@ -32,8 +31,7 @@ export type TransferNeonAuthProviderProjectOutput =
  *
  * Transfer ownership of your Neon-managed auth project to your own auth provider account.
  */
-export const transferNeonAuthProviderProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TransferNeonAuthProviderProjectInput,
-    outputSchema: TransferNeonAuthProviderProjectOutput,
-  }));
+export const transferNeonAuthProviderProject = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransferNeonAuthProviderProjectInput,
+  outputSchema: TransferNeonAuthProviderProjectOutput,
+}));

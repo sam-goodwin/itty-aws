@@ -4,27 +4,25 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterOnlineArchivesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
-    }),
-  );
+export const ListGroupClusterOnlineArchivesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
+  }),
+);
 export type ListGroupClusterOnlineArchivesInput =
   typeof ListGroupClusterOnlineArchivesInput.Type;
 
 // Output Schema
-export const ListGroupClusterOnlineArchivesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterOnlineArchivesOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterOnlineArchivesOutput =
   typeof ListGroupClusterOnlineArchivesOutput.Type;
 
@@ -44,9 +42,8 @@ export type ListGroupClusterOnlineArchivesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection for which you want to return the online archives.
  */
-export const listGroupClusterOnlineArchives =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterOnlineArchivesInput,
-    outputSchema: ListGroupClusterOnlineArchivesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGroupClusterOnlineArchives = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterOnlineArchivesInput,
+  outputSchema: ListGroupClusterOnlineArchivesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

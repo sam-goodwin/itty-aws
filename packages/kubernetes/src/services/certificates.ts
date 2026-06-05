@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateCertificatesV1CertificateSigningRequestInput =
@@ -955,40 +955,38 @@ export const deleteCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetCertificatesAPIGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/certificates.k8s.io/" }),
-  );
+export const GetCertificatesAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/certificates.k8s.io/" }));
 export type GetCertificatesAPIGroupInput =
   typeof GetCertificatesAPIGroupInput.Type;
 
 // Output Schema
-export const GetCertificatesAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetCertificatesAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetCertificatesAPIGroupOutput =
   typeof GetCertificatesAPIGroupOutput.Type;
 
@@ -1001,34 +999,32 @@ export const getCertificatesAPIGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetCertificatesAPIGroupOutput,
 }));
 // Input Schema
-export const GetCertificatesV1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1/" }),
-  );
+export const GetCertificatesV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1/" }));
 export type GetCertificatesV1APIResourcesInput =
   typeof GetCertificatesV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetCertificatesV1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetCertificatesV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetCertificatesV1APIResourcesOutput =
   typeof GetCertificatesV1APIResourcesOutput.Type;
 
@@ -1036,11 +1032,10 @@ export type GetCertificatesV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCertificatesV1APIResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetCertificatesV1APIResourcesInput,
-    outputSchema: GetCertificatesV1APIResourcesOutput,
-  }));
+export const getCertificatesV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCertificatesV1APIResourcesInput,
+  outputSchema: GetCertificatesV1APIResourcesOutput,
+}));
 // Input Schema
 export const GetCertificatesV1alpha1APIResourcesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1077,11 +1072,12 @@ export type GetCertificatesV1alpha1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCertificatesV1alpha1APIResources =
-  /*@__PURE__*/ API.make(() => ({
+export const getCertificatesV1alpha1APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetCertificatesV1alpha1APIResourcesInput,
     outputSchema: GetCertificatesV1alpha1APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GetCertificatesV1beta1APIResourcesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1118,11 +1114,12 @@ export type GetCertificatesV1beta1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCertificatesV1beta1APIResources =
-  /*@__PURE__*/ API.make(() => ({
+export const getCertificatesV1beta1APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetCertificatesV1beta1APIResourcesInput,
     outputSchema: GetCertificatesV1beta1APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1437,11 +1434,12 @@ export type ListCertificatesV1beta1ClusterTrustBundleOutput =
 /**
  * list or watch objects of kind ClusterTrustBundle
  */
-export const listCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ API.make(() => ({
+export const listCertificatesV1beta1ClusterTrustBundle = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ListCertificatesV1beta1ClusterTrustBundleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2892,12 +2890,13 @@ export type ReadCertificatesV1beta1ClusterTrustBundleOutput =
 /**
  * read the specified ClusterTrustBundle
  */
-export const readCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ API.make(() => ({
+export const readCertificatesV1beta1ClusterTrustBundle = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ReadCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(

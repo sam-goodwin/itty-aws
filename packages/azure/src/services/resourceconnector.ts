@@ -7,45 +7,43 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const AppliancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
-    }),
-  );
+export const AppliancesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+  }),
+);
 export type AppliancesCreateOrUpdateInput =
   typeof AppliancesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AppliancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppliancesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppliancesCreateOrUpdateOutput =
   typeof AppliancesCreateOrUpdateOutput.Type;
 
@@ -60,14 +58,12 @@ export type AppliancesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesCreateOrUpdateInput,
-    outputSchema: AppliancesCreateOrUpdateOutput,
-  }),
-);
+export const AppliancesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesCreateOrUpdateInput,
+  outputSchema: AppliancesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -81,7 +77,7 @@ export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AppliancesDeleteInput = typeof AppliancesDeleteInput.Type;
 
 // Output Schema
-export const AppliancesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppliancesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppliancesDeleteOutput = typeof AppliancesDeleteOutput.Type;
 
 // The operation
@@ -95,12 +91,12 @@ export type AppliancesDeleteOutput = typeof AppliancesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesDeleteInput,
   outputSchema: AppliancesDeleteOutput,
 }));
 // Input Schema
-export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -114,7 +110,7 @@ export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AppliancesGetInput = typeof AppliancesGetInput.Type;
 
 // Output Schema
-export const AppliancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -146,29 +142,27 @@ export type AppliancesGetOutput = typeof AppliancesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesGetInput,
   outputSchema: AppliancesGetOutput,
 }));
 // Input Schema
-export const AppliancesGetTelemetryConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/telemetryconfig",
-    }),
-  );
+export const AppliancesGetTelemetryConfigInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/telemetryconfig",
+  }),
+);
 export type AppliancesGetTelemetryConfigInput =
   typeof AppliancesGetTelemetryConfigInput.Type;
 
 // Output Schema
-export const AppliancesGetTelemetryConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    telemetryInstrumentationKey: Schema.optional(Schema.String),
-  });
+export const AppliancesGetTelemetryConfigOutput = /*@__PURE__*/ Schema.Struct({
+  telemetryInstrumentationKey: Schema.optional(Schema.String),
+});
 export type AppliancesGetTelemetryConfigOutput =
   typeof AppliancesGetTelemetryConfigOutput.Type;
 
@@ -179,64 +173,61 @@ export type AppliancesGetTelemetryConfigOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AppliancesGetTelemetryConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppliancesGetTelemetryConfigInput,
-    outputSchema: AppliancesGetTelemetryConfigOutput,
-  }));
+export const AppliancesGetTelemetryConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesGetTelemetryConfigInput,
+  outputSchema: AppliancesGetTelemetryConfigOutput,
+}));
 // Input Schema
-export const AppliancesGetUpgradeGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    upgradeGraph: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}",
-    }),
-  );
+export const AppliancesGetUpgradeGraphInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  upgradeGraph: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}",
+  }),
+);
 export type AppliancesGetUpgradeGraphInput =
   typeof AppliancesGetUpgradeGraphInput.Type;
 
 // Output Schema
-export const AppliancesGetUpgradeGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        applianceVersion: Schema.optional(Schema.String),
-        supportedVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Struct({
-                  catalogVersion: Schema.optional(
-                    Schema.Struct({
-                      data: Schema.optional(
-                        Schema.Struct({
-                          audience: Schema.optional(Schema.String),
-                          catalog: Schema.optional(Schema.String),
-                          offer: Schema.optional(Schema.String),
-                          version: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      name: Schema.optional(Schema.String),
-                      namespace: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+export const AppliancesGetUpgradeGraphOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      applianceVersion: Schema.optional(Schema.String),
+      supportedVersions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            metadata: Schema.optional(
+              Schema.Struct({
+                catalogVersion: Schema.optional(
+                  Schema.Struct({
+                    data: Schema.optional(
+                      Schema.Struct({
+                        audience: Schema.optional(Schema.String),
+                        catalog: Schema.optional(Schema.String),
+                        offer: Schema.optional(Schema.String),
+                        version: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    name: Schema.optional(Schema.String),
+                    namespace: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            version: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type AppliancesGetUpgradeGraphOutput =
   typeof AppliancesGetUpgradeGraphOutput.Type;
 
@@ -252,63 +243,49 @@ export type AppliancesGetUpgradeGraphOutput =
  * @param resourceName - Appliances name.
  * @param upgradeGraph - Upgrade graph version, ex - stable
  */
-export const AppliancesGetUpgradeGraph = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesGetUpgradeGraphInput,
-    outputSchema: AppliancesGetUpgradeGraphOutput,
+export const AppliancesGetUpgradeGraph = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesGetUpgradeGraphInput,
+  outputSchema: AppliancesGetUpgradeGraphOutput,
+}));
+// Input Schema
+export const AppliancesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
   }),
 );
-// Input Schema
-export const AppliancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
-    }),
-  );
 export type AppliancesListByResourceGroupInput =
   typeof AppliancesListByResourceGroupInput.Type;
 
 // Output Schema
-export const AppliancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppliancesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppliancesListByResourceGroupOutput =
   typeof AppliancesListByResourceGroupOutput.Type;
 
@@ -322,61 +299,48 @@ export type AppliancesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AppliancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppliancesListByResourceGroupInput,
-    outputSchema: AppliancesListByResourceGroupOutput,
-  }));
+export const AppliancesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesListByResourceGroupInput,
+  outputSchema: AppliancesListByResourceGroupOutput,
+}));
 // Input Schema
-export const AppliancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances",
-    }),
-  );
+export const AppliancesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances",
+  }),
+);
 export type AppliancesListBySubscriptionInput =
   typeof AppliancesListBySubscriptionInput.Type;
 
 // Output Schema
-export const AppliancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppliancesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppliancesListBySubscriptionOutput =
   typeof AppliancesListBySubscriptionOutput.Type;
 
@@ -389,14 +353,13 @@ export type AppliancesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AppliancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppliancesListBySubscriptionInput,
-    outputSchema: AppliancesListBySubscriptionOutput,
-  }));
+export const AppliancesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesListBySubscriptionInput,
+  outputSchema: AppliancesListBySubscriptionOutput,
+}));
 // Input Schema
 export const AppliancesListClusterUserCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -412,7 +375,7 @@ export type AppliancesListClusterUserCredentialInput =
 
 // Output Schema
 export const AppliancesListClusterUserCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
       Schema.Struct({
         expirationTime: Schema.optional(Schema.Number),
@@ -446,61 +409,60 @@ export type AppliancesListClusterUserCredentialOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesListClusterUserCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesListClusterUserCredential = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppliancesListClusterUserCredentialInput,
     outputSchema: AppliancesListClusterUserCredentialOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppliancesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    artifactType: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listkeys",
-    }),
-  );
+export const AppliancesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  artifactType: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listkeys",
+  }),
+);
 export type AppliancesListKeysInput = typeof AppliancesListKeysInput.Type;
 
 // Output Schema
-export const AppliancesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    artifactProfiles: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          endpoint: Schema.optional(Schema.String),
-        }),
-      ),
+export const AppliancesListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  artifactProfiles: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        endpoint: Schema.optional(Schema.String),
+      }),
     ),
-    kubeconfigs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(
-            Schema.Literals(["clusterUser", "clusterCustomerUser"]),
-          ),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  kubeconfigs: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals(["clusterUser", "clusterCustomerUser"]),
+        ),
+        value: Schema.optional(Schema.String),
+      }),
     ),
-    sshKeys: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          certificate: Schema.optional(Schema.String),
-          creationTimeStamp: Schema.optional(Schema.Number),
-          expirationTimeStamp: Schema.optional(Schema.Number),
-          privateKey: Schema.optional(SensitiveString),
-          publicKey: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  sshKeys: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        certificate: Schema.optional(Schema.String),
+        creationTimeStamp: Schema.optional(Schema.Number),
+        expirationTimeStamp: Schema.optional(Schema.Number),
+        privateKey: Schema.optional(SensitiveOutputString),
+        publicKey: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type AppliancesListKeysOutput = typeof AppliancesListKeysOutput.Type;
 
 // The operation
@@ -515,43 +477,41 @@ export type AppliancesListKeysOutput = typeof AppliancesListKeysOutput.Type;
  * @param resourceName - Appliances name.
  * @param artifactType - This sets the type of artifact being returned, when empty no artifact endpoint is returned.
  */
-export const AppliancesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesListKeysInput,
   outputSchema: AppliancesListKeysOutput,
 }));
 // Input Schema
-export const AppliancesListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ResourceConnector/operations",
-    }),
-  );
+export const AppliancesListOperationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ResourceConnector/operations",
+  }),
+);
 export type AppliancesListOperationsInput =
   typeof AppliancesListOperationsInput.Type;
 
 // Output Schema
-export const AppliancesListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        name: Schema.optional(Schema.String),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppliancesListOperationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      display: Schema.optional(
+        Schema.Struct({
+          description: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+        }),
+      ),
+      isDataAction: Schema.optional(Schema.Boolean),
+      name: Schema.optional(Schema.String),
+      origin: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppliancesListOperationsOutput =
   typeof AppliancesListOperationsOutput.Type;
 
@@ -561,14 +521,12 @@ export type AppliancesListOperationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const AppliancesListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesListOperationsInput,
-    outputSchema: AppliancesListOperationsOutput,
-  }),
-);
+export const AppliancesListOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesListOperationsInput,
+  outputSchema: AppliancesListOperationsOutput,
+}));
 // Input Schema
-export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -582,27 +540,25 @@ export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AppliancesUpdateInput = typeof AppliancesUpdateInput.Type;
 
 // Output Schema
-export const AppliancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const AppliancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppliancesUpdateOutput = typeof AppliancesUpdateOutput.Type;
 
 // The operation
@@ -616,7 +572,7 @@ export type AppliancesUpdateOutput = typeof AppliancesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesUpdateInput,
   outputSchema: AppliancesUpdateOutput,
 }));

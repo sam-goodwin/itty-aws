@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterBackupSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupClusterBackupSnapshotsInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -13,18 +13,18 @@ export const ListGroupClusterBackupSnapshotsInput =
     itemsPerPage: Schema.optional(Schema.Number),
     pageNum: Schema.optional(Schema.Number),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots",
+  }),
+);
 export type ListGroupClusterBackupSnapshotsInput =
   typeof ListGroupClusterBackupSnapshotsInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterBackupSnapshotsOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterBackupSnapshotsOutput =
   typeof ListGroupClusterBackupSnapshotsOutput.Type;
 
@@ -44,9 +44,8 @@ export type ListGroupClusterBackupSnapshotsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const listGroupClusterBackupSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterBackupSnapshotsInput,
-    outputSchema: ListGroupClusterBackupSnapshotsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const listGroupClusterBackupSnapshots = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterBackupSnapshotsInput,
+  outputSchema: ListGroupClusterBackupSnapshotsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

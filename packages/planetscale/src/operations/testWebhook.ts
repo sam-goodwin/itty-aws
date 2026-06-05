@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestWebhookInput = typeof TestWebhookInput.Type;
 
 // Output Schema
-export const TestWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TestWebhookOutput = /*@__PURE__*/ Schema.Void;
 export type TestWebhookOutput = typeof TestWebhookOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type TestWebhookOutput = typeof TestWebhookOutput.Type;
  * @param database - The name of the database
  * @param id - The ID of the webhook
  */
-export const testWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const testWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestWebhookInput,
   outputSchema: TestWebhookOutput,
   errors: [Forbidden, NotFound] as const,

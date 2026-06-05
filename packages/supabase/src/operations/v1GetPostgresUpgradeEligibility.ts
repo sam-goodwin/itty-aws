@@ -4,18 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1GetPostgresUpgradeEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetPostgresUpgradeEligibilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/v1/projects/{ref}/upgrade/eligibility" }),
-  );
+  },
+).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}/upgrade/eligibility" }),
+);
 export type V1GetPostgresUpgradeEligibilityInput =
   typeof V1GetPostgresUpgradeEligibilityInput.Type;
 
 // Output Schema
 export const V1GetPostgresUpgradeEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligible: Schema.Boolean,
     current_app_version: Schema.String,
     current_app_version_release_channel: Schema.Literals([
@@ -63,9 +64,8 @@ export type V1GetPostgresUpgradeEligibilityOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPostgresUpgradeEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1GetPostgresUpgradeEligibilityInput,
-    outputSchema: V1GetPostgresUpgradeEligibilityOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }));
+export const v1GetPostgresUpgradeEligibility = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetPostgresUpgradeEligibilityInput,
+  outputSchema: V1GetPostgresUpgradeEligibilityOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

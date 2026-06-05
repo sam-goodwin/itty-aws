@@ -4,25 +4,26 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const IntegrationsGithubReposRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationsGithubReposRetrieveInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
     search: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/integrations/{id}/github_repos/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/integrations/{id}/github_repos/",
+  }),
+);
 export type IntegrationsGithubReposRetrieveInput =
   typeof IntegrationsGithubReposRetrieveInput.Type;
 
 // Output Schema
 export const IntegrationsGithubReposRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -46,9 +47,8 @@ export type IntegrationsGithubReposRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Optional case-insensitive repository name search query.
  */
-export const integrationsGithubReposRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationsGithubReposRetrieveInput,
-    outputSchema: IntegrationsGithubReposRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const integrationsGithubReposRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationsGithubReposRetrieveInput,
+  outputSchema: IntegrationsGithubReposRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

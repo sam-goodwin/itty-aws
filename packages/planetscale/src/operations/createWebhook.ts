@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
+import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
-import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateWebhookInput = /*@__PURE__*/ Schema.Struct({

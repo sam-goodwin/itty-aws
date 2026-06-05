@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EnvironmentsDefaultEvaluationContextsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type EnvironmentsDefaultEvaluationContextsRetrieveInput =
 
 // Output Schema
 export const EnvironmentsDefaultEvaluationContextsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type EnvironmentsDefaultEvaluationContextsRetrieveOutput =
   typeof EnvironmentsDefaultEvaluationContextsRetrieveOutput.Type;
 
@@ -31,7 +31,7 @@ export type EnvironmentsDefaultEvaluationContextsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDefaultEvaluationContextsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDefaultEvaluationContextsRetrieveInput,
     outputSchema: EnvironmentsDefaultEvaluationContextsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

@@ -9,42 +9,40 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ApplyUpdatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
-    }),
-  );
+export const ApplyUpdatesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
+  }),
+);
 export type ApplyUpdatesCreateOrUpdateInput =
   typeof ApplyUpdatesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ApplyUpdatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplyUpdatesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplyUpdatesCreateOrUpdateOutput =
   typeof ApplyUpdatesCreateOrUpdateOutput.Type;
 
@@ -59,15 +57,13 @@ export type ApplyUpdatesCreateOrUpdateOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplyUpdatesCreateOrUpdateInput,
-    outputSchema: ApplyUpdatesCreateOrUpdateOutput,
-  }),
-);
+export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplyUpdatesCreateOrUpdateInput,
+  outputSchema: ApplyUpdatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ApplyUpdatesCreateOrUpdateParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -85,7 +81,7 @@ export type ApplyUpdatesCreateOrUpdateParentInput =
 
 // Output Schema
 export const ApplyUpdatesCreateOrUpdateParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -120,13 +116,12 @@ export type ApplyUpdatesCreateOrUpdateParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const ApplyUpdatesCreateOrUpdateParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ApplyUpdatesCreateOrUpdateParentInput,
-    outputSchema: ApplyUpdatesCreateOrUpdateParentOutput,
-  }));
+export const ApplyUpdatesCreateOrUpdateParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplyUpdatesCreateOrUpdateParentInput,
+  outputSchema: ApplyUpdatesCreateOrUpdateParentOutput,
+}));
 // Input Schema
-export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplyUpdatesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -141,7 +136,7 @@ export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApplyUpdatesGetInput = typeof ApplyUpdatesGetInput.Type;
 
 // Output Schema
-export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplyUpdatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -174,49 +169,47 @@ export type ApplyUpdatesGetOutput = typeof ApplyUpdatesGetOutput.Type;
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
  */
-export const ApplyUpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplyUpdatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplyUpdatesGetInput,
   outputSchema: ApplyUpdatesGetOutput,
 }));
 // Input Schema
-export const ApplyUpdatesGetParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceParentType: Schema.String.pipe(T.PathParam()),
-    resourceParentName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    applyUpdateName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
-    }),
-  );
+export const ApplyUpdatesGetParentInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceParentType: Schema.String.pipe(T.PathParam()),
+  resourceParentName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  applyUpdateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
+  }),
+);
 export type ApplyUpdatesGetParentInput = typeof ApplyUpdatesGetParentInput.Type;
 
 // Output Schema
-export const ApplyUpdatesGetParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplyUpdatesGetParentOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplyUpdatesGetParentOutput =
   typeof ApplyUpdatesGetParentOutput.Type;
 
@@ -234,15 +227,13 @@ export type ApplyUpdatesGetParentOutput =
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
  */
-export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplyUpdatesGetParentInput,
-    outputSchema: ApplyUpdatesGetParentOutput,
-  }),
-);
+export const ApplyUpdatesGetParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplyUpdatesGetParentInput,
+  outputSchema: ApplyUpdatesGetParentOutput,
+}));
 // Input Schema
 export const ConfigurationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -259,7 +250,7 @@ export type ConfigurationAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -293,14 +284,15 @@ export type ConfigurationAssignmentsCreateOrUpdateOutput =
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
  */
-export const ConfigurationAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationAssignmentsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationAssignmentsCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationAssignmentsCreateOrUpdateParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -319,7 +311,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentInput =
 
 // Output Schema
 export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -356,30 +348,29 @@ export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsCreateOrUpdateParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsCreateOrUpdateParentInput,
     outputSchema: ConfigurationAssignmentsCreateOrUpdateParentOutput,
   }));
 // Input Schema
-export const ConfigurationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    configurationAssignmentName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-    }),
-  );
+export const ConfigurationAssignmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+  }),
+);
 export type ConfigurationAssignmentsDeleteInput =
   typeof ConfigurationAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConfigurationAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -397,7 +388,8 @@ export const ConfigurationAssignmentsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ConfigurationAssignmentsDeleteOutput =
   typeof ConfigurationAssignmentsDeleteOutput.Type;
 
@@ -413,14 +405,13 @@ export type ConfigurationAssignmentsDeleteOutput =
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
  */
-export const ConfigurationAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationAssignmentsDeleteInput,
-    outputSchema: ConfigurationAssignmentsDeleteOutput,
-  }));
+export const ConfigurationAssignmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationAssignmentsDeleteInput,
+  outputSchema: ConfigurationAssignmentsDeleteOutput,
+}));
 // Input Schema
 export const ConfigurationAssignmentsDeleteParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -439,7 +430,7 @@ export type ConfigurationAssignmentsDeleteParentInput =
 
 // Output Schema
 export const ConfigurationAssignmentsDeleteParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -475,14 +466,15 @@ export type ConfigurationAssignmentsDeleteParentOutput =
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
  */
-export const ConfigurationAssignmentsDeleteParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationAssignmentsDeleteParent = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationAssignmentsDeleteParentInput,
     outputSchema: ConfigurationAssignmentsDeleteParentOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -496,7 +488,7 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -528,13 +520,13 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -548,7 +540,7 @@ export type ConfigurationAssignmentsForResourceGroupDeleteInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -580,13 +572,13 @@ export type ConfigurationAssignmentsForResourceGroupDeleteOutput =
  * @param configurationAssignmentName - Unique configuration assignment name
  */
 export const ConfigurationAssignmentsForResourceGroupDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupDeleteInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupDeleteOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -600,7 +592,7 @@ export type ConfigurationAssignmentsForResourceGroupGetInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -632,13 +624,13 @@ export type ConfigurationAssignmentsForResourceGroupGetOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForResourceGroupGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupGetInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupGetOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -652,7 +644,7 @@ export type ConfigurationAssignmentsForResourceGroupUpdateInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -684,13 +676,13 @@ export type ConfigurationAssignmentsForResourceGroupUpdateOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForResourceGroupUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupUpdateInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -703,7 +695,7 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -734,13 +726,13 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -753,7 +745,7 @@ export type ConfigurationAssignmentsForSubscriptionsDeleteInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -784,13 +776,13 @@ export type ConfigurationAssignmentsForSubscriptionsDeleteOutput =
  * @param configurationAssignmentName - Unique configuration assignment name
  */
 export const ConfigurationAssignmentsForSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsDeleteInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsDeleteOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -803,7 +795,7 @@ export type ConfigurationAssignmentsForSubscriptionsGetInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -834,13 +826,13 @@ export type ConfigurationAssignmentsForSubscriptionsGetOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsGetInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsGetOutput,
   }));
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -853,7 +845,7 @@ export type ConfigurationAssignmentsForSubscriptionsUpdateInput =
 
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -884,48 +876,46 @@ export type ConfigurationAssignmentsForSubscriptionsUpdateOutput =
  * @param configurationAssignmentName - Configuration assignment name
  */
 export const ConfigurationAssignmentsForSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsUpdateInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsUpdateOutput,
   }));
 // Input Schema
-export const ConfigurationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    configurationAssignmentName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-    }),
-  );
+export const ConfigurationAssignmentsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+  }),
+);
 export type ConfigurationAssignmentsGetInput =
   typeof ConfigurationAssignmentsGetInput.Type;
 
 // Output Schema
-export const ConfigurationAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationAssignmentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationAssignmentsGetOutput =
   typeof ConfigurationAssignmentsGetOutput.Type;
 
@@ -941,15 +931,13 @@ export type ConfigurationAssignmentsGetOutput =
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
  */
-export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationAssignmentsGetInput,
-    outputSchema: ConfigurationAssignmentsGetOutput,
-  }),
-);
+export const ConfigurationAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationAssignmentsGetInput,
+  outputSchema: ConfigurationAssignmentsGetOutput,
+}));
 // Input Schema
 export const ConfigurationAssignmentsGetParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -968,7 +956,7 @@ export type ConfigurationAssignmentsGetParentInput =
 
 // Output Schema
 export const ConfigurationAssignmentsGetParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1004,64 +992,61 @@ export type ConfigurationAssignmentsGetParentOutput =
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
  */
-export const ConfigurationAssignmentsGetParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationAssignmentsGetParentInput,
-    outputSchema: ConfigurationAssignmentsGetParentOutput,
-  }));
+export const ConfigurationAssignmentsGetParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationAssignmentsGetParentInput,
+  outputSchema: ConfigurationAssignmentsGetParentOutput,
+}));
 // Input Schema
-export const ConfigurationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
-    }),
-  );
+export const ConfigurationAssignmentsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
+  }),
+);
 export type ConfigurationAssignmentsListInput =
   typeof ConfigurationAssignmentsListInput.Type;
 
 // Output Schema
-export const ConfigurationAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConfigurationAssignmentsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type ConfigurationAssignmentsListOutput =
   typeof ConfigurationAssignmentsListOutput.Type;
 
@@ -1076,14 +1061,13 @@ export type ConfigurationAssignmentsListOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const ConfigurationAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationAssignmentsListInput,
-    outputSchema: ConfigurationAssignmentsListOutput,
-  }));
+export const ConfigurationAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationAssignmentsListInput,
+  outputSchema: ConfigurationAssignmentsListOutput,
+}));
 // Input Schema
 export const ConfigurationAssignmentsListParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -1101,7 +1085,7 @@ export type ConfigurationAssignmentsListParentInput =
 
 // Output Schema
 export const ConfigurationAssignmentsListParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1152,14 +1136,15 @@ export type ConfigurationAssignmentsListParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const ConfigurationAssignmentsListParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationAssignmentsListParent = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationAssignmentsListParentInput,
     outputSchema: ConfigurationAssignmentsListParentOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationAssignmentsWithinSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments",
@@ -1170,7 +1155,7 @@ export type ConfigurationAssignmentsWithinSubscriptionListInput =
 
 // Output Schema
 export const ConfigurationAssignmentsWithinSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1213,13 +1198,13 @@ export type ConfigurationAssignmentsWithinSubscriptionListOutput =
  * [UNSUPPORTED] Get configuration assignment within a subscription. This API is not implemented yet.
  */
 export const ConfigurationAssignmentsWithinSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsWithinSubscriptionListInput,
     outputSchema: ConfigurationAssignmentsWithinSubscriptionListOutput,
   }));
 // Input Schema
 export const MaintenanceConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1233,7 +1218,7 @@ export type MaintenanceConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const MaintenanceConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1262,28 +1247,30 @@ export type MaintenanceConfigurationsCreateOrUpdateOutput =
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
  */
-export const MaintenanceConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MaintenanceConfigurationsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MaintenanceConfigurationsCreateOrUpdateInput,
     outputSchema: MaintenanceConfigurationsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const MaintenanceConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenanceConfigurationsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+  }),
+);
 export type MaintenanceConfigurationsDeleteInput =
   typeof MaintenanceConfigurationsDeleteInput.Type;
 
 // Output Schema
 export const MaintenanceConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1312,14 +1299,13 @@ export type MaintenanceConfigurationsDeleteOutput =
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
  */
-export const MaintenanceConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsDeleteInput,
-    outputSchema: MaintenanceConfigurationsDeleteOutput,
-  }));
+export const MaintenanceConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsDeleteInput,
+  outputSchema: MaintenanceConfigurationsDeleteOutput,
+}));
 // Input Schema
 export const MaintenanceConfigurationsForResourceGroupListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1332,7 +1318,7 @@ export type MaintenanceConfigurationsForResourceGroupListInput =
 
 // Output Schema
 export const MaintenanceConfigurationsForResourceGroupListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1377,45 +1363,43 @@ export type MaintenanceConfigurationsForResourceGroupListOutput =
  * @param resourceGroupName - Resource Group Name
  */
 export const MaintenanceConfigurationsForResourceGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsForResourceGroupListInput,
     outputSchema: MaintenanceConfigurationsForResourceGroupListOutput,
   }));
 // Input Schema
-export const MaintenanceConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
-    }),
-  );
+export const MaintenanceConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+  }),
+);
 export type MaintenanceConfigurationsGetInput =
   typeof MaintenanceConfigurationsGetInput.Type;
 
 // Output Schema
-export const MaintenanceConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MaintenanceConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MaintenanceConfigurationsGetOutput =
   typeof MaintenanceConfigurationsGetOutput.Type;
 
@@ -1426,59 +1410,58 @@ export type MaintenanceConfigurationsGetOutput =
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
  */
-export const MaintenanceConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsGetInput,
-    outputSchema: MaintenanceConfigurationsGetOutput,
-  }));
+export const MaintenanceConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsGetInput,
+  outputSchema: MaintenanceConfigurationsGetOutput,
+}));
 // Input Schema
-export const MaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/maintenanceConfigurations",
-    }),
-  );
+export const MaintenanceConfigurationsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/maintenanceConfigurations",
+  }),
+);
 export type MaintenanceConfigurationsListInput =
   typeof MaintenanceConfigurationsListInput.Type;
 
 // Output Schema
-export const MaintenanceConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const MaintenanceConfigurationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type MaintenanceConfigurationsListOutput =
   typeof MaintenanceConfigurationsListOutput.Type;
 
@@ -1486,28 +1469,28 @@ export type MaintenanceConfigurationsListOutput =
 /**
  * Get Configuration records within a subscription
  */
-export const MaintenanceConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsListInput,
-    outputSchema: MaintenanceConfigurationsListOutput,
-  }));
+export const MaintenanceConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsListInput,
+  outputSchema: MaintenanceConfigurationsListOutput,
+}));
 // Input Schema
-export const MaintenanceConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenanceConfigurationsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+  }),
+);
 export type MaintenanceConfigurationsUpdateInput =
   typeof MaintenanceConfigurationsUpdateInput.Type;
 
 // Output Schema
 export const MaintenanceConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1536,15 +1519,12 @@ export type MaintenanceConfigurationsUpdateOutput =
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
  */
-export const MaintenanceConfigurationsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsUpdateInput,
-    outputSchema: MaintenanceConfigurationsUpdateOutput,
-  }));
+export const MaintenanceConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsUpdateInput,
+  outputSchema: MaintenanceConfigurationsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Maintenance/operations",
@@ -1553,7 +1533,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1581,13 +1561,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * List the available operations supported by the Microsoft.Maintenance resource provider
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PublicMaintenanceConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1600,7 +1580,7 @@ export type PublicMaintenanceConfigurationsGetInput =
 
 // Output Schema
 export const PublicMaintenanceConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1628,14 +1608,15 @@ export type PublicMaintenanceConfigurationsGetOutput =
  *
  * @param resourceName - Maintenance Configuration Name
  */
-export const PublicMaintenanceConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublicMaintenanceConfigurationsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PublicMaintenanceConfigurationsGetInput,
     outputSchema: PublicMaintenanceConfigurationsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PublicMaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations",
@@ -1646,7 +1627,7 @@ export type PublicMaintenanceConfigurationsListInput =
 
 // Output Schema
 export const PublicMaintenanceConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1688,13 +1669,14 @@ export type PublicMaintenanceConfigurationsListOutput =
 /**
  * Get Public Maintenance Configuration records
  */
-export const PublicMaintenanceConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublicMaintenanceConfigurationsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PublicMaintenanceConfigurationsListInput,
     outputSchema: PublicMaintenanceConfigurationsListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -1708,7 +1690,7 @@ export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdatesListInput = typeof UpdatesListInput.Type;
 
 // Output Schema
-export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1759,21 +1741,19 @@ export type UpdatesListOutput = typeof UpdatesListOutput.Type;
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListInput,
   outputSchema: UpdatesListOutput,
 }));
 // Input Schema
-export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceParentType: Schema.String.pipe(T.PathParam()),
-    resourceParentName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const UpdatesListParentInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceParentType: Schema.String.pipe(T.PathParam()),
+  resourceParentName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
@@ -1782,45 +1762,44 @@ export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdatesListParentInput = typeof UpdatesListParentInput.Type;
 
 // Output Schema
-export const UpdatesListParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          maintenanceScope: Schema.optional(
-            Schema.Literals([
-              "Host",
-              "Resource",
-              "OSImage",
-              "Extension",
-              "InGuestPatch",
-              "SQLDB",
-              "SQLManagedInstance",
-            ]),
-          ),
-          impactType: Schema.optional(
-            Schema.Literals(["None", "Freeze", "Restart", "Redeploy"]),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "Pending",
-              "InProgress",
-              "Completed",
-              "RetryNow",
-              "RetryLater",
-            ]),
-          ),
-          impactDurationInSec: Schema.optional(Schema.Number),
-          notBefore: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              resourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const UpdatesListParentOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        maintenanceScope: Schema.optional(
+          Schema.Literals([
+            "Host",
+            "Resource",
+            "OSImage",
+            "Extension",
+            "InGuestPatch",
+            "SQLDB",
+            "SQLManagedInstance",
+          ]),
+        ),
+        impactType: Schema.optional(
+          Schema.Literals(["None", "Freeze", "Restart", "Redeploy"]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pending",
+            "InProgress",
+            "Completed",
+            "RetryNow",
+            "RetryLater",
+          ]),
+        ),
+        impactDurationInSec: Schema.optional(Schema.Number),
+        notBefore: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
 
 // The operation
@@ -1836,7 +1815,7 @@ export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  */
-export const UpdatesListParent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesListParent = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListParentInput,
   outputSchema: UpdatesListParentOutput,
 }));

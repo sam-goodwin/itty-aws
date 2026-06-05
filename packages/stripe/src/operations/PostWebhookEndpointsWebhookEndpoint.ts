@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostWebhookEndpointsWebhookEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhook_endpoint: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.Unknown),
     disabled: Schema.optional(Schema.Boolean),
@@ -285,7 +285,7 @@ export type PostWebhookEndpointsWebhookEndpointInput =
 
 // Output Schema
 export const PostWebhookEndpointsWebhookEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_version: Schema.NullOr(Schema.String),
     application: Schema.NullOr(Schema.String),
     created: Schema.Number,
@@ -295,7 +295,7 @@ export const PostWebhookEndpointsWebhookEndpointOutput =
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
     object: Schema.Literals(["webhook_endpoint"]),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
     status: Schema.String,
     url: Schema.String,
   });
@@ -308,8 +308,9 @@ export type PostWebhookEndpointsWebhookEndpointOutput =
  *
  * <p>Updates the webhook endpoint. You may edit the <code>url</code>, the list of <code>enabled_events</code>, and the status of your endpoint.</p>
  */
-export const PostWebhookEndpointsWebhookEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostWebhookEndpointsWebhookEndpoint = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostWebhookEndpointsWebhookEndpointInput,
     outputSchema: PostWebhookEndpointsWebhookEndpointOutput,
-  }));
+  }),
+);

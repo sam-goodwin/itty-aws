@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetEvmSwapPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvmSwapPriceInput = /*@__PURE__*/ Schema.Struct({
   network: Schema.String,
   toToken: Schema.String,
   fromToken: Schema.String,
@@ -16,7 +16,7 @@ export const GetEvmSwapPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEvmSwapPriceInput = typeof GetEvmSwapPriceInput.Type;
 
 // Output Schema
-export const GetEvmSwapPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const GetEvmSwapPriceOutput = /*@__PURE__*/ Schema.Unknown;
 export type GetEvmSwapPriceOutput = typeof GetEvmSwapPriceOutput.Type;
 
 // The operation
@@ -25,7 +25,7 @@ export type GetEvmSwapPriceOutput = typeof GetEvmSwapPriceOutput.Type;
  *
  * Get a price estimate for a swap between two tokens on an EVM network.
  */
-export const getEvmSwapPrice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEvmSwapPrice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEvmSwapPriceInput,
   outputSchema: GetEvmSwapPriceOutput,
 }));

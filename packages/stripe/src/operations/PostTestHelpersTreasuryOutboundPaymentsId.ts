@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTreasuryOutboundPaymentsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     tracking_details: Schema.Struct({
@@ -34,7 +34,7 @@ export type PostTestHelpersTreasuryOutboundPaymentsIdInput =
 
 // Output Schema
 export const PostTestHelpersTreasuryOutboundPaymentsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -78,8 +78,9 @@ export type PostTestHelpersTreasuryOutboundPaymentsIdOutput =
  *
  * <p>Updates a test mode created OutboundPayment with tracking details. The OutboundPayment must not be cancelable, and cannot be in the <code>canceled</code> or <code>failed</code> states.</p>
  */
-export const PostTestHelpersTreasuryOutboundPaymentsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTestHelpersTreasuryOutboundPaymentsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTestHelpersTreasuryOutboundPaymentsIdInput,
     outputSchema: PostTestHelpersTreasuryOutboundPaymentsIdOutput,
-  }));
+  }),
+);

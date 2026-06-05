@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesListInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
   region: Schema.optional(Schema.String),
@@ -14,7 +14,7 @@ export const MachinesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesListInput = typeof MachinesListInput.Type;
 
 // Output Schema
-export const MachinesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const MachinesListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     checks: Schema.optional(
       Schema.Array(
@@ -967,7 +967,7 @@ export type MachinesListOutput = typeof MachinesListOutput.Type;
  * @param state - comma separated list of states to filter (created, started, stopped, suspended)
  * @param summary - Only return summary info about machines (omit config, checks, events, host_status, nonce, etc.)
  */
-export const MachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesListInput,
   outputSchema: MachinesListOutput,
   errors: [Forbidden, NotFound] as const,

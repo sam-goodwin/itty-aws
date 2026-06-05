@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationDomainsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/organization_domains/{id}" }));
 export type OrganizationDomainsControllerDeleteInput =
@@ -13,7 +13,7 @@ export type OrganizationDomainsControllerDeleteInput =
 
 // Output Schema
 export const OrganizationDomainsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type OrganizationDomainsControllerDeleteOutput =
   typeof OrganizationDomainsControllerDeleteOutput.Type;
 
@@ -25,9 +25,10 @@ export type OrganizationDomainsControllerDeleteOutput =
  *
  * @param id - Unique identifier of the organization domain.
  */
-export const OrganizationDomainsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationDomainsControllerDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationDomainsControllerDeleteInput,
     outputSchema: OrganizationDomainsControllerDeleteOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeletePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const DeletePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeletePasswordInput = typeof DeletePasswordInput.Type;
 
 // Output Schema
-export const DeletePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeletePasswordOutput = /*@__PURE__*/ Schema.Void;
 export type DeletePasswordOutput = typeof DeletePasswordOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type DeletePasswordOutput = typeof DeletePasswordOutput.Type;
  * @param branch - The name of the branch the password belongs to
  * @param id - The ID of the password
  */
-export const deletePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deletePassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletePasswordInput,
   outputSchema: DeletePasswordOutput,
   errors: [Forbidden, NotFound] as const,

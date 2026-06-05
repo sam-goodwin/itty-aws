@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InvitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -17,7 +17,7 @@ export const InvitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InvitesListInput = typeof InvitesListInput.Type;
 
 // Output Schema
-export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -65,7 +65,7 @@ export type InvitesListOutput = typeof InvitesListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const invitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const invitesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitesListInput,
   outputSchema: InvitesListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,22 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ResetGroupMaintenanceWindowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
-    }),
-  );
+export const ResetGroupMaintenanceWindowInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
+  }),
+);
 export type ResetGroupMaintenanceWindowInput =
   typeof ResetGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const ResetGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ResetGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
 export type ResetGroupMaintenanceWindowOutput =
   typeof ResetGroupMaintenanceWindowOutput.Type;
 
@@ -34,10 +32,8 @@ export type ResetGroupMaintenanceWindowOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const resetGroupMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ResetGroupMaintenanceWindowInput,
-    outputSchema: ResetGroupMaintenanceWindowOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const resetGroupMaintenanceWindow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResetGroupMaintenanceWindowInput,
+  outputSchema: ResetGroupMaintenanceWindowOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -3,13 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetAPITokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/tokens" }));
+export const GetAPITokensInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/tokens" }),
+);
 export type GetAPITokensInput = typeof GetAPITokensInput.Type;
 
 // Output Schema
-export const GetAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetAPITokensOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     datasetCapabilities: Schema.Record(
       Schema.String,
@@ -99,7 +99,7 @@ export type GetAPITokensOutput = typeof GetAPITokensOutput.Type;
 /**
  * Get API tokens
  */
-export const getAPITokens = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPITokens = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPITokensInput,
   outputSchema: GetAPITokensOutput,
 }));

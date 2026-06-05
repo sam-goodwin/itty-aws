@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const InvalidateGroupTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
-    }),
-  );
+export const InvalidateGroupTokensInput = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+  groupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
+  }),
+);
 export type InvalidateGroupTokensInput = typeof InvalidateGroupTokensInput.Type;
 
 // Output Schema
-export const InvalidateGroupTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InvalidateGroupTokensOutput = /*@__PURE__*/ Schema.Void;
 export type InvalidateGroupTokensOutput =
   typeof InvalidateGroupTokensOutput.Type;
 
@@ -31,10 +29,8 @@ export type InvalidateGroupTokensOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const invalidateGroupTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvalidateGroupTokensInput,
-    outputSchema: InvalidateGroupTokensOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const invalidateGroupTokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvalidateGroupTokensInput,
+  outputSchema: InvalidateGroupTokensOutput,
+  errors: [NotFound] as const,
+}));

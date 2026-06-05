@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableNeonAuthInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   delete_data: Schema.optional(Schema.Boolean),
@@ -16,7 +16,7 @@ export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DisableNeonAuthInput = typeof DisableNeonAuthInput.Type;
 
 // Output Schema
-export const DisableNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DisableNeonAuthOutput = /*@__PURE__*/ Schema.Void;
 export type DisableNeonAuthOutput = typeof DisableNeonAuthOutput.Type;
 
 // The operation
@@ -26,7 +26,7 @@ export type DisableNeonAuthOutput = typeof DisableNeonAuthOutput.Type;
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const disableNeonAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const disableNeonAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisableNeonAuthInput,
   outputSchema: DisableNeonAuthOutput,
 }));

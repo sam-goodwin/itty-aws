@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetShippingRatesShippingRateTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shipping_rate_token: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetShippingRatesShippingRateTokenInput =
 
 // Output Schema
 export const GetShippingRatesShippingRateTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     created: Schema.Number,
     delivery_estimate: Schema.Unknown,
@@ -64,8 +64,7 @@ export type GetShippingRatesShippingRateTokenOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetShippingRatesShippingRateToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetShippingRatesShippingRateTokenInput,
-    outputSchema: GetShippingRatesShippingRateTokenOutput,
-  }));
+export const GetShippingRatesShippingRateToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetShippingRatesShippingRateTokenInput,
+  outputSchema: GetShippingRatesShippingRateTokenOutput,
+}));

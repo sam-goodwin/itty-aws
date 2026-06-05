@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostBillingMeterEventAdjustmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.optional(
       Schema.Struct({
         identifier: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export type PostBillingMeterEventAdjustmentsInput =
 
 // Output Schema
 export const PostBillingMeterEventAdjustmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.Unknown,
     event_name: Schema.String,
     livemode: Schema.Boolean,
@@ -42,8 +42,7 @@ export type PostBillingMeterEventAdjustmentsOutput =
  *
  * <p>Creates a billing meter event adjustment.</p>
  */
-export const PostBillingMeterEventAdjustments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostBillingMeterEventAdjustmentsInput,
-    outputSchema: PostBillingMeterEventAdjustmentsOutput,
-  }));
+export const PostBillingMeterEventAdjustments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingMeterEventAdjustmentsInput,
+  outputSchema: PostBillingMeterEventAdjustmentsOutput,
+}));

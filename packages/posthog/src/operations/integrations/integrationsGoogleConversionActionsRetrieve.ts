@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const IntegrationsGoogleConversionActionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type IntegrationsGoogleConversionActionsRetrieveInput =
 
 // Output Schema
 export const IntegrationsGoogleConversionActionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationsGoogleConversionActionsRetrieveOutput =
   typeof IntegrationsGoogleConversionActionsRetrieveOutput.Type;
 
@@ -30,7 +30,7 @@ export type IntegrationsGoogleConversionActionsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGoogleConversionActionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGoogleConversionActionsRetrieveInput,
     outputSchema: IntegrationsGoogleConversionActionsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

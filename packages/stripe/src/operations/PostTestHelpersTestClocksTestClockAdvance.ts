@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTestClocksTestClockAdvanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     frozen_time: Schema.Number,
@@ -20,7 +20,7 @@ export type PostTestHelpersTestClocksTestClockAdvanceInput =
 
 // Output Schema
 export const PostTestHelpersTestClocksTestClockAdvanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deletes_after: Schema.Number,
     frozen_time: Schema.Number,
@@ -46,8 +46,9 @@ export type PostTestHelpersTestClocksTestClockAdvanceOutput =
  *
  * <p>Starts advancing a test clock to a specified time in the future. Advancement is done when status changes to <code>Ready</code>.</p>
  */
-export const PostTestHelpersTestClocksTestClockAdvance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTestHelpersTestClocksTestClockAdvance = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTestHelpersTestClocksTestClockAdvanceInput,
     outputSchema: PostTestHelpersTestClocksTestClockAdvanceOutput,
-  }));
+  }),
+);

@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const CreateGroupClusterIndexRollingIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type CreateGroupClusterIndexRollingIndexInput =
 
 // Output Schema
 export const CreateGroupClusterIndexRollingIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterIndexRollingIndexOutput =
   typeof CreateGroupClusterIndexRollingIndexOutput.Type;
 
@@ -38,9 +38,10 @@ export type CreateGroupClusterIndexRollingIndexOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
  */
-export const createGroupClusterIndexRollingIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupClusterIndexRollingIndex = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateGroupClusterIndexRollingIndexInput,
     outputSchema: CreateGroupClusterIndexRollingIndexOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

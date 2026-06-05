@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GroupMembershipsControllerRemoveMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     omId: Schema.String.pipe(T.PathParam()),
@@ -20,7 +20,7 @@ export type GroupMembershipsControllerRemoveMemberInput =
 
 // Output Schema
 export const GroupMembershipsControllerRemoveMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GroupMembershipsControllerRemoveMemberOutput =
   typeof GroupMembershipsControllerRemoveMemberOutput.Type;
 
@@ -34,9 +34,10 @@ export type GroupMembershipsControllerRemoveMemberOutput =
  * @param groupId - Unique identifier of the Group.
  * @param omId - Unique identifier of the Organization Membership.
  */
-export const GroupMembershipsControllerRemoveMember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupMembershipsControllerRemoveMember = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GroupMembershipsControllerRemoveMemberInput,
     outputSchema: GroupMembershipsControllerRemoveMemberOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

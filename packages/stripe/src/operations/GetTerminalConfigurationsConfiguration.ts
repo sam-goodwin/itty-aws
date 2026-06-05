@@ -31,8 +31,9 @@ export type GetTerminalConfigurationsConfigurationOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ API.make(() => ({
+export const GetTerminalConfigurationsConfiguration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetTerminalConfigurationsConfigurationInput,
     outputSchema: GetTerminalConfigurationsConfigurationOutput,
-  }));
+  }),
+);

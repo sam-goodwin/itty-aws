@@ -10,74 +10,70 @@ import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const CreateNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
-  );
+export const CreateNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
+);
 export type CreateNetworkingV1IPAddressInput =
   typeof CreateNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const CreateNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const CreateNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    parentRef: Schema.Struct({
+      group: Schema.optional(Schema.String),
+      name: Schema.String,
+      namespace: Schema.optional(Schema.String),
+      resource: Schema.String,
+    }),
+  }),
+});
 export type CreateNetworkingV1IPAddressOutput =
   typeof CreateNetworkingV1IPAddressOutput.Type;
 
@@ -88,30 +84,24 @@ export type CreateNetworkingV1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateNetworkingV1IPAddressInput,
-    outputSchema: CreateNetworkingV1IPAddressOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNetworkingV1IPAddressInput,
+  outputSchema: CreateNetworkingV1IPAddressOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
-export const CreateNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/apis/networking.k8s.io/v1/ingressclasses",
-    }),
-  );
+export const CreateNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ingressclasses" }),
+);
 export type CreateNetworkingV1IngressClassInput =
   typeof CreateNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const CreateNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -172,7 +162,8 @@ export const CreateNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type CreateNetworkingV1IngressClassOutput =
   typeof CreateNetworkingV1IngressClassOutput.Type;
 
@@ -183,15 +174,14 @@ export type CreateNetworkingV1IngressClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateNetworkingV1IngressClassInput,
-    outputSchema: CreateNetworkingV1IngressClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNetworkingV1IngressClassInput,
+  outputSchema: CreateNetworkingV1IngressClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -205,7 +195,7 @@ export type CreateNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const CreateNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -360,15 +350,16 @@ export type CreateNetworkingV1NamespacedIngressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateNetworkingV1NamespacedIngressInput,
     outputSchema: CreateNetworkingV1NamespacedIngressOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -382,7 +373,7 @@ export type CreateNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -587,94 +578,91 @@ export type CreateNetworkingV1NamespacedNetworkPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: CreateNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const CreateNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
-  );
+export const CreateNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
+);
 export type CreateNetworkingV1ServiceCIDRInput =
   typeof CreateNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const CreateNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const CreateNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      cidrs: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      conditions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            lastTransitionTime: Schema.String,
+            message: Schema.String,
+            observedGeneration: Schema.optional(Schema.Number),
+            reason: Schema.String,
+            status: Schema.String,
+            type: Schema.String,
+          }),
         ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type CreateNetworkingV1ServiceCIDROutput =
   typeof CreateNetworkingV1ServiceCIDROutput.Type;
 
@@ -685,15 +673,14 @@ export type CreateNetworkingV1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateNetworkingV1ServiceCIDRInput,
-    outputSchema: CreateNetworkingV1ServiceCIDROutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNetworkingV1ServiceCIDRInput,
+  outputSchema: CreateNetworkingV1ServiceCIDROutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -707,7 +694,7 @@ export type CreateNetworkingV1beta1IPAddressInput =
 
 // Output Schema
 export const CreateNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -773,15 +760,14 @@ export type CreateNetworkingV1beta1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateNetworkingV1beta1IPAddressInput,
-    outputSchema: CreateNetworkingV1beta1IPAddressOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNetworkingV1beta1IPAddressInput,
+  outputSchema: CreateNetworkingV1beta1IPAddressOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -795,7 +781,7 @@ export type CreateNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const CreateNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -874,15 +860,16 @@ export type CreateNetworkingV1beta1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateNetworkingV1beta1ServiceCIDRInput,
     outputSchema: CreateNetworkingV1beta1ServiceCIDROutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteNetworkingV1CollectionIPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -895,7 +882,7 @@ export type DeleteNetworkingV1CollectionIPAddressInput =
 
 // Output Schema
 export const DeleteNetworkingV1CollectionIPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -943,14 +930,15 @@ export type DeleteNetworkingV1CollectionIPAddressOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1CollectionIPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1CollectionIPAddress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1CollectionIPAddressInput,
     outputSchema: DeleteNetworkingV1CollectionIPAddressOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteNetworkingV1CollectionIngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -963,7 +951,7 @@ export type DeleteNetworkingV1CollectionIngressClassInput =
 
 // Output Schema
 export const DeleteNetworkingV1CollectionIngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1011,14 +999,15 @@ export type DeleteNetworkingV1CollectionIngressClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1CollectionIngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1CollectionIngressClass = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1CollectionIngressClassInput,
     outputSchema: DeleteNetworkingV1CollectionIngressClassOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteNetworkingV1CollectionNamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1031,7 +1020,7 @@ export type DeleteNetworkingV1CollectionNamespacedIngressInput =
 
 // Output Schema
 export const DeleteNetworkingV1CollectionNamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1080,13 +1069,13 @@ export type DeleteNetworkingV1CollectionNamespacedIngressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteNetworkingV1CollectionNamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionNamespacedIngressInput,
     outputSchema: DeleteNetworkingV1CollectionNamespacedIngressOutput,
   }));
 // Input Schema
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1099,7 +1088,7 @@ export type DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
 
 // Output Schema
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1148,13 +1137,13 @@ export type DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteNetworkingV1CollectionNamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput,
     outputSchema: DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput,
   }));
 // Input Schema
 export const DeleteNetworkingV1CollectionServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1167,7 +1156,7 @@ export type DeleteNetworkingV1CollectionServiceCIDRInput =
 
 // Output Schema
 export const DeleteNetworkingV1CollectionServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1215,65 +1204,64 @@ export type DeleteNetworkingV1CollectionServiceCIDROutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1CollectionServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1CollectionServiceCIDR = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1CollectionServiceCIDRInput,
     outputSchema: DeleteNetworkingV1CollectionServiceCIDROutput,
-  }));
+  }),
+);
 // Input Schema
-export const DeleteNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
-    }),
-  );
+export const DeleteNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
+  }),
+);
 export type DeleteNetworkingV1IPAddressInput =
   typeof DeleteNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const DeleteNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
+export const DeleteNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Struct({
+      causes: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            selector: Schema.String,
+            field: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    reason: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-  });
+      ),
+      group: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      retryAfterSeconds: Schema.optional(Schema.Number),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+  reason: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+});
 export type DeleteNetworkingV1IPAddressOutput =
   typeof DeleteNetworkingV1IPAddressOutput.Type;
 
@@ -1283,29 +1271,26 @@ export type DeleteNetworkingV1IPAddressOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteNetworkingV1IPAddressInput,
-    outputSchema: DeleteNetworkingV1IPAddressOutput,
-    errors: [NotFound, Conflict] as const,
+export const deleteNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNetworkingV1IPAddressInput,
+  outputSchema: DeleteNetworkingV1IPAddressOutput,
+  errors: [NotFound, Conflict] as const,
+}));
+// Input Schema
+export const DeleteNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
   }),
 );
-// Input Schema
-export const DeleteNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
-    }),
-  );
 export type DeleteNetworkingV1IngressClassInput =
   typeof DeleteNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const DeleteNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1343,7 +1328,8 @@ export const DeleteNetworkingV1IngressClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
+  },
+);
 export type DeleteNetworkingV1IngressClassOutput =
   typeof DeleteNetworkingV1IngressClassOutput.Type;
 
@@ -1353,15 +1339,14 @@ export type DeleteNetworkingV1IngressClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteNetworkingV1IngressClassInput,
-    outputSchema: DeleteNetworkingV1IngressClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNetworkingV1IngressClassInput,
+  outputSchema: DeleteNetworkingV1IngressClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1374,7 +1359,7 @@ export type DeleteNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const DeleteNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1422,15 +1407,16 @@ export type DeleteNetworkingV1NamespacedIngressOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1NamespacedIngressInput,
     outputSchema: DeleteNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1443,7 +1429,7 @@ export type DeleteNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1491,66 +1477,65 @@ export type DeleteNetworkingV1NamespacedNetworkPolicyOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: DeleteNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
-export const DeleteNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
-    }),
-  );
+export const DeleteNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
+  }),
+);
 export type DeleteNetworkingV1ServiceCIDRInput =
   typeof DeleteNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const DeleteNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
+export const DeleteNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Struct({
+      causes: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            selector: Schema.String,
+            field: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    reason: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-  });
+      ),
+      group: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      retryAfterSeconds: Schema.optional(Schema.Number),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+  reason: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+});
 export type DeleteNetworkingV1ServiceCIDROutput =
   typeof DeleteNetworkingV1ServiceCIDROutput.Type;
 
@@ -1560,15 +1545,14 @@ export type DeleteNetworkingV1ServiceCIDROutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteNetworkingV1ServiceCIDRInput,
-    outputSchema: DeleteNetworkingV1ServiceCIDROutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNetworkingV1ServiceCIDRInput,
+  outputSchema: DeleteNetworkingV1ServiceCIDROutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteNetworkingV1beta1CollectionIPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1581,7 +1565,7 @@ export type DeleteNetworkingV1beta1CollectionIPAddressInput =
 
 // Output Schema
 export const DeleteNetworkingV1beta1CollectionIPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1630,13 +1614,13 @@ export type DeleteNetworkingV1beta1CollectionIPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteNetworkingV1beta1CollectionIPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1beta1CollectionIPAddressInput,
     outputSchema: DeleteNetworkingV1beta1CollectionIPAddressOutput,
   }));
 // Input Schema
 export const DeleteNetworkingV1beta1CollectionServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1649,7 +1633,7 @@ export type DeleteNetworkingV1beta1CollectionServiceCIDRInput =
 
 // Output Schema
 export const DeleteNetworkingV1beta1CollectionServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1698,13 +1682,13 @@ export type DeleteNetworkingV1beta1CollectionServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteNetworkingV1beta1CollectionServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1beta1CollectionServiceCIDRInput,
     outputSchema: DeleteNetworkingV1beta1CollectionServiceCIDROutput,
   }));
 // Input Schema
 export const DeleteNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1717,7 +1701,7 @@ export type DeleteNetworkingV1beta1IPAddressInput =
 
 // Output Schema
 export const DeleteNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1765,15 +1749,14 @@ export type DeleteNetworkingV1beta1IPAddressOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteNetworkingV1beta1IPAddressInput,
-    outputSchema: DeleteNetworkingV1beta1IPAddressOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNetworkingV1beta1IPAddressInput,
+  outputSchema: DeleteNetworkingV1beta1IPAddressOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1786,7 +1769,7 @@ export type DeleteNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const DeleteNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1834,46 +1817,45 @@ export type DeleteNetworkingV1beta1ServiceCIDROutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteNetworkingV1beta1ServiceCIDRInput,
     outputSchema: DeleteNetworkingV1beta1ServiceCIDROutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
-export const GetNetworkingAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/networking.k8s.io/" }),
-  );
+export const GetNetworkingAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/networking.k8s.io/" }),
+);
 export type GetNetworkingAPIGroupInput = typeof GetNetworkingAPIGroupInput.Type;
 
 // Output Schema
-export const GetNetworkingAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetNetworkingAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetNetworkingAPIGroupOutput =
   typeof GetNetworkingAPIGroupOutput.Type;
 
@@ -1881,41 +1863,37 @@ export type GetNetworkingAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getNetworkingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNetworkingAPIGroupInput,
-    outputSchema: GetNetworkingAPIGroupOutput,
-  }),
-);
+export const getNetworkingAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNetworkingAPIGroupInput,
+  outputSchema: GetNetworkingAPIGroupOutput,
+}));
 // Input Schema
-export const GetNetworkingV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/" }),
-  );
+export const GetNetworkingV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/" }));
 export type GetNetworkingV1APIResourcesInput =
   typeof GetNetworkingV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetNetworkingV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetNetworkingV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetNetworkingV1APIResourcesOutput =
   typeof GetNetworkingV1APIResourcesOutput.Type;
 
@@ -1923,15 +1901,13 @@ export type GetNetworkingV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getNetworkingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNetworkingV1APIResourcesInput,
-    outputSchema: GetNetworkingV1APIResourcesOutput,
-  }),
-);
+export const getNetworkingV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNetworkingV1APIResourcesInput,
+  outputSchema: GetNetworkingV1APIResourcesOutput,
+}));
 // Input Schema
 export const GetNetworkingV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1beta1/" }),
   );
 export type GetNetworkingV1beta1APIResourcesInput =
@@ -1939,7 +1915,7 @@ export type GetNetworkingV1beta1APIResourcesInput =
 
 // Output Schema
 export const GetNetworkingV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1965,98 +1941,95 @@ export type GetNetworkingV1beta1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getNetworkingV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetNetworkingV1beta1APIResourcesInput,
-    outputSchema: GetNetworkingV1beta1APIResourcesOutput,
-  }));
+export const getNetworkingV1beta1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNetworkingV1beta1APIResourcesInput,
+  outputSchema: GetNetworkingV1beta1APIResourcesOutput,
+}));
 // Input Schema
-export const ListNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
-  );
+export const ListNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
+);
 export type ListNetworkingV1IPAddressInput =
   typeof ListNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const ListNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+export const ListNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
             ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+          ),
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
             ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          parentRef: Schema.Struct({
-            group: Schema.optional(Schema.String),
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            resource: Schema.String,
-          }),
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+      ),
+      spec: Schema.Struct({
+        parentRef: Schema.Struct({
+          group: Schema.optional(Schema.String),
+          name: Schema.String,
+          namespace: Schema.optional(Schema.String),
+          resource: Schema.String,
         }),
       }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
-    ),
-  });
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListNetworkingV1IPAddressOutput =
   typeof ListNetworkingV1IPAddressOutput.Type;
 
@@ -2064,108 +2037,101 @@ export type ListNetworkingV1IPAddressOutput =
 /**
  * list or watch objects of kind IPAddress
  */
-export const listNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListNetworkingV1IPAddressInput,
-    outputSchema: ListNetworkingV1IPAddressOutput,
-  }),
-);
+export const listNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1IPAddressInput,
+  outputSchema: ListNetworkingV1IPAddressOutput,
+}));
 // Input Schema
-export const ListNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/ingressclasses",
-    }),
-  );
+export const ListNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ingressclasses" }),
+);
 export type ListNetworkingV1IngressClassInput =
   typeof ListNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const ListNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            controller: Schema.optional(Schema.String),
-            parameters: Schema.optional(
+export const ListNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
+            Schema.Array(
               Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-                namespace: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
               }),
             ),
-          }),
-        ),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
-    ),
-  });
+          ),
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
+            ),
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+      ),
+      spec: Schema.optional(
+        Schema.Struct({
+          controller: Schema.optional(Schema.String),
+          parameters: Schema.optional(
+            Schema.Struct({
+              apiGroup: Schema.optional(Schema.String),
+              kind: Schema.String,
+              name: Schema.String,
+              namespace: Schema.optional(Schema.String),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListNetworkingV1IngressClassOutput =
   typeof ListNetworkingV1IngressClassOutput.Type;
 
@@ -2173,14 +2139,13 @@ export type ListNetworkingV1IngressClassOutput =
 /**
  * list or watch objects of kind IngressClass
  */
-export const listNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListNetworkingV1IngressClassInput,
-    outputSchema: ListNetworkingV1IngressClassOutput,
-  }));
+export const listNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1IngressClassInput,
+  outputSchema: ListNetworkingV1IngressClassOutput,
+}));
 // Input Schema
 export const ListNetworkingV1IngressForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ingresses" }),
   );
 export type ListNetworkingV1IngressForAllNamespacesInput =
@@ -2188,7 +2153,7 @@ export type ListNetworkingV1IngressForAllNamespacesInput =
 
 // Output Schema
 export const ListNetworkingV1IngressForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2361,14 +2326,15 @@ export type ListNetworkingV1IngressForAllNamespacesOutput =
 /**
  * list or watch objects of kind Ingress
  */
-export const listNetworkingV1IngressForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listNetworkingV1IngressForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListNetworkingV1IngressForAllNamespacesInput,
     outputSchema: ListNetworkingV1IngressForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
@@ -2379,7 +2345,7 @@ export type ListNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const ListNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2552,14 +2518,13 @@ export type ListNetworkingV1NamespacedIngressOutput =
 /**
  * list or watch objects of kind Ingress
  */
-export const listNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListNetworkingV1NamespacedIngressInput,
-    outputSchema: ListNetworkingV1NamespacedIngressOutput,
-  }));
+export const listNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1NamespacedIngressInput,
+  outputSchema: ListNetworkingV1NamespacedIngressOutput,
+}));
 // Input Schema
 export const ListNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
@@ -2570,7 +2535,7 @@ export type ListNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const ListNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2797,14 +2762,15 @@ export type ListNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * list or watch objects of kind NetworkPolicy
  */
-export const listNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ListNetworkingV1NamespacedNetworkPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListNetworkingV1NetworkPolicyForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/networkpolicies",
@@ -2815,7 +2781,7 @@ export type ListNetworkingV1NetworkPolicyForAllNamespacesInput =
 
 // Output Schema
 export const ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3043,110 +3009,108 @@ export type ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
  * list or watch objects of kind NetworkPolicy
  */
 export const listNetworkingV1NetworkPolicyForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1NetworkPolicyForAllNamespacesInput,
     outputSchema: ListNetworkingV1NetworkPolicyForAllNamespacesOutput,
   }));
 // Input Schema
-export const ListNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
-  );
+export const ListNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
+);
 export type ListNetworkingV1ServiceCIDRInput =
   typeof ListNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const ListNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+export const ListNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
             ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+          ),
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
             ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+      ),
+      spec: Schema.optional(
+        Schema.Struct({
+          cidrs: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      status: Schema.optional(
+        Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                lastTransitionTime: Schema.String,
+                message: Schema.String,
+                observedGeneration: Schema.optional(Schema.Number),
+                reason: Schema.String,
+                status: Schema.String,
+                type: Schema.String,
+              }),
             ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            cidrs: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
-    ),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListNetworkingV1ServiceCIDROutput =
   typeof ListNetworkingV1ServiceCIDROutput.Type;
 
@@ -3154,26 +3118,25 @@ export type ListNetworkingV1ServiceCIDROutput =
 /**
  * list or watch objects of kind ServiceCIDR
  */
-export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListNetworkingV1ServiceCIDRInput,
-    outputSchema: ListNetworkingV1ServiceCIDROutput,
+export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1ServiceCIDRInput,
+  outputSchema: ListNetworkingV1ServiceCIDROutput,
+}));
+// Input Schema
+export const ListNetworkingV1beta1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1beta1/ipaddresses",
   }),
 );
-// Input Schema
-export const ListNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1beta1/ipaddresses",
-    }),
-  );
 export type ListNetworkingV1beta1IPAddressInput =
   typeof ListNetworkingV1beta1IPAddressInput.Type;
 
 // Output Schema
-export const ListNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListNetworkingV1beta1IPAddressOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3249,7 +3212,8 @@ export const ListNetworkingV1beta1IPAddressOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ListNetworkingV1beta1IPAddressOutput =
   typeof ListNetworkingV1beta1IPAddressOutput.Type;
 
@@ -3257,14 +3221,13 @@ export type ListNetworkingV1beta1IPAddressOutput =
 /**
  * list or watch objects of kind IPAddress
  */
-export const listNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListNetworkingV1beta1IPAddressInput,
-    outputSchema: ListNetworkingV1beta1IPAddressOutput,
-  }));
+export const listNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1beta1IPAddressInput,
+  outputSchema: ListNetworkingV1beta1IPAddressOutput,
+}));
 // Input Schema
 export const ListNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs",
@@ -3275,7 +3238,7 @@ export type ListNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const ListNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3372,83 +3335,78 @@ export type ListNetworkingV1beta1ServiceCIDROutput =
 /**
  * list or watch objects of kind ServiceCIDR
  */
-export const listNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListNetworkingV1beta1ServiceCIDRInput,
-    outputSchema: ListNetworkingV1beta1ServiceCIDROutput,
-  }));
+export const listNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1beta1ServiceCIDRInput,
+  outputSchema: ListNetworkingV1beta1ServiceCIDROutput,
+}));
 // Input Schema
-export const PatchNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
-    }),
-  );
+export const PatchNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
+  }),
+);
 export type PatchNetworkingV1IPAddressInput =
   typeof PatchNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const PatchNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const PatchNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    parentRef: Schema.Struct({
+      group: Schema.optional(Schema.String),
+      name: Schema.String,
+      namespace: Schema.optional(Schema.String),
+      resource: Schema.String,
+    }),
+  }),
+});
 export type PatchNetworkingV1IPAddressOutput =
   typeof PatchNetworkingV1IPAddressOutput.Type;
 
@@ -3459,91 +3417,85 @@ export type PatchNetworkingV1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchNetworkingV1IPAddressInput,
-    outputSchema: PatchNetworkingV1IPAddressOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+export const patchNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1IPAddressInput,
+  outputSchema: PatchNetworkingV1IPAddressOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
+// Input Schema
+export const PatchNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
   }),
 );
-// Input Schema
-export const PatchNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
-    }),
-  );
 export type PatchNetworkingV1IngressClassInput =
   typeof PatchNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const PatchNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
+export const PatchNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-  });
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      controller: Schema.optional(Schema.String),
+      parameters: Schema.optional(
+        Schema.Struct({
+          apiGroup: Schema.optional(Schema.String),
+          kind: Schema.String,
+          name: Schema.String,
+          namespace: Schema.optional(Schema.String),
+          scope: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type PatchNetworkingV1IngressClassOutput =
   typeof PatchNetworkingV1IngressClassOutput.Type;
 
@@ -3554,15 +3506,14 @@ export type PatchNetworkingV1IngressClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchNetworkingV1IngressClassInput,
-    outputSchema: PatchNetworkingV1IngressClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1IngressClassInput,
+  outputSchema: PatchNetworkingV1IngressClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3576,7 +3527,7 @@ export type PatchNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const PatchNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3731,15 +3682,16 @@ export type PatchNetworkingV1NamespacedIngressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchNetworkingV1NamespacedIngressInput,
     outputSchema: PatchNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3753,7 +3705,7 @@ export type PatchNetworkingV1NamespacedIngressStatusInput =
 
 // Output Schema
 export const PatchNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3908,15 +3860,16 @@ export type PatchNetworkingV1NamespacedIngressStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchNetworkingV1NamespacedIngressStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchNetworkingV1NamespacedIngressStatusInput,
     outputSchema: PatchNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3930,7 +3883,7 @@ export type PatchNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4135,97 +4088,94 @@ export type PatchNetworkingV1NamespacedNetworkPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: PatchNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const PatchNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
-    }),
-  );
+export const PatchNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
+  }),
+);
 export type PatchNetworkingV1ServiceCIDRInput =
   typeof PatchNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const PatchNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const PatchNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      cidrs: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      conditions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            lastTransitionTime: Schema.String,
+            message: Schema.String,
+            observedGeneration: Schema.optional(Schema.Number),
+            reason: Schema.String,
+            status: Schema.String,
+            type: Schema.String,
+          }),
         ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type PatchNetworkingV1ServiceCIDROutput =
   typeof PatchNetworkingV1ServiceCIDROutput.Type;
 
@@ -4236,15 +4186,14 @@ export type PatchNetworkingV1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchNetworkingV1ServiceCIDRInput,
-    outputSchema: PatchNetworkingV1ServiceCIDROutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1ServiceCIDRInput,
+  outputSchema: PatchNetworkingV1ServiceCIDROutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -4258,7 +4207,7 @@ export type PatchNetworkingV1ServiceCIDRStatusInput =
 
 // Output Schema
 export const PatchNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4337,29 +4286,31 @@ export type PatchNetworkingV1ServiceCIDRStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchNetworkingV1ServiceCIDRStatusInput,
     outputSchema: PatchNetworkingV1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const PatchNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchNetworkingV1beta1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/networking.k8s.io/v1beta1/ipaddresses/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/networking.k8s.io/v1beta1/ipaddresses/{name}",
+  }),
+);
 export type PatchNetworkingV1beta1IPAddressInput =
   typeof PatchNetworkingV1beta1IPAddressInput.Type;
 
 // Output Schema
 export const PatchNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4425,15 +4376,14 @@ export type PatchNetworkingV1beta1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchNetworkingV1beta1IPAddressInput,
-    outputSchema: PatchNetworkingV1beta1IPAddressOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1beta1IPAddressInput,
+  outputSchema: PatchNetworkingV1beta1IPAddressOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -4447,7 +4397,7 @@ export type PatchNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const PatchNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4526,15 +4476,14 @@ export type PatchNetworkingV1beta1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchNetworkingV1beta1ServiceCIDRInput,
-    outputSchema: PatchNetworkingV1beta1ServiceCIDROutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1beta1ServiceCIDRInput,
+  outputSchema: PatchNetworkingV1beta1ServiceCIDROutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -4548,7 +4497,7 @@ export type PatchNetworkingV1beta1ServiceCIDRStatusInput =
 
 // Output Schema
 export const PatchNetworkingV1beta1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4627,81 +4576,80 @@ export type PatchNetworkingV1beta1ServiceCIDRStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchNetworkingV1beta1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchNetworkingV1beta1ServiceCIDRStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: PatchNetworkingV1beta1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
-    }),
-  );
+export const ReadNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
+  }),
+);
 export type ReadNetworkingV1IPAddressInput =
   typeof ReadNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const ReadNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const ReadNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    parentRef: Schema.Struct({
+      group: Schema.optional(Schema.String),
+      name: Schema.String,
+      namespace: Schema.optional(Schema.String),
+      resource: Schema.String,
+    }),
+  }),
+});
 export type ReadNetworkingV1IPAddressOutput =
   typeof ReadNetworkingV1IPAddressOutput.Type;
 
@@ -4709,88 +4657,84 @@ export type ReadNetworkingV1IPAddressOutput =
 /**
  * read the specified IPAddress
  */
-export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadNetworkingV1IPAddressInput,
-    outputSchema: ReadNetworkingV1IPAddressOutput,
-    errors: [NotFound] as const,
+export const readNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1IPAddressInput,
+  outputSchema: ReadNetworkingV1IPAddressOutput,
+  errors: [NotFound] as const,
+}));
+// Input Schema
+export const ReadNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
   }),
 );
-// Input Schema
-export const ReadNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
-    }),
-  );
 export type ReadNetworkingV1IngressClassInput =
   typeof ReadNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const ReadNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
+export const ReadNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-  });
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      controller: Schema.optional(Schema.String),
+      parameters: Schema.optional(
+        Schema.Struct({
+          apiGroup: Schema.optional(Schema.String),
+          kind: Schema.String,
+          name: Schema.String,
+          namespace: Schema.optional(Schema.String),
+          scope: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type ReadNetworkingV1IngressClassOutput =
   typeof ReadNetworkingV1IngressClassOutput.Type;
 
@@ -4798,15 +4742,14 @@ export type ReadNetworkingV1IngressClassOutput =
 /**
  * read the specified IngressClass
  */
-export const readNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadNetworkingV1IngressClassInput,
-    outputSchema: ReadNetworkingV1IngressClassOutput,
-    errors: [NotFound] as const,
-  }));
+export const readNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1IngressClassInput,
+  outputSchema: ReadNetworkingV1IngressClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
@@ -4817,7 +4760,7 @@ export type ReadNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const ReadNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4969,15 +4912,14 @@ export type ReadNetworkingV1NamespacedIngressOutput =
 /**
  * read the specified Ingress
  */
-export const readNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadNetworkingV1NamespacedIngressInput,
-    outputSchema: ReadNetworkingV1NamespacedIngressOutput,
-    errors: [NotFound] as const,
-  }));
+export const readNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1NamespacedIngressInput,
+  outputSchema: ReadNetworkingV1NamespacedIngressOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
@@ -4988,7 +4930,7 @@ export type ReadNetworkingV1NamespacedIngressStatusInput =
 
 // Output Schema
 export const ReadNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5140,15 +5082,16 @@ export type ReadNetworkingV1NamespacedIngressStatusOutput =
 /**
  * read status of the specified Ingress
  */
-export const readNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readNetworkingV1NamespacedIngressStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReadNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
@@ -5159,7 +5102,7 @@ export type ReadNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5361,94 +5304,93 @@ export type ReadNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * read the specified NetworkPolicy
  */
-export const readNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReadNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
-    }),
-  );
+export const ReadNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
+  }),
+);
 export type ReadNetworkingV1ServiceCIDRInput =
   typeof ReadNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const ReadNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const ReadNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      cidrs: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      conditions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            lastTransitionTime: Schema.String,
+            message: Schema.String,
+            observedGeneration: Schema.optional(Schema.Number),
+            reason: Schema.String,
+            status: Schema.String,
+            type: Schema.String,
+          }),
         ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ReadNetworkingV1ServiceCIDROutput =
   typeof ReadNetworkingV1ServiceCIDROutput.Type;
 
@@ -5456,16 +5398,14 @@ export type ReadNetworkingV1ServiceCIDROutput =
 /**
  * read the specified ServiceCIDR
  */
-export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadNetworkingV1ServiceCIDRInput,
-    outputSchema: ReadNetworkingV1ServiceCIDROutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1ServiceCIDRInput,
+  outputSchema: ReadNetworkingV1ServiceCIDROutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}/status",
@@ -5476,7 +5416,7 @@ export type ReadNetworkingV1ServiceCIDRStatusInput =
 
 // Output Schema
 export const ReadNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5552,26 +5492,26 @@ export type ReadNetworkingV1ServiceCIDRStatusOutput =
 /**
  * read status of the specified ServiceCIDR
  */
-export const readNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadNetworkingV1ServiceCIDRStatusInput,
-    outputSchema: ReadNetworkingV1ServiceCIDRStatusOutput,
-    errors: [NotFound] as const,
-  }));
+export const readNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1ServiceCIDRStatusInput,
+  outputSchema: ReadNetworkingV1ServiceCIDRStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
-export const ReadNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1beta1/ipaddresses/{name}",
-    }),
-  );
+export const ReadNetworkingV1beta1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1beta1/ipaddresses/{name}",
+  }),
+);
 export type ReadNetworkingV1beta1IPAddressInput =
   typeof ReadNetworkingV1beta1IPAddressInput.Type;
 
 // Output Schema
-export const ReadNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReadNetworkingV1beta1IPAddressOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5626,7 +5566,8 @@ export const ReadNetworkingV1beta1IPAddressOutput =
         resource: Schema.String,
       }),
     }),
-  });
+  },
+);
 export type ReadNetworkingV1beta1IPAddressOutput =
   typeof ReadNetworkingV1beta1IPAddressOutput.Type;
 
@@ -5634,15 +5575,14 @@ export type ReadNetworkingV1beta1IPAddressOutput =
 /**
  * read the specified IPAddress
  */
-export const readNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadNetworkingV1beta1IPAddressInput,
-    outputSchema: ReadNetworkingV1beta1IPAddressOutput,
-    errors: [NotFound] as const,
-  }));
+export const readNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1beta1IPAddressInput,
+  outputSchema: ReadNetworkingV1beta1IPAddressOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs/{name}",
@@ -5653,7 +5593,7 @@ export type ReadNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const ReadNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5729,15 +5669,14 @@ export type ReadNetworkingV1beta1ServiceCIDROutput =
 /**
  * read the specified ServiceCIDR
  */
-export const readNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadNetworkingV1beta1ServiceCIDRInput,
-    outputSchema: ReadNetworkingV1beta1ServiceCIDROutput,
-    errors: [NotFound] as const,
-  }));
+export const readNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1beta1ServiceCIDRInput,
+  outputSchema: ReadNetworkingV1beta1ServiceCIDROutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs/{name}/status",
@@ -5748,7 +5687,7 @@ export type ReadNetworkingV1beta1ServiceCIDRStatusInput =
 
 // Output Schema
 export const ReadNetworkingV1beta1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5824,84 +5763,81 @@ export type ReadNetworkingV1beta1ServiceCIDRStatusOutput =
 /**
  * read status of the specified ServiceCIDR
  */
-export const readNetworkingV1beta1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readNetworkingV1beta1ServiceCIDRStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: ReadNetworkingV1beta1ServiceCIDRStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReplaceNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
-    }),
-  );
+export const ReplaceNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
+  }),
+);
 export type ReplaceNetworkingV1IPAddressInput =
   typeof ReplaceNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const ReplaceNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const ReplaceNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    parentRef: Schema.Struct({
+      group: Schema.optional(Schema.String),
+      name: Schema.String,
+      namespace: Schema.optional(Schema.String),
+      resource: Schema.String,
+    }),
+  }),
+});
 export type ReplaceNetworkingV1IPAddressOutput =
   typeof ReplaceNetworkingV1IPAddressOutput.Type;
 
@@ -5912,29 +5848,29 @@ export type ReplaceNetworkingV1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceNetworkingV1IPAddressInput,
-    outputSchema: ReplaceNetworkingV1IPAddressOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceNetworkingV1IPAddressInput,
+  outputSchema: ReplaceNetworkingV1IPAddressOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
-export const ReplaceNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplaceNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
+  }),
+);
 export type ReplaceNetworkingV1IngressClassInput =
   typeof ReplaceNetworkingV1IngressClassInput.Type;
 
 // Output Schema
 export const ReplaceNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6006,15 +5942,14 @@ export type ReplaceNetworkingV1IngressClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceNetworkingV1IngressClassInput,
-    outputSchema: ReplaceNetworkingV1IngressClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceNetworkingV1IngressClassInput,
+  outputSchema: ReplaceNetworkingV1IngressClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6028,7 +5963,7 @@ export type ReplaceNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const ReplaceNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6183,15 +6118,16 @@ export type ReplaceNetworkingV1NamespacedIngressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6205,7 +6141,7 @@ export type ReplaceNetworkingV1NamespacedIngressStatusInput =
 
 // Output Schema
 export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6361,14 +6297,14 @@ export type ReplaceNetworkingV1NamespacedIngressStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6382,7 +6318,7 @@ export type ReplaceNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6588,28 +6524,27 @@ export type ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const ReplaceNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
-    }),
-  );
+export const ReplaceNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
+  }),
+);
 export type ReplaceNetworkingV1ServiceCIDRInput =
   typeof ReplaceNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const ReplaceNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplaceNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6677,7 +6612,8 @@ export const ReplaceNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ReplaceNetworkingV1ServiceCIDROutput =
   typeof ReplaceNetworkingV1ServiceCIDROutput.Type;
 
@@ -6688,15 +6624,14 @@ export type ReplaceNetworkingV1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceNetworkingV1ServiceCIDRInput,
-    outputSchema: ReplaceNetworkingV1ServiceCIDROutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceNetworkingV1ServiceCIDRInput,
+  outputSchema: ReplaceNetworkingV1ServiceCIDROutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6710,7 +6645,7 @@ export type ReplaceNetworkingV1ServiceCIDRStatusInput =
 
 // Output Schema
 export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6789,15 +6724,16 @@ export type ReplaceNetworkingV1ServiceCIDRStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceNetworkingV1ServiceCIDRStatusInput,
     outputSchema: ReplaceNetworkingV1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6811,7 +6747,7 @@ export type ReplaceNetworkingV1beta1IPAddressInput =
 
 // Output Schema
 export const ReplaceNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6877,15 +6813,14 @@ export type ReplaceNetworkingV1beta1IPAddressOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceNetworkingV1beta1IPAddressInput,
-    outputSchema: ReplaceNetworkingV1beta1IPAddressOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceNetworkingV1beta1IPAddressInput,
+  outputSchema: ReplaceNetworkingV1beta1IPAddressOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6899,7 +6834,7 @@ export type ReplaceNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const ReplaceNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6978,15 +6913,16 @@ export type ReplaceNetworkingV1beta1ServiceCIDROutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceNetworkingV1beta1ServiceCIDRInput,
     outputSchema: ReplaceNetworkingV1beta1ServiceCIDROutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -7000,7 +6936,7 @@ export type ReplaceNetworkingV1beta1ServiceCIDRStatusInput =
 
 // Output Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7079,29 +7015,30 @@ export type ReplaceNetworkingV1beta1ServiceCIDRStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNetworkingV1beta1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceNetworkingV1beta1ServiceCIDRStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: ReplaceNetworkingV1beta1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const WatchNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/watch/ipaddresses/{name}",
-    }),
-  );
+export const WatchNetworkingV1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/watch/ipaddresses/{name}",
+  }),
+);
 export type WatchNetworkingV1IPAddressInput =
   typeof WatchNetworkingV1IPAddressInput.Type;
 
 // Output Schema
-export const WatchNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
-    type: Schema.String,
-  });
+export const WatchNetworkingV1IPAddressOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.Unknown,
+  type: Schema.String,
+});
 export type WatchNetworkingV1IPAddressOutput =
   typeof WatchNetworkingV1IPAddressOutput.Type;
 
@@ -7109,29 +7046,29 @@ export type WatchNetworkingV1IPAddressOutput =
 /**
  * watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchNetworkingV1IPAddressInput,
-    outputSchema: WatchNetworkingV1IPAddressOutput,
+export const watchNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1IPAddressInput,
+  outputSchema: WatchNetworkingV1IPAddressOutput,
+}));
+// Input Schema
+export const WatchNetworkingV1IPAddressListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/watch/ipaddresses",
   }),
 );
-// Input Schema
-export const WatchNetworkingV1IPAddressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/watch/ipaddresses",
-    }),
-  );
 export type WatchNetworkingV1IPAddressListInput =
   typeof WatchNetworkingV1IPAddressListInput.Type;
 
 // Output Schema
-export const WatchNetworkingV1IPAddressListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchNetworkingV1IPAddressListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     object: Schema.Unknown,
     type: Schema.String,
-  });
+  },
+);
 export type WatchNetworkingV1IPAddressListOutput =
   typeof WatchNetworkingV1IPAddressListOutput.Type;
 
@@ -7139,28 +7076,27 @@ export type WatchNetworkingV1IPAddressListOutput =
 /**
  * watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1IPAddressList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1IPAddressListInput,
-    outputSchema: WatchNetworkingV1IPAddressListOutput,
-  }));
+export const watchNetworkingV1IPAddressList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1IPAddressListInput,
+  outputSchema: WatchNetworkingV1IPAddressListOutput,
+}));
 // Input Schema
-export const WatchNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}",
-    }),
-  );
+export const WatchNetworkingV1IngressClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}",
+  }),
+);
 export type WatchNetworkingV1IngressClassInput =
   typeof WatchNetworkingV1IngressClassInput.Type;
 
 // Output Schema
-export const WatchNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
-    type: Schema.String,
-  });
+export const WatchNetworkingV1IngressClassOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.Unknown,
+  type: Schema.String,
+});
 export type WatchNetworkingV1IngressClassOutput =
   typeof WatchNetworkingV1IngressClassOutput.Type;
 
@@ -7168,14 +7104,13 @@ export type WatchNetworkingV1IngressClassOutput =
 /**
  * watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1IngressClassInput,
-    outputSchema: WatchNetworkingV1IngressClassOutput,
-  }));
+export const watchNetworkingV1IngressClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1IngressClassInput,
+  outputSchema: WatchNetworkingV1IngressClassOutput,
+}));
 // Input Schema
 export const WatchNetworkingV1IngressClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingressclasses",
@@ -7186,7 +7121,7 @@ export type WatchNetworkingV1IngressClassListInput =
 
 // Output Schema
 export const WatchNetworkingV1IngressClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7197,14 +7132,13 @@ export type WatchNetworkingV1IngressClassListOutput =
 /**
  * watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1IngressClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1IngressClassListInput,
-    outputSchema: WatchNetworkingV1IngressClassListOutput,
-  }));
+export const watchNetworkingV1IngressClassList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1IngressClassListInput,
+  outputSchema: WatchNetworkingV1IngressClassListOutput,
+}));
 // Input Schema
 export const WatchNetworkingV1IngressListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingresses",
@@ -7215,7 +7149,7 @@ export type WatchNetworkingV1IngressListForAllNamespacesInput =
 
 // Output Schema
 export const WatchNetworkingV1IngressListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7227,13 +7161,13 @@ export type WatchNetworkingV1IngressListForAllNamespacesOutput =
  * watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchNetworkingV1IngressListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1IngressListForAllNamespacesInput,
     outputSchema: WatchNetworkingV1IngressListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}",
@@ -7244,7 +7178,7 @@ export type WatchNetworkingV1NamespacedIngressInput =
 
 // Output Schema
 export const WatchNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7255,14 +7189,15 @@ export type WatchNetworkingV1NamespacedIngressOutput =
 /**
  * watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchNetworkingV1NamespacedIngress = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchNetworkingV1NamespacedIngressInput,
     outputSchema: WatchNetworkingV1NamespacedIngressOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchNetworkingV1NamespacedIngressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses",
@@ -7273,7 +7208,7 @@ export type WatchNetworkingV1NamespacedIngressListInput =
 
 // Output Schema
 export const WatchNetworkingV1NamespacedIngressListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7284,14 +7219,15 @@ export type WatchNetworkingV1NamespacedIngressListOutput =
 /**
  * watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1NamespacedIngressList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchNetworkingV1NamespacedIngressList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchNetworkingV1NamespacedIngressListInput,
     outputSchema: WatchNetworkingV1NamespacedIngressListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}",
@@ -7302,7 +7238,7 @@ export type WatchNetworkingV1NamespacedNetworkPolicyInput =
 
 // Output Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7313,14 +7249,15 @@ export type WatchNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchNetworkingV1NamespacedNetworkPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies",
@@ -7331,7 +7268,7 @@ export type WatchNetworkingV1NamespacedNetworkPolicyListInput =
 
 // Output Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7343,13 +7280,13 @@ export type WatchNetworkingV1NamespacedNetworkPolicyListOutput =
  * watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchNetworkingV1NamespacedNetworkPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NamespacedNetworkPolicyListInput,
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyListOutput,
   }));
 // Input Schema
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/networkpolicies",
@@ -7360,7 +7297,7 @@ export type WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
 
 // Output Schema
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7372,27 +7309,27 @@ export type WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
  * watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchNetworkingV1NetworkPolicyListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NetworkPolicyListForAllNamespacesInput,
     outputSchema: WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput,
   }));
 // Input Schema
-export const WatchNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1/watch/servicecidrs/{name}",
-    }),
-  );
+export const WatchNetworkingV1ServiceCIDRInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1/watch/servicecidrs/{name}",
+  }),
+);
 export type WatchNetworkingV1ServiceCIDRInput =
   typeof WatchNetworkingV1ServiceCIDRInput.Type;
 
 // Output Schema
-export const WatchNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
-    type: Schema.String,
-  });
+export const WatchNetworkingV1ServiceCIDROutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.Unknown,
+  type: Schema.String,
+});
 export type WatchNetworkingV1ServiceCIDROutput =
   typeof WatchNetworkingV1ServiceCIDROutput.Type;
 
@@ -7400,14 +7337,13 @@ export type WatchNetworkingV1ServiceCIDROutput =
 /**
  * watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1ServiceCIDRInput,
-    outputSchema: WatchNetworkingV1ServiceCIDROutput,
-  }));
+export const watchNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1ServiceCIDRInput,
+  outputSchema: WatchNetworkingV1ServiceCIDROutput,
+}));
 // Input Schema
 export const WatchNetworkingV1ServiceCIDRListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/servicecidrs",
@@ -7418,7 +7354,7 @@ export type WatchNetworkingV1ServiceCIDRListInput =
 
 // Output Schema
 export const WatchNetworkingV1ServiceCIDRListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7429,25 +7365,25 @@ export type WatchNetworkingV1ServiceCIDRListOutput =
 /**
  * watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1ServiceCIDRList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1ServiceCIDRListInput,
-    outputSchema: WatchNetworkingV1ServiceCIDRListOutput,
-  }));
+export const watchNetworkingV1ServiceCIDRList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1ServiceCIDRListInput,
+  outputSchema: WatchNetworkingV1ServiceCIDRListOutput,
+}));
 // Input Schema
-export const WatchNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/networking.k8s.io/v1beta1/watch/ipaddresses/{name}",
-    }),
-  );
+export const WatchNetworkingV1beta1IPAddressInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/networking.k8s.io/v1beta1/watch/ipaddresses/{name}",
+  }),
+);
 export type WatchNetworkingV1beta1IPAddressInput =
   typeof WatchNetworkingV1beta1IPAddressInput.Type;
 
 // Output Schema
 export const WatchNetworkingV1beta1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7458,14 +7394,13 @@ export type WatchNetworkingV1beta1IPAddressOutput =
 /**
  * watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1beta1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1beta1IPAddressInput,
-    outputSchema: WatchNetworkingV1beta1IPAddressOutput,
-  }));
+export const watchNetworkingV1beta1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1beta1IPAddressInput,
+  outputSchema: WatchNetworkingV1beta1IPAddressOutput,
+}));
 // Input Schema
 export const WatchNetworkingV1beta1IPAddressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/ipaddresses",
@@ -7476,7 +7411,7 @@ export type WatchNetworkingV1beta1IPAddressListInput =
 
 // Output Schema
 export const WatchNetworkingV1beta1IPAddressListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7487,14 +7422,15 @@ export type WatchNetworkingV1beta1IPAddressListOutput =
 /**
  * watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1beta1IPAddressList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchNetworkingV1beta1IPAddressList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchNetworkingV1beta1IPAddressListInput,
     outputSchema: WatchNetworkingV1beta1IPAddressListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/servicecidrs/{name}",
@@ -7505,7 +7441,7 @@ export type WatchNetworkingV1beta1ServiceCIDRInput =
 
 // Output Schema
 export const WatchNetworkingV1beta1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7516,14 +7452,13 @@ export type WatchNetworkingV1beta1ServiceCIDROutput =
 /**
  * watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchNetworkingV1beta1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchNetworkingV1beta1ServiceCIDRInput,
-    outputSchema: WatchNetworkingV1beta1ServiceCIDROutput,
-  }));
+export const watchNetworkingV1beta1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1beta1ServiceCIDRInput,
+  outputSchema: WatchNetworkingV1beta1ServiceCIDROutput,
+}));
 // Input Schema
 export const WatchNetworkingV1beta1ServiceCIDRListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/servicecidrs",
@@ -7534,7 +7469,7 @@ export type WatchNetworkingV1beta1ServiceCIDRListInput =
 
 // Output Schema
 export const WatchNetworkingV1beta1ServiceCIDRListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -7545,8 +7480,9 @@ export type WatchNetworkingV1beta1ServiceCIDRListOutput =
 /**
  * watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchNetworkingV1beta1ServiceCIDRList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchNetworkingV1beta1ServiceCIDRList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchNetworkingV1beta1ServiceCIDRListInput,
     outputSchema: WatchNetworkingV1beta1ServiceCIDRListOutput,
-  }));
+  }),
+);

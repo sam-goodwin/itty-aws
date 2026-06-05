@@ -5,7 +5,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const RadarStandaloneControllerUpdateRadarAttemptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     challenge_status: Schema.optional(Schema.String),
     attempt_status: Schema.optional(Schema.String),
@@ -15,7 +15,7 @@ export type RadarStandaloneControllerUpdateRadarAttemptInput =
 
 // Output Schema
 export const RadarStandaloneControllerUpdateRadarAttemptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RadarStandaloneControllerUpdateRadarAttemptOutput =
   typeof RadarStandaloneControllerUpdateRadarAttemptOutput.Type;
 
@@ -28,7 +28,7 @@ export type RadarStandaloneControllerUpdateRadarAttemptOutput =
  * @param id - The unique identifier of the Radar attempt to update.
  */
 export const RadarStandaloneControllerUpdateRadarAttempt =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RadarStandaloneControllerUpdateRadarAttemptInput,
     outputSchema: RadarStandaloneControllerUpdateRadarAttemptOutput,
     errors: [BadRequest, NotFound] as const,

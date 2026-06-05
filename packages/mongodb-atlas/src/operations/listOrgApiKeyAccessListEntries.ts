@@ -4,27 +4,25 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListOrgApiKeyAccessListEntriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList",
-    }),
-  );
+export const ListOrgApiKeyAccessListEntriesInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList",
+  }),
+);
 export type ListOrgApiKeyAccessListEntriesInput =
   typeof ListOrgApiKeyAccessListEntriesInput.Type;
 
 // Output Schema
-export const ListOrgApiKeyAccessListEntriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListOrgApiKeyAccessListEntriesOutput = /*@__PURE__*/ Schema.Void;
 export type ListOrgApiKeyAccessListEntriesOutput =
   typeof ListOrgApiKeyAccessListEntriesOutput.Type;
 
@@ -42,9 +40,8 @@ export type ListOrgApiKeyAccessListEntriesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for which you want to return access list entries.
  */
-export const listOrgApiKeyAccessListEntries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListOrgApiKeyAccessListEntriesInput,
-    outputSchema: ListOrgApiKeyAccessListEntriesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listOrgApiKeyAccessListEntries = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrgApiKeyAccessListEntriesInput,
+  outputSchema: ListOrgApiKeyAccessListEntriesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

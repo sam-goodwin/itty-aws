@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostCustomersCustomerBalanceTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     transaction: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type PostCustomersCustomerBalanceTransactionsTransactionInput =
 
 // Output Schema
 export const PostCustomersCustomerBalanceTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     checkout_session: Schema.Unknown,
     created: Schema.Number,
@@ -62,7 +62,7 @@ export type PostCustomersCustomerBalanceTransactionsTransactionOutput =
  * <p>Most credit balance transaction fields are immutable, but you may update its <code>description</code> and <code>metadata</code>.</p>
  */
 export const PostCustomersCustomerBalanceTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostCustomersCustomerBalanceTransactionsTransactionInput,
     outputSchema: PostCustomersCustomerBalanceTransactionsTransactionOutput,
   }));

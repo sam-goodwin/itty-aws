@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateRbacAuthorizationV1ClusterRoleInput =
@@ -116,12 +116,13 @@ export type CreateRbacAuthorizationV1ClusterRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const createRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateRbacAuthorizationV1ClusterRoleInput,
     outputSchema: CreateRbacAuthorizationV1ClusterRoleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -302,12 +303,13 @@ export type CreateRbacAuthorizationV1NamespacedRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const createRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: CreateRbacAuthorizationV1NamespacedRoleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -466,12 +468,13 @@ export type DeleteRbacAuthorizationV1ClusterRoleOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteRbacAuthorizationV1ClusterRoleInput,
     outputSchema: DeleteRbacAuthorizationV1ClusterRoleOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -877,12 +880,13 @@ export type DeleteRbacAuthorizationV1NamespacedRoleOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: DeleteRbacAuthorizationV1NamespacedRoleOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -953,40 +957,38 @@ export const deleteRbacAuthorizationV1NamespacedRoleBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetRbacAuthorizationAPIGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/rbac.authorization.k8s.io/" }),
-  );
+export const GetRbacAuthorizationAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/rbac.authorization.k8s.io/" }));
 export type GetRbacAuthorizationAPIGroupInput =
   typeof GetRbacAuthorizationAPIGroupInput.Type;
 
 // Output Schema
-export const GetRbacAuthorizationAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetRbacAuthorizationAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetRbacAuthorizationAPIGroupOutput =
   typeof GetRbacAuthorizationAPIGroupOutput.Type;
 
@@ -994,11 +996,10 @@ export type GetRbacAuthorizationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getRbacAuthorizationAPIGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetRbacAuthorizationAPIGroupInput,
-    outputSchema: GetRbacAuthorizationAPIGroupOutput,
-  }));
+export const getRbacAuthorizationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRbacAuthorizationAPIGroupInput,
+  outputSchema: GetRbacAuthorizationAPIGroupOutput,
+}));
 // Input Schema
 export const GetRbacAuthorizationV1APIResourcesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1035,11 +1036,12 @@ export type GetRbacAuthorizationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getRbacAuthorizationV1APIResources =
-  /*@__PURE__*/ API.make(() => ({
+export const getRbacAuthorizationV1APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetRbacAuthorizationV1APIResourcesInput,
     outputSchema: GetRbacAuthorizationV1APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1162,11 +1164,12 @@ export type ListRbacAuthorizationV1ClusterRoleOutput =
 /**
  * list or watch objects of kind ClusterRole
  */
-export const listRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const listRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListRbacAuthorizationV1ClusterRoleInput,
     outputSchema: ListRbacAuthorizationV1ClusterRoleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1271,11 +1274,12 @@ export type ListRbacAuthorizationV1ClusterRoleBindingOutput =
 /**
  * list or watch objects of kind ClusterRoleBinding
  */
-export const listRbacAuthorizationV1ClusterRoleBinding =
-  /*@__PURE__*/ API.make(() => ({
+export const listRbacAuthorizationV1ClusterRoleBinding = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: ListRbacAuthorizationV1ClusterRoleBindingOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1376,11 +1380,12 @@ export type ListRbacAuthorizationV1NamespacedRoleOutput =
 /**
  * list or watch objects of kind Role
  */
-export const listRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const listRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: ListRbacAuthorizationV1NamespacedRoleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1808,12 +1813,13 @@ export type PatchRbacAuthorizationV1ClusterRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const patchRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchRbacAuthorizationV1ClusterRoleInput,
     outputSchema: PatchRbacAuthorizationV1ClusterRoleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1994,12 +2000,13 @@ export type PatchRbacAuthorizationV1NamespacedRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const patchRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: PatchRbacAuthorizationV1NamespacedRoleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2196,12 +2203,13 @@ export type ReadRbacAuthorizationV1ClusterRoleOutput =
 /**
  * read the specified ClusterRole
  */
-export const readRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const readRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadRbacAuthorizationV1ClusterRoleInput,
     outputSchema: ReadRbacAuthorizationV1ClusterRoleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2285,12 +2293,13 @@ export type ReadRbacAuthorizationV1ClusterRoleBindingOutput =
 /**
  * read the specified ClusterRoleBinding
  */
-export const readRbacAuthorizationV1ClusterRoleBinding =
-  /*@__PURE__*/ API.make(() => ({
+export const readRbacAuthorizationV1ClusterRoleBinding = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: ReadRbacAuthorizationV1ClusterRoleBindingOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2370,12 +2379,13 @@ export type ReadRbacAuthorizationV1NamespacedRoleOutput =
 /**
  * read the specified Role
  */
-export const readRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const readRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: ReadRbacAuthorizationV1NamespacedRoleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2572,12 +2582,13 @@ export type ReplaceRbacAuthorizationV1ClusterRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceRbacAuthorizationV1ClusterRoleInput,
     outputSchema: ReplaceRbacAuthorizationV1ClusterRoleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2758,12 +2769,13 @@ export type ReplaceRbacAuthorizationV1NamespacedRoleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: ReplaceRbacAuthorizationV1NamespacedRoleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2883,11 +2895,12 @@ export type WatchRbacAuthorizationV1ClusterRoleOutput =
 /**
  * watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchRbacAuthorizationV1ClusterRole =
-  /*@__PURE__*/ API.make(() => ({
+export const watchRbacAuthorizationV1ClusterRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchRbacAuthorizationV1ClusterRoleInput,
     outputSchema: WatchRbacAuthorizationV1ClusterRoleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2970,11 +2983,12 @@ export type WatchRbacAuthorizationV1ClusterRoleListOutput =
 /**
  * watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchRbacAuthorizationV1ClusterRoleList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchRbacAuthorizationV1ClusterRoleList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchRbacAuthorizationV1ClusterRoleListInput,
     outputSchema: WatchRbacAuthorizationV1ClusterRoleListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2999,11 +3013,12 @@ export type WatchRbacAuthorizationV1NamespacedRoleOutput =
 /**
  * watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchRbacAuthorizationV1NamespacedRole =
-  /*@__PURE__*/ API.make(() => ({
+export const watchRbacAuthorizationV1NamespacedRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: WatchRbacAuthorizationV1NamespacedRoleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(

@@ -4,26 +4,27 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const VisualReviewReposQuarantineListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VisualReviewReposQuarantineListInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     identifier: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
     run_type: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/",
+  }),
+);
 export type VisualReviewReposQuarantineListInput =
   typeof VisualReviewReposQuarantineListInput.Type;
 
 // Output Schema
 export const VisualReviewReposQuarantineListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -63,9 +64,8 @@ export type VisualReviewReposQuarantineListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param run_type - Filter by run type
  */
-export const visualReviewReposQuarantineList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VisualReviewReposQuarantineListInput,
-    outputSchema: VisualReviewReposQuarantineListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const visualReviewReposQuarantineList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewReposQuarantineListInput,
+  outputSchema: VisualReviewReposQuarantineListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

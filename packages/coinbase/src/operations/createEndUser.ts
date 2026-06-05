@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateEndUserInput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.optional(Schema.String),
   authenticationMethods: Schema.Array(Schema.Unknown),
   evmAccount: Schema.optional(
@@ -21,7 +21,7 @@ export const CreateEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateEndUserInput = typeof CreateEndUserInput.Type;
 
 // Output Schema
-export const CreateEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateEndUserOutput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String,
   authenticationMethods: Schema.Array(Schema.Unknown),
   mfaMethods: Schema.optional(
@@ -81,7 +81,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createEndUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateEndUserInput,
   outputSchema: CreateEndUserOutput,
 }));

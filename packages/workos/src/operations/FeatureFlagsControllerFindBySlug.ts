@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const FeatureFlagsControllerFindBySlugInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "GET", path: "/feature-flags/{slug}" }));
 export type FeatureFlagsControllerFindBySlugInput =
@@ -13,7 +13,7 @@ export type FeatureFlagsControllerFindBySlugInput =
 
 // Output Schema
 export const FeatureFlagsControllerFindBySlugOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -37,9 +37,8 @@ export type FeatureFlagsControllerFindBySlugOutput =
  *
  * @param slug - A unique key to reference the Feature Flag.
  */
-export const FeatureFlagsControllerFindBySlug =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FeatureFlagsControllerFindBySlugInput,
-    outputSchema: FeatureFlagsControllerFindBySlugOutput,
-    errors: [NotFound] as const,
-  }));
+export const FeatureFlagsControllerFindBySlug = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsControllerFindBySlugInput,
+  outputSchema: FeatureFlagsControllerFindBySlugOutput,
+  errors: [NotFound] as const,
+}));

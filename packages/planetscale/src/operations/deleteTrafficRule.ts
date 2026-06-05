@@ -4,15 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    budget_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DeleteTrafficRuleInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  budget_id: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules/{id}",
@@ -21,7 +19,7 @@ export const DeleteTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteTrafficRuleInput = typeof DeleteTrafficRuleInput.Type;
 
 // Output Schema
-export const DeleteTrafficRuleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteTrafficRuleOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteTrafficRuleOutput = typeof DeleteTrafficRuleOutput.Type;
 
 // The operation
@@ -34,7 +32,7 @@ export type DeleteTrafficRuleOutput = typeof DeleteTrafficRuleOutput.Type;
  * @param budget_id - The ID of the traffic budget
  * @param id - The ID of the traffic rule
  */
-export const deleteTrafficRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteTrafficRule = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteTrafficRuleInput,
   outputSchema: DeleteTrafficRuleOutput,
   errors: [Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const SecretDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -13,7 +13,7 @@ export const SecretDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SecretDeleteInput = typeof SecretDeleteInput.Type;
 
 // Output Schema
-export const SecretDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretDeleteOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   version: Schema.optional(Schema.Number),
 });
@@ -26,7 +26,7 @@ export type SecretDeleteOutput = typeof SecretDeleteOutput.Type;
  * @param app_name - Fly App Name
  * @param secret_name - App secret name
  */
-export const SecretDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretDeleteInput,
   outputSchema: SecretDeleteOutput,
   errors: [Forbidden, NotFound] as const,

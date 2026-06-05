@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationOrganizationRolesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type AuthorizationOrganizationRolesControllerListInput =
 
 // Output Schema
 export const AuthorizationOrganizationRolesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -51,7 +51,7 @@ export type AuthorizationOrganizationRolesControllerListOutput =
  * @param organizationId - The ID of the organization.
  */
 export const AuthorizationOrganizationRolesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationOrganizationRolesControllerListInput,
     outputSchema: AuthorizationOrganizationRolesControllerListOutput,
     errors: [Forbidden, NotFound] as const,

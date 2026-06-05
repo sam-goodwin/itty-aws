@@ -4,13 +4,13 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const GetDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/datasets/{dataset_id}" }));
 export type GetDatasetInput = typeof GetDatasetInput.Type;
 
 // Output Schema
-export const GetDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -35,7 +35,7 @@ export type GetDatasetOutput = typeof GetDatasetOutput.Type;
 /**
  * Get dataset by ID
  */
-export const getDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatasetInput,
   outputSchema: GetDatasetOutput,
   errors: [Forbidden, NotFound] as const,

@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
 
 // Output Schema
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
   typeof DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput.Type;
 
@@ -30,7 +30,7 @@ export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
  * Revokes the integration tokens with the given client ID.
  */
 export const deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput,
     outputSchema: DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput,
     errors: [NotFound, UnprocessableEntity] as const,

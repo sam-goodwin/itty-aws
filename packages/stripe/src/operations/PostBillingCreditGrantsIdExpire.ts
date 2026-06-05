@@ -3,23 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostBillingCreditGrantsIdExpireInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostBillingCreditGrantsIdExpireInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/billing/credit_grants/{id}/expire",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/billing/credit_grants/{id}/expire",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostBillingCreditGrantsIdExpireInput =
   typeof PostBillingCreditGrantsIdExpireInput.Type;
 
 // Output Schema
 export const PostBillingCreditGrantsIdExpireOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.Unknown,
       type: Schema.Literals(["monetary"]),
@@ -63,8 +64,7 @@ export type PostBillingCreditGrantsIdExpireOutput =
  *
  * @param id - Unique identifier for the object.
  */
-export const PostBillingCreditGrantsIdExpire =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostBillingCreditGrantsIdExpireInput,
-    outputSchema: PostBillingCreditGrantsIdExpireOutput,
-  }));
+export const PostBillingCreditGrantsIdExpire = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingCreditGrantsIdExpireInput,
+  outputSchema: PostBillingCreditGrantsIdExpireOutput,
+}));

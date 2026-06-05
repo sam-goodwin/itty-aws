@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationsControllerDeleteOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/organizations/{id}" }));
 export type OrganizationsControllerDeleteOrganizationInput =
@@ -13,7 +13,7 @@ export type OrganizationsControllerDeleteOrganizationInput =
 
 // Output Schema
 export const OrganizationsControllerDeleteOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type OrganizationsControllerDeleteOrganizationOutput =
   typeof OrganizationsControllerDeleteOrganizationOutput.Type;
 
@@ -25,9 +25,10 @@ export type OrganizationsControllerDeleteOrganizationOutput =
  *
  * @param id - Unique identifier of the Organization.
  */
-export const OrganizationsControllerDeleteOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationsControllerDeleteOrganization = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationsControllerDeleteOrganizationInput,
     outputSchema: OrganizationsControllerDeleteOrganizationOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

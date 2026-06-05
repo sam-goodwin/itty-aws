@@ -4,12 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    user_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1DeleteJitAccessInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  user_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/v1/projects/{ref}/database/jit/{user_id}",
@@ -18,7 +16,7 @@ export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type V1DeleteJitAccessInput = typeof V1DeleteJitAccessInput.Type;
 
 // Output Schema
-export const V1DeleteJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1DeleteJitAccessOutput = /*@__PURE__*/ Schema.Void;
 export type V1DeleteJitAccessOutput = typeof V1DeleteJitAccessOutput.Type;
 
 // The operation
@@ -29,7 +27,7 @@ export type V1DeleteJitAccessOutput = typeof V1DeleteJitAccessOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1DeleteJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteJitAccessInput,
   outputSchema: V1DeleteJitAccessOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

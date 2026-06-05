@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupProcessDiskMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupProcessDiskMeasurementsInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     partitionName: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
@@ -16,18 +16,18 @@ export const GetGroupProcessDiskMeasurementsInput =
     period: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements",
+  }),
+);
 export type GetGroupProcessDiskMeasurementsInput =
   typeof GetGroupProcessDiskMeasurementsInput.Type;
 
 // Output Schema
-export const GetGroupProcessDiskMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupProcessDiskMeasurementsOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupProcessDiskMeasurementsOutput =
   typeof GetGroupProcessDiskMeasurementsOutput.Type;
 
@@ -55,9 +55,8 @@ export type GetGroupProcessDiskMeasurementsOutput =
  * @param start - Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  */
-export const getGroupProcessDiskMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupProcessDiskMeasurementsInput,
-    outputSchema: GetGroupProcessDiskMeasurementsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const getGroupProcessDiskMeasurements = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupProcessDiskMeasurementsInput,
+  outputSchema: GetGroupProcessDiskMeasurementsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

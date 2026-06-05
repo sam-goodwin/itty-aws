@@ -5,7 +5,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
 export const UserlandSsoControllerDeviceAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_id: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/user_management/authorize/device" }),
@@ -15,7 +15,7 @@ export type UserlandSsoControllerDeviceAuthorizationInput =
 
 // Output Schema
 export const UserlandSsoControllerDeviceAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     device_code: Schema.optional(Schema.String),
     user_code: Schema.optional(Schema.String),
     verification_uri: Schema.optional(Schema.String),
@@ -32,9 +32,10 @@ export type UserlandSsoControllerDeviceAuthorizationOutput =
  *
  * Initiates the CLI Auth flow by requesting a device code and verification URLs. This endpoint implements the OAuth 2.0 Device Authorization Flow ([RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628)) and is designed for command-line applications or other devices with limited input capabilities.
  */
-export const UserlandSsoControllerDeviceAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandSsoControllerDeviceAuthorization = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandSsoControllerDeviceAuthorizationInput,
     outputSchema: UserlandSsoControllerDeviceAuthorizationOutput,
     errors: [BadRequest, Forbidden] as const,
-  }));
+  }),
+);

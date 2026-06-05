@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
+import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
-import * as T from "../traits.ts";
 
 // =============================================================================
 // Errors
@@ -111,7 +111,7 @@ export interface GetConsumerRequest {
   accountId: string;
 }
 
-export const GetConsumerRequest = /*@__PURE__*/ Schema.Struct({
+export const GetConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -152,7 +152,7 @@ export type GetConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const GetConsumerResponse = /*@__PURE__*/ Schema.Union([
+export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -267,7 +267,7 @@ export const getConsumer: API.OperationMethod<
   GetConsumerResponse,
   GetConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConsumerRequest,
   output: GetConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -279,7 +279,7 @@ export interface ListConsumersRequest {
   accountId: string;
 }
 
-export const ListConsumersRequest = /*@__PURE__*/ Schema.Struct({
+export const ListConsumersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -322,7 +322,7 @@ export interface ListConsumersResponse {
   )[];
 }
 
-export const ListConsumersResponse = /*@__PURE__*/ Schema.Struct({
+export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Union([
       Schema.Struct({
@@ -438,7 +438,7 @@ export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersResponse,
   ListConsumersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConsumersRequest,
   output: ListConsumersResponse,
   errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
@@ -469,7 +469,7 @@ export interface CreateConsumerRequest {
   };
 }
 
-export const CreateConsumerRequest = /*@__PURE__*/ Schema.Struct({
+export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   scriptName: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export type CreateConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const CreateConsumerResponse = /*@__PURE__*/ Schema.Union([
+export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -654,7 +654,7 @@ export const createConsumer: API.OperationMethod<
   CreateConsumerResponse,
   CreateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConsumerRequest,
   output: CreateConsumerResponse,
   errors: [
@@ -689,7 +689,7 @@ export interface UpdateConsumerRequest {
   };
 }
 
-export const UpdateConsumerRequest = /*@__PURE__*/ Schema.Struct({
+export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -758,7 +758,7 @@ export type UpdateConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const UpdateConsumerResponse = /*@__PURE__*/ Schema.Union([
+export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -875,7 +875,7 @@ export const updateConsumer: API.OperationMethod<
   UpdateConsumerResponse,
   UpdateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConsumerRequest,
   output: UpdateConsumerResponse,
   errors: [
@@ -895,7 +895,7 @@ export interface DeleteConsumerRequest {
   accountId: string;
 }
 
-export const DeleteConsumerRequest = /*@__PURE__*/ Schema.Struct({
+export const DeleteConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -920,43 +920,45 @@ export interface DeleteConsumerResponse {
   success?: true | null;
 }
 
-export const DeleteConsumerResponse = /*@__PURE__*/ Schema.Struct({
-  errors: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+export const DeleteConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    errors: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.Number,
+            message: Schema.String,
+            documentationUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            source: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  pointer: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              code: "code",
+              message: "message",
+              documentationUrl: "documentation_url",
+              source: "source",
+            }),
           ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
         ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  messages: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
-}) as unknown as Schema.Schema<DeleteConsumerResponse>;
+        Schema.Null,
+      ]),
+    ),
+    messages: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
+  },
+) as unknown as Schema.Schema<DeleteConsumerResponse>;
 
 export type DeleteConsumerError =
   | DefaultErrors
@@ -970,7 +972,7 @@ export const deleteConsumer: API.OperationMethod<
   DeleteConsumerResponse,
   DeleteConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConsumerRequest,
   output: DeleteConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -994,7 +996,7 @@ export interface BulkPushMessagesRequest {
 }
 
 export const BulkPushMessagesRequest =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queueId: Schema.String.pipe(T.HttpPath("queueId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     delaySeconds: Schema.optional(Schema.Number),
@@ -1045,7 +1047,7 @@ export interface BulkPushMessagesResponse {
 }
 
 export const BulkPushMessagesResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -1084,7 +1086,7 @@ export const bulkPushMessages: API.OperationMethod<
   BulkPushMessagesResponse,
   BulkPushMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkPushMessagesRequest,
   output: BulkPushMessagesResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1100,7 +1102,7 @@ export interface PullMessageRequest {
   visibilityTimeoutMs?: number;
 }
 
-export const PullMessageRequest = /*@__PURE__*/ Schema.Struct({
+export const PullMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   batchSize: Schema.optional(Schema.Number),
@@ -1138,7 +1140,7 @@ export interface PullMessageResponse {
   } | null;
 }
 
-export const PullMessageResponse = /*@__PURE__*/ Schema.Struct({
+export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   messageBacklogCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
@@ -1217,7 +1219,7 @@ export const pullMessage: API.OperationMethod<
   PullMessageResponse,
   PullMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullMessageRequest,
   output: PullMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1235,7 +1237,7 @@ export interface PushMessageRequest {
   delaySeconds?: number;
 }
 
-export const PushMessageRequest = /*@__PURE__*/ Schema.Struct({
+export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.optional(Schema.String),
@@ -1265,7 +1267,7 @@ export interface PushMessageResponse {
   } | null;
 }
 
-export const PushMessageResponse = /*@__PURE__*/ Schema.Struct({
+export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   metadata: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -1304,7 +1306,7 @@ export const pushMessage: API.OperationMethod<
   PushMessageResponse,
   PushMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PushMessageRequest,
   output: PushMessageResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1320,7 +1322,7 @@ export interface AckMessageRequest {
   retries?: { delaySeconds?: number; leaseId?: string }[];
 }
 
-export const AckMessageRequest = /*@__PURE__*/ Schema.Struct({
+export const AckMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   acks: Schema.optional(
@@ -1359,7 +1361,7 @@ export interface AckMessageResponse {
   warnings?: Record<string, unknown> | null;
 }
 
-export const AckMessageResponse = /*@__PURE__*/ Schema.Struct({
+export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ackCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   retryCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   warnings: Schema.optional(
@@ -1381,7 +1383,7 @@ export const ackMessage: API.OperationMethod<
   AckMessageResponse,
   AckMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AckMessageRequest,
   output: AckMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1397,10 +1399,12 @@ export interface GetMetricsQueueRequest {
   accountId: string;
 }
 
-export const GetMetricsQueueRequest = /*@__PURE__*/ Schema.Struct({
-  queueId: Schema.String.pipe(T.HttpPath("queueId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
+export const GetMetricsQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  },
+).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/queues/{queueId}/metrics",
@@ -1417,7 +1421,7 @@ export interface GetMetricsQueueResponse {
 }
 
 export const GetMetricsQueueResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backlogBytes: Schema.Number,
     backlogCount: Schema.Number,
     oldestMessageTimestampMs: Schema.Number,
@@ -1440,7 +1444,7 @@ export const getMetricsQueue: API.OperationMethod<
   GetMetricsQueueResponse,
   GetMetricsQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsQueueRequest,
   output: GetMetricsQueueResponse,
   errors: [],
@@ -1458,7 +1462,7 @@ export interface StartPurgeRequest {
   deleteMessagesPermanently?: boolean;
 }
 
-export const StartPurgeRequest = /*@__PURE__*/ Schema.Struct({
+export const StartPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   deleteMessagesPermanently: Schema.optional(Schema.Boolean),
@@ -1524,7 +1528,7 @@ export interface StartPurgeResponse {
   } | null;
 }
 
-export const StartPurgeResponse = /*@__PURE__*/ Schema.Struct({
+export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -1728,7 +1732,7 @@ export const startPurge: API.OperationMethod<
   StartPurgeResponse,
   StartPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartPurgeRequest,
   output: StartPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1740,7 +1744,7 @@ export interface StatusPurgeRequest {
   accountId: string;
 }
 
-export const StatusPurgeRequest = /*@__PURE__*/ Schema.Struct({
+export const StatusPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1757,7 +1761,7 @@ export interface StatusPurgeResponse {
   startedAt?: string | null;
 }
 
-export const StatusPurgeResponse = /*@__PURE__*/ Schema.Struct({
+export const StatusPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
@@ -1773,7 +1777,7 @@ export const statusPurge: API.OperationMethod<
   StatusPurgeResponse,
   StatusPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StatusPurgeRequest,
   output: StatusPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1789,7 +1793,7 @@ export interface GetQueueRequest {
   accountId: string;
 }
 
-export const GetQueueRequest = /*@__PURE__*/ Schema.Struct({
+export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1848,7 +1852,7 @@ export interface GetQueueResponse {
   } | null;
 }
 
-export const GetQueueResponse = /*@__PURE__*/ Schema.Struct({
+export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2050,7 +2054,7 @@ export const getQueue: API.OperationMethod<
   GetQueueResponse,
   GetQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -2061,7 +2065,7 @@ export interface ListQueuesRequest {
   accountId: string;
 }
 
-export const ListQueuesRequest = /*@__PURE__*/ Schema.Struct({
+export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/queues" }),
@@ -2121,7 +2125,7 @@ export interface ListQueuesResponse {
   }[];
 }
 
-export const ListQueuesResponse = /*@__PURE__*/ Schema.Struct({
+export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       consumers: Schema.optional(
@@ -2327,7 +2331,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesResponse,
   ListQueuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [InvalidRoute],
@@ -2344,7 +2348,7 @@ export interface CreateQueueRequest {
   queueName: string;
 }
 
-export const CreateQueueRequest = /*@__PURE__*/ Schema.Struct({
+export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.String,
 }).pipe(
@@ -2404,7 +2408,7 @@ export interface CreateQueueResponse {
   } | null;
 }
 
-export const CreateQueueResponse = /*@__PURE__*/ Schema.Struct({
+export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2612,7 +2616,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueResponse,
   CreateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
   errors: [QueueAlreadyExists, InvalidQueueName, InvalidRoute],
@@ -2632,7 +2636,7 @@ export interface UpdateQueueRequest {
   };
 }
 
-export const UpdateQueueRequest = /*@__PURE__*/ Schema.Struct({
+export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.optional(Schema.String),
@@ -2706,7 +2710,7 @@ export interface UpdateQueueResponse {
   } | null;
 }
 
-export const UpdateQueueResponse = /*@__PURE__*/ Schema.Struct({
+export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2914,7 +2918,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueResponse,
   UpdateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
   errors: [InvalidQueueName, QueueNotFound, InvalidRoute],
@@ -2934,7 +2938,7 @@ export interface PatchQueueRequest {
   };
 }
 
-export const PatchQueueRequest = /*@__PURE__*/ Schema.Struct({
+export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.optional(Schema.String),
@@ -3008,7 +3012,7 @@ export interface PatchQueueResponse {
   } | null;
 }
 
-export const PatchQueueResponse = /*@__PURE__*/ Schema.Struct({
+export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -3212,7 +3216,7 @@ export const patchQueue: API.OperationMethod<
   PatchQueueResponse,
   PatchQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchQueueRequest,
   output: PatchQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -3224,7 +3228,7 @@ export interface DeleteQueueRequest {
   accountId: string;
 }
 
-export const DeleteQueueRequest = /*@__PURE__*/ Schema.Struct({
+export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -3245,7 +3249,7 @@ export interface DeleteQueueResponse {
   success?: true | null;
 }
 
-export const DeleteQueueResponse = /*@__PURE__*/ Schema.Struct({
+export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   errors: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -3290,7 +3294,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueResponse,
   DeleteQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -3306,10 +3310,12 @@ export interface GetSubscriptionRequest {
   accountId: string;
 }
 
-export const GetSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
-  subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
+export const GetSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  },
+).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
@@ -3344,7 +3350,7 @@ export interface GetSubscriptionResponse {
 }
 
 export const GetSubscriptionResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     destination: Schema.Struct({
@@ -3428,7 +3434,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3446,7 +3452,7 @@ export interface ListSubscriptionsRequest {
 }
 
 export const ListSubscriptionsRequest =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -3494,7 +3500,7 @@ export interface ListSubscriptionsResponse {
 }
 
 export const ListSubscriptionsResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -3609,7 +3615,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [],
@@ -3646,7 +3652,7 @@ export interface CreateSubscriptionRequest {
 }
 
 export const CreateSubscriptionRequest =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     destination: Schema.optional(
       Schema.Struct({
@@ -3725,7 +3731,7 @@ export interface CreateSubscriptionResponse {
 }
 
 export const CreateSubscriptionResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     destination: Schema.Struct({
@@ -3809,7 +3815,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3830,7 +3836,7 @@ export interface PatchSubscriptionRequest {
 }
 
 export const PatchSubscriptionRequest =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     destination: Schema.optional(
@@ -3877,7 +3883,7 @@ export interface PatchSubscriptionResponse {
 }
 
 export const PatchSubscriptionResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     destination: Schema.Struct({
@@ -3961,7 +3967,7 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionResponse,
   PatchSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSubscriptionRequest,
   output: PatchSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3974,7 +3980,7 @@ export interface DeleteSubscriptionRequest {
 }
 
 export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -4012,7 +4018,7 @@ export interface DeleteSubscriptionResponse {
 }
 
 export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     destination: Schema.Struct({
@@ -4096,7 +4102,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [UnrecognizedEventType],

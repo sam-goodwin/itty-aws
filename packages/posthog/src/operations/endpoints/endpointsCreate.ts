@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   query: Schema.optional(Schema.NullOr(Schema.Unknown)),
@@ -25,7 +25,7 @@ export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EndpointsCreateInput = typeof EndpointsCreateInput.Type;
 
 // Output Schema
-export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -92,7 +92,7 @@ export type EndpointsCreateOutput = typeof EndpointsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const endpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const endpointsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsCreateInput,
   outputSchema: EndpointsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

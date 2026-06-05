@@ -3,20 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetProjectAdvisorSecurityIssuesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectAdvisorSecurityIssuesInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.optional(Schema.String),
     database_name: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     min_severity: Schema.optional(Schema.Literals(["INFO", "WARN", "ERROR"])),
-  }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/advisors" }));
+  },
+).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/advisors" }));
 export type GetProjectAdvisorSecurityIssuesInput =
   typeof GetProjectAdvisorSecurityIssuesInput.Type;
 
 // Output Schema
 export const GetProjectAdvisorSecurityIssuesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issues: Schema.Array(
       Schema.Struct({
         name: Schema.String,
@@ -49,8 +50,7 @@ export type GetProjectAdvisorSecurityIssuesOutput =
  * @param category - Filter issues by category
  * @param min_severity - Minimum severity level to include. For example, WARN returns WARN and ERROR issues, excluding INFO.
  */
-export const getProjectAdvisorSecurityIssues =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetProjectAdvisorSecurityIssuesInput,
-    outputSchema: GetProjectAdvisorSecurityIssuesOutput,
-  }));
+export const getProjectAdvisorSecurityIssues = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProjectAdvisorSecurityIssuesInput,
+  outputSchema: GetProjectAdvisorSecurityIssuesOutput,
+}));

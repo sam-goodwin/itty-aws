@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenInput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -91,7 +91,7 @@ export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateAPITokenInput = typeof CreateAPITokenInput.Type;
 
 // Output Schema
-export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
     Schema.Struct({
@@ -178,7 +178,7 @@ export type CreateAPITokenOutput = typeof CreateAPITokenOutput.Type;
 /**
  * Create API token
  */
-export const createAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAPITokenInput,
   outputSchema: CreateAPITokenOutput,
   errors: [UnprocessableEntity] as const,

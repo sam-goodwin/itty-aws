@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDocumentInput = typeof GetDocumentInput.Type;
 
 // Output Schema
-export const GetDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const GetDocumentOutput = /*@__PURE__*/ Schema.Unknown;
 export type GetDocumentOutput = typeof GetDocumentOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type GetDocumentOutput = typeof GetDocumentOutput.Type;
  * @param collectionName - The name of the collection to search for the document under
  * @param documentId - The Document ID
  */
-export const getDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDocumentInput,
   outputSchema: GetDocumentOutput,
   errors: [NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ImportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   importDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const ImportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImportDocumentsInput = typeof ImportDocumentsInput.Type;
 
 // Output Schema
-export const ImportDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ImportDocumentsOutput = /*@__PURE__*/ Schema.Void;
 export type ImportDocumentsOutput = typeof ImportDocumentsOutput.Type;
 
 // The operation
@@ -27,7 +27,7 @@ export type ImportDocumentsOutput = typeof ImportDocumentsOutput.Type;
  *
  * @param collectionName - The name of the collection
  */
-export const importDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportDocumentsInput,
   outputSchema: ImportDocumentsOutput,
   errors: [BadRequest, NotFound] as const,

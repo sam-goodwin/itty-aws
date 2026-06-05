@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const DownloadGroupDataFederationQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     endDate: Schema.optional(Schema.Number),
@@ -21,7 +21,7 @@ export type DownloadGroupDataFederationQueryLogsInput =
 
 // Output Schema
 export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DownloadGroupDataFederationQueryLogsOutput =
   typeof DownloadGroupDataFederationQueryLogsOutput.Type;
 
@@ -38,9 +38,10 @@ export type DownloadGroupDataFederationQueryLogsOutput =
  * @param startDate - Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch.
  * @param tenantName - Human-readable label that identifies the federated database instance for which you want to download query logs.
  */
-export const downloadGroupDataFederationQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const downloadGroupDataFederationQueryLogs = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DownloadGroupDataFederationQueryLogsInput,
     outputSchema: DownloadGroupDataFederationQueryLogsOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

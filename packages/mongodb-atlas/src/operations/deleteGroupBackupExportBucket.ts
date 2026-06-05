@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupBackupExportBucketInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    exportBucketId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}",
-    }),
-  );
+export const DeleteGroupBackupExportBucketInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  exportBucketId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}",
+  }),
+);
 export type DeleteGroupBackupExportBucketInput =
   typeof DeleteGroupBackupExportBucketInput.Type;
 
 // Output Schema
-export const DeleteGroupBackupExportBucketOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupBackupExportBucketOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupBackupExportBucketOutput =
   typeof DeleteGroupBackupExportBucketOutput.Type;
 
@@ -36,9 +34,8 @@ export type DeleteGroupBackupExportBucketOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param exportBucketId - Unique 24-hexadecimal character string that identifies the Export Bucket.
  */
-export const deleteGroupBackupExportBucket =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupBackupExportBucketInput,
-    outputSchema: DeleteGroupBackupExportBucketOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const deleteGroupBackupExportBucket = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupBackupExportBucketInput,
+  outputSchema: DeleteGroupBackupExportBucketOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

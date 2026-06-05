@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const DisableConsoleInput = /*@__PURE__*/ Schema.Struct({
@@ -163,28 +163,26 @@ export const ListOperations = /*@__PURE__*/ API.make(() => ({
   outputSchema: ListOperationsOutput,
 }));
 // Input Schema
-export const SerialPortsConnectInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
-    parentResourceType: Schema.String.pipe(T.PathParam()),
-    parentResource: Schema.String.pipe(T.PathParam()),
-    serialPort: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}/connect",
-    }),
-  );
+export const SerialPortsConnectInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  parentResourceType: Schema.String.pipe(T.PathParam()),
+  parentResource: Schema.String.pipe(T.PathParam()),
+  serialPort: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}/connect",
+  }),
+);
 export type SerialPortsConnectInput = typeof SerialPortsConnectInput.Type;
 
 // Output Schema
-export const SerialPortsConnectOutput =
-  /*@__PURE__*/ Schema.Struct({
-    connectionString: Schema.optional(SensitiveString),
-  });
+export const SerialPortsConnectOutput = /*@__PURE__*/ Schema.Struct({
+  connectionString: Schema.optional(SensitiveOutputString),
+});
 export type SerialPortsConnectOutput = typeof SerialPortsConnectOutput.Type;
 
 // The operation
@@ -221,26 +219,25 @@ export const SerialPortsCreateInput = /*@__PURE__*/ Schema.Struct({
 export type SerialPortsCreateInput = typeof SerialPortsCreateInput.Type;
 
 // Output Schema
-export const SerialPortsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SerialPortsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SerialPortsCreateOutput = typeof SerialPortsCreateOutput.Type;
 
 // The operation
@@ -384,22 +381,21 @@ export const SerialPortsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SerialPortsListOutput,
 }));
 // Input Schema
-export const SerialPortsListBySubscriptionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/serialPorts",
-    }),
-  );
+export const SerialPortsListBySubscriptionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/serialPorts",
+  }),
+);
 export type SerialPortsListBySubscriptionsInput =
   typeof SerialPortsListBySubscriptionsInput.Type;
 
 // Output Schema
-export const SerialPortsListBySubscriptionsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const SerialPortsListBySubscriptionsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -433,7 +429,8 @@ export const SerialPortsListBySubscriptionsOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type SerialPortsListBySubscriptionsOutput =
   typeof SerialPortsListBySubscriptionsOutput.Type;
 
@@ -444,8 +441,7 @@ export type SerialPortsListBySubscriptionsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SerialPortsListBySubscriptions =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SerialPortsListBySubscriptionsInput,
-    outputSchema: SerialPortsListBySubscriptionsOutput,
-  }));
+export const SerialPortsListBySubscriptions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SerialPortsListBySubscriptionsInput,
+  outputSchema: SerialPortsListBySubscriptionsOutput,
+}));

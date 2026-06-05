@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTreasuryDebitReversalsDebitReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     debit_reversal: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTreasuryDebitReversalsDebitReversalInput =
 
 // Output Schema
 export const GetTreasuryDebitReversalsDebitReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -49,8 +49,9 @@ export type GetTreasuryDebitReversalsDebitReversalOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTreasuryDebitReversalsDebitReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTreasuryDebitReversalsDebitReversal = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetTreasuryDebitReversalsDebitReversalInput,
     outputSchema: GetTreasuryDebitReversalsDebitReversalOutput,
-  }));
+  }),
+);

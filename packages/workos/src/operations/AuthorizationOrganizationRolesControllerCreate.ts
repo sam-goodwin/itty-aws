@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const AuthorizationOrganizationRolesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export type AuthorizationOrganizationRolesControllerCreateInput =
 
 // Output Schema
 export const AuthorizationOrganizationRolesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -52,7 +52,7 @@ export type AuthorizationOrganizationRolesControllerCreateOutput =
  * @param organizationId - The ID of the organization.
  */
 export const AuthorizationOrganizationRolesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationOrganizationRolesControllerCreateInput,
     outputSchema: AuthorizationOrganizationRolesControllerCreateOutput,
     errors: [

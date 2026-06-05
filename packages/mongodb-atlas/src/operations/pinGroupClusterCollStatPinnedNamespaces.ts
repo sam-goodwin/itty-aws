@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const PinGroupClusterCollStatPinnedNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type PinGroupClusterCollStatPinnedNamespacesInput =
 
 // Output Schema
 export const PinGroupClusterCollStatPinnedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PinGroupClusterCollStatPinnedNamespacesOutput =
   typeof PinGroupClusterCollStatPinnedNamespacesOutput.Type;
 
@@ -36,9 +36,10 @@ export type PinGroupClusterCollStatPinnedNamespacesOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param clusterName - Human-readable label that identifies the cluster to pin namespaces to.
  */
-export const pinGroupClusterCollStatPinnedNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const pinGroupClusterCollStatPinnedNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PinGroupClusterCollStatPinnedNamespacesInput,
     outputSchema: PinGroupClusterCollStatPinnedNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAppsV1NamespacedControllerRevisionInput =
@@ -85,23 +85,25 @@ export type CreateAppsV1NamespacedControllerRevisionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const createAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateAppsV1NamespacedControllerRevisionInput,
     outputSchema: CreateAppsV1NamespacedControllerRevisionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const CreateAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const CreateAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/apis/apps/v1/namespaces/{namespace}/daemonsets",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apis/apps/v1/namespaces/{namespace}/daemonsets",
+  }),
+);
 export type CreateAppsV1NamespacedDaemonSetInput =
   typeof CreateAppsV1NamespacedDaemonSetInput.Type;
 
@@ -2625,12 +2627,11 @@ export type CreateAppsV1NamespacedDaemonSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateAppsV1NamespacedDaemonSetInput,
-    outputSchema: CreateAppsV1NamespacedDaemonSetOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAppsV1NamespacedDaemonSetInput,
+  outputSchema: CreateAppsV1NamespacedDaemonSetOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateAppsV1NamespacedDeploymentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5168,12 +5169,11 @@ export type CreateAppsV1NamespacedDeploymentOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateAppsV1NamespacedDeploymentInput,
-    outputSchema: CreateAppsV1NamespacedDeploymentOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAppsV1NamespacedDeploymentInput,
+  outputSchema: CreateAppsV1NamespacedDeploymentOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateAppsV1NamespacedReplicaSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7754,12 +7754,11 @@ export type CreateAppsV1NamespacedReplicaSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateAppsV1NamespacedReplicaSetInput,
-    outputSchema: CreateAppsV1NamespacedReplicaSetOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAppsV1NamespacedReplicaSetInput,
+  outputSchema: CreateAppsV1NamespacedReplicaSetOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateAppsV1NamespacedStatefulSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10452,12 +10451,11 @@ export type CreateAppsV1NamespacedStatefulSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateAppsV1NamespacedStatefulSetInput,
-    outputSchema: CreateAppsV1NamespacedStatefulSetOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAppsV1NamespacedStatefulSetInput,
+  outputSchema: CreateAppsV1NamespacedStatefulSetOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10589,11 +10587,12 @@ export type DeleteAppsV1CollectionNamespacedDaemonSetOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1CollectionNamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteAppsV1CollectionNamespacedDaemonSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteAppsV1CollectionNamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedDaemonSetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedDeploymentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10861,22 +10860,24 @@ export type DeleteAppsV1NamespacedControllerRevisionOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteAppsV1NamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
-export const DeleteAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const DeleteAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
+  }),
+);
 export type DeleteAppsV1NamespacedDaemonSetInput =
   typeof DeleteAppsV1NamespacedDaemonSetInput.Type;
 
@@ -10930,12 +10931,11 @@ export type DeleteAppsV1NamespacedDaemonSetOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteAppsV1NamespacedDaemonSetInput,
-    outputSchema: DeleteAppsV1NamespacedDaemonSetOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteAppsV1NamespacedDaemonSetInput,
+  outputSchema: DeleteAppsV1NamespacedDaemonSetOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteAppsV1NamespacedDeploymentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10999,12 +10999,11 @@ export type DeleteAppsV1NamespacedDeploymentOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteAppsV1NamespacedDeploymentInput,
-    outputSchema: DeleteAppsV1NamespacedDeploymentOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteAppsV1NamespacedDeploymentInput,
+  outputSchema: DeleteAppsV1NamespacedDeploymentOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteAppsV1NamespacedReplicaSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11068,12 +11067,11 @@ export type DeleteAppsV1NamespacedReplicaSetOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteAppsV1NamespacedReplicaSetInput,
-    outputSchema: DeleteAppsV1NamespacedReplicaSetOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteAppsV1NamespacedReplicaSetInput,
+  outputSchema: DeleteAppsV1NamespacedReplicaSetOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteAppsV1NamespacedStatefulSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11137,12 +11135,11 @@ export type DeleteAppsV1NamespacedStatefulSetOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteAppsV1NamespacedStatefulSetInput,
-    outputSchema: DeleteAppsV1NamespacedStatefulSetOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteAppsV1NamespacedStatefulSetInput,
+  outputSchema: DeleteAppsV1NamespacedStatefulSetOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const GetAppsAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/apps/" }),
@@ -11186,33 +11183,31 @@ export const getAppsAPIGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetAppsAPIGroupOutput,
 }));
 // Input Schema
-export const GetAppsV1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/apps/v1/" }),
-  );
+export const GetAppsV1APIResourcesInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/apps/v1/" }),
+);
 export type GetAppsV1APIResourcesInput = typeof GetAppsV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetAppsV1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetAppsV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetAppsV1APIResourcesOutput =
   typeof GetAppsV1APIResourcesOutput.Type;
 
@@ -13975,11 +13970,12 @@ export type ListAppsV1DaemonSetForAllNamespacesOutput =
 /**
  * list or watch objects of kind DaemonSet
  */
-export const listAppsV1DaemonSetForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const listAppsV1DaemonSetForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListAppsV1DaemonSetForAllNamespacesInput,
     outputSchema: ListAppsV1DaemonSetForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListAppsV1DeploymentForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -16641,11 +16637,12 @@ export type ListAppsV1DeploymentForAllNamespacesOutput =
 /**
  * list or watch objects of kind Deployment
  */
-export const listAppsV1DeploymentForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const listAppsV1DeploymentForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListAppsV1DeploymentForAllNamespacesInput,
     outputSchema: ListAppsV1DeploymentForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListAppsV1NamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -16737,184 +16734,281 @@ export type ListAppsV1NamespacedControllerRevisionOutput =
 /**
  * list or watch objects of kind ControllerRevision
  */
-export const listAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const listAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListAppsV1NamespacedControllerRevisionInput,
     outputSchema: ListAppsV1NamespacedControllerRevisionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ListAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/daemonsets",
-    }),
-  );
+export const ListAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/daemonsets",
+  }),
+);
 export type ListAppsV1NamespacedDaemonSetInput =
   typeof ListAppsV1NamespacedDaemonSetInput.Type;
 
 // Output Schema
-export const ListAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+export const ListAppsV1NamespacedDaemonSetOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
             ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
+          ),
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
             ),
-            managedFields: Schema.optional(
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+      ),
+      spec: Schema.optional(
+        Schema.Struct({
+          minReadySeconds: Schema.optional(Schema.Number),
+          revisionHistoryLimit: Schema.optional(Schema.Number),
+          selector: Schema.Struct({
+            matchExpressions: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
             ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
           }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            minReadySeconds: Schema.optional(Schema.Number),
-            revisionHistoryLimit: Schema.optional(Schema.Number),
-            selector: Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
+          template: Schema.Struct({
+            metadata: Schema.optional(
+              Schema.Struct({
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
                 ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-            template: Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Struct({
-                  annotations: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  creationTimestamp: Schema.optional(Schema.String),
-                  deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-                  deletionTimestamp: Schema.optional(Schema.String),
-                  finalizers: Schema.optional(Schema.Array(Schema.String)),
-                  generateName: Schema.optional(Schema.String),
-                  generation: Schema.optional(Schema.Number),
-                  labels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  managedFields: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        apiVersion: Schema.optional(Schema.String),
-                        fieldsType: Schema.optional(Schema.String),
-                        fieldsV1: Schema.optional(Schema.Unknown),
-                        manager: Schema.optional(Schema.String),
-                        operation: Schema.optional(Schema.String),
-                        subresource: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                  ownerReferences: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        apiVersion: Schema.String,
-                        blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                        controller: Schema.optional(Schema.Boolean),
-                        kind: Schema.String,
-                        name: Schema.String,
-                        uid: Schema.String,
-                      }),
-                    ),
-                  ),
-                  resourceVersion: Schema.optional(Schema.String),
-                  selfLink: Schema.optional(Schema.String),
-                  uid: Schema.optional(Schema.String),
-                }),
-              ),
-              spec: Schema.optional(
-                Schema.Struct({
-                  activeDeadlineSeconds: Schema.optional(Schema.Number),
-                  affinity: Schema.optional(
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      nodeAffinity: Schema.optional(
-                        Schema.Struct({
-                          preferredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
-                              Schema.Array(
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
+                    }),
+                  ),
+                ),
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                activeDeadlineSeconds: Schema.optional(Schema.Number),
+                affinity: Schema.optional(
+                  Schema.Struct({
+                    nodeAffinity: Schema.optional(
+                      Schema.Struct({
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                preference: Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchFields: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                                weight: Schema.Number,
+                              }),
+                            ),
+                          ),
+                        requiredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Struct({
+                              nodeSelectorTerms: Schema.Array(
                                 Schema.Struct({
-                                  preference: Schema.Struct({
-                                    matchExpressions: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
                                     ),
-                                    matchFields: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
+                                  ),
+                                  matchFields: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
                                     ),
-                                  }),
-                                  weight: Schema.Number,
+                                  ),
                                 }),
                               ),
-                            ),
-                          requiredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
+                            }),
+                          ),
+                      }),
+                    ),
+                    podAffinity: Schema.optional(
+                      Schema.Struct({
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                nodeSelectorTerms: Schema.Array(
+                                podAffinityTerm: Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                                weight: Schema.Number,
+                              }),
+                            ),
+                          ),
+                        requiredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                labelSelector: Schema.optional(
                                   Schema.Struct({
                                     matchExpressions: Schema.optional(
                                       Schema.Array(
@@ -16927,7 +17021,23 @@ export const ListAppsV1NamespacedDaemonSetOutput =
                                         }),
                                       ),
                                     ),
-                                    matchFields: Schema.optional(
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
                                       Schema.Array(
                                         Schema.Struct({
                                           key: Schema.String,
@@ -16938,266 +17048,1053 @@ export const ListAppsV1NamespacedDaemonSetOutput =
                                         }),
                                       ),
                                     ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                            ),
+                          ),
+                      }),
+                    ),
+                    podAntiAffinity: Schema.optional(
+                      Schema.Struct({
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                podAffinityTerm: Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                                weight: Schema.Number,
+                              }),
+                            ),
+                          ),
+                        requiredDuringSchedulingIgnoredDuringExecution:
+                          Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                            ),
+                          ),
+                      }),
+                    ),
+                  }),
+                ),
+                automountServiceAccountToken: Schema.optional(Schema.Boolean),
+                containers: Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+                dnsConfig: Schema.optional(
+                  Schema.Struct({
+                    nameservers: Schema.optional(Schema.Array(Schema.String)),
+                    options: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          value: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    searches: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+                dnsPolicy: Schema.optional(Schema.String),
+                enableServiceLinks: Schema.optional(Schema.Boolean),
+                ephemeralContainers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      args: Schema.optional(Schema.Array(Schema.String)),
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                      env: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.optional(Schema.String),
+                            valueFrom: Schema.optional(
+                              Schema.Struct({
+                                configMapKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                                fieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldPath: Schema.String,
+                                  }),
+                                ),
+                                fileKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    optional: Schema.optional(Schema.Boolean),
+                                    path: Schema.String,
+                                    volumeName: Schema.String,
+                                  }),
+                                ),
+                                resourceFieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    containerName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    divisor: Schema.optional(Schema.String),
+                                    resource: Schema.String,
+                                  }),
+                                ),
+                                secretKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
                                   }),
                                 ),
                               }),
                             ),
-                        }),
+                          }),
+                        ),
                       ),
-                      podAffinity: Schema.optional(
+                      envFrom: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            configMapRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            prefix: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      image: Schema.optional(Schema.String),
+                      imagePullPolicy: Schema.optional(Schema.String),
+                      lifecycle: Schema.optional(
                         Schema.Struct({
-                          preferredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
-                              Schema.Array(
+                          postStart: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
                                 Schema.Struct({
-                                  podAffinityTerm: Schema.Struct({
-                                    labelSelector: Schema.optional(
-                                      Schema.Struct({
-                                        matchExpressions: Schema.optional(
-                                          Schema.Array(
-                                            Schema.Struct({
-                                              key: Schema.String,
-                                              operator: Schema.String,
-                                              values: Schema.optional(
-                                                Schema.Array(Schema.String),
-                                              ),
-                                            }),
-                                          ),
-                                        ),
-                                        matchLabels: Schema.optional(
-                                          Schema.Record(
-                                            Schema.String,
-                                            Schema.String,
-                                          ),
-                                        ),
-                                      }),
-                                    ),
-                                    matchLabelKeys: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    mismatchLabelKeys: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    namespaceSelector: Schema.optional(
-                                      Schema.Struct({
-                                        matchExpressions: Schema.optional(
-                                          Schema.Array(
-                                            Schema.Struct({
-                                              key: Schema.String,
-                                              operator: Schema.String,
-                                              values: Schema.optional(
-                                                Schema.Array(Schema.String),
-                                              ),
-                                            }),
-                                          ),
-                                        ),
-                                        matchLabels: Schema.optional(
-                                          Schema.Record(
-                                            Schema.String,
-                                            Schema.String,
-                                          ),
-                                        ),
-                                      }),
-                                    ),
-                                    namespaces: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    topologyKey: Schema.String,
-                                  }),
-                                  weight: Schema.Number,
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
                                 }),
                               ),
-                            ),
-                          requiredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
-                              Schema.Array(
+                              httpGet: Schema.optional(
                                 Schema.Struct({
-                                  labelSelector: Schema.optional(
-                                    Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
                                   ),
-                                  matchLabelKeys: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  mismatchLabelKeys: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  namespaceSelector: Schema.optional(
-                                    Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  namespaces: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  topologyKey: Schema.String,
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
                                 }),
                               ),
-                            ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          preStop: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          stopSignal: Schema.optional(Schema.String),
                         }),
                       ),
-                      podAntiAffinity: Schema.optional(
+                      livenessProbe: Schema.optional(
                         Schema.Struct({
-                          preferredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  podAffinityTerm: Schema.Struct({
-                                    labelSelector: Schema.optional(
-                                      Schema.Struct({
-                                        matchExpressions: Schema.optional(
-                                          Schema.Array(
-                                            Schema.Struct({
-                                              key: Schema.String,
-                                              operator: Schema.String,
-                                              values: Schema.optional(
-                                                Schema.Array(Schema.String),
-                                              ),
-                                            }),
-                                          ),
-                                        ),
-                                        matchLabels: Schema.optional(
-                                          Schema.Record(
-                                            Schema.String,
-                                            Schema.String,
-                                          ),
-                                        ),
-                                      }),
-                                    ),
-                                    matchLabelKeys: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    mismatchLabelKeys: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    namespaceSelector: Schema.optional(
-                                      Schema.Struct({
-                                        matchExpressions: Schema.optional(
-                                          Schema.Array(
-                                            Schema.Struct({
-                                              key: Schema.String,
-                                              operator: Schema.String,
-                                              values: Schema.optional(
-                                                Schema.Array(Schema.String),
-                                              ),
-                                            }),
-                                          ),
-                                        ),
-                                        matchLabels: Schema.optional(
-                                          Schema.Record(
-                                            Schema.String,
-                                            Schema.String,
-                                          ),
-                                        ),
-                                      }),
-                                    ),
-                                    namespaces: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    topologyKey: Schema.String,
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
                                   }),
-                                  weight: Schema.Number,
-                                }),
+                                ),
                               ),
-                            ),
-                          requiredDuringSchedulingIgnoredDuringExecution:
-                            Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  labelSelector: Schema.optional(
-                                    Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  matchLabelKeys: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  mismatchLabelKeys: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  namespaceSelector: Schema.optional(
-                                    Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  namespaces: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  topologyKey: Schema.String,
-                                }),
-                              ),
-                            ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
                         }),
                       ),
+                      name: Schema.String,
+                      ports: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPort: Schema.Number,
+                            hostIP: Schema.optional(Schema.String),
+                            hostPort: Schema.optional(Schema.Number),
+                            name: Schema.optional(Schema.String),
+                            protocol: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      readinessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      resizePolicy: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            resourceName: Schema.String,
+                            restartPolicy: Schema.String,
+                          }),
+                        ),
+                      ),
+                      resources: Schema.optional(
+                        Schema.Struct({
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                request: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                          limits: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      restartPolicy: Schema.optional(Schema.String),
+                      restartPolicyRules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            exitCodes: Schema.optional(
+                              Schema.Struct({
+                                operator: Schema.String,
+                                values: Schema.optional(
+                                  Schema.Array(Schema.Number),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      securityContext: Schema.optional(
+                        Schema.Struct({
+                          allowPrivilegeEscalation: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          appArmorProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          capabilities: Schema.optional(
+                            Schema.Struct({
+                              add: Schema.optional(Schema.Array(Schema.String)),
+                              drop: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          privileged: Schema.optional(Schema.Boolean),
+                          procMount: Schema.optional(Schema.String),
+                          readOnlyRootFilesystem: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          runAsGroup: Schema.optional(Schema.Number),
+                          runAsNonRoot: Schema.optional(Schema.Boolean),
+                          runAsUser: Schema.optional(Schema.Number),
+                          seLinuxOptions: Schema.optional(
+                            Schema.Struct({
+                              level: Schema.optional(Schema.String),
+                              role: Schema.optional(Schema.String),
+                              type: Schema.optional(Schema.String),
+                              user: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          seccompProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          windowsOptions: Schema.optional(
+                            Schema.Struct({
+                              gmsaCredentialSpec: Schema.optional(
+                                Schema.String,
+                              ),
+                              gmsaCredentialSpecName: Schema.optional(
+                                Schema.String,
+                              ),
+                              hostProcess: Schema.optional(Schema.Boolean),
+                              runAsUserName: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      startupProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      stdin: Schema.optional(Schema.Boolean),
+                      stdinOnce: Schema.optional(Schema.Boolean),
+                      targetContainerName: Schema.optional(Schema.String),
+                      terminationMessagePath: Schema.optional(Schema.String),
+                      terminationMessagePolicy: Schema.optional(Schema.String),
+                      tty: Schema.optional(Schema.Boolean),
+                      volumeDevices: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            devicePath: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                      ),
+                      volumeMounts: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            mountPath: Schema.String,
+                            mountPropagation: Schema.optional(Schema.String),
+                            name: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            recursiveReadOnly: Schema.optional(Schema.String),
+                            subPath: Schema.optional(Schema.String),
+                            subPathExpr: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      workingDir: Schema.optional(Schema.String),
                     }),
                   ),
-                  automountServiceAccountToken: Schema.optional(Schema.Boolean),
-                  containers: Schema.Array(
+                ),
+                hostAliases: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      hostnames: Schema.optional(Schema.Array(Schema.String)),
+                      ip: Schema.String,
+                    }),
+                  ),
+                ),
+                hostIPC: Schema.optional(Schema.Boolean),
+                hostNetwork: Schema.optional(Schema.Boolean),
+                hostPID: Schema.optional(Schema.Boolean),
+                hostUsers: Schema.optional(Schema.Boolean),
+                hostname: Schema.optional(Schema.String),
+                hostnameOverride: Schema.optional(Schema.String),
+                imagePullSecrets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                initContainers: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
                       args: Schema.optional(Schema.Array(Schema.String)),
                       command: Schema.optional(Schema.Array(Schema.String)),
@@ -17631,1771 +18528,816 @@ export const ListAppsV1NamespacedDaemonSetOutput =
                       workingDir: Schema.optional(Schema.String),
                     }),
                   ),
-                  dnsConfig: Schema.optional(
+                ),
+                nodeName: Schema.optional(Schema.String),
+                nodeSelector: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                os: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.String,
+                  }),
+                ),
+                overhead: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                preemptionPolicy: Schema.optional(Schema.String),
+                priority: Schema.optional(Schema.Number),
+                priorityClassName: Schema.optional(Schema.String),
+                readinessGates: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      nameservers: Schema.optional(Schema.Array(Schema.String)),
-                      options: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      searches: Schema.optional(Schema.Array(Schema.String)),
+                      conditionType: Schema.String,
                     }),
                   ),
-                  dnsPolicy: Schema.optional(Schema.String),
-                  enableServiceLinks: Schema.optional(Schema.Boolean),
-                  ephemeralContainers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        args: Schema.optional(Schema.Array(Schema.String)),
-                        command: Schema.optional(Schema.Array(Schema.String)),
-                        env: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.String,
-                              value: Schema.optional(Schema.String),
-                              valueFrom: Schema.optional(
-                                Schema.Struct({
-                                  configMapKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                  fieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      apiVersion: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      fieldPath: Schema.String,
-                                    }),
-                                  ),
-                                  fileKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      optional: Schema.optional(Schema.Boolean),
-                                      path: Schema.String,
-                                      volumeName: Schema.String,
-                                    }),
-                                  ),
-                                  resourceFieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      containerName: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      divisor: Schema.optional(Schema.String),
-                                      resource: Schema.String,
-                                    }),
-                                  ),
-                                  secretKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        envFrom: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              configMapRef: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              prefix: Schema.optional(Schema.String),
-                              secretRef: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        image: Schema.optional(Schema.String),
-                        imagePullPolicy: Schema.optional(Schema.String),
-                        lifecycle: Schema.optional(
-                          Schema.Struct({
-                            postStart: Schema.optional(
-                              Schema.Struct({
-                                exec: Schema.optional(
-                                  Schema.Struct({
-                                    command: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                  }),
-                                ),
-                                httpGet: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    httpHeaders: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          name: Schema.String,
-                                          value: Schema.String,
-                                        }),
-                                      ),
-                                    ),
-                                    path: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                    scheme: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                                sleep: Schema.optional(
-                                  Schema.Struct({
-                                    seconds: Schema.Number,
-                                  }),
-                                ),
-                                tcpSocket: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                  }),
-                                ),
-                              }),
-                            ),
-                            preStop: Schema.optional(
-                              Schema.Struct({
-                                exec: Schema.optional(
-                                  Schema.Struct({
-                                    command: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                  }),
-                                ),
-                                httpGet: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    httpHeaders: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          name: Schema.String,
-                                          value: Schema.String,
-                                        }),
-                                      ),
-                                    ),
-                                    path: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                    scheme: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                                sleep: Schema.optional(
-                                  Schema.Struct({
-                                    seconds: Schema.Number,
-                                  }),
-                                ),
-                                tcpSocket: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                  }),
-                                ),
-                              }),
-                            ),
-                            stopSignal: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        livenessProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        name: Schema.String,
-                        ports: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              containerPort: Schema.Number,
-                              hostIP: Schema.optional(Schema.String),
-                              hostPort: Schema.optional(Schema.Number),
-                              name: Schema.optional(Schema.String),
-                              protocol: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        readinessProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        resizePolicy: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              resourceName: Schema.String,
-                              restartPolicy: Schema.String,
-                            }),
-                          ),
-                        ),
-                        resources: Schema.optional(
-                          Schema.Struct({
-                            claims: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  request: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                            limits: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        restartPolicy: Schema.optional(Schema.String),
-                        restartPolicyRules: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              action: Schema.String,
-                              exitCodes: Schema.optional(
-                                Schema.Struct({
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.Number),
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        securityContext: Schema.optional(
-                          Schema.Struct({
-                            allowPrivilegeEscalation: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            appArmorProfile: Schema.optional(
-                              Schema.Struct({
-                                localhostProfile: Schema.optional(
-                                  Schema.String,
-                                ),
-                                type: Schema.String,
-                              }),
-                            ),
-                            capabilities: Schema.optional(
-                              Schema.Struct({
-                                add: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                drop: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            privileged: Schema.optional(Schema.Boolean),
-                            procMount: Schema.optional(Schema.String),
-                            readOnlyRootFilesystem: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            runAsGroup: Schema.optional(Schema.Number),
-                            runAsNonRoot: Schema.optional(Schema.Boolean),
-                            runAsUser: Schema.optional(Schema.Number),
-                            seLinuxOptions: Schema.optional(
-                              Schema.Struct({
-                                level: Schema.optional(Schema.String),
-                                role: Schema.optional(Schema.String),
-                                type: Schema.optional(Schema.String),
-                                user: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            seccompProfile: Schema.optional(
-                              Schema.Struct({
-                                localhostProfile: Schema.optional(
-                                  Schema.String,
-                                ),
-                                type: Schema.String,
-                              }),
-                            ),
-                            windowsOptions: Schema.optional(
-                              Schema.Struct({
-                                gmsaCredentialSpec: Schema.optional(
-                                  Schema.String,
-                                ),
-                                gmsaCredentialSpecName: Schema.optional(
-                                  Schema.String,
-                                ),
-                                hostProcess: Schema.optional(Schema.Boolean),
-                                runAsUserName: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          }),
-                        ),
-                        startupProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        stdin: Schema.optional(Schema.Boolean),
-                        stdinOnce: Schema.optional(Schema.Boolean),
-                        targetContainerName: Schema.optional(Schema.String),
-                        terminationMessagePath: Schema.optional(Schema.String),
-                        terminationMessagePolicy: Schema.optional(
-                          Schema.String,
-                        ),
-                        tty: Schema.optional(Schema.Boolean),
-                        volumeDevices: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              devicePath: Schema.String,
-                              name: Schema.String,
-                            }),
-                          ),
-                        ),
-                        volumeMounts: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              mountPath: Schema.String,
-                              mountPropagation: Schema.optional(Schema.String),
-                              name: Schema.String,
-                              readOnly: Schema.optional(Schema.Boolean),
-                              recursiveReadOnly: Schema.optional(Schema.String),
-                              subPath: Schema.optional(Schema.String),
-                              subPathExpr: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        workingDir: Schema.optional(Schema.String),
-                      }),
+                ),
+                resourceClaims: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      resourceClaimName: Schema.optional(Schema.String),
+                      resourceClaimTemplateName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                resources: Schema.optional(
+                  Schema.Struct({
+                    claims: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          request: Schema.optional(Schema.String),
+                        }),
+                      ),
                     ),
-                  ),
-                  hostAliases: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        hostnames: Schema.optional(Schema.Array(Schema.String)),
-                        ip: Schema.String,
-                      }),
+                    limits: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
                     ),
-                  ),
-                  hostIPC: Schema.optional(Schema.Boolean),
-                  hostNetwork: Schema.optional(Schema.Boolean),
-                  hostPID: Schema.optional(Schema.Boolean),
-                  hostUsers: Schema.optional(Schema.Boolean),
-                  hostname: Schema.optional(Schema.String),
-                  hostnameOverride: Schema.optional(Schema.String),
-                  imagePullSecrets: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                      }),
+                    requests: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
                     ),
-                  ),
-                  initContainers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        args: Schema.optional(Schema.Array(Schema.String)),
-                        command: Schema.optional(Schema.Array(Schema.String)),
-                        env: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.String,
-                              value: Schema.optional(Schema.String),
-                              valueFrom: Schema.optional(
-                                Schema.Struct({
-                                  configMapKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                  fieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      apiVersion: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      fieldPath: Schema.String,
-                                    }),
-                                  ),
-                                  fileKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      optional: Schema.optional(Schema.Boolean),
-                                      path: Schema.String,
-                                      volumeName: Schema.String,
-                                    }),
-                                  ),
-                                  resourceFieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      containerName: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      divisor: Schema.optional(Schema.String),
-                                      resource: Schema.String,
-                                    }),
-                                  ),
-                                  secretKeyRef: Schema.optional(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        envFrom: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              configMapRef: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              prefix: Schema.optional(Schema.String),
-                              secretRef: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        image: Schema.optional(Schema.String),
-                        imagePullPolicy: Schema.optional(Schema.String),
-                        lifecycle: Schema.optional(
-                          Schema.Struct({
-                            postStart: Schema.optional(
-                              Schema.Struct({
-                                exec: Schema.optional(
-                                  Schema.Struct({
-                                    command: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                  }),
-                                ),
-                                httpGet: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    httpHeaders: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          name: Schema.String,
-                                          value: Schema.String,
-                                        }),
-                                      ),
-                                    ),
-                                    path: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                    scheme: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                                sleep: Schema.optional(
-                                  Schema.Struct({
-                                    seconds: Schema.Number,
-                                  }),
-                                ),
-                                tcpSocket: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                  }),
-                                ),
-                              }),
-                            ),
-                            preStop: Schema.optional(
-                              Schema.Struct({
-                                exec: Schema.optional(
-                                  Schema.Struct({
-                                    command: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                  }),
-                                ),
-                                httpGet: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    httpHeaders: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          name: Schema.String,
-                                          value: Schema.String,
-                                        }),
-                                      ),
-                                    ),
-                                    path: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                    scheme: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                                sleep: Schema.optional(
-                                  Schema.Struct({
-                                    seconds: Schema.Number,
-                                  }),
-                                ),
-                                tcpSocket: Schema.optional(
-                                  Schema.Struct({
-                                    host: Schema.optional(Schema.String),
-                                    port: Schema.String,
-                                  }),
-                                ),
-                              }),
-                            ),
-                            stopSignal: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        livenessProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        name: Schema.String,
-                        ports: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              containerPort: Schema.Number,
-                              hostIP: Schema.optional(Schema.String),
-                              hostPort: Schema.optional(Schema.Number),
-                              name: Schema.optional(Schema.String),
-                              protocol: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        readinessProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        resizePolicy: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              resourceName: Schema.String,
-                              restartPolicy: Schema.String,
-                            }),
-                          ),
-                        ),
-                        resources: Schema.optional(
-                          Schema.Struct({
-                            claims: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  request: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                            limits: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        restartPolicy: Schema.optional(Schema.String),
-                        restartPolicyRules: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              action: Schema.String,
-                              exitCodes: Schema.optional(
-                                Schema.Struct({
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.Number),
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        securityContext: Schema.optional(
-                          Schema.Struct({
-                            allowPrivilegeEscalation: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            appArmorProfile: Schema.optional(
-                              Schema.Struct({
-                                localhostProfile: Schema.optional(
-                                  Schema.String,
-                                ),
-                                type: Schema.String,
-                              }),
-                            ),
-                            capabilities: Schema.optional(
-                              Schema.Struct({
-                                add: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                drop: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            privileged: Schema.optional(Schema.Boolean),
-                            procMount: Schema.optional(Schema.String),
-                            readOnlyRootFilesystem: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            runAsGroup: Schema.optional(Schema.Number),
-                            runAsNonRoot: Schema.optional(Schema.Boolean),
-                            runAsUser: Schema.optional(Schema.Number),
-                            seLinuxOptions: Schema.optional(
-                              Schema.Struct({
-                                level: Schema.optional(Schema.String),
-                                role: Schema.optional(Schema.String),
-                                type: Schema.optional(Schema.String),
-                                user: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            seccompProfile: Schema.optional(
-                              Schema.Struct({
-                                localhostProfile: Schema.optional(
-                                  Schema.String,
-                                ),
-                                type: Schema.String,
-                              }),
-                            ),
-                            windowsOptions: Schema.optional(
-                              Schema.Struct({
-                                gmsaCredentialSpec: Schema.optional(
-                                  Schema.String,
-                                ),
-                                gmsaCredentialSpecName: Schema.optional(
-                                  Schema.String,
-                                ),
-                                hostProcess: Schema.optional(Schema.Boolean),
-                                runAsUserName: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          }),
-                        ),
-                        startupProbe: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            failureThreshold: Schema.optional(Schema.Number),
-                            grpc: Schema.optional(
-                              Schema.Struct({
-                                port: Schema.Number,
-                                service: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            initialDelaySeconds: Schema.optional(Schema.Number),
-                            periodSeconds: Schema.optional(Schema.Number),
-                            successThreshold: Schema.optional(Schema.Number),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                            terminationGracePeriodSeconds: Schema.optional(
-                              Schema.Number,
-                            ),
-                            timeoutSeconds: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        stdin: Schema.optional(Schema.Boolean),
-                        stdinOnce: Schema.optional(Schema.Boolean),
-                        terminationMessagePath: Schema.optional(Schema.String),
-                        terminationMessagePolicy: Schema.optional(
-                          Schema.String,
-                        ),
-                        tty: Schema.optional(Schema.Boolean),
-                        volumeDevices: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              devicePath: Schema.String,
-                              name: Schema.String,
-                            }),
-                          ),
-                        ),
-                        volumeMounts: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              mountPath: Schema.String,
-                              mountPropagation: Schema.optional(Schema.String),
-                              name: Schema.String,
-                              readOnly: Schema.optional(Schema.Boolean),
-                              recursiveReadOnly: Schema.optional(Schema.String),
-                              subPath: Schema.optional(Schema.String),
-                              subPathExpr: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        workingDir: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  nodeName: Schema.optional(Schema.String),
-                  nodeSelector: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  os: Schema.optional(
+                  }),
+                ),
+                restartPolicy: Schema.optional(Schema.String),
+                runtimeClassName: Schema.optional(Schema.String),
+                schedulerName: Schema.optional(Schema.String),
+                schedulingGates: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
                       name: Schema.String,
                     }),
                   ),
-                  overhead: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  preemptionPolicy: Schema.optional(Schema.String),
-                  priority: Schema.optional(Schema.Number),
-                  priorityClassName: Schema.optional(Schema.String),
-                  readinessGates: Schema.optional(
-                    Schema.Array(
+                ),
+                schedulingGroup: Schema.optional(
+                  Schema.Struct({
+                    podGroupName: Schema.optional(Schema.String),
+                  }),
+                ),
+                securityContext: Schema.optional(
+                  Schema.Struct({
+                    appArmorProfile: Schema.optional(
                       Schema.Struct({
-                        conditionType: Schema.String,
+                        localhostProfile: Schema.optional(Schema.String),
+                        type: Schema.String,
                       }),
                     ),
-                  ),
-                  resourceClaims: Schema.optional(
-                    Schema.Array(
+                    fsGroup: Schema.optional(Schema.Number),
+                    fsGroupChangePolicy: Schema.optional(Schema.String),
+                    runAsGroup: Schema.optional(Schema.Number),
+                    runAsNonRoot: Schema.optional(Schema.Boolean),
+                    runAsUser: Schema.optional(Schema.Number),
+                    seLinuxChangePolicy: Schema.optional(Schema.String),
+                    seLinuxOptions: Schema.optional(
                       Schema.Struct({
-                        name: Schema.String,
-                        resourceClaimName: Schema.optional(Schema.String),
-                        resourceClaimTemplateName: Schema.optional(
-                          Schema.String,
-                        ),
+                        level: Schema.optional(Schema.String),
+                        role: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                        user: Schema.optional(Schema.String),
                       }),
                     ),
-                  ),
-                  resources: Schema.optional(
-                    Schema.Struct({
-                      claims: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.String,
-                            request: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      limits: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                  restartPolicy: Schema.optional(Schema.String),
-                  runtimeClassName: Schema.optional(Schema.String),
-                  schedulerName: Schema.optional(Schema.String),
-                  schedulingGates: Schema.optional(
-                    Schema.Array(
+                    seccompProfile: Schema.optional(
                       Schema.Struct({
-                        name: Schema.String,
+                        localhostProfile: Schema.optional(Schema.String),
+                        type: Schema.String,
                       }),
                     ),
-                  ),
-                  schedulingGroup: Schema.optional(
-                    Schema.Struct({
-                      podGroupName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  securityContext: Schema.optional(
-                    Schema.Struct({
-                      appArmorProfile: Schema.optional(
+                    supplementalGroups: Schema.optional(
+                      Schema.Array(Schema.Number),
+                    ),
+                    supplementalGroupsPolicy: Schema.optional(Schema.String),
+                    sysctls: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          localhostProfile: Schema.optional(Schema.String),
-                          type: Schema.String,
+                          name: Schema.String,
+                          value: Schema.String,
                         }),
                       ),
-                      fsGroup: Schema.optional(Schema.Number),
-                      fsGroupChangePolicy: Schema.optional(Schema.String),
-                      runAsGroup: Schema.optional(Schema.Number),
-                      runAsNonRoot: Schema.optional(Schema.Boolean),
-                      runAsUser: Schema.optional(Schema.Number),
-                      seLinuxChangePolicy: Schema.optional(Schema.String),
-                      seLinuxOptions: Schema.optional(
+                    ),
+                    windowsOptions: Schema.optional(
+                      Schema.Struct({
+                        gmsaCredentialSpec: Schema.optional(Schema.String),
+                        gmsaCredentialSpecName: Schema.optional(Schema.String),
+                        hostProcess: Schema.optional(Schema.Boolean),
+                        runAsUserName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                serviceAccount: Schema.optional(Schema.String),
+                serviceAccountName: Schema.optional(Schema.String),
+                setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+                shareProcessNamespace: Schema.optional(Schema.Boolean),
+                subdomain: Schema.optional(Schema.String),
+                terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+                tolerations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      effect: Schema.optional(Schema.String),
+                      key: Schema.optional(Schema.String),
+                      operator: Schema.optional(Schema.String),
+                      tolerationSeconds: Schema.optional(Schema.Number),
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                topologySpreadConstraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      labelSelector: Schema.optional(
                         Schema.Struct({
-                          level: Schema.optional(Schema.String),
-                          role: Schema.optional(Schema.String),
-                          type: Schema.optional(Schema.String),
+                          matchExpressions: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                key: Schema.String,
+                                operator: Schema.String,
+                                values: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                          ),
+                          matchLabels: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      matchLabelKeys: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      maxSkew: Schema.Number,
+                      minDomains: Schema.optional(Schema.Number),
+                      nodeAffinityPolicy: Schema.optional(Schema.String),
+                      nodeTaintsPolicy: Schema.optional(Schema.String),
+                      topologyKey: Schema.String,
+                      whenUnsatisfiable: Schema.String,
+                    }),
+                  ),
+                ),
+                volumes: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      awsElasticBlockStore: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          partition: Schema.optional(Schema.Number),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          volumeID: Schema.String,
+                        }),
+                      ),
+                      azureDisk: Schema.optional(
+                        Schema.Struct({
+                          cachingMode: Schema.optional(Schema.String),
+                          diskName: Schema.String,
+                          diskURI: Schema.String,
+                          fsType: Schema.optional(Schema.String),
+                          kind: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      azureFile: Schema.optional(
+                        Schema.Struct({
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretName: Schema.String,
+                          shareName: Schema.String,
+                        }),
+                      ),
+                      cephfs: Schema.optional(
+                        Schema.Struct({
+                          monitors: Schema.Array(Schema.String),
+                          path: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretFile: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                          ),
                           user: Schema.optional(Schema.String),
                         }),
                       ),
-                      seccompProfile: Schema.optional(
+                      cinder: Schema.optional(
                         Schema.Struct({
-                          localhostProfile: Schema.optional(Schema.String),
-                          type: Schema.String,
-                        }),
-                      ),
-                      supplementalGroups: Schema.optional(
-                        Schema.Array(Schema.Number),
-                      ),
-                      supplementalGroupsPolicy: Schema.optional(Schema.String),
-                      sysctls: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.String,
-                            value: Schema.String,
-                          }),
-                        ),
-                      ),
-                      windowsOptions: Schema.optional(
-                        Schema.Struct({
-                          gmsaCredentialSpec: Schema.optional(Schema.String),
-                          gmsaCredentialSpecName: Schema.optional(
-                            Schema.String,
+                          fsType: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
                           ),
-                          hostProcess: Schema.optional(Schema.Boolean),
-                          runAsUserName: Schema.optional(Schema.String),
+                          volumeID: Schema.String,
                         }),
                       ),
-                    }),
-                  ),
-                  serviceAccount: Schema.optional(Schema.String),
-                  serviceAccountName: Schema.optional(Schema.String),
-                  setHostnameAsFQDN: Schema.optional(Schema.Boolean),
-                  shareProcessNamespace: Schema.optional(Schema.Boolean),
-                  subdomain: Schema.optional(Schema.String),
-                  terminationGracePeriodSeconds: Schema.optional(Schema.Number),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  topologySpreadConstraints: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        labelSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
+                      configMap: Schema.optional(
+                        Schema.Struct({
+                          defaultMode: Schema.optional(Schema.Number),
+                          items: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                key: Schema.String,
+                                mode: Schema.optional(Schema.Number),
+                                path: Schema.String,
+                              }),
+                            ),
+                          ),
+                          name: Schema.optional(Schema.String),
+                          optional: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      csi: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          fsType: Schema.optional(Schema.String),
+                          nodePublishSecretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          volumeAttributes: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      downwardAPI: Schema.optional(
+                        Schema.Struct({
+                          defaultMode: Schema.optional(Schema.Number),
+                          items: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                fieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldPath: Schema.String,
+                                  }),
+                                ),
+                                mode: Schema.optional(Schema.Number),
+                                path: Schema.String,
+                                resourceFieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    containerName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    divisor: Schema.optional(Schema.String),
+                                    resource: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      emptyDir: Schema.optional(
+                        Schema.Struct({
+                          medium: Schema.optional(Schema.String),
+                          sizeLimit: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      ephemeral: Schema.optional(
+                        Schema.Struct({
+                          volumeClaimTemplate: Schema.optional(
+                            Schema.Struct({
+                              metadata: Schema.optional(
                                 Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
+                                  annotations: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                  creationTimestamp: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  deletionGracePeriodSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  deletionTimestamp: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  finalizers: Schema.optional(
                                     Schema.Array(Schema.String),
                                   ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        matchLabelKeys: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        maxSkew: Schema.Number,
-                        minDomains: Schema.optional(Schema.Number),
-                        nodeAffinityPolicy: Schema.optional(Schema.String),
-                        nodeTaintsPolicy: Schema.optional(Schema.String),
-                        topologyKey: Schema.String,
-                        whenUnsatisfiable: Schema.String,
-                      }),
-                    ),
-                  ),
-                  volumes: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        awsElasticBlockStore: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            partition: Schema.optional(Schema.Number),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            volumeID: Schema.String,
-                          }),
-                        ),
-                        azureDisk: Schema.optional(
-                          Schema.Struct({
-                            cachingMode: Schema.optional(Schema.String),
-                            diskName: Schema.String,
-                            diskURI: Schema.String,
-                            fsType: Schema.optional(Schema.String),
-                            kind: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                        azureFile: Schema.optional(
-                          Schema.Struct({
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretName: Schema.String,
-                            shareName: Schema.String,
-                          }),
-                        ),
-                        cephfs: Schema.optional(
-                          Schema.Struct({
-                            monitors: Schema.Array(Schema.String),
-                            path: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretFile: Schema.optional(Schema.String),
-                            secretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            user: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        cinder: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            volumeID: Schema.String,
-                          }),
-                        ),
-                        configMap: Schema.optional(
-                          Schema.Struct({
-                            defaultMode: Schema.optional(Schema.Number),
-                            items: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  mode: Schema.optional(Schema.Number),
-                                  path: Schema.String,
-                                }),
-                              ),
-                            ),
-                            name: Schema.optional(Schema.String),
-                            optional: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                        csi: Schema.optional(
-                          Schema.Struct({
-                            driver: Schema.String,
-                            fsType: Schema.optional(Schema.String),
-                            nodePublishSecretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            volumeAttributes: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        downwardAPI: Schema.optional(
-                          Schema.Struct({
-                            defaultMode: Schema.optional(Schema.Number),
-                            items: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  fieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      apiVersion: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      fieldPath: Schema.String,
-                                    }),
+                                  generateName: Schema.optional(Schema.String),
+                                  generation: Schema.optional(Schema.Number),
+                                  labels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
                                   ),
-                                  mode: Schema.optional(Schema.Number),
-                                  path: Schema.String,
-                                  resourceFieldRef: Schema.optional(
-                                    Schema.Struct({
-                                      containerName: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      divisor: Schema.optional(Schema.String),
-                                      resource: Schema.String,
-                                    }),
+                                  managedFields: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        apiVersion: Schema.optional(
+                                          Schema.String,
+                                        ),
+                                        fieldsType: Schema.optional(
+                                          Schema.String,
+                                        ),
+                                        fieldsV1: Schema.optional(
+                                          Schema.Unknown,
+                                        ),
+                                        manager: Schema.optional(Schema.String),
+                                        operation: Schema.optional(
+                                          Schema.String,
+                                        ),
+                                        subresource: Schema.optional(
+                                          Schema.String,
+                                        ),
+                                        time: Schema.optional(Schema.String),
+                                      }),
+                                    ),
                                   ),
+                                  name: Schema.optional(Schema.String),
+                                  namespace: Schema.optional(Schema.String),
+                                  ownerReferences: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        apiVersion: Schema.String,
+                                        blockOwnerDeletion: Schema.optional(
+                                          Schema.Boolean,
+                                        ),
+                                        controller: Schema.optional(
+                                          Schema.Boolean,
+                                        ),
+                                        kind: Schema.String,
+                                        name: Schema.String,
+                                        uid: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  resourceVersion: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  selfLink: Schema.optional(Schema.String),
+                                  uid: Schema.optional(Schema.String),
                                 }),
                               ),
-                            ),
-                          }),
-                        ),
-                        emptyDir: Schema.optional(
-                          Schema.Struct({
-                            medium: Schema.optional(Schema.String),
-                            sizeLimit: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        ephemeral: Schema.optional(
-                          Schema.Struct({
-                            volumeClaimTemplate: Schema.optional(
-                              Schema.Struct({
-                                metadata: Schema.optional(
+                              spec: Schema.Struct({
+                                accessModes: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                dataSource: Schema.optional(
                                   Schema.Struct({
-                                    annotations: Schema.optional(
+                                    apiGroup: Schema.optional(Schema.String),
+                                    kind: Schema.String,
+                                    name: Schema.String,
+                                  }),
+                                ),
+                                dataSourceRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiGroup: Schema.optional(Schema.String),
+                                    kind: Schema.String,
+                                    name: Schema.String,
+                                    namespace: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                resources: Schema.optional(
+                                  Schema.Struct({
+                                    limits: Schema.optional(
                                       Schema.Record(
                                         Schema.String,
                                         Schema.String,
                                       ),
                                     ),
-                                    creationTimestamp: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                    deletionGracePeriodSeconds: Schema.optional(
-                                      Schema.Number,
-                                    ),
-                                    deletionTimestamp: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                    finalizers: Schema.optional(
-                                      Schema.Array(Schema.String),
-                                    ),
-                                    generateName: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                    generation: Schema.optional(Schema.Number),
-                                    labels: Schema.optional(
+                                    requests: Schema.optional(
                                       Schema.Record(
                                         Schema.String,
                                         Schema.String,
                                       ),
                                     ),
-                                    managedFields: Schema.optional(
+                                  }),
+                                ),
+                                selector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
                                       Schema.Array(
                                         Schema.Struct({
-                                          apiVersion: Schema.optional(
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                storageClassName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                volumeAttributesClassName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                volumeMode: Schema.optional(Schema.String),
+                                volumeName: Schema.optional(Schema.String),
+                              }),
+                            }),
+                          ),
+                        }),
+                      ),
+                      fc: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          lun: Schema.optional(Schema.Number),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          targetWWNs: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                          wwids: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      flexVolume: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          fsType: Schema.optional(Schema.String),
+                          options: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      flocker: Schema.optional(
+                        Schema.Struct({
+                          datasetName: Schema.optional(Schema.String),
+                          datasetUUID: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      gcePersistentDisk: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          partition: Schema.optional(Schema.Number),
+                          pdName: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      gitRepo: Schema.optional(
+                        Schema.Struct({
+                          directory: Schema.optional(Schema.String),
+                          repository: Schema.String,
+                          revision: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      glusterfs: Schema.optional(
+                        Schema.Struct({
+                          endpoints: Schema.String,
+                          path: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      hostPath: Schema.optional(
+                        Schema.Struct({
+                          path: Schema.String,
+                          type: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      image: Schema.optional(
+                        Schema.Struct({
+                          pullPolicy: Schema.optional(Schema.String),
+                          reference: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      iscsi: Schema.optional(
+                        Schema.Struct({
+                          chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                          chapAuthSession: Schema.optional(Schema.Boolean),
+                          fsType: Schema.optional(Schema.String),
+                          initiatorName: Schema.optional(Schema.String),
+                          iqn: Schema.String,
+                          iscsiInterface: Schema.optional(Schema.String),
+                          lun: Schema.Number,
+                          portals: Schema.optional(Schema.Array(Schema.String)),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          targetPortal: Schema.String,
+                        }),
+                      ),
+                      name: Schema.String,
+                      nfs: Schema.optional(
+                        Schema.Struct({
+                          path: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          server: Schema.String,
+                        }),
+                      ),
+                      persistentVolumeClaim: Schema.optional(
+                        Schema.Struct({
+                          claimName: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      photonPersistentDisk: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          pdID: Schema.String,
+                        }),
+                      ),
+                      portworxVolume: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          volumeID: Schema.String,
+                        }),
+                      ),
+                      projected: Schema.optional(
+                        Schema.Struct({
+                          defaultMode: Schema.optional(Schema.Number),
+                          sources: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                clusterTrustBundle: Schema.optional(
+                                  Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
                                             Schema.String,
                                           ),
-                                          fieldsType: Schema.optional(
-                                            Schema.String,
-                                          ),
-                                          fieldsV1: Schema.optional(
-                                            Schema.Unknown,
-                                          ),
-                                          manager: Schema.optional(
-                                            Schema.String,
-                                          ),
-                                          operation: Schema.optional(
-                                            Schema.String,
-                                          ),
-                                          subresource: Schema.optional(
-                                            Schema.String,
-                                          ),
-                                          time: Schema.optional(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                    path: Schema.String,
+                                    signerName: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                configMap: Schema.optional(
+                                  Schema.Struct({
+                                    items: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          mode: Schema.optional(Schema.Number),
+                                          path: Schema.String,
                                         }),
                                       ),
                                     ),
                                     name: Schema.optional(Schema.String),
-                                    namespace: Schema.optional(Schema.String),
-                                    ownerReferences: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          apiVersion: Schema.String,
-                                          blockOwnerDeletion: Schema.optional(
-                                            Schema.Boolean,
-                                          ),
-                                          controller: Schema.optional(
-                                            Schema.Boolean,
-                                          ),
-                                          kind: Schema.String,
-                                          name: Schema.String,
-                                          uid: Schema.String,
-                                        }),
-                                      ),
-                                    ),
-                                    resourceVersion: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                    selfLink: Schema.optional(Schema.String),
-                                    uid: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
                                   }),
                                 ),
-                                spec: Schema.Struct({
-                                  accessModes: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  dataSource: Schema.optional(
-                                    Schema.Struct({
-                                      apiGroup: Schema.optional(Schema.String),
-                                      kind: Schema.String,
-                                      name: Schema.String,
-                                    }),
-                                  ),
-                                  dataSourceRef: Schema.optional(
-                                    Schema.Struct({
-                                      apiGroup: Schema.optional(Schema.String),
-                                      kind: Schema.String,
-                                      name: Schema.String,
-                                      namespace: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                  resources: Schema.optional(
-                                    Schema.Struct({
-                                      limits: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                      requests: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  selector: Schema.optional(
-                                    Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  storageClassName: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                  volumeAttributesClassName: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                  volumeMode: Schema.optional(Schema.String),
-                                  volumeName: Schema.optional(Schema.String),
-                                }),
-                              }),
-                            ),
-                          }),
-                        ),
-                        fc: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            lun: Schema.optional(Schema.Number),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            targetWWNs: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            wwids: Schema.optional(Schema.Array(Schema.String)),
-                          }),
-                        ),
-                        flexVolume: Schema.optional(
-                          Schema.Struct({
-                            driver: Schema.String,
-                            fsType: Schema.optional(Schema.String),
-                            options: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          }),
-                        ),
-                        flocker: Schema.optional(
-                          Schema.Struct({
-                            datasetName: Schema.optional(Schema.String),
-                            datasetUUID: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        gcePersistentDisk: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            partition: Schema.optional(Schema.Number),
-                            pdName: Schema.String,
-                            readOnly: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                        gitRepo: Schema.optional(
-                          Schema.Struct({
-                            directory: Schema.optional(Schema.String),
-                            repository: Schema.String,
-                            revision: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        glusterfs: Schema.optional(
-                          Schema.Struct({
-                            endpoints: Schema.String,
-                            path: Schema.String,
-                            readOnly: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                        hostPath: Schema.optional(
-                          Schema.Struct({
-                            path: Schema.String,
-                            type: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        image: Schema.optional(
-                          Schema.Struct({
-                            pullPolicy: Schema.optional(Schema.String),
-                            reference: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        iscsi: Schema.optional(
-                          Schema.Struct({
-                            chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                            chapAuthSession: Schema.optional(Schema.Boolean),
-                            fsType: Schema.optional(Schema.String),
-                            initiatorName: Schema.optional(Schema.String),
-                            iqn: Schema.String,
-                            iscsiInterface: Schema.optional(Schema.String),
-                            lun: Schema.Number,
-                            portals: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            targetPortal: Schema.String,
-                          }),
-                        ),
-                        name: Schema.String,
-                        nfs: Schema.optional(
-                          Schema.Struct({
-                            path: Schema.String,
-                            readOnly: Schema.optional(Schema.Boolean),
-                            server: Schema.String,
-                          }),
-                        ),
-                        persistentVolumeClaim: Schema.optional(
-                          Schema.Struct({
-                            claimName: Schema.String,
-                            readOnly: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                        photonPersistentDisk: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            pdID: Schema.String,
-                          }),
-                        ),
-                        portworxVolume: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            volumeID: Schema.String,
-                          }),
-                        ),
-                        projected: Schema.optional(
-                          Schema.Struct({
-                            defaultMode: Schema.optional(Schema.Number),
-                            sources: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  clusterTrustBundle: Schema.optional(
-                                    Schema.Struct({
-                                      labelSelector: Schema.optional(
+                                downwardAPI: Schema.optional(
+                                  Schema.Struct({
+                                    items: Schema.optional(
+                                      Schema.Array(
                                         Schema.Struct({
-                                          matchExpressions: Schema.optional(
-                                            Schema.Array(
-                                              Schema.Struct({
-                                                key: Schema.String,
-                                                operator: Schema.String,
-                                                values: Schema.optional(
-                                                  Schema.Array(Schema.String),
-                                                ),
-                                              }),
-                                            ),
+                                          fieldRef: Schema.optional(
+                                            Schema.Struct({
+                                              apiVersion: Schema.optional(
+                                                Schema.String,
+                                              ),
+                                              fieldPath: Schema.String,
+                                            }),
                                           ),
-                                          matchLabels: Schema.optional(
-                                            Schema.Record(
-                                              Schema.String,
-                                              Schema.String,
-                                            ),
+                                          mode: Schema.optional(Schema.Number),
+                                          path: Schema.String,
+                                          resourceFieldRef: Schema.optional(
+                                            Schema.Struct({
+                                              containerName: Schema.optional(
+                                                Schema.String,
+                                              ),
+                                              divisor: Schema.optional(
+                                                Schema.String,
+                                              ),
+                                              resource: Schema.String,
+                                            }),
                                           ),
                                         }),
                                       ),
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                      path: Schema.String,
-                                      signerName: Schema.optional(
+                                    ),
+                                  }),
+                                ),
+                                podCertificate: Schema.optional(
+                                  Schema.Struct({
+                                    certificateChainPath: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    credentialBundlePath: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    keyPath: Schema.optional(Schema.String),
+                                    keyType: Schema.String,
+                                    maxExpirationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    signerName: Schema.String,
+                                    userAnnotations: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
                                         Schema.String,
                                       ),
-                                    }),
-                                  ),
-                                  configMap: Schema.optional(
-                                    Schema.Struct({
-                                      items: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            mode: Schema.optional(
-                                              Schema.Number,
-                                            ),
-                                            path: Schema.String,
-                                          }),
-                                        ),
+                                    ),
+                                  }),
+                                ),
+                                secret: Schema.optional(
+                                  Schema.Struct({
+                                    items: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          mode: Schema.optional(Schema.Number),
+                                          path: Schema.String,
+                                        }),
                                       ),
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                  downwardAPI: Schema.optional(
-                                    Schema.Struct({
-                                      items: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            fieldRef: Schema.optional(
-                                              Schema.Struct({
-                                                apiVersion: Schema.optional(
-                                                  Schema.String,
-                                                ),
-                                                fieldPath: Schema.String,
-                                              }),
-                                            ),
-                                            mode: Schema.optional(
-                                              Schema.Number,
-                                            ),
-                                            path: Schema.String,
-                                            resourceFieldRef: Schema.optional(
-                                              Schema.Struct({
-                                                containerName: Schema.optional(
-                                                  Schema.String,
-                                                ),
-                                                divisor: Schema.optional(
-                                                  Schema.String,
-                                                ),
-                                                resource: Schema.String,
-                                              }),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  podCertificate: Schema.optional(
-                                    Schema.Struct({
-                                      certificateChainPath: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      credentialBundlePath: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      keyPath: Schema.optional(Schema.String),
-                                      keyType: Schema.String,
-                                      maxExpirationSeconds: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      signerName: Schema.String,
-                                      userAnnotations: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  secret: Schema.optional(
-                                    Schema.Struct({
-                                      items: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            mode: Schema.optional(
-                                              Schema.Number,
-                                            ),
-                                            path: Schema.String,
-                                          }),
-                                        ),
-                                      ),
-                                      name: Schema.optional(Schema.String),
-                                      optional: Schema.optional(Schema.Boolean),
-                                    }),
-                                  ),
-                                  serviceAccountToken: Schema.optional(
-                                    Schema.Struct({
-                                      audience: Schema.optional(Schema.String),
-                                      expirationSeconds: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      path: Schema.String,
-                                    }),
-                                  ),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                        quobyte: Schema.optional(
-                          Schema.Struct({
-                            group: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            registry: Schema.String,
-                            tenant: Schema.optional(Schema.String),
-                            user: Schema.optional(Schema.String),
-                            volume: Schema.String,
-                          }),
-                        ),
-                        rbd: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            image: Schema.String,
-                            keyring: Schema.optional(Schema.String),
-                            monitors: Schema.Array(Schema.String),
-                            pool: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
+                                    ),
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                                serviceAccountToken: Schema.optional(
+                                  Schema.Struct({
+                                    audience: Schema.optional(Schema.String),
+                                    expirationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    path: Schema.String,
+                                  }),
+                                ),
                               }),
                             ),
-                            user: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        scaleIO: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            gateway: Schema.String,
-                            protectionDomain: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.Struct({
+                          ),
+                        }),
+                      ),
+                      quobyte: Schema.optional(
+                        Schema.Struct({
+                          group: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          registry: Schema.String,
+                          tenant: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                          volume: Schema.String,
+                        }),
+                      ),
+                      rbd: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          image: Schema.String,
+                          keyring: Schema.optional(Schema.String),
+                          monitors: Schema.Array(Schema.String),
+                          pool: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
                               name: Schema.optional(Schema.String),
                             }),
-                            sslEnabled: Schema.optional(Schema.Boolean),
-                            storageMode: Schema.optional(Schema.String),
-                            storagePool: Schema.optional(Schema.String),
-                            system: Schema.String,
-                            volumeName: Schema.optional(Schema.String),
+                          ),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      scaleIO: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          gateway: Schema.String,
+                          protectionDomain: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.Struct({
+                            name: Schema.optional(Schema.String),
                           }),
-                        ),
-                        secret: Schema.optional(
-                          Schema.Struct({
-                            defaultMode: Schema.optional(Schema.Number),
-                            items: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  mode: Schema.optional(Schema.Number),
-                                  path: Schema.String,
-                                }),
-                              ),
-                            ),
-                            optional: Schema.optional(Schema.Boolean),
-                            secretName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        storageos: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            readOnly: Schema.optional(Schema.Boolean),
-                            secretRef: Schema.optional(
+                          sslEnabled: Schema.optional(Schema.Boolean),
+                          storageMode: Schema.optional(Schema.String),
+                          storagePool: Schema.optional(Schema.String),
+                          system: Schema.String,
+                          volumeName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      secret: Schema.optional(
+                        Schema.Struct({
+                          defaultMode: Schema.optional(Schema.Number),
+                          items: Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                name: Schema.optional(Schema.String),
+                                key: Schema.String,
+                                mode: Schema.optional(Schema.Number),
+                                path: Schema.String,
                               }),
                             ),
-                            volumeName: Schema.optional(Schema.String),
-                            volumeNamespace: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        vsphereVolume: Schema.optional(
-                          Schema.Struct({
-                            fsType: Schema.optional(Schema.String),
-                            storagePolicyID: Schema.optional(Schema.String),
-                            storagePolicyName: Schema.optional(Schema.String),
-                            volumePath: Schema.String,
-                          }),
-                        ),
-                      }),
-                    ),
+                          ),
+                          optional: Schema.optional(Schema.Boolean),
+                          secretName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      storageos: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          readOnly: Schema.optional(Schema.Boolean),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          volumeName: Schema.optional(Schema.String),
+                          volumeNamespace: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      vsphereVolume: Schema.optional(
+                        Schema.Struct({
+                          fsType: Schema.optional(Schema.String),
+                          storagePolicyID: Schema.optional(Schema.String),
+                          storagePolicyName: Schema.optional(Schema.String),
+                          volumePath: Schema.String,
+                        }),
+                      ),
+                    }),
                   ),
-                }),
-              ),
-            }),
-            updateStrategy: Schema.optional(
-              Schema.Struct({
-                rollingUpdate: Schema.optional(
-                  Schema.Struct({
-                    maxSurge: Schema.optional(Schema.String),
-                    maxUnavailable: Schema.optional(Schema.String),
-                  }),
                 ),
-                type: Schema.optional(Schema.String),
               }),
             ),
           }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            collisionCount: Schema.optional(Schema.Number),
-            conditions: Schema.optional(
-              Schema.Array(
+          updateStrategy: Schema.optional(
+            Schema.Struct({
+              rollingUpdate: Schema.optional(
                 Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.String,
-                  type: Schema.String,
+                  maxSurge: Schema.optional(Schema.String),
+                  maxUnavailable: Schema.optional(Schema.String),
                 }),
               ),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      status: Schema.optional(
+        Schema.Struct({
+          collisionCount: Schema.optional(Schema.Number),
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                lastTransitionTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reason: Schema.optional(Schema.String),
+                status: Schema.String,
+                type: Schema.String,
+              }),
             ),
-            currentNumberScheduled: Schema.Number,
-            desiredNumberScheduled: Schema.Number,
-            numberAvailable: Schema.optional(Schema.Number),
-            numberMisscheduled: Schema.Number,
-            numberReady: Schema.Number,
-            numberUnavailable: Schema.optional(Schema.Number),
-            observedGeneration: Schema.optional(Schema.Number),
-            updatedNumberScheduled: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
-    ),
-  });
+          ),
+          currentNumberScheduled: Schema.Number,
+          desiredNumberScheduled: Schema.Number,
+          numberAvailable: Schema.optional(Schema.Number),
+          numberMisscheduled: Schema.Number,
+          numberReady: Schema.Number,
+          numberUnavailable: Schema.optional(Schema.Number),
+          observedGeneration: Schema.optional(Schema.Number),
+          updatedNumberScheduled: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListAppsV1NamespacedDaemonSetOutput =
   typeof ListAppsV1NamespacedDaemonSetOutput.Type;
 
@@ -19403,25 +19345,25 @@ export type ListAppsV1NamespacedDaemonSetOutput =
 /**
  * list or watch objects of kind DaemonSet
  */
-export const listAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListAppsV1NamespacedDaemonSetInput,
-    outputSchema: ListAppsV1NamespacedDaemonSetOutput,
-  }));
+export const listAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListAppsV1NamespacedDaemonSetInput,
+  outputSchema: ListAppsV1NamespacedDaemonSetOutput,
+}));
 // Input Schema
-export const ListAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/deployments",
-    }),
-  );
+export const ListAppsV1NamespacedDeploymentInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/deployments",
+  }),
+);
 export type ListAppsV1NamespacedDeploymentInput =
   typeof ListAppsV1NamespacedDeploymentInput.Type;
 
 // Output Schema
-export const ListAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ListAppsV1NamespacedDeploymentOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -22064,7 +22006,8 @@ export const ListAppsV1NamespacedDeploymentOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ListAppsV1NamespacedDeploymentOutput =
   typeof ListAppsV1NamespacedDeploymentOutput.Type;
 
@@ -22072,25 +22015,25 @@ export type ListAppsV1NamespacedDeploymentOutput =
 /**
  * list or watch objects of kind Deployment
  */
-export const listAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListAppsV1NamespacedDeploymentInput,
-    outputSchema: ListAppsV1NamespacedDeploymentOutput,
-  }));
+export const listAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListAppsV1NamespacedDeploymentInput,
+  outputSchema: ListAppsV1NamespacedDeploymentOutput,
+}));
 // Input Schema
-export const ListAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/replicasets",
-    }),
-  );
+export const ListAppsV1NamespacedReplicaSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/replicasets",
+  }),
+);
 export type ListAppsV1NamespacedReplicaSetInput =
   typeof ListAppsV1NamespacedReplicaSetInput.Type;
 
 // Output Schema
-export const ListAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ListAppsV1NamespacedReplicaSetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -24796,7 +24739,8 @@ export const ListAppsV1NamespacedReplicaSetOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ListAppsV1NamespacedReplicaSetOutput =
   typeof ListAppsV1NamespacedReplicaSetOutput.Type;
 
@@ -24804,19 +24748,19 @@ export type ListAppsV1NamespacedReplicaSetOutput =
 /**
  * list or watch objects of kind ReplicaSet
  */
-export const listAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListAppsV1NamespacedReplicaSetInput,
-    outputSchema: ListAppsV1NamespacedReplicaSetOutput,
-  }));
+export const listAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListAppsV1NamespacedReplicaSetInput,
+  outputSchema: ListAppsV1NamespacedReplicaSetOutput,
+}));
 // Input Schema
-export const ListAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/statefulsets",
-    }),
-  );
+export const ListAppsV1NamespacedStatefulSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/statefulsets",
+  }),
+);
 export type ListAppsV1NamespacedStatefulSetInput =
   typeof ListAppsV1NamespacedStatefulSetInput.Type;
 
@@ -27630,11 +27574,10 @@ export type ListAppsV1NamespacedStatefulSetOutput =
 /**
  * list or watch objects of kind StatefulSet
  */
-export const listAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListAppsV1NamespacedStatefulSetInput,
-    outputSchema: ListAppsV1NamespacedStatefulSetOutput,
-  }));
+export const listAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListAppsV1NamespacedStatefulSetInput,
+  outputSchema: ListAppsV1NamespacedStatefulSetOutput,
+}));
 // Input Schema
 export const ListAppsV1ReplicaSetForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -30359,11 +30302,12 @@ export type ListAppsV1ReplicaSetForAllNamespacesOutput =
 /**
  * list or watch objects of kind ReplicaSet
  */
-export const listAppsV1ReplicaSetForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const listAppsV1ReplicaSetForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListAppsV1ReplicaSetForAllNamespacesInput,
     outputSchema: ListAppsV1ReplicaSetForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListAppsV1StatefulSetForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -33182,11 +33126,12 @@ export type ListAppsV1StatefulSetForAllNamespacesOutput =
 /**
  * list or watch objects of kind StatefulSet
  */
-export const listAppsV1StatefulSetForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const listAppsV1StatefulSetForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListAppsV1StatefulSetForAllNamespacesInput,
     outputSchema: ListAppsV1StatefulSetForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PatchAppsV1NamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33263,29 +33208,29 @@ export type PatchAppsV1NamespacedControllerRevisionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: PatchAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const PatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
-    }),
-  );
+export const PatchAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
+  }),
+);
 export type PatchAppsV1NamespacedDaemonSetInput =
   typeof PatchAppsV1NamespacedDaemonSetInput.Type;
 
 // Output Schema
-export const PatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchAppsV1NamespacedDaemonSetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -35792,7 +35737,8 @@ export const PatchAppsV1NamespacedDaemonSetOutput =
         updatedNumberScheduled: Schema.optional(Schema.Number),
       }),
     ),
-  });
+  },
+);
 export type PatchAppsV1NamespacedDaemonSetOutput =
   typeof PatchAppsV1NamespacedDaemonSetOutput.Type;
 
@@ -35803,12 +35749,11 @@ export type PatchAppsV1NamespacedDaemonSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchAppsV1NamespacedDaemonSetInput,
-    outputSchema: PatchAppsV1NamespacedDaemonSetOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchAppsV1NamespacedDaemonSetInput,
+  outputSchema: PatchAppsV1NamespacedDaemonSetOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchAppsV1NamespacedDaemonSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -38343,23 +38288,25 @@ export type PatchAppsV1NamespacedDaemonSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedDaemonSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const PatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchAppsV1NamespacedDeploymentInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}",
+  }),
+);
 export type PatchAppsV1NamespacedDeploymentInput =
   typeof PatchAppsV1NamespacedDeploymentInput.Type;
 
@@ -40886,12 +40833,11 @@ export type PatchAppsV1NamespacedDeploymentOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchAppsV1NamespacedDeploymentInput,
-    outputSchema: PatchAppsV1NamespacedDeploymentOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchAppsV1NamespacedDeploymentInput,
+  outputSchema: PatchAppsV1NamespacedDeploymentOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -40977,12 +40923,13 @@ export type PatchAppsV1NamespacedDeploymentScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedDeploymentScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedDeploymentScaleInput,
     outputSchema: PatchAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -43520,23 +43467,25 @@ export type PatchAppsV1NamespacedDeploymentStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedDeploymentStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedDeploymentStatusInput,
     outputSchema: PatchAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const PatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchAppsV1NamespacedReplicaSetInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}",
+  }),
+);
 export type PatchAppsV1NamespacedReplicaSetInput =
   typeof PatchAppsV1NamespacedReplicaSetInput.Type;
 
@@ -46106,12 +46055,11 @@ export type PatchAppsV1NamespacedReplicaSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchAppsV1NamespacedReplicaSetInput,
-    outputSchema: PatchAppsV1NamespacedReplicaSetOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchAppsV1NamespacedReplicaSetInput,
+  outputSchema: PatchAppsV1NamespacedReplicaSetOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -46197,12 +46145,13 @@ export type PatchAppsV1NamespacedReplicaSetScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedReplicaSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -48783,12 +48732,13 @@ export type PatchAppsV1NamespacedReplicaSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedReplicaSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -51481,12 +51431,11 @@ export type PatchAppsV1NamespacedStatefulSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchAppsV1NamespacedStatefulSetInput,
-    outputSchema: PatchAppsV1NamespacedStatefulSetOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchAppsV1NamespacedStatefulSetInput,
+  outputSchema: PatchAppsV1NamespacedStatefulSetOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -51572,12 +51521,13 @@ export type PatchAppsV1NamespacedStatefulSetScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedStatefulSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -54270,12 +54220,13 @@ export type PatchAppsV1NamespacedStatefulSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchAppsV1NamespacedStatefulSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadAppsV1NamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -54346,180 +54297,271 @@ export type ReadAppsV1NamespacedControllerRevisionOutput =
 /**
  * read the specified ControllerRevision
  */
-export const readAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReadAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
-    }),
-  );
+export const ReadAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
+  }),
+);
 export type ReadAppsV1NamespacedDaemonSetInput =
   typeof ReadAppsV1NamespacedDaemonSetInput.Type;
 
 // Output Schema
-export const ReadAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
+export const ReadAppsV1NamespacedDaemonSetOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      minReadySeconds: Schema.optional(Schema.Number),
+      revisionHistoryLimit: Schema.optional(Schema.Number),
+      selector: Schema.Struct({
+        matchExpressions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.String,
+              operator: Schema.String,
+              values: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        matchLabels: Schema.optional(
           Schema.Record(Schema.String, Schema.String),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
       }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        minReadySeconds: Schema.optional(Schema.Number),
-        revisionHistoryLimit: Schema.optional(Schema.Number),
-        selector: Schema.Struct({
-          matchExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                operator: Schema.String,
-                values: Schema.optional(Schema.Array(Schema.String)),
-              }),
+      template: Schema.Struct({
+        metadata: Schema.optional(
+          Schema.Struct({
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
             ),
-          ),
-          matchLabels: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-        template: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.optional(
-            Schema.Struct({
-              activeDeadlineSeconds: Schema.optional(Schema.Number),
-              affinity: Schema.optional(
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
-                  nodeAffinity: Schema.optional(
-                    Schema.Struct({
-                      preferredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
-                          Schema.Array(
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
+                }),
+              ),
+            ),
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            activeDeadlineSeconds: Schema.optional(Schema.Number),
+            affinity: Schema.optional(
+              Schema.Struct({
+                nodeAffinity: Schema.optional(
+                  Schema.Struct({
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            preference: Schema.Struct({
+                              matchExpressions: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    operator: Schema.String,
+                                    values: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                              matchFields: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    operator: Schema.String,
+                                    values: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                            }),
+                            weight: Schema.Number,
+                          }),
+                        ),
+                      ),
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Struct({
+                          nodeSelectorTerms: Schema.Array(
                             Schema.Struct({
-                              preference: Schema.Struct({
-                                matchExpressions: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      operator: Schema.String,
-                                      values: Schema.optional(
-                                        Schema.Array(Schema.String),
-                                      ),
-                                    }),
-                                  ),
+                              matchExpressions: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    operator: Schema.String,
+                                    values: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
                                 ),
-                                matchFields: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      key: Schema.String,
-                                      operator: Schema.String,
-                                      values: Schema.optional(
-                                        Schema.Array(Schema.String),
-                                      ),
-                                    }),
-                                  ),
+                              ),
+                              matchFields: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    operator: Schema.String,
+                                    values: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
                                 ),
-                              }),
-                              weight: Schema.Number,
+                              ),
                             }),
                           ),
-                        ),
-                      requiredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
+                        }),
+                      ),
+                  }),
+                ),
+                podAffinity: Schema.optional(
+                  Schema.Struct({
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            nodeSelectorTerms: Schema.Array(
+                            podAffinityTerm: Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                            weight: Schema.Number,
+                          }),
+                        ),
+                      ),
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            labelSelector: Schema.optional(
                               Schema.Struct({
                                 matchExpressions: Schema.optional(
                                   Schema.Array(
@@ -54532,7 +54574,20 @@ export const ReadAppsV1NamespacedDaemonSetOutput =
                                     }),
                                   ),
                                 ),
-                                matchFields: Schema.optional(
+                                matchLabels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            matchLabelKeys: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            mismatchLabelKeys: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            namespaceSelector: Schema.optional(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
                                   Schema.Array(
                                     Schema.Struct({
                                       key: Schema.String,
@@ -54543,254 +54598,1010 @@ export const ReadAppsV1NamespacedDaemonSetOutput =
                                     }),
                                   ),
                                 ),
+                                matchLabels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            namespaces: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            topologyKey: Schema.String,
+                          }),
+                        ),
+                      ),
+                  }),
+                ),
+                podAntiAffinity: Schema.optional(
+                  Schema.Struct({
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            podAffinityTerm: Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                            weight: Schema.Number,
+                          }),
+                        ),
+                      ),
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            labelSelector: Schema.optional(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchLabels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            matchLabelKeys: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            mismatchLabelKeys: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            namespaceSelector: Schema.optional(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchLabels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            namespaces: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            topologyKey: Schema.String,
+                          }),
+                        ),
+                      ),
+                  }),
+                ),
+              }),
+            ),
+            automountServiceAccountToken: Schema.optional(Schema.Boolean),
+            containers: Schema.Array(
+              Schema.Struct({
+                args: Schema.optional(Schema.Array(Schema.String)),
+                command: Schema.optional(Schema.Array(Schema.String)),
+                env: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      value: Schema.optional(Schema.String),
+                      valueFrom: Schema.optional(
+                        Schema.Struct({
+                          configMapKeyRef: Schema.optional(
+                            Schema.Struct({
+                              key: Schema.String,
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          fieldRef: Schema.optional(
+                            Schema.Struct({
+                              apiVersion: Schema.optional(Schema.String),
+                              fieldPath: Schema.String,
+                            }),
+                          ),
+                          fileKeyRef: Schema.optional(
+                            Schema.Struct({
+                              key: Schema.String,
+                              optional: Schema.optional(Schema.Boolean),
+                              path: Schema.String,
+                              volumeName: Schema.String,
+                            }),
+                          ),
+                          resourceFieldRef: Schema.optional(
+                            Schema.Struct({
+                              containerName: Schema.optional(Schema.String),
+                              divisor: Schema.optional(Schema.String),
+                              resource: Schema.String,
+                            }),
+                          ),
+                          secretKeyRef: Schema.optional(
+                            Schema.Struct({
+                              key: Schema.String,
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                envFrom: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      configMapRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          optional: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      prefix: Schema.optional(Schema.String),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          optional: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                image: Schema.optional(Schema.String),
+                imagePullPolicy: Schema.optional(Schema.String),
+                lifecycle: Schema.optional(
+                  Schema.Struct({
+                    postStart: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        sleep: Schema.optional(
+                          Schema.Struct({
+                            seconds: Schema.Number,
+                          }),
+                        ),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                    preStop: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        sleep: Schema.optional(
+                          Schema.Struct({
+                            seconds: Schema.Number,
+                          }),
+                        ),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                    stopSignal: Schema.optional(Schema.String),
+                  }),
+                ),
+                livenessProbe: Schema.optional(
+                  Schema.Struct({
+                    exec: Schema.optional(
+                      Schema.Struct({
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    failureThreshold: Schema.optional(Schema.Number),
+                    grpc: Schema.optional(
+                      Schema.Struct({
+                        port: Schema.Number,
+                        service: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    httpGet: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        httpHeaders: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                        path: Schema.optional(Schema.String),
+                        port: Schema.String,
+                        scheme: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    initialDelaySeconds: Schema.optional(Schema.Number),
+                    periodSeconds: Schema.optional(Schema.Number),
+                    successThreshold: Schema.optional(Schema.Number),
+                    tcpSocket: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        port: Schema.String,
+                      }),
+                    ),
+                    terminationGracePeriodSeconds: Schema.optional(
+                      Schema.Number,
+                    ),
+                    timeoutSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+                name: Schema.String,
+                ports: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      containerPort: Schema.Number,
+                      hostIP: Schema.optional(Schema.String),
+                      hostPort: Schema.optional(Schema.Number),
+                      name: Schema.optional(Schema.String),
+                      protocol: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                readinessProbe: Schema.optional(
+                  Schema.Struct({
+                    exec: Schema.optional(
+                      Schema.Struct({
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    failureThreshold: Schema.optional(Schema.Number),
+                    grpc: Schema.optional(
+                      Schema.Struct({
+                        port: Schema.Number,
+                        service: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    httpGet: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        httpHeaders: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                        path: Schema.optional(Schema.String),
+                        port: Schema.String,
+                        scheme: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    initialDelaySeconds: Schema.optional(Schema.Number),
+                    periodSeconds: Schema.optional(Schema.Number),
+                    successThreshold: Schema.optional(Schema.Number),
+                    tcpSocket: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        port: Schema.String,
+                      }),
+                    ),
+                    terminationGracePeriodSeconds: Schema.optional(
+                      Schema.Number,
+                    ),
+                    timeoutSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+                resizePolicy: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      resourceName: Schema.String,
+                      restartPolicy: Schema.String,
+                    }),
+                  ),
+                ),
+                resources: Schema.optional(
+                  Schema.Struct({
+                    claims: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          request: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    limits: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+                restartPolicy: Schema.optional(Schema.String),
+                restartPolicyRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      action: Schema.String,
+                      exitCodes: Schema.optional(
+                        Schema.Struct({
+                          operator: Schema.String,
+                          values: Schema.optional(Schema.Array(Schema.Number)),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                securityContext: Schema.optional(
+                  Schema.Struct({
+                    allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                    appArmorProfile: Schema.optional(
+                      Schema.Struct({
+                        localhostProfile: Schema.optional(Schema.String),
+                        type: Schema.String,
+                      }),
+                    ),
+                    capabilities: Schema.optional(
+                      Schema.Struct({
+                        add: Schema.optional(Schema.Array(Schema.String)),
+                        drop: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    privileged: Schema.optional(Schema.Boolean),
+                    procMount: Schema.optional(Schema.String),
+                    readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                    runAsGroup: Schema.optional(Schema.Number),
+                    runAsNonRoot: Schema.optional(Schema.Boolean),
+                    runAsUser: Schema.optional(Schema.Number),
+                    seLinuxOptions: Schema.optional(
+                      Schema.Struct({
+                        level: Schema.optional(Schema.String),
+                        role: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    seccompProfile: Schema.optional(
+                      Schema.Struct({
+                        localhostProfile: Schema.optional(Schema.String),
+                        type: Schema.String,
+                      }),
+                    ),
+                    windowsOptions: Schema.optional(
+                      Schema.Struct({
+                        gmsaCredentialSpec: Schema.optional(Schema.String),
+                        gmsaCredentialSpecName: Schema.optional(Schema.String),
+                        hostProcess: Schema.optional(Schema.Boolean),
+                        runAsUserName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                startupProbe: Schema.optional(
+                  Schema.Struct({
+                    exec: Schema.optional(
+                      Schema.Struct({
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    failureThreshold: Schema.optional(Schema.Number),
+                    grpc: Schema.optional(
+                      Schema.Struct({
+                        port: Schema.Number,
+                        service: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    httpGet: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        httpHeaders: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                        path: Schema.optional(Schema.String),
+                        port: Schema.String,
+                        scheme: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    initialDelaySeconds: Schema.optional(Schema.Number),
+                    periodSeconds: Schema.optional(Schema.Number),
+                    successThreshold: Schema.optional(Schema.Number),
+                    tcpSocket: Schema.optional(
+                      Schema.Struct({
+                        host: Schema.optional(Schema.String),
+                        port: Schema.String,
+                      }),
+                    ),
+                    terminationGracePeriodSeconds: Schema.optional(
+                      Schema.Number,
+                    ),
+                    timeoutSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+                stdin: Schema.optional(Schema.Boolean),
+                stdinOnce: Schema.optional(Schema.Boolean),
+                terminationMessagePath: Schema.optional(Schema.String),
+                terminationMessagePolicy: Schema.optional(Schema.String),
+                tty: Schema.optional(Schema.Boolean),
+                volumeDevices: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      devicePath: Schema.String,
+                      name: Schema.String,
+                    }),
+                  ),
+                ),
+                volumeMounts: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      mountPath: Schema.String,
+                      mountPropagation: Schema.optional(Schema.String),
+                      name: Schema.String,
+                      readOnly: Schema.optional(Schema.Boolean),
+                      recursiveReadOnly: Schema.optional(Schema.String),
+                      subPath: Schema.optional(Schema.String),
+                      subPathExpr: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                workingDir: Schema.optional(Schema.String),
+              }),
+            ),
+            dnsConfig: Schema.optional(
+              Schema.Struct({
+                nameservers: Schema.optional(Schema.Array(Schema.String)),
+                options: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                searches: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            dnsPolicy: Schema.optional(Schema.String),
+            enableServiceLinks: Schema.optional(Schema.Boolean),
+            ephemeralContainers: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  args: Schema.optional(Schema.Array(Schema.String)),
+                  command: Schema.optional(Schema.Array(Schema.String)),
+                  env: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.optional(Schema.String),
+                        valueFrom: Schema.optional(
+                          Schema.Struct({
+                            configMapKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            fieldRef: Schema.optional(
+                              Schema.Struct({
+                                apiVersion: Schema.optional(Schema.String),
+                                fieldPath: Schema.String,
+                              }),
+                            ),
+                            fileKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                optional: Schema.optional(Schema.Boolean),
+                                path: Schema.String,
+                                volumeName: Schema.String,
+                              }),
+                            ),
+                            resourceFieldRef: Schema.optional(
+                              Schema.Struct({
+                                containerName: Schema.optional(Schema.String),
+                                divisor: Schema.optional(Schema.String),
+                                resource: Schema.String,
+                              }),
+                            ),
+                            secretKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
                               }),
                             ),
                           }),
                         ),
-                    }),
+                      }),
+                    ),
                   ),
-                  podAffinity: Schema.optional(
+                  envFrom: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        configMapRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        prefix: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  image: Schema.optional(Schema.String),
+                  imagePullPolicy: Schema.optional(Schema.String),
+                  lifecycle: Schema.optional(
                     Schema.Struct({
-                      preferredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
-                          Schema.Array(
+                      postStart: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
                             Schema.Struct({
-                              podAffinityTerm: Schema.Struct({
-                                labelSelector: Schema.optional(
-                                  Schema.Struct({
-                                    matchExpressions: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
-                                    ),
-                                    matchLabels: Schema.optional(
-                                      Schema.Record(
-                                        Schema.String,
-                                        Schema.String,
-                                      ),
-                                    ),
-                                  }),
-                                ),
-                                matchLabelKeys: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                mismatchLabelKeys: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                namespaceSelector: Schema.optional(
-                                  Schema.Struct({
-                                    matchExpressions: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
-                                    ),
-                                    matchLabels: Schema.optional(
-                                      Schema.Record(
-                                        Schema.String,
-                                        Schema.String,
-                                      ),
-                                    ),
-                                  }),
-                                ),
-                                namespaces: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                topologyKey: Schema.String,
-                              }),
-                              weight: Schema.Number,
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
                             }),
                           ),
-                        ),
-                      requiredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
-                          Schema.Array(
+                          httpGet: Schema.optional(
                             Schema.Struct({
-                              labelSelector: Schema.optional(
-                                Schema.Struct({
-                                  matchExpressions: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        operator: Schema.String,
-                                        values: Schema.optional(
-                                          Schema.Array(Schema.String),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                  matchLabels: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
                               ),
-                              matchLabelKeys: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              mismatchLabelKeys: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              namespaceSelector: Schema.optional(
-                                Schema.Struct({
-                                  matchExpressions: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        operator: Schema.String,
-                                        values: Schema.optional(
-                                          Schema.Array(Schema.String),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                  matchLabels: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              namespaces: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              topologyKey: Schema.String,
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
                             }),
                           ),
-                        ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      preStop: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      stopSignal: Schema.optional(Schema.String),
                     }),
                   ),
-                  podAntiAffinity: Schema.optional(
+                  livenessProbe: Schema.optional(
                     Schema.Struct({
-                      preferredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              podAffinityTerm: Schema.Struct({
-                                labelSelector: Schema.optional(
-                                  Schema.Struct({
-                                    matchExpressions: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
-                                    ),
-                                    matchLabels: Schema.optional(
-                                      Schema.Record(
-                                        Schema.String,
-                                        Schema.String,
-                                      ),
-                                    ),
-                                  }),
-                                ),
-                                matchLabelKeys: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                mismatchLabelKeys: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                namespaceSelector: Schema.optional(
-                                  Schema.Struct({
-                                    matchExpressions: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          key: Schema.String,
-                                          operator: Schema.String,
-                                          values: Schema.optional(
-                                            Schema.Array(Schema.String),
-                                          ),
-                                        }),
-                                      ),
-                                    ),
-                                    matchLabels: Schema.optional(
-                                      Schema.Record(
-                                        Schema.String,
-                                        Schema.String,
-                                      ),
-                                    ),
-                                  }),
-                                ),
-                                namespaces: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                topologyKey: Schema.String,
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
                               }),
-                              weight: Schema.Number,
-                            }),
+                            ),
                           ),
-                        ),
-                      requiredDuringSchedulingIgnoredDuringExecution:
-                        Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              labelSelector: Schema.optional(
-                                Schema.Struct({
-                                  matchExpressions: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        operator: Schema.String,
-                                        values: Schema.optional(
-                                          Schema.Array(Schema.String),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                  matchLabels: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              matchLabelKeys: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              mismatchLabelKeys: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              namespaceSelector: Schema.optional(
-                                Schema.Struct({
-                                  matchExpressions: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        operator: Schema.String,
-                                        values: Schema.optional(
-                                          Schema.Array(Schema.String),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                  matchLabels: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              namespaces: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              topologyKey: Schema.String,
-                            }),
-                          ),
-                        ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
                     }),
                   ),
+                  name: Schema.String,
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        containerPort: Schema.Number,
+                        hostIP: Schema.optional(Schema.String),
+                        hostPort: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        protocol: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  readinessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  resizePolicy: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        resourceName: Schema.String,
+                        restartPolicy: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  restartPolicyRules: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        action: Schema.String,
+                        exitCodes: Schema.optional(
+                          Schema.Struct({
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.Number),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      capabilities: Schema.optional(
+                        Schema.Struct({
+                          add: Schema.optional(Schema.Array(Schema.String)),
+                          drop: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      privileged: Schema.optional(Schema.Boolean),
+                      procMount: Schema.optional(Schema.String),
+                      readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  startupProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  stdin: Schema.optional(Schema.Boolean),
+                  stdinOnce: Schema.optional(Schema.Boolean),
+                  targetContainerName: Schema.optional(Schema.String),
+                  terminationMessagePath: Schema.optional(Schema.String),
+                  terminationMessagePolicy: Schema.optional(Schema.String),
+                  tty: Schema.optional(Schema.Boolean),
+                  volumeDevices: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        devicePath: Schema.String,
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumeMounts: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        mountPath: Schema.String,
+                        mountPropagation: Schema.optional(Schema.String),
+                        name: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        recursiveReadOnly: Schema.optional(Schema.String),
+                        subPath: Schema.optional(Schema.String),
+                        subPathExpr: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  workingDir: Schema.optional(Schema.String),
                 }),
               ),
-              automountServiceAccountToken: Schema.optional(Schema.Boolean),
-              containers: Schema.Array(
+            ),
+            hostAliases: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  hostnames: Schema.optional(Schema.Array(Schema.String)),
+                  ip: Schema.String,
+                }),
+              ),
+            ),
+            hostIPC: Schema.optional(Schema.Boolean),
+            hostNetwork: Schema.optional(Schema.Boolean),
+            hostPID: Schema.optional(Schema.Boolean),
+            hostUsers: Schema.optional(Schema.Boolean),
+            hostname: Schema.optional(Schema.String),
+            hostnameOverride: Schema.optional(Schema.String),
+            imagePullSecrets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            initContainers: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
                   args: Schema.optional(Schema.Array(Schema.String)),
                   command: Schema.optional(Schema.Array(Schema.String)),
@@ -55208,1671 +56019,762 @@ export const ReadAppsV1NamespacedDaemonSetOutput =
                   workingDir: Schema.optional(Schema.String),
                 }),
               ),
-              dnsConfig: Schema.optional(
+            ),
+            nodeName: Schema.optional(Schema.String),
+            nodeSelector: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            os: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+              }),
+            ),
+            overhead: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            preemptionPolicy: Schema.optional(Schema.String),
+            priority: Schema.optional(Schema.Number),
+            priorityClassName: Schema.optional(Schema.String),
+            readinessGates: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
-                  nameservers: Schema.optional(Schema.Array(Schema.String)),
-                  options: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  searches: Schema.optional(Schema.Array(Schema.String)),
+                  conditionType: Schema.String,
                 }),
               ),
-              dnsPolicy: Schema.optional(Schema.String),
-              enableServiceLinks: Schema.optional(Schema.Boolean),
-              ephemeralContainers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    args: Schema.optional(Schema.Array(Schema.String)),
-                    command: Schema.optional(Schema.Array(Schema.String)),
-                    env: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          value: Schema.optional(Schema.String),
-                          valueFrom: Schema.optional(
-                            Schema.Struct({
-                              configMapKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              fieldRef: Schema.optional(
-                                Schema.Struct({
-                                  apiVersion: Schema.optional(Schema.String),
-                                  fieldPath: Schema.String,
-                                }),
-                              ),
-                              fileKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  optional: Schema.optional(Schema.Boolean),
-                                  path: Schema.String,
-                                  volumeName: Schema.String,
-                                }),
-                              ),
-                              resourceFieldRef: Schema.optional(
-                                Schema.Struct({
-                                  containerName: Schema.optional(Schema.String),
-                                  divisor: Schema.optional(Schema.String),
-                                  resource: Schema.String,
-                                }),
-                              ),
-                              secretKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    envFrom: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          configMapRef: Schema.optional(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              optional: Schema.optional(Schema.Boolean),
-                            }),
-                          ),
-                          prefix: Schema.optional(Schema.String),
-                          secretRef: Schema.optional(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              optional: Schema.optional(Schema.Boolean),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    image: Schema.optional(Schema.String),
-                    imagePullPolicy: Schema.optional(Schema.String),
-                    lifecycle: Schema.optional(
-                      Schema.Struct({
-                        postStart: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            sleep: Schema.optional(
-                              Schema.Struct({
-                                seconds: Schema.Number,
-                              }),
-                            ),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        preStop: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            sleep: Schema.optional(
-                              Schema.Struct({
-                                seconds: Schema.Number,
-                              }),
-                            ),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        stopSignal: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    livenessProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    name: Schema.String,
-                    ports: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          containerPort: Schema.Number,
-                          hostIP: Schema.optional(Schema.String),
-                          hostPort: Schema.optional(Schema.Number),
-                          name: Schema.optional(Schema.String),
-                          protocol: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    readinessProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    resizePolicy: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          resourceName: Schema.String,
-                          restartPolicy: Schema.String,
-                        }),
-                      ),
-                    ),
-                    resources: Schema.optional(
-                      Schema.Struct({
-                        claims: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.String,
-                              request: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        limits: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    restartPolicy: Schema.optional(Schema.String),
-                    restartPolicyRules: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          exitCodes: Schema.optional(
-                            Schema.Struct({
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.Number),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    securityContext: Schema.optional(
-                      Schema.Struct({
-                        allowPrivilegeEscalation: Schema.optional(
-                          Schema.Boolean,
-                        ),
-                        appArmorProfile: Schema.optional(
-                          Schema.Struct({
-                            localhostProfile: Schema.optional(Schema.String),
-                            type: Schema.String,
-                          }),
-                        ),
-                        capabilities: Schema.optional(
-                          Schema.Struct({
-                            add: Schema.optional(Schema.Array(Schema.String)),
-                            drop: Schema.optional(Schema.Array(Schema.String)),
-                          }),
-                        ),
-                        privileged: Schema.optional(Schema.Boolean),
-                        procMount: Schema.optional(Schema.String),
-                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
-                        runAsGroup: Schema.optional(Schema.Number),
-                        runAsNonRoot: Schema.optional(Schema.Boolean),
-                        runAsUser: Schema.optional(Schema.Number),
-                        seLinuxOptions: Schema.optional(
-                          Schema.Struct({
-                            level: Schema.optional(Schema.String),
-                            role: Schema.optional(Schema.String),
-                            type: Schema.optional(Schema.String),
-                            user: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        seccompProfile: Schema.optional(
-                          Schema.Struct({
-                            localhostProfile: Schema.optional(Schema.String),
-                            type: Schema.String,
-                          }),
-                        ),
-                        windowsOptions: Schema.optional(
-                          Schema.Struct({
-                            gmsaCredentialSpec: Schema.optional(Schema.String),
-                            gmsaCredentialSpecName: Schema.optional(
-                              Schema.String,
-                            ),
-                            hostProcess: Schema.optional(Schema.Boolean),
-                            runAsUserName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                    startupProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    stdin: Schema.optional(Schema.Boolean),
-                    stdinOnce: Schema.optional(Schema.Boolean),
-                    targetContainerName: Schema.optional(Schema.String),
-                    terminationMessagePath: Schema.optional(Schema.String),
-                    terminationMessagePolicy: Schema.optional(Schema.String),
-                    tty: Schema.optional(Schema.Boolean),
-                    volumeDevices: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          devicePath: Schema.String,
-                          name: Schema.String,
-                        }),
-                      ),
-                    ),
-                    volumeMounts: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          mountPath: Schema.String,
-                          mountPropagation: Schema.optional(Schema.String),
-                          name: Schema.String,
-                          readOnly: Schema.optional(Schema.Boolean),
-                          recursiveReadOnly: Schema.optional(Schema.String),
-                          subPath: Schema.optional(Schema.String),
-                          subPathExpr: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    workingDir: Schema.optional(Schema.String),
-                  }),
+            ),
+            resourceClaims: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  resourceClaimName: Schema.optional(Schema.String),
+                  resourceClaimTemplateName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            resources: Schema.optional(
+              Schema.Struct({
+                claims: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      request: Schema.optional(Schema.String),
+                    }),
+                  ),
                 ),
-              ),
-              hostAliases: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    hostnames: Schema.optional(Schema.Array(Schema.String)),
-                    ip: Schema.String,
-                  }),
+                limits: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
                 ),
-              ),
-              hostIPC: Schema.optional(Schema.Boolean),
-              hostNetwork: Schema.optional(Schema.Boolean),
-              hostPID: Schema.optional(Schema.Boolean),
-              hostUsers: Schema.optional(Schema.Boolean),
-              hostname: Schema.optional(Schema.String),
-              hostnameOverride: Schema.optional(Schema.String),
-              imagePullSecrets: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                  }),
+                requests: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
                 ),
-              ),
-              initContainers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    args: Schema.optional(Schema.Array(Schema.String)),
-                    command: Schema.optional(Schema.Array(Schema.String)),
-                    env: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          value: Schema.optional(Schema.String),
-                          valueFrom: Schema.optional(
-                            Schema.Struct({
-                              configMapKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              fieldRef: Schema.optional(
-                                Schema.Struct({
-                                  apiVersion: Schema.optional(Schema.String),
-                                  fieldPath: Schema.String,
-                                }),
-                              ),
-                              fileKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  optional: Schema.optional(Schema.Boolean),
-                                  path: Schema.String,
-                                  volumeName: Schema.String,
-                                }),
-                              ),
-                              resourceFieldRef: Schema.optional(
-                                Schema.Struct({
-                                  containerName: Schema.optional(Schema.String),
-                                  divisor: Schema.optional(Schema.String),
-                                  resource: Schema.String,
-                                }),
-                              ),
-                              secretKeyRef: Schema.optional(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    envFrom: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          configMapRef: Schema.optional(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              optional: Schema.optional(Schema.Boolean),
-                            }),
-                          ),
-                          prefix: Schema.optional(Schema.String),
-                          secretRef: Schema.optional(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              optional: Schema.optional(Schema.Boolean),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    image: Schema.optional(Schema.String),
-                    imagePullPolicy: Schema.optional(Schema.String),
-                    lifecycle: Schema.optional(
-                      Schema.Struct({
-                        postStart: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            sleep: Schema.optional(
-                              Schema.Struct({
-                                seconds: Schema.Number,
-                              }),
-                            ),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        preStop: Schema.optional(
-                          Schema.Struct({
-                            exec: Schema.optional(
-                              Schema.Struct({
-                                command: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                            httpGet: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                httpHeaders: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      value: Schema.String,
-                                    }),
-                                  ),
-                                ),
-                                path: Schema.optional(Schema.String),
-                                port: Schema.String,
-                                scheme: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            sleep: Schema.optional(
-                              Schema.Struct({
-                                seconds: Schema.Number,
-                              }),
-                            ),
-                            tcpSocket: Schema.optional(
-                              Schema.Struct({
-                                host: Schema.optional(Schema.String),
-                                port: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        stopSignal: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    livenessProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    name: Schema.String,
-                    ports: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          containerPort: Schema.Number,
-                          hostIP: Schema.optional(Schema.String),
-                          hostPort: Schema.optional(Schema.Number),
-                          name: Schema.optional(Schema.String),
-                          protocol: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    readinessProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    resizePolicy: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          resourceName: Schema.String,
-                          restartPolicy: Schema.String,
-                        }),
-                      ),
-                    ),
-                    resources: Schema.optional(
-                      Schema.Struct({
-                        claims: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.String,
-                              request: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        limits: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    restartPolicy: Schema.optional(Schema.String),
-                    restartPolicyRules: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          exitCodes: Schema.optional(
-                            Schema.Struct({
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.Number),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    securityContext: Schema.optional(
-                      Schema.Struct({
-                        allowPrivilegeEscalation: Schema.optional(
-                          Schema.Boolean,
-                        ),
-                        appArmorProfile: Schema.optional(
-                          Schema.Struct({
-                            localhostProfile: Schema.optional(Schema.String),
-                            type: Schema.String,
-                          }),
-                        ),
-                        capabilities: Schema.optional(
-                          Schema.Struct({
-                            add: Schema.optional(Schema.Array(Schema.String)),
-                            drop: Schema.optional(Schema.Array(Schema.String)),
-                          }),
-                        ),
-                        privileged: Schema.optional(Schema.Boolean),
-                        procMount: Schema.optional(Schema.String),
-                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
-                        runAsGroup: Schema.optional(Schema.Number),
-                        runAsNonRoot: Schema.optional(Schema.Boolean),
-                        runAsUser: Schema.optional(Schema.Number),
-                        seLinuxOptions: Schema.optional(
-                          Schema.Struct({
-                            level: Schema.optional(Schema.String),
-                            role: Schema.optional(Schema.String),
-                            type: Schema.optional(Schema.String),
-                            user: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        seccompProfile: Schema.optional(
-                          Schema.Struct({
-                            localhostProfile: Schema.optional(Schema.String),
-                            type: Schema.String,
-                          }),
-                        ),
-                        windowsOptions: Schema.optional(
-                          Schema.Struct({
-                            gmsaCredentialSpec: Schema.optional(Schema.String),
-                            gmsaCredentialSpecName: Schema.optional(
-                              Schema.String,
-                            ),
-                            hostProcess: Schema.optional(Schema.Boolean),
-                            runAsUserName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                    startupProbe: Schema.optional(
-                      Schema.Struct({
-                        exec: Schema.optional(
-                          Schema.Struct({
-                            command: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        failureThreshold: Schema.optional(Schema.Number),
-                        grpc: Schema.optional(
-                          Schema.Struct({
-                            port: Schema.Number,
-                            service: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        httpGet: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            httpHeaders: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  value: Schema.String,
-                                }),
-                              ),
-                            ),
-                            path: Schema.optional(Schema.String),
-                            port: Schema.String,
-                            scheme: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        initialDelaySeconds: Schema.optional(Schema.Number),
-                        periodSeconds: Schema.optional(Schema.Number),
-                        successThreshold: Schema.optional(Schema.Number),
-                        tcpSocket: Schema.optional(
-                          Schema.Struct({
-                            host: Schema.optional(Schema.String),
-                            port: Schema.String,
-                          }),
-                        ),
-                        terminationGracePeriodSeconds: Schema.optional(
-                          Schema.Number,
-                        ),
-                        timeoutSeconds: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    stdin: Schema.optional(Schema.Boolean),
-                    stdinOnce: Schema.optional(Schema.Boolean),
-                    terminationMessagePath: Schema.optional(Schema.String),
-                    terminationMessagePolicy: Schema.optional(Schema.String),
-                    tty: Schema.optional(Schema.Boolean),
-                    volumeDevices: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          devicePath: Schema.String,
-                          name: Schema.String,
-                        }),
-                      ),
-                    ),
-                    volumeMounts: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          mountPath: Schema.String,
-                          mountPropagation: Schema.optional(Schema.String),
-                          name: Schema.String,
-                          readOnly: Schema.optional(Schema.Boolean),
-                          recursiveReadOnly: Schema.optional(Schema.String),
-                          subPath: Schema.optional(Schema.String),
-                          subPathExpr: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    workingDir: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              nodeName: Schema.optional(Schema.String),
-              nodeSelector: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              os: Schema.optional(
+              }),
+            ),
+            restartPolicy: Schema.optional(Schema.String),
+            runtimeClassName: Schema.optional(Schema.String),
+            schedulerName: Schema.optional(Schema.String),
+            schedulingGates: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
                   name: Schema.String,
                 }),
               ),
-              overhead: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              preemptionPolicy: Schema.optional(Schema.String),
-              priority: Schema.optional(Schema.Number),
-              priorityClassName: Schema.optional(Schema.String),
-              readinessGates: Schema.optional(
-                Schema.Array(
+            ),
+            schedulingGroup: Schema.optional(
+              Schema.Struct({
+                podGroupName: Schema.optional(Schema.String),
+              }),
+            ),
+            securityContext: Schema.optional(
+              Schema.Struct({
+                appArmorProfile: Schema.optional(
                   Schema.Struct({
-                    conditionType: Schema.String,
+                    localhostProfile: Schema.optional(Schema.String),
+                    type: Schema.String,
                   }),
                 ),
-              ),
-              resourceClaims: Schema.optional(
-                Schema.Array(
+                fsGroup: Schema.optional(Schema.Number),
+                fsGroupChangePolicy: Schema.optional(Schema.String),
+                runAsGroup: Schema.optional(Schema.Number),
+                runAsNonRoot: Schema.optional(Schema.Boolean),
+                runAsUser: Schema.optional(Schema.Number),
+                seLinuxChangePolicy: Schema.optional(Schema.String),
+                seLinuxOptions: Schema.optional(
                   Schema.Struct({
-                    name: Schema.String,
-                    resourceClaimName: Schema.optional(Schema.String),
-                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                    level: Schema.optional(Schema.String),
+                    role: Schema.optional(Schema.String),
+                    type: Schema.optional(Schema.String),
+                    user: Schema.optional(Schema.String),
                   }),
                 ),
-              ),
-              resources: Schema.optional(
-                Schema.Struct({
-                  claims: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        request: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  limits: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  requests: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              restartPolicy: Schema.optional(Schema.String),
-              runtimeClassName: Schema.optional(Schema.String),
-              schedulerName: Schema.optional(Schema.String),
-              schedulingGates: Schema.optional(
-                Schema.Array(
+                seccompProfile: Schema.optional(
                   Schema.Struct({
-                    name: Schema.String,
+                    localhostProfile: Schema.optional(Schema.String),
+                    type: Schema.String,
                   }),
                 ),
-              ),
-              schedulingGroup: Schema.optional(
-                Schema.Struct({
-                  podGroupName: Schema.optional(Schema.String),
-                }),
-              ),
-              securityContext: Schema.optional(
-                Schema.Struct({
-                  appArmorProfile: Schema.optional(
+                supplementalGroups: Schema.optional(
+                  Schema.Array(Schema.Number),
+                ),
+                supplementalGroupsPolicy: Schema.optional(Schema.String),
+                sysctls: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      localhostProfile: Schema.optional(Schema.String),
-                      type: Schema.String,
+                      name: Schema.String,
+                      value: Schema.String,
                     }),
                   ),
-                  fsGroup: Schema.optional(Schema.Number),
-                  fsGroupChangePolicy: Schema.optional(Schema.String),
-                  runAsGroup: Schema.optional(Schema.Number),
-                  runAsNonRoot: Schema.optional(Schema.Boolean),
-                  runAsUser: Schema.optional(Schema.Number),
-                  seLinuxChangePolicy: Schema.optional(Schema.String),
-                  seLinuxOptions: Schema.optional(
+                ),
+                windowsOptions: Schema.optional(
+                  Schema.Struct({
+                    gmsaCredentialSpec: Schema.optional(Schema.String),
+                    gmsaCredentialSpecName: Schema.optional(Schema.String),
+                    hostProcess: Schema.optional(Schema.Boolean),
+                    runAsUserName: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            serviceAccount: Schema.optional(Schema.String),
+            serviceAccountName: Schema.optional(Schema.String),
+            setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+            shareProcessNamespace: Schema.optional(Schema.Boolean),
+            subdomain: Schema.optional(Schema.String),
+            terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+            tolerations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  effect: Schema.optional(Schema.String),
+                  key: Schema.optional(Schema.String),
+                  operator: Schema.optional(Schema.String),
+                  tolerationSeconds: Schema.optional(Schema.Number),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            topologySpreadConstraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  labelSelector: Schema.optional(
                     Schema.Struct({
-                      level: Schema.optional(Schema.String),
-                      role: Schema.optional(Schema.String),
-                      type: Schema.optional(Schema.String),
+                      matchExpressions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                      ),
+                      matchLabels: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  matchLabelKeys: Schema.optional(Schema.Array(Schema.String)),
+                  maxSkew: Schema.Number,
+                  minDomains: Schema.optional(Schema.Number),
+                  nodeAffinityPolicy: Schema.optional(Schema.String),
+                  nodeTaintsPolicy: Schema.optional(Schema.String),
+                  topologyKey: Schema.String,
+                  whenUnsatisfiable: Schema.String,
+                }),
+              ),
+            ),
+            volumes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  awsElasticBlockStore: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      partition: Schema.optional(Schema.Number),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      volumeID: Schema.String,
+                    }),
+                  ),
+                  azureDisk: Schema.optional(
+                    Schema.Struct({
+                      cachingMode: Schema.optional(Schema.String),
+                      diskName: Schema.String,
+                      diskURI: Schema.String,
+                      fsType: Schema.optional(Schema.String),
+                      kind: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  azureFile: Schema.optional(
+                    Schema.Struct({
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretName: Schema.String,
+                      shareName: Schema.String,
+                    }),
+                  ),
+                  cephfs: Schema.optional(
+                    Schema.Struct({
+                      monitors: Schema.Array(Schema.String),
+                      path: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretFile: Schema.optional(Schema.String),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
                       user: Schema.optional(Schema.String),
                     }),
                   ),
-                  seccompProfile: Schema.optional(
+                  cinder: Schema.optional(
                     Schema.Struct({
-                      localhostProfile: Schema.optional(Schema.String),
-                      type: Schema.String,
+                      fsType: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      volumeID: Schema.String,
                     }),
                   ),
-                  supplementalGroups: Schema.optional(
-                    Schema.Array(Schema.Number),
-                  ),
-                  supplementalGroupsPolicy: Schema.optional(Schema.String),
-                  sysctls: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        value: Schema.String,
-                      }),
-                    ),
-                  ),
-                  windowsOptions: Schema.optional(
+                  configMap: Schema.optional(
                     Schema.Struct({
-                      gmsaCredentialSpec: Schema.optional(Schema.String),
-                      gmsaCredentialSpecName: Schema.optional(Schema.String),
-                      hostProcess: Schema.optional(Schema.Boolean),
-                      runAsUserName: Schema.optional(Schema.String),
+                      defaultMode: Schema.optional(Schema.Number),
+                      items: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                            mode: Schema.optional(Schema.Number),
+                            path: Schema.String,
+                          }),
+                        ),
+                      ),
+                      name: Schema.optional(Schema.String),
+                      optional: Schema.optional(Schema.Boolean),
                     }),
                   ),
-                }),
-              ),
-              serviceAccount: Schema.optional(Schema.String),
-              serviceAccountName: Schema.optional(Schema.String),
-              setHostnameAsFQDN: Schema.optional(Schema.Boolean),
-              shareProcessNamespace: Schema.optional(Schema.Boolean),
-              subdomain: Schema.optional(Schema.String),
-              terminationGracePeriodSeconds: Schema.optional(Schema.Number),
-              tolerations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    effect: Schema.optional(Schema.String),
-                    key: Schema.optional(Schema.String),
-                    operator: Schema.optional(Schema.String),
-                    tolerationSeconds: Schema.optional(Schema.Number),
-                    value: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              topologySpreadConstraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    labelSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
+                  csi: Schema.optional(
+                    Schema.Struct({
+                      driver: Schema.String,
+                      fsType: Schema.optional(Schema.String),
+                      nodePublishSecretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      volumeAttributes: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  downwardAPI: Schema.optional(
+                    Schema.Struct({
+                      defaultMode: Schema.optional(Schema.Number),
+                      items: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            fieldRef: Schema.optional(
+                              Schema.Struct({
+                                apiVersion: Schema.optional(Schema.String),
+                                fieldPath: Schema.String,
+                              }),
+                            ),
+                            mode: Schema.optional(Schema.Number),
+                            path: Schema.String,
+                            resourceFieldRef: Schema.optional(
+                              Schema.Struct({
+                                containerName: Schema.optional(Schema.String),
+                                divisor: Schema.optional(Schema.String),
+                                resource: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  emptyDir: Schema.optional(
+                    Schema.Struct({
+                      medium: Schema.optional(Schema.String),
+                      sizeLimit: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  ephemeral: Schema.optional(
+                    Schema.Struct({
+                      volumeClaimTemplate: Schema.optional(
+                        Schema.Struct({
+                          metadata: Schema.optional(
                             Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
+                              annotations: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
+                              ),
+                              creationTimestamp: Schema.optional(Schema.String),
+                              deletionGracePeriodSeconds: Schema.optional(
+                                Schema.Number,
+                              ),
+                              deletionTimestamp: Schema.optional(Schema.String),
+                              finalizers: Schema.optional(
                                 Schema.Array(Schema.String),
                               ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    matchLabelKeys: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    maxSkew: Schema.Number,
-                    minDomains: Schema.optional(Schema.Number),
-                    nodeAffinityPolicy: Schema.optional(Schema.String),
-                    nodeTaintsPolicy: Schema.optional(Schema.String),
-                    topologyKey: Schema.String,
-                    whenUnsatisfiable: Schema.String,
-                  }),
-                ),
-              ),
-              volumes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    awsElasticBlockStore: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        partition: Schema.optional(Schema.Number),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        volumeID: Schema.String,
-                      }),
-                    ),
-                    azureDisk: Schema.optional(
-                      Schema.Struct({
-                        cachingMode: Schema.optional(Schema.String),
-                        diskName: Schema.String,
-                        diskURI: Schema.String,
-                        fsType: Schema.optional(Schema.String),
-                        kind: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    azureFile: Schema.optional(
-                      Schema.Struct({
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretName: Schema.String,
-                        shareName: Schema.String,
-                      }),
-                    ),
-                    cephfs: Schema.optional(
-                      Schema.Struct({
-                        monitors: Schema.Array(Schema.String),
-                        path: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretFile: Schema.optional(Schema.String),
-                        secretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        user: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    cinder: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        volumeID: Schema.String,
-                      }),
-                    ),
-                    configMap: Schema.optional(
-                      Schema.Struct({
-                        defaultMode: Schema.optional(Schema.Number),
-                        items: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              mode: Schema.optional(Schema.Number),
-                              path: Schema.String,
-                            }),
-                          ),
-                        ),
-                        name: Schema.optional(Schema.String),
-                        optional: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    csi: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        fsType: Schema.optional(Schema.String),
-                        nodePublishSecretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        volumeAttributes: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    downwardAPI: Schema.optional(
-                      Schema.Struct({
-                        defaultMode: Schema.optional(Schema.Number),
-                        items: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              fieldRef: Schema.optional(
-                                Schema.Struct({
-                                  apiVersion: Schema.optional(Schema.String),
-                                  fieldPath: Schema.String,
-                                }),
+                              generateName: Schema.optional(Schema.String),
+                              generation: Schema.optional(Schema.Number),
+                              labels: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
-                              mode: Schema.optional(Schema.Number),
-                              path: Schema.String,
-                              resourceFieldRef: Schema.optional(
-                                Schema.Struct({
-                                  containerName: Schema.optional(Schema.String),
-                                  divisor: Schema.optional(Schema.String),
-                                  resource: Schema.String,
-                                }),
+                              managedFields: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldsType: Schema.optional(Schema.String),
+                                    fieldsV1: Schema.optional(Schema.Unknown),
+                                    manager: Schema.optional(Schema.String),
+                                    operation: Schema.optional(Schema.String),
+                                    subresource: Schema.optional(Schema.String),
+                                    time: Schema.optional(Schema.String),
+                                  }),
+                                ),
                               ),
+                              name: Schema.optional(Schema.String),
+                              namespace: Schema.optional(Schema.String),
+                              ownerReferences: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    apiVersion: Schema.String,
+                                    blockOwnerDeletion: Schema.optional(
+                                      Schema.Boolean,
+                                    ),
+                                    controller: Schema.optional(Schema.Boolean),
+                                    kind: Schema.String,
+                                    name: Schema.String,
+                                    uid: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              resourceVersion: Schema.optional(Schema.String),
+                              selfLink: Schema.optional(Schema.String),
+                              uid: Schema.optional(Schema.String),
                             }),
                           ),
-                        ),
-                      }),
-                    ),
-                    emptyDir: Schema.optional(
-                      Schema.Struct({
-                        medium: Schema.optional(Schema.String),
-                        sizeLimit: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    ephemeral: Schema.optional(
-                      Schema.Struct({
-                        volumeClaimTemplate: Schema.optional(
-                          Schema.Struct({
-                            metadata: Schema.optional(
+                          spec: Schema.Struct({
+                            accessModes: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            dataSource: Schema.optional(
                               Schema.Struct({
-                                annotations: Schema.optional(
+                                apiGroup: Schema.optional(Schema.String),
+                                kind: Schema.String,
+                                name: Schema.String,
+                              }),
+                            ),
+                            dataSourceRef: Schema.optional(
+                              Schema.Struct({
+                                apiGroup: Schema.optional(Schema.String),
+                                kind: Schema.String,
+                                name: Schema.String,
+                                namespace: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            resources: Schema.optional(
+                              Schema.Struct({
+                                limits: Schema.optional(
                                   Schema.Record(Schema.String, Schema.String),
                                 ),
-                                creationTimestamp: Schema.optional(
-                                  Schema.String,
-                                ),
-                                deletionGracePeriodSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                deletionTimestamp: Schema.optional(
-                                  Schema.String,
-                                ),
-                                finalizers: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                generateName: Schema.optional(Schema.String),
-                                generation: Schema.optional(Schema.Number),
-                                labels: Schema.optional(
+                                requests: Schema.optional(
                                   Schema.Record(Schema.String, Schema.String),
                                 ),
-                                managedFields: Schema.optional(
+                              }),
+                            ),
+                            selector: Schema.optional(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
                                   Schema.Array(
                                     Schema.Struct({
-                                      apiVersion: Schema.optional(
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchLabels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            storageClassName: Schema.optional(Schema.String),
+                            volumeAttributesClassName: Schema.optional(
+                              Schema.String,
+                            ),
+                            volumeMode: Schema.optional(Schema.String),
+                            volumeName: Schema.optional(Schema.String),
+                          }),
+                        }),
+                      ),
+                    }),
+                  ),
+                  fc: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      lun: Schema.optional(Schema.Number),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      targetWWNs: Schema.optional(Schema.Array(Schema.String)),
+                      wwids: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  flexVolume: Schema.optional(
+                    Schema.Struct({
+                      driver: Schema.String,
+                      fsType: Schema.optional(Schema.String),
+                      options: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  flocker: Schema.optional(
+                    Schema.Struct({
+                      datasetName: Schema.optional(Schema.String),
+                      datasetUUID: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  gcePersistentDisk: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      partition: Schema.optional(Schema.Number),
+                      pdName: Schema.String,
+                      readOnly: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  gitRepo: Schema.optional(
+                    Schema.Struct({
+                      directory: Schema.optional(Schema.String),
+                      repository: Schema.String,
+                      revision: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  glusterfs: Schema.optional(
+                    Schema.Struct({
+                      endpoints: Schema.String,
+                      path: Schema.String,
+                      readOnly: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  hostPath: Schema.optional(
+                    Schema.Struct({
+                      path: Schema.String,
+                      type: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  image: Schema.optional(
+                    Schema.Struct({
+                      pullPolicy: Schema.optional(Schema.String),
+                      reference: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  iscsi: Schema.optional(
+                    Schema.Struct({
+                      chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                      chapAuthSession: Schema.optional(Schema.Boolean),
+                      fsType: Schema.optional(Schema.String),
+                      initiatorName: Schema.optional(Schema.String),
+                      iqn: Schema.String,
+                      iscsiInterface: Schema.optional(Schema.String),
+                      lun: Schema.Number,
+                      portals: Schema.optional(Schema.Array(Schema.String)),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      targetPortal: Schema.String,
+                    }),
+                  ),
+                  name: Schema.String,
+                  nfs: Schema.optional(
+                    Schema.Struct({
+                      path: Schema.String,
+                      readOnly: Schema.optional(Schema.Boolean),
+                      server: Schema.String,
+                    }),
+                  ),
+                  persistentVolumeClaim: Schema.optional(
+                    Schema.Struct({
+                      claimName: Schema.String,
+                      readOnly: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  photonPersistentDisk: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      pdID: Schema.String,
+                    }),
+                  ),
+                  portworxVolume: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      volumeID: Schema.String,
+                    }),
+                  ),
+                  projected: Schema.optional(
+                    Schema.Struct({
+                      defaultMode: Schema.optional(Schema.Number),
+                      sources: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            clusterTrustBundle: Schema.optional(
+                              Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
                                         Schema.String,
                                       ),
-                                      fieldsType: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      fieldsV1: Schema.optional(Schema.Unknown),
-                                      manager: Schema.optional(Schema.String),
-                                      operation: Schema.optional(Schema.String),
-                                      subresource: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                      time: Schema.optional(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                                path: Schema.String,
+                                signerName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            configMap: Schema.optional(
+                              Schema.Struct({
+                                items: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      mode: Schema.optional(Schema.Number),
+                                      path: Schema.String,
                                     }),
                                   ),
                                 ),
                                 name: Schema.optional(Schema.String),
-                                namespace: Schema.optional(Schema.String),
-                                ownerReferences: Schema.optional(
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            downwardAPI: Schema.optional(
+                              Schema.Struct({
+                                items: Schema.optional(
                                   Schema.Array(
                                     Schema.Struct({
-                                      apiVersion: Schema.String,
-                                      blockOwnerDeletion: Schema.optional(
-                                        Schema.Boolean,
+                                      fieldRef: Schema.optional(
+                                        Schema.Struct({
+                                          apiVersion: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldPath: Schema.String,
+                                        }),
                                       ),
-                                      controller: Schema.optional(
-                                        Schema.Boolean,
+                                      mode: Schema.optional(Schema.Number),
+                                      path: Schema.String,
+                                      resourceFieldRef: Schema.optional(
+                                        Schema.Struct({
+                                          containerName: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          divisor: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          resource: Schema.String,
+                                        }),
                                       ),
-                                      kind: Schema.String,
-                                      name: Schema.String,
-                                      uid: Schema.String,
                                     }),
                                   ),
                                 ),
-                                resourceVersion: Schema.optional(Schema.String),
-                                selfLink: Schema.optional(Schema.String),
-                                uid: Schema.optional(Schema.String),
                               }),
                             ),
-                            spec: Schema.Struct({
-                              accessModes: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              dataSource: Schema.optional(
-                                Schema.Struct({
-                                  apiGroup: Schema.optional(Schema.String),
-                                  kind: Schema.String,
-                                  name: Schema.String,
-                                }),
-                              ),
-                              dataSourceRef: Schema.optional(
-                                Schema.Struct({
-                                  apiGroup: Schema.optional(Schema.String),
-                                  kind: Schema.String,
-                                  name: Schema.String,
-                                  namespace: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              resources: Schema.optional(
-                                Schema.Struct({
-                                  limits: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                  requests: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              selector: Schema.optional(
-                                Schema.Struct({
-                                  matchExpressions: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        operator: Schema.String,
-                                        values: Schema.optional(
-                                          Schema.Array(Schema.String),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                  matchLabels: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              storageClassName: Schema.optional(Schema.String),
-                              volumeAttributesClassName: Schema.optional(
-                                Schema.String,
-                              ),
-                              volumeMode: Schema.optional(Schema.String),
-                              volumeName: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                      }),
-                    ),
-                    fc: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        lun: Schema.optional(Schema.Number),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        targetWWNs: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        wwids: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    flexVolume: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        fsType: Schema.optional(Schema.String),
-                        options: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                    flocker: Schema.optional(
-                      Schema.Struct({
-                        datasetName: Schema.optional(Schema.String),
-                        datasetUUID: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    gcePersistentDisk: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        partition: Schema.optional(Schema.Number),
-                        pdName: Schema.String,
-                        readOnly: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    gitRepo: Schema.optional(
-                      Schema.Struct({
-                        directory: Schema.optional(Schema.String),
-                        repository: Schema.String,
-                        revision: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    glusterfs: Schema.optional(
-                      Schema.Struct({
-                        endpoints: Schema.String,
-                        path: Schema.String,
-                        readOnly: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    hostPath: Schema.optional(
-                      Schema.Struct({
-                        path: Schema.String,
-                        type: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    image: Schema.optional(
-                      Schema.Struct({
-                        pullPolicy: Schema.optional(Schema.String),
-                        reference: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    iscsi: Schema.optional(
-                      Schema.Struct({
-                        chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                        chapAuthSession: Schema.optional(Schema.Boolean),
-                        fsType: Schema.optional(Schema.String),
-                        initiatorName: Schema.optional(Schema.String),
-                        iqn: Schema.String,
-                        iscsiInterface: Schema.optional(Schema.String),
-                        lun: Schema.Number,
-                        portals: Schema.optional(Schema.Array(Schema.String)),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        targetPortal: Schema.String,
-                      }),
-                    ),
-                    name: Schema.String,
-                    nfs: Schema.optional(
-                      Schema.Struct({
-                        path: Schema.String,
-                        readOnly: Schema.optional(Schema.Boolean),
-                        server: Schema.String,
-                      }),
-                    ),
-                    persistentVolumeClaim: Schema.optional(
-                      Schema.Struct({
-                        claimName: Schema.String,
-                        readOnly: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    photonPersistentDisk: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        pdID: Schema.String,
-                      }),
-                    ),
-                    portworxVolume: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        volumeID: Schema.String,
-                      }),
-                    ),
-                    projected: Schema.optional(
-                      Schema.Struct({
-                        defaultMode: Schema.optional(Schema.Number),
-                        sources: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              clusterTrustBundle: Schema.optional(
-                                Schema.Struct({
-                                  labelSelector: Schema.optional(
+                            podCertificate: Schema.optional(
+                              Schema.Struct({
+                                certificateChainPath: Schema.optional(
+                                  Schema.String,
+                                ),
+                                credentialBundlePath: Schema.optional(
+                                  Schema.String,
+                                ),
+                                keyPath: Schema.optional(Schema.String),
+                                keyType: Schema.String,
+                                maxExpirationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                signerName: Schema.String,
+                                userAnnotations: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            secret: Schema.optional(
+                              Schema.Struct({
+                                items: Schema.optional(
+                                  Schema.Array(
                                     Schema.Struct({
-                                      matchExpressions: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            key: Schema.String,
-                                            operator: Schema.String,
-                                            values: Schema.optional(
-                                              Schema.Array(Schema.String),
-                                            ),
-                                          }),
-                                        ),
-                                      ),
-                                      matchLabels: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
+                                      key: Schema.String,
+                                      mode: Schema.optional(Schema.Number),
+                                      path: Schema.String,
                                     }),
                                   ),
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                  path: Schema.String,
-                                  signerName: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              configMap: Schema.optional(
-                                Schema.Struct({
-                                  items: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        mode: Schema.optional(Schema.Number),
-                                        path: Schema.String,
-                                      }),
-                                    ),
-                                  ),
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              downwardAPI: Schema.optional(
-                                Schema.Struct({
-                                  items: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        fieldRef: Schema.optional(
-                                          Schema.Struct({
-                                            apiVersion: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            fieldPath: Schema.String,
-                                          }),
-                                        ),
-                                        mode: Schema.optional(Schema.Number),
-                                        path: Schema.String,
-                                        resourceFieldRef: Schema.optional(
-                                          Schema.Struct({
-                                            containerName: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            divisor: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            resource: Schema.String,
-                                          }),
-                                        ),
-                                      }),
-                                    ),
-                                  ),
-                                }),
-                              ),
-                              podCertificate: Schema.optional(
-                                Schema.Struct({
-                                  certificateChainPath: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                  credentialBundlePath: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                  keyPath: Schema.optional(Schema.String),
-                                  keyType: Schema.String,
-                                  maxExpirationSeconds: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  signerName: Schema.String,
-                                  userAnnotations: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              secret: Schema.optional(
-                                Schema.Struct({
-                                  items: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        key: Schema.String,
-                                        mode: Schema.optional(Schema.Number),
-                                        path: Schema.String,
-                                      }),
-                                    ),
-                                  ),
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                              serviceAccountToken: Schema.optional(
-                                Schema.Struct({
-                                  audience: Schema.optional(Schema.String),
-                                  expirationSeconds: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  path: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    quobyte: Schema.optional(
-                      Schema.Struct({
-                        group: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        registry: Schema.String,
-                        tenant: Schema.optional(Schema.String),
-                        user: Schema.optional(Schema.String),
-                        volume: Schema.String,
-                      }),
-                    ),
-                    rbd: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        image: Schema.String,
-                        keyring: Schema.optional(Schema.String),
-                        monitors: Schema.Array(Schema.String),
-                        pool: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
+                                ),
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            serviceAccountToken: Schema.optional(
+                              Schema.Struct({
+                                audience: Schema.optional(Schema.String),
+                                expirationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                path: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                        user: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    scaleIO: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        gateway: Schema.String,
-                        protectionDomain: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.Struct({
+                      ),
+                    }),
+                  ),
+                  quobyte: Schema.optional(
+                    Schema.Struct({
+                      group: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      registry: Schema.String,
+                      tenant: Schema.optional(Schema.String),
+                      user: Schema.optional(Schema.String),
+                      volume: Schema.String,
+                    }),
+                  ),
+                  rbd: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      image: Schema.String,
+                      keyring: Schema.optional(Schema.String),
+                      monitors: Schema.Array(Schema.String),
+                      pool: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
                           name: Schema.optional(Schema.String),
                         }),
-                        sslEnabled: Schema.optional(Schema.Boolean),
-                        storageMode: Schema.optional(Schema.String),
-                        storagePool: Schema.optional(Schema.String),
-                        system: Schema.String,
-                        volumeName: Schema.optional(Schema.String),
+                      ),
+                      user: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  scaleIO: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      gateway: Schema.String,
+                      protectionDomain: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.Struct({
+                        name: Schema.optional(Schema.String),
                       }),
-                    ),
-                    secret: Schema.optional(
-                      Schema.Struct({
-                        defaultMode: Schema.optional(Schema.Number),
-                        items: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              mode: Schema.optional(Schema.Number),
-                              path: Schema.String,
-                            }),
-                          ),
-                        ),
-                        optional: Schema.optional(Schema.Boolean),
-                        secretName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    storageos: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        readOnly: Schema.optional(Schema.Boolean),
-                        secretRef: Schema.optional(
+                      sslEnabled: Schema.optional(Schema.Boolean),
+                      storageMode: Schema.optional(Schema.String),
+                      storagePool: Schema.optional(Schema.String),
+                      system: Schema.String,
+                      volumeName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  secret: Schema.optional(
+                    Schema.Struct({
+                      defaultMode: Schema.optional(Schema.Number),
+                      items: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            name: Schema.optional(Schema.String),
+                            key: Schema.String,
+                            mode: Schema.optional(Schema.Number),
+                            path: Schema.String,
                           }),
                         ),
-                        volumeName: Schema.optional(Schema.String),
-                        volumeNamespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    vsphereVolume: Schema.optional(
-                      Schema.Struct({
-                        fsType: Schema.optional(Schema.String),
-                        storagePolicyID: Schema.optional(Schema.String),
-                        storagePolicyName: Schema.optional(Schema.String),
-                        volumePath: Schema.String,
-                      }),
-                    ),
-                  }),
-                ),
+                      ),
+                      optional: Schema.optional(Schema.Boolean),
+                      secretName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  storageos: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      readOnly: Schema.optional(Schema.Boolean),
+                      secretRef: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      volumeName: Schema.optional(Schema.String),
+                      volumeNamespace: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  vsphereVolume: Schema.optional(
+                    Schema.Struct({
+                      fsType: Schema.optional(Schema.String),
+                      storagePolicyID: Schema.optional(Schema.String),
+                      storagePolicyName: Schema.optional(Schema.String),
+                      volumePath: Schema.String,
+                    }),
+                  ),
+                }),
               ),
-            }),
-          ),
-        }),
-        updateStrategy: Schema.optional(
-          Schema.Struct({
-            rollingUpdate: Schema.optional(
-              Schema.Struct({
-                maxSurge: Schema.optional(Schema.String),
-                maxUnavailable: Schema.optional(Schema.String),
-              }),
             ),
-            type: Schema.optional(Schema.String),
           }),
         ),
       }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        collisionCount: Schema.optional(Schema.Number),
-        conditions: Schema.optional(
-          Schema.Array(
+      updateStrategy: Schema.optional(
+        Schema.Struct({
+          rollingUpdate: Schema.optional(
             Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
+              maxSurge: Schema.optional(Schema.String),
+              maxUnavailable: Schema.optional(Schema.String),
             }),
           ),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      collisionCount: Schema.optional(Schema.Number),
+      conditions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            lastTransitionTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            status: Schema.String,
+            type: Schema.String,
+          }),
         ),
-        currentNumberScheduled: Schema.Number,
-        desiredNumberScheduled: Schema.Number,
-        numberAvailable: Schema.optional(Schema.Number),
-        numberMisscheduled: Schema.Number,
-        numberReady: Schema.Number,
-        numberUnavailable: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-        updatedNumberScheduled: Schema.optional(Schema.Number),
-      }),
-    ),
-  });
+      ),
+      currentNumberScheduled: Schema.Number,
+      desiredNumberScheduled: Schema.Number,
+      numberAvailable: Schema.optional(Schema.Number),
+      numberMisscheduled: Schema.Number,
+      numberReady: Schema.Number,
+      numberUnavailable: Schema.optional(Schema.Number),
+      observedGeneration: Schema.optional(Schema.Number),
+      updatedNumberScheduled: Schema.optional(Schema.Number),
+    }),
+  ),
+});
 export type ReadAppsV1NamespacedDaemonSetOutput =
   typeof ReadAppsV1NamespacedDaemonSetOutput.Type;
 
@@ -56880,12 +56782,11 @@ export type ReadAppsV1NamespacedDaemonSetOutput =
 /**
  * read the specified DaemonSet
  */
-export const readAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadAppsV1NamespacedDaemonSetInput,
-    outputSchema: ReadAppsV1NamespacedDaemonSetOutput,
-    errors: [NotFound] as const,
-  }));
+export const readAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadAppsV1NamespacedDaemonSetInput,
+  outputSchema: ReadAppsV1NamespacedDaemonSetOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadAppsV1NamespacedDaemonSetStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -59414,26 +59315,28 @@ export type ReadAppsV1NamespacedDaemonSetStatusOutput =
 /**
  * read status of the specified DaemonSet
  */
-export const readAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedDaemonSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}",
-    }),
-  );
+export const ReadAppsV1NamespacedDeploymentInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}",
+  }),
+);
 export type ReadAppsV1NamespacedDeploymentInput =
   typeof ReadAppsV1NamespacedDeploymentInput.Type;
 
 // Output Schema
-export const ReadAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReadAppsV1NamespacedDeploymentOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -61943,7 +61846,8 @@ export const ReadAppsV1NamespacedDeploymentOutput =
         updatedReplicas: Schema.optional(Schema.Number),
       }),
     ),
-  });
+  },
+);
 export type ReadAppsV1NamespacedDeploymentOutput =
   typeof ReadAppsV1NamespacedDeploymentOutput.Type;
 
@@ -61951,12 +61855,11 @@ export type ReadAppsV1NamespacedDeploymentOutput =
 /**
  * read the specified Deployment
  */
-export const readAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadAppsV1NamespacedDeploymentInput,
-    outputSchema: ReadAppsV1NamespacedDeploymentOutput,
-    errors: [NotFound] as const,
-  }));
+export const readAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadAppsV1NamespacedDeploymentInput,
+  outputSchema: ReadAppsV1NamespacedDeploymentOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentScaleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -62036,12 +61939,13 @@ export type ReadAppsV1NamespacedDeploymentScaleOutput =
 /**
  * read scale of the specified Deployment
  */
-export const readAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedDeploymentScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReadAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -64573,26 +64477,28 @@ export type ReadAppsV1NamespacedDeploymentStatusOutput =
 /**
  * read status of the specified Deployment
  */
-export const readAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedDeploymentStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReadAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}",
-    }),
-  );
+export const ReadAppsV1NamespacedReplicaSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}",
+  }),
+);
 export type ReadAppsV1NamespacedReplicaSetInput =
   typeof ReadAppsV1NamespacedReplicaSetInput.Type;
 
 // Output Schema
-export const ReadAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReadAppsV1NamespacedReplicaSetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -67145,7 +67051,8 @@ export const ReadAppsV1NamespacedReplicaSetOutput =
         terminatingReplicas: Schema.optional(Schema.Number),
       }),
     ),
-  });
+  },
+);
 export type ReadAppsV1NamespacedReplicaSetOutput =
   typeof ReadAppsV1NamespacedReplicaSetOutput.Type;
 
@@ -67153,12 +67060,11 @@ export type ReadAppsV1NamespacedReplicaSetOutput =
 /**
  * read the specified ReplicaSet
  */
-export const readAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadAppsV1NamespacedReplicaSetInput,
-    outputSchema: ReadAppsV1NamespacedReplicaSetOutput,
-    errors: [NotFound] as const,
-  }));
+export const readAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadAppsV1NamespacedReplicaSetInput,
+  outputSchema: ReadAppsV1NamespacedReplicaSetOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetScaleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -67238,12 +67144,13 @@ export type ReadAppsV1NamespacedReplicaSetScaleOutput =
 /**
  * read scale of the specified ReplicaSet
  */
-export const readAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedReplicaSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -69818,20 +69725,22 @@ export type ReadAppsV1NamespacedReplicaSetStatusOutput =
 /**
  * read status of the specified ReplicaSet
  */
-export const readAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedReplicaSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}",
-    }),
-  );
+export const ReadAppsV1NamespacedStatefulSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}",
+  }),
+);
 export type ReadAppsV1NamespacedStatefulSetInput =
   typeof ReadAppsV1NamespacedStatefulSetInput.Type;
 
@@ -72510,12 +72419,11 @@ export type ReadAppsV1NamespacedStatefulSetOutput =
 /**
  * read the specified StatefulSet
  */
-export const readAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadAppsV1NamespacedStatefulSetInput,
-    outputSchema: ReadAppsV1NamespacedStatefulSetOutput,
-    errors: [NotFound] as const,
-  }));
+export const readAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadAppsV1NamespacedStatefulSetInput,
+  outputSchema: ReadAppsV1NamespacedStatefulSetOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetScaleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -72595,12 +72503,13 @@ export type ReadAppsV1NamespacedStatefulSetScaleOutput =
 /**
  * read scale of the specified StatefulSet
  */
-export const readAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedStatefulSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -75287,12 +75196,13 @@ export type ReadAppsV1NamespacedStatefulSetStatusOutput =
 /**
  * read status of the specified StatefulSet
  */
-export const readAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readAppsV1NamespacedStatefulSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -75369,12 +75279,13 @@ export type ReplaceAppsV1NamespacedControllerRevisionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReplaceAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -77909,12 +77820,11 @@ export type ReplaceAppsV1NamespacedDaemonSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceAppsV1NamespacedDaemonSetInput,
-    outputSchema: ReplaceAppsV1NamespacedDaemonSetOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceAppsV1NamespacedDaemonSetInput,
+  outputSchema: ReplaceAppsV1NamespacedDaemonSetOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -80449,12 +80359,13 @@ export type ReplaceAppsV1NamespacedDaemonSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedDaemonSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -82992,12 +82903,11 @@ export type ReplaceAppsV1NamespacedDeploymentOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceAppsV1NamespacedDeploymentInput,
-    outputSchema: ReplaceAppsV1NamespacedDeploymentOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceAppsV1NamespacedDeploymentInput,
+  outputSchema: ReplaceAppsV1NamespacedDeploymentOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -83083,12 +82993,13 @@ export type ReplaceAppsV1NamespacedDeploymentScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedDeploymentScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -85626,12 +85537,13 @@ export type ReplaceAppsV1NamespacedDeploymentStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedDeploymentStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -88212,12 +88124,11 @@ export type ReplaceAppsV1NamespacedReplicaSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceAppsV1NamespacedReplicaSetInput,
-    outputSchema: ReplaceAppsV1NamespacedReplicaSetOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceAppsV1NamespacedReplicaSetInput,
+  outputSchema: ReplaceAppsV1NamespacedReplicaSetOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -88303,12 +88214,13 @@ export type ReplaceAppsV1NamespacedReplicaSetScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedReplicaSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -90889,12 +90801,13 @@ export type ReplaceAppsV1NamespacedReplicaSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedReplicaSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -93587,12 +93500,13 @@ export type ReplaceAppsV1NamespacedStatefulSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetScaleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -93678,12 +93592,13 @@ export type ReplaceAppsV1NamespacedStatefulSetScaleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedStatefulSetScale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -96376,12 +96291,13 @@ export type ReplaceAppsV1NamespacedStatefulSetStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceAppsV1NamespacedStatefulSetStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1ControllerRevisionListForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96429,11 +96345,12 @@ export type WatchAppsV1DaemonSetListForAllNamespacesOutput =
 /**
  * watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1DaemonSetListForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1DaemonSetListForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1DaemonSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1DaemonSetListForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1DeploymentListForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96455,11 +96372,12 @@ export type WatchAppsV1DeploymentListForAllNamespacesOutput =
 /**
  * watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1DeploymentListForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1DeploymentListForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1DeploymentListForAllNamespacesInput,
     outputSchema: WatchAppsV1DeploymentListForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1NamespacedControllerRevisionInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96484,11 +96402,12 @@ export type WatchAppsV1NamespacedControllerRevisionOutput =
 /**
  * watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1NamespacedControllerRevision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: WatchAppsV1NamespacedControllerRevisionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1NamespacedControllerRevisionListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96519,22 +96438,24 @@ export const watchAppsV1NamespacedControllerRevisionList =
     outputSchema: WatchAppsV1NamespacedControllerRevisionListOutput,
   }));
 // Input Schema
-export const WatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}",
-    }),
-  );
+export const WatchAppsV1NamespacedDaemonSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}",
+  }),
+);
 export type WatchAppsV1NamespacedDaemonSetInput =
   typeof WatchAppsV1NamespacedDaemonSetInput.Type;
 
 // Output Schema
-export const WatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WatchAppsV1NamespacedDaemonSetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     object: Schema.Unknown,
     type: Schema.String,
-  });
+  },
+);
 export type WatchAppsV1NamespacedDaemonSetOutput =
   typeof WatchAppsV1NamespacedDaemonSetOutput.Type;
 
@@ -96542,11 +96463,10 @@ export type WatchAppsV1NamespacedDaemonSetOutput =
 /**
  * watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchAppsV1NamespacedDaemonSetInput,
-    outputSchema: WatchAppsV1NamespacedDaemonSetOutput,
-  }));
+export const watchAppsV1NamespacedDaemonSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchAppsV1NamespacedDaemonSetInput,
+  outputSchema: WatchAppsV1NamespacedDaemonSetOutput,
+}));
 // Input Schema
 export const WatchAppsV1NamespacedDaemonSetListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96571,19 +96491,21 @@ export type WatchAppsV1NamespacedDaemonSetListOutput =
 /**
  * watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1NamespacedDaemonSetList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1NamespacedDaemonSetList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1NamespacedDaemonSetListInput,
     outputSchema: WatchAppsV1NamespacedDaemonSetListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}",
-    }),
-  );
+export const WatchAppsV1NamespacedDeploymentInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}",
+  }),
+);
 export type WatchAppsV1NamespacedDeploymentInput =
   typeof WatchAppsV1NamespacedDeploymentInput.Type;
 
@@ -96600,11 +96522,10 @@ export type WatchAppsV1NamespacedDeploymentOutput =
 /**
  * watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchAppsV1NamespacedDeploymentInput,
-    outputSchema: WatchAppsV1NamespacedDeploymentOutput,
-  }));
+export const watchAppsV1NamespacedDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchAppsV1NamespacedDeploymentInput,
+  outputSchema: WatchAppsV1NamespacedDeploymentOutput,
+}));
 // Input Schema
 export const WatchAppsV1NamespacedDeploymentListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96629,19 +96550,21 @@ export type WatchAppsV1NamespacedDeploymentListOutput =
 /**
  * watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1NamespacedDeploymentList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1NamespacedDeploymentList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1NamespacedDeploymentListInput,
     outputSchema: WatchAppsV1NamespacedDeploymentListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}",
-    }),
-  );
+export const WatchAppsV1NamespacedReplicaSetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}",
+  }),
+);
 export type WatchAppsV1NamespacedReplicaSetInput =
   typeof WatchAppsV1NamespacedReplicaSetInput.Type;
 
@@ -96658,11 +96581,10 @@ export type WatchAppsV1NamespacedReplicaSetOutput =
 /**
  * watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchAppsV1NamespacedReplicaSetInput,
-    outputSchema: WatchAppsV1NamespacedReplicaSetOutput,
-  }));
+export const watchAppsV1NamespacedReplicaSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchAppsV1NamespacedReplicaSetInput,
+  outputSchema: WatchAppsV1NamespacedReplicaSetOutput,
+}));
 // Input Schema
 export const WatchAppsV1NamespacedReplicaSetListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96687,11 +96609,12 @@ export type WatchAppsV1NamespacedReplicaSetListOutput =
 /**
  * watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1NamespacedReplicaSetList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1NamespacedReplicaSetList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1NamespacedReplicaSetListInput,
     outputSchema: WatchAppsV1NamespacedReplicaSetListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1NamespacedStatefulSetInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96716,11 +96639,10 @@ export type WatchAppsV1NamespacedStatefulSetOutput =
 /**
  * watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchAppsV1NamespacedStatefulSetInput,
-    outputSchema: WatchAppsV1NamespacedStatefulSetOutput,
-  }));
+export const watchAppsV1NamespacedStatefulSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchAppsV1NamespacedStatefulSetInput,
+  outputSchema: WatchAppsV1NamespacedStatefulSetOutput,
+}));
 // Input Schema
 export const WatchAppsV1NamespacedStatefulSetListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96745,11 +96667,12 @@ export type WatchAppsV1NamespacedStatefulSetListOutput =
 /**
  * watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1NamespacedStatefulSetList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1NamespacedStatefulSetList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1NamespacedStatefulSetListInput,
     outputSchema: WatchAppsV1NamespacedStatefulSetListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1ReplicaSetListForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -96771,11 +96694,12 @@ export type WatchAppsV1ReplicaSetListForAllNamespacesOutput =
 /**
  * watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchAppsV1ReplicaSetListForAllNamespaces =
-  /*@__PURE__*/ API.make(() => ({
+export const watchAppsV1ReplicaSetListForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchAppsV1ReplicaSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1ReplicaSetListForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchAppsV1StatefulSetListForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(

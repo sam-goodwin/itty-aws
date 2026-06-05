@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgTeamByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgTeamByNameInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const GetOrgTeamByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgTeamByNameInput = typeof GetOrgTeamByNameInput.Type;
 
 // Output Schema
-export const GetOrgTeamByNameOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgTeamByNameOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgTeamByNameOutput = typeof GetOrgTeamByNameOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type GetOrgTeamByNameOutput = typeof GetOrgTeamByNameOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param teamName - Name of the team whose information you want to return.
  */
-export const getOrgTeamByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgTeamByName = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgTeamByNameInput,
   outputSchema: GetOrgTeamByNameOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const UsersTwoFactorStartSetupRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,15 +17,13 @@ export type UsersTwoFactorStartSetupRetrieveInput =
   typeof UsersTwoFactorStartSetupRetrieveInput.Type;
 
 // Output Schema
-export const UsersTwoFactorStartSetupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersTwoFactorStartSetupRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type UsersTwoFactorStartSetupRetrieveOutput =
   typeof UsersTwoFactorStartSetupRetrieveOutput.Type;
 
 // The operation
-export const usersTwoFactorStartSetupRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UsersTwoFactorStartSetupRetrieveInput,
-    outputSchema: UsersTwoFactorStartSetupRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const usersTwoFactorStartSetupRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersTwoFactorStartSetupRetrieveInput,
+  outputSchema: UsersTwoFactorStartSetupRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

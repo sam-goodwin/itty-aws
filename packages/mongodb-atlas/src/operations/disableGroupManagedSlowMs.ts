@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DisableGroupManagedSlowMsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable",
-    }),
-  );
+export const DisableGroupManagedSlowMsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable",
+  }),
+);
 export type DisableGroupManagedSlowMsInput =
   typeof DisableGroupManagedSlowMsInput.Type;
 
 // Output Schema
-export const DisableGroupManagedSlowMsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DisableGroupManagedSlowMsOutput = /*@__PURE__*/ Schema.Void;
 export type DisableGroupManagedSlowMsOutput =
   typeof DisableGroupManagedSlowMsOutput.Type;
 
@@ -36,10 +34,8 @@ export type DisableGroupManagedSlowMsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const disableGroupManagedSlowMs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DisableGroupManagedSlowMsInput,
-    outputSchema: DisableGroupManagedSlowMsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const disableGroupManagedSlowMs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisableGroupManagedSlowMsInput,
+  outputSchema: DisableGroupManagedSlowMsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const FederatedIdentityCredentialsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type FederatedIdentityCredentialsCreateOrUpdateInput =
 
 // Output Schema
 export const FederatedIdentityCredentialsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -60,13 +60,13 @@ export type FederatedIdentityCredentialsCreateOrUpdateOutput =
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
 export const FederatedIdentityCredentialsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FederatedIdentityCredentialsCreateOrUpdateInput,
     outputSchema: FederatedIdentityCredentialsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const FederatedIdentityCredentialsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -83,7 +83,7 @@ export type FederatedIdentityCredentialsDeleteInput =
 
 // Output Schema
 export const FederatedIdentityCredentialsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type FederatedIdentityCredentialsDeleteOutput =
   typeof FederatedIdentityCredentialsDeleteOutput.Type;
 
@@ -97,31 +97,33 @@ export type FederatedIdentityCredentialsDeleteOutput =
  * @param resourceName - The name of the identity resource.
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
-export const FederatedIdentityCredentialsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FederatedIdentityCredentialsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FederatedIdentityCredentialsDeleteInput,
     outputSchema: FederatedIdentityCredentialsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const FederatedIdentityCredentialsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FederatedIdentityCredentialsGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     federatedIdentityCredentialResourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
+  }),
+);
 export type FederatedIdentityCredentialsGetInput =
   typeof FederatedIdentityCredentialsGetInput.Type;
 
 // Output Schema
 export const FederatedIdentityCredentialsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -153,14 +155,13 @@ export type FederatedIdentityCredentialsGetOutput =
  * @param resourceName - The name of the identity resource.
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
-export const FederatedIdentityCredentialsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FederatedIdentityCredentialsGetInput,
-    outputSchema: FederatedIdentityCredentialsGetOutput,
-  }));
+export const FederatedIdentityCredentialsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FederatedIdentityCredentialsGetInput,
+  outputSchema: FederatedIdentityCredentialsGetOutput,
+}));
 // Input Schema
 export const FederatedIdentityCredentialsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -178,7 +179,7 @@ export type FederatedIdentityCredentialsListInput =
 
 // Output Schema
 export const FederatedIdentityCredentialsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -226,13 +227,12 @@ export type FederatedIdentityCredentialsListOutput =
  * @param $top - Number of records to return.
  * @param $skiptoken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const FederatedIdentityCredentialsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FederatedIdentityCredentialsListInput,
-    outputSchema: FederatedIdentityCredentialsListOutput,
-  }));
+export const FederatedIdentityCredentialsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FederatedIdentityCredentialsListInput,
+  outputSchema: FederatedIdentityCredentialsListOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -243,7 +243,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -267,13 +267,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const SystemAssignedIdentitiesGetByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -287,7 +287,7 @@ export type SystemAssignedIdentitiesGetByScopeInput =
 
 // Output Schema
 export const SystemAssignedIdentitiesGetByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -316,14 +316,15 @@ export type SystemAssignedIdentitiesGetByScopeOutput =
  * @param api-version - The API version to use for this operation.
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const SystemAssignedIdentitiesGetByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SystemAssignedIdentitiesGetByScope = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SystemAssignedIdentitiesGetByScopeInput,
     outputSchema: SystemAssignedIdentitiesGetByScopeOutput,
-  }));
+  }),
+);
 // Input Schema
 export const UserAssignedIdentitiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -339,7 +340,7 @@ export type UserAssignedIdentitiesCreateOrUpdateInput =
 
 // Output Schema
 export const UserAssignedIdentitiesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -370,30 +371,29 @@ export type UserAssignedIdentitiesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the identity resource.
  */
-export const UserAssignedIdentitiesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserAssignedIdentitiesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserAssignedIdentitiesCreateOrUpdateInput,
     outputSchema: UserAssignedIdentitiesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const UserAssignedIdentitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-    }),
-  );
+export const UserAssignedIdentitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+  }),
+);
 export type UserAssignedIdentitiesDeleteInput =
   typeof UserAssignedIdentitiesDeleteInput.Type;
 
 // Output Schema
-export const UserAssignedIdentitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserAssignedIdentitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type UserAssignedIdentitiesDeleteOutput =
   typeof UserAssignedIdentitiesDeleteOutput.Type;
 
@@ -406,48 +406,45 @@ export type UserAssignedIdentitiesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the identity resource.
  */
-export const UserAssignedIdentitiesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserAssignedIdentitiesDeleteInput,
-    outputSchema: UserAssignedIdentitiesDeleteOutput,
-  }));
+export const UserAssignedIdentitiesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserAssignedIdentitiesDeleteInput,
+  outputSchema: UserAssignedIdentitiesDeleteOutput,
+}));
 // Input Schema
-export const UserAssignedIdentitiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-    }),
-  );
+export const UserAssignedIdentitiesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+  }),
+);
 export type UserAssignedIdentitiesGetInput =
   typeof UserAssignedIdentitiesGetInput.Type;
 
 // Output Schema
-export const UserAssignedIdentitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UserAssignedIdentitiesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UserAssignedIdentitiesGetOutput =
   typeof UserAssignedIdentitiesGetOutput.Type;
 
@@ -460,15 +457,13 @@ export type UserAssignedIdentitiesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the identity resource.
  */
-export const UserAssignedIdentitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserAssignedIdentitiesGetInput,
-    outputSchema: UserAssignedIdentitiesGetOutput,
-  }),
-);
+export const UserAssignedIdentitiesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserAssignedIdentitiesGetInput,
+  outputSchema: UserAssignedIdentitiesGetOutput,
+}));
 // Input Schema
 export const UserAssignedIdentitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -483,7 +478,7 @@ export type UserAssignedIdentitiesListByResourceGroupInput =
 
 // Output Schema
 export const UserAssignedIdentitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -528,14 +523,15 @@ export type UserAssignedIdentitiesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const UserAssignedIdentitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserAssignedIdentitiesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserAssignedIdentitiesListByResourceGroupInput,
     outputSchema: UserAssignedIdentitiesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const UserAssignedIdentitiesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -549,7 +545,7 @@ export type UserAssignedIdentitiesListBySubscriptionInput =
 
 // Output Schema
 export const UserAssignedIdentitiesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -593,48 +589,47 @@ export type UserAssignedIdentitiesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserAssignedIdentitiesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserAssignedIdentitiesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserAssignedIdentitiesListBySubscriptionInput,
     outputSchema: UserAssignedIdentitiesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const UserAssignedIdentitiesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-    }),
-  );
+export const UserAssignedIdentitiesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+  }),
+);
 export type UserAssignedIdentitiesUpdateInput =
   typeof UserAssignedIdentitiesUpdateInput.Type;
 
 // Output Schema
-export const UserAssignedIdentitiesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UserAssignedIdentitiesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UserAssignedIdentitiesUpdateOutput =
   typeof UserAssignedIdentitiesUpdateOutput.Type;
 
@@ -647,8 +642,7 @@ export type UserAssignedIdentitiesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the identity resource.
  */
-export const UserAssignedIdentitiesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserAssignedIdentitiesUpdateInput,
-    outputSchema: UserAssignedIdentitiesUpdateOutput,
-  }));
+export const UserAssignedIdentitiesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserAssignedIdentitiesUpdateInput,
+  outputSchema: UserAssignedIdentitiesUpdateOutput,
+}));

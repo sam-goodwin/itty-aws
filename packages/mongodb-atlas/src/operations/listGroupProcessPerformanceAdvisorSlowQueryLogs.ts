@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export type ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
 
 // Output Schema
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
   typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput.Type;
 
@@ -59,7 +59,7 @@ export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
  * @param includeOpType - Whether or not to include the operation type (read/write/command) extracted from the slow query log as a separate field.
  */
 export const listGroupProcessPerformanceAdvisorSlowQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsInput,
     outputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput,
     errors: [Forbidden, NotFound] as const,

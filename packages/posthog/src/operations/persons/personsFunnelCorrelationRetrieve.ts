@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const PersonsFunnelCorrelationRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
   }).pipe(
@@ -18,8 +18,7 @@ export type PersonsFunnelCorrelationRetrieveInput =
   typeof PersonsFunnelCorrelationRetrieveInput.Type;
 
 // Output Schema
-export const PersonsFunnelCorrelationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsFunnelCorrelationRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsFunnelCorrelationRetrieveOutput =
   typeof PersonsFunnelCorrelationRetrieveOutput.Type;
 
@@ -29,9 +28,8 @@ export type PersonsFunnelCorrelationRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsFunnelCorrelationRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PersonsFunnelCorrelationRetrieveInput,
-    outputSchema: PersonsFunnelCorrelationRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const personsFunnelCorrelationRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsFunnelCorrelationRetrieveInput,
+  outputSchema: PersonsFunnelCorrelationRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

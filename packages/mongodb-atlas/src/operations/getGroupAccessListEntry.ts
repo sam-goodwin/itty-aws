@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    entryValue: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
-    }),
-  );
+export const GetGroupAccessListEntryInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  entryValue: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
+  }),
+);
 export type GetGroupAccessListEntryInput =
   typeof GetGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const GetGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupAccessListEntryOutput =
   typeof GetGroupAccessListEntryOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupAccessListEntryOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param entryValue - Access list entry that you want to return from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`).
  */
-export const getGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAccessListEntryInput,
-    outputSchema: GetGroupAccessListEntryOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAccessListEntryInput,
+  outputSchema: GetGroupAccessListEntryOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

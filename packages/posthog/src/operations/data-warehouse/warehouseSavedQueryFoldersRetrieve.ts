@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const WarehouseSavedQueryFoldersRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type WarehouseSavedQueryFoldersRetrieveInput =
 
 // Output Schema
 export const WarehouseSavedQueryFoldersRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -51,9 +51,10 @@ export type WarehouseSavedQueryFoldersRetrieveOutput =
  * @param id - A UUID string identifying this data warehouse saved query folder.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseSavedQueryFoldersRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const warehouseSavedQueryFoldersRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WarehouseSavedQueryFoldersRetrieveInput,
     outputSchema: WarehouseSavedQueryFoldersRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

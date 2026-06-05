@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GetV1DatabasesByDatabaseIdConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -17,7 +17,7 @@ export type GetV1DatabasesByDatabaseIdConnectionsInput =
 
 // Output Schema
 export const GetV1DatabasesByDatabaseIdConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -76,9 +76,10 @@ export type GetV1DatabasesByDatabaseIdConnectionsOutput =
  *
  * Returns all connections for the given database.
  */
-export const getV1DatabasesByDatabaseIdConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1DatabasesByDatabaseIdConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetV1DatabasesByDatabaseIdConnectionsInput,
     outputSchema: GetV1DatabasesByDatabaseIdConnectionsOutput,
     errors: [UnprocessableEntity] as const,
-  }));
+  }),
+);

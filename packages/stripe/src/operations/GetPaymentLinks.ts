@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPaymentLinksInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -19,7 +19,7 @@ export const GetPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPaymentLinksInput = typeof GetPaymentLinksInput.Type;
 
 // Output Schema
-export const GetPaymentLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPaymentLinksOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       active: Schema.Boolean,
@@ -344,7 +344,7 @@ export type GetPaymentLinksOutput = typeof GetPaymentLinksOutput.Type;
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetPaymentLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPaymentLinks = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPaymentLinksInput,
   outputSchema: GetPaymentLinksOutput,
 }));

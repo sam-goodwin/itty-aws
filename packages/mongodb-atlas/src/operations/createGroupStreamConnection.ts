@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
-    }),
-  );
+export const CreateGroupStreamConnectionInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
+  }),
+);
 export type CreateGroupStreamConnectionInput =
   typeof CreateGroupStreamConnectionInput.Type;
 
 // Output Schema
-export const CreateGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupStreamConnectionOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupStreamConnectionOutput =
   typeof CreateGroupStreamConnectionOutput.Type;
 
@@ -38,10 +36,8 @@ export type CreateGroupStreamConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const createGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupStreamConnectionInput,
-    outputSchema: CreateGroupStreamConnectionOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupStreamConnectionInput,
+  outputSchema: CreateGroupStreamConnectionOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

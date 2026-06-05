@@ -3,26 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteApplePayDomainsDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v1/apple_pay/domains/{domain}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const DeleteApplePayDomainsDomainInput = /*@__PURE__*/ Schema.Struct({
+  domain: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/apple_pay/domains/{domain}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type DeleteApplePayDomainsDomainInput =
   typeof DeleteApplePayDomainsDomainInput.Type;
 
 // Output Schema
-export const DeleteApplePayDomainsDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deleted: Schema.Literals(["true"]),
-    id: Schema.String,
-    object: Schema.Literals(["apple_pay_domain"]),
-  });
+export const DeleteApplePayDomainsDomainOutput = /*@__PURE__*/ Schema.Struct({
+  deleted: Schema.Literals(["true"]),
+  id: Schema.String,
+  object: Schema.Literals(["apple_pay_domain"]),
+});
 export type DeleteApplePayDomainsDomainOutput =
   typeof DeleteApplePayDomainsDomainOutput.Type;
 
@@ -30,9 +28,7 @@ export type DeleteApplePayDomainsDomainOutput =
 /**
  * <p>Delete an apple pay domain.</p>
  */
-export const DeleteApplePayDomainsDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteApplePayDomainsDomainInput,
-    outputSchema: DeleteApplePayDomainsDomainOutput,
-  }),
-);
+export const DeleteApplePayDomainsDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteApplePayDomainsDomainInput,
+  outputSchema: DeleteApplePayDomainsDomainOutput,
+}));

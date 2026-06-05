@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -14,7 +14,7 @@ export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExperimentsListInput = typeof ExperimentsListInput.Type;
 
 // Output Schema
-export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1064,7 +1064,7 @@ export type ExperimentsListOutput = typeof ExperimentsListOutput.Type;
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsListInput,
   outputSchema: ExperimentsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

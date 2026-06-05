@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListAllBucketsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListAllBucketsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/storage/buckets" }));
 export type V1ListAllBucketsInput = typeof V1ListAllBucketsInput.Type;
 
 // Output Schema
-export const V1ListAllBucketsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListAllBucketsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -28,7 +28,7 @@ export type V1ListAllBucketsOutput = typeof V1ListAllBucketsOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListAllBuckets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllBuckets = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllBucketsInput,
   outputSchema: V1ListAllBucketsOutput,
   errors: [BadRequest, Forbidden] as const,

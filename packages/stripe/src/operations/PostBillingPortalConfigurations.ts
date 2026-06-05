@@ -3,8 +3,8 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostBillingPortalConfigurationsInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PostBillingPortalConfigurationsInput = /*@__PURE__*/ Schema.Struct(
+  {
     business_profile: Schema.optional(
       Schema.Struct({
         headline: Schema.optional(Schema.Unknown),
@@ -87,13 +87,14 @@ export const PostBillingPortalConfigurationsInput =
     ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.Unknown),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/billing_portal/configurations",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/billing_portal/configurations",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostBillingPortalConfigurationsInput =
   typeof PostBillingPortalConfigurationsInput.Type;
 
@@ -216,8 +217,7 @@ export type PostBillingPortalConfigurationsOutput =
  *
  * <p>Creates a configuration that describes the functionality and behavior of a PortalSession</p>
  */
-export const PostBillingPortalConfigurations =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PostBillingPortalConfigurationsInput,
-    outputSchema: PostBillingPortalConfigurationsOutput,
-  }));
+export const PostBillingPortalConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingPortalConfigurationsInput,
+  outputSchema: PostBillingPortalConfigurationsOutput,
+}));

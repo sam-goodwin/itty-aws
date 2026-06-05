@@ -3,34 +3,32 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostApplicationFeesIdRefundsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    amount: Schema.optional(Schema.Number),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/application_fees/{id}/refunds",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const PostApplicationFeesIdRefundsInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  amount: Schema.optional(Schema.Number),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/application_fees/{id}/refunds",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostApplicationFeesIdRefundsInput =
   typeof PostApplicationFeesIdRefundsInput.Type;
 
 // Output Schema
-export const PostApplicationFeesIdRefundsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amount: Schema.Number,
-    balance_transaction: Schema.Unknown,
-    created: Schema.Number,
-    currency: Schema.String,
-    fee: Schema.Unknown,
-    id: Schema.String,
-    metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    object: Schema.Literals(["fee_refund"]),
-  });
+export const PostApplicationFeesIdRefundsOutput = /*@__PURE__*/ Schema.Struct({
+  amount: Schema.Number,
+  balance_transaction: Schema.Unknown,
+  created: Schema.Number,
+  currency: Schema.String,
+  fee: Schema.Unknown,
+  id: Schema.String,
+  metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  object: Schema.Literals(["fee_refund"]),
+});
 export type PostApplicationFeesIdRefundsOutput =
   typeof PostApplicationFeesIdRefundsOutput.Type;
 
@@ -46,8 +44,7 @@ export type PostApplicationFeesIdRefundsOutput =
  * This method will raise an error when called on an already-refunded application fee,
  * or when trying to refund more money than is left on an application fee.</p>
  */
-export const PostApplicationFeesIdRefunds =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostApplicationFeesIdRefundsInput,
-    outputSchema: PostApplicationFeesIdRefundsOutput,
-  }));
+export const PostApplicationFeesIdRefunds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostApplicationFeesIdRefundsInput,
+  outputSchema: PostApplicationFeesIdRefundsOutput,
+}));

@@ -4,21 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsFunnelRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/funnel/",
-    }),
-  );
+export const PersonsFunnelRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/persons/funnel/" }),
+);
 export type PersonsFunnelRetrieveInput = typeof PersonsFunnelRetrieveInput.Type;
 
 // Output Schema
-export const PersonsFunnelRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsFunnelRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsFunnelRetrieveOutput =
   typeof PersonsFunnelRetrieveOutput.Type;
 
@@ -28,10 +23,8 @@ export type PersonsFunnelRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsFunnelRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsFunnelRetrieveInput,
-    outputSchema: PersonsFunnelRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsFunnelRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsFunnelRetrieveInput,
+  outputSchema: PersonsFunnelRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

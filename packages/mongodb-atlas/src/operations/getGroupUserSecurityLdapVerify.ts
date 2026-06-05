@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupUserSecurityLdapVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    requestId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}",
-    }),
-  );
+export const GetGroupUserSecurityLdapVerifyInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  requestId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}",
+  }),
+);
 export type GetGroupUserSecurityLdapVerifyInput =
   typeof GetGroupUserSecurityLdapVerifyInput.Type;
 
 // Output Schema
-export const GetGroupUserSecurityLdapVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupUserSecurityLdapVerifyOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupUserSecurityLdapVerifyOutput =
   typeof GetGroupUserSecurityLdapVerifyOutput.Type;
 
@@ -38,9 +36,8 @@ export type GetGroupUserSecurityLdapVerifyOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param requestId - Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
  */
-export const getGroupUserSecurityLdapVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupUserSecurityLdapVerifyInput,
-    outputSchema: GetGroupUserSecurityLdapVerifyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const getGroupUserSecurityLdapVerify = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupUserSecurityLdapVerifyInput,
+  outputSchema: GetGroupUserSecurityLdapVerifyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

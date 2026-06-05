@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   updateDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -13,7 +13,7 @@ export const UpdateDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDocumentsInput = typeof UpdateDocumentsInput.Type;
 
 // Output Schema
-export const UpdateDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDocumentsOutput = /*@__PURE__*/ Schema.Struct({
   num_updated: Schema.Number,
 });
 export type UpdateDocumentsOutput = typeof UpdateDocumentsOutput.Type;
@@ -26,7 +26,7 @@ export type UpdateDocumentsOutput = typeof UpdateDocumentsOutput.Type;
  *
  * @param collectionName - The name of the collection to update documents in
  */
-export const updateDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDocumentsInput,
   outputSchema: UpdateDocumentsOutput,
   errors: [BadRequest, NotFound] as const,

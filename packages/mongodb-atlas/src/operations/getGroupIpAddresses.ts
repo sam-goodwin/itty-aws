@@ -4,22 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupIpAddressesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/ipAddresses",
-    }),
-  );
+export const GetGroupIpAddressesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/ipAddresses" }),
+);
 export type GetGroupIpAddressesInput = typeof GetGroupIpAddressesInput.Type;
 
 // Output Schema
-export const GetGroupIpAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupIpAddressesOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupIpAddressesOutput = typeof GetGroupIpAddressesOutput.Type;
 
 // The operation
@@ -34,7 +29,7 @@ export type GetGroupIpAddressesOutput = typeof GetGroupIpAddressesOutput.Type;
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const getGroupIpAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupIpAddresses = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupIpAddressesInput,
   outputSchema: GetGroupIpAddressesOutput,
   errors: [Forbidden, NotFound] as const,

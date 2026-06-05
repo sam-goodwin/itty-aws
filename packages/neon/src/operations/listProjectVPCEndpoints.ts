@@ -3,25 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListProjectVPCEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/projects/{project_id}/vpc_endpoints" }),
-  );
+export const ListProjectVPCEndpointsInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}/vpc_endpoints" }),
+);
 export type ListProjectVPCEndpointsInput =
   typeof ListProjectVPCEndpointsInput.Type;
 
 // Output Schema
-export const ListProjectVPCEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.Array(
-      Schema.Struct({
-        vpc_endpoint_id: Schema.String,
-        label: Schema.String,
-      }),
-    ),
-  });
+export const ListProjectVPCEndpointsOutput = /*@__PURE__*/ Schema.Struct({
+  endpoints: Schema.Array(
+    Schema.Struct({
+      vpc_endpoint_id: Schema.String,
+      label: Schema.String,
+    }),
+  ),
+});
 export type ListProjectVPCEndpointsOutput =
   typeof ListProjectVPCEndpointsOutput.Type;
 
@@ -33,9 +31,7 @@ export type ListProjectVPCEndpointsOutput =
  *
  * @param project_id - The Neon project ID
  */
-export const listProjectVPCEndpoints = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListProjectVPCEndpointsInput,
-    outputSchema: ListProjectVPCEndpointsOutput,
-  }),
-);
+export const listProjectVPCEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListProjectVPCEndpointsInput,
+  outputSchema: ListProjectVPCEndpointsOutput,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const GetWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetWorkflowInput = typeof GetWorkflowInput.Type;
 
 // Output Schema
-export const GetWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   number: Schema.Number,
@@ -44,18 +44,18 @@ export const GetWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ]),
   created_at: Schema.String,
   updated_at: Schema.String,
-  started_at: Schema.NullOr(Schema.String),
-  completed_at: Schema.NullOr(Schema.String),
-  cancelled_at: Schema.NullOr(Schema.String),
-  reversed_at: Schema.NullOr(Schema.String),
-  retried_at: Schema.NullOr(Schema.String),
-  data_copy_completed_at: Schema.NullOr(Schema.String),
-  cutover_at: Schema.NullOr(Schema.String),
+  started_at: Schema.String,
+  completed_at: Schema.String,
+  cancelled_at: Schema.String,
+  reversed_at: Schema.String,
+  retried_at: Schema.String,
+  data_copy_completed_at: Schema.String,
+  cutover_at: Schema.String,
   replicas_switched: Schema.Boolean,
   primaries_switched: Schema.Boolean,
-  switch_replicas_at: Schema.NullOr(Schema.String),
-  switch_primaries_at: Schema.NullOr(Schema.String),
-  verify_data_at: Schema.NullOr(Schema.String),
+  switch_replicas_at: Schema.String,
+  switch_primaries_at: Schema.String,
+  verify_data_at: Schema.String,
   workflow_type: Schema.Literals(["move_tables"]),
   workflow_subtype: Schema.String,
   defer_secondary_keys: Schema.Boolean,
@@ -120,28 +120,28 @@ export const GetWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
   source_keyspace: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
   target_keyspace: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
   global_keyspace: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
 });
 export type GetWorkflowOutput = typeof GetWorkflowOutput.Type;
@@ -154,7 +154,7 @@ export type GetWorkflowOutput = typeof GetWorkflowOutput.Type;
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const getWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getWorkflow = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetWorkflowInput,
   outputSchema: GetWorkflowOutput,
   errors: [Forbidden, NotFound] as const,

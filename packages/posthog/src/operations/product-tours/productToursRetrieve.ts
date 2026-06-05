@@ -4,92 +4,90 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ProductToursRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/product_tours/{id}/",
-    }),
-  );
+export const ProductToursRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/product_tours/{id}/",
+  }),
+);
 export type ProductToursRetrieveInput = typeof ProductToursRetrieveInput.Type;
 
 // Output Schema
-export const ProductToursRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    internal_targeting_flag: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        team_id: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-        key: Schema.optional(Schema.String),
-        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        deleted: Schema.optional(Schema.Boolean),
-        active: Schema.optional(Schema.Boolean),
-        ensure_experience_continuity: Schema.optional(
-          Schema.NullOr(Schema.Boolean),
-        ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
-        evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    linked_flag: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        team_id: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-        key: Schema.optional(Schema.String),
-        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        deleted: Schema.optional(Schema.Boolean),
-        active: Schema.optional(Schema.Boolean),
-        ensure_experience_continuity: Schema.optional(
-          Schema.NullOr(Schema.Boolean),
-        ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
-        evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    targeting_flag_filters: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    content: Schema.optional(Schema.Unknown),
-    draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    has_draft: Schema.optional(Schema.Boolean),
-    auto_launch: Schema.optional(Schema.Boolean),
-    start_date: Schema.optional(Schema.NullOr(Schema.String)),
-    end_date: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.optional(Schema.String),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
+export const ProductToursRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  internal_targeting_flag: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.Number),
+      team_id: Schema.optional(Schema.Number),
+      name: Schema.optional(Schema.String),
+      key: Schema.optional(Schema.String),
+      filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      deleted: Schema.optional(Schema.Boolean),
+      active: Schema.optional(Schema.Boolean),
+      ensure_experience_continuity: Schema.optional(
+        Schema.NullOr(Schema.Boolean),
       ),
+      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      version: Schema.optional(Schema.NullOr(Schema.Number)),
+      evaluation_runtime: Schema.optional(Schema.Unknown),
+      bucketing_identifier: Schema.optional(Schema.Unknown),
+      evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  linked_flag: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.Number),
+      team_id: Schema.optional(Schema.Number),
+      name: Schema.optional(Schema.String),
+      key: Schema.optional(Schema.String),
+      filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      deleted: Schema.optional(Schema.Boolean),
+      active: Schema.optional(Schema.Boolean),
+      ensure_experience_continuity: Schema.optional(
+        Schema.NullOr(Schema.Boolean),
+      ),
+      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      version: Schema.optional(Schema.NullOr(Schema.Number)),
+      evaluation_runtime: Schema.optional(Schema.Unknown),
+      bucketing_identifier: Schema.optional(Schema.Unknown),
+      evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  targeting_flag_filters: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  content: Schema.optional(Schema.Unknown),
+  draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  has_draft: Schema.optional(Schema.Boolean),
+  auto_launch: Schema.optional(Schema.Boolean),
+  start_date: Schema.optional(Schema.NullOr(Schema.String)),
+  end_date: Schema.optional(Schema.NullOr(Schema.String)),
+  created_at: Schema.optional(Schema.String),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    updated_at: Schema.optional(Schema.String),
-    archived: Schema.optional(Schema.Boolean),
-  });
+  ),
+  updated_at: Schema.optional(Schema.String),
+  archived: Schema.optional(Schema.Boolean),
+});
 export type ProductToursRetrieveOutput = typeof ProductToursRetrieveOutput.Type;
 
 // The operation
@@ -98,10 +96,8 @@ export type ProductToursRetrieveOutput = typeof ProductToursRetrieveOutput.Type;
  * @param id - A UUID string identifying this product tour.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const productToursRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductToursRetrieveInput,
-    outputSchema: ProductToursRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const productToursRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductToursRetrieveInput,
+  outputSchema: ProductToursRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

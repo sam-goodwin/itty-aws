@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsClusteringJobsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export type LlmAnalyticsClusteringJobsPartialUpdateInput =
 
 // Output Schema
 export const LlmAnalyticsClusteringJobsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     analysis_level: Schema.optional(
@@ -48,9 +48,10 @@ export type LlmAnalyticsClusteringJobsPartialUpdateOutput =
  * @param id - A UUID string identifying this clustering job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsClusteringJobsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsClusteringJobsPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsClusteringJobsPartialUpdateInput,
     outputSchema: LlmAnalyticsClusteringJobsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

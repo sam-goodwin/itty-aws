@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GetV1DatabasesByDatabaseIdBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
   }).pipe(
@@ -16,7 +16,7 @@ export type GetV1DatabasesByDatabaseIdBackupsInput =
 
 // Output Schema
 export const GetV1DatabasesByDatabaseIdBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -44,9 +44,8 @@ export type GetV1DatabasesByDatabaseIdBackupsOutput =
  *
  * Returns backups for the specified database.
  */
-export const getV1DatabasesByDatabaseIdBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetV1DatabasesByDatabaseIdBackupsInput,
-    outputSchema: GetV1DatabasesByDatabaseIdBackupsOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }));
+export const getV1DatabasesByDatabaseIdBackups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1DatabasesByDatabaseIdBackupsInput,
+  outputSchema: GetV1DatabasesByDatabaseIdBackupsOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

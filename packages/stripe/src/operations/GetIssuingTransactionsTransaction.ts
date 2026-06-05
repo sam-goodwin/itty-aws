@@ -68,8 +68,7 @@ export type GetIssuingTransactionsTransactionOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingTransactionsTransaction =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetIssuingTransactionsTransactionInput,
-    outputSchema: GetIssuingTransactionsTransactionOutput,
-  }));
+export const GetIssuingTransactionsTransaction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingTransactionsTransactionInput,
+  outputSchema: GetIssuingTransactionsTransactionOutput,
+}));

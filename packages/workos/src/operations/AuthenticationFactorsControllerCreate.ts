@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AuthenticationFactorsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.Literals(["generic_otp", "sms", "totp"]),
     phone_number: Schema.optional(Schema.String),
     totp_issuer: Schema.optional(Schema.String),
@@ -18,7 +18,7 @@ export type AuthenticationFactorsControllerCreateInput =
 
 // Output Schema
 export const AuthenticationFactorsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     type: Schema.optional(
@@ -34,7 +34,7 @@ export const AuthenticationFactorsControllerCreateOutput =
       Schema.Struct({
         issuer: Schema.String,
         user: Schema.String,
-        secret: SensitiveString,
+        secret: SensitiveOutputString,
         qr_code: Schema.String,
         uri: Schema.String,
       }),
@@ -51,9 +51,10 @@ export type AuthenticationFactorsControllerCreateOutput =
  *
  * Enrolls an Authentication Factor to be used as an additional factor of authentication. The returned ID should be used to create an authentication Challenge.
  */
-export const AuthenticationFactorsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthenticationFactorsControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthenticationFactorsControllerCreateInput,
     outputSchema: AuthenticationFactorsControllerCreateOutput,
     errors: [UnprocessableEntity] as const,
-  }));
+  }),
+);

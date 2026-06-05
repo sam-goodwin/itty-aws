@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupClusterBackupExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports",
-    }),
-  );
+export const CreateGroupClusterBackupExportInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports",
+  }),
+);
 export type CreateGroupClusterBackupExportInput =
   typeof CreateGroupClusterBackupExportInput.Type;
 
 // Output Schema
-export const CreateGroupClusterBackupExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupClusterBackupExportOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterBackupExportOutput =
   typeof CreateGroupClusterBackupExportOutput.Type;
 
@@ -36,9 +34,8 @@ export type CreateGroupClusterBackupExportOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const createGroupClusterBackupExport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupClusterBackupExportInput,
-    outputSchema: CreateGroupClusterBackupExportOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const createGroupClusterBackupExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupClusterBackupExportInput,
+  outputSchema: CreateGroupClusterBackupExportOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

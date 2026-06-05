@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type ListGroupPrivateEndpointEndpointServiceInput =
 
 // Output Schema
 export const ListGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupPrivateEndpointEndpointServiceOutput =
   typeof ListGroupPrivateEndpointEndpointServiceOutput.Type;
 
@@ -38,9 +38,10 @@ export type ListGroupPrivateEndpointEndpointServiceOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  */
-export const listGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupPrivateEndpointEndpointService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupPrivateEndpointEndpointServiceInput,
     outputSchema: ListGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

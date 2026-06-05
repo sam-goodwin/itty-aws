@@ -9,15 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ApplicationCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
@@ -26,26 +24,25 @@ export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApplicationCreateInput = typeof ApplicationCreateInput.Type;
 
 // Output Schema
-export const ApplicationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationCreateOutput = typeof ApplicationCreateOutput.Type;
 
 // The operation
@@ -58,20 +55,18 @@ export type ApplicationCreateOutput = typeof ApplicationCreateOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param applicationName - The name of the application. This must be unique within the account.
  */
-export const ApplicationCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationCreateInput,
   outputSchema: ApplicationCreateOutput,
 }));
 // Input Schema
-export const ApplicationDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ApplicationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
@@ -80,7 +75,7 @@ export const ApplicationDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApplicationDeleteInput = typeof ApplicationDeleteInput.Type;
 
 // Output Schema
-export const ApplicationDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApplicationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApplicationDeleteOutput = typeof ApplicationDeleteOutput.Type;
 
 // The operation
@@ -93,12 +88,12 @@ export type ApplicationDeleteOutput = typeof ApplicationDeleteOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param applicationName - The name of the application. This must be unique within the account.
  */
-export const ApplicationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationDeleteInput,
   outputSchema: ApplicationDeleteOutput,
 }));
 // Input Schema
-export const ApplicationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -113,7 +108,7 @@ export const ApplicationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApplicationGetInput = typeof ApplicationGetInput.Type;
 
 // Output Schema
-export const ApplicationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -144,12 +139,12 @@ export type ApplicationGetOutput = typeof ApplicationGetOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param applicationName - The name of the application. This must be unique within the account.
  */
-export const ApplicationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationGetInput,
   outputSchema: ApplicationGetOutput,
 }));
 // Input Schema
-export const ApplicationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -164,7 +159,7 @@ export const ApplicationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApplicationListInput = typeof ApplicationListInput.Type;
 
 // Output Schema
-export const ApplicationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -200,49 +195,47 @@ export type ApplicationListOutput = typeof ApplicationListOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param maxresults - The maximum number of items to return in the response.
  */
-export const ApplicationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationListInput,
   outputSchema: ApplicationListOutput,
 }));
 // Input Schema
-export const ApplicationPackageActivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}/activate",
-    }),
-  );
+export const ApplicationPackageActivateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}/activate",
+  }),
+);
 export type ApplicationPackageActivateInput =
   typeof ApplicationPackageActivateInput.Type;
 
 // Output Schema
-export const ApplicationPackageActivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationPackageActivateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationPackageActivateOutput =
   typeof ApplicationPackageActivateOutput.Type;
 
@@ -257,51 +250,47 @@ export type ApplicationPackageActivateOutput =
  * @param applicationName - The name of the application. This must be unique within the account.
  * @param versionName - The version of the application.
  */
-export const ApplicationPackageActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationPackageActivateInput,
-    outputSchema: ApplicationPackageActivateOutput,
+export const ApplicationPackageActivate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationPackageActivateInput,
+  outputSchema: ApplicationPackageActivateOutput,
+}));
+// Input Schema
+export const ApplicationPackageCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
   }),
 );
-// Input Schema
-export const ApplicationPackageCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
-    }),
-  );
 export type ApplicationPackageCreateInput =
   typeof ApplicationPackageCreateInput.Type;
 
 // Output Schema
-export const ApplicationPackageCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationPackageCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationPackageCreateOutput =
   typeof ApplicationPackageCreateOutput.Type;
 
@@ -316,33 +305,29 @@ export type ApplicationPackageCreateOutput =
  * @param applicationName - The name of the application. This must be unique within the account.
  * @param versionName - The version of the application.
  */
-export const ApplicationPackageCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationPackageCreateInput,
-    outputSchema: ApplicationPackageCreateOutput,
+export const ApplicationPackageCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationPackageCreateInput,
+  outputSchema: ApplicationPackageCreateOutput,
+}));
+// Input Schema
+export const ApplicationPackageDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
   }),
 );
-// Input Schema
-export const ApplicationPackageDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
-    }),
-  );
 export type ApplicationPackageDeleteInput =
   typeof ApplicationPackageDeleteInput.Type;
 
 // Output Schema
-export const ApplicationPackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApplicationPackageDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApplicationPackageDeleteOutput =
   typeof ApplicationPackageDeleteOutput.Type;
 
@@ -357,50 +342,46 @@ export type ApplicationPackageDeleteOutput =
  * @param applicationName - The name of the application. This must be unique within the account.
  * @param versionName - The version of the application.
  */
-export const ApplicationPackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationPackageDeleteInput,
-    outputSchema: ApplicationPackageDeleteOutput,
+export const ApplicationPackageDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationPackageDeleteInput,
+  outputSchema: ApplicationPackageDeleteOutput,
+}));
+// Input Schema
+export const ApplicationPackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
   }),
 );
-// Input Schema
-export const ApplicationPackageGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
-    }),
-  );
 export type ApplicationPackageGetInput = typeof ApplicationPackageGetInput.Type;
 
 // Output Schema
-export const ApplicationPackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationPackageGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationPackageGetOutput =
   typeof ApplicationPackageGetOutput.Type;
 
@@ -415,66 +396,52 @@ export type ApplicationPackageGetOutput =
  * @param applicationName - The name of the application. This must be unique within the account.
  * @param versionName - The version of the application.
  */
-export const ApplicationPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationPackageGetInput,
-    outputSchema: ApplicationPackageGetOutput,
+export const ApplicationPackageGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationPackageGetInput,
+  outputSchema: ApplicationPackageGetOutput,
+}));
+// Input Schema
+export const ApplicationPackageListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  maxresults: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions",
   }),
 );
-// Input Schema
-export const ApplicationPackageListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    maxresults: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions",
-    }),
-  );
 export type ApplicationPackageListInput =
   typeof ApplicationPackageListInput.Type;
 
 // Output Schema
-export const ApplicationPackageListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ApplicationPackageListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ApplicationPackageListOutput =
   typeof ApplicationPackageListOutput.Type;
 
@@ -489,22 +456,18 @@ export type ApplicationPackageListOutput =
  * @param applicationName - The name of the application. This must be unique within the account.
  * @param maxresults - The maximum number of items to return in the response.
  */
-export const ApplicationPackageList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationPackageListInput,
-    outputSchema: ApplicationPackageListOutput,
-  }),
-);
+export const ApplicationPackageList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationPackageListInput,
+  outputSchema: ApplicationPackageListOutput,
+}));
 // Input Schema
-export const ApplicationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ApplicationUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
@@ -513,26 +476,25 @@ export const ApplicationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApplicationUpdateInput = typeof ApplicationUpdateInput.Type;
 
 // Output Schema
-export const ApplicationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationUpdateOutput = typeof ApplicationUpdateOutput.Type;
 
 // The operation
@@ -545,46 +507,44 @@ export type ApplicationUpdateOutput = typeof ApplicationUpdateOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param applicationName - The name of the application. This must be unique within the account.
  */
-export const ApplicationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationUpdateInput,
   outputSchema: ApplicationUpdateOutput,
 }));
 // Input Schema
-export const BatchAccountCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
-    }),
-  );
+export const BatchAccountCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+  }),
+);
 export type BatchAccountCreateInput = typeof BatchAccountCreateInput.Type;
 
 // Output Schema
-export const BatchAccountCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BatchAccountCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BatchAccountCreateOutput = typeof BatchAccountCreateOutput.Type;
 
 // The operation
@@ -596,27 +556,26 @@ export type BatchAccountCreateOutput = typeof BatchAccountCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountCreateInput,
   outputSchema: BatchAccountCreateOutput,
 }));
 // Input Schema
-export const BatchAccountDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
-    }),
-  );
+export const BatchAccountDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+  }),
+);
 export type BatchAccountDeleteInput = typeof BatchAccountDeleteInput.Type;
 
 // Output Schema
-export const BatchAccountDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BatchAccountDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BatchAccountDeleteOutput = typeof BatchAccountDeleteOutput.Type;
 
 // The operation
@@ -628,12 +587,12 @@ export type BatchAccountDeleteOutput = typeof BatchAccountDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountDeleteInput,
   outputSchema: BatchAccountDeleteOutput,
 }));
 // Input Schema
-export const BatchAccountGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BatchAccountGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -647,7 +606,7 @@ export const BatchAccountGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BatchAccountGetInput = typeof BatchAccountGetInput.Type;
 
 // Output Schema
-export const BatchAccountGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BatchAccountGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -677,48 +636,46 @@ export type BatchAccountGetOutput = typeof BatchAccountGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountGetInput,
   outputSchema: BatchAccountGetOutput,
 }));
 // Input Schema
-export const BatchAccountGetDetectorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    detectorId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors/{detectorId}",
-    }),
-  );
+export const BatchAccountGetDetectorInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  detectorId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors/{detectorId}",
+  }),
+);
 export type BatchAccountGetDetectorInput =
   typeof BatchAccountGetDetectorInput.Type;
 
 // Output Schema
-export const BatchAccountGetDetectorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BatchAccountGetDetectorOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BatchAccountGetDetectorOutput =
   typeof BatchAccountGetDetectorOutput.Type;
 
@@ -732,34 +689,30 @@ export type BatchAccountGetDetectorOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param detectorId - The name of the detector.
  */
-export const BatchAccountGetDetector = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchAccountGetDetectorInput,
-    outputSchema: BatchAccountGetDetectorOutput,
+export const BatchAccountGetDetector = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchAccountGetDetectorInput,
+  outputSchema: BatchAccountGetDetectorOutput,
+}));
+// Input Schema
+export const BatchAccountGetKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/listKeys",
   }),
 );
-// Input Schema
-export const BatchAccountGetKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/listKeys",
-    }),
-  );
 export type BatchAccountGetKeysInput = typeof BatchAccountGetKeysInput.Type;
 
 // Output Schema
-export const BatchAccountGetKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountName: Schema.optional(Schema.String),
-    primary: Schema.optional(Schema.String),
-    secondary: Schema.optional(Schema.String),
-  });
+export const BatchAccountGetKeysOutput = /*@__PURE__*/ Schema.Struct({
+  accountName: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.String),
+  secondary: Schema.optional(Schema.String),
+});
 export type BatchAccountGetKeysOutput = typeof BatchAccountGetKeysOutput.Type;
 
 // The operation
@@ -773,12 +726,12 @@ export type BatchAccountGetKeysOutput = typeof BatchAccountGetKeysOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountGetKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountGetKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountGetKeysInput,
   outputSchema: BatchAccountGetKeysOutput,
 }));
 // Input Schema
-export const BatchAccountListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BatchAccountListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -790,42 +743,30 @@ export const BatchAccountListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BatchAccountListInput = typeof BatchAccountListInput.Type;
 
 // Output Schema
-export const BatchAccountListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const BatchAccountListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BatchAccountListOutput = typeof BatchAccountListOutput.Type;
 
 // The operation
@@ -835,28 +776,29 @@ export type BatchAccountListOutput = typeof BatchAccountListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const BatchAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountListInput,
   outputSchema: BatchAccountListOutput,
 }));
 // Input Schema
-export const BatchAccountListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BatchAccountListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts",
+  }),
+);
 export type BatchAccountListByResourceGroupInput =
   typeof BatchAccountListByResourceGroupInput.Type;
 
 // Output Schema
 export const BatchAccountListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -901,63 +843,50 @@ export type BatchAccountListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const BatchAccountListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BatchAccountListByResourceGroupInput,
-    outputSchema: BatchAccountListByResourceGroupOutput,
-  }));
+export const BatchAccountListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchAccountListByResourceGroupInput,
+  outputSchema: BatchAccountListByResourceGroupOutput,
+}));
 // Input Schema
-export const BatchAccountListDetectorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors",
-    }),
-  );
+export const BatchAccountListDetectorsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors",
+  }),
+);
 export type BatchAccountListDetectorsInput =
   typeof BatchAccountListDetectorsInput.Type;
 
 // Output Schema
-export const BatchAccountListDetectorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BatchAccountListDetectorsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BatchAccountListDetectorsOutput =
   typeof BatchAccountListDetectorsOutput.Type;
 
@@ -970,15 +899,13 @@ export type BatchAccountListDetectorsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountListDetectors = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchAccountListDetectorsInput,
-    outputSchema: BatchAccountListDetectorsOutput,
-  }),
-);
+export const BatchAccountListDetectors = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchAccountListDetectorsInput,
+  outputSchema: BatchAccountListDetectorsOutput,
+}));
 // Input Schema
 export const BatchAccountListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -994,7 +921,7 @@ export type BatchAccountListOutboundNetworkDependenciesEndpointsInput =
 
 // Output Schema
 export const BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -1030,33 +957,31 @@ export type BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
 export const BatchAccountListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BatchAccountListOutboundNetworkDependenciesEndpointsInput,
     outputSchema: BatchAccountListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
-export const BatchAccountRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/regenerateKeys",
-    }),
-  );
+export const BatchAccountRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/regenerateKeys",
+  }),
+);
 export type BatchAccountRegenerateKeyInput =
   typeof BatchAccountRegenerateKeyInput.Type;
 
 // Output Schema
-export const BatchAccountRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountName: Schema.optional(Schema.String),
-    primary: Schema.optional(Schema.String),
-    secondary: Schema.optional(Schema.String),
-  });
+export const BatchAccountRegenerateKeyOutput = /*@__PURE__*/ Schema.Struct({
+  accountName: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.String),
+  secondary: Schema.optional(Schema.String),
+});
 export type BatchAccountRegenerateKeyOutput =
   typeof BatchAccountRegenerateKeyOutput.Type;
 
@@ -1071,15 +996,13 @@ export type BatchAccountRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchAccountRegenerateKeyInput,
-    outputSchema: BatchAccountRegenerateKeyOutput,
-  }),
-);
+export const BatchAccountRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchAccountRegenerateKeyInput,
+  outputSchema: BatchAccountRegenerateKeyOutput,
+}));
 // Input Schema
 export const BatchAccountSynchronizeAutoStorageKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1095,7 +1018,7 @@ export type BatchAccountSynchronizeAutoStorageKeysInput =
 
 // Output Schema
 export const BatchAccountSynchronizeAutoStorageKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type BatchAccountSynchronizeAutoStorageKeysOutput =
   typeof BatchAccountSynchronizeAutoStorageKeysOutput.Type;
 
@@ -1108,47 +1031,46 @@ export type BatchAccountSynchronizeAutoStorageKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountSynchronizeAutoStorageKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountSynchronizeAutoStorageKeys = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BatchAccountSynchronizeAutoStorageKeysInput,
     outputSchema: BatchAccountSynchronizeAutoStorageKeysOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BatchAccountUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
-    }),
-  );
+export const BatchAccountUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+  }),
+);
 export type BatchAccountUpdateInput = typeof BatchAccountUpdateInput.Type;
 
 // Output Schema
-export const BatchAccountUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BatchAccountUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BatchAccountUpdateOutput = typeof BatchAccountUpdateOutput.Type;
 
 // The operation
@@ -1160,32 +1082,30 @@ export type BatchAccountUpdateOutput = typeof BatchAccountUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
-export const BatchAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BatchAccountUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchAccountUpdateInput,
   outputSchema: BatchAccountUpdateOutput,
 }));
 // Input Schema
-export const LocationCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability",
-    }),
-  );
+export const LocationCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability",
+  }),
+);
 export type LocationCheckNameAvailabilityInput =
   typeof LocationCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const LocationCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const LocationCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type LocationCheckNameAvailabilityOutput =
   typeof LocationCheckNameAvailabilityOutput.Type;
 
@@ -1197,19 +1117,16 @@ export type LocationCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The desired region for the name check.
  */
-export const LocationCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LocationCheckNameAvailabilityInput,
-    outputSchema: LocationCheckNameAvailabilityOutput,
-  }));
+export const LocationCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationCheckNameAvailabilityInput,
+  outputSchema: LocationCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const LocationGetQuotasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const LocationGetQuotasInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/quotas",
@@ -1218,10 +1135,9 @@ export const LocationGetQuotasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LocationGetQuotasInput = typeof LocationGetQuotasInput.Type;
 
 // Output Schema
-export const LocationGetQuotasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountQuota: Schema.optional(Schema.Number),
-  });
+export const LocationGetQuotasOutput = /*@__PURE__*/ Schema.Struct({
+  accountQuota: Schema.optional(Schema.Number),
+});
 export type LocationGetQuotasOutput = typeof LocationGetQuotasOutput.Type;
 
 // The operation
@@ -1232,13 +1148,13 @@ export type LocationGetQuotasOutput = typeof LocationGetQuotasOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The region for which to retrieve Batch service quotas.
  */
-export const LocationGetQuotas = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationGetQuotas = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationGetQuotasInput,
   outputSchema: LocationGetQuotasOutput,
 }));
 // Input Schema
 export const LocationListSupportedVirtualMachineSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1255,7 +1171,7 @@ export type LocationListSupportedVirtualMachineSkusInput =
 
 // Output Schema
 export const LocationListSupportedVirtualMachineSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -1286,14 +1202,15 @@ export type LocationListSupportedVirtualMachineSkusOutput =
  * @param maxresults - The maximum number of items to return in the response.
  * @param $filter - OData filter expression. Valid properties for filtering are "familyName".
  */
-export const LocationListSupportedVirtualMachineSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationListSupportedVirtualMachineSkus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LocationListSupportedVirtualMachineSkusInput,
     outputSchema: LocationListSupportedVirtualMachineSkusOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetworkSecurityPerimeterGetConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1312,7 +1229,7 @@ export type NetworkSecurityPerimeterGetConfigurationInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterGetConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1344,14 +1261,15 @@ export type NetworkSecurityPerimeterGetConfigurationOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
-export const NetworkSecurityPerimeterGetConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkSecurityPerimeterGetConfiguration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetworkSecurityPerimeterGetConfigurationInput,
     outputSchema: NetworkSecurityPerimeterGetConfigurationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetworkSecurityPerimeterListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1367,7 +1285,7 @@ export type NetworkSecurityPerimeterListConfigurationsInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterListConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1414,13 +1332,13 @@ export type NetworkSecurityPerimeterListConfigurationsOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  */
 export const NetworkSecurityPerimeterListConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterListConfigurationsInput,
     outputSchema: NetworkSecurityPerimeterListConfigurationsOutput,
   }));
 // Input Schema
 export const NetworkSecurityPerimeterReconcileConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1439,7 +1357,7 @@ export type NetworkSecurityPerimeterReconcileConfigurationInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterReconcileConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NetworkSecurityPerimeterReconcileConfigurationOutput =
   typeof NetworkSecurityPerimeterReconcileConfigurationOutput.Type;
 
@@ -1454,12 +1372,12 @@ export type NetworkSecurityPerimeterReconcileConfigurationOutput =
  * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
 export const NetworkSecurityPerimeterReconcileConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterReconcileConfigurationInput,
     outputSchema: NetworkSecurityPerimeterReconcileConfigurationOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Batch/operations" }),
@@ -1467,7 +1385,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1494,12 +1412,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PoolCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1514,7 +1432,7 @@ export const PoolCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoolCreateInput = typeof PoolCreateInput.Type;
 
 // Output Schema
-export const PoolCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1547,12 +1465,12 @@ export type PoolCreateOutput = typeof PoolCreateOutput.Type;
  * @param If-Match - The entity state (ETag) version of the pool to update. A value of "*" can be used to apply the operation only if the pool already exists. If omitted, this operation will always be applied.
  * @param If-None-Match - Set to '*' to allow a new pool to be created, but to prevent updating an existing pool. Other values will be ignored.
  */
-export const PoolCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolCreateInput,
   outputSchema: PoolCreateOutput,
 }));
 // Input Schema
-export const PoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1567,7 +1485,7 @@ export const PoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoolDeleteInput = typeof PoolDeleteInput.Type;
 
 // Output Schema
-export const PoolDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PoolDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PoolDeleteOutput = typeof PoolDeleteOutput.Type;
 
 // The operation
@@ -1580,47 +1498,45 @@ export type PoolDeleteOutput = typeof PoolDeleteOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param poolName - The pool name. This must be unique within the account.
  */
-export const PoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolDeleteInput,
   outputSchema: PoolDeleteOutput,
 }));
 // Input Schema
-export const PoolDisableAutoScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}/disableAutoScale",
-    }),
-  );
+export const PoolDisableAutoScaleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}/disableAutoScale",
+  }),
+);
 export type PoolDisableAutoScaleInput = typeof PoolDisableAutoScaleInput.Type;
 
 // Output Schema
-export const PoolDisableAutoScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PoolDisableAutoScaleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PoolDisableAutoScaleOutput = typeof PoolDisableAutoScaleOutput.Type;
 
 // The operation
@@ -1633,14 +1549,12 @@ export type PoolDisableAutoScaleOutput = typeof PoolDisableAutoScaleOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param poolName - The pool name. This must be unique within the account.
  */
-export const PoolDisableAutoScale = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolDisableAutoScaleInput,
-    outputSchema: PoolDisableAutoScaleOutput,
-  }),
-);
+export const PoolDisableAutoScale = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolDisableAutoScaleInput,
+  outputSchema: PoolDisableAutoScaleOutput,
+}));
 // Input Schema
-export const PoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1655,7 +1569,7 @@ export const PoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoolGetInput = typeof PoolGetInput.Type;
 
 // Output Schema
-export const PoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1686,65 +1600,53 @@ export type PoolGetOutput = typeof PoolGetOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param poolName - The pool name. This must be unique within the account.
  */
-export const PoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolGetInput,
   outputSchema: PoolGetOutput,
 }));
 // Input Schema
-export const PoolListByBatchAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    maxresults: Schema.optional(Schema.Number),
-    $select: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools",
-    }),
-  );
+export const PoolListByBatchAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  maxresults: Schema.optional(Schema.Number),
+  $select: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools",
+  }),
+);
 export type PoolListByBatchAccountInput =
   typeof PoolListByBatchAccountInput.Type;
 
 // Output Schema
-export const PoolListByBatchAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PoolListByBatchAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PoolListByBatchAccountOutput =
   typeof PoolListByBatchAccountOutput.Type;
 
@@ -1772,14 +1674,12 @@ properties/interNodeCommunication
 properties/scaleSettings/autoScale
 properties/scaleSettings/fixedScale
  */
-export const PoolListByBatchAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolListByBatchAccountInput,
-    outputSchema: PoolListByBatchAccountOutput,
-  }),
-);
+export const PoolListByBatchAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolListByBatchAccountInput,
+  outputSchema: PoolListByBatchAccountOutput,
+}));
 // Input Schema
-export const PoolStopResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolStopResizeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1794,7 +1694,7 @@ export const PoolStopResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoolStopResizeInput = typeof PoolStopResizeInput.Type;
 
 // Output Schema
-export const PoolStopResizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolStopResizeOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1827,12 +1727,12 @@ export type PoolStopResizeOutput = typeof PoolStopResizeOutput.Type;
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param poolName - The pool name. This must be unique within the account.
  */
-export const PoolStopResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolStopResize = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolStopResizeInput,
   outputSchema: PoolStopResizeOutput,
 }));
 // Input Schema
-export const PoolUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1847,7 +1747,7 @@ export const PoolUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoolUpdateInput = typeof PoolUpdateInput.Type;
 
 // Output Schema
-export const PoolUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1879,30 +1779,30 @@ export type PoolUpdateOutput = typeof PoolUpdateOutput.Type;
  * @param poolName - The pool name. This must be unique within the account.
  * @param If-Match - The entity state (ETag) version of the pool to update. This value can be omitted or set to "*" to apply the operation unconditionally.
  */
-export const PoolUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolUpdateInput,
   outputSchema: PoolUpdateOutput,
 }));
 // Input Schema
-export const PrivateEndpointConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionDeleteOutput =
   typeof PrivateEndpointConnectionDeleteOutput.Type;
 
@@ -1916,49 +1816,46 @@ export type PrivateEndpointConnectionDeleteOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param privateEndpointConnectionName - The private endpoint connection name. This must be unique within the account.
  */
-export const PrivateEndpointConnectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionDeleteInput,
-    outputSchema: PrivateEndpointConnectionDeleteOutput,
-  }));
+export const PrivateEndpointConnectionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionDeleteInput,
+  outputSchema: PrivateEndpointConnectionDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionGetInput =
   typeof PrivateEndpointConnectionGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionGetOutput =
   typeof PrivateEndpointConnectionGetOutput.Type;
 
@@ -1972,14 +1869,13 @@ export type PrivateEndpointConnectionGetOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param privateEndpointConnectionName - The private endpoint connection name. This must be unique within the account.
  */
-export const PrivateEndpointConnectionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionGetInput,
-    outputSchema: PrivateEndpointConnectionGetOutput,
-  }));
+export const PrivateEndpointConnectionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionGetInput,
+  outputSchema: PrivateEndpointConnectionGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionListByBatchAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1996,7 +1892,7 @@ export type PrivateEndpointConnectionListByBatchAccountInput =
 
 // Output Schema
 export const PrivateEndpointConnectionListByBatchAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2044,30 +1940,31 @@ export type PrivateEndpointConnectionListByBatchAccountOutput =
  * @param maxresults - The maximum number of items to return in the response.
  */
 export const PrivateEndpointConnectionListByBatchAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionListByBatchAccountInput,
     outputSchema: PrivateEndpointConnectionListByBatchAccountOutput,
   }));
 // Input Schema
-export const PrivateEndpointConnectionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionUpdateInput =
   typeof PrivateEndpointConnectionUpdateInput.Type;
 
 // Output Schema
 export const PrivateEndpointConnectionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2100,49 +1997,46 @@ export type PrivateEndpointConnectionUpdateOutput =
  * @param privateEndpointConnectionName - The private endpoint connection name. This must be unique within the account.
  * @param If-Match - The state (ETag) version of the private endpoint connection to update. This value can be omitted or set to "*" to apply the operation unconditionally.
  */
-export const PrivateEndpointConnectionUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionUpdateInput,
-    outputSchema: PrivateEndpointConnectionUpdateOutput,
-  }));
+export const PrivateEndpointConnectionUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionUpdateInput,
+  outputSchema: PrivateEndpointConnectionUpdateOutput,
+}));
 // Input Schema
-export const PrivateLinkResourceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateLinkResources/{privateLinkResourceName}",
-    }),
-  );
+export const PrivateLinkResourceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  privateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateLinkResources/{privateLinkResourceName}",
+  }),
+);
 export type PrivateLinkResourceGetInput =
   typeof PrivateLinkResourceGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateLinkResourceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateLinkResourceGetOutput =
   typeof PrivateLinkResourceGetOutput.Type;
 
@@ -2156,15 +2050,13 @@ export type PrivateLinkResourceGetOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param privateLinkResourceName - The private link resource name. This must be unique within the account.
  */
-export const PrivateLinkResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourceGetInput,
-    outputSchema: PrivateLinkResourceGetOutput,
-  }),
-);
+export const PrivateLinkResourceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourceGetInput,
+  outputSchema: PrivateLinkResourceGetOutput,
+}));
 // Input Schema
 export const PrivateLinkResourceListByBatchAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2181,7 +2073,7 @@ export type PrivateLinkResourceListByBatchAccountInput =
 
 // Output Schema
 export const PrivateLinkResourceListByBatchAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2228,8 +2120,9 @@ export type PrivateLinkResourceListByBatchAccountOutput =
  * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
  * @param maxresults - The maximum number of items to return in the response.
  */
-export const PrivateLinkResourceListByBatchAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkResourceListByBatchAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkResourceListByBatchAccountInput,
     outputSchema: PrivateLinkResourceListByBatchAccountOutput,
-  }));
+  }),
+);

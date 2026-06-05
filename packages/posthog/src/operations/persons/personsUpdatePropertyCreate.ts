@@ -4,25 +4,23 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsUpdatePropertyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-    key: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Unknown),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/persons/{id}/update_property/",
-    }),
-  );
+export const PersonsUpdatePropertyCreateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Unknown),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/persons/{id}/update_property/",
+  }),
+);
 export type PersonsUpdatePropertyCreateInput =
   typeof PersonsUpdatePropertyCreateInput.Type;
 
 // Output Schema
-export const PersonsUpdatePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsUpdatePropertyCreateOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsUpdatePropertyCreateOutput =
   typeof PersonsUpdatePropertyCreateOutput.Type;
 
@@ -33,10 +31,8 @@ export type PersonsUpdatePropertyCreateOutput =
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsUpdatePropertyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsUpdatePropertyCreateInput,
-    outputSchema: PersonsUpdatePropertyCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsUpdatePropertyCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsUpdatePropertyCreateInput,
+  outputSchema: PersonsUpdatePropertyCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgGroupsInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -16,7 +16,7 @@ export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgGroupsInput = typeof GetOrgGroupsInput.Type;
 
 // Output Schema
-export const GetOrgGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgGroupsOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgGroupsOutput = typeof GetOrgGroupsOutput.Type;
 
 // The operation
@@ -38,7 +38,7 @@ export type GetOrgGroupsOutput = typeof GetOrgGroupsOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label of the project to use to filter the returned list. Performs a case-insensitive search for a project within the organization which is prefixed by the specified name.
  */
-export const getOrgGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgGroupsInput,
   outputSchema: GetOrgGroupsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

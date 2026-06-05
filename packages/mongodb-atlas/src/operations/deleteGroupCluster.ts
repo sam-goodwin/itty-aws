@@ -4,23 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    retainBackups: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
-    }),
-  );
+export const DeleteGroupClusterInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  retainBackups: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
+  }),
+);
 export type DeleteGroupClusterInput = typeof DeleteGroupClusterInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupClusterOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupClusterOutput = typeof DeleteGroupClusterOutput.Type;
 
 // The operation
@@ -38,7 +37,7 @@ export type DeleteGroupClusterOutput = typeof DeleteGroupClusterOutput.Type;
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param retainBackups - Flag that indicates whether to retain backup snapshots for the deleted dedicated cluster.
  */
-export const deleteGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupClusterInput,
   outputSchema: DeleteGroupClusterOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

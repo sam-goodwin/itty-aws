@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIssuingPhysicalBundlesPhysicalBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     physical_bundle: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetIssuingPhysicalBundlesPhysicalBundleInput =
 
 // Output Schema
 export const GetIssuingPhysicalBundlesPhysicalBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.Struct({
       card_logo: Schema.Literals(["optional", "required", "unsupported"]),
       carrier_text: Schema.Literals(["optional", "required", "unsupported"]),
@@ -43,8 +43,9 @@ export type GetIssuingPhysicalBundlesPhysicalBundleOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingPhysicalBundlesPhysicalBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIssuingPhysicalBundlesPhysicalBundle = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetIssuingPhysicalBundlesPhysicalBundleInput,
     outputSchema: GetIssuingPhysicalBundlesPhysicalBundleOutput,
-  }));
+  }),
+);

@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const FeatureFlagsControllerEnableFlagInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "PUT", path: "/feature-flags/{slug}/enable" }));
 export type FeatureFlagsControllerEnableFlagInput =
@@ -13,7 +13,7 @@ export type FeatureFlagsControllerEnableFlagInput =
 
 // Output Schema
 export const FeatureFlagsControllerEnableFlagOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     slug: Schema.String,
@@ -37,9 +37,8 @@ export type FeatureFlagsControllerEnableFlagOutput =
  *
  * @param slug - A unique key to reference the Feature Flag.
  */
-export const FeatureFlagsControllerEnableFlag =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FeatureFlagsControllerEnableFlagInput,
-    outputSchema: FeatureFlagsControllerEnableFlagOutput,
-    errors: [NotFound] as const,
-  }));
+export const FeatureFlagsControllerEnableFlag = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsControllerEnableFlagInput,
+  outputSchema: FeatureFlagsControllerEnableFlagOutput,
+  errors: [NotFound] as const,
+}));

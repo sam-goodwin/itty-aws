@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostSourcesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   currency: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostSourcesInput = typeof PostSourcesInput.Type;
 
 // Output Schema
-export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostSourcesOutput = /*@__PURE__*/ Schema.Struct({
   ach_credit_transfer: Schema.optional(
     Schema.Struct({
       account_number: Schema.optional(Schema.NullOr(Schema.String)),
@@ -255,7 +255,7 @@ export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       transaction_status_information: Schema.optional(Schema.String),
     }),
   ),
-  client_secret: SensitiveString,
+  client_secret: SensitiveOutputString,
   code_verification: Schema.optional(
     Schema.Struct({
       attempts_remaining: Schema.Number,
@@ -522,7 +522,7 @@ export type PostSourcesOutput = typeof PostSourcesOutput.Type;
  *
  * <p>Creates a new source object.</p>
  */
-export const PostSources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSources = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostSourcesInput,
   outputSchema: PostSourcesOutput,
 }));

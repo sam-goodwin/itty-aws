@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthenticationFactorsControllerChallengeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     sms_template: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/auth/factors/{id}/challenge" }));
@@ -14,7 +14,7 @@ export type AuthenticationFactorsControllerChallengeInput =
 
 // Output Schema
 export const AuthenticationFactorsControllerChallengeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
@@ -34,9 +34,10 @@ export type AuthenticationFactorsControllerChallengeOutput =
  *
  * @param id - The unique ID of the Authentication Factor to be challenged.
  */
-export const AuthenticationFactorsControllerChallenge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthenticationFactorsControllerChallenge = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthenticationFactorsControllerChallengeInput,
     outputSchema: AuthenticationFactorsControllerChallengeOutput,
     errors: [NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

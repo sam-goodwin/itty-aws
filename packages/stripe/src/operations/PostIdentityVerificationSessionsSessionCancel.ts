@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostIdentityVerificationSessionsSessionCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -20,9 +20,9 @@ export type PostIdentityVerificationSessionsSessionCancelInput =
 
 // Output Schema
 export const PostIdentityVerificationSessionsSessionCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     id: Schema.String,
     last_error: Schema.Unknown,
@@ -63,7 +63,7 @@ export type PostIdentityVerificationSessionsSessionCancelOutput =
  * <p>Once canceled, future submission attempts are disabled. This cannot be undone. <a href="/docs/identity/verification-sessions#cancel">Learn more</a>.</p>
  */
 export const PostIdentityVerificationSessionsSessionCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIdentityVerificationSessionsSessionCancelInput,
     outputSchema: PostIdentityVerificationSessionsSessionCancelOutput,
   }));

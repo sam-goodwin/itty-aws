@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const UpdateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export const UpdateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateMonitorInput = typeof UpdateMonitorInput.Type;
 
 // Output Schema
-export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorOutput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export type UpdateMonitorOutput = typeof UpdateMonitorOutput.Type;
 /**
  * Update monitor
  */
-export const updateMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMonitorInput,
   outputSchema: UpdateMonitorOutput,
   errors: [NotFound, UnprocessableEntity] as const,

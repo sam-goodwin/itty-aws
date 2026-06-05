@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupClusterBackupSnapshotShardedClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type ListGroupClusterBackupSnapshotShardedClustersInput =
 
 // Output Schema
 export const ListGroupClusterBackupSnapshotShardedClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterBackupSnapshotShardedClustersOutput =
   typeof ListGroupClusterBackupSnapshotShardedClustersOutput.Type;
 
@@ -39,7 +39,7 @@ export type ListGroupClusterBackupSnapshotShardedClustersOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const listGroupClusterBackupSnapshotShardedClusters =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterBackupSnapshotShardedClustersInput,
     outputSchema: ListGroupClusterBackupSnapshotShardedClustersOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentVerifyMicrodepositsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amounts: Schema.optional(Schema.Array(Schema.Number)),
     descriptor_code: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type PostPaymentIntentsIntentVerifyMicrodepositsInput =
 
 // Output Schema
 export const PostPaymentIntentsIntentVerifyMicrodepositsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -99,7 +99,7 @@ export const PostPaymentIntentsIntentVerifyMicrodepositsOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -231,7 +231,7 @@ export type PostPaymentIntentsIntentVerifyMicrodepositsOutput =
  * <p>Verifies microdeposits on a PaymentIntent object.</p>
  */
 export const PostPaymentIntentsIntentVerifyMicrodeposits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentVerifyMicrodepositsInput,
     outputSchema: PostPaymentIntentsIntentVerifyMicrodepositsOutput,
   }));

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const ListPasswordsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPasswordsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -21,8 +21,7 @@ export const ListPasswordsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPasswordsInput = typeof ListPasswordsInput.Type;
 
 // Output Schema
-export const ListPasswordsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListPasswordsOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -45,13 +44,11 @@ export const ListPasswordsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       access_host_url: Schema.String,
       access_host_regional_url: Schema.String,
       access_host_regional_urls: Schema.Array(Schema.String),
-      actor: Schema.NullOr(
-        Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-      ),
+      actor: Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
+      }),
       region: Schema.Struct({
         id: Schema.String,
         provider: Schema.String,
@@ -61,8 +58,6 @@ export const ListPasswordsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         location: Schema.String,
         slug: Schema.String,
         current_default: Schema.Boolean,
-        mysql_supported: Schema.Boolean,
-        postgresql_supported: Schema.Boolean,
       }),
       username: Schema.String,
       plain_text: SensitiveOutputNullableString,
@@ -91,16 +86,14 @@ export type ListPasswordsOutput = typeof ListPasswordsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listPasswords = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListPasswordsInput,
-    outputSchema: ListPasswordsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listPasswords = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListPasswordsInput,
+  outputSchema: ListPasswordsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

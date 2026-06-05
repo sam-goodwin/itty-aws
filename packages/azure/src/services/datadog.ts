@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const BillingInfoGetInput = /*@__PURE__*/ Schema.Struct({
@@ -58,29 +58,27 @@ export const BillingInfoGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BillingInfoGetOutput,
 }));
 // Input Schema
-export const CreationSupportedGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    datadogOrganizationId: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses/default",
-    }),
-  );
+export const CreationSupportedGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  datadogOrganizationId: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses/default",
+  }),
+);
 export type CreationSupportedGetInput = typeof CreationSupportedGetInput.Type;
 
 // Output Schema
-export const CreationSupportedGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        creationSupported: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  });
+export const CreationSupportedGetOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      creationSupported: Schema.optional(Schema.Boolean),
+    }),
+  ),
+});
 export type CreationSupportedGetOutput = typeof CreationSupportedGetOutput.Type;
 
 // The operation
@@ -96,34 +94,32 @@ export const CreationSupportedGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CreationSupportedGetOutput,
 }));
 // Input Schema
-export const CreationSupportedListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    datadogOrganizationId: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses",
-    }),
-  );
+export const CreationSupportedListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  datadogOrganizationId: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses",
+  }),
+);
 export type CreationSupportedListInput = typeof CreationSupportedListInput.Type;
 
 // Output Schema
-export const CreationSupportedListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            creationSupported: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CreationSupportedListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          creationSupported: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CreationSupportedListOutput =
   typeof CreationSupportedListOutput.Type;
 
@@ -196,73 +192,62 @@ export type MarketplaceAgreementsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MarketplaceAgreementsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const MarketplaceAgreementsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MarketplaceAgreementsCreateOrUpdateInput,
     outputSchema: MarketplaceAgreementsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const MarketplaceAgreementsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements",
-    }),
-  );
+export const MarketplaceAgreementsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements",
+  }),
+);
 export type MarketplaceAgreementsListInput =
   typeof MarketplaceAgreementsListInput.Type;
 
 // Output Schema
-export const MarketplaceAgreementsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            publisher: Schema.optional(Schema.String),
-            product: Schema.optional(Schema.String),
-            plan: Schema.optional(Schema.String),
-            licenseTextLink: Schema.optional(Schema.String),
-            privacyPolicyLink: Schema.optional(Schema.String),
-            retrieveDatetime: Schema.optional(Schema.String),
-            signature: Schema.optional(Schema.String),
-            accepted: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MarketplaceAgreementsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          publisher: Schema.optional(Schema.String),
+          product: Schema.optional(Schema.String),
+          plan: Schema.optional(Schema.String),
+          licenseTextLink: Schema.optional(Schema.String),
+          privacyPolicyLink: Schema.optional(Schema.String),
+          retrieveDatetime: Schema.optional(Schema.String),
+          signature: Schema.optional(Schema.String),
+          accepted: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MarketplaceAgreementsListOutput =
   typeof MarketplaceAgreementsListOutput.Type;
 
@@ -328,25 +313,25 @@ export type MonitoredSubscriptionsCreateorUpdateOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
-export const MonitoredSubscriptionsCreateorUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const MonitoredSubscriptionsCreateorUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MonitoredSubscriptionsCreateorUpdateInput,
     outputSchema: MonitoredSubscriptionsCreateorUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const MonitoredSubscriptionsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-    }),
-  );
+export const MonitoredSubscriptionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+  }),
+);
 export type MonitoredSubscriptionsDeleteInput =
   typeof MonitoredSubscriptionsDeleteInput.Type;
 
@@ -365,49 +350,46 @@ export type MonitoredSubscriptionsDeleteOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
-export const MonitoredSubscriptionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MonitoredSubscriptionsDeleteInput,
-    outputSchema: MonitoredSubscriptionsDeleteOutput,
-  }));
+export const MonitoredSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsDeleteInput,
+  outputSchema: MonitoredSubscriptionsDeleteOutput,
+}));
 // Input Schema
-export const MonitoredSubscriptionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-    }),
-  );
+export const MonitoredSubscriptionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+  }),
+);
 export type MonitoredSubscriptionsGetInput =
   typeof MonitoredSubscriptionsGetInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MonitoredSubscriptionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MonitoredSubscriptionsGetOutput =
   typeof MonitoredSubscriptionsGetOutput.Type;
 
@@ -426,57 +408,45 @@ export const MonitoredSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitoredSubscriptionsGetOutput,
 }));
 // Input Schema
-export const MonitoredSubscriptionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions",
-    }),
-  );
+export const MonitoredSubscriptionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions",
+  }),
+);
 export type MonitoredSubscriptionsListInput =
   typeof MonitoredSubscriptionsListInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MonitoredSubscriptionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitoredSubscriptionsListOutput =
   typeof MonitoredSubscriptionsListOutput.Type;
 
@@ -494,43 +464,41 @@ export const MonitoredSubscriptionsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitoredSubscriptionsListOutput,
 }));
 // Input Schema
-export const MonitoredSubscriptionsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-    }),
-  );
+export const MonitoredSubscriptionsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+  }),
+);
 export type MonitoredSubscriptionsUpdateInput =
   typeof MonitoredSubscriptionsUpdateInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MonitoredSubscriptionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MonitoredSubscriptionsUpdateOutput =
   typeof MonitoredSubscriptionsUpdateOutput.Type;
 
@@ -544,11 +512,10 @@ export type MonitoredSubscriptionsUpdateOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
-export const MonitoredSubscriptionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MonitoredSubscriptionsUpdateInput,
-    outputSchema: MonitoredSubscriptionsUpdateOutput,
-  }));
+export const MonitoredSubscriptionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsUpdateInput,
+  outputSchema: MonitoredSubscriptionsUpdateOutput,
+}));
 // Input Schema
 export const MonitorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -679,28 +646,26 @@ export const MonitorsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitorsGetOutput,
 }));
 // Input Schema
-export const MonitorsGetDefaultKeyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getDefaultKey",
-    }),
-  );
+export const MonitorsGetDefaultKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getDefaultKey",
+  }),
+);
 export type MonitorsGetDefaultKeyInput = typeof MonitorsGetDefaultKeyInput.Type;
 
 // Output Schema
-export const MonitorsGetDefaultKeyOutput =
-  /*@__PURE__*/ Schema.Struct({
-    createdBy: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    key: Schema.String,
-    created: Schema.optional(Schema.String),
-  });
+export const MonitorsGetDefaultKeyOutput = /*@__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  key: Schema.String,
+  created: Schema.optional(Schema.String),
+});
 export type MonitorsGetDefaultKeyOutput =
   typeof MonitorsGetDefaultKeyOutput.Type;
 
@@ -768,33 +733,31 @@ export const MonitorsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListOutput,
 }));
 // Input Schema
-export const MonitorsListApiKeysInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listApiKeys",
-    }),
-  );
+export const MonitorsListApiKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listApiKeys",
+  }),
+);
 export type MonitorsListApiKeysInput = typeof MonitorsListApiKeysInput.Type;
 
 // Output Schema
-export const MonitorsListApiKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        key: Schema.String,
-        created: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MonitorsListApiKeysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      key: Schema.String,
+      created: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitorsListApiKeysOutput = typeof MonitorsListApiKeysOutput.Type;
 
 // The operation
@@ -811,56 +774,44 @@ export const MonitorsListApiKeys = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListApiKeysOutput,
 }));
 // Input Schema
-export const MonitorsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors",
-    }),
-  );
+export const MonitorsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors",
+  }),
+);
 export type MonitorsListByResourceGroupInput =
   typeof MonitorsListByResourceGroupInput.Type;
 
 // Output Schema
-export const MonitorsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MonitorsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitorsListByResourceGroupOutput =
   typeof MonitorsListByResourceGroupOutput.Type;
 
@@ -891,34 +842,33 @@ export const MonitorsListHostsInput = /*@__PURE__*/ Schema.Struct({
 export type MonitorsListHostsInput = typeof MonitorsListHostsInput.Type;
 
 // Output Schema
-export const MonitorsListHostsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        aliases: Schema.optional(Schema.Array(Schema.String)),
-        apps: Schema.optional(Schema.Array(Schema.String)),
-        meta: Schema.optional(
-          Schema.Struct({
-            agentVersion: Schema.optional(Schema.String),
-            installMethod: Schema.optional(
-              Schema.Struct({
-                tool: Schema.optional(Schema.String),
-                toolVersion: Schema.optional(Schema.String),
-                installerVersion: Schema.optional(Schema.String),
-              }),
-            ),
-            logsAgent: Schema.optional(
-              Schema.Struct({
-                transport: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MonitorsListHostsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      aliases: Schema.optional(Schema.Array(Schema.String)),
+      apps: Schema.optional(Schema.Array(Schema.String)),
+      meta: Schema.optional(
+        Schema.Struct({
+          agentVersion: Schema.optional(Schema.String),
+          installMethod: Schema.optional(
+            Schema.Struct({
+              tool: Schema.optional(Schema.String),
+              toolVersion: Schema.optional(Schema.String),
+              installerVersion: Schema.optional(Schema.String),
+            }),
+          ),
+          logsAgent: Schema.optional(
+            Schema.Struct({
+              transport: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitorsListHostsOutput = typeof MonitorsListHostsOutput.Type;
 
 // The operation
@@ -935,32 +885,30 @@ export const MonitorsListHosts = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListHostsOutput,
 }));
 // Input Schema
-export const MonitorsListLinkedResourcesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listLinkedResources",
-    }),
-  );
+export const MonitorsListLinkedResourcesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listLinkedResources",
+  }),
+);
 export type MonitorsListLinkedResourcesInput =
   typeof MonitorsListLinkedResourcesInput.Type;
 
 // Output Schema
-export const MonitorsListLinkedResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MonitorsListLinkedResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitorsListLinkedResourcesOutput =
   typeof MonitorsListLinkedResourcesOutput.Type;
 
@@ -978,24 +926,23 @@ export const MonitorsListLinkedResources = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListLinkedResourcesOutput,
 }));
 // Input Schema
-export const MonitorsListMonitoredResourcesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listMonitoredResources",
-    }),
-  );
+export const MonitorsListMonitoredResourcesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listMonitoredResources",
+  }),
+);
 export type MonitorsListMonitoredResourcesInput =
   typeof MonitorsListMonitoredResourcesInput.Type;
 
 // Output Schema
-export const MonitorsListMonitoredResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const MonitorsListMonitoredResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1006,7 +953,8 @@ export const MonitorsListMonitoredResourcesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type MonitorsListMonitoredResourcesOutput =
   typeof MonitorsListMonitoredResourcesOutput.Type;
 
@@ -1019,32 +967,31 @@ export type MonitorsListMonitoredResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsListMonitoredResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MonitorsListMonitoredResourcesInput,
-    outputSchema: MonitorsListMonitoredResourcesOutput,
-  }));
+export const MonitorsListMonitoredResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsListMonitoredResourcesInput,
+  outputSchema: MonitorsListMonitoredResourcesOutput,
+}));
 // Input Schema
-export const MonitorsRefreshSetPasswordLinkInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/refreshSetPasswordLink",
-    }),
-  );
+export const MonitorsRefreshSetPasswordLinkInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/refreshSetPasswordLink",
+  }),
+);
 export type MonitorsRefreshSetPasswordLinkInput =
   typeof MonitorsRefreshSetPasswordLinkInput.Type;
 
 // Output Schema
-export const MonitorsRefreshSetPasswordLinkOutput =
-  /*@__PURE__*/ Schema.Struct({
-    setPasswordLink: Schema.optional(SensitiveString),
-  });
+export const MonitorsRefreshSetPasswordLinkOutput = /*@__PURE__*/ Schema.Struct(
+  {
+    setPasswordLink: Schema.optional(SensitiveOutputString),
+  },
+);
 export type MonitorsRefreshSetPasswordLinkOutput =
   typeof MonitorsRefreshSetPasswordLinkOutput.Type;
 
@@ -1057,24 +1004,22 @@ export type MonitorsRefreshSetPasswordLinkOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsRefreshSetPasswordLink =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MonitorsRefreshSetPasswordLinkInput,
-    outputSchema: MonitorsRefreshSetPasswordLinkOutput,
-  }));
+export const MonitorsRefreshSetPasswordLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsRefreshSetPasswordLinkInput,
+  outputSchema: MonitorsRefreshSetPasswordLinkOutput,
+}));
 // Input Schema
-export const MonitorsSetDefaultKeyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/setDefaultKey",
-    }),
-  );
+export const MonitorsSetDefaultKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/setDefaultKey",
+  }),
+);
 export type MonitorsSetDefaultKeyInput = typeof MonitorsSetDefaultKeyInput.Type;
 
 // Output Schema
@@ -1183,42 +1128,40 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OrganizationsResubscribeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/resubscribe",
-    }),
-  );
+export const OrganizationsResubscribeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/resubscribe",
+  }),
+);
 export type OrganizationsResubscribeInput =
   typeof OrganizationsResubscribeInput.Type;
 
 // Output Schema
-export const OrganizationsResubscribeOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OrganizationsResubscribeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OrganizationsResubscribeOutput =
   typeof OrganizationsResubscribeOutput.Type;
 
@@ -1286,49 +1229,48 @@ export type SingleSignOnConfigurationsCreateOrUpdateOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - Configuration name
  */
-export const SingleSignOnConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const SingleSignOnConfigurationsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SingleSignOnConfigurationsCreateOrUpdateInput,
     outputSchema: SingleSignOnConfigurationsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SingleSignOnConfigurationsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
-    }),
-  );
+export const SingleSignOnConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
+  }),
+);
 export type SingleSignOnConfigurationsGetInput =
   typeof SingleSignOnConfigurationsGetInput.Type;
 
 // Output Schema
-export const SingleSignOnConfigurationsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SingleSignOnConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SingleSignOnConfigurationsGetOutput =
   typeof SingleSignOnConfigurationsGetOutput.Type;
 
@@ -1342,30 +1284,28 @@ export type SingleSignOnConfigurationsGetOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - Configuration name
  */
-export const SingleSignOnConfigurationsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SingleSignOnConfigurationsGetInput,
-    outputSchema: SingleSignOnConfigurationsGetOutput,
-  }));
+export const SingleSignOnConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SingleSignOnConfigurationsGetInput,
+  outputSchema: SingleSignOnConfigurationsGetOutput,
+}));
 // Input Schema
-export const SingleSignOnConfigurationsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations",
-    }),
-  );
+export const SingleSignOnConfigurationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations",
+  }),
+);
 export type SingleSignOnConfigurationsListInput =
   typeof SingleSignOnConfigurationsListInput.Type;
 
 // Output Schema
-export const SingleSignOnConfigurationsListOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const SingleSignOnConfigurationsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1398,7 +1338,8 @@ export const SingleSignOnConfigurationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type SingleSignOnConfigurationsListOutput =
   typeof SingleSignOnConfigurationsListOutput.Type;
 
@@ -1411,49 +1352,46 @@ export type SingleSignOnConfigurationsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const SingleSignOnConfigurationsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SingleSignOnConfigurationsListInput,
-    outputSchema: SingleSignOnConfigurationsListOutput,
-  }));
+export const SingleSignOnConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SingleSignOnConfigurationsListInput,
+  outputSchema: SingleSignOnConfigurationsListOutput,
+}));
 // Input Schema
-export const TagRulesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    ruleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}",
-    }),
-  );
+export const TagRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  ruleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}",
+  }),
+);
 export type TagRulesCreateOrUpdateInput =
   typeof TagRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const TagRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TagRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TagRulesCreateOrUpdateOutput =
   typeof TagRulesCreateOrUpdateOutput.Type;
 

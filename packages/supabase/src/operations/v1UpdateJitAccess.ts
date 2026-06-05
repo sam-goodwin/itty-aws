@@ -4,67 +4,64 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1UpdateJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    user_id: Schema.String,
-    roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+export const V1UpdateJitAccessInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  user_id: Schema.String,
+  roles: Schema.Array(
+    Schema.Struct({
+      role: Schema.String,
+      expires_at: Schema.optional(Schema.Number),
+      allowed_networks: Schema.optional(
+        Schema.Struct({
+          allowed_cidrs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+          ),
+          allowed_cidrs_v6: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-          }),
-        ),
-      }),
-    ),
-  },
-).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/database/jit" }));
+          ),
+        }),
+      ),
+    }),
+  ),
+}).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/database/jit" }));
 export type V1UpdateJitAccessInput = typeof V1UpdateJitAccessInput.Type;
 
 // Output Schema
-export const V1UpdateJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String,
-    user_roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+export const V1UpdateJitAccessOutput = /*@__PURE__*/ Schema.Struct({
+  user_id: Schema.String,
+  user_roles: Schema.Array(
+    Schema.Struct({
+      role: Schema.String,
+      expires_at: Schema.optional(Schema.Number),
+      allowed_networks: Schema.optional(
+        Schema.Struct({
+          allowed_cidrs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+          ),
+          allowed_cidrs_v6: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-          }),
-        ),
-      }),
-    ),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+});
 export type V1UpdateJitAccessOutput = typeof V1UpdateJitAccessOutput.Type;
 
 // The operation
@@ -75,7 +72,7 @@ export type V1UpdateJitAccessOutput = typeof V1UpdateJitAccessOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1UpdateJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1UpdateJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UpdateJitAccessInput,
   outputSchema: V1UpdateJitAccessOutput,
   errors: [BadRequest, Forbidden] as const,

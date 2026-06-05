@@ -5,7 +5,7 @@ import { Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationResourcesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -23,7 +23,7 @@ export type AuthorizationResourcesControllerListInput =
 
 // Output Schema
 export const AuthorizationResourcesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -69,9 +69,10 @@ export type AuthorizationResourcesControllerListOutput =
  * @param parent_external_id - Filter resources by parent external ID. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.
  * @param search - Search resources by name.
  */
-export const AuthorizationResourcesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationResourcesControllerList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationResourcesControllerListInput,
     outputSchema: AuthorizationResourcesControllerListOutput,
     errors: [Forbidden, UnprocessableEntity] as const,
-  }));
+  }),
+);

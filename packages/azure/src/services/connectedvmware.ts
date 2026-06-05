@@ -7,10 +7,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateInput = /*@__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -21,7 +21,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
 
 // Output Schema
-export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -97,12 +97,12 @@ export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
  *
  * @param clusterName - Name of the cluster.
  */
-export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
   outputSchema: ClustersCreateOutput,
 }));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -114,7 +114,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -126,12 +126,12 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param clusterName - Name of the cluster.
  * @param force - Whether force delete was specified.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -142,7 +142,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -218,14 +218,12 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  *
  * @param clusterName - Name of the cluster.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
@@ -234,7 +232,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ClustersListInput = typeof ClustersListInput.Type;
 
 // Output Schema
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -313,104 +311,94 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
  *
  * List of clusters in a subscription.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
-export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
-    }),
-  );
+export const ClustersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
+  }),
+);
 export type ClustersListByResourceGroupInput =
   typeof ClustersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
+export const ClustersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
           ),
-          customResourceName: Schema.optional(Schema.String),
-          usedMemoryGB: Schema.optional(Schema.Number),
-          totalMemoryGB: Schema.optional(Schema.Number),
-          usedCpuMHz: Schema.optional(Schema.Number),
-          totalCpuMHz: Schema.optional(Schema.Number),
-          datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-          networkIds: Schema.optional(Schema.Array(Schema.String)),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        customResourceName: Schema.optional(Schema.String),
+        usedMemoryGB: Schema.optional(Schema.Number),
+        totalMemoryGB: Schema.optional(Schema.Number),
+        usedCpuMHz: Schema.optional(Schema.Number),
+        totalCpuMHz: Schema.optional(Schema.Number),
+        datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+        networkIds: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
 
@@ -420,14 +408,12 @@ export type ClustersListByResourceGroupOutput =
  *
  * List of clusters in a resource group.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -438,7 +424,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -514,12 +500,12 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  *
  * @param clusterName - Name of the cluster.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
-export const DatastoresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresCreateInput = /*@__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -530,70 +516,68 @@ export const DatastoresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresCreateInput = typeof DatastoresCreateInput.Type;
 
 // Output Schema
-export const DatastoresCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const DatastoresCreateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      customResourceName: Schema.optional(Schema.String),
-      capacityGB: Schema.optional(Schema.Number),
-      freeSpaceGB: Schema.optional(Schema.Number),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    capacityGB: Schema.optional(Schema.Number),
+    freeSpaceGB: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  },
-);
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type DatastoresCreateOutput = typeof DatastoresCreateOutput.Type;
 
 // The operation
@@ -604,12 +588,12 @@ export type DatastoresCreateOutput = typeof DatastoresCreateOutput.Type;
  *
  * @param datastoreName - Name of the datastore.
  */
-export const DatastoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresCreateInput,
   outputSchema: DatastoresCreateOutput,
 }));
 // Input Schema
-export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresDeleteInput = /*@__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -621,7 +605,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
 
 // Output Schema
-export const DatastoresDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatastoresDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
 
 // The operation
@@ -633,12 +617,12 @@ export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
  * @param datastoreName - Name of the datastore.
  * @param force - Whether force delete was specified.
  */
-export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresDeleteInput,
   outputSchema: DatastoresDeleteOutput,
 }));
 // Input Schema
-export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetInput = /*@__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -649,7 +633,7 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresGetInput = typeof DatastoresGetInput.Type;
 
 // Output Schema
-export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -721,14 +705,12 @@ export type DatastoresGetOutput = typeof DatastoresGetOutput.Type;
  *
  * @param datastoreName - Name of the datastore.
  */
-export const DatastoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresGetInput,
   outputSchema: DatastoresGetOutput,
 }));
 // Input Schema
-export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DatastoresListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
@@ -737,7 +719,7 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DatastoresListInput = typeof DatastoresListInput.Type;
 
 // Output Schema
-export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -812,100 +794,90 @@ export type DatastoresListOutput = typeof DatastoresListOutput.Type;
  *
  * List of datastores in a subscription.
  */
-export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresListInput,
   outputSchema: DatastoresListOutput,
 }));
 // Input Schema
-export const DatastoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
-    }),
-  );
+export const DatastoresListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
+  }),
+);
 export type DatastoresListByResourceGroupInput =
   typeof DatastoresListByResourceGroupInput.Type;
 
 // Output Schema
-export const DatastoresListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
+export const DatastoresListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
           ),
-          customResourceName: Schema.optional(Schema.String),
-          capacityGB: Schema.optional(Schema.Number),
-          freeSpaceGB: Schema.optional(Schema.Number),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        customResourceName: Schema.optional(Schema.String),
+        capacityGB: Schema.optional(Schema.Number),
+        freeSpaceGB: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DatastoresListByResourceGroupOutput =
   typeof DatastoresListByResourceGroupOutput.Type;
 
@@ -915,13 +887,12 @@ export type DatastoresListByResourceGroupOutput =
  *
  * List of datastores in a resource group.
  */
-export const DatastoresListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatastoresListByResourceGroupInput,
-    outputSchema: DatastoresListByResourceGroupOutput,
-  }));
+export const DatastoresListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatastoresListByResourceGroupInput,
+  outputSchema: DatastoresListByResourceGroupOutput,
+}));
 // Input Schema
-export const DatastoresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresUpdateInput = /*@__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -932,70 +903,68 @@ export const DatastoresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresUpdateInput = typeof DatastoresUpdateInput.Type;
 
 // Output Schema
-export const DatastoresUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const DatastoresUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      customResourceName: Schema.optional(Schema.String),
-      capacityGB: Schema.optional(Schema.Number),
-      freeSpaceGB: Schema.optional(Schema.Number),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    capacityGB: Schema.optional(Schema.Number),
+    freeSpaceGB: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  },
-);
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type DatastoresUpdateOutput = typeof DatastoresUpdateOutput.Type;
 
 // The operation
@@ -1006,12 +975,12 @@ export type DatastoresUpdateOutput = typeof DatastoresUpdateOutput.Type;
  *
  * @param datastoreName - Name of the datastore.
  */
-export const DatastoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresUpdateInput,
   outputSchema: DatastoresUpdateOutput,
 }));
 // Input Schema
-export const HostsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsCreateInput = /*@__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1022,7 +991,7 @@ export const HostsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsCreateInput = typeof HostsCreateInput.Type;
 
 // Output Schema
-export const HostsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsCreateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -1098,12 +1067,12 @@ export type HostsCreateOutput = typeof HostsCreateOutput.Type;
  *
  * @param hostName - Name of the host.
  */
-export const HostsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsCreateInput,
   outputSchema: HostsCreateOutput,
 }));
 // Input Schema
-export const HostsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsDeleteInput = /*@__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -1115,7 +1084,7 @@ export const HostsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsDeleteInput = typeof HostsDeleteInput.Type;
 
 // Output Schema
-export const HostsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HostsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HostsDeleteOutput = typeof HostsDeleteOutput.Type;
 
 // The operation
@@ -1127,12 +1096,12 @@ export type HostsDeleteOutput = typeof HostsDeleteOutput.Type;
  * @param hostName - Name of the host.
  * @param force - Whether force delete was specified.
  */
-export const HostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsDeleteInput,
   outputSchema: HostsDeleteOutput,
 }));
 // Input Schema
-export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetInput = /*@__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1143,7 +1112,7 @@ export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsGetInput = typeof HostsGetInput.Type;
 
 // Output Schema
-export const HostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -1219,14 +1188,12 @@ export type HostsGetOutput = typeof HostsGetOutput.Type;
  *
  * @param hostName - Name of the host.
  */
-export const HostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsGetInput,
   outputSchema: HostsGetOutput,
 }));
 // Input Schema
-export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const HostsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
@@ -1235,7 +1202,7 @@ export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type HostsListInput = typeof HostsListInput.Type;
 
 // Output Schema
-export const HostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -1314,104 +1281,94 @@ export type HostsListOutput = typeof HostsListOutput.Type;
  *
  * List of hosts in a subscription.
  */
-export const HostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsListInput,
   outputSchema: HostsListOutput,
 }));
 // Input Schema
-export const HostsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
-    }),
-  );
+export const HostsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
+  }),
+);
 export type HostsListByResourceGroupInput =
   typeof HostsListByResourceGroupInput.Type;
 
 // Output Schema
-export const HostsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
+export const HostsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
           ),
-          customResourceName: Schema.optional(Schema.String),
-          overallMemoryUsageGB: Schema.optional(Schema.Number),
-          memorySizeGB: Schema.optional(Schema.Number),
-          overallCpuUsageMHz: Schema.optional(Schema.Number),
-          cpuMhz: Schema.optional(Schema.Number),
-          datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-          networkIds: Schema.optional(Schema.Array(Schema.String)),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        customResourceName: Schema.optional(Schema.String),
+        overallMemoryUsageGB: Schema.optional(Schema.Number),
+        memorySizeGB: Schema.optional(Schema.Number),
+        overallCpuUsageMHz: Schema.optional(Schema.Number),
+        cpuMhz: Schema.optional(Schema.Number),
+        datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+        networkIds: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HostsListByResourceGroupOutput =
   typeof HostsListByResourceGroupOutput.Type;
 
@@ -1421,14 +1378,12 @@ export type HostsListByResourceGroupOutput =
  *
  * List of hosts in a resource group.
  */
-export const HostsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HostsListByResourceGroupInput,
-    outputSchema: HostsListByResourceGroupOutput,
-  }),
-);
+export const HostsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HostsListByResourceGroupInput,
+  outputSchema: HostsListByResourceGroupOutput,
+}));
 // Input Schema
-export const HostsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsUpdateInput = /*@__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1439,7 +1394,7 @@ export const HostsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsUpdateInput = typeof HostsUpdateInput.Type;
 
 // Output Schema
-export const HostsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     vCenterId: Schema.optional(Schema.String),
@@ -1515,44 +1470,42 @@ export type HostsUpdateOutput = typeof HostsUpdateOutput.Type;
  *
  * @param hostName - Name of the host.
  */
-export const HostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsUpdateInput,
   outputSchema: HostsUpdateOutput,
 }));
 // Input Schema
-export const InventoryItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    inventoryItemName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
-    }),
-  );
+export const InventoryItemsCreateInput = /*@__PURE__*/ Schema.Struct({
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  inventoryItemName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
+  }),
+);
 export type InventoryItemsCreateInput = typeof InventoryItemsCreateInput.Type;
 
 // Output Schema
-export const InventoryItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InventoryItemsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
 
 // The operation
@@ -1564,28 +1517,24 @@ export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
  */
-export const InventoryItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InventoryItemsCreateInput,
-    outputSchema: InventoryItemsCreateOutput,
+export const InventoryItemsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsCreateInput,
+  outputSchema: InventoryItemsCreateOutput,
+}));
+// Input Schema
+export const InventoryItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  inventoryItemName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
   }),
 );
-// Input Schema
-export const InventoryItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    inventoryItemName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
-    }),
-  );
 export type InventoryItemsDeleteInput = typeof InventoryItemsDeleteInput.Type;
 
 // Output Schema
-export const InventoryItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InventoryItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
 
 // The operation
@@ -1597,19 +1546,15 @@ export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
  */
-export const InventoryItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InventoryItemsDeleteInput,
-    outputSchema: InventoryItemsDeleteOutput,
-  }),
-);
+export const InventoryItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsDeleteInput,
+  outputSchema: InventoryItemsDeleteOutput,
+}));
 // Input Schema
-export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    inventoryItemName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const InventoryItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  inventoryItemName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
@@ -1618,26 +1563,25 @@ export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InventoryItemsGetInput = typeof InventoryItemsGetInput.Type;
 
 // Output Schema
-export const InventoryItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InventoryItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
 
 // The operation
@@ -1649,59 +1593,47 @@ export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
  */
-export const InventoryItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InventoryItemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InventoryItemsGetInput,
   outputSchema: InventoryItemsGetOutput,
 }));
 // Input Schema
-export const InventoryItemsListByVCenterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vcenterName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems",
-    }),
-  );
+export const InventoryItemsListByVCenterInput = /*@__PURE__*/ Schema.Struct({
+  vcenterName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems",
+  }),
+);
 export type InventoryItemsListByVCenterInput =
   typeof InventoryItemsListByVCenterInput.Type;
 
 // Output Schema
-export const InventoryItemsListByVCenterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const InventoryItemsListByVCenterOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type InventoryItemsListByVCenterOutput =
   typeof InventoryItemsListByVCenterOutput.Type;
 
@@ -1713,16 +1645,12 @@ export type InventoryItemsListByVCenterOutput =
  *
  * @param vcenterName - Name of the vCenter.
  */
-export const InventoryItemsListByVCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InventoryItemsListByVCenterInput,
-    outputSchema: InventoryItemsListByVCenterOutput,
-  }),
-);
+export const InventoryItemsListByVCenter = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsListByVCenterInput,
+  outputSchema: InventoryItemsListByVCenterOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ConnectedVMwarevSphere/operations",
@@ -1731,7 +1659,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -1754,96 +1682,94 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Returns list of all operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ResourcePoolsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourcePoolName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
-    }),
-  );
+export const ResourcePoolsCreateInput = /*@__PURE__*/ Schema.Struct({
+  resourcePoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+  }),
+);
 export type ResourcePoolsCreateInput = typeof ResourcePoolsCreateInput.Type;
 
 // Output Schema
-export const ResourcePoolsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      cpuSharesLevel: Schema.optional(Schema.String),
-      cpuReservationMHz: Schema.optional(Schema.Number),
-      cpuLimitMHz: Schema.optional(Schema.Number),
-      memSharesLevel: Schema.optional(Schema.String),
-      memReservationMB: Schema.optional(Schema.Number),
-      memLimitMB: Schema.optional(Schema.Number),
-      memOverallUsageGB: Schema.optional(Schema.Number),
-      memCapacityGB: Schema.optional(Schema.Number),
-      cpuOverallUsageMHz: Schema.optional(Schema.Number),
-      cpuCapacityMHz: Schema.optional(Schema.Number),
-      customResourceName: Schema.optional(Schema.String),
-      datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-      networkIds: Schema.optional(Schema.Array(Schema.String)),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const ResourcePoolsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    cpuSharesLevel: Schema.optional(Schema.String),
+    cpuReservationMHz: Schema.optional(Schema.Number),
+    cpuLimitMHz: Schema.optional(Schema.Number),
+    memSharesLevel: Schema.optional(Schema.String),
+    memReservationMB: Schema.optional(Schema.Number),
+    memLimitMB: Schema.optional(Schema.Number),
+    memOverallUsageGB: Schema.optional(Schema.Number),
+    memCapacityGB: Schema.optional(Schema.Number),
+    cpuOverallUsageMHz: Schema.optional(Schema.Number),
+    cpuCapacityMHz: Schema.optional(Schema.Number),
+    customResourceName: Schema.optional(Schema.String),
+    datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+    networkIds: Schema.optional(Schema.Array(Schema.String)),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type ResourcePoolsCreateOutput = typeof ResourcePoolsCreateOutput.Type;
 
 // The operation
@@ -1854,26 +1780,24 @@ export type ResourcePoolsCreateOutput = typeof ResourcePoolsCreateOutput.Type;
  *
  * @param resourcePoolName - Name of the resourcePool.
  */
-export const ResourcePoolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourcePoolsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsCreateInput,
   outputSchema: ResourcePoolsCreateOutput,
 }));
 // Input Schema
-export const ResourcePoolsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourcePoolName: Schema.String.pipe(T.PathParam()),
-    force: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
-    }),
-  );
+export const ResourcePoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourcePoolName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+  }),
+);
 export type ResourcePoolsDeleteInput = typeof ResourcePoolsDeleteInput.Type;
 
 // Output Schema
-export const ResourcePoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ResourcePoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ResourcePoolsDeleteOutput = typeof ResourcePoolsDeleteOutput.Type;
 
 // The operation
@@ -1885,12 +1809,12 @@ export type ResourcePoolsDeleteOutput = typeof ResourcePoolsDeleteOutput.Type;
  * @param resourcePoolName - Name of the resourcePool.
  * @param force - Whether force delete was specified.
  */
-export const ResourcePoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourcePoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsDeleteInput,
   outputSchema: ResourcePoolsDeleteOutput,
 }));
 // Input Schema
-export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResourcePoolsGetInput = /*@__PURE__*/ Schema.Struct({
   resourcePoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1901,80 +1825,78 @@ export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ResourcePoolsGetInput = typeof ResourcePoolsGetInput.Type;
 
 // Output Schema
-export const ResourcePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      cpuSharesLevel: Schema.optional(Schema.String),
-      cpuReservationMHz: Schema.optional(Schema.Number),
-      cpuLimitMHz: Schema.optional(Schema.Number),
-      memSharesLevel: Schema.optional(Schema.String),
-      memReservationMB: Schema.optional(Schema.Number),
-      memLimitMB: Schema.optional(Schema.Number),
-      memOverallUsageGB: Schema.optional(Schema.Number),
-      memCapacityGB: Schema.optional(Schema.Number),
-      cpuOverallUsageMHz: Schema.optional(Schema.Number),
-      cpuCapacityMHz: Schema.optional(Schema.Number),
-      customResourceName: Schema.optional(Schema.String),
-      datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-      networkIds: Schema.optional(Schema.Array(Schema.String)),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const ResourcePoolsGetOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    cpuSharesLevel: Schema.optional(Schema.String),
+    cpuReservationMHz: Schema.optional(Schema.Number),
+    cpuLimitMHz: Schema.optional(Schema.Number),
+    memSharesLevel: Schema.optional(Schema.String),
+    memReservationMB: Schema.optional(Schema.Number),
+    memLimitMB: Schema.optional(Schema.Number),
+    memOverallUsageGB: Schema.optional(Schema.Number),
+    memCapacityGB: Schema.optional(Schema.Number),
+    cpuOverallUsageMHz: Schema.optional(Schema.Number),
+    cpuCapacityMHz: Schema.optional(Schema.Number),
+    customResourceName: Schema.optional(Schema.String),
+    datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+    networkIds: Schema.optional(Schema.Array(Schema.String)),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  },
-);
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type ResourcePoolsGetOutput = typeof ResourcePoolsGetOutput.Type;
 
 // The operation
@@ -1985,14 +1907,12 @@ export type ResourcePoolsGetOutput = typeof ResourcePoolsGetOutput.Type;
  *
  * @param resourcePoolName - Name of the resourcePool.
  */
-export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourcePoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsGetInput,
   outputSchema: ResourcePoolsGetOutput,
 }));
 // Input Schema
-export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ResourcePoolsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
@@ -2001,94 +1921,83 @@ export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ResourcePoolsListInput = typeof ResourcePoolsListInput.Type;
 
 // Output Schema
-export const ResourcePoolsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          cpuSharesLevel: Schema.optional(Schema.String),
-          cpuReservationMHz: Schema.optional(Schema.Number),
-          cpuLimitMHz: Schema.optional(Schema.Number),
-          memSharesLevel: Schema.optional(Schema.String),
-          memReservationMB: Schema.optional(Schema.Number),
-          memLimitMB: Schema.optional(Schema.Number),
-          memOverallUsageGB: Schema.optional(Schema.Number),
-          memCapacityGB: Schema.optional(Schema.Number),
-          cpuOverallUsageMHz: Schema.optional(Schema.Number),
-          cpuCapacityMHz: Schema.optional(Schema.Number),
-          customResourceName: Schema.optional(Schema.String),
-          datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-          networkIds: Schema.optional(Schema.Array(Schema.String)),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
+export const ResourcePoolsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        cpuSharesLevel: Schema.optional(Schema.String),
+        cpuReservationMHz: Schema.optional(Schema.Number),
+        cpuLimitMHz: Schema.optional(Schema.Number),
+        memSharesLevel: Schema.optional(Schema.String),
+        memReservationMB: Schema.optional(Schema.Number),
+        memLimitMB: Schema.optional(Schema.Number),
+        memOverallUsageGB: Schema.optional(Schema.Number),
+        memCapacityGB: Schema.optional(Schema.Number),
+        cpuOverallUsageMHz: Schema.optional(Schema.Number),
+        cpuCapacityMHz: Schema.optional(Schema.Number),
+        customResourceName: Schema.optional(Schema.String),
+        datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+        networkIds: Schema.optional(Schema.Array(Schema.String)),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
           ),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
 
 // The operation
@@ -2097,13 +2006,13 @@ export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
  *
  * List of resourcePools in a subscription.
  */
-export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourcePoolsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsListInput,
   outputSchema: ResourcePoolsListOutput,
 }));
 // Input Schema
 export const ResourcePoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
@@ -2114,7 +2023,7 @@ export type ResourcePoolsListByResourceGroupInput =
 
 // Output Schema
 export const ResourcePoolsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2210,97 +2119,94 @@ export type ResourcePoolsListByResourceGroupOutput =
  *
  * List of resourcePools in a resource group.
  */
-export const ResourcePoolsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ResourcePoolsListByResourceGroupInput,
-    outputSchema: ResourcePoolsListByResourceGroupOutput,
-  }));
+export const ResourcePoolsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourcePoolsListByResourceGroupInput,
+  outputSchema: ResourcePoolsListByResourceGroupOutput,
+}));
 // Input Schema
-export const ResourcePoolsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourcePoolName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
-    }),
-  );
+export const ResourcePoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourcePoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+  }),
+);
 export type ResourcePoolsUpdateInput = typeof ResourcePoolsUpdateInput.Type;
 
 // Output Schema
-export const ResourcePoolsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      cpuSharesLevel: Schema.optional(Schema.String),
-      cpuReservationMHz: Schema.optional(Schema.Number),
-      cpuLimitMHz: Schema.optional(Schema.Number),
-      memSharesLevel: Schema.optional(Schema.String),
-      memReservationMB: Schema.optional(Schema.Number),
-      memLimitMB: Schema.optional(Schema.Number),
-      memOverallUsageGB: Schema.optional(Schema.Number),
-      memCapacityGB: Schema.optional(Schema.Number),
-      cpuOverallUsageMHz: Schema.optional(Schema.Number),
-      cpuCapacityMHz: Schema.optional(Schema.Number),
-      customResourceName: Schema.optional(Schema.String),
-      datastoreIds: Schema.optional(Schema.Array(Schema.String)),
-      networkIds: Schema.optional(Schema.Array(Schema.String)),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const ResourcePoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    cpuSharesLevel: Schema.optional(Schema.String),
+    cpuReservationMHz: Schema.optional(Schema.Number),
+    cpuLimitMHz: Schema.optional(Schema.Number),
+    memSharesLevel: Schema.optional(Schema.String),
+    memReservationMB: Schema.optional(Schema.Number),
+    memLimitMB: Schema.optional(Schema.Number),
+    memOverallUsageGB: Schema.optional(Schema.Number),
+    memCapacityGB: Schema.optional(Schema.Number),
+    cpuOverallUsageMHz: Schema.optional(Schema.Number),
+    cpuCapacityMHz: Schema.optional(Schema.Number),
+    customResourceName: Schema.optional(Schema.String),
+    datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+    networkIds: Schema.optional(Schema.Array(Schema.String)),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type ResourcePoolsUpdateOutput = typeof ResourcePoolsUpdateOutput.Type;
 
 // The operation
@@ -2311,12 +2217,12 @@ export type ResourcePoolsUpdateOutput = typeof ResourcePoolsUpdateOutput.Type;
  *
  * @param resourcePoolName - Name of the resourcePool.
  */
-export const ResourcePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourcePoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsUpdateInput,
   outputSchema: ResourcePoolsUpdateOutput,
 }));
 // Input Schema
-export const VCentersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersCreateInput = /*@__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2327,7 +2233,7 @@ export const VCentersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VCentersCreateInput = typeof VCentersCreateInput.Type;
 
 // Output Schema
-export const VCentersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersCreateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     fqdn: Schema.String,
@@ -2339,7 +2245,7 @@ export const VCentersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2404,12 +2310,12 @@ export type VCentersCreateOutput = typeof VCentersCreateOutput.Type;
  *
  * @param vcenterName - Name of the vCenter.
  */
-export const VCentersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VCentersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VCentersCreateInput,
   outputSchema: VCentersCreateOutput,
 }));
 // Input Schema
-export const VCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersDeleteInput = /*@__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -2421,7 +2327,7 @@ export const VCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VCentersDeleteInput = typeof VCentersDeleteInput.Type;
 
 // Output Schema
-export const VCentersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VCentersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VCentersDeleteOutput = typeof VCentersDeleteOutput.Type;
 
 // The operation
@@ -2433,12 +2339,12 @@ export type VCentersDeleteOutput = typeof VCentersDeleteOutput.Type;
  * @param vcenterName - Name of the vCenter.
  * @param force - Whether force delete was specified.
  */
-export const VCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VCentersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VCentersDeleteInput,
   outputSchema: VCentersDeleteOutput,
 }));
 // Input Schema
-export const VCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersGetInput = /*@__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2449,7 +2355,7 @@ export const VCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VCentersGetInput = typeof VCentersGetInput.Type;
 
 // Output Schema
-export const VCentersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersGetOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     fqdn: Schema.String,
@@ -2461,7 +2367,7 @@ export const VCentersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2526,14 +2432,12 @@ export type VCentersGetOutput = typeof VCentersGetOutput.Type;
  *
  * @param vcenterName - Name of the vCenter.
  */
-export const VCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VCentersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VCentersGetInput,
   outputSchema: VCentersGetOutput,
 }));
 // Input Schema
-export const VCentersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const VCentersListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
@@ -2542,7 +2446,7 @@ export const VCentersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type VCentersListInput = typeof VCentersListInput.Type;
 
 // Output Schema
-export const VCentersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -2557,7 +2461,7 @@ export const VCentersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         credentials: Schema.optional(
           Schema.Struct({
             username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
+            password: Schema.optional(SensitiveOutputString),
           }),
         ),
         statuses: Schema.optional(
@@ -2622,105 +2526,95 @@ export type VCentersListOutput = typeof VCentersListOutput.Type;
  *
  * List of vCenters in a subscription.
  */
-export const VCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VCentersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VCentersListInput,
   outputSchema: VCentersListOutput,
 }));
 // Input Schema
-export const VCentersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
-    }),
-  );
+export const VCentersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
+  }),
+);
 export type VCentersListByResourceGroupInput =
   typeof VCentersListByResourceGroupInput.Type;
 
 // Output Schema
-export const VCentersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          fqdn: Schema.String,
-          port: Schema.optional(Schema.Number),
-          version: Schema.optional(Schema.String),
-          instanceUuid: Schema.optional(Schema.String),
-          connectionStatus: Schema.optional(Schema.String),
-          customResourceName: Schema.optional(Schema.String),
-          credentials: Schema.optional(
+export const VCentersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        fqdn: Schema.String,
+        port: Schema.optional(Schema.Number),
+        version: Schema.optional(Schema.String),
+        instanceUuid: Schema.optional(Schema.String),
+        connectionStatus: Schema.optional(Schema.String),
+        customResourceName: Schema.optional(Schema.String),
+        credentials: Schema.optional(
+          Schema.Struct({
+            username: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveOutputString),
+          }),
+        ),
+        statuses: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              username: Schema.optional(Schema.String),
-              password: Schema.optional(SensitiveString),
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
             }),
           ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VCentersListByResourceGroupOutput =
   typeof VCentersListByResourceGroupOutput.Type;
 
@@ -2730,14 +2624,12 @@ export type VCentersListByResourceGroupOutput =
  *
  * List of vCenters in a resource group.
  */
-export const VCentersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VCentersListByResourceGroupInput,
-    outputSchema: VCentersListByResourceGroupOutput,
-  }),
-);
+export const VCentersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VCentersListByResourceGroupInput,
+  outputSchema: VCentersListByResourceGroupOutput,
+}));
 // Input Schema
-export const VCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersUpdateInput = /*@__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2748,7 +2640,7 @@ export const VCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VCentersUpdateInput = typeof VCentersUpdateInput.Type;
 
 // Output Schema
-export const VCentersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VCentersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
     fqdn: Schema.String,
@@ -2760,7 +2652,7 @@ export const VCentersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2825,13 +2717,13 @@ export type VCentersUpdateOutput = typeof VCentersUpdateOutput.Type;
  *
  * @param vcenterName - Name of the vCenter.
  */
-export const VCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VCentersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VCentersUpdateInput,
   outputSchema: VCentersUpdateOutput,
 }));
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
@@ -2842,7 +2734,7 @@ export type VirtualMachineInstancesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2870,28 +2762,27 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
  *
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
  */
-export const VirtualMachineInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineInstancesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineInstancesCreateOrUpdateInput,
     outputSchema: VirtualMachineInstancesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deleteFromHost: Schema.optional(Schema.Boolean),
-    force: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
-    }),
-  );
+export const VirtualMachineInstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  deleteFromHost: Schema.optional(Schema.Boolean),
+  force: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+  }),
+);
 export type VirtualMachineInstancesDeleteInput =
   typeof VirtualMachineInstancesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesDeleteOutput =
   typeof VirtualMachineInstancesDeleteOutput.Type;
 
@@ -2904,43 +2795,42 @@ export type VirtualMachineInstancesDeleteOutput =
  * @param deleteFromHost - Whether to delete the VM from the vCenter.
  * @param force - Whether force delete was specified.
  */
-export const VirtualMachineInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesDeleteInput,
-    outputSchema: VirtualMachineInstancesDeleteOutput,
-  }));
+export const VirtualMachineInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesDeleteInput,
+  outputSchema: VirtualMachineInstancesDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
-    }),
-  );
+export const VirtualMachineInstancesGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+  }),
+);
 export type VirtualMachineInstancesGetInput =
   typeof VirtualMachineInstancesGetInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineInstancesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineInstancesGetOutput =
   typeof VirtualMachineInstancesGetOutput.Type;
 
@@ -2950,59 +2840,47 @@ export type VirtualMachineInstancesGetOutput =
  *
  * Retrieves information about a virtual machine instance.
  */
-export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesGetInput,
-    outputSchema: VirtualMachineInstancesGetOutput,
+export const VirtualMachineInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesGetInput,
+  outputSchema: VirtualMachineInstancesGetOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances",
-    }),
-  );
 export type VirtualMachineInstancesListInput =
   typeof VirtualMachineInstancesListInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const VirtualMachineInstancesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type VirtualMachineInstancesListOutput =
   typeof VirtualMachineInstancesListOutput.Type;
 
@@ -3012,26 +2890,24 @@ export type VirtualMachineInstancesListOutput =
  *
  * Lists all of the virtual machine instances within the specified parent resource.
  */
-export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesListInput,
-    outputSchema: VirtualMachineInstancesListOutput,
+export const VirtualMachineInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesListInput,
+  outputSchema: VirtualMachineInstancesListOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesRestartInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/restart",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/restart",
-    }),
-  );
 export type VirtualMachineInstancesRestartInput =
   typeof VirtualMachineInstancesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesRestartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesRestartOutput =
   typeof VirtualMachineInstancesRestartOutput.Type;
 
@@ -3041,25 +2917,24 @@ export type VirtualMachineInstancesRestartOutput =
  *
  * The operation to restart a virtual machine instance.
  */
-export const VirtualMachineInstancesRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesRestartInput,
-    outputSchema: VirtualMachineInstancesRestartOutput,
-  }));
+export const VirtualMachineInstancesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesRestartInput,
+  outputSchema: VirtualMachineInstancesRestartOutput,
+}));
 // Input Schema
-export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/start",
-    }),
-  );
+export const VirtualMachineInstancesStartInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/start",
+  }),
+);
 export type VirtualMachineInstancesStartInput =
   typeof VirtualMachineInstancesStartInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesStartOutput =
   typeof VirtualMachineInstancesStartOutput.Type;
 
@@ -3069,25 +2944,24 @@ export type VirtualMachineInstancesStartOutput =
  *
  * The operation to start a virtual machine instance.
  */
-export const VirtualMachineInstancesStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesStartInput,
-    outputSchema: VirtualMachineInstancesStartOutput,
-  }));
+export const VirtualMachineInstancesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesStartInput,
+  outputSchema: VirtualMachineInstancesStartOutput,
+}));
 // Input Schema
-export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/stop",
-    }),
-  );
+export const VirtualMachineInstancesStopInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/stop",
+  }),
+);
 export type VirtualMachineInstancesStopInput =
   typeof VirtualMachineInstancesStopInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesStopOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesStopOutput =
   typeof VirtualMachineInstancesStopOutput.Type;
 
@@ -3097,44 +2971,42 @@ export type VirtualMachineInstancesStopOutput =
  *
  * The operation to power off (stop) a virtual machine instance.
  */
-export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesStopInput,
-    outputSchema: VirtualMachineInstancesStopOutput,
+export const VirtualMachineInstancesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesStopInput,
+  outputSchema: VirtualMachineInstancesStopOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
-    }),
-  );
 export type VirtualMachineInstancesUpdateInput =
   typeof VirtualMachineInstancesUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineInstancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineInstancesUpdateOutput =
   typeof VirtualMachineInstancesUpdateOutput.Type;
 
@@ -3144,183 +3016,180 @@ export type VirtualMachineInstancesUpdateOutput =
  *
  * The operation to update a virtual machine instance.
  */
-export const VirtualMachineInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesUpdateInput,
-    outputSchema: VirtualMachineInstancesUpdateOutput,
-  }));
+export const VirtualMachineInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesUpdateInput,
+  outputSchema: VirtualMachineInstancesUpdateOutput,
+}));
 // Input Schema
-export const VirtualMachineTemplatesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesCreateInput = /*@__PURE__*/ Schema.Struct({
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesCreateInput =
   typeof VirtualMachineTemplatesCreateInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      memorySizeMB: Schema.optional(Schema.Number),
-      numCPUs: Schema.optional(Schema.Number),
-      numCoresPerSocket: Schema.optional(Schema.Number),
-      osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
-      osName: Schema.optional(Schema.String),
-      folderPath: Schema.optional(Schema.String),
-      networkInterfaces: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-            macAddress: Schema.optional(Schema.String),
-            networkId: Schema.optional(Schema.String),
-            nicType: Schema.optional(
-              Schema.Literals([
-                "vmxnet3",
-                "vmxnet2",
-                "vmxnet",
-                "e1000",
-                "e1000e",
-                "pcnet32",
-              ]),
-            ),
-            powerOnBoot: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            networkMoRefId: Schema.optional(Schema.String),
-            networkMoName: Schema.optional(Schema.String),
-            deviceKey: Schema.optional(Schema.Number),
-            ipSettings: Schema.optional(
-              Schema.Struct({
-                allocationMethod: Schema.optional(
-                  Schema.Literals([
-                    "unset",
-                    "dynamic",
-                    "static",
-                    "linklayer",
-                    "random",
-                    "other",
-                  ]),
+export const VirtualMachineTemplatesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    memorySizeMB: Schema.optional(Schema.Number),
+    numCPUs: Schema.optional(Schema.Number),
+    numCoresPerSocket: Schema.optional(Schema.Number),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
+    osName: Schema.optional(Schema.String),
+    folderPath: Schema.optional(Schema.String),
+    networkInterfaces: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+          macAddress: Schema.optional(Schema.String),
+          networkId: Schema.optional(Schema.String),
+          nicType: Schema.optional(
+            Schema.Literals([
+              "vmxnet3",
+              "vmxnet2",
+              "vmxnet",
+              "e1000",
+              "e1000e",
+              "pcnet32",
+            ]),
+          ),
+          powerOnBoot: Schema.optional(
+            Schema.Literals(["enabled", "disabled"]),
+          ),
+          networkMoRefId: Schema.optional(Schema.String),
+          networkMoName: Schema.optional(Schema.String),
+          deviceKey: Schema.optional(Schema.Number),
+          ipSettings: Schema.optional(
+            Schema.Struct({
+              allocationMethod: Schema.optional(
+                Schema.Literals([
+                  "unset",
+                  "dynamic",
+                  "static",
+                  "linklayer",
+                  "random",
+                  "other",
+                ]),
+              ),
+              dnsServers: Schema.optional(Schema.Array(Schema.String)),
+              gateway: Schema.optional(Schema.Array(Schema.String)),
+              ipAddress: Schema.optional(Schema.String),
+              subnetMask: Schema.optional(Schema.String),
+              primaryWinsServer: Schema.optional(Schema.String),
+              secondaryWinsServer: Schema.optional(Schema.String),
+              ipAddressInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    allocationMethod: Schema.optional(Schema.String),
+                    ipAddress: Schema.optional(Schema.String),
+                    subnetMask: Schema.optional(Schema.String),
+                  }),
                 ),
-                dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                gateway: Schema.optional(Schema.Array(Schema.String)),
-                ipAddress: Schema.optional(Schema.String),
-                subnetMask: Schema.optional(Schema.String),
-                primaryWinsServer: Schema.optional(Schema.String),
-                secondaryWinsServer: Schema.optional(Schema.String),
-                ipAddressInfo: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      allocationMethod: Schema.optional(Schema.String),
-                      ipAddress: Schema.optional(Schema.String),
-                      subnetMask: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
+              ),
+            }),
+          ),
+        }),
       ),
-      disks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            diskObjectId: Schema.optional(Schema.String),
-            diskSizeGB: Schema.optional(Schema.Number),
-            deviceKey: Schema.optional(Schema.Number),
-            diskMode: Schema.optional(
-              Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-            ),
-            controllerKey: Schema.optional(Schema.Number),
-            unitNumber: Schema.optional(Schema.Number),
-            deviceName: Schema.optional(Schema.String),
-            diskType: Schema.optional(
-              Schema.Literals([
-                "flat",
-                "pmem",
-                "rawphysical",
-                "rawvirtual",
-                "sparse",
-                "sesparse",
-                "unknown",
-              ]),
-            ),
-          }),
-        ),
+    ),
+    disks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          diskObjectId: Schema.optional(Schema.String),
+          diskSizeGB: Schema.optional(Schema.Number),
+          deviceKey: Schema.optional(Schema.Number),
+          diskMode: Schema.optional(
+            Schema.Literals([
+              "persistent",
+              "independent_persistent",
+              "independent_nonpersistent",
+            ]),
+          ),
+          controllerKey: Schema.optional(Schema.Number),
+          unitNumber: Schema.optional(Schema.Number),
+          deviceName: Schema.optional(Schema.String),
+          diskType: Schema.optional(
+            Schema.Literals([
+              "flat",
+              "pmem",
+              "rawphysical",
+              "rawvirtual",
+              "sparse",
+              "sesparse",
+              "unknown",
+            ]),
+          ),
+        }),
       ),
-      customResourceName: Schema.optional(Schema.String),
-      toolsVersionStatus: Schema.optional(Schema.String),
-      toolsVersion: Schema.optional(Schema.String),
-      firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    toolsVersionStatus: Schema.optional(Schema.String),
+    toolsVersion: Schema.optional(Schema.String),
+    firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualMachineTemplatesCreateOutput =
   typeof VirtualMachineTemplatesCreateOutput.Type;
 
@@ -3332,28 +3201,25 @@ export type VirtualMachineTemplatesCreateOutput =
  *
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
  */
-export const VirtualMachineTemplatesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineTemplatesCreateInput,
-    outputSchema: VirtualMachineTemplatesCreateOutput,
-  }));
+export const VirtualMachineTemplatesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesCreateInput,
+  outputSchema: VirtualMachineTemplatesCreateOutput,
+}));
 // Input Schema
-export const VirtualMachineTemplatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-    force: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesDeleteInput =
   typeof VirtualMachineTemplatesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineTemplatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineTemplatesDeleteOutput =
   typeof VirtualMachineTemplatesDeleteOutput.Type;
 
@@ -3366,183 +3232,180 @@ export type VirtualMachineTemplatesDeleteOutput =
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
  * @param force - Whether force delete was specified.
  */
-export const VirtualMachineTemplatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineTemplatesDeleteInput,
-    outputSchema: VirtualMachineTemplatesDeleteOutput,
-  }));
+export const VirtualMachineTemplatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesDeleteInput,
+  outputSchema: VirtualMachineTemplatesDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesGetInput = /*@__PURE__*/ Schema.Struct({
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesGetInput =
   typeof VirtualMachineTemplatesGetInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      memorySizeMB: Schema.optional(Schema.Number),
-      numCPUs: Schema.optional(Schema.Number),
-      numCoresPerSocket: Schema.optional(Schema.Number),
-      osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
-      osName: Schema.optional(Schema.String),
-      folderPath: Schema.optional(Schema.String),
-      networkInterfaces: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-            macAddress: Schema.optional(Schema.String),
-            networkId: Schema.optional(Schema.String),
-            nicType: Schema.optional(
-              Schema.Literals([
-                "vmxnet3",
-                "vmxnet2",
-                "vmxnet",
-                "e1000",
-                "e1000e",
-                "pcnet32",
-              ]),
-            ),
-            powerOnBoot: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            networkMoRefId: Schema.optional(Schema.String),
-            networkMoName: Schema.optional(Schema.String),
-            deviceKey: Schema.optional(Schema.Number),
-            ipSettings: Schema.optional(
-              Schema.Struct({
-                allocationMethod: Schema.optional(
-                  Schema.Literals([
-                    "unset",
-                    "dynamic",
-                    "static",
-                    "linklayer",
-                    "random",
-                    "other",
-                  ]),
+export const VirtualMachineTemplatesGetOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    memorySizeMB: Schema.optional(Schema.Number),
+    numCPUs: Schema.optional(Schema.Number),
+    numCoresPerSocket: Schema.optional(Schema.Number),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
+    osName: Schema.optional(Schema.String),
+    folderPath: Schema.optional(Schema.String),
+    networkInterfaces: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+          macAddress: Schema.optional(Schema.String),
+          networkId: Schema.optional(Schema.String),
+          nicType: Schema.optional(
+            Schema.Literals([
+              "vmxnet3",
+              "vmxnet2",
+              "vmxnet",
+              "e1000",
+              "e1000e",
+              "pcnet32",
+            ]),
+          ),
+          powerOnBoot: Schema.optional(
+            Schema.Literals(["enabled", "disabled"]),
+          ),
+          networkMoRefId: Schema.optional(Schema.String),
+          networkMoName: Schema.optional(Schema.String),
+          deviceKey: Schema.optional(Schema.Number),
+          ipSettings: Schema.optional(
+            Schema.Struct({
+              allocationMethod: Schema.optional(
+                Schema.Literals([
+                  "unset",
+                  "dynamic",
+                  "static",
+                  "linklayer",
+                  "random",
+                  "other",
+                ]),
+              ),
+              dnsServers: Schema.optional(Schema.Array(Schema.String)),
+              gateway: Schema.optional(Schema.Array(Schema.String)),
+              ipAddress: Schema.optional(Schema.String),
+              subnetMask: Schema.optional(Schema.String),
+              primaryWinsServer: Schema.optional(Schema.String),
+              secondaryWinsServer: Schema.optional(Schema.String),
+              ipAddressInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    allocationMethod: Schema.optional(Schema.String),
+                    ipAddress: Schema.optional(Schema.String),
+                    subnetMask: Schema.optional(Schema.String),
+                  }),
                 ),
-                dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                gateway: Schema.optional(Schema.Array(Schema.String)),
-                ipAddress: Schema.optional(Schema.String),
-                subnetMask: Schema.optional(Schema.String),
-                primaryWinsServer: Schema.optional(Schema.String),
-                secondaryWinsServer: Schema.optional(Schema.String),
-                ipAddressInfo: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      allocationMethod: Schema.optional(Schema.String),
-                      ipAddress: Schema.optional(Schema.String),
-                      subnetMask: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
+              ),
+            }),
+          ),
+        }),
       ),
-      disks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            diskObjectId: Schema.optional(Schema.String),
-            diskSizeGB: Schema.optional(Schema.Number),
-            deviceKey: Schema.optional(Schema.Number),
-            diskMode: Schema.optional(
-              Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-            ),
-            controllerKey: Schema.optional(Schema.Number),
-            unitNumber: Schema.optional(Schema.Number),
-            deviceName: Schema.optional(Schema.String),
-            diskType: Schema.optional(
-              Schema.Literals([
-                "flat",
-                "pmem",
-                "rawphysical",
-                "rawvirtual",
-                "sparse",
-                "sesparse",
-                "unknown",
-              ]),
-            ),
-          }),
-        ),
+    ),
+    disks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          diskObjectId: Schema.optional(Schema.String),
+          diskSizeGB: Schema.optional(Schema.Number),
+          deviceKey: Schema.optional(Schema.Number),
+          diskMode: Schema.optional(
+            Schema.Literals([
+              "persistent",
+              "independent_persistent",
+              "independent_nonpersistent",
+            ]),
+          ),
+          controllerKey: Schema.optional(Schema.Number),
+          unitNumber: Schema.optional(Schema.Number),
+          deviceName: Schema.optional(Schema.String),
+          diskType: Schema.optional(
+            Schema.Literals([
+              "flat",
+              "pmem",
+              "rawphysical",
+              "rawvirtual",
+              "sparse",
+              "sesparse",
+              "unknown",
+            ]),
+          ),
+        }),
       ),
-      customResourceName: Schema.optional(Schema.String),
-      toolsVersionStatus: Schema.optional(Schema.String),
-      toolsVersion: Schema.optional(Schema.String),
-      firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    toolsVersionStatus: Schema.optional(Schema.String),
+    toolsVersion: Schema.optional(Schema.String),
+    firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualMachineTemplatesGetOutput =
   typeof VirtualMachineTemplatesGetOutput.Type;
 
@@ -3554,199 +3417,185 @@ export type VirtualMachineTemplatesGetOutput =
  *
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
  */
-export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineTemplatesGetInput,
-    outputSchema: VirtualMachineTemplatesGetOutput,
+export const VirtualMachineTemplatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesGetInput,
+  outputSchema: VirtualMachineTemplatesGetOutput,
+}));
+// Input Schema
+export const VirtualMachineTemplatesListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
   }),
 );
-// Input Schema
-export const VirtualMachineTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
-    }),
-  );
 export type VirtualMachineTemplatesListInput =
   typeof VirtualMachineTemplatesListInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          memorySizeMB: Schema.optional(Schema.Number),
-          numCPUs: Schema.optional(Schema.Number),
-          numCoresPerSocket: Schema.optional(Schema.Number),
-          osType: Schema.optional(
-            Schema.Literals(["Windows", "Linux", "Other"]),
-          ),
-          osName: Schema.optional(Schema.String),
-          folderPath: Schema.optional(Schema.String),
-          networkInterfaces: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                label: Schema.optional(Schema.String),
-                ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-                macAddress: Schema.optional(Schema.String),
-                networkId: Schema.optional(Schema.String),
-                nicType: Schema.optional(
-                  Schema.Literals([
-                    "vmxnet3",
-                    "vmxnet2",
-                    "vmxnet",
-                    "e1000",
-                    "e1000e",
-                    "pcnet32",
-                  ]),
-                ),
-                powerOnBoot: Schema.optional(
-                  Schema.Literals(["enabled", "disabled"]),
-                ),
-                networkMoRefId: Schema.optional(Schema.String),
-                networkMoName: Schema.optional(Schema.String),
-                deviceKey: Schema.optional(Schema.Number),
-                ipSettings: Schema.optional(
-                  Schema.Struct({
-                    allocationMethod: Schema.optional(
-                      Schema.Literals([
-                        "unset",
-                        "dynamic",
-                        "static",
-                        "linklayer",
-                        "random",
-                        "other",
-                      ]),
+export const VirtualMachineTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        memorySizeMB: Schema.optional(Schema.Number),
+        numCPUs: Schema.optional(Schema.Number),
+        numCoresPerSocket: Schema.optional(Schema.Number),
+        osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
+        osName: Schema.optional(Schema.String),
+        folderPath: Schema.optional(Schema.String),
+        networkInterfaces: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              label: Schema.optional(Schema.String),
+              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+              macAddress: Schema.optional(Schema.String),
+              networkId: Schema.optional(Schema.String),
+              nicType: Schema.optional(
+                Schema.Literals([
+                  "vmxnet3",
+                  "vmxnet2",
+                  "vmxnet",
+                  "e1000",
+                  "e1000e",
+                  "pcnet32",
+                ]),
+              ),
+              powerOnBoot: Schema.optional(
+                Schema.Literals(["enabled", "disabled"]),
+              ),
+              networkMoRefId: Schema.optional(Schema.String),
+              networkMoName: Schema.optional(Schema.String),
+              deviceKey: Schema.optional(Schema.Number),
+              ipSettings: Schema.optional(
+                Schema.Struct({
+                  allocationMethod: Schema.optional(
+                    Schema.Literals([
+                      "unset",
+                      "dynamic",
+                      "static",
+                      "linklayer",
+                      "random",
+                      "other",
+                    ]),
+                  ),
+                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
+                  gateway: Schema.optional(Schema.Array(Schema.String)),
+                  ipAddress: Schema.optional(Schema.String),
+                  subnetMask: Schema.optional(Schema.String),
+                  primaryWinsServer: Schema.optional(Schema.String),
+                  secondaryWinsServer: Schema.optional(Schema.String),
+                  ipAddressInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMethod: Schema.optional(Schema.String),
+                        ipAddress: Schema.optional(Schema.String),
+                        subnetMask: Schema.optional(Schema.String),
+                      }),
                     ),
-                    dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                    gateway: Schema.optional(Schema.Array(Schema.String)),
-                    ipAddress: Schema.optional(Schema.String),
-                    subnetMask: Schema.optional(Schema.String),
-                    primaryWinsServer: Schema.optional(Schema.String),
-                    secondaryWinsServer: Schema.optional(Schema.String),
-                    ipAddressInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          allocationMethod: Schema.optional(Schema.String),
-                          ipAddress: Schema.optional(Schema.String),
-                          subnetMask: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+                  ),
+                }),
+              ),
+            }),
           ),
-          disks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                label: Schema.optional(Schema.String),
-                diskObjectId: Schema.optional(Schema.String),
-                diskSizeGB: Schema.optional(Schema.Number),
-                deviceKey: Schema.optional(Schema.Number),
-                diskMode: Schema.optional(
-                  Schema.Literals([
-                    "persistent",
-                    "independent_persistent",
-                    "independent_nonpersistent",
-                  ]),
-                ),
-                controllerKey: Schema.optional(Schema.Number),
-                unitNumber: Schema.optional(Schema.Number),
-                deviceName: Schema.optional(Schema.String),
-                diskType: Schema.optional(
-                  Schema.Literals([
-                    "flat",
-                    "pmem",
-                    "rawphysical",
-                    "rawvirtual",
-                    "sparse",
-                    "sesparse",
-                    "unknown",
-                  ]),
-                ),
-              }),
-            ),
-          ),
-          customResourceName: Schema.optional(Schema.String),
-          toolsVersionStatus: Schema.optional(Schema.String),
-          toolsVersion: Schema.optional(Schema.String),
-          firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        disks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              label: Schema.optional(Schema.String),
+              diskObjectId: Schema.optional(Schema.String),
+              diskSizeGB: Schema.optional(Schema.Number),
+              deviceKey: Schema.optional(Schema.Number),
+              diskMode: Schema.optional(
+                Schema.Literals([
+                  "persistent",
+                  "independent_persistent",
+                  "independent_nonpersistent",
+                ]),
+              ),
+              controllerKey: Schema.optional(Schema.Number),
+              unitNumber: Schema.optional(Schema.Number),
+              deviceName: Schema.optional(Schema.String),
+              diskType: Schema.optional(
+                Schema.Literals([
+                  "flat",
+                  "pmem",
+                  "rawphysical",
+                  "rawvirtual",
+                  "sparse",
+                  "sesparse",
+                  "unknown",
+                ]),
+              ),
+            }),
+          ),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
+        customResourceName: Schema.optional(Schema.String),
+        toolsVersionStatus: Schema.optional(Schema.String),
+        toolsVersion: Schema.optional(Schema.String),
+        firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
+        ),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineTemplatesListOutput =
   typeof VirtualMachineTemplatesListOutput.Type;
 
@@ -3756,15 +3605,13 @@ export type VirtualMachineTemplatesListOutput =
  *
  * List of virtualMachineTemplates in a subscription.
  */
-export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineTemplatesListInput,
-    outputSchema: VirtualMachineTemplatesListOutput,
-  }),
-);
+export const VirtualMachineTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesListInput,
+  outputSchema: VirtualMachineTemplatesListOutput,
+}));
 // Input Schema
 export const VirtualMachineTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
@@ -3775,7 +3622,7 @@ export type VirtualMachineTemplatesListByResourceGroupInput =
 
 // Output Schema
 export const VirtualMachineTemplatesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3959,182 +3806,180 @@ export type VirtualMachineTemplatesListByResourceGroupOutput =
  * List of virtualMachineTemplates in a resource group.
  */
 export const VirtualMachineTemplatesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineTemplatesListByResourceGroupInput,
     outputSchema: VirtualMachineTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
-export const VirtualMachineTemplatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesUpdateInput =
   typeof VirtualMachineTemplatesUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      memorySizeMB: Schema.optional(Schema.Number),
-      numCPUs: Schema.optional(Schema.Number),
-      numCoresPerSocket: Schema.optional(Schema.Number),
-      osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
-      osName: Schema.optional(Schema.String),
-      folderPath: Schema.optional(Schema.String),
-      networkInterfaces: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-            macAddress: Schema.optional(Schema.String),
-            networkId: Schema.optional(Schema.String),
-            nicType: Schema.optional(
-              Schema.Literals([
-                "vmxnet3",
-                "vmxnet2",
-                "vmxnet",
-                "e1000",
-                "e1000e",
-                "pcnet32",
-              ]),
-            ),
-            powerOnBoot: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            networkMoRefId: Schema.optional(Schema.String),
-            networkMoName: Schema.optional(Schema.String),
-            deviceKey: Schema.optional(Schema.Number),
-            ipSettings: Schema.optional(
-              Schema.Struct({
-                allocationMethod: Schema.optional(
-                  Schema.Literals([
-                    "unset",
-                    "dynamic",
-                    "static",
-                    "linklayer",
-                    "random",
-                    "other",
-                  ]),
+export const VirtualMachineTemplatesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    memorySizeMB: Schema.optional(Schema.Number),
+    numCPUs: Schema.optional(Schema.Number),
+    numCoresPerSocket: Schema.optional(Schema.Number),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
+    osName: Schema.optional(Schema.String),
+    folderPath: Schema.optional(Schema.String),
+    networkInterfaces: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+          macAddress: Schema.optional(Schema.String),
+          networkId: Schema.optional(Schema.String),
+          nicType: Schema.optional(
+            Schema.Literals([
+              "vmxnet3",
+              "vmxnet2",
+              "vmxnet",
+              "e1000",
+              "e1000e",
+              "pcnet32",
+            ]),
+          ),
+          powerOnBoot: Schema.optional(
+            Schema.Literals(["enabled", "disabled"]),
+          ),
+          networkMoRefId: Schema.optional(Schema.String),
+          networkMoName: Schema.optional(Schema.String),
+          deviceKey: Schema.optional(Schema.Number),
+          ipSettings: Schema.optional(
+            Schema.Struct({
+              allocationMethod: Schema.optional(
+                Schema.Literals([
+                  "unset",
+                  "dynamic",
+                  "static",
+                  "linklayer",
+                  "random",
+                  "other",
+                ]),
+              ),
+              dnsServers: Schema.optional(Schema.Array(Schema.String)),
+              gateway: Schema.optional(Schema.Array(Schema.String)),
+              ipAddress: Schema.optional(Schema.String),
+              subnetMask: Schema.optional(Schema.String),
+              primaryWinsServer: Schema.optional(Schema.String),
+              secondaryWinsServer: Schema.optional(Schema.String),
+              ipAddressInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    allocationMethod: Schema.optional(Schema.String),
+                    ipAddress: Schema.optional(Schema.String),
+                    subnetMask: Schema.optional(Schema.String),
+                  }),
                 ),
-                dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                gateway: Schema.optional(Schema.Array(Schema.String)),
-                ipAddress: Schema.optional(Schema.String),
-                subnetMask: Schema.optional(Schema.String),
-                primaryWinsServer: Schema.optional(Schema.String),
-                secondaryWinsServer: Schema.optional(Schema.String),
-                ipAddressInfo: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      allocationMethod: Schema.optional(Schema.String),
-                      ipAddress: Schema.optional(Schema.String),
-                      subnetMask: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
+              ),
+            }),
+          ),
+        }),
       ),
-      disks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            diskObjectId: Schema.optional(Schema.String),
-            diskSizeGB: Schema.optional(Schema.Number),
-            deviceKey: Schema.optional(Schema.Number),
-            diskMode: Schema.optional(
-              Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-            ),
-            controllerKey: Schema.optional(Schema.Number),
-            unitNumber: Schema.optional(Schema.Number),
-            deviceName: Schema.optional(Schema.String),
-            diskType: Schema.optional(
-              Schema.Literals([
-                "flat",
-                "pmem",
-                "rawphysical",
-                "rawvirtual",
-                "sparse",
-                "sesparse",
-                "unknown",
-              ]),
-            ),
-          }),
-        ),
+    ),
+    disks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          diskObjectId: Schema.optional(Schema.String),
+          diskSizeGB: Schema.optional(Schema.Number),
+          deviceKey: Schema.optional(Schema.Number),
+          diskMode: Schema.optional(
+            Schema.Literals([
+              "persistent",
+              "independent_persistent",
+              "independent_nonpersistent",
+            ]),
+          ),
+          controllerKey: Schema.optional(Schema.Number),
+          unitNumber: Schema.optional(Schema.Number),
+          deviceName: Schema.optional(Schema.String),
+          diskType: Schema.optional(
+            Schema.Literals([
+              "flat",
+              "pmem",
+              "rawphysical",
+              "rawvirtual",
+              "sparse",
+              "sesparse",
+              "unknown",
+            ]),
+          ),
+        }),
       ),
-      customResourceName: Schema.optional(Schema.String),
-      toolsVersionStatus: Schema.optional(Schema.String),
-      toolsVersion: Schema.optional(Schema.String),
-      firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    toolsVersionStatus: Schema.optional(Schema.String),
+    toolsVersion: Schema.optional(Schema.String),
+    firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualMachineTemplatesUpdateOutput =
   typeof VirtualMachineTemplatesUpdateOutput.Type;
 
@@ -4146,85 +3991,82 @@ export type VirtualMachineTemplatesUpdateOutput =
  *
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
  */
-export const VirtualMachineTemplatesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineTemplatesUpdateInput,
-    outputSchema: VirtualMachineTemplatesUpdateOutput,
-  }));
+export const VirtualMachineTemplatesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesUpdateInput,
+  outputSchema: VirtualMachineTemplatesUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksCreateInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksCreateInput = typeof VirtualNetworksCreateInput.Type;
 
 // Output Schema
-export const VirtualNetworksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      customResourceName: Schema.optional(Schema.String),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const VirtualNetworksCreateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    customResourceName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualNetworksCreateOutput =
   typeof VirtualNetworksCreateOutput.Type;
 
@@ -4236,28 +4078,24 @@ export type VirtualNetworksCreateOutput =
  *
  * @param virtualNetworkName - Name of the virtual network resource.
  */
-export const VirtualNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksCreateInput,
-    outputSchema: VirtualNetworksCreateOutput,
+export const VirtualNetworksCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksCreateInput,
+  outputSchema: VirtualNetworksCreateOutput,
+}));
+// Input Schema
+export const VirtualNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    force: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualNetworksDeleteOutput =
   typeof VirtualNetworksDeleteOutput.Type;
 
@@ -4270,86 +4108,82 @@ export type VirtualNetworksDeleteOutput =
  * @param virtualNetworkName - Name of the virtual network resource.
  * @param force - Whether force delete was specified.
  */
-export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksDeleteInput,
-    outputSchema: VirtualNetworksDeleteOutput,
+export const VirtualNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksDeleteInput,
+  outputSchema: VirtualNetworksDeleteOutput,
+}));
+// Input Schema
+export const VirtualNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
 
 // Output Schema
-export const VirtualNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      customResourceName: Schema.optional(Schema.String),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const VirtualNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    customResourceName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
 
 // The operation
@@ -4360,97 +4194,85 @@ export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
  *
  * @param virtualNetworkName - Name of the virtual network resource.
  */
-export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksGetInput,
   outputSchema: VirtualNetworksGetOutput,
 }));
 // Input Schema
-export const VirtualNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
-    }),
-  );
+export const VirtualNetworksListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
+  }),
+);
 export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
 
 // Output Schema
-export const VirtualNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          vCenterId: Schema.optional(Schema.String),
-          moRefId: Schema.optional(Schema.String),
-          inventoryItemId: Schema.optional(Schema.String),
-          moName: Schema.optional(Schema.String),
-          customResourceName: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                severity: Schema.optional(Schema.String),
-                lastUpdatedAt: Schema.optional(Schema.String),
-              }),
-            ),
+export const VirtualNetworksListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        vCenterId: Schema.optional(Schema.String),
+        moRefId: Schema.optional(Schema.String),
+        inventoryItemId: Schema.optional(Schema.String),
+        moName: Schema.optional(Schema.String),
+        customResourceName: Schema.optional(Schema.String),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              lastUpdatedAt: Schema.optional(Schema.String),
+            }),
           ),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Succeeded",
-              "Failed",
-              "Canceled",
-              "Provisioning",
-              "Updating",
-              "Deleting",
-              "Accepted",
-              "Created",
-            ]),
-          ),
-        }),
-        location: Schema.String,
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
         ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Created",
+          ]),
         ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        name: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
       }),
-    ),
-  });
+      location: Schema.String,
+      extendedLocation: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      name: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
 
 // The operation
@@ -4459,13 +4281,13 @@ export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
  *
  * List of virtualNetworks in a subscription.
  */
-export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksListInput,
   outputSchema: VirtualNetworksListOutput,
 }));
 // Input Schema
 export const VirtualNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
@@ -4476,7 +4298,7 @@ export type VirtualNetworksListByResourceGroupInput =
 
 // Output Schema
 export const VirtualNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4560,85 +4382,84 @@ export type VirtualNetworksListByResourceGroupOutput =
  *
  * List of virtualNetworks in a resource group.
  */
-export const VirtualNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualNetworksListByResourceGroupInput,
     outputSchema: VirtualNetworksListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksUpdateInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      uuid: Schema.optional(Schema.String),
-      vCenterId: Schema.optional(Schema.String),
-      moRefId: Schema.optional(Schema.String),
-      inventoryItemId: Schema.optional(Schema.String),
-      moName: Schema.optional(Schema.String),
-      customResourceName: Schema.optional(Schema.String),
-      statuses: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            reason: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.String),
-            lastUpdatedAt: Schema.optional(Schema.String),
-          }),
-        ),
+export const VirtualNetworksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    customResourceName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
       ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-          "Created",
-        ]),
-      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
-    location: Schema.String,
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  });
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
 export type VirtualNetworksUpdateOutput =
   typeof VirtualNetworksUpdateOutput.Type;
 
@@ -4650,44 +4471,42 @@ export type VirtualNetworksUpdateOutput =
  *
  * @param virtualNetworkName - Name of the virtual network resource.
  */
-export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksUpdateInput,
-    outputSchema: VirtualNetworksUpdateOutput,
+export const VirtualNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksUpdateInput,
+  outputSchema: VirtualNetworksUpdateOutput,
+}));
+// Input Schema
+export const VMInstanceGuestAgentsCreateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
   }),
 );
-// Input Schema
-export const VMInstanceGuestAgentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
-    }),
-  );
 export type VMInstanceGuestAgentsCreateInput =
   typeof VMInstanceGuestAgentsCreateInput.Type;
 
 // Output Schema
-export const VMInstanceGuestAgentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VMInstanceGuestAgentsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VMInstanceGuestAgentsCreateOutput =
   typeof VMInstanceGuestAgentsCreateOutput.Type;
 
@@ -4697,26 +4516,24 @@ export type VMInstanceGuestAgentsCreateOutput =
  *
  * Create Or Update GuestAgent.
  */
-export const VMInstanceGuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VMInstanceGuestAgentsCreateInput,
-    outputSchema: VMInstanceGuestAgentsCreateOutput,
+export const VMInstanceGuestAgentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VMInstanceGuestAgentsCreateInput,
+  outputSchema: VMInstanceGuestAgentsCreateOutput,
+}));
+// Input Schema
+export const VMInstanceGuestAgentsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
   }),
 );
-// Input Schema
-export const VMInstanceGuestAgentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
-    }),
-  );
 export type VMInstanceGuestAgentsDeleteInput =
   typeof VMInstanceGuestAgentsDeleteInput.Type;
 
 // Output Schema
-export const VMInstanceGuestAgentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VMInstanceGuestAgentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VMInstanceGuestAgentsDeleteOutput =
   typeof VMInstanceGuestAgentsDeleteOutput.Type;
 
@@ -4726,44 +4543,42 @@ export type VMInstanceGuestAgentsDeleteOutput =
  *
  * Implements GuestAgent DELETE method.
  */
-export const VMInstanceGuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VMInstanceGuestAgentsDeleteInput,
-    outputSchema: VMInstanceGuestAgentsDeleteOutput,
+export const VMInstanceGuestAgentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VMInstanceGuestAgentsDeleteInput,
+  outputSchema: VMInstanceGuestAgentsDeleteOutput,
+}));
+// Input Schema
+export const VMInstanceGuestAgentsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
   }),
 );
-// Input Schema
-export const VMInstanceGuestAgentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
-    }),
-  );
 export type VMInstanceGuestAgentsGetInput =
   typeof VMInstanceGuestAgentsGetInput.Type;
 
 // Output Schema
-export const VMInstanceGuestAgentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VMInstanceGuestAgentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VMInstanceGuestAgentsGetOutput =
   typeof VMInstanceGuestAgentsGetOutput.Type;
 
@@ -4773,59 +4588,47 @@ export type VMInstanceGuestAgentsGetOutput =
  *
  * Implements GuestAgent GET method.
  */
-export const VMInstanceGuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VMInstanceGuestAgentsGetInput,
-    outputSchema: VMInstanceGuestAgentsGetOutput,
+export const VMInstanceGuestAgentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VMInstanceGuestAgentsGetInput,
+  outputSchema: VMInstanceGuestAgentsGetOutput,
+}));
+// Input Schema
+export const VMInstanceGuestAgentsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents",
   }),
 );
-// Input Schema
-export const VMInstanceGuestAgentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents",
-    }),
-  );
 export type VMInstanceGuestAgentsListInput =
   typeof VMInstanceGuestAgentsListInput.Type;
 
 // Output Schema
-export const VMInstanceGuestAgentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const VMInstanceGuestAgentsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type VMInstanceGuestAgentsListOutput =
   typeof VMInstanceGuestAgentsListOutput.Type;
 
@@ -4835,15 +4638,13 @@ export type VMInstanceGuestAgentsListOutput =
  *
  * Returns the list of GuestAgent of the given vm.
  */
-export const VMInstanceGuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VMInstanceGuestAgentsListInput,
-    outputSchema: VMInstanceGuestAgentsListOutput,
-  }),
-);
+export const VMInstanceGuestAgentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VMInstanceGuestAgentsListInput,
+  outputSchema: VMInstanceGuestAgentsListOutput,
+}));
 // Input Schema
 export const VmInstanceHybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata/default",
@@ -4854,7 +4655,7 @@ export type VmInstanceHybridIdentityMetadataGetInput =
 
 // Output Schema
 export const VmInstanceHybridIdentityMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4882,14 +4683,15 @@ export type VmInstanceHybridIdentityMetadataGetOutput =
  *
  * Implements HybridIdentityMetadata GET method.
  */
-export const VmInstanceHybridIdentityMetadataGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmInstanceHybridIdentityMetadataGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VmInstanceHybridIdentityMetadataGetInput,
     outputSchema: VmInstanceHybridIdentityMetadataGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VmInstanceHybridIdentityMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata",
@@ -4900,7 +4702,7 @@ export type VmInstanceHybridIdentityMetadataListInput =
 
 // Output Schema
 export const VmInstanceHybridIdentityMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4943,8 +4745,9 @@ export type VmInstanceHybridIdentityMetadataListOutput =
  *
  * Returns the list of HybridIdentityMetadata of the given vm.
  */
-export const VmInstanceHybridIdentityMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmInstanceHybridIdentityMetadataList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VmInstanceHybridIdentityMetadataListInput,
     outputSchema: VmInstanceHybridIdentityMetadataListOutput,
-  }));
+  }),
+);

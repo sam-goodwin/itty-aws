@@ -4,20 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgActivityFeedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    pretty: Schema.optional(Schema.Boolean),
-    eventType: Schema.optional(Schema.String),
-    maxDate: Schema.optional(Schema.String),
-    minDate: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/activityFeed" }),
-  );
+export const GetOrgActivityFeedInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  pretty: Schema.optional(Schema.Boolean),
+  eventType: Schema.optional(Schema.String),
+  maxDate: Schema.optional(Schema.String),
+  minDate: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/activityFeed" }),
+);
 export type GetOrgActivityFeedInput = typeof GetOrgActivityFeedInput.Type;
 
 // Output Schema
-export const GetOrgActivityFeedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgActivityFeedOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
 
 // The operation
@@ -34,7 +33,7 @@ export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
  * @param maxDate - End date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  * @param minDate - Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  */
-export const getOrgActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgActivityFeed = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgActivityFeedInput,
   outputSchema: GetOrgActivityFeedOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

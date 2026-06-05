@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1ProjectsByProjectIdComputeServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.String,
     regionId: Schema.optional(
@@ -29,7 +29,7 @@ export type PostV1ProjectsByProjectIdComputeServicesInput =
 
 // Output Schema
 export const PostV1ProjectsByProjectIdComputeServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -55,9 +55,10 @@ export type PostV1ProjectsByProjectIdComputeServicesOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Creates a new compute service under the specified project. The service is placed in the given region (or the default region if omitted).
  */
-export const postV1ProjectsByProjectIdComputeServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1ProjectsByProjectIdComputeServices = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV1ProjectsByProjectIdComputeServicesInput,
     outputSchema: PostV1ProjectsByProjectIdComputeServicesOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

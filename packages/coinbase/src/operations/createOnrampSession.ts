@@ -3,57 +3,55 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateOnrampSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    purchaseCurrency: Schema.String,
-    destinationNetwork: Schema.String,
-    destinationAddress: Schema.String,
-    paymentAmount: Schema.optional(Schema.String),
-    purchaseAmount: Schema.optional(Schema.String),
-    paymentCurrency: Schema.optional(Schema.String),
-    paymentMethod: Schema.optional(
-      Schema.Literals([
-        "CARD",
-        "ACH",
-        "APPLE_PAY",
-        "PAYPAL",
-        "FIAT_WALLET",
-        "CRYPTO_WALLET",
-      ]),
-    ),
-    country: Schema.optional(Schema.String),
-    subdivision: Schema.optional(Schema.String),
-    redirectUrl: Schema.optional(Schema.String),
-    clientIp: Schema.optional(Schema.String),
-    partnerUserRef: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/onramp/sessions" }));
+export const CreateOnrampSessionInput = /*@__PURE__*/ Schema.Struct({
+  purchaseCurrency: Schema.String,
+  destinationNetwork: Schema.String,
+  destinationAddress: Schema.String,
+  paymentAmount: Schema.optional(Schema.String),
+  purchaseAmount: Schema.optional(Schema.String),
+  paymentCurrency: Schema.optional(Schema.String),
+  paymentMethod: Schema.optional(
+    Schema.Literals([
+      "CARD",
+      "ACH",
+      "APPLE_PAY",
+      "PAYPAL",
+      "FIAT_WALLET",
+      "CRYPTO_WALLET",
+    ]),
+  ),
+  country: Schema.optional(Schema.String),
+  subdivision: Schema.optional(Schema.String),
+  redirectUrl: Schema.optional(Schema.String),
+  clientIp: Schema.optional(Schema.String),
+  partnerUserRef: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "POST", path: "/v2/onramp/sessions" }));
 export type CreateOnrampSessionInput = typeof CreateOnrampSessionInput.Type;
 
 // Output Schema
-export const CreateOnrampSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    session: Schema.Struct({
-      onrampUrl: Schema.String,
+export const CreateOnrampSessionOutput = /*@__PURE__*/ Schema.Struct({
+  session: Schema.Struct({
+    onrampUrl: Schema.String,
+  }),
+  quote: Schema.optional(
+    Schema.Struct({
+      paymentTotal: Schema.String,
+      paymentSubtotal: Schema.String,
+      paymentCurrency: Schema.String,
+      purchaseAmount: Schema.String,
+      purchaseCurrency: Schema.String,
+      destinationNetwork: Schema.String,
+      fees: Schema.Array(
+        Schema.Struct({
+          type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
+          amount: Schema.String,
+          currency: Schema.String,
+        }),
+      ),
+      exchangeRate: Schema.String,
     }),
-    quote: Schema.optional(
-      Schema.Struct({
-        paymentTotal: Schema.String,
-        paymentSubtotal: Schema.String,
-        paymentCurrency: Schema.String,
-        purchaseAmount: Schema.String,
-        purchaseCurrency: Schema.String,
-        destinationNetwork: Schema.String,
-        fees: Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
-            amount: Schema.String,
-            currency: Schema.String,
-          }),
-        ),
-        exchangeRate: Schema.String,
-      }),
-    ),
-  });
+  ),
+});
 export type CreateOnrampSessionOutput = typeof CreateOnrampSessionOutput.Type;
 
 // The operation
@@ -74,7 +72,7 @@ export type CreateOnrampSessionOutput = typeof CreateOnrampSessionOutput.Type;
  * **Returns**: Complete pricing quote and one-click onramp URL. Both `session` and `quote` objects will be included in the response.
  * **Note**: Only one of `paymentAmount` or `purchaseAmount` should be provided, not both. Providing both will result in an error. When `paymentAmount` is provided, the quote shows how much crypto the user will receive for the specified fiat amount (fee-inclusive). When `purchaseAmount` is provided, the quote shows how much fiat the user needs to pay for the specified crypto amount (fee-exclusive).
  */
-export const createOnrampSession = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOnrampSession = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOnrampSessionInput,
   outputSchema: CreateOnrampSessionOutput,
 }));

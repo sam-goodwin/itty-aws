@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const McpToolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const McpToolsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   tool_name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const McpToolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type McpToolsCreateInput = typeof McpToolsCreateInput.Type;
 
 // Output Schema
-export const McpToolsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+export const McpToolsCreateOutput = /*@__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
 );
@@ -31,7 +31,7 @@ export type McpToolsCreateOutput = typeof McpToolsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const mcpToolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const mcpToolsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: McpToolsCreateInput,
   outputSchema: McpToolsCreateOutput,
   errors: [Forbidden, NotFound] as const,

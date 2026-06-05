@@ -4,20 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteServiceTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/service-tokens/{id}",
-    }),
-  );
+export const DeleteServiceTokenInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/service-tokens/{id}",
+  }),
+);
 export type DeleteServiceTokenInput = typeof DeleteServiceTokenInput.Type;
 
 // Output Schema
-export const DeleteServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteServiceTokenOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteServiceTokenOutput = typeof DeleteServiceTokenOutput.Type;
 
 // The operation
@@ -29,7 +28,7 @@ export type DeleteServiceTokenOutput = typeof DeleteServiceTokenOutput.Type;
  * @param organization - The name of the organization
  * @param id - The ID of the service token
  */
-export const deleteServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteServiceTokenInput,
   outputSchema: DeleteServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

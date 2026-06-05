@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserInvitesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -18,7 +18,7 @@ export type UserlandUserInvitesControllerListInput =
 
 // Output Schema
 export const UserlandUserInvitesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -66,9 +66,8 @@ export type UserlandUserInvitesControllerListOutput =
  * @param organization_id - The ID of the [organization](/reference/organization) that the recipient will join.
  * @param email - The email address of the recipient.
  */
-export const UserlandUserInvitesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserlandUserInvitesControllerListInput,
-    outputSchema: UserlandUserInvitesControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }));
+export const UserlandUserInvitesControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUserInvitesControllerListInput,
+  outputSchema: UserlandUserInvitesControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

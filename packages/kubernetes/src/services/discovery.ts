@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateDiscoveryV1NamespacedEndpointSliceInput =
@@ -143,12 +143,13 @@ export type CreateDiscoveryV1NamespacedEndpointSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const createDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: CreateDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -280,46 +281,45 @@ export type DeleteDiscoveryV1NamespacedEndpointSliceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: DeleteDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
-export const GetDiscoveryAPIGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/discovery.k8s.io/" }),
-  );
+export const GetDiscoveryAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/discovery.k8s.io/" }),
+);
 export type GetDiscoveryAPIGroupInput = typeof GetDiscoveryAPIGroupInput.Type;
 
 // Output Schema
-export const GetDiscoveryAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetDiscoveryAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetDiscoveryAPIGroupOutput = typeof GetDiscoveryAPIGroupOutput.Type;
 
 // The operation
@@ -331,34 +331,32 @@ export const getDiscoveryAPIGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetDiscoveryAPIGroupOutput,
 }));
 // Input Schema
-export const GetDiscoveryV1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/discovery.k8s.io/v1/" }),
-  );
+export const GetDiscoveryV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/discovery.k8s.io/v1/" }));
 export type GetDiscoveryV1APIResourcesInput =
   typeof GetDiscoveryV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetDiscoveryV1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetDiscoveryV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetDiscoveryV1APIResourcesOutput =
   typeof GetDiscoveryV1APIResourcesOutput.Type;
 
@@ -670,11 +668,12 @@ export type ListDiscoveryV1NamespacedEndpointSliceOutput =
 /**
  * list or watch objects of kind EndpointSlice
  */
-export const listDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const listDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ListDiscoveryV1NamespacedEndpointSliceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PatchDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -809,12 +808,13 @@ export type PatchDiscoveryV1NamespacedEndpointSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const patchDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: PatchDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -943,12 +943,13 @@ export type ReadDiscoveryV1NamespacedEndpointSliceOutput =
 /**
  * read the specified EndpointSlice
  */
-export const readDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const readDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReadDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1083,12 +1084,13 @@ export type ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1142,11 +1144,12 @@ export type WatchDiscoveryV1NamespacedEndpointSliceOutput =
 /**
  * watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const watchDiscoveryV1NamespacedEndpointSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: WatchDiscoveryV1NamespacedEndpointSliceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchDiscoveryV1NamespacedEndpointSliceListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(

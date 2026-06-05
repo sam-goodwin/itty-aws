@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const MembersDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersDestroyInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   user__uuid: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,11 +16,11 @@ export const MembersDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MembersDestroyInput = typeof MembersDestroyInput.Type;
 
 // Output Schema
-export const MembersDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MembersDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type MembersDestroyOutput = typeof MembersDestroyOutput.Type;
 
 // The operation
-export const membersDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const membersDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: MembersDestroyInput,
   outputSchema: MembersDestroyOutput,
   errors: [Forbidden, NotFound] as const,

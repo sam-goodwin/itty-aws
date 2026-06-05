@@ -9,33 +9,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetAvailableOperationsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.PowerBI/operations" }),
-  );
+export const GetAvailableOperationsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.PowerBI/operations" }),
+);
 export type GetAvailableOperationsInput =
   typeof GetAvailableOperationsInput.Type;
 
 // Output Schema
-export const GetAvailableOperationsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              origin: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const GetAvailableOperationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            origin: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type GetAvailableOperationsOutput =
   typeof GetAvailableOperationsOutput.Type;
 
@@ -76,41 +74,40 @@ export type WorkspaceCollectionsCheckNameAvailabilityOutput =
  *
  * @param location - Azure location
  */
-export const WorkspaceCollectionsCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkspaceCollectionsCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkspaceCollectionsCheckNameAvailabilityInput,
     outputSchema: WorkspaceCollectionsCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkspaceCollectionsCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceCollectionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
-    }),
-  );
+export const WorkspaceCollectionsCreateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+  }),
+);
 export type WorkspaceCollectionsCreateInput =
   typeof WorkspaceCollectionsCreateInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
-    properties: Schema.optional(Schema.Unknown),
-  });
+export const WorkspaceCollectionsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["S1"]),
+      tier: Schema.Literals(["Standard"]),
+    }),
+  ),
+  properties: Schema.optional(Schema.Unknown),
+});
 export type WorkspaceCollectionsCreateOutput =
   typeof WorkspaceCollectionsCreateOutput.Type;
 
@@ -126,16 +123,15 @@ export const WorkspaceCollectionsCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkspaceCollectionsCreateOutput,
 }));
 // Input Schema
-export const WorkspaceCollectionsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceCollectionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
-    }),
-  );
+export const WorkspaceCollectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+  }),
+);
 export type WorkspaceCollectionsDeleteInput =
   typeof WorkspaceCollectionsDeleteInput.Type;
 
@@ -185,41 +181,38 @@ export type WorkspaceCollectionsGetAccessKeysOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsGetAccessKeys =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkspaceCollectionsGetAccessKeysInput,
-    outputSchema: WorkspaceCollectionsGetAccessKeysOutput,
-  }));
+export const WorkspaceCollectionsGetAccessKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsGetAccessKeysInput,
+  outputSchema: WorkspaceCollectionsGetAccessKeysOutput,
+}));
 // Input Schema
-export const WorkspaceCollectionsGetByNameInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceCollectionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
-    }),
-  );
+export const WorkspaceCollectionsGetByNameInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+  }),
+);
 export type WorkspaceCollectionsGetByNameInput =
   typeof WorkspaceCollectionsGetByNameInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsGetByNameOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
-    properties: Schema.optional(Schema.Unknown),
-  });
+export const WorkspaceCollectionsGetByNameOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["S1"]),
+      tier: Schema.Literals(["Standard"]),
+    }),
+  ),
+  properties: Schema.optional(Schema.Unknown),
+});
 export type WorkspaceCollectionsGetByNameOutput =
   typeof WorkspaceCollectionsGetByNameOutput.Type;
 
@@ -230,11 +223,10 @@ export type WorkspaceCollectionsGetByNameOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsGetByName =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkspaceCollectionsGetByNameInput,
-    outputSchema: WorkspaceCollectionsGetByNameOutput,
-  }));
+export const WorkspaceCollectionsGetByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsGetByNameInput,
+  outputSchema: WorkspaceCollectionsGetByNameOutput,
+}));
 // Input Schema
 export const WorkspaceCollectionsListByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -279,11 +271,12 @@ export type WorkspaceCollectionsListByResourceGroupOutput =
  *
  * @param resourceGroupName - Azure resource group
  */
-export const WorkspaceCollectionsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkspaceCollectionsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkspaceCollectionsListByResourceGroupInput,
     outputSchema: WorkspaceCollectionsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkspaceCollectionsListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -324,21 +317,21 @@ export type WorkspaceCollectionsListBySubscriptionOutput =
 /**
  * Retrieves all existing Power BI workspace collections in the specified subscription.
  */
-export const WorkspaceCollectionsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkspaceCollectionsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkspaceCollectionsListBySubscriptionInput,
     outputSchema: WorkspaceCollectionsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkspaceCollectionsMigrateInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources",
-    }),
-  );
+export const WorkspaceCollectionsMigrateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources",
+  }),
+);
 export type WorkspaceCollectionsMigrateInput =
   typeof WorkspaceCollectionsMigrateInput.Type;
 
@@ -387,41 +380,38 @@ export type WorkspaceCollectionsRegenerateKeyOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsRegenerateKey =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkspaceCollectionsRegenerateKeyInput,
-    outputSchema: WorkspaceCollectionsRegenerateKeyOutput,
-  }));
+export const WorkspaceCollectionsRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsRegenerateKeyInput,
+  outputSchema: WorkspaceCollectionsRegenerateKeyOutput,
+}));
 // Input Schema
-export const WorkspaceCollectionsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceCollectionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
-    }),
-  );
+export const WorkspaceCollectionsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+  }),
+);
 export type WorkspaceCollectionsUpdateInput =
   typeof WorkspaceCollectionsUpdateInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
-    properties: Schema.optional(Schema.Unknown),
-  });
+export const WorkspaceCollectionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["S1"]),
+      tier: Schema.Literals(["Standard"]),
+    }),
+  ),
+  properties: Schema.optional(Schema.Unknown),
+});
 export type WorkspaceCollectionsUpdateOutput =
   typeof WorkspaceCollectionsUpdateOutput.Type;
 

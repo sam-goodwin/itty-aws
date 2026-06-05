@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const GetWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const GetWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetWebhookInput = typeof GetWebhookInput.Type;
 
 // Output Schema
-export const GetWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -62,7 +62,7 @@ export type GetWebhookOutput = typeof GetWebhookOutput.Type;
  * @param database - The name of the database
  * @param id - The ID of the webhook
  */
-export const getWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetWebhookInput,
   outputSchema: GetWebhookOutput,
   errors: [Forbidden, NotFound] as const,

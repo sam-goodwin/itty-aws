@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1DatabasesByDatabaseIdConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
@@ -17,7 +17,7 @@ export type PostV1DatabasesByDatabaseIdConnectionsInput =
 
 // Output Schema
 export const PostV1DatabasesByDatabaseIdConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -30,25 +30,25 @@ export const PostV1DatabasesByDatabaseIdConnectionsOutput =
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         pooled: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         accelerate: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
       }),
-      connectionString: SensitiveString,
+      connectionString: SensitiveOutputString,
       directConnection: Schema.optional(
         Schema.NullOr(
           Schema.Struct({
@@ -77,9 +77,10 @@ export type PostV1DatabasesByDatabaseIdConnectionsOutput =
  *
  * Creates a new connection string for the given database.
  */
-export const postV1DatabasesByDatabaseIdConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1DatabasesByDatabaseIdConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV1DatabasesByDatabaseIdConnectionsInput,
     outputSchema: PostV1DatabasesByDatabaseIdConnectionsOutput,
     errors: [NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

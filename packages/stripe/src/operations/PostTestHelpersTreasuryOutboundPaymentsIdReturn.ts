@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTreasuryOutboundPaymentsIdReturnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     returned_details: Schema.optional(
@@ -37,7 +37,7 @@ export type PostTestHelpersTreasuryOutboundPaymentsIdReturnInput =
 
 // Output Schema
 export const PostTestHelpersTreasuryOutboundPaymentsIdReturnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -82,7 +82,7 @@ export type PostTestHelpersTreasuryOutboundPaymentsIdReturnOutput =
  * <p>Transitions a test mode created OutboundPayment to the <code>returned</code> status. The OutboundPayment must already be in the <code>processing</code> state.</p>
  */
 export const PostTestHelpersTreasuryOutboundPaymentsIdReturn =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryOutboundPaymentsIdReturnInput,
     outputSchema: PostTestHelpersTreasuryOutboundPaymentsIdReturnOutput,
   }));

@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DomainRegistrationProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -23,7 +23,7 @@ export type DomainRegistrationProviderListOperationsInput =
 
 // Output Schema
 export const DomainRegistrationProviderListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -117,32 +117,31 @@ export type DomainRegistrationProviderListOperationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const DomainRegistrationProviderListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainRegistrationProviderListOperations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DomainRegistrationProviderListOperationsInput,
     outputSchema: DomainRegistrationProviderListOperationsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DomainsCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability",
-    }),
-  );
+export const DomainsCheckAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability",
+  }),
+);
 export type DomainsCheckAvailabilityInput =
   typeof DomainsCheckAvailabilityInput.Type;
 
 // Output Schema
-export const DomainsCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    available: Schema.optional(Schema.Boolean),
-    domainType: Schema.optional(Schema.Literals(["Regular", "SoftDeleted"])),
-  });
+export const DomainsCheckAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  available: Schema.optional(Schema.Boolean),
+  domainType: Schema.optional(Schema.Literals(["Regular", "SoftDeleted"])),
+});
 export type DomainsCheckAvailabilityOutput =
   typeof DomainsCheckAvailabilityOutput.Type;
 
@@ -155,48 +154,44 @@ export type DomainsCheckAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCheckAvailabilityInput,
-    outputSchema: DomainsCheckAvailabilityOutput,
+export const DomainsCheckAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCheckAvailabilityInput,
+  outputSchema: DomainsCheckAvailabilityOutput,
+}));
+// Input Schema
+export const DomainsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
   }),
 );
-// Input Schema
-export const DomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
-    }),
-  );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DomainsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DomainsCreateOrUpdateOutput =
   typeof DomainsCreateOrUpdateOutput.Type;
 
@@ -211,15 +206,13 @@ export type DomainsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCreateOrUpdateInput,
-    outputSchema: DomainsCreateOrUpdateOutput,
-  }),
-);
+export const DomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCreateOrUpdateInput,
+  outputSchema: DomainsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const DomainsCreateOrUpdateOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -236,7 +229,7 @@ export type DomainsCreateOrUpdateOwnershipIdentifierInput =
 
 // Output Schema
 export const DomainsCreateOrUpdateOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -270,13 +263,14 @@ export type DomainsCreateOrUpdateOwnershipIdentifierOutput =
  * @param domainName - Name of the domain.
  * @param name - Name of identifier.
  */
-export const DomainsCreateOrUpdateOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsCreateOrUpdateOwnershipIdentifier = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DomainsCreateOrUpdateOwnershipIdentifierInput,
     outputSchema: DomainsCreateOrUpdateOwnershipIdentifierOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -291,7 +285,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
 
 // The operation
@@ -306,13 +300,13 @@ export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
  * @param domainName - Name of the domain.
  * @param forceHardDeleteDomain - Specify <code>true</code> to delete the domain immediately. The default is <code>false</code> which deletes the domain after 24 hours.
  */
-export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsDeleteInput,
   outputSchema: DomainsDeleteOutput,
 }));
 // Input Schema
 export const DomainsDeleteOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -328,8 +322,7 @@ export type DomainsDeleteOwnershipIdentifierInput =
   typeof DomainsDeleteOwnershipIdentifierInput.Type;
 
 // Output Schema
-export const DomainsDeleteOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DomainsDeleteOwnershipIdentifierOutput = /*@__PURE__*/ Schema.Void;
 export type DomainsDeleteOwnershipIdentifierOutput =
   typeof DomainsDeleteOwnershipIdentifierOutput.Type;
 
@@ -345,13 +338,12 @@ export type DomainsDeleteOwnershipIdentifierOutput =
  * @param domainName - Name of the domain.
  * @param name - Name of identifier.
  */
-export const DomainsDeleteOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DomainsDeleteOwnershipIdentifierInput,
-    outputSchema: DomainsDeleteOwnershipIdentifierOutput,
-  }));
+export const DomainsDeleteOwnershipIdentifier = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsDeleteOwnershipIdentifierInput,
+  outputSchema: DomainsDeleteOwnershipIdentifierOutput,
+}));
 // Input Schema
-export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -365,7 +357,7 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsGetInput = typeof DomainsGetInput.Type;
 
 // Output Schema
-export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -397,13 +389,13 @@ export type DomainsGetOutput = typeof DomainsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsGetInput,
   outputSchema: DomainsGetOutput,
 }));
 // Input Schema
 export const DomainsGetControlCenterSsoRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -417,7 +409,7 @@ export type DomainsGetControlCenterSsoRequestInput =
 
 // Output Schema
 export const DomainsGetControlCenterSsoRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     postParameterKey: Schema.optional(Schema.String),
     postParameterValue: Schema.optional(Schema.String),
@@ -434,49 +426,46 @@ export type DomainsGetControlCenterSsoRequestOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsGetControlCenterSsoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DomainsGetControlCenterSsoRequestInput,
-    outputSchema: DomainsGetControlCenterSsoRequestOutput,
-  }));
+export const DomainsGetControlCenterSsoRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsGetControlCenterSsoRequestInput,
+  outputSchema: DomainsGetControlCenterSsoRequestOutput,
+}));
 // Input Schema
-export const DomainsGetOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
-    }),
-  );
+export const DomainsGetOwnershipIdentifierInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+  }),
+);
 export type DomainsGetOwnershipIdentifierInput =
   typeof DomainsGetOwnershipIdentifierInput.Type;
 
 // Output Schema
-export const DomainsGetOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DomainsGetOwnershipIdentifierOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DomainsGetOwnershipIdentifierOutput =
   typeof DomainsGetOwnershipIdentifierOutput.Type;
 
@@ -492,13 +481,12 @@ export type DomainsGetOwnershipIdentifierOutput =
  * @param domainName - Name of the domain.
  * @param name - Name of identifier.
  */
-export const DomainsGetOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DomainsGetOwnershipIdentifierInput,
-    outputSchema: DomainsGetOwnershipIdentifierOutput,
-  }));
+export const DomainsGetOwnershipIdentifier = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsGetOwnershipIdentifierInput,
+  outputSchema: DomainsGetOwnershipIdentifierOutput,
+}));
 // Input Schema
-export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -510,7 +498,7 @@ export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsListInput = typeof DomainsListInput.Type;
 
 // Output Schema
-export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -545,61 +533,49 @@ export type DomainsListOutput = typeof DomainsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsListInput,
   outputSchema: DomainsListOutput,
 }));
 // Input Schema
-export const DomainsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
-    }),
-  );
+export const DomainsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
+  }),
+);
 export type DomainsListByResourceGroupInput =
   typeof DomainsListByResourceGroupInput.Type;
 
 // Output Schema
-export const DomainsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DomainsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DomainsListByResourceGroupOutput =
   typeof DomainsListByResourceGroupOutput.Type;
 
@@ -613,31 +589,30 @@ export type DomainsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListByResourceGroupInput,
-    outputSchema: DomainsListByResourceGroupOutput,
-  }),
-);
+export const DomainsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListByResourceGroupInput,
+  outputSchema: DomainsListByResourceGroupOutput,
+}));
 // Input Schema
-export const DomainsListOwnershipIdentifiersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListOwnershipIdentifiersInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers",
+  }),
+);
 export type DomainsListOwnershipIdentifiersInput =
   typeof DomainsListOwnershipIdentifiersInput.Type;
 
 // Output Schema
 export const DomainsListOwnershipIdentifiersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -685,35 +660,32 @@ export type DomainsListOwnershipIdentifiersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsListOwnershipIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DomainsListOwnershipIdentifiersInput,
-    outputSchema: DomainsListOwnershipIdentifiersOutput,
-  }));
+export const DomainsListOwnershipIdentifiers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListOwnershipIdentifiersInput,
+  outputSchema: DomainsListOwnershipIdentifiersOutput,
+}));
 // Input Schema
-export const DomainsListRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations",
-    }),
-  );
+export const DomainsListRecommendationsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations",
+  }),
+);
 export type DomainsListRecommendationsInput =
   typeof DomainsListRecommendationsInput.Type;
 
 // Output Schema
-export const DomainsListRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DomainsListRecommendationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DomainsListRecommendationsOutput =
   typeof DomainsListRecommendationsOutput.Type;
 
@@ -726,14 +698,12 @@ export type DomainsListRecommendationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsListRecommendations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListRecommendationsInput,
-    outputSchema: DomainsListRecommendationsOutput,
-  }),
-);
+export const DomainsListRecommendations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListRecommendationsInput,
+  outputSchema: DomainsListRecommendationsOutput,
+}));
 // Input Schema
-export const DomainsRenewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsRenewInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -747,7 +717,7 @@ export const DomainsRenewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsRenewInput = typeof DomainsRenewInput.Type;
 
 // Output Schema
-export const DomainsRenewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DomainsRenewOutput = /*@__PURE__*/ Schema.Void;
 export type DomainsRenewOutput = typeof DomainsRenewOutput.Type;
 
 // The operation
@@ -761,46 +731,44 @@ export type DomainsRenewOutput = typeof DomainsRenewOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsRenew = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsRenew = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsRenewInput,
   outputSchema: DomainsRenewOutput,
 }));
 // Input Schema
-export const DomainsTransferOutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/transferOut",
-    }),
-  );
+export const DomainsTransferOutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/transferOut",
+  }),
+);
 export type DomainsTransferOutInput = typeof DomainsTransferOutInput.Type;
 
 // Output Schema
-export const DomainsTransferOutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DomainsTransferOutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DomainsTransferOutOutput = typeof DomainsTransferOutOutput.Type;
 
 // The operation
@@ -812,12 +780,12 @@ export type DomainsTransferOutOutput = typeof DomainsTransferOutOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsTransferOut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsTransferOut = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsTransferOutInput,
   outputSchema: DomainsTransferOutOutput,
 }));
 // Input Schema
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -831,7 +799,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
 
 // Output Schema
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -863,13 +831,13 @@ export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
 }));
 // Input Schema
 export const DomainsUpdateOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -886,7 +854,7 @@ export type DomainsUpdateOwnershipIdentifierInput =
 
 // Output Schema
 export const DomainsUpdateOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -920,46 +888,43 @@ export type DomainsUpdateOwnershipIdentifierOutput =
  * @param domainName - Name of the domain.
  * @param name - Name of identifier.
  */
-export const DomainsUpdateOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DomainsUpdateOwnershipIdentifierInput,
-    outputSchema: DomainsUpdateOwnershipIdentifierOutput,
-  }));
+export const DomainsUpdateOwnershipIdentifier = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsUpdateOwnershipIdentifierInput,
+  outputSchema: DomainsUpdateOwnershipIdentifierOutput,
+}));
 // Input Schema
-export const TopLevelDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}",
-    }),
-  );
+export const TopLevelDomainsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}",
+  }),
+);
 export type TopLevelDomainsGetInput = typeof TopLevelDomainsGetInput.Type;
 
 // Output Schema
-export const TopLevelDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TopLevelDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TopLevelDomainsGetOutput = typeof TopLevelDomainsGetOutput.Type;
 
 // The operation
@@ -972,59 +937,47 @@ export type TopLevelDomainsGetOutput = typeof TopLevelDomainsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param name - Name of the top-level domain.
  */
-export const TopLevelDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopLevelDomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopLevelDomainsGetInput,
   outputSchema: TopLevelDomainsGetOutput,
 }));
 // Input Schema
-export const TopLevelDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains",
-    }),
-  );
+export const TopLevelDomainsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains",
+  }),
+);
 export type TopLevelDomainsListInput = typeof TopLevelDomainsListInput.Type;
 
 // Output Schema
-export const TopLevelDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TopLevelDomainsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TopLevelDomainsListOutput = typeof TopLevelDomainsListOutput.Type;
 
 // The operation
@@ -1036,38 +989,36 @@ export type TopLevelDomainsListOutput = typeof TopLevelDomainsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const TopLevelDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopLevelDomainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopLevelDomainsListInput,
   outputSchema: TopLevelDomainsListOutput,
 }));
 // Input Schema
-export const TopLevelDomainsListAgreementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements",
-    }),
-  );
+export const TopLevelDomainsListAgreementsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements",
+  }),
+);
 export type TopLevelDomainsListAgreementsInput =
   typeof TopLevelDomainsListAgreementsInput.Type;
 
 // Output Schema
-export const TopLevelDomainsListAgreementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        agreementKey: Schema.String,
-        title: Schema.String,
-        content: Schema.String,
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TopLevelDomainsListAgreementsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      agreementKey: Schema.String,
+      title: Schema.String,
+      content: Schema.String,
+      url: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TopLevelDomainsListAgreementsOutput =
   typeof TopLevelDomainsListAgreementsOutput.Type;
 
@@ -1081,8 +1032,7 @@ export type TopLevelDomainsListAgreementsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param name - Name of the top-level domain.
  */
-export const TopLevelDomainsListAgreements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TopLevelDomainsListAgreementsInput,
-    outputSchema: TopLevelDomainsListAgreementsOutput,
-  }));
+export const TopLevelDomainsListAgreements = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopLevelDomainsListAgreementsInput,
+  outputSchema: TopLevelDomainsListAgreementsOutput,
+}));

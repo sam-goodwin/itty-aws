@@ -9,27 +9,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ClustersCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
-    }),
-  );
+export const ClustersCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
+  }),
+);
 export type ClustersCheckNameAvailabilityInput =
   typeof ClustersCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const ClustersCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    nameAvailable: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ClustersCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  nameAvailable: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ClustersCheckNameAvailabilityOutput =
   typeof ClustersCheckNameAvailabilityOutput.Type;
 
@@ -40,13 +38,12 @@ export type ClustersCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ClustersCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ClustersCheckNameAvailabilityInput,
-    outputSchema: ClustersCheckNameAvailabilityOutput,
-  }));
+export const ClustersCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCheckNameAvailabilityInput,
+  outputSchema: ClustersCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -59,7 +56,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
 
 // Output Schema
-export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -88,12 +85,12 @@ export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
   outputSchema: ClustersCreateOutput,
 }));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -106,7 +103,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -117,12 +114,12 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -135,7 +132,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -164,12 +161,12 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -181,7 +178,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersListInput = typeof ClustersListInput.Type;
 
 // Output Schema
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -226,63 +223,61 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
-export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
-    }),
-  );
+export const ClustersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
+  }),
+);
 export type ClustersListByResourceGroupInput =
   typeof ClustersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ClustersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
 
@@ -294,30 +289,26 @@ export type ClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
+// Input Schema
+export const ClustersPromoteReadReplicaInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/promote",
   }),
 );
-// Input Schema
-export const ClustersPromoteReadReplicaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/promote",
-    }),
-  );
 export type ClustersPromoteReadReplicaInput =
   typeof ClustersPromoteReadReplicaInput.Type;
 
 // Output Schema
-export const ClustersPromoteReadReplicaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersPromoteReadReplicaOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersPromoteReadReplicaOutput =
   typeof ClustersPromoteReadReplicaOutput.Type;
 
@@ -329,14 +320,12 @@ export type ClustersPromoteReadReplicaOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersPromoteReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersPromoteReadReplicaInput,
-    outputSchema: ClustersPromoteReadReplicaOutput,
-  }),
-);
+export const ClustersPromoteReadReplica = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersPromoteReadReplicaInput,
+  outputSchema: ClustersPromoteReadReplicaOutput,
+}));
 // Input Schema
-export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -349,7 +338,7 @@ export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersRestartInput = typeof ClustersRestartInput.Type;
 
 // Output Schema
-export const ClustersRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersRestartOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersRestartOutput = typeof ClustersRestartOutput.Type;
 
 // The operation
@@ -360,12 +349,12 @@ export type ClustersRestartOutput = typeof ClustersRestartOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersRestartInput,
   outputSchema: ClustersRestartOutput,
 }));
 // Input Schema
-export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -378,7 +367,7 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersStartInput = typeof ClustersStartInput.Type;
 
 // Output Schema
-export const ClustersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersStartOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersStartOutput = typeof ClustersStartOutput.Type;
 
 // The operation
@@ -389,12 +378,12 @@ export type ClustersStartOutput = typeof ClustersStartOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersStartInput,
   outputSchema: ClustersStartOutput,
 }));
 // Input Schema
-export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -407,7 +396,7 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersStopInput = typeof ClustersStopInput.Type;
 
 // Output Schema
-export const ClustersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersStopOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersStopOutput = typeof ClustersStopOutput.Type;
 
 // The operation
@@ -418,12 +407,12 @@ export type ClustersStopOutput = typeof ClustersStopOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersStopInput,
   outputSchema: ClustersStopOutput,
 }));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -436,7 +425,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -465,18 +454,16 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
-export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations/{configurationName}",
@@ -485,26 +472,25 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
 
 // Output Schema
-export const ConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
 
 // The operation
@@ -515,46 +501,44 @@ export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsGetInput,
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
-export const ConfigurationsGetCoordinatorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
-    }),
-  );
+export const ConfigurationsGetCoordinatorInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
+  }),
+);
 export type ConfigurationsGetCoordinatorInput =
   typeof ConfigurationsGetCoordinatorInput.Type;
 
 // Output Schema
-export const ConfigurationsGetCoordinatorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationsGetCoordinatorOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationsGetCoordinatorOutput =
   typeof ConfigurationsGetCoordinatorOutput.Type;
 
@@ -566,46 +550,43 @@ export type ConfigurationsGetCoordinatorOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsGetCoordinator =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationsGetCoordinatorInput,
-    outputSchema: ConfigurationsGetCoordinatorOutput,
-  }));
+export const ConfigurationsGetCoordinator = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsGetCoordinatorInput,
+  outputSchema: ConfigurationsGetCoordinatorOutput,
+}));
 // Input Schema
-export const ConfigurationsGetNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
-    }),
-  );
+export const ConfigurationsGetNodeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
+  }),
+);
 export type ConfigurationsGetNodeInput = typeof ConfigurationsGetNodeInput.Type;
 
 // Output Schema
-export const ConfigurationsGetNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationsGetNodeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationsGetNodeOutput =
   typeof ConfigurationsGetNodeOutput.Type;
 
@@ -617,65 +598,61 @@ export type ConfigurationsGetNodeOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsGetNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsGetNodeInput,
-    outputSchema: ConfigurationsGetNodeOutput,
+export const ConfigurationsGetNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsGetNodeInput,
+  outputSchema: ConfigurationsGetNodeOutput,
+}));
+// Input Schema
+export const ConfigurationsListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations",
   }),
 );
-// Input Schema
-export const ConfigurationsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations",
-    }),
-  );
 export type ConfigurationsListByClusterInput =
   typeof ConfigurationsListByClusterInput.Type;
 
 // Output Schema
-export const ConfigurationsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConfigurationsListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationsListByClusterOutput =
   typeof ConfigurationsListByClusterOutput.Type;
 
@@ -687,65 +664,61 @@ export type ConfigurationsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsListByClusterInput,
-    outputSchema: ConfigurationsListByClusterOutput,
+export const ConfigurationsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsListByClusterInput,
+  outputSchema: ConfigurationsListByClusterOutput,
+}));
+// Input Schema
+export const ConfigurationsListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
   }),
 );
-// Input Schema
-export const ConfigurationsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
-    }),
-  );
 export type ConfigurationsListByServerInput =
   typeof ConfigurationsListByServerInput.Type;
 
 // Output Schema
-export const ConfigurationsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConfigurationsListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationsListByServerOutput =
   typeof ConfigurationsListByServerOutput.Type;
 
@@ -757,15 +730,13 @@ export type ConfigurationsListByServerOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsListByServerInput,
-    outputSchema: ConfigurationsListByServerOutput,
-  }),
-);
+export const ConfigurationsListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsListByServerInput,
+  outputSchema: ConfigurationsListByServerOutput,
+}));
 // Input Schema
 export const ConfigurationsUpdateOnCoordinatorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -780,7 +751,7 @@ export type ConfigurationsUpdateOnCoordinatorInput =
 
 // Output Schema
 export const ConfigurationsUpdateOnCoordinatorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -810,47 +781,44 @@ export type ConfigurationsUpdateOnCoordinatorOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsUpdateOnCoordinator =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationsUpdateOnCoordinatorInput,
-    outputSchema: ConfigurationsUpdateOnCoordinatorOutput,
-  }));
+export const ConfigurationsUpdateOnCoordinator = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsUpdateOnCoordinatorInput,
+  outputSchema: ConfigurationsUpdateOnCoordinatorOutput,
+}));
 // Input Schema
-export const ConfigurationsUpdateOnNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
-    }),
-  );
+export const ConfigurationsUpdateOnNodeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
+  }),
+);
 export type ConfigurationsUpdateOnNodeInput =
   typeof ConfigurationsUpdateOnNodeInput.Type;
 
 // Output Schema
-export const ConfigurationsUpdateOnNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationsUpdateOnNodeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationsUpdateOnNodeOutput =
   typeof ConfigurationsUpdateOnNodeOutput.Type;
 
@@ -862,48 +830,44 @@ export type ConfigurationsUpdateOnNodeOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConfigurationsUpdateOnNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsUpdateOnNodeInput,
-    outputSchema: ConfigurationsUpdateOnNodeOutput,
+export const ConfigurationsUpdateOnNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsUpdateOnNodeInput,
+  outputSchema: ConfigurationsUpdateOnNodeOutput,
+}));
+// Input Schema
+export const FirewallRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
-    }),
-  );
 export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
 
@@ -915,29 +879,25 @@ export type FirewallRulesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
-    }),
-  );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -948,12 +908,12 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -966,27 +926,25 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 
 // Output Schema
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 
 // The operation
@@ -997,62 +955,60 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
-export const FirewallRulesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules",
-    }),
-  );
+export const FirewallRulesListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules",
+  }),
+);
 export type FirewallRulesListByClusterInput =
   typeof FirewallRulesListByClusterInput.Type;
 
 // Output Schema
-export const FirewallRulesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const FirewallRulesListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type FirewallRulesListByClusterOutput =
   typeof FirewallRulesListByClusterOutput.Type;
 
@@ -1064,14 +1020,12 @@ export type FirewallRulesListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FirewallRulesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesListByClusterInput,
-    outputSchema: FirewallRulesListByClusterOutput,
-  }),
-);
+export const FirewallRulesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesListByClusterInput,
+  outputSchema: FirewallRulesListByClusterOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1082,7 +1036,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1115,13 +1069,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1156,7 +1110,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1187,14 +1141,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param properties - Resource properties.
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1208,8 +1163,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1221,47 +1175,44 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -1273,14 +1224,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1295,7 +1245,7 @@ export type PrivateEndpointConnectionsListByClusterInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1341,47 +1291,46 @@ export type PrivateEndpointConnectionsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateEndpointConnectionsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsListByCluster = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsListByClusterInput,
     outputSchema: PrivateEndpointConnectionsListByClusterOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources/{privateLinkResourceName}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources/{privateLinkResourceName}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -1393,15 +1342,13 @@ export type PrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1416,7 +1363,7 @@ export type PrivateLinkResourcesListByClusterInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1462,13 +1409,12 @@ export type PrivateLinkResourcesListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateLinkResourcesListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkResourcesListByClusterInput,
-    outputSchema: PrivateLinkResourcesListByClusterOutput,
-  }));
+export const PrivateLinkResourcesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListByClusterInput,
+  outputSchema: PrivateLinkResourcesListByClusterOutput,
+}));
 // Input Schema
-export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1481,7 +1427,7 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesCreateInput = typeof RolesCreateInput.Type;
 
 // Output Schema
-export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1510,12 +1456,12 @@ export type RolesCreateOutput = typeof RolesCreateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesCreateInput,
   outputSchema: RolesCreateOutput,
 }));
 // Input Schema
-export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1528,7 +1474,7 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
 
 // Output Schema
-export const RolesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RolesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
 
 // The operation
@@ -1539,12 +1485,12 @@ export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesDeleteInput,
   outputSchema: RolesDeleteOutput,
 }));
 // Input Schema
-export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1557,7 +1503,7 @@ export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesGetInput = typeof RolesGetInput.Type;
 
 // Output Schema
-export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1586,61 +1532,59 @@ export type RolesGetOutput = typeof RolesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesGetInput,
   outputSchema: RolesGetOutput,
 }));
 // Input Schema
-export const RolesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles",
-    }),
-  );
+export const RolesListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles",
+  }),
+);
 export type RolesListByClusterInput = typeof RolesListByClusterInput.Type;
 
 // Output Schema
-export const RolesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const RolesListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type RolesListByClusterOutput = typeof RolesListByClusterOutput.Type;
 
 // The operation
@@ -1651,12 +1595,12 @@ export type RolesListByClusterOutput = typeof RolesListByClusterOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RolesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesListByCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesListByClusterInput,
   outputSchema: RolesListByClusterOutput,
 }));
 // Input Schema
-export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1669,7 +1613,7 @@ export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersGetInput = typeof ServersGetInput.Type;
 
 // Output Schema
-export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1698,61 +1642,59 @@ export type ServersGetOutput = typeof ServersGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersGetInput,
   outputSchema: ServersGetOutput,
 }));
 // Input Schema
-export const ServersListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers",
-    }),
-  );
+export const ServersListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers",
+  }),
+);
 export type ServersListByClusterInput = typeof ServersListByClusterInput.Type;
 
 // Output Schema
-export const ServersListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServersListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type ServersListByClusterOutput = typeof ServersListByClusterOutput.Type;
 
 // The operation
@@ -1763,9 +1705,7 @@ export type ServersListByClusterOutput = typeof ServersListByClusterOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServersListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListByClusterInput,
-    outputSchema: ServersListByClusterOutput,
-  }),
-);
+export const ServersListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListByClusterInput,
+  outputSchema: ServersListByClusterOutput,
+}));

@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
-    }),
-  );
+export const DeleteGroupDatabaseUserInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
+  }),
+);
 export type DeleteGroupDatabaseUserInput =
   typeof DeleteGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const DeleteGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupDatabaseUserOutput =
   typeof DeleteGroupDatabaseUserOutput.Type;
 
@@ -53,10 +51,8 @@ export type DeleteGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const deleteGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupDatabaseUserInput,
-    outputSchema: DeleteGroupDatabaseUserOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupDatabaseUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDatabaseUserInput,
+  outputSchema: DeleteGroupDatabaseUserOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

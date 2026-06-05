@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIssuingAuthorizationsAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetIssuingAuthorizationsAuthorizationInput =
 
 // Output Schema
 export const GetIssuingAuthorizationsAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1273,8 +1273,9 @@ export type GetIssuingAuthorizationsAuthorizationOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingAuthorizationsAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIssuingAuthorizationsAuthorization = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetIssuingAuthorizationsAuthorizationInput,
     outputSchema: GetIssuingAuthorizationsAuthorizationOutput,
-  }));
+  }),
+);

@@ -4,20 +4,21 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const QueryDraftSqlRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/query/draft_sql/",
-    }),
-  );
+export const QueryDraftSqlRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/query/draft_sql/",
+  }),
+);
 export type QueryDraftSqlRetrieveInput = typeof QueryDraftSqlRetrieveInput.Type;
 
 // Output Schema
-export const QueryDraftSqlRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
+export const QueryDraftSqlRetrieveOutput = /*@__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.Unknown,
+);
 export type QueryDraftSqlRetrieveOutput =
   typeof QueryDraftSqlRetrieveOutput.Type;
 
@@ -31,10 +32,8 @@ export type QueryDraftSqlRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const queryDraftSqlRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QueryDraftSqlRetrieveInput,
-    outputSchema: QueryDraftSqlRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const queryDraftSqlRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueryDraftSqlRetrieveInput,
+  outputSchema: QueryDraftSqlRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

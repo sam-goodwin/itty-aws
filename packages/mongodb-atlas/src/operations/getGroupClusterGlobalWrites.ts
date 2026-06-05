@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupClusterGlobalWritesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites",
-    }),
-  );
+export const GetGroupClusterGlobalWritesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites",
+  }),
+);
 export type GetGroupClusterGlobalWritesInput =
   typeof GetGroupClusterGlobalWritesInput.Type;
 
 // Output Schema
-export const GetGroupClusterGlobalWritesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterGlobalWritesOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterGlobalWritesOutput =
   typeof GetGroupClusterGlobalWritesOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupClusterGlobalWritesOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const getGroupClusterGlobalWrites = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterGlobalWritesInput,
-    outputSchema: GetGroupClusterGlobalWritesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterGlobalWrites = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterGlobalWritesInput,
+  outputSchema: GetGroupClusterGlobalWritesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

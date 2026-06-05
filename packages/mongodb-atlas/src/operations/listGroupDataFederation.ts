@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    type: Schema.optional(Schema.Literals(["USER", "ONLINE_ARCHIVE"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation",
-    }),
-  );
+export const ListGroupDataFederationInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.Literals(["USER", "ONLINE_ARCHIVE"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation",
+  }),
+);
 export type ListGroupDataFederationInput =
   typeof ListGroupDataFederationInput.Type;
 
 // Output Schema
-export const ListGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupDataFederationOutput =
   typeof ListGroupDataFederationOutput.Type;
 
@@ -38,10 +36,8 @@ export type ListGroupDataFederationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param type - Type of Federated Database Instances to return.
  */
-export const listGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupDataFederationInput,
-    outputSchema: ListGroupDataFederationOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupDataFederationInput,
+  outputSchema: ListGroupDataFederationOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

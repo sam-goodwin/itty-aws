@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupFlexClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export type GetGroupFlexClusterBackupSnapshotInput =
 
 // Output Schema
 export const GetGroupFlexClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupFlexClusterBackupSnapshotOutput =
   typeof GetGroupFlexClusterBackupSnapshotOutput.Type;
 
@@ -38,9 +38,8 @@ export type GetGroupFlexClusterBackupSnapshotOutput =
  * @param name - Human-readable label that identifies the flex cluster.
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
-export const getGroupFlexClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupFlexClusterBackupSnapshotInput,
-    outputSchema: GetGroupFlexClusterBackupSnapshotOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const getGroupFlexClusterBackupSnapshot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupFlexClusterBackupSnapshotInput,
+  outputSchema: GetGroupFlexClusterBackupSnapshotOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

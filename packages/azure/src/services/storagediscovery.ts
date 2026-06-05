@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -51,44 +51,42 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ReportGenerateReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    discoveryResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports/{discoveryResourceName}/generateReport",
-    }),
-  );
+export const ReportGenerateReportInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
+  discoveryResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports/{discoveryResourceName}/generateReport",
+  }),
+);
 export type ReportGenerateReportInput = typeof ReportGenerateReportInput.Type;
 
 // Output Schema
-export const ReportGenerateReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        columns: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.String,
-            }),
-          ),
+export const ReportGenerateReportOutput = /*@__PURE__*/ Schema.Struct({
+  results: Schema.Array(
+    Schema.Struct({
+      columns: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.String,
+          }),
         ),
-        rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
-        errorCode: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+      ),
+      rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+      errorCode: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReportGenerateReportOutput = typeof ReportGenerateReportOutput.Type;
 
 // The operation
@@ -101,14 +99,12 @@ export type ReportGenerateReportOutput = typeof ReportGenerateReportOutput.Type;
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  * @param discoveryResourceName - The name of the ReportResource
  */
-export const ReportGenerateReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportGenerateReportInput,
-    outputSchema: ReportGenerateReportOutput,
-  }),
-);
+export const ReportGenerateReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportGenerateReportInput,
+  outputSchema: ReportGenerateReportOutput,
+}));
 // Input Schema
-export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -123,7 +119,7 @@ export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportGetInput = typeof ReportGetInput.Type;
 
 // Output Schema
-export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -154,62 +150,50 @@ export type ReportGetOutput = typeof ReportGetOutput.Type;
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  * @param discoveryResourceName - The name of the ReportResource
  */
-export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportGetInput,
   outputSchema: ReportGetOutput,
 }));
 // Input Schema
-export const ReportListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
-    }),
-  );
+export const ReportListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
+  }),
+);
 export type ReportListByResourceGroupInput =
   typeof ReportListByResourceGroupInput.Type;
 
 // Output Schema
-export const ReportListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReportListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReportListByResourceGroupOutput =
   typeof ReportListByResourceGroupOutput.Type;
 
@@ -222,63 +206,49 @@ export type ReportListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const ReportListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportListByResourceGroupInput,
-    outputSchema: ReportListByResourceGroupOutput,
+export const ReportListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportListByResourceGroupInput,
+  outputSchema: ReportListByResourceGroupOutput,
+}));
+// Input Schema
+export const ReportListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
   }),
 );
-// Input Schema
-export const ReportListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
-    }),
-  );
 export type ReportListBySubscriptionInput =
   typeof ReportListBySubscriptionInput.Type;
 
 // Output Schema
-export const ReportListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReportListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReportListBySubscriptionOutput =
   typeof ReportListBySubscriptionOutput.Type;
 
@@ -290,15 +260,13 @@ export type ReportListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const ReportListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportListBySubscriptionInput,
-    outputSchema: ReportListBySubscriptionOutput,
-  }),
-);
+export const ReportListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportListBySubscriptionInput,
+  outputSchema: ReportListBySubscriptionOutput,
+}));
 // Input Schema
 export const StorageDiscoveryWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -314,7 +282,7 @@ export type StorageDiscoveryWorkspacesCreateOrUpdateInput =
 
 // Output Schema
 export const StorageDiscoveryWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -345,14 +313,15 @@ export type StorageDiscoveryWorkspacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const StorageDiscoveryWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageDiscoveryWorkspacesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageDiscoveryWorkspacesCreateOrUpdateInput,
     outputSchema: StorageDiscoveryWorkspacesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StorageDiscoveryWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -367,8 +336,7 @@ export type StorageDiscoveryWorkspacesDeleteInput =
   typeof StorageDiscoveryWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const StorageDiscoveryWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageDiscoveryWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageDiscoveryWorkspacesDeleteOutput =
   typeof StorageDiscoveryWorkspacesDeleteOutput.Type;
 
@@ -381,48 +349,45 @@ export type StorageDiscoveryWorkspacesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const StorageDiscoveryWorkspacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageDiscoveryWorkspacesDeleteInput,
-    outputSchema: StorageDiscoveryWorkspacesDeleteOutput,
-  }));
+export const StorageDiscoveryWorkspacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageDiscoveryWorkspacesDeleteInput,
+  outputSchema: StorageDiscoveryWorkspacesDeleteOutput,
+}));
 // Input Schema
-export const StorageDiscoveryWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
-    }),
-  );
+export const StorageDiscoveryWorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+  }),
+);
 export type StorageDiscoveryWorkspacesGetInput =
   typeof StorageDiscoveryWorkspacesGetInput.Type;
 
 // Output Schema
-export const StorageDiscoveryWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageDiscoveryWorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageDiscoveryWorkspacesGetOutput =
   typeof StorageDiscoveryWorkspacesGetOutput.Type;
 
@@ -435,14 +400,13 @@ export type StorageDiscoveryWorkspacesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const StorageDiscoveryWorkspacesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageDiscoveryWorkspacesGetInput,
-    outputSchema: StorageDiscoveryWorkspacesGetOutput,
-  }));
+export const StorageDiscoveryWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageDiscoveryWorkspacesGetInput,
+  outputSchema: StorageDiscoveryWorkspacesGetOutput,
+}));
 // Input Schema
 export const StorageDiscoveryWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -457,7 +421,7 @@ export type StorageDiscoveryWorkspacesListByResourceGroupInput =
 
 // Output Schema
 export const StorageDiscoveryWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -503,13 +467,13 @@ export type StorageDiscoveryWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StorageDiscoveryWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesListByResourceGroupInput,
     outputSchema: StorageDiscoveryWorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
 export const StorageDiscoveryWorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -523,7 +487,7 @@ export type StorageDiscoveryWorkspacesListBySubscriptionInput =
 
 // Output Schema
 export const StorageDiscoveryWorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -568,13 +532,13 @@ export type StorageDiscoveryWorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StorageDiscoveryWorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesListBySubscriptionInput,
     outputSchema: StorageDiscoveryWorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
 export const StorageDiscoveryWorkspacesReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -590,7 +554,7 @@ export type StorageDiscoveryWorkspacesReportInput =
 
 // Output Schema
 export const StorageDiscoveryWorkspacesReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         columns: Schema.optional(
@@ -618,14 +582,13 @@ export type StorageDiscoveryWorkspacesReportOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const StorageDiscoveryWorkspacesReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageDiscoveryWorkspacesReportInput,
-    outputSchema: StorageDiscoveryWorkspacesReportOutput,
-  }));
+export const StorageDiscoveryWorkspacesReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageDiscoveryWorkspacesReportInput,
+  outputSchema: StorageDiscoveryWorkspacesReportOutput,
+}));
 // Input Schema
 export const StorageDiscoveryWorkspacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -641,7 +604,7 @@ export type StorageDiscoveryWorkspacesUpdateInput =
 
 // Output Schema
 export const StorageDiscoveryWorkspacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -672,8 +635,7 @@ export type StorageDiscoveryWorkspacesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const StorageDiscoveryWorkspacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageDiscoveryWorkspacesUpdateInput,
-    outputSchema: StorageDiscoveryWorkspacesUpdateOutput,
-  }));
+export const StorageDiscoveryWorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageDiscoveryWorkspacesUpdateInput,
+  outputSchema: StorageDiscoveryWorkspacesUpdateOutput,
+}));

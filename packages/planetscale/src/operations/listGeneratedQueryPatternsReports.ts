@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGeneratedQueryPatternsReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -23,18 +23,17 @@ export type ListGeneratedQueryPatternsReportsInput =
 
 // Output Schema
 export const ListGeneratedQueryPatternsReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.String,
+  /*@__PURE__*/ Schema.Struct({
     has_next: Schema.Boolean,
     has_prev: Schema.Boolean,
-    cursor_start: Schema.NullOr(Schema.String),
-    cursor_end: Schema.NullOr(Schema.String),
+    cursor_start: Schema.String,
+    cursor_end: Schema.String,
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
         state: Schema.Literals(["pending", "completed", "failed"]),
         created_at: Schema.String,
-        finished_at: Schema.NullOr(Schema.String),
+        finished_at: Schema.String,
         url: Schema.String,
         download_url: Schema.String,
         actor: Schema.Struct({
@@ -59,9 +58,8 @@ export type ListGeneratedQueryPatternsReportsOutput =
  * @param ending_before - If provided, returns results before the specified cursor
  * @param limit - If provided, specifies the number of returned results (max 100)
  */
-export const listGeneratedQueryPatternsReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGeneratedQueryPatternsReportsInput,
-    outputSchema: ListGeneratedQueryPatternsReportsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGeneratedQueryPatternsReports = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGeneratedQueryPatternsReportsInput,
+  outputSchema: ListGeneratedQueryPatternsReportsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

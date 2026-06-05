@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
   page: Schema.optional(Schema.Number),
@@ -15,8 +15,7 @@ export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDatabasesInput = typeof ListDatabasesInput.Type;
 
 // Output Schema
-export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListDatabasesOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -31,7 +30,7 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       open_schema_recommendations_count: Schema.optional(Schema.Number),
       development_branches_count: Schema.optional(Schema.Number),
       production_branches_count: Schema.optional(Schema.Number),
-      issues_count: Schema.optional(Schema.NullOr(Schema.Number)),
+      issues_count: Schema.optional(Schema.Number),
       multiple_admins_required_for_deletion: Schema.optional(Schema.Boolean),
       ready: Schema.Boolean,
       at_backup_restore_branches_limit: Schema.optional(Schema.Boolean),
@@ -41,8 +40,8 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             state: Schema.String,
             import_check_errors: Schema.String,
-            started_at: Schema.NullOr(Schema.String),
-            finished_at: Schema.NullOr(Schema.String),
+            started_at: Schema.String,
+            finished_at: Schema.String,
             data_source: Schema.Struct({
               hostname: Schema.String,
               port: Schema.Number,
@@ -60,8 +59,6 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         location: Schema.String,
         slug: Schema.String,
         current_default: Schema.Boolean,
-        mysql_supported: Schema.Boolean,
-        postgresql_supported: Schema.Boolean,
       }),
       html_url: Schema.String,
       name: Schema.String,
@@ -96,7 +93,7 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       migration_framework: Schema.optional(Schema.NullOr(Schema.String)),
       created_at: Schema.String,
       updated_at: Schema.String,
-      schema_last_updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+      schema_last_updated_at: Schema.optional(Schema.String),
       kind: Schema.Literals(["mysql", "postgresql"]),
     }),
   ),
@@ -112,16 +109,14 @@ export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListDatabasesInput,
-    outputSchema: ListDatabasesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listDatabases = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListDatabasesInput,
+  outputSchema: ListDatabasesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

@@ -4,98 +4,92 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PropertyDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    event_names: Schema.optional(Schema.String),
-    exclude_core_properties: Schema.optional(Schema.Boolean),
-    exclude_hidden: Schema.optional(Schema.Boolean),
-    excluded_properties: Schema.optional(Schema.String),
-    filter_by_event_names: Schema.optional(Schema.Boolean),
-    group_type_index: Schema.optional(Schema.Number),
-    is_feature_flag: Schema.optional(Schema.Boolean),
-    is_numerical: Schema.optional(Schema.Boolean),
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-    properties: Schema.optional(Schema.String),
-    search: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals(["event", "person", "group", "session"]),
-    ),
-    verified: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/property_definitions/",
-    }),
-  );
+export const PropertyDefinitionsListInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  event_names: Schema.optional(Schema.String),
+  exclude_core_properties: Schema.optional(Schema.Boolean),
+  exclude_hidden: Schema.optional(Schema.Boolean),
+  excluded_properties: Schema.optional(Schema.String),
+  filter_by_event_names: Schema.optional(Schema.Boolean),
+  group_type_index: Schema.optional(Schema.Number),
+  is_feature_flag: Schema.optional(Schema.Boolean),
+  is_numerical: Schema.optional(Schema.Boolean),
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+  properties: Schema.optional(Schema.String),
+  search: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals(["event", "person", "group", "session"]),
+  ),
+  verified: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/property_definitions/",
+  }),
+);
 export type PropertyDefinitionsListInput =
   typeof PropertyDefinitionsListInput.Type;
 
 // Output Schema
-export const PropertyDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.optional(Schema.Number),
-    next: Schema.optional(Schema.NullOr(Schema.String)),
-    previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          tags: Schema.optional(Schema.Array(Schema.Unknown)),
-          is_numerical: Schema.optional(Schema.Boolean),
-          updated_at: Schema.optional(Schema.String),
-          updated_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
+export const PropertyDefinitionsListOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  next: Schema.optional(Schema.NullOr(Schema.String)),
+  previous: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+        tags: Schema.optional(Schema.Array(Schema.Unknown)),
+        is_numerical: Schema.optional(Schema.Boolean),
+        updated_at: Schema.optional(Schema.String),
+        updated_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
           ),
-          is_seen_on_filtered_events: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
+        ),
+        is_seen_on_filtered_events: Schema.optional(
+          Schema.NullOr(Schema.Boolean),
+        ),
+        property_type: Schema.optional(Schema.Unknown),
+        verified: Schema.optional(Schema.Boolean),
+        verified_at: Schema.optional(Schema.NullOr(Schema.String)),
+        verified_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
           ),
-          property_type: Schema.optional(Schema.Unknown),
-          verified: Schema.optional(Schema.Boolean),
-          verified_at: Schema.optional(Schema.NullOr(Schema.String)),
-          verified_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+        ),
+        hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      }),
     ),
-  });
+  ),
+});
 export type PropertyDefinitionsListOutput =
   typeof PropertyDefinitionsListOutput.Type;
 
@@ -123,10 +117,8 @@ export type PropertyDefinitionsListOutput =
 * `session` - session
  * @param verified - Filter by verified status. True returns only verified, false returns only unverified.
  */
-export const propertyDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PropertyDefinitionsListInput,
-    outputSchema: PropertyDefinitionsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const propertyDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PropertyDefinitionsListInput,
+  outputSchema: PropertyDefinitionsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

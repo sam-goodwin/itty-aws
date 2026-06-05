@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingRecommendationsRefreshCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type ErrorTrackingRecommendationsRefreshCreateInput =
 
 // Output Schema
 export const ErrorTrackingRecommendationsRefreshCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     meta: Schema.optional(Schema.Unknown),
@@ -38,9 +38,10 @@ export type ErrorTrackingRecommendationsRefreshCreateOutput =
  * @param id - A UUID string identifying this error tracking recommendation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingRecommendationsRefreshCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingRecommendationsRefreshCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingRecommendationsRefreshCreateInput,
     outputSchema: ErrorTrackingRecommendationsRefreshCreateOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -7,45 +7,43 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const AddonsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    addonName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}",
-    }),
-  );
+export const AddonsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  addonName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}",
+  }),
+);
 export type AddonsCreateOrUpdateInput = typeof AddonsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AddonsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AddonsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AddonsCreateOrUpdateOutput = typeof AddonsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -58,14 +56,12 @@ export type AddonsCreateOrUpdateOutput = typeof AddonsCreateOrUpdateOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddonsCreateOrUpdateInput,
-    outputSchema: AddonsCreateOrUpdateOutput,
-  }),
-);
+export const AddonsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddonsCreateOrUpdateInput,
+  outputSchema: AddonsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -80,7 +76,7 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
 
 // Output Schema
-export const AddonsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AddonsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AddonsDeleteOutput = typeof AddonsDeleteOutput.Type;
 
 // The operation
@@ -93,12 +89,12 @@ export type AddonsDeleteOutput = typeof AddonsDeleteOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsDeleteInput,
   outputSchema: AddonsDeleteOutput,
 }));
 // Input Schema
-export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -113,7 +109,7 @@ export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddonsGetInput = typeof AddonsGetInput.Type;
 
 // Output Schema
-export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -144,12 +140,12 @@ export type AddonsGetOutput = typeof AddonsGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsGetInput,
   outputSchema: AddonsGetOutput,
 }));
 // Input Schema
-export const AddonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -163,7 +159,7 @@ export const AddonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddonsListInput = typeof AddonsListInput.Type;
 
 // Output Schema
-export const AddonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -198,48 +194,46 @@ export type AddonsListOutput = typeof AddonsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const AddonsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsListInput,
   outputSchema: AddonsListOutput,
 }));
 // Input Schema
-export const AuthorizationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
-    }),
-  );
+export const AuthorizationsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+  }),
+);
 export type AuthorizationsCreateOrUpdateInput =
   typeof AuthorizationsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AuthorizationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AuthorizationsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AuthorizationsCreateOrUpdateOutput =
   typeof AuthorizationsCreateOrUpdateOutput.Type;
 
@@ -253,30 +247,27 @@ export type AuthorizationsCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
-export const AuthorizationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuthorizationsCreateOrUpdateInput,
-    outputSchema: AuthorizationsCreateOrUpdateOutput,
-  }));
+export const AuthorizationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationsCreateOrUpdateInput,
+  outputSchema: AuthorizationsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AuthorizationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
-    }),
-  );
+export const AuthorizationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+  }),
+);
 export type AuthorizationsDeleteInput = typeof AuthorizationsDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationsDeleteOutput = typeof AuthorizationsDeleteOutput.Type;
 
 // The operation
@@ -289,22 +280,18 @@ export type AuthorizationsDeleteOutput = typeof AuthorizationsDeleteOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
-export const AuthorizationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationsDeleteInput,
-    outputSchema: AuthorizationsDeleteOutput,
-  }),
-);
+export const AuthorizationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationsDeleteInput,
+  outputSchema: AuthorizationsDeleteOutput,
+}));
 // Input Schema
-export const AuthorizationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AuthorizationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
@@ -313,26 +300,25 @@ export const AuthorizationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AuthorizationsGetInput = typeof AuthorizationsGetInput.Type;
 
 // Output Schema
-export const AuthorizationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AuthorizationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AuthorizationsGetOutput = typeof AuthorizationsGetOutput.Type;
 
 // The operation
@@ -345,61 +331,49 @@ export type AuthorizationsGetOutput = typeof AuthorizationsGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
-export const AuthorizationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationsGetInput,
   outputSchema: AuthorizationsGetOutput,
 }));
 // Input Schema
-export const AuthorizationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations",
-    }),
-  );
+export const AuthorizationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations",
+  }),
+);
 export type AuthorizationsListInput = typeof AuthorizationsListInput.Type;
 
 // Output Schema
-export const AuthorizationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AuthorizationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AuthorizationsListOutput = typeof AuthorizationsListOutput.Type;
 
 // The operation
@@ -411,48 +385,46 @@ export type AuthorizationsListOutput = typeof AuthorizationsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const AuthorizationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationsListInput,
   outputSchema: AuthorizationsListOutput,
 }));
 // Input Schema
-export const CloudLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    cloudLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
-    }),
-  );
+export const CloudLinksCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  cloudLinkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
+  }),
+);
 export type CloudLinksCreateOrUpdateInput =
   typeof CloudLinksCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CloudLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CloudLinksCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CloudLinksCreateOrUpdateOutput =
   typeof CloudLinksCreateOrUpdateOutput.Type;
 
@@ -466,14 +438,12 @@ export type CloudLinksCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudLinksCreateOrUpdateInput,
-    outputSchema: CloudLinksCreateOrUpdateOutput,
-  }),
-);
+export const CloudLinksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudLinksCreateOrUpdateInput,
+  outputSchema: CloudLinksCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CloudLinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -488,7 +458,7 @@ export const CloudLinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudLinksDeleteInput = typeof CloudLinksDeleteInput.Type;
 
 // Output Schema
-export const CloudLinksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CloudLinksDeleteOutput = typeof CloudLinksDeleteOutput.Type;
 
 // The operation
@@ -501,12 +471,12 @@ export type CloudLinksDeleteOutput = typeof CloudLinksDeleteOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksDeleteInput,
   outputSchema: CloudLinksDeleteOutput,
 }));
 // Input Schema
-export const CloudLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -521,7 +491,7 @@ export const CloudLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudLinksGetInput = typeof CloudLinksGetInput.Type;
 
 // Output Schema
-export const CloudLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -552,12 +522,12 @@ export type CloudLinksGetOutput = typeof CloudLinksGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksGetInput,
   outputSchema: CloudLinksGetOutput,
 }));
 // Input Schema
-export const CloudLinksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -571,7 +541,7 @@ export const CloudLinksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudLinksListInput = typeof CloudLinksListInput.Type;
 
 // Output Schema
-export const CloudLinksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -606,48 +576,46 @@ export type CloudLinksListOutput = typeof CloudLinksListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const CloudLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksListInput,
   outputSchema: CloudLinksListOutput,
 }));
 // Input Schema
-export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
-    }),
-  );
+export const ClustersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
+  }),
+);
 export type ClustersCreateOrUpdateInput =
   typeof ClustersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ClustersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
 
@@ -661,14 +629,12 @@ export type ClustersCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -683,7 +649,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -696,12 +662,12 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -716,7 +682,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -747,12 +713,12 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -766,7 +732,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersListInput = typeof ClustersListInput.Type;
 
 // Output Schema
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -801,20 +767,18 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
-export const ClustersListZonesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ClustersListZonesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/listZones",
@@ -823,17 +787,16 @@ export const ClustersListZonesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ClustersListZonesInput = typeof ClustersListZonesInput.Type;
 
 // Output Schema
-export const ClustersListZonesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zones: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          hosts: Schema.optional(Schema.Array(Schema.String)),
-          zone: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListZonesOutput = /*@__PURE__*/ Schema.Struct({
+  zones: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        hosts: Schema.optional(Schema.Array(Schema.String)),
+        zone: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ClustersListZonesOutput = typeof ClustersListZonesOutput.Type;
 
 // The operation
@@ -846,12 +809,12 @@ export type ClustersListZonesOutput = typeof ClustersListZonesOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersListZones = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersListZones = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListZonesInput,
   outputSchema: ClustersListZonesOutput,
 }));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -866,7 +829,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -897,49 +860,47 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
-export const DatastoresCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    datastoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
-    }),
-  );
+export const DatastoresCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  datastoreName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
+  }),
+);
 export type DatastoresCreateOrUpdateInput =
   typeof DatastoresCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DatastoresCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DatastoresCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DatastoresCreateOrUpdateOutput =
   typeof DatastoresCreateOrUpdateOutput.Type;
 
@@ -954,14 +915,12 @@ export type DatastoresCreateOrUpdateOutput =
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatastoresCreateOrUpdateInput,
-    outputSchema: DatastoresCreateOrUpdateOutput,
-  }),
-);
+export const DatastoresCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatastoresCreateOrUpdateInput,
+  outputSchema: DatastoresCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -977,7 +936,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
 
 // Output Schema
-export const DatastoresDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatastoresDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
 
 // The operation
@@ -991,12 +950,12 @@ export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresDeleteInput,
   outputSchema: DatastoresDeleteOutput,
 }));
 // Input Schema
-export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1012,7 +971,7 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresGetInput = typeof DatastoresGetInput.Type;
 
 // Output Schema
-export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1044,12 +1003,12 @@ export type DatastoresGetOutput = typeof DatastoresGetOutput.Type;
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresGetInput,
   outputSchema: DatastoresGetOutput,
 }));
 // Input Schema
-export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1064,7 +1023,7 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatastoresListInput = typeof DatastoresListInput.Type;
 
 // Output Schema
-export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1100,13 +1059,13 @@ export type DatastoresListOutput = typeof DatastoresListOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresListInput,
   outputSchema: DatastoresListOutput,
 }));
 // Input Schema
 export const GlobalReachConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1123,7 +1082,7 @@ export type GlobalReachConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const GlobalReachConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1155,31 +1114,30 @@ export type GlobalReachConnectionsCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param globalReachConnectionName - Name of the global reach connection
  */
-export const GlobalReachConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GlobalReachConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GlobalReachConnectionsCreateOrUpdateInput,
     outputSchema: GlobalReachConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const GlobalReachConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    globalReachConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
-    }),
-  );
+export const GlobalReachConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  globalReachConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
+  }),
+);
 export type GlobalReachConnectionsDeleteInput =
   typeof GlobalReachConnectionsDeleteInput.Type;
 
 // Output Schema
-export const GlobalReachConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GlobalReachConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GlobalReachConnectionsDeleteOutput =
   typeof GlobalReachConnectionsDeleteOutput.Type;
 
@@ -1193,49 +1151,46 @@ export type GlobalReachConnectionsDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param globalReachConnectionName - Name of the global reach connection
  */
-export const GlobalReachConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GlobalReachConnectionsDeleteInput,
-    outputSchema: GlobalReachConnectionsDeleteOutput,
-  }));
+export const GlobalReachConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalReachConnectionsDeleteInput,
+  outputSchema: GlobalReachConnectionsDeleteOutput,
+}));
 // Input Schema
-export const GlobalReachConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    globalReachConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
-    }),
-  );
+export const GlobalReachConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  globalReachConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
+  }),
+);
 export type GlobalReachConnectionsGetInput =
   typeof GlobalReachConnectionsGetInput.Type;
 
 // Output Schema
-export const GlobalReachConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GlobalReachConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GlobalReachConnectionsGetOutput =
   typeof GlobalReachConnectionsGetOutput.Type;
 
@@ -1249,64 +1204,50 @@ export type GlobalReachConnectionsGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param globalReachConnectionName - Name of the global reach connection
  */
-export const GlobalReachConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalReachConnectionsGetInput,
-    outputSchema: GlobalReachConnectionsGetOutput,
+export const GlobalReachConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalReachConnectionsGetInput,
+  outputSchema: GlobalReachConnectionsGetOutput,
+}));
+// Input Schema
+export const GlobalReachConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections",
   }),
 );
-// Input Schema
-export const GlobalReachConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections",
-    }),
-  );
 export type GlobalReachConnectionsListInput =
   typeof GlobalReachConnectionsListInput.Type;
 
 // Output Schema
-export const GlobalReachConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const GlobalReachConnectionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GlobalReachConnectionsListOutput =
   typeof GlobalReachConnectionsListOutput.Type;
 
@@ -1319,15 +1260,13 @@ export type GlobalReachConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const GlobalReachConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalReachConnectionsListInput,
-    outputSchema: GlobalReachConnectionsListOutput,
-  }),
-);
+export const GlobalReachConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalReachConnectionsListInput,
+  outputSchema: GlobalReachConnectionsListOutput,
+}));
 // Input Schema
 export const HcxEnterpriseSitesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1344,7 +1283,7 @@ export type HcxEnterpriseSitesCreateOrUpdateInput =
 
 // Output Schema
 export const HcxEnterpriseSitesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1376,31 +1315,28 @@ export type HcxEnterpriseSitesCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
-export const HcxEnterpriseSitesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HcxEnterpriseSitesCreateOrUpdateInput,
-    outputSchema: HcxEnterpriseSitesCreateOrUpdateOutput,
-  }));
+export const HcxEnterpriseSitesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesCreateOrUpdateInput,
+  outputSchema: HcxEnterpriseSitesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const HcxEnterpriseSitesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
-    }),
-  );
+export const HcxEnterpriseSitesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
+  }),
+);
 export type HcxEnterpriseSitesDeleteInput =
   typeof HcxEnterpriseSitesDeleteInput.Type;
 
 // Output Schema
-export const HcxEnterpriseSitesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HcxEnterpriseSitesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HcxEnterpriseSitesDeleteOutput =
   typeof HcxEnterpriseSitesDeleteOutput.Type;
 
@@ -1414,49 +1350,45 @@ export type HcxEnterpriseSitesDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
-export const HcxEnterpriseSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesDeleteInput,
-    outputSchema: HcxEnterpriseSitesDeleteOutput,
+export const HcxEnterpriseSitesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesDeleteInput,
+  outputSchema: HcxEnterpriseSitesDeleteOutput,
+}));
+// Input Schema
+export const HcxEnterpriseSitesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
   }),
 );
-// Input Schema
-export const HcxEnterpriseSitesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
-    }),
-  );
 export type HcxEnterpriseSitesGetInput = typeof HcxEnterpriseSitesGetInput.Type;
 
 // Output Schema
-export const HcxEnterpriseSitesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HcxEnterpriseSitesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HcxEnterpriseSitesGetOutput =
   typeof HcxEnterpriseSitesGetOutput.Type;
 
@@ -1470,64 +1402,50 @@ export type HcxEnterpriseSitesGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
-export const HcxEnterpriseSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesGetInput,
-    outputSchema: HcxEnterpriseSitesGetOutput,
+export const HcxEnterpriseSitesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesGetInput,
+  outputSchema: HcxEnterpriseSitesGetOutput,
+}));
+// Input Schema
+export const HcxEnterpriseSitesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites",
   }),
 );
-// Input Schema
-export const HcxEnterpriseSitesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites",
-    }),
-  );
 export type HcxEnterpriseSitesListInput =
   typeof HcxEnterpriseSitesListInput.Type;
 
 // Output Schema
-export const HcxEnterpriseSitesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const HcxEnterpriseSitesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type HcxEnterpriseSitesListOutput =
   typeof HcxEnterpriseSitesListOutput.Type;
 
@@ -1540,14 +1458,12 @@ export type HcxEnterpriseSitesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const HcxEnterpriseSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesListInput,
-    outputSchema: HcxEnterpriseSitesListOutput,
-  }),
-);
+export const HcxEnterpriseSitesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesListInput,
+  outputSchema: HcxEnterpriseSitesListOutput,
+}));
 // Input Schema
-export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1563,7 +1479,7 @@ export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsGetInput = typeof HostsGetInput.Type;
 
 // Output Schema
-export const HostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1595,12 +1511,12 @@ export type HostsGetOutput = typeof HostsGetOutput.Type;
  * @param clusterName - Name of the cluster
  * @param hostId - The host identifier.
  */
-export const HostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsGetInput,
   outputSchema: HostsGetOutput,
 }));
 // Input Schema
-export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1615,7 +1531,7 @@ export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HostsListInput = typeof HostsListInput.Type;
 
 // Output Schema
-export const HostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1651,47 +1567,45 @@ export type HostsListOutput = typeof HostsListOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const HostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsListInput,
   outputSchema: HostsListOutput,
 }));
 // Input Schema
-export const IscsiPathsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
-    }),
-  );
+export const IscsiPathsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+  }),
+);
 export type IscsiPathsCreateOrUpdateInput =
   typeof IscsiPathsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IscsiPathsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const IscsiPathsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IscsiPathsCreateOrUpdateOutput =
   typeof IscsiPathsCreateOrUpdateOutput.Type;
 
@@ -1704,14 +1618,12 @@ export type IscsiPathsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IscsiPathsCreateOrUpdateInput,
-    outputSchema: IscsiPathsCreateOrUpdateOutput,
-  }),
-);
+export const IscsiPathsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IscsiPathsCreateOrUpdateInput,
+  outputSchema: IscsiPathsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IscsiPathsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1725,7 +1637,7 @@ export const IscsiPathsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IscsiPathsDeleteInput = typeof IscsiPathsDeleteInput.Type;
 
 // Output Schema
-export const IscsiPathsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IscsiPathsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IscsiPathsDeleteOutput = typeof IscsiPathsDeleteOutput.Type;
 
 // The operation
@@ -1737,12 +1649,12 @@ export type IscsiPathsDeleteOutput = typeof IscsiPathsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiPathsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiPathsDeleteInput,
   outputSchema: IscsiPathsDeleteOutput,
 }));
 // Input Schema
-export const IscsiPathsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1756,7 +1668,7 @@ export const IscsiPathsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IscsiPathsGetInput = typeof IscsiPathsGetInput.Type;
 
 // Output Schema
-export const IscsiPathsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1786,62 +1698,50 @@ export type IscsiPathsGetOutput = typeof IscsiPathsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiPathsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiPathsGetInput,
   outputSchema: IscsiPathsGetOutput,
 }));
 // Input Schema
-export const IscsiPathsListByPrivateCloudInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths",
-    }),
-  );
+export const IscsiPathsListByPrivateCloudInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths",
+  }),
+);
 export type IscsiPathsListByPrivateCloudInput =
   typeof IscsiPathsListByPrivateCloudInput.Type;
 
 // Output Schema
-export const IscsiPathsListByPrivateCloudOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const IscsiPathsListByPrivateCloudOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IscsiPathsListByPrivateCloudOutput =
   typeof IscsiPathsListByPrivateCloudOutput.Type;
 
@@ -1854,49 +1754,46 @@ export type IscsiPathsListByPrivateCloudOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsListByPrivateCloud =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IscsiPathsListByPrivateCloudInput,
-    outputSchema: IscsiPathsListByPrivateCloudOutput,
-  }));
+export const IscsiPathsListByPrivateCloud = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IscsiPathsListByPrivateCloudInput,
+  outputSchema: IscsiPathsListByPrivateCloudOutput,
+}));
 // Input Schema
-export const LicensesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
-    }),
-  );
+export const LicensesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+  }),
+);
 export type LicensesCreateOrUpdateInput =
   typeof LicensesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const LicensesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LicensesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LicensesCreateOrUpdateOutput =
   typeof LicensesCreateOrUpdateOutput.Type;
 
@@ -1910,14 +1807,12 @@ export type LicensesCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesCreateOrUpdateInput,
-    outputSchema: LicensesCreateOrUpdateOutput,
-  }),
-);
+export const LicensesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesCreateOrUpdateInput,
+  outputSchema: LicensesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1932,7 +1827,7 @@ export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
 
 // Output Schema
-export const LicensesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LicensesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
 
 // The operation
@@ -1945,12 +1840,12 @@ export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesDeleteInput,
   outputSchema: LicensesDeleteOutput,
 }));
 // Input Schema
-export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1965,7 +1860,7 @@ export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LicensesGetInput = typeof LicensesGetInput.Type;
 
 // Output Schema
-export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1996,34 +1891,32 @@ export type LicensesGetOutput = typeof LicensesGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesGetInput,
   outputSchema: LicensesGetOutput,
 }));
 // Input Schema
-export const LicensesGetPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}/getProperties",
-    }),
-  );
+export const LicensesGetPropertiesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}/getProperties",
+  }),
+);
 export type LicensesGetPropertiesInput = typeof LicensesGetPropertiesInput.Type;
 
 // Output Schema
-export const LicensesGetPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.Literals(["VmwareFirewall"]),
-    provisioningState: Schema.optional(
-      Schema.Literals(["Succeeded", "Failed", "Canceled"]),
-    ),
-  });
+export const LicensesGetPropertiesOutput = /*@__PURE__*/ Schema.Struct({
+  kind: Schema.Literals(["VmwareFirewall"]),
+  provisioningState: Schema.optional(
+    Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+  ),
+});
 export type LicensesGetPropertiesOutput =
   typeof LicensesGetPropertiesOutput.Type;
 
@@ -2037,14 +1930,12 @@ export type LicensesGetPropertiesOutput =
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesGetProperties = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesGetPropertiesInput,
-    outputSchema: LicensesGetPropertiesOutput,
-  }),
-);
+export const LicensesGetProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesGetPropertiesInput,
+  outputSchema: LicensesGetPropertiesOutput,
+}));
 // Input Schema
-export const LicensesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2058,7 +1949,7 @@ export const LicensesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LicensesListInput = typeof LicensesListInput.Type;
 
 // Output Schema
-export const LicensesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2093,28 +1984,29 @@ export type LicensesListOutput = typeof LicensesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const LicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesListInput,
   outputSchema: LicensesListOutput,
 }));
 // Input Schema
-export const LocationsCheckQuotaAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsCheckQuotaAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkQuotaAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkQuotaAvailability",
+  }),
+);
 export type LocationsCheckQuotaAvailabilityInput =
   typeof LocationsCheckQuotaAvailabilityInput.Type;
 
 // Output Schema
 export const LocationsCheckQuotaAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostsRemaining: Schema.optional(
       Schema.Record(Schema.String, Schema.Number),
     ),
@@ -2131,14 +2023,13 @@ export type LocationsCheckQuotaAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const LocationsCheckQuotaAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LocationsCheckQuotaAvailabilityInput,
-    outputSchema: LocationsCheckQuotaAvailabilityOutput,
-  }));
+export const LocationsCheckQuotaAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsCheckQuotaAvailabilityInput,
+  outputSchema: LocationsCheckQuotaAvailabilityOutput,
+}));
 // Input Schema
-export const LocationsCheckTrialAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsCheckTrialAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2149,18 +2040,19 @@ export const LocationsCheckTrialAvailabilityInput =
     size: Schema.optional(Schema.String),
     family: Schema.optional(Schema.String),
     capacity: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability",
+  }),
+);
 export type LocationsCheckTrialAvailabilityInput =
   typeof LocationsCheckTrialAvailabilityInput.Type;
 
 // Output Schema
 export const LocationsCheckTrialAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["TrialAvailable", "TrialUsed", "TrialDisabled"]),
     ),
@@ -2181,13 +2073,12 @@ export type LocationsCheckTrialAvailabilityOutput =
  * @param family - If the service has different generations of hardware, for the same SKU, then that can be captured here.
  * @param capacity - If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
  */
-export const LocationsCheckTrialAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LocationsCheckTrialAvailabilityInput,
-    outputSchema: LocationsCheckTrialAvailabilityOutput,
-  }));
+export const LocationsCheckTrialAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsCheckTrialAvailabilityInput,
+  outputSchema: LocationsCheckTrialAvailabilityOutput,
+}));
 // Input Schema
-export const MaintenancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2202,7 +2093,7 @@ export const MaintenancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MaintenancesGetInput = typeof MaintenancesGetInput.Type;
 
 // Output Schema
-export const MaintenancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2233,48 +2124,46 @@ export type MaintenancesGetOutput = typeof MaintenancesGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MaintenancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MaintenancesGetInput,
   outputSchema: MaintenancesGetOutput,
 }));
 // Input Schema
-export const MaintenancesInitiateChecksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/initiateChecks",
-    }),
-  );
+export const MaintenancesInitiateChecksInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  maintenanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/initiateChecks",
+  }),
+);
 export type MaintenancesInitiateChecksInput =
   typeof MaintenancesInitiateChecksInput.Type;
 
 // Output Schema
-export const MaintenancesInitiateChecksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MaintenancesInitiateChecksOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MaintenancesInitiateChecksOutput =
   typeof MaintenancesInitiateChecksOutput.Type;
 
@@ -2288,14 +2177,12 @@ export type MaintenancesInitiateChecksOutput =
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesInitiateChecks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesInitiateChecksInput,
-    outputSchema: MaintenancesInitiateChecksOutput,
-  }),
-);
+export const MaintenancesInitiateChecks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesInitiateChecksInput,
+  outputSchema: MaintenancesInitiateChecksOutput,
+}));
 // Input Schema
-export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2322,42 +2209,30 @@ export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MaintenancesListInput = typeof MaintenancesListInput.Type;
 
 // Output Schema
-export const MaintenancesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const MaintenancesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MaintenancesListOutput = typeof MaintenancesListOutput.Type;
 
 // The operation
@@ -2373,48 +2248,46 @@ export type MaintenancesListOutput = typeof MaintenancesListOutput.Type;
  * @param from - date from which result should be returned. ie. scheduledStartTime >= from
  * @param to - date till which result should be returned. i.e. scheduledStartTime <= to
  */
-export const MaintenancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MaintenancesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MaintenancesListInput,
   outputSchema: MaintenancesListOutput,
 }));
 // Input Schema
-export const MaintenancesRescheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/reschedule",
-    }),
-  );
+export const MaintenancesRescheduleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  maintenanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/reschedule",
+  }),
+);
 export type MaintenancesRescheduleInput =
   typeof MaintenancesRescheduleInput.Type;
 
 // Output Schema
-export const MaintenancesRescheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MaintenancesRescheduleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MaintenancesRescheduleOutput =
   typeof MaintenancesRescheduleOutput.Type;
 
@@ -2428,49 +2301,45 @@ export type MaintenancesRescheduleOutput =
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesReschedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesRescheduleInput,
-    outputSchema: MaintenancesRescheduleOutput,
+export const MaintenancesReschedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesRescheduleInput,
+  outputSchema: MaintenancesRescheduleOutput,
+}));
+// Input Schema
+export const MaintenancesScheduleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  maintenanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/schedule",
   }),
 );
-// Input Schema
-export const MaintenancesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/schedule",
-    }),
-  );
 export type MaintenancesScheduleInput = typeof MaintenancesScheduleInput.Type;
 
 // Output Schema
-export const MaintenancesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MaintenancesScheduleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MaintenancesScheduleOutput = typeof MaintenancesScheduleOutput.Type;
 
 // The operation
@@ -2483,20 +2352,18 @@ export type MaintenancesScheduleOutput = typeof MaintenancesScheduleOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesScheduleInput,
-    outputSchema: MaintenancesScheduleOutput,
-  }),
-);
+export const MaintenancesSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesScheduleInput,
+  outputSchema: MaintenancesScheduleOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(T.Http({ method: "GET", path: "/providers/Microsoft.AVS/operations" }));
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2527,31 +2394,32 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PlacementPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PlacementPoliciesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     placementPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+  }),
+);
 export type PlacementPoliciesCreateOrUpdateInput =
   typeof PlacementPoliciesCreateOrUpdateInput.Type;
 
 // Output Schema
 export const PlacementPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2584,32 +2452,29 @@ export type PlacementPoliciesCreateOrUpdateOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PlacementPoliciesCreateOrUpdateInput,
-    outputSchema: PlacementPoliciesCreateOrUpdateOutput,
-  }));
+export const PlacementPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesCreateOrUpdateInput,
+  outputSchema: PlacementPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PlacementPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
-    }),
-  );
+export const PlacementPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  placementPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+  }),
+);
 export type PlacementPoliciesDeleteInput =
   typeof PlacementPoliciesDeleteInput.Type;
 
 // Output Schema
-export const PlacementPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PlacementPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PlacementPoliciesDeleteOutput =
   typeof PlacementPoliciesDeleteOutput.Type;
 
@@ -2624,50 +2489,46 @@ export type PlacementPoliciesDeleteOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesDeleteInput,
-    outputSchema: PlacementPoliciesDeleteOutput,
+export const PlacementPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesDeleteInput,
+  outputSchema: PlacementPoliciesDeleteOutput,
+}));
+// Input Schema
+export const PlacementPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  placementPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
   }),
 );
-// Input Schema
-export const PlacementPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
-    }),
-  );
 export type PlacementPoliciesGetInput = typeof PlacementPoliciesGetInput.Type;
 
 // Output Schema
-export const PlacementPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PlacementPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PlacementPoliciesGetOutput = typeof PlacementPoliciesGetOutput.Type;
 
 // The operation
@@ -2681,64 +2542,50 @@ export type PlacementPoliciesGetOutput = typeof PlacementPoliciesGetOutput.Type;
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesGetInput,
-    outputSchema: PlacementPoliciesGetOutput,
+export const PlacementPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesGetInput,
+  outputSchema: PlacementPoliciesGetOutput,
+}));
+// Input Schema
+export const PlacementPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies",
   }),
 );
-// Input Schema
-export const PlacementPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies",
-    }),
-  );
 export type PlacementPoliciesListInput = typeof PlacementPoliciesListInput.Type;
 
 // Output Schema
-export const PlacementPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PlacementPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PlacementPoliciesListOutput =
   typeof PlacementPoliciesListOutput.Type;
 
@@ -2752,51 +2599,47 @@ export type PlacementPoliciesListOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const PlacementPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesListInput,
-    outputSchema: PlacementPoliciesListOutput,
+export const PlacementPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesListInput,
+  outputSchema: PlacementPoliciesListOutput,
+}));
+// Input Schema
+export const PlacementPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  placementPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
   }),
 );
-// Input Schema
-export const PlacementPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
-    }),
-  );
 export type PlacementPoliciesUpdateInput =
   typeof PlacementPoliciesUpdateInput.Type;
 
 // Output Schema
-export const PlacementPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PlacementPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PlacementPoliciesUpdateOutput =
   typeof PlacementPoliciesUpdateOutput.Type;
 
@@ -2811,49 +2654,45 @@ export type PlacementPoliciesUpdateOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesUpdateInput,
-    outputSchema: PlacementPoliciesUpdateOutput,
+export const PlacementPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesUpdateInput,
+  outputSchema: PlacementPoliciesUpdateOutput,
+}));
+// Input Schema
+export const PrivateCloudsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
   }),
 );
-// Input Schema
-export const PrivateCloudsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
-    }),
-  );
 export type PrivateCloudsCreateOrUpdateInput =
   typeof PrivateCloudsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PrivateCloudsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateCloudsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateCloudsCreateOrUpdateOutput =
   typeof PrivateCloudsCreateOrUpdateOutput.Type;
 
@@ -2866,30 +2705,26 @@ export type PrivateCloudsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateCloudsCreateOrUpdateInput,
-    outputSchema: PrivateCloudsCreateOrUpdateOutput,
+export const PrivateCloudsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsCreateOrUpdateInput,
+  outputSchema: PrivateCloudsCreateOrUpdateOutput,
+}));
+// Input Schema
+export const PrivateCloudsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
   }),
 );
-// Input Schema
-export const PrivateCloudsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
-    }),
-  );
 export type PrivateCloudsDeleteInput = typeof PrivateCloudsDeleteInput.Type;
 
 // Output Schema
-export const PrivateCloudsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateCloudsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateCloudsDeleteOutput = typeof PrivateCloudsDeleteOutput.Type;
 
 // The operation
@@ -2901,12 +2736,12 @@ export type PrivateCloudsDeleteOutput = typeof PrivateCloudsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsDeleteInput,
   outputSchema: PrivateCloudsDeleteOutput,
 }));
 // Input Schema
-export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateCloudsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2920,27 +2755,25 @@ export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PrivateCloudsGetInput = typeof PrivateCloudsGetInput.Type;
 
 // Output Schema
-export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const PrivateCloudsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateCloudsGetOutput = typeof PrivateCloudsGetOutput.Type;
 
 // The operation
@@ -2952,34 +2785,32 @@ export type PrivateCloudsGetOutput = typeof PrivateCloudsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsGetInput,
   outputSchema: PrivateCloudsGetOutput,
 }));
 // Input Schema
-export const PrivateCloudsGetVcfLicenseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/getVcfLicense",
-    }),
-  );
+export const PrivateCloudsGetVcfLicenseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/getVcfLicense",
+  }),
+);
 export type PrivateCloudsGetVcfLicenseInput =
   typeof PrivateCloudsGetVcfLicenseInput.Type;
 
 // Output Schema
-export const PrivateCloudsGetVcfLicenseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.Literals(["vcf5"]),
-    provisioningState: Schema.optional(
-      Schema.Literals(["Succeeded", "Failed", "Canceled"]),
-    ),
-  });
+export const PrivateCloudsGetVcfLicenseOutput = /*@__PURE__*/ Schema.Struct({
+  kind: Schema.Literals(["vcf5"]),
+  provisioningState: Schema.optional(
+    Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+  ),
+});
 export type PrivateCloudsGetVcfLicenseOutput =
   typeof PrivateCloudsGetVcfLicenseOutput.Type;
 
@@ -2992,20 +2823,16 @@ export type PrivateCloudsGetVcfLicenseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsGetVcfLicense = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateCloudsGetVcfLicenseInput,
-    outputSchema: PrivateCloudsGetVcfLicenseOutput,
-  }),
-);
+export const PrivateCloudsGetVcfLicense = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsGetVcfLicenseInput,
+  outputSchema: PrivateCloudsGetVcfLicenseOutput,
+}));
 // Input Schema
-export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const PrivateCloudsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds",
@@ -3014,41 +2841,30 @@ export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PrivateCloudsListInput = typeof PrivateCloudsListInput.Type;
 
 // Output Schema
-export const PrivateCloudsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PrivateCloudsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateCloudsListOutput = typeof PrivateCloudsListOutput.Type;
 
 // The operation
@@ -3059,13 +2875,13 @@ export type PrivateCloudsListOutput = typeof PrivateCloudsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateCloudsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsListInput,
   outputSchema: PrivateCloudsListOutput,
 }));
 // Input Schema
 export const PrivateCloudsListAdminCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3081,11 +2897,11 @@ export type PrivateCloudsListAdminCredentialsInput =
 
 // Output Schema
 export const PrivateCloudsListAdminCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nsxtUsername: Schema.optional(Schema.String),
-    nsxtPassword: Schema.optional(SensitiveString),
+    nsxtPassword: Schema.optional(SensitiveOutputString),
     vcenterUsername: Schema.optional(Schema.String),
-    vcenterPassword: Schema.optional(SensitiveString),
+    vcenterPassword: Schema.optional(SensitiveOutputString),
   });
 export type PrivateCloudsListAdminCredentialsOutput =
   typeof PrivateCloudsListAdminCredentialsOutput.Type;
@@ -3099,28 +2915,28 @@ export type PrivateCloudsListAdminCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsListAdminCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateCloudsListAdminCredentialsInput,
-    outputSchema: PrivateCloudsListAdminCredentialsOutput,
-  }));
+export const PrivateCloudsListAdminCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsListAdminCredentialsInput,
+  outputSchema: PrivateCloudsListAdminCredentialsOutput,
+}));
 // Input Schema
-export const PrivateCloudsListInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateCloudsListInSubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds",
+  }),
+);
 export type PrivateCloudsListInSubscriptionInput =
   typeof PrivateCloudsListInSubscriptionInput.Type;
 
 // Output Schema
 export const PrivateCloudsListInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3164,30 +2980,29 @@ export type PrivateCloudsListInSubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PrivateCloudsListInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateCloudsListInSubscriptionInput,
-    outputSchema: PrivateCloudsListInSubscriptionOutput,
-  }));
+export const PrivateCloudsListInSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsListInSubscriptionInput,
+  outputSchema: PrivateCloudsListInSubscriptionOutput,
+}));
 // Input Schema
-export const PrivateCloudsRotateNsxtPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateCloudsRotateNsxtPasswordInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateNsxtPassword",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateNsxtPassword",
+  }),
+);
 export type PrivateCloudsRotateNsxtPasswordInput =
   typeof PrivateCloudsRotateNsxtPasswordInput.Type;
 
 // Output Schema
-export const PrivateCloudsRotateNsxtPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateCloudsRotateNsxtPasswordOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateCloudsRotateNsxtPasswordOutput =
   typeof PrivateCloudsRotateNsxtPasswordOutput.Type;
 
@@ -3200,14 +3015,13 @@ export type PrivateCloudsRotateNsxtPasswordOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsRotateNsxtPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateCloudsRotateNsxtPasswordInput,
-    outputSchema: PrivateCloudsRotateNsxtPasswordOutput,
-  }));
+export const PrivateCloudsRotateNsxtPassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsRotateNsxtPasswordInput,
+  outputSchema: PrivateCloudsRotateNsxtPasswordOutput,
+}));
 // Input Schema
 export const PrivateCloudsRotateVcenterPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3223,7 +3037,7 @@ export type PrivateCloudsRotateVcenterPasswordInput =
 
 // Output Schema
 export const PrivateCloudsRotateVcenterPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PrivateCloudsRotateVcenterPasswordOutput =
   typeof PrivateCloudsRotateVcenterPasswordOutput.Type;
 
@@ -3236,47 +3050,46 @@ export type PrivateCloudsRotateVcenterPasswordOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsRotateVcenterPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsRotateVcenterPassword = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateCloudsRotateVcenterPasswordInput,
     outputSchema: PrivateCloudsRotateVcenterPasswordOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateCloudsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
-    }),
-  );
+export const PrivateCloudsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+  }),
+);
 export type PrivateCloudsUpdateInput = typeof PrivateCloudsUpdateInput.Type;
 
 // Output Schema
-export const PrivateCloudsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateCloudsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateCloudsUpdateOutput = typeof PrivateCloudsUpdateOutput.Type;
 
 // The operation
@@ -3288,48 +3101,46 @@ export type PrivateCloudsUpdateOutput = typeof PrivateCloudsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsUpdateInput,
   outputSchema: PrivateCloudsUpdateOutput,
 }));
 // Input Schema
-export const ProvisionedNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    provisionedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}",
-    }),
-  );
+export const ProvisionedNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  provisionedNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}",
+  }),
+);
 export type ProvisionedNetworksGetInput =
   typeof ProvisionedNetworksGetInput.Type;
 
 // Output Schema
-export const ProvisionedNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProvisionedNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProvisionedNetworksGetOutput =
   typeof ProvisionedNetworksGetOutput.Type;
 
@@ -3343,64 +3154,50 @@ export type ProvisionedNetworksGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param provisionedNetworkName - Name of the cloud link.
  */
-export const ProvisionedNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProvisionedNetworksGetInput,
-    outputSchema: ProvisionedNetworksGetOutput,
+export const ProvisionedNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedNetworksGetInput,
+  outputSchema: ProvisionedNetworksGetOutput,
+}));
+// Input Schema
+export const ProvisionedNetworksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks",
   }),
 );
-// Input Schema
-export const ProvisionedNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks",
-    }),
-  );
 export type ProvisionedNetworksListInput =
   typeof ProvisionedNetworksListInput.Type;
 
 // Output Schema
-export const ProvisionedNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProvisionedNetworksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProvisionedNetworksListOutput =
   typeof ProvisionedNetworksListOutput.Type;
 
@@ -3413,15 +3210,13 @@ export type ProvisionedNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ProvisionedNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProvisionedNetworksListInput,
-    outputSchema: ProvisionedNetworksListOutput,
-  }),
-);
+export const ProvisionedNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedNetworksListInput,
+  outputSchema: ProvisionedNetworksListOutput,
+}));
 // Input Schema
 export const PureStoragePoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3438,7 +3233,7 @@ export type PureStoragePoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const PureStoragePoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3470,31 +3265,28 @@ export type PureStoragePoliciesCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param storagePolicyName - Name of the storage policy.
  */
-export const PureStoragePoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PureStoragePoliciesCreateOrUpdateInput,
-    outputSchema: PureStoragePoliciesCreateOrUpdateOutput,
-  }));
+export const PureStoragePoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesCreateOrUpdateInput,
+  outputSchema: PureStoragePoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PureStoragePoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    storagePolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
-    }),
-  );
+export const PureStoragePoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  storagePolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+  }),
+);
 export type PureStoragePoliciesDeleteInput =
   typeof PureStoragePoliciesDeleteInput.Type;
 
 // Output Schema
-export const PureStoragePoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PureStoragePoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PureStoragePoliciesDeleteOutput =
   typeof PureStoragePoliciesDeleteOutput.Type;
 
@@ -3508,50 +3300,46 @@ export type PureStoragePoliciesDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param storagePolicyName - Name of the storage policy.
  */
-export const PureStoragePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesDeleteInput,
-    outputSchema: PureStoragePoliciesDeleteOutput,
+export const PureStoragePoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesDeleteInput,
+  outputSchema: PureStoragePoliciesDeleteOutput,
+}));
+// Input Schema
+export const PureStoragePoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  storagePolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
   }),
 );
-// Input Schema
-export const PureStoragePoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    storagePolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
-    }),
-  );
 export type PureStoragePoliciesGetInput =
   typeof PureStoragePoliciesGetInput.Type;
 
 // Output Schema
-export const PureStoragePoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PureStoragePoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PureStoragePoliciesGetOutput =
   typeof PureStoragePoliciesGetOutput.Type;
 
@@ -3565,64 +3353,50 @@ export type PureStoragePoliciesGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param storagePolicyName - Name of the storage policy.
  */
-export const PureStoragePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesGetInput,
-    outputSchema: PureStoragePoliciesGetOutput,
+export const PureStoragePoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesGetInput,
+  outputSchema: PureStoragePoliciesGetOutput,
+}));
+// Input Schema
+export const PureStoragePoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies",
   }),
 );
-// Input Schema
-export const PureStoragePoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies",
-    }),
-  );
 export type PureStoragePoliciesListInput =
   typeof PureStoragePoliciesListInput.Type;
 
 // Output Schema
-export const PureStoragePoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PureStoragePoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PureStoragePoliciesListOutput =
   typeof PureStoragePoliciesListOutput.Type;
 
@@ -3635,14 +3409,12 @@ export type PureStoragePoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PureStoragePoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesListInput,
-    outputSchema: PureStoragePoliciesListOutput,
-  }),
-);
+export const PureStoragePoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesListInput,
+  outputSchema: PureStoragePoliciesListOutput,
+}));
 // Input Schema
-export const ScriptCmdletsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptCmdletsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3658,27 +3430,25 @@ export const ScriptCmdletsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScriptCmdletsGetInput = typeof ScriptCmdletsGetInput.Type;
 
 // Output Schema
-export const ScriptCmdletsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ScriptCmdletsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScriptCmdletsGetOutput = typeof ScriptCmdletsGetOutput.Type;
 
 // The operation
@@ -3692,20 +3462,18 @@ export type ScriptCmdletsGetOutput = typeof ScriptCmdletsGetOutput.Type;
  * @param scriptPackageName - Name of the script package.
  * @param scriptCmdletName - Name of the script cmdlet.
  */
-export const ScriptCmdletsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptCmdletsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptCmdletsGetInput,
   outputSchema: ScriptCmdletsGetOutput,
 }));
 // Input Schema
-export const ScriptCmdletsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptPackageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ScriptCmdletsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptPackageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets",
@@ -3714,41 +3482,30 @@ export const ScriptCmdletsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ScriptCmdletsListInput = typeof ScriptCmdletsListInput.Type;
 
 // Output Schema
-export const ScriptCmdletsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ScriptCmdletsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScriptCmdletsListOutput = typeof ScriptCmdletsListOutput.Type;
 
 // The operation
@@ -3761,30 +3518,29 @@ export type ScriptCmdletsListOutput = typeof ScriptCmdletsListOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param scriptPackageName - Name of the script package.
  */
-export const ScriptCmdletsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptCmdletsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptCmdletsListInput,
   outputSchema: ScriptCmdletsListOutput,
 }));
 // Input Schema
-export const ScriptExecutionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
-    }),
-  );
+export const ScriptExecutionsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptExecutionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
+  }),
+);
 export type ScriptExecutionsCreateOrUpdateInput =
   typeof ScriptExecutionsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ScriptExecutionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptExecutionsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3802,7 +3558,8 @@ export const ScriptExecutionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ScriptExecutionsCreateOrUpdateOutput =
   typeof ScriptExecutionsCreateOrUpdateOutput.Type;
 
@@ -3816,31 +3573,28 @@ export type ScriptExecutionsCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ScriptExecutionsCreateOrUpdateInput,
-    outputSchema: ScriptExecutionsCreateOrUpdateOutput,
-  }));
+export const ScriptExecutionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsCreateOrUpdateInput,
+  outputSchema: ScriptExecutionsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ScriptExecutionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
-    }),
-  );
+export const ScriptExecutionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptExecutionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
+  }),
+);
 export type ScriptExecutionsDeleteInput =
   typeof ScriptExecutionsDeleteInput.Type;
 
 // Output Schema
-export const ScriptExecutionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScriptExecutionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ScriptExecutionsDeleteOutput =
   typeof ScriptExecutionsDeleteOutput.Type;
 
@@ -3854,49 +3608,45 @@ export type ScriptExecutionsDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptExecutionsDeleteInput,
-    outputSchema: ScriptExecutionsDeleteOutput,
+export const ScriptExecutionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsDeleteInput,
+  outputSchema: ScriptExecutionsDeleteOutput,
+}));
+// Input Schema
+export const ScriptExecutionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptExecutionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
   }),
 );
-// Input Schema
-export const ScriptExecutionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
-    }),
-  );
 export type ScriptExecutionsGetInput = typeof ScriptExecutionsGetInput.Type;
 
 // Output Schema
-export const ScriptExecutionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScriptExecutionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScriptExecutionsGetOutput = typeof ScriptExecutionsGetOutput.Type;
 
 // The operation
@@ -3909,13 +3659,13 @@ export type ScriptExecutionsGetOutput = typeof ScriptExecutionsGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptExecutionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptExecutionsGetInput,
   outputSchema: ScriptExecutionsGetOutput,
 }));
 // Input Schema
 export const ScriptExecutionsGetExecutionLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3932,7 +3682,7 @@ export type ScriptExecutionsGetExecutionLogsInput =
 
 // Output Schema
 export const ScriptExecutionsGetExecutionLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3964,62 +3714,49 @@ export type ScriptExecutionsGetExecutionLogsOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsGetExecutionLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ScriptExecutionsGetExecutionLogsInput,
-    outputSchema: ScriptExecutionsGetExecutionLogsOutput,
-  }));
+export const ScriptExecutionsGetExecutionLogs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsGetExecutionLogsInput,
+  outputSchema: ScriptExecutionsGetExecutionLogsOutput,
+}));
 // Input Schema
-export const ScriptExecutionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions",
-    }),
-  );
+export const ScriptExecutionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions",
+  }),
+);
 export type ScriptExecutionsListInput = typeof ScriptExecutionsListInput.Type;
 
 // Output Schema
-export const ScriptExecutionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ScriptExecutionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScriptExecutionsListOutput = typeof ScriptExecutionsListOutput.Type;
 
 // The operation
@@ -4031,22 +3768,18 @@ export type ScriptExecutionsListOutput = typeof ScriptExecutionsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ScriptExecutionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptExecutionsListInput,
-    outputSchema: ScriptExecutionsListOutput,
-  }),
-);
+export const ScriptExecutionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsListInput,
+  outputSchema: ScriptExecutionsListOutput,
+}));
 // Input Schema
-export const ScriptPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptPackageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ScriptPackagesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptPackageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}",
@@ -4055,26 +3788,25 @@ export const ScriptPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ScriptPackagesGetInput = typeof ScriptPackagesGetInput.Type;
 
 // Output Schema
-export const ScriptPackagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScriptPackagesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScriptPackagesGetOutput = typeof ScriptPackagesGetOutput.Type;
 
 // The operation
@@ -4087,61 +3819,49 @@ export type ScriptPackagesGetOutput = typeof ScriptPackagesGetOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param scriptPackageName - Name of the script package.
  */
-export const ScriptPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptPackagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptPackagesGetInput,
   outputSchema: ScriptPackagesGetOutput,
 }));
 // Input Schema
-export const ScriptPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages",
-    }),
-  );
+export const ScriptPackagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages",
+  }),
+);
 export type ScriptPackagesListInput = typeof ScriptPackagesListInput.Type;
 
 // Output Schema
-export const ScriptPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ScriptPackagesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScriptPackagesListOutput = typeof ScriptPackagesListOutput.Type;
 
 // The operation
@@ -4153,13 +3873,13 @@ export type ScriptPackagesListOutput = typeof ScriptPackagesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ScriptPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptPackagesListInput,
   outputSchema: ScriptPackagesListOutput,
 }));
 // Input Schema
 export const ServiceComponentsCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     serviceComponentName: Schema.String.pipe(T.PathParam()),
@@ -4175,7 +3895,7 @@ export type ServiceComponentsCheckAvailabilityInput =
 
 // Output Schema
 export const ServiceComponentsCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ServiceComponentsCheckAvailabilityOutput =
   typeof ServiceComponentsCheckAvailabilityOutput.Type;
 
@@ -4188,13 +3908,14 @@ export type ServiceComponentsCheckAvailabilityOutput =
  * @param location - The name of the Azure region.
  * @param serviceComponentName - A service component
  */
-export const ServiceComponentsCheckAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceComponentsCheckAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ServiceComponentsCheckAvailabilityInput,
     outputSchema: ServiceComponentsCheckAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -4206,7 +3927,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       resourceType: Schema.Literals([
@@ -4269,48 +3990,46 @@ export type SkusListOutput = typeof SkusListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
-export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    virtualMachineId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}",
-    }),
-  );
+export const VirtualMachinesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  virtualMachineId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}",
+  }),
+);
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 
 // Output Schema
-export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachinesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
 
 // The operation
@@ -4324,62 +4043,50 @@ export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
  * @param clusterName - Name of the cluster
  * @param virtualMachineId - ID of the virtual machine.
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
-export const VirtualMachinesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines",
-    }),
-  );
+export const VirtualMachinesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines",
+  }),
+);
 export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
 
 // Output Schema
-export const VirtualMachinesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
 
 // The operation
@@ -4392,31 +4099,31 @@ export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesListInput,
   outputSchema: VirtualMachinesListOutput,
 }));
 // Input Schema
-export const VirtualMachinesRestrictMovementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VirtualMachinesRestrictMovementInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     virtualMachineId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement",
+  }),
+);
 export type VirtualMachinesRestrictMovementInput =
   typeof VirtualMachinesRestrictMovementInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestrictMovementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesRestrictMovementOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesRestrictMovementOutput =
   typeof VirtualMachinesRestrictMovementOutput.Type;
 
@@ -4431,49 +4138,46 @@ export type VirtualMachinesRestrictMovementOutput =
  * @param clusterName - Name of the cluster
  * @param virtualMachineId - ID of the virtual machine.
  */
-export const VirtualMachinesRestrictMovement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesRestrictMovementInput,
-    outputSchema: VirtualMachinesRestrictMovementOutput,
-  }));
+export const VirtualMachinesRestrictMovement = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRestrictMovementInput,
+  outputSchema: VirtualMachinesRestrictMovementOutput,
+}));
 // Input Schema
-export const WorkloadNetworksCreateDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
-    }),
-  );
+export const WorkloadNetworksCreateDhcpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dhcpId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+  }),
+);
 export type WorkloadNetworksCreateDhcpInput =
   typeof WorkloadNetworksCreateDhcpInput.Type;
 
 // Output Schema
-export const WorkloadNetworksCreateDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksCreateDhcpOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksCreateDhcpOutput =
   typeof WorkloadNetworksCreateDhcpOutput.Type;
 
@@ -4487,15 +4191,13 @@ export type WorkloadNetworksCreateDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksCreateDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksCreateDhcpInput,
-    outputSchema: WorkloadNetworksCreateDhcpOutput,
-  }),
-);
+export const WorkloadNetworksCreateDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateDhcpInput,
+  outputSchema: WorkloadNetworksCreateDhcpOutput,
+}));
 // Input Schema
 export const WorkloadNetworksCreateDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4512,7 +4214,7 @@ export type WorkloadNetworksCreateDnsServiceInput =
 
 // Output Schema
 export const WorkloadNetworksCreateDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4544,49 +4246,46 @@ export type WorkloadNetworksCreateDnsServiceOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsServiceId - ID of the DNS service.
  */
-export const WorkloadNetworksCreateDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksCreateDnsServiceInput,
-    outputSchema: WorkloadNetworksCreateDnsServiceOutput,
-  }));
+export const WorkloadNetworksCreateDnsService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateDnsServiceInput,
+  outputSchema: WorkloadNetworksCreateDnsServiceOutput,
+}));
 // Input Schema
-export const WorkloadNetworksCreateDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
-    }),
-  );
+export const WorkloadNetworksCreateDnsZoneInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dnsZoneId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+  }),
+);
 export type WorkloadNetworksCreateDnsZoneInput =
   typeof WorkloadNetworksCreateDnsZoneInput.Type;
 
 // Output Schema
-export const WorkloadNetworksCreateDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksCreateDnsZoneOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksCreateDnsZoneOutput =
   typeof WorkloadNetworksCreateDnsZoneOutput.Type;
 
@@ -4600,14 +4299,13 @@ export type WorkloadNetworksCreateDnsZoneOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsZoneId - ID of the DNS zone.
  */
-export const WorkloadNetworksCreateDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksCreateDnsZoneInput,
-    outputSchema: WorkloadNetworksCreateDnsZoneOutput,
-  }));
+export const WorkloadNetworksCreateDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateDnsZoneInput,
+  outputSchema: WorkloadNetworksCreateDnsZoneOutput,
+}));
 // Input Schema
 export const WorkloadNetworksCreatePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4624,7 +4322,7 @@ export type WorkloadNetworksCreatePortMirroringInput =
 
 // Output Schema
 export const WorkloadNetworksCreatePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4656,31 +4354,31 @@ export type WorkloadNetworksCreatePortMirroringOutput =
  * @param privateCloudName - Name of the private cloud
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
-export const WorkloadNetworksCreatePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksCreatePortMirroring = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkloadNetworksCreatePortMirroringInput,
     outputSchema: WorkloadNetworksCreatePortMirroringOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkloadNetworksCreatePublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    publicIPId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
-    }),
-  );
+export const WorkloadNetworksCreatePublicIPInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  publicIPId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+  }),
+);
 export type WorkloadNetworksCreatePublicIPInput =
   typeof WorkloadNetworksCreatePublicIPInput.Type;
 
 // Output Schema
-export const WorkloadNetworksCreatePublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkloadNetworksCreatePublicIPOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4698,7 +4396,8 @@ export const WorkloadNetworksCreatePublicIPOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WorkloadNetworksCreatePublicIPOutput =
   typeof WorkloadNetworksCreatePublicIPOutput.Type;
 
@@ -4712,31 +4411,29 @@ export type WorkloadNetworksCreatePublicIPOutput =
  * @param privateCloudName - Name of the private cloud
  * @param publicIPId - ID of the DNS zone.
  */
-export const WorkloadNetworksCreatePublicIP =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksCreatePublicIPInput,
-    outputSchema: WorkloadNetworksCreatePublicIPOutput,
-  }));
+export const WorkloadNetworksCreatePublicIP = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreatePublicIPInput,
+  outputSchema: WorkloadNetworksCreatePublicIPOutput,
+}));
 // Input Schema
-export const WorkloadNetworksCreateSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
-    }),
-  );
+export const WorkloadNetworksCreateSegmentsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  segmentId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+  }),
+);
 export type WorkloadNetworksCreateSegmentsInput =
   typeof WorkloadNetworksCreateSegmentsInput.Type;
 
 // Output Schema
-export const WorkloadNetworksCreateSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkloadNetworksCreateSegmentsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4754,7 +4451,8 @@ export const WorkloadNetworksCreateSegmentsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WorkloadNetworksCreateSegmentsOutput =
   typeof WorkloadNetworksCreateSegmentsOutput.Type;
 
@@ -4768,49 +4466,46 @@ export type WorkloadNetworksCreateSegmentsOutput =
  * @param privateCloudName - Name of the private cloud
  * @param segmentId - The ID of the NSX Segment
  */
-export const WorkloadNetworksCreateSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksCreateSegmentsInput,
-    outputSchema: WorkloadNetworksCreateSegmentsOutput,
-  }));
+export const WorkloadNetworksCreateSegments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateSegmentsInput,
+  outputSchema: WorkloadNetworksCreateSegmentsOutput,
+}));
 // Input Schema
-export const WorkloadNetworksCreateVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
-    }),
-  );
+export const WorkloadNetworksCreateVMGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  vmGroupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+  }),
+);
 export type WorkloadNetworksCreateVMGroupInput =
   typeof WorkloadNetworksCreateVMGroupInput.Type;
 
 // Output Schema
-export const WorkloadNetworksCreateVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksCreateVMGroupOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksCreateVMGroupOutput =
   typeof WorkloadNetworksCreateVMGroupOutput.Type;
 
@@ -4824,31 +4519,28 @@ export type WorkloadNetworksCreateVMGroupOutput =
  * @param privateCloudName - Name of the private cloud
  * @param vmGroupId - ID of the VM group.
  */
-export const WorkloadNetworksCreateVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksCreateVMGroupInput,
-    outputSchema: WorkloadNetworksCreateVMGroupOutput,
-  }));
+export const WorkloadNetworksCreateVMGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateVMGroupInput,
+  outputSchema: WorkloadNetworksCreateVMGroupOutput,
+}));
 // Input Schema
-export const WorkloadNetworksDeleteDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
-    }),
-  );
+export const WorkloadNetworksDeleteDhcpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dhcpId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+  }),
+);
 export type WorkloadNetworksDeleteDhcpInput =
   typeof WorkloadNetworksDeleteDhcpInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeleteDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeleteDhcpOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeleteDhcpOutput =
   typeof WorkloadNetworksDeleteDhcpOutput.Type;
 
@@ -4862,15 +4554,13 @@ export type WorkloadNetworksDeleteDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksDeleteDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksDeleteDhcpInput,
-    outputSchema: WorkloadNetworksDeleteDhcpOutput,
-  }),
-);
+export const WorkloadNetworksDeleteDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteDhcpInput,
+  outputSchema: WorkloadNetworksDeleteDhcpOutput,
+}));
 // Input Schema
 export const WorkloadNetworksDeleteDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4884,8 +4574,7 @@ export type WorkloadNetworksDeleteDnsServiceInput =
   typeof WorkloadNetworksDeleteDnsServiceInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeleteDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeleteDnsServiceOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeleteDnsServiceOutput =
   typeof WorkloadNetworksDeleteDnsServiceOutput.Type;
 
@@ -4897,29 +4586,26 @@ export type WorkloadNetworksDeleteDnsServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksDeleteDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksDeleteDnsServiceInput,
-    outputSchema: WorkloadNetworksDeleteDnsServiceOutput,
-  }));
+export const WorkloadNetworksDeleteDnsService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteDnsServiceInput,
+  outputSchema: WorkloadNetworksDeleteDnsServiceOutput,
+}));
 // Input Schema
-export const WorkloadNetworksDeleteDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
-    }),
-  );
+export const WorkloadNetworksDeleteDnsZoneInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+  }),
+);
 export type WorkloadNetworksDeleteDnsZoneInput =
   typeof WorkloadNetworksDeleteDnsZoneInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeleteDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeleteDnsZoneOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeleteDnsZoneOutput =
   typeof WorkloadNetworksDeleteDnsZoneOutput.Type;
 
@@ -4931,14 +4617,13 @@ export type WorkloadNetworksDeleteDnsZoneOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksDeleteDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksDeleteDnsZoneInput,
-    outputSchema: WorkloadNetworksDeleteDnsZoneOutput,
-  }));
+export const WorkloadNetworksDeleteDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteDnsZoneInput,
+  outputSchema: WorkloadNetworksDeleteDnsZoneOutput,
+}));
 // Input Schema
 export const WorkloadNetworksDeletePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4953,7 +4638,7 @@ export type WorkloadNetworksDeletePortMirroringInput =
 
 // Output Schema
 export const WorkloadNetworksDeletePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeletePortMirroringOutput =
   typeof WorkloadNetworksDeletePortMirroringOutput.Type;
 
@@ -4965,29 +4650,28 @@ export type WorkloadNetworksDeletePortMirroringOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksDeletePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksDeletePortMirroring = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkloadNetworksDeletePortMirroringInput,
     outputSchema: WorkloadNetworksDeletePortMirroringOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkloadNetworksDeletePublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
-    }),
-  );
+export const WorkloadNetworksDeletePublicIPInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+  }),
+);
 export type WorkloadNetworksDeletePublicIPInput =
   typeof WorkloadNetworksDeletePublicIPInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeletePublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeletePublicIPOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeletePublicIPOutput =
   typeof WorkloadNetworksDeletePublicIPOutput.Type;
 
@@ -4999,31 +4683,28 @@ export type WorkloadNetworksDeletePublicIPOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksDeletePublicIP =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksDeletePublicIPInput,
-    outputSchema: WorkloadNetworksDeletePublicIPOutput,
-  }));
+export const WorkloadNetworksDeletePublicIP = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeletePublicIPInput,
+  outputSchema: WorkloadNetworksDeletePublicIPOutput,
+}));
 // Input Schema
-export const WorkloadNetworksDeleteSegmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
-    }),
-  );
+export const WorkloadNetworksDeleteSegmentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  segmentId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+  }),
+);
 export type WorkloadNetworksDeleteSegmentInput =
   typeof WorkloadNetworksDeleteSegmentInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeleteSegmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeleteSegmentOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeleteSegmentOutput =
   typeof WorkloadNetworksDeleteSegmentOutput.Type;
 
@@ -5037,29 +4718,26 @@ export type WorkloadNetworksDeleteSegmentOutput =
  * @param privateCloudName - Name of the private cloud
  * @param segmentId - The ID of the NSX Segment
  */
-export const WorkloadNetworksDeleteSegment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksDeleteSegmentInput,
-    outputSchema: WorkloadNetworksDeleteSegmentOutput,
-  }));
+export const WorkloadNetworksDeleteSegment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteSegmentInput,
+  outputSchema: WorkloadNetworksDeleteSegmentOutput,
+}));
 // Input Schema
-export const WorkloadNetworksDeleteVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
-    }),
-  );
+export const WorkloadNetworksDeleteVMGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+  }),
+);
 export type WorkloadNetworksDeleteVMGroupInput =
   typeof WorkloadNetworksDeleteVMGroupInput.Type;
 
 // Output Schema
-export const WorkloadNetworksDeleteVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkloadNetworksDeleteVMGroupOutput = /*@__PURE__*/ Schema.Void;
 export type WorkloadNetworksDeleteVMGroupOutput =
   typeof WorkloadNetworksDeleteVMGroupOutput.Type;
 
@@ -5071,47 +4749,44 @@ export type WorkloadNetworksDeleteVMGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksDeleteVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksDeleteVMGroupInput,
-    outputSchema: WorkloadNetworksDeleteVMGroupOutput,
-  }));
+export const WorkloadNetworksDeleteVMGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteVMGroupInput,
+  outputSchema: WorkloadNetworksDeleteVMGroupOutput,
+}));
 // Input Schema
-export const WorkloadNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default",
-    }),
-  );
+export const WorkloadNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default",
+  }),
+);
 export type WorkloadNetworksGetInput = typeof WorkloadNetworksGetInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetOutput = typeof WorkloadNetworksGetOutput.Type;
 
 // The operation
@@ -5123,46 +4798,44 @@ export type WorkloadNetworksGetOutput = typeof WorkloadNetworksGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkloadNetworksGetInput,
   outputSchema: WorkloadNetworksGetOutput,
 }));
 // Input Schema
-export const WorkloadNetworksGetDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
-    }),
-  );
+export const WorkloadNetworksGetDhcpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+  }),
+);
 export type WorkloadNetworksGetDhcpInput =
   typeof WorkloadNetworksGetDhcpInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetDhcpOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetDhcpOutput =
   typeof WorkloadNetworksGetDhcpOutput.Type;
 
@@ -5174,50 +4847,46 @@ export type WorkloadNetworksGetDhcpOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkloadNetworksGetDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetDhcpInput,
-    outputSchema: WorkloadNetworksGetDhcpOutput,
+export const WorkloadNetworksGetDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetDhcpInput,
+  outputSchema: WorkloadNetworksGetDhcpOutput,
+}));
+// Input Schema
+export const WorkloadNetworksGetDnsServiceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dnsServiceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
   }),
 );
-// Input Schema
-export const WorkloadNetworksGetDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dnsServiceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
-    }),
-  );
 export type WorkloadNetworksGetDnsServiceInput =
   typeof WorkloadNetworksGetDnsServiceInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetDnsServiceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetDnsServiceOutput =
   typeof WorkloadNetworksGetDnsServiceOutput.Type;
 
@@ -5231,49 +4900,46 @@ export type WorkloadNetworksGetDnsServiceOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsServiceId - ID of the DNS service.
  */
-export const WorkloadNetworksGetDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksGetDnsServiceInput,
-    outputSchema: WorkloadNetworksGetDnsServiceOutput,
-  }));
+export const WorkloadNetworksGetDnsService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetDnsServiceInput,
+  outputSchema: WorkloadNetworksGetDnsServiceOutput,
+}));
 // Input Schema
-export const WorkloadNetworksGetDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
-    }),
-  );
+export const WorkloadNetworksGetDnsZoneInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dnsZoneId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+  }),
+);
 export type WorkloadNetworksGetDnsZoneInput =
   typeof WorkloadNetworksGetDnsZoneInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetDnsZoneOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetDnsZoneOutput =
   typeof WorkloadNetworksGetDnsZoneOutput.Type;
 
@@ -5287,50 +4953,46 @@ export type WorkloadNetworksGetDnsZoneOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsZoneId - ID of the DNS zone.
  */
-export const WorkloadNetworksGetDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetDnsZoneInput,
-    outputSchema: WorkloadNetworksGetDnsZoneOutput,
+export const WorkloadNetworksGetDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetDnsZoneInput,
+  outputSchema: WorkloadNetworksGetDnsZoneOutput,
+}));
+// Input Schema
+export const WorkloadNetworksGetGatewayInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  gatewayId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways/{gatewayId}",
   }),
 );
-// Input Schema
-export const WorkloadNetworksGetGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    gatewayId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways/{gatewayId}",
-    }),
-  );
 export type WorkloadNetworksGetGatewayInput =
   typeof WorkloadNetworksGetGatewayInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetGatewayOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetGatewayOutput =
   typeof WorkloadNetworksGetGatewayOutput.Type;
 
@@ -5344,15 +5006,13 @@ export type WorkloadNetworksGetGatewayOutput =
  * @param privateCloudName - Name of the private cloud
  * @param gatewayId - The ID of the NSX Gateway
  */
-export const WorkloadNetworksGetGateway = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetGatewayInput,
-    outputSchema: WorkloadNetworksGetGatewayOutput,
-  }),
-);
+export const WorkloadNetworksGetGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetGatewayInput,
+  outputSchema: WorkloadNetworksGetGatewayOutput,
+}));
 // Input Schema
 export const WorkloadNetworksGetPortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5369,7 +5029,7 @@ export type WorkloadNetworksGetPortMirroringInput =
 
 // Output Schema
 export const WorkloadNetworksGetPortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5401,49 +5061,46 @@ export type WorkloadNetworksGetPortMirroringOutput =
  * @param privateCloudName - Name of the private cloud
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
-export const WorkloadNetworksGetPortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksGetPortMirroringInput,
-    outputSchema: WorkloadNetworksGetPortMirroringOutput,
-  }));
+export const WorkloadNetworksGetPortMirroring = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetPortMirroringInput,
+  outputSchema: WorkloadNetworksGetPortMirroringOutput,
+}));
 // Input Schema
-export const WorkloadNetworksGetPublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    publicIPId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
-    }),
-  );
+export const WorkloadNetworksGetPublicIPInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  publicIPId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+  }),
+);
 export type WorkloadNetworksGetPublicIPInput =
   typeof WorkloadNetworksGetPublicIPInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetPublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetPublicIPOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetPublicIPOutput =
   typeof WorkloadNetworksGetPublicIPOutput.Type;
 
@@ -5457,50 +5114,46 @@ export type WorkloadNetworksGetPublicIPOutput =
  * @param privateCloudName - Name of the private cloud
  * @param publicIPId - ID of the DNS zone.
  */
-export const WorkloadNetworksGetPublicIP = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetPublicIPInput,
-    outputSchema: WorkloadNetworksGetPublicIPOutput,
+export const WorkloadNetworksGetPublicIP = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetPublicIPInput,
+  outputSchema: WorkloadNetworksGetPublicIPOutput,
+}));
+// Input Schema
+export const WorkloadNetworksGetSegmentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  segmentId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
   }),
 );
-// Input Schema
-export const WorkloadNetworksGetSegmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
-    }),
-  );
 export type WorkloadNetworksGetSegmentInput =
   typeof WorkloadNetworksGetSegmentInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetSegmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetSegmentOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetSegmentOutput =
   typeof WorkloadNetworksGetSegmentOutput.Type;
 
@@ -5514,15 +5167,13 @@ export type WorkloadNetworksGetSegmentOutput =
  * @param privateCloudName - Name of the private cloud
  * @param segmentId - The ID of the NSX Segment
  */
-export const WorkloadNetworksGetSegment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetSegmentInput,
-    outputSchema: WorkloadNetworksGetSegmentOutput,
-  }),
-);
+export const WorkloadNetworksGetSegment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetSegmentInput,
+  outputSchema: WorkloadNetworksGetSegmentOutput,
+}));
 // Input Schema
 export const WorkloadNetworksGetVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5539,7 +5190,7 @@ export type WorkloadNetworksGetVirtualMachineInput =
 
 // Output Schema
 export const WorkloadNetworksGetVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5571,49 +5222,46 @@ export type WorkloadNetworksGetVirtualMachineOutput =
  * @param privateCloudName - Name of the private cloud
  * @param virtualMachineId - ID of the virtual machine.
  */
-export const WorkloadNetworksGetVirtualMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksGetVirtualMachineInput,
-    outputSchema: WorkloadNetworksGetVirtualMachineOutput,
-  }));
+export const WorkloadNetworksGetVirtualMachine = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetVirtualMachineInput,
+  outputSchema: WorkloadNetworksGetVirtualMachineOutput,
+}));
 // Input Schema
-export const WorkloadNetworksGetVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
-    }),
-  );
+export const WorkloadNetworksGetVMGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  vmGroupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+  }),
+);
 export type WorkloadNetworksGetVMGroupInput =
   typeof WorkloadNetworksGetVMGroupInput.Type;
 
 // Output Schema
-export const WorkloadNetworksGetVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksGetVMGroupOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksGetVMGroupOutput =
   typeof WorkloadNetworksGetVMGroupOutput.Type;
 
@@ -5627,63 +5275,49 @@ export type WorkloadNetworksGetVMGroupOutput =
  * @param privateCloudName - Name of the private cloud
  * @param vmGroupId - ID of the VM group.
  */
-export const WorkloadNetworksGetVMGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetVMGroupInput,
-    outputSchema: WorkloadNetworksGetVMGroupOutput,
+export const WorkloadNetworksGetVMGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetVMGroupInput,
+  outputSchema: WorkloadNetworksGetVMGroupOutput,
+}));
+// Input Schema
+export const WorkloadNetworksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks",
   }),
 );
-// Input Schema
-export const WorkloadNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks",
-    }),
-  );
 export type WorkloadNetworksListInput = typeof WorkloadNetworksListInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListOutput = typeof WorkloadNetworksListOutput.Type;
 
 // The operation
@@ -5695,64 +5329,50 @@ export type WorkloadNetworksListOutput = typeof WorkloadNetworksListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksListInput,
-    outputSchema: WorkloadNetworksListOutput,
+export const WorkloadNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListInput,
+  outputSchema: WorkloadNetworksListOutput,
+}));
+// Input Schema
+export const WorkloadNetworksListDhcpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations",
   }),
 );
-// Input Schema
-export const WorkloadNetworksListDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations",
-    }),
-  );
 export type WorkloadNetworksListDhcpInput =
   typeof WorkloadNetworksListDhcpInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListDhcpOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListDhcpOutput =
   typeof WorkloadNetworksListDhcpOutput.Type;
 
@@ -5765,31 +5385,30 @@ export type WorkloadNetworksListDhcpOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksListDhcpInput,
-    outputSchema: WorkloadNetworksListDhcpOutput,
-  }),
-);
+export const WorkloadNetworksListDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListDhcpInput,
+  outputSchema: WorkloadNetworksListDhcpOutput,
+}));
 // Input Schema
-export const WorkloadNetworksListDnsServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkloadNetworksListDnsServicesInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices",
+  }),
+);
 export type WorkloadNetworksListDnsServicesInput =
   typeof WorkloadNetworksListDnsServicesInput.Type;
 
 // Output Schema
 export const WorkloadNetworksListDnsServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5835,63 +5454,50 @@ export type WorkloadNetworksListDnsServicesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListDnsServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListDnsServicesInput,
-    outputSchema: WorkloadNetworksListDnsServicesOutput,
-  }));
+export const WorkloadNetworksListDnsServices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListDnsServicesInput,
+  outputSchema: WorkloadNetworksListDnsServicesOutput,
+}));
 // Input Schema
-export const WorkloadNetworksListDnsZonesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones",
-    }),
-  );
+export const WorkloadNetworksListDnsZonesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones",
+  }),
+);
 export type WorkloadNetworksListDnsZonesInput =
   typeof WorkloadNetworksListDnsZonesInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListDnsZonesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListDnsZonesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListDnsZonesOutput =
   typeof WorkloadNetworksListDnsZonesOutput.Type;
 
@@ -5904,63 +5510,50 @@ export type WorkloadNetworksListDnsZonesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListDnsZones =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListDnsZonesInput,
-    outputSchema: WorkloadNetworksListDnsZonesOutput,
-  }));
+export const WorkloadNetworksListDnsZones = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListDnsZonesInput,
+  outputSchema: WorkloadNetworksListDnsZonesOutput,
+}));
 // Input Schema
-export const WorkloadNetworksListGatewaysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways",
-    }),
-  );
+export const WorkloadNetworksListGatewaysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways",
+  }),
+);
 export type WorkloadNetworksListGatewaysInput =
   typeof WorkloadNetworksListGatewaysInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListGatewaysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListGatewaysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListGatewaysOutput =
   typeof WorkloadNetworksListGatewaysOutput.Type;
 
@@ -5973,14 +5566,13 @@ export type WorkloadNetworksListGatewaysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListGateways =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListGatewaysInput,
-    outputSchema: WorkloadNetworksListGatewaysOutput,
-  }));
+export const WorkloadNetworksListGateways = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListGatewaysInput,
+  outputSchema: WorkloadNetworksListGatewaysOutput,
+}));
 // Input Schema
 export const WorkloadNetworksListPortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5996,7 +5588,7 @@ export type WorkloadNetworksListPortMirroringInput =
 
 // Output Schema
 export const WorkloadNetworksListPortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6042,63 +5634,50 @@ export type WorkloadNetworksListPortMirroringOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListPortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListPortMirroringInput,
-    outputSchema: WorkloadNetworksListPortMirroringOutput,
-  }));
+export const WorkloadNetworksListPortMirroring = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListPortMirroringInput,
+  outputSchema: WorkloadNetworksListPortMirroringOutput,
+}));
 // Input Schema
-export const WorkloadNetworksListPublicIPsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs",
-    }),
-  );
+export const WorkloadNetworksListPublicIPsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs",
+  }),
+);
 export type WorkloadNetworksListPublicIPsInput =
   typeof WorkloadNetworksListPublicIPsInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListPublicIPsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListPublicIPsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListPublicIPsOutput =
   typeof WorkloadNetworksListPublicIPsOutput.Type;
 
@@ -6111,63 +5690,50 @@ export type WorkloadNetworksListPublicIPsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListPublicIPs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListPublicIPsInput,
-    outputSchema: WorkloadNetworksListPublicIPsOutput,
-  }));
+export const WorkloadNetworksListPublicIPs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListPublicIPsInput,
+  outputSchema: WorkloadNetworksListPublicIPsOutput,
+}));
 // Input Schema
-export const WorkloadNetworksListSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments",
-    }),
-  );
+export const WorkloadNetworksListSegmentsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments",
+  }),
+);
 export type WorkloadNetworksListSegmentsInput =
   typeof WorkloadNetworksListSegmentsInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListSegmentsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListSegmentsOutput =
   typeof WorkloadNetworksListSegmentsOutput.Type;
 
@@ -6180,14 +5746,13 @@ export type WorkloadNetworksListSegmentsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListSegmentsInput,
-    outputSchema: WorkloadNetworksListSegmentsOutput,
-  }));
+export const WorkloadNetworksListSegments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListSegmentsInput,
+  outputSchema: WorkloadNetworksListSegmentsOutput,
+}));
 // Input Schema
 export const WorkloadNetworksListVirtualMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6203,7 +5768,7 @@ export type WorkloadNetworksListVirtualMachinesInput =
 
 // Output Schema
 export const WorkloadNetworksListVirtualMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6249,63 +5814,52 @@ export type WorkloadNetworksListVirtualMachinesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListVirtualMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksListVirtualMachines = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkloadNetworksListVirtualMachinesInput,
     outputSchema: WorkloadNetworksListVirtualMachinesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkloadNetworksListVMGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups",
-    }),
-  );
+export const WorkloadNetworksListVMGroupsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups",
+  }),
+);
 export type WorkloadNetworksListVMGroupsInput =
   typeof WorkloadNetworksListVMGroupsInput.Type;
 
 // Output Schema
-export const WorkloadNetworksListVMGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkloadNetworksListVMGroupsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkloadNetworksListVMGroupsOutput =
   typeof WorkloadNetworksListVMGroupsOutput.Type;
 
@@ -6318,49 +5872,46 @@ export type WorkloadNetworksListVMGroupsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListVMGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksListVMGroupsInput,
-    outputSchema: WorkloadNetworksListVMGroupsOutput,
-  }));
+export const WorkloadNetworksListVMGroups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListVMGroupsInput,
+  outputSchema: WorkloadNetworksListVMGroupsOutput,
+}));
 // Input Schema
-export const WorkloadNetworksUpdateDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
-    }),
-  );
+export const WorkloadNetworksUpdateDhcpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dhcpId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+  }),
+);
 export type WorkloadNetworksUpdateDhcpInput =
   typeof WorkloadNetworksUpdateDhcpInput.Type;
 
 // Output Schema
-export const WorkloadNetworksUpdateDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksUpdateDhcpOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksUpdateDhcpOutput =
   typeof WorkloadNetworksUpdateDhcpOutput.Type;
 
@@ -6374,15 +5925,13 @@ export type WorkloadNetworksUpdateDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksUpdateDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksUpdateDhcpInput,
-    outputSchema: WorkloadNetworksUpdateDhcpOutput,
-  }),
-);
+export const WorkloadNetworksUpdateDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateDhcpInput,
+  outputSchema: WorkloadNetworksUpdateDhcpOutput,
+}));
 // Input Schema
 export const WorkloadNetworksUpdateDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6399,7 +5948,7 @@ export type WorkloadNetworksUpdateDnsServiceInput =
 
 // Output Schema
 export const WorkloadNetworksUpdateDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6431,49 +5980,46 @@ export type WorkloadNetworksUpdateDnsServiceOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsServiceId - ID of the DNS service.
  */
-export const WorkloadNetworksUpdateDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksUpdateDnsServiceInput,
-    outputSchema: WorkloadNetworksUpdateDnsServiceOutput,
-  }));
+export const WorkloadNetworksUpdateDnsService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateDnsServiceInput,
+  outputSchema: WorkloadNetworksUpdateDnsServiceOutput,
+}));
 // Input Schema
-export const WorkloadNetworksUpdateDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
-    }),
-  );
+export const WorkloadNetworksUpdateDnsZoneInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  dnsZoneId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+  }),
+);
 export type WorkloadNetworksUpdateDnsZoneInput =
   typeof WorkloadNetworksUpdateDnsZoneInput.Type;
 
 // Output Schema
-export const WorkloadNetworksUpdateDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksUpdateDnsZoneOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksUpdateDnsZoneOutput =
   typeof WorkloadNetworksUpdateDnsZoneOutput.Type;
 
@@ -6487,14 +6033,13 @@ export type WorkloadNetworksUpdateDnsZoneOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsZoneId - ID of the DNS zone.
  */
-export const WorkloadNetworksUpdateDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksUpdateDnsZoneInput,
-    outputSchema: WorkloadNetworksUpdateDnsZoneOutput,
-  }));
+export const WorkloadNetworksUpdateDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateDnsZoneInput,
+  outputSchema: WorkloadNetworksUpdateDnsZoneOutput,
+}));
 // Input Schema
 export const WorkloadNetworksUpdatePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6511,7 +6056,7 @@ export type WorkloadNetworksUpdatePortMirroringInput =
 
 // Output Schema
 export const WorkloadNetworksUpdatePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6543,31 +6088,31 @@ export type WorkloadNetworksUpdatePortMirroringOutput =
  * @param privateCloudName - Name of the private cloud
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
-export const WorkloadNetworksUpdatePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksUpdatePortMirroring = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkloadNetworksUpdatePortMirroringInput,
     outputSchema: WorkloadNetworksUpdatePortMirroringOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkloadNetworksUpdateSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
-    }),
-  );
+export const WorkloadNetworksUpdateSegmentsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  segmentId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+  }),
+);
 export type WorkloadNetworksUpdateSegmentsInput =
   typeof WorkloadNetworksUpdateSegmentsInput.Type;
 
 // Output Schema
-export const WorkloadNetworksUpdateSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkloadNetworksUpdateSegmentsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6585,7 +6130,8 @@ export const WorkloadNetworksUpdateSegmentsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WorkloadNetworksUpdateSegmentsOutput =
   typeof WorkloadNetworksUpdateSegmentsOutput.Type;
 
@@ -6599,49 +6145,46 @@ export type WorkloadNetworksUpdateSegmentsOutput =
  * @param privateCloudName - Name of the private cloud
  * @param segmentId - The ID of the NSX Segment
  */
-export const WorkloadNetworksUpdateSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksUpdateSegmentsInput,
-    outputSchema: WorkloadNetworksUpdateSegmentsOutput,
-  }));
+export const WorkloadNetworksUpdateSegments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateSegmentsInput,
+  outputSchema: WorkloadNetworksUpdateSegmentsOutput,
+}));
 // Input Schema
-export const WorkloadNetworksUpdateVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
-    }),
-  );
+export const WorkloadNetworksUpdateVMGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  vmGroupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+  }),
+);
 export type WorkloadNetworksUpdateVMGroupInput =
   typeof WorkloadNetworksUpdateVMGroupInput.Type;
 
 // Output Schema
-export const WorkloadNetworksUpdateVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkloadNetworksUpdateVMGroupOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkloadNetworksUpdateVMGroupOutput =
   typeof WorkloadNetworksUpdateVMGroupOutput.Type;
 
@@ -6655,8 +6198,7 @@ export type WorkloadNetworksUpdateVMGroupOutput =
  * @param privateCloudName - Name of the private cloud
  * @param vmGroupId - ID of the VM group.
  */
-export const WorkloadNetworksUpdateVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkloadNetworksUpdateVMGroupInput,
-    outputSchema: WorkloadNetworksUpdateVMGroupOutput,
-  }));
+export const WorkloadNetworksUpdateVMGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateVMGroupInput,
+  outputSchema: WorkloadNetworksUpdateVMGroupOutput,
+}));

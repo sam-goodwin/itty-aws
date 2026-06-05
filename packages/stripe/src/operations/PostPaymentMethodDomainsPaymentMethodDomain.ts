@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostPaymentMethodDomainsPaymentMethodDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method_domain: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type PostPaymentMethodDomainsPaymentMethodDomainInput =
 
 // Output Schema
 export const PostPaymentMethodDomainsPaymentMethodDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
       status: Schema.Literals(["active", "inactive"]),
       status_details: Schema.optional(
@@ -86,7 +86,7 @@ export type PostPaymentMethodDomainsPaymentMethodDomainOutput =
  * <p>Updates an existing payment method domain.</p>
  */
 export const PostPaymentMethodDomainsPaymentMethodDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodDomainsPaymentMethodDomainInput,
     outputSchema: PostPaymentMethodDomainsPaymentMethodDomainOutput,
   }));

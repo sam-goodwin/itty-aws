@@ -4,22 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListAllNetworkBansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/projects/{ref}/network-bans/retrieve",
-    }),
-  );
+export const V1ListAllNetworkBansInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/projects/{ref}/network-bans/retrieve" }),
+);
 export type V1ListAllNetworkBansInput = typeof V1ListAllNetworkBansInput.Type;
 
 // Output Schema
-export const V1ListAllNetworkBansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    banned_ipv4_addresses: Schema.Array(Schema.String),
-  });
+export const V1ListAllNetworkBansOutput = /*@__PURE__*/ Schema.Struct({
+  banned_ipv4_addresses: Schema.Array(Schema.String),
+});
 export type V1ListAllNetworkBansOutput = typeof V1ListAllNetworkBansOutput.Type;
 
 // The operation
@@ -28,10 +23,8 @@ export type V1ListAllNetworkBansOutput = typeof V1ListAllNetworkBansOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListAllNetworkBans = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListAllNetworkBansInput,
-    outputSchema: V1ListAllNetworkBansOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ListAllNetworkBans = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListAllNetworkBansInput,
+  outputSchema: V1ListAllNetworkBansOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

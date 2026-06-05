@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
-    }),
-  );
+export const CreateGroupAlertConfigInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
+  }),
+);
 export type CreateGroupAlertConfigInput =
   typeof CreateGroupAlertConfigInput.Type;
 
 // Output Schema
-export const CreateGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupAlertConfigOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupAlertConfigOutput =
   typeof CreateGroupAlertConfigOutput.Type;
 
@@ -37,10 +35,8 @@ export type CreateGroupAlertConfigOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupAlertConfigInput,
-    outputSchema: CreateGroupAlertConfigOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupAlertConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupAlertConfigInput,
+  outputSchema: CreateGroupAlertConfigOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

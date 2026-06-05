@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteOrganizationInviteByEmailV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type DeleteOrganizationInviteByEmailV2Input =
 
 // Output Schema
 export const DeleteOrganizationInviteByEmailV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteOrganizationInviteByEmailV2Output =
   typeof DeleteOrganizationInviteByEmailV2Output.Type;
 
@@ -31,9 +31,8 @@ export type DeleteOrganizationInviteByEmailV2Output =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const deleteOrganizationInviteByEmailV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteOrganizationInviteByEmailV2Input,
-    outputSchema: DeleteOrganizationInviteByEmailV2Output,
-    errors: [NotFound] as const,
-  }));
+export const deleteOrganizationInviteByEmailV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrganizationInviteByEmailV2Input,
+  outputSchema: DeleteOrganizationInviteByEmailV2Output,
+  errors: [NotFound] as const,
+}));

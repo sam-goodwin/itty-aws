@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const LogsViewsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LogsViewsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const LogsViewsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LogsViewsCreateInput = typeof LogsViewsCreateInput.Type;
 
 // Output Schema
-export const LogsViewsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LogsViewsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export type LogsViewsCreateOutput = typeof LogsViewsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsViewsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logsViewsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsCreateInput,
   outputSchema: LogsViewsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

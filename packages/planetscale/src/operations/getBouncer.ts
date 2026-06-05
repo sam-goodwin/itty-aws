@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const GetBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBouncerInput = typeof GetBouncerInput.Type;
 
 // Output Schema
-export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBouncerOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   sku: Schema.Struct({
@@ -32,7 +32,7 @@ export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   replicas_per_cell: Schema.Number,
   created_at: Schema.String,
   updated_at: Schema.String,
-  deleted_at: Schema.NullOr(Schema.String),
+  deleted_at: Schema.String,
   actor: Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
@@ -43,7 +43,7 @@ export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
   parameters: Schema.Array(
     Schema.Struct({
@@ -91,7 +91,7 @@ export type GetBouncerOutput = typeof GetBouncerOutput.Type;
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param bouncer - The name of the bouncer
  */
-export const getBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBouncerInput,
   outputSchema: GetBouncerOutput,
   errors: [Forbidden, NotFound] as const,

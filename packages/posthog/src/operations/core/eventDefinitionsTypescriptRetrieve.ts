@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EventDefinitionsTypescriptRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type EventDefinitionsTypescriptRetrieveInput =
 
 // Output Schema
 export const EventDefinitionsTypescriptRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type EventDefinitionsTypescriptRetrieveOutput =
   typeof EventDefinitionsTypescriptRetrieveOutput.Type;
 
@@ -27,9 +27,10 @@ export type EventDefinitionsTypescriptRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventDefinitionsTypescriptRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventDefinitionsTypescriptRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: EventDefinitionsTypescriptRetrieveInput,
     outputSchema: EventDefinitionsTypescriptRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

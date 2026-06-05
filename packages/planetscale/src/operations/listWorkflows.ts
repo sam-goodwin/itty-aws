@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListWorkflowsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWorkflowsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   between: Schema.optional(Schema.String),
@@ -19,8 +19,7 @@ export const ListWorkflowsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListWorkflowsInput = typeof ListWorkflowsInput.Type;
 
 // Output Schema
-export const ListWorkflowsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListWorkflowsOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -54,18 +53,18 @@ export const ListWorkflowsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
       created_at: Schema.String,
       updated_at: Schema.String,
-      started_at: Schema.NullOr(Schema.String),
-      completed_at: Schema.NullOr(Schema.String),
-      cancelled_at: Schema.NullOr(Schema.String),
-      reversed_at: Schema.NullOr(Schema.String),
-      retried_at: Schema.NullOr(Schema.String),
-      data_copy_completed_at: Schema.NullOr(Schema.String),
-      cutover_at: Schema.NullOr(Schema.String),
+      started_at: Schema.String,
+      completed_at: Schema.String,
+      cancelled_at: Schema.String,
+      reversed_at: Schema.String,
+      retried_at: Schema.String,
+      data_copy_completed_at: Schema.String,
+      cutover_at: Schema.String,
       replicas_switched: Schema.Boolean,
       primaries_switched: Schema.Boolean,
-      switch_replicas_at: Schema.NullOr(Schema.String),
-      switch_primaries_at: Schema.NullOr(Schema.String),
-      verify_data_at: Schema.NullOr(Schema.String),
+      switch_replicas_at: Schema.String,
+      switch_primaries_at: Schema.String,
+      verify_data_at: Schema.String,
       workflow_type: Schema.Literals(["move_tables"]),
       workflow_subtype: Schema.String,
       defer_secondary_keys: Schema.Boolean,
@@ -130,28 +129,28 @@ export const ListWorkflowsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
+        deleted_at: Schema.String,
       }),
       source_keyspace: Schema.Struct({
         id: Schema.String,
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
+        deleted_at: Schema.String,
       }),
       target_keyspace: Schema.Struct({
         id: Schema.String,
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
+        deleted_at: Schema.String,
       }),
       global_keyspace: Schema.Struct({
         id: Schema.String,
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
+        deleted_at: Schema.String,
       }),
     }),
   ),
@@ -168,16 +167,14 @@ export type ListWorkflowsOutput = typeof ListWorkflowsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListWorkflowsInput,
-    outputSchema: ListWorkflowsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listWorkflows = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListWorkflowsInput,
+  outputSchema: ListWorkflowsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

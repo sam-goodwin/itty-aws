@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const ExternalDataSourcesUpdateWebhookInputsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export type ExternalDataSourcesUpdateWebhookInputsCreateInput =
 
 // Output Schema
 export const ExternalDataSourcesUpdateWebhookInputsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExternalDataSourcesUpdateWebhookInputsCreateOutput =
   typeof ExternalDataSourcesUpdateWebhookInputsCreateOutput.Type;
 
@@ -202,7 +202,7 @@ export type ExternalDataSourcesUpdateWebhookInputsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesUpdateWebhookInputsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesUpdateWebhookInputsCreateInput,
     outputSchema: ExternalDataSourcesUpdateWebhookInputsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

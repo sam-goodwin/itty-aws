@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetReportingReportTypesReportTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report_type: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetReportingReportTypesReportTypeInput =
 
 // Output Schema
 export const GetReportingReportTypesReportTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data_available_end: Schema.Number,
     data_available_start: Schema.Number,
     default_columns: Schema.NullOr(Schema.Array(Schema.String)),
@@ -41,8 +41,7 @@ export type GetReportingReportTypesReportTypeOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetReportingReportTypesReportType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetReportingReportTypesReportTypeInput,
-    outputSchema: GetReportingReportTypesReportTypeOutput,
-  }));
+export const GetReportingReportTypesReportType = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetReportingReportTypesReportTypeInput,
+  outputSchema: GetReportingReportTypesReportTypeOutput,
+}));

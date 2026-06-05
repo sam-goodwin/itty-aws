@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateBranchClusterConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    cluster_size: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/cluster",
-    }),
-  );
+export const UpdateBranchClusterConfigInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  cluster_size: Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/cluster",
+  }),
+);
 export type UpdateBranchClusterConfigInput =
   typeof UpdateBranchClusterConfigInput.Type;
 
 // Output Schema
-export const UpdateBranchClusterConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateBranchClusterConfigOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateBranchClusterConfigOutput =
   typeof UpdateBranchClusterConfigOutput.Type;
 
@@ -34,10 +32,8 @@ export type UpdateBranchClusterConfigOutput =
  * @param branch - The name of the branch to configure
  * @param cluster_size - The new size of the database cluster: PS_10, PS_20,…
  */
-export const updateBranchClusterConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateBranchClusterConfigInput,
-    outputSchema: UpdateBranchClusterConfigOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateBranchClusterConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBranchClusterConfigInput,
+  outputSchema: UpdateBranchClusterConfigOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -6,96 +6,92 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const CreateResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
-  );
+export const CreateResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
+);
 export type CreateResourceV1DeviceClassInput =
   typeof CreateResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const CreateResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      config: Schema.optional(
+export const CreateResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
           }),
         ),
       ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    config: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          opaque: Schema.optional(
+            Schema.Struct({
+              driver: Schema.String,
+              parameters: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+    ),
+    extendedResourceName: Schema.optional(Schema.String),
+    selectors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          cel: Schema.optional(
+            Schema.Struct({
+              expression: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    ),
+  }),
+});
 export type CreateResourceV1DeviceClassOutput =
   typeof CreateResourceV1DeviceClassOutput.Type;
 
@@ -421,12 +417,13 @@ export type CreateResourceV1NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const createResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -665,225 +662,221 @@ export const createResourceV1NamespacedResourceClaimTemplate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const CreateResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/resourceslices" }),
-  );
+export const CreateResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/resourceslices" }),
+);
 export type CreateResourceV1ResourceSliceInput =
   typeof CreateResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const CreateResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      allNodes: Schema.optional(Schema.Boolean),
-      devices: Schema.optional(
+export const CreateResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            allNodes: Schema.optional(Schema.Boolean),
-            allowMultipleAllocations: Schema.optional(Schema.Boolean),
-            attributes: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  bool: Schema.optional(Schema.Boolean),
-                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
-                  int: Schema.optional(Schema.Number),
-                  ints: Schema.optional(Schema.Array(Schema.Number)),
-                  string: Schema.optional(Schema.String),
-                  strings: Schema.optional(Schema.Array(Schema.String)),
-                  version: Schema.optional(Schema.String),
-                  versions: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            bindingConditions: Schema.optional(Schema.Array(Schema.String)),
-            bindingFailureConditions: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            bindsToNode: Schema.optional(Schema.Boolean),
-            capacity: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  requestPolicy: Schema.optional(
-                    Schema.Struct({
-                      default: Schema.optional(Schema.String),
-                      validRange: Schema.optional(
-                        Schema.Struct({
-                          max: Schema.optional(Schema.String),
-                          min: Schema.String,
-                          step: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      validValues: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                  value: Schema.String,
-                }),
-              ),
-            ),
-            consumesCounters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  counterSet: Schema.String,
-                  counters: Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            name: Schema.String,
-            nodeAllocatableResourceMappings: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  allocationMultiplier: Schema.optional(Schema.String),
-                  capacityKey: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            nodeName: Schema.optional(Schema.String),
-            nodeSelector: Schema.optional(
-              Schema.Struct({
-                nodeSelectorTerms: Schema.Array(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchFields: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            taints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  effect: Schema.String,
-                  key: Schema.String,
-                  timeAdded: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      driver: Schema.String,
-      nodeName: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(
-        Schema.Struct({
-          nodeSelectorTerms: Schema.Array(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      perDeviceNodeSelection: Schema.optional(Schema.Boolean),
-      pool: Schema.Struct({
-        generation: Schema.Number,
-        name: Schema.String,
-        resourceSliceCount: Schema.Number,
-      }),
-      sharedCounters: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            counters: Schema.Record(
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.Struct({
+    allNodes: Schema.optional(Schema.Boolean),
+    devices: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          allNodes: Schema.optional(Schema.Boolean),
+          allowMultipleAllocations: Schema.optional(Schema.Boolean),
+          attributes: Schema.optional(
+            Schema.Record(
               Schema.String,
               Schema.Struct({
+                bool: Schema.optional(Schema.Boolean),
+                bools: Schema.optional(Schema.Array(Schema.Boolean)),
+                int: Schema.optional(Schema.Number),
+                ints: Schema.optional(Schema.Array(Schema.Number)),
+                string: Schema.optional(Schema.String),
+                strings: Schema.optional(Schema.Array(Schema.String)),
+                version: Schema.optional(Schema.String),
+                versions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          ),
+          bindingConditions: Schema.optional(Schema.Array(Schema.String)),
+          bindingFailureConditions: Schema.optional(
+            Schema.Array(Schema.String),
+          ),
+          bindsToNode: Schema.optional(Schema.Boolean),
+          capacity: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                requestPolicy: Schema.optional(
+                  Schema.Struct({
+                    default: Schema.optional(Schema.String),
+                    validRange: Schema.optional(
+                      Schema.Struct({
+                        max: Schema.optional(Schema.String),
+                        min: Schema.String,
+                        step: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    validValues: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
                 value: Schema.String,
               }),
             ),
-            name: Schema.String,
+          ),
+          consumesCounters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                counterSet: Schema.String,
+                counters: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          ),
+          name: Schema.String,
+          nodeAllocatableResourceMappings: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                allocationMultiplier: Schema.optional(Schema.String),
+                capacityKey: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          nodeName: Schema.optional(Schema.String),
+          nodeSelector: Schema.optional(
+            Schema.Struct({
+              nodeSelectorTerms: Schema.Array(
+                Schema.Struct({
+                  matchExpressions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                  matchFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          taints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                effect: Schema.String,
+                key: Schema.String,
+                timeAdded: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    driver: Schema.String,
+    nodeName: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(
+      Schema.Struct({
+        nodeSelectorTerms: Schema.Array(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
           }),
         ),
-      ),
+      }),
+    ),
+    perDeviceNodeSelection: Schema.optional(Schema.Boolean),
+    pool: Schema.Struct({
+      generation: Schema.Number,
+      name: Schema.String,
+      resourceSliceCount: Schema.Number,
     }),
-  });
+    sharedCounters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          counters: Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              value: Schema.String,
+            }),
+          ),
+          name: Schema.String,
+        }),
+      ),
+    ),
+  }),
+});
 export type CreateResourceV1ResourceSliceOutput =
   typeof CreateResourceV1ResourceSliceOutput.Type;
 
@@ -894,12 +887,11 @@ export type CreateResourceV1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateResourceV1ResourceSliceInput,
-    outputSchema: CreateResourceV1ResourceSliceOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateResourceV1ResourceSliceInput,
+  outputSchema: CreateResourceV1ResourceSliceOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1005,12 +997,13 @@ export type CreateResourceV1alpha3DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const createResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: CreateResourceV1alpha3DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1224,12 +1217,11 @@ export type CreateResourceV1beta1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateResourceV1beta1DeviceClassInput,
-    outputSchema: CreateResourceV1beta1DeviceClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateResourceV1beta1DeviceClassInput,
+  outputSchema: CreateResourceV1beta1DeviceClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2018,12 +2010,13 @@ export type CreateResourceV1beta1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const createResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateResourceV1beta1ResourceSliceInput,
     outputSchema: CreateResourceV1beta1ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2124,12 +2117,11 @@ export type CreateResourceV1beta2DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateResourceV1beta2DeviceClassInput,
-    outputSchema: CreateResourceV1beta2DeviceClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateResourceV1beta2DeviceClassInput,
+  outputSchema: CreateResourceV1beta2DeviceClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2235,12 +2227,13 @@ export type CreateResourceV1beta2DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const createResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateResourceV1beta2DeviceTaintRuleInput,
     outputSchema: CreateResourceV1beta2DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3027,12 +3020,13 @@ export type CreateResourceV1beta2ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const createResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateResourceV1beta2ResourceSliceInput,
     outputSchema: CreateResourceV1beta2ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1CollectionDeviceClassInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3096,11 +3090,12 @@ export type DeleteResourceV1CollectionDeviceClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1CollectionDeviceClass =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1CollectionDeviceClass = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1CollectionDeviceClassOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1CollectionNamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3301,100 +3296,97 @@ export type DeleteResourceV1CollectionResourceSliceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1CollectionResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1CollectionResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1CollectionResourceSliceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DeleteResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
-    }),
-  );
+export const DeleteResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
+  }),
+);
 export type DeleteResourceV1DeviceClassInput =
   typeof DeleteResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const DeleteResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      config: Schema.optional(
+export const DeleteResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
           }),
         ),
       ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    config: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          opaque: Schema.optional(
+            Schema.Struct({
+              driver: Schema.String,
+              parameters: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+    ),
+    extendedResourceName: Schema.optional(Schema.String),
+    selectors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          cel: Schema.optional(
+            Schema.Struct({
+              expression: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    ),
+  }),
+});
 export type DeleteResourceV1DeviceClassOutput =
   typeof DeleteResourceV1DeviceClassOutput.Type;
 
@@ -3717,12 +3709,13 @@ export type DeleteResourceV1NamespacedResourceClaimOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3959,227 +3952,223 @@ export const deleteResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const DeleteResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
-    }),
-  );
+export const DeleteResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
+  }),
+);
 export type DeleteResourceV1ResourceSliceInput =
   typeof DeleteResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const DeleteResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      allNodes: Schema.optional(Schema.Boolean),
-      devices: Schema.optional(
+export const DeleteResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            allNodes: Schema.optional(Schema.Boolean),
-            allowMultipleAllocations: Schema.optional(Schema.Boolean),
-            attributes: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  bool: Schema.optional(Schema.Boolean),
-                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
-                  int: Schema.optional(Schema.Number),
-                  ints: Schema.optional(Schema.Array(Schema.Number)),
-                  string: Schema.optional(Schema.String),
-                  strings: Schema.optional(Schema.Array(Schema.String)),
-                  version: Schema.optional(Schema.String),
-                  versions: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            bindingConditions: Schema.optional(Schema.Array(Schema.String)),
-            bindingFailureConditions: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            bindsToNode: Schema.optional(Schema.Boolean),
-            capacity: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  requestPolicy: Schema.optional(
-                    Schema.Struct({
-                      default: Schema.optional(Schema.String),
-                      validRange: Schema.optional(
-                        Schema.Struct({
-                          max: Schema.optional(Schema.String),
-                          min: Schema.String,
-                          step: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      validValues: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                  value: Schema.String,
-                }),
-              ),
-            ),
-            consumesCounters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  counterSet: Schema.String,
-                  counters: Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            name: Schema.String,
-            nodeAllocatableResourceMappings: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  allocationMultiplier: Schema.optional(Schema.String),
-                  capacityKey: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            nodeName: Schema.optional(Schema.String),
-            nodeSelector: Schema.optional(
-              Schema.Struct({
-                nodeSelectorTerms: Schema.Array(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchFields: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            taints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  effect: Schema.String,
-                  key: Schema.String,
-                  timeAdded: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      driver: Schema.String,
-      nodeName: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(
-        Schema.Struct({
-          nodeSelectorTerms: Schema.Array(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      perDeviceNodeSelection: Schema.optional(Schema.Boolean),
-      pool: Schema.Struct({
-        generation: Schema.Number,
-        name: Schema.String,
-        resourceSliceCount: Schema.Number,
-      }),
-      sharedCounters: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            counters: Schema.Record(
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.Struct({
+    allNodes: Schema.optional(Schema.Boolean),
+    devices: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          allNodes: Schema.optional(Schema.Boolean),
+          allowMultipleAllocations: Schema.optional(Schema.Boolean),
+          attributes: Schema.optional(
+            Schema.Record(
               Schema.String,
               Schema.Struct({
+                bool: Schema.optional(Schema.Boolean),
+                bools: Schema.optional(Schema.Array(Schema.Boolean)),
+                int: Schema.optional(Schema.Number),
+                ints: Schema.optional(Schema.Array(Schema.Number)),
+                string: Schema.optional(Schema.String),
+                strings: Schema.optional(Schema.Array(Schema.String)),
+                version: Schema.optional(Schema.String),
+                versions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          ),
+          bindingConditions: Schema.optional(Schema.Array(Schema.String)),
+          bindingFailureConditions: Schema.optional(
+            Schema.Array(Schema.String),
+          ),
+          bindsToNode: Schema.optional(Schema.Boolean),
+          capacity: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                requestPolicy: Schema.optional(
+                  Schema.Struct({
+                    default: Schema.optional(Schema.String),
+                    validRange: Schema.optional(
+                      Schema.Struct({
+                        max: Schema.optional(Schema.String),
+                        min: Schema.String,
+                        step: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    validValues: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
                 value: Schema.String,
               }),
             ),
-            name: Schema.String,
+          ),
+          consumesCounters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                counterSet: Schema.String,
+                counters: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          ),
+          name: Schema.String,
+          nodeAllocatableResourceMappings: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                allocationMultiplier: Schema.optional(Schema.String),
+                capacityKey: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          nodeName: Schema.optional(Schema.String),
+          nodeSelector: Schema.optional(
+            Schema.Struct({
+              nodeSelectorTerms: Schema.Array(
+                Schema.Struct({
+                  matchExpressions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                  matchFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          taints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                effect: Schema.String,
+                key: Schema.String,
+                timeAdded: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    driver: Schema.String,
+    nodeName: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(
+      Schema.Struct({
+        nodeSelectorTerms: Schema.Array(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
           }),
         ),
-      ),
+      }),
+    ),
+    perDeviceNodeSelection: Schema.optional(Schema.Boolean),
+    pool: Schema.Struct({
+      generation: Schema.Number,
+      name: Schema.String,
+      resourceSliceCount: Schema.Number,
     }),
-  });
+    sharedCounters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          counters: Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              value: Schema.String,
+            }),
+          ),
+          name: Schema.String,
+        }),
+      ),
+    ),
+  }),
+});
 export type DeleteResourceV1ResourceSliceOutput =
   typeof DeleteResourceV1ResourceSliceOutput.Type;
 
@@ -4189,12 +4178,11 @@ export type DeleteResourceV1ResourceSliceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteResourceV1ResourceSliceInput,
-    outputSchema: DeleteResourceV1ResourceSliceOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteResourceV1ResourceSliceInput,
+  outputSchema: DeleteResourceV1ResourceSliceOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4435,12 +4423,13 @@ export type DeleteResourceV1alpha3DeviceTaintRuleOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4924,12 +4913,11 @@ export type DeleteResourceV1beta1DeviceClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteResourceV1beta1DeviceClassInput,
-    outputSchema: DeleteResourceV1beta1DeviceClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteResourceV1beta1DeviceClassInput,
+  outputSchema: DeleteResourceV1beta1DeviceClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5712,12 +5700,13 @@ export type DeleteResourceV1beta1ResourceSliceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1beta1ResourceSliceInput,
     outputSchema: DeleteResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1beta2CollectionDeviceClassInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6158,12 +6147,11 @@ export type DeleteResourceV1beta2DeviceClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteResourceV1beta2DeviceClassInput,
-    outputSchema: DeleteResourceV1beta2DeviceClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteResourceV1beta2DeviceClassInput,
+  outputSchema: DeleteResourceV1beta2DeviceClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6267,12 +6255,13 @@ export type DeleteResourceV1beta2DeviceTaintRuleOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1beta2DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7053,46 +7042,45 @@ export type DeleteResourceV1beta2ResourceSliceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const deleteResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteResourceV1beta2ResourceSliceInput,
     outputSchema: DeleteResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
-export const GetResourceAPIGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/" }),
-  );
+export const GetResourceAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/resource.k8s.io/" }),
+);
 export type GetResourceAPIGroupInput = typeof GetResourceAPIGroupInput.Type;
 
 // Output Schema
-export const GetResourceAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetResourceAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetResourceAPIGroupOutput = typeof GetResourceAPIGroupOutput.Type;
 
 // The operation
@@ -7104,34 +7092,32 @@ export const getResourceAPIGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetResourceAPIGroupOutput,
 }));
 // Input Schema
-export const GetResourceV1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/" }),
-  );
+export const GetResourceV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/" }));
 export type GetResourceV1APIResourcesInput =
   typeof GetResourceV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetResourceV1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetResourceV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetResourceV1APIResourcesOutput =
   typeof GetResourceV1APIResourcesOutput.Type;
 
@@ -7144,10 +7130,9 @@ export const getResourceV1APIResources = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetResourceV1APIResourcesOutput,
 }));
 // Input Schema
-export const GetResourceV1alpha3APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1alpha3/" }),
-  );
+export const GetResourceV1alpha3APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1alpha3/" }));
 export type GetResourceV1alpha3APIResourcesInput =
   typeof GetResourceV1alpha3APIResourcesInput.Type;
 
@@ -7179,22 +7164,20 @@ export type GetResourceV1alpha3APIResourcesOutput =
 /**
  * get available resources
  */
-export const getResourceV1alpha3APIResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetResourceV1alpha3APIResourcesInput,
-    outputSchema: GetResourceV1alpha3APIResourcesOutput,
-  }));
+export const getResourceV1alpha3APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetResourceV1alpha3APIResourcesInput,
+  outputSchema: GetResourceV1alpha3APIResourcesOutput,
+}));
 // Input Schema
-export const GetResourceV1beta1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta1/" }),
-  );
+export const GetResourceV1beta1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta1/" }));
 export type GetResourceV1beta1APIResourcesInput =
   typeof GetResourceV1beta1APIResourcesInput.Type;
 
 // Output Schema
-export const GetResourceV1beta1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const GetResourceV1beta1APIResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7212,7 +7195,8 @@ export const GetResourceV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type GetResourceV1beta1APIResourcesOutput =
   typeof GetResourceV1beta1APIResourcesOutput.Type;
 
@@ -7220,22 +7204,20 @@ export type GetResourceV1beta1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getResourceV1beta1APIResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetResourceV1beta1APIResourcesInput,
-    outputSchema: GetResourceV1beta1APIResourcesOutput,
-  }));
+export const getResourceV1beta1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetResourceV1beta1APIResourcesInput,
+  outputSchema: GetResourceV1beta1APIResourcesOutput,
+}));
 // Input Schema
-export const GetResourceV1beta2APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta2/" }),
-  );
+export const GetResourceV1beta2APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta2/" }));
 export type GetResourceV1beta2APIResourcesInput =
   typeof GetResourceV1beta2APIResourcesInput.Type;
 
 // Output Schema
-export const GetResourceV1beta2APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const GetResourceV1beta2APIResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7253,7 +7235,8 @@ export const GetResourceV1beta2APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type GetResourceV1beta2APIResourcesOutput =
   typeof GetResourceV1beta2APIResourcesOutput.Type;
 
@@ -7261,116 +7244,113 @@ export type GetResourceV1beta2APIResourcesOutput =
 /**
  * get available resources
  */
-export const getResourceV1beta2APIResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetResourceV1beta2APIResourcesInput,
-    outputSchema: GetResourceV1beta2APIResourcesOutput,
-  }));
+export const getResourceV1beta2APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetResourceV1beta2APIResourcesInput,
+  outputSchema: GetResourceV1beta2APIResourcesOutput,
+}));
 // Input Schema
-export const ListResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
-  );
+export const ListResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
+);
 export type ListResourceV1DeviceClassInput =
   typeof ListResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const ListResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          config: Schema.optional(
+export const ListResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
               }),
             ),
           ),
-          extendedResourceName: Schema.optional(Schema.String),
-          selectors: Schema.optional(
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                cel: Schema.optional(
-                  Schema.Struct({
-                    expression: Schema.String,
-                  }),
-                ),
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
               }),
             ),
           ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
         }),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
+      ),
+      spec: Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
+        ),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
       }),
-    ),
-  });
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListResourceV1DeviceClassOutput =
   typeof ListResourceV1DeviceClassOutput.Type;
 
@@ -7717,11 +7697,12 @@ export type ListResourceV1NamespacedResourceClaimOutput =
 /**
  * list or watch objects of kind ResourceClaim
  */
-export const listResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const listResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListResourceV1NamespacedResourceClaimInput,
     outputSchema: ListResourceV1NamespacedResourceClaimOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -8574,249 +8555,247 @@ export const listResourceV1ResourceClaimTemplateForAllNamespaces =
     outputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
-export const ListResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceslices" }),
-  );
+export const ListResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceslices" }),
+);
 export type ListResourceV1ResourceSliceInput =
   typeof ListResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const ListResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          allNodes: Schema.optional(Schema.Boolean),
-          devices: Schema.optional(
+export const ListResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  items: Schema.Array(
+    Schema.Struct({
+      apiVersion: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                allNodes: Schema.optional(Schema.Boolean),
-                allowMultipleAllocations: Schema.optional(Schema.Boolean),
-                attributes: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      bool: Schema.optional(Schema.Boolean),
-                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
-                      int: Schema.optional(Schema.Number),
-                      ints: Schema.optional(Schema.Array(Schema.Number)),
-                      string: Schema.optional(Schema.String),
-                      strings: Schema.optional(Schema.Array(Schema.String)),
-                      version: Schema.optional(Schema.String),
-                      versions: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                bindingConditions: Schema.optional(Schema.Array(Schema.String)),
-                bindingFailureConditions: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                bindsToNode: Schema.optional(Schema.Boolean),
-                capacity: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      requestPolicy: Schema.optional(
-                        Schema.Struct({
-                          default: Schema.optional(Schema.String),
-                          validRange: Schema.optional(
-                            Schema.Struct({
-                              max: Schema.optional(Schema.String),
-                              min: Schema.String,
-                              step: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          validValues: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                      value: Schema.String,
-                    }),
-                  ),
-                ),
-                consumesCounters: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      counterSet: Schema.String,
-                      counters: Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          value: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                name: Schema.String,
-                nodeAllocatableResourceMappings: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      allocationMultiplier: Schema.optional(Schema.String),
-                      capacityKey: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                nodeName: Schema.optional(Schema.String),
-                nodeSelector: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                taints: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.String,
-                      key: Schema.String,
-                      timeAdded: Schema.optional(Schema.String),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
               }),
             ),
           ),
-          driver: Schema.String,
-          nodeName: Schema.optional(Schema.String),
-          nodeSelector: Schema.optional(
-            Schema.Struct({
-              nodeSelectorTerms: Schema.Array(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchFields: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          perDeviceNodeSelection: Schema.optional(Schema.Boolean),
-          pool: Schema.Struct({
-            generation: Schema.Number,
-            name: Schema.String,
-            resourceSliceCount: Schema.Number,
-          }),
-          sharedCounters: Schema.optional(
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                counters: Schema.Record(
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
+            ),
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+      ),
+      spec: Schema.Struct({
+        allNodes: Schema.optional(Schema.Boolean),
+        devices: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allNodes: Schema.optional(Schema.Boolean),
+              allowMultipleAllocations: Schema.optional(Schema.Boolean),
+              attributes: Schema.optional(
+                Schema.Record(
                   Schema.String,
                   Schema.Struct({
+                    bool: Schema.optional(Schema.Boolean),
+                    bools: Schema.optional(Schema.Array(Schema.Boolean)),
+                    int: Schema.optional(Schema.Number),
+                    ints: Schema.optional(Schema.Array(Schema.Number)),
+                    string: Schema.optional(Schema.String),
+                    strings: Schema.optional(Schema.Array(Schema.String)),
+                    version: Schema.optional(Schema.String),
+                    versions: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+              ),
+              bindingConditions: Schema.optional(Schema.Array(Schema.String)),
+              bindingFailureConditions: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              bindsToNode: Schema.optional(Schema.Boolean),
+              capacity: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    requestPolicy: Schema.optional(
+                      Schema.Struct({
+                        default: Schema.optional(Schema.String),
+                        validRange: Schema.optional(
+                          Schema.Struct({
+                            max: Schema.optional(Schema.String),
+                            min: Schema.String,
+                            step: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        validValues: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
                     value: Schema.String,
                   }),
                 ),
-                name: Schema.String,
+              ),
+              consumesCounters: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    counterSet: Schema.String,
+                    counters: Schema.Record(
+                      Schema.String,
+                      Schema.Struct({
+                        value: Schema.String,
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              name: Schema.String,
+              nodeAllocatableResourceMappings: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    allocationMultiplier: Schema.optional(Schema.String),
+                    capacityKey: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              nodeName: Schema.optional(Schema.String),
+              nodeSelector: Schema.optional(
+                Schema.Struct({
+                  nodeSelectorTerms: Schema.Array(
+                    Schema.Struct({
+                      matchExpressions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                      ),
+                      matchFields: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+              taints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    effect: Schema.String,
+                    key: Schema.String,
+                    timeAdded: Schema.optional(Schema.String),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        driver: Schema.String,
+        nodeName: Schema.optional(Schema.String),
+        nodeSelector: Schema.optional(
+          Schema.Struct({
+            nodeSelectorTerms: Schema.Array(
+              Schema.Struct({
+                matchExpressions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operator: Schema.String,
+                      values: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                matchFields: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operator: Schema.String,
+                      values: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
               }),
             ),
-          ),
-        }),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
           }),
         ),
+        perDeviceNodeSelection: Schema.optional(Schema.Boolean),
+        pool: Schema.Struct({
+          generation: Schema.Number,
+          name: Schema.String,
+          resourceSliceCount: Schema.Number,
+        }),
+        sharedCounters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              counters: Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  value: Schema.String,
+                }),
+              ),
+              name: Schema.String,
+            }),
+          ),
+        ),
       }),
-    ),
-  });
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ListResourceV1ResourceSliceOutput =
   typeof ListResourceV1ResourceSliceOutput.Type;
 
@@ -8948,11 +8927,12 @@ export type ListResourceV1alpha3DeviceTaintRuleOutput =
 /**
  * list or watch objects of kind DeviceTaintRule
  */
-export const listResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const listResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ListResourceV1alpha3DeviceTaintRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -9082,19 +9062,20 @@ export const listResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: ListResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
-export const ListResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
-    }),
-  );
+export const ListResourceV1beta1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
+  }),
+);
 export type ListResourceV1beta1DeviceClassInput =
   typeof ListResourceV1beta1DeviceClassInput.Type;
 
 // Output Schema
-export const ListResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ListResourceV1beta1DeviceClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9188,7 +9169,8 @@ export const ListResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ListResourceV1beta1DeviceClassOutput =
   typeof ListResourceV1beta1DeviceClassOutput.Type;
 
@@ -9196,11 +9178,10 @@ export type ListResourceV1beta1DeviceClassOutput =
 /**
  * list or watch objects of kind DeviceClass
  */
-export const listResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListResourceV1beta1DeviceClassInput,
-    outputSchema: ListResourceV1beta1DeviceClassOutput,
-  }));
+export const listResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1beta1DeviceClassInput,
+  outputSchema: ListResourceV1beta1DeviceClassOutput,
+}));
 // Input Schema
 export const ListResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -10638,25 +10619,25 @@ export type ListResourceV1beta1ResourceSliceOutput =
 /**
  * list or watch objects of kind ResourceSlice
  */
-export const listResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListResourceV1beta1ResourceSliceInput,
-    outputSchema: ListResourceV1beta1ResourceSliceOutput,
-  }));
+export const listResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1beta1ResourceSliceInput,
+  outputSchema: ListResourceV1beta1ResourceSliceOutput,
+}));
 // Input Schema
-export const ListResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
-    }),
-  );
+export const ListResourceV1beta2DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
+  }),
+);
 export type ListResourceV1beta2DeviceClassInput =
   typeof ListResourceV1beta2DeviceClassInput.Type;
 
 // Output Schema
-export const ListResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ListResourceV1beta2DeviceClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10750,7 +10731,8 @@ export const ListResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
+  },
+);
 export type ListResourceV1beta2DeviceClassOutput =
   typeof ListResourceV1beta2DeviceClassOutput.Type;
 
@@ -10758,11 +10740,10 @@ export type ListResourceV1beta2DeviceClassOutput =
 /**
  * list or watch objects of kind DeviceClass
  */
-export const listResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListResourceV1beta2DeviceClassInput,
-    outputSchema: ListResourceV1beta2DeviceClassOutput,
-  }));
+export const listResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1beta2DeviceClassInput,
+  outputSchema: ListResourceV1beta2DeviceClassOutput,
+}));
 // Input Schema
 export const ListResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -10883,11 +10864,12 @@ export type ListResourceV1beta2DeviceTaintRuleOutput =
 /**
  * list or watch objects of kind DeviceTaintRule
  */
-export const listResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const listResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ListResourceV1beta2DeviceTaintRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -12337,101 +12319,96 @@ export type ListResourceV1beta2ResourceSliceOutput =
 /**
  * list or watch objects of kind ResourceSlice
  */
-export const listResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListResourceV1beta2ResourceSliceInput,
-    outputSchema: ListResourceV1beta2ResourceSliceOutput,
-  }));
+export const listResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1beta2ResourceSliceInput,
+  outputSchema: ListResourceV1beta2ResourceSliceOutput,
+}));
 // Input Schema
-export const PatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
-    }),
-  );
+export const PatchResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
+  }),
+);
 export type PatchResourceV1DeviceClassInput =
   typeof PatchResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const PatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      config: Schema.optional(
+export const PatchResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
           }),
         ),
       ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    config: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          opaque: Schema.optional(
+            Schema.Struct({
+              driver: Schema.String,
+              parameters: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+    ),
+    extendedResourceName: Schema.optional(Schema.String),
+    selectors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          cel: Schema.optional(
+            Schema.Struct({
+              expression: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    ),
+  }),
+});
 export type PatchResourceV1DeviceClassOutput =
   typeof PatchResourceV1DeviceClassOutput.Type;
 
@@ -12757,12 +12734,13 @@ export type PatchResourceV1NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const patchResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13317,228 +13295,224 @@ export const patchResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const PatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
-    }),
-  );
+export const PatchResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
+  }),
+);
 export type PatchResourceV1ResourceSliceInput =
   typeof PatchResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const PatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      allNodes: Schema.optional(Schema.Boolean),
-      devices: Schema.optional(
+export const PatchResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            allNodes: Schema.optional(Schema.Boolean),
-            allowMultipleAllocations: Schema.optional(Schema.Boolean),
-            attributes: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  bool: Schema.optional(Schema.Boolean),
-                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
-                  int: Schema.optional(Schema.Number),
-                  ints: Schema.optional(Schema.Array(Schema.Number)),
-                  string: Schema.optional(Schema.String),
-                  strings: Schema.optional(Schema.Array(Schema.String)),
-                  version: Schema.optional(Schema.String),
-                  versions: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            bindingConditions: Schema.optional(Schema.Array(Schema.String)),
-            bindingFailureConditions: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            bindsToNode: Schema.optional(Schema.Boolean),
-            capacity: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  requestPolicy: Schema.optional(
-                    Schema.Struct({
-                      default: Schema.optional(Schema.String),
-                      validRange: Schema.optional(
-                        Schema.Struct({
-                          max: Schema.optional(Schema.String),
-                          min: Schema.String,
-                          step: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      validValues: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                  value: Schema.String,
-                }),
-              ),
-            ),
-            consumesCounters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  counterSet: Schema.String,
-                  counters: Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            name: Schema.String,
-            nodeAllocatableResourceMappings: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  allocationMultiplier: Schema.optional(Schema.String),
-                  capacityKey: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            nodeName: Schema.optional(Schema.String),
-            nodeSelector: Schema.optional(
-              Schema.Struct({
-                nodeSelectorTerms: Schema.Array(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchFields: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            taints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  effect: Schema.String,
-                  key: Schema.String,
-                  timeAdded: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      driver: Schema.String,
-      nodeName: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(
-        Schema.Struct({
-          nodeSelectorTerms: Schema.Array(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      perDeviceNodeSelection: Schema.optional(Schema.Boolean),
-      pool: Schema.Struct({
-        generation: Schema.Number,
-        name: Schema.String,
-        resourceSliceCount: Schema.Number,
-      }),
-      sharedCounters: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            counters: Schema.Record(
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.Struct({
+    allNodes: Schema.optional(Schema.Boolean),
+    devices: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          allNodes: Schema.optional(Schema.Boolean),
+          allowMultipleAllocations: Schema.optional(Schema.Boolean),
+          attributes: Schema.optional(
+            Schema.Record(
               Schema.String,
               Schema.Struct({
+                bool: Schema.optional(Schema.Boolean),
+                bools: Schema.optional(Schema.Array(Schema.Boolean)),
+                int: Schema.optional(Schema.Number),
+                ints: Schema.optional(Schema.Array(Schema.Number)),
+                string: Schema.optional(Schema.String),
+                strings: Schema.optional(Schema.Array(Schema.String)),
+                version: Schema.optional(Schema.String),
+                versions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          ),
+          bindingConditions: Schema.optional(Schema.Array(Schema.String)),
+          bindingFailureConditions: Schema.optional(
+            Schema.Array(Schema.String),
+          ),
+          bindsToNode: Schema.optional(Schema.Boolean),
+          capacity: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                requestPolicy: Schema.optional(
+                  Schema.Struct({
+                    default: Schema.optional(Schema.String),
+                    validRange: Schema.optional(
+                      Schema.Struct({
+                        max: Schema.optional(Schema.String),
+                        min: Schema.String,
+                        step: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    validValues: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
                 value: Schema.String,
               }),
             ),
-            name: Schema.String,
+          ),
+          consumesCounters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                counterSet: Schema.String,
+                counters: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          ),
+          name: Schema.String,
+          nodeAllocatableResourceMappings: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                allocationMultiplier: Schema.optional(Schema.String),
+                capacityKey: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          nodeName: Schema.optional(Schema.String),
+          nodeSelector: Schema.optional(
+            Schema.Struct({
+              nodeSelectorTerms: Schema.Array(
+                Schema.Struct({
+                  matchExpressions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                  matchFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          taints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                effect: Schema.String,
+                key: Schema.String,
+                timeAdded: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    driver: Schema.String,
+    nodeName: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(
+      Schema.Struct({
+        nodeSelectorTerms: Schema.Array(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
           }),
         ),
-      ),
+      }),
+    ),
+    perDeviceNodeSelection: Schema.optional(Schema.Boolean),
+    pool: Schema.Struct({
+      generation: Schema.Number,
+      name: Schema.String,
+      resourceSliceCount: Schema.Number,
     }),
-  });
+    sharedCounters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          counters: Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              value: Schema.String,
+            }),
+          ),
+          name: Schema.String,
+        }),
+      ),
+    ),
+  }),
+});
 export type PatchResourceV1ResourceSliceOutput =
   typeof PatchResourceV1ResourceSliceOutput.Type;
 
@@ -13549,12 +13523,11 @@ export type PatchResourceV1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchResourceV1ResourceSliceInput,
-    outputSchema: PatchResourceV1ResourceSliceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1ResourceSliceInput,
+  outputSchema: PatchResourceV1ResourceSliceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13660,12 +13633,13 @@ export type PatchResourceV1alpha3DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const patchResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14004,16 +13978,17 @@ export const patchResourceV1alpha3ResourcePoolStatusRequestStatus =
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
-export const PatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchResourceV1beta1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
+  }),
+);
 export type PatchResourceV1beta1DeviceClassInput =
   typeof PatchResourceV1beta1DeviceClassInput.Type;
 
@@ -14103,12 +14078,11 @@ export type PatchResourceV1beta1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchResourceV1beta1DeviceClassInput,
-    outputSchema: PatchResourceV1beta1DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1beta1DeviceClassInput,
+  outputSchema: PatchResourceV1beta1DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15209,23 +15183,23 @@ export type PatchResourceV1beta1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchResourceV1beta1ResourceSliceInput,
-    outputSchema: PatchResourceV1beta1ResourceSliceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1beta1ResourceSliceInput,
+  outputSchema: PatchResourceV1beta1ResourceSliceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
-export const PatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchResourceV1beta2DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
+  }),
+);
 export type PatchResourceV1beta2DeviceClassInput =
   typeof PatchResourceV1beta2DeviceClassInput.Type;
 
@@ -15315,12 +15289,11 @@ export type PatchResourceV1beta2DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchResourceV1beta2DeviceClassInput,
-    outputSchema: PatchResourceV1beta2DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1beta2DeviceClassInput,
+  outputSchema: PatchResourceV1beta2DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15426,12 +15399,13 @@ export type PatchResourceV1beta2DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const patchResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15537,12 +15511,13 @@ export type PatchResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchResourceV1beta2DeviceTaintRuleStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16645,99 +16620,96 @@ export type PatchResourceV1beta2ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchResourceV1beta2ResourceSliceInput,
-    outputSchema: PatchResourceV1beta2ResourceSliceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1beta2ResourceSliceInput,
+  outputSchema: PatchResourceV1beta2ResourceSliceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
-export const ReadResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
-    }),
-  );
+export const ReadResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
+  }),
+);
 export type ReadResourceV1DeviceClassInput =
   typeof ReadResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const ReadResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      config: Schema.optional(
+export const ReadResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
           }),
         ),
       ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    config: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          opaque: Schema.optional(
+            Schema.Struct({
+              driver: Schema.String,
+              parameters: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+    ),
+    extendedResourceName: Schema.optional(Schema.String),
+    selectors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          cel: Schema.optional(
+            Schema.Struct({
+              expression: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    ),
+  }),
+});
 export type ReadResourceV1DeviceClassOutput =
   typeof ReadResourceV1DeviceClassOutput.Type;
 
@@ -17054,12 +17026,13 @@ export type ReadResourceV1NamespacedResourceClaimOutput =
 /**
  * read the specified ResourceClaim
  */
-export const readResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const readResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -17602,225 +17575,223 @@ export const readResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound] as const,
   }));
 // Input Schema
-export const ReadResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
-    }),
-  );
+export const ReadResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
+  }),
+);
 export type ReadResourceV1ResourceSliceInput =
   typeof ReadResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const ReadResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      allNodes: Schema.optional(Schema.Boolean),
-      devices: Schema.optional(
+export const ReadResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            allNodes: Schema.optional(Schema.Boolean),
-            allowMultipleAllocations: Schema.optional(Schema.Boolean),
-            attributes: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  bool: Schema.optional(Schema.Boolean),
-                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
-                  int: Schema.optional(Schema.Number),
-                  ints: Schema.optional(Schema.Array(Schema.Number)),
-                  string: Schema.optional(Schema.String),
-                  strings: Schema.optional(Schema.Array(Schema.String)),
-                  version: Schema.optional(Schema.String),
-                  versions: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            bindingConditions: Schema.optional(Schema.Array(Schema.String)),
-            bindingFailureConditions: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            bindsToNode: Schema.optional(Schema.Boolean),
-            capacity: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  requestPolicy: Schema.optional(
-                    Schema.Struct({
-                      default: Schema.optional(Schema.String),
-                      validRange: Schema.optional(
-                        Schema.Struct({
-                          max: Schema.optional(Schema.String),
-                          min: Schema.String,
-                          step: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      validValues: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                  value: Schema.String,
-                }),
-              ),
-            ),
-            consumesCounters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  counterSet: Schema.String,
-                  counters: Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            name: Schema.String,
-            nodeAllocatableResourceMappings: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  allocationMultiplier: Schema.optional(Schema.String),
-                  capacityKey: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            nodeName: Schema.optional(Schema.String),
-            nodeSelector: Schema.optional(
-              Schema.Struct({
-                nodeSelectorTerms: Schema.Array(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchFields: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            taints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  effect: Schema.String,
-                  key: Schema.String,
-                  timeAdded: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      driver: Schema.String,
-      nodeName: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(
-        Schema.Struct({
-          nodeSelectorTerms: Schema.Array(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      perDeviceNodeSelection: Schema.optional(Schema.Boolean),
-      pool: Schema.Struct({
-        generation: Schema.Number,
-        name: Schema.String,
-        resourceSliceCount: Schema.Number,
-      }),
-      sharedCounters: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            counters: Schema.Record(
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.Struct({
+    allNodes: Schema.optional(Schema.Boolean),
+    devices: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          allNodes: Schema.optional(Schema.Boolean),
+          allowMultipleAllocations: Schema.optional(Schema.Boolean),
+          attributes: Schema.optional(
+            Schema.Record(
               Schema.String,
               Schema.Struct({
+                bool: Schema.optional(Schema.Boolean),
+                bools: Schema.optional(Schema.Array(Schema.Boolean)),
+                int: Schema.optional(Schema.Number),
+                ints: Schema.optional(Schema.Array(Schema.Number)),
+                string: Schema.optional(Schema.String),
+                strings: Schema.optional(Schema.Array(Schema.String)),
+                version: Schema.optional(Schema.String),
+                versions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          ),
+          bindingConditions: Schema.optional(Schema.Array(Schema.String)),
+          bindingFailureConditions: Schema.optional(
+            Schema.Array(Schema.String),
+          ),
+          bindsToNode: Schema.optional(Schema.Boolean),
+          capacity: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                requestPolicy: Schema.optional(
+                  Schema.Struct({
+                    default: Schema.optional(Schema.String),
+                    validRange: Schema.optional(
+                      Schema.Struct({
+                        max: Schema.optional(Schema.String),
+                        min: Schema.String,
+                        step: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    validValues: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
                 value: Schema.String,
               }),
             ),
-            name: Schema.String,
+          ),
+          consumesCounters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                counterSet: Schema.String,
+                counters: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          ),
+          name: Schema.String,
+          nodeAllocatableResourceMappings: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                allocationMultiplier: Schema.optional(Schema.String),
+                capacityKey: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          nodeName: Schema.optional(Schema.String),
+          nodeSelector: Schema.optional(
+            Schema.Struct({
+              nodeSelectorTerms: Schema.Array(
+                Schema.Struct({
+                  matchExpressions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                  matchFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        operator: Schema.String,
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          taints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                effect: Schema.String,
+                key: Schema.String,
+                timeAdded: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    driver: Schema.String,
+    nodeName: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(
+      Schema.Struct({
+        nodeSelectorTerms: Schema.Array(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
           }),
         ),
-      ),
+      }),
+    ),
+    perDeviceNodeSelection: Schema.optional(Schema.Boolean),
+    pool: Schema.Struct({
+      generation: Schema.Number,
+      name: Schema.String,
+      resourceSliceCount: Schema.Number,
     }),
-  });
+    sharedCounters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          counters: Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              value: Schema.String,
+            }),
+          ),
+          name: Schema.String,
+        }),
+      ),
+    ),
+  }),
+});
 export type ReadResourceV1ResourceSliceOutput =
   typeof ReadResourceV1ResourceSliceOutput.Type;
 
@@ -17932,12 +17903,13 @@ export type ReadResourceV1alpha3DeviceTaintRuleOutput =
 /**
  * read the specified DeviceTaintRule
  */
-export const readResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const readResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -18037,12 +18009,13 @@ export type ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
 /**
  * read status of the specified DeviceTaintRule
  */
-export const readResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readResourceV1alpha3DeviceTaintRuleStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -18258,19 +18231,20 @@ export const readResourceV1alpha3ResourcePoolStatusRequestStatus =
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
-export const ReadResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
-    }),
-  );
+export const ReadResourceV1beta1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
+  }),
+);
 export type ReadResourceV1beta1DeviceClassInput =
   typeof ReadResourceV1beta1DeviceClassInput.Type;
 
 // Output Schema
-export const ReadResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReadResourceV1beta1DeviceClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18343,7 +18317,8 @@ export const ReadResourceV1beta1DeviceClassOutput =
         ),
       ),
     }),
-  });
+  },
+);
 export type ReadResourceV1beta1DeviceClassOutput =
   typeof ReadResourceV1beta1DeviceClassOutput.Type;
 
@@ -18351,12 +18326,11 @@ export type ReadResourceV1beta1DeviceClassOutput =
 /**
  * read the specified DeviceClass
  */
-export const readResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadResourceV1beta1DeviceClassInput,
-    outputSchema: ReadResourceV1beta1DeviceClassOutput,
-    errors: [NotFound] as const,
-  }));
+export const readResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1beta1DeviceClassInput,
+  outputSchema: ReadResourceV1beta1DeviceClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -19433,26 +19407,26 @@ export type ReadResourceV1beta1ResourceSliceOutput =
 /**
  * read the specified ResourceSlice
  */
-export const readResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadResourceV1beta1ResourceSliceInput,
-    outputSchema: ReadResourceV1beta1ResourceSliceOutput,
-    errors: [NotFound] as const,
-  }));
+export const readResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1beta1ResourceSliceInput,
+  outputSchema: ReadResourceV1beta1ResourceSliceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
-export const ReadResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
-    }),
-  );
+export const ReadResourceV1beta2DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
+  }),
+);
 export type ReadResourceV1beta2DeviceClassInput =
   typeof ReadResourceV1beta2DeviceClassInput.Type;
 
 // Output Schema
-export const ReadResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReadResourceV1beta2DeviceClassOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19525,7 +19499,8 @@ export const ReadResourceV1beta2DeviceClassOutput =
         ),
       ),
     }),
-  });
+  },
+);
 export type ReadResourceV1beta2DeviceClassOutput =
   typeof ReadResourceV1beta2DeviceClassOutput.Type;
 
@@ -19533,12 +19508,11 @@ export type ReadResourceV1beta2DeviceClassOutput =
 /**
  * read the specified DeviceClass
  */
-export const readResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadResourceV1beta2DeviceClassInput,
-    outputSchema: ReadResourceV1beta2DeviceClassOutput,
-    errors: [NotFound] as const,
-  }));
+export const readResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1beta2DeviceClassInput,
+  outputSchema: ReadResourceV1beta2DeviceClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -19638,12 +19612,13 @@ export type ReadResourceV1beta2DeviceTaintRuleOutput =
 /**
  * read the specified DeviceTaintRule
  */
-export const readResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const readResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -19743,12 +19718,13 @@ export type ReadResourceV1beta2DeviceTaintRuleStatusOutput =
 /**
  * read status of the specified DeviceTaintRule
  */
-export const readResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readResourceV1beta2DeviceTaintRuleStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -20827,102 +20803,97 @@ export type ReadResourceV1beta2ResourceSliceOutput =
 /**
  * read the specified ResourceSlice
  */
-export const readResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadResourceV1beta2ResourceSliceInput,
-    outputSchema: ReadResourceV1beta2ResourceSliceOutput,
-    errors: [NotFound] as const,
-  }));
+export const readResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1beta2ResourceSliceInput,
+  outputSchema: ReadResourceV1beta2ResourceSliceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
-export const ReplaceResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
-    }),
-  );
+export const ReplaceResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
+  }),
+);
 export type ReplaceResourceV1DeviceClassInput =
   typeof ReplaceResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const ReplaceResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      config: Schema.optional(
+export const ReplaceResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
           }),
         ),
       ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
           }),
         ),
       ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
     }),
-  });
+  ),
+  spec: Schema.Struct({
+    config: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          opaque: Schema.optional(
+            Schema.Struct({
+              driver: Schema.String,
+              parameters: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+    ),
+    extendedResourceName: Schema.optional(Schema.String),
+    selectors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          cel: Schema.optional(
+            Schema.Struct({
+              expression: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    ),
+  }),
+});
 export type ReplaceResourceV1DeviceClassOutput =
   typeof ReplaceResourceV1DeviceClassOutput.Type;
 
@@ -20933,12 +20904,11 @@ export type ReplaceResourceV1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceResourceV1DeviceClassInput,
-    outputSchema: ReplaceResourceV1DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceResourceV1DeviceClassInput,
+  outputSchema: ReplaceResourceV1DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21249,12 +21219,13 @@ export type ReplaceResourceV1NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21809,22 +21780,21 @@ export const replaceResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const ReplaceResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
-    }),
-  );
+export const ReplaceResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
+  }),
+);
 export type ReplaceResourceV1ResourceSliceInput =
   typeof ReplaceResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const ReplaceResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReplaceResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22030,7 +22000,8 @@ export const ReplaceResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
+  },
+);
 export type ReplaceResourceV1ResourceSliceOutput =
   typeof ReplaceResourceV1ResourceSliceOutput.Type;
 
@@ -22041,12 +22012,11 @@ export type ReplaceResourceV1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceResourceV1ResourceSliceInput,
-    outputSchema: ReplaceResourceV1ResourceSliceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceResourceV1ResourceSliceInput,
+  outputSchema: ReplaceResourceV1ResourceSliceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -22152,12 +22122,13 @@ export type ReplaceResourceV1alpha3DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -22595,12 +22566,11 @@ export type ReplaceResourceV1beta1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceResourceV1beta1DeviceClassInput,
-    outputSchema: ReplaceResourceV1beta1DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceResourceV1beta1DeviceClassInput,
+  outputSchema: ReplaceResourceV1beta1DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23701,12 +23671,13 @@ export type ReplaceResourceV1beta1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceResourceV1beta1ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23807,12 +23778,11 @@ export type ReplaceResourceV1beta2DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceResourceV1beta2DeviceClassInput,
-    outputSchema: ReplaceResourceV1beta2DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const replaceResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceResourceV1beta2DeviceClassInput,
+  outputSchema: ReplaceResourceV1beta2DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23918,12 +23888,13 @@ export type ReplaceResourceV1beta2DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25137,29 +25108,30 @@ export type ReplaceResourceV1beta2ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceResourceV1beta2ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const WatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1/watch/deviceclasses/{name}",
-    }),
-  );
+export const WatchResourceV1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1/watch/deviceclasses/{name}",
+  }),
+);
 export type WatchResourceV1DeviceClassInput =
   typeof WatchResourceV1DeviceClassInput.Type;
 
 // Output Schema
-export const WatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
-    type: Schema.String,
-  });
+export const WatchResourceV1DeviceClassOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.Unknown,
+  type: Schema.String,
+});
 export type WatchResourceV1DeviceClassOutput =
   typeof WatchResourceV1DeviceClassOutput.Type;
 
@@ -25172,22 +25144,24 @@ export const watchResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
   outputSchema: WatchResourceV1DeviceClassOutput,
 }));
 // Input Schema
-export const WatchResourceV1DeviceClassListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1/watch/deviceclasses",
-    }),
-  );
+export const WatchResourceV1DeviceClassListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1/watch/deviceclasses",
+  }),
+);
 export type WatchResourceV1DeviceClassListInput =
   typeof WatchResourceV1DeviceClassListInput.Type;
 
 // Output Schema
-export const WatchResourceV1DeviceClassListOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WatchResourceV1DeviceClassListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     object: Schema.Unknown,
     type: Schema.String,
-  });
+  },
+);
 export type WatchResourceV1DeviceClassListOutput =
   typeof WatchResourceV1DeviceClassListOutput.Type;
 
@@ -25195,11 +25169,10 @@ export type WatchResourceV1DeviceClassListOutput =
 /**
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1DeviceClassList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1DeviceClassListInput,
-    outputSchema: WatchResourceV1DeviceClassListOutput,
-  }));
+export const watchResourceV1DeviceClassList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1DeviceClassListInput,
+  outputSchema: WatchResourceV1DeviceClassListOutput,
+}));
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25224,11 +25197,12 @@ export type WatchResourceV1NamespacedResourceClaimOutput =
 /**
  * watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1NamespacedResourceClaim = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25376,22 +25350,22 @@ export const watchResourceV1ResourceClaimTemplateListForAllNamespaces =
       WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
-export const WatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1/watch/resourceslices/{name}",
-    }),
-  );
+export const WatchResourceV1ResourceSliceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1/watch/resourceslices/{name}",
+  }),
+);
 export type WatchResourceV1ResourceSliceInput =
   typeof WatchResourceV1ResourceSliceInput.Type;
 
 // Output Schema
-export const WatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
-    type: Schema.String,
-  });
+export const WatchResourceV1ResourceSliceOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.Unknown,
+  type: Schema.String,
+});
 export type WatchResourceV1ResourceSliceOutput =
   typeof WatchResourceV1ResourceSliceOutput.Type;
 
@@ -25399,11 +25373,10 @@ export type WatchResourceV1ResourceSliceOutput =
 /**
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1ResourceSliceInput,
-    outputSchema: WatchResourceV1ResourceSliceOutput,
-  }));
+export const watchResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1ResourceSliceInput,
+  outputSchema: WatchResourceV1ResourceSliceOutput,
+}));
 // Input Schema
 export const WatchResourceV1ResourceSliceListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25428,11 +25401,10 @@ export type WatchResourceV1ResourceSliceListOutput =
 /**
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1ResourceSliceList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1ResourceSliceListInput,
-    outputSchema: WatchResourceV1ResourceSliceListOutput,
-  }));
+export const watchResourceV1ResourceSliceList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1ResourceSliceListInput,
+  outputSchema: WatchResourceV1ResourceSliceListOutput,
+}));
 // Input Schema
 export const WatchResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25457,11 +25429,12 @@ export type WatchResourceV1alpha3DeviceTaintRuleOutput =
 /**
  * watch changes to an object of kind DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1alpha3DeviceTaintRuleListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25486,11 +25459,12 @@ export type WatchResourceV1alpha3DeviceTaintRuleListOutput =
 /**
  * watch individual changes to a list of DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1alpha3DeviceTaintRuleList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1alpha3DeviceTaintRuleList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25550,13 +25524,14 @@ export const watchResourceV1alpha3ResourcePoolStatusRequestList =
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListOutput,
   }));
 // Input Schema
-export const WatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses/{name}",
-    }),
-  );
+export const WatchResourceV1beta1DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses/{name}",
+  }),
+);
 export type WatchResourceV1beta1DeviceClassInput =
   typeof WatchResourceV1beta1DeviceClassInput.Type;
 
@@ -25573,11 +25548,10 @@ export type WatchResourceV1beta1DeviceClassOutput =
 /**
  * watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1beta1DeviceClassInput,
-    outputSchema: WatchResourceV1beta1DeviceClassOutput,
-  }));
+export const watchResourceV1beta1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1beta1DeviceClassInput,
+  outputSchema: WatchResourceV1beta1DeviceClassOutput,
+}));
 // Input Schema
 export const WatchResourceV1beta1DeviceClassListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25602,11 +25576,12 @@ export type WatchResourceV1beta1DeviceClassListOutput =
 /**
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1beta1DeviceClassList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta1DeviceClassList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta1DeviceClassListInput,
     outputSchema: WatchResourceV1beta1DeviceClassListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25807,11 +25782,10 @@ export type WatchResourceV1beta1ResourceSliceOutput =
 /**
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1beta1ResourceSliceInput,
-    outputSchema: WatchResourceV1beta1ResourceSliceOutput,
-  }));
+export const watchResourceV1beta1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1beta1ResourceSliceInput,
+  outputSchema: WatchResourceV1beta1ResourceSliceOutput,
+}));
 // Input Schema
 export const WatchResourceV1beta1ResourceSliceListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25836,19 +25810,21 @@ export type WatchResourceV1beta1ResourceSliceListOutput =
 /**
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1beta1ResourceSliceList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta1ResourceSliceList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta1ResourceSliceListInput,
     outputSchema: WatchResourceV1beta1ResourceSliceListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses/{name}",
-    }),
-  );
+export const WatchResourceV1beta2DeviceClassInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses/{name}",
+  }),
+);
 export type WatchResourceV1beta2DeviceClassInput =
   typeof WatchResourceV1beta2DeviceClassInput.Type;
 
@@ -25865,11 +25841,10 @@ export type WatchResourceV1beta2DeviceClassOutput =
 /**
  * watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1beta2DeviceClassInput,
-    outputSchema: WatchResourceV1beta2DeviceClassOutput,
-  }));
+export const watchResourceV1beta2DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1beta2DeviceClassInput,
+  outputSchema: WatchResourceV1beta2DeviceClassOutput,
+}));
 // Input Schema
 export const WatchResourceV1beta2DeviceClassListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25894,11 +25869,12 @@ export type WatchResourceV1beta2DeviceClassListOutput =
 /**
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1beta2DeviceClassList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta2DeviceClassList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta2DeviceClassListInput,
     outputSchema: WatchResourceV1beta2DeviceClassListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25923,11 +25899,12 @@ export type WatchResourceV1beta2DeviceTaintRuleOutput =
 /**
  * watch changes to an object of kind DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta2DeviceTaintRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1beta2DeviceTaintRuleListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -25952,11 +25929,12 @@ export type WatchResourceV1beta2DeviceTaintRuleListOutput =
 /**
  * watch individual changes to a list of DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1beta2DeviceTaintRuleList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta2DeviceTaintRuleList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -26157,11 +26135,10 @@ export type WatchResourceV1beta2ResourceSliceOutput =
 /**
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchResourceV1beta2ResourceSliceInput,
-    outputSchema: WatchResourceV1beta2ResourceSliceOutput,
-  }));
+export const watchResourceV1beta2ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1beta2ResourceSliceInput,
+  outputSchema: WatchResourceV1beta2ResourceSliceOutput,
+}));
 // Input Schema
 export const WatchResourceV1beta2ResourceSliceListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -26186,8 +26163,9 @@ export type WatchResourceV1beta2ResourceSliceListOutput =
 /**
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchResourceV1beta2ResourceSliceList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchResourceV1beta2ResourceSliceList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchResourceV1beta2ResourceSliceListInput,
     outputSchema: WatchResourceV1beta2ResourceSliceListOutput,
-  }));
+  }),
+);

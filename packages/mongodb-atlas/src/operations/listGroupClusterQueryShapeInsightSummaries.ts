@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupClusterQueryShapeInsightSummariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     since: Schema.optional(Schema.Number),
@@ -29,7 +29,7 @@ export type ListGroupClusterQueryShapeInsightSummariesInput =
 
 // Output Schema
 export const ListGroupClusterQueryShapeInsightSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterQueryShapeInsightSummariesOutput =
   typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
 
@@ -61,7 +61,7 @@ export type ListGroupClusterQueryShapeInsightSummariesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupClusterQueryShapeInsightSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterQueryShapeInsightSummariesInput,
     outputSchema: ListGroupClusterQueryShapeInsightSummariesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

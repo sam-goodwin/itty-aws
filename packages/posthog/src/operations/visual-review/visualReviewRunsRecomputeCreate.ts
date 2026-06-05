@@ -4,22 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const VisualReviewRunsRecomputeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VisualReviewRunsRecomputeCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/visual_review/runs/{id}/recompute/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/visual_review/runs/{id}/recompute/",
+  }),
+);
 export type VisualReviewRunsRecomputeCreateInput =
   typeof VisualReviewRunsRecomputeCreateInput.Type;
 
 // Output Schema
 export const VisualReviewRunsRecomputeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     run: Schema.optional(
       Schema.Struct({
         approved_by: Schema.optional(
@@ -73,9 +74,8 @@ export type VisualReviewRunsRecomputeCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visualReviewRunsRecomputeCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VisualReviewRunsRecomputeCreateInput,
-    outputSchema: VisualReviewRunsRecomputeCreateOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const visualReviewRunsRecomputeCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsRecomputeCreateInput,
+  outputSchema: VisualReviewRunsRecomputeCreateOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

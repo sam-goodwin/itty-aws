@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1GetAllProjectsForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetAllProjectsForOrganizationInput = /*@__PURE__*/ Schema.Struct(
+  {
     slug: Schema.String.pipe(T.PathParam()),
     offset: Schema.optional(Schema.Number),
     limit: Schema.optional(Schema.Number),
@@ -14,13 +14,14 @@ export const V1GetAllProjectsForOrganizationInput =
       Schema.Literals(["name_asc", "name_desc", "created_asc", "created_desc"]),
     ),
     statuses: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/organizations/{slug}/projects" }));
+  },
+).pipe(T.Http({ method: "GET", path: "/v1/organizations/{slug}/projects" }));
 export type V1GetAllProjectsForOrganizationInput =
   typeof V1GetAllProjectsForOrganizationInput.Type;
 
 // Output Schema
 export const V1GetAllProjectsForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         ref: Schema.String,
@@ -123,9 +124,8 @@ export type V1GetAllProjectsForOrganizationOutput =
 
 The following values are supported: `ACTIVE_HEALTHY`, `INACTIVE`.
  */
-export const v1GetAllProjectsForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1GetAllProjectsForOrganizationInput,
-    outputSchema: V1GetAllProjectsForOrganizationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const v1GetAllProjectsForOrganization = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetAllProjectsForOrganizationInput,
+  outputSchema: V1GetAllProjectsForOrganizationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

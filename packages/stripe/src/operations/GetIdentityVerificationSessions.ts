@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const GetIdentityVerificationSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIdentityVerificationSessionsInput = /*@__PURE__*/ Schema.Struct(
+  {
     client_reference_id: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
@@ -17,23 +17,24 @@ export const GetIdentityVerificationSessionsInput =
     status: Schema.optional(
       Schema.Literals(["canceled", "processing", "requires_input", "verified"]),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/identity/verification_sessions",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/identity/verification_sessions",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetIdentityVerificationSessionsInput =
   typeof GetIdentityVerificationSessionsInput.Type;
 
 // Output Schema
 export const GetIdentityVerificationSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         client_reference_id: Schema.NullOr(Schema.String),
-        client_secret: SensitiveNullableString,
+        client_secret: SensitiveOutputNullableString,
         created: Schema.Number,
         id: Schema.String,
         last_error: Schema.Unknown,
@@ -87,8 +88,7 @@ export type GetIdentityVerificationSessionsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return VerificationSessions with this status. [Learn more about the lifecycle of sessions](https://docs.stripe.com/identity/how-sessions-work).
  */
-export const GetIdentityVerificationSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetIdentityVerificationSessionsInput,
-    outputSchema: GetIdentityVerificationSessionsOutput,
-  }));
+export const GetIdentityVerificationSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIdentityVerificationSessionsInput,
+  outputSchema: GetIdentityVerificationSessionsOutput,
+}));

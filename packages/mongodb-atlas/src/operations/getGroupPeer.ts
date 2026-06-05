@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupPeerInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const GetGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupPeerInput = typeof GetGroupPeerInput.Type;
 
 // Output Schema
-export const GetGroupPeerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupPeerOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupPeerOutput = typeof GetGroupPeerOutput.Type;
 
 // The operation
@@ -34,7 +34,7 @@ export type GetGroupPeerOutput = typeof GetGroupPeerOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param peerId - Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
  */
-export const getGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupPeer = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupPeerInput,
   outputSchema: GetGroupPeerOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

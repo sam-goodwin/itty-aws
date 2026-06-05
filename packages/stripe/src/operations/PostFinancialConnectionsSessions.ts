@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostFinancialConnectionsSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Struct({
       account: Schema.optional(Schema.String),
       customer: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export type PostFinancialConnectionsSessionsInput =
 
 // Output Schema
 export const PostFinancialConnectionsSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     accounts: Schema.Struct({
       data: Schema.Array(
@@ -116,7 +116,7 @@ export const PostFinancialConnectionsSessionsOutput =
       object: Schema.Literals(["list"]),
       url: Schema.String,
     }),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     filters: Schema.optional(
       Schema.Struct({
         account_subcategories: Schema.NullOr(
@@ -158,8 +158,7 @@ export type PostFinancialConnectionsSessionsOutput =
  *
  * <p>To launch the Financial Connections authorization flow, create a <code>Session</code>. The session’s <code>client_secret</code> can be used to launch the flow using Stripe.js.</p>
  */
-export const PostFinancialConnectionsSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostFinancialConnectionsSessionsInput,
-    outputSchema: PostFinancialConnectionsSessionsOutput,
-  }));
+export const PostFinancialConnectionsSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostFinancialConnectionsSessionsInput,
+  outputSchema: PostFinancialConnectionsSessionsOutput,
+}));

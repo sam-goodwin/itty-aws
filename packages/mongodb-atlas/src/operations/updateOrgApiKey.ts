@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const UpdateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateOrgApiKeyInput = typeof UpdateOrgApiKeyInput.Type;
 
 // Output Schema
-export const UpdateOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateOrgApiKeyOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateOrgApiKeyOutput = typeof UpdateOrgApiKeyOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type UpdateOrgApiKeyOutput = typeof UpdateOrgApiKeyOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
  */
-export const updateOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgApiKeyInput,
   outputSchema: UpdateOrgApiKeyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

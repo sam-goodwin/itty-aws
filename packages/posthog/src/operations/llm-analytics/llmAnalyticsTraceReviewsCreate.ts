@@ -4,37 +4,36 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const LlmAnalyticsTraceReviewsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    trace_id: Schema.optional(Schema.String),
-    comment: Schema.optional(Schema.NullOr(Schema.String)),
-    scores: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          definition_id: Schema.optional(Schema.String),
-          definition_version_id: Schema.optional(Schema.NullOr(Schema.String)),
-          categorical_values: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-          numeric_value: Schema.optional(Schema.NullOr(Schema.String)),
-          boolean_value: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+export const LlmAnalyticsTraceReviewsCreateInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  trace_id: Schema.optional(Schema.String),
+  comment: Schema.optional(Schema.NullOr(Schema.String)),
+  scores: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        definition_id: Schema.optional(Schema.String),
+        definition_version_id: Schema.optional(Schema.NullOr(Schema.String)),
+        categorical_values: Schema.optional(
+          Schema.NullOr(Schema.Array(Schema.String)),
+        ),
+        numeric_value: Schema.optional(Schema.NullOr(Schema.String)),
+        boolean_value: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      }),
     ),
-    queue_id: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/trace_reviews/",
-    }),
-  );
+  ),
+  queue_id: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/environments/{project_id}/llm_analytics/trace_reviews/",
+  }),
+);
 export type LlmAnalyticsTraceReviewsCreateInput =
   typeof LlmAnalyticsTraceReviewsCreateInput.Type;
 
 // Output Schema
-export const LlmAnalyticsTraceReviewsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LlmAnalyticsTraceReviewsCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     trace_id: Schema.optional(Schema.String),
     comment: Schema.optional(Schema.NullOr(Schema.String)),
@@ -96,7 +95,8 @@ export const LlmAnalyticsTraceReviewsCreateOutput =
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
+  },
+);
 export type LlmAnalyticsTraceReviewsCreateOutput =
   typeof LlmAnalyticsTraceReviewsCreateOutput.Type;
 
@@ -105,9 +105,8 @@ export type LlmAnalyticsTraceReviewsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsTraceReviewsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LlmAnalyticsTraceReviewsCreateInput,
-    outputSchema: LlmAnalyticsTraceReviewsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const llmAnalyticsTraceReviewsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsTraceReviewsCreateInput,
+  outputSchema: LlmAnalyticsTraceReviewsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

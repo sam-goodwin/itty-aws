@@ -9,25 +9,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccessPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessPolicyName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
-    }),
-  );
+export const AccessPoliciesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  accessPolicyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+  }),
+);
 export type AccessPoliciesCreateOrUpdateInput =
   typeof AccessPoliciesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AccessPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccessPoliciesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccessPoliciesCreateOrUpdateOutput =
   typeof AccessPoliciesCreateOrUpdateOutput.Type;
 
@@ -37,40 +35,33 @@ export type AccessPoliciesCreateOrUpdateOutput =
  *
  * @param accessPolicyName - Name of the access policy.
  */
-export const AccessPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccessPoliciesCreateOrUpdateInput,
-    outputSchema: AccessPoliciesCreateOrUpdateOutput,
-  }));
+export const AccessPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesCreateOrUpdateInput,
+  outputSchema: AccessPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AccessPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
-    }),
-  );
+export const AccessPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+  }),
+);
 export type AccessPoliciesDeleteInput = typeof AccessPoliciesDeleteInput.Type;
 
 // Output Schema
-export const AccessPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccessPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccessPoliciesDeleteOutput = typeof AccessPoliciesDeleteOutput.Type;
 
 // The operation
 /**
  * Deletes the access policy with the specified name in the specified subscription, resource group, and environment
  */
-export const AccessPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPoliciesDeleteInput,
-    outputSchema: AccessPoliciesDeleteOutput,
-  }),
-);
+export const AccessPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesDeleteInput,
+  outputSchema: AccessPoliciesDeleteOutput,
+}));
 // Input Schema
-export const AccessPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccessPoliciesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
@@ -79,36 +70,36 @@ export const AccessPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccessPoliciesGetInput = typeof AccessPoliciesGetInput.Type;
 
 // Output Schema
-export const AccessPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccessPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccessPoliciesGetOutput = typeof AccessPoliciesGetOutput.Type;
 
 // The operation
 /**
  * Gets the access policy with the specified name in the specified environment.
  */
-export const AccessPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPoliciesGetInput,
   outputSchema: AccessPoliciesGetOutput,
 }));
 // Input Schema
-export const AccessPoliciesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies",
-    }),
-  );
+export const AccessPoliciesListByEnvironmentInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies",
+  }),
+);
 export type AccessPoliciesListByEnvironmentInput =
   typeof AccessPoliciesListByEnvironmentInput.Type;
 
 // Output Schema
 export const AccessPoliciesListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -126,60 +117,53 @@ export type AccessPoliciesListByEnvironmentOutput =
 /**
  * Lists all the available access policies associated with the environment.
  */
-export const AccessPoliciesListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccessPoliciesListByEnvironmentInput,
-    outputSchema: AccessPoliciesListByEnvironmentOutput,
-  }));
+export const AccessPoliciesListByEnvironment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesListByEnvironmentInput,
+  outputSchema: AccessPoliciesListByEnvironmentOutput,
+}));
 // Input Schema
-export const AccessPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
-    }),
-  );
+export const AccessPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+  }),
+);
 export type AccessPoliciesUpdateInput = typeof AccessPoliciesUpdateInput.Type;
 
 // Output Schema
-export const AccessPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccessPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccessPoliciesUpdateOutput = typeof AccessPoliciesUpdateOutput.Type;
 
 // The operation
 /**
  * Updates the access policy with the specified name in the specified subscription, resource group, and environment.
  */
-export const AccessPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPoliciesUpdateInput,
-    outputSchema: AccessPoliciesUpdateOutput,
+export const AccessPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesUpdateInput,
+  outputSchema: AccessPoliciesUpdateOutput,
+}));
+// Input Schema
+export const EnvironmentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  environmentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
   }),
 );
-// Input Schema
-export const EnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environmentName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-    }),
-  );
 export type EnvironmentsCreateOrUpdateInput =
   typeof EnvironmentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const EnvironmentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type EnvironmentsCreateOrUpdateOutput =
   typeof EnvironmentsCreateOrUpdateOutput.Type;
 
@@ -189,38 +173,33 @@ export type EnvironmentsCreateOrUpdateOutput =
  *
  * @param environmentName - Name of the environment
  */
-export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnvironmentsCreateOrUpdateInput,
-    outputSchema: EnvironmentsCreateOrUpdateOutput,
+export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsCreateOrUpdateInput,
+  outputSchema: EnvironmentsCreateOrUpdateOutput,
+}));
+// Input Schema
+export const EnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
   }),
 );
-// Input Schema
-export const EnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-    }),
-  );
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const EnvironmentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
 
 // The operation
 /**
  * Deletes the environment with the specified name in the specified subscription and resource group.
  */
-export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsDeleteInput,
   outputSchema: EnvironmentsDeleteOutput,
 }));
 // Input Schema
-export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
@@ -229,7 +208,7 @@ export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
 
 // Output Schema
-export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -240,24 +219,25 @@ export type EnvironmentsGetOutput = typeof EnvironmentsGetOutput.Type;
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
  */
-export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsGetInput,
   outputSchema: EnvironmentsGetOutput,
 }));
 // Input Schema
-export const EnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments",
-    }),
-  );
+export const EnvironmentsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments",
+  }),
+);
 export type EnvironmentsListByResourceGroupInput =
   typeof EnvironmentsListByResourceGroupInput.Type;
 
 // Output Schema
 export const EnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -275,25 +255,25 @@ export type EnvironmentsListByResourceGroupOutput =
 /**
  * Lists all the available environments associated with the subscription and within the specified resource group.
  */
-export const EnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EnvironmentsListByResourceGroupInput,
-    outputSchema: EnvironmentsListByResourceGroupOutput,
-  }));
+export const EnvironmentsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsListByResourceGroupInput,
+  outputSchema: EnvironmentsListByResourceGroupOutput,
+}));
 // Input Schema
-export const EnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.TimeSeriesInsights/environments",
-    }),
-  );
+export const EnvironmentsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.TimeSeriesInsights/environments",
+  }),
+);
 export type EnvironmentsListBySubscriptionInput =
   typeof EnvironmentsListBySubscriptionInput.Type;
 
 // Output Schema
-export const EnvironmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -303,7 +283,8 @@ export const EnvironmentsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type EnvironmentsListBySubscriptionOutput =
   typeof EnvironmentsListBySubscriptionOutput.Type;
 
@@ -311,58 +292,53 @@ export type EnvironmentsListBySubscriptionOutput =
 /**
  * Lists all the available environments within a subscription, irrespective of the resource groups.
  */
-export const EnvironmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EnvironmentsListBySubscriptionInput,
-    outputSchema: EnvironmentsListBySubscriptionOutput,
-  }));
+export const EnvironmentsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsListBySubscriptionInput,
+  outputSchema: EnvironmentsListBySubscriptionOutput,
+}));
 // Input Schema
-export const EnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-    }),
-  );
+export const EnvironmentsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+  }),
+);
 export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const EnvironmentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type EnvironmentsUpdateOutput = typeof EnvironmentsUpdateOutput.Type;
 
 // The operation
 /**
  * Updates the environment with the specified name in the specified subscription and resource group.
  */
-export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsUpdateInput,
   outputSchema: EnvironmentsUpdateOutput,
 }));
 // Input Schema
-export const EventSourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventSourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-    }),
-  );
+export const EventSourcesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  eventSourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+  }),
+);
 export type EventSourcesCreateOrUpdateInput =
   typeof EventSourcesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const EventSourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const EventSourcesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type EventSourcesCreateOrUpdateOutput =
   typeof EventSourcesCreateOrUpdateOutput.Type;
 
@@ -372,38 +348,33 @@ export type EventSourcesCreateOrUpdateOutput =
  *
  * @param eventSourceName - Name of the event source.
  */
-export const EventSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSourcesCreateOrUpdateInput,
-    outputSchema: EventSourcesCreateOrUpdateOutput,
+export const EventSourcesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSourcesCreateOrUpdateInput,
+  outputSchema: EventSourcesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const EventSourcesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
   }),
 );
-// Input Schema
-export const EventSourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-    }),
-  );
 export type EventSourcesDeleteInput = typeof EventSourcesDeleteInput.Type;
 
 // Output Schema
-export const EventSourcesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EventSourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EventSourcesDeleteOutput = typeof EventSourcesDeleteOutput.Type;
 
 // The operation
 /**
  * Deletes the event source with the specified name in the specified subscription, resource group, and environment
  */
-export const EventSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesDeleteInput,
   outputSchema: EventSourcesDeleteOutput,
 }));
 // Input Schema
-export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EventSourcesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
@@ -412,7 +383,7 @@ export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type EventSourcesGetInput = typeof EventSourcesGetInput.Type;
 
 // Output Schema
-export const EventSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventSourcesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -423,34 +394,34 @@ export type EventSourcesGetOutput = typeof EventSourcesGetOutput.Type;
 /**
  * Gets the event source with the specified name in the specified environment.
  */
-export const EventSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesGetInput,
   outputSchema: EventSourcesGetOutput,
 }));
 // Input Schema
-export const EventSourcesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources",
-    }),
-  );
+export const EventSourcesListByEnvironmentInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources",
+  }),
+);
 export type EventSourcesListByEnvironmentInput =
   typeof EventSourcesListByEnvironmentInput.Type;
 
 // Output Schema
-export const EventSourcesListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const EventSourcesListByEnvironmentOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type EventSourcesListByEnvironmentOutput =
   typeof EventSourcesListByEnvironmentOutput.Type;
 
@@ -458,42 +429,37 @@ export type EventSourcesListByEnvironmentOutput =
 /**
  * Lists all the available event sources associated with the subscription and within the specified resource group and environment.
  */
-export const EventSourcesListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventSourcesListByEnvironmentInput,
-    outputSchema: EventSourcesListByEnvironmentOutput,
-  }));
+export const EventSourcesListByEnvironment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSourcesListByEnvironmentInput,
+  outputSchema: EventSourcesListByEnvironmentOutput,
+}));
 // Input Schema
-export const EventSourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-    }),
-  );
+export const EventSourcesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+  }),
+);
 export type EventSourcesUpdateInput = typeof EventSourcesUpdateInput.Type;
 
 // Output Schema
-export const EventSourcesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const EventSourcesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type EventSourcesUpdateOutput = typeof EventSourcesUpdateOutput.Type;
 
 // The operation
 /**
  * Updates the event source with the specified name in the specified subscription, resource group, and environment.
  */
-export const EventSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesUpdateInput,
   outputSchema: EventSourcesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.TimeSeriesInsights/operations",
@@ -502,7 +468,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -574,26 +540,27 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available Time Series Insights related operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ReferenceDataSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReferenceDataSetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     referenceDataSetName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+  }),
+);
 export type ReferenceDataSetsCreateOrUpdateInput =
   typeof ReferenceDataSetsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ReferenceDataSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -607,25 +574,24 @@ export type ReferenceDataSetsCreateOrUpdateOutput =
  *
  * @param referenceDataSetName - Name of the reference data set.
  */
-export const ReferenceDataSetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReferenceDataSetsCreateOrUpdateInput,
-    outputSchema: ReferenceDataSetsCreateOrUpdateOutput,
-  }));
+export const ReferenceDataSetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsCreateOrUpdateInput,
+  outputSchema: ReferenceDataSetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ReferenceDataSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
-    }),
-  );
+export const ReferenceDataSetsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+  }),
+);
 export type ReferenceDataSetsDeleteInput =
   typeof ReferenceDataSetsDeleteInput.Type;
 
 // Output Schema
-export const ReferenceDataSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReferenceDataSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReferenceDataSetsDeleteOutput =
   typeof ReferenceDataSetsDeleteOutput.Type;
 
@@ -633,44 +599,38 @@ export type ReferenceDataSetsDeleteOutput =
 /**
  * Deletes the reference data set with the specified name in the specified subscription, resource group, and environment
  */
-export const ReferenceDataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsDeleteInput,
-    outputSchema: ReferenceDataSetsDeleteOutput,
+export const ReferenceDataSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsDeleteInput,
+  outputSchema: ReferenceDataSetsDeleteOutput,
+}));
+// Input Schema
+export const ReferenceDataSetsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
   }),
 );
-// Input Schema
-export const ReferenceDataSetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
-    }),
-  );
 export type ReferenceDataSetsGetInput = typeof ReferenceDataSetsGetInput.Type;
 
 // Output Schema
-export const ReferenceDataSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ReferenceDataSetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ReferenceDataSetsGetOutput = typeof ReferenceDataSetsGetOutput.Type;
 
 // The operation
 /**
  * Gets the reference data set with the specified name in the specified environment.
  */
-export const ReferenceDataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsGetInput,
-    outputSchema: ReferenceDataSetsGetOutput,
-  }),
-);
+export const ReferenceDataSetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsGetInput,
+  outputSchema: ReferenceDataSetsGetOutput,
+}));
 // Input Schema
 export const ReferenceDataSetsListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets",
@@ -681,7 +641,7 @@ export type ReferenceDataSetsListByEnvironmentInput =
 
 // Output Schema
 export const ReferenceDataSetsListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -699,29 +659,30 @@ export type ReferenceDataSetsListByEnvironmentOutput =
 /**
  * Lists all the available reference data sets associated with the subscription and within the specified resource group and environment.
  */
-export const ReferenceDataSetsListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReferenceDataSetsListByEnvironment = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReferenceDataSetsListByEnvironmentInput,
     outputSchema: ReferenceDataSetsListByEnvironmentOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReferenceDataSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
-    }),
-  );
+export const ReferenceDataSetsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+  }),
+);
 export type ReferenceDataSetsUpdateInput =
   typeof ReferenceDataSetsUpdateInput.Type;
 
 // Output Schema
-export const ReferenceDataSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ReferenceDataSetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ReferenceDataSetsUpdateOutput =
   typeof ReferenceDataSetsUpdateOutput.Type;
 
@@ -729,9 +690,7 @@ export type ReferenceDataSetsUpdateOutput =
 /**
  * Updates the reference data set with the specified name in the specified subscription, resource group, and environment.
  */
-export const ReferenceDataSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsUpdateInput,
-    outputSchema: ReferenceDataSetsUpdateOutput,
-  }),
-);
+export const ReferenceDataSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsUpdateInput,
+  outputSchema: ReferenceDataSetsUpdateOutput,
+}));

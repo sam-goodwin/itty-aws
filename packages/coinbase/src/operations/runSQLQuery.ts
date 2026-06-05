@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunSQLQueryInput = /*@__PURE__*/ Schema.Struct({
   sql: Schema.String,
   cache: Schema.optional(
     Schema.Struct({
@@ -14,7 +14,7 @@ export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunSQLQueryInput = typeof RunSQLQueryInput.Type;
 
 // Output Schema
-export const RunSQLQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunSQLQueryOutput = /*@__PURE__*/ Schema.Struct({
   result: Schema.optional(
     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
   ),
@@ -98,7 +98,7 @@ export type RunSQLQueryOutput = typeof RunSQLQueryOutput.Type;
  * By default, each query result is returned from cache so long as the result is from an identical query and less than 750ms old. This freshness tolerance can be modified upwards, to a maximum of 900000ms (i.e. 900s, 15m).
  * This can be helpful for users who wish to reduce expensive calls to the SQL API by reusing cached results.
  */
-export const runSQLQuery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const runSQLQuery = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunSQLQueryInput,
   outputSchema: RunSQLQueryOutput,
 }));

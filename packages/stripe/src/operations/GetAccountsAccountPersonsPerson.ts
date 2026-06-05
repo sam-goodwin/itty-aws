@@ -3,24 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetAccountsAccountPersonsPersonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsAccountPersonsPersonInput = /*@__PURE__*/ Schema.Struct(
+  {
     account: Schema.String.pipe(T.PathParam()),
     person: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/accounts/{account}/persons/{person}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/accounts/{account}/persons/{person}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetAccountsAccountPersonsPersonInput =
   typeof GetAccountsAccountPersonsPersonInput.Type;
 
 // Output Schema
 export const GetAccountsAccountPersonsPersonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -119,8 +120,7 @@ export type GetAccountsAccountPersonsPersonOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetAccountsAccountPersonsPerson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetAccountsAccountPersonsPersonInput,
-    outputSchema: GetAccountsAccountPersonsPersonOutput,
-  }));
+export const GetAccountsAccountPersonsPerson = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAccountsAccountPersonsPersonInput,
+  outputSchema: GetAccountsAccountPersonsPersonOutput,
+}));

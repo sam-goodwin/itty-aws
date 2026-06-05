@@ -4,14 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const AuditLogEventsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.optional(Schema.String),
-    event: Schema.optional(
-      Schema.Struct({
-        action: Schema.optional(Schema.String),
-        occurred_at: Schema.optional(Schema.String),
-        actor: Schema.optional(
+export const AuditLogEventsControllerCreateInput = /*@__PURE__*/ Schema.Struct({
+  organization_id: Schema.optional(Schema.String),
+  event: Schema.optional(
+    Schema.Struct({
+      action: Schema.optional(Schema.String),
+      occurred_at: Schema.optional(Schema.String),
+      actor: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          metadata: Schema.optional(Schema.Unknown),
+        }),
+      ),
+      targets: Schema.optional(
+        Schema.Array(
           Schema.Struct({
             id: Schema.optional(Schema.String),
             type: Schema.optional(Schema.String),
@@ -19,35 +27,27 @@ export const AuditLogEventsControllerCreateInput =
             metadata: Schema.optional(Schema.Unknown),
           }),
         ),
-        targets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              metadata: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        context: Schema.optional(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            user_agent: Schema.optional(Schema.String),
-          }),
-        ),
-        metadata: Schema.optional(Schema.Unknown),
-        version: Schema.optional(Schema.Number),
-      }),
-    ),
-  }).pipe(T.Http({ method: "POST", path: "/audit_logs/events" }));
+      ),
+      context: Schema.optional(
+        Schema.Struct({
+          location: Schema.optional(Schema.String),
+          user_agent: Schema.optional(Schema.String),
+        }),
+      ),
+      metadata: Schema.optional(Schema.Unknown),
+      version: Schema.optional(Schema.Number),
+    }),
+  ),
+}).pipe(T.Http({ method: "POST", path: "/audit_logs/events" }));
 export type AuditLogEventsControllerCreateInput =
   typeof AuditLogEventsControllerCreateInput.Type;
 
 // Output Schema
-export const AuditLogEventsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AuditLogEventsControllerCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     success: Schema.optional(Schema.Boolean),
-  });
+  },
+);
 export type AuditLogEventsControllerCreateOutput =
   typeof AuditLogEventsControllerCreateOutput.Type;
 
@@ -62,9 +62,8 @@ export type AuditLogEventsControllerCreateOutput =
  *
  * @param idempotency-key - A unique string to prevent duplicate requests. Each subsequent request matching this unique string will return the same response. We suggest using v4 UUIDs. Keys expire after 24 hours.
  */
-export const AuditLogEventsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuditLogEventsControllerCreateInput,
-    outputSchema: AuditLogEventsControllerCreateOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }));
+export const AuditLogEventsControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuditLogEventsControllerCreateInput,
+  outputSchema: AuditLogEventsControllerCreateOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

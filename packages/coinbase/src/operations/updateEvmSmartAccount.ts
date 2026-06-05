@@ -3,23 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateEvmSmartAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/v2/evm/smart-accounts/{address}" }));
+export const UpdateEvmSmartAccountInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "PUT", path: "/v2/evm/smart-accounts/{address}" }));
 export type UpdateEvmSmartAccountInput = typeof UpdateEvmSmartAccountInput.Type;
 
 // Output Schema
-export const UpdateEvmSmartAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String,
-    owners: Schema.Array(Schema.String),
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  });
+export const UpdateEvmSmartAccountOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  owners: Schema.Array(Schema.String),
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+});
 export type UpdateEvmSmartAccountOutput =
   typeof UpdateEvmSmartAccountOutput.Type;
 
@@ -31,9 +29,7 @@ export type UpdateEvmSmartAccountOutput =
  *
  * @param address - The 0x-prefixed address of the EVM smart account. The address does not need to be checksummed.
  */
-export const updateEvmSmartAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateEvmSmartAccountInput,
-    outputSchema: UpdateEvmSmartAccountOutput,
-  }),
-);
+export const updateEvmSmartAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateEvmSmartAccountInput,
+  outputSchema: UpdateEvmSmartAccountOutput,
+}));

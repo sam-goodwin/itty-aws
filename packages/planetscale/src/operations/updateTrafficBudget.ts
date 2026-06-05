@@ -4,71 +4,69 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateTrafficBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.Literals(["enforce", "warn", "off"])),
-    capacity: Schema.optional(Schema.Number),
-    rate: Schema.optional(Schema.Number),
-    burst: Schema.optional(Schema.Number),
-    concurrency: Schema.optional(Schema.Number),
-    warning_threshold: Schema.optional(Schema.Number),
-    rules: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
-    }),
-  );
+export const UpdateTrafficBudgetInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.Literals(["enforce", "warn", "off"])),
+  capacity: Schema.optional(Schema.Number),
+  rate: Schema.optional(Schema.Number),
+  burst: Schema.optional(Schema.Number),
+  concurrency: Schema.optional(Schema.Number),
+  warning_threshold: Schema.optional(Schema.Number),
+  rules: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
+  }),
+);
 export type UpdateTrafficBudgetInput = typeof UpdateTrafficBudgetInput.Type;
 
 // Output Schema
-export const UpdateTrafficBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTrafficBudgetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  mode: Schema.Literals(["enforce", "warn", "off"]),
+  capacity: Schema.optional(Schema.Number),
+  rate: Schema.optional(Schema.Number),
+  burst: Schema.optional(Schema.Number),
+  concurrency: Schema.optional(Schema.Number),
+  warning_threshold: Schema.optional(Schema.Number),
+  actor: Schema.Struct({
     id: Schema.String,
-    name: Schema.String,
-    mode: Schema.Literals(["enforce", "warn", "off"]),
-    capacity: Schema.optional(Schema.NullOr(Schema.Number)),
-    rate: Schema.optional(Schema.NullOr(Schema.Number)),
-    burst: Schema.optional(Schema.NullOr(Schema.Number)),
-    concurrency: Schema.optional(Schema.NullOr(Schema.Number)),
-    warning_threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-    actor: Schema.Struct({
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+  rules: Schema.Array(
+    Schema.Struct({
       id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-    rules: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        kind: Schema.Literals(["match"]),
-        tags: Schema.Array(
-          Schema.Struct({
-            key_id: Schema.String,
-            key: Schema.String,
-            value: Schema.String,
-            source: Schema.Literals(["sql", "system"]),
-          }),
-        ),
-        fingerprint: Schema.optional(Schema.NullOr(Schema.String)),
-        keyspace: Schema.optional(Schema.NullOr(Schema.String)),
-        actor: Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
+      kind: Schema.Literals(["match"]),
+      tags: Schema.Array(
+        Schema.Struct({
+          key_id: Schema.String,
+          key: Schema.String,
+          value: Schema.String,
+          source: Schema.Literals(["sql", "system"]),
         }),
-        syntax_highlighted_sql: Schema.String,
-        created_at: Schema.String,
-        updated_at: Schema.String,
+      ),
+      fingerprint: Schema.optional(Schema.String),
+      keyspace: Schema.optional(Schema.String),
+      actor: Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
       }),
-    ),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-  });
+      syntax_highlighted_sql: Schema.String,
+      created_at: Schema.String,
+      updated_at: Schema.String,
+    }),
+  ),
+  created_at: Schema.String,
+  updated_at: Schema.String,
+});
 export type UpdateTrafficBudgetOutput = typeof UpdateTrafficBudgetOutput.Type;
 
 // The operation
@@ -88,7 +86,7 @@ export type UpdateTrafficBudgetOutput = typeof UpdateTrafficBudgetOutput.Type;
  * @param warning_threshold - A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100).
  * @param rules - Array of traffic rules to apply to the budget
  */
-export const updateTrafficBudget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateTrafficBudget = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateTrafficBudgetInput,
   outputSchema: UpdateTrafficBudgetOutput,
   errors: [Forbidden, NotFound] as const,

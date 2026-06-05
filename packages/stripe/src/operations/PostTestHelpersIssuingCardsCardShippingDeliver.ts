@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingCardsCardShippingDeliverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostTestHelpersIssuingCardsCardShippingDeliverInput =
 
 // Output Schema
 export const PostTestHelpersIssuingCardsCardShippingDeliverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
       Schema.Literals(["design_rejected", "lost", "stolen"]),
@@ -1036,7 +1036,7 @@ export type PostTestHelpersIssuingCardsCardShippingDeliverOutput =
  * <p>Updates the shipping status of the specified Issuing <code>Card</code> object to <code>delivered</code>.</p>
  */
 export const PostTestHelpersIssuingCardsCardShippingDeliver =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingCardsCardShippingDeliverInput,
     outputSchema: PostTestHelpersIssuingCardsCardShippingDeliverOutput,
   }));

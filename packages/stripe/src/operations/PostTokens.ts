@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTokensInput = /*@__PURE__*/ Schema.Struct({
   account: Schema.optional(
     Schema.Struct({
       business_type: Schema.optional(
@@ -447,7 +447,7 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTokensInput = typeof PostTokensInput.Type;
 
 // Output Schema
-export const PostTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTokensOutput = /*@__PURE__*/ Schema.Struct({
   bank_account: Schema.optional(
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
@@ -540,7 +540,7 @@ export type PostTokensOutput = typeof PostTokensOutput.Type;
  * <p>Creates a single-use token that represents a bank account’s details.
  * You can use this token with any v1 API method in place of a bank account dictionary. You can only use this token once. To do so, attach it to a <a href="#accounts">connected account</a> where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.</p>
  */
-export const PostTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTokens = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTokensInput,
   outputSchema: PostTokensOutput,
 }));

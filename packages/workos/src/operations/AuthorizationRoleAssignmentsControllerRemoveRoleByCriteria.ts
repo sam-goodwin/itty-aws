@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
   }).pipe(
@@ -19,7 +19,7 @@ export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
 
 // Output Schema
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
   typeof AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput.Type;
 
@@ -32,7 +32,7 @@ export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
  * @param organization_membership_id - The ID of the organization membership.
  */
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput,
     outputSchema:

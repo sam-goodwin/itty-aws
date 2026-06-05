@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingIssuesExistsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type ErrorTrackingIssuesExistsRetrieveInput =
 
 // Output Schema
 export const ErrorTrackingIssuesExistsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingIssuesExistsRetrieveOutput =
   typeof ErrorTrackingIssuesExistsRetrieveOutput.Type;
 
@@ -27,9 +27,8 @@ export type ErrorTrackingIssuesExistsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingIssuesExistsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ErrorTrackingIssuesExistsRetrieveInput,
-    outputSchema: ErrorTrackingIssuesExistsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const errorTrackingIssuesExistsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingIssuesExistsRetrieveInput,
+  outputSchema: ErrorTrackingIssuesExistsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

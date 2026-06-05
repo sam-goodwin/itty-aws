@@ -9,25 +9,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability",
-    }),
-  );
+export const AccountsCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability",
+  }),
+);
 export type AccountsCheckNameAvailabilityInput =
   typeof AccountsCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-  });
+export const AccountsCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
 export type AccountsCheckNameAvailabilityOutput =
   typeof AccountsCheckNameAvailabilityOutput.Type;
 
@@ -37,15 +35,12 @@ export type AccountsCheckNameAvailabilityOutput =
  *
  * @param location - The resource location without whitespace.
  */
-export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccountsCheckNameAvailabilityInput,
-    outputSchema: AccountsCheckNameAvailabilityOutput,
-  }));
+export const AccountsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCheckNameAvailabilityInput,
+  outputSchema: AccountsCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -54,7 +49,7 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -67,14 +62,12 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 /**
  * Creates the specified Data Lake Store account.
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -83,31 +76,29 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
 /**
  * Deletes the specified Data Lake Store account.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsEnableKeyVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault",
-    }),
-  );
+export const AccountsEnableKeyVaultInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault",
+  }),
+);
 export type AccountsEnableKeyVaultInput =
   typeof AccountsEnableKeyVaultInput.Type;
 
 // Output Schema
-export const AccountsEnableKeyVaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccountsEnableKeyVaultOutput = /*@__PURE__*/ Schema.Void;
 export type AccountsEnableKeyVaultOutput =
   typeof AccountsEnableKeyVaultOutput.Type;
 
@@ -115,16 +106,12 @@ export type AccountsEnableKeyVaultOutput =
 /**
  * Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
  */
-export const AccountsEnableKeyVault = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsEnableKeyVaultInput,
-    outputSchema: AccountsEnableKeyVaultOutput,
-  }),
-);
+export const AccountsEnableKeyVault = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsEnableKeyVaultInput,
+  outputSchema: AccountsEnableKeyVaultOutput,
+}));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -133,7 +120,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -146,12 +133,12 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 /**
  * Gets the specified Data Lake Store account.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
-export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
@@ -167,7 +154,7 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccountsListInput = typeof AccountsListInput.Type;
 
 // Output Schema
-export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -194,44 +181,42 @@ export type AccountsListOutput = typeof AccountsListOutput.Type;
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
  */
-export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
   outputSchema: AccountsListOutput,
 }));
 // Input Schema
-export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $filter: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $select: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $count: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts",
-    }),
-  );
+export const AccountsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $select: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $count: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts",
+  }),
+);
 export type AccountsListByResourceGroupInput =
   typeof AccountsListByResourceGroupInput.Type;
 
 // Output Schema
-export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const AccountsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccountsListByResourceGroupOutput =
   typeof AccountsListByResourceGroupOutput.Type;
 
@@ -246,16 +231,12 @@ export type AccountsListByResourceGroupOutput =
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -264,7 +245,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -277,30 +258,28 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 /**
  * Updates the specified Data Lake Store account information.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
-    }),
-  );
+export const FirewallRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
+  }),
+);
 export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
 
@@ -310,27 +289,23 @@ export type FirewallRulesCreateOrUpdateOutput =
  *
  * @param firewallRuleName - The name of the firewall rule to create or update.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
-    }),
-  );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -339,12 +314,12 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
  *
  * @param firewallRuleName - The name of the firewall rule to delete.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   firewallRuleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -355,13 +330,11 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 
 // Output Schema
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 
 // The operation
@@ -370,35 +343,35 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
  *
  * @param firewallRuleName - The name of the firewall rule to retrieve.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
-export const FirewallRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules",
-    }),
-  );
+export const FirewallRulesListByAccountInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules",
+  }),
+);
 export type FirewallRulesListByAccountInput =
   typeof FirewallRulesListByAccountInput.Type;
 
 // Output Schema
-export const FirewallRulesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const FirewallRulesListByAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FirewallRulesListByAccountOutput =
   typeof FirewallRulesListByAccountOutput.Type;
 
@@ -406,31 +379,27 @@ export type FirewallRulesListByAccountOutput =
 /**
  * Lists the Data Lake Store firewall rules within the specified Data Lake Store account.
  */
-export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesListByAccountInput,
-    outputSchema: FirewallRulesListByAccountOutput,
+export const FirewallRulesListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesListByAccountInput,
+  outputSchema: FirewallRulesListByAccountOutput,
+}));
+// Input Schema
+export const FirewallRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
-    }),
-  );
 export type FirewallRulesUpdateInput = typeof FirewallRulesUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FirewallRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FirewallRulesUpdateOutput = typeof FirewallRulesUpdateOutput.Type;
 
 // The operation
@@ -439,40 +408,38 @@ export type FirewallRulesUpdateOutput = typeof FirewallRulesUpdateOutput.Type;
  *
  * @param firewallRuleName - The name of the firewall rule to update.
  */
-export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesUpdateInput,
   outputSchema: FirewallRulesUpdateOutput,
 }));
 // Input Schema
-export const LocationsGetCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/capability",
-    }),
-  );
+export const LocationsGetCapabilityInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/capability",
+  }),
+);
 export type LocationsGetCapabilityInput =
   typeof LocationsGetCapabilityInput.Type;
 
 // Output Schema
-export const LocationsGetCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.optional(Schema.String),
-    state: Schema.optional(
-      Schema.Literals([
-        "Registered",
-        "Suspended",
-        "Deleted",
-        "Unregistered",
-        "Warned",
-      ]),
-    ),
-    maxAccountCount: Schema.optional(Schema.Number),
-    accountCount: Schema.optional(Schema.Number),
-    migrationState: Schema.optional(Schema.Boolean),
-  });
+export const LocationsGetCapabilityOutput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "Registered",
+      "Suspended",
+      "Deleted",
+      "Unregistered",
+      "Warned",
+    ]),
+  ),
+  maxAccountCount: Schema.optional(Schema.Number),
+  accountCount: Schema.optional(Schema.Number),
+  migrationState: Schema.optional(Schema.Boolean),
+});
 export type LocationsGetCapabilityOutput =
   typeof LocationsGetCapabilityOutput.Type;
 
@@ -482,18 +449,14 @@ export type LocationsGetCapabilityOutput =
  *
  * @param location - The resource location without whitespace.
  */
-export const LocationsGetCapability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationsGetCapabilityInput,
-    outputSchema: LocationsGetCapabilityOutput,
-  }),
-);
+export const LocationsGetCapability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsGetCapabilityInput,
+  outputSchema: LocationsGetCapabilityOutput,
+}));
 // Input Schema
-export const LocationsGetUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    location: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LocationsGetUsageInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/usages",
@@ -502,34 +465,33 @@ export const LocationsGetUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LocationsGetUsageInput = typeof LocationsGetUsageInput.Type;
 
 // Output Schema
-export const LocationsGetUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountsPerSecond",
-              "BytesPerSecond",
-            ]),
-          ),
-          id: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const LocationsGetUsageOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountsPerSecond",
+            "BytesPerSecond",
+          ]),
+        ),
+        id: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type LocationsGetUsageOutput = typeof LocationsGetUsageOutput.Type;
 
 // The operation
@@ -538,14 +500,12 @@ export type LocationsGetUsageOutput = typeof LocationsGetUsageOutput.Type;
  *
  * @param location - The resource location without whitespace.
  */
-export const LocationsGetUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsGetUsage = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetUsageInput,
   outputSchema: LocationsGetUsageOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataLakeStore/operations",
@@ -554,7 +514,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -581,13 +541,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available Data Lake Store REST API operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const TrustedIdProvidersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -600,7 +560,7 @@ export type TrustedIdProvidersCreateOrUpdateInput =
 
 // Output Schema
 export const TrustedIdProvidersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -614,27 +574,24 @@ export type TrustedIdProvidersCreateOrUpdateOutput =
  *
  * @param trustedIdProviderName - The name of the trusted identity provider. This is used for differentiation of providers in the account.
  */
-export const TrustedIdProvidersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TrustedIdProvidersCreateOrUpdateInput,
-    outputSchema: TrustedIdProvidersCreateOrUpdateOutput,
-  }));
+export const TrustedIdProvidersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersCreateOrUpdateInput,
+  outputSchema: TrustedIdProvidersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TrustedIdProvidersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    trustedIdProviderName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
-    }),
-  );
+export const TrustedIdProvidersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  trustedIdProviderName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+  }),
+);
 export type TrustedIdProvidersDeleteInput =
   typeof TrustedIdProvidersDeleteInput.Type;
 
 // Output Schema
-export const TrustedIdProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TrustedIdProvidersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TrustedIdProvidersDeleteOutput =
   typeof TrustedIdProvidersDeleteOutput.Type;
 
@@ -644,31 +601,27 @@ export type TrustedIdProvidersDeleteOutput =
  *
  * @param trustedIdProviderName - The name of the trusted identity provider to delete.
  */
-export const TrustedIdProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersDeleteInput,
-    outputSchema: TrustedIdProvidersDeleteOutput,
+export const TrustedIdProvidersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersDeleteInput,
+  outputSchema: TrustedIdProvidersDeleteOutput,
+}));
+// Input Schema
+export const TrustedIdProvidersGetInput = /*@__PURE__*/ Schema.Struct({
+  trustedIdProviderName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
   }),
 );
-// Input Schema
-export const TrustedIdProvidersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    trustedIdProviderName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
-    }),
-  );
 export type TrustedIdProvidersGetInput = typeof TrustedIdProvidersGetInput.Type;
 
 // Output Schema
-export const TrustedIdProvidersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const TrustedIdProvidersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TrustedIdProvidersGetOutput =
   typeof TrustedIdProvidersGetOutput.Type;
 
@@ -678,26 +631,25 @@ export type TrustedIdProvidersGetOutput =
  *
  * @param trustedIdProviderName - The name of the trusted identity provider to retrieve.
  */
-export const TrustedIdProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersGetInput,
-    outputSchema: TrustedIdProvidersGetOutput,
+export const TrustedIdProvidersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersGetInput,
+  outputSchema: TrustedIdProvidersGetOutput,
+}));
+// Input Schema
+export const TrustedIdProvidersListByAccountInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders",
   }),
 );
-// Input Schema
-export const TrustedIdProvidersListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders",
-    }),
-  );
 export type TrustedIdProvidersListByAccountInput =
   typeof TrustedIdProvidersListByAccountInput.Type;
 
 // Output Schema
 export const TrustedIdProvidersListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -716,31 +668,28 @@ export type TrustedIdProvidersListByAccountOutput =
 /**
  * Lists the Data Lake Store trusted identity providers within the specified Data Lake Store account.
  */
-export const TrustedIdProvidersListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TrustedIdProvidersListByAccountInput,
-    outputSchema: TrustedIdProvidersListByAccountOutput,
-  }));
+export const TrustedIdProvidersListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersListByAccountInput,
+  outputSchema: TrustedIdProvidersListByAccountOutput,
+}));
 // Input Schema
-export const TrustedIdProvidersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    trustedIdProviderName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
-    }),
-  );
+export const TrustedIdProvidersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  trustedIdProviderName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+  }),
+);
 export type TrustedIdProvidersUpdateInput =
   typeof TrustedIdProvidersUpdateInput.Type;
 
 // Output Schema
-export const TrustedIdProvidersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const TrustedIdProvidersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TrustedIdProvidersUpdateOutput =
   typeof TrustedIdProvidersUpdateOutput.Type;
 
@@ -750,15 +699,13 @@ export type TrustedIdProvidersUpdateOutput =
  *
  * @param trustedIdProviderName - The name of the trusted identity provider. This is used for differentiation of providers in the account.
  */
-export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersUpdateInput,
-    outputSchema: TrustedIdProvidersUpdateOutput,
-  }),
-);
+export const TrustedIdProvidersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersUpdateInput,
+  outputSchema: TrustedIdProvidersUpdateOutput,
+}));
 // Input Schema
 export const VirtualNetworkRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -771,7 +718,7 @@ export type VirtualNetworkRulesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualNetworkRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -785,27 +732,24 @@ export type VirtualNetworkRulesCreateOrUpdateOutput =
  *
  * @param virtualNetworkRuleName - The name of the virtual network rule to create or update.
  */
-export const VirtualNetworkRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworkRulesCreateOrUpdateInput,
-    outputSchema: VirtualNetworkRulesCreateOrUpdateOutput,
-  }));
+export const VirtualNetworkRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesCreateOrUpdateInput,
+  outputSchema: VirtualNetworkRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworkRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
-    }),
-  );
+export const VirtualNetworkRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+  }),
+);
 export type VirtualNetworkRulesDeleteInput =
   typeof VirtualNetworkRulesDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworkRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualNetworkRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualNetworkRulesDeleteOutput =
   typeof VirtualNetworkRulesDeleteOutput.Type;
 
@@ -815,32 +759,28 @@ export type VirtualNetworkRulesDeleteOutput =
  *
  * @param virtualNetworkRuleName - The name of the virtual network rule to delete.
  */
-export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesDeleteInput,
-    outputSchema: VirtualNetworkRulesDeleteOutput,
+export const VirtualNetworkRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesDeleteInput,
+  outputSchema: VirtualNetworkRulesDeleteOutput,
+}));
+// Input Schema
+export const VirtualNetworkRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
   }),
 );
-// Input Schema
-export const VirtualNetworkRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
-    }),
-  );
 export type VirtualNetworkRulesGetInput =
   typeof VirtualNetworkRulesGetInput.Type;
 
 // Output Schema
-export const VirtualNetworkRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const VirtualNetworkRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type VirtualNetworkRulesGetOutput =
   typeof VirtualNetworkRulesGetOutput.Type;
 
@@ -850,15 +790,13 @@ export type VirtualNetworkRulesGetOutput =
  *
  * @param virtualNetworkRuleName - The name of the virtual network rule to retrieve.
  */
-export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesGetInput,
-    outputSchema: VirtualNetworkRulesGetOutput,
-  }),
-);
+export const VirtualNetworkRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesGetInput,
+  outputSchema: VirtualNetworkRulesGetOutput,
+}));
 // Input Schema
 export const VirtualNetworkRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules",
@@ -869,7 +807,7 @@ export type VirtualNetworkRulesListByAccountInput =
 
 // Output Schema
 export const VirtualNetworkRulesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -888,31 +826,28 @@ export type VirtualNetworkRulesListByAccountOutput =
 /**
  * Lists the Data Lake Store virtual network rules within the specified Data Lake Store account.
  */
-export const VirtualNetworkRulesListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworkRulesListByAccountInput,
-    outputSchema: VirtualNetworkRulesListByAccountOutput,
-  }));
+export const VirtualNetworkRulesListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesListByAccountInput,
+  outputSchema: VirtualNetworkRulesListByAccountOutput,
+}));
 // Input Schema
-export const VirtualNetworkRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
-    }),
-  );
+export const VirtualNetworkRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+  }),
+);
 export type VirtualNetworkRulesUpdateInput =
   typeof VirtualNetworkRulesUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworkRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const VirtualNetworkRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type VirtualNetworkRulesUpdateOutput =
   typeof VirtualNetworkRulesUpdateOutput.Type;
 
@@ -922,9 +857,7 @@ export type VirtualNetworkRulesUpdateOutput =
  *
  * @param virtualNetworkRuleName - The name of the virtual network rule to update.
  */
-export const VirtualNetworkRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesUpdateInput,
-    outputSchema: VirtualNetworkRulesUpdateOutput,
-  }),
-);
+export const VirtualNetworkRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesUpdateInput,
+  outputSchema: VirtualNetworkRulesUpdateOutput,
+}));

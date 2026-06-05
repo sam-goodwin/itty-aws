@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuditLogsRetentionControllerUpdateAuditLogsRetentionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     retention_period_in_days: Schema.optional(Schema.Number),
   }).pipe(
@@ -16,7 +16,7 @@ export type AuditLogsRetentionControllerUpdateAuditLogsRetentionInput =
 
 // Output Schema
 export const AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
   });
 export type AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput =
@@ -31,7 +31,7 @@ export type AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const AuditLogsRetentionControllerUpdateAuditLogsRetention =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogsRetentionControllerUpdateAuditLogsRetentionInput,
     outputSchema: AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput,
     errors: [NotFound, UnprocessableEntity] as const,

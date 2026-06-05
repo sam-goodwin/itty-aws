@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteKeyspaceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteKeyspaceInput = typeof DeleteKeyspaceInput.Type;
 
 // Output Schema
-export const DeleteKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteKeyspaceOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteKeyspaceOutput = typeof DeleteKeyspaceOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type DeleteKeyspaceOutput = typeof DeleteKeyspaceOutput.Type;
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const deleteKeyspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteKeyspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteKeyspaceInput,
   outputSchema: DeleteKeyspaceOutput,
   errors: [Forbidden, NotFound] as const,

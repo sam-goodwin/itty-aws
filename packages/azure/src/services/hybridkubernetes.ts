@@ -9,27 +9,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ConnectedClusterCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-    }),
-  );
+export const ConnectedClusterCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+  }),
+);
 export type ConnectedClusterCreateInput =
   typeof ConnectedClusterCreateInput.Type;
 
 // Output Schema
-export const ConnectedClusterCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConnectedClusterCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConnectedClusterCreateOutput =
   typeof ConnectedClusterCreateOutput.Type;
 
@@ -48,17 +46,16 @@ export const ConnectedClusterCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConnectedClusterCreateOutput,
 }));
 // Input Schema
-export const ConnectedClusterDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-    }),
-  );
+export const ConnectedClusterDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+  }),
+);
 export type ConnectedClusterDeleteInput =
   typeof ConnectedClusterDeleteInput.Type;
 
@@ -82,26 +79,24 @@ export const ConnectedClusterDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConnectedClusterDeleteOutput,
 }));
 // Input Schema
-export const ConnectedClusterGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-    }),
-  );
+export const ConnectedClusterGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+  }),
+);
 export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
 
 // Output Schema
-export const ConnectedClusterGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConnectedClusterGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
 
 // The operation
@@ -160,11 +155,12 @@ export type ConnectedClusterListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const ConnectedClusterListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConnectedClusterListByResourceGroupInput,
     outputSchema: ConnectedClusterListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConnectedClusterListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -205,11 +201,12 @@ export type ConnectedClusterListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectedClusterListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const ConnectedClusterListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConnectedClusterListBySubscriptionInput,
     outputSchema: ConnectedClusterListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConnectedClusterListClusterUserCredentialInput =
   /*@__PURE__*/ Schema.Struct({
@@ -258,33 +255,32 @@ export type ConnectedClusterListClusterUserCredentialOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterListClusterUserCredential =
-  /*@__PURE__*/ API.make(() => ({
+export const ConnectedClusterListClusterUserCredential = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConnectedClusterListClusterUserCredentialInput,
     outputSchema: ConnectedClusterListClusterUserCredentialOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConnectedClusterUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-    }),
-  );
+export const ConnectedClusterUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+  }),
+);
 export type ConnectedClusterUpdateInput =
   typeof ConnectedClusterUpdateInput.Type;
 
 // Output Schema
-export const ConnectedClusterUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConnectedClusterUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConnectedClusterUpdateOutput =
   typeof ConnectedClusterUpdateOutput.Type;
 

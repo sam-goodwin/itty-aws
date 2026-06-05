@@ -5,7 +5,7 @@ import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1DatabasesByTargetDatabaseIdRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetDatabaseId: Schema.String.pipe(T.PathParam()),
     source: Schema.Struct({
       type: Schema.String,
@@ -23,7 +23,7 @@ export type PostV1DatabasesByTargetDatabaseIdRestoreInput =
 
 // Output Schema
 export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -110,9 +110,10 @@ export type PostV1DatabasesByTargetDatabaseIdRestoreOutput =
  * ⚠️ **Destructive operation** — this immediately and irreversibly overwrites all data in the target database with the contents of the specified backup. Any data written since the backup was taken will be lost. Ensure you have a recent backup of the target database before proceeding.
  * Replaces the data in an existing database from a backup. Connections and credentials are preserved — only the data layer is replaced.
  */
-export const postV1DatabasesByTargetDatabaseIdRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1DatabasesByTargetDatabaseIdRestore = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV1DatabasesByTargetDatabaseIdRestoreInput,
     outputSchema: PostV1DatabasesByTargetDatabaseIdRestoreOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);

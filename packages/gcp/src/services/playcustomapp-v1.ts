@@ -23,16 +23,16 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Organization {
-  /** Required. ID of the organization. */
-  organizationId?: string;
   /** Optional. A human-readable name of the organization, to help recognize the organization. */
   organizationName?: string;
+  /** Required. ID of the organization. */
+  organizationId?: string;
 }
 
 export const Organization: Schema.Schema<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationId: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     organizationName: Schema.optional(Schema.String),
+    organizationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Organization" });
 
 export interface CustomApp {
@@ -46,13 +46,12 @@ export interface CustomApp {
   languageCode?: string;
 }
 
-export const CustomApp: Schema.Schema<CustomApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
-    packageName: Schema.optional(Schema.String),
-    organizations: Schema.optional(Schema.Array(Organization)),
-    languageCode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CustomApp" });
+export const CustomApp: Schema.Schema<CustomApp> = /*@__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  organizations: Schema.optional(Schema.Array(Organization)),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomApp" });
 
 // ==========================================================================
 // Errors
@@ -115,22 +114,20 @@ export interface CreateAccountsCustomAppsRequest {
   body?: CustomApp;
 }
 
-export const CreateAccountsCustomAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    account: Schema.String.pipe(T.HttpPath("account")),
-    body: Schema.optional(CustomApp).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "playcustomapp/v1/accounts/{account}/customApps",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateAccountsCustomAppsRequest>;
+export const CreateAccountsCustomAppsRequest = /*@__PURE__*/ Schema.Struct({
+  account: Schema.String.pipe(T.HttpPath("account")),
+  body: Schema.optional(CustomApp).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "playcustomapp/v1/accounts/{account}/customApps",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreateAccountsCustomAppsRequest>;
 
 export type CreateAccountsCustomAppsResponse = CustomApp;
-export const CreateAccountsCustomAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomApp;
+export const CreateAccountsCustomAppsResponse = /*@__PURE__*/ CustomApp;
 
 export type CreateAccountsCustomAppsError =
   | DefaultErrors
@@ -145,7 +142,7 @@ export const createAccountsCustomApps: API.OperationMethod<
   CreateAccountsCustomAppsResponse,
   CreateAccountsCustomAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsCustomAppsRequest,
   output: CreateAccountsCustomAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

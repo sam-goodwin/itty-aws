@@ -22,45 +22,194 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Organization {
+  /** Identifier. The resource name of the GMP organization. Format: organizations/{org_id} */
+  name?: string;
+  /** The human-readable name for the organization. */
+  displayName?: string;
+}
+
+export const Organization: Schema.Schema<Organization> =
+  /*@__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Organization" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
+
+export interface ListOrganizationsResponse {
+  /** The Organization resource that the user has access to, which includes the org id and display name. */
+  organizations?: ReadonlyArray<Organization>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(Schema.Array(Organization)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrganizationsResponse" });
+
+export interface Marketingplatformadmin_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+}
+
+export const Marketingplatformadmin_Date: Schema.Schema<Marketingplatformadmin_Date> =
+  /*@__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Marketingplatformadmin_Date" });
+
+export interface ClientData {
+  /** The start date of the contract between the sales org and the end client. */
+  startDate?: Marketingplatformadmin_Date;
+  /** The end date of the contract between the sales org and the end client. */
+  endDate?: Marketingplatformadmin_Date;
+  /** The end client that has/had contract with the requested sales org. */
+  organization?: Organization;
+}
+
+export const ClientData: Schema.Schema<ClientData> =
+  /*@__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(Marketingplatformadmin_Date),
+    endDate: Schema.optional(Marketingplatformadmin_Date),
+    organization: Schema.optional(Organization),
+  }).annotate({ identifier: "ClientData" });
+
+export interface FindSalesPartnerManagedClientsResponse {
+  /** The clients managed by the sales org. */
+  clientData?: ReadonlyArray<ClientData>;
+}
+
+export const FindSalesPartnerManagedClientsResponse: Schema.Schema<FindSalesPartnerManagedClientsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    clientData: Schema.optional(Schema.Array(ClientData)),
+  }).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" });
+
+export interface Money {
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+}
+
+export const Money: Schema.Schema<Money> = /*@__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
+
+export interface ReportPropertyUsageRequest {
+  /** Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05" */
+  month?: string;
+}
+
+export const ReportPropertyUsageRequest: Schema.Schema<ReportPropertyUsageRequest> =
+  /*@__PURE__*/ Schema.Struct({
+    month: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportPropertyUsageRequest" });
+
 export interface AnalyticsAccountLink {
+  /** Identifier. Resource name of this AnalyticsAccountLink. Note the resource ID is the same as the ID of the Analtyics account. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} Example: "organizations/xyz/analyticsAccountLinks/1234" */
+  name?: string;
+  /** Output only. The human-readable name for the Analytics account. */
+  displayName?: string;
+  /** Required. Immutable. The resource name of the AnalyticsAdmin API account. The account ID will be used as the ID of this AnalyticsAccountLink resource, which will become the final component of the resource name. Format: analyticsadmin.googleapis.com/accounts/{account_id} */
+  analyticsAccount?: string;
   /** Output only. The verification state of the link between the Analytics account and the parent organization. */
   linkVerificationState?:
     | "LINK_VERIFICATION_STATE_UNSPECIFIED"
     | "LINK_VERIFICATION_STATE_VERIFIED"
     | "LINK_VERIFICATION_STATE_NOT_VERIFIED"
     | (string & {});
-  /** Output only. The human-readable name for the Analytics account. */
-  displayName?: string;
-  /** Identifier. Resource name of this AnalyticsAccountLink. Note the resource ID is the same as the ID of the Analtyics account. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} Example: "organizations/xyz/analyticsAccountLinks/1234" */
-  name?: string;
-  /** Required. Immutable. The resource name of the AnalyticsAdmin API account. The account ID will be used as the ID of this AnalyticsAccountLink resource, which will become the final component of the resource name. Format: analyticsadmin.googleapis.com/accounts/{account_id} */
-  analyticsAccount?: string;
 }
 
 export const AnalyticsAccountLink: Schema.Schema<AnalyticsAccountLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    linkVerificationState: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
     analyticsAccount: Schema.optional(Schema.String),
+    linkVerificationState: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnalyticsAccountLink" });
 
 export interface ListAnalyticsAccountLinksResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** Analytics account links in this organization. */
   analyticsAccountLinks?: ReadonlyArray<AnalyticsAccountLink>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 
 export const ListAnalyticsAccountLinksResponse: Schema.Schema<ListAnalyticsAccountLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     analyticsAccountLinks: Schema.optional(Schema.Array(AnalyticsAccountLink)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAnalyticsAccountLinksResponse" });
 
+export interface BillInfo {
+  /** The total amount of the bill. */
+  total?: Money;
+  /** The amount of the event fee. */
+  eventFee?: Money;
+  /** The amount of the price protection credit, this is only available for eligible customers. */
+  priceProtectionCredit?: Money;
+  /** The amount of the monthly base fee. */
+  baseFee?: Money;
+}
+
+export const BillInfo: Schema.Schema<BillInfo> = /*@__PURE__*/ Schema.Struct({
+  total: Schema.optional(Money),
+  eventFee: Schema.optional(Money),
+  priceProtectionCredit: Schema.optional(Money),
+  baseFee: Schema.optional(Money),
+}).annotate({ identifier: "BillInfo" });
+
+export interface SetPropertyServiceLevelResponse {}
+
+export const SetPropertyServiceLevelResponse: Schema.Schema<SetPropertyServiceLevelResponse> =
+  /*@__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SetPropertyServiceLevelResponse",
+  });
+
+export interface FindSalesPartnerManagedClientsRequest {
+  /** Optional. If set, only active and just ended clients will be returned. */
+  isActive?: boolean;
+}
+
+export const FindSalesPartnerManagedClientsRequest: Schema.Schema<FindSalesPartnerManagedClientsRequest> =
+  /*@__PURE__*/ Schema.Struct({
+    isActive: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" });
+
+export interface SetPropertyServiceLevelRequest {
+  /** Required. The Analytics property to change the ServiceLevel setting. This field is the name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
+  analyticsProperty?: string;
+  /** Required. The service level to set for this property. */
+  serviceLevel?:
+    | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
+    | "ANALYTICS_SERVICE_LEVEL_STANDARD"
+    | "ANALYTICS_SERVICE_LEVEL_360"
+    | (string & {});
+}
+
+export const SetPropertyServiceLevelRequest: Schema.Schema<SetPropertyServiceLevelRequest> =
+  /*@__PURE__*/ Schema.Struct({
+    analyticsProperty: Schema.optional(Schema.String),
+    serviceLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetPropertyServiceLevelRequest" });
+
 export interface PropertyUsage {
-  /** The name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
-  property?: string;
   /** The subtype of the analytics property. This affects the billable event count. */
   propertyType?:
     | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
@@ -74,170 +223,28 @@ export interface PropertyUsage {
     | "ANALYTICS_SERVICE_LEVEL_STANDARD"
     | "ANALYTICS_SERVICE_LEVEL_360"
     | (string & {});
+  /** The number of events for which the property is billed in the requested month. */
+  billableEventCount?: string;
   /** The ID of the property's parent account. */
   accountId?: string;
   /** The display name of the property. */
   displayName?: string;
   /** Total event count that the property received during the requested month. */
   totalEventCount?: string;
-  /** The number of events for which the property is billed in the requested month. */
-  billableEventCount?: string;
+  /** The name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
+  property?: string;
 }
 
 export const PropertyUsage: Schema.Schema<PropertyUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    property: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     propertyType: Schema.optional(Schema.String),
     serviceLevel: Schema.optional(Schema.String),
+    billableEventCount: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     totalEventCount: Schema.optional(Schema.String),
-    billableEventCount: Schema.optional(Schema.String),
+    property: Schema.optional(Schema.String),
   }).annotate({ identifier: "PropertyUsage" });
-
-export interface SetPropertyServiceLevelRequest {
-  /** Required. The service level to set for this property. */
-  serviceLevel?:
-    | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
-    | "ANALYTICS_SERVICE_LEVEL_STANDARD"
-    | "ANALYTICS_SERVICE_LEVEL_360"
-    | (string & {});
-  /** Required. The Analytics property to change the ServiceLevel setting. This field is the name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
-  analyticsProperty?: string;
-}
-
-export const SetPropertyServiceLevelRequest: Schema.Schema<SetPropertyServiceLevelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceLevel: Schema.optional(Schema.String),
-    analyticsProperty: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SetPropertyServiceLevelRequest" });
-
-export interface Organization {
-  /** Identifier. The resource name of the GMP organization. Format: organizations/{org_id} */
-  name?: string;
-  /** The human-readable name for the organization. */
-  displayName?: string;
-}
-
-export const Organization: Schema.Schema<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Organization" });
-
-export interface ListOrganizationsResponse {
-  /** The Organization resource that the user has access to, which includes the org id and display name. */
-  organizations?: ReadonlyArray<Organization>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizations: Schema.optional(Schema.Array(Organization)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOrganizationsResponse" });
-
-export interface Marketingplatformadmin_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-}
-
-export const Marketingplatformadmin_Date: Schema.Schema<Marketingplatformadmin_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    year: Schema.optional(Schema.Number),
-    month: Schema.optional(Schema.Number),
-    day: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Marketingplatformadmin_Date" });
-
-export interface ClientData {
-  /** The start date of the contract between the sales org and the end client. */
-  startDate?: Marketingplatformadmin_Date;
-  /** The end date of the contract between the sales org and the end client. */
-  endDate?: Marketingplatformadmin_Date;
-  /** The end client that has/had contract with the requested sales org. */
-  organization?: Organization;
-}
-
-export const ClientData: Schema.Schema<ClientData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startDate: Schema.optional(Marketingplatformadmin_Date),
-    endDate: Schema.optional(Marketingplatformadmin_Date),
-    organization: Schema.optional(Organization),
-  }).annotate({ identifier: "ClientData" });
-
-export interface FindSalesPartnerManagedClientsResponse {
-  /** The clients managed by the sales org. */
-  clientData?: ReadonlyArray<ClientData>;
-}
-
-export const FindSalesPartnerManagedClientsResponse: Schema.Schema<FindSalesPartnerManagedClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientData: Schema.optional(Schema.Array(ClientData)),
-  }).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" });
-
-export interface Money {
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-}
-
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nanos: Schema.optional(Schema.Number),
-    currencyCode: Schema.optional(Schema.String),
-    units: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Money" });
-
-export interface FindSalesPartnerManagedClientsRequest {
-  /** Optional. If set, only active and just ended clients will be returned. */
-  isActive?: boolean;
-}
-
-export const FindSalesPartnerManagedClientsRequest: Schema.Schema<FindSalesPartnerManagedClientsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    isActive: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" });
-
-export interface SetPropertyServiceLevelResponse {}
-
-export const SetPropertyServiceLevelResponse: Schema.Schema<SetPropertyServiceLevelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SetPropertyServiceLevelResponse",
-  });
-
-export interface BillInfo {
-  /** The amount of the event fee. */
-  eventFee?: Money;
-  /** The amount of the price protection credit, this is only available for eligible customers. */
-  priceProtectionCredit?: Money;
-  /** The total amount of the bill. */
-  total?: Money;
-  /** The amount of the monthly base fee. */
-  baseFee?: Money;
-}
-
-export const BillInfo: Schema.Schema<BillInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventFee: Schema.optional(Money),
-    priceProtectionCredit: Schema.optional(Money),
-    total: Schema.optional(Money),
-    baseFee: Schema.optional(Money),
-  }).annotate({ identifier: "BillInfo" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
 
 export interface ReportPropertyUsageResponse {
   /** Usage data for all properties in the specified organization and month. */
@@ -247,20 +254,10 @@ export interface ReportPropertyUsageResponse {
 }
 
 export const ReportPropertyUsageResponse: Schema.Schema<ReportPropertyUsageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     propertyUsages: Schema.optional(Schema.Array(PropertyUsage)),
     billInfo: Schema.optional(BillInfo),
   }).annotate({ identifier: "ReportPropertyUsageResponse" });
-
-export interface ReportPropertyUsageRequest {
-  /** Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05" */
-  month?: string;
-}
-
-export const ReportPropertyUsageRequest: Schema.Schema<ReportPropertyUsageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    month: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ReportPropertyUsageRequest" });
 
 // ==========================================================================
 // Errors
@@ -321,17 +318,15 @@ export interface GetOrganizationsRequest {
   name: string;
 }
 
-export const GetOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+export const GetOrganizationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = Organization;
-export const GetOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Organization;
+export const GetOrganizationsResponse = /*@__PURE__*/ Organization;
 
 export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -341,7 +336,7 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsResponse,
   GetOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -354,18 +349,17 @@ export interface ListOrganizationsRequest {
   pageToken?: string;
 }
 
-export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/organizations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsRequest>;
+export const ListOrganizationsRequest = /*@__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha/organizations" }),
+  svc,
+) as unknown as Schema.Schema<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
 export const ListOrganizationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOrganizationsResponse;
+  /*@__PURE__*/ ListOrganizationsResponse;
 
 export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -375,7 +369,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsResponse_Op,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -383,6 +377,50 @@ export const listOrganizations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface ReportPropertyUsageOrganizationsRequest {
+  /** Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id} */
+  organization: string;
+  /** Request body */
+  body?: ReportPropertyUsageRequest;
+}
+
+export const ReportPropertyUsageOrganizationsRequest =
+  /*@__PURE__*/ Schema.Struct({
+    organization: Schema.String.pipe(T.HttpPath("organization")),
+    body: Schema.optional(ReportPropertyUsageRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+organization}:reportPropertyUsage",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ReportPropertyUsageOrganizationsRequest>;
+
+export type ReportPropertyUsageOrganizationsResponse =
+  ReportPropertyUsageResponse;
+export const ReportPropertyUsageOrganizationsResponse =
+  /*@__PURE__*/ ReportPropertyUsageResponse;
+
+export type ReportPropertyUsageOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the usage and billing data for properties within the organization for the specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order to view the usage data only. */
+export const reportPropertyUsageOrganizations: API.OperationMethod<
+  ReportPropertyUsageOrganizationsRequest,
+  ReportPropertyUsageOrganizationsResponse,
+  ReportPropertyUsageOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ReportPropertyUsageOrganizationsRequest,
+  output: ReportPropertyUsageOrganizationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindSalesPartnerManagedClientsOrganizationsRequest {
@@ -393,7 +431,7 @@ export interface FindSalesPartnerManagedClientsOrganizationsRequest {
 }
 
 export const FindSalesPartnerManagedClientsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.HttpPath("organization")),
     body: Schema.optional(FindSalesPartnerManagedClientsRequest).pipe(
       T.HttpBody(),
@@ -410,7 +448,7 @@ export const FindSalesPartnerManagedClientsOrganizationsRequest =
 export type FindSalesPartnerManagedClientsOrganizationsResponse =
   FindSalesPartnerManagedClientsResponse;
 export const FindSalesPartnerManagedClientsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindSalesPartnerManagedClientsResponse;
+  /*@__PURE__*/ FindSalesPartnerManagedClientsResponse;
 
 export type FindSalesPartnerManagedClientsOrganizationsError =
   | DefaultErrors
@@ -425,53 +463,9 @@ export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
   FindSalesPartnerManagedClientsOrganizationsResponse,
   FindSalesPartnerManagedClientsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindSalesPartnerManagedClientsOrganizationsRequest,
   output: FindSalesPartnerManagedClientsOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ReportPropertyUsageOrganizationsRequest {
-  /** Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id} */
-  organization: string;
-  /** Request body */
-  body?: ReportPropertyUsageRequest;
-}
-
-export const ReportPropertyUsageOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.HttpPath("organization")),
-    body: Schema.optional(ReportPropertyUsageRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/{+organization}:reportPropertyUsage",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ReportPropertyUsageOrganizationsRequest>;
-
-export type ReportPropertyUsageOrganizationsResponse =
-  ReportPropertyUsageResponse;
-export const ReportPropertyUsageOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportPropertyUsageResponse;
-
-export type ReportPropertyUsageOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets the usage and billing data for properties within the organization for the specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order to view the usage data only. */
-export const reportPropertyUsageOrganizations: API.OperationMethod<
-  ReportPropertyUsageOrganizationsRequest,
-  ReportPropertyUsageOrganizationsResponse,
-  ReportPropertyUsageOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReportPropertyUsageOrganizationsRequest,
-  output: ReportPropertyUsageOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -481,7 +475,7 @@ export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
 }
 
 export const DeleteOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -490,7 +484,7 @@ export const DeleteOrganizationsAnalyticsAccountLinksRequest =
 
 export type DeleteOrganizationsAnalyticsAccountLinksResponse = Empty;
 export const DeleteOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -505,71 +499,25 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   DeleteOrganizationsAnalyticsAccountLinksResponse,
   DeleteOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAnalyticsAccountLinksRequest,
   output: DeleteOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest {
-  /** Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
-  analyticsAccountLink: string;
-  /** Request body */
-  body?: SetPropertyServiceLevelRequest;
-}
-
-export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    analyticsAccountLink: Schema.String.pipe(
-      T.HttpPath("analyticsAccountLink"),
-    ),
-    body: Schema.optional(SetPropertyServiceLevelRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
-
-export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
-  SetPropertyServiceLevelResponse;
-export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPropertyServiceLevelResponse;
-
-export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the service level for an Analytics property. */
-export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.OperationMethod<
-  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
-  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
-  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
-  output: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListOrganizationsAnalyticsAccountLinksRequest {
-  /** Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id} */
-  parent: string;
   /** Optional. The maximum number of Analytics account links to return in one call. The service may return fewer than this value. If unspecified, at most 50 Analytics account links will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id} */
+  parent: string;
   /** Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token. */
   pageToken?: string;
 }
 
 export const ListOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/analyticsAccountLinks" }),
@@ -579,7 +527,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
 export type ListOrganizationsAnalyticsAccountLinksResponse =
   ListAnalyticsAccountLinksResponse;
 export const ListOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAnalyticsAccountLinksResponse;
+  /*@__PURE__*/ ListAnalyticsAccountLinksResponse;
 
 export type ListOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -592,7 +540,7 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   ListOrganizationsAnalyticsAccountLinksResponse,
   ListOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAnalyticsAccountLinksRequest,
   output: ListOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden],
@@ -610,7 +558,7 @@ export interface CreateOrganizationsAnalyticsAccountLinksRequest {
 }
 
 export const CreateOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AnalyticsAccountLink).pipe(T.HttpBody()),
   }).pipe(
@@ -625,7 +573,7 @@ export const CreateOrganizationsAnalyticsAccountLinksRequest =
 export type CreateOrganizationsAnalyticsAccountLinksResponse =
   AnalyticsAccountLink;
 export const CreateOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnalyticsAccountLink;
+  /*@__PURE__*/ AnalyticsAccountLink;
 
 export type CreateOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -640,8 +588,54 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   CreateOrganizationsAnalyticsAccountLinksResponse,
   CreateOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAnalyticsAccountLinksRequest,
   output: CreateOrganizationsAnalyticsAccountLinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest {
+  /** Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
+  analyticsAccountLink: string;
+  /** Request body */
+  body?: SetPropertyServiceLevelRequest;
+}
+
+export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
+  /*@__PURE__*/ Schema.Struct({
+    analyticsAccountLink: Schema.String.pipe(
+      T.HttpPath("analyticsAccountLink"),
+    ),
+    body: Schema.optional(SetPropertyServiceLevelRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
+
+export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
+  SetPropertyServiceLevelResponse;
+export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
+  /*@__PURE__*/ SetPropertyServiceLevelResponse;
+
+export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the service level for an Analytics property. */
+export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.OperationMethod<
+  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
+  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
+  SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
+  output: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

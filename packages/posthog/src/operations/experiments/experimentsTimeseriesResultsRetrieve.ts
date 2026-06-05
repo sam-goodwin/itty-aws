@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExperimentsTimeseriesResultsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     fingerprint: Schema.String,
@@ -21,7 +21,7 @@ export type ExperimentsTimeseriesResultsRetrieveInput =
 
 // Output Schema
 export const ExperimentsTimeseriesResultsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExperimentsTimeseriesResultsRetrieveOutput =
   typeof ExperimentsTimeseriesResultsRetrieveOutput.Type;
 
@@ -37,9 +37,10 @@ export type ExperimentsTimeseriesResultsRetrieveOutput =
  * @param metric_uuid - UUID of the metric to fetch timeseries for. Available on each metric in the experiment's metrics array.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsTimeseriesResultsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentsTimeseriesResultsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExperimentsTimeseriesResultsRetrieveInput,
     outputSchema: ExperimentsTimeseriesResultsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

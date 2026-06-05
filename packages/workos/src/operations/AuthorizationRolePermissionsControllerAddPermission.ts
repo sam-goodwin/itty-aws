@@ -10,7 +10,7 @@ import {
 
 // Input Schema
 export const AuthorizationRolePermissionsControllerAddPermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/authorization/roles/{slug}/permissions" }),
@@ -20,7 +20,7 @@ export type AuthorizationRolePermissionsControllerAddPermissionInput =
 
 // Output Schema
 export const AuthorizationRolePermissionsControllerAddPermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -44,7 +44,7 @@ export type AuthorizationRolePermissionsControllerAddPermissionOutput =
  * @param slug - The slug of the environment role.
  */
 export const AuthorizationRolePermissionsControllerAddPermission =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationRolePermissionsControllerAddPermissionInput,
     outputSchema: AuthorizationRolePermissionsControllerAddPermissionOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

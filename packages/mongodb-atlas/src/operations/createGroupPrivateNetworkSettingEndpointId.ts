@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const CreateGroupPrivateNetworkSettingEndpointIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type CreateGroupPrivateNetworkSettingEndpointIdInput =
 
 // Output Schema
 export const CreateGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateGroupPrivateNetworkSettingEndpointIdOutput =
   typeof CreateGroupPrivateNetworkSettingEndpointIdOutput.Type;
 
@@ -37,7 +37,7 @@ export type CreateGroupPrivateNetworkSettingEndpointIdOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const createGroupPrivateNetworkSettingEndpointId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupPrivateNetworkSettingEndpointIdInput,
     outputSchema: CreateGroupPrivateNetworkSettingEndpointIdOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const RevokeApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeApiKeyInput = /*@__PURE__*/ Schema.Struct({
   key_id: Schema.Number.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/api_keys/{key_id}" }));
 export type RevokeApiKeyInput = typeof RevokeApiKeyInput.Type;
 
 // Output Schema
-export const RevokeApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
   created_at: Schema.String,
@@ -34,7 +34,7 @@ export type RevokeApiKeyOutput = typeof RevokeApiKeyOutput.Type;
  *
  * @param key_id - The API key ID
  */
-export const revokeApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const revokeApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RevokeApiKeyInput,
   outputSchema: RevokeApiKeyOutput,
   errors: [NotFound] as const,

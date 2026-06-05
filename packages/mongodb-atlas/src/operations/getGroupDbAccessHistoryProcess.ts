@@ -4,29 +4,27 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupDbAccessHistoryProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    hostname: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    authResult: Schema.optional(Schema.Boolean),
-    end: Schema.optional(Schema.Number),
-    ipAddress: Schema.optional(Schema.String),
-    nLogs: Schema.optional(Schema.Number),
-    start: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}",
-    }),
-  );
+export const GetGroupDbAccessHistoryProcessInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  hostname: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  authResult: Schema.optional(Schema.Boolean),
+  end: Schema.optional(Schema.Number),
+  ipAddress: Schema.optional(Schema.String),
+  nLogs: Schema.optional(Schema.Number),
+  start: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}",
+  }),
+);
 export type GetGroupDbAccessHistoryProcessInput =
   typeof GetGroupDbAccessHistoryProcessInput.Type;
 
 // Output Schema
-export const GetGroupDbAccessHistoryProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupDbAccessHistoryProcessOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupDbAccessHistoryProcessOutput =
   typeof GetGroupDbAccessHistoryProcessOutput.Type;
 
@@ -48,9 +46,8 @@ export type GetGroupDbAccessHistoryProcessOutput =
  * @param nLogs - Maximum number of lines from the log to return.
  * @param start - Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds.
  */
-export const getGroupDbAccessHistoryProcess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupDbAccessHistoryProcessInput,
-    outputSchema: GetGroupDbAccessHistoryProcessOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const getGroupDbAccessHistoryProcess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupDbAccessHistoryProcessInput,
+  outputSchema: GetGroupDbAccessHistoryProcessOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuditLogValidatorsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -16,7 +16,7 @@ export type AuditLogValidatorsControllerListInput =
 
 // Output Schema
 export const AuditLogValidatorsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -74,9 +74,8 @@ export type AuditLogValidatorsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time.
  */
-export const AuditLogValidatorsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuditLogValidatorsControllerListInput,
-    outputSchema: AuditLogValidatorsControllerListOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }));
+export const AuditLogValidatorsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuditLogValidatorsControllerListInput,
+  outputSchema: AuditLogValidatorsControllerListOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

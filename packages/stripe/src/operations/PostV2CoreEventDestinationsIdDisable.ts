@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV2CoreEventDestinationsIdDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type PostV2CoreEventDestinationsIdDisableInput =
 
 // Output Schema
 export const PostV2CoreEventDestinationsIdDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -56,7 +56,7 @@ export const PostV2CoreEventDestinationsIdDisableOutput =
     updated: Schema.String,
     webhook_endpoint: Schema.optional(
       Schema.Struct({
-        signing_secret: Schema.optional(SensitiveString),
+        signing_secret: Schema.optional(SensitiveOutputString),
         url: Schema.optional(Schema.String),
       }),
     ),
@@ -72,8 +72,9 @@ export type PostV2CoreEventDestinationsIdDisableOutput =
  *
  * @param id - Identifier for the event destination to disable.
  */
-export const PostV2CoreEventDestinationsIdDisable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostV2CoreEventDestinationsIdDisable = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV2CoreEventDestinationsIdDisableInput,
     outputSchema: PostV2CoreEventDestinationsIdDisableOutput,
-  }));
+  }),
+);

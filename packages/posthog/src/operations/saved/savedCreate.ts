@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SavedCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export const SavedCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SavedCreateInput = typeof SavedCreateInput.Type;
 
 // Output Schema
-export const SavedCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -89,7 +89,7 @@ export type SavedCreateOutput = typeof SavedCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const savedCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const savedCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedCreateInput,
   outputSchema: SavedCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

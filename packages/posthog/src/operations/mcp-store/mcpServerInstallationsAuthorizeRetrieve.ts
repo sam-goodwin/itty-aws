@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const McpServerInstallationsAuthorizeRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     install_source: Schema.optional(
       Schema.Literals(["posthog", "posthog-code"]),
@@ -24,7 +24,7 @@ export type McpServerInstallationsAuthorizeRetrieveInput =
 
 // Output Schema
 export const McpServerInstallationsAuthorizeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type McpServerInstallationsAuthorizeRetrieveOutput =
   typeof McpServerInstallationsAuthorizeRetrieveOutput.Type;
 
@@ -39,9 +39,10 @@ export type McpServerInstallationsAuthorizeRetrieveOutput =
  * `posthog-code` - posthog-code
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const mcpServerInstallationsAuthorizeRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const mcpServerInstallationsAuthorizeRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: McpServerInstallationsAuthorizeRetrieveInput,
     outputSchema: McpServerInstallationsAuthorizeRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

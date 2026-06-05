@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -20,7 +20,7 @@ export type AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
 
 // Output Schema
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -46,7 +46,7 @@ export type AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
  * @param external_id - An identifier you provide to reference the resource in your system.
  */
 export const AuthorizationResourcesByExternalIdControllerGetByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerGetByExternalIdInput,
     outputSchema:

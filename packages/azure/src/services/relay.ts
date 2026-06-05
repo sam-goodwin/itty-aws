@@ -9,25 +9,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const HybridConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HybridConnectionsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     hybridConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
+  }),
+);
 export type HybridConnectionsCreateOrUpdateInput =
   typeof HybridConnectionsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const HybridConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,14 +60,13 @@ export type HybridConnectionsCreateOrUpdateOutput =
  * @param namespaceName - The namespace name
  * @param hybridConnectionName - The hybrid connection name.
  */
-export const HybridConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridConnectionsCreateOrUpdateInput,
-    outputSchema: HybridConnectionsCreateOrUpdateOutput,
-  }));
+export const HybridConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsCreateOrUpdateInput,
+  outputSchema: HybridConnectionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -84,7 +84,7 @@ export type HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -118,30 +118,28 @@ export type HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
  * @param authorizationRuleName - The authorization rule name.
  */
 export const HybridConnectionsCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridConnectionsCreateOrUpdateAuthorizationRuleInput,
     outputSchema: HybridConnectionsCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
-export const HybridConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    hybridConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
-    }),
-  );
+export const HybridConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  hybridConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
+  }),
+);
 export type HybridConnectionsDeleteInput =
   typeof HybridConnectionsDeleteInput.Type;
 
 // Output Schema
-export const HybridConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HybridConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HybridConnectionsDeleteOutput =
   typeof HybridConnectionsDeleteOutput.Type;
 
@@ -155,15 +153,13 @@ export type HybridConnectionsDeleteOutput =
  * @param namespaceName - The namespace name
  * @param hybridConnectionName - The hybrid connection name.
  */
-export const HybridConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridConnectionsDeleteInput,
-    outputSchema: HybridConnectionsDeleteOutput,
-  }),
-);
+export const HybridConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsDeleteInput,
+  outputSchema: HybridConnectionsDeleteOutput,
+}));
 // Input Schema
 export const HybridConnectionsDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -181,7 +177,7 @@ export type HybridConnectionsDeleteAuthorizationRuleInput =
 
 // Output Schema
 export const HybridConnectionsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type HybridConnectionsDeleteAuthorizationRuleOutput =
   typeof HybridConnectionsDeleteAuthorizationRuleOutput.Type;
 
@@ -196,48 +192,47 @@ export type HybridConnectionsDeleteAuthorizationRuleOutput =
  * @param hybridConnectionName - The hybrid connection name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const HybridConnectionsDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HybridConnectionsDeleteAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: HybridConnectionsDeleteAuthorizationRuleInput,
     outputSchema: HybridConnectionsDeleteAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
-export const HybridConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    hybridConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
-    }),
-  );
+export const HybridConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  hybridConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
+  }),
+);
 export type HybridConnectionsGetInput = typeof HybridConnectionsGetInput.Type;
 
 // Output Schema
-export const HybridConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridConnectionsGetOutput = typeof HybridConnectionsGetOutput.Type;
 
 // The operation
@@ -250,15 +245,13 @@ export type HybridConnectionsGetOutput = typeof HybridConnectionsGetOutput.Type;
  * @param namespaceName - The namespace name
  * @param hybridConnectionName - The hybrid connection name.
  */
-export const HybridConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridConnectionsGetInput,
-    outputSchema: HybridConnectionsGetOutput,
-  }),
-);
+export const HybridConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsGetInput,
+  outputSchema: HybridConnectionsGetOutput,
+}));
 // Input Schema
 export const HybridConnectionsGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -276,7 +269,7 @@ export type HybridConnectionsGetAuthorizationRuleInput =
 
 // Output Schema
 export const HybridConnectionsGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -309,14 +302,15 @@ export type HybridConnectionsGetAuthorizationRuleOutput =
  * @param hybridConnectionName - The hybrid connection name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const HybridConnectionsGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HybridConnectionsGetAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: HybridConnectionsGetAuthorizationRuleInput,
     outputSchema: HybridConnectionsGetAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const HybridConnectionsListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -333,7 +327,7 @@ export type HybridConnectionsListAuthorizationRulesInput =
 
 // Output Schema
 export const HybridConnectionsListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -380,14 +374,15 @@ export type HybridConnectionsListAuthorizationRulesOutput =
  * @param namespaceName - The namespace name
  * @param hybridConnectionName - The hybrid connection name.
  */
-export const HybridConnectionsListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HybridConnectionsListAuthorizationRules = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: HybridConnectionsListAuthorizationRulesInput,
     outputSchema: HybridConnectionsListAuthorizationRulesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const HybridConnectionsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -403,7 +398,7 @@ export type HybridConnectionsListByNamespaceInput =
 
 // Output Schema
 export const HybridConnectionsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -449,38 +444,35 @@ export type HybridConnectionsListByNamespaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const HybridConnectionsListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridConnectionsListByNamespaceInput,
-    outputSchema: HybridConnectionsListByNamespaceOutput,
-  }));
+export const HybridConnectionsListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsListByNamespaceInput,
+  outputSchema: HybridConnectionsListByNamespaceOutput,
+}));
 // Input Schema
-export const HybridConnectionsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    hybridConnectionName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+export const HybridConnectionsListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  hybridConnectionName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type HybridConnectionsListKeysInput =
   typeof HybridConnectionsListKeysInput.Type;
 
 // Output Schema
-export const HybridConnectionsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const HybridConnectionsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type HybridConnectionsListKeysOutput =
   typeof HybridConnectionsListKeysOutput.Type;
 
@@ -495,33 +487,32 @@ export type HybridConnectionsListKeysOutput =
  * @param hybridConnectionName - The hybrid connection name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const HybridConnectionsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridConnectionsListKeysInput,
-    outputSchema: HybridConnectionsListKeysOutput,
-  }),
-);
+export const HybridConnectionsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsListKeysInput,
+  outputSchema: HybridConnectionsListKeysOutput,
+}));
 // Input Schema
-export const HybridConnectionsRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HybridConnectionsRegenerateKeysInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     hybridConnectionName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type HybridConnectionsRegenerateKeysInput =
   typeof HybridConnectionsRegenerateKeysInput.Type;
 
 // Output Schema
 export const HybridConnectionsRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
@@ -542,28 +533,28 @@ export type HybridConnectionsRegenerateKeysOutput =
  * @param hybridConnectionName - The hybrid connection name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const HybridConnectionsRegenerateKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridConnectionsRegenerateKeysInput,
-    outputSchema: HybridConnectionsRegenerateKeysOutput,
-  }));
+export const HybridConnectionsRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridConnectionsRegenerateKeysInput,
+  outputSchema: HybridConnectionsRegenerateKeysOutput,
+}));
 // Input Schema
-export const NamespacesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/checkNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/checkNameAvailability",
+  }),
+);
 export type NamespacesCheckNameAvailabilityInput =
   typeof NamespacesCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const NamespacesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
@@ -587,48 +578,45 @@ export type NamespacesCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const NamespacesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesCheckNameAvailabilityInput,
-    outputSchema: NamespacesCheckNameAvailabilityOutput,
-  }));
+export const NamespacesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCheckNameAvailabilityInput,
+  outputSchema: NamespacesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const NamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
-    }),
-  );
+export const NamespacesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
+  }),
+);
 export type NamespacesCreateOrUpdateInput =
   typeof NamespacesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const NamespacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NamespacesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
 
@@ -641,15 +629,13 @@ export type NamespacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCreateOrUpdateInput,
-    outputSchema: NamespacesCreateOrUpdateOutput,
-  }),
-);
+export const NamespacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCreateOrUpdateInput,
+  outputSchema: NamespacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -666,7 +652,7 @@ export type NamespacesCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -698,14 +684,15 @@ export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
  */
-export const NamespacesCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesCreateOrUpdateAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NamespacesCreateOrUpdateAuthorizationRuleInput,
     outputSchema: NamespacesCreateOrUpdateAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -721,7 +708,7 @@ export type NamespacesCreateOrUpdateNetworkRuleSetInput =
 
 // Output Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -752,13 +739,14 @@ export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesCreateOrUpdateNetworkRuleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesCreateOrUpdateNetworkRuleSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NamespacesCreateOrUpdateNetworkRuleSetInput,
     outputSchema: NamespacesCreateOrUpdateNetworkRuleSetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -772,7 +760,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -784,13 +772,13 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
 export const NamespacesDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -807,7 +795,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -821,13 +809,12 @@ export type NamespacesDeleteAuthorizationRuleOutput =
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
  */
-export const NamespacesDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesDeleteAuthorizationRuleInput,
-    outputSchema: NamespacesDeleteAuthorizationRuleOutput,
-  }));
+export const NamespacesDeleteAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesDeleteAuthorizationRuleInput,
+  outputSchema: NamespacesDeleteAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -841,7 +828,7 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
-export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -871,30 +858,29 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
-export const NamespacesGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
-    }),
-  );
+export const NamespacesGetAuthorizationRuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+  }),
+);
 export type NamespacesGetAuthorizationRuleInput =
   typeof NamespacesGetAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetAuthorizationRuleOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -912,7 +898,8 @@ export const NamespacesGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type NamespacesGetAuthorizationRuleOutput =
   typeof NamespacesGetAuthorizationRuleOutput.Type;
 
@@ -926,48 +913,45 @@ export type NamespacesGetAuthorizationRuleOutput =
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
  */
-export const NamespacesGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesGetAuthorizationRuleInput,
-    outputSchema: NamespacesGetAuthorizationRuleOutput,
-  }));
+export const NamespacesGetAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetAuthorizationRuleInput,
+  outputSchema: NamespacesGetAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetNetworkRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
-    }),
-  );
+export const NamespacesGetNetworkRuleSetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
+  }),
+);
 export type NamespacesGetNetworkRuleSetInput =
   typeof NamespacesGetNetworkRuleSetInput.Type;
 
 // Output Schema
-export const NamespacesGetNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NamespacesGetNetworkRuleSetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesGetNetworkRuleSetOutput =
   typeof NamespacesGetNetworkRuleSetOutput.Type;
 
@@ -980,14 +964,12 @@ export type NamespacesGetNetworkRuleSetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesGetNetworkRuleSetInput,
-    outputSchema: NamespacesGetNetworkRuleSetOutput,
-  }),
-);
+export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetNetworkRuleSetInput,
+  outputSchema: NamespacesGetNetworkRuleSetOutput,
+}));
 // Input Schema
-export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -999,7 +981,7 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
-export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1032,13 +1014,13 @@ export type NamespacesListOutput = typeof NamespacesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListInput,
   outputSchema: NamespacesListOutput,
 }));
 // Input Schema
 export const NamespacesListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1054,7 +1036,7 @@ export type NamespacesListAuthorizationRulesInput =
 
 // Output Schema
 export const NamespacesListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1100,62 +1082,49 @@ export type NamespacesListAuthorizationRulesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListAuthorizationRulesInput,
-    outputSchema: NamespacesListAuthorizationRulesOutput,
-  }));
+export const NamespacesListAuthorizationRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListAuthorizationRulesInput,
+  outputSchema: NamespacesListAuthorizationRulesOutput,
+}));
 // Input Schema
-export const NamespacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
-    }),
-  );
+export const NamespacesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
+  }),
+);
 export type NamespacesListByResourceGroupInput =
   typeof NamespacesListByResourceGroupInput.Type;
 
 // Output Schema
-export const NamespacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NamespacesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NamespacesListByResourceGroupOutput =
   typeof NamespacesListByResourceGroupOutput.Type;
 
@@ -1167,36 +1136,33 @@ export type NamespacesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const NamespacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListByResourceGroupInput,
-    outputSchema: NamespacesListByResourceGroupOutput,
-  }));
+export const NamespacesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListByResourceGroupInput,
+  outputSchema: NamespacesListByResourceGroupOutput,
+}));
 // Input Schema
-export const NamespacesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+export const NamespacesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
 
 // Output Schema
-export const NamespacesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
 
 // The operation
@@ -1209,36 +1175,34 @@ export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
  */
-export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListKeysInput,
   outputSchema: NamespacesListKeysOutput,
 }));
 // Input Schema
-export const NamespacesRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+export const NamespacesRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type NamespacesRegenerateKeysInput =
   typeof NamespacesRegenerateKeysInput.Type;
 
 // Output Schema
-export const NamespacesRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesRegenerateKeysOutput =
   typeof NamespacesRegenerateKeysOutput.Type;
 
@@ -1252,14 +1216,12 @@ export type NamespacesRegenerateKeysOutput =
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
  */
-export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesRegenerateKeysInput,
-    outputSchema: NamespacesRegenerateKeysOutput,
-  }),
-);
+export const NamespacesRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesRegenerateKeysInput,
+  outputSchema: NamespacesRegenerateKeysOutput,
+}));
 // Input Schema
-export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1273,27 +1235,25 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 
 // Output Schema
-export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const NamespacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
 
 // The operation
@@ -1305,12 +1265,12 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Relay/operations" }),
@@ -1318,7 +1278,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1349,13 +1309,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1372,7 +1332,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1404,14 +1364,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param namespaceName - The namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1427,8 +1388,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1442,49 +1402,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param namespaceName - The namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -1498,30 +1455,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param namespaceName - The namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1554,7 +1509,8 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -1567,49 +1523,46 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources/{privateLinkResourceName}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  privateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources/{privateLinkResourceName}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -1623,64 +1576,50 @@ export type PrivateLinkResourcesGetOutput =
  * @param namespaceName - The namespace name
  * @param privateLinkResourceName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
+// Input Schema
+export const PrivateLinkResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources",
   }),
 );
-// Input Schema
-export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources",
-    }),
-  );
 export type PrivateLinkResourcesListInput =
   typeof PrivateLinkResourcesListInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PrivateLinkResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateLinkResourcesListOutput =
   typeof PrivateLinkResourcesListOutput.Type;
 
@@ -1693,50 +1632,46 @@ export type PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
+// Input Schema
+export const WCFRelaysCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
   }),
 );
-// Input Schema
-export const WCFRelaysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
-    }),
-  );
 export type WCFRelaysCreateOrUpdateInput =
   typeof WCFRelaysCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WCFRelaysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WCFRelaysCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WCFRelaysCreateOrUpdateOutput =
   typeof WCFRelaysCreateOrUpdateOutput.Type;
 
@@ -1750,15 +1685,13 @@ export type WCFRelaysCreateOrUpdateOutput =
  * @param namespaceName - The namespace name
  * @param relayName - The relay name.
  */
-export const WCFRelaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WCFRelaysCreateOrUpdateInput,
-    outputSchema: WCFRelaysCreateOrUpdateOutput,
-  }),
-);
+export const WCFRelaysCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysCreateOrUpdateInput,
+  outputSchema: WCFRelaysCreateOrUpdateOutput,
+}));
 // Input Schema
 export const WCFRelaysCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1776,7 +1709,7 @@ export type WCFRelaysCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1809,13 +1742,14 @@ export type WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
  * @param relayName - The relay name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const WCFRelaysCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WCFRelaysCreateOrUpdateAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WCFRelaysCreateOrUpdateAuthorizationRuleInput,
     outputSchema: WCFRelaysCreateOrUpdateAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WCFRelaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WCFRelaysDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1830,7 +1764,7 @@ export const WCFRelaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WCFRelaysDeleteInput = typeof WCFRelaysDeleteInput.Type;
 
 // Output Schema
-export const WCFRelaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WCFRelaysDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WCFRelaysDeleteOutput = typeof WCFRelaysDeleteOutput.Type;
 
 // The operation
@@ -1843,13 +1777,13 @@ export type WCFRelaysDeleteOutput = typeof WCFRelaysDeleteOutput.Type;
  * @param namespaceName - The namespace name
  * @param relayName - The relay name.
  */
-export const WCFRelaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WCFRelaysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WCFRelaysDeleteInput,
   outputSchema: WCFRelaysDeleteOutput,
 }));
 // Input Schema
 export const WCFRelaysDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1866,8 +1800,7 @@ export type WCFRelaysDeleteAuthorizationRuleInput =
   typeof WCFRelaysDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const WCFRelaysDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WCFRelaysDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
 export type WCFRelaysDeleteAuthorizationRuleOutput =
   typeof WCFRelaysDeleteAuthorizationRuleOutput.Type;
 
@@ -1882,13 +1815,12 @@ export type WCFRelaysDeleteAuthorizationRuleOutput =
  * @param relayName - The relay name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const WCFRelaysDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WCFRelaysDeleteAuthorizationRuleInput,
-    outputSchema: WCFRelaysDeleteAuthorizationRuleOutput,
-  }));
+export const WCFRelaysDeleteAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysDeleteAuthorizationRuleInput,
+  outputSchema: WCFRelaysDeleteAuthorizationRuleOutput,
+}));
 // Input Schema
-export const WCFRelaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WCFRelaysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1903,7 +1835,7 @@ export const WCFRelaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WCFRelaysGetInput = typeof WCFRelaysGetInput.Type;
 
 // Output Schema
-export const WCFRelaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WCFRelaysGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1934,49 +1866,47 @@ export type WCFRelaysGetOutput = typeof WCFRelaysGetOutput.Type;
  * @param namespaceName - The namespace name
  * @param relayName - The relay name.
  */
-export const WCFRelaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WCFRelaysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WCFRelaysGetInput,
   outputSchema: WCFRelaysGetOutput,
 }));
 // Input Schema
-export const WCFRelaysGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
-    }),
-  );
+export const WCFRelaysGetAuthorizationRuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
+  }),
+);
 export type WCFRelaysGetAuthorizationRuleInput =
   typeof WCFRelaysGetAuthorizationRuleInput.Type;
 
 // Output Schema
-export const WCFRelaysGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WCFRelaysGetAuthorizationRuleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WCFRelaysGetAuthorizationRuleOutput =
   typeof WCFRelaysGetAuthorizationRuleOutput.Type;
 
@@ -1991,31 +1921,31 @@ export type WCFRelaysGetAuthorizationRuleOutput =
  * @param relayName - The relay name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const WCFRelaysGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WCFRelaysGetAuthorizationRuleInput,
-    outputSchema: WCFRelaysGetAuthorizationRuleOutput,
-  }));
+export const WCFRelaysGetAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysGetAuthorizationRuleInput,
+  outputSchema: WCFRelaysGetAuthorizationRuleOutput,
+}));
 // Input Schema
-export const WCFRelaysListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WCFRelaysListAuthorizationRulesInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     relayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
+  }),
+);
 export type WCFRelaysListAuthorizationRulesInput =
   typeof WCFRelaysListAuthorizationRulesInput.Type;
 
 // Output Schema
 export const WCFRelaysListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2062,63 +1992,50 @@ export type WCFRelaysListAuthorizationRulesOutput =
  * @param namespaceName - The namespace name
  * @param relayName - The relay name.
  */
-export const WCFRelaysListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WCFRelaysListAuthorizationRulesInput,
-    outputSchema: WCFRelaysListAuthorizationRulesOutput,
-  }));
+export const WCFRelaysListAuthorizationRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysListAuthorizationRulesInput,
+  outputSchema: WCFRelaysListAuthorizationRulesOutput,
+}));
 // Input Schema
-export const WCFRelaysListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
-    }),
-  );
+export const WCFRelaysListByNamespaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
+  }),
+);
 export type WCFRelaysListByNamespaceInput =
   typeof WCFRelaysListByNamespaceInput.Type;
 
 // Output Schema
-export const WCFRelaysListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WCFRelaysListByNamespaceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WCFRelaysListByNamespaceOutput =
   typeof WCFRelaysListByNamespaceOutput.Type;
 
@@ -2131,23 +2048,19 @@ export type WCFRelaysListByNamespaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  */
-export const WCFRelaysListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WCFRelaysListByNamespaceInput,
-    outputSchema: WCFRelaysListByNamespaceOutput,
-  }),
-);
+export const WCFRelaysListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysListByNamespaceInput,
+  outputSchema: WCFRelaysListByNamespaceOutput,
+}));
 // Input Schema
-export const WCFRelaysListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WCFRelaysListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/listKeys",
@@ -2156,14 +2069,13 @@ export const WCFRelaysListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WCFRelaysListKeysInput = typeof WCFRelaysListKeysInput.Type;
 
 // Output Schema
-export const WCFRelaysListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const WCFRelaysListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type WCFRelaysListKeysOutput = typeof WCFRelaysListKeysOutput.Type;
 
 // The operation
@@ -2177,37 +2089,35 @@ export type WCFRelaysListKeysOutput = typeof WCFRelaysListKeysOutput.Type;
  * @param relayName - The relay name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const WCFRelaysListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WCFRelaysListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: WCFRelaysListKeysInput,
   outputSchema: WCFRelaysListKeysOutput,
 }));
 // Input Schema
-export const WCFRelaysRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+export const WCFRelaysRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type WCFRelaysRegenerateKeysInput =
   typeof WCFRelaysRegenerateKeysInput.Type;
 
 // Output Schema
-export const WCFRelaysRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const WCFRelaysRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type WCFRelaysRegenerateKeysOutput =
   typeof WCFRelaysRegenerateKeysOutput.Type;
 
@@ -2222,9 +2132,7 @@ export type WCFRelaysRegenerateKeysOutput =
  * @param relayName - The relay name.
  * @param authorizationRuleName - The authorization rule name.
  */
-export const WCFRelaysRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WCFRelaysRegenerateKeysInput,
-    outputSchema: WCFRelaysRegenerateKeysOutput,
-  }),
-);
+export const WCFRelaysRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WCFRelaysRegenerateKeysInput,
+  outputSchema: WCFRelaysRegenerateKeysOutput,
+}));

@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/secrets" }));
 export type SecretsUpdateInput = typeof SecretsUpdateInput.Type;
 
 // Output Schema
-export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   secrets: Schema.optional(
     Schema.Array(
@@ -34,7 +34,7 @@ export type SecretsUpdateOutput = typeof SecretsUpdateOutput.Type;
  *
  * @param app_name - Fly App Name
  */
-export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsUpdateInput,
   outputSchema: SecretsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

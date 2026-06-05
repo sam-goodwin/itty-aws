@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const RetrievePresetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrievePresetInput = /*@__PURE__*/ Schema.Struct({
   presetId: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/presets/{presetId}" }));
 export type RetrievePresetInput = typeof RetrievePresetInput.Type;
 
 // Output Schema
-export const RetrievePresetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrievePresetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Unknown,
   name: Schema.String,
 });
@@ -24,7 +24,7 @@ export type RetrievePresetOutput = typeof RetrievePresetOutput.Type;
  *
  * @param presetId - The ID of the preset to retrieve.
  */
-export const retrievePreset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrievePreset = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrievePresetInput,
   outputSchema: RetrievePresetOutput,
   errors: [NotFound] as const,

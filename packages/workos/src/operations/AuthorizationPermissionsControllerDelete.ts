@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationPermissionsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/authorization/permissions/{slug}" }),
@@ -15,7 +15,7 @@ export type AuthorizationPermissionsControllerDeleteInput =
 
 // Output Schema
 export const AuthorizationPermissionsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizationPermissionsControllerDeleteOutput =
   typeof AuthorizationPermissionsControllerDeleteOutput.Type;
 
@@ -27,9 +27,10 @@ export type AuthorizationPermissionsControllerDeleteOutput =
  *
  * @param slug - A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks.
  */
-export const AuthorizationPermissionsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationPermissionsControllerDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationPermissionsControllerDeleteInput,
     outputSchema: AuthorizationPermissionsControllerDeleteOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

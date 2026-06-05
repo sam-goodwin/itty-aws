@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDatabaseInput = typeof GetDatabaseInput.Type;
 
 // Output Schema
-export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Struct({
       Name: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export type GetDatabaseOutput = typeof GetDatabaseOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const getDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInput,
   outputSchema: GetDatabaseOutput,
   errors: [NotFound] as const,

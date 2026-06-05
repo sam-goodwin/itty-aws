@@ -9,26 +9,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ADCCatalogsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
-    }),
-  );
+export const ADCCatalogsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+  }),
+);
 export type ADCCatalogsCreateOrUpdateInput =
   typeof ADCCatalogsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ADCCatalogsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    etag: Schema.optional(Schema.String),
-  });
+export const ADCCatalogsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+});
 export type ADCCatalogsCreateOrUpdateOutput =
   typeof ADCCatalogsCreateOrUpdateOutput.Type;
 
@@ -96,13 +96,14 @@ export const ADCCatalogsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ADCCatalogsGetOutput,
 }));
 // Input Schema
-export const ADCCatalogsListtByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
-    }),
-  );
+export const ADCCatalogsListtByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
+  }),
+);
 export type ADCCatalogsListtByResourceGroupInput =
   typeof ADCCatalogsListtByResourceGroupInput.Type;
 
@@ -131,11 +132,10 @@ export type ADCCatalogsListtByResourceGroupOutput =
  *
  * The List catalogs in Resource Group operation lists all the Azure Data Catalogs available under the given resource group.
  */
-export const ADCCatalogsListtByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ADCCatalogsListtByResourceGroupInput,
-    outputSchema: ADCCatalogsListtByResourceGroupOutput,
-  }));
+export const ADCCatalogsListtByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ADCCatalogsListtByResourceGroupInput,
+  outputSchema: ADCCatalogsListtByResourceGroupOutput,
+}));
 // Input Schema
 export const ADCCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
@@ -146,15 +146,14 @@ export const ADCCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ADCCatalogsUpdateInput = typeof ADCCatalogsUpdateInput.Type;
 
 // Output Schema
-export const ADCCatalogsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    etag: Schema.optional(Schema.String),
-  });
+export const ADCCatalogsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+});
 export type ADCCatalogsUpdateOutput = typeof ADCCatalogsUpdateOutput.Type;
 
 // The operation
@@ -177,24 +176,23 @@ export const ADCOperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ADCOperationsListInput = typeof ADCOperationsListInput.Type;
 
 // Output Schema
-export const ADCOperationsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ADCOperationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        display: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type ADCOperationsListOutput = typeof ADCOperationsListOutput.Type;
 
 // The operation

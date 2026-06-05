@@ -3,21 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
-    }),
-  );
+export const DeleteWebhookSubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
+  }),
+);
 export type DeleteWebhookSubscriptionInput =
   typeof DeleteWebhookSubscriptionInput.Type;
 
 // Output Schema
-export const DeleteWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteWebhookSubscriptionOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteWebhookSubscriptionOutput =
   typeof DeleteWebhookSubscriptionOutput.Type;
 
@@ -34,9 +32,7 @@ export type DeleteWebhookSubscriptionOutput =
  *
  * @param subscriptionId - Unique identifier for the webhook subscription.
  */
-export const deleteWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteWebhookSubscriptionInput,
-    outputSchema: DeleteWebhookSubscriptionOutput,
-  }),
-);
+export const deleteWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteWebhookSubscriptionInput,
+  outputSchema: DeleteWebhookSubscriptionOutput,
+}));

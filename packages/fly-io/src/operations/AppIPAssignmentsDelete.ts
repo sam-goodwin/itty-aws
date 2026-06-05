@@ -4,19 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppIPAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    ip: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/apps/{app_name}/ip_assignments/{ip}" }),
-  );
+export const AppIPAssignmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  ip: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "DELETE", path: "/apps/{app_name}/ip_assignments/{ip}" }),
+);
 export type AppIPAssignmentsDeleteInput =
   typeof AppIPAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const AppIPAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppIPAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppIPAssignmentsDeleteOutput =
   typeof AppIPAssignmentsDeleteOutput.Type;
 
@@ -27,10 +25,8 @@ export type AppIPAssignmentsDeleteOutput =
  * @param app_name - Fly App Name
  * @param ip - IP address
  */
-export const AppIPAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppIPAssignmentsDeleteInput,
-    outputSchema: AppIPAssignmentsDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppIPAssignmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppIPAssignmentsDeleteInput,
+  outputSchema: AppIPAssignmentsDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

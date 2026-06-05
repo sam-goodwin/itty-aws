@@ -3,21 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ExportEvmAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    exportEncryptionKey: Schema.String,
-  }).pipe(
-    T.Http({ method: "POST", path: "/v2/evm/accounts/export/by-name/{name}" }),
-  );
+export const ExportEvmAccountByNameInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  exportEncryptionKey: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/evm/accounts/export/by-name/{name}" }),
+);
 export type ExportEvmAccountByNameInput =
   typeof ExportEvmAccountByNameInput.Type;
 
 // Output Schema
-export const ExportEvmAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptedPrivateKey: Schema.String,
-  });
+export const ExportEvmAccountByNameOutput = /*@__PURE__*/ Schema.Struct({
+  encryptedPrivateKey: Schema.String,
+});
 export type ExportEvmAccountByNameOutput =
   typeof ExportEvmAccountByNameOutput.Type;
 
@@ -37,9 +35,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param name - The name of the EVM account.
  */
-export const exportEvmAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExportEvmAccountByNameInput,
-    outputSchema: ExportEvmAccountByNameOutput,
-  }),
-);
+export const exportEvmAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportEvmAccountByNameInput,
+  outputSchema: ExportEvmAccountByNameOutput,
+}));

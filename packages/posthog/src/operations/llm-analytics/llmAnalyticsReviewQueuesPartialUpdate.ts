@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueuesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type LlmAnalyticsReviewQueuesPartialUpdateInput =
 
 // Output Schema
 export const LlmAnalyticsReviewQueuesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     pending_item_count: Schema.optional(Schema.Number),
@@ -54,9 +54,10 @@ export type LlmAnalyticsReviewQueuesPartialUpdateOutput =
  * @param id - A UUID string identifying this review queue.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsReviewQueuesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsReviewQueuesPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsReviewQueuesPartialUpdateInput,
     outputSchema: LlmAnalyticsReviewQueuesPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

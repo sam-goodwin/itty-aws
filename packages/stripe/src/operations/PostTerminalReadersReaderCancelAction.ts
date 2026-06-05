@@ -55,8 +55,9 @@ export type PostTerminalReadersReaderCancelActionOutput =
  *
  * <p>Cancels the current reader action. See <a href="/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven#programmatic-cancellation">Programmatic Cancellation</a> for more details.</p>
  */
-export const PostTerminalReadersReaderCancelAction =
-  /*@__PURE__*/ API.make(() => ({
+export const PostTerminalReadersReaderCancelAction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTerminalReadersReaderCancelActionInput,
     outputSchema: PostTerminalReadersReaderCancelActionOutput,
-  }));
+  }),
+);

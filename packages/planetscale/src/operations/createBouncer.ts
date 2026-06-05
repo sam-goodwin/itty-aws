@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { Forbidden, NotFound } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const CreateBouncerInput = /*@__PURE__*/ Schema.Struct({
@@ -35,7 +35,7 @@ export const CreateBouncerOutput = /*@__PURE__*/ Schema.Struct({
   replicas_per_cell: Schema.Number,
   created_at: Schema.String,
   updated_at: Schema.String,
-  deleted_at: Schema.NullOr(Schema.String),
+  deleted_at: Schema.String,
   actor: Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
@@ -46,7 +46,7 @@ export const CreateBouncerOutput = /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
+    deleted_at: Schema.String,
   }),
   parameters: Schema.Array(
     Schema.Struct({

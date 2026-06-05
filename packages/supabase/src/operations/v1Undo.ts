@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1UndoInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
@@ -13,7 +13,7 @@ export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1UndoInput = typeof V1UndoInput.Type;
 
 // Output Schema
-export const V1UndoOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1UndoOutput = /*@__PURE__*/ Schema.Void;
 export type V1UndoOutput = typeof V1UndoOutput.Type;
 
 // The operation
@@ -22,7 +22,7 @@ export type V1UndoOutput = typeof V1UndoOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1Undo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1Undo = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UndoInput,
   outputSchema: V1UndoOutput,
   errors: [BadRequest, Forbidden] as const,

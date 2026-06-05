@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    entryValue: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
-    }),
-  );
+export const DeleteGroupAccessListEntryInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  entryValue: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
+  }),
+);
 export type DeleteGroupAccessListEntryInput =
   typeof DeleteGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupAccessListEntryOutput =
   typeof DeleteGroupAccessListEntryOutput.Type;
 
@@ -42,10 +40,8 @@ export type DeleteGroupAccessListEntryOutput =
 - how MongoDB Cloud or the driver using the address behaves, and
 - which protocol (like TCP or UDP) the connection uses.
  */
-export const deleteGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupAccessListEntryInput,
-    outputSchema: DeleteGroupAccessListEntryOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupAccessListEntryInput,
+  outputSchema: DeleteGroupAccessListEntryOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

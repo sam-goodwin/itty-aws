@@ -3,12 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetQuotesQuotePdfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    quote: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  },
-).pipe(
+export const GetQuotesQuotePdfInput = /*@__PURE__*/ Schema.Struct({
+  quote: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/v1/quotes/{quote}/pdf",
@@ -18,7 +16,7 @@ export const GetQuotesQuotePdfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetQuotesQuotePdfInput = typeof GetQuotesQuotePdfInput.Type;
 
 // Output Schema
-export const GetQuotesQuotePdfOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetQuotesQuotePdfOutput = /*@__PURE__*/ Schema.Void;
 export type GetQuotesQuotePdfOutput = typeof GetQuotesQuotePdfOutput.Type;
 
 // The operation
@@ -29,7 +27,7 @@ export type GetQuotesQuotePdfOutput = typeof GetQuotesQuotePdfOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetQuotesQuotePdf = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetQuotesQuotePdf = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetQuotesQuotePdfInput,
   outputSchema: GetQuotesQuotePdfOutput,
 }));

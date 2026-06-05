@@ -23,26 +23,25 @@ export const GeoCatalogsCreateInput = /*@__PURE__*/ Schema.Struct({
 export type GeoCatalogsCreateInput = typeof GeoCatalogsCreateInput.Type;
 
 // Output Schema
-export const GeoCatalogsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GeoCatalogsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GeoCatalogsCreateOutput = typeof GeoCatalogsCreateOutput.Type;
 
 // The operation
@@ -139,23 +138,22 @@ export const GeoCatalogsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: GeoCatalogsGetOutput,
 }));
 // Input Schema
-export const GeoCatalogsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs",
-    }),
-  );
+export const GeoCatalogsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs",
+  }),
+);
 export type GeoCatalogsListByResourceGroupInput =
   typeof GeoCatalogsListByResourceGroupInput.Type;
 
 // Output Schema
-export const GeoCatalogsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const GeoCatalogsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -188,7 +186,8 @@ export const GeoCatalogsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type GeoCatalogsListByResourceGroupOutput =
   typeof GeoCatalogsListByResourceGroupOutput.Type;
 
@@ -200,61 +199,48 @@ export type GeoCatalogsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const GeoCatalogsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GeoCatalogsListByResourceGroupInput,
-    outputSchema: GeoCatalogsListByResourceGroupOutput,
-  }));
+export const GeoCatalogsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GeoCatalogsListByResourceGroupInput,
+  outputSchema: GeoCatalogsListByResourceGroupOutput,
+}));
 // Input Schema
-export const GeoCatalogsListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs",
-    }),
-  );
+export const GeoCatalogsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs",
+  }),
+);
 export type GeoCatalogsListBySubscriptionInput =
   typeof GeoCatalogsListBySubscriptionInput.Type;
 
 // Output Schema
-export const GeoCatalogsListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const GeoCatalogsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GeoCatalogsListBySubscriptionOutput =
   typeof GeoCatalogsListBySubscriptionOutput.Type;
 
@@ -265,11 +251,10 @@ export type GeoCatalogsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GeoCatalogsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GeoCatalogsListBySubscriptionInput,
-    outputSchema: GeoCatalogsListBySubscriptionOutput,
-  }));
+export const GeoCatalogsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GeoCatalogsListBySubscriptionInput,
+  outputSchema: GeoCatalogsListBySubscriptionOutput,
+}));
 // Input Schema
 export const GeoCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -285,26 +270,25 @@ export const GeoCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type GeoCatalogsUpdateInput = typeof GeoCatalogsUpdateInput.Type;
 
 // Output Schema
-export const GeoCatalogsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GeoCatalogsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GeoCatalogsUpdateOutput = typeof GeoCatalogsUpdateOutput.Type;
 
 // The operation

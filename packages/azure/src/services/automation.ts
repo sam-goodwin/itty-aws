@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ActivityGetInput = typeof ActivityGetInput.Type;
 
 // Output Schema
-export const ActivityGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   properties: Schema.optional(
@@ -89,86 +89,84 @@ export type ActivityGetOutput = typeof ActivityGetOutput.Type;
  * @param moduleName - The module name.
  * @param activityName - The name of activity.
  */
-export const ActivityGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActivityGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActivityGetInput,
   outputSchema: ActivityGetOutput,
 }));
 // Input Schema
-export const ActivityListByModuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    moduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
-    }),
-  );
+export const ActivityListByModuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  moduleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
+  }),
+);
 export type ActivityListByModuleInput = typeof ActivityListByModuleInput.Type;
 
 // Output Schema
-export const ActivityListByModuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            definition: Schema.optional(Schema.String),
-            parameterSets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  parameters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        type: Schema.optional(Schema.String),
-                        isMandatory: Schema.optional(Schema.Boolean),
-                        isDynamic: Schema.optional(Schema.Boolean),
-                        position: Schema.optional(Schema.Number),
-                        valueFromPipeline: Schema.optional(Schema.Boolean),
-                        valueFromPipelineByPropertyName: Schema.optional(
-                          Schema.Boolean,
+export const ActivityListByModuleOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          definition: Schema.optional(Schema.String),
+          parameterSets: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                parameters: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.String),
+                      isMandatory: Schema.optional(Schema.Boolean),
+                      isDynamic: Schema.optional(Schema.Boolean),
+                      position: Schema.optional(Schema.Number),
+                      valueFromPipeline: Schema.optional(Schema.Boolean),
+                      valueFromPipelineByPropertyName: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      valueFromRemainingArguments: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      description: Schema.optional(Schema.String),
+                      validationSet: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            memberValue: Schema.optional(Schema.String),
+                          }),
                         ),
-                        valueFromRemainingArguments: Schema.optional(
-                          Schema.Boolean,
-                        ),
-                        description: Schema.optional(Schema.String),
-                        validationSet: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              memberValue: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
+                      ),
+                    }),
                   ),
-                }),
-              ),
+                ),
+              }),
             ),
-            outputTypes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
+          ),
+          outputTypes: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
             ),
-            creationTime: Schema.optional(Schema.String),
-            lastModifiedTime: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+          ),
+          creationTime: Schema.optional(Schema.String),
+          lastModifiedTime: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ActivityListByModuleOutput = typeof ActivityListByModuleOutput.Type;
 
 // The operation
@@ -181,31 +179,30 @@ export type ActivityListByModuleOutput = typeof ActivityListByModuleOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ActivityListByModule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActivityListByModuleInput,
-    outputSchema: ActivityListByModuleOutput,
-  }),
-);
+export const ActivityListByModule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActivityListByModuleInput,
+  outputSchema: ActivityListByModuleOutput,
+}));
 // Input Schema
-export const AgentRegistrationInformationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentRegistrationInformationGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
+  }),
+);
 export type AgentRegistrationInformationGetInput =
   typeof AgentRegistrationInformationGetInput.Type;
 
 // Output Schema
 export const AgentRegistrationInformationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
     keys: Schema.optional(
@@ -228,14 +225,13 @@ export type AgentRegistrationInformationGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AgentRegistrationInformationGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AgentRegistrationInformationGetInput,
-    outputSchema: AgentRegistrationInformationGetOutput,
-  }));
+export const AgentRegistrationInformationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentRegistrationInformationGetInput,
+  outputSchema: AgentRegistrationInformationGetOutput,
+}));
 // Input Schema
 export const AgentRegistrationInformationRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -251,7 +247,7 @@ export type AgentRegistrationInformationRegenerateKeyInput =
 
 // Output Schema
 export const AgentRegistrationInformationRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
     keys: Schema.optional(
@@ -274,30 +270,32 @@ export type AgentRegistrationInformationRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AgentRegistrationInformationRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentRegistrationInformationRegenerateKey = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AgentRegistrationInformationRegenerateKeyInput,
     outputSchema: AgentRegistrationInformationRegenerateKeyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AutomationAccountCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AutomationAccountCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+  }),
+);
 export type AutomationAccountCreateOrUpdateInput =
   typeof AutomationAccountCreateOrUpdateInput.Type;
 
 // Output Schema
 export const AutomationAccountCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -328,30 +326,27 @@ export type AutomationAccountCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutomationAccountCreateOrUpdateInput,
-    outputSchema: AutomationAccountCreateOrUpdateOutput,
-  }));
+export const AutomationAccountCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountCreateOrUpdateInput,
+  outputSchema: AutomationAccountCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AutomationAccountDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-    }),
-  );
+export const AutomationAccountDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+  }),
+);
 export type AutomationAccountDeleteInput =
   typeof AutomationAccountDeleteInput.Type;
 
 // Output Schema
-export const AutomationAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AutomationAccountDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AutomationAccountDeleteOutput =
   typeof AutomationAccountDeleteOutput.Type;
 
@@ -364,48 +359,44 @@ export type AutomationAccountDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountDeleteInput,
-    outputSchema: AutomationAccountDeleteOutput,
+export const AutomationAccountDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountDeleteInput,
+  outputSchema: AutomationAccountDeleteOutput,
+}));
+// Input Schema
+export const AutomationAccountGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
   }),
 );
-// Input Schema
-export const AutomationAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-    }),
-  );
 export type AutomationAccountGetInput = typeof AutomationAccountGetInput.Type;
 
 // Output Schema
-export const AutomationAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutomationAccountGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutomationAccountGetOutput = typeof AutomationAccountGetOutput.Type;
 
 // The operation
@@ -417,61 +408,47 @@ export type AutomationAccountGetOutput = typeof AutomationAccountGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountGetInput,
-    outputSchema: AutomationAccountGetOutput,
+export const AutomationAccountGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountGetInput,
+  outputSchema: AutomationAccountGetOutput,
+}));
+// Input Schema
+export const AutomationAccountListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
   }),
 );
-// Input Schema
-export const AutomationAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
-    }),
-  );
 export type AutomationAccountListInput = typeof AutomationAccountListInput.Type;
 
 // Output Schema
-export const AutomationAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AutomationAccountListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AutomationAccountListOutput =
   typeof AutomationAccountListOutput.Type;
 
@@ -484,15 +461,13 @@ export type AutomationAccountListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AutomationAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountListInput,
-    outputSchema: AutomationAccountListOutput,
-  }),
-);
+export const AutomationAccountList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountListInput,
+  outputSchema: AutomationAccountListOutput,
+}));
 // Input Schema
 export const AutomationAccountListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -507,7 +482,7 @@ export type AutomationAccountListByResourceGroupInput =
 
 // Output Schema
 export const AutomationAccountListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -552,14 +527,15 @@ export type AutomationAccountListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AutomationAccountListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutomationAccountListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AutomationAccountListByResourceGroupInput,
     outputSchema: AutomationAccountListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AutomationAccountListDeletedRunbooksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -575,7 +551,7 @@ export type AutomationAccountListDeletedRunbooksInput =
 
 // Output Schema
 export const AutomationAccountListDeletedRunbooksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -607,48 +583,47 @@ export type AutomationAccountListDeletedRunbooksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountListDeletedRunbooks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutomationAccountListDeletedRunbooks = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AutomationAccountListDeletedRunbooksInput,
     outputSchema: AutomationAccountListDeletedRunbooksOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AutomationAccountUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-    }),
-  );
+export const AutomationAccountUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+  }),
+);
 export type AutomationAccountUpdateInput =
   typeof AutomationAccountUpdateInput.Type;
 
 // Output Schema
-export const AutomationAccountUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutomationAccountUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutomationAccountUpdateOutput =
   typeof AutomationAccountUpdateOutput.Type;
 
@@ -661,50 +636,46 @@ export type AutomationAccountUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountUpdateInput,
-    outputSchema: AutomationAccountUpdateOutput,
+export const AutomationAccountUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountUpdateInput,
+  outputSchema: AutomationAccountUpdateOutput,
+}));
+// Input Schema
+export const CertificateCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
   }),
 );
-// Input Schema
-export const CertificateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-    }),
-  );
 export type CertificateCreateOrUpdateInput =
   typeof CertificateCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CertificateCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CertificateCreateOrUpdateOutput =
   typeof CertificateCreateOrUpdateOutput.Type;
 
@@ -718,22 +689,18 @@ export type CertificateCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateCreateOrUpdateInput,
-    outputSchema: CertificateCreateOrUpdateOutput,
-  }),
-);
+export const CertificateCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateCreateOrUpdateInput,
+  outputSchema: CertificateCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CertificateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
@@ -742,7 +709,7 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CertificateDeleteInput = typeof CertificateDeleteInput.Type;
 
 // Output Schema
-export const CertificateDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CertificateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
 
 // The operation
@@ -755,12 +722,12 @@ export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateDeleteInput,
   outputSchema: CertificateDeleteOutput,
 }));
 // Input Schema
-export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -775,7 +742,7 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CertificateGetInput = typeof CertificateGetInput.Type;
 
 // Output Schema
-export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -806,13 +773,13 @@ export type CertificateGetOutput = typeof CertificateGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateGetInput,
   outputSchema: CertificateGetOutput,
 }));
 // Input Schema
 export const CertificateListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -828,7 +795,7 @@ export type CertificateListByAutomationAccountInput =
 
 // Output Schema
 export const CertificateListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -874,21 +841,20 @@ export type CertificateListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const CertificateListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CertificateListByAutomationAccountInput,
     outputSchema: CertificateListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CertificateUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
@@ -897,26 +863,25 @@ export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CertificateUpdateInput = typeof CertificateUpdateInput.Type;
 
 // Output Schema
-export const CertificateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CertificateUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CertificateUpdateOutput = typeof CertificateUpdateOutput.Type;
 
 // The operation
@@ -929,48 +894,46 @@ export type CertificateUpdateOutput = typeof CertificateUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateUpdateInput,
   outputSchema: CertificateUpdateOutput,
 }));
 // Input Schema
-export const ConnectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-    }),
-  );
+export const ConnectionCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+  }),
+);
 export type ConnectionCreateOrUpdateInput =
   typeof ConnectionCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectionCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionCreateOrUpdateOutput =
   typeof ConnectionCreateOrUpdateOutput.Type;
 
@@ -984,14 +947,12 @@ export type ConnectionCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionCreateOrUpdateInput,
-    outputSchema: ConnectionCreateOrUpdateOutput,
-  }),
-);
+export const ConnectionCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionCreateOrUpdateInput,
+  outputSchema: ConnectionCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1006,7 +967,7 @@ export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionDeleteInput = typeof ConnectionDeleteInput.Type;
 
 // Output Schema
-export const ConnectionDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectionDeleteOutput = typeof ConnectionDeleteOutput.Type;
 
 // The operation
@@ -1019,12 +980,12 @@ export type ConnectionDeleteOutput = typeof ConnectionDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionDeleteInput,
   outputSchema: ConnectionDeleteOutput,
 }));
 // Input Schema
-export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1039,7 +1000,7 @@ export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionGetInput = typeof ConnectionGetInput.Type;
 
 // Output Schema
-export const ConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1070,13 +1031,13 @@ export type ConnectionGetOutput = typeof ConnectionGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionGetInput,
   outputSchema: ConnectionGetOutput,
 }));
 // Input Schema
 export const ConnectionListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1092,7 +1053,7 @@ export type ConnectionListByAutomationAccountInput =
 
 // Output Schema
 export const ConnectionListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1138,49 +1099,46 @@ export type ConnectionListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const ConnectionListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectionListByAutomationAccountInput,
-    outputSchema: ConnectionListByAutomationAccountOutput,
-  }));
+export const ConnectionListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionListByAutomationAccountInput,
+  outputSchema: ConnectionListByAutomationAccountOutput,
+}));
 // Input Schema
-export const ConnectionTypeCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-    }),
-  );
+export const ConnectionTypeCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  connectionTypeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+  }),
+);
 export type ConnectionTypeCreateOrUpdateInput =
   typeof ConnectionTypeCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ConnectionTypeCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectionTypeCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionTypeCreateOrUpdateOutput =
   typeof ConnectionTypeCreateOrUpdateOutput.Type;
 
@@ -1194,30 +1152,27 @@ export type ConnectionTypeCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
  */
-export const ConnectionTypeCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectionTypeCreateOrUpdateInput,
-    outputSchema: ConnectionTypeCreateOrUpdateOutput,
-  }));
+export const ConnectionTypeCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionTypeCreateOrUpdateInput,
+  outputSchema: ConnectionTypeCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConnectionTypeDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-    }),
-  );
+export const ConnectionTypeDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  connectionTypeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+  }),
+);
 export type ConnectionTypeDeleteInput = typeof ConnectionTypeDeleteInput.Type;
 
 // Output Schema
-export const ConnectionTypeDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectionTypeDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectionTypeDeleteOutput = typeof ConnectionTypeDeleteOutput.Type;
 
 // The operation
@@ -1230,22 +1185,18 @@ export type ConnectionTypeDeleteOutput = typeof ConnectionTypeDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
  */
-export const ConnectionTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionTypeDeleteInput,
-    outputSchema: ConnectionTypeDeleteOutput,
-  }),
-);
+export const ConnectionTypeDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionTypeDeleteInput,
+  outputSchema: ConnectionTypeDeleteOutput,
+}));
 // Input Schema
-export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConnectionTypeGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  connectionTypeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
@@ -1254,26 +1205,25 @@ export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConnectionTypeGetInput = typeof ConnectionTypeGetInput.Type;
 
 // Output Schema
-export const ConnectionTypeGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectionTypeGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionTypeGetOutput = typeof ConnectionTypeGetOutput.Type;
 
 // The operation
@@ -1286,13 +1236,13 @@ export type ConnectionTypeGetOutput = typeof ConnectionTypeGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
  */
-export const ConnectionTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionTypeGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionTypeGetInput,
   outputSchema: ConnectionTypeGetOutput,
 }));
 // Input Schema
 export const ConnectionTypeListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1308,7 +1258,7 @@ export type ConnectionTypeListByAutomationAccountInput =
 
 // Output Schema
 export const ConnectionTypeListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1354,13 +1304,14 @@ export type ConnectionTypeListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const ConnectionTypeListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionTypeListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConnectionTypeListByAutomationAccountInput,
     outputSchema: ConnectionTypeListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1375,27 +1326,25 @@ export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionUpdateInput = typeof ConnectionUpdateInput.Type;
 
 // Output Schema
-export const ConnectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ConnectionUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionUpdateOutput = typeof ConnectionUpdateOutput.Type;
 
 // The operation
@@ -1408,40 +1357,38 @@ export type ConnectionUpdateOutput = typeof ConnectionUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionUpdateInput,
   outputSchema: ConnectionUpdateOutput,
 }));
 // Input Schema
-export const ConvertGraphRunbookContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
-    }),
-  );
+export const ConvertGraphRunbookContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
+  }),
+);
 export type ConvertGraphRunbookContentInput =
   typeof ConvertGraphRunbookContentInput.Type;
 
 // Output Schema
-export const ConvertGraphRunbookContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rawContent: Schema.optional(
-      Schema.Struct({
-        schemaVersion: Schema.optional(Schema.String),
-        runbookDefinition: Schema.optional(Schema.String),
-        runbookType: Schema.optional(
-          Schema.Literals(["GraphPowerShell", "GraphPowerShellWorkflow"]),
-        ),
-      }),
-    ),
-    graphRunbookJson: Schema.optional(Schema.NullOr(Schema.String)),
-  });
+export const ConvertGraphRunbookContentOutput = /*@__PURE__*/ Schema.Struct({
+  rawContent: Schema.optional(
+    Schema.Struct({
+      schemaVersion: Schema.optional(Schema.String),
+      runbookDefinition: Schema.optional(Schema.String),
+      runbookType: Schema.optional(
+        Schema.Literals(["GraphPowerShell", "GraphPowerShellWorkflow"]),
+      ),
+    }),
+  ),
+  graphRunbookJson: Schema.optional(Schema.NullOr(Schema.String)),
+});
 export type ConvertGraphRunbookContentOutput =
   typeof ConvertGraphRunbookContentOutput.Type;
 
@@ -1454,50 +1401,46 @@ export type ConvertGraphRunbookContentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const convertGraphRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConvertGraphRunbookContentInput,
-    outputSchema: ConvertGraphRunbookContentOutput,
+export const convertGraphRunbookContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConvertGraphRunbookContentInput,
+  outputSchema: ConvertGraphRunbookContentOutput,
+}));
+// Input Schema
+export const CredentialCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  credentialName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
   }),
 );
-// Input Schema
-export const CredentialCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    credentialName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
-    }),
-  );
 export type CredentialCreateOrUpdateInput =
   typeof CredentialCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CredentialCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CredentialCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CredentialCreateOrUpdateOutput =
   typeof CredentialCreateOrUpdateOutput.Type;
 
@@ -1511,14 +1454,12 @@ export type CredentialCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialCreateOrUpdateInput,
-    outputSchema: CredentialCreateOrUpdateOutput,
-  }),
-);
+export const CredentialCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialCreateOrUpdateInput,
+  outputSchema: CredentialCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1533,7 +1474,7 @@ export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CredentialDeleteInput = typeof CredentialDeleteInput.Type;
 
 // Output Schema
-export const CredentialDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CredentialDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CredentialDeleteOutput = typeof CredentialDeleteOutput.Type;
 
 // The operation
@@ -1546,12 +1487,12 @@ export type CredentialDeleteOutput = typeof CredentialDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialDeleteInput,
   outputSchema: CredentialDeleteOutput,
 }));
 // Input Schema
-export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1566,7 +1507,7 @@ export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CredentialGetInput = typeof CredentialGetInput.Type;
 
 // Output Schema
-export const CredentialGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1597,13 +1538,13 @@ export type CredentialGetOutput = typeof CredentialGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialGetInput,
   outputSchema: CredentialGetOutput,
 }));
 // Input Schema
 export const CredentialListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1619,7 +1560,7 @@ export type CredentialListByAutomationAccountInput =
 
 // Output Schema
 export const CredentialListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1665,13 +1606,12 @@ export type CredentialListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const CredentialListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CredentialListByAutomationAccountInput,
-    outputSchema: CredentialListByAutomationAccountOutput,
-  }));
+export const CredentialListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialListByAutomationAccountInput,
+  outputSchema: CredentialListByAutomationAccountOutput,
+}));
 // Input Schema
-export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1686,27 +1626,25 @@ export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CredentialUpdateInput = typeof CredentialUpdateInput.Type;
 
 // Output Schema
-export const CredentialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CredentialUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CredentialUpdateOutput = typeof CredentialUpdateOutput.Type;
 
 // The operation
@@ -1719,13 +1657,13 @@ export type CredentialUpdateOutput = typeof CredentialUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialUpdateInput,
   outputSchema: CredentialUpdateOutput,
 }));
 // Input Schema
 export const DeletedAutomationAccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1739,7 +1677,7 @@ export type DeletedAutomationAccountsListBySubscriptionInput =
 
 // Output Schema
 export const DeletedAutomationAccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1770,30 +1708,29 @@ export type DeletedAutomationAccountsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const deletedAutomationAccountsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedAutomationAccountsListBySubscriptionInput,
     outputSchema: DeletedAutomationAccountsListBySubscriptionOutput,
   }));
 // Input Schema
-export const DscConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-    }),
-  );
+export const DscConfigurationCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+  }),
+);
 export type DscConfigurationCreateOrUpdateInput =
   typeof DscConfigurationCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DscConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscConfigurationCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1811,7 +1748,8 @@ export const DscConfigurationCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type DscConfigurationCreateOrUpdateOutput =
   typeof DscConfigurationCreateOrUpdateOutput.Type;
 
@@ -1825,31 +1763,28 @@ export type DscConfigurationCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DscConfigurationCreateOrUpdateInput,
-    outputSchema: DscConfigurationCreateOrUpdateOutput,
-  }));
+export const DscConfigurationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationCreateOrUpdateInput,
+  outputSchema: DscConfigurationCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DscConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-    }),
-  );
+export const DscConfigurationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+  }),
+);
 export type DscConfigurationDeleteInput =
   typeof DscConfigurationDeleteInput.Type;
 
 // Output Schema
-export const DscConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DscConfigurationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DscConfigurationDeleteOutput =
   typeof DscConfigurationDeleteOutput.Type;
 
@@ -1863,49 +1798,45 @@ export type DscConfigurationDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationDeleteInput,
-    outputSchema: DscConfigurationDeleteOutput,
+export const DscConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationDeleteInput,
+  outputSchema: DscConfigurationDeleteOutput,
+}));
+// Input Schema
+export const DscConfigurationGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
   }),
 );
-// Input Schema
-export const DscConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-    }),
-  );
 export type DscConfigurationGetInput = typeof DscConfigurationGetInput.Type;
 
 // Output Schema
-export const DscConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DscConfigurationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DscConfigurationGetOutput = typeof DscConfigurationGetOutput.Type;
 
 // The operation
@@ -1918,30 +1849,28 @@ export type DscConfigurationGetOutput = typeof DscConfigurationGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscConfigurationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscConfigurationGetInput,
   outputSchema: DscConfigurationGetOutput,
 }));
 // Input Schema
-export const DscConfigurationGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
-    }),
-  );
+export const DscConfigurationGetContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
+  }),
+);
 export type DscConfigurationGetContentInput =
   typeof DscConfigurationGetContentInput.Type;
 
 // Output Schema
-export const DscConfigurationGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const DscConfigurationGetContentOutput = /*@__PURE__*/ Schema.String;
 export type DscConfigurationGetContentOutput =
   typeof DscConfigurationGetContentOutput.Type;
 
@@ -1955,15 +1884,13 @@ export type DscConfigurationGetContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationGetContentInput,
-    outputSchema: DscConfigurationGetContentOutput,
-  }),
-);
+export const DscConfigurationGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationGetContentInput,
+  outputSchema: DscConfigurationGetContentOutput,
+}));
 // Input Schema
 export const DscConfigurationListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1983,7 +1910,7 @@ export type DscConfigurationListByAutomationAccountInput =
 
 // Output Schema
 export const DscConfigurationListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2036,49 +1963,48 @@ export type DscConfigurationListByAutomationAccountOutput =
  * @param $top - The number of rows to take.
  * @param $inlinecount - Return total rows.
  */
-export const DscConfigurationListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscConfigurationListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DscConfigurationListByAutomationAccountInput,
     outputSchema: DscConfigurationListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DscConfigurationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-    }),
-  );
+export const DscConfigurationUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+  }),
+);
 export type DscConfigurationUpdateInput =
   typeof DscConfigurationUpdateInput.Type;
 
 // Output Schema
-export const DscConfigurationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DscConfigurationUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DscConfigurationUpdateOutput =
   typeof DscConfigurationUpdateOutput.Type;
 
@@ -2092,15 +2018,13 @@ export type DscConfigurationUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationUpdateInput,
-    outputSchema: DscConfigurationUpdateOutput,
-  }),
-);
+export const DscConfigurationUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationUpdateInput,
+  outputSchema: DscConfigurationUpdateOutput,
+}));
 // Input Schema
 export const DscNodeConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2117,7 +2041,7 @@ export type DscNodeConfigurationCreateOrUpdateInput =
 
 // Output Schema
 export const DscNodeConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DscNodeConfigurationCreateOrUpdateOutput =
   typeof DscNodeConfigurationCreateOrUpdateOutput.Type;
 
@@ -2131,31 +2055,30 @@ export type DscNodeConfigurationCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
-export const DscNodeConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeConfigurationCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DscNodeConfigurationCreateOrUpdateInput,
     outputSchema: DscNodeConfigurationCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DscNodeConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
-    }),
-  );
+export const DscNodeConfigurationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  nodeConfigurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+  }),
+);
 export type DscNodeConfigurationDeleteInput =
   typeof DscNodeConfigurationDeleteInput.Type;
 
 // Output Schema
-export const DscNodeConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DscNodeConfigurationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DscNodeConfigurationDeleteOutput =
   typeof DscNodeConfigurationDeleteOutput.Type;
 
@@ -2169,50 +2092,46 @@ export type DscNodeConfigurationDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
-export const DscNodeConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscNodeConfigurationDeleteInput,
-    outputSchema: DscNodeConfigurationDeleteOutput,
+export const DscNodeConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscNodeConfigurationDeleteInput,
+  outputSchema: DscNodeConfigurationDeleteOutput,
+}));
+// Input Schema
+export const DscNodeConfigurationGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  nodeConfigurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
   }),
 );
-// Input Schema
-export const DscNodeConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
-    }),
-  );
 export type DscNodeConfigurationGetInput =
   typeof DscNodeConfigurationGetInput.Type;
 
 // Output Schema
-export const DscNodeConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DscNodeConfigurationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DscNodeConfigurationGetOutput =
   typeof DscNodeConfigurationGetOutput.Type;
 
@@ -2226,15 +2145,13 @@ export type DscNodeConfigurationGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
-export const DscNodeConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscNodeConfigurationGetInput,
-    outputSchema: DscNodeConfigurationGetOutput,
-  }),
-);
+export const DscNodeConfigurationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscNodeConfigurationGetInput,
+  outputSchema: DscNodeConfigurationGetOutput,
+}));
 // Input Schema
 export const DscNodeConfigurationListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2254,7 +2171,7 @@ export type DscNodeConfigurationListByAutomationAccountInput =
 
 // Output Schema
 export const DscNodeConfigurationListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2308,12 +2225,12 @@ export type DscNodeConfigurationListByAutomationAccountOutput =
  * @param $inlinecount - Return total rows.
  */
 export const DscNodeConfigurationListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscNodeConfigurationListByAutomationAccountInput,
     outputSchema: DscNodeConfigurationListByAutomationAccountOutput,
   }));
 // Input Schema
-export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2328,7 +2245,7 @@ export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DscNodeDeleteInput = typeof DscNodeDeleteInput.Type;
 
 // Output Schema
-export const DscNodeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DscNodeDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DscNodeDeleteOutput = typeof DscNodeDeleteOutput.Type;
 
 // The operation
@@ -2341,12 +2258,12 @@ export type DscNodeDeleteOutput = typeof DscNodeDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeDeleteInput,
   outputSchema: DscNodeDeleteOutput,
 }));
 // Input Schema
-export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2361,7 +2278,7 @@ export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DscNodeGetInput = typeof DscNodeGetInput.Type;
 
 // Output Schema
-export const DscNodeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2392,33 +2309,32 @@ export type DscNodeGetOutput = typeof DscNodeGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeGetInput,
   outputSchema: DscNodeGetOutput,
 }));
 // Input Schema
-export const DscNodeListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skip: Schema.optional(Schema.Number),
-    $top: Schema.optional(Schema.Number),
-    $inlinecount: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
-    }),
-  );
+export const DscNodeListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skip: Schema.optional(Schema.Number),
+  $top: Schema.optional(Schema.Number),
+  $inlinecount: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
+  }),
+);
 export type DscNodeListByAutomationAccountInput =
   typeof DscNodeListByAutomationAccountInput.Type;
 
 // Output Schema
-export const DscNodeListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2454,7 +2370,8 @@ export const DscNodeListByAutomationAccountOutput =
     ),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
-  });
+  },
+);
 export type DscNodeListByAutomationAccountOutput =
   typeof DscNodeListByAutomationAccountOutput.Type;
 
@@ -2471,13 +2388,12 @@ export type DscNodeListByAutomationAccountOutput =
  * @param $top - The number of rows to take.
  * @param $inlinecount - Return total rows.
  */
-export const DscNodeListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DscNodeListByAutomationAccountInput,
-    outputSchema: DscNodeListByAutomationAccountOutput,
-  }));
+export const DscNodeListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscNodeListByAutomationAccountInput,
+  outputSchema: DscNodeListByAutomationAccountOutput,
+}));
 // Input Schema
-export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2492,7 +2408,7 @@ export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DscNodeUpdateInput = typeof DscNodeUpdateInput.Type;
 
 // Output Schema
-export const DscNodeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2523,12 +2439,12 @@ export type DscNodeUpdateOutput = typeof DscNodeUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeUpdateInput,
   outputSchema: DscNodeUpdateOutput,
 }));
 // Input Schema
-export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FieldsListByTypeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2544,19 +2460,17 @@ export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FieldsListByTypeInput = typeof FieldsListByTypeInput.Type;
 
 // Output Schema
-export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const FieldsListByTypeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FieldsListByTypeOutput = typeof FieldsListByTypeOutput.Type;
 
 // The operation
@@ -2570,30 +2484,29 @@ export type FieldsListByTypeOutput = typeof FieldsListByTypeOutput.Type;
  * @param moduleName - The module name.
  * @param typeName - The name of type.
  */
-export const FieldsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FieldsListByType = /*@__PURE__*/ API.make(() => ({
   inputSchema: FieldsListByTypeInput,
   outputSchema: FieldsListByTypeOutput,
 }));
 // Input Schema
-export const HybridRunbookWorkerGroupCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-    }),
-  );
+export const HybridRunbookWorkerGroupCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+  }),
+);
 export type HybridRunbookWorkerGroupCreateInput =
   typeof HybridRunbookWorkerGroupCreateInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkerGroupCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HybridRunbookWorkerGroupCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2611,7 +2524,8 @@ export const HybridRunbookWorkerGroupCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type HybridRunbookWorkerGroupCreateOutput =
   typeof HybridRunbookWorkerGroupCreateOutput.Type;
 
@@ -2625,31 +2539,28 @@ export type HybridRunbookWorkerGroupCreateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
-export const HybridRunbookWorkerGroupCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridRunbookWorkerGroupCreateInput,
-    outputSchema: HybridRunbookWorkerGroupCreateOutput,
-  }));
+export const HybridRunbookWorkerGroupCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkerGroupCreateInput,
+  outputSchema: HybridRunbookWorkerGroupCreateOutput,
+}));
 // Input Schema
-export const HybridRunbookWorkerGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-    }),
-  );
+export const HybridRunbookWorkerGroupDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+  }),
+);
 export type HybridRunbookWorkerGroupDeleteInput =
   typeof HybridRunbookWorkerGroupDeleteInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkerGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HybridRunbookWorkerGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HybridRunbookWorkerGroupDeleteOutput =
   typeof HybridRunbookWorkerGroupDeleteOutput.Type;
 
@@ -2663,49 +2574,46 @@ export type HybridRunbookWorkerGroupDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
-export const HybridRunbookWorkerGroupDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridRunbookWorkerGroupDeleteInput,
-    outputSchema: HybridRunbookWorkerGroupDeleteOutput,
-  }));
+export const HybridRunbookWorkerGroupDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkerGroupDeleteInput,
+  outputSchema: HybridRunbookWorkerGroupDeleteOutput,
+}));
 // Input Schema
-export const HybridRunbookWorkerGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-    }),
-  );
+export const HybridRunbookWorkerGroupGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+  }),
+);
 export type HybridRunbookWorkerGroupGetInput =
   typeof HybridRunbookWorkerGroupGetInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkerGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridRunbookWorkerGroupGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridRunbookWorkerGroupGetOutput =
   typeof HybridRunbookWorkerGroupGetOutput.Type;
 
@@ -2719,15 +2627,13 @@ export type HybridRunbookWorkerGroupGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
-export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkerGroupGetInput,
-    outputSchema: HybridRunbookWorkerGroupGetOutput,
-  }),
-);
+export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkerGroupGetInput,
+  outputSchema: HybridRunbookWorkerGroupGetOutput,
+}));
 // Input Schema
 export const HybridRunbookWorkerGroupListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2744,7 +2650,7 @@ export type HybridRunbookWorkerGroupListByAutomationAccountInput =
 
 // Output Schema
 export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2792,30 +2698,29 @@ export type HybridRunbookWorkerGroupListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const HybridRunbookWorkerGroupListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkerGroupListByAutomationAccountInput,
     outputSchema: HybridRunbookWorkerGroupListByAutomationAccountOutput,
   }));
 // Input Schema
-export const HybridRunbookWorkerGroupUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-    }),
-  );
+export const HybridRunbookWorkerGroupUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+  }),
+);
 export type HybridRunbookWorkerGroupUpdateInput =
   typeof HybridRunbookWorkerGroupUpdateInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkerGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HybridRunbookWorkerGroupUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2833,7 +2738,8 @@ export const HybridRunbookWorkerGroupUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type HybridRunbookWorkerGroupUpdateOutput =
   typeof HybridRunbookWorkerGroupUpdateOutput.Type;
 
@@ -2847,50 +2753,47 @@ export type HybridRunbookWorkerGroupUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
-export const HybridRunbookWorkerGroupUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridRunbookWorkerGroupUpdateInput,
-    outputSchema: HybridRunbookWorkerGroupUpdateOutput,
-  }));
+export const HybridRunbookWorkerGroupUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkerGroupUpdateInput,
+  outputSchema: HybridRunbookWorkerGroupUpdateOutput,
+}));
 // Input Schema
-export const HybridRunbookWorkersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-    }),
-  );
+export const HybridRunbookWorkersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+  }),
+);
 export type HybridRunbookWorkersCreateInput =
   typeof HybridRunbookWorkersCreateInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridRunbookWorkersCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridRunbookWorkersCreateOutput =
   typeof HybridRunbookWorkersCreateOutput.Type;
 
@@ -2905,33 +2808,29 @@ export type HybridRunbookWorkersCreateOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersCreateInput,
-    outputSchema: HybridRunbookWorkersCreateOutput,
+export const HybridRunbookWorkersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersCreateInput,
+  outputSchema: HybridRunbookWorkersCreateOutput,
+}));
+// Input Schema
+export const HybridRunbookWorkersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
   }),
 );
-// Input Schema
-export const HybridRunbookWorkersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-    }),
-  );
 export type HybridRunbookWorkersDeleteInput =
   typeof HybridRunbookWorkersDeleteInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HybridRunbookWorkersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HybridRunbookWorkersDeleteOutput =
   typeof HybridRunbookWorkersDeleteOutput.Type;
 
@@ -2946,51 +2845,47 @@ export type HybridRunbookWorkersDeleteOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersDeleteInput,
-    outputSchema: HybridRunbookWorkersDeleteOutput,
+export const HybridRunbookWorkersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersDeleteInput,
+  outputSchema: HybridRunbookWorkersDeleteOutput,
+}));
+// Input Schema
+export const HybridRunbookWorkersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
   }),
 );
-// Input Schema
-export const HybridRunbookWorkersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-    }),
-  );
 export type HybridRunbookWorkersGetInput =
   typeof HybridRunbookWorkersGetInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridRunbookWorkersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridRunbookWorkersGetOutput =
   typeof HybridRunbookWorkersGetOutput.Type;
 
@@ -3005,15 +2900,13 @@ export type HybridRunbookWorkersGetOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersGetInput,
-    outputSchema: HybridRunbookWorkersGetOutput,
-  }),
-);
+export const HybridRunbookWorkersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersGetInput,
+  outputSchema: HybridRunbookWorkersGetOutput,
+}));
 // Input Schema
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3031,7 +2924,7 @@ export type HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
 
 // Output Schema
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3080,31 +2973,29 @@ export type HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkersListByHybridRunbookWorkerGroupInput,
     outputSchema: HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput,
   }));
 // Input Schema
-export const HybridRunbookWorkersMoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
-    }),
-  );
+export const HybridRunbookWorkersMoveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
+  }),
+);
 export type HybridRunbookWorkersMoveInput =
   typeof HybridRunbookWorkersMoveInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkersMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HybridRunbookWorkersMoveOutput = /*@__PURE__*/ Schema.Void;
 export type HybridRunbookWorkersMoveOutput =
   typeof HybridRunbookWorkersMoveOutput.Type;
 
@@ -3119,51 +3010,47 @@ export type HybridRunbookWorkersMoveOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersMoveInput,
-    outputSchema: HybridRunbookWorkersMoveOutput,
+export const HybridRunbookWorkersMove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersMoveInput,
+  outputSchema: HybridRunbookWorkersMoveOutput,
+}));
+// Input Schema
+export const HybridRunbookWorkersPatchInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
+  hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
   }),
 );
-// Input Schema
-export const HybridRunbookWorkersPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-    }),
-  );
 export type HybridRunbookWorkersPatchInput =
   typeof HybridRunbookWorkersPatchInput.Type;
 
 // Output Schema
-export const HybridRunbookWorkersPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridRunbookWorkersPatchOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridRunbookWorkersPatchOutput =
   typeof HybridRunbookWorkersPatchOutput.Type;
 
@@ -3178,14 +3065,12 @@ export type HybridRunbookWorkersPatchOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersPatchInput,
-    outputSchema: HybridRunbookWorkersPatchOutput,
-  }),
-);
+export const HybridRunbookWorkersPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersPatchInput,
+  outputSchema: HybridRunbookWorkersPatchOutput,
+}));
 // Input Schema
-export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3200,7 +3085,7 @@ export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobCreateInput = typeof JobCreateInput.Type;
 
 // Output Schema
-export const JobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3232,12 +3117,12 @@ export type JobCreateOutput = typeof JobCreateOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobCreateInput,
   outputSchema: JobCreateOutput,
 }));
 // Input Schema
-export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3252,7 +3137,7 @@ export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobGetInput = typeof JobGetInput.Type;
 
 // Output Schema
-export const JobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3284,29 +3169,27 @@ export type JobGetOutput = typeof JobGetOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobGetInput,
   outputSchema: JobGetOutput,
 }));
 // Input Schema
-export const JobGetRunbookContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
-    }),
-  );
+export const JobGetRunbookContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
+  }),
+);
 export type JobGetRunbookContentInput = typeof JobGetRunbookContentInput.Type;
 
 // Output Schema
-export const JobGetRunbookContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const JobGetRunbookContentOutput = /*@__PURE__*/ Schema.String;
 export type JobGetRunbookContentOutput = typeof JobGetRunbookContentOutput.Type;
 
 // The operation
@@ -3320,65 +3203,51 @@ export type JobGetRunbookContentOutput = typeof JobGetRunbookContentOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobGetRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobGetRunbookContentInput,
-    outputSchema: JobGetRunbookContentOutput,
+export const JobGetRunbookContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobGetRunbookContentInput,
+  outputSchema: JobGetRunbookContentOutput,
+}));
+// Input Schema
+export const JobListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
   }),
 );
-// Input Schema
-export const JobListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
-    }),
-  );
 export type JobListByAutomationAccountInput =
   typeof JobListByAutomationAccountInput.Type;
 
 // Output Schema
-export const JobListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const JobListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type JobListByAutomationAccountOutput =
   typeof JobListByAutomationAccountOutput.Type;
 
@@ -3393,14 +3262,12 @@ export type JobListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobListByAutomationAccountInput,
-    outputSchema: JobListByAutomationAccountOutput,
-  }),
-);
+export const JobListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobListByAutomationAccountInput,
+  outputSchema: JobListByAutomationAccountOutput,
+}));
 // Input Schema
-export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3415,7 +3282,7 @@ export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobResumeInput = typeof JobResumeInput.Type;
 
 // Output Schema
-export const JobResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const JobResumeOutput = /*@__PURE__*/ Schema.Void;
 export type JobResumeOutput = typeof JobResumeOutput.Type;
 
 // The operation
@@ -3429,20 +3296,18 @@ export type JobResumeOutput = typeof JobResumeOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobResumeInput,
   outputSchema: JobResumeOutput,
 }));
 // Input Schema
-export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobScheduleId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const JobScheduleCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobScheduleId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
@@ -3451,26 +3316,25 @@ export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type JobScheduleCreateInput = typeof JobScheduleCreateInput.Type;
 
 // Output Schema
-export const JobScheduleCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const JobScheduleCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type JobScheduleCreateOutput = typeof JobScheduleCreateOutput.Type;
 
 // The operation
@@ -3483,20 +3347,18 @@ export type JobScheduleCreateOutput = typeof JobScheduleCreateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleCreateInput,
   outputSchema: JobScheduleCreateOutput,
 }));
 // Input Schema
-export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobScheduleId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const JobScheduleDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobScheduleId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
@@ -3505,7 +3367,7 @@ export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type JobScheduleDeleteInput = typeof JobScheduleDeleteInput.Type;
 
 // Output Schema
-export const JobScheduleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const JobScheduleDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type JobScheduleDeleteOutput = typeof JobScheduleDeleteOutput.Type;
 
 // The operation
@@ -3518,12 +3380,12 @@ export type JobScheduleDeleteOutput = typeof JobScheduleDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleDeleteInput,
   outputSchema: JobScheduleDeleteOutput,
 }));
 // Input Schema
-export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobScheduleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3538,7 +3400,7 @@ export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobScheduleGetInput = typeof JobScheduleGetInput.Type;
 
 // Output Schema
-export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobScheduleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3569,13 +3431,13 @@ export type JobScheduleGetOutput = typeof JobScheduleGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleGetInput,
   outputSchema: JobScheduleGetOutput,
 }));
 // Input Schema
 export const JobScheduleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3592,7 +3454,7 @@ export type JobScheduleListByAutomationAccountInput =
 
 // Output Schema
 export const JobScheduleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3639,13 +3501,14 @@ export type JobScheduleListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  */
-export const JobScheduleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: JobScheduleListByAutomationAccountInput,
     outputSchema: JobScheduleListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3660,7 +3523,7 @@ export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobStopInput = typeof JobStopInput.Type;
 
 // Output Schema
-export const JobStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const JobStopOutput = /*@__PURE__*/ Schema.Void;
 export type JobStopOutput = typeof JobStopOutput.Type;
 
 // The operation
@@ -3674,12 +3537,12 @@ export type JobStopOutput = typeof JobStopOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStopInput,
   outputSchema: JobStopOutput,
 }));
 // Input Schema
-export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStreamGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3695,7 +3558,7 @@ export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobStreamGetInput = typeof JobStreamGetInput.Type;
 
 // Output Schema
-export const JobStreamGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStreamGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   properties: Schema.optional(
     Schema.Struct({
@@ -3732,59 +3595,55 @@ export type JobStreamGetOutput = typeof JobStreamGetOutput.Type;
  * @param jobStreamId - The job stream id.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStreamGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStreamGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStreamGetInput,
   outputSchema: JobStreamGetOutput,
 }));
 // Input Schema
-export const JobStreamListByJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
-    }),
-  );
+export const JobStreamListByJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
+  }),
+);
 export type JobStreamListByJobInput = typeof JobStreamListByJobInput.Type;
 
 // Output Schema
-export const JobStreamListByJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            jobStreamId: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-            streamType: Schema.optional(
-              Schema.Literals([
-                "Progress",
-                "Output",
-                "Warning",
-                "Error",
-                "Debug",
-                "Verbose",
-                "Any",
-              ]),
-            ),
-            streamText: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.NullOr(Schema.String)),
-            value: Schema.optional(
-              Schema.Record(Schema.String, Schema.Unknown),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const JobStreamListByJobOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          jobStreamId: Schema.optional(Schema.String),
+          time: Schema.optional(Schema.String),
+          streamType: Schema.optional(
+            Schema.Literals([
+              "Progress",
+              "Output",
+              "Warning",
+              "Error",
+              "Debug",
+              "Verbose",
+              "Any",
+            ]),
+          ),
+          streamText: Schema.optional(Schema.String),
+          summary: Schema.optional(Schema.NullOr(Schema.String)),
+          value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type JobStreamListByJobOutput = typeof JobStreamListByJobOutput.Type;
 
 // The operation
@@ -3799,12 +3658,12 @@ export type JobStreamListByJobOutput = typeof JobStreamListByJobOutput.Type;
  * @param $filter - The filter to apply on the operation.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStreamListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStreamListByJob = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStreamListByJobInput,
   outputSchema: JobStreamListByJobOutput,
 }));
 // Input Schema
-export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobSuspendInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3819,7 +3678,7 @@ export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobSuspendInput = typeof JobSuspendInput.Type;
 
 // Output Schema
-export const JobSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const JobSuspendOutput = /*@__PURE__*/ Schema.Void;
 export type JobSuspendOutput = typeof JobSuspendOutput.Type;
 
 // The operation
@@ -3833,39 +3692,37 @@ export type JobSuspendOutput = typeof JobSuspendOutput.Type;
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobSuspendInput,
   outputSchema: JobSuspendOutput,
 }));
 // Input Schema
-export const KeysListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
-    }),
-  );
+export const KeysListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
+  }),
+);
 export type KeysListByAutomationAccountInput =
   typeof KeysListByAutomationAccountInput.Type;
 
 // Output Schema
-export const KeysListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keys: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          KeyName: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
-          Permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
-          Value: Schema.optional(Schema.String),
-        }),
-      ),
+export const KeysListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct({
+  keys: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        KeyName: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+        Permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
+        Value: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type KeysListByAutomationAccountOutput =
   typeof KeysListByAutomationAccountOutput.Type;
 
@@ -3878,32 +3735,28 @@ export type KeysListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const KeysListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeysListByAutomationAccountInput,
-    outputSchema: KeysListByAutomationAccountOutput,
+export const KeysListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeysListByAutomationAccountInput,
+  outputSchema: KeysListByAutomationAccountOutput,
+}));
+// Input Schema
+export const LinkedWorkspaceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
   }),
 );
-// Input Schema
-export const LinkedWorkspaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
-    }),
-  );
 export type LinkedWorkspaceGetInput = typeof LinkedWorkspaceGetInput.Type;
 
 // Output Schema
-export const LinkedWorkspaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const LinkedWorkspaceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type LinkedWorkspaceGetOutput = typeof LinkedWorkspaceGetOutput.Type;
 
 // The operation
@@ -3915,47 +3768,45 @@ export type LinkedWorkspaceGetOutput = typeof LinkedWorkspaceGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const LinkedWorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedWorkspaceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedWorkspaceGetInput,
   outputSchema: LinkedWorkspaceGetOutput,
 }));
 // Input Schema
-export const ModuleCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    moduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-    }),
-  );
+export const ModuleCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  moduleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+  }),
+);
 export type ModuleCreateOrUpdateInput = typeof ModuleCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ModuleCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ModuleCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ModuleCreateOrUpdateOutput = typeof ModuleCreateOrUpdateOutput.Type;
 
 // The operation
@@ -3968,14 +3819,12 @@ export type ModuleCreateOrUpdateOutput = typeof ModuleCreateOrUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ModuleCreateOrUpdateInput,
-    outputSchema: ModuleCreateOrUpdateOutput,
-  }),
-);
+export const ModuleCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModuleCreateOrUpdateInput,
+  outputSchema: ModuleCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3990,7 +3839,7 @@ export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModuleDeleteInput = typeof ModuleDeleteInput.Type;
 
 // Output Schema
-export const ModuleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ModuleDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ModuleDeleteOutput = typeof ModuleDeleteOutput.Type;
 
 // The operation
@@ -4003,12 +3852,12 @@ export type ModuleDeleteOutput = typeof ModuleDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleDeleteInput,
   outputSchema: ModuleDeleteOutput,
 }));
 // Input Schema
-export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4023,7 +3872,7 @@ export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModuleGetInput = typeof ModuleGetInput.Type;
 
 // Output Schema
-export const ModuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4054,62 +3903,50 @@ export type ModuleGetOutput = typeof ModuleGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleGetInput,
   outputSchema: ModuleGetOutput,
 }));
 // Input Schema
-export const ModuleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
-    }),
-  );
+export const ModuleListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
+  }),
+);
 export type ModuleListByAutomationAccountInput =
   typeof ModuleListByAutomationAccountInput.Type;
 
 // Output Schema
-export const ModuleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ModuleListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ModuleListByAutomationAccountOutput =
   typeof ModuleListByAutomationAccountOutput.Type;
 
@@ -4122,13 +3959,12 @@ export type ModuleListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const ModuleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ModuleListByAutomationAccountInput,
-    outputSchema: ModuleListByAutomationAccountOutput,
-  }));
+export const ModuleListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModuleListByAutomationAccountInput,
+  outputSchema: ModuleListByAutomationAccountOutput,
+}));
 // Input Schema
-export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4143,7 +3979,7 @@ export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModuleUpdateInput = typeof ModuleUpdateInput.Type;
 
 // Output Schema
-export const ModuleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4174,46 +4010,44 @@ export type ModuleUpdateOutput = typeof ModuleUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleUpdateInput,
   outputSchema: ModuleUpdateOutput,
 }));
 // Input Schema
-export const NodeCountInformationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    countType: Schema.Literals(["status", "nodeconfiguration"]).pipe(
-      T.PathParam(),
-    ),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
-    }),
-  );
+export const NodeCountInformationGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  countType: Schema.Literals(["status", "nodeconfiguration"]).pipe(
+    T.PathParam(),
+  ),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
+  }),
+);
 export type NodeCountInformationGetInput =
   typeof NodeCountInformationGetInput.Type;
 
 // Output Schema
-export const NodeCountInformationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+export const NodeCountInformationGetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            count: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
     ),
-    totalCount: Schema.optional(Schema.Number),
-  });
+  ),
+  totalCount: Schema.optional(Schema.Number),
+});
 export type NodeCountInformationGetOutput =
   typeof NodeCountInformationGetOutput.Type;
 
@@ -4227,14 +4061,12 @@ export type NodeCountInformationGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param countType - The type of counts to retrieve
  */
-export const NodeCountInformationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeCountInformationGetInput,
-    outputSchema: NodeCountInformationGetOutput,
-  }),
-);
+export const NodeCountInformationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeCountInformationGetInput,
+  outputSchema: NodeCountInformationGetOutput,
+}));
 // Input Schema
-export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NodeReportsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4250,7 +4082,7 @@ export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NodeReportsGetInput = typeof NodeReportsGetInput.Type;
 
 // Output Schema
-export const NodeReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NodeReportsGetOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.NullOr(Schema.String)),
   lastModifiedTime: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.NullOr(Schema.String)),
@@ -4326,30 +4158,28 @@ export type NodeReportsGetOutput = typeof NodeReportsGetOutput.Type;
  * @param nodeId - The node id.
  * @param reportId - The report id.
  */
-export const NodeReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NodeReportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NodeReportsGetInput,
   outputSchema: NodeReportsGetOutput,
 }));
 // Input Schema
-export const NodeReportsGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    nodeId: Schema.String.pipe(T.PathParam()),
-    reportId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
-    }),
-  );
+export const NodeReportsGetContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  nodeId: Schema.String.pipe(T.PathParam()),
+  reportId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
+  }),
+);
 export type NodeReportsGetContentInput = typeof NodeReportsGetContentInput.Type;
 
 // Output Schema
-export const NodeReportsGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const NodeReportsGetContentOutput = /*@__PURE__*/ Schema.String;
 export type NodeReportsGetContentOutput =
   typeof NodeReportsGetContentOutput.Type;
 
@@ -4364,99 +4194,95 @@ export type NodeReportsGetContentOutput =
  * @param nodeId - The node id.
  * @param reportId - The report id.
  */
-export const NodeReportsGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeReportsGetContentInput,
-    outputSchema: NodeReportsGetContentOutput,
+export const NodeReportsGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeReportsGetContentInput,
+  outputSchema: NodeReportsGetContentOutput,
+}));
+// Input Schema
+export const NodeReportsListByNodeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  nodeId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports",
   }),
 );
-// Input Schema
-export const NodeReportsListByNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    nodeId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports",
-    }),
-  );
 export type NodeReportsListByNodeInput = typeof NodeReportsListByNodeInput.Type;
 
 // Output Schema
-export const NodeReportsListByNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedTime: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.NullOr(Schema.String)),
-        type: Schema.optional(Schema.String),
-        reportId: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        refreshMode: Schema.optional(Schema.String),
-        rebootRequested: Schema.optional(Schema.String),
-        reportFormatVersion: Schema.optional(Schema.String),
-        configurationVersion: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        errors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              errorSource: Schema.optional(Schema.String),
-              resourceId: Schema.optional(Schema.String),
-              errorCode: Schema.optional(Schema.String),
-              errorMessage: Schema.optional(Schema.String),
-              locale: Schema.optional(Schema.String),
-              errorDetails: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        resources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              resourceId: Schema.optional(Schema.String),
-              sourceInfo: Schema.optional(Schema.String),
-              dependsOn: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    resourceId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              moduleName: Schema.optional(Schema.String),
-              moduleVersion: Schema.optional(Schema.String),
-              resourceName: Schema.optional(Schema.String),
-              error: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              durationInSeconds: Schema.optional(Schema.Number),
-              startDate: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        metaConfiguration: Schema.optional(
+export const NodeReportsListByNodeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      endTime: Schema.optional(Schema.NullOr(Schema.String)),
+      lastModifiedTime: Schema.optional(Schema.String),
+      startTime: Schema.optional(Schema.NullOr(Schema.String)),
+      type: Schema.optional(Schema.String),
+      reportId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      refreshMode: Schema.optional(Schema.String),
+      rebootRequested: Schema.optional(Schema.String),
+      reportFormatVersion: Schema.optional(Schema.String),
+      configurationVersion: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      errors: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            configurationModeFrequencyMins: Schema.optional(Schema.Number),
-            rebootNodeIfNeeded: Schema.optional(Schema.Boolean),
-            configurationMode: Schema.optional(Schema.String),
-            actionAfterReboot: Schema.optional(Schema.String),
-            certificateId: Schema.optional(Schema.String),
-            refreshFrequencyMins: Schema.optional(Schema.Number),
-            allowModuleOverwrite: Schema.optional(Schema.Boolean),
+            errorSource: Schema.optional(Schema.String),
+            resourceId: Schema.optional(Schema.String),
+            errorCode: Schema.optional(Schema.String),
+            errorMessage: Schema.optional(Schema.String),
+            locale: Schema.optional(Schema.String),
+            errorDetails: Schema.optional(Schema.String),
           }),
         ),
-        hostName: Schema.optional(Schema.String),
-        iPV4Addresses: Schema.optional(Schema.Array(Schema.String)),
-        iPV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-        numberOfResources: Schema.optional(Schema.Number),
-        rawErrors: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+      ),
+      resources: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            sourceInfo: Schema.optional(Schema.String),
+            dependsOn: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  resourceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            moduleName: Schema.optional(Schema.String),
+            moduleVersion: Schema.optional(Schema.String),
+            resourceName: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            durationInSeconds: Schema.optional(Schema.Number),
+            startDate: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      metaConfiguration: Schema.optional(
+        Schema.Struct({
+          configurationModeFrequencyMins: Schema.optional(Schema.Number),
+          rebootNodeIfNeeded: Schema.optional(Schema.Boolean),
+          configurationMode: Schema.optional(Schema.String),
+          actionAfterReboot: Schema.optional(Schema.String),
+          certificateId: Schema.optional(Schema.String),
+          refreshFrequencyMins: Schema.optional(Schema.Number),
+          allowModuleOverwrite: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      hostName: Schema.optional(Schema.String),
+      iPV4Addresses: Schema.optional(Schema.Array(Schema.String)),
+      iPV6Addresses: Schema.optional(Schema.Array(Schema.String)),
+      numberOfResources: Schema.optional(Schema.Number),
+      rawErrors: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NodeReportsListByNodeOutput =
   typeof NodeReportsListByNodeOutput.Type;
 
@@ -4471,15 +4297,13 @@ export type NodeReportsListByNodeOutput =
  * @param nodeId - The node id.
  * @param $filter - The filter to apply on the operation.
  */
-export const NodeReportsListByNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeReportsListByNodeInput,
-    outputSchema: NodeReportsListByNodeOutput,
-  }),
-);
+export const NodeReportsListByNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeReportsListByNodeInput,
+  outputSchema: NodeReportsListByNodeOutput,
+}));
 // Input Schema
 export const ObjectDataTypesListFieldsByModuleAndTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4497,7 +4321,7 @@ export type ObjectDataTypesListFieldsByModuleAndTypeInput =
 
 // Output Schema
 export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4522,31 +4346,33 @@ export type ObjectDataTypesListFieldsByModuleAndTypeOutput =
  * @param moduleName - The module name.
  * @param typeName - The name of type.
  */
-export const ObjectDataTypesListFieldsByModuleAndType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ObjectDataTypesListFieldsByModuleAndType = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ObjectDataTypesListFieldsByModuleAndTypeInput,
     outputSchema: ObjectDataTypesListFieldsByModuleAndTypeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ObjectDataTypesListFieldsByTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ObjectDataTypesListFieldsByTypeInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     typeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/objectDataTypes/{typeName}/fields",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/objectDataTypes/{typeName}/fields",
+  }),
+);
 export type ObjectDataTypesListFieldsByTypeInput =
   typeof ObjectDataTypesListFieldsByTypeInput.Type;
 
 // Output Schema
 export const ObjectDataTypesListFieldsByTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4570,13 +4396,12 @@ export type ObjectDataTypesListFieldsByTypeOutput =
  * @param automationAccountName - The name of the automation account.
  * @param typeName - The name of type.
  */
-export const ObjectDataTypesListFieldsByType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ObjectDataTypesListFieldsByTypeInput,
-    outputSchema: ObjectDataTypesListFieldsByTypeOutput,
-  }));
+export const ObjectDataTypesListFieldsByType = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectDataTypesListFieldsByTypeInput,
+  outputSchema: ObjectDataTypesListFieldsByTypeOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Automation/operations" }),
@@ -4584,7 +4409,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -4645,48 +4470,46 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
-    }),
-  );
+export const PackageCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+  }),
+);
 export type PackageCreateOrUpdateInput = typeof PackageCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PackageCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PackageCreateOrUpdateOutput =
   typeof PackageCreateOrUpdateOutput.Type;
 
@@ -4701,14 +4524,12 @@ export type PackageCreateOrUpdateOutput =
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PackageCreateOrUpdateInput,
-    outputSchema: PackageCreateOrUpdateOutput,
-  }),
-);
+export const PackageCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PackageCreateOrUpdateInput,
+  outputSchema: PackageCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4724,7 +4545,7 @@ export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PackageDeleteInput = typeof PackageDeleteInput.Type;
 
 // Output Schema
-export const PackageDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PackageDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PackageDeleteOutput = typeof PackageDeleteOutput.Type;
 
 // The operation
@@ -4738,12 +4559,12 @@ export type PackageDeleteOutput = typeof PackageDeleteOutput.Type;
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageDeleteInput,
   outputSchema: PackageDeleteOutput,
 }));
 // Input Schema
-export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4759,7 +4580,7 @@ export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PackageGetInput = typeof PackageGetInput.Type;
 
 // Output Schema
-export const PackageGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4791,30 +4612,31 @@ export type PackageGetOutput = typeof PackageGetOutput.Type;
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageGetInput,
   outputSchema: PackageGetOutput,
 }));
 // Input Schema
-export const PackageListByRuntimeEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageListByRuntimeEnvironmentInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
+  }),
+);
 export type PackageListByRuntimeEnvironmentInput =
   typeof PackageListByRuntimeEnvironmentInput.Type;
 
 // Output Schema
 export const PackageListByRuntimeEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4861,13 +4683,12 @@ export type PackageListByRuntimeEnvironmentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const PackageListByRuntimeEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PackageListByRuntimeEnvironmentInput,
-    outputSchema: PackageListByRuntimeEnvironmentOutput,
-  }));
+export const PackageListByRuntimeEnvironment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PackageListByRuntimeEnvironmentInput,
+  outputSchema: PackageListByRuntimeEnvironmentOutput,
+}));
 // Input Schema
-export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4883,7 +4704,7 @@ export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PackageUpdateInput = typeof PackageUpdateInput.Type;
 
 // Output Schema
-export const PackageUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4915,13 +4736,13 @@ export type PackageUpdateOutput = typeof PackageUpdateOutput.Type;
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageUpdateInput,
   outputSchema: PackageUpdateOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4938,7 +4759,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4970,14 +4791,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4993,8 +4815,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -5008,49 +4829,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -5064,14 +4882,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5087,7 +4904,7 @@ export type PrivateEndpointConnectionsListByAutomationAccountInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5136,29 +4953,28 @@ export type PrivateEndpointConnectionsListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const PrivateEndpointConnectionsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByAutomationAccountInput,
     outputSchema: PrivateEndpointConnectionsListByAutomationAccountOutput,
   }));
 // Input Schema
-export const PrivateLinkResourcesAutomationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources",
-    }),
-  );
+export const PrivateLinkResourcesAutomationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources",
+  }),
+);
 export type PrivateLinkResourcesAutomationInput =
   typeof PrivateLinkResourcesAutomationInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesAutomationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateLinkResourcesAutomationOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5193,7 +5009,8 @@ export const PrivateLinkResourcesAutomationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateLinkResourcesAutomationOutput =
   typeof PrivateLinkResourcesAutomationOutput.Type;
 
@@ -5206,49 +5023,46 @@ export type PrivateLinkResourcesAutomationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const PrivateLinkResourcesAutomation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkResourcesAutomationInput,
-    outputSchema: PrivateLinkResourcesAutomationOutput,
-  }));
+export const PrivateLinkResourcesAutomation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesAutomationInput,
+  outputSchema: PrivateLinkResourcesAutomationOutput,
+}));
 // Input Schema
-export const Python2PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-    }),
-  );
+export const Python2PackageCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+  }),
+);
 export type Python2PackageCreateOrUpdateInput =
   typeof Python2PackageCreateOrUpdateInput.Type;
 
 // Output Schema
-export const Python2PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python2PackageCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python2PackageCreateOrUpdateOutput =
   typeof Python2PackageCreateOrUpdateOutput.Type;
 
@@ -5262,30 +5076,27 @@ export type Python2PackageCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: Python2PackageCreateOrUpdateInput,
-    outputSchema: Python2PackageCreateOrUpdateOutput,
-  }));
+export const Python2PackageCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python2PackageCreateOrUpdateInput,
+  outputSchema: Python2PackageCreateOrUpdateOutput,
+}));
 // Input Schema
-export const Python2PackageDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-    }),
-  );
+export const Python2PackageDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+  }),
+);
 export type Python2PackageDeleteInput = typeof Python2PackageDeleteInput.Type;
 
 // Output Schema
-export const Python2PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const Python2PackageDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type Python2PackageDeleteOutput = typeof Python2PackageDeleteOutput.Type;
 
 // The operation
@@ -5298,22 +5109,18 @@ export type Python2PackageDeleteOutput = typeof Python2PackageDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python2PackageDeleteInput,
-    outputSchema: Python2PackageDeleteOutput,
-  }),
-);
+export const Python2PackageDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python2PackageDeleteInput,
+  outputSchema: Python2PackageDeleteOutput,
+}));
 // Input Schema
-export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const Python2PackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
@@ -5322,26 +5129,25 @@ export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type Python2PackageGetInput = typeof Python2PackageGetInput.Type;
 
 // Output Schema
-export const Python2PackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python2PackageGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python2PackageGetOutput = typeof Python2PackageGetOutput.Type;
 
 // The operation
@@ -5354,13 +5160,13 @@ export type Python2PackageGetOutput = typeof Python2PackageGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python2PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: Python2PackageGetInput,
   outputSchema: Python2PackageGetOutput,
 }));
 // Input Schema
 export const Python2PackageListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5376,7 +5182,7 @@ export type Python2PackageListByAutomationAccountInput =
 
 // Output Schema
 export const Python2PackageListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5422,48 +5228,47 @@ export type Python2PackageListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const Python2PackageListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python2PackageListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: Python2PackageListByAutomationAccountInput,
     outputSchema: Python2PackageListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const Python2PackageUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-    }),
-  );
+export const Python2PackageUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+  }),
+);
 export type Python2PackageUpdateInput = typeof Python2PackageUpdateInput.Type;
 
 // Output Schema
-export const Python2PackageUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python2PackageUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python2PackageUpdateOutput = typeof Python2PackageUpdateOutput.Type;
 
 // The operation
@@ -5476,50 +5281,46 @@ export type Python2PackageUpdateOutput = typeof Python2PackageUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python2PackageUpdateInput,
-    outputSchema: Python2PackageUpdateOutput,
+export const Python2PackageUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python2PackageUpdateInput,
+  outputSchema: Python2PackageUpdateOutput,
+}));
+// Input Schema
+export const Python3PackageCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
   }),
 );
-// Input Schema
-export const Python3PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-    }),
-  );
 export type Python3PackageCreateOrUpdateInput =
   typeof Python3PackageCreateOrUpdateInput.Type;
 
 // Output Schema
-export const Python3PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python3PackageCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python3PackageCreateOrUpdateOutput =
   typeof Python3PackageCreateOrUpdateOutput.Type;
 
@@ -5533,30 +5334,27 @@ export type Python3PackageCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: Python3PackageCreateOrUpdateInput,
-    outputSchema: Python3PackageCreateOrUpdateOutput,
-  }));
+export const Python3PackageCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python3PackageCreateOrUpdateInput,
+  outputSchema: Python3PackageCreateOrUpdateOutput,
+}));
 // Input Schema
-export const Python3PackageDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-    }),
-  );
+export const Python3PackageDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+  }),
+);
 export type Python3PackageDeleteInput = typeof Python3PackageDeleteInput.Type;
 
 // Output Schema
-export const Python3PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const Python3PackageDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type Python3PackageDeleteOutput = typeof Python3PackageDeleteOutput.Type;
 
 // The operation
@@ -5569,22 +5367,18 @@ export type Python3PackageDeleteOutput = typeof Python3PackageDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python3PackageDeleteInput,
-    outputSchema: Python3PackageDeleteOutput,
-  }),
-);
+export const Python3PackageDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python3PackageDeleteInput,
+  outputSchema: Python3PackageDeleteOutput,
+}));
 // Input Schema
-export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const Python3PackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
@@ -5593,26 +5387,25 @@ export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type Python3PackageGetInput = typeof Python3PackageGetInput.Type;
 
 // Output Schema
-export const Python3PackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python3PackageGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python3PackageGetOutput = typeof Python3PackageGetOutput.Type;
 
 // The operation
@@ -5625,13 +5418,13 @@ export type Python3PackageGetOutput = typeof Python3PackageGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python3PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: Python3PackageGetInput,
   outputSchema: Python3PackageGetOutput,
 }));
 // Input Schema
 export const Python3PackageListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5647,7 +5440,7 @@ export type Python3PackageListByAutomationAccountInput =
 
 // Output Schema
 export const Python3PackageListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5693,48 +5486,47 @@ export type Python3PackageListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const Python3PackageListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python3PackageListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: Python3PackageListByAutomationAccountInput,
     outputSchema: Python3PackageListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const Python3PackageUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-    }),
-  );
+export const Python3PackageUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+  }),
+);
 export type Python3PackageUpdateInput = typeof Python3PackageUpdateInput.Type;
 
 // Output Schema
-export const Python3PackageUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const Python3PackageUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type Python3PackageUpdateOutput = typeof Python3PackageUpdateOutput.Type;
 
 // The operation
@@ -5747,49 +5539,45 @@ export type Python3PackageUpdateOutput = typeof Python3PackageUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python3PackageUpdateInput,
-    outputSchema: Python3PackageUpdateOutput,
+export const Python3PackageUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python3PackageUpdateInput,
+  outputSchema: Python3PackageUpdateOutput,
+}));
+// Input Schema
+export const RunbookCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
   }),
 );
-// Input Schema
-export const RunbookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-    }),
-  );
 export type RunbookCreateOrUpdateInput = typeof RunbookCreateOrUpdateInput.Type;
 
 // Output Schema
-export const RunbookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RunbookCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RunbookCreateOrUpdateOutput =
   typeof RunbookCreateOrUpdateOutput.Type;
 
@@ -5803,14 +5591,12 @@ export type RunbookCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookCreateOrUpdateInput,
-    outputSchema: RunbookCreateOrUpdateOutput,
-  }),
-);
+export const RunbookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookCreateOrUpdateInput,
+  outputSchema: RunbookCreateOrUpdateOutput,
+}));
 // Input Schema
-export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5825,7 +5611,7 @@ export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunbookDeleteInput = typeof RunbookDeleteInput.Type;
 
 // Output Schema
-export const RunbookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RunbookDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RunbookDeleteOutput = typeof RunbookDeleteOutput.Type;
 
 // The operation
@@ -5838,12 +5624,12 @@ export type RunbookDeleteOutput = typeof RunbookDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookDeleteInput,
   outputSchema: RunbookDeleteOutput,
 }));
 // Input Schema
-export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDraftGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5858,7 +5644,7 @@ export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunbookDraftGetInput = typeof RunbookDraftGetInput.Type;
 
 // Output Schema
-export const RunbookDraftGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDraftGetOutput = /*@__PURE__*/ Schema.Struct({
   inEdit: Schema.optional(Schema.Boolean),
   draftContentLink: Schema.optional(
     Schema.Struct({
@@ -5899,30 +5685,28 @@ export type RunbookDraftGetOutput = typeof RunbookDraftGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookDraftGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookDraftGetInput,
   outputSchema: RunbookDraftGetOutput,
 }));
 // Input Schema
-export const RunbookDraftGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
-    }),
-  );
+export const RunbookDraftGetContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
+  }),
+);
 export type RunbookDraftGetContentInput =
   typeof RunbookDraftGetContentInput.Type;
 
 // Output Schema
-export const RunbookDraftGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const RunbookDraftGetContentOutput = /*@__PURE__*/ Schema.String;
 export type RunbookDraftGetContentOutput =
   typeof RunbookDraftGetContentOutput.Type;
 
@@ -5936,32 +5720,28 @@ export type RunbookDraftGetContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftGetContentInput,
-    outputSchema: RunbookDraftGetContentOutput,
+export const RunbookDraftGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftGetContentInput,
+  outputSchema: RunbookDraftGetContentOutput,
+}));
+// Input Schema
+export const RunbookDraftReplaceContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
   }),
 );
-// Input Schema
-export const RunbookDraftReplaceContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
-    }),
-  );
 export type RunbookDraftReplaceContentInput =
   typeof RunbookDraftReplaceContentInput.Type;
 
 // Output Schema
-export const RunbookDraftReplaceContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RunbookDraftReplaceContentOutput = /*@__PURE__*/ Schema.Void;
 export type RunbookDraftReplaceContentOutput =
   typeof RunbookDraftReplaceContentOutput.Type;
 
@@ -5975,84 +5755,80 @@ export type RunbookDraftReplaceContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftReplaceContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftReplaceContentInput,
-    outputSchema: RunbookDraftReplaceContentOutput,
+export const RunbookDraftReplaceContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftReplaceContentInput,
+  outputSchema: RunbookDraftReplaceContentOutput,
+}));
+// Input Schema
+export const RunbookDraftUndoEditInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
   }),
 );
-// Input Schema
-export const RunbookDraftUndoEditInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
-    }),
-  );
 export type RunbookDraftUndoEditInput = typeof RunbookDraftUndoEditInput.Type;
 
 // Output Schema
-export const RunbookDraftUndoEditOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusCode: Schema.optional(
-      Schema.Literals([
-        "Continue",
-        "SwitchingProtocols",
-        "OK",
-        "Created",
-        "Accepted",
-        "NonAuthoritativeInformation",
-        "NoContent",
-        "ResetContent",
-        "PartialContent",
-        "MultipleChoices",
-        "Ambiguous",
-        "MovedPermanently",
-        "Moved",
-        "Found",
-        "Redirect",
-        "SeeOther",
-        "RedirectMethod",
-        "NotModified",
-        "UseProxy",
-        "Unused",
-        "TemporaryRedirect",
-        "RedirectKeepVerb",
-        "BadRequest",
-        "Unauthorized",
-        "PaymentRequired",
-        "Forbidden",
-        "NotFound",
-        "MethodNotAllowed",
-        "NotAcceptable",
-        "ProxyAuthenticationRequired",
-        "RequestTimeout",
-        "Conflict",
-        "Gone",
-        "LengthRequired",
-        "PreconditionFailed",
-        "RequestEntityTooLarge",
-        "RequestUriTooLong",
-        "UnsupportedMediaType",
-        "RequestedRangeNotSatisfiable",
-        "ExpectationFailed",
-        "UpgradeRequired",
-        "InternalServerError",
-        "NotImplemented",
-        "BadGateway",
-        "ServiceUnavailable",
-        "GatewayTimeout",
-        "HttpVersionNotSupported",
-      ]),
-    ),
-    requestId: Schema.optional(Schema.String),
-  });
+export const RunbookDraftUndoEditOutput = /*@__PURE__*/ Schema.Struct({
+  statusCode: Schema.optional(
+    Schema.Literals([
+      "Continue",
+      "SwitchingProtocols",
+      "OK",
+      "Created",
+      "Accepted",
+      "NonAuthoritativeInformation",
+      "NoContent",
+      "ResetContent",
+      "PartialContent",
+      "MultipleChoices",
+      "Ambiguous",
+      "MovedPermanently",
+      "Moved",
+      "Found",
+      "Redirect",
+      "SeeOther",
+      "RedirectMethod",
+      "NotModified",
+      "UseProxy",
+      "Unused",
+      "TemporaryRedirect",
+      "RedirectKeepVerb",
+      "BadRequest",
+      "Unauthorized",
+      "PaymentRequired",
+      "Forbidden",
+      "NotFound",
+      "MethodNotAllowed",
+      "NotAcceptable",
+      "ProxyAuthenticationRequired",
+      "RequestTimeout",
+      "Conflict",
+      "Gone",
+      "LengthRequired",
+      "PreconditionFailed",
+      "RequestEntityTooLarge",
+      "RequestUriTooLong",
+      "UnsupportedMediaType",
+      "RequestedRangeNotSatisfiable",
+      "ExpectationFailed",
+      "UpgradeRequired",
+      "InternalServerError",
+      "NotImplemented",
+      "BadGateway",
+      "ServiceUnavailable",
+      "GatewayTimeout",
+      "HttpVersionNotSupported",
+    ]),
+  ),
+  requestId: Schema.optional(Schema.String),
+});
 export type RunbookDraftUndoEditOutput = typeof RunbookDraftUndoEditOutput.Type;
 
 // The operation
@@ -6065,14 +5841,12 @@ export type RunbookDraftUndoEditOutput = typeof RunbookDraftUndoEditOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftUndoEdit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftUndoEditInput,
-    outputSchema: RunbookDraftUndoEditOutput,
-  }),
-);
+export const RunbookDraftUndoEdit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftUndoEditInput,
+  outputSchema: RunbookDraftUndoEditOutput,
+}));
 // Input Schema
-export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6087,7 +5861,7 @@ export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunbookGetInput = typeof RunbookGetInput.Type;
 
 // Output Schema
-export const RunbookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6118,20 +5892,18 @@ export type RunbookGetOutput = typeof RunbookGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetInput,
   outputSchema: RunbookGetOutput,
 }));
 // Input Schema
-export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const RunbookGetContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
@@ -6140,8 +5912,7 @@ export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type RunbookGetContentInput = typeof RunbookGetContentInput.Type;
 
 // Output Schema
-export const RunbookGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const RunbookGetContentOutput = /*@__PURE__*/ Schema.String;
 export type RunbookGetContentOutput = typeof RunbookGetContentOutput.Type;
 
 // The operation
@@ -6154,29 +5925,28 @@ export type RunbookGetContentOutput = typeof RunbookGetContentOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookGetContent = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetContentInput,
   outputSchema: RunbookGetContentOutput,
 }));
 // Input Schema
-export const RunbookListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
-    }),
-  );
+export const RunbookListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
+  }),
+);
 export type RunbookListByAutomationAccountInput =
   typeof RunbookListByAutomationAccountInput.Type;
 
 // Output Schema
-export const RunbookListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6209,7 +5979,8 @@ export const RunbookListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type RunbookListByAutomationAccountOutput =
   typeof RunbookListByAutomationAccountOutput.Type;
 
@@ -6222,13 +5993,12 @@ export type RunbookListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const RunbookListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RunbookListByAutomationAccountInput,
-    outputSchema: RunbookListByAutomationAccountOutput,
-  }));
+export const RunbookListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookListByAutomationAccountInput,
+  outputSchema: RunbookListByAutomationAccountOutput,
+}));
 // Input Schema
-export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookPublishInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6243,7 +6013,7 @@ export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunbookPublishInput = typeof RunbookPublishInput.Type;
 
 // Output Schema
-export const RunbookPublishOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RunbookPublishOutput = /*@__PURE__*/ Schema.Void;
 export type RunbookPublishOutput = typeof RunbookPublishOutput.Type;
 
 // The operation
@@ -6256,12 +6026,12 @@ export type RunbookPublishOutput = typeof RunbookPublishOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookPublish = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookPublishInput,
   outputSchema: RunbookPublishOutput,
 }));
 // Input Schema
-export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6276,7 +6046,7 @@ export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunbookUpdateInput = typeof RunbookUpdateInput.Type;
 
 // Output Schema
-export const RunbookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6307,48 +6077,46 @@ export type RunbookUpdateOutput = typeof RunbookUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookUpdateInput,
   outputSchema: RunbookUpdateOutput,
 }));
 // Input Schema
-export const RuntimeEnvironmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-    }),
-  );
+export const RuntimeEnvironmentsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+  }),
+);
 export type RuntimeEnvironmentsCreateInput =
   typeof RuntimeEnvironmentsCreateInput.Type;
 
 // Output Schema
-export const RuntimeEnvironmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RuntimeEnvironmentsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RuntimeEnvironmentsCreateOutput =
   typeof RuntimeEnvironmentsCreateOutput.Type;
 
@@ -6362,32 +6130,28 @@ export type RuntimeEnvironmentsCreateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsCreateInput,
-    outputSchema: RuntimeEnvironmentsCreateOutput,
+export const RuntimeEnvironmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsCreateInput,
+  outputSchema: RuntimeEnvironmentsCreateOutput,
+}));
+// Input Schema
+export const RuntimeEnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
   }),
 );
-// Input Schema
-export const RuntimeEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-    }),
-  );
 export type RuntimeEnvironmentsDeleteInput =
   typeof RuntimeEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const RuntimeEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RuntimeEnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RuntimeEnvironmentsDeleteOutput =
   typeof RuntimeEnvironmentsDeleteOutput.Type;
 
@@ -6401,50 +6165,46 @@ export type RuntimeEnvironmentsDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsDeleteInput,
-    outputSchema: RuntimeEnvironmentsDeleteOutput,
+export const RuntimeEnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsDeleteInput,
+  outputSchema: RuntimeEnvironmentsDeleteOutput,
+}));
+// Input Schema
+export const RuntimeEnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
   }),
 );
-// Input Schema
-export const RuntimeEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-    }),
-  );
 export type RuntimeEnvironmentsGetInput =
   typeof RuntimeEnvironmentsGetInput.Type;
 
 // Output Schema
-export const RuntimeEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RuntimeEnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RuntimeEnvironmentsGetOutput =
   typeof RuntimeEnvironmentsGetOutput.Type;
 
@@ -6458,15 +6218,13 @@ export type RuntimeEnvironmentsGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsGetInput,
-    outputSchema: RuntimeEnvironmentsGetOutput,
-  }),
-);
+export const RuntimeEnvironmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsGetInput,
+  outputSchema: RuntimeEnvironmentsGetOutput,
+}));
 // Input Schema
 export const RuntimeEnvironmentsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6482,7 +6240,7 @@ export type RuntimeEnvironmentsListByAutomationAccountInput =
 
 // Output Schema
 export const RuntimeEnvironmentsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6529,48 +6287,46 @@ export type RuntimeEnvironmentsListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const RuntimeEnvironmentsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RuntimeEnvironmentsListByAutomationAccountInput,
     outputSchema: RuntimeEnvironmentsListByAutomationAccountOutput,
   }));
 // Input Schema
-export const RuntimeEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-    }),
-  );
+export const RuntimeEnvironmentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+  }),
+);
 export type RuntimeEnvironmentsUpdateInput =
   typeof RuntimeEnvironmentsUpdateInput.Type;
 
 // Output Schema
-export const RuntimeEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RuntimeEnvironmentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RuntimeEnvironmentsUpdateOutput =
   typeof RuntimeEnvironmentsUpdateOutput.Type;
 
@@ -6584,50 +6340,46 @@ export type RuntimeEnvironmentsUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsUpdateInput,
-    outputSchema: RuntimeEnvironmentsUpdateOutput,
+export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsUpdateInput,
+  outputSchema: RuntimeEnvironmentsUpdateOutput,
+}));
+// Input Schema
+export const ScheduleCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
   }),
 );
-// Input Schema
-export const ScheduleCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    scheduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-    }),
-  );
 export type ScheduleCreateOrUpdateInput =
   typeof ScheduleCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ScheduleCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScheduleCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScheduleCreateOrUpdateOutput =
   typeof ScheduleCreateOrUpdateOutput.Type;
 
@@ -6641,14 +6393,12 @@ export type ScheduleCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduleCreateOrUpdateInput,
-    outputSchema: ScheduleCreateOrUpdateOutput,
-  }),
-);
+export const ScheduleCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduleCreateOrUpdateInput,
+  outputSchema: ScheduleCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6663,7 +6413,7 @@ export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScheduleDeleteInput = typeof ScheduleDeleteInput.Type;
 
 // Output Schema
-export const ScheduleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScheduleDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ScheduleDeleteOutput = typeof ScheduleDeleteOutput.Type;
 
 // The operation
@@ -6676,12 +6426,12 @@ export type ScheduleDeleteOutput = typeof ScheduleDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleDeleteInput,
   outputSchema: ScheduleDeleteOutput,
 }));
 // Input Schema
-export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6696,7 +6446,7 @@ export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScheduleGetInput = typeof ScheduleGetInput.Type;
 
 // Output Schema
-export const ScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6727,29 +6477,30 @@ export type ScheduleGetOutput = typeof ScheduleGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleGetInput,
   outputSchema: ScheduleGetOutput,
 }));
 // Input Schema
-export const ScheduleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
+  }),
+);
 export type ScheduleListByAutomationAccountInput =
   typeof ScheduleListByAutomationAccountInput.Type;
 
 // Output Schema
 export const ScheduleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6795,13 +6546,12 @@ export type ScheduleListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const ScheduleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ScheduleListByAutomationAccountInput,
-    outputSchema: ScheduleListByAutomationAccountOutput,
-  }));
+export const ScheduleListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduleListByAutomationAccountInput,
+  outputSchema: ScheduleListByAutomationAccountOutput,
+}));
 // Input Schema
-export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6816,7 +6566,7 @@ export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScheduleUpdateInput = typeof ScheduleUpdateInput.Type;
 
 // Output Schema
-export const ScheduleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6847,13 +6597,13 @@ export type ScheduleUpdateOutput = typeof ScheduleUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleUpdateInput,
   outputSchema: ScheduleUpdateOutput,
 }));
 // Input Schema
 export const SoftwareUpdateConfigurationMachineRunsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6870,7 +6620,7 @@ export type SoftwareUpdateConfigurationMachineRunsGetByIdInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -6922,13 +6672,13 @@ export type SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationMachineRunsGetById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationMachineRunsGetByIdInput,
     outputSchema: SoftwareUpdateConfigurationMachineRunsGetByIdOutput,
   }));
 // Input Schema
 export const SoftwareUpdateConfigurationMachineRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6947,7 +6697,7 @@ export type SoftwareUpdateConfigurationMachineRunsListInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationMachineRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7006,13 +6756,13 @@ export type SoftwareUpdateConfigurationMachineRunsListOutput =
  * @param $top - Maximum number of entries returned in the results collection
  */
 export const SoftwareUpdateConfigurationMachineRunsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationMachineRunsListInput,
     outputSchema: SoftwareUpdateConfigurationMachineRunsListOutput,
   }));
 // Input Schema
 export const SoftwareUpdateConfigurationRunsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7029,7 +6779,7 @@ export type SoftwareUpdateConfigurationRunsGetByIdInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationRunsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -7085,14 +6835,15 @@ export type SoftwareUpdateConfigurationRunsGetByIdOutput =
  * @param softwareUpdateConfigurationRunId - The Id of the software update configuration run.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const SoftwareUpdateConfigurationRunsGetById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SoftwareUpdateConfigurationRunsGetById = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SoftwareUpdateConfigurationRunsGetByIdInput,
     outputSchema: SoftwareUpdateConfigurationRunsGetByIdOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SoftwareUpdateConfigurationRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7111,7 +6862,7 @@ export type SoftwareUpdateConfigurationRunsListInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7174,14 +6925,15 @@ export type SoftwareUpdateConfigurationRunsListOutput =
  * @param $skip - Number of entries you skip before returning results
  * @param $top - Maximum number of entries returned in the results collection
  */
-export const SoftwareUpdateConfigurationRunsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SoftwareUpdateConfigurationRunsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SoftwareUpdateConfigurationRunsListInput,
     outputSchema: SoftwareUpdateConfigurationRunsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SoftwareUpdateConfigurationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7198,7 +6950,7 @@ export type SoftwareUpdateConfigurationsCreateInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7231,14 +6983,15 @@ export type SoftwareUpdateConfigurationsCreateOutput =
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const SoftwareUpdateConfigurationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SoftwareUpdateConfigurationsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SoftwareUpdateConfigurationsCreateInput,
     outputSchema: SoftwareUpdateConfigurationsCreateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SoftwareUpdateConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7255,7 +7008,7 @@ export type SoftwareUpdateConfigurationsDeleteInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SoftwareUpdateConfigurationsDeleteOutput =
   typeof SoftwareUpdateConfigurationsDeleteOutput.Type;
 
@@ -7270,14 +7023,15 @@ export type SoftwareUpdateConfigurationsDeleteOutput =
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const SoftwareUpdateConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SoftwareUpdateConfigurationsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SoftwareUpdateConfigurationsDeleteInput,
     outputSchema: SoftwareUpdateConfigurationsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SoftwareUpdateConfigurationsGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7294,7 +7048,7 @@ export type SoftwareUpdateConfigurationsGetByNameInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7327,14 +7081,15 @@ export type SoftwareUpdateConfigurationsGetByNameOutput =
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const SoftwareUpdateConfigurationsGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SoftwareUpdateConfigurationsGetByName = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SoftwareUpdateConfigurationsGetByNameInput,
     outputSchema: SoftwareUpdateConfigurationsGetByNameOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SoftwareUpdateConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7351,7 +7106,7 @@ export type SoftwareUpdateConfigurationsListInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7502,49 +7257,46 @@ export type SoftwareUpdateConfigurationsListOutput =
  * @param clientRequestId - Identifies this specific client request.
  * @param $filter - The filter to apply on the operation.
  */
-export const SoftwareUpdateConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SoftwareUpdateConfigurationsListInput,
-    outputSchema: SoftwareUpdateConfigurationsListOutput,
-  }));
+export const SoftwareUpdateConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SoftwareUpdateConfigurationsListInput,
+  outputSchema: SoftwareUpdateConfigurationsListOutput,
+}));
 // Input Schema
-export const SourceControlCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-    }),
-  );
+export const SourceControlCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+  }),
+);
 export type SourceControlCreateOrUpdateInput =
   typeof SourceControlCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SourceControlCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SourceControlCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlCreateOrUpdateOutput =
   typeof SourceControlCreateOrUpdateOutput.Type;
 
@@ -7558,31 +7310,27 @@ export type SourceControlCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlCreateOrUpdateInput,
-    outputSchema: SourceControlCreateOrUpdateOutput,
+export const SourceControlCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlCreateOrUpdateInput,
+  outputSchema: SourceControlCreateOrUpdateOutput,
+}));
+// Input Schema
+export const SourceControlDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
   }),
 );
-// Input Schema
-export const SourceControlDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-    }),
-  );
 export type SourceControlDeleteInput = typeof SourceControlDeleteInput.Type;
 
 // Output Schema
-export const SourceControlDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SourceControlDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SourceControlDeleteOutput = typeof SourceControlDeleteOutput.Type;
 
 // The operation
@@ -7595,12 +7343,12 @@ export type SourceControlDeleteOutput = typeof SourceControlDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlDeleteInput,
   outputSchema: SourceControlDeleteOutput,
 }));
 // Input Schema
-export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SourceControlGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7615,27 +7363,25 @@ export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SourceControlGetInput = typeof SourceControlGetInput.Type;
 
 // Output Schema
-export const SourceControlGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const SourceControlGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlGetOutput = typeof SourceControlGetOutput.Type;
 
 // The operation
@@ -7648,13 +7394,13 @@ export type SourceControlGetOutput = typeof SourceControlGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlGetInput,
   outputSchema: SourceControlGetOutput,
 }));
 // Input Schema
 export const SourceControlListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7671,7 +7417,7 @@ export type SourceControlListByAutomationAccountInput =
 
 // Output Schema
 export const SourceControlListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7718,48 +7464,47 @@ export type SourceControlListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  */
-export const SourceControlListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlListByAutomationAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SourceControlListByAutomationAccountInput,
     outputSchema: SourceControlListByAutomationAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SourceControlSyncJobCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-    }),
-  );
+export const SourceControlSyncJobCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+  }),
+);
 export type SourceControlSyncJobCreateInput =
   typeof SourceControlSyncJobCreateInput.Type;
 
 // Output Schema
-export const SourceControlSyncJobCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        sourceControlSyncJobId: Schema.optional(Schema.String),
-        creationTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Completed", "Failed", "Running"]),
-        ),
-        startTime: Schema.optional(Schema.NullOr(Schema.String)),
-        endTime: Schema.optional(Schema.NullOr(Schema.String)),
-        syncType: Schema.optional(Schema.Literals(["PartialSync", "FullSync"])),
-      }),
-    ),
-  });
+export const SourceControlSyncJobCreateOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      sourceControlSyncJobId: Schema.optional(Schema.String),
+      creationTime: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Completed", "Failed", "Running"]),
+      ),
+      startTime: Schema.optional(Schema.NullOr(Schema.String)),
+      endTime: Schema.optional(Schema.NullOr(Schema.String)),
+      syncType: Schema.optional(Schema.Literals(["PartialSync", "FullSync"])),
+    }),
+  ),
+});
 export type SourceControlSyncJobCreateOutput =
   typeof SourceControlSyncJobCreateOutput.Type;
 
@@ -7774,48 +7519,44 @@ export type SourceControlSyncJobCreateOutput =
  * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  */
-export const SourceControlSyncJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlSyncJobCreateInput,
-    outputSchema: SourceControlSyncJobCreateOutput,
+export const SourceControlSyncJobCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlSyncJobCreateInput,
+  outputSchema: SourceControlSyncJobCreateOutput,
+}));
+// Input Schema
+export const SourceControlSyncJobGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
   }),
 );
-// Input Schema
-export const SourceControlSyncJobGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-    }),
-  );
 export type SourceControlSyncJobGetInput =
   typeof SourceControlSyncJobGetInput.Type;
 
 // Output Schema
-export const SourceControlSyncJobGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        sourceControlSyncJobId: Schema.optional(Schema.String),
-        creationTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Completed", "Failed", "Running"]),
-        ),
-        startTime: Schema.optional(Schema.NullOr(Schema.String)),
-        endTime: Schema.optional(Schema.NullOr(Schema.String)),
-        syncType: Schema.optional(Schema.Literals(["PartialSync", "FullSync"])),
-        exception: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SourceControlSyncJobGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      sourceControlSyncJobId: Schema.optional(Schema.String),
+      creationTime: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Completed", "Failed", "Running"]),
+      ),
+      startTime: Schema.optional(Schema.NullOr(Schema.String)),
+      endTime: Schema.optional(Schema.NullOr(Schema.String)),
+      syncType: Schema.optional(Schema.Literals(["PartialSync", "FullSync"])),
+      exception: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlSyncJobGetOutput =
   typeof SourceControlSyncJobGetOutput.Type;
 
@@ -7830,15 +7571,13 @@ export type SourceControlSyncJobGetOutput =
  * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  */
-export const SourceControlSyncJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlSyncJobGetInput,
-    outputSchema: SourceControlSyncJobGetOutput,
-  }),
-);
+export const SourceControlSyncJobGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlSyncJobGetInput,
+  outputSchema: SourceControlSyncJobGetOutput,
+}));
 // Input Schema
 export const SourceControlSyncJobListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7856,7 +7595,7 @@ export type SourceControlSyncJobListByAutomationAccountInput =
 
 // Output Schema
 export const SourceControlSyncJobListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7895,32 +7634,31 @@ export type SourceControlSyncJobListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const SourceControlSyncJobListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlSyncJobListByAutomationAccountInput,
     outputSchema: SourceControlSyncJobListByAutomationAccountOutput,
   }));
 // Input Schema
-export const SourceControlSyncJobStreamsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    streamId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
-    }),
-  );
+export const SourceControlSyncJobStreamsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
+  streamId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
+  }),
+);
 export type SourceControlSyncJobStreamsGetInput =
   typeof SourceControlSyncJobStreamsGetInput.Type;
 
 // Output Schema
-export const SourceControlSyncJobStreamsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SourceControlSyncJobStreamsGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -7932,7 +7670,8 @@ export const SourceControlSyncJobStreamsGetOutput =
         value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
     ),
-  });
+  },
+);
 export type SourceControlSyncJobStreamsGetOutput =
   typeof SourceControlSyncJobStreamsGetOutput.Type;
 
@@ -7948,14 +7687,13 @@ export type SourceControlSyncJobStreamsGetOutput =
  * @param sourceControlSyncJobId - The source control sync job id.
  * @param streamId - The id of the sync job stream.
  */
-export const SourceControlSyncJobStreamsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SourceControlSyncJobStreamsGetInput,
-    outputSchema: SourceControlSyncJobStreamsGetOutput,
-  }));
+export const SourceControlSyncJobStreamsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlSyncJobStreamsGetInput,
+  outputSchema: SourceControlSyncJobStreamsGetOutput,
+}));
 // Input Schema
 export const SourceControlSyncJobStreamsListBySyncJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7974,7 +7712,7 @@ export type SourceControlSyncJobStreamsListBySyncJobInput =
 
 // Output Schema
 export const SourceControlSyncJobStreamsListBySyncJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8005,48 +7743,47 @@ export type SourceControlSyncJobStreamsListBySyncJobOutput =
  * @param sourceControlSyncJobId - The source control sync job id.
  * @param $filter - The filter to apply on the operation.
  */
-export const SourceControlSyncJobStreamsListBySyncJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlSyncJobStreamsListBySyncJob = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SourceControlSyncJobStreamsListBySyncJobInput,
     outputSchema: SourceControlSyncJobStreamsListBySyncJobOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SourceControlUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-    }),
-  );
+export const SourceControlUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  sourceControlName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+  }),
+);
 export type SourceControlUpdateInput = typeof SourceControlUpdateInput.Type;
 
 // Output Schema
-export const SourceControlUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SourceControlUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlUpdateOutput = typeof SourceControlUpdateOutput.Type;
 
 // The operation
@@ -8059,13 +7796,13 @@ export type SourceControlUpdateOutput = typeof SourceControlUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlUpdateInput,
   outputSchema: SourceControlUpdateOutput,
 }));
 // Input Schema
 export const StatisticsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8082,7 +7819,7 @@ export type StatisticsListByAutomationAccountInput =
 
 // Output Schema
 export const StatisticsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8109,13 +7846,12 @@ export type StatisticsListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  */
-export const StatisticsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StatisticsListByAutomationAccountInput,
-    outputSchema: StatisticsListByAutomationAccountOutput,
-  }));
+export const StatisticsListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StatisticsListByAutomationAccountInput,
+  outputSchema: StatisticsListByAutomationAccountOutput,
+}));
 // Input Schema
-export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8130,7 +7866,7 @@ export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestJobCreateInput = typeof TestJobCreateInput.Type;
 
 // Output Schema
-export const TestJobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobCreateOutput = /*@__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
   statusDetails: Schema.optional(Schema.String),
@@ -8155,12 +7891,12 @@ export type TestJobCreateOutput = typeof TestJobCreateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobCreateInput,
   outputSchema: TestJobCreateOutput,
 }));
 // Input Schema
-export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8175,7 +7911,7 @@ export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestJobGetInput = typeof TestJobGetInput.Type;
 
 // Output Schema
-export const TestJobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobGetOutput = /*@__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
   statusDetails: Schema.optional(Schema.String),
@@ -8200,12 +7936,12 @@ export type TestJobGetOutput = typeof TestJobGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobGetInput,
   outputSchema: TestJobGetOutput,
 }));
 // Input Schema
-export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8220,7 +7956,7 @@ export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestJobResumeInput = typeof TestJobResumeInput.Type;
 
 // Output Schema
-export const TestJobResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TestJobResumeOutput = /*@__PURE__*/ Schema.Void;
 export type TestJobResumeOutput = typeof TestJobResumeOutput.Type;
 
 // The operation
@@ -8233,12 +7969,12 @@ export type TestJobResumeOutput = typeof TestJobResumeOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobResumeInput,
   outputSchema: TestJobResumeOutput,
 }));
 // Input Schema
-export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8253,7 +7989,7 @@ export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestJobStopInput = typeof TestJobStopInput.Type;
 
 // Output Schema
-export const TestJobStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TestJobStopOutput = /*@__PURE__*/ Schema.Void;
 export type TestJobStopOutput = typeof TestJobStopOutput.Type;
 
 // The operation
@@ -8266,21 +8002,19 @@ export type TestJobStopOutput = typeof TestJobStopOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobStopInput,
   outputSchema: TestJobStopOutput,
 }));
 // Input Schema
-export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    jobStreamId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const TestJobStreamsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  jobStreamId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
@@ -8289,30 +8023,29 @@ export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TestJobStreamsGetInput = typeof TestJobStreamsGetInput.Type;
 
 // Output Schema
-export const TestJobStreamsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        jobStreamId: Schema.optional(Schema.String),
-        time: Schema.optional(Schema.String),
-        streamType: Schema.optional(
-          Schema.Literals([
-            "Progress",
-            "Output",
-            "Warning",
-            "Error",
-            "Debug",
-            "Verbose",
-            "Any",
-          ]),
-        ),
-        streamText: Schema.optional(Schema.String),
-        summary: Schema.optional(Schema.NullOr(Schema.String)),
-        value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-    ),
-  });
+export const TestJobStreamsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      jobStreamId: Schema.optional(Schema.String),
+      time: Schema.optional(Schema.String),
+      streamType: Schema.optional(
+        Schema.Literals([
+          "Progress",
+          "Output",
+          "Warning",
+          "Error",
+          "Debug",
+          "Verbose",
+          "Any",
+        ]),
+      ),
+      streamText: Schema.optional(Schema.String),
+      summary: Schema.optional(Schema.NullOr(Schema.String)),
+      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ),
+});
 export type TestJobStreamsGetOutput = typeof TestJobStreamsGetOutput.Type;
 
 // The operation
@@ -8326,60 +8059,56 @@ export type TestJobStreamsGetOutput = typeof TestJobStreamsGetOutput.Type;
  * @param runbookName - The runbook name.
  * @param jobStreamId - The job stream id.
  */
-export const TestJobStreamsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobStreamsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobStreamsGetInput,
   outputSchema: TestJobStreamsGetOutput,
 }));
 // Input Schema
-export const TestJobStreamsListByTestJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
-    }),
-  );
+export const TestJobStreamsListByTestJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
+  }),
+);
 export type TestJobStreamsListByTestJobInput =
   typeof TestJobStreamsListByTestJobInput.Type;
 
 // Output Schema
-export const TestJobStreamsListByTestJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            jobStreamId: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-            streamType: Schema.optional(
-              Schema.Literals([
-                "Progress",
-                "Output",
-                "Warning",
-                "Error",
-                "Debug",
-                "Verbose",
-                "Any",
-              ]),
-            ),
-            streamText: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.NullOr(Schema.String)),
-            value: Schema.optional(
-              Schema.Record(Schema.String, Schema.Unknown),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TestJobStreamsListByTestJobOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          jobStreamId: Schema.optional(Schema.String),
+          time: Schema.optional(Schema.String),
+          streamType: Schema.optional(
+            Schema.Literals([
+              "Progress",
+              "Output",
+              "Warning",
+              "Error",
+              "Debug",
+              "Verbose",
+              "Any",
+            ]),
+          ),
+          streamText: Schema.optional(Schema.String),
+          summary: Schema.optional(Schema.NullOr(Schema.String)),
+          value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TestJobStreamsListByTestJobOutput =
   typeof TestJobStreamsListByTestJobOutput.Type;
 
@@ -8394,14 +8123,12 @@ export type TestJobStreamsListByTestJobOutput =
  * @param runbookName - The runbook name.
  * @param $filter - The filter to apply on the operation.
  */
-export const TestJobStreamsListByTestJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TestJobStreamsListByTestJobInput,
-    outputSchema: TestJobStreamsListByTestJobOutput,
-  }),
-);
+export const TestJobStreamsListByTestJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TestJobStreamsListByTestJobInput,
+  outputSchema: TestJobStreamsListByTestJobOutput,
+}));
 // Input Schema
-export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobSuspendInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8416,7 +8143,7 @@ export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestJobSuspendInput = typeof TestJobSuspendInput.Type;
 
 // Output Schema
-export const TestJobSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TestJobSuspendOutput = /*@__PURE__*/ Schema.Void;
 export type TestJobSuspendOutput = typeof TestJobSuspendOutput.Type;
 
 // The operation
@@ -8429,48 +8156,46 @@ export type TestJobSuspendOutput = typeof TestJobSuspendOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobSuspendInput,
   outputSchema: TestJobSuspendOutput,
 }));
 // Input Schema
-export const UsagesListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
-    }),
-  );
+export const UsagesListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
+  }),
+);
 export type UsagesListByAutomationAccountInput =
   typeof UsagesListByAutomationAccountInput.Type;
 
 // Output Schema
-export const UsagesListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          throttleStatus: Schema.optional(Schema.String),
-        }),
-      ),
+export const UsagesListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        unit: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        throttleStatus: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type UsagesListByAutomationAccountOutput =
   typeof UsagesListByAutomationAccountOutput.Type;
 
@@ -8483,49 +8208,46 @@ export type UsagesListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const UsagesListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UsagesListByAutomationAccountInput,
-    outputSchema: UsagesListByAutomationAccountOutput,
-  }));
+export const UsagesListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListByAutomationAccountInput,
+  outputSchema: UsagesListByAutomationAccountOutput,
+}));
 // Input Schema
-export const VariableCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    variableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-    }),
-  );
+export const VariableCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  variableName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+  }),
+);
 export type VariableCreateOrUpdateInput =
   typeof VariableCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VariableCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VariableCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VariableCreateOrUpdateOutput =
   typeof VariableCreateOrUpdateOutput.Type;
 
@@ -8539,14 +8261,12 @@ export type VariableCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VariableCreateOrUpdateInput,
-    outputSchema: VariableCreateOrUpdateOutput,
-  }),
-);
+export const VariableCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VariableCreateOrUpdateInput,
+  outputSchema: VariableCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8561,7 +8281,7 @@ export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VariableDeleteInput = typeof VariableDeleteInput.Type;
 
 // Output Schema
-export const VariableDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VariableDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VariableDeleteOutput = typeof VariableDeleteOutput.Type;
 
 // The operation
@@ -8574,12 +8294,12 @@ export type VariableDeleteOutput = typeof VariableDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableDeleteInput,
   outputSchema: VariableDeleteOutput,
 }));
 // Input Schema
-export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8594,7 +8314,7 @@ export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VariableGetInput = typeof VariableGetInput.Type;
 
 // Output Schema
-export const VariableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8625,29 +8345,30 @@ export type VariableGetOutput = typeof VariableGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableGetInput,
   outputSchema: VariableGetOutput,
 }));
 // Input Schema
-export const VariableListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
+  }),
+);
 export type VariableListByAutomationAccountInput =
   typeof VariableListByAutomationAccountInput.Type;
 
 // Output Schema
 export const VariableListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8693,13 +8414,12 @@ export type VariableListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const VariableListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VariableListByAutomationAccountInput,
-    outputSchema: VariableListByAutomationAccountOutput,
-  }));
+export const VariableListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VariableListByAutomationAccountInput,
+  outputSchema: VariableListByAutomationAccountOutput,
+}));
 // Input Schema
-export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8714,7 +8434,7 @@ export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VariableUpdateInput = typeof VariableUpdateInput.Type;
 
 // Output Schema
-export const VariableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8745,47 +8465,45 @@ export type VariableUpdateOutput = typeof VariableUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableUpdateInput,
   outputSchema: VariableUpdateOutput,
 }));
 // Input Schema
-export const WatcherCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-    }),
-  );
+export const WatcherCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+  }),
+);
 export type WatcherCreateOrUpdateInput = typeof WatcherCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WatcherCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WatcherCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WatcherCreateOrUpdateOutput =
   typeof WatcherCreateOrUpdateOutput.Type;
 
@@ -8799,14 +8517,12 @@ export type WatcherCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatcherCreateOrUpdateInput,
-    outputSchema: WatcherCreateOrUpdateOutput,
-  }),
-);
+export const WatcherCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatcherCreateOrUpdateInput,
+  outputSchema: WatcherCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8821,7 +8537,7 @@ export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatcherDeleteInput = typeof WatcherDeleteInput.Type;
 
 // Output Schema
-export const WatcherDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatcherDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WatcherDeleteOutput = typeof WatcherDeleteOutput.Type;
 
 // The operation
@@ -8834,12 +8550,12 @@ export type WatcherDeleteOutput = typeof WatcherDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherDeleteInput,
   outputSchema: WatcherDeleteOutput,
 }));
 // Input Schema
-export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8854,7 +8570,7 @@ export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatcherGetInput = typeof WatcherGetInput.Type;
 
 // Output Schema
-export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8885,30 +8601,29 @@ export type WatcherGetOutput = typeof WatcherGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherGetInput,
   outputSchema: WatcherGetOutput,
 }));
 // Input Schema
-export const WatcherListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
-    }),
-  );
+export const WatcherListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
+  }),
+);
 export type WatcherListByAutomationAccountInput =
   typeof WatcherListByAutomationAccountInput.Type;
 
 // Output Schema
-export const WatcherListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8941,7 +8656,8 @@ export const WatcherListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WatcherListByAutomationAccountOutput =
   typeof WatcherListByAutomationAccountOutput.Type;
 
@@ -8955,13 +8671,12 @@ export type WatcherListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  */
-export const WatcherListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatcherListByAutomationAccountInput,
-    outputSchema: WatcherListByAutomationAccountOutput,
-  }));
+export const WatcherListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatcherListByAutomationAccountInput,
+  outputSchema: WatcherListByAutomationAccountOutput,
+}));
 // Input Schema
-export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8976,7 +8691,7 @@ export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatcherStartInput = typeof WatcherStartInput.Type;
 
 // Output Schema
-export const WatcherStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatcherStartOutput = /*@__PURE__*/ Schema.Void;
 export type WatcherStartOutput = typeof WatcherStartOutput.Type;
 
 // The operation
@@ -8989,12 +8704,12 @@ export type WatcherStartOutput = typeof WatcherStartOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherStartInput,
   outputSchema: WatcherStartOutput,
 }));
 // Input Schema
-export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9009,7 +8724,7 @@ export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatcherStopInput = typeof WatcherStopInput.Type;
 
 // Output Schema
-export const WatcherStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatcherStopOutput = /*@__PURE__*/ Schema.Void;
 export type WatcherStopOutput = typeof WatcherStopOutput.Type;
 
 // The operation
@@ -9022,12 +8737,12 @@ export type WatcherStopOutput = typeof WatcherStopOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherStopInput,
   outputSchema: WatcherStopOutput,
 }));
 // Input Schema
-export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9042,7 +8757,7 @@ export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatcherUpdateInput = typeof WatcherUpdateInput.Type;
 
 // Output Schema
-export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9073,47 +8788,45 @@ export type WatcherUpdateOutput = typeof WatcherUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherUpdateInput,
   outputSchema: WatcherUpdateOutput,
 }));
 // Input Schema
-export const WebhookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-    }),
-  );
+export const WebhookCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  webhookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+  }),
+);
 export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WebhookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebhookCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebhookCreateOrUpdateOutput =
   typeof WebhookCreateOrUpdateOutput.Type;
 
@@ -9127,14 +8840,12 @@ export type WebhookCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhookCreateOrUpdateInput,
-    outputSchema: WebhookCreateOrUpdateOutput,
-  }),
-);
+export const WebhookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookCreateOrUpdateInput,
+  outputSchema: WebhookCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9149,7 +8860,7 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
 
 // Output Schema
-export const WebhookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebhookDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
 
 // The operation
@@ -9162,28 +8873,26 @@ export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookDeleteInput,
   outputSchema: WebhookDeleteOutput,
 }));
 // Input Schema
-export const WebhookGenerateUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
-    }),
-  );
+export const WebhookGenerateUriInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
+  }),
+);
 export type WebhookGenerateUriInput = typeof WebhookGenerateUriInput.Type;
 
 // Output Schema
-export const WebhookGenerateUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const WebhookGenerateUriOutput = /*@__PURE__*/ Schema.String;
 export type WebhookGenerateUriOutput = typeof WebhookGenerateUriOutput.Type;
 
 // The operation
@@ -9195,12 +8904,12 @@ export type WebhookGenerateUriOutput = typeof WebhookGenerateUriOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const WebhookGenerateUri = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGenerateUri = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGenerateUriInput,
   outputSchema: WebhookGenerateUriOutput,
 }));
 // Input Schema
-export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9215,7 +8924,7 @@ export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookGetInput = typeof WebhookGetInput.Type;
 
 // Output Schema
-export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9246,30 +8955,29 @@ export type WebhookGetOutput = typeof WebhookGetOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGetInput,
   outputSchema: WebhookGetOutput,
 }));
 // Input Schema
-export const WebhookListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
-    }),
-  );
+export const WebhookListByAutomationAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
+  }),
+);
 export type WebhookListByAutomationAccountInput =
   typeof WebhookListByAutomationAccountInput.Type;
 
 // Output Schema
-export const WebhookListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookListByAutomationAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9302,7 +9010,8 @@ export const WebhookListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebhookListByAutomationAccountOutput =
   typeof WebhookListByAutomationAccountOutput.Type;
 
@@ -9316,13 +9025,12 @@ export type WebhookListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  */
-export const WebhookListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebhookListByAutomationAccountInput,
-    outputSchema: WebhookListByAutomationAccountOutput,
-  }));
+export const WebhookListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookListByAutomationAccountInput,
+  outputSchema: WebhookListByAutomationAccountOutput,
+}));
 // Input Schema
-export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9337,7 +9045,7 @@ export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;
 
 // Output Schema
-export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9368,7 +9076,7 @@ export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookUpdateInput,
   outputSchema: WebhookUpdateOutput,
 }));

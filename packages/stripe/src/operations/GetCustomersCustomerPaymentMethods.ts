@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetCustomersCustomerPaymentMethodsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     allow_redisplay: Schema.optional(
       Schema.Literals(["always", "limited", "unspecified"]),
@@ -81,7 +81,7 @@ export type GetCustomersCustomerPaymentMethodsInput =
 
 // Output Schema
 export const GetCustomersCustomerPaymentMethodsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         acss_debit: Schema.optional(
@@ -605,8 +605,9 @@ export type GetCustomersCustomerPaymentMethodsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param type - An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request.
  */
-export const GetCustomersCustomerPaymentMethods =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCustomersCustomerPaymentMethods = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetCustomersCustomerPaymentMethodsInput,
     outputSchema: GetCustomersCustomerPaymentMethodsOutput,
-  }));
+  }),
+);

@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DeleteDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
-    }),
-  );
+export const DeleteDatabasePostgresCidrInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
+  }),
+);
 export type DeleteDatabasePostgresCidrInput =
   typeof DeleteDatabasePostgresCidrInput.Type;
 
 // Output Schema
-export const DeleteDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteDatabasePostgresCidrOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteDatabasePostgresCidrOutput =
   typeof DeleteDatabasePostgresCidrOutput.Type;
 
@@ -32,10 +30,8 @@ export type DeleteDatabasePostgresCidrOutput =
  * @param database - The name of the database
  * @param id - The ID of the IP restriction entry
  */
-export const deleteDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteDatabasePostgresCidrInput,
-    outputSchema: DeleteDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteDatabasePostgresCidrInput,
+  outputSchema: DeleteDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

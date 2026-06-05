@@ -3,13 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetOrgsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/orgs" }),
 );
 export type GetOrgsInput = typeof GetOrgsInput.Type;
 
 // Output Schema
-export const GetOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetOrgsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     defaultEdgeDeployment: Schema.optional(Schema.String),
     defaultRegion: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export const GetOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 export type GetOrgsOutput = typeof GetOrgsOutput.Type;
 
 // The operation
-export const getOrgs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgs = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgsInput,
   outputSchema: GetOrgsOutput,
 }));

@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesGetMetadataKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-    key: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-    }),
-  );
+export const MachinesGetMetadataKeyInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+  key: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
+  }),
+);
 export type MachinesGetMetadataKeyInput =
   typeof MachinesGetMetadataKeyInput.Type;
 
 // Output Schema
-export const MachinesGetMetadataKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.String),
-  });
+export const MachinesGetMetadataKeyOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+});
 export type MachinesGetMetadataKeyOutput =
   typeof MachinesGetMetadataKeyOutput.Type;
 
@@ -36,10 +34,8 @@ export type MachinesGetMetadataKeyOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesGetMetadataKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesGetMetadataKeyInput,
-    outputSchema: MachinesGetMetadataKeyOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const MachinesGetMetadataKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesGetMetadataKeyInput,
+  outputSchema: MachinesGetMetadataKeyOutput,
+  errors: [NotFound] as const,
+}));

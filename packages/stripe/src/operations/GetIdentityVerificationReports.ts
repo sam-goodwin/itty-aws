@@ -3,29 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetIdentityVerificationReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    client_reference_id: Schema.optional(Schema.String),
-    created: Schema.optional(Schema.String),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    starting_after: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Literals(["document", "id_number"])),
-    verification_session: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/identity/verification_reports",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetIdentityVerificationReportsInput = /*@__PURE__*/ Schema.Struct({
+  client_reference_id: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  starting_after: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["document", "id_number"])),
+  verification_session: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/identity/verification_reports",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetIdentityVerificationReportsInput =
   typeof GetIdentityVerificationReportsInput.Type;
 
 // Output Schema
-export const GetIdentityVerificationReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIdentityVerificationReportsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     data: Schema.Array(
       Schema.Struct({
         client_reference_id: Schema.NullOr(Schema.String),
@@ -120,7 +119,8 @@ export const GetIdentityVerificationReportsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
+  },
+);
 export type GetIdentityVerificationReportsOutput =
   typeof GetIdentityVerificationReportsOutput.Type;
 
@@ -139,8 +139,7 @@ export type GetIdentityVerificationReportsOutput =
  * @param type - Only return VerificationReports of this type
  * @param verification_session - Only return VerificationReports created by this VerificationSession ID. It is allowed to provide a VerificationIntent ID.
  */
-export const GetIdentityVerificationReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetIdentityVerificationReportsInput,
-    outputSchema: GetIdentityVerificationReportsOutput,
-  }));
+export const GetIdentityVerificationReports = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIdentityVerificationReportsInput,
+  outputSchema: GetIdentityVerificationReportsOutput,
+}));

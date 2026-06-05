@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesAcmeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostname: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/apps/{app_name}/certificates/acme" }),
@@ -14,7 +14,7 @@ export type App_CertificatesAcmeCreateInput =
 
 // Output Schema
 export const App_CertificatesAcmeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -93,9 +93,7 @@ export type App_CertificatesAcmeCreateOutput =
 /**
  * Request ACME certificate
  */
-export const App_CertificatesAcmeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_CertificatesAcmeCreateInput,
-    outputSchema: App_CertificatesAcmeCreateOutput,
-  }),
-);
+export const App_CertificatesAcmeCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_CertificatesAcmeCreateInput,
+  outputSchema: App_CertificatesAcmeCreateOutput,
+}));

@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterProviderRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupClusterProviderRegionsInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -14,18 +14,18 @@ export const ListGroupClusterProviderRegionsInput =
     pretty: Schema.optional(Schema.Boolean),
     providers: Schema.optional(Schema.String),
     tier: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/provider/regions",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/provider/regions",
+  }),
+);
 export type ListGroupClusterProviderRegionsInput =
   typeof ListGroupClusterProviderRegionsInput.Type;
 
 // Output Schema
-export const ListGroupClusterProviderRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterProviderRegionsOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterProviderRegionsOutput =
   typeof ListGroupClusterProviderRegionsOutput.Type;
 
@@ -46,9 +46,8 @@ export type ListGroupClusterProviderRegionsOutput =
  * @param providers - Cloud providers whose regions to retrieve. When you specify multiple providers, the response can return only tiers and regions that support multi-cloud clusters.
  * @param tier - Cluster tier for which to retrieve the regions.
  */
-export const listGroupClusterProviderRegions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterProviderRegionsInput,
-    outputSchema: ListGroupClusterProviderRegionsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGroupClusterProviderRegions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterProviderRegionsInput,
+  outputSchema: ListGroupClusterProviderRegionsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

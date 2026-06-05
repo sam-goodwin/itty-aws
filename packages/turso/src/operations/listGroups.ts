@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -14,7 +14,7 @@ export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGroupsInput = typeof ListGroupsInput.Type;
 
 // Output Schema
-export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsOutput = /*@__PURE__*/ Schema.Struct({
   groups: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -38,7 +38,7 @@ export type ListGroupsOutput = typeof ListGroupsOutput.Type;
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupsInput,
   outputSchema: ListGroupsOutput,
 }));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupTeamsInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -17,7 +17,7 @@ export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGroupTeamsInput = typeof ListGroupTeamsInput.Type;
 
 // Output Schema
-export const ListGroupTeamsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupTeamsOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupTeamsOutput = typeof ListGroupTeamsOutput.Type;
 
 // The operation
@@ -35,7 +35,7 @@ export type ListGroupTeamsOutput = typeof ListGroupTeamsOutput.Type;
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const listGroupTeams = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupTeams = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupTeamsInput,
   outputSchema: ListGroupTeamsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

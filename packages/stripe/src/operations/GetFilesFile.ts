@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetFilesFileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesFileInput = /*@__PURE__*/ Schema.Struct({
   file: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetFilesFileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFilesFileInput = typeof GetFilesFileInput.Type;
 
 // Output Schema
-export const GetFilesFileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesFileOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   expires_at: Schema.NullOr(Schema.Number),
   filename: Schema.NullOr(Schema.String),
@@ -82,7 +82,7 @@ export type GetFilesFileOutput = typeof GetFilesFileOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetFilesFile = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFilesFile = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFilesFileInput,
   outputSchema: GetFilesFileOutput,
 }));

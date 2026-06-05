@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesExecInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesExecInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   cmd: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export const MachinesExecInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesExecInput = typeof MachinesExecInput.Type;
 
 // Output Schema
-export const MachinesExecOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesExecOutput = /*@__PURE__*/ Schema.Struct({
   exit_code: Schema.optional(Schema.Number),
   exit_signal: Schema.optional(Schema.Number),
   stderr: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export type MachinesExecOutput = typeof MachinesExecOutput.Type;
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesExec = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesExec = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesExecInput,
   outputSchema: MachinesExecOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

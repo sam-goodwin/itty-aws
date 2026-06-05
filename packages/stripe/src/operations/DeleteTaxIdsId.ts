@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteTaxIdsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTaxIdsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -15,7 +15,7 @@ export const DeleteTaxIdsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteTaxIdsIdInput = typeof DeleteTaxIdsIdInput.Type;
 
 // Output Schema
-export const DeleteTaxIdsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTaxIdsIdOutput = /*@__PURE__*/ Schema.Struct({
   deleted: Schema.Literals(["true"]),
   id: Schema.String,
   object: Schema.Literals(["tax_id"]),
@@ -28,7 +28,7 @@ export type DeleteTaxIdsIdOutput = typeof DeleteTaxIdsIdOutput.Type;
  *
  * <p>Deletes an existing account or customer <code>tax_id</code> object.</p>
  */
-export const DeleteTaxIdsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteTaxIdsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteTaxIdsIdInput,
   outputSchema: DeleteTaxIdsIdOutput,
 }));

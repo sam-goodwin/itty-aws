@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddGroupApiKeyInput = typeof AddGroupApiKeyInput.Type;
 
 // Output Schema
-export const AddGroupApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AddGroupApiKeyOutput = /*@__PURE__*/ Schema.Void;
 export type AddGroupApiKeyOutput = typeof AddGroupApiKeyOutput.Type;
 
 // The operation
@@ -34,7 +34,7 @@ export type AddGroupApiKeyOutput = typeof AddGroupApiKeyOutput.Type;
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to assign to one project.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const addGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addGroupApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddGroupApiKeyInput,
   outputSchema: AddGroupApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

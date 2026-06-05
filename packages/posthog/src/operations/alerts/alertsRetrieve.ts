@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const AlertsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   checks_date_from: Schema.optional(Schema.String),
@@ -17,7 +17,7 @@ export const AlertsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertsRetrieveInput = typeof AlertsRetrieveInput.Type;
 
 // Output Schema
-export const AlertsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -151,7 +151,7 @@ export type AlertsRetrieveOutput = typeof AlertsRetrieveOutput.Type;
  * @param id - A UUID string identifying this alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const alertsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const alertsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsRetrieveInput,
   outputSchema: AlertsRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

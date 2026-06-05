@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingTransactionsTransactionRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     refund_amount: Schema.optional(Schema.Number),
@@ -20,7 +20,7 @@ export type PostTestHelpersIssuingTransactionsTransactionRefundInput =
 
 // Output Schema
 export const PostTestHelpersIssuingTransactionsTransactionRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     authorization: Schema.Unknown,
@@ -68,7 +68,7 @@ export type PostTestHelpersIssuingTransactionsTransactionRefundOutput =
  * <p>Refund a test-mode Transaction.</p>
  */
 export const PostTestHelpersIssuingTransactionsTransactionRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsTransactionRefundInput,
     outputSchema: PostTestHelpersIssuingTransactionsTransactionRefundOutput,
   }));

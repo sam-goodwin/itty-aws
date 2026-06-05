@@ -1,20 +1,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { Forbidden, NotFound } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteBackupPolicyInput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
-    }),
-  );
+export const DeleteBackupPolicyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
+  }),
+);
 export type DeleteBackupPolicyInput = typeof DeleteBackupPolicyInput.Type;
 
 // Output Schema

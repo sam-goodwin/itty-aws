@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesCreateInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
   compute: Schema.optional(
@@ -37,7 +37,7 @@ export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VolumesCreateInput = typeof VolumesCreateInput.Type;
 
 // Output Schema
-export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesCreateOutput = /*@__PURE__*/ Schema.Struct({
   attached_alloc_id: Schema.optional(Schema.String),
   attached_machine_id: Schema.optional(Schema.String),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
@@ -72,7 +72,7 @@ export type VolumesCreateOutput = typeof VolumesCreateOutput.Type;
  *
  * @param app_name - Fly App Name
  */
-export const VolumesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesCreateInput,
   outputSchema: VolumesCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

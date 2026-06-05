@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterSearchIndexesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
-    }),
-  );
+export const ListGroupClusterSearchIndexesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
+  }),
+);
 export type ListGroupClusterSearchIndexesInput =
   typeof ListGroupClusterSearchIndexesInput.Type;
 
 // Output Schema
-export const ListGroupClusterSearchIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterSearchIndexesOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterSearchIndexesOutput =
   typeof ListGroupClusterSearchIndexesOutput.Type;
 
@@ -38,9 +36,8 @@ export type ListGroupClusterSearchIndexesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Name of the cluster that contains the collection with one or more Atlas Search indexes.
  */
-export const listGroupClusterSearchIndexes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterSearchIndexesInput,
-    outputSchema: ListGroupClusterSearchIndexesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const listGroupClusterSearchIndexes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterSearchIndexesInput,
+  outputSchema: ListGroupClusterSearchIndexesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

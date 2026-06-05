@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetProjectLogsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   sql: Schema.optional(Schema.String),
   iso_timestamp_start: Schema.optional(Schema.String),
@@ -18,12 +18,10 @@ export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1GetProjectLogsInput = typeof V1GetProjectLogsInput.Type;
 
 // Output Schema
-export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.optional(Schema.Array(Schema.Unknown)),
-    error: Schema.optional(Schema.Unknown),
-  },
-);
+export const V1GetProjectLogsOutput = /*@__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.Unknown),
+});
 export type V1GetProjectLogsOutput = typeof V1GetProjectLogsOutput.Type;
 
 // The operation
@@ -39,7 +37,7 @@ export type V1GetProjectLogsOutput = typeof V1GetProjectLogsOutput.Type;
  * @param ref - Project ref
  * @param sql - Custom SQL query to execute on the logs. See [querying logs](/docs/guides/telemetry/logs?queryGroups=product&product=postgres&queryGroups=source&source=edge_logs#querying-with-the-logs-explorer) for more details.
  */
-export const v1GetProjectLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetProjectLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetProjectLogsInput,
   outputSchema: V1GetProjectLogsOutput,
   errors: [BadRequest, Forbidden] as const,

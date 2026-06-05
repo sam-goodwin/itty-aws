@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
-export const GetV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1DatabasesInput = /*@__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   projectId: Schema.optional(Schema.String),
@@ -12,7 +12,7 @@ export const GetV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetV1DatabasesInput = typeof GetV1DatabasesInput.Type;
 
 // Output Schema
-export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1DatabasesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -99,7 +99,7 @@ export type GetV1DatabasesOutput = typeof GetV1DatabasesOutput.Type;
  *
  * Returns all databases the token has access to. Optionally filter by project ID.
  */
-export const getV1Databases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Databases = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1DatabasesInput,
   outputSchema: GetV1DatabasesOutput,
   errors: [Forbidden] as const,

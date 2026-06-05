@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
+import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import * as T from "../traits.ts";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 
 // Service metadata
 const svc = T.Service({
@@ -6474,13 +6474,12 @@ export interface GetProjectsOperationsRequest {
   name: string;
 }
 
-export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+export const GetProjectsOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
@@ -6548,19 +6547,18 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: string[];
 }
 
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+export const ListProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("extraLocationTypes"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/locations" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -6590,13 +6588,12 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 
-export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+export const GetProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
@@ -7744,15 +7741,16 @@ export interface PatchProjectsLocationsSchemasRequest {
   body?: GoogleCloudDocumentaiV1NextSchema;
 }
 
-export const PatchProjectsLocationsSchemasRequest =
-  /*@__PURE__*/ Schema.Struct({
+export const PatchProjectsLocationsSchemasRequest = /*@__PURE__*/ Schema.Struct(
+  {
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDocumentaiV1NextSchema).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSchemasRequest>;
+  },
+).pipe(
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchProjectsLocationsSchemasRequest>;
 
 export type PatchProjectsLocationsSchemasResponse =
   GoogleCloudDocumentaiV1NextSchema;
@@ -7826,15 +7824,14 @@ export interface ListProjectsLocationsSchemasRequest {
   pageToken?: string;
 }
 
-export const ListProjectsLocationsSchemasRequest =
-  /*@__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/schemas" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemasRequest>;
+export const ListProjectsLocationsSchemasRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+parent}/schemas" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsLocationsSchemasRequest>;
 
 export type ListProjectsLocationsSchemasResponse =
   GoogleCloudDocumentaiV1ListSchemasResponse;
@@ -7867,13 +7864,12 @@ export interface GetProjectsLocationsSchemasRequest {
   name: string;
 }
 
-export const GetProjectsLocationsSchemasRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemasRequest>;
+export const GetProjectsLocationsSchemasRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsLocationsSchemasRequest>;
 
 export type GetProjectsLocationsSchemasResponse =
   GoogleCloudDocumentaiV1NextSchema;
@@ -8156,13 +8152,12 @@ export interface DeleteOperationsRequest {
   name: string;
 }
 
-export const DeleteOperationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+export const DeleteOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = GoogleProtobufEmpty;
 export const DeleteOperationsResponse = /*@__PURE__*/ GoogleProtobufEmpty;

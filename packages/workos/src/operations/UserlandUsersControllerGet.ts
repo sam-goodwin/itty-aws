@@ -4,30 +4,28 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const UserlandUsersControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/users/{id}" }));
+export const UserlandUsersControllerGetInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/user_management/users/{id}" }));
 export type UserlandUsersControllerGetInput =
   typeof UserlandUsersControllerGetInput.Type;
 
 // Output Schema
-export const UserlandUsersControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    first_name: Schema.optional(Schema.NullOr(Schema.String)),
-    last_name: Schema.optional(Schema.NullOr(Schema.String)),
-    profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
-    email: Schema.optional(Schema.String),
-    email_verified: Schema.optional(Schema.Boolean),
-    external_id: Schema.optional(Schema.NullOr(Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
-    locale: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
+export const UserlandUsersControllerGetOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  first_name: Schema.optional(Schema.NullOr(Schema.String)),
+  last_name: Schema.optional(Schema.NullOr(Schema.String)),
+  profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
+  email: Schema.optional(Schema.String),
+  email_verified: Schema.optional(Schema.Boolean),
+  external_id: Schema.optional(Schema.NullOr(Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
+  locale: Schema.optional(Schema.NullOr(Schema.String)),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+});
 export type UserlandUsersControllerGetOutput =
   typeof UserlandUsersControllerGetOutput.Type;
 
@@ -39,10 +37,8 @@ export type UserlandUsersControllerGetOutput =
  *
  * @param id - The unique ID of the user.
  */
-export const UserlandUsersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserlandUsersControllerGetInput,
-    outputSchema: UserlandUsersControllerGetOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const UserlandUsersControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUsersControllerGetInput,
+  outputSchema: UserlandUsersControllerGetOutput,
+  errors: [NotFound] as const,
+}));

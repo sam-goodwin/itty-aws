@@ -4,23 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/{id}/activity/",
-    }),
-  );
+export const PersonsActivityRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/persons/{id}/activity/",
+  }),
+);
 export type PersonsActivityRetrieveInput =
   typeof PersonsActivityRetrieveInput.Type;
 
 // Output Schema
-export const PersonsActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsActivityRetrieveOutput =
   typeof PersonsActivityRetrieveOutput.Type;
 
@@ -31,10 +29,8 @@ export type PersonsActivityRetrieveOutput =
  * @param id - A unique integer value identifying this person.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsActivityRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsActivityRetrieveInput,
-    outputSchema: PersonsActivityRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsActivityRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsActivityRetrieveInput,
+  outputSchema: PersonsActivityRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

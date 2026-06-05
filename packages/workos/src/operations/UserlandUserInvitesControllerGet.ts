@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserInvitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "GET", path: "/user_management/invitations/{id}" }));
 export type UserlandUserInvitesControllerGetInput =
@@ -13,7 +13,7 @@ export type UserlandUserInvitesControllerGetInput =
 
 // Output Schema
 export const UserlandUserInvitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -43,9 +43,8 @@ export type UserlandUserInvitesControllerGetOutput =
  *
  * @param id - The unique ID of the invitation.
  */
-export const UserlandUserInvitesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserlandUserInvitesControllerGetInput,
-    outputSchema: UserlandUserInvitesControllerGetOutput,
-    errors: [NotFound] as const,
-  }));
+export const UserlandUserInvitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUserInvitesControllerGetInput,
+  outputSchema: UserlandUserInvitesControllerGetOutput,
+  errors: [NotFound] as const,
+}));

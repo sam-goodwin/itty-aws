@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostCustomersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCustomersInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.optional(Schema.Unknown),
   balance: Schema.optional(Schema.Number),
   business_name: Schema.optional(Schema.Unknown),
@@ -183,7 +183,7 @@ export const PostCustomersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostCustomersInput = typeof PostCustomersInput.Type;
 
 // Output Schema
-export const PostCustomersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCustomersOutput = /*@__PURE__*/ Schema.Struct({
   address: Schema.optional(Schema.Unknown),
   balance: Schema.optional(Schema.Number),
   business_name: Schema.optional(Schema.String),
@@ -713,7 +713,7 @@ export type PostCustomersOutput = typeof PostCustomersOutput.Type;
  *
  * <p>Creates a new customer object.</p>
  */
-export const PostCustomers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCustomers = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCustomersInput,
   outputSchema: PostCustomersOutput,
 }));

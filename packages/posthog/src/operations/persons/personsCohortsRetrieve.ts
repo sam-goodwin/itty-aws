@@ -4,23 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsCohortsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-    person_id: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/cohorts/",
-    }),
-  );
+export const PersonsCohortsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  person_id: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/persons/cohorts/",
+  }),
+);
 export type PersonsCohortsRetrieveInput =
   typeof PersonsCohortsRetrieveInput.Type;
 
 // Output Schema
-export const PersonsCohortsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsCohortsRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsCohortsRetrieveOutput =
   typeof PersonsCohortsRetrieveOutput.Type;
 
@@ -31,10 +29,8 @@ export type PersonsCohortsRetrieveOutput =
  * @param person_id - The person ID or UUID to get cohorts for.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsCohortsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsCohortsRetrieveInput,
-    outputSchema: PersonsCohortsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsCohortsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsCohortsRetrieveInput,
+  outputSchema: PersonsCohortsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

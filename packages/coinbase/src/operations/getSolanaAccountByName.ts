@@ -3,24 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetSolanaAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/v2/solana/accounts/by-name/{name}" }),
-  );
+export const GetSolanaAccountByNameInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v2/solana/accounts/by-name/{name}" }));
 export type GetSolanaAccountByNameInput =
   typeof GetSolanaAccountByNameInput.Type;
 
 // Output Schema
-export const GetSolanaAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String,
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  });
+export const GetSolanaAccountByNameOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+});
 export type GetSolanaAccountByNameOutput =
   typeof GetSolanaAccountByNameOutput.Type;
 
@@ -32,9 +28,7 @@ export type GetSolanaAccountByNameOutput =
  *
  * @param name - The name of the Solana account.
  */
-export const getSolanaAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSolanaAccountByNameInput,
-    outputSchema: GetSolanaAccountByNameOutput,
-  }),
-);
+export const getSolanaAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSolanaAccountByNameInput,
+  outputSchema: GetSolanaAccountByNameOutput,
+}));

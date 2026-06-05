@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateGroupClusterBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,8 +20,7 @@ export type UpdateGroupClusterBackupScheduleInput =
   typeof UpdateGroupClusterBackupScheduleInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupClusterBackupScheduleOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupClusterBackupScheduleOutput =
   typeof UpdateGroupClusterBackupScheduleOutput.Type;
 
@@ -38,9 +37,8 @@ export type UpdateGroupClusterBackupScheduleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const updateGroupClusterBackupSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupClusterBackupScheduleInput,
-    outputSchema: UpdateGroupClusterBackupScheduleOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const updateGroupClusterBackupSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupClusterBackupScheduleInput,
+  outputSchema: UpdateGroupClusterBackupScheduleOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

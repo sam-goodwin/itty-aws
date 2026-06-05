@@ -4,22 +4,20 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsLifecycleRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/lifecycle/",
-    }),
-  );
+export const PersonsLifecycleRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/persons/lifecycle/",
+  }),
+);
 export type PersonsLifecycleRetrieveInput =
   typeof PersonsLifecycleRetrieveInput.Type;
 
 // Output Schema
-export const PersonsLifecycleRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsLifecycleRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsLifecycleRetrieveOutput =
   typeof PersonsLifecycleRetrieveOutput.Type;
 
@@ -29,10 +27,8 @@ export type PersonsLifecycleRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsLifecycleRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsLifecycleRetrieveInput,
-    outputSchema: PersonsLifecycleRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsLifecycleRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsLifecycleRetrieveInput,
+  outputSchema: PersonsLifecycleRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

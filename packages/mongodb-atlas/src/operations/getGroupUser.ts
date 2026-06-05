@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupUserInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupUserInput = typeof GetGroupUserInput.Type;
 
 // Output Schema
-export const GetGroupUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupUserOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupUserOutput = typeof GetGroupUserOutput.Type;
 
 // The operation
@@ -36,7 +36,7 @@ export type GetGroupUserOutput = typeof GetGroupUserOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
  */
-export const getGroupUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupUserInput,
   outputSchema: GetGroupUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

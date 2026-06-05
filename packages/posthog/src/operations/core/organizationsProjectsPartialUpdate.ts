@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const OrganizationsProjectsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     organization: Schema.optional(Schema.String),
@@ -816,7 +816,7 @@ export type OrganizationsProjectsPartialUpdateInput =
 
 // Output Schema
 export const OrganizationsProjectsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -832,7 +832,7 @@ export const OrganizationsProjectsPartialUpdateOutput =
     live_events_token: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
-    api_token: Schema.optional(SensitiveString),
+    api_token: Schema.optional(SensitiveOutputString),
     app_urls: Schema.optional(Schema.Array(Schema.NullOr(Schema.String))),
     anonymize_ips: Schema.optional(Schema.Boolean),
     completed_snippet_onboarding: Schema.optional(Schema.Boolean),
@@ -1624,9 +1624,10 @@ export type OrganizationsProjectsPartialUpdateOutput =
  *
  * @param id - A unique value identifying this project.
  */
-export const organizationsProjectsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const organizationsProjectsPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationsProjectsPartialUpdateInput,
     outputSchema: OrganizationsProjectsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

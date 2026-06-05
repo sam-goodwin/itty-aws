@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const NotebooksDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksDestroyInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   short_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const NotebooksDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NotebooksDestroyInput = typeof NotebooksDestroyInput.Type;
 
 // Output Schema
-export const NotebooksDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotebooksDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type NotebooksDestroyOutput = typeof NotebooksDestroyOutput.Type;
 
 // The operation
@@ -25,7 +25,7 @@ export type NotebooksDestroyOutput = typeof NotebooksDestroyOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const notebooksDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotebooksDestroyInput,
   outputSchema: NotebooksDestroyOutput,
   errors: [Forbidden, NotFound] as const,

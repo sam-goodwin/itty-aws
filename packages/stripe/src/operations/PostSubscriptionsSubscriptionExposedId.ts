@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSubscriptionsSubscriptionExposedIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription_exposed_id: Schema.String.pipe(T.PathParam()),
     add_invoice_items: Schema.optional(
       Schema.Array(
@@ -205,7 +205,7 @@ export type PostSubscriptionsSubscriptionExposedIdInput =
 
 // Output Schema
 export const PostSubscriptionsSubscriptionExposedIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     application_fee_percent: Schema.NullOr(Schema.Number),
     automatic_tax: Schema.Struct({
@@ -526,8 +526,9 @@ export type PostSubscriptionsSubscriptionExposedIdOutput =
  * <p>If you don’t want to prorate, set the <code>proration_behavior</code> option to <code>none</code>. With this option, the customer is billed <currency>100</currency> on May 1 and <currency>200</currency> on June 1. Similarly, if you set <code>proration_behavior</code> to <code>none</code> when switching between different billing intervals (for example, from monthly to yearly), we don’t generate any credits for the old subscription’s unused time. We still reset the billing date and bill immediately for the new subscription.</p>
  * <p>Updating the quantity on a subscription many times in an hour may result in <a href="/docs/rate-limits">rate limiting</a>. If you need to bill for a frequently changing quantity, consider integrating <a href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.</p>
  */
-export const PostSubscriptionsSubscriptionExposedId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSubscriptionsSubscriptionExposedId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostSubscriptionsSubscriptionExposedIdInput,
     outputSchema: PostSubscriptionsSubscriptionExposedIdOutput,
-  }));
+  }),
+);

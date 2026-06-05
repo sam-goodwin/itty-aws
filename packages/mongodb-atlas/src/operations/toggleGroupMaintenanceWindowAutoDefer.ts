@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ToggleGroupMaintenanceWindowAutoDeferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -19,7 +19,7 @@ export type ToggleGroupMaintenanceWindowAutoDeferInput =
 
 // Output Schema
 export const ToggleGroupMaintenanceWindowAutoDeferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ToggleGroupMaintenanceWindowAutoDeferOutput =
   typeof ToggleGroupMaintenanceWindowAutoDeferOutput.Type;
 
@@ -34,9 +34,10 @@ export type ToggleGroupMaintenanceWindowAutoDeferOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const toggleGroupMaintenanceWindowAutoDefer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const toggleGroupMaintenanceWindowAutoDefer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ToggleGroupMaintenanceWindowAutoDeferInput,
     outputSchema: ToggleGroupMaintenanceWindowAutoDeferOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

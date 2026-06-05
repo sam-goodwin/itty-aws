@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeauthorizeGroupCloudProviderAccessRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     roleId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type DeauthorizeGroupCloudProviderAccessRoleInput =
 
 // Output Schema
 export const DeauthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeauthorizeGroupCloudProviderAccessRoleOutput =
   typeof DeauthorizeGroupCloudProviderAccessRoleOutput.Type;
 
@@ -40,9 +40,10 @@ export type DeauthorizeGroupCloudProviderAccessRoleOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the role to deauthorize.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const deauthorizeGroupCloudProviderAccessRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deauthorizeGroupCloudProviderAccessRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeauthorizeGroupCloudProviderAccessRoleInput,
     outputSchema: DeauthorizeGroupCloudProviderAccessRoleOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

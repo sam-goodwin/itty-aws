@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
-    }),
-  );
+export const GetGroupStreamConnectionInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
+  }),
+);
 export type GetGroupStreamConnectionInput =
   typeof GetGroupStreamConnectionInput.Type;
 
 // Output Schema
-export const GetGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupStreamConnectionOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupStreamConnectionOutput =
   typeof GetGroupStreamConnectionOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupStreamConnectionOutput =
  * @param tenantName - Label that identifies the stream workspace to return.
  * @param connectionName - Label that identifies the stream connection to return.
  */
-export const getGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamConnectionInput,
-    outputSchema: GetGroupStreamConnectionOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamConnectionInput,
+  outputSchema: GetGroupStreamConnectionOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

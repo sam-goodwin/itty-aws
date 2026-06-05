@@ -2,10 +2,10 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
-export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateInput = /*@__PURE__*/ Schema.Struct({
   uuid: Schema.String.pipe(T.PathParam()),
   date_joined: Schema.optional(Schema.String),
   distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -751,7 +751,7 @@ export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UsersUpdateInput = typeof UsersUpdateInput.Type;
 
 // Output Schema
-export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   date_joined: Schema.optional(Schema.String),
   uuid: Schema.optional(Schema.String),
   distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -779,7 +779,7 @@ export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       uuid: Schema.optional(Schema.String),
       organization: Schema.optional(Schema.String),
       project_id: Schema.optional(Schema.Number),
-      api_token: Schema.optional(SensitiveString),
+      api_token: Schema.optional(SensitiveOutputString),
       name: Schema.optional(Schema.String),
       completed_snippet_onboarding: Schema.optional(Schema.Boolean),
       has_completed_onboarding_for: Schema.optional(
@@ -1449,8 +1449,8 @@ export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   set_current_organization: Schema.optional(Schema.String),
   set_current_team: Schema.optional(Schema.String),
-  password: Schema.optional(SensitiveString),
-  current_password: Schema.optional(SensitiveString),
+  password: Schema.optional(SensitiveOutputString),
+  current_password: Schema.optional(SensitiveOutputString),
   events_column_config: Schema.optional(Schema.Unknown),
   is_2fa_enabled: Schema.optional(Schema.Boolean),
   has_social_auth: Schema.optional(Schema.Boolean),
@@ -1500,7 +1500,7 @@ export type UsersUpdateOutput = typeof UsersUpdateOutput.Type;
 /**
  * Replace the authenticated user's profile and settings. Pass `@me` as the UUID to update the authenticated user. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided.
  */
-export const usersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersUpdateInput,
   outputSchema: UsersUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type ErrorTrackingAssignmentRulesDestroyInput =
 
 // Output Schema
 export const ErrorTrackingAssignmentRulesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingAssignmentRulesDestroyOutput =
   typeof ErrorTrackingAssignmentRulesDestroyOutput.Type;
 
@@ -29,9 +29,10 @@ export type ErrorTrackingAssignmentRulesDestroyOutput =
  * @param id - A UUID string identifying this error tracking assignment rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingAssignmentRulesDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingAssignmentRulesDestroy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingAssignmentRulesDestroyInput,
     outputSchema: ErrorTrackingAssignmentRulesDestroyOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

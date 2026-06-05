@@ -3,18 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RequestSolanaFaucetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String,
-    token: Schema.Literals(["sol", "usdc", "cbtusd"]),
-  }).pipe(T.Http({ method: "POST", path: "/v2/solana/faucet" }));
+export const RequestSolanaFaucetInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  token: Schema.Literals(["sol", "usdc", "cbtusd"]),
+}).pipe(T.Http({ method: "POST", path: "/v2/solana/faucet" }));
 export type RequestSolanaFaucetInput = typeof RequestSolanaFaucetInput.Type;
 
 // Output Schema
-export const RequestSolanaFaucetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    transactionSignature: Schema.String,
-  });
+export const RequestSolanaFaucetOutput = /*@__PURE__*/ Schema.Struct({
+  transactionSignature: Schema.String,
+});
 export type RequestSolanaFaucetOutput = typeof RequestSolanaFaucetOutput.Type;
 
 // The operation
@@ -27,7 +25,7 @@ export type RequestSolanaFaucetOutput = typeof RequestSolanaFaucetOutput.Type;
  * These limits are applied at both the CDP Project level and the blockchain address level.
  * A single blockchain address cannot exceed the specified limits, even if multiple users submit requests to the same address.
  */
-export const requestSolanaFaucet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const requestSolanaFaucet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RequestSolanaFaucetInput,
   outputSchema: RequestSolanaFaucetOutput,
 }));

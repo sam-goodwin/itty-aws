@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const BestPracticesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BestPracticesGetInput = /*@__PURE__*/ Schema.Struct({
   bestPracticeName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -21,32 +21,30 @@ export const BestPracticesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BestPracticesGetInput = typeof BestPracticesGetInput.Type;
 
 // Output Schema
-export const BestPracticesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        configuration: Schema.optional(Schema.Unknown),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const BestPracticesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      configuration: Schema.optional(Schema.Unknown),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BestPracticesGetOutput = typeof BestPracticesGetOutput.Type;
 
 // The operation
@@ -56,65 +54,63 @@ export type BestPracticesGetOutput = typeof BestPracticesGetOutput.Type;
  * @param bestPracticeName - The Automanage best practice name.
  * @param api-version - The API version to use for this operation.
  */
-export const BestPracticesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BestPracticesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BestPracticesGetInput,
   outputSchema: BestPracticesGetOutput,
 }));
 // Input Schema
-export const BestPracticesListByTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Automanage/bestPractices",
-    }),
-  );
+export const BestPracticesListByTenantInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Automanage/bestPractices",
+  }),
+);
 export type BestPracticesListByTenantInput =
   typeof BestPracticesListByTenantInput.Type;
 
 // Output Schema
-export const BestPracticesListByTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              configuration: Schema.optional(Schema.Unknown),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BestPracticesListByTenantOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            configuration: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type BestPracticesListByTenantOutput =
   typeof BestPracticesListByTenantOutput.Type;
 
@@ -124,53 +120,49 @@ export type BestPracticesListByTenantOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const BestPracticesListByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BestPracticesListByTenantInput,
-    outputSchema: BestPracticesListByTenantOutput,
+export const BestPracticesListByTenant = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BestPracticesListByTenantInput,
+  outputSchema: BestPracticesListByTenantOutput,
+}));
+// Input Schema
+export const BestPracticesVersionsGetInput = /*@__PURE__*/ Schema.Struct({
+  bestPracticeName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
   }),
 );
-// Input Schema
-export const BestPracticesVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bestPracticeName: Schema.String.pipe(T.PathParam()),
-    versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
-    }),
-  );
 export type BestPracticesVersionsGetInput =
   typeof BestPracticesVersionsGetInput.Type;
 
 // Output Schema
-export const BestPracticesVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        configuration: Schema.optional(Schema.Unknown),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BestPracticesVersionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      configuration: Schema.optional(Schema.Unknown),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BestPracticesVersionsGetOutput =
   typeof BestPracticesVersionsGetOutput.Type;
 
@@ -182,15 +174,13 @@ export type BestPracticesVersionsGetOutput =
  * @param versionName - The Automanage best practice version name.
  * @param api-version - The API version to use for this operation.
  */
-export const BestPracticesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BestPracticesVersionsGetInput,
-    outputSchema: BestPracticesVersionsGetOutput,
-  }),
-);
+export const BestPracticesVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BestPracticesVersionsGetInput,
+  outputSchema: BestPracticesVersionsGetOutput,
+}));
 // Input Schema
 export const BestPracticesVersionsListByTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bestPracticeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -204,7 +194,7 @@ export type BestPracticesVersionsListByTenantInput =
 
 // Output Schema
 export const BestPracticesVersionsListByTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -254,14 +244,13 @@ export type BestPracticesVersionsListByTenantOutput =
  * @param bestPracticeName - The Automanage best practice name.
  * @param api-version - The API version to use for this operation.
  */
-export const BestPracticesVersionsListByTenant =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BestPracticesVersionsListByTenantInput,
-    outputSchema: BestPracticesVersionsListByTenantOutput,
-  }));
+export const BestPracticesVersionsListByTenant = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BestPracticesVersionsListByTenantInput,
+  outputSchema: BestPracticesVersionsListByTenantOutput,
+}));
 // Input Schema
 export const ConfigurationProfileAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -277,7 +266,7 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -295,13 +284,13 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileAssignmentsCreateOrUpdateInput,
     outputSchema: ConfigurationProfileAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationProfileAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -317,7 +306,7 @@ export type ConfigurationProfileAssignmentsDeleteInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ConfigurationProfileAssignmentsDeleteOutput =
   typeof ConfigurationProfileAssignmentsDeleteOutput.Type;
 
@@ -330,14 +319,15 @@ export type ConfigurationProfileAssignmentsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileAssignmentsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileAssignmentsDeleteInput,
     outputSchema: ConfigurationProfileAssignmentsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -353,7 +343,7 @@ export type ConfigurationProfileAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -370,14 +360,15 @@ export type ConfigurationProfileAssignmentsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileAssignmentsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileAssignmentsGetInput,
     outputSchema: ConfigurationProfileAssignmentsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -392,7 +383,7 @@ export type ConfigurationProfileAssignmentsListInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -414,14 +405,15 @@ export type ConfigurationProfileAssignmentsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileAssignmentsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileAssignmentsListInput,
     outputSchema: ConfigurationProfileAssignmentsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileAssignmentsListByClusterNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -436,7 +428,7 @@ export type ConfigurationProfileAssignmentsListByClusterNameInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsListByClusterNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -459,13 +451,13 @@ export type ConfigurationProfileAssignmentsListByClusterNameOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByClusterName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileAssignmentsListByClusterNameInput,
     outputSchema: ConfigurationProfileAssignmentsListByClusterNameOutput,
   }));
 // Input Schema
 export const ConfigurationProfileAssignmentsListByMachineNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -480,7 +472,7 @@ export type ConfigurationProfileAssignmentsListByMachineNameInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsListByMachineNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -503,13 +495,13 @@ export type ConfigurationProfileAssignmentsListByMachineNameOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByMachineName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileAssignmentsListByMachineNameInput,
     outputSchema: ConfigurationProfileAssignmentsListByMachineNameOutput,
   }));
 // Input Schema
 export const ConfigurationProfileAssignmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -523,7 +515,7 @@ export type ConfigurationProfileAssignmentsListBySubscriptionInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -545,13 +537,13 @@ export type ConfigurationProfileAssignmentsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileAssignmentsListBySubscriptionInput,
     outputSchema: ConfigurationProfileAssignmentsListBySubscriptionOutput,
   }));
 // Input Schema
 export const ConfigurationProfileAssignmentsListByVirtualMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -566,7 +558,7 @@ export type ConfigurationProfileAssignmentsListByVirtualMachinesInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -589,13 +581,13 @@ export type ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByVirtualMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileAssignmentsListByVirtualMachinesInput,
     outputSchema: ConfigurationProfileAssignmentsListByVirtualMachinesOutput,
   }));
 // Input Schema
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -611,7 +603,7 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -629,13 +621,13 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileHCIAssignmentsCreateOrUpdateInput,
     outputSchema: ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationProfileHCIAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -651,7 +643,7 @@ export type ConfigurationProfileHCIAssignmentsDeleteInput =
 
 // Output Schema
 export const ConfigurationProfileHCIAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ConfigurationProfileHCIAssignmentsDeleteOutput =
   typeof ConfigurationProfileHCIAssignmentsDeleteOutput.Type;
 
@@ -664,14 +656,15 @@ export type ConfigurationProfileHCIAssignmentsDeleteOutput =
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileHCIAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileHCIAssignmentsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileHCIAssignmentsDeleteInput,
     outputSchema: ConfigurationProfileHCIAssignmentsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileHCIAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -687,7 +680,7 @@ export type ConfigurationProfileHCIAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileHCIAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -704,14 +697,15 @@ export type ConfigurationProfileHCIAssignmentsGetOutput =
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileHCIAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileHCIAssignmentsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileHCIAssignmentsGetInput,
     outputSchema: ConfigurationProfileHCIAssignmentsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -727,7 +721,7 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -745,13 +739,13 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput,
     outputSchema: ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationProfileHCRPAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -767,7 +761,7 @@ export type ConfigurationProfileHCRPAssignmentsDeleteInput =
 
 // Output Schema
 export const ConfigurationProfileHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
   typeof ConfigurationProfileHCRPAssignmentsDeleteOutput.Type;
 
@@ -780,14 +774,15 @@ export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileHCRPAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileHCRPAssignmentsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileHCRPAssignmentsDeleteInput,
     outputSchema: ConfigurationProfileHCRPAssignmentsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfileHCRPAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -803,7 +798,7 @@ export type ConfigurationProfileHCRPAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileHCRPAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -820,14 +815,15 @@ export type ConfigurationProfileHCRPAssignmentsGetOutput =
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfileHCRPAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfileHCRPAssignmentsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfileHCRPAssignmentsGetInput,
     outputSchema: ConfigurationProfileHCRPAssignmentsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -843,7 +839,7 @@ export type ConfigurationProfilesCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -860,30 +856,29 @@ export type ConfigurationProfilesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfilesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfilesCreateOrUpdateInput,
     outputSchema: ConfigurationProfilesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConfigurationProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    configurationProfileName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-    }),
-  );
+export const ConfigurationProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configurationProfileName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+  }),
+);
 export type ConfigurationProfilesDeleteInput =
   typeof ConfigurationProfilesDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationProfilesDeleteOutput =
   typeof ConfigurationProfilesDeleteOutput.Type;
 
@@ -896,35 +891,31 @@ export type ConfigurationProfilesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationProfilesDeleteInput,
-    outputSchema: ConfigurationProfilesDeleteOutput,
+export const ConfigurationProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationProfilesDeleteInput,
+  outputSchema: ConfigurationProfilesDeleteOutput,
+}));
+// Input Schema
+export const ConfigurationProfilesGetInput = /*@__PURE__*/ Schema.Struct({
+  configurationProfileName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
   }),
 );
-// Input Schema
-export const ConfigurationProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configurationProfileName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-    }),
-  );
 export type ConfigurationProfilesGetInput =
   typeof ConfigurationProfilesGetInput.Type;
 
 // Output Schema
-export const ConfigurationProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConfigurationProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConfigurationProfilesGetOutput =
   typeof ConfigurationProfilesGetOutput.Type;
 
@@ -937,15 +928,13 @@ export type ConfigurationProfilesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationProfilesGetInput,
-    outputSchema: ConfigurationProfilesGetOutput,
-  }),
-);
+export const ConfigurationProfilesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationProfilesGetInput,
+  outputSchema: ConfigurationProfilesGetOutput,
+}));
 // Input Schema
 export const ConfigurationProfilesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -960,7 +949,7 @@ export type ConfigurationProfilesListByResourceGroupInput =
 
 // Output Schema
 export const ConfigurationProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -982,14 +971,15 @@ export type ConfigurationProfilesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfilesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfilesListByResourceGroupInput,
     outputSchema: ConfigurationProfilesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfilesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1003,7 +993,7 @@ export type ConfigurationProfilesListBySubscriptionInput =
 
 // Output Schema
 export const ConfigurationProfilesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1024,34 +1014,33 @@ export type ConfigurationProfilesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfilesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfilesListBySubscriptionInput,
     outputSchema: ConfigurationProfilesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConfigurationProfilesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configurationProfileName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-    }),
-  );
+export const ConfigurationProfilesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  configurationProfileName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+  }),
+);
 export type ConfigurationProfilesUpdateInput =
   typeof ConfigurationProfilesUpdateInput.Type;
 
 // Output Schema
-export const ConfigurationProfilesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConfigurationProfilesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConfigurationProfilesUpdateOutput =
   typeof ConfigurationProfilesUpdateOutput.Type;
 
@@ -1064,15 +1053,13 @@ export type ConfigurationProfilesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationProfilesUpdateInput,
-    outputSchema: ConfigurationProfilesUpdateOutput,
-  }),
-);
+export const ConfigurationProfilesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationProfilesUpdateInput,
+  outputSchema: ConfigurationProfilesUpdateOutput,
+}));
 // Input Schema
 export const ConfigurationProfilesVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1089,7 +1076,7 @@ export type ConfigurationProfilesVersionsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfilesVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1108,13 +1095,13 @@ export type ConfigurationProfilesVersionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfilesVersionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfilesVersionsCreateOrUpdateInput,
     outputSchema: ConfigurationProfilesVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationProfilesVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
@@ -1131,7 +1118,7 @@ export type ConfigurationProfilesVersionsDeleteInput =
 
 // Output Schema
 export const ConfigurationProfilesVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ConfigurationProfilesVersionsDeleteOutput =
   typeof ConfigurationProfilesVersionsDeleteOutput.Type;
 
@@ -1145,14 +1132,15 @@ export type ConfigurationProfilesVersionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesVersionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationProfilesVersionsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationProfilesVersionsDeleteInput,
     outputSchema: ConfigurationProfilesVersionsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConfigurationProfilesVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1169,7 +1157,7 @@ export type ConfigurationProfilesVersionsGetInput =
 
 // Output Schema
 export const ConfigurationProfilesVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1187,14 +1175,13 @@ export type ConfigurationProfilesVersionsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ConfigurationProfilesVersionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationProfilesVersionsGetInput,
-    outputSchema: ConfigurationProfilesVersionsGetOutput,
-  }));
+export const ConfigurationProfilesVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationProfilesVersionsGetInput,
+  outputSchema: ConfigurationProfilesVersionsGetOutput,
+}));
 // Input Schema
 export const ConfigurationProfilesVersionsListChildResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1210,7 +1197,7 @@ export type ConfigurationProfilesVersionsListChildResourcesInput =
 
 // Output Schema
 export const ConfigurationProfilesVersionsListChildResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1234,12 +1221,12 @@ export type ConfigurationProfilesVersionsListChildResourcesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfilesVersionsListChildResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationProfilesVersionsListChildResourcesInput,
     outputSchema: ConfigurationProfilesVersionsListChildResourcesOutput,
   }));
 // Input Schema
-export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HCIReportsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1254,7 +1241,7 @@ export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HCIReportsGetInput = typeof HCIReportsGetInput.Type;
 
 // Output Schema
-export const HCIReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HCIReportsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1271,13 +1258,13 @@ export type HCIReportsGetOutput = typeof HCIReportsGetOutput.Type;
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
  */
-export const HCIReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HCIReportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HCIReportsGetInput,
   outputSchema: HCIReportsGetOutput,
 }));
 // Input Schema
 export const HCIReportsListByConfigurationProfileAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1293,7 +1280,7 @@ export type HCIReportsListByConfigurationProfileAssignmentsInput =
 
 // Output Schema
 export const HCIReportsListByConfigurationProfileAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1317,12 +1304,12 @@ export type HCIReportsListByConfigurationProfileAssignmentsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const HCIReportsListByConfigurationProfileAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HCIReportsListByConfigurationProfileAssignmentsInput,
     outputSchema: HCIReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
-export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HCRPReportsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1337,7 +1324,7 @@ export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HCRPReportsGetInput = typeof HCRPReportsGetInput.Type;
 
 // Output Schema
-export const HCRPReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HCRPReportsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1354,13 +1341,13 @@ export type HCRPReportsGetOutput = typeof HCRPReportsGetOutput.Type;
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
  */
-export const HCRPReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HCRPReportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HCRPReportsGetInput,
   outputSchema: HCRPReportsGetOutput,
 }));
 // Input Schema
 export const HCRPReportsListByConfigurationProfileAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1376,7 +1363,7 @@ export type HCRPReportsListByConfigurationProfileAssignmentsInput =
 
 // Output Schema
 export const HCRPReportsListByConfigurationProfileAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1400,12 +1387,12 @@ export type HCRPReportsListByConfigurationProfileAssignmentsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const HCRPReportsListByConfigurationProfileAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HCRPReportsListByConfigurationProfileAssignmentsInput,
     outputSchema: HCRPReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Automanage/operations" }),
@@ -1413,7 +1400,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1444,12 +1431,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
@@ -1464,7 +1451,7 @@ export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportsGetInput = typeof ReportsGetInput.Type;
 
 // Output Schema
-export const ReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1481,13 +1468,13 @@ export type ReportsGetOutput = typeof ReportsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const reportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const reportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsGetInput,
   outputSchema: ReportsGetOutput,
 }));
 // Input Schema
 export const ReportsListByConfigurationProfileAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1503,7 +1490,7 @@ export type ReportsListByConfigurationProfileAssignmentsInput =
 
 // Output Schema
 export const ReportsListByConfigurationProfileAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1527,30 +1514,28 @@ export type ReportsListByConfigurationProfileAssignmentsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const reportsListByConfigurationProfileAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReportsListByConfigurationProfileAssignmentsInput,
     outputSchema: ReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
-export const ServicePrincipalsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
-    }),
-  );
+export const ServicePrincipalsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
+  }),
+);
 export type ServicePrincipalsGetInput = typeof ServicePrincipalsGetInput.Type;
 
 // Output Schema
-export const ServicePrincipalsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ServicePrincipalsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ServicePrincipalsGetOutput = typeof ServicePrincipalsGetOutput.Type;
 
 // The operation
@@ -1560,15 +1545,13 @@ export type ServicePrincipalsGetOutput = typeof ServicePrincipalsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ServicePrincipalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicePrincipalsGetInput,
-    outputSchema: ServicePrincipalsGetOutput,
-  }),
-);
+export const ServicePrincipalsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicePrincipalsGetInput,
+  outputSchema: ServicePrincipalsGetOutput,
+}));
 // Input Schema
 export const ServicePrincipalsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1582,7 +1565,7 @@ export type ServicePrincipalsListBySubscriptionInput =
 
 // Output Schema
 export const ServicePrincipalsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1603,8 +1586,9 @@ export type ServicePrincipalsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ServicePrincipalsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicePrincipalsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ServicePrincipalsListBySubscriptionInput,
     outputSchema: ServicePrincipalsListBySubscriptionOutput,
-  }));
+  }),
+);

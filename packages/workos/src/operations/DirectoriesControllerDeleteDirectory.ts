@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DirectoriesControllerDeleteDirectoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/directories/{id}" }));
 export type DirectoriesControllerDeleteDirectoryInput =
@@ -13,7 +13,7 @@ export type DirectoriesControllerDeleteDirectoryInput =
 
 // Output Schema
 export const DirectoriesControllerDeleteDirectoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DirectoriesControllerDeleteDirectoryOutput =
   typeof DirectoriesControllerDeleteDirectoryOutput.Type;
 
@@ -25,9 +25,10 @@ export type DirectoriesControllerDeleteDirectoryOutput =
  *
  * @param id - Unique identifier for the Directory.
  */
-export const DirectoriesControllerDeleteDirectory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DirectoriesControllerDeleteDirectory = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DirectoriesControllerDeleteDirectoryInput,
     outputSchema: DirectoriesControllerDeleteDirectoryOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBillingMetersInput = /*@__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
@@ -19,39 +19,37 @@ export const GetBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBillingMetersInput = typeof GetBillingMetersInput.Type;
 
 // Output Schema
-export const GetBillingMetersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        customer_mapping: Schema.Struct({
-          event_payload_key: Schema.String,
-          type: Schema.Literals(["by_id"]),
-        }),
-        default_aggregation: Schema.Struct({
-          formula: Schema.Literals(["count", "last", "sum"]),
-        }),
-        display_name: Schema.String,
-        event_name: Schema.String,
-        event_time_window: Schema.NullOr(Schema.Literals(["day", "hour"])),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["billing.meter"]),
-        status: Schema.Literals(["active", "inactive"]),
-        status_transitions: Schema.Struct({
-          deactivated_at: Schema.NullOr(Schema.Number),
-        }),
-        updated: Schema.Number,
-        value_settings: Schema.Struct({
-          event_payload_key: Schema.String,
-        }),
+export const GetBillingMetersOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      created: Schema.Number,
+      customer_mapping: Schema.Struct({
+        event_payload_key: Schema.String,
+        type: Schema.Literals(["by_id"]),
       }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  },
-);
+      default_aggregation: Schema.Struct({
+        formula: Schema.Literals(["count", "last", "sum"]),
+      }),
+      display_name: Schema.String,
+      event_name: Schema.String,
+      event_time_window: Schema.NullOr(Schema.Literals(["day", "hour"])),
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      object: Schema.Literals(["billing.meter"]),
+      status: Schema.Literals(["active", "inactive"]),
+      status_transitions: Schema.Struct({
+        deactivated_at: Schema.NullOr(Schema.Number),
+      }),
+      updated: Schema.Number,
+      value_settings: Schema.Struct({
+        event_payload_key: Schema.String,
+      }),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetBillingMetersOutput = typeof GetBillingMetersOutput.Type;
 
 // The operation
@@ -66,7 +64,7 @@ export type GetBillingMetersOutput = typeof GetBillingMetersOutput.Type;
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Filter results to only include meters with the given status.
  */
-export const GetBillingMeters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBillingMeters = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBillingMetersInput,
   outputSchema: GetBillingMetersOutput,
 }));

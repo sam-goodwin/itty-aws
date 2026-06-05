@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
-    }),
-  );
+export const DeleteGroupDataFederationInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
+  }),
+);
 export type DeleteGroupDataFederationInput =
   typeof DeleteGroupDataFederationInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupDataFederationOutput =
   typeof DeleteGroupDataFederationOutput.Type;
 
@@ -38,10 +36,8 @@ export type DeleteGroupDataFederationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param tenantName - Human-readable label that identifies the federated database instance to remove.
  */
-export const deleteGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupDataFederationInput,
-    outputSchema: DeleteGroupDataFederationOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDataFederationInput,
+  outputSchema: DeleteGroupDataFederationOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

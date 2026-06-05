@@ -4,22 +4,20 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsAllActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/activity/",
-    }),
-  );
+export const PersonsAllActivityRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/persons/activity/",
+  }),
+);
 export type PersonsAllActivityRetrieveInput =
   typeof PersonsAllActivityRetrieveInput.Type;
 
 // Output Schema
-export const PersonsAllActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsAllActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsAllActivityRetrieveOutput =
   typeof PersonsAllActivityRetrieveOutput.Type;
 
@@ -29,10 +27,8 @@ export type PersonsAllActivityRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsAllActivityRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsAllActivityRetrieveInput,
-    outputSchema: PersonsAllActivityRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsAllActivityRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsAllActivityRetrieveInput,
+  outputSchema: PersonsAllActivityRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

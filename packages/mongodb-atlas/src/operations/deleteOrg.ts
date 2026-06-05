@@ -10,14 +10,14 @@ import {
 } from "../errors.ts";
 
 // Input Schema
-export const DeleteOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOrgInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}" }));
 export type DeleteOrgInput = typeof DeleteOrgInput.Type;
 
 // Output Schema
-export const DeleteOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOrgOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOrgOutput = typeof DeleteOrgOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type DeleteOrgOutput = typeof DeleteOrgOutput.Type;
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
-export const deleteOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteOrgInput,
   outputSchema: DeleteOrgOutput,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,

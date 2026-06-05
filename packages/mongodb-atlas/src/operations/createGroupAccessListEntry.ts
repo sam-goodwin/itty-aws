@@ -4,26 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/accessList",
-    }),
-  );
+export const CreateGroupAccessListEntryInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/accessList" }),
+);
 export type CreateGroupAccessListEntryInput =
   typeof CreateGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const CreateGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupAccessListEntryOutput =
   typeof CreateGroupAccessListEntryOutput.Type;
 
@@ -42,10 +37,8 @@ export type CreateGroupAccessListEntryOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupAccessListEntryInput,
-    outputSchema: CreateGroupAccessListEntryOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupAccessListEntryInput,
+  outputSchema: CreateGroupAccessListEntryOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -9,9 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AnalysisServices/operations",
@@ -20,7 +18,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -81,30 +79,28 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available consumption REST API operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ServersCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
-    }),
-  );
+export const ServersCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+  }),
+);
 export type ServersCheckNameAvailabilityInput =
   typeof ServersCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const ServersCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-  });
+export const ServersCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
 export type ServersCheckNameAvailabilityOutput =
   typeof ServersCheckNameAvailabilityOutput.Type;
 
@@ -114,13 +110,12 @@ export type ServersCheckNameAvailabilityOutput =
  *
  * @param location - The region name which the operation will lookup into.
  */
-export const ServersCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ServersCheckNameAvailabilityInput,
-    outputSchema: ServersCheckNameAvailabilityOutput,
-  }));
+export const ServersCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersCheckNameAvailabilityInput,
+  outputSchema: ServersCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersCreateInput = /*@__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -131,7 +126,7 @@ export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersCreateInput = typeof ServersCreateInput.Type;
 
 // Output Schema
-export const ServersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -153,12 +148,12 @@ export type ServersCreateOutput = typeof ServersCreateOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const ServersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersCreateInput,
   outputSchema: ServersCreateOutput,
 }));
 // Input Schema
-export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersDeleteInput = /*@__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -169,7 +164,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
 
 // The operation
@@ -178,26 +173,24 @@ export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersDeleteInput,
   outputSchema: ServersDeleteOutput,
 }));
 // Input Schema
-export const ServersDissociateGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serverName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
-    }),
-  );
+export const ServersDissociateGatewayInput = /*@__PURE__*/ Schema.Struct({
+  serverName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+  }),
+);
 export type ServersDissociateGatewayInput =
   typeof ServersDissociateGatewayInput.Type;
 
 // Output Schema
-export const ServersDissociateGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersDissociateGatewayOutput = /*@__PURE__*/ Schema.Void;
 export type ServersDissociateGatewayOutput =
   typeof ServersDissociateGatewayOutput.Type;
 
@@ -207,18 +200,14 @@ export type ServersDissociateGatewayOutput =
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersDissociateGateway = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersDissociateGatewayInput,
-    outputSchema: ServersDissociateGatewayOutput,
-  }),
-);
+export const ServersDissociateGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersDissociateGatewayInput,
+  outputSchema: ServersDissociateGatewayOutput,
+}));
 // Input Schema
-export const ServersGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    serverName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ServersGetDetailsInput = /*@__PURE__*/ Schema.Struct({
+  serverName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
@@ -227,21 +216,20 @@ export const ServersGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServersGetDetailsInput = typeof ServersGetDetailsInput.Type;
 
 // Output Schema
-export const ServersGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    sku: Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Development", "Basic", "Standard"]),
-      ),
-      capacity: Schema.optional(Schema.Number),
-    }),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ServersGetDetailsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  sku: Schema.Struct({
+    name: Schema.String,
+    tier: Schema.optional(
+      Schema.Literals(["Development", "Basic", "Standard"]),
+    ),
+    capacity: Schema.optional(Schema.Number),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ServersGetDetailsOutput = typeof ServersGetDetailsOutput.Type;
 
 // The operation
@@ -250,14 +238,12 @@ export type ServersGetDetailsOutput = typeof ServersGetDetailsOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const ServersGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersGetDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersGetDetailsInput,
   outputSchema: ServersGetDetailsOutput,
 }));
 // Input Schema
-export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServersListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
@@ -266,7 +252,7 @@ export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServersListInput = typeof ServersListInput.Type;
 
 // Output Schema
-export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -290,41 +276,41 @@ export type ServersListOutput = typeof ServersListOutput.Type;
 /**
  * Lists all the Analysis Services servers for the given subscription.
  */
-export const ServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersListInput,
   outputSchema: ServersListOutput,
 }));
 // Input Schema
-export const ServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
-    }),
-  );
+export const ServersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+  }),
+);
 export type ServersListByResourceGroupInput =
   typeof ServersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ServersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.String,
-        sku: Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["Development", "Basic", "Standard"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+export const ServersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.String,
+      sku: Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Development", "Basic", "Standard"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
       }),
-    ),
-  });
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+});
 export type ServersListByResourceGroupOutput =
   typeof ServersListByResourceGroupOutput.Type;
 
@@ -332,30 +318,26 @@ export type ServersListByResourceGroupOutput =
 /**
  * Gets all the Analysis Services servers for the given resource group.
  */
-export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListByResourceGroupInput,
-    outputSchema: ServersListByResourceGroupOutput,
+export const ServersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListByResourceGroupInput,
+  outputSchema: ServersListByResourceGroupOutput,
+}));
+// Input Schema
+export const ServersListGatewayStatusInput = /*@__PURE__*/ Schema.Struct({
+  serverName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
   }),
 );
-// Input Schema
-export const ServersListGatewayStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serverName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
-    }),
-  );
 export type ServersListGatewayStatusInput =
   typeof ServersListGatewayStatusInput.Type;
 
 // Output Schema
-export const ServersListGatewayStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Schema.Literals([0])),
-  });
+export const ServersListGatewayStatusOutput = /*@__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.Literals([0])),
+});
 export type ServersListGatewayStatusOutput =
   typeof ServersListGatewayStatusOutput.Type;
 
@@ -365,29 +347,25 @@ export type ServersListGatewayStatusOutput =
  *
  * @param serverName - The name of the Analysis Services server.
  */
-export const ServersListGatewayStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListGatewayStatusInput,
-    outputSchema: ServersListGatewayStatusOutput,
+export const ServersListGatewayStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListGatewayStatusInput,
+  outputSchema: ServersListGatewayStatusOutput,
+}));
+// Input Schema
+export const ServersListOperationResultsInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
   }),
 );
-// Input Schema
-export const ServersListOperationResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
-    }),
-  );
 export type ServersListOperationResultsInput =
   typeof ServersListOperationResultsInput.Type;
 
 // Output Schema
-export const ServersListOperationResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersListOperationResultsOutput = /*@__PURE__*/ Schema.Void;
 export type ServersListOperationResultsOutput =
   typeof ServersListOperationResultsOutput.Type;
 
@@ -398,54 +376,50 @@ export type ServersListOperationResultsOutput =
  * @param location - The region name which the operation will lookup into.
  * @param operationId - The target operation Id.
  */
-export const ServersListOperationResults = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListOperationResultsInput,
-    outputSchema: ServersListOperationResultsOutput,
+export const ServersListOperationResults = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListOperationResultsInput,
+  outputSchema: ServersListOperationResultsOutput,
+}));
+// Input Schema
+export const ServersListOperationStatusesInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
   }),
 );
-// Input Schema
-export const ServersListOperationStatusesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
-    }),
-  );
 export type ServersListOperationStatusesInput =
   typeof ServersListOperationStatusesInput.Type;
 
 // Output Schema
-export const ServersListOperationStatusesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        subCode: Schema.optional(Schema.Number),
-        httpStatusCode: Schema.optional(Schema.Number),
-        timeStamp: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+export const ServersListOperationStatusesOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      subCode: Schema.optional(Schema.Number),
+      httpStatusCode: Schema.optional(Schema.Number),
+      timeStamp: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ServersListOperationStatusesOutput =
   typeof ServersListOperationStatusesOutput.Type;
 
@@ -456,44 +430,41 @@ export type ServersListOperationStatusesOutput =
  * @param location - The region name which the operation will lookup into.
  * @param operationId - The target operation Id.
  */
-export const ServersListOperationStatuses =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ServersListOperationStatusesInput,
-    outputSchema: ServersListOperationStatusesOutput,
-  }));
+export const ServersListOperationStatuses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListOperationStatusesInput,
+  outputSchema: ServersListOperationStatusesOutput,
+}));
 // Input Schema
-export const ServersListSkusForExistingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serverName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
-    }),
-  );
+export const ServersListSkusForExistingInput = /*@__PURE__*/ Schema.Struct({
+  serverName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+  }),
+);
 export type ServersListSkusForExistingInput =
   typeof ServersListSkusForExistingInput.Type;
 
 // Output Schema
-export const ServersListSkusForExistingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Development", "Basic", "Standard"]),
-              ),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          resourceType: Schema.optional(Schema.String),
-        }),
-      ),
+export const ServersListSkusForExistingOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["Development", "Basic", "Standard"]),
+            ),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        resourceType: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ServersListSkusForExistingOutput =
   typeof ServersListSkusForExistingOutput.Type;
 
@@ -503,37 +474,33 @@ export type ServersListSkusForExistingOutput =
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersListSkusForExisting = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListSkusForExistingInput,
-    outputSchema: ServersListSkusForExistingOutput,
+export const ServersListSkusForExisting = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListSkusForExistingInput,
+  outputSchema: ServersListSkusForExistingOutput,
+}));
+// Input Schema
+export const ServersListSkusForNewInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
   }),
 );
-// Input Schema
-export const ServersListSkusForNewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
-    }),
-  );
 export type ServersListSkusForNewInput = typeof ServersListSkusForNewInput.Type;
 
 // Output Schema
-export const ServersListSkusForNewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["Development", "Basic", "Standard"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-      ),
+export const ServersListSkusForNewOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Development", "Basic", "Standard"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type ServersListSkusForNewOutput =
   typeof ServersListSkusForNewOutput.Type;
 
@@ -541,14 +508,12 @@ export type ServersListSkusForNewOutput =
 /**
  * Lists eligible SKUs for Analysis Services resource provider.
  */
-export const ServersListSkusForNew = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListSkusForNewInput,
-    outputSchema: ServersListSkusForNewOutput,
-  }),
-);
+export const ServersListSkusForNew = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListSkusForNewInput,
+  outputSchema: ServersListSkusForNewOutput,
+}));
 // Input Schema
-export const ServersResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersResumeInput = /*@__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -559,7 +524,7 @@ export const ServersResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersResumeInput = typeof ServersResumeInput.Type;
 
 // Output Schema
-export const ServersResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersResumeOutput = /*@__PURE__*/ Schema.Void;
 export type ServersResumeOutput = typeof ServersResumeOutput.Type;
 
 // The operation
@@ -568,12 +533,12 @@ export type ServersResumeOutput = typeof ServersResumeOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersResumeInput,
   outputSchema: ServersResumeOutput,
 }));
 // Input Schema
-export const ServersSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersSuspendInput = /*@__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -584,7 +549,7 @@ export const ServersSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersSuspendInput = typeof ServersSuspendInput.Type;
 
 // Output Schema
-export const ServersSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersSuspendOutput = /*@__PURE__*/ Schema.Void;
 export type ServersSuspendOutput = typeof ServersSuspendOutput.Type;
 
 // The operation
@@ -593,12 +558,12 @@ export type ServersSuspendOutput = typeof ServersSuspendOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersSuspendInput,
   outputSchema: ServersSuspendOutput,
 }));
 // Input Schema
-export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersUpdateInput = /*@__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -609,7 +574,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
-export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -631,7 +596,7 @@ export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
  *
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
  */
-export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersUpdateInput,
   outputSchema: ServersUpdateOutput,
 }));

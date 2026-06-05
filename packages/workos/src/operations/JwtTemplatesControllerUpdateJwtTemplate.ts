@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const JwtTemplatesControllerUpdateJwtTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/user_management/jwt_template" }));
 export type JwtTemplatesControllerUpdateJwtTemplateInput =
@@ -13,7 +13,7 @@ export type JwtTemplatesControllerUpdateJwtTemplateInput =
 
 // Output Schema
 export const JwtTemplatesControllerUpdateJwtTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -28,9 +28,10 @@ export type JwtTemplatesControllerUpdateJwtTemplateOutput =
  *
  * Update the JWT template for the current environment.
  */
-export const JwtTemplatesControllerUpdateJwtTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JwtTemplatesControllerUpdateJwtTemplate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: JwtTemplatesControllerUpdateJwtTemplateInput,
     outputSchema: JwtTemplatesControllerUpdateJwtTemplateOutput,
     errors: [UnprocessableEntity] as const,
-  }));
+  }),
+);

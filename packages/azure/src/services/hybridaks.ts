@@ -9,39 +9,37 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AgentPoolCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
-    }),
-  );
+export const AgentPoolCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
+  }),
+);
 export type AgentPoolCreateOrUpdateInput =
   typeof AgentPoolCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AgentPoolCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AgentPoolCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AgentPoolCreateOrUpdateOutput =
   typeof AgentPoolCreateOrUpdateOutput.Type;
 
@@ -51,14 +49,12 @@ export type AgentPoolCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentPoolCreateOrUpdateInput,
-    outputSchema: AgentPoolCreateOrUpdateOutput,
-  }),
-);
+export const agentPoolCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolCreateOrUpdateInput,
+  outputSchema: AgentPoolCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolDeleteInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -69,7 +65,7 @@ export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentPoolDeleteInput = typeof AgentPoolDeleteInput.Type;
 
 // Output Schema
-export const AgentPoolDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AgentPoolDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AgentPoolDeleteOutput = typeof AgentPoolDeleteOutput.Type;
 
 // The operation
@@ -78,12 +74,12 @@ export type AgentPoolDeleteOutput = typeof AgentPoolDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentPoolDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolDeleteInput,
   outputSchema: AgentPoolDeleteOutput,
 }));
 // Input Schema
-export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolGetInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -94,7 +90,7 @@ export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentPoolGetInput = typeof AgentPoolGetInput.Type;
 
 // Output Schema
-export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -121,13 +117,13 @@ export type AgentPoolGetOutput = typeof AgentPoolGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentPoolGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolGetInput,
   outputSchema: AgentPoolGetOutput,
 }));
 // Input Schema
 export const AgentPoolListByProvisionedClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -140,7 +136,7 @@ export type AgentPoolListByProvisionedClusterInput =
 
 // Output Schema
 export const AgentPoolListByProvisionedClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -185,27 +181,24 @@ export type AgentPoolListByProvisionedClusterOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolListByProvisionedCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AgentPoolListByProvisionedClusterInput,
-    outputSchema: AgentPoolListByProvisionedClusterOutput,
-  }));
+export const agentPoolListByProvisionedCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolListByProvisionedClusterInput,
+  outputSchema: AgentPoolListByProvisionedClusterOutput,
+}));
 // Input Schema
-export const DeleteKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
-    }),
-  );
+export const DeleteKubernetesVersionsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+  }),
+);
 export type DeleteKubernetesVersionsInput =
   typeof DeleteKubernetesVersionsInput.Type;
 
 // Output Schema
-export const DeleteKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteKubernetesVersionsOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteKubernetesVersionsOutput =
   typeof DeleteKubernetesVersionsOutput.Type;
 
@@ -217,14 +210,12 @@ export type DeleteKubernetesVersionsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const DeleteKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteKubernetesVersionsInput,
-    outputSchema: DeleteKubernetesVersionsOutput,
-  }),
-);
+export const DeleteKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteKubernetesVersionsInput,
+  outputSchema: DeleteKubernetesVersionsOutput,
+}));
 // Input Schema
-export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteVMSkusInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -235,7 +226,7 @@ export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteVMSkusInput = typeof DeleteVMSkusInput.Type;
 
 // Output Schema
-export const DeleteVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteVMSkusOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteVMSkusOutput = typeof DeleteVMSkusOutput.Type;
 
 // The operation
@@ -244,43 +235,41 @@ export type DeleteVMSkusOutput = typeof DeleteVMSkusOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const DeleteVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteVMSkusInput,
   outputSchema: DeleteVMSkusOutput,
 }));
 // Input Schema
-export const GetKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
-    }),
-  );
+export const GetKubernetesVersionsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+  }),
+);
 export type GetKubernetesVersionsInput = typeof GetKubernetesVersionsInput.Type;
 
 // Output Schema
-export const GetKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetKubernetesVersionsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetKubernetesVersionsOutput =
   typeof GetKubernetesVersionsOutput.Type;
 
@@ -292,14 +281,12 @@ export type GetKubernetesVersionsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GetKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetKubernetesVersionsInput,
-    outputSchema: GetKubernetesVersionsOutput,
-  }),
-);
+export const GetKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetKubernetesVersionsInput,
+  outputSchema: GetKubernetesVersionsOutput,
+}));
 // Input Schema
-export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVMSkusInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -310,7 +297,7 @@ export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetVMSkusInput = typeof GetVMSkusInput.Type;
 
 // Output Schema
-export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVMSkusOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -339,26 +326,24 @@ export type GetVMSkusOutput = typeof GetVMSkusOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GetVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetVMSkusInput,
   outputSchema: GetVMSkusOutput,
 }));
 // Input Schema
-export const HybridIdentityMetadataDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
-    }),
-  );
+export const HybridIdentityMetadataDeleteInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+  }),
+);
 export type HybridIdentityMetadataDeleteInput =
   typeof HybridIdentityMetadataDeleteInput.Type;
 
 // Output Schema
-export const HybridIdentityMetadataDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HybridIdentityMetadataDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HybridIdentityMetadataDeleteOutput =
   typeof HybridIdentityMetadataDeleteOutput.Type;
 
@@ -370,45 +355,42 @@ export type HybridIdentityMetadataDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HybridIdentityMetadataDeleteInput,
-    outputSchema: HybridIdentityMetadataDeleteOutput,
-  }));
+export const HybridIdentityMetadataDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataDeleteInput,
+  outputSchema: HybridIdentityMetadataDeleteOutput,
+}));
 // Input Schema
-export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
-    }),
-  );
+export const HybridIdentityMetadataGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+  }),
+);
 export type HybridIdentityMetadataGetInput =
   typeof HybridIdentityMetadataGetInput.Type;
 
 // Output Schema
-export const HybridIdentityMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridIdentityMetadataGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridIdentityMetadataGetOutput =
   typeof HybridIdentityMetadataGetOutput.Type;
 
@@ -420,15 +402,13 @@ export type HybridIdentityMetadataGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataGetInput,
-    outputSchema: HybridIdentityMetadataGetOutput,
-  }),
-);
+export const HybridIdentityMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataGetInput,
+  outputSchema: HybridIdentityMetadataGetOutput,
+}));
 // Input Schema
 export const HybridIdentityMetadataListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -441,7 +421,7 @@ export type HybridIdentityMetadataListByClusterInput =
 
 // Output Schema
 export const HybridIdentityMetadataListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -486,45 +466,44 @@ export type HybridIdentityMetadataListByClusterOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HybridIdentityMetadataListByCluster = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: HybridIdentityMetadataListByClusterInput,
     outputSchema: HybridIdentityMetadataListByClusterOutput,
-  }));
+  }),
+);
 // Input Schema
-export const HybridIdentityMetadataPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
-    }),
-  );
+export const HybridIdentityMetadataPutInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+  }),
+);
 export type HybridIdentityMetadataPutInput =
   typeof HybridIdentityMetadataPutInput.Type;
 
 // Output Schema
-export const HybridIdentityMetadataPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HybridIdentityMetadataPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HybridIdentityMetadataPutOutput =
   typeof HybridIdentityMetadataPutOutput.Type;
 
@@ -536,63 +515,59 @@ export type HybridIdentityMetadataPutOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataPutInput,
-    outputSchema: HybridIdentityMetadataPutOutput,
+export const HybridIdentityMetadataPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataPutInput,
+  outputSchema: HybridIdentityMetadataPutOutput,
+}));
+// Input Schema
+export const KubernetesVersionsListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions",
   }),
 );
-// Input Schema
-export const KubernetesVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions",
-    }),
-  );
 export type KubernetesVersionsListInput =
   typeof KubernetesVersionsListInput.Type;
 
 // Output Schema
-export const KubernetesVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const KubernetesVersionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type KubernetesVersionsListOutput =
   typeof KubernetesVersionsListOutput.Type;
 
@@ -604,14 +579,12 @@ export type KubernetesVersionsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const KubernetesVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesVersionsListInput,
-    outputSchema: KubernetesVersionsListOutput,
-  }),
-);
+export const KubernetesVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesVersionsListInput,
+  outputSchema: KubernetesVersionsListOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -622,7 +595,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -653,13 +626,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ProvisionedClusterInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -672,7 +645,7 @@ export type ProvisionedClusterInstancesCreateOrUpdateInput =
 
 // Output Schema
 export const ProvisionedClusterInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -700,14 +673,15 @@ export type ProvisionedClusterInstancesCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const provisionedClusterInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const provisionedClusterInstancesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProvisionedClusterInstancesCreateOrUpdateInput,
     outputSchema: ProvisionedClusterInstancesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProvisionedClusterInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -720,7 +694,7 @@ export type ProvisionedClusterInstancesDeleteInput =
 
 // Output Schema
 export const ProvisionedClusterInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ProvisionedClusterInstancesDeleteOutput =
   typeof ProvisionedClusterInstancesDeleteOutput.Type;
 
@@ -730,27 +704,25 @@ export type ProvisionedClusterInstancesDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const provisionedClusterInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProvisionedClusterInstancesDeleteInput,
-    outputSchema: ProvisionedClusterInstancesDeleteOutput,
-  }));
+export const provisionedClusterInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedClusterInstancesDeleteInput,
+  outputSchema: ProvisionedClusterInstancesDeleteOutput,
+}));
 // Input Schema
-export const ProvisionedClusterInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
-    }),
-  );
+export const ProvisionedClusterInstancesGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+  }),
+);
 export type ProvisionedClusterInstancesGetInput =
   typeof ProvisionedClusterInstancesGetInput.Type;
 
 // Output Schema
-export const ProvisionedClusterInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProvisionedClusterInstancesGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -768,7 +740,8 @@ export const ProvisionedClusterInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ProvisionedClusterInstancesGetOutput =
   typeof ProvisionedClusterInstancesGetOutput.Type;
 
@@ -778,14 +751,13 @@ export type ProvisionedClusterInstancesGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const provisionedClusterInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProvisionedClusterInstancesGetInput,
-    outputSchema: ProvisionedClusterInstancesGetOutput,
-  }));
+export const provisionedClusterInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedClusterInstancesGetInput,
+  outputSchema: ProvisionedClusterInstancesGetOutput,
+}));
 // Input Schema
 export const ProvisionedClusterInstancesGetUpgradeProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -798,7 +770,7 @@ export type ProvisionedClusterInstancesGetUpgradeProfileInput =
 
 // Output Schema
 export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -827,26 +799,27 @@ export type ProvisionedClusterInstancesGetUpgradeProfileOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesGetUpgradeProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesGetUpgradeProfileInput,
     outputSchema: ProvisionedClusterInstancesGetUpgradeProfileOutput,
   }));
 // Input Schema
-export const ProvisionedClusterInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProvisionedClusterInstancesListInput = /*@__PURE__*/ Schema.Struct(
+  {
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances",
+  }),
+);
 export type ProvisionedClusterInstancesListInput =
   typeof ProvisionedClusterInstancesListInput.Type;
 
 // Output Schema
 export const ProvisionedClusterInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -891,14 +864,13 @@ export type ProvisionedClusterInstancesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const provisionedClusterInstancesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProvisionedClusterInstancesListInput,
-    outputSchema: ProvisionedClusterInstancesListOutput,
-  }));
+export const provisionedClusterInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedClusterInstancesListInput,
+  outputSchema: ProvisionedClusterInstancesListOutput,
+}));
 // Input Schema
 export const ProvisionedClusterInstancesListAdminKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -911,7 +883,7 @@ export type ProvisionedClusterInstancesListAdminKubeconfigInput =
 
 // Output Schema
 export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -957,13 +929,13 @@ export type ProvisionedClusterInstancesListAdminKubeconfigOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesListAdminKubeconfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesListAdminKubeconfigInput,
     outputSchema: ProvisionedClusterInstancesListAdminKubeconfigOutput,
   }));
 // Input Schema
 export const ProvisionedClusterInstancesListUserKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -976,7 +948,7 @@ export type ProvisionedClusterInstancesListUserKubeconfigInput =
 
 // Output Schema
 export const ProvisionedClusterInstancesListUserKubeconfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -1022,43 +994,41 @@ export type ProvisionedClusterInstancesListUserKubeconfigOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesListUserKubeconfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesListUserKubeconfigInput,
     outputSchema: ProvisionedClusterInstancesListUserKubeconfigOutput,
   }));
 // Input Schema
-export const PutKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
-    }),
-  );
+export const PutKubernetesVersionsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+  }),
+);
 export type PutKubernetesVersionsInput = typeof PutKubernetesVersionsInput.Type;
 
 // Output Schema
-export const PutKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PutKubernetesVersionsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PutKubernetesVersionsOutput =
   typeof PutKubernetesVersionsOutput.Type;
 
@@ -1068,14 +1038,12 @@ export type PutKubernetesVersionsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PutKubernetesVersionsInput,
-    outputSchema: PutKubernetesVersionsOutput,
-  }),
-);
+export const PutKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PutKubernetesVersionsInput,
+  outputSchema: PutKubernetesVersionsOutput,
+}));
 // Input Schema
-export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutVMSkusInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1086,7 +1054,7 @@ export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PutVMSkusInput = typeof PutVMSkusInput.Type;
 
 // Output Schema
-export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutVMSkusOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1113,46 +1081,44 @@ export type PutVMSkusOutput = typeof PutVMSkusOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const PutVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PutVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: PutVMSkusInput,
   outputSchema: PutVMSkusOutput,
 }));
 // Input Schema
-export const VirtualNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksCreateOrUpdateInput =
   typeof VirtualNetworksCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksCreateOrUpdateOutput =
   typeof VirtualNetworksCreateOrUpdateOutput.Type;
 
@@ -1164,28 +1130,25 @@ export type VirtualNetworksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworksCreateOrUpdateInput,
-    outputSchema: VirtualNetworksCreateOrUpdateOutput,
-  }));
+export const virtualNetworksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksCreateOrUpdateInput,
+  outputSchema: VirtualNetworksCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualNetworksDeleteOutput =
   typeof VirtualNetworksDeleteOutput.Type;
 
@@ -1197,15 +1160,13 @@ export type VirtualNetworksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksDeleteInput,
-    outputSchema: VirtualNetworksDeleteOutput,
-  }),
-);
+export const virtualNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksDeleteInput,
+  outputSchema: VirtualNetworksDeleteOutput,
+}));
 // Input Schema
 export const VirtualNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1220,7 +1181,7 @@ export type VirtualNetworksListByResourceGroupInput =
 
 // Output Schema
 export const VirtualNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1267,14 +1228,15 @@ export type VirtualNetworksListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const virtualNetworksListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualNetworksListByResourceGroupInput,
     outputSchema: VirtualNetworksListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualNetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1288,7 +1250,7 @@ export type VirtualNetworksListBySubscriptionInput =
 
 // Output Schema
 export const VirtualNetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1334,47 +1296,44 @@ export type VirtualNetworksListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworksListBySubscriptionInput,
-    outputSchema: VirtualNetworksListBySubscriptionOutput,
-  }));
+export const virtualNetworksListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksListBySubscriptionInput,
+  outputSchema: VirtualNetworksListBySubscriptionOutput,
+}));
 // Input Schema
-export const VirtualNetworksRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksRetrieveInput =
   typeof VirtualNetworksRetrieveInput.Type;
 
 // Output Schema
-export const VirtualNetworksRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksRetrieveOutput =
   typeof VirtualNetworksRetrieveOutput.Type;
 
@@ -1386,47 +1345,43 @@ export type VirtualNetworksRetrieveOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksRetrieveInput,
-    outputSchema: VirtualNetworksRetrieveOutput,
+export const virtualNetworksRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksRetrieveInput,
+  outputSchema: VirtualNetworksRetrieveOutput,
+}));
+// Input Schema
+export const VirtualNetworksUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksUpdateOutput =
   typeof VirtualNetworksUpdateOutput.Type;
 
@@ -1438,14 +1393,12 @@ export type VirtualNetworksUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksUpdateInput,
-    outputSchema: VirtualNetworksUpdateOutput,
-  }),
-);
+export const virtualNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksUpdateInput,
+  outputSchema: VirtualNetworksUpdateOutput,
+}));
 // Input Schema
-export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMSkusListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1456,7 +1409,7 @@ export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VMSkusListInput = typeof VMSkusListInput.Type;
 
 // Output Schema
-export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMSkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1502,7 +1455,7 @@ export type VMSkusListOutput = typeof VMSkusListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VMSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VMSkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VMSkusListInput,
   outputSchema: VMSkusListOutput,
 }));

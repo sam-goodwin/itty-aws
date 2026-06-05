@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteV2CoreAccountsAccountIdPersonsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -18,7 +18,7 @@ export type DeleteV2CoreAccountsAccountIdPersonsIdInput =
 
 // Output Schema
 export const DeleteV2CoreAccountsAccountIdPersonsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.optional(Schema.String),
   });
@@ -34,8 +34,9 @@ export type DeleteV2CoreAccountsAccountIdPersonsIdOutput =
  * @param account_id - The Account the Person is associated with.
  * @param id - The ID of the Person to delete.
  */
-export const DeleteV2CoreAccountsAccountIdPersonsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteV2CoreAccountsAccountIdPersonsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteV2CoreAccountsAccountIdPersonsIdInput,
     outputSchema: DeleteV2CoreAccountsAccountIdPersonsIdOutput,
-  }));
+  }),
+);

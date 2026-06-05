@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExternalDataSourcesWebhookInfoRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type ExternalDataSourcesWebhookInfoRetrieveInput =
 
 // Output Schema
 export const ExternalDataSourcesWebhookInfoRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExternalDataSourcesWebhookInfoRetrieveOutput =
   typeof ExternalDataSourcesWebhookInfoRetrieveOutput.Type;
 
@@ -30,9 +30,10 @@ export type ExternalDataSourcesWebhookInfoRetrieveOutput =
  * @param id - A UUID string identifying this external data source.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesWebhookInfoRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const externalDataSourcesWebhookInfoRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExternalDataSourcesWebhookInfoRetrieveInput,
     outputSchema: ExternalDataSourcesWebhookInfoRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

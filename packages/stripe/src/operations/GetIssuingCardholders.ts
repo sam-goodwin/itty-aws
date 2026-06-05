@@ -3,88 +3,86 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetIssuingCardholdersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    created: Schema.optional(Schema.String),
-    email: Schema.optional(Schema.String),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    phone_number: Schema.optional(Schema.String),
-    starting_after: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.Literals(["active", "blocked", "inactive"])),
-    type: Schema.optional(Schema.Literals(["company", "individual"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/issuing/cardholders",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetIssuingCardholdersInput = /*@__PURE__*/ Schema.Struct({
+  created: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  phone_number: Schema.optional(Schema.String),
+  starting_after: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Literals(["active", "blocked", "inactive"])),
+  type: Schema.optional(Schema.Literals(["company", "individual"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/issuing/cardholders",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetIssuingCardholdersInput = typeof GetIssuingCardholdersInput.Type;
 
 // Output Schema
-export const GetIssuingCardholdersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        billing: Schema.Struct({
-          address: Schema.Struct({
-            city: Schema.NullOr(Schema.String),
-            country: Schema.NullOr(Schema.String),
-            line1: Schema.NullOr(Schema.String),
-            line2: Schema.NullOr(Schema.String),
-            postal_code: Schema.NullOr(Schema.String),
-            state: Schema.NullOr(Schema.String),
-          }),
+export const GetIssuingCardholdersOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      billing: Schema.Struct({
+        address: Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
         }),
-        company: Schema.Unknown,
-        created: Schema.Number,
-        email: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        individual: Schema.Unknown,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.String,
-        object: Schema.Literals(["issuing.cardholder"]),
-        phone_number: Schema.NullOr(Schema.String),
-        preferred_locales: Schema.NullOr(
-          Schema.Array(Schema.Literals(["de", "en", "es", "fr", "it"])),
+      }),
+      company: Schema.Unknown,
+      created: Schema.Number,
+      email: Schema.NullOr(Schema.String),
+      id: Schema.String,
+      individual: Schema.Unknown,
+      livemode: Schema.Boolean,
+      metadata: Schema.Record(Schema.String, Schema.String),
+      name: Schema.String,
+      object: Schema.Literals(["issuing.cardholder"]),
+      phone_number: Schema.NullOr(Schema.String),
+      preferred_locales: Schema.NullOr(
+        Schema.Array(Schema.Literals(["de", "en", "es", "fr", "it"])),
+      ),
+      requirements: Schema.Struct({
+        disabled_reason: Schema.NullOr(
+          Schema.Literals([
+            "listed",
+            "rejected.listed",
+            "requirements.past_due",
+            "under_review",
+          ]),
         ),
-        requirements: Schema.Struct({
-          disabled_reason: Schema.NullOr(
+        past_due: Schema.NullOr(
+          Schema.Array(
             Schema.Literals([
-              "listed",
-              "rejected.listed",
-              "requirements.past_due",
-              "under_review",
+              "company.tax_id",
+              "individual.card_issuing.user_terms_acceptance.date",
+              "individual.card_issuing.user_terms_acceptance.ip",
+              "individual.dob.day",
+              "individual.dob.month",
+              "individual.dob.year",
+              "individual.first_name",
+              "individual.last_name",
+              "individual.verification.document",
             ]),
           ),
-          past_due: Schema.NullOr(
-            Schema.Array(
-              Schema.Literals([
-                "company.tax_id",
-                "individual.card_issuing.user_terms_acceptance.date",
-                "individual.card_issuing.user_terms_acceptance.ip",
-                "individual.dob.day",
-                "individual.dob.month",
-                "individual.dob.year",
-                "individual.first_name",
-                "individual.last_name",
-                "individual.verification.document",
-              ]),
-            ),
-          ),
-        }),
-        spending_controls: Schema.Unknown,
-        status: Schema.Literals(["active", "blocked", "inactive"]),
-        type: Schema.Literals(["company", "individual"]),
+        ),
       }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+      spending_controls: Schema.Unknown,
+      status: Schema.Literals(["active", "blocked", "inactive"]),
+      type: Schema.Literals(["company", "individual"]),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetIssuingCardholdersOutput =
   typeof GetIssuingCardholdersOutput.Type;
 
@@ -104,9 +102,7 @@ export type GetIssuingCardholdersOutput =
  * @param status - Only return cardholders that have the given status. One of `active`, `inactive`, or `blocked`.
  * @param type - Only return cardholders that have the given type. One of `individual` or `company`.
  */
-export const GetIssuingCardholders = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingCardholdersInput,
-    outputSchema: GetIssuingCardholdersOutput,
-  }),
-);
+export const GetIssuingCardholders = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingCardholdersInput,
+  outputSchema: GetIssuingCardholdersOutput,
+}));

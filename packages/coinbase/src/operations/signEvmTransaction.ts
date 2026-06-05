@@ -3,23 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const SignEvmTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    transaction: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/evm/accounts/{address}/sign/transaction",
-    }),
-  );
+export const SignEvmTransactionInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  transaction: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v2/evm/accounts/{address}/sign/transaction",
+  }),
+);
 export type SignEvmTransactionInput = typeof SignEvmTransactionInput.Type;
 
 // Output Schema
-export const SignEvmTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    signedTransaction: Schema.String,
-  });
+export const SignEvmTransactionOutput = /*@__PURE__*/ Schema.Struct({
+  signedTransaction: Schema.String,
+});
 export type SignEvmTransactionOutput = typeof SignEvmTransactionOutput.Type;
 
 // The operation
@@ -40,7 +38,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account.
  */
-export const signEvmTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const signEvmTransaction = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignEvmTransactionInput,
   outputSchema: SignEvmTransactionOutput,
 }));

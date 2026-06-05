@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostCheckoutSessionsSessionExpireInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -20,7 +20,7 @@ export type PostCheckoutSessionsSessionExpireInput =
 
 // Output Schema
 export const PostCheckoutSessionsSessionExpireOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.Unknown,
     after_expiration: Schema.Unknown,
     allow_promotion_codes: Schema.NullOr(Schema.Boolean),
@@ -50,7 +50,7 @@ export const PostCheckoutSessionsSessionExpireOutput =
     ),
     cancel_url: Schema.NullOr(Schema.String),
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     collected_information: Schema.Unknown,
     consent: Schema.Unknown,
     consent_collection: Schema.Unknown,
@@ -392,8 +392,7 @@ export type PostCheckoutSessionsSessionExpireOutput =
  * <p>A Checkout Session can be expired when it is in one of these statuses: <code>open</code> </p>
  * <p>After it expires, a customer can’t complete a Checkout Session and customers loading the Checkout Session see a message saying the Checkout Session is expired.</p>
  */
-export const PostCheckoutSessionsSessionExpire =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostCheckoutSessionsSessionExpireInput,
-    outputSchema: PostCheckoutSessionsSessionExpireOutput,
-  }));
+export const PostCheckoutSessionsSessionExpire = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCheckoutSessionsSessionExpireInput,
+  outputSchema: PostCheckoutSessionsSessionExpireOutput,
+}));

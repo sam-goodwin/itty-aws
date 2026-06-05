@@ -4,42 +4,40 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GroupsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationId: Schema.String.pipe(T.PathParam()),
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-  }).pipe(
-    T.Http({ method: "GET", path: "/organizations/{organizationId}/groups" }),
-  );
+export const GroupsControllerListInput = /*@__PURE__*/ Schema.Struct({
+  organizationId: Schema.String.pipe(T.PathParam()),
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+}).pipe(
+  T.Http({ method: "GET", path: "/organizations/{organizationId}/groups" }),
+);
 export type GroupsControllerListInput = typeof GroupsControllerListInput.Type;
 
 // Output Schema
-export const GroupsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+export const GroupsControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        organization_id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type GroupsControllerListOutput = typeof GroupsControllerListOutput.Type;
 
 // The operation
@@ -54,10 +52,8 @@ export type GroupsControllerListOutput = typeof GroupsControllerListOutput.Type;
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
  */
-export const GroupsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsControllerListInput,
-    outputSchema: GroupsControllerListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const GroupsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsControllerListInput,
+  outputSchema: GroupsControllerListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

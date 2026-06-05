@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const InviteGroupServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientId: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite",
-    }),
-  );
+export const InviteGroupServiceAccountInput = /*@__PURE__*/ Schema.Struct({
+  clientId: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite",
+  }),
+);
 export type InviteGroupServiceAccountInput =
   typeof InviteGroupServiceAccountInput.Type;
 
 // Output Schema
-export const InviteGroupServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InviteGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
 export type InviteGroupServiceAccountOutput =
   typeof InviteGroupServiceAccountOutput.Type;
 
@@ -38,10 +36,8 @@ export type InviteGroupServiceAccountOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const inviteGroupServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InviteGroupServiceAccountInput,
-    outputSchema: InviteGroupServiceAccountOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const inviteGroupServiceAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InviteGroupServiceAccountInput,
+  outputSchema: InviteGroupServiceAccountOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

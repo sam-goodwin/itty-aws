@@ -4,19 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1DeleteAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1DeleteAProjectInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}" }));
 export type V1DeleteAProjectInput = typeof V1DeleteAProjectInput.Type;
 
 // Output Schema
-export const V1DeleteAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.Number,
-    ref: Schema.String,
-    name: Schema.String,
-  },
-);
+export const V1DeleteAProjectOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number,
+  ref: Schema.String,
+  name: Schema.String,
+});
 export type V1DeleteAProjectOutput = typeof V1DeleteAProjectOutput.Type;
 
 // The operation
@@ -25,7 +23,7 @@ export type V1DeleteAProjectOutput = typeof V1DeleteAProjectOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1DeleteAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteAProjectInput,
   outputSchema: V1DeleteAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

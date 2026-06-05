@@ -4,24 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupClusterSearchDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupClusterSearchDeploymentInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
+  }),
+);
 export type GetGroupClusterSearchDeploymentInput =
   typeof GetGroupClusterSearchDeploymentInput.Type;
 
 // Output Schema
-export const GetGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterSearchDeploymentOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterSearchDeploymentOutput =
   typeof GetGroupClusterSearchDeploymentOutput.Type;
 
@@ -38,9 +38,8 @@ export type GetGroupClusterSearchDeploymentOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Label that identifies the cluster to return the Search Nodes for.
  */
-export const getGroupClusterSearchDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterSearchDeploymentInput,
-    outputSchema: GetGroupClusterSearchDeploymentOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const getGroupClusterSearchDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterSearchDeploymentInput,
+  outputSchema: GetGroupClusterSearchDeploymentOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

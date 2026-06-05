@@ -5,8 +5,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
-export const UsersScenePersonalisationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersScenePersonalisationCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -748,25 +748,21 @@ export const UsersScenePersonalisationCreateInput =
         }),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/users/{uuid}/scene_personalisation/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({ method: "POST", path: "/api/users/{uuid}/scene_personalisation/" }),
+);
 export type UsersScenePersonalisationCreateInput =
   typeof UsersScenePersonalisationCreateInput.Type;
 
 // Output Schema
-export const UsersScenePersonalisationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersScenePersonalisationCreateOutput = /*@__PURE__*/ Schema.Void;
 export type UsersScenePersonalisationCreateOutput =
   typeof UsersScenePersonalisationCreateOutput.Type;
 
 // The operation
-export const usersScenePersonalisationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UsersScenePersonalisationCreateInput,
-    outputSchema: UsersScenePersonalisationCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const usersScenePersonalisationCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersScenePersonalisationCreateInput,
+  outputSchema: UsersScenePersonalisationCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

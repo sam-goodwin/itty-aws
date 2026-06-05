@@ -1,45 +1,43 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CreateWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    eventTypes: Schema.Array(Schema.String),
-    isEnabled: Schema.Boolean,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/v2/data/webhooks/subscriptions" }));
+export const CreateWebhookSubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  eventTypes: Schema.Array(Schema.String),
+  isEnabled: Schema.Boolean,
+  target: Schema.Struct({
+    url: Schema.String,
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(T.Http({ method: "POST", path: "/v2/data/webhooks/subscriptions" }));
 export type CreateWebhookSubscriptionInput =
   typeof CreateWebhookSubscriptionInput.Type;
 
 // Output Schema
-export const CreateWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createdAt: Schema.String,
-    updatedAt: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    eventTypes: Schema.Array(Schema.String),
-    isEnabled: Schema.Boolean,
-    metadata: Schema.optional(
-      Schema.Struct({
-        secret: Schema.optional(SensitiveString),
-      }),
-    ),
-    secret: SensitiveString,
-    subscriptionId: Schema.String,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+export const CreateWebhookSubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  createdAt: Schema.String,
+  updatedAt: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  eventTypes: Schema.Array(Schema.String),
+  isEnabled: Schema.Boolean,
+  metadata: Schema.optional(
+    Schema.Struct({
+      secret: Schema.optional(SensitiveOutputString),
     }),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+  ),
+  secret: SensitiveOutputString,
+  subscriptionId: Schema.String,
+  target: Schema.Struct({
+    url: Schema.String,
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type CreateWebhookSubscriptionOutput =
   typeof CreateWebhookSubscriptionOutput.Type;
 
@@ -88,9 +86,7 @@ export type CreateWebhookSubscriptionOutput =
  * - **Price Oracle Tracker**: `{"network": "base-mainnet", "contract_address": "0xbac4a9428ea707c51f171ed9890c3c2fa810305d", "event_name": "PriceUpdated"}`
  * - **DeFi Protocol Activity**: `{"network": "base-mainnet", "contract_address": "0x45c6e6a47a711b14d8357d5243f46704904578e3", "event_name": "Deposit"}`
  */
-export const createWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateWebhookSubscriptionInput,
-    outputSchema: CreateWebhookSubscriptionOutput,
-  }),
-);
+export const createWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateWebhookSubscriptionInput,
+  outputSchema: CreateWebhookSubscriptionOutput,
+}));

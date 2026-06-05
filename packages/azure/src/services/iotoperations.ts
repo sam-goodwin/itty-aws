@@ -9,44 +9,42 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AkriConnectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
-    }),
-  );
+export const AkriConnectorCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
+  }),
+);
 export type AkriConnectorCreateOrUpdateInput =
   typeof AkriConnectorCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AkriConnectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AkriConnectorCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AkriConnectorCreateOrUpdateOutput =
   typeof AkriConnectorCreateOrUpdateOutput.Type;
 
@@ -61,32 +59,28 @@ export type AkriConnectorCreateOrUpdateOutput =
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorCreateOrUpdateInput,
-    outputSchema: AkriConnectorCreateOrUpdateOutput,
+export const AkriConnectorCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorCreateOrUpdateInput,
+  outputSchema: AkriConnectorCreateOrUpdateOutput,
+}));
+// Input Schema
+export const AkriConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
   }),
 );
-// Input Schema
-export const AkriConnectorDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
-    }),
-  );
 export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
 
 // Output Schema
-export const AkriConnectorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AkriConnectorDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AkriConnectorDeleteOutput = typeof AkriConnectorDeleteOutput.Type;
 
 // The operation
@@ -100,12 +94,12 @@ export type AkriConnectorDeleteOutput = typeof AkriConnectorDeleteOutput.Type;
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriConnectorDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriConnectorDeleteInput,
   outputSchema: AkriConnectorDeleteOutput,
 }));
 // Input Schema
-export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriConnectorGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -121,27 +115,25 @@ export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AkriConnectorGetInput = typeof AkriConnectorGetInput.Type;
 
 // Output Schema
-export const AkriConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const AkriConnectorGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AkriConnectorGetOutput = typeof AkriConnectorGetOutput.Type;
 
 // The operation
@@ -155,63 +147,51 @@ export type AkriConnectorGetOutput = typeof AkriConnectorGetOutput.Type;
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriConnectorGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriConnectorGetInput,
   outputSchema: AkriConnectorGetOutput,
 }));
 // Input Schema
-export const AkriConnectorListByTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors",
-    }),
-  );
+export const AkriConnectorListByTemplateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors",
+  }),
+);
 export type AkriConnectorListByTemplateInput =
   typeof AkriConnectorListByTemplateInput.Type;
 
 // Output Schema
-export const AkriConnectorListByTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AkriConnectorListByTemplateOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AkriConnectorListByTemplateOutput =
   typeof AkriConnectorListByTemplateOutput.Type;
 
@@ -225,15 +205,13 @@ export type AkriConnectorListByTemplateOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorListByTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorListByTemplateInput,
-    outputSchema: AkriConnectorListByTemplateOutput,
-  }),
-);
+export const AkriConnectorListByTemplate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorListByTemplateInput,
+  outputSchema: AkriConnectorListByTemplateOutput,
+}));
 // Input Schema
 export const AkriConnectorTemplateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -250,7 +228,7 @@ export type AkriConnectorTemplateCreateOrUpdateInput =
 
 // Output Schema
 export const AkriConnectorTemplateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -282,31 +260,30 @@ export type AkriConnectorTemplateCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorTemplateCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriConnectorTemplateCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AkriConnectorTemplateCreateOrUpdateInput,
     outputSchema: AkriConnectorTemplateCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AkriConnectorTemplateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-    }),
-  );
+export const AkriConnectorTemplateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
+  }),
+);
 export type AkriConnectorTemplateDeleteInput =
   typeof AkriConnectorTemplateDeleteInput.Type;
 
 // Output Schema
-export const AkriConnectorTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AkriConnectorTemplateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AkriConnectorTemplateDeleteOutput =
   typeof AkriConnectorTemplateDeleteOutput.Type;
 
@@ -320,50 +297,46 @@ export type AkriConnectorTemplateDeleteOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorTemplateDeleteInput,
-    outputSchema: AkriConnectorTemplateDeleteOutput,
+export const AkriConnectorTemplateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorTemplateDeleteInput,
+  outputSchema: AkriConnectorTemplateDeleteOutput,
+}));
+// Input Schema
+export const AkriConnectorTemplateGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
   }),
 );
-// Input Schema
-export const AkriConnectorTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-    }),
-  );
 export type AkriConnectorTemplateGetInput =
   typeof AkriConnectorTemplateGetInput.Type;
 
 // Output Schema
-export const AkriConnectorTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AkriConnectorTemplateGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AkriConnectorTemplateGetOutput =
   typeof AkriConnectorTemplateGetOutput.Type;
 
@@ -377,15 +350,13 @@ export type AkriConnectorTemplateGetOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorTemplateGetInput,
-    outputSchema: AkriConnectorTemplateGetOutput,
-  }),
-);
+export const AkriConnectorTemplateGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorTemplateGetInput,
+  outputSchema: AkriConnectorTemplateGetOutput,
+}));
 // Input Schema
 export const AkriConnectorTemplateListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -401,7 +372,7 @@ export type AkriConnectorTemplateListByInstanceResourceInput =
 
 // Output Schema
 export const AkriConnectorTemplateListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -448,48 +419,46 @@ export type AkriConnectorTemplateListByInstanceResourceOutput =
  * @param instanceName - Name of instance.
  */
 export const AkriConnectorTemplateListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AkriConnectorTemplateListByInstanceResourceInput,
     outputSchema: AkriConnectorTemplateListByInstanceResourceOutput,
   }));
 // Input Schema
-export const AkriServiceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
-    }),
-  );
+export const AkriServiceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
+  }),
+);
 export type AkriServiceCreateOrUpdateInput =
   typeof AkriServiceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AkriServiceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AkriServiceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AkriServiceCreateOrUpdateOutput =
   typeof AkriServiceCreateOrUpdateOutput.Type;
 
@@ -503,22 +472,18 @@ export type AkriServiceCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriServiceCreateOrUpdateInput,
-    outputSchema: AkriServiceCreateOrUpdateOutput,
-  }),
-);
+export const AkriServiceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriServiceCreateOrUpdateInput,
+  outputSchema: AkriServiceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AkriServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
@@ -527,7 +492,7 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
 
 // Output Schema
-export const AkriServiceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AkriServiceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AkriServiceDeleteOutput = typeof AkriServiceDeleteOutput.Type;
 
 // The operation
@@ -540,12 +505,12 @@ export type AkriServiceDeleteOutput = typeof AkriServiceDeleteOutput.Type;
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriServiceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriServiceDeleteInput,
   outputSchema: AkriServiceDeleteOutput,
 }));
 // Input Schema
-export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriServiceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -560,7 +525,7 @@ export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AkriServiceGetInput = typeof AkriServiceGetInput.Type;
 
 // Output Schema
-export const AkriServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriServiceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -591,13 +556,13 @@ export type AkriServiceGetOutput = typeof AkriServiceGetOutput.Type;
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriServiceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriServiceGetInput,
   outputSchema: AkriServiceGetOutput,
 }));
 // Input Schema
 export const AkriServiceListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -613,7 +578,7 @@ export type AkriServiceListByInstanceResourceInput =
 
 // Output Schema
 export const AkriServiceListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -659,14 +624,13 @@ export type AkriServiceListByInstanceResourceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const AkriServiceListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AkriServiceListByInstanceResourceInput,
-    outputSchema: AkriServiceListByInstanceResourceOutput,
-  }));
+export const AkriServiceListByInstanceResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriServiceListByInstanceResourceInput,
+  outputSchema: AkriServiceListByInstanceResourceOutput,
+}));
 // Input Schema
 export const BrokerAuthenticationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -684,7 +648,7 @@ export type BrokerAuthenticationCreateOrUpdateInput =
 
 // Output Schema
 export const BrokerAuthenticationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -717,32 +681,31 @@ export type BrokerAuthenticationCreateOrUpdateOutput =
  * @param brokerName - Name of broker.
  * @param authenticationName - Name of Instance broker authentication resource
  */
-export const BrokerAuthenticationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerAuthenticationCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BrokerAuthenticationCreateOrUpdateInput,
     outputSchema: BrokerAuthenticationCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BrokerAuthenticationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-    }),
-  );
+export const BrokerAuthenticationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  authenticationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+  }),
+);
 export type BrokerAuthenticationDeleteInput =
   typeof BrokerAuthenticationDeleteInput.Type;
 
 // Output Schema
-export const BrokerAuthenticationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BrokerAuthenticationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BrokerAuthenticationDeleteOutput =
   typeof BrokerAuthenticationDeleteOutput.Type;
 
@@ -757,51 +720,47 @@ export type BrokerAuthenticationDeleteOutput =
  * @param brokerName - Name of broker.
  * @param authenticationName - Name of Instance broker authentication resource
  */
-export const BrokerAuthenticationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthenticationDeleteInput,
-    outputSchema: BrokerAuthenticationDeleteOutput,
+export const BrokerAuthenticationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthenticationDeleteInput,
+  outputSchema: BrokerAuthenticationDeleteOutput,
+}));
+// Input Schema
+export const BrokerAuthenticationGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  authenticationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
   }),
 );
-// Input Schema
-export const BrokerAuthenticationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-    }),
-  );
 export type BrokerAuthenticationGetInput =
   typeof BrokerAuthenticationGetInput.Type;
 
 // Output Schema
-export const BrokerAuthenticationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BrokerAuthenticationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BrokerAuthenticationGetOutput =
   typeof BrokerAuthenticationGetOutput.Type;
 
@@ -816,15 +775,13 @@ export type BrokerAuthenticationGetOutput =
  * @param brokerName - Name of broker.
  * @param authenticationName - Name of Instance broker authentication resource
  */
-export const BrokerAuthenticationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthenticationGetInput,
-    outputSchema: BrokerAuthenticationGetOutput,
-  }),
-);
+export const BrokerAuthenticationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthenticationGetInput,
+  outputSchema: BrokerAuthenticationGetOutput,
+}));
 // Input Schema
 export const BrokerAuthenticationListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -841,7 +798,7 @@ export type BrokerAuthenticationListByResourceGroupInput =
 
 // Output Schema
 export const BrokerAuthenticationListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -888,14 +845,15 @@ export type BrokerAuthenticationListByResourceGroupOutput =
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerAuthenticationListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerAuthenticationListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BrokerAuthenticationListByResourceGroupInput,
     outputSchema: BrokerAuthenticationListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BrokerAuthorizationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -913,7 +871,7 @@ export type BrokerAuthorizationCreateOrUpdateInput =
 
 // Output Schema
 export const BrokerAuthorizationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -946,32 +904,29 @@ export type BrokerAuthorizationCreateOrUpdateOutput =
  * @param brokerName - Name of broker.
  * @param authorizationName - Name of Instance broker authorization resource
  */
-export const BrokerAuthorizationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BrokerAuthorizationCreateOrUpdateInput,
-    outputSchema: BrokerAuthorizationCreateOrUpdateOutput,
-  }));
+export const BrokerAuthorizationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthorizationCreateOrUpdateInput,
+  outputSchema: BrokerAuthorizationCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BrokerAuthorizationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-    }),
-  );
+export const BrokerAuthorizationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
+  }),
+);
 export type BrokerAuthorizationDeleteInput =
   typeof BrokerAuthorizationDeleteInput.Type;
 
 // Output Schema
-export const BrokerAuthorizationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BrokerAuthorizationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BrokerAuthorizationDeleteOutput =
   typeof BrokerAuthorizationDeleteOutput.Type;
 
@@ -986,51 +941,47 @@ export type BrokerAuthorizationDeleteOutput =
  * @param brokerName - Name of broker.
  * @param authorizationName - Name of Instance broker authorization resource
  */
-export const BrokerAuthorizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthorizationDeleteInput,
-    outputSchema: BrokerAuthorizationDeleteOutput,
+export const BrokerAuthorizationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthorizationDeleteInput,
+  outputSchema: BrokerAuthorizationDeleteOutput,
+}));
+// Input Schema
+export const BrokerAuthorizationGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
   }),
 );
-// Input Schema
-export const BrokerAuthorizationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-    }),
-  );
 export type BrokerAuthorizationGetInput =
   typeof BrokerAuthorizationGetInput.Type;
 
 // Output Schema
-export const BrokerAuthorizationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BrokerAuthorizationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BrokerAuthorizationGetOutput =
   typeof BrokerAuthorizationGetOutput.Type;
 
@@ -1045,15 +996,13 @@ export type BrokerAuthorizationGetOutput =
  * @param brokerName - Name of broker.
  * @param authorizationName - Name of Instance broker authorization resource
  */
-export const BrokerAuthorizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthorizationGetInput,
-    outputSchema: BrokerAuthorizationGetOutput,
-  }),
-);
+export const BrokerAuthorizationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthorizationGetInput,
+  outputSchema: BrokerAuthorizationGetOutput,
+}));
 // Input Schema
 export const BrokerAuthorizationListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1070,7 +1019,7 @@ export type BrokerAuthorizationListByResourceGroupInput =
 
 // Output Schema
 export const BrokerAuthorizationListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1117,48 +1066,47 @@ export type BrokerAuthorizationListByResourceGroupOutput =
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerAuthorizationListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerAuthorizationListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BrokerAuthorizationListByResourceGroupInput,
     outputSchema: BrokerAuthorizationListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BrokerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
-    }),
-  );
+export const BrokerCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+  }),
+);
 export type BrokerCreateOrUpdateInput = typeof BrokerCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BrokerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BrokerCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BrokerCreateOrUpdateOutput = typeof BrokerCreateOrUpdateOutput.Type;
 
 // The operation
@@ -1171,14 +1119,12 @@ export type BrokerCreateOrUpdateOutput = typeof BrokerCreateOrUpdateOutput.Type;
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerCreateOrUpdateInput,
-    outputSchema: BrokerCreateOrUpdateOutput,
-  }),
-);
+export const BrokerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerCreateOrUpdateInput,
+  outputSchema: BrokerCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -1193,7 +1139,7 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
 
 // Output Schema
-export const BrokerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BrokerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BrokerDeleteOutput = typeof BrokerDeleteOutput.Type;
 
 // The operation
@@ -1206,12 +1152,12 @@ export type BrokerDeleteOutput = typeof BrokerDeleteOutput.Type;
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerDeleteInput,
   outputSchema: BrokerDeleteOutput,
 }));
 // Input Schema
-export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -1226,7 +1172,7 @@ export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BrokerGetInput = typeof BrokerGetInput.Type;
 
 // Output Schema
-export const BrokerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1257,62 +1203,50 @@ export type BrokerGetOutput = typeof BrokerGetOutput.Type;
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerGetInput,
   outputSchema: BrokerGetOutput,
 }));
 // Input Schema
-export const BrokerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers",
-    }),
-  );
+export const BrokerListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers",
+  }),
+);
 export type BrokerListByResourceGroupInput =
   typeof BrokerListByResourceGroupInput.Type;
 
 // Output Schema
-export const BrokerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BrokerListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BrokerListByResourceGroupOutput =
   typeof BrokerListByResourceGroupOutput.Type;
 
@@ -1325,51 +1259,47 @@ export type BrokerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const BrokerListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerListByResourceGroupInput,
-    outputSchema: BrokerListByResourceGroupOutput,
+export const BrokerListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListByResourceGroupInput,
+  outputSchema: BrokerListByResourceGroupOutput,
+}));
+// Input Schema
+export const BrokerListenerCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  listenerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
   }),
 );
-// Input Schema
-export const BrokerListenerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-    }),
-  );
 export type BrokerListenerCreateOrUpdateInput =
   typeof BrokerListenerCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BrokerListenerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BrokerListenerCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BrokerListenerCreateOrUpdateOutput =
   typeof BrokerListenerCreateOrUpdateOutput.Type;
 
@@ -1384,31 +1314,28 @@ export type BrokerListenerCreateOrUpdateOutput =
  * @param brokerName - Name of broker.
  * @param listenerName - Name of Instance broker listener resource
  */
-export const BrokerListenerCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BrokerListenerCreateOrUpdateInput,
-    outputSchema: BrokerListenerCreateOrUpdateOutput,
-  }));
+export const BrokerListenerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListenerCreateOrUpdateInput,
+  outputSchema: BrokerListenerCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BrokerListenerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-    }),
-  );
+export const BrokerListenerDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  listenerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+  }),
+);
 export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
 
 // Output Schema
-export const BrokerListenerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BrokerListenerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BrokerListenerDeleteOutput = typeof BrokerListenerDeleteOutput.Type;
 
 // The operation
@@ -1422,23 +1349,19 @@ export type BrokerListenerDeleteOutput = typeof BrokerListenerDeleteOutput.Type;
  * @param brokerName - Name of broker.
  * @param listenerName - Name of Instance broker listener resource
  */
-export const BrokerListenerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerListenerDeleteInput,
-    outputSchema: BrokerListenerDeleteOutput,
-  }),
-);
+export const BrokerListenerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListenerDeleteInput,
+  outputSchema: BrokerListenerDeleteOutput,
+}));
 // Input Schema
-export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const BrokerListenerGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  listenerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
@@ -1447,26 +1370,25 @@ export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BrokerListenerGetInput = typeof BrokerListenerGetInput.Type;
 
 // Output Schema
-export const BrokerListenerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BrokerListenerGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BrokerListenerGetOutput = typeof BrokerListenerGetOutput.Type;
 
 // The operation
@@ -1480,13 +1402,13 @@ export type BrokerListenerGetOutput = typeof BrokerListenerGetOutput.Type;
  * @param brokerName - Name of broker.
  * @param listenerName - Name of Instance broker listener resource
  */
-export const BrokerListenerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerListenerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerListenerGetInput,
   outputSchema: BrokerListenerGetOutput,
 }));
 // Input Schema
 export const BrokerListenerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1503,7 +1425,7 @@ export type BrokerListenerListByResourceGroupInput =
 
 // Output Schema
 export const BrokerListenerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1550,50 +1472,47 @@ export type BrokerListenerListByResourceGroupOutput =
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerListenerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BrokerListenerListByResourceGroupInput,
-    outputSchema: BrokerListenerListByResourceGroupOutput,
-  }));
+export const BrokerListenerListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListenerListByResourceGroupInput,
+  outputSchema: BrokerListenerListByResourceGroupOutput,
+}));
 // Input Schema
-export const DataflowCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    dataflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
-    }),
-  );
+export const DataflowCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  dataflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+  }),
+);
 export type DataflowCreateOrUpdateInput =
   typeof DataflowCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataflowCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataflowCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowCreateOrUpdateOutput =
   typeof DataflowCreateOrUpdateOutput.Type;
 
@@ -1608,14 +1527,12 @@ export type DataflowCreateOrUpdateOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowCreateOrUpdateInput,
-    outputSchema: DataflowCreateOrUpdateOutput,
-  }),
-);
+export const DataflowCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowCreateOrUpdateInput,
+  outputSchema: DataflowCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -1631,7 +1548,7 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
 
 // Output Schema
-export const DataflowDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataflowDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataflowDeleteOutput = typeof DataflowDeleteOutput.Type;
 
 // The operation
@@ -1645,30 +1562,29 @@ export type DataflowDeleteOutput = typeof DataflowDeleteOutput.Type;
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowDeleteInput,
   outputSchema: DataflowDeleteOutput,
 }));
 // Input Schema
-export const DataflowEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-    }),
-  );
+export const DataflowEndpointCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+  }),
+);
 export type DataflowEndpointCreateOrUpdateInput =
   typeof DataflowEndpointCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataflowEndpointCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowEndpointCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1686,7 +1602,8 @@ export const DataflowEndpointCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type DataflowEndpointCreateOrUpdateOutput =
   typeof DataflowEndpointCreateOrUpdateOutput.Type;
 
@@ -1700,31 +1617,28 @@ export type DataflowEndpointCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
-export const DataflowEndpointCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataflowEndpointCreateOrUpdateInput,
-    outputSchema: DataflowEndpointCreateOrUpdateOutput,
-  }));
+export const DataflowEndpointCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowEndpointCreateOrUpdateInput,
+  outputSchema: DataflowEndpointCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataflowEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-    }),
-  );
+export const DataflowEndpointDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+  }),
+);
 export type DataflowEndpointDeleteInput =
   typeof DataflowEndpointDeleteInput.Type;
 
 // Output Schema
-export const DataflowEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataflowEndpointDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataflowEndpointDeleteOutput =
   typeof DataflowEndpointDeleteOutput.Type;
 
@@ -1738,49 +1652,45 @@ export type DataflowEndpointDeleteOutput =
  * @param instanceName - Name of instance.
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
-export const DataflowEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowEndpointDeleteInput,
-    outputSchema: DataflowEndpointDeleteOutput,
+export const DataflowEndpointDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowEndpointDeleteInput,
+  outputSchema: DataflowEndpointDeleteOutput,
+}));
+// Input Schema
+export const DataflowEndpointGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
   }),
 );
-// Input Schema
-export const DataflowEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-    }),
-  );
 export type DataflowEndpointGetInput = typeof DataflowEndpointGetInput.Type;
 
 // Output Schema
-export const DataflowEndpointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataflowEndpointGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowEndpointGetOutput = typeof DataflowEndpointGetOutput.Type;
 
 // The operation
@@ -1793,13 +1703,13 @@ export type DataflowEndpointGetOutput = typeof DataflowEndpointGetOutput.Type;
  * @param instanceName - Name of instance.
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
-export const DataflowEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowEndpointGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowEndpointGetInput,
   outputSchema: DataflowEndpointGetOutput,
 }));
 // Input Schema
 export const DataflowEndpointListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1815,7 +1725,7 @@ export type DataflowEndpointListByResourceGroupInput =
 
 // Output Schema
 export const DataflowEndpointListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1861,13 +1771,14 @@ export type DataflowEndpointListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const DataflowEndpointListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowEndpointListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DataflowEndpointListByResourceGroupInput,
     outputSchema: DataflowEndpointListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -1883,7 +1794,7 @@ export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataflowGetInput = typeof DataflowGetInput.Type;
 
 // Output Schema
-export const DataflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1915,49 +1826,47 @@ export type DataflowGetOutput = typeof DataflowGetOutput.Type;
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGetInput,
   outputSchema: DataflowGetOutput,
 }));
 // Input Schema
-export const DataflowGraphCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    dataflowGraphName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-    }),
-  );
+export const DataflowGraphCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  dataflowGraphName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
+  }),
+);
 export type DataflowGraphCreateOrUpdateInput =
   typeof DataflowGraphCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataflowGraphCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataflowGraphCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowGraphCreateOrUpdateOutput =
   typeof DataflowGraphCreateOrUpdateOutput.Type;
 
@@ -1972,32 +1881,28 @@ export type DataflowGraphCreateOrUpdateOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowGraphCreateOrUpdateInput,
-    outputSchema: DataflowGraphCreateOrUpdateOutput,
+export const DataflowGraphCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowGraphCreateOrUpdateInput,
+  outputSchema: DataflowGraphCreateOrUpdateOutput,
+}));
+// Input Schema
+export const DataflowGraphDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  dataflowGraphName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
   }),
 );
-// Input Schema
-export const DataflowGraphDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    dataflowGraphName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-    }),
-  );
 export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
 
 // Output Schema
-export const DataflowGraphDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataflowGraphDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataflowGraphDeleteOutput = typeof DataflowGraphDeleteOutput.Type;
 
 // The operation
@@ -2011,12 +1916,12 @@ export type DataflowGraphDeleteOutput = typeof DataflowGraphDeleteOutput.Type;
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGraphDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGraphDeleteInput,
   outputSchema: DataflowGraphDeleteOutput,
 }));
 // Input Schema
-export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGraphGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2032,27 +1937,25 @@ export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataflowGraphGetInput = typeof DataflowGraphGetInput.Type;
 
 // Output Schema
-export const DataflowGraphGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const DataflowGraphGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowGraphGetOutput = typeof DataflowGraphGetOutput.Type;
 
 // The operation
@@ -2066,13 +1969,13 @@ export type DataflowGraphGetOutput = typeof DataflowGraphGetOutput.Type;
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGraphGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGraphGetInput,
   outputSchema: DataflowGraphGetOutput,
 }));
 // Input Schema
 export const DataflowGraphListByDataflowProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2089,7 +1992,7 @@ export type DataflowGraphListByDataflowProfileInput =
 
 // Output Schema
 export const DataflowGraphListByDataflowProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2136,64 +2039,53 @@ export type DataflowGraphListByDataflowProfileOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowGraphListByDataflowProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGraphListByDataflowProfile = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DataflowGraphListByDataflowProfileInput,
     outputSchema: DataflowGraphListByDataflowProfileOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DataflowListByProfileResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows",
-    }),
-  );
+export const DataflowListByProfileResourceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows",
+  }),
+);
 export type DataflowListByProfileResourceInput =
   typeof DataflowListByProfileResourceInput.Type;
 
 // Output Schema
-export const DataflowListByProfileResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DataflowListByProfileResourceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DataflowListByProfileResourceOutput =
   typeof DataflowListByProfileResourceOutput.Type;
 
@@ -2207,49 +2099,46 @@ export type DataflowListByProfileResourceOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowListByProfileResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataflowListByProfileResourceInput,
-    outputSchema: DataflowListByProfileResourceOutput,
-  }));
+export const DataflowListByProfileResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowListByProfileResourceInput,
+  outputSchema: DataflowListByProfileResourceOutput,
+}));
 // Input Schema
-export const DataflowProfileCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-    }),
-  );
+export const DataflowProfileCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+  }),
+);
 export type DataflowProfileCreateOrUpdateInput =
   typeof DataflowProfileCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataflowProfileCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataflowProfileCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowProfileCreateOrUpdateOutput =
   typeof DataflowProfileCreateOrUpdateOutput.Type;
 
@@ -2263,30 +2152,27 @@ export type DataflowProfileCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowProfileCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataflowProfileCreateOrUpdateInput,
-    outputSchema: DataflowProfileCreateOrUpdateOutput,
-  }));
+export const DataflowProfileCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowProfileCreateOrUpdateInput,
+  outputSchema: DataflowProfileCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataflowProfileDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-    }),
-  );
+export const DataflowProfileDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+  }),
+);
 export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
 
 // Output Schema
-export const DataflowProfileDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataflowProfileDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataflowProfileDeleteOutput =
   typeof DataflowProfileDeleteOutput.Type;
 
@@ -2300,49 +2186,45 @@ export type DataflowProfileDeleteOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowProfileDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowProfileDeleteInput,
-    outputSchema: DataflowProfileDeleteOutput,
+export const DataflowProfileDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowProfileDeleteInput,
+  outputSchema: DataflowProfileDeleteOutput,
+}));
+// Input Schema
+export const DataflowProfileGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  dataflowProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
   }),
 );
-// Input Schema
-export const DataflowProfileGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-    }),
-  );
 export type DataflowProfileGetInput = typeof DataflowProfileGetInput.Type;
 
 // Output Schema
-export const DataflowProfileGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataflowProfileGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataflowProfileGetOutput = typeof DataflowProfileGetOutput.Type;
 
 // The operation
@@ -2355,13 +2237,13 @@ export type DataflowProfileGetOutput = typeof DataflowProfileGetOutput.Type;
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowProfileGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowProfileGetInput,
   outputSchema: DataflowProfileGetOutput,
 }));
 // Input Schema
 export const DataflowProfileListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2377,7 +2259,7 @@ export type DataflowProfileListByResourceGroupInput =
 
 // Output Schema
 export const DataflowProfileListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2423,48 +2305,47 @@ export type DataflowProfileListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const DataflowProfileListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowProfileListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DataflowProfileListByResourceGroupInput,
     outputSchema: DataflowProfileListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const InstanceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-    }),
-  );
+export const InstanceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+  }),
+);
 export type InstanceCreateOrUpdateInput =
   typeof InstanceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const InstanceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InstanceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InstanceCreateOrUpdateOutput =
   typeof InstanceCreateOrUpdateOutput.Type;
 
@@ -2477,14 +2358,12 @@ export type InstanceCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceCreateOrUpdateInput,
-    outputSchema: InstanceCreateOrUpdateOutput,
-  }),
-);
+export const InstanceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceCreateOrUpdateInput,
+  outputSchema: InstanceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2498,7 +2377,7 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
 
 // Output Schema
-export const InstanceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InstanceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InstanceDeleteOutput = typeof InstanceDeleteOutput.Type;
 
 // The operation
@@ -2510,12 +2389,12 @@ export type InstanceDeleteOutput = typeof InstanceDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceDeleteInput,
   outputSchema: InstanceDeleteOutput,
 }));
 // Input Schema
-export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2529,7 +2408,7 @@ export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InstanceGetInput = typeof InstanceGetInput.Type;
 
 // Output Schema
-export const InstanceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2559,61 +2438,49 @@ export type InstanceGetOutput = typeof InstanceGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceGetInput,
   outputSchema: InstanceGetOutput,
 }));
 // Input Schema
-export const InstanceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances",
-    }),
-  );
+export const InstanceListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances",
+  }),
+);
 export type InstanceListByResourceGroupInput =
   typeof InstanceListByResourceGroupInput.Type;
 
 // Output Schema
-export const InstanceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const InstanceListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type InstanceListByResourceGroupOutput =
   typeof InstanceListByResourceGroupOutput.Type;
 
@@ -2625,62 +2492,48 @@ export type InstanceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const InstanceListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceListByResourceGroupInput,
-    outputSchema: InstanceListByResourceGroupOutput,
+export const InstanceListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceListByResourceGroupInput,
+  outputSchema: InstanceListByResourceGroupOutput,
+}));
+// Input Schema
+export const InstanceListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTOperations/instances",
   }),
 );
-// Input Schema
-export const InstanceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTOperations/instances",
-    }),
-  );
 export type InstanceListBySubscriptionInput =
   typeof InstanceListBySubscriptionInput.Type;
 
 // Output Schema
-export const InstanceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const InstanceListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type InstanceListBySubscriptionOutput =
   typeof InstanceListBySubscriptionOutput.Type;
 
@@ -2691,14 +2544,12 @@ export type InstanceListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const InstanceListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceListBySubscriptionInput,
-    outputSchema: InstanceListBySubscriptionOutput,
-  }),
-);
+export const InstanceListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceListBySubscriptionInput,
+  outputSchema: InstanceListBySubscriptionOutput,
+}));
 // Input Schema
-export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2712,7 +2563,7 @@ export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InstanceUpdateInput = typeof InstanceUpdateInput.Type;
 
 // Output Schema
-export const InstanceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2742,12 +2593,12 @@ export type InstanceUpdateOutput = typeof InstanceUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceUpdateInput,
   outputSchema: InstanceUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2758,7 +2609,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2789,30 +2640,29 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const RegistryEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-    }),
-  );
+export const RegistryEndpointCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  registryEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+  }),
+);
 export type RegistryEndpointCreateOrUpdateInput =
   typeof RegistryEndpointCreateOrUpdateInput.Type;
 
 // Output Schema
-export const RegistryEndpointCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistryEndpointCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2830,7 +2680,8 @@ export const RegistryEndpointCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type RegistryEndpointCreateOrUpdateOutput =
   typeof RegistryEndpointCreateOrUpdateOutput.Type;
 
@@ -2844,31 +2695,28 @@ export type RegistryEndpointCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
-export const RegistryEndpointCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistryEndpointCreateOrUpdateInput,
-    outputSchema: RegistryEndpointCreateOrUpdateOutput,
-  }));
+export const RegistryEndpointCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistryEndpointCreateOrUpdateInput,
+  outputSchema: RegistryEndpointCreateOrUpdateOutput,
+}));
 // Input Schema
-export const RegistryEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-    }),
-  );
+export const RegistryEndpointDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  registryEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+  }),
+);
 export type RegistryEndpointDeleteInput =
   typeof RegistryEndpointDeleteInput.Type;
 
 // Output Schema
-export const RegistryEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistryEndpointDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegistryEndpointDeleteOutput =
   typeof RegistryEndpointDeleteOutput.Type;
 
@@ -2882,49 +2730,45 @@ export type RegistryEndpointDeleteOutput =
  * @param instanceName - Name of instance.
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
-export const RegistryEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistryEndpointDeleteInput,
-    outputSchema: RegistryEndpointDeleteOutput,
+export const RegistryEndpointDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistryEndpointDeleteInput,
+  outputSchema: RegistryEndpointDeleteOutput,
+}));
+// Input Schema
+export const RegistryEndpointGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  registryEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
   }),
 );
-// Input Schema
-export const RegistryEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-    }),
-  );
 export type RegistryEndpointGetInput = typeof RegistryEndpointGetInput.Type;
 
 // Output Schema
-export const RegistryEndpointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RegistryEndpointGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegistryEndpointGetOutput = typeof RegistryEndpointGetOutput.Type;
 
 // The operation
@@ -2937,13 +2781,13 @@ export type RegistryEndpointGetOutput = typeof RegistryEndpointGetOutput.Type;
  * @param instanceName - Name of instance.
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
-export const RegistryEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistryEndpointGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistryEndpointGetInput,
   outputSchema: RegistryEndpointGetOutput,
 }));
 // Input Schema
 export const RegistryEndpointListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2959,7 +2803,7 @@ export type RegistryEndpointListByInstanceResourceInput =
 
 // Output Schema
 export const RegistryEndpointListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3005,8 +2849,9 @@ export type RegistryEndpointListByInstanceResourceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const RegistryEndpointListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistryEndpointListByInstanceResource = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RegistryEndpointListByInstanceResourceInput,
     outputSchema: RegistryEndpointListByInstanceResourceOutput,
-  }));
+  }),
+);

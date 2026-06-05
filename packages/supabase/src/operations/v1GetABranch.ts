@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1GetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetABranchInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/branches/{name}" }));
 export type V1GetABranchInput = typeof V1GetABranchInput.Type;
 
 // Output Schema
-export const V1GetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetABranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   project_ref: Schema.String,
@@ -65,7 +65,7 @@ export type V1GetABranchOutput = typeof V1GetABranchOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1GetABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetABranchInput,
   outputSchema: V1GetABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

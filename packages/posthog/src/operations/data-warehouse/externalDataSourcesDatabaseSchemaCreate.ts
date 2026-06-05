@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExternalDataSourcesDatabaseSchemaCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_type: Schema.optional(
       Schema.Literals([
@@ -165,7 +165,7 @@ export type ExternalDataSourcesDatabaseSchemaCreateInput =
 
 // Output Schema
 export const ExternalDataSourcesDatabaseSchemaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExternalDataSourcesDatabaseSchemaCreateOutput =
   typeof ExternalDataSourcesDatabaseSchemaCreateOutput.Type;
 
@@ -175,9 +175,10 @@ export type ExternalDataSourcesDatabaseSchemaCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesDatabaseSchemaCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const externalDataSourcesDatabaseSchemaCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExternalDataSourcesDatabaseSchemaCreateInput,
     outputSchema: ExternalDataSourcesDatabaseSchemaCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

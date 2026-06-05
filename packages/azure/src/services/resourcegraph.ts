@@ -9,42 +9,40 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GraphQueryCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
-    }),
-  );
+export const GraphQueryCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
+  }),
+);
 export type GraphQueryCreateOrUpdateInput =
   typeof GraphQueryCreateOrUpdateInput.Type;
 
 // Output Schema
-export const GraphQueryCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GraphQueryCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GraphQueryCreateOrUpdateOutput =
   typeof GraphQueryCreateOrUpdateOutput.Type;
 
@@ -57,14 +55,12 @@ export type GraphQueryCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Graph Query resource.
  */
-export const GraphQueryCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQueryCreateOrUpdateInput,
-    outputSchema: GraphQueryCreateOrUpdateOutput,
-  }),
-);
+export const GraphQueryCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQueryCreateOrUpdateInput,
+  outputSchema: GraphQueryCreateOrUpdateOutput,
+}));
 // Input Schema
-export const GraphQueryDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -78,7 +74,7 @@ export const GraphQueryDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GraphQueryDeleteInput = typeof GraphQueryDeleteInput.Type;
 
 // Output Schema
-export const GraphQueryDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GraphQueryDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GraphQueryDeleteOutput = typeof GraphQueryDeleteOutput.Type;
 
 // The operation
@@ -90,12 +86,12 @@ export type GraphQueryDeleteOutput = typeof GraphQueryDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Graph Query resource.
  */
-export const GraphQueryDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GraphQueryDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GraphQueryDeleteInput,
   outputSchema: GraphQueryDeleteOutput,
 }));
 // Input Schema
-export const GraphQueryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -109,7 +105,7 @@ export const GraphQueryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GraphQueryGetInput = typeof GraphQueryGetInput.Type;
 
 // Output Schema
-export const GraphQueryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -139,12 +135,12 @@ export type GraphQueryGetOutput = typeof GraphQueryGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Graph Query resource.
  */
-export const GraphQueryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GraphQueryGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GraphQueryGetInput,
   outputSchema: GraphQueryGetOutput,
 }));
 // Input Schema
-export const GraphQueryListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -157,7 +153,7 @@ export const GraphQueryListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GraphQueryListInput = typeof GraphQueryListInput.Type;
 
 // Output Schema
-export const GraphQueryListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -191,60 +187,48 @@ export type GraphQueryListOutput = typeof GraphQueryListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const GraphQueryList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GraphQueryList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GraphQueryListInput,
   outputSchema: GraphQueryListOutput,
 }));
 // Input Schema
-export const GraphQueryListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceGraph/queries",
-    }),
-  );
+export const GraphQueryListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceGraph/queries",
+  }),
+);
 export type GraphQueryListBySubscriptionInput =
   typeof GraphQueryListBySubscriptionInput.Type;
 
 // Output Schema
-export const GraphQueryListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const GraphQueryListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GraphQueryListBySubscriptionOutput =
   typeof GraphQueryListBySubscriptionOutput.Type;
 
@@ -255,13 +239,12 @@ export type GraphQueryListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GraphQueryListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GraphQueryListBySubscriptionInput,
-    outputSchema: GraphQueryListBySubscriptionOutput,
-  }));
+export const GraphQueryListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQueryListBySubscriptionInput,
+  outputSchema: GraphQueryListBySubscriptionOutput,
+}));
 // Input Schema
-export const GraphQueryUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GraphQueryUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -275,27 +258,25 @@ export const GraphQueryUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GraphQueryUpdateInput = typeof GraphQueryUpdateInput.Type;
 
 // Output Schema
-export const GraphQueryUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const GraphQueryUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GraphQueryUpdateOutput = typeof GraphQueryUpdateOutput.Type;
 
 // The operation
@@ -307,12 +288,12 @@ export type GraphQueryUpdateOutput = typeof GraphQueryUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Graph Query resource.
  */
-export const GraphQueryUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GraphQueryUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GraphQueryUpdateInput,
   outputSchema: GraphQueryUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -323,7 +304,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -348,12 +329,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ResourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResourcesInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -364,7 +345,7 @@ export const ResourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ResourcesInput = typeof ResourcesInput.Type;
 
 // Output Schema
-export const ResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResourcesOutput = /*@__PURE__*/ Schema.Struct({
   totalRecords: Schema.Number,
   count: Schema.Number,
   resultTruncated: Schema.Literals(["true", "false"]),
@@ -387,7 +368,7 @@ export type ResourcesOutput = typeof ResourcesOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const Resources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Resources = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourcesInput,
   outputSchema: ResourcesOutput,
 }));

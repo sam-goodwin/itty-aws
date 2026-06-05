@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const WarehouseTablesRefreshSchemaCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -238,7 +238,7 @@ export type WarehouseTablesRefreshSchemaCreateInput =
 
 // Output Schema
 export const WarehouseTablesRefreshSchemaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WarehouseTablesRefreshSchemaCreateOutput =
   typeof WarehouseTablesRefreshSchemaCreateOutput.Type;
 
@@ -249,9 +249,10 @@ export type WarehouseTablesRefreshSchemaCreateOutput =
  * @param id - A UUID string identifying this data warehouse table.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseTablesRefreshSchemaCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const warehouseTablesRefreshSchemaCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WarehouseTablesRefreshSchemaCreateInput,
     outputSchema: WarehouseTablesRefreshSchemaCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

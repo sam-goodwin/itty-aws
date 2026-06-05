@@ -1,42 +1,40 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const GetWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
-    }),
-  );
+export const GetWebhookSubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
+  }),
+);
 export type GetWebhookSubscriptionInput =
   typeof GetWebhookSubscriptionInput.Type;
 
 // Output Schema
-export const GetWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createdAt: Schema.String,
-    updatedAt: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    eventTypes: Schema.Array(Schema.String),
-    isEnabled: Schema.Boolean,
-    metadata: Schema.optional(
-      Schema.Struct({
-        secret: Schema.optional(SensitiveString),
-      }),
-    ),
-    secret: SensitiveString,
-    subscriptionId: Schema.String,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+export const GetWebhookSubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  createdAt: Schema.String,
+  updatedAt: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  eventTypes: Schema.Array(Schema.String),
+  isEnabled: Schema.Boolean,
+  metadata: Schema.optional(
+    Schema.Struct({
+      secret: Schema.optional(SensitiveOutputString),
     }),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+  ),
+  secret: SensitiveOutputString,
+  subscriptionId: Schema.String,
+  target: Schema.Struct({
+    url: Schema.String,
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type GetWebhookSubscriptionOutput =
   typeof GetWebhookSubscriptionOutput.Type;
 
@@ -54,9 +52,7 @@ export type GetWebhookSubscriptionOutput =
  *
  * @param subscriptionId - Unique identifier for the webhook subscription.
  */
-export const getWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetWebhookSubscriptionInput,
-    outputSchema: GetWebhookSubscriptionOutput,
-  }),
-);
+export const getWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetWebhookSubscriptionInput,
+  outputSchema: GetWebhookSubscriptionOutput,
+}));

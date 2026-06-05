@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
       Schema.Struct({
@@ -30,7 +30,7 @@ export type ErrorTrackingAssignmentRulesCreateInput =
 
 // Output Schema
 export const ErrorTrackingAssignmentRulesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
     assignee: Schema.optional(
@@ -54,9 +54,10 @@ export type ErrorTrackingAssignmentRulesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingAssignmentRulesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingAssignmentRulesCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingAssignmentRulesCreateInput,
     outputSchema: ErrorTrackingAssignmentRulesCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

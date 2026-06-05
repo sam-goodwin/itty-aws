@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostAccountLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAccountLinksInput = /*@__PURE__*/ Schema.Struct({
   account: Schema.String,
   collect: Schema.optional(
     Schema.Literals(["currently_due", "eventually_due"]),
@@ -32,14 +32,12 @@ export const PostAccountLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostAccountLinksInput = typeof PostAccountLinksInput.Type;
 
 // Output Schema
-export const PostAccountLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    created: Schema.Number,
-    expires_at: Schema.Number,
-    object: Schema.Literals(["account_link"]),
-    url: Schema.String,
-  },
-);
+export const PostAccountLinksOutput = /*@__PURE__*/ Schema.Struct({
+  created: Schema.Number,
+  expires_at: Schema.Number,
+  object: Schema.Literals(["account_link"]),
+  url: Schema.String,
+});
 export type PostAccountLinksOutput = typeof PostAccountLinksOutput.Type;
 
 // The operation
@@ -48,7 +46,7 @@ export type PostAccountLinksOutput = typeof PostAccountLinksOutput.Type;
  *
  * <p>Creates an AccountLink object that includes a single-use Stripe URL that the platform can redirect their user to in order to take them through the Connect Onboarding flow.</p>
  */
-export const PostAccountLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccountLinks = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAccountLinksInput,
   outputSchema: PostAccountLinksOutput,
 }));

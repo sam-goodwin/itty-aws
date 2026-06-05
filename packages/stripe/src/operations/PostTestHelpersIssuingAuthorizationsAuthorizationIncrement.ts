@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     increment_amount: Schema.Number,
@@ -21,7 +21,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput =
 
 // Output Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1274,7 +1274,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationIncrementOutput =
  * <p>Increment a test-mode Authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput,
     outputSchema:

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTreasuryCreditReversalsCreditReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     credit_reversal: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTreasuryCreditReversalsCreditReversalInput =
 
 // Output Schema
 export const GetTreasuryCreditReversalsCreditReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -48,8 +48,9 @@ export type GetTreasuryCreditReversalsCreditReversalOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTreasuryCreditReversalsCreditReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTreasuryCreditReversalsCreditReversal = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetTreasuryCreditReversalsCreditReversalInput,
     outputSchema: GetTreasuryCreditReversalsCreditReversalOutput,
-  }));
+  }),
+);

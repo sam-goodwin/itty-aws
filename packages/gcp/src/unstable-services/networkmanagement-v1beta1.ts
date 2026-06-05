@@ -35,14 +35,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    locationId: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -52,7 +51,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -66,14 +65,13 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> = /*@__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -88,14 +86,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    error: Schema.optional(Status),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -107,7 +104,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -115,15 +112,14 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -133,7 +129,7 @@ export interface CloudFunctionEndpoint {
 }
 
 export const CloudFunctionEndpoint: Schema.Schema<CloudFunctionEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudFunctionEndpoint" });
 
@@ -143,7 +139,7 @@ export interface AppEngineVersionEndpoint {
 }
 
 export const AppEngineVersionEndpoint: Schema.Schema<AppEngineVersionEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppEngineVersionEndpoint" });
 
@@ -155,7 +151,7 @@ export interface CloudRunRevisionEndpoint {
 }
 
 export const CloudRunRevisionEndpoint: Schema.Schema<CloudRunRevisionEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     serviceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudRunRevisionEndpoint" });
@@ -205,10 +201,6 @@ export interface Endpoint {
   redisCluster?: string;
   /** A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI. */
   gkePod?: string;
-  /** A [DMS Private Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
-  dmsPrivateConnection?: string;
-  /** A [Datastream Private Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
-  datastreamPrivateConnection?: string;
   /** A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint. */
   cloudFunction?: CloudFunctionEndpoint;
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions). Applicable only to source endpoint. */
@@ -228,30 +220,27 @@ export interface Endpoint {
   projectId?: string;
 }
 
-export const Endpoint: Schema.Schema<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ipAddress: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-    instance: Schema.optional(Schema.String),
-    forwardingRule: Schema.optional(Schema.String),
-    forwardingRuleTarget: Schema.optional(Schema.String),
-    loadBalancerId: Schema.optional(Schema.String),
-    loadBalancerType: Schema.optional(Schema.String),
-    gkeMasterCluster: Schema.optional(Schema.String),
-    fqdn: Schema.optional(Schema.String),
-    cloudSqlInstance: Schema.optional(Schema.String),
-    redisInstance: Schema.optional(Schema.String),
-    redisCluster: Schema.optional(Schema.String),
-    gkePod: Schema.optional(Schema.String),
-    dmsPrivateConnection: Schema.optional(Schema.String),
-    datastreamPrivateConnection: Schema.optional(Schema.String),
-    cloudFunction: Schema.optional(CloudFunctionEndpoint),
-    appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
-    cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
-    network: Schema.optional(Schema.String),
-    networkType: Schema.optional(Schema.String),
-    projectId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Endpoint" });
+export const Endpoint: Schema.Schema<Endpoint> = /*@__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+  instance: Schema.optional(Schema.String),
+  forwardingRule: Schema.optional(Schema.String),
+  forwardingRuleTarget: Schema.optional(Schema.String),
+  loadBalancerId: Schema.optional(Schema.String),
+  loadBalancerType: Schema.optional(Schema.String),
+  gkeMasterCluster: Schema.optional(Schema.String),
+  fqdn: Schema.optional(Schema.String),
+  cloudSqlInstance: Schema.optional(Schema.String),
+  redisInstance: Schema.optional(Schema.String),
+  redisCluster: Schema.optional(Schema.String),
+  gkePod: Schema.optional(Schema.String),
+  cloudFunction: Schema.optional(CloudFunctionEndpoint),
+  appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
+  cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
+  network: Schema.optional(Schema.String),
+  networkType: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Endpoint" });
 
 export interface EndpointInfo {
   /** Source IP address. */
@@ -273,7 +262,7 @@ export interface EndpointInfo {
 }
 
 export const EndpointInfo: Schema.Schema<EndpointInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceIp: Schema.optional(Schema.String),
     destinationIp: Schema.optional(Schema.String),
     protocol: Schema.optional(Schema.String),
@@ -310,7 +299,7 @@ export interface InstanceInfo {
 }
 
 export const InstanceInfo: Schema.Schema<InstanceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     interface: Schema.optional(Schema.String),
@@ -371,7 +360,7 @@ export interface FirewallInfo {
 }
 
 export const FirewallInfo: Schema.Schema<FirewallInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     direction: Schema.optional(Schema.String),
@@ -427,7 +416,7 @@ export interface RouteInfo {
   displayName?: string;
   /** URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
   uri?: string;
-  /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. If set to "all" for POLICY_BASED route, the route applies to VLAN attachments of Cloud Interconnect in all regions. */
+  /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. */
   region?: string;
   /** Destination IP range of the route. */
   destIpRange?: string;
@@ -467,33 +456,32 @@ export interface RouteInfo {
   nccHubRouteUri?: string;
 }
 
-export const RouteInfo: Schema.Schema<RouteInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    routeType: Schema.optional(Schema.String),
-    nextHopType: Schema.optional(Schema.String),
-    routeScope: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    uri: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
-    destIpRange: Schema.optional(Schema.String),
-    nextHop: Schema.optional(Schema.String),
-    networkUri: Schema.optional(Schema.String),
-    priority: Schema.optional(Schema.Number),
-    instanceTags: Schema.optional(Schema.Array(Schema.String)),
-    srcIpRange: Schema.optional(Schema.String),
-    destPortRanges: Schema.optional(Schema.Array(Schema.String)),
-    srcPortRanges: Schema.optional(Schema.Array(Schema.String)),
-    protocols: Schema.optional(Schema.Array(Schema.String)),
-    nccHubUri: Schema.optional(Schema.String),
-    nccSpokeUri: Schema.optional(Schema.String),
-    advertisedRouteSourceRouterUri: Schema.optional(Schema.String),
-    advertisedRouteNextHopUri: Schema.optional(Schema.String),
-    nextHopUri: Schema.optional(Schema.String),
-    nextHopNetworkUri: Schema.optional(Schema.String),
-    originatingRouteUri: Schema.optional(Schema.String),
-    originatingRouteDisplayName: Schema.optional(Schema.String),
-    nccHubRouteUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RouteInfo" });
+export const RouteInfo: Schema.Schema<RouteInfo> = /*@__PURE__*/ Schema.Struct({
+  routeType: Schema.optional(Schema.String),
+  nextHopType: Schema.optional(Schema.String),
+  routeScope: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  destIpRange: Schema.optional(Schema.String),
+  nextHop: Schema.optional(Schema.String),
+  networkUri: Schema.optional(Schema.String),
+  priority: Schema.optional(Schema.Number),
+  instanceTags: Schema.optional(Schema.Array(Schema.String)),
+  srcIpRange: Schema.optional(Schema.String),
+  destPortRanges: Schema.optional(Schema.Array(Schema.String)),
+  srcPortRanges: Schema.optional(Schema.Array(Schema.String)),
+  protocols: Schema.optional(Schema.Array(Schema.String)),
+  nccHubUri: Schema.optional(Schema.String),
+  nccSpokeUri: Schema.optional(Schema.String),
+  advertisedRouteSourceRouterUri: Schema.optional(Schema.String),
+  advertisedRouteNextHopUri: Schema.optional(Schema.String),
+  nextHopUri: Schema.optional(Schema.String),
+  nextHopNetworkUri: Schema.optional(Schema.String),
+  originatingRouteUri: Schema.optional(Schema.String),
+  originatingRouteDisplayName: Schema.optional(Schema.String),
+  nccHubRouteUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "RouteInfo" });
 
 export interface GoogleServiceInfo {
   /** Source IP address. */
@@ -512,7 +500,7 @@ export interface GoogleServiceInfo {
 }
 
 export const GoogleServiceInfo: Schema.Schema<GoogleServiceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceIp: Schema.optional(Schema.String),
     googleServiceType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleServiceInfo" });
@@ -543,7 +531,7 @@ export interface ForwardingRuleInfo {
 }
 
 export const ForwardingRuleInfo: Schema.Schema<ForwardingRuleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     matchedProtocol: Schema.optional(Schema.String),
@@ -567,7 +555,7 @@ export interface HybridSubnetInfo {
 }
 
 export const HybridSubnetInfo: Schema.Schema<HybridSubnetInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -589,7 +577,7 @@ export interface VpnGatewayInfo {
 }
 
 export const VpnGatewayInfo: Schema.Schema<VpnGatewayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     networkUri: Schema.optional(Schema.String),
@@ -625,7 +613,7 @@ export interface VpnTunnelInfo {
 }
 
 export const VpnTunnelInfo: Schema.Schema<VpnTunnelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     sourceGateway: Schema.optional(Schema.String),
@@ -661,7 +649,7 @@ export interface InterconnectAttachmentInfo {
 }
 
 export const InterconnectAttachmentInfo: Schema.Schema<InterconnectAttachmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     interconnectUri: Schema.optional(Schema.String),
@@ -681,7 +669,7 @@ export interface VpcConnectorInfo {
 }
 
 export const VpcConnectorInfo: Schema.Schema<VpcConnectorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -701,7 +689,7 @@ export interface DirectVpcEgressConnectionInfo {
 }
 
 export const DirectVpcEgressConnectionInfo: Schema.Schema<DirectVpcEgressConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkUri: Schema.optional(Schema.String),
     subnetworkUri: Schema.optional(Schema.String),
     selectedIpRange: Schema.optional(Schema.String),
@@ -715,7 +703,7 @@ export interface ServerlessExternalConnectionInfo {
 }
 
 export const ServerlessExternalConnectionInfo: Schema.Schema<ServerlessExternalConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectedIpAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServerlessExternalConnectionInfo" });
 
@@ -762,7 +750,7 @@ export interface DeliverInfo {
 }
 
 export const DeliverInfo: Schema.Schema<DeliverInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -793,7 +781,7 @@ export interface ForwardInfo {
 }
 
 export const ForwardInfo: Schema.Schema<ForwardInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -846,7 +834,6 @@ export interface AbortInfo {
     | "NO_SERVERLESS_IP_RANGES"
     | "IP_VERSION_PROTOCOL_MISMATCH"
     | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
-    | "RESPONSE_TOO_LARGE"
     | (string & {});
   /** URI of the resource that caused the abort. */
   resourceUri?: string;
@@ -856,13 +843,12 @@ export interface AbortInfo {
   projectsMissingPermission?: ReadonlyArray<string>;
 }
 
-export const AbortInfo: Schema.Schema<AbortInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cause: Schema.optional(Schema.String),
-    resourceUri: Schema.optional(Schema.String),
-    ipAddress: Schema.optional(Schema.String),
-    projectsMissingPermission: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "AbortInfo" });
+export const AbortInfo: Schema.Schema<AbortInfo> = /*@__PURE__*/ Schema.Struct({
+  cause: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  projectsMissingPermission: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AbortInfo" });
 
 export interface DropInfo {
   /** Cause that the packet is dropped. */
@@ -972,7 +958,6 @@ export interface DropInfo {
     | "HYBRID_SUBNET_NO_ROUTE"
     | "GKE_NETWORK_POLICY"
     | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
-    | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
     | (string & {});
   /** URI of the resource that caused the drop. */
   resourceUri?: string;
@@ -988,16 +973,15 @@ export interface DropInfo {
   destinationGeolocationCode?: string;
 }
 
-export const DropInfo: Schema.Schema<DropInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cause: Schema.optional(Schema.String),
-    resourceUri: Schema.optional(Schema.String),
-    sourceIp: Schema.optional(Schema.String),
-    destinationIp: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
-    sourceGeolocationCode: Schema.optional(Schema.String),
-    destinationGeolocationCode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DropInfo" });
+export const DropInfo: Schema.Schema<DropInfo> = /*@__PURE__*/ Schema.Struct({
+  cause: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  sourceIp: Schema.optional(Schema.String),
+  destinationIp: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  sourceGeolocationCode: Schema.optional(Schema.String),
+  destinationGeolocationCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DropInfo" });
 
 export interface LoadBalancerBackend {
   /** Name of a Compute Engine instance or network endpoint. */
@@ -1017,7 +1001,7 @@ export interface LoadBalancerBackend {
 }
 
 export const LoadBalancerBackend: Schema.Schema<LoadBalancerBackend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     healthCheckFirewallState: Schema.optional(Schema.String),
@@ -1055,7 +1039,7 @@ export interface LoadBalancerInfo {
 }
 
 export const LoadBalancerInfo: Schema.Schema<LoadBalancerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerType: Schema.optional(Schema.String),
     healthCheckUri: Schema.optional(Schema.String),
     backends: Schema.optional(Schema.Array(LoadBalancerBackend)),
@@ -1077,7 +1061,7 @@ export interface NetworkInfo {
 }
 
 export const NetworkInfo: Schema.Schema<NetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     matchedSubnetUri: Schema.optional(Schema.String),
@@ -1099,7 +1083,7 @@ export interface GKEMasterInfo {
 }
 
 export const GKEMasterInfo: Schema.Schema<GKEMasterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterUri: Schema.optional(Schema.String),
     clusterNetworkUri: Schema.optional(Schema.String),
     internalIp: Schema.optional(Schema.String),
@@ -1117,7 +1101,7 @@ export interface GkePodInfo {
 }
 
 export const GkePodInfo: Schema.Schema<GkePodInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     podUri: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
     networkUri: Schema.optional(Schema.String),
@@ -1140,7 +1124,7 @@ export interface IpMasqueradingSkippedInfo {
 }
 
 export const IpMasqueradingSkippedInfo: Schema.Schema<IpMasqueradingSkippedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     nonMasqueradeRange: Schema.optional(Schema.String),
   }).annotate({ identifier: "IpMasqueradingSkippedInfo" });
@@ -1157,7 +1141,7 @@ export interface GkeNetworkPolicyInfo {
 }
 
 export const GkeNetworkPolicyInfo: Schema.Schema<GkeNetworkPolicyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     direction: Schema.optional(Schema.String),
@@ -1177,7 +1161,7 @@ export interface GkeNetworkPolicySkippedInfo {
 }
 
 export const GkeNetworkPolicySkippedInfo: Schema.Schema<GkeNetworkPolicySkippedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "GkeNetworkPolicySkippedInfo" });
 
@@ -1197,7 +1181,7 @@ export interface CloudSQLInstanceInfo {
 }
 
 export const CloudSQLInstanceInfo: Schema.Schema<CloudSQLInstanceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     networkUri: Schema.optional(Schema.String),
@@ -1222,7 +1206,7 @@ export interface RedisInstanceInfo {
 }
 
 export const RedisInstanceInfo: Schema.Schema<RedisInstanceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     networkUri: Schema.optional(Schema.String),
@@ -1247,7 +1231,7 @@ export interface RedisClusterInfo {
 }
 
 export const RedisClusterInfo: Schema.Schema<RedisClusterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     networkUri: Schema.optional(Schema.String),
@@ -1268,7 +1252,7 @@ export interface CloudFunctionInfo {
 }
 
 export const CloudFunctionInfo: Schema.Schema<CloudFunctionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1287,7 +1271,7 @@ export interface AppEngineVersionInfo {
 }
 
 export const AppEngineVersionInfo: Schema.Schema<AppEngineVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     runtime: Schema.optional(Schema.String),
@@ -1306,7 +1290,7 @@ export interface CloudRunRevisionInfo {
 }
 
 export const CloudRunRevisionInfo: Schema.Schema<CloudRunRevisionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1358,23 +1342,22 @@ export interface NatInfo {
     | (string & {});
 }
 
-export const NatInfo: Schema.Schema<NatInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    protocol: Schema.optional(Schema.String),
-    networkUri: Schema.optional(Schema.String),
-    oldSourceIp: Schema.optional(Schema.String),
-    newSourceIp: Schema.optional(Schema.String),
-    oldDestinationIp: Schema.optional(Schema.String),
-    newDestinationIp: Schema.optional(Schema.String),
-    oldSourcePort: Schema.optional(Schema.Number),
-    newSourcePort: Schema.optional(Schema.Number),
-    oldDestinationPort: Schema.optional(Schema.Number),
-    newDestinationPort: Schema.optional(Schema.Number),
-    routerUri: Schema.optional(Schema.String),
-    natGatewayName: Schema.optional(Schema.String),
-    cloudNatGatewayType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NatInfo" });
+export const NatInfo: Schema.Schema<NatInfo> = /*@__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  networkUri: Schema.optional(Schema.String),
+  oldSourceIp: Schema.optional(Schema.String),
+  newSourceIp: Schema.optional(Schema.String),
+  oldDestinationIp: Schema.optional(Schema.String),
+  newDestinationIp: Schema.optional(Schema.String),
+  oldSourcePort: Schema.optional(Schema.Number),
+  newSourcePort: Schema.optional(Schema.Number),
+  oldDestinationPort: Schema.optional(Schema.Number),
+  newDestinationPort: Schema.optional(Schema.Number),
+  routerUri: Schema.optional(Schema.String),
+  natGatewayName: Schema.optional(Schema.String),
+  cloudNatGatewayType: Schema.optional(Schema.String),
+}).annotate({ identifier: "NatInfo" });
 
 export interface ProxyConnectionInfo {
   /** IP protocol in string format, for example: "TCP", "UDP", "ICMP". */
@@ -1402,7 +1385,7 @@ export interface ProxyConnectionInfo {
 }
 
 export const ProxyConnectionInfo: Schema.Schema<ProxyConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     oldSourceIp: Schema.optional(Schema.String),
     newSourceIp: Schema.optional(Schema.String),
@@ -1446,7 +1429,7 @@ export interface LoadBalancerBackendInfo {
 }
 
 export const LoadBalancerBackendInfo: Schema.Schema<LoadBalancerBackendInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     instanceUri: Schema.optional(Schema.String),
     backendServiceUri: Schema.optional(Schema.String),
@@ -1465,7 +1448,7 @@ export interface StorageBucketInfo {
 }
 
 export const StorageBucketInfo: Schema.Schema<StorageBucketInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
   }).annotate({ identifier: "StorageBucketInfo" });
 
@@ -1475,7 +1458,7 @@ export interface ServerlessNegInfo {
 }
 
 export const ServerlessNegInfo: Schema.Schema<ServerlessNegInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     negUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServerlessNegInfo" });
 
@@ -1485,19 +1468,9 @@ export interface NgfwPacketInspectionInfo {
 }
 
 export const NgfwPacketInspectionInfo: Schema.Schema<NgfwPacketInspectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfileGroupUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "NgfwPacketInspectionInfo" });
-
-export interface PrivateConnectionInfo {
-  /** URI of the Private Connection in format "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}" */
-  uri?: string;
-}
-
-export const PrivateConnectionInfo: Schema.Schema<PrivateConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PrivateConnectionInfo" });
 
 export interface Step {
   /** A description of the step. Usually this is a summary of the state. */
@@ -1520,8 +1493,6 @@ export interface Step {
     | "START_FROM_STORAGE_BUCKET"
     | "START_FROM_PSC_PUBLISHED_SERVICE"
     | "START_FROM_SERVERLESS_NEG"
-    | "START_FROM_DMS_PRIVATE_CONNECTION"
-    | "START_FROM_DATASTREAM_PRIVATE_CONNECTION"
     | "APPLY_INGRESS_FIREWALL_RULE"
     | "APPLY_EGRESS_FIREWALL_RULE"
     | "APPLY_ROUTE"
@@ -1629,59 +1600,52 @@ export interface Step {
   serverlessNeg?: ServerlessNegInfo;
   /** Display information of a layer 7 packet inspection by the firewall. */
   ngfwPacketInspection?: NgfwPacketInspectionInfo;
-  /** Display information of a DMS Private Connection. */
-  dmsPrivateConnection?: PrivateConnectionInfo;
-  /** Display information of a Datastream Private Connection. */
-  datastreamPrivateConnection?: PrivateConnectionInfo;
 }
 
-export const Step: Schema.Schema<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    causesDrop: Schema.optional(Schema.Boolean),
-    projectId: Schema.optional(Schema.String),
-    instance: Schema.optional(InstanceInfo),
-    firewall: Schema.optional(FirewallInfo),
-    route: Schema.optional(RouteInfo),
-    endpoint: Schema.optional(EndpointInfo),
-    googleService: Schema.optional(GoogleServiceInfo),
-    forwardingRule: Schema.optional(ForwardingRuleInfo),
-    hybridSubnet: Schema.optional(HybridSubnetInfo),
-    vpnGateway: Schema.optional(VpnGatewayInfo),
-    vpnTunnel: Schema.optional(VpnTunnelInfo),
-    interconnectAttachment: Schema.optional(InterconnectAttachmentInfo),
-    vpcConnector: Schema.optional(VpcConnectorInfo),
-    directVpcEgressConnection: Schema.optional(DirectVpcEgressConnectionInfo),
-    serverlessExternalConnection: Schema.optional(
-      ServerlessExternalConnectionInfo,
-    ),
-    deliver: Schema.optional(DeliverInfo),
-    forward: Schema.optional(ForwardInfo),
-    abort: Schema.optional(AbortInfo),
-    drop: Schema.optional(DropInfo),
-    loadBalancer: Schema.optional(LoadBalancerInfo),
-    network: Schema.optional(NetworkInfo),
-    gkeMaster: Schema.optional(GKEMasterInfo),
-    gkePod: Schema.optional(GkePodInfo),
-    ipMasqueradingSkipped: Schema.optional(IpMasqueradingSkippedInfo),
-    gkeNetworkPolicy: Schema.optional(GkeNetworkPolicyInfo),
-    gkeNetworkPolicySkipped: Schema.optional(GkeNetworkPolicySkippedInfo),
-    cloudSqlInstance: Schema.optional(CloudSQLInstanceInfo),
-    redisInstance: Schema.optional(RedisInstanceInfo),
-    redisCluster: Schema.optional(RedisClusterInfo),
-    cloudFunction: Schema.optional(CloudFunctionInfo),
-    appEngineVersion: Schema.optional(AppEngineVersionInfo),
-    cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
-    nat: Schema.optional(NatInfo),
-    proxyConnection: Schema.optional(ProxyConnectionInfo),
-    loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
-    storageBucket: Schema.optional(StorageBucketInfo),
-    serverlessNeg: Schema.optional(ServerlessNegInfo),
-    ngfwPacketInspection: Schema.optional(NgfwPacketInspectionInfo),
-    dmsPrivateConnection: Schema.optional(PrivateConnectionInfo),
-    datastreamPrivateConnection: Schema.optional(PrivateConnectionInfo),
-  }).annotate({ identifier: "Step" });
+export const Step: Schema.Schema<Step> = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  causesDrop: Schema.optional(Schema.Boolean),
+  projectId: Schema.optional(Schema.String),
+  instance: Schema.optional(InstanceInfo),
+  firewall: Schema.optional(FirewallInfo),
+  route: Schema.optional(RouteInfo),
+  endpoint: Schema.optional(EndpointInfo),
+  googleService: Schema.optional(GoogleServiceInfo),
+  forwardingRule: Schema.optional(ForwardingRuleInfo),
+  hybridSubnet: Schema.optional(HybridSubnetInfo),
+  vpnGateway: Schema.optional(VpnGatewayInfo),
+  vpnTunnel: Schema.optional(VpnTunnelInfo),
+  interconnectAttachment: Schema.optional(InterconnectAttachmentInfo),
+  vpcConnector: Schema.optional(VpcConnectorInfo),
+  directVpcEgressConnection: Schema.optional(DirectVpcEgressConnectionInfo),
+  serverlessExternalConnection: Schema.optional(
+    ServerlessExternalConnectionInfo,
+  ),
+  deliver: Schema.optional(DeliverInfo),
+  forward: Schema.optional(ForwardInfo),
+  abort: Schema.optional(AbortInfo),
+  drop: Schema.optional(DropInfo),
+  loadBalancer: Schema.optional(LoadBalancerInfo),
+  network: Schema.optional(NetworkInfo),
+  gkeMaster: Schema.optional(GKEMasterInfo),
+  gkePod: Schema.optional(GkePodInfo),
+  ipMasqueradingSkipped: Schema.optional(IpMasqueradingSkippedInfo),
+  gkeNetworkPolicy: Schema.optional(GkeNetworkPolicyInfo),
+  gkeNetworkPolicySkipped: Schema.optional(GkeNetworkPolicySkippedInfo),
+  cloudSqlInstance: Schema.optional(CloudSQLInstanceInfo),
+  redisInstance: Schema.optional(RedisInstanceInfo),
+  redisCluster: Schema.optional(RedisClusterInfo),
+  cloudFunction: Schema.optional(CloudFunctionInfo),
+  appEngineVersion: Schema.optional(AppEngineVersionInfo),
+  cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
+  nat: Schema.optional(NatInfo),
+  proxyConnection: Schema.optional(ProxyConnectionInfo),
+  loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
+  storageBucket: Schema.optional(StorageBucketInfo),
+  serverlessNeg: Schema.optional(ServerlessNegInfo),
+  ngfwPacketInspection: Schema.optional(NgfwPacketInspectionInfo),
+}).annotate({ identifier: "Step" });
 
 export interface Trace {
   /** Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces. */
@@ -1692,12 +1656,11 @@ export interface Trace {
   forwardTraceId?: number;
 }
 
-export const Trace: Schema.Schema<Trace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpointInfo: Schema.optional(EndpointInfo),
-    steps: Schema.optional(Schema.Array(Step)),
-    forwardTraceId: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Trace" });
+export const Trace: Schema.Schema<Trace> = /*@__PURE__*/ Schema.Struct({
+  endpointInfo: Schema.optional(EndpointInfo),
+  steps: Schema.optional(Schema.Array(Step)),
+  forwardTraceId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Trace" });
 
 export interface ReachabilityDetails {
   /** The overall result of the test's configuration analysis. */
@@ -1717,7 +1680,7 @@ export interface ReachabilityDetails {
 }
 
 export const ReachabilityDetails: Schema.Schema<ReachabilityDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     verifyTime: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -1732,7 +1695,7 @@ export interface LatencyPercentile {
 }
 
 export const LatencyPercentile: Schema.Schema<LatencyPercentile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     percent: Schema.optional(Schema.Number),
     latencyMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "LatencyPercentile" });
@@ -1743,7 +1706,7 @@ export interface LatencyDistribution {
 }
 
 export const LatencyDistribution: Schema.Schema<LatencyDistribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latencyPercentiles: Schema.optional(Schema.Array(LatencyPercentile)),
   }).annotate({ identifier: "LatencyDistribution" });
 
@@ -1753,7 +1716,7 @@ export interface EdgeLocation {
 }
 
 export const EdgeLocation: Schema.Schema<EdgeLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metropolitanArea: Schema.optional(Schema.String),
   }).annotate({ identifier: "EdgeLocation" });
 
@@ -1779,7 +1742,7 @@ export interface SingleEdgeResponse {
 }
 
 export const SingleEdgeResponse: Schema.Schema<SingleEdgeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     sentProbeCount: Schema.optional(Schema.Number),
     successfulProbeCount: Schema.optional(Schema.Number),
@@ -1824,7 +1787,7 @@ export interface ProbingDetails {
 }
 
 export const ProbingDetails: Schema.Schema<ProbingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     verifyTime: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -1872,7 +1835,7 @@ export interface ConnectivityTest {
 }
 
 export const ConnectivityTest: Schema.Schema<ConnectivityTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     source: Schema.optional(Endpoint),
@@ -1900,7 +1863,7 @@ export interface ListConnectivityTestsResponse {
 }
 
 export const ListConnectivityTestsResponse: Schema.Schema<ListConnectivityTestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(ConnectivityTest)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1909,7 +1872,7 @@ export const ListConnectivityTestsResponse: Schema.Schema<ListConnectivityTestsR
 export interface RerunConnectivityTestRequest {}
 
 export const RerunConnectivityTestRequest: Schema.Schema<RerunConnectivityTestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RerunConnectivityTestRequest",
   });
 
@@ -1972,7 +1935,7 @@ export interface VpcFlowLogsConfig {
 }
 
 export const VpcFlowLogsConfig: Schema.Schema<VpcFlowLogsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2002,7 +1965,7 @@ export interface ListVpcFlowLogsConfigsResponse {
 }
 
 export const ListVpcFlowLogsConfigsResponse: Schema.Schema<ListVpcFlowLogsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcFlowLogsConfigs: Schema.optional(Schema.Array(VpcFlowLogsConfig)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2018,7 +1981,7 @@ export interface QueryOrgVpcFlowLogsConfigsResponse {
 }
 
 export const QueryOrgVpcFlowLogsConfigsResponse: Schema.Schema<QueryOrgVpcFlowLogsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcFlowLogsConfigs: Schema.optional(Schema.Array(VpcFlowLogsConfig)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2079,7 +2042,7 @@ export interface EffectiveVpcFlowLogsConfig {
 }
 
 export const EffectiveVpcFlowLogsConfig: Schema.Schema<EffectiveVpcFlowLogsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     aggregationInterval: Schema.optional(Schema.String),
@@ -2105,7 +2068,7 @@ export interface ShowEffectiveFlowLogsConfigsResponse {
 }
 
 export const ShowEffectiveFlowLogsConfigsResponse: Schema.Schema<ShowEffectiveFlowLogsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     effectiveFlowLogsConfigs: Schema.optional(
       Schema.Array(EffectiveVpcFlowLogsConfig),
     ),
@@ -2124,13 +2087,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> = /*@__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2141,12 +2103,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-    condition: Schema.optional(Expr),
-  }).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> = /*@__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -2161,7 +2122,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -2174,7 +2135,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
@@ -2190,13 +2151,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.Number),
-    bindings: Schema.optional(Schema.Array(Binding)),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> = /*@__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -2206,7 +2166,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -2217,7 +2177,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -2227,7 +2187,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -2249,7 +2209,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -2322,37 +2282,36 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+export const ListProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("extraLocationTypes"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -2367,17 +2326,15 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 
-export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+export const GetProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2387,7 +2344,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -2407,7 +2364,7 @@ export interface ListProjectsLocationsGlobalOperationsRequest {
 }
 
 export const ListProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2423,7 +2380,7 @@ export const ListProjectsLocationsGlobalOperationsRequest =
 export type ListProjectsLocationsGlobalOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -2436,7 +2393,7 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   ListProjectsLocationsGlobalOperationsResponse,
   ListProjectsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalOperationsRequest,
   output: ListProjectsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2452,7 +2409,7 @@ export interface GetProjectsLocationsGlobalOperationsRequest {
 }
 
 export const GetProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2461,7 +2418,7 @@ export const GetProjectsLocationsGlobalOperationsRequest =
 
 export type GetProjectsLocationsGlobalOperationsResponse = Operation;
 export const GetProjectsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -2474,7 +2431,7 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
   GetProjectsLocationsGlobalOperationsResponse,
   GetProjectsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalOperationsRequest,
   output: GetProjectsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2486,7 +2443,7 @@ export interface DeleteProjectsLocationsGlobalOperationsRequest {
 }
 
 export const DeleteProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -2495,7 +2452,7 @@ export const DeleteProjectsLocationsGlobalOperationsRequest =
 
 export type DeleteProjectsLocationsGlobalOperationsResponse = Empty;
 export const DeleteProjectsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -2510,7 +2467,7 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
   DeleteProjectsLocationsGlobalOperationsResponse,
   DeleteProjectsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalOperationsRequest,
   output: DeleteProjectsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2524,7 +2481,7 @@ export interface CancelProjectsLocationsGlobalOperationsRequest {
 }
 
 export const CancelProjectsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2534,7 +2491,7 @@ export const CancelProjectsLocationsGlobalOperationsRequest =
 
 export type CancelProjectsLocationsGlobalOperationsResponse = Empty;
 export const CancelProjectsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -2549,7 +2506,7 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   CancelProjectsLocationsGlobalOperationsResponse,
   CancelProjectsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsGlobalOperationsRequest,
   output: CancelProjectsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2569,7 +2526,7 @@ export interface ListProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const ListProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2583,7 +2540,7 @@ export const ListProjectsLocationsGlobalConnectivityTestsRequest =
 export type ListProjectsLocationsGlobalConnectivityTestsResponse =
   ListConnectivityTestsResponse;
 export const ListProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConnectivityTestsResponse;
+  /*@__PURE__*/ ListConnectivityTestsResponse;
 
 export type ListProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2596,7 +2553,7 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
   ListProjectsLocationsGlobalConnectivityTestsResponse,
   ListProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalConnectivityTestsRequest,
   output: ListProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden],
@@ -2612,7 +2569,7 @@ export interface GetProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const GetProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2622,7 +2579,7 @@ export const GetProjectsLocationsGlobalConnectivityTestsRequest =
 export type GetProjectsLocationsGlobalConnectivityTestsResponse =
   ConnectivityTest;
 export const GetProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConnectivityTest;
+  /*@__PURE__*/ ConnectivityTest;
 
 export type GetProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2635,7 +2592,7 @@ export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GetProjectsLocationsGlobalConnectivityTestsResponse,
   GetProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalConnectivityTestsRequest,
   output: GetProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden],
@@ -2651,7 +2608,7 @@ export interface CreateProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const CreateProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     testId: Schema.optional(Schema.String).pipe(T.HttpQuery("testId")),
     body: Schema.optional(ConnectivityTest).pipe(T.HttpBody()),
@@ -2666,7 +2623,7 @@ export const CreateProjectsLocationsGlobalConnectivityTestsRequest =
 
 export type CreateProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const CreateProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2681,7 +2638,7 @@ export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   CreateProjectsLocationsGlobalConnectivityTestsResponse,
   CreateProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalConnectivityTestsRequest,
   output: CreateProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2697,7 +2654,7 @@ export interface PatchProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const PatchProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ConnectivityTest).pipe(T.HttpBody()),
@@ -2708,7 +2665,7 @@ export const PatchProjectsLocationsGlobalConnectivityTestsRequest =
 
 export type PatchProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const PatchProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2723,7 +2680,7 @@ export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   PatchProjectsLocationsGlobalConnectivityTestsResponse,
   PatchProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalConnectivityTestsRequest,
   output: PatchProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2737,7 +2694,7 @@ export interface RerunProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const RerunProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RerunConnectivityTestRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2747,7 +2704,7 @@ export const RerunProjectsLocationsGlobalConnectivityTestsRequest =
 
 export type RerunProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const RerunProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type RerunProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2762,7 +2719,7 @@ export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   RerunProjectsLocationsGlobalConnectivityTestsResponse,
   RerunProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RerunProjectsLocationsGlobalConnectivityTestsRequest,
   output: RerunProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2774,7 +2731,7 @@ export interface DeleteProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const DeleteProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -2783,7 +2740,7 @@ export const DeleteProjectsLocationsGlobalConnectivityTestsRequest =
 
 export type DeleteProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const DeleteProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2798,7 +2755,7 @@ export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   DeleteProjectsLocationsGlobalConnectivityTestsResponse,
   DeleteProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalConnectivityTestsRequest,
   output: DeleteProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2812,7 +2769,7 @@ export interface SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2827,7 +2784,7 @@ export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
 export type SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
   Policy;
 export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2842,7 +2799,7 @@ export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
   SetIamPolicyProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
   output: SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2856,7 +2813,7 @@ export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -2869,7 +2826,7 @@ export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
 export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
   Policy;
 export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2882,7 +2839,7 @@ export const getIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
   GetIamPolicyProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
   output: GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden],
@@ -2896,7 +2853,7 @@ export interface TestIamPermissionsProjectsLocationsGlobalConnectivityTestsReque
 }
 
 export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2911,7 +2868,7 @@ export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest =
 export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError =
   | DefaultErrors
@@ -2926,7 +2883,7 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
   TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse,
   TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest,
   output: TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2946,7 +2903,7 @@ export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const ListProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2960,7 +2917,7 @@ export const ListProjectsLocationsVpcFlowLogsConfigsRequest =
 export type ListProjectsLocationsVpcFlowLogsConfigsResponse =
   ListVpcFlowLogsConfigsResponse;
 export const ListProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVpcFlowLogsConfigsResponse;
+  /*@__PURE__*/ ListVpcFlowLogsConfigsResponse;
 
 export type ListProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -2973,7 +2930,7 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
   ListProjectsLocationsVpcFlowLogsConfigsResponse,
   ListProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVpcFlowLogsConfigsRequest,
   output: ListProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -2989,7 +2946,7 @@ export interface GetProjectsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const GetProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2998,7 +2955,7 @@ export const GetProjectsLocationsVpcFlowLogsConfigsRequest =
 
 export type GetProjectsLocationsVpcFlowLogsConfigsResponse = VpcFlowLogsConfig;
 export const GetProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VpcFlowLogsConfig;
+  /*@__PURE__*/ VpcFlowLogsConfig;
 
 export type GetProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3011,7 +2968,7 @@ export const getProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetProjectsLocationsVpcFlowLogsConfigsResponse,
   GetProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVpcFlowLogsConfigsRequest,
   output: GetProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -3027,7 +2984,7 @@ export interface CreateProjectsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const CreateProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     vpcFlowLogsConfigId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("vpcFlowLogsConfigId"),
@@ -3044,7 +3001,7 @@ export const CreateProjectsLocationsVpcFlowLogsConfigsRequest =
 
 export type CreateProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const CreateProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3059,7 +3016,7 @@ export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   CreateProjectsLocationsVpcFlowLogsConfigsResponse,
   CreateProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVpcFlowLogsConfigsRequest,
   output: CreateProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3075,7 +3032,7 @@ export interface PatchProjectsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const PatchProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VpcFlowLogsConfig).pipe(T.HttpBody()),
@@ -3086,7 +3043,7 @@ export const PatchProjectsLocationsVpcFlowLogsConfigsRequest =
 
 export type PatchProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const PatchProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3101,7 +3058,7 @@ export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   PatchProjectsLocationsVpcFlowLogsConfigsResponse,
   PatchProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVpcFlowLogsConfigsRequest,
   output: PatchProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3113,7 +3070,7 @@ export interface DeleteProjectsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const DeleteProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -3122,7 +3079,7 @@ export const DeleteProjectsLocationsVpcFlowLogsConfigsRequest =
 
 export type DeleteProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const DeleteProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3137,7 +3094,7 @@ export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   DeleteProjectsLocationsVpcFlowLogsConfigsResponse,
   DeleteProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVpcFlowLogsConfigsRequest,
   output: DeleteProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3155,7 +3112,7 @@ export interface QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRe
 }
 
 export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3171,7 +3128,7 @@ export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsReques
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse =
   QueryOrgVpcFlowLogsConfigsResponse;
 export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
+  /*@__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
 
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3184,7 +3141,7 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
   QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
   QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output: QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -3208,7 +3165,7 @@ export interface ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs
 }
 
 export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     resource: Schema.optional(Schema.String).pipe(T.HttpQuery("resource")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3225,7 +3182,7 @@ export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequ
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse =
   ShowEffectiveFlowLogsConfigsResponse;
 export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
+  /*@__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
 
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3238,7 +3195,7 @@ export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: AP
   ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
   ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output:
     ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
@@ -3258,40 +3215,39 @@ export interface ListOrganizationsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
-export const ListOrganizationsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsRequest>;
+export const ListOrganizationsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("extraLocationTypes"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
+  svc,
+) as unknown as Schema.Schema<ListOrganizationsLocationsRequest>;
 
 export type ListOrganizationsLocationsResponse = ListLocationsResponse;
 export const ListOrganizationsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListOrganizationsLocationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listOrganizationsLocations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsRequest,
   ListOrganizationsLocationsResponse,
   ListOrganizationsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListOrganizationsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -3306,17 +3262,15 @@ export interface GetOrganizationsLocationsRequest {
   name: string;
 }
 
-export const GetOrganizationsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsRequest>;
+export const GetOrganizationsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetOrganizationsLocationsRequest>;
 
 export type GetOrganizationsLocationsResponse = Location;
-export const GetOrganizationsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetOrganizationsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetOrganizationsLocationsError =
   | DefaultErrors
@@ -3329,7 +3283,7 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsResponse,
   GetOrganizationsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsRequest,
   output: GetOrganizationsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -3349,7 +3303,7 @@ export interface ListOrganizationsLocationsGlobalOperationsRequest {
 }
 
 export const ListOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3365,7 +3319,7 @@ export const ListOrganizationsLocationsGlobalOperationsRequest =
 export type ListOrganizationsLocationsGlobalOperationsResponse =
   ListOperationsResponse;
 export const ListOrganizationsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOrganizationsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -3378,7 +3332,7 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
   ListOrganizationsLocationsGlobalOperationsResponse,
   ListOrganizationsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalOperationsRequest,
   output: ListOrganizationsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -3394,7 +3348,7 @@ export interface GetOrganizationsLocationsGlobalOperationsRequest {
 }
 
 export const GetOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -3403,7 +3357,7 @@ export const GetOrganizationsLocationsGlobalOperationsRequest =
 
 export type GetOrganizationsLocationsGlobalOperationsResponse = Operation;
 export const GetOrganizationsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetOrganizationsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -3416,7 +3370,7 @@ export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
   GetOrganizationsLocationsGlobalOperationsResponse,
   GetOrganizationsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsGlobalOperationsRequest,
   output: GetOrganizationsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -3428,7 +3382,7 @@ export interface DeleteOrganizationsLocationsGlobalOperationsRequest {
 }
 
 export const DeleteOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -3437,7 +3391,7 @@ export const DeleteOrganizationsLocationsGlobalOperationsRequest =
 
 export type DeleteOrganizationsLocationsGlobalOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -3452,7 +3406,7 @@ export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
   DeleteOrganizationsLocationsGlobalOperationsResponse,
   DeleteOrganizationsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsGlobalOperationsRequest,
   output: DeleteOrganizationsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3466,7 +3420,7 @@ export interface CancelOrganizationsLocationsGlobalOperationsRequest {
 }
 
 export const CancelOrganizationsLocationsGlobalOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3476,7 +3430,7 @@ export const CancelOrganizationsLocationsGlobalOperationsRequest =
 
 export type CancelOrganizationsLocationsGlobalOperationsResponse = Empty;
 export const CancelOrganizationsLocationsGlobalOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelOrganizationsLocationsGlobalOperationsError =
   | DefaultErrors
@@ -3491,7 +3445,7 @@ export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
   CancelOrganizationsLocationsGlobalOperationsResponse,
   CancelOrganizationsLocationsGlobalOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsGlobalOperationsRequest,
   output: CancelOrganizationsLocationsGlobalOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3511,7 +3465,7 @@ export interface ListOrganizationsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3525,7 +3479,7 @@ export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest =
 export type ListOrganizationsLocationsVpcFlowLogsConfigsResponse =
   ListVpcFlowLogsConfigsResponse;
 export const ListOrganizationsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVpcFlowLogsConfigsResponse;
+  /*@__PURE__*/ ListVpcFlowLogsConfigsResponse;
 
 export type ListOrganizationsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3538,7 +3492,7 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
   ListOrganizationsLocationsVpcFlowLogsConfigsResponse,
   ListOrganizationsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: ListOrganizationsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -3554,7 +3508,7 @@ export interface GetOrganizationsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const GetOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -3564,7 +3518,7 @@ export const GetOrganizationsLocationsVpcFlowLogsConfigsRequest =
 export type GetOrganizationsLocationsVpcFlowLogsConfigsResponse =
   VpcFlowLogsConfig;
 export const GetOrganizationsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VpcFlowLogsConfig;
+  /*@__PURE__*/ VpcFlowLogsConfig;
 
 export type GetOrganizationsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3577,7 +3531,7 @@ export const getOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetOrganizationsLocationsVpcFlowLogsConfigsResponse,
   GetOrganizationsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: GetOrganizationsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -3593,7 +3547,7 @@ export interface CreateOrganizationsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     vpcFlowLogsConfigId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("vpcFlowLogsConfigId"),
@@ -3610,7 +3564,7 @@ export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest =
 
 export type CreateOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const CreateOrganizationsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateOrganizationsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3625,7 +3579,7 @@ export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   CreateOrganizationsLocationsVpcFlowLogsConfigsResponse,
   CreateOrganizationsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: CreateOrganizationsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3641,7 +3595,7 @@ export interface PatchOrganizationsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VpcFlowLogsConfig).pipe(T.HttpBody()),
@@ -3652,7 +3606,7 @@ export const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest =
 
 export type PatchOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const PatchOrganizationsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchOrganizationsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3667,7 +3621,7 @@ export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   PatchOrganizationsLocationsVpcFlowLogsConfigsResponse,
   PatchOrganizationsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: PatchOrganizationsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3679,7 +3633,7 @@ export interface DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest {
 }
 
 export const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -3688,7 +3642,7 @@ export const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest =
 
 export type DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteOrganizationsLocationsVpcFlowLogsConfigsError =
   | DefaultErrors
@@ -3703,7 +3657,7 @@ export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse,
   DeleteOrganizationsLocationsVpcFlowLogsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

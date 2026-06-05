@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ListBranchNeonAuthOauthProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,13 +19,13 @@ export type ListBranchNeonAuthOauthProvidersInput =
 
 // Output Schema
 export const ListBranchNeonAuthOauthProvidersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     providers: Schema.Array(
       Schema.Struct({
         id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
         type: Schema.Literals(["standard", "shared"]),
         client_id: Schema.optional(Schema.String),
-        client_secret: Schema.optional(SensitiveString),
+        client_secret: Schema.optional(SensitiveOutputString),
       }),
     ),
   });
@@ -41,8 +41,7 @@ export type ListBranchNeonAuthOauthProvidersOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const listBranchNeonAuthOauthProviders =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListBranchNeonAuthOauthProvidersInput,
-    outputSchema: ListBranchNeonAuthOauthProvidersOutput,
-  }));
+export const listBranchNeonAuthOauthProviders = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListBranchNeonAuthOauthProvidersInput,
+  outputSchema: ListBranchNeonAuthOauthProvidersOutput,
+}));

@@ -7,10 +7,10 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1DatabasesInput = /*@__PURE__*/ Schema.Struct({
   projectId: Schema.String,
   region: Schema.optional(
     Schema.Literals([
@@ -30,7 +30,7 @@ export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostV1DatabasesInput = typeof PostV1DatabasesInput.Type;
 
 // Output Schema
-export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1DatabasesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     id: Schema.String,
     type: Schema.String,
@@ -53,21 +53,21 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           pooled: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           accelerate: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
         }),
@@ -109,7 +109,7 @@ export type PostV1DatabasesOutput = typeof PostV1DatabasesOutput.Type;
  *
  * Creates a new database in the specified project.
  */
-export const postV1Databases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1Databases = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostV1DatabasesInput,
   outputSchema: PostV1DatabasesOutput,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupClusterSearchIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
-    }),
-  );
+export const CreateGroupClusterSearchIndexInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
+  }),
+);
 export type CreateGroupClusterSearchIndexInput =
   typeof CreateGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const CreateGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupClusterSearchIndexOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterSearchIndexOutput =
   typeof CreateGroupClusterSearchIndexOutput.Type;
 
@@ -38,9 +36,8 @@ export type CreateGroupClusterSearchIndexOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Name of the cluster that contains the collection on which to create an Atlas Search index.
  */
-export const createGroupClusterSearchIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupClusterSearchIndexInput,
-    outputSchema: CreateGroupClusterSearchIndexOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const createGroupClusterSearchIndex = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupClusterSearchIndexInput,
+  outputSchema: CreateGroupClusterSearchIndexOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

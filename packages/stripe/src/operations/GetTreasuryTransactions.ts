@@ -3,130 +3,128 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTreasuryTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    created: Schema.optional(Schema.String),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    financial_account: Schema.String,
-    limit: Schema.optional(Schema.Number),
-    order_by: Schema.optional(Schema.Literals(["created", "posted_at"])),
-    starting_after: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.Literals(["open", "posted", "void"])),
-    status_transitions: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/treasury/transactions",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetTreasuryTransactionsInput = /*@__PURE__*/ Schema.Struct({
+  created: Schema.optional(Schema.String),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  financial_account: Schema.String,
+  limit: Schema.optional(Schema.Number),
+  order_by: Schema.optional(Schema.Literals(["created", "posted_at"])),
+  starting_after: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Literals(["open", "posted", "void"])),
+  status_transitions: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/treasury/transactions",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetTreasuryTransactionsInput =
   typeof GetTreasuryTransactionsInput.Type;
 
 // Output Schema
-export const GetTreasuryTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        balance_impact: Schema.Struct({
-          cash: Schema.Number,
-          inbound_pending: Schema.Number,
-          outbound_pending: Schema.Number,
-        }),
-        created: Schema.Number,
-        currency: Schema.String,
-        description: Schema.String,
-        entries: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              data: Schema.Array(
-                Schema.Struct({
-                  balance_impact: Schema.Struct({
-                    cash: Schema.Number,
-                    inbound_pending: Schema.Number,
-                    outbound_pending: Schema.Number,
-                  }),
-                  created: Schema.Number,
-                  currency: Schema.String,
-                  effective_at: Schema.Number,
-                  financial_account: Schema.String,
-                  flow: Schema.NullOr(Schema.String),
-                  flow_details: Schema.optional(Schema.Unknown),
-                  flow_type: Schema.Literals([
-                    "credit_reversal",
-                    "debit_reversal",
-                    "inbound_transfer",
-                    "issuing_authorization",
-                    "other",
-                    "outbound_payment",
-                    "outbound_transfer",
-                    "received_credit",
-                    "received_debit",
-                  ]),
-                  id: Schema.String,
-                  livemode: Schema.Boolean,
-                  object: Schema.Literals(["treasury.transaction_entry"]),
-                  transaction: Schema.Unknown,
-                  type: Schema.Literals([
-                    "credit_reversal",
-                    "credit_reversal_posting",
-                    "debit_reversal",
-                    "inbound_transfer",
-                    "inbound_transfer_return",
-                    "issuing_authorization_hold",
-                    "issuing_authorization_release",
-                    "other",
-                    "outbound_payment",
-                    "outbound_payment_cancellation",
-                    "outbound_payment_failure",
-                    "outbound_payment_posting",
-                    "outbound_payment_return",
-                    "outbound_transfer",
-                    "outbound_transfer_cancellation",
-                    "outbound_transfer_failure",
-                    "outbound_transfer_posting",
-                    "outbound_transfer_return",
-                    "received_credit",
-                    "received_debit",
-                  ]),
-                }),
-              ),
-              has_more: Schema.Boolean,
-              object: Schema.Literals(["list"]),
-              url: Schema.String,
-            }),
-          ),
-        ),
-        financial_account: Schema.String,
-        flow: Schema.NullOr(Schema.String),
-        flow_details: Schema.optional(Schema.Unknown),
-        flow_type: Schema.Literals([
-          "credit_reversal",
-          "debit_reversal",
-          "inbound_transfer",
-          "issuing_authorization",
-          "other",
-          "outbound_payment",
-          "outbound_transfer",
-          "received_credit",
-          "received_debit",
-        ]),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["treasury.transaction"]),
-        status: Schema.Literals(["open", "posted", "void"]),
-        status_transitions: Schema.Struct({
-          posted_at: Schema.NullOr(Schema.Number),
-          void_at: Schema.NullOr(Schema.Number),
-        }),
+export const GetTreasuryTransactionsOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      amount: Schema.Number,
+      balance_impact: Schema.Struct({
+        cash: Schema.Number,
+        inbound_pending: Schema.Number,
+        outbound_pending: Schema.Number,
       }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+      created: Schema.Number,
+      currency: Schema.String,
+      description: Schema.String,
+      entries: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            data: Schema.Array(
+              Schema.Struct({
+                balance_impact: Schema.Struct({
+                  cash: Schema.Number,
+                  inbound_pending: Schema.Number,
+                  outbound_pending: Schema.Number,
+                }),
+                created: Schema.Number,
+                currency: Schema.String,
+                effective_at: Schema.Number,
+                financial_account: Schema.String,
+                flow: Schema.NullOr(Schema.String),
+                flow_details: Schema.optional(Schema.Unknown),
+                flow_type: Schema.Literals([
+                  "credit_reversal",
+                  "debit_reversal",
+                  "inbound_transfer",
+                  "issuing_authorization",
+                  "other",
+                  "outbound_payment",
+                  "outbound_transfer",
+                  "received_credit",
+                  "received_debit",
+                ]),
+                id: Schema.String,
+                livemode: Schema.Boolean,
+                object: Schema.Literals(["treasury.transaction_entry"]),
+                transaction: Schema.Unknown,
+                type: Schema.Literals([
+                  "credit_reversal",
+                  "credit_reversal_posting",
+                  "debit_reversal",
+                  "inbound_transfer",
+                  "inbound_transfer_return",
+                  "issuing_authorization_hold",
+                  "issuing_authorization_release",
+                  "other",
+                  "outbound_payment",
+                  "outbound_payment_cancellation",
+                  "outbound_payment_failure",
+                  "outbound_payment_posting",
+                  "outbound_payment_return",
+                  "outbound_transfer",
+                  "outbound_transfer_cancellation",
+                  "outbound_transfer_failure",
+                  "outbound_transfer_posting",
+                  "outbound_transfer_return",
+                  "received_credit",
+                  "received_debit",
+                ]),
+              }),
+            ),
+            has_more: Schema.Boolean,
+            object: Schema.Literals(["list"]),
+            url: Schema.String,
+          }),
+        ),
+      ),
+      financial_account: Schema.String,
+      flow: Schema.NullOr(Schema.String),
+      flow_details: Schema.optional(Schema.Unknown),
+      flow_type: Schema.Literals([
+        "credit_reversal",
+        "debit_reversal",
+        "inbound_transfer",
+        "issuing_authorization",
+        "other",
+        "outbound_payment",
+        "outbound_transfer",
+        "received_credit",
+        "received_debit",
+      ]),
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      object: Schema.Literals(["treasury.transaction"]),
+      status: Schema.Literals(["open", "posted", "void"]),
+      status_transitions: Schema.Struct({
+        posted_at: Schema.NullOr(Schema.Number),
+        void_at: Schema.NullOr(Schema.Number),
+      }),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetTreasuryTransactionsOutput =
   typeof GetTreasuryTransactionsOutput.Type;
 
@@ -146,9 +144,7 @@ export type GetTreasuryTransactionsOutput =
  * @param status - Only return Transactions that have the given status: `open`, `posted`, or `void`.
  * @param status_transitions - A filter for the `status_transitions.posted_at` timestamp. When using this filter, `status=posted` and `order_by=posted_at` must also be specified.
  */
-export const GetTreasuryTransactions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTreasuryTransactionsInput,
-    outputSchema: GetTreasuryTransactionsOutput,
-  }),
-);
+export const GetTreasuryTransactions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryTransactionsInput,
+  outputSchema: GetTreasuryTransactionsOutput,
+}));

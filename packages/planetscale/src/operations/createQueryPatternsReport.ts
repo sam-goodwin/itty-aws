@@ -4,35 +4,33 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateQueryPatternsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
-    }),
-  );
+export const CreateQueryPatternsReportInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
+  }),
+);
 export type CreateQueryPatternsReportInput =
   typeof CreateQueryPatternsReportInput.Type;
 
 // Output Schema
-export const CreateQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueryPatternsReportOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  state: Schema.Literals(["pending", "completed", "failed"]),
+  created_at: Schema.String,
+  finished_at: Schema.String,
+  url: Schema.String,
+  download_url: Schema.String,
+  actor: Schema.Struct({
     id: Schema.String,
-    state: Schema.Literals(["pending", "completed", "failed"]),
-    created_at: Schema.String,
-    finished_at: Schema.NullOr(Schema.String),
-    url: Schema.String,
-    download_url: Schema.String,
-    actor: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  });
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+});
 export type CreateQueryPatternsReportOutput =
   typeof CreateQueryPatternsReportOutput.Type;
 
@@ -44,10 +42,8 @@ export type CreateQueryPatternsReportOutput =
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const createQueryPatternsReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateQueryPatternsReportInput,
-    outputSchema: CreateQueryPatternsReportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const createQueryPatternsReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateQueryPatternsReportInput,
+  outputSchema: CreateQueryPatternsReportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

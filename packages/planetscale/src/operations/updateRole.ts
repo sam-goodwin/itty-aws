@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
+import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
-import * as T from "../traits.ts";
 
 // Input Schema
 export const UpdateRoleInput = /*@__PURE__*/ Schema.Struct({
@@ -29,7 +29,6 @@ export const UpdateRoleOutput = /*@__PURE__*/ Schema.Struct({
   private_access_host_url: Schema.String,
   private_connection_service_name: Schema.String,
   username: Schema.String,
-  base_username: Schema.String,
   password: SensitiveOutputNullableString,
   database_name: Schema.String,
   created_at: Schema.String,

@@ -4,18 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1GetDatabaseOpenapiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    schema: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/v1/projects/{ref}/database/openapi" }),
-  );
+export const V1GetDatabaseOpenapiInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  schema: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/database/openapi" }));
 export type V1GetDatabaseOpenapiInput = typeof V1GetDatabaseOpenapiInput.Type;
 
 // Output Schema
-export const V1GetDatabaseOpenapiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const V1GetDatabaseOpenapiOutput = /*@__PURE__*/ Schema.Unknown;
 export type V1GetDatabaseOpenapiOutput = typeof V1GetDatabaseOpenapiOutput.Type;
 
 // The operation
@@ -27,10 +23,8 @@ export type V1GetDatabaseOpenapiOutput = typeof V1GetDatabaseOpenapiOutput.Type;
  * @param ref - Project ref
  * @param schema - The database schema to generate the OpenAPI spec for
  */
-export const v1GetDatabaseOpenapi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetDatabaseOpenapiInput,
-    outputSchema: V1GetDatabaseOpenapiOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1GetDatabaseOpenapi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetDatabaseOpenapiInput,
+  outputSchema: V1GetDatabaseOpenapiOutput,
+  errors: [Forbidden] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTerminalReadersReaderProcessSetupIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     allow_redisplay: Schema.Literals(["always", "limited", "unspecified"]),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -26,7 +26,7 @@ export type PostTerminalReadersReaderProcessSetupIntentInput =
 
 // Output Schema
 export const PostTerminalReadersReaderProcessSetupIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -63,7 +63,7 @@ export type PostTerminalReadersReaderProcessSetupIntentOutput =
  * <p>Initiates a SetupIntent flow on a Reader. See <a href="/docs/terminal/features/saving-payment-details/save-directly">Save directly without charging</a> for more details.</p>
  */
 export const PostTerminalReadersReaderProcessSetupIntent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderProcessSetupIntentInput,
     outputSchema: PostTerminalReadersReaderProcessSetupIntentOutput,
   }));

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetConsumptionHistoryPerProjectV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     project_ids: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type GetConsumptionHistoryPerProjectV2Input =
 
 // Output Schema
 export const GetConsumptionHistoryPerProjectV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         project_id: Schema.String,
@@ -108,7 +108,6 @@ Possible values:
 - `public_network_transfer_bytes`
 - `private_network_transfer_bytes`
 - `extra_branches_month`
-- `snapshot_storage_bytes_month`
 
 A list of metrics can be specified as an array of parameter values or as a comma-separated list in a single parameter value.
 - As an array of parameter values: `metrics=compute_unit_seconds&metrics=extra_branches_month`
@@ -116,7 +115,7 @@ A list of metrics can be specified as an array of parameter values or as a comma
 
  */
 export const getConsumptionHistoryPerProjectV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetConsumptionHistoryPerProjectV2Input,
     outputSchema: GetConsumptionHistoryPerProjectV2Output,
     errors: [Forbidden, NotFound] as const,

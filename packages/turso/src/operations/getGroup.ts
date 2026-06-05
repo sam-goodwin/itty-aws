@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupInput = typeof GetGroupInput.Type;
 
 // Output Schema
-export const GetGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupOutput = /*@__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export type GetGroupOutput = typeof GetGroupOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const getGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupInput,
   outputSchema: GetGroupOutput,
   errors: [NotFound] as const,

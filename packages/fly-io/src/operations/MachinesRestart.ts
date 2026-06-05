@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesRestartInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   timeout: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export const MachinesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesRestartInput = typeof MachinesRestartInput.Type;
 
 // Output Schema
-export const MachinesRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesRestartOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesRestartOutput = typeof MachinesRestartOutput.Type;
 
 // The operation
@@ -42,7 +42,7 @@ export type MachinesRestartOutput = typeof MachinesRestartOutput.Type;
  * @param timeout - Restart timeout as a Go duration string or number of seconds
  * @param signal - Unix signal name
  */
-export const MachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesRestartInput,
   outputSchema: MachinesRestartOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

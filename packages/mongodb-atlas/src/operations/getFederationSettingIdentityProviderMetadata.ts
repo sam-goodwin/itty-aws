@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetFederationSettingIdentityProviderMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     identityProviderId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetFederationSettingIdentityProviderMetadataInput =
 
 // Output Schema
 export const GetFederationSettingIdentityProviderMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetFederationSettingIdentityProviderMetadataOutput =
   typeof GetFederationSettingIdentityProviderMetadataOutput.Type;
 
@@ -33,7 +33,7 @@ export type GetFederationSettingIdentityProviderMetadataOutput =
  * @param identityProviderId - Legacy 20-hexadecimal digit string that identifies the identity provider. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
  */
 export const getFederationSettingIdentityProviderMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFederationSettingIdentityProviderMetadataInput,
     outputSchema: GetFederationSettingIdentityProviderMetadataOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

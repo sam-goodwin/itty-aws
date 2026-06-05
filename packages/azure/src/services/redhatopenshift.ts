@@ -7,27 +7,28 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const OpenShiftClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenShiftClustersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+  }),
+);
 export type OpenShiftClustersCreateOrUpdateInput =
   typeof OpenShiftClustersCreateOrUpdateInput.Type;
 
 // Output Schema
 export const OpenShiftClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -60,30 +61,27 @@ export type OpenShiftClustersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OpenShiftClustersCreateOrUpdateInput,
-    outputSchema: OpenShiftClustersCreateOrUpdateOutput,
-  }));
+export const OpenShiftClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersCreateOrUpdateInput,
+  outputSchema: OpenShiftClustersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const OpenShiftClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
-    }),
-  );
+export const OpenShiftClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+  }),
+);
 export type OpenShiftClustersDeleteInput =
   typeof OpenShiftClustersDeleteInput.Type;
 
 // Output Schema
-export const OpenShiftClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const OpenShiftClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type OpenShiftClustersDeleteOutput =
   typeof OpenShiftClustersDeleteOutput.Type;
 
@@ -98,48 +96,44 @@ export type OpenShiftClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersDeleteInput,
-    outputSchema: OpenShiftClustersDeleteOutput,
+export const OpenShiftClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersDeleteInput,
+  outputSchema: OpenShiftClustersDeleteOutput,
+}));
+// Input Schema
+export const OpenShiftClustersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
   }),
 );
-// Input Schema
-export const OpenShiftClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
-    }),
-  );
 export type OpenShiftClustersGetInput = typeof OpenShiftClustersGetInput.Type;
 
 // Output Schema
-export const OpenShiftClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OpenShiftClustersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OpenShiftClustersGetOutput = typeof OpenShiftClustersGetOutput.Type;
 
 // The operation
@@ -153,61 +147,47 @@ export type OpenShiftClustersGetOutput = typeof OpenShiftClustersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersGetInput,
-    outputSchema: OpenShiftClustersGetOutput,
+export const OpenShiftClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersGetInput,
+  outputSchema: OpenShiftClustersGetOutput,
+}));
+// Input Schema
+export const OpenShiftClustersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
   }),
 );
-// Input Schema
-export const OpenShiftClustersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
-    }),
-  );
 export type OpenShiftClustersListInput = typeof OpenShiftClustersListInput.Type;
 
 // Output Schema
-export const OpenShiftClustersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const OpenShiftClustersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OpenShiftClustersListOutput =
   typeof OpenShiftClustersListOutput.Type;
 
@@ -220,15 +200,13 @@ export type OpenShiftClustersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OpenShiftClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersListInput,
-    outputSchema: OpenShiftClustersListOutput,
-  }),
-);
+export const OpenShiftClustersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersListInput,
+  outputSchema: OpenShiftClustersListOutput,
+}));
 // Input Schema
 export const OpenShiftClustersListAdminCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -244,7 +222,7 @@ export type OpenShiftClustersListAdminCredentialsInput =
 
 // Output Schema
 export const OpenShiftClustersListAdminCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kubeconfig: Schema.optional(Schema.String),
   });
 export type OpenShiftClustersListAdminCredentialsOutput =
@@ -261,14 +239,15 @@ export type OpenShiftClustersListAdminCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersListAdminCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenShiftClustersListAdminCredentials = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OpenShiftClustersListAdminCredentialsInput,
     outputSchema: OpenShiftClustersListAdminCredentialsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const OpenShiftClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -283,7 +262,7 @@ export type OpenShiftClustersListByResourceGroupInput =
 
 // Output Schema
 export const OpenShiftClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -330,14 +309,15 @@ export type OpenShiftClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const OpenShiftClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenShiftClustersListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OpenShiftClustersListByResourceGroupInput,
     outputSchema: OpenShiftClustersListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const OpenShiftClustersListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -353,9 +333,9 @@ export type OpenShiftClustersListCredentialsInput =
 
 // Output Schema
 export const OpenShiftClustersListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kubeadminUsername: Schema.optional(Schema.String),
-    kubeadminPassword: Schema.optional(SensitiveString),
+    kubeadminPassword: Schema.optional(SensitiveOutputString),
   });
 export type OpenShiftClustersListCredentialsOutput =
   typeof OpenShiftClustersListCredentialsOutput.Type;
@@ -371,48 +351,45 @@ export type OpenShiftClustersListCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersListCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OpenShiftClustersListCredentialsInput,
-    outputSchema: OpenShiftClustersListCredentialsOutput,
-  }));
+export const OpenShiftClustersListCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersListCredentialsInput,
+  outputSchema: OpenShiftClustersListCredentialsOutput,
+}));
 // Input Schema
-export const OpenShiftClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
-    }),
-  );
+export const OpenShiftClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+  }),
+);
 export type OpenShiftClustersUpdateInput =
   typeof OpenShiftClustersUpdateInput.Type;
 
 // Output Schema
-export const OpenShiftClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OpenShiftClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OpenShiftClustersUpdateOutput =
   typeof OpenShiftClustersUpdateOutput.Type;
 
@@ -427,48 +404,44 @@ export type OpenShiftClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersUpdateInput,
-    outputSchema: OpenShiftClustersUpdateOutput,
+export const OpenShiftClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersUpdateInput,
+  outputSchema: OpenShiftClustersUpdateOutput,
+}));
+// Input Schema
+export const OpenShiftVersionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  openShiftVersion: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions/{openShiftVersion}",
   }),
 );
-// Input Schema
-export const OpenShiftVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    openShiftVersion: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions/{openShiftVersion}",
-    }),
-  );
 export type OpenShiftVersionsGetInput = typeof OpenShiftVersionsGetInput.Type;
 
 // Output Schema
-export const OpenShiftVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OpenShiftVersionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OpenShiftVersionsGetOutput = typeof OpenShiftVersionsGetOutput.Type;
 
 // The operation
@@ -482,62 +455,48 @@ export type OpenShiftVersionsGetOutput = typeof OpenShiftVersionsGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param openShiftVersion - The desired version value of the OpenShiftVersion resource.
  */
-export const OpenShiftVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftVersionsGetInput,
-    outputSchema: OpenShiftVersionsGetOutput,
+export const OpenShiftVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftVersionsGetInput,
+  outputSchema: OpenShiftVersionsGetOutput,
+}));
+// Input Schema
+export const OpenShiftVersionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions",
   }),
 );
-// Input Schema
-export const OpenShiftVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions",
-    }),
-  );
 export type OpenShiftVersionsListInput = typeof OpenShiftVersionsListInput.Type;
 
 // Output Schema
-export const OpenShiftVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const OpenShiftVersionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OpenShiftVersionsListOutput =
   typeof OpenShiftVersionsListOutput.Type;
 
@@ -551,14 +510,12 @@ export type OpenShiftVersionsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const OpenShiftVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftVersionsListInput,
-    outputSchema: OpenShiftVersionsListOutput,
-  }),
-);
+export const OpenShiftVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftVersionsListInput,
+  outputSchema: OpenShiftVersionsListOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -569,7 +526,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -594,13 +551,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PlatformWorkloadIdentityRoleSetGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     openShiftMinorVersion: Schema.String.pipe(T.PathParam()),
@@ -616,7 +573,7 @@ export type PlatformWorkloadIdentityRoleSetGetInput =
 
 // Output Schema
 export const PlatformWorkloadIdentityRoleSetGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -649,14 +606,15 @@ export type PlatformWorkloadIdentityRoleSetGetOutput =
  * @param location - The name of the Azure region.
  * @param openShiftMinorVersion - The desired version value of the PlatformWorkloadIdentityRoleSet resource.
  */
-export const PlatformWorkloadIdentityRoleSetGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PlatformWorkloadIdentityRoleSetGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PlatformWorkloadIdentityRoleSetGetInput,
     outputSchema: PlatformWorkloadIdentityRoleSetGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PlatformWorkloadIdentityRoleSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -671,7 +629,7 @@ export type PlatformWorkloadIdentityRoleSetsListInput =
 
 // Output Schema
 export const PlatformWorkloadIdentityRoleSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -718,8 +676,9 @@ export type PlatformWorkloadIdentityRoleSetsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const PlatformWorkloadIdentityRoleSetsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PlatformWorkloadIdentityRoleSetsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PlatformWorkloadIdentityRoleSetsListInput,
     outputSchema: PlatformWorkloadIdentityRoleSetsListOutput,
-  }));
+  }),
+);

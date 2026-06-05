@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListOrgApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgApiKeysInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/api_keys" }));
 export type ListOrgApiKeysInput = typeof ListOrgApiKeysInput.Type;
 
 // Output Schema
-export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListOrgApiKeysOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
     name: Schema.String,
@@ -37,7 +37,7 @@ export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
  *
  * @param org_id - The Neon organization ID
  */
-export const listOrgApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgApiKeysInput,
   outputSchema: ListOrgApiKeysOutput,
 }));

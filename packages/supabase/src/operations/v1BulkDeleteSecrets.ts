@@ -4,15 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1BulkDeleteSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/secrets" }));
+export const V1BulkDeleteSecretsInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/secrets" }));
 export type V1BulkDeleteSecretsInput = typeof V1BulkDeleteSecretsInput.Type;
 
 // Output Schema
-export const V1BulkDeleteSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1BulkDeleteSecretsOutput = /*@__PURE__*/ Schema.Void;
 export type V1BulkDeleteSecretsOutput = typeof V1BulkDeleteSecretsOutput.Type;
 
 // The operation
@@ -23,7 +21,7 @@ export type V1BulkDeleteSecretsOutput = typeof V1BulkDeleteSecretsOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1BulkDeleteSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1BulkDeleteSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1BulkDeleteSecretsInput,
   outputSchema: V1BulkDeleteSecretsOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteOrgApiKeyAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    ipAddress: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
-    }),
-  );
+export const DeleteOrgApiKeyAccessListEntryInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  ipAddress: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
+  }),
+);
 export type DeleteOrgApiKeyAccessListEntryInput =
   typeof DeleteOrgApiKeyAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOrgApiKeyAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOrgApiKeyAccessListEntryOutput =
   typeof DeleteOrgApiKeyAccessListEntryOutput.Type;
 
@@ -38,9 +36,8 @@ export type DeleteOrgApiKeyAccessListEntryOutput =
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for which you want to remove access list entries.
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block to limit requests to API resources in the specified organization. When adding a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  */
-export const deleteOrgApiKeyAccessListEntry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteOrgApiKeyAccessListEntryInput,
-    outputSchema: DeleteOrgApiKeyAccessListEntryOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const deleteOrgApiKeyAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrgApiKeyAccessListEntryInput,
+  outputSchema: DeleteOrgApiKeyAccessListEntryOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

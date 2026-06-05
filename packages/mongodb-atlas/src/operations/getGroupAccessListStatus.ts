@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupAccessListStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    entryValue: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status",
-    }),
-  );
+export const GetGroupAccessListStatusInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  entryValue: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status",
+  }),
+);
 export type GetGroupAccessListStatusInput =
   typeof GetGroupAccessListStatusInput.Type;
 
 // Output Schema
-export const GetGroupAccessListStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAccessListStatusOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupAccessListStatusOutput =
   typeof GetGroupAccessListStatusOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupAccessListStatusOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param entryValue - Network address or cloud provider security construct that identifies which project access list entry to be verified.
  */
-export const getGroupAccessListStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAccessListStatusInput,
-    outputSchema: GetGroupAccessListStatusOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupAccessListStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAccessListStatusInput,
+  outputSchema: GetGroupAccessListStatusOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupStreamVpcPeeringConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type DeleteGroupStreamVpcPeeringConnectionInput =
 
 // Output Schema
 export const DeleteGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteGroupStreamVpcPeeringConnectionOutput =
   typeof DeleteGroupStreamVpcPeeringConnectionOutput.Type;
 
@@ -36,9 +36,10 @@ export type DeleteGroupStreamVpcPeeringConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param id - The VPC Peering Connection id.
  */
-export const deleteGroupStreamVpcPeeringConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupStreamVpcPeeringConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteGroupStreamVpcPeeringConnectionInput,
     outputSchema: DeleteGroupStreamVpcPeeringConnectionOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

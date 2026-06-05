@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetFinancialConnectionsSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -20,7 +20,7 @@ export type GetFinancialConnectionsSessionsSessionInput =
 
 // Output Schema
 export const GetFinancialConnectionsSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     accounts: Schema.Struct({
       data: Schema.Array(
@@ -83,7 +83,7 @@ export const GetFinancialConnectionsSessionsSessionOutput =
       object: Schema.Literals(["list"]),
       url: Schema.String,
     }),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     filters: Schema.optional(
       Schema.Struct({
         account_subcategories: Schema.NullOr(
@@ -127,8 +127,9 @@ export type GetFinancialConnectionsSessionsSessionOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetFinancialConnectionsSessionsSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFinancialConnectionsSessionsSession = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetFinancialConnectionsSessionsSessionInput,
     outputSchema: GetFinancialConnectionsSessionsSessionOutput,
-  }));
+  }),
+);

@@ -5,21 +5,19 @@ import { BadRequest, Forbidden } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
-export const V1UpdateDatabasePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    password: SensitiveString,
-  }).pipe(
-    T.Http({ method: "PATCH", path: "/v1/projects/{ref}/database/password" }),
-  );
+export const V1UpdateDatabasePasswordInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  password: SensitiveString,
+}).pipe(
+  T.Http({ method: "PATCH", path: "/v1/projects/{ref}/database/password" }),
+);
 export type V1UpdateDatabasePasswordInput =
   typeof V1UpdateDatabasePasswordInput.Type;
 
 // Output Schema
-export const V1UpdateDatabasePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.String,
-  });
+export const V1UpdateDatabasePasswordOutput = /*@__PURE__*/ Schema.Struct({
+  message: Schema.String,
+});
 export type V1UpdateDatabasePasswordOutput =
   typeof V1UpdateDatabasePasswordOutput.Type;
 
@@ -29,10 +27,8 @@ export type V1UpdateDatabasePasswordOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateDatabasePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateDatabasePasswordInput,
-    outputSchema: V1UpdateDatabasePasswordOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateDatabasePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateDatabasePasswordInput,
+  outputSchema: V1UpdateDatabasePasswordOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsAlertsDestinationsDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     hog_function_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type LogsAlertsDestinationsDeleteCreateInput =
 
 // Output Schema
 export const LogsAlertsDestinationsDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type LogsAlertsDestinationsDeleteCreateOutput =
   typeof LogsAlertsDestinationsDeleteCreateOutput.Type;
 
@@ -31,9 +31,10 @@ export type LogsAlertsDestinationsDeleteCreateOutput =
  * @param id - A UUID string identifying this logs alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsAlertsDestinationsDeleteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logsAlertsDestinationsDeleteCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LogsAlertsDestinationsDeleteCreateInput,
     outputSchema: LogsAlertsDestinationsDeleteCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostInvoicesInvoiceAttachPaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     payment_intent: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export type PostInvoicesInvoiceAttachPaymentInput =
 
 // Output Schema
 export const PostInvoicesInvoiceAttachPaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
@@ -552,8 +552,7 @@ export type PostInvoicesInvoiceAttachPaymentOutput =
  * credited to the invoice immediately.</p>
  * <p>See: <a href="/docs/invoicing/partial-payments">Partial payments</a> to learn more.</p>
  */
-export const PostInvoicesInvoiceAttachPayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostInvoicesInvoiceAttachPaymentInput,
-    outputSchema: PostInvoicesInvoiceAttachPaymentOutput,
-  }));
+export const PostInvoicesInvoiceAttachPayment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoiceAttachPaymentInput,
+  outputSchema: PostInvoicesInvoiceAttachPaymentOutput,
+}));

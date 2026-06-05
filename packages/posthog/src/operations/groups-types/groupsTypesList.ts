@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const GroupsTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupsTypesListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/groups_types/" }),
@@ -12,7 +12,7 @@ export const GroupsTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupsTypesListInput = typeof GroupsTypesListInput.Type;
 
 // Output Schema
-export const GroupsTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GroupsTypesListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     group_type: Schema.optional(Schema.String),
     group_type_index: Schema.optional(Schema.Number),
@@ -32,7 +32,7 @@ export type GroupsTypesListOutput = typeof GroupsTypesListOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const groupsTypesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupsTypesListInput,
   outputSchema: GroupsTypesListOutput,
   errors: [Forbidden, NotFound] as const,

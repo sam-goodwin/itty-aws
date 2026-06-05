@@ -4,18 +4,19 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const AuditLogExportsControllerExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AuditLogExportsControllerExportInput = /*@__PURE__*/ Schema.Struct(
+  {
     auditLogExportId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/audit_logs/exports/{auditLogExportId}" }),
-  );
+  },
+).pipe(
+  T.Http({ method: "GET", path: "/audit_logs/exports/{auditLogExportId}" }),
+);
 export type AuditLogExportsControllerExportInput =
   typeof AuditLogExportsControllerExportInput.Type;
 
 // Output Schema
 export const AuditLogExportsControllerExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     state: Schema.optional(Schema.Literals(["pending", "ready", "error"])),
@@ -34,9 +35,8 @@ export type AuditLogExportsControllerExportOutput =
  *
  * @param auditLogExportId - The unique ID of the Audit Log Export.
  */
-export const AuditLogExportsControllerExport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuditLogExportsControllerExportInput,
-    outputSchema: AuditLogExportsControllerExportOutput,
-    errors: [NotFound] as const,
-  }));
+export const AuditLogExportsControllerExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuditLogExportsControllerExportInput,
+  outputSchema: AuditLogExportsControllerExportOutput,
+  errors: [NotFound] as const,
+}));

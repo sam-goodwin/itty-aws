@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetFinancialConnectionsAccountsAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetFinancialConnectionsAccountsAccountInput =
 
 // Output Schema
 export const GetFinancialConnectionsAccountsAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
@@ -84,8 +84,9 @@ export type GetFinancialConnectionsAccountsAccountOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetFinancialConnectionsAccountsAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFinancialConnectionsAccountsAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetFinancialConnectionsAccountsAccountInput,
     outputSchema: GetFinancialConnectionsAccountsAccountOutput,
-  }));
+  }),
+);

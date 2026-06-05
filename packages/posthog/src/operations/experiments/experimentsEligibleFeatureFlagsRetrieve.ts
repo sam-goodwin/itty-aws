@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExperimentsEligibleFeatureFlagsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type ExperimentsEligibleFeatureFlagsRetrieveInput =
 
 // Output Schema
 export const ExperimentsEligibleFeatureFlagsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExperimentsEligibleFeatureFlagsRetrieveOutput =
   typeof ExperimentsEligibleFeatureFlagsRetrieveOutput.Type;
 
@@ -40,9 +40,10 @@ export type ExperimentsEligibleFeatureFlagsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsEligibleFeatureFlagsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentsEligibleFeatureFlagsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExperimentsEligibleFeatureFlagsRetrieveInput,
     outputSchema: ExperimentsEligibleFeatureFlagsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

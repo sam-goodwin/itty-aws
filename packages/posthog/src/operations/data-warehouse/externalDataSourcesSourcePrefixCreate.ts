@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const ExternalDataSourcesSourcePrefixCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export type ExternalDataSourcesSourcePrefixCreateInput =
 
 // Output Schema
 export const ExternalDataSourcesSourcePrefixCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExternalDataSourcesSourcePrefixCreateOutput =
   typeof ExternalDataSourcesSourcePrefixCreateOutput.Type;
 
@@ -200,9 +200,10 @@ export type ExternalDataSourcesSourcePrefixCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesSourcePrefixCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const externalDataSourcesSourcePrefixCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExternalDataSourcesSourcePrefixCreateInput,
     outputSchema: ExternalDataSourcesSourcePrefixCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

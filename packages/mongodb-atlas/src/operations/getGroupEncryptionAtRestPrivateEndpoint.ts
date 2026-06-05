@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupEncryptionAtRestPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type GetGroupEncryptionAtRestPrivateEndpointInput =
 
 // Output Schema
 export const GetGroupEncryptionAtRestPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupEncryptionAtRestPrivateEndpointOutput =
   typeof GetGroupEncryptionAtRestPrivateEndpointOutput.Type;
 
@@ -40,9 +40,10 @@ export type GetGroupEncryptionAtRestPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint.
  */
-export const getGroupEncryptionAtRestPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupEncryptionAtRestPrivateEndpoint = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetGroupEncryptionAtRestPrivateEndpointInput,
     outputSchema: GetGroupEncryptionAtRestPrivateEndpointOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

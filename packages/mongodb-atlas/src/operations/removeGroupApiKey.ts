@@ -4,14 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const RemoveGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
@@ -20,7 +18,7 @@ export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type RemoveGroupApiKeyInput = typeof RemoveGroupApiKeyInput.Type;
 
 // Output Schema
-export const RemoveGroupApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveGroupApiKeyOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveGroupApiKeyOutput = typeof RemoveGroupApiKeyOutput.Type;
 
 // The operation
@@ -36,7 +34,7 @@ export type RemoveGroupApiKeyOutput = typeof RemoveGroupApiKeyOutput.Type;
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const removeGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupApiKeyInput,
   outputSchema: RemoveGroupApiKeyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

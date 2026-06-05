@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyspaceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const GetKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetKeyspaceInput = typeof GetKeyspaceInput.Type;
 
 // Output Schema
-export const GetKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyspaceOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   shards: Schema.Number,
@@ -64,7 +64,7 @@ export type GetKeyspaceOutput = typeof GetKeyspaceOutput.Type;
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const getKeyspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKeyspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyspaceInput,
   outputSchema: GetKeyspaceOutput,
   errors: [Forbidden, NotFound] as const,

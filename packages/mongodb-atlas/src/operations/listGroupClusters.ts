@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClustersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-    includeDeletedWithRetainedBackups: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const ListGroupClustersInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+  includeDeletedWithRetainedBackups: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters" }),
 );
 export type ListGroupClustersInput = typeof ListGroupClustersInput.Type;
 
 // Output Schema
-export const ListGroupClustersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClustersOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClustersOutput = typeof ListGroupClustersOutput.Type;
 
 // The operation
@@ -41,7 +39,7 @@ export type ListGroupClustersOutput = typeof ListGroupClustersOutput.Type;
  * @param includeDeletedWithRetainedBackups - Flag that indicates whether to return Clusters with retain backups.
  * @param Use-Effective-Instance-Fields - Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
  */
-export const listGroupClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupClusters = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupClustersInput,
   outputSchema: ListGroupClustersOutput,
   errors: [Forbidden, NotFound] as const,

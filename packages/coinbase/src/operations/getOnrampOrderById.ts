@@ -3,49 +3,47 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetOnrampOrderByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v2/onramp/orders/{orderId}" }));
+export const GetOnrampOrderByIdInput = /*@__PURE__*/ Schema.Struct({
+  orderId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v2/onramp/orders/{orderId}" }));
 export type GetOnrampOrderByIdInput = typeof GetOnrampOrderByIdInput.Type;
 
 // Output Schema
-export const GetOnrampOrderByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    order: Schema.Struct({
-      orderId: Schema.String,
-      paymentTotal: Schema.String,
-      paymentSubtotal: Schema.String,
-      paymentCurrency: Schema.String,
-      paymentMethod: Schema.Literals([
-        "GUEST_CHECKOUT_APPLE_PAY",
-        "GUEST_CHECKOUT_GOOGLE_PAY",
-      ]),
-      purchaseAmount: Schema.String,
-      purchaseCurrency: Schema.String,
-      fees: Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
-          amount: Schema.String,
-          currency: Schema.String,
-        }),
-      ),
-      exchangeRate: Schema.String,
-      destinationAddress: Schema.String,
-      destinationNetwork: Schema.String,
-      status: Schema.Literals([
-        "ONRAMP_ORDER_STATUS_PENDING_AUTH",
-        "ONRAMP_ORDER_STATUS_PENDING_PAYMENT",
-        "ONRAMP_ORDER_STATUS_PROCESSING",
-        "ONRAMP_ORDER_STATUS_COMPLETED",
-        "ONRAMP_ORDER_STATUS_FAILED",
-      ]),
-      txHash: Schema.optional(Schema.String),
-      createdAt: Schema.String,
-      updatedAt: Schema.String,
-      partnerUserRef: Schema.optional(Schema.String),
-    }),
-  });
+export const GetOnrampOrderByIdOutput = /*@__PURE__*/ Schema.Struct({
+  order: Schema.Struct({
+    orderId: Schema.String,
+    paymentTotal: Schema.String,
+    paymentSubtotal: Schema.String,
+    paymentCurrency: Schema.String,
+    paymentMethod: Schema.Literals([
+      "GUEST_CHECKOUT_APPLE_PAY",
+      "GUEST_CHECKOUT_GOOGLE_PAY",
+    ]),
+    purchaseAmount: Schema.String,
+    purchaseCurrency: Schema.String,
+    fees: Schema.Array(
+      Schema.Struct({
+        type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
+        amount: Schema.String,
+        currency: Schema.String,
+      }),
+    ),
+    exchangeRate: Schema.String,
+    destinationAddress: Schema.String,
+    destinationNetwork: Schema.String,
+    status: Schema.Literals([
+      "ONRAMP_ORDER_STATUS_PENDING_AUTH",
+      "ONRAMP_ORDER_STATUS_PENDING_PAYMENT",
+      "ONRAMP_ORDER_STATUS_PROCESSING",
+      "ONRAMP_ORDER_STATUS_COMPLETED",
+      "ONRAMP_ORDER_STATUS_FAILED",
+    ]),
+    txHash: Schema.optional(Schema.String),
+    createdAt: Schema.String,
+    updatedAt: Schema.String,
+    partnerUserRef: Schema.optional(Schema.String),
+  }),
+});
 export type GetOnrampOrderByIdOutput = typeof GetOnrampOrderByIdOutput.Type;
 
 // The operation
@@ -56,7 +54,7 @@ export type GetOnrampOrderByIdOutput = typeof GetOnrampOrderByIdOutput.Type;
  *
  * @param orderId - The ID of the onramp order to retrieve.
  */
-export const getOnrampOrderById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOnrampOrderById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOnrampOrderByIdInput,
   outputSchema: GetOnrampOrderByIdOutput,
 }));

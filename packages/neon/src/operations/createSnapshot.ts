@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   lsn: Schema.optional(Schema.String),
@@ -19,7 +19,7 @@ export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateSnapshotInput = typeof CreateSnapshotInput.Type;
 
 // Output Schema
-export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -29,8 +29,6 @@ export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
     expires_at: Schema.optional(Schema.String),
     manual: Schema.optional(Schema.Boolean),
-    full_size: Schema.optional(Schema.Number),
-    diff_size: Schema.optional(Schema.Number),
   }),
   operations: Schema.Array(
     Schema.Struct({
@@ -64,13 +62,10 @@ export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
-        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
-        "finalize_migration",
-        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",
@@ -114,7 +109,7 @@ Use ISO 8601 format (e.g. 2025-08-05T22:00:00Z). Cannot be used with `lsn`.
 Use ISO 8601 format (e.g. 2025-08-05T22:00:00Z).
 
  */
-export const createSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateSnapshotInput,
   outputSchema: CreateSnapshotOutput,
 }));

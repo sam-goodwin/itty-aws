@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationFeatureFlagsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type OrganizationFeatureFlagsControllerListInput =
 
 // Output Schema
 export const OrganizationFeatureFlagsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -63,9 +63,10 @@ export type OrganizationFeatureFlagsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time.
  */
-export const OrganizationFeatureFlagsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationFeatureFlagsControllerList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationFeatureFlagsControllerListInput,
     outputSchema: OrganizationFeatureFlagsControllerListOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

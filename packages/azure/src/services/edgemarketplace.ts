@@ -6,30 +6,28 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const OffersGenerateAccessTokenInput =
-  /*@__PURE__*/ Schema.Struct({
-    offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/generateAccessToken",
-    }),
-  );
+export const OffersGenerateAccessTokenInput = /*@__PURE__*/ Schema.Struct({
+  offerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/generateAccessToken",
+  }),
+);
 export type OffersGenerateAccessTokenInput =
   typeof OffersGenerateAccessTokenInput.Type;
 
 // Output Schema
-export const OffersGenerateAccessTokenOutput =
-  /*@__PURE__*/ Schema.Struct({
-    diskId: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    accessToken: SensitiveString,
-  });
+export const OffersGenerateAccessTokenOutput = /*@__PURE__*/ Schema.Struct({
+  diskId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  accessToken: SensitiveOutputString,
+});
 export type OffersGenerateAccessTokenOutput =
   typeof OffersGenerateAccessTokenOutput.Type;
 
@@ -90,25 +88,23 @@ export const OffersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: OffersGetOutput,
 }));
 // Input Schema
-export const OffersGetAccessTokenInput =
-  /*@__PURE__*/ Schema.Struct({
-    offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/getAccessToken",
-    }),
-  );
+export const OffersGetAccessTokenInput = /*@__PURE__*/ Schema.Struct({
+  offerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/getAccessToken",
+  }),
+);
 export type OffersGetAccessTokenInput = typeof OffersGetAccessTokenInput.Type;
 
 // Output Schema
-export const OffersGetAccessTokenOutput =
-  /*@__PURE__*/ Schema.Struct({
-    diskId: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    accessToken: SensitiveString,
-  });
+export const OffersGetAccessTokenOutput = /*@__PURE__*/ Schema.Struct({
+  diskId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  accessToken: SensitiveOutputString,
+});
 export type OffersGetAccessTokenOutput = typeof OffersGetAccessTokenOutput.Type;
 
 // The operation
@@ -181,55 +177,43 @@ export const OffersList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OffersListOutput,
 }));
 // Input Schema
-export const OffersListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/offers",
-    }),
-  );
+export const OffersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/offers",
+  }),
+);
 export type OffersListBySubscriptionInput =
   typeof OffersListBySubscriptionInput.Type;
 
 // Output Schema
-export const OffersListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const OffersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OffersListBySubscriptionOutput =
   typeof OffersListBySubscriptionOutput.Type;
 
@@ -395,55 +379,43 @@ export const PublishersList = /*@__PURE__*/ API.make(() => ({
   outputSchema: PublishersListOutput,
 }));
 // Input Schema
-export const PublishersListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/publishers",
-    }),
-  );
+export const PublishersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/publishers",
+  }),
+);
 export type PublishersListBySubscriptionInput =
   typeof PublishersListBySubscriptionInput.Type;
 
 // Output Schema
-export const PublishersListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PublishersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PublishersListBySubscriptionOutput =
   typeof PublishersListBySubscriptionOutput.Type;
 
@@ -454,8 +426,7 @@ export type PublishersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PublishersListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PublishersListBySubscriptionInput,
-    outputSchema: PublishersListBySubscriptionOutput,
-  }));
+export const PublishersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublishersListBySubscriptionInput,
+  outputSchema: PublishersListBySubscriptionOutput,
+}));

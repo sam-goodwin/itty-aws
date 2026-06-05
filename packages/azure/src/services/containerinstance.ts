@@ -6,46 +6,44 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CGProfileCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
-    }),
-  );
+export const CGProfileCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
+  }),
+);
 export type CGProfileCreateOrUpdateInput =
   typeof CGProfileCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CGProfileCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CGProfileCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CGProfileCreateOrUpdateOutput =
   typeof CGProfileCreateOrUpdateOutput.Type;
 
@@ -149,43 +147,41 @@ export const CGProfileGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CGProfileGetOutput,
 }));
 // Input Schema
-export const CGProfileGetByRevisionNumberInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupProfileName: Schema.String.pipe(T.PathParam()),
-    revisionNumber: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions/{revisionNumber}",
-    }),
-  );
+export const CGProfileGetByRevisionNumberInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupProfileName: Schema.String.pipe(T.PathParam()),
+  revisionNumber: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions/{revisionNumber}",
+  }),
+);
 export type CGProfileGetByRevisionNumberInput =
   typeof CGProfileGetByRevisionNumberInput.Type;
 
 // Output Schema
-export const CGProfileGetByRevisionNumberOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CGProfileGetByRevisionNumberOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CGProfileGetByRevisionNumberOutput =
   typeof CGProfileGetByRevisionNumberOutput.Type;
 
@@ -201,63 +197,50 @@ export type CGProfileGetByRevisionNumberOutput =
  * @param containerGroupProfileName - ContainerGroupProfile name.
  * @param revisionNumber - The revision number of the container group profile.
  */
-export const CGProfileGetByRevisionNumber =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CGProfileGetByRevisionNumberInput,
-    outputSchema: CGProfileGetByRevisionNumberOutput,
-  }));
+export const CGProfileGetByRevisionNumber = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CGProfileGetByRevisionNumberInput,
+  outputSchema: CGProfileGetByRevisionNumberOutput,
+}));
 // Input Schema
-export const CGProfileListAllRevisionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions",
-    }),
-  );
+export const CGProfileListAllRevisionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions",
+  }),
+);
 export type CGProfileListAllRevisionsInput =
   typeof CGProfileListAllRevisionsInput.Type;
 
 // Output Schema
-export const CGProfileListAllRevisionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CGProfileListAllRevisionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CGProfileListAllRevisionsOutput =
   typeof CGProfileListAllRevisionsOutput.Type;
 
@@ -277,56 +260,44 @@ export const CGProfileListAllRevisions = /*@__PURE__*/ API.make(() => ({
   outputSchema: CGProfileListAllRevisionsOutput,
 }));
 // Input Schema
-export const CGProfilesListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
-    }),
-  );
+export const CGProfilesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
+  }),
+);
 export type CGProfilesListByResourceGroupInput =
   typeof CGProfilesListByResourceGroupInput.Type;
 
 // Output Schema
-export const CGProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CGProfilesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CGProfilesListByResourceGroupOutput =
   typeof CGProfilesListByResourceGroupOutput.Type;
 
@@ -340,61 +311,48 @@ export type CGProfilesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CGProfilesListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CGProfilesListByResourceGroupInput,
-    outputSchema: CGProfilesListByResourceGroupOutput,
-  }));
+export const CGProfilesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CGProfilesListByResourceGroupInput,
+  outputSchema: CGProfilesListByResourceGroupOutput,
+}));
 // Input Schema
-export const CGProfilesListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
-    }),
-  );
+export const CGProfilesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
+  }),
+);
 export type CGProfilesListBySubscriptionInput =
   typeof CGProfilesListBySubscriptionInput.Type;
 
 // Output Schema
-export const CGProfilesListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CGProfilesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CGProfilesListBySubscriptionOutput =
   typeof CGProfilesListBySubscriptionOutput.Type;
 
@@ -407,11 +365,10 @@ export type CGProfilesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CGProfilesListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CGProfilesListBySubscriptionInput,
-    outputSchema: CGProfilesListBySubscriptionOutput,
-  }));
+export const CGProfilesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CGProfilesListBySubscriptionInput,
+  outputSchema: CGProfilesListBySubscriptionOutput,
+}));
 // Input Schema
 export const CGProfileUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -464,31 +421,29 @@ export const CGProfileUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CGProfileUpdateOutput,
 }));
 // Input Schema
-export const ContainerGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-    }),
-  );
+export const ContainerGroupsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+  }),
+);
 export type ContainerGroupsCreateOrUpdateInput =
   typeof ContainerGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ContainerGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ContainerGroupsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ContainerGroupsCreateOrUpdateOutput =
   typeof ContainerGroupsCreateOrUpdateOutput.Type;
 
@@ -503,36 +458,33 @@ export type ContainerGroupsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ContainerGroupsCreateOrUpdateInput,
-    outputSchema: ContainerGroupsCreateOrUpdateOutput,
-  }));
+export const ContainerGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerGroupsCreateOrUpdateInput,
+  outputSchema: ContainerGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ContainerGroupsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-    }),
-  );
+export const ContainerGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+  }),
+);
 export type ContainerGroupsDeleteInput = typeof ContainerGroupsDeleteInput.Type;
 
 // Output Schema
-export const ContainerGroupsDeleteOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ContainerGroupsDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ContainerGroupsDeleteOutput =
   typeof ContainerGroupsDeleteOutput.Type;
 
@@ -552,30 +504,28 @@ export const ContainerGroupsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerGroupsDeleteOutput,
 }));
 // Input Schema
-export const ContainerGroupsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-    }),
-  );
+export const ContainerGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+  }),
+);
 export type ContainerGroupsGetInput = typeof ContainerGroupsGetInput.Type;
 
 // Output Schema
-export const ContainerGroupsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ContainerGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ContainerGroupsGetOutput = typeof ContainerGroupsGetOutput.Type;
 
 // The operation
@@ -632,95 +582,385 @@ export const ContainerGroupsGetOutboundNetworkDependenciesEndpoints =
     outputSchema: ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
-export const ContainerGroupsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroups",
-    }),
-  );
+export const ContainerGroupsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroups",
+  }),
+);
 export type ContainerGroupsListInput = typeof ContainerGroupsListInput.Type;
 
 // Output Schema
-export const ContainerGroupsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        zones: Schema.optional(Schema.Array(Schema.String)),
-        identity: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(
-              Schema.Literals([
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned, UserAssigned",
-                "None",
-              ]),
-            ),
-            userAssignedIdentities: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  principalId: Schema.optional(Schema.String),
-                  clientId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        properties: Schema.Struct({
-          provisioningState: Schema.optional(
+export const ContainerGroupsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      zones: Schema.optional(Schema.Array(Schema.String)),
+      identity: Schema.optional(
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          type: Schema.optional(
             Schema.Literals([
-              "NotSpecified",
-              "Accepted",
-              "Pending",
-              "Updating",
-              "Creating",
-              "Repairing",
-              "Unhealthy",
-              "Failed",
-              "Canceled",
-              "Succeeded",
-              "Deleting",
-              "NotAccessible",
-              "PreProvisioned",
+              "SystemAssigned",
+              "UserAssigned",
+              "SystemAssigned, UserAssigned",
+              "None",
             ]),
           ),
-          secretReferences: Schema.optional(
-            Schema.Array(
+          userAssignedIdentities: Schema.optional(
+            Schema.Record(
+              Schema.String,
               Schema.Struct({
-                name: Schema.String,
-                identity: Schema.String,
-                secretReferenceUri: Schema.String,
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
               }),
             ),
           ),
-          containers: Schema.Array(
+        }),
+      ),
+      properties: Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Pending",
+            "Updating",
+            "Creating",
+            "Repairing",
+            "Unhealthy",
+            "Failed",
+            "Canceled",
+            "Succeeded",
+            "Deleting",
+            "NotAccessible",
+            "PreProvisioned",
+          ]),
+        ),
+        secretReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              identity: Schema.String,
+              secretReferenceUri: Schema.String,
+            }),
+          ),
+        ),
+        containers: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.Struct({
+              image: Schema.optional(Schema.String),
+              command: Schema.optional(Schema.Array(Schema.String)),
+              ports: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    protocol: Schema.optional(Schema.Literals(["TCP", "UDP"])),
+                    port: Schema.Number,
+                  }),
+                ),
+              ),
+              environmentVariables: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    value: Schema.optional(Schema.String),
+                    secureValue: Schema.optional(Schema.String),
+                    secureValueReference: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              instanceView: Schema.optional(
+                Schema.Struct({
+                  restartCount: Schema.optional(Schema.Number),
+                  currentState: Schema.optional(
+                    Schema.Struct({
+                      state: Schema.optional(Schema.String),
+                      startTime: Schema.optional(Schema.String),
+                      exitCode: Schema.optional(Schema.Number),
+                      finishTime: Schema.optional(Schema.String),
+                      detailStatus: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  previousState: Schema.optional(
+                    Schema.Struct({
+                      state: Schema.optional(Schema.String),
+                      startTime: Schema.optional(Schema.String),
+                      exitCode: Schema.optional(Schema.Number),
+                      finishTime: Schema.optional(Schema.String),
+                      detailStatus: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  events: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        count: Schema.optional(Schema.Number),
+                        firstTimestamp: Schema.optional(Schema.String),
+                        lastTimestamp: Schema.optional(Schema.String),
+                        name: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+              resources: Schema.optional(
+                Schema.Struct({
+                  requests: Schema.Struct({
+                    memoryInGB: Schema.Number,
+                    cpu: Schema.Number,
+                    gpu: Schema.optional(
+                      Schema.Struct({
+                        count: Schema.Number,
+                        sku: Schema.Literals(["K80", "P100", "V100"]),
+                      }),
+                    ),
+                  }),
+                  limits: Schema.optional(
+                    Schema.Struct({
+                      memoryInGB: Schema.optional(Schema.Number),
+                      cpu: Schema.optional(Schema.Number),
+                      gpu: Schema.optional(
+                        Schema.Struct({
+                          count: Schema.Number,
+                          sku: Schema.Literals(["K80", "P100", "V100"]),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+              volumeMounts: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    mountPath: Schema.String,
+                    readOnly: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              ),
+              livenessProbe: Schema.optional(
+                Schema.Struct({
+                  exec: Schema.optional(
+                    Schema.Struct({
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  httpGet: Schema.optional(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      port: Schema.Number,
+                      scheme: Schema.optional(
+                        Schema.Literals(["http", "https"]),
+                      ),
+                      httpHeaders: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  initialDelaySeconds: Schema.optional(Schema.Number),
+                  periodSeconds: Schema.optional(Schema.Number),
+                  failureThreshold: Schema.optional(Schema.Number),
+                  successThreshold: Schema.optional(Schema.Number),
+                  timeoutSeconds: Schema.optional(Schema.Number),
+                }),
+              ),
+              readinessProbe: Schema.optional(
+                Schema.Struct({
+                  exec: Schema.optional(
+                    Schema.Struct({
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  httpGet: Schema.optional(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      port: Schema.Number,
+                      scheme: Schema.optional(
+                        Schema.Literals(["http", "https"]),
+                      ),
+                      httpHeaders: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  initialDelaySeconds: Schema.optional(Schema.Number),
+                  periodSeconds: Schema.optional(Schema.Number),
+                  failureThreshold: Schema.optional(Schema.Number),
+                  successThreshold: Schema.optional(Schema.Number),
+                  timeoutSeconds: Schema.optional(Schema.Number),
+                }),
+              ),
+              securityContext: Schema.optional(
+                Schema.Struct({
+                  privileged: Schema.optional(Schema.Boolean),
+                  allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                  capabilities: Schema.optional(
+                    Schema.Struct({
+                      add: Schema.optional(Schema.Array(Schema.String)),
+                      drop: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  runAsGroup: Schema.optional(Schema.Number),
+                  runAsUser: Schema.optional(Schema.Number),
+                  seccompProfile: Schema.optional(Schema.String),
+                }),
+              ),
+              configMap: Schema.optional(
+                Schema.Struct({
+                  keyValuePairs: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            }),
+          }),
+        ),
+        imageRegistryCredentials: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              server: Schema.String,
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveOutputString),
+              passwordReference: Schema.optional(SensitiveOutputString),
+              identity: Schema.optional(Schema.String),
+              identityUrl: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        restartPolicy: Schema.optional(
+          Schema.Literals(["Always", "OnFailure", "Never"]),
+        ),
+        ipAddress: Schema.optional(
+          Schema.Struct({
+            ports: Schema.Array(
+              Schema.Struct({
+                protocol: Schema.optional(Schema.Literals(["TCP", "UDP"])),
+                port: Schema.Number,
+              }),
+            ),
+            type: Schema.Literals(["Public", "Private"]),
+            ip: Schema.optional(Schema.String),
+            dnsNameLabel: Schema.optional(Schema.String),
+            autoGeneratedDomainNameLabelScope: Schema.optional(
+              Schema.Literals([
+                "Unsecure",
+                "TenantReuse",
+                "SubscriptionReuse",
+                "ResourceGroupReuse",
+                "Noreuse",
+              ]),
+            ),
+            fqdn: Schema.optional(Schema.String),
+          }),
+        ),
+        osType: Schema.Literals(["Windows", "Linux"]),
+        volumes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              azureFile: Schema.optional(
+                Schema.Struct({
+                  shareName: Schema.String,
+                  readOnly: Schema.optional(Schema.Boolean),
+                  storageAccountName: Schema.String,
+                  storageAccountKey: Schema.optional(Schema.String),
+                  storageAccountKeyReference: Schema.optional(Schema.String),
+                }),
+              ),
+              emptyDir: Schema.optional(Schema.Unknown),
+              secret: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              secretReference: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              gitRepo: Schema.optional(
+                Schema.Struct({
+                  directory: Schema.optional(Schema.String),
+                  repository: Schema.String,
+                  revision: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            logAnalytics: Schema.optional(
+              Schema.Struct({
+                workspaceId: Schema.String,
+                workspaceKey: Schema.String,
+                logType: Schema.optional(
+                  Schema.Literals([
+                    "ContainerInsights",
+                    "ContainerInstanceLogs",
+                  ]),
+                ),
+                metadata: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                workspaceResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        subnetIds: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        dnsConfig: Schema.optional(
+          Schema.Struct({
+            nameServers: Schema.Array(Schema.String),
+            searchDomains: Schema.optional(Schema.String),
+            options: Schema.optional(Schema.String),
+          }),
+        ),
+        sku: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Standard",
+            "Dedicated",
+            "Confidential",
+          ]),
+        ),
+        encryptionProperties: Schema.optional(
+          Schema.Struct({
+            vaultBaseUrl: Schema.String,
+            keyName: Schema.String,
+            keyVersion: Schema.String,
+            identity: Schema.optional(Schema.String),
+          }),
+        ),
+        initContainers: Schema.optional(
+          Schema.Array(
             Schema.Struct({
               name: Schema.String,
               properties: Schema.Struct({
                 image: Schema.optional(Schema.String),
                 command: Schema.optional(Schema.Array(Schema.String)),
-                ports: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      protocol: Schema.optional(
-                        Schema.Literals(["TCP", "UDP"]),
-                      ),
-                      port: Schema.Number,
-                    }),
-                  ),
-                ),
                 environmentVariables: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
@@ -766,32 +1006,6 @@ export const ContainerGroupsListOutput =
                     ),
                   }),
                 ),
-                resources: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.Struct({
-                      memoryInGB: Schema.Number,
-                      cpu: Schema.Number,
-                      gpu: Schema.optional(
-                        Schema.Struct({
-                          count: Schema.Number,
-                          sku: Schema.Literals(["K80", "P100", "V100"]),
-                        }),
-                      ),
-                    }),
-                    limits: Schema.optional(
-                      Schema.Struct({
-                        memoryInGB: Schema.optional(Schema.Number),
-                        cpu: Schema.optional(Schema.Number),
-                        gpu: Schema.optional(
-                          Schema.Struct({
-                            count: Schema.Number,
-                            sku: Schema.Literals(["K80", "P100", "V100"]),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
                 volumeMounts: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
@@ -800,68 +1014,6 @@ export const ContainerGroupsListOutput =
                       readOnly: Schema.optional(Schema.Boolean),
                     }),
                   ),
-                ),
-                livenessProbe: Schema.optional(
-                  Schema.Struct({
-                    exec: Schema.optional(
-                      Schema.Struct({
-                        command: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    httpGet: Schema.optional(
-                      Schema.Struct({
-                        path: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        scheme: Schema.optional(
-                          Schema.Literals(["http", "https"]),
-                        ),
-                        httpHeaders: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    initialDelaySeconds: Schema.optional(Schema.Number),
-                    periodSeconds: Schema.optional(Schema.Number),
-                    failureThreshold: Schema.optional(Schema.Number),
-                    successThreshold: Schema.optional(Schema.Number),
-                    timeoutSeconds: Schema.optional(Schema.Number),
-                  }),
-                ),
-                readinessProbe: Schema.optional(
-                  Schema.Struct({
-                    exec: Schema.optional(
-                      Schema.Struct({
-                        command: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    httpGet: Schema.optional(
-                      Schema.Struct({
-                        path: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        scheme: Schema.optional(
-                          Schema.Literals(["http", "https"]),
-                        ),
-                        httpHeaders: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    initialDelaySeconds: Schema.optional(Schema.Number),
-                    periodSeconds: Schema.optional(Schema.Number),
-                    failureThreshold: Schema.optional(Schema.Number),
-                    successThreshold: Schema.optional(Schema.Number),
-                    timeoutSeconds: Schema.optional(Schema.Number),
-                  }),
                 ),
                 securityContext: Schema.optional(
                   Schema.Struct({
@@ -878,274 +1030,68 @@ export const ContainerGroupsListOutput =
                     seccompProfile: Schema.optional(Schema.String),
                   }),
                 ),
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    keyValuePairs: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
               }),
             }),
           ),
-          imageRegistryCredentials: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                server: Schema.String,
-                username: Schema.optional(Schema.String),
-                password: Schema.optional(SensitiveString),
-                passwordReference: Schema.optional(SensitiveString),
-                identity: Schema.optional(Schema.String),
-                identityUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          restartPolicy: Schema.optional(
-            Schema.Literals(["Always", "OnFailure", "Never"]),
-          ),
-          ipAddress: Schema.optional(
+        ),
+        extensions: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              ports: Schema.Array(
+              name: Schema.String,
+              properties: Schema.optional(
                 Schema.Struct({
-                  protocol: Schema.optional(Schema.Literals(["TCP", "UDP"])),
-                  port: Schema.Number,
+                  extensionType: Schema.String,
+                  version: Schema.String,
+                  settings: Schema.optional(Schema.Unknown),
+                  protectedSettings: Schema.optional(Schema.Unknown),
                 }),
               ),
-              type: Schema.Literals(["Public", "Private"]),
-              ip: Schema.optional(Schema.String),
-              dnsNameLabel: Schema.optional(Schema.String),
-              autoGeneratedDomainNameLabelScope: Schema.optional(
-                Schema.Literals([
-                  "Unsecure",
-                  "TenantReuse",
-                  "SubscriptionReuse",
-                  "ResourceGroupReuse",
-                  "Noreuse",
-                ]),
-              ),
-              fqdn: Schema.optional(Schema.String),
             }),
           ),
-          osType: Schema.Literals(["Windows", "Linux"]),
-          volumes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                azureFile: Schema.optional(
-                  Schema.Struct({
-                    shareName: Schema.String,
-                    readOnly: Schema.optional(Schema.Boolean),
-                    storageAccountName: Schema.String,
-                    storageAccountKey: Schema.optional(Schema.String),
-                    storageAccountKeyReference: Schema.optional(Schema.String),
-                  }),
-                ),
-                emptyDir: Schema.optional(Schema.Unknown),
-                secret: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                secretReference: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                gitRepo: Schema.optional(
-                  Schema.Struct({
-                    directory: Schema.optional(Schema.String),
-                    repository: Schema.String,
-                    revision: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
+        ),
+        confidentialComputeProperties: Schema.optional(
+          Schema.Struct({
+            ccePolicy: Schema.optional(Schema.String),
+          }),
+        ),
+        priority: Schema.optional(Schema.Literals(["Regular", "Spot"])),
+        identityAcls: Schema.optional(
+          Schema.Struct({
+            defaultAccess: Schema.optional(
+              Schema.Literals(["All", "System", "User"]),
             ),
-          ),
-          diagnostics: Schema.optional(
-            Schema.Struct({
-              logAnalytics: Schema.optional(
+            acls: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
-                  workspaceId: Schema.String,
-                  workspaceKey: Schema.String,
-                  logType: Schema.optional(
-                    Schema.Literals([
-                      "ContainerInsights",
-                      "ContainerInstanceLogs",
-                    ]),
+                  access: Schema.optional(
+                    Schema.Literals(["All", "System", "User"]),
                   ),
-                  metadata: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  workspaceResourceId: Schema.optional(Schema.String),
+                  identity: Schema.optional(Schema.String),
                 }),
               ),
-            }),
-          ),
-          subnetIds: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-                name: Schema.optional(Schema.String),
-              }),
             ),
-          ),
-          dnsConfig: Schema.optional(
-            Schema.Struct({
-              nameServers: Schema.Array(Schema.String),
-              searchDomains: Schema.optional(Schema.String),
-              options: Schema.optional(Schema.String),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Standard",
-              "Dedicated",
-              "Confidential",
-            ]),
-          ),
-          encryptionProperties: Schema.optional(
-            Schema.Struct({
-              vaultBaseUrl: Schema.String,
-              keyName: Schema.String,
-              keyVersion: Schema.String,
-              identity: Schema.optional(Schema.String),
-            }),
-          ),
-          initContainers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                properties: Schema.Struct({
-                  image: Schema.optional(Schema.String),
-                  command: Schema.optional(Schema.Array(Schema.String)),
-                  environmentVariables: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        value: Schema.optional(Schema.String),
-                        secureValue: Schema.optional(Schema.String),
-                        secureValueReference: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  instanceView: Schema.optional(
-                    Schema.Struct({
-                      restartCount: Schema.optional(Schema.Number),
-                      currentState: Schema.optional(
-                        Schema.Struct({
-                          state: Schema.optional(Schema.String),
-                          startTime: Schema.optional(Schema.String),
-                          exitCode: Schema.optional(Schema.Number),
-                          finishTime: Schema.optional(Schema.String),
-                          detailStatus: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      previousState: Schema.optional(
-                        Schema.Struct({
-                          state: Schema.optional(Schema.String),
-                          startTime: Schema.optional(Schema.String),
-                          exitCode: Schema.optional(Schema.Number),
-                          finishTime: Schema.optional(Schema.String),
-                          detailStatus: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      events: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            count: Schema.optional(Schema.Number),
-                            firstTimestamp: Schema.optional(Schema.String),
-                            lastTimestamp: Schema.optional(Schema.String),
-                            name: Schema.optional(Schema.String),
-                            message: Schema.optional(Schema.String),
-                            type: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  volumeMounts: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        mountPath: Schema.String,
-                        readOnly: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  ),
-                  securityContext: Schema.optional(
-                    Schema.Struct({
-                      privileged: Schema.optional(Schema.Boolean),
-                      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
-                      capabilities: Schema.optional(
-                        Schema.Struct({
-                          add: Schema.optional(Schema.Array(Schema.String)),
-                          drop: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                      runAsGroup: Schema.optional(Schema.Number),
-                      runAsUser: Schema.optional(Schema.Number),
-                      seccompProfile: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              }),
+          }),
+        ),
+        containerGroupProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            revision: Schema.optional(Schema.Number),
+          }),
+        ),
+        standbyPoolProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            failContainerGroupCreateOnReuseFailure: Schema.optional(
+              Schema.Boolean,
             ),
-          ),
-          extensions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                properties: Schema.optional(
-                  Schema.Struct({
-                    extensionType: Schema.String,
-                    version: Schema.String,
-                    settings: Schema.optional(Schema.Unknown),
-                    protectedSettings: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          confidentialComputeProperties: Schema.optional(
-            Schema.Struct({
-              ccePolicy: Schema.optional(Schema.String),
-            }),
-          ),
-          priority: Schema.optional(Schema.Literals(["Regular", "Spot"])),
-          identityAcls: Schema.optional(
-            Schema.Struct({
-              defaultAccess: Schema.optional(
-                Schema.Literals(["All", "System", "User"]),
-              ),
-              acls: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    access: Schema.optional(
-                      Schema.Literals(["All", "System", "User"]),
-                    ),
-                    identity: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          containerGroupProfile: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              revision: Schema.optional(Schema.Number),
-            }),
-          ),
-          standbyPoolProfile: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              failContainerGroupCreateOnReuseFailure: Schema.optional(
-                Schema.Boolean,
-              ),
-            }),
-          ),
-          isCreatedFromStandbyPool: Schema.optional(Schema.Boolean),
-        }),
+          }),
+        ),
+        isCreatedFromStandbyPool: Schema.optional(Schema.Boolean),
       }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ContainerGroupsListOutput = typeof ContainerGroupsListOutput.Type;
 
 // The operation
@@ -1425,8 +1371,8 @@ export const ContainerGroupsListByResourceGroupOutput =
               Schema.Struct({
                 server: Schema.String,
                 username: Schema.optional(Schema.String),
-                password: Schema.optional(SensitiveString),
-                passwordReference: Schema.optional(SensitiveString),
+                password: Schema.optional(SensitiveOutputString),
+                passwordReference: Schema.optional(SensitiveOutputString),
                 identity: Schema.optional(Schema.String),
                 identityUrl: Schema.optional(Schema.String),
               }),
@@ -1691,24 +1637,24 @@ export type ContainerGroupsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ContainerGroupsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const ContainerGroupsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ContainerGroupsListByResourceGroupInput,
     outputSchema: ContainerGroupsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ContainerGroupsRestartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
-    }),
-  );
+export const ContainerGroupsRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
+  }),
+);
 export type ContainerGroupsRestartInput =
   typeof ContainerGroupsRestartInput.Type;
 
@@ -1733,18 +1679,17 @@ export const ContainerGroupsRestart = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerGroupsRestartOutput,
 }));
 // Input Schema
-export const ContainerGroupsStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start",
-    }),
-  );
+export const ContainerGroupsStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start",
+  }),
+);
 export type ContainerGroupsStartInput = typeof ContainerGroupsStartInput.Type;
 
 // Output Schema
@@ -1767,18 +1712,17 @@ export const ContainerGroupsStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerGroupsStartOutput,
 }));
 // Input Schema
-export const ContainerGroupsStopInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/stop",
-    }),
-  );
+export const ContainerGroupsStopInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/stop",
+  }),
+);
 export type ContainerGroupsStopInput = typeof ContainerGroupsStopInput.Type;
 
 // Output Schema
@@ -1801,30 +1745,28 @@ export const ContainerGroupsStop = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerGroupsStopOutput,
 }));
 // Input Schema
-export const ContainerGroupsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-    }),
-  );
+export const ContainerGroupsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+  }),
+);
 export type ContainerGroupsUpdateInput = typeof ContainerGroupsUpdateInput.Type;
 
 // Output Schema
-export const ContainerGroupsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ContainerGroupsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ContainerGroupsUpdateOutput =
   typeof ContainerGroupsUpdateOutput.Type;
 
@@ -1861,7 +1803,7 @@ export type ContainersAttachInput = typeof ContainersAttachInput.Type;
 // Output Schema
 export const ContainersAttachOutput = /*@__PURE__*/ Schema.Struct({
   webSocketUri: Schema.optional(Schema.String),
-  password: Schema.optional(SensitiveString),
+  password: Schema.optional(SensitiveOutputString),
 });
 export type ContainersAttachOutput = typeof ContainersAttachOutput.Type;
 
@@ -1882,28 +1824,26 @@ export const ContainersAttach = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainersAttachOutput,
 }));
 // Input Schema
-export const ContainersExecuteCommandInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/exec",
-    }),
-  );
+export const ContainersExecuteCommandInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/exec",
+  }),
+);
 export type ContainersExecuteCommandInput =
   typeof ContainersExecuteCommandInput.Type;
 
 // Output Schema
-export const ContainersExecuteCommandOutput =
-  /*@__PURE__*/ Schema.Struct({
-    webSocketUri: Schema.optional(Schema.String),
-    password: Schema.optional(SensitiveString),
-  });
+export const ContainersExecuteCommandOutput = /*@__PURE__*/ Schema.Struct({
+  webSocketUri: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveOutputString),
+});
 export type ContainersExecuteCommandOutput =
   typeof ContainersExecuteCommandOutput.Type;
 
@@ -1924,28 +1864,26 @@ export const ContainersExecuteCommand = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainersExecuteCommandOutput,
 }));
 // Input Schema
-export const ContainersListLogsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerGroupName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    tail: Schema.optional(Schema.Number),
-    timestamps: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/logs",
-    }),
-  );
+export const ContainersListLogsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerGroupName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  tail: Schema.optional(Schema.Number),
+  timestamps: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/logs",
+  }),
+);
 export type ContainersListLogsInput = typeof ContainersListLogsInput.Type;
 
 // Output Schema
-export const ContainersListLogsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    content: Schema.optional(Schema.String),
-  });
+export const ContainersListLogsOutput = /*@__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+});
 export type ContainersListLogsOutput = typeof ContainersListLogsOutput.Type;
 
 // The operation
@@ -1967,33 +1905,31 @@ export const ContainersListLogs = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainersListLogsOutput,
 }));
 // Input Schema
-export const LocationListCachedImagesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/cachedImages",
-    }),
-  );
+export const LocationListCachedImagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/cachedImages",
+  }),
+);
 export type LocationListCachedImagesInput =
   typeof LocationListCachedImagesInput.Type;
 
 // Output Schema
-export const LocationListCachedImagesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          osType: Schema.String,
-          image: Schema.String,
-        }),
-      ),
+export const LocationListCachedImagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        osType: Schema.String,
+        image: Schema.String,
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LocationListCachedImagesOutput =
   typeof LocationListCachedImagesOutput.Type;
 
@@ -2012,43 +1948,41 @@ export const LocationListCachedImages = /*@__PURE__*/ API.make(() => ({
   outputSchema: LocationListCachedImagesOutput,
 }));
 // Input Schema
-export const LocationListCapabilitiesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/capabilities",
-    }),
-  );
+export const LocationListCapabilitiesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/capabilities",
+  }),
+);
 export type LocationListCapabilitiesInput =
   typeof LocationListCapabilitiesInput.Type;
 
 // Output Schema
-export const LocationListCapabilitiesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          osType: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          ipAddressType: Schema.optional(Schema.String),
-          gpu: Schema.optional(Schema.String),
-          capabilities: Schema.optional(
-            Schema.Struct({
-              maxMemoryInGB: Schema.optional(Schema.Number),
-              maxCpu: Schema.optional(Schema.Number),
-              maxGpuCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+export const LocationListCapabilitiesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        osType: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        ipAddressType: Schema.optional(Schema.String),
+        gpu: Schema.optional(Schema.String),
+        capabilities: Schema.optional(
+          Schema.Struct({
+            maxMemoryInGB: Schema.optional(Schema.Number),
+            maxCpu: Schema.optional(Schema.Number),
+            maxGpuCount: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LocationListCapabilitiesOutput =
   typeof LocationListCapabilitiesOutput.Type;
 
@@ -2080,26 +2014,25 @@ export const LocationListUsageInput = /*@__PURE__*/ Schema.Struct({
 export type LocationListUsageInput = typeof LocationListUsageInput.Type;
 
 // Output Schema
-export const LocationListUsageOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const LocationListUsageOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        unit: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LocationListUsageOutput = typeof LocationListUsageOutput.Type;
 
 // The operation
@@ -2115,41 +2048,39 @@ export const LocationListUsage = /*@__PURE__*/ API.make(() => ({
   outputSchema: LocationListUsageOutput,
 }));
 // Input Schema
-export const NGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ngroupsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
-    }),
-  );
+export const NGroupsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ngroupsName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
+  }),
+);
 export type NGroupsCreateOrUpdateInput = typeof NGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const NGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NGroupsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NGroupsCreateOrUpdateOutput =
   typeof NGroupsCreateOrUpdateOutput.Type;
 
@@ -2305,56 +2236,44 @@ export const NGroupsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: NGroupsListOutput,
 }));
 // Input Schema
-export const NGroupsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups",
-    }),
-  );
+export const NGroupsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups",
+  }),
+);
 export type NGroupsListByResourceGroupInput =
   typeof NGroupsListByResourceGroupInput.Type;
 
 // Output Schema
-export const NGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NGroupsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NGroupsListByResourceGroupOutput =
   typeof NGroupsListByResourceGroupOutput.Type;
 
@@ -2597,8 +2516,9 @@ export type SubnetServiceAssociationLinkDeleteOutput =
  * @param virtualNetworkName - The name of the virtual network.
  * @param subnetName - The name of the subnet.
  */
-export const SubnetServiceAssociationLinkDelete =
-  /*@__PURE__*/ API.make(() => ({
+export const SubnetServiceAssociationLinkDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SubnetServiceAssociationLinkDeleteInput,
     outputSchema: SubnetServiceAssociationLinkDeleteOutput,
-  }));
+  }),
+);

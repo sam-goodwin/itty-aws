@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -20,7 +20,7 @@ export const PersonsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PersonsUpdateInput = typeof PersonsUpdateInput.Type;
 
 // Output Schema
-export const PersonsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.String),
   distinct_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -40,7 +40,7 @@ export type PersonsUpdateOutput = typeof PersonsUpdateOutput.Type;
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const personsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PersonsUpdateInput,
   outputSchema: PersonsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

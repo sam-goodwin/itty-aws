@@ -4,52 +4,50 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateBackupPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.Literals(["production", "development"])),
-    retention_value: Schema.optional(Schema.Number),
-    retention_unit: Schema.optional(
-      Schema.Literals(["hour", "day", "week", "month", "year"]),
-    ),
-    frequency_value: Schema.optional(Schema.Number),
-    frequency_unit: Schema.optional(
-      Schema.Literals(["hour", "day", "week", "month"]),
-    ),
-    schedule_time: Schema.optional(Schema.String),
-    schedule_day: Schema.optional(Schema.Number),
-    schedule_week: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
-    }),
-  );
+export const UpdateBackupPolicyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.Literals(["production", "development"])),
+  retention_value: Schema.optional(Schema.Number),
+  retention_unit: Schema.optional(
+    Schema.Literals(["hour", "day", "week", "month", "year"]),
+  ),
+  frequency_value: Schema.optional(Schema.Number),
+  frequency_unit: Schema.optional(
+    Schema.Literals(["hour", "day", "week", "month"]),
+  ),
+  schedule_time: Schema.optional(Schema.String),
+  schedule_day: Schema.optional(Schema.Number),
+  schedule_week: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
+  }),
+);
 export type UpdateBackupPolicyInput = typeof UpdateBackupPolicyInput.Type;
 
 // Output Schema
-export const UpdateBackupPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    name: Schema.String,
-    target: Schema.Literals(["production", "development"]),
-    retention_value: Schema.Number,
-    retention_unit: Schema.String,
-    frequency_value: Schema.Number,
-    frequency_unit: Schema.String,
-    schedule_time: Schema.String,
-    schedule_day: Schema.NullOr(Schema.Number),
-    schedule_week: Schema.NullOr(Schema.Number),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    last_ran_at: Schema.NullOr(Schema.String),
-    next_run_at: Schema.NullOr(Schema.String),
-    required: Schema.Boolean,
-  });
+export const UpdateBackupPolicyOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  display_name: Schema.String,
+  name: Schema.String,
+  target: Schema.Literals(["production", "development"]),
+  retention_value: Schema.Number,
+  retention_unit: Schema.String,
+  frequency_value: Schema.Number,
+  frequency_unit: Schema.String,
+  schedule_time: Schema.String,
+  schedule_day: Schema.Number,
+  schedule_week: Schema.Number,
+  created_at: Schema.String,
+  updated_at: Schema.String,
+  last_ran_at: Schema.String,
+  next_run_at: Schema.String,
+  required: Schema.Boolean,
+});
 export type UpdateBackupPolicyOutput = typeof UpdateBackupPolicyOutput.Type;
 
 // The operation
@@ -69,7 +67,7 @@ export type UpdateBackupPolicyOutput = typeof UpdateBackupPolicyOutput.Type;
  * @param schedule_day - Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday
  * @param schedule_week - Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week
  */
-export const updateBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateBackupPolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateBackupPolicyInput,
   outputSchema: UpdateBackupPolicyOutput,
   errors: [Forbidden, NotFound] as const,

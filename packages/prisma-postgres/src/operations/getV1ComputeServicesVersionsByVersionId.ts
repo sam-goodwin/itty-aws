@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesVersionsByVersionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type GetV1ComputeServicesVersionsByVersionIdInput =
 
 // Output Schema
 export const GetV1ComputeServicesVersionsByVersionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -45,9 +45,10 @@ export type GetV1ComputeServicesVersionsByVersionIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns a compute version by ID, including its current status derived from the underlying VM state.
  */
-export const getV1ComputeServicesVersionsByVersionId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1ComputeServicesVersionsByVersionId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetV1ComputeServicesVersionsByVersionIdInput,
     outputSchema: GetV1ComputeServicesVersionsByVersionIdOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

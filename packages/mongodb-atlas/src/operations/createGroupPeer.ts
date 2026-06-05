@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupPeerInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -14,7 +14,7 @@ export const CreateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupPeerInput = typeof CreateGroupPeerInput.Type;
 
 // Output Schema
-export const CreateGroupPeerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupPeerOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupPeerOutput = typeof CreateGroupPeerOutput.Type;
 
 // The operation
@@ -29,7 +29,7 @@ export type CreateGroupPeerOutput = typeof CreateGroupPeerOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupPeer = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupPeerInput,
   outputSchema: CreateGroupPeerOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

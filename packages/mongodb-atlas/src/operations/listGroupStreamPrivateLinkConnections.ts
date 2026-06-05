@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupStreamPrivateLinkConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -22,7 +22,7 @@ export type ListGroupStreamPrivateLinkConnectionsInput =
 
 // Output Schema
 export const ListGroupStreamPrivateLinkConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupStreamPrivateLinkConnectionsOutput =
   typeof ListGroupStreamPrivateLinkConnectionsOutput.Type;
 
@@ -40,9 +40,10 @@ export type ListGroupStreamPrivateLinkConnectionsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupStreamPrivateLinkConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupStreamPrivateLinkConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupStreamPrivateLinkConnectionsInput,
     outputSchema: ListGroupStreamPrivateLinkConnectionsOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

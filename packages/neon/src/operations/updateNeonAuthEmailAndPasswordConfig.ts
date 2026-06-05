@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const UpdateNeonAuthEmailAndPasswordConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export type UpdateNeonAuthEmailAndPasswordConfigInput =
 
 // Output Schema
 export const UpdateNeonAuthEmailAndPasswordConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     email_verification_method: Schema.Literals(["link", "otp"]),
     require_email_verification: Schema.Boolean,
@@ -48,8 +48,9 @@ export type UpdateNeonAuthEmailAndPasswordConfigOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const updateNeonAuthEmailAndPasswordConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateNeonAuthEmailAndPasswordConfig = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UpdateNeonAuthEmailAndPasswordConfigInput,
     outputSchema: UpdateNeonAuthEmailAndPasswordConfigOutput,
-  }));
+  }),
+);

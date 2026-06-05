@@ -9,32 +9,30 @@ import {
 } from "../errors.ts";
 
 // Input Schema
-export const GroupsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationId: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organizationId}/groups/{groupId}",
-    }),
-  );
+export const GroupsControllerUpdateInput = /*@__PURE__*/ Schema.Struct({
+  organizationId: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organizationId}/groups/{groupId}",
+  }),
+);
 export type GroupsControllerUpdateInput =
   typeof GroupsControllerUpdateInput.Type;
 
 // Output Schema
-export const GroupsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    organization_id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
+export const GroupsControllerUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+});
 export type GroupsControllerUpdateOutput =
   typeof GroupsControllerUpdateOutput.Type;
 
@@ -47,10 +45,8 @@ export type GroupsControllerUpdateOutput =
  * @param organizationId - The ID of the organization.
  * @param groupId - The ID of the group.
  */
-export const GroupsControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsControllerUpdateInput,
-    outputSchema: GroupsControllerUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const GroupsControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsControllerUpdateInput,
+  outputSchema: GroupsControllerUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

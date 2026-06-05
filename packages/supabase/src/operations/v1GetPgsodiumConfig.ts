@@ -4,17 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1GetPgsodiumConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/pgsodium" }));
+export const V1GetPgsodiumConfigInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/pgsodium" }));
 export type V1GetPgsodiumConfigInput = typeof V1GetPgsodiumConfigInput.Type;
 
 // Output Schema
-export const V1GetPgsodiumConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    root_key: Schema.String,
-  });
+export const V1GetPgsodiumConfigOutput = /*@__PURE__*/ Schema.Struct({
+  root_key: Schema.String,
+});
 export type V1GetPgsodiumConfigOutput = typeof V1GetPgsodiumConfigOutput.Type;
 
 // The operation
@@ -23,7 +21,7 @@ export type V1GetPgsodiumConfigOutput = typeof V1GetPgsodiumConfigOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1GetPgsodiumConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetPgsodiumConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetPgsodiumConfigInput,
   outputSchema: V1GetPgsodiumConfigOutput,
   errors: [BadRequest, Forbidden] as const,

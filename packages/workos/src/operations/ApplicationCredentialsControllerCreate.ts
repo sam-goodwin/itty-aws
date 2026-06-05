@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ApplicationCredentialsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19,14 +19,14 @@ export type ApplicationCredentialsControllerCreateInput =
 
 // Output Schema
 export const ApplicationCredentialsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     secret_hint: Schema.optional(Schema.String),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
   });
 export type ApplicationCredentialsControllerCreateOutput =
   typeof ApplicationCredentialsControllerCreateOutput.Type;
@@ -39,9 +39,10 @@ export type ApplicationCredentialsControllerCreateOutput =
  *
  * @param id - The application ID or client ID of the Connect Application.
  */
-export const ApplicationCredentialsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationCredentialsControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ApplicationCredentialsControllerCreateInput,
     outputSchema: ApplicationCredentialsControllerCreateOutput,
     errors: [NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

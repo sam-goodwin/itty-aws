@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     confirmed: Schema.Boolean,
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesResp
 
 // Output Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1273,7 +1273,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesResp
  * <p>Respond to a fraud challenge on a testmode Issuing authorization, simulating either a confirmation of fraud or a correction of legitimacy.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespond =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondInput,
     outputSchema:

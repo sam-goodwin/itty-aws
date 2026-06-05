@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
-export const GetNotifiersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/notifiers" }));
+export const GetNotifiersInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/notifiers" }),
+);
 export type GetNotifiersInput = typeof GetNotifiersInput.Type;
 
 // Output Schema
-export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetNotifiersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     createdBy: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       ),
       opsgenie: Schema.optional(
         Schema.Struct({
-          apiKey: Schema.optional(SensitiveString),
+          apiKey: Schema.optional(SensitiveOutputString),
           isEU: Schema.optional(Schema.Boolean),
         }),
       ),
@@ -80,7 +80,7 @@ export type GetNotifiersOutput = typeof GetNotifiersOutput.Type;
 /**
  * Lists all configured notifiers. Returns an array of notification configurations including their IDs and current status.
  */
-export const getNotifiers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getNotifiers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetNotifiersInput,
   outputSchema: GetNotifiersOutput,
 }));

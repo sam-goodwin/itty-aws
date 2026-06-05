@@ -23,106 +23,20 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Doubleclickbidmanager_Date {
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
 
 export const Doubleclickbidmanager_Date: Schema.Schema<Doubleclickbidmanager_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    day: Schema.optional(Schema.Number),
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Doubleclickbidmanager_Date" });
-
-export interface QuerySchedule {
-  /** The date on which to end the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored. */
-  endDate?: Doubleclickbidmanager_Date;
-  /** How frequently to run the query. If set to `ONE_TIME`, the query will only be run when queries.run is called. */
-  frequency?:
-    | "FREQUENCY_UNSPECIFIED"
-    | "ONE_TIME"
-    | "DAILY"
-    | "WEEKLY"
-    | "SEMI_MONTHLY"
-    | "MONTHLY"
-    | "QUARTERLY"
-    | "YEARLY"
-    | (string & {});
-  /** The date on which to begin the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored. */
-  startDate?: Doubleclickbidmanager_Date;
-  /** The canonical code for the timezone the query schedule is based on. Scheduled runs are usually conducted in the morning of a given day. Defaults to `America/New_York`. */
-  nextRunTimezoneCode?: string;
-}
-
-export const QuerySchedule: Schema.Schema<QuerySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endDate: Schema.optional(Doubleclickbidmanager_Date),
-    frequency: Schema.optional(Schema.String),
-    startDate: Schema.optional(Doubleclickbidmanager_Date),
-    nextRunTimezoneCode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "QuerySchedule" });
-
-export interface Options {
-  /** Whether to include data for audience lists specifically targeted by filtered line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` filters. */
-  includeOnlyTargetedUserLists?: boolean;
-}
-
-export const Options: Schema.Schema<Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Options" });
-
-export interface FilterPair {
-  /** The type of value to filter by. Defined by a [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) value. */
-  type?: string;
-  /** The identifying value to filter by, such as a relevant resource ID. */
-  value?: string;
-}
-
-export const FilterPair: Schema.Schema<FilterPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FilterPair" });
-
-export interface Parameters {
-  /** The type of the report. The type of the report determines the dimesions, filters, and metrics that can be used. */
-  type?:
-    | "REPORT_TYPE_UNSPECIFIED"
-    | "STANDARD"
-    | "INVENTORY_AVAILABILITY"
-    | "AUDIENCE_COMPOSITION"
-    | "FLOODLIGHT"
-    | "YOUTUBE"
-    | "GRP"
-    | "YOUTUBE_PROGRAMMATIC_GUARANTEED"
-    | "REACH"
-    | "UNIQUE_REACH_AUDIENCE"
-    | "FULL_PATH"
-    | "PATH_ATTRIBUTION"
-    | (string & {});
-  /** Dimensions by which to segment and group the data. Defined by [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) values. */
-  groupBys?: ReadonlyArray<string>;
-  /** Metrics to define the data populating the report. Defined by [Metric](/bid-manager/reference/rest/v2/filters-metrics#metrics) values. */
-  metrics?: ReadonlyArray<string>;
-  /** Additional report parameter options. */
-  options?: Options;
-  /** Filters to limit the scope of reported data. */
-  filters?: ReadonlyArray<FilterPair>;
-}
-
-export const Parameters: Schema.Schema<Parameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    groupBys: Schema.optional(Schema.Array(Schema.String)),
-    metrics: Schema.optional(Schema.Array(Schema.String)),
-    options: Schema.optional(Options),
-    filters: Schema.optional(Schema.Array(FilterPair)),
-  }).annotate({ identifier: "Parameters" });
 
 export interface DataRange {
   /** The preset date range to be reported on. If `CUSTOM_DATES` is assigned to this field, fields custom_start_date and custom_end_date must be set to specify the custom date range. */
@@ -153,79 +67,62 @@ export interface DataRange {
   customStartDate?: Doubleclickbidmanager_Date;
 }
 
-export const DataRange: Schema.Schema<DataRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    range: Schema.optional(Schema.String),
-    customEndDate: Schema.optional(Doubleclickbidmanager_Date),
-    customStartDate: Schema.optional(Doubleclickbidmanager_Date),
-  }).annotate({ identifier: "DataRange" });
+export const DataRange: Schema.Schema<DataRange> = /*@__PURE__*/ Schema.Struct({
+  range: Schema.optional(Schema.String),
+  customEndDate: Schema.optional(Doubleclickbidmanager_Date),
+  customStartDate: Schema.optional(Doubleclickbidmanager_Date),
+}).annotate({ identifier: "DataRange" });
 
-export interface QueryMetadata {
-  /** The display name of the query. This value will be used in the file name of reports generated by the query. */
-  title?: string;
-  /** The date range the report generated by the query will report on. This date range will be defined by the time zone as used by the advertiser. */
+export interface RunQueryRequest {
+  /** The date range used by the query to generate the report. If unspecified, the query's original data_range is used. */
   dataRange?: DataRange;
-  /** List of additional email addresses with which to share the query. If send_notification is `true`, these email addresses will receive a notification when a report generated by the query is ready. If these email addresses are connected to Display & Video 360 users, the query will be available to them in the Display & Video 360 interface. */
-  shareEmailAddress?: ReadonlyArray<string>;
-  /** The format of the report generated by the query. */
-  format?: "FORMAT_UNSPECIFIED" | "CSV" | "XLSX" | (string & {});
-  /** Whether an email notification is sent to the query creator when a report generated by the query is ready. This value is `false` by default. */
-  sendNotification?: boolean;
 }
 
-export const QueryMetadata: Schema.Schema<QueryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
+export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
+  /*@__PURE__*/ Schema.Struct({
     dataRange: Schema.optional(DataRange),
-    shareEmailAddress: Schema.optional(Schema.Array(Schema.String)),
-    format: Schema.optional(Schema.String),
-    sendNotification: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "QueryMetadata" });
+  }).annotate({ identifier: "RunQueryRequest" });
 
-export interface Query {
-  /** The parameters of the report generated by the query. */
-  params?: Parameters;
-  /** When and how often the query is scheduled to run. If the frequency field is set to `ONE_TIME`, the query will only run when queries.run is called. */
-  schedule?: QuerySchedule;
-  /** Output only. The unique ID of the query. */
-  queryId?: string;
-  /** The metadata of the query. */
-  metadata?: QueryMetadata;
+export interface QuerySchedule {
+  /** The canonical code for the timezone the query schedule is based on. Scheduled runs are usually conducted in the morning of a given day. Defaults to `America/New_York`. */
+  nextRunTimezoneCode?: string;
+  /** The date on which to end the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored. */
+  endDate?: Doubleclickbidmanager_Date;
+  /** The date on which to begin the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored. */
+  startDate?: Doubleclickbidmanager_Date;
+  /** How frequently to run the query. If set to `ONE_TIME`, the query will only be run when queries.run is called. */
+  frequency?:
+    | "FREQUENCY_UNSPECIFIED"
+    | "ONE_TIME"
+    | "DAILY"
+    | "WEEKLY"
+    | "SEMI_MONTHLY"
+    | "MONTHLY"
+    | "QUARTERLY"
+    | "YEARLY"
+    | (string & {});
 }
 
-export const Query: Schema.Schema<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    params: Schema.optional(Parameters),
-    schedule: Schema.optional(QuerySchedule),
-    queryId: Schema.optional(Schema.String),
-    metadata: Schema.optional(QueryMetadata),
-  }).annotate({ identifier: "Query" });
+export const QuerySchedule: Schema.Schema<QuerySchedule> =
+  /*@__PURE__*/ Schema.Struct({
+    nextRunTimezoneCode: Schema.optional(Schema.String),
+    endDate: Schema.optional(Doubleclickbidmanager_Date),
+    startDate: Schema.optional(Doubleclickbidmanager_Date),
+    frequency: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QuerySchedule" });
 
-export interface ListQueriesResponse {
-  /** The list of queries. This field will be absent if empty. */
-  queries?: ReadonlyArray<Query>;
-  /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.list` method to retrieve the next page of results. */
-  nextPageToken?: string;
+export interface FilterPair {
+  /** The type of value to filter by. Defined by a [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) value. */
+  type?: string;
+  /** The identifying value to filter by, such as a relevant resource ID. */
+  value?: string;
 }
 
-export const ListQueriesResponse: Schema.Schema<ListQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    queries: Schema.optional(Schema.Array(Query)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListQueriesResponse" });
-
-export interface ReportKey {
-  /** Output only. The unique ID of the query that generated the report. */
-  queryId?: string;
-  /** Output only. The unique ID of the report. */
-  reportId?: string;
-}
-
-export const ReportKey: Schema.Schema<ReportKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    queryId: Schema.optional(Schema.String),
-    reportId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ReportKey" });
+export const FilterPair: Schema.Schema<FilterPair> =
+  /*@__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FilterPair" });
 
 export interface ReportStatus {
   /** Output only. The state of the report generation. */
@@ -243,46 +140,154 @@ export interface ReportStatus {
 }
 
 export const ReportStatus: Schema.Schema<ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportStatus" });
 
 export interface ReportMetadata {
+  /** The start date of the report data date range. */
+  reportDataStartDate?: Doubleclickbidmanager_Date;
+  /** The end date of the report data date range. */
+  reportDataEndDate?: Doubleclickbidmanager_Date;
   /** Output only. The location of the generated report file in Google Cloud Storage. This field will be absent if status.state is not `DONE`. */
   googleCloudStoragePath?: string;
   /** The status of the report. */
   status?: ReportStatus;
-  /** The end date of the report data date range. */
-  reportDataEndDate?: Doubleclickbidmanager_Date;
-  /** The start date of the report data date range. */
-  reportDataStartDate?: Doubleclickbidmanager_Date;
 }
 
 export const ReportMetadata: Schema.Schema<ReportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
+    reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
+    reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
     googleCloudStoragePath: Schema.optional(Schema.String),
     status: Schema.optional(ReportStatus),
-    reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
-    reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
   }).annotate({ identifier: "ReportMetadata" });
+
+export interface ReportKey {
+  /** Output only. The unique ID of the query that generated the report. */
+  queryId?: string;
+  /** Output only. The unique ID of the report. */
+  reportId?: string;
+}
+
+export const ReportKey: Schema.Schema<ReportKey> = /*@__PURE__*/ Schema.Struct({
+  queryId: Schema.optional(Schema.String),
+  reportId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportKey" });
+
+export interface Options {
+  /** Whether to include data for audience lists specifically targeted by filtered line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` filters. */
+  includeOnlyTargetedUserLists?: boolean;
+}
+
+export const Options: Schema.Schema<Options> = /*@__PURE__*/ Schema.Struct({
+  includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Options" });
+
+export interface Parameters {
+  /** The type of the report. The type of the report determines the dimesions, filters, and metrics that can be used. */
+  type?:
+    | "REPORT_TYPE_UNSPECIFIED"
+    | "STANDARD"
+    | "INVENTORY_AVAILABILITY"
+    | "AUDIENCE_COMPOSITION"
+    | "FLOODLIGHT"
+    | "YOUTUBE"
+    | "GRP"
+    | "YOUTUBE_PROGRAMMATIC_GUARANTEED"
+    | "REACH"
+    | "UNIQUE_REACH_AUDIENCE"
+    | "FULL_PATH"
+    | "PATH_ATTRIBUTION"
+    | (string & {});
+  /** Metrics to define the data populating the report. Defined by [Metric](/bid-manager/reference/rest/v2/filters-metrics#metrics) values. */
+  metrics?: ReadonlyArray<string>;
+  /** Additional report parameter options. */
+  options?: Options;
+  /** Dimensions by which to segment and group the data. Defined by [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) values. */
+  groupBys?: ReadonlyArray<string>;
+  /** Filters to limit the scope of reported data. */
+  filters?: ReadonlyArray<FilterPair>;
+}
+
+export const Parameters: Schema.Schema<Parameters> =
+  /*@__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(Schema.String)),
+    options: Schema.optional(Options),
+    groupBys: Schema.optional(Schema.Array(Schema.String)),
+    filters: Schema.optional(Schema.Array(FilterPair)),
+  }).annotate({ identifier: "Parameters" });
+
+export interface QueryMetadata {
+  /** The display name of the query. This value will be used in the file name of reports generated by the query. */
+  title?: string;
+  /** Whether an email notification is sent to the query creator when a report generated by the query is ready. This value is `false` by default. */
+  sendNotification?: boolean;
+  /** List of additional email addresses with which to share the query. If send_notification is `true`, these email addresses will receive a notification when a report generated by the query is ready. If these email addresses are connected to Display & Video 360 users, the query will be available to them in the Display & Video 360 interface. */
+  shareEmailAddress?: ReadonlyArray<string>;
+  /** The date range the report generated by the query will report on. This date range will be defined by the time zone as used by the advertiser. */
+  dataRange?: DataRange;
+  /** The format of the report generated by the query. */
+  format?: "FORMAT_UNSPECIFIED" | "CSV" | "XLSX" | (string & {});
+}
+
+export const QueryMetadata: Schema.Schema<QueryMetadata> =
+  /*@__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    sendNotification: Schema.optional(Schema.Boolean),
+    shareEmailAddress: Schema.optional(Schema.Array(Schema.String)),
+    dataRange: Schema.optional(DataRange),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryMetadata" });
+
+export interface Query {
+  /** The parameters of the report generated by the query. */
+  params?: Parameters;
+  /** Output only. The unique ID of the query. */
+  queryId?: string;
+  /** When and how often the query is scheduled to run. If the frequency field is set to `ONE_TIME`, the query will only run when queries.run is called. */
+  schedule?: QuerySchedule;
+  /** The metadata of the query. */
+  metadata?: QueryMetadata;
+}
+
+export const Query: Schema.Schema<Query> = /*@__PURE__*/ Schema.Struct({
+  params: Schema.optional(Parameters),
+  queryId: Schema.optional(Schema.String),
+  schedule: Schema.optional(QuerySchedule),
+  metadata: Schema.optional(QueryMetadata),
+}).annotate({ identifier: "Query" });
+
+export interface ListQueriesResponse {
+  /** The list of queries. This field will be absent if empty. */
+  queries?: ReadonlyArray<Query>;
+  /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.list` method to retrieve the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListQueriesResponse: Schema.Schema<ListQueriesResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    queries: Schema.optional(Schema.Array(Query)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListQueriesResponse" });
 
 export interface Report {
   /** The key information identifying the report. */
   key?: ReportKey;
-  /** The parameters of the report. */
-  params?: Parameters;
   /** The metadata of the report. */
   metadata?: ReportMetadata;
+  /** The parameters of the report. */
+  params?: Parameters;
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    key: Schema.optional(ReportKey),
-    params: Schema.optional(Parameters),
-    metadata: Schema.optional(ReportMetadata),
-  }).annotate({ identifier: "Report" });
+export const Report: Schema.Schema<Report> = /*@__PURE__*/ Schema.Struct({
+  key: Schema.optional(ReportKey),
+  metadata: Schema.optional(ReportMetadata),
+  params: Schema.optional(Parameters),
+}).annotate({ identifier: "Report" });
 
 export interface ListReportsResponse {
   /** The list of reports. This field will be absent if empty. */
@@ -292,20 +297,10 @@ export interface ListReportsResponse {
 }
 
 export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReportsResponse" });
-
-export interface RunQueryRequest {
-  /** The date range used by the query to generate the report. If unspecified, the query's original data_range is used. */
-  dataRange?: DataRange;
-}
-
-export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dataRange: Schema.optional(DataRange),
-  }).annotate({ identifier: "RunQueryRequest" });
 
 // ==========================================================================
 // Errors
@@ -361,49 +356,12 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface DeleteQueriesRequest {
-  /** Required. The ID of the query to delete. */
-  queryId: string;
-}
-
-export const DeleteQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  queryId: Schema.String.pipe(T.HttpPath("queryId")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "queries/{queryId}" }),
-  svc,
-) as unknown as Schema.Schema<DeleteQueriesRequest>;
-
-export interface DeleteQueriesResponse {}
-export const DeleteQueriesResponse: Schema.Schema<DeleteQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteQueriesResponse>;
-
-export type DeleteQueriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing query as well as its generated reports. */
-export const deleteQueries: API.OperationMethod<
-  DeleteQueriesRequest,
-  DeleteQueriesResponse,
-  DeleteQueriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteQueriesRequest,
-  output: DeleteQueriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface CreateQueriesRequest {
   /** Request body */
   body?: Query;
 }
 
-export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueriesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Query).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "queries", hasBody: true }),
@@ -411,7 +369,7 @@ export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<CreateQueriesRequest>;
 
 export type CreateQueriesResponse = Query;
-export const CreateQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
+export const CreateQueriesResponse = /*@__PURE__*/ Query;
 
 export type CreateQueriesError =
   | DefaultErrors
@@ -426,39 +384,10 @@ export const createQueries: API.OperationMethod<
   CreateQueriesResponse,
   CreateQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueriesRequest,
   output: CreateQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetQueriesRequest {
-  /** Required. The ID of the query to retrieve. */
-  queryId: string;
-}
-
-export const GetQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  queryId: Schema.String.pipe(T.HttpPath("queryId")),
-}).pipe(
-  T.Http({ method: "GET", path: "queries/{queryId}" }),
-  svc,
-) as unknown as Schema.Schema<GetQueriesRequest>;
-
-export type GetQueriesResponse = Query;
-export const GetQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
-
-export type GetQueriesError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves a query. */
-export const getQueries: API.OperationMethod<
-  GetQueriesRequest,
-  GetQueriesResponse,
-  GetQueriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetQueriesRequest,
-  output: GetQueriesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface ListQueriesRequest {
@@ -470,7 +399,7 @@ export interface ListQueriesRequest {
   orderBy?: string;
 }
 
-export const ListQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListQueriesRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -480,8 +409,7 @@ export const ListQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListQueriesRequest>;
 
 export type ListQueriesResponse_Op = ListQueriesResponse;
-export const ListQueriesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListQueriesResponse;
+export const ListQueriesResponse_Op = /*@__PURE__*/ ListQueriesResponse;
 
 export type ListQueriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -491,7 +419,7 @@ export const listQueries: API.PaginatedOperationMethod<
   ListQueriesResponse_Op,
   ListQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesRequest,
   output: ListQueriesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -510,7 +438,7 @@ export interface RunQueriesRequest {
   body?: RunQueryRequest;
 }
 
-export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunQueriesRequest = /*@__PURE__*/ Schema.Struct({
   synchronous: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("synchronous")),
   queryId: Schema.String.pipe(T.HttpPath("queryId")),
   body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
@@ -520,7 +448,7 @@ export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RunQueriesRequest>;
 
 export type RunQueriesResponse = Report;
-export const RunQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const RunQueriesResponse = /*@__PURE__*/ Report;
 
 export type RunQueriesError =
   | DefaultErrors
@@ -535,9 +463,75 @@ export const runQueries: API.OperationMethod<
   RunQueriesResponse,
   RunQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunQueriesRequest,
   output: RunQueriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetQueriesRequest {
+  /** Required. The ID of the query to retrieve. */
+  queryId: string;
+}
+
+export const GetQueriesRequest = /*@__PURE__*/ Schema.Struct({
+  queryId: Schema.String.pipe(T.HttpPath("queryId")),
+}).pipe(
+  T.Http({ method: "GET", path: "queries/{queryId}" }),
+  svc,
+) as unknown as Schema.Schema<GetQueriesRequest>;
+
+export type GetQueriesResponse = Query;
+export const GetQueriesResponse = /*@__PURE__*/ Query;
+
+export type GetQueriesError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves a query. */
+export const getQueries: API.OperationMethod<
+  GetQueriesRequest,
+  GetQueriesResponse,
+  GetQueriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQueriesRequest,
+  output: GetQueriesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteQueriesRequest {
+  /** Required. The ID of the query to delete. */
+  queryId: string;
+}
+
+export const DeleteQueriesRequest = /*@__PURE__*/ Schema.Struct({
+  queryId: Schema.String.pipe(T.HttpPath("queryId")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "queries/{queryId}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteQueriesRequest>;
+
+export interface DeleteQueriesResponse {}
+export const DeleteQueriesResponse: Schema.Schema<DeleteQueriesResponse> =
+  /*@__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteQueriesResponse>;
+
+export type DeleteQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing query as well as its generated reports. */
+export const deleteQueries: API.OperationMethod<
+  DeleteQueriesRequest,
+  DeleteQueriesResponse,
+  DeleteQueriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteQueriesRequest,
+  output: DeleteQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -548,17 +542,16 @@ export interface GetQueriesReportsRequest {
   reportId: string;
 }
 
-export const GetQueriesReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    queryId: Schema.String.pipe(T.HttpPath("queryId")),
-    reportId: Schema.String.pipe(T.HttpPath("reportId")),
-  }).pipe(
-    T.Http({ method: "GET", path: "queries/{queryId}/reports/{reportId}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetQueriesReportsRequest>;
+export const GetQueriesReportsRequest = /*@__PURE__*/ Schema.Struct({
+  queryId: Schema.String.pipe(T.HttpPath("queryId")),
+  reportId: Schema.String.pipe(T.HttpPath("reportId")),
+}).pipe(
+  T.Http({ method: "GET", path: "queries/{queryId}/reports/{reportId}" }),
+  svc,
+) as unknown as Schema.Schema<GetQueriesReportsRequest>;
 
 export type GetQueriesReportsResponse = Report;
-export const GetQueriesReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const GetQueriesReportsResponse = /*@__PURE__*/ Report;
 
 export type GetQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -568,37 +561,35 @@ export const getQueriesReports: API.OperationMethod<
   GetQueriesReportsResponse,
   GetQueriesReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueriesReportsRequest,
   output: GetQueriesReportsResponse,
   errors: [NotFound, Forbidden],
 }));
 
 export interface ListQueriesReportsRequest {
-  /** Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified. */
-  pageSize?: number;
-  /** Required. The ID of the query that generated the reports. */
-  queryId: string;
-  /** Field to sort the list by. Accepts the following values: * `key.reportId` (default) The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `key.reportId desc`. */
-  orderBy?: string;
   /** A token identifying which page of results the server should return. Typically, this is the value of nextPageToken returned from the previous call to the `queries.reports.list` method. If unspecified, the first page of results is returned. */
   pageToken?: string;
+  /** Required. The ID of the query that generated the reports. */
+  queryId: string;
+  /** Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified. */
+  pageSize?: number;
+  /** Field to sort the list by. Accepts the following values: * `key.reportId` (default) The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `key.reportId desc`. */
+  orderBy?: string;
 }
 
-export const ListQueriesReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    queryId: Schema.String.pipe(T.HttpPath("queryId")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "queries/{queryId}/reports" }),
-    svc,
-  ) as unknown as Schema.Schema<ListQueriesReportsRequest>;
+export const ListQueriesReportsRequest = /*@__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  queryId: Schema.String.pipe(T.HttpPath("queryId")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
+  T.Http({ method: "GET", path: "queries/{queryId}/reports" }),
+  svc,
+) as unknown as Schema.Schema<ListQueriesReportsRequest>;
 
 export type ListQueriesReportsResponse = ListReportsResponse;
-export const ListQueriesReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReportsResponse;
+export const ListQueriesReportsResponse = /*@__PURE__*/ ListReportsResponse;
 
 export type ListQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -608,7 +599,7 @@ export const listQueriesReports: API.PaginatedOperationMethod<
   ListQueriesReportsResponse,
   ListQueriesReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesReportsRequest,
   output: ListQueriesReportsResponse,
   errors: [NotFound, Forbidden],

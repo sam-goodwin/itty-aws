@@ -2,30 +2,29 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const ResetProjectBranchRolePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    branch_id: Schema.String.pipe(T.PathParam()),
-    role_name: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reset_password",
-    }),
-  );
+export const ResetProjectBranchRolePasswordInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  branch_id: Schema.String.pipe(T.PathParam()),
+  role_name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reset_password",
+  }),
+);
 export type ResetProjectBranchRolePasswordInput =
   typeof ResetProjectBranchRolePasswordInput.Type;
 
 // Output Schema
-export const ResetProjectBranchRolePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResetProjectBranchRolePasswordOutput = /*@__PURE__*/ Schema.Struct(
+  {
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -63,13 +62,10 @@ export const ResetProjectBranchRolePasswordOutput =
           "sync_dbs_and_roles_from_compute",
           "apply_schema_from_branch",
           "timeline_mark_invisible",
-          "timeline_update_protected_config",
           "prewarm_replica",
           "promote_replica",
           "set_storage_non_dirty",
           "swap_binding_id",
-          "finalize_migration",
-          "mark_migration_prepared",
         ]),
         status: Schema.Literals([
           "scheduling",
@@ -89,7 +85,8 @@ export const ResetProjectBranchRolePasswordOutput =
         total_duration_ms: Schema.Number,
       }),
     ),
-  });
+  },
+);
 export type ResetProjectBranchRolePasswordOutput =
   typeof ResetProjectBranchRolePasswordOutput.Type;
 
@@ -111,9 +108,8 @@ export type ResetProjectBranchRolePasswordOutput =
  * @param branch_id - The branch ID
  * @param role_name - The role name
  */
-export const resetProjectBranchRolePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ResetProjectBranchRolePasswordInput,
-    outputSchema: ResetProjectBranchRolePasswordOutput,
-    errors: [NotFound] as const,
-  }));
+export const resetProjectBranchRolePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResetProjectBranchRolePasswordInput,
+  outputSchema: ResetProjectBranchRolePasswordOutput,
+  errors: [NotFound] as const,
+}));

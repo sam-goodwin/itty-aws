@@ -3,33 +3,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const SendEvmTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    network: Schema.Literals([
-      "base",
-      "base-sepolia",
-      "ethereum",
-      "ethereum-sepolia",
-      "avalanche",
-      "polygon",
-      "optimism",
-      "arbitrum",
-    ]),
-    transaction: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/evm/accounts/{address}/send/transaction",
-    }),
-  );
+export const SendEvmTransactionInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  network: Schema.Literals([
+    "base",
+    "base-sepolia",
+    "ethereum",
+    "ethereum-sepolia",
+    "avalanche",
+    "polygon",
+    "optimism",
+    "arbitrum",
+  ]),
+  transaction: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v2/evm/accounts/{address}/send/transaction",
+  }),
+);
 export type SendEvmTransactionInput = typeof SendEvmTransactionInput.Type;
 
 // Output Schema
-export const SendEvmTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    transactionHash: Schema.String,
-  });
+export const SendEvmTransactionOutput = /*@__PURE__*/ Schema.Struct({
+  transactionHash: Schema.String,
+});
 export type SendEvmTransactionOutput = typeof SendEvmTransactionOutput.Type;
 
 // The operation
@@ -64,7 +62,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the Ethereum account.
  */
-export const sendEvmTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sendEvmTransaction = /*@__PURE__*/ API.make(() => ({
   inputSchema: SendEvmTransactionInput,
   outputSchema: SendEvmTransactionOutput,
 }));

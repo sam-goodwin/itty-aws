@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const UpdateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   retentionDays: Schema.optional(Schema.Number),
@@ -13,7 +13,7 @@ export const UpdateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDatasetInput = typeof UpdateDatasetInput.Type;
 
 // Output Schema
-export const UpdateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -38,7 +38,7 @@ export type UpdateDatasetOutput = typeof UpdateDatasetOutput.Type;
 /**
  * Update dataset
  */
-export const updateDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDatasetInput,
   outputSchema: UpdateDatasetOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

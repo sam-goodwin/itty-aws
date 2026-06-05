@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostFinancialConnectionsAccountsAccountUnsubscribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.Array(Schema.Literals(["transactions"])),
@@ -20,7 +20,7 @@ export type PostFinancialConnectionsAccountsAccountUnsubscribeInput =
 
 // Output Schema
 export const PostFinancialConnectionsAccountsAccountUnsubscribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
@@ -84,7 +84,7 @@ export type PostFinancialConnectionsAccountsAccountUnsubscribeOutput =
  * <p>Unsubscribes from periodic refreshes of data associated with a Financial Connections <code>Account</code>.</p>
  */
 export const PostFinancialConnectionsAccountsAccountUnsubscribe =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountUnsubscribeInput,
     outputSchema: PostFinancialConnectionsAccountsAccountUnsubscribeOutput,
   }));

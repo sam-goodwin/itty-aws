@@ -9,24 +9,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Management/checkNameAvailability",
-    }),
-  );
+export const CheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Management/checkNameAvailability",
+  }),
+);
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const CheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type CheckNameAvailabilityOutput =
   typeof CheckNameAvailabilityOutput.Type;
 
@@ -36,14 +34,12 @@ export type CheckNameAvailabilityOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EntitiesListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
   $skiptoken: Schema.optional(Schema.String),
   $skip: Schema.optional(Schema.Number),
@@ -77,7 +73,7 @@ export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EntitiesListInput = typeof EntitiesListInput.Type;
 
 // Output Schema
-export const EntitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EntitiesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -137,27 +133,28 @@ With $search=ChildrenOnly the API will return only the first level of children o
  * @param groupName - A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'")
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const EntitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EntitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EntitiesListInput,
   outputSchema: EntitiesListOutput,
 }));
 // Input Schema
-export const HierarchySettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HierarchySettingsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+  }),
+);
 export type HierarchySettingsCreateOrUpdateInput =
   typeof HierarchySettingsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const HierarchySettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -186,28 +183,25 @@ export type HierarchySettingsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HierarchySettingsCreateOrUpdateInput,
-    outputSchema: HierarchySettingsCreateOrUpdateOutput,
-  }));
+export const HierarchySettingsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsCreateOrUpdateInput,
+  outputSchema: HierarchySettingsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const HierarchySettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-    }),
-  );
+export const HierarchySettingsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+  }),
+);
 export type HierarchySettingsDeleteInput =
   typeof HierarchySettingsDeleteInput.Type;
 
 // Output Schema
-export const HierarchySettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HierarchySettingsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type HierarchySettingsDeleteOutput =
   typeof HierarchySettingsDeleteOutput.Type;
 
@@ -218,46 +212,42 @@ export type HierarchySettingsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsDeleteInput,
-    outputSchema: HierarchySettingsDeleteOutput,
+export const HierarchySettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsDeleteInput,
+  outputSchema: HierarchySettingsDeleteOutput,
+}));
+// Input Schema
+export const HierarchySettingsGetInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
   }),
 );
-// Input Schema
-export const HierarchySettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-    }),
-  );
 export type HierarchySettingsGetInput = typeof HierarchySettingsGetInput.Type;
 
 // Output Schema
-export const HierarchySettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HierarchySettingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HierarchySettingsGetOutput = typeof HierarchySettingsGetOutput.Type;
 
 // The operation
@@ -267,48 +257,44 @@ export type HierarchySettingsGetOutput = typeof HierarchySettingsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsGetInput,
-    outputSchema: HierarchySettingsGetOutput,
+export const HierarchySettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsGetInput,
+  outputSchema: HierarchySettingsGetOutput,
+}));
+// Input Schema
+export const HierarchySettingsListInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
   }),
 );
-// Input Schema
-export const HierarchySettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
-    }),
-  );
 export type HierarchySettingsListInput = typeof HierarchySettingsListInput.Type;
 
 // Output Schema
-export const HierarchySettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-              requireAuthorizationForGroupCreation: Schema.optional(
-                Schema.Boolean,
-              ),
-              defaultManagementGroup: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const HierarchySettingsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            requireAuthorizationForGroupCreation: Schema.optional(
+              Schema.Boolean,
+            ),
+            defaultManagementGroup: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    "@nextLink": Schema.optional(Schema.String),
-  });
+  ),
+  "@nextLink": Schema.optional(Schema.String),
+});
 export type HierarchySettingsListOutput =
   typeof HierarchySettingsListOutput.Type;
 
@@ -319,47 +305,43 @@ export type HierarchySettingsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsListInput,
-    outputSchema: HierarchySettingsListOutput,
+export const HierarchySettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsListInput,
+  outputSchema: HierarchySettingsListOutput,
+}));
+// Input Schema
+export const HierarchySettingsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
   }),
 );
-// Input Schema
-export const HierarchySettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-    }),
-  );
 export type HierarchySettingsUpdateInput =
   typeof HierarchySettingsUpdateInput.Type;
 
 // Output Schema
-export const HierarchySettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HierarchySettingsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HierarchySettingsUpdateOutput =
   typeof HierarchySettingsUpdateOutput.Type;
 
@@ -370,29 +352,26 @@ export type HierarchySettingsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsUpdateInput,
-    outputSchema: HierarchySettingsUpdateOutput,
+export const HierarchySettingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsUpdateInput,
+  outputSchema: HierarchySettingsUpdateOutput,
+}));
+// Input Schema
+export const ManagementGroupsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}",
   }),
 );
-// Input Schema
-export const ManagementGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}",
-    }),
-  );
 export type ManagementGroupsCreateOrUpdateInput =
   typeof ManagementGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ManagementGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ManagementGroupsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -410,7 +389,8 @@ export const ManagementGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ManagementGroupsCreateOrUpdateOutput =
   typeof ManagementGroupsCreateOrUpdateOutput.Type;
 
@@ -423,28 +403,25 @@ export type ManagementGroupsCreateOrUpdateOutput =
  * @param groupId - Management Group ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ManagementGroupsCreateOrUpdateInput,
-    outputSchema: ManagementGroupsCreateOrUpdateOutput,
-  }));
+export const ManagementGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsCreateOrUpdateInput,
+  outputSchema: ManagementGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ManagementGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}",
-    }),
-  );
+export const ManagementGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+  }),
+);
 export type ManagementGroupsDeleteInput =
   typeof ManagementGroupsDeleteInput.Type;
 
 // Output Schema
-export const ManagementGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ManagementGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ManagementGroupsDeleteOutput =
   typeof ManagementGroupsDeleteOutput.Type;
 
@@ -457,51 +434,45 @@ export type ManagementGroupsDeleteOutput =
  * @param groupId - Management Group ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsDeleteInput,
-    outputSchema: ManagementGroupsDeleteOutput,
+export const ManagementGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsDeleteInput,
+  outputSchema: ManagementGroupsDeleteOutput,
+}));
+// Input Schema
+export const ManagementGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["children", "path", "ancestors"])),
+  $recurse: Schema.optional(Schema.Boolean),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}",
   }),
 );
-// Input Schema
-export const ManagementGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["children", "path", "ancestors"]),
-    ),
-    $recurse: Schema.optional(Schema.Boolean),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}",
-    }),
-  );
 export type ManagementGroupsGetInput = typeof ManagementGroupsGetInput.Type;
 
 // Output Schema
-export const ManagementGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagementGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagementGroupsGetOutput = typeof ManagementGroupsGetOutput.Type;
 
 // The operation
@@ -515,29 +486,28 @@ export type ManagementGroupsGetOutput = typeof ManagementGroupsGetOutput.Type;
  * @param $filter - A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagementGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagementGroupsGetInput,
   outputSchema: ManagementGroupsGetOutput,
 }));
 // Input Schema
-export const ManagementGroupsGetDescendantsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skiptoken: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
-    }),
-  );
+export const ManagementGroupsGetDescendantsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skiptoken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
+  }),
+);
 export type ManagementGroupsGetDescendantsInput =
   typeof ManagementGroupsGetDescendantsInput.Type;
 
 // Output Schema
-export const ManagementGroupsGetDescendantsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ManagementGroupsGetDescendantsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -556,7 +526,8 @@ export const ManagementGroupsGetDescendantsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ManagementGroupsGetDescendantsOutput =
   typeof ManagementGroupsGetDescendantsOutput.Type;
 
@@ -570,44 +541,41 @@ export type ManagementGroupsGetDescendantsOutput =
 If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
  * @param $top - Number of elements to return when retrieving results. Passing this in will override $skipToken.
  */
-export const ManagementGroupsGetDescendants =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ManagementGroupsGetDescendantsInput,
-    outputSchema: ManagementGroupsGetDescendantsOutput,
-  }));
+export const ManagementGroupsGetDescendants = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsGetDescendantsInput,
+  outputSchema: ManagementGroupsGetDescendantsOutput,
+}));
 // Input Schema
-export const ManagementGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    $skiptoken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Management/managementGroups",
-    }),
-  );
+export const ManagementGroupsListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  $skiptoken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/managementGroups",
+  }),
+);
 export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
 
 // Output Schema
-export const ManagementGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ManagementGroupsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    "@nextLink": Schema.optional(Schema.String),
-  });
+  ),
+  "@nextLink": Schema.optional(Schema.String),
+});
 export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
 
 // The operation
@@ -619,15 +587,13 @@ export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
  * @param $skiptoken - Page continuation token is only used if a previous operation returned a partial result.
 If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
  */
-export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsListInput,
-    outputSchema: ManagementGroupsListOutput,
-  }),
-);
+export const ManagementGroupsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsListInput,
+  outputSchema: ManagementGroupsListOutput,
+}));
 // Input Schema
 export const ManagementGroupSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -642,7 +608,7 @@ export type ManagementGroupSubscriptionsCreateInput =
 
 // Output Schema
 export const ManagementGroupSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -673,14 +639,15 @@ export type ManagementGroupSubscriptionsCreateOutput =
  * @param subscriptionId - Subscription ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupSubscriptionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagementGroupSubscriptionsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagementGroupSubscriptionsCreateInput,
     outputSchema: ManagementGroupSubscriptionsCreateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagementGroupSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -695,7 +662,7 @@ export type ManagementGroupSubscriptionsDeleteInput =
 
 // Output Schema
 export const ManagementGroupSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ManagementGroupSubscriptionsDeleteOutput =
   typeof ManagementGroupSubscriptionsDeleteOutput.Type;
 
@@ -708,14 +675,15 @@ export type ManagementGroupSubscriptionsDeleteOutput =
  * @param subscriptionId - Subscription ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagementGroupSubscriptionsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagementGroupSubscriptionsDeleteInput,
     outputSchema: ManagementGroupSubscriptionsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagementGroupSubscriptionsGetSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -730,7 +698,7 @@ export type ManagementGroupSubscriptionsGetSubscriptionInput =
 
 // Output Schema
 export const ManagementGroupSubscriptionsGetSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -762,13 +730,13 @@ export type ManagementGroupSubscriptionsGetSubscriptionOutput =
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
 export const ManagementGroupSubscriptionsGetSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupSubscriptionsGetSubscriptionInput,
     outputSchema: ManagementGroupSubscriptionsGetSubscriptionOutput,
   }));
 // Input Schema
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
@@ -783,7 +751,7 @@ export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInpu
 
 // Output Schema
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -830,47 +798,45 @@ export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutp
 If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
  */
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput,
     outputSchema:
       ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput,
   }));
 // Input Schema
-export const ManagementGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/providers/Microsoft.Management/managementGroups/{groupId}",
-    }),
-  );
+export const ManagementGroupsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+  }),
+);
 export type ManagementGroupsUpdateInput =
   typeof ManagementGroupsUpdateInput.Type;
 
 // Output Schema
-export const ManagementGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagementGroupsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagementGroupsUpdateOutput =
   typeof ManagementGroupsUpdateOutput.Type;
 
@@ -882,14 +848,12 @@ export type ManagementGroupsUpdateOutput =
  * @param groupId - Management Group ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsUpdateInput,
-    outputSchema: ManagementGroupsUpdateOutput,
-  }),
-);
+export const ManagementGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsUpdateInput,
+  outputSchema: ManagementGroupsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Management/operations" }),
@@ -897,7 +861,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -928,37 +892,35 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const StartTenantBackfillInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Management/startTenantBackfill",
-    }),
-  );
+export const StartTenantBackfillInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Management/startTenantBackfill",
+  }),
+);
 export type StartTenantBackfillInput = typeof StartTenantBackfillInput.Type;
 
 // Output Schema
-export const StartTenantBackfillOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tenantId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NotStarted",
-        "NotStartedButGroupsExist",
-        "Started",
-        "Failed",
-        "Cancelled",
-        "Completed",
-      ]),
-    ),
-  });
+export const StartTenantBackfillOutput = /*@__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "NotStarted",
+      "NotStartedButGroupsExist",
+      "Started",
+      "Failed",
+      "Cancelled",
+      "Completed",
+    ]),
+  ),
+});
 export type StartTenantBackfillOutput = typeof StartTenantBackfillOutput.Type;
 
 // The operation
@@ -967,37 +929,35 @@ export type StartTenantBackfillOutput = typeof StartTenantBackfillOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const StartTenantBackfill = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StartTenantBackfill = /*@__PURE__*/ API.make(() => ({
   inputSchema: StartTenantBackfillInput,
   outputSchema: StartTenantBackfillOutput,
 }));
 // Input Schema
-export const TenantBackfillStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Management/tenantBackfillStatus",
-    }),
-  );
+export const TenantBackfillStatusInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Management/tenantBackfillStatus",
+  }),
+);
 export type TenantBackfillStatusInput = typeof TenantBackfillStatusInput.Type;
 
 // Output Schema
-export const TenantBackfillStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tenantId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NotStarted",
-        "NotStartedButGroupsExist",
-        "Started",
-        "Failed",
-        "Cancelled",
-        "Completed",
-      ]),
-    ),
-  });
+export const TenantBackfillStatusOutput = /*@__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "NotStarted",
+      "NotStartedButGroupsExist",
+      "Started",
+      "Failed",
+      "Cancelled",
+      "Completed",
+    ]),
+  ),
+});
 export type TenantBackfillStatusOutput = typeof TenantBackfillStatusOutput.Type;
 
 // The operation
@@ -1006,9 +966,7 @@ export type TenantBackfillStatusOutput = typeof TenantBackfillStatusOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const TenantBackfillStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantBackfillStatusInput,
-    outputSchema: TenantBackfillStatusOutput,
-  }),
-);
+export const TenantBackfillStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantBackfillStatusInput,
+  outputSchema: TenantBackfillStatusOutput,
+}));

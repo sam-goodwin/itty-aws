@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationResourcesControllerFindByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/authorization/resources/{resource_id}" }),
@@ -15,7 +15,7 @@ export type AuthorizationResourcesControllerFindByIdInput =
 
 // Output Schema
 export const AuthorizationResourcesControllerFindByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -38,9 +38,10 @@ export type AuthorizationResourcesControllerFindByIdOutput =
  *
  * @param resource_id - The ID of the authorization resource.
  */
-export const AuthorizationResourcesControllerFindById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationResourcesControllerFindById = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationResourcesControllerFindByIdInput,
     outputSchema: AuthorizationResourcesControllerFindByIdOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

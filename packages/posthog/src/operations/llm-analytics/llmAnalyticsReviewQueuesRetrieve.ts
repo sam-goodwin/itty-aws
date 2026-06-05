@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type LlmAnalyticsReviewQueuesRetrieveInput =
 
 // Output Schema
 export const LlmAnalyticsReviewQueuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     pending_item_count: Schema.optional(Schema.Number),
@@ -53,9 +53,8 @@ export type LlmAnalyticsReviewQueuesRetrieveOutput =
  * @param id - A UUID string identifying this review queue.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsReviewQueuesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LlmAnalyticsReviewQueuesRetrieveInput,
-    outputSchema: LlmAnalyticsReviewQueuesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const llmAnalyticsReviewQueuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsReviewQueuesRetrieveInput,
+  outputSchema: LlmAnalyticsReviewQueuesRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

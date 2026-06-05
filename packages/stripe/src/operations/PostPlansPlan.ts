@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansPlanInput = /*@__PURE__*/ Schema.Struct({
   plan: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Boolean),
   expand: Schema.optional(Schema.Array(Schema.String)),
@@ -21,7 +21,7 @@ export const PostPlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostPlansPlanInput = typeof PostPlansPlanInput.Type;
 
 // Output Schema
-export const PostPlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansPlanOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   amount: Schema.NullOr(Schema.Number),
   amount_decimal: Schema.NullOr(Schema.String),
@@ -61,7 +61,7 @@ export type PostPlansPlanOutput = typeof PostPlansPlanOutput.Type;
  *
  * <p>Updates the specified plan by setting the values of the parameters passed. Any parameters not provided are left unchanged. By design, you cannot change a plan’s ID, amount, currency, or billing cycle.</p>
  */
-export const PostPlansPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPlansPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPlansPlanInput,
   outputSchema: PostPlansPlanOutput,
 }));

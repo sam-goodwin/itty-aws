@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListFederationSettingIdentityProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -23,7 +23,7 @@ export type ListFederationSettingIdentityProvidersInput =
 
 // Output Schema
 export const ListFederationSettingIdentityProvidersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListFederationSettingIdentityProvidersOutput =
   typeof ListFederationSettingIdentityProvidersOutput.Type;
 
@@ -40,9 +40,10 @@ export type ListFederationSettingIdentityProvidersOutput =
  * @param protocol - The protocols of the target identity providers.
  * @param idpType - The types of the target identity providers.
  */
-export const listFederationSettingIdentityProviders =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listFederationSettingIdentityProviders = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListFederationSettingIdentityProvidersInput,
     outputSchema: ListFederationSettingIdentityProvidersOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

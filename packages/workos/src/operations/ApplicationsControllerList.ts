@@ -4,42 +4,40 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const ApplicationsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-    organization_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/connect/applications" }));
+export const ApplicationsControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+  organization_id: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/connect/applications" }));
 export type ApplicationsControllerListInput =
   typeof ApplicationsControllerListInput.Type;
 
 // Output Schema
-export const ApplicationsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.String,
-          id: Schema.String,
-          client_id: Schema.String,
-          description: Schema.NullOr(Schema.String),
-          name: Schema.String,
-          scopes: Schema.Array(Schema.String),
-          created_at: Schema.String,
-          updated_at: Schema.String,
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+export const ApplicationsControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        object: Schema.String,
+        id: Schema.String,
+        client_id: Schema.String,
+        description: Schema.NullOr(Schema.String),
+        name: Schema.String,
+        scopes: Schema.Array(Schema.String),
+        created_at: Schema.String,
+        updated_at: Schema.String,
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type ApplicationsControllerListOutput =
   typeof ApplicationsControllerListOutput.Type;
 
@@ -55,10 +53,8 @@ export type ApplicationsControllerListOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
  * @param organization_id - Filter Connect Applications by organization ID.
  */
-export const ApplicationsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationsControllerListInput,
-    outputSchema: ApplicationsControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const ApplicationsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationsControllerListInput,
+  outputSchema: ApplicationsControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

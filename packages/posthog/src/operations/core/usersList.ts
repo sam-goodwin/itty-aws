@@ -2,10 +2,10 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
-export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListInput = /*@__PURE__*/ Schema.Struct({
   email: Schema.optional(Schema.String),
   is_staff: Schema.optional(Schema.Boolean),
   limit: Schema.optional(Schema.Number),
@@ -14,7 +14,7 @@ export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UsersListInput = typeof UsersListInput.Type;
 
 // Output Schema
-export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -52,7 +52,7 @@ export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             uuid: Schema.optional(Schema.String),
             organization: Schema.optional(Schema.String),
             project_id: Schema.optional(Schema.Number),
-            api_token: Schema.optional(SensitiveString),
+            api_token: Schema.optional(SensitiveOutputString),
             name: Schema.optional(Schema.String),
             completed_snippet_onboarding: Schema.optional(Schema.Boolean),
             has_completed_onboarding_for: Schema.optional(
@@ -732,8 +732,8 @@ export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         set_current_organization: Schema.optional(Schema.String),
         set_current_team: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        current_password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
+        current_password: Schema.optional(SensitiveOutputString),
         events_column_config: Schema.optional(Schema.Unknown),
         is_2fa_enabled: Schema.optional(Schema.Boolean),
         has_social_auth: Schema.optional(Schema.Boolean),
@@ -796,7 +796,7 @@ export type UsersListOutput = typeof UsersListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const usersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersListInput,
   outputSchema: UsersListOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -2,97 +2,92 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, Conflict } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CreateProjectBranchRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    branch_id: Schema.String.pipe(T.PathParam()),
-    role: Schema.Struct({
-      name: Schema.String,
-      no_login: Schema.optional(Schema.Boolean),
-    }),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/projects/{project_id}/branches/{branch_id}/roles",
-    }),
-  );
+export const CreateProjectBranchRoleInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  branch_id: Schema.String.pipe(T.PathParam()),
+  role: Schema.Struct({
+    name: Schema.String,
+    no_login: Schema.optional(Schema.Boolean),
+  }),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/projects/{project_id}/branches/{branch_id}/roles",
+  }),
+);
 export type CreateProjectBranchRoleInput =
   typeof CreateProjectBranchRoleInput.Type;
 
 // Output Schema
-export const CreateProjectBranchRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.Struct({
-      branch_id: Schema.String,
-      name: Schema.String,
-      password: Schema.optional(SensitiveString),
-      protected: Schema.optional(Schema.Boolean),
-      authentication_method: Schema.optional(Schema.String),
+export const CreateProjectBranchRoleOutput = /*@__PURE__*/ Schema.Struct({
+  role: Schema.Struct({
+    branch_id: Schema.String,
+    name: Schema.String,
+    password: Schema.optional(SensitiveOutputString),
+    protected: Schema.optional(Schema.Boolean),
+    authentication_method: Schema.optional(Schema.String),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+  }),
+  operations: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      project_id: Schema.String,
+      branch_id: Schema.optional(Schema.String),
+      endpoint_id: Schema.optional(Schema.String),
+      action: Schema.Literals([
+        "create_compute",
+        "create_timeline",
+        "start_compute",
+        "suspend_compute",
+        "apply_config",
+        "check_availability",
+        "delete_timeline",
+        "create_branch",
+        "import_data",
+        "tenant_ignore",
+        "tenant_attach",
+        "tenant_detach",
+        "tenant_reattach",
+        "replace_safekeeper",
+        "disable_maintenance",
+        "apply_storage_config",
+        "prepare_secondary_pageserver",
+        "switch_pageserver",
+        "detach_parent_branch",
+        "timeline_archive",
+        "timeline_unarchive",
+        "start_reserved_compute",
+        "sync_dbs_and_roles_from_compute",
+        "apply_schema_from_branch",
+        "timeline_mark_invisible",
+        "prewarm_replica",
+        "promote_replica",
+        "set_storage_non_dirty",
+        "swap_binding_id",
+      ]),
+      status: Schema.Literals([
+        "scheduling",
+        "running",
+        "finished",
+        "failed",
+        "error",
+        "cancelling",
+        "cancelled",
+        "skipped",
+      ]),
+      error: Schema.optional(Schema.String),
+      failures_count: Schema.Number,
+      retry_at: Schema.optional(Schema.String),
       created_at: Schema.String,
       updated_at: Schema.String,
+      total_duration_ms: Schema.Number,
     }),
-    operations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        project_id: Schema.String,
-        branch_id: Schema.optional(Schema.String),
-        endpoint_id: Schema.optional(Schema.String),
-        action: Schema.Literals([
-          "create_compute",
-          "create_timeline",
-          "start_compute",
-          "suspend_compute",
-          "apply_config",
-          "check_availability",
-          "delete_timeline",
-          "create_branch",
-          "import_data",
-          "tenant_ignore",
-          "tenant_attach",
-          "tenant_detach",
-          "tenant_reattach",
-          "replace_safekeeper",
-          "disable_maintenance",
-          "apply_storage_config",
-          "prepare_secondary_pageserver",
-          "switch_pageserver",
-          "detach_parent_branch",
-          "timeline_archive",
-          "timeline_unarchive",
-          "start_reserved_compute",
-          "sync_dbs_and_roles_from_compute",
-          "apply_schema_from_branch",
-          "timeline_mark_invisible",
-          "timeline_update_protected_config",
-          "prewarm_replica",
-          "promote_replica",
-          "set_storage_non_dirty",
-          "swap_binding_id",
-          "finalize_migration",
-          "mark_migration_prepared",
-        ]),
-        status: Schema.Literals([
-          "scheduling",
-          "running",
-          "finished",
-          "failed",
-          "error",
-          "cancelling",
-          "cancelled",
-          "skipped",
-        ]),
-        error: Schema.optional(Schema.String),
-        failures_count: Schema.Number,
-        retry_at: Schema.optional(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        total_duration_ms: Schema.Number,
-      }),
-    ),
-  });
+  ),
+});
 export type CreateProjectBranchRoleOutput =
   typeof CreateProjectBranchRoleOutput.Type;
 
@@ -110,10 +105,8 @@ export type CreateProjectBranchRoleOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const createProjectBranchRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateProjectBranchRoleInput,
-    outputSchema: CreateProjectBranchRoleOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const createProjectBranchRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectBranchRoleInput,
+  outputSchema: CreateProjectBranchRoleOutput,
+  errors: [NotFound, Conflict] as const,
+}));

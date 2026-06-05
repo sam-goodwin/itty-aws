@@ -5,7 +5,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
 export const V1DeactivateVanitySubdomainConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/vanity-subdomain" }),
@@ -15,7 +15,7 @@ export type V1DeactivateVanitySubdomainConfigInput =
 
 // Output Schema
 export const V1DeactivateVanitySubdomainConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type V1DeactivateVanitySubdomainConfigOutput =
   typeof V1DeactivateVanitySubdomainConfigOutput.Type;
 
@@ -25,9 +25,8 @@ export type V1DeactivateVanitySubdomainConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeactivateVanitySubdomainConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1DeactivateVanitySubdomainConfigInput,
-    outputSchema: V1DeactivateVanitySubdomainConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }));
+export const v1DeactivateVanitySubdomainConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DeactivateVanitySubdomainConfigInput,
+  outputSchema: V1DeactivateVanitySubdomainConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

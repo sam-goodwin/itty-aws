@@ -9,247 +9,235 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CalculateExchangePostInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/calculateExchange",
-    }),
-  );
+export const CalculateExchangePostInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/calculateExchange",
+  }),
+);
 export type CalculateExchangePostInput = typeof CalculateExchangePostInput.Type;
 
 // Output Schema
-export const CalculateExchangePostOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["Succeeded", "Failed", "Cancelled", "Pending"]),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        sessionId: Schema.optional(Schema.String),
-        netPayable: Schema.optional(
+export const CalculateExchangePostOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals(["Succeeded", "Failed", "Cancelled", "Pending"]),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      sessionId: Schema.optional(Schema.String),
+      netPayable: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      refundsTotal: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      purchasesTotal: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      reservationsToPurchase: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        refundsTotal: Schema.optional(
-          Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        purchasesTotal: Schema.optional(
-          Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        reservationsToPurchase: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(
-                Schema.Struct({
-                  sku: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  location: Schema.optional(Schema.String),
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      reservedResourceType: Schema.optional(
-                        Schema.Literals([
-                          "VirtualMachines",
-                          "SqlDatabases",
-                          "SuseLinux",
-                          "CosmosDb",
-                          "RedHat",
-                          "SqlDataWarehouse",
-                          "VMwareCloudSimple",
-                          "RedHatOsa",
-                          "Databricks",
-                          "AppService",
-                          "ManagedDisk",
-                          "BlockBlob",
-                          "RedisCache",
-                          "AzureDataExplorer",
-                          "MySql",
-                          "MariaDb",
-                          "PostgreSql",
-                          "DedicatedHost",
-                          "SapHana",
-                          "SqlAzureHybridBenefit",
-                          "AVS",
-                          "DataFactory",
-                          "NetAppStorage",
-                          "AzureFiles",
-                          "SqlEdge",
-                          "VirtualMachineSoftware",
-                        ]),
-                      ),
-                      billingScopeId: Schema.optional(Schema.String),
-                      term: Schema.optional(
-                        Schema.Literals(["P1Y", "P3Y", "P5Y"]),
-                      ),
-                      billingPlan: Schema.optional(
-                        Schema.Literals(["Upfront", "Monthly"]),
-                      ),
-                      quantity: Schema.optional(Schema.Number),
-                      displayName: Schema.optional(Schema.String),
-                      appliedScopeType: Schema.optional(
-                        Schema.Literals([
-                          "Single",
-                          "Shared",
-                          "ManagementGroup",
-                        ]),
-                      ),
-                      appliedScopes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      appliedScopeProperties: Schema.optional(
-                        Schema.Struct({
-                          tenantId: Schema.optional(Schema.String),
-                          managementGroupId: Schema.optional(Schema.String),
-                          subscriptionId: Schema.optional(Schema.String),
-                          resourceGroupId: Schema.optional(Schema.String),
-                          displayName: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      renew: Schema.optional(Schema.Boolean),
-                      reservedResourceProperties: Schema.optional(
-                        Schema.Struct({
-                          instanceFlexibility: Schema.optional(
-                            Schema.Literals(["On", "Off"]),
-                          ),
-                        }),
-                      ),
-                      reviewDateTime: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              billingCurrencyTotal: Schema.optional(
-                Schema.Struct({
-                  currencyCode: Schema.optional(Schema.String),
-                  amount: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-        savingsPlansToPurchase: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(
-                Schema.Struct({
-                  sku: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      displayName: Schema.optional(Schema.String),
-                      billingScopeId: Schema.optional(Schema.String),
-                      term: Schema.optional(Schema.Literals(["P1Y", "P3Y"])),
-                      billingPlan: Schema.optional(Schema.Literals(["P1M"])),
-                      appliedScopeType: Schema.optional(
-                        Schema.Literals([
-                          "Single",
-                          "Shared",
-                          "ManagementGroup",
-                        ]),
-                      ),
-                      appliedScopeProperties: Schema.optional(
-                        Schema.Struct({
-                          tenantId: Schema.optional(Schema.String),
-                          managementGroupId: Schema.optional(Schema.String),
-                          subscriptionId: Schema.optional(Schema.String),
-                          resourceGroupId: Schema.optional(Schema.String),
-                          displayName: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      commitment: Schema.optional(
-                        Schema.Struct({
-                          currencyCode: Schema.optional(Schema.String),
-                          amount: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              billingCurrencyTotal: Schema.optional(
-                Schema.Struct({
-                  currencyCode: Schema.optional(Schema.String),
-                  amount: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-        reservationsToExchange: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              reservationId: Schema.optional(Schema.String),
-              quantity: Schema.optional(Schema.Number),
-              billingRefundAmount: Schema.optional(
-                Schema.Struct({
-                  currencyCode: Schema.optional(Schema.String),
-                  amount: Schema.optional(Schema.Number),
-                }),
-              ),
-              billingInformation: Schema.optional(
-                Schema.Struct({
-                  billingCurrencyTotalPaidAmount: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingCurrencyProratedAmount: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingCurrencyRemainingCommitmentAmount: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        policyResult: Schema.optional(
-          Schema.Struct({
-            policyErrors: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
+            properties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                location: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    reservedResourceType: Schema.optional(
+                      Schema.Literals([
+                        "VirtualMachines",
+                        "SqlDatabases",
+                        "SuseLinux",
+                        "CosmosDb",
+                        "RedHat",
+                        "SqlDataWarehouse",
+                        "VMwareCloudSimple",
+                        "RedHatOsa",
+                        "Databricks",
+                        "AppService",
+                        "ManagedDisk",
+                        "BlockBlob",
+                        "RedisCache",
+                        "AzureDataExplorer",
+                        "MySql",
+                        "MariaDb",
+                        "PostgreSql",
+                        "DedicatedHost",
+                        "SapHana",
+                        "SqlAzureHybridBenefit",
+                        "AVS",
+                        "DataFactory",
+                        "NetAppStorage",
+                        "AzureFiles",
+                        "SqlEdge",
+                        "VirtualMachineSoftware",
+                      ]),
+                    ),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(
+                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                    ),
+                    billingPlan: Schema.optional(
+                      Schema.Literals(["Upfront", "Monthly"]),
+                    ),
+                    quantity: Schema.optional(Schema.Number),
+                    displayName: Schema.optional(Schema.String),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    renew: Schema.optional(Schema.Boolean),
+                    reservedResourceProperties: Schema.optional(
+                      Schema.Struct({
+                        instanceFlexibility: Schema.optional(
+                          Schema.Literals(["On", "Off"]),
+                        ),
+                      }),
+                    ),
+                    reviewDateTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            billingCurrencyTotal: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amount: Schema.optional(Schema.Number),
+              }),
             ),
           }),
         ),
-      }),
-    ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+      ),
+      savingsPlansToPurchase: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    displayName: Schema.optional(Schema.String),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(Schema.Literals(["P1Y", "P3Y"])),
+                    billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    commitment: Schema.optional(
+                      Schema.Struct({
+                        currencyCode: Schema.optional(Schema.String),
+                        amount: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            billingCurrencyTotal: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amount: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+      ),
+      reservationsToExchange: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            reservationId: Schema.optional(Schema.String),
+            quantity: Schema.optional(Schema.Number),
+            billingRefundAmount: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amount: Schema.optional(Schema.Number),
+              }),
+            ),
+            billingInformation: Schema.optional(
+              Schema.Struct({
+                billingCurrencyTotalPaidAmount: Schema.optional(
+                  Schema.Struct({
+                    currencyCode: Schema.optional(Schema.String),
+                    amount: Schema.optional(Schema.Number),
+                  }),
+                ),
+                billingCurrencyProratedAmount: Schema.optional(
+                  Schema.Struct({
+                    currencyCode: Schema.optional(Schema.String),
+                    amount: Schema.optional(Schema.Number),
+                  }),
+                ),
+                billingCurrencyRemainingCommitmentAmount: Schema.optional(
+                  Schema.Struct({
+                    currencyCode: Schema.optional(Schema.String),
+                    amount: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+      ),
+      policyResult: Schema.optional(
+        Schema.Struct({
+          policyErrors: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CalculateExchangePostOutput =
   typeof CalculateExchangePostOutput.Type;
 
@@ -266,157 +254,153 @@ export const CalculateExchangePost = /*@__PURE__*/ API.make(() => ({
   outputSchema: CalculateExchangePostOutput,
 }));
 // Input Schema
-export const CalculateRefundPostInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
-    }),
-  );
+export const CalculateRefundPostInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
+  }),
+);
 export type CalculateRefundPostInput = typeof CalculateRefundPostInput.Type;
 
 // Output Schema
-export const CalculateRefundPostOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        sessionId: Schema.optional(Schema.String),
-        quantity: Schema.optional(Schema.Number),
-        billingRefundAmount: Schema.optional(
-          Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        pricingRefundAmount: Schema.optional(
-          Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        policyResult: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                consumedRefundsTotal: Schema.optional(
+export const CalculateRefundPostOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      sessionId: Schema.optional(Schema.String),
+      quantity: Schema.optional(Schema.Number),
+      billingRefundAmount: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      pricingRefundAmount: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      policyResult: Schema.optional(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              consumedRefundsTotal: Schema.optional(
+                Schema.Struct({
+                  currencyCode: Schema.optional(Schema.String),
+                  amount: Schema.optional(Schema.Number),
+                }),
+              ),
+              maxRefundLimit: Schema.optional(
+                Schema.Struct({
+                  currencyCode: Schema.optional(Schema.String),
+                  amount: Schema.optional(Schema.Number),
+                }),
+              ),
+              policyErrors: Schema.optional(
+                Schema.Array(
                   Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amount: Schema.optional(Schema.Number),
+                    code: Schema.optional(
+                      Schema.Literals([
+                        "NotSpecified",
+                        "InternalServerError",
+                        "ServerTimeout",
+                        "AuthorizationFailed",
+                        "BadRequest",
+                        "ClientCertificateThumbprintNotSet",
+                        "InvalidRequestContent",
+                        "OperationFailed",
+                        "HttpMethodNotSupported",
+                        "InvalidRequestUri",
+                        "MissingTenantId",
+                        "InvalidTenantId",
+                        "InvalidReservationOrderId",
+                        "InvalidReservationId",
+                        "ReservationIdNotInReservationOrder",
+                        "ReservationOrderNotFound",
+                        "InvalidSubscriptionId",
+                        "InvalidAccessToken",
+                        "InvalidLocationId",
+                        "UnauthenticatedRequestsThrottled",
+                        "InvalidHealthCheckType",
+                        "Forbidden",
+                        "BillingScopeIdCannotBeChanged",
+                        "AppliedScopesNotAssociatedWithCommerceAccount",
+                        "PatchValuesSameAsExisting",
+                        "RoleAssignmentCreationFailed",
+                        "ReservationOrderCreationFailed",
+                        "ReservationOrderNotEnabled",
+                        "CapacityUpdateScopesFailed",
+                        "UnsupportedReservationTerm",
+                        "ReservationOrderIdAlreadyExists",
+                        "RiskCheckFailed",
+                        "CreateQuoteFailed",
+                        "ActivateQuoteFailed",
+                        "NonsupportedAccountId",
+                        "PaymentInstrumentNotFound",
+                        "MissingAppliedScopesForSingle",
+                        "NoValidReservationsToReRate",
+                        "ReRateOnlyAllowedForEA",
+                        "OperationCannotBePerformedInCurrentState",
+                        "InvalidSingleAppliedScopesCount",
+                        "InvalidFulfillmentRequestParameters",
+                        "NotSupportedCountry",
+                        "InvalidRefundQuantity",
+                        "PurchaseError",
+                        "BillingCustomerInputError",
+                        "BillingPaymentInstrumentSoftError",
+                        "BillingPaymentInstrumentHardError",
+                        "BillingTransientError",
+                        "BillingError",
+                        "FulfillmentConfigurationError",
+                        "FulfillmentOutOfStockError",
+                        "FulfillmentTransientError",
+                        "FulfillmentError",
+                        "CalculatePriceFailed",
+                        "AppliedScopesSameAsExisting",
+                        "SelfServiceRefundNotSupported",
+                        "RefundLimitExceeded",
+                      ]),
+                    ),
+                    message: Schema.optional(Schema.String),
                   }),
                 ),
-                maxRefundLimit: Schema.optional(
-                  Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amount: Schema.optional(Schema.Number),
-                  }),
-                ),
-                policyErrors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(
-                        Schema.Literals([
-                          "NotSpecified",
-                          "InternalServerError",
-                          "ServerTimeout",
-                          "AuthorizationFailed",
-                          "BadRequest",
-                          "ClientCertificateThumbprintNotSet",
-                          "InvalidRequestContent",
-                          "OperationFailed",
-                          "HttpMethodNotSupported",
-                          "InvalidRequestUri",
-                          "MissingTenantId",
-                          "InvalidTenantId",
-                          "InvalidReservationOrderId",
-                          "InvalidReservationId",
-                          "ReservationIdNotInReservationOrder",
-                          "ReservationOrderNotFound",
-                          "InvalidSubscriptionId",
-                          "InvalidAccessToken",
-                          "InvalidLocationId",
-                          "UnauthenticatedRequestsThrottled",
-                          "InvalidHealthCheckType",
-                          "Forbidden",
-                          "BillingScopeIdCannotBeChanged",
-                          "AppliedScopesNotAssociatedWithCommerceAccount",
-                          "PatchValuesSameAsExisting",
-                          "RoleAssignmentCreationFailed",
-                          "ReservationOrderCreationFailed",
-                          "ReservationOrderNotEnabled",
-                          "CapacityUpdateScopesFailed",
-                          "UnsupportedReservationTerm",
-                          "ReservationOrderIdAlreadyExists",
-                          "RiskCheckFailed",
-                          "CreateQuoteFailed",
-                          "ActivateQuoteFailed",
-                          "NonsupportedAccountId",
-                          "PaymentInstrumentNotFound",
-                          "MissingAppliedScopesForSingle",
-                          "NoValidReservationsToReRate",
-                          "ReRateOnlyAllowedForEA",
-                          "OperationCannotBePerformedInCurrentState",
-                          "InvalidSingleAppliedScopesCount",
-                          "InvalidFulfillmentRequestParameters",
-                          "NotSupportedCountry",
-                          "InvalidRefundQuantity",
-                          "PurchaseError",
-                          "BillingCustomerInputError",
-                          "BillingPaymentInstrumentSoftError",
-                          "BillingPaymentInstrumentHardError",
-                          "BillingTransientError",
-                          "BillingError",
-                          "FulfillmentConfigurationError",
-                          "FulfillmentOutOfStockError",
-                          "FulfillmentTransientError",
-                          "FulfillmentError",
-                          "CalculatePriceFailed",
-                          "AppliedScopesSameAsExisting",
-                          "SelfServiceRefundNotSupported",
-                          "RefundLimitExceeded",
-                        ]),
-                      ),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        billingInformation: Schema.optional(
-          Schema.Struct({
-            billingPlan: Schema.optional(
-              Schema.Literals(["Upfront", "Monthly"]),
-            ),
-            completedTransactions: Schema.optional(Schema.Number),
-            totalTransactions: Schema.optional(Schema.Number),
-            billingCurrencyTotalPaidAmount: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            billingCurrencyProratedAmount: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            billingCurrencyRemainingCommitmentAmount: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  });
+              ),
+            }),
+          ),
+        }),
+      ),
+      billingInformation: Schema.optional(
+        Schema.Struct({
+          billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
+          completedTransactions: Schema.optional(Schema.Number),
+          totalTransactions: Schema.optional(Schema.Number),
+          billingCurrencyTotalPaidAmount: Schema.optional(
+            Schema.Struct({
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
+            }),
+          ),
+          billingCurrencyProratedAmount: Schema.optional(
+            Schema.Struct({
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
+            }),
+          ),
+          billingCurrencyRemainingCommitmentAmount: Schema.optional(
+            Schema.Struct({
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+});
 export type CalculateRefundPostOutput = typeof CalculateRefundPostOutput.Type;
 
 // The operation
@@ -693,36 +677,34 @@ export const ExchangePost = /*@__PURE__*/ API.make(() => ({
   outputSchema: ExchangePostOutput,
 }));
 // Input Schema
-export const GetAppliedReservationListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
-    }),
-  );
+export const GetAppliedReservationListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
+  }),
+);
 export type GetAppliedReservationListInput =
   typeof GetAppliedReservationListInput.Type;
 
 // Output Schema
-export const GetAppliedReservationListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        reservationOrderIds: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.Array(Schema.String)),
-            nextLink: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const GetAppliedReservationListOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      reservationOrderIds: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.Array(Schema.String)),
+          nextLink: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type GetAppliedReservationListOutput =
   typeof GetAppliedReservationListOutput.Type;
 
@@ -895,17 +877,16 @@ export const OperationList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationListOutput,
 }));
 // Input Schema
-export const ReservationArchiveInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
-    }),
-  );
+export const ReservationArchiveInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
+  }),
+);
 export type ReservationArchiveInput = typeof ReservationArchiveInput.Type;
 
 // Output Schema
@@ -927,36 +908,34 @@ export const ReservationArchive = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationArchiveOutput,
 }));
 // Input Schema
-export const ReservationAvailableScopesInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
-    }),
-  );
+export const ReservationAvailableScopesInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
+  }),
+);
 export type ReservationAvailableScopesInput =
   typeof ReservationAvailableScopesInput.Type;
 
 // Output Schema
-export const ReservationAvailableScopesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        scopes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              scope: Schema.optional(Schema.String),
-              valid: Schema.optional(Schema.Boolean),
-            }),
-          ),
+export const ReservationAvailableScopesOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      scopes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            scope: Schema.optional(Schema.String),
+            valid: Schema.optional(Schema.Boolean),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ReservationAvailableScopesOutput =
   typeof ReservationAvailableScopesOutput.Type;
 
@@ -1078,111 +1057,23 @@ export const ReservationList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationListOutput,
 }));
 // Input Schema
-export const ReservationListAllInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    refreshSummary: Schema.optional(Schema.String),
-    $skiptoken: Schema.optional(Schema.Number),
-    selectedState: Schema.optional(Schema.String),
-    take: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Capacity/reservations",
-    }),
-  );
+export const ReservationListAllInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  refreshSummary: Schema.optional(Schema.String),
+  $skiptoken: Schema.optional(Schema.Number),
+  selectedState: Schema.optional(Schema.String),
+  take: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Capacity/reservations" }),
+);
 export type ReservationListAllInput = typeof ReservationListAllInput.Type;
 
 // Output Schema
-export const ReservationListAllOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
-    nextLink: Schema.optional(Schema.String),
-    summary: Schema.optional(
-      Schema.Struct({
-        succeededCount: Schema.optional(Schema.Number),
-        failedCount: Schema.optional(Schema.Number),
-        expiringCount: Schema.optional(Schema.Number),
-        expiredCount: Schema.optional(Schema.Number),
-        pendingCount: Schema.optional(Schema.Number),
-        cancelledCount: Schema.optional(Schema.Number),
-        processingCount: Schema.optional(Schema.Number),
-        warningCount: Schema.optional(Schema.Number),
-        noBenefitCount: Schema.optional(Schema.Number),
-      }),
-    ),
-  });
-export type ReservationListAllOutput = typeof ReservationListAllOutput.Type;
-
-// The operation
-/**
- * List the reservations and the roll up counts of reservations group by provisioning states that the user has access to in the current tenant.
- *
- * @param api-version - The API version to use for this operation.
- * @param $filter - May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
- * @param $orderby - May be used to sort order by reservation properties.
- * @param refreshSummary - To indicate whether to refresh the roll up counts of the reservations group by provisioning states
- * @param $skiptoken - The number of reservations to skip from the list before returning results
- * @param selectedState - The selected provisioning state
- * @param take - To number of reservations to return
- */
-export const ReservationListAll = /*@__PURE__*/ API.make(() => ({
-  inputSchema: ReservationListAllInput,
-  outputSchema: ReservationListAllOutput,
-}));
-// Input Schema
-export const ReservationListRevisionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
-    }),
-  );
-export type ReservationListRevisionsInput =
-  typeof ReservationListRevisionsInput.Type;
-
-// Output Schema
-export const ReservationListRevisionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
+export const ReservationListAllOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
@@ -1213,8 +1104,79 @@ export const ReservationListRevisionsOutput =
         ),
       }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+  summary: Schema.optional(
+    Schema.Struct({
+      succeededCount: Schema.optional(Schema.Number),
+      failedCount: Schema.optional(Schema.Number),
+      expiringCount: Schema.optional(Schema.Number),
+      expiredCount: Schema.optional(Schema.Number),
+      pendingCount: Schema.optional(Schema.Number),
+      cancelledCount: Schema.optional(Schema.Number),
+      processingCount: Schema.optional(Schema.Number),
+      warningCount: Schema.optional(Schema.Number),
+      noBenefitCount: Schema.optional(Schema.Number),
+    }),
+  ),
+});
+export type ReservationListAllOutput = typeof ReservationListAllOutput.Type;
+
+// The operation
+/**
+ * List the reservations and the roll up counts of reservations group by provisioning states that the user has access to in the current tenant.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
+ * @param $orderby - May be used to sort order by reservation properties.
+ * @param refreshSummary - To indicate whether to refresh the roll up counts of the reservations group by provisioning states
+ * @param $skiptoken - The number of reservations to skip from the list before returning results
+ * @param selectedState - The selected provisioning state
+ * @param take - To number of reservations to return
+ */
+export const ReservationListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationListAllInput,
+  outputSchema: ReservationListAllOutput,
+}));
+// Input Schema
+export const ReservationListRevisionsInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
+  }),
+);
+export type ReservationListRevisionsInput =
+  typeof ReservationListRevisionsInput.Type;
+
+// Output Schema
+export const ReservationListRevisionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReservationListRevisionsOutput =
   typeof ReservationListRevisionsOutput.Type;
 
@@ -1282,94 +1244,92 @@ export const ReservationMerge = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationMergeOutput,
 }));
 // Input Schema
-export const ReservationOrderCalculateInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/calculatePrice",
-    }),
-  );
+export const ReservationOrderCalculateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/calculatePrice",
+  }),
+);
 export type ReservationOrderCalculateInput =
   typeof ReservationOrderCalculateInput.Type;
 
 // Output Schema
-export const ReservationOrderCalculateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        billingCurrencyTotal: Schema.optional(
+export const ReservationOrderCalculateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      billingCurrencyTotal: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      netTotal: Schema.optional(Schema.Number),
+      taxTotal: Schema.optional(Schema.Number),
+      grandTotal: Schema.optional(Schema.Number),
+      isTaxIncluded: Schema.optional(Schema.Boolean),
+      isBillingPartnerManaged: Schema.optional(Schema.Boolean),
+      reservationOrderId: Schema.optional(Schema.String),
+      skuTitle: Schema.optional(Schema.String),
+      skuDescription: Schema.optional(Schema.String),
+      pricingCurrencyTotal: Schema.optional(
+        Schema.Struct({
+          currencyCode: Schema.optional(Schema.String),
+          amount: Schema.optional(Schema.Number),
+        }),
+      ),
+      paymentSchedule: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
+            dueDate: Schema.optional(Schema.String),
+            paymentDate: Schema.optional(Schema.String),
+            pricingCurrencyTotal: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amount: Schema.optional(Schema.Number),
+              }),
+            ),
+            billingCurrencyTotal: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amount: Schema.optional(Schema.Number),
+              }),
+            ),
+            billingAccount: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "Failed",
+                "Scheduled",
+                "Cancelled",
+              ]),
+            ),
+            extendedStatusInfo: Schema.optional(
+              Schema.Struct({
+                statusCode: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "Pending",
+                    "Processing",
+                    "Active",
+                    "PurchaseError",
+                    "PaymentInstrumentError",
+                    "Split",
+                    "Merged",
+                    "Expired",
+                    "Succeeded",
+                  ]),
+                ),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
           }),
         ),
-        netTotal: Schema.optional(Schema.Number),
-        taxTotal: Schema.optional(Schema.Number),
-        grandTotal: Schema.optional(Schema.Number),
-        isTaxIncluded: Schema.optional(Schema.Boolean),
-        isBillingPartnerManaged: Schema.optional(Schema.Boolean),
-        reservationOrderId: Schema.optional(Schema.String),
-        skuTitle: Schema.optional(Schema.String),
-        skuDescription: Schema.optional(Schema.String),
-        pricingCurrencyTotal: Schema.optional(
-          Schema.Struct({
-            currencyCode: Schema.optional(Schema.String),
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-        paymentSchedule: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dueDate: Schema.optional(Schema.String),
-              paymentDate: Schema.optional(Schema.String),
-              pricingCurrencyTotal: Schema.optional(
-                Schema.Struct({
-                  currencyCode: Schema.optional(Schema.String),
-                  amount: Schema.optional(Schema.Number),
-                }),
-              ),
-              billingCurrencyTotal: Schema.optional(
-                Schema.Struct({
-                  currencyCode: Schema.optional(Schema.String),
-                  amount: Schema.optional(Schema.Number),
-                }),
-              ),
-              billingAccount: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Failed",
-                  "Scheduled",
-                  "Cancelled",
-                ]),
-              ),
-              extendedStatusInfo: Schema.optional(
-                Schema.Struct({
-                  statusCode: Schema.optional(
-                    Schema.Literals([
-                      "None",
-                      "Pending",
-                      "Processing",
-                      "Active",
-                      "PurchaseError",
-                      "PaymentInstrumentError",
-                      "Split",
-                      "Merged",
-                      "Expired",
-                      "Succeeded",
-                    ]),
-                  ),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ReservationOrderCalculateOutput =
   typeof ReservationOrderCalculateOutput.Type;
 
@@ -1386,16 +1346,17 @@ export const ReservationOrderCalculate = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationOrderCalculateOutput,
 }));
 // Input Schema
-export const ReservationOrderChangeDirectoryInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ReservationOrderChangeDirectoryInput = /*@__PURE__*/ Schema.Struct(
+  {
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
+  }),
+);
 export type ReservationOrderChangeDirectoryInput =
   typeof ReservationOrderChangeDirectoryInput.Type;
 
@@ -1433,46 +1394,43 @@ export type ReservationOrderChangeDirectoryOutput =
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationOrderChangeDirectory =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReservationOrderChangeDirectoryInput,
-    outputSchema: ReservationOrderChangeDirectoryOutput,
-  }));
+export const ReservationOrderChangeDirectory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderChangeDirectoryInput,
+  outputSchema: ReservationOrderChangeDirectoryOutput,
+}));
 // Input Schema
-export const ReservationOrderGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
-    }),
-  );
+export const ReservationOrderGetInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+  }),
+);
 export type ReservationOrderGetInput = typeof ReservationOrderGetInput.Type;
 
 // Output Schema
-export const ReservationOrderGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReservationOrderGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReservationOrderGetOutput = typeof ReservationOrderGetOutput.Type;
 
 // The operation
@@ -1490,53 +1448,41 @@ export const ReservationOrderGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationOrderGetOutput,
 }));
 // Input Schema
-export const ReservationOrderListInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Capacity/reservationOrders",
-    }),
-  );
+export const ReservationOrderListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Capacity/reservationOrders",
+  }),
+);
 export type ReservationOrderListInput = typeof ReservationOrderListInput.Type;
 
 // Output Schema
-export const ReservationOrderListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReservationOrderListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReservationOrderListOutput = typeof ReservationOrderListOutput.Type;
 
 // The operation
@@ -1552,40 +1498,38 @@ export const ReservationOrderList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationOrderListOutput,
 }));
 // Input Schema
-export const ReservationOrderPurchaseInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
-    }),
-  );
+export const ReservationOrderPurchaseInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+  }),
+);
 export type ReservationOrderPurchaseInput =
   typeof ReservationOrderPurchaseInput.Type;
 
 // Output Schema
-export const ReservationOrderPurchaseOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReservationOrderPurchaseOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReservationOrderPurchaseOutput =
   typeof ReservationOrderPurchaseOutput.Type;
 
@@ -1652,17 +1596,16 @@ export const ReservationSplit = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationSplitOutput,
 }));
 // Input Schema
-export const ReservationUnarchiveInput =
-  /*@__PURE__*/ Schema.Struct({
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
-    }),
-  );
+export const ReservationUnarchiveInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
+  }),
+);
 export type ReservationUnarchiveInput = typeof ReservationUnarchiveInput.Type;
 
 // Output Schema
@@ -1697,26 +1640,25 @@ export const ReservationUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ReservationUpdateInput = typeof ReservationUpdateInput.Type;
 
 // Output Schema
-export const ReservationUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReservationUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReservationUpdateOutput = typeof ReservationUpdateOutput.Type;
 
 // The operation

@@ -2,25 +2,23 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const V1GetPostgrestServiceConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/postgrest" }));
+export const V1GetPostgrestServiceConfigInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/postgrest" }));
 export type V1GetPostgrestServiceConfigInput =
   typeof V1GetPostgrestServiceConfigInput.Type;
 
 // Output Schema
-export const V1GetPostgrestServiceConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    db_schema: Schema.String,
-    max_rows: Schema.Number,
-    db_extra_search_path: Schema.String,
-    db_pool: Schema.NullOr(Schema.Number),
-    jwt_secret: Schema.optional(SensitiveString),
-  });
+export const V1GetPostgrestServiceConfigOutput = /*@__PURE__*/ Schema.Struct({
+  db_schema: Schema.String,
+  max_rows: Schema.Number,
+  db_extra_search_path: Schema.String,
+  db_pool: Schema.NullOr(Schema.Number),
+  jwt_secret: Schema.optional(SensitiveOutputString),
+});
 export type V1GetPostgrestServiceConfigOutput =
   typeof V1GetPostgrestServiceConfigOutput.Type;
 
@@ -30,10 +28,8 @@ export type V1GetPostgrestServiceConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPostgrestServiceConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetPostgrestServiceConfigInput,
-    outputSchema: V1GetPostgrestServiceConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetPostgrestServiceConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetPostgrestServiceConfigInput,
+  outputSchema: V1GetPostgrestServiceConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostCustomersCustomerBalanceTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     amount: Schema.Number,
     currency: Schema.String,
@@ -23,7 +23,7 @@ export type PostCustomersCustomerBalanceTransactionsInput =
 
 // Output Schema
 export const PostCustomersCustomerBalanceTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     checkout_session: Schema.Unknown,
     created: Schema.Number,
@@ -62,8 +62,9 @@ export type PostCustomersCustomerBalanceTransactionsOutput =
  *
  * <p>Creates an immutable transaction that updates the customer’s credit <a href="/docs/billing/customer/balance">balance</a>.</p>
  */
-export const PostCustomersCustomerBalanceTransactions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCustomersCustomerBalanceTransactions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostCustomersCustomerBalanceTransactionsInput,
     outputSchema: PostCustomersCustomerBalanceTransactionsOutput,
-  }));
+  }),
+);

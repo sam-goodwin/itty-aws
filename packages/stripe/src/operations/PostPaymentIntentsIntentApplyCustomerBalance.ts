@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentApplyCustomerBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     currency: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type PostPaymentIntentsIntentApplyCustomerBalanceInput =
 
 // Output Schema
 export const PostPaymentIntentsIntentApplyCustomerBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -99,7 +99,7 @@ export const PostPaymentIntentsIntentApplyCustomerBalanceOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -231,7 +231,7 @@ export type PostPaymentIntentsIntentApplyCustomerBalanceOutput =
  * <p>Manually reconcile the remaining amount for a <code>customer_balance</code> PaymentIntent.</p>
  */
 export const PostPaymentIntentsIntentApplyCustomerBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentApplyCustomerBalanceInput,
     outputSchema: PostPaymentIntentsIntentApplyCustomerBalanceOutput,
   }));

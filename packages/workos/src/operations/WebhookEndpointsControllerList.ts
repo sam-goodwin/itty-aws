@@ -1,22 +1,21 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const WebhookEndpointsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-  }).pipe(T.Http({ method: "GET", path: "/webhook_endpoints" }));
+export const WebhookEndpointsControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+}).pipe(T.Http({ method: "GET", path: "/webhook_endpoints" }));
 export type WebhookEndpointsControllerListInput =
   typeof WebhookEndpointsControllerListInput.Type;
 
 // Output Schema
-export const WebhookEndpointsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookEndpointsControllerListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -24,7 +23,7 @@ export const WebhookEndpointsControllerListOutput =
           object: Schema.optional(Schema.String),
           id: Schema.optional(Schema.String),
           endpoint_url: Schema.optional(Schema.String),
-          secret: Schema.optional(SensitiveString),
+          secret: Schema.optional(SensitiveOutputString),
           status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
           events: Schema.optional(Schema.Array(Schema.String)),
           created_at: Schema.optional(Schema.String),
@@ -38,7 +37,8 @@ export const WebhookEndpointsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebhookEndpointsControllerListOutput =
   typeof WebhookEndpointsControllerListOutput.Type;
 
@@ -53,8 +53,7 @@ export type WebhookEndpointsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
  */
-export const WebhookEndpointsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebhookEndpointsControllerListInput,
-    outputSchema: WebhookEndpointsControllerListOutput,
-  }));
+export const WebhookEndpointsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookEndpointsControllerListInput,
+  outputSchema: WebhookEndpointsControllerListOutput,
+}));

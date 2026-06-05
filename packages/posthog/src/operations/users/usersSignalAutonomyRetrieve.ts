@@ -4,32 +4,30 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const UsersSignalAutonomyRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/users/{user_id}/signal_autonomy/" }),
-  );
+export const UsersSignalAutonomyRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  user_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/users/{user_id}/signal_autonomy/" }),
+);
 export type UsersSignalAutonomyRetrieveInput =
   typeof UsersSignalAutonomyRetrieveInput.Type;
 
 // Output Schema
-export const UsersSignalAutonomyRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    user: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        uuid: Schema.optional(Schema.String),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-      }),
-    ),
-    autostart_priority: Schema.optional(Schema.Unknown),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
+export const UsersSignalAutonomyRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  user: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.Number),
+      uuid: Schema.optional(Schema.String),
+      first_name: Schema.optional(Schema.String),
+      last_name: Schema.optional(Schema.String),
+      email: Schema.optional(Schema.String),
+    }),
+  ),
+  autostart_priority: Schema.optional(Schema.Unknown),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+});
 export type UsersSignalAutonomyRetrieveOutput =
   typeof UsersSignalAutonomyRetrieveOutput.Type;
 
@@ -40,10 +38,8 @@ export type UsersSignalAutonomyRetrieveOutput =
  * POST   /api/users/<id>/signal_autonomy/ → create or update
  * DELETE /api/users/<id>/signal_autonomy/ → remove (opt out)
  */
-export const usersSignalAutonomyRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersSignalAutonomyRetrieveInput,
-    outputSchema: UsersSignalAutonomyRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const usersSignalAutonomyRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersSignalAutonomyRetrieveInput,
+  outputSchema: UsersSignalAutonomyRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

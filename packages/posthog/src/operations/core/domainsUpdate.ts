@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
   domain: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
 
 // Output Schema
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
   is_verified: Schema.optional(Schema.Boolean),
@@ -54,7 +54,7 @@ export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
  *
  * @param id - A UUID string identifying this domain.
  */
-export const domainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

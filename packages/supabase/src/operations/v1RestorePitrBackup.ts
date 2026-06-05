@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1RestorePitrBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    recovery_time_target_unix: Schema.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/projects/{ref}/database/backups/restore-pitr",
-    }),
-  );
+export const V1RestorePitrBackupInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  recovery_time_target_unix: Schema.Number,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/projects/{ref}/database/backups/restore-pitr",
+  }),
+);
 export type V1RestorePitrBackupInput = typeof V1RestorePitrBackupInput.Type;
 
 // Output Schema
-export const V1RestorePitrBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1RestorePitrBackupOutput = /*@__PURE__*/ Schema.Void;
 export type V1RestorePitrBackupOutput = typeof V1RestorePitrBackupOutput.Type;
 
 // The operation
@@ -27,7 +25,7 @@ export type V1RestorePitrBackupOutput = typeof V1RestorePitrBackupOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1RestorePitrBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RestorePitrBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RestorePitrBackupInput,
   outputSchema: V1RestorePitrBackupOutput,
   errors: [BadRequest, Forbidden] as const,

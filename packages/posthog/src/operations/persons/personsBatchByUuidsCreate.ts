@@ -4,29 +4,27 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsBatchByUuidsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-    id: Schema.optional(Schema.Number),
-    name: Schema.optional(Schema.String),
-    distinct_ids: Schema.optional(Schema.Array(Schema.String)),
-    properties: Schema.optional(Schema.Unknown),
-    created_at: Schema.optional(Schema.String),
-    uuid: Schema.optional(Schema.String),
-    last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/persons/batch_by_uuids/",
-    }),
-  );
+export const PersonsBatchByUuidsCreateInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  id: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  distinct_ids: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Unknown),
+  created_at: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+  last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/persons/batch_by_uuids/",
+  }),
+);
 export type PersonsBatchByUuidsCreateInput =
   typeof PersonsBatchByUuidsCreateInput.Type;
 
 // Output Schema
-export const PersonsBatchByUuidsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsBatchByUuidsCreateOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsBatchByUuidsCreateOutput =
   typeof PersonsBatchByUuidsCreateOutput.Type;
 
@@ -36,10 +34,8 @@ export type PersonsBatchByUuidsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsBatchByUuidsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsBatchByUuidsCreateInput,
-    outputSchema: PersonsBatchByUuidsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsBatchByUuidsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsBatchByUuidsCreateInput,
+  outputSchema: PersonsBatchByUuidsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

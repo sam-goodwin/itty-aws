@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const GetRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -19,14 +19,13 @@ export const GetRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRoleInput = typeof GetRoleInput.Type;
 
 // Output Schema
-export const GetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
   private_access_host_url: Schema.String,
   private_connection_service_name: Schema.String,
   username: Schema.String,
-  base_username: Schema.String,
   password: SensitiveOutputNullableString,
   database_name: Schema.String,
   created_at: Schema.String,
@@ -84,7 +83,7 @@ export type GetRoleOutput = typeof GetRoleOutput.Type;
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param id - The ID of the role
  */
-export const getRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRoleInput,
   outputSchema: GetRoleOutput,
   errors: [Forbidden, NotFound] as const,

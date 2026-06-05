@@ -5,7 +5,7 @@ import { BadRequest } from "../errors.ts";
 
 // Input Schema
 export const RadarStandaloneControllerUpdateRadarListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.Literals([
       "ip_address",
       "domain",
@@ -23,7 +23,7 @@ export type RadarStandaloneControllerUpdateRadarListInput =
 
 // Output Schema
 export const RadarStandaloneControllerUpdateRadarListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   });
 export type RadarStandaloneControllerUpdateRadarListOutput =
@@ -38,9 +38,10 @@ export type RadarStandaloneControllerUpdateRadarListOutput =
  * @param type - The type of the Radar list (e.g. ip_address, domain, email).
  * @param action - The list action indicating whether to add the entry to the allow or block list.
  */
-export const RadarStandaloneControllerUpdateRadarList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RadarStandaloneControllerUpdateRadarList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RadarStandaloneControllerUpdateRadarListInput,
     outputSchema: RadarStandaloneControllerUpdateRadarListOutput,
     errors: [BadRequest] as const,
-  }));
+  }),
+);

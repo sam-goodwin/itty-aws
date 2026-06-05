@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostFinancialConnectionsAccountsAccountDisconnectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostFinancialConnectionsAccountsAccountDisconnectInput =
 
 // Output Schema
 export const PostFinancialConnectionsAccountsAccountDisconnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
@@ -83,7 +83,7 @@ export type PostFinancialConnectionsAccountsAccountDisconnectOutput =
  * <p>Disables your access to a Financial Connections <code>Account</code>. You will no longer be able to access data associated with the account (e.g. balances, transactions).</p>
  */
 export const PostFinancialConnectionsAccountsAccountDisconnect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountDisconnectInput,
     outputSchema: PostFinancialConnectionsAccountsAccountDisconnectOutput,
   }));

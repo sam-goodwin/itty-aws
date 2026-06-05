@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignAct
 
 // Output Schema
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.Unknown,
     carrier_text: Schema.Unknown,
     created: Schema.Number,
@@ -75,7 +75,7 @@ export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignAct
  * <p>Updates the <code>status</code> of the specified testmode personalization design object to <code>active</code>.</p>
  */
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivateInput,
     outputSchema:

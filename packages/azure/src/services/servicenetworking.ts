@@ -59,25 +59,25 @@ export type AssociationsInterfaceCreateOrUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param associationName - Name of Association
  */
-export const AssociationsInterfaceCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const AssociationsInterfaceCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AssociationsInterfaceCreateOrUpdateInput,
     outputSchema: AssociationsInterfaceCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AssociationsInterfaceDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
-    }),
-  );
+export const AssociationsInterfaceDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  associationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+  }),
+);
 export type AssociationsInterfaceDeleteInput =
   typeof AssociationsInterfaceDeleteInput.Type;
 
@@ -101,43 +101,41 @@ export const AssociationsInterfaceDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: AssociationsInterfaceDeleteOutput,
 }));
 // Input Schema
-export const AssociationsInterfaceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
-    }),
-  );
+export const AssociationsInterfaceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  associationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+  }),
+);
 export type AssociationsInterfaceGetInput =
   typeof AssociationsInterfaceGetInput.Type;
 
 // Output Schema
-export const AssociationsInterfaceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AssociationsInterfaceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AssociationsInterfaceGetOutput =
   typeof AssociationsInterfaceGetOutput.Type;
 
@@ -225,43 +223,41 @@ export const AssociationsInterfaceListByTrafficController =
     outputSchema: AssociationsInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
-export const AssociationsInterfaceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
-    }),
-  );
+export const AssociationsInterfaceUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  associationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+  }),
+);
 export type AssociationsInterfaceUpdateInput =
   typeof AssociationsInterfaceUpdateInput.Type;
 
 // Output Schema
-export const AssociationsInterfaceUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AssociationsInterfaceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AssociationsInterfaceUpdateOutput =
   typeof AssociationsInterfaceUpdateOutput.Type;
 
@@ -330,25 +326,23 @@ export type FrontendsInterfaceCreateOrUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param frontendName - Frontends
  */
-export const FrontendsInterfaceCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FrontendsInterfaceCreateOrUpdateInput,
-    outputSchema: FrontendsInterfaceCreateOrUpdateOutput,
-  }));
+export const FrontendsInterfaceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendsInterfaceCreateOrUpdateInput,
+  outputSchema: FrontendsInterfaceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const FrontendsInterfaceDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
-    }),
-  );
+export const FrontendsInterfaceDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  frontendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+  }),
+);
 export type FrontendsInterfaceDeleteInput =
   typeof FrontendsInterfaceDeleteInput.Type;
 
@@ -372,42 +366,40 @@ export const FrontendsInterfaceDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: FrontendsInterfaceDeleteOutput,
 }));
 // Input Schema
-export const FrontendsInterfaceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
-    }),
-  );
+export const FrontendsInterfaceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  frontendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+  }),
+);
 export type FrontendsInterfaceGetInput = typeof FrontendsInterfaceGetInput.Type;
 
 // Output Schema
-export const FrontendsInterfaceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FrontendsInterfaceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FrontendsInterfaceGetOutput =
   typeof FrontendsInterfaceGetOutput.Type;
 
@@ -489,49 +481,48 @@ export type FrontendsInterfaceListByTrafficControllerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trafficControllerName - traffic controller name for path
  */
-export const FrontendsInterfaceListByTrafficController =
-  /*@__PURE__*/ API.make(() => ({
+export const FrontendsInterfaceListByTrafficController = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FrontendsInterfaceListByTrafficControllerInput,
     outputSchema: FrontendsInterfaceListByTrafficControllerOutput,
-  }));
+  }),
+);
 // Input Schema
-export const FrontendsInterfaceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
-    }),
-  );
+export const FrontendsInterfaceUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  frontendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+  }),
+);
 export type FrontendsInterfaceUpdateInput =
   typeof FrontendsInterfaceUpdateInput.Type;
 
 // Output Schema
-export const FrontendsInterfaceUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FrontendsInterfaceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FrontendsInterfaceUpdateOutput =
   typeof FrontendsInterfaceUpdateOutput.Type;
 
@@ -647,25 +638,27 @@ export type SecurityPoliciesInterfaceCreateOrUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param securityPolicyName - SecurityPolicy
  */
-export const SecurityPoliciesInterfaceCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const SecurityPoliciesInterfaceCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SecurityPoliciesInterfaceCreateOrUpdateInput,
     outputSchema: SecurityPoliciesInterfaceCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SecurityPoliciesInterfaceDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const SecurityPoliciesInterfaceDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+  }),
+);
 export type SecurityPoliciesInterfaceDeleteInput =
   typeof SecurityPoliciesInterfaceDeleteInput.Type;
 
@@ -684,49 +677,46 @@ export type SecurityPoliciesInterfaceDeleteOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param securityPolicyName - SecurityPolicy
  */
-export const SecurityPoliciesInterfaceDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SecurityPoliciesInterfaceDeleteInput,
-    outputSchema: SecurityPoliciesInterfaceDeleteOutput,
-  }));
+export const SecurityPoliciesInterfaceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesInterfaceDeleteInput,
+  outputSchema: SecurityPoliciesInterfaceDeleteOutput,
+}));
 // Input Schema
-export const SecurityPoliciesInterfaceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    securityPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
-    }),
-  );
+export const SecurityPoliciesInterfaceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  securityPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+  }),
+);
 export type SecurityPoliciesInterfaceGetInput =
   typeof SecurityPoliciesInterfaceGetInput.Type;
 
 // Output Schema
-export const SecurityPoliciesInterfaceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SecurityPoliciesInterfaceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SecurityPoliciesInterfaceGetOutput =
   typeof SecurityPoliciesInterfaceGetOutput.Type;
 
@@ -740,11 +730,10 @@ export type SecurityPoliciesInterfaceGetOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param securityPolicyName - SecurityPolicy
  */
-export const SecurityPoliciesInterfaceGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SecurityPoliciesInterfaceGetInput,
-    outputSchema: SecurityPoliciesInterfaceGetOutput,
-  }));
+export const SecurityPoliciesInterfaceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesInterfaceGetInput,
+  outputSchema: SecurityPoliciesInterfaceGetOutput,
+}));
 // Input Schema
 export const SecurityPoliciesInterfaceListByTrafficControllerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -815,19 +804,20 @@ export const SecurityPoliciesInterfaceListByTrafficController =
     outputSchema: SecurityPoliciesInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
-export const SecurityPoliciesInterfaceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const SecurityPoliciesInterfaceUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+  }),
+);
 export type SecurityPoliciesInterfaceUpdateInput =
   typeof SecurityPoliciesInterfaceUpdateInput.Type;
 
@@ -865,11 +855,10 @@ export type SecurityPoliciesInterfaceUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param securityPolicyName - SecurityPolicy
  */
-export const SecurityPoliciesInterfaceUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SecurityPoliciesInterfaceUpdateInput,
-    outputSchema: SecurityPoliciesInterfaceUpdateOutput,
-  }));
+export const SecurityPoliciesInterfaceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesInterfaceUpdateInput,
+  outputSchema: SecurityPoliciesInterfaceUpdateOutput,
+}));
 // Input Schema
 export const TrafficControllerInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -919,11 +908,12 @@ export type TrafficControllerInterfaceCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trafficControllerName - traffic controller name for path
  */
-export const TrafficControllerInterfaceCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const TrafficControllerInterfaceCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: TrafficControllerInterfaceCreateOrUpdateInput,
     outputSchema: TrafficControllerInterfaceCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const TrafficControllerInterfaceDeleteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -954,48 +944,45 @@ export type TrafficControllerInterfaceDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trafficControllerName - traffic controller name for path
  */
-export const TrafficControllerInterfaceDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrafficControllerInterfaceDeleteInput,
-    outputSchema: TrafficControllerInterfaceDeleteOutput,
-  }));
+export const TrafficControllerInterfaceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrafficControllerInterfaceDeleteInput,
+  outputSchema: TrafficControllerInterfaceDeleteOutput,
+}));
 // Input Schema
-export const TrafficControllerInterfaceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
-    }),
-  );
+export const TrafficControllerInterfaceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  trafficControllerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
+  }),
+);
 export type TrafficControllerInterfaceGetInput =
   typeof TrafficControllerInterfaceGetInput.Type;
 
 // Output Schema
-export const TrafficControllerInterfaceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TrafficControllerInterfaceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TrafficControllerInterfaceGetOutput =
   typeof TrafficControllerInterfaceGetOutput.Type;
 
@@ -1008,11 +995,10 @@ export type TrafficControllerInterfaceGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trafficControllerName - traffic controller name for path
  */
-export const TrafficControllerInterfaceGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrafficControllerInterfaceGetInput,
-    outputSchema: TrafficControllerInterfaceGetOutput,
-  }));
+export const TrafficControllerInterfaceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrafficControllerInterfaceGetInput,
+  outputSchema: TrafficControllerInterfaceGetOutput,
+}));
 // Input Schema
 export const TrafficControllerInterfaceListByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1194,8 +1180,7 @@ export type TrafficControllerInterfaceUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trafficControllerName - traffic controller name for path
  */
-export const TrafficControllerInterfaceUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrafficControllerInterfaceUpdateInput,
-    outputSchema: TrafficControllerInterfaceUpdateOutput,
-  }));
+export const TrafficControllerInterfaceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrafficControllerInterfaceUpdateInput,
+  outputSchema: TrafficControllerInterfaceUpdateOutput,
+}));

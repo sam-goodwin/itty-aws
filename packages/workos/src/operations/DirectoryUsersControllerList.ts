@@ -4,94 +4,92 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DirectoryUsersControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-    directory: Schema.optional(Schema.String),
-    group: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/directory_users" }));
+export const DirectoryUsersControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+  directory: Schema.optional(Schema.String),
+  group: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/directory_users" }));
 export type DirectoryUsersControllerListInput =
   typeof DirectoryUsersControllerListInput.Type;
 
 // Output Schema
-export const DirectoryUsersControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          directory_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          idp_id: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.NullOr(Schema.String)),
-          last_name: Schema.optional(Schema.NullOr(Schema.String)),
-          emails: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                primary: Schema.optional(Schema.Boolean),
-                type: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
+export const DirectoryUsersControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        directory_id: Schema.optional(Schema.String),
+        organization_id: Schema.optional(Schema.String),
+        idp_id: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.NullOr(Schema.String)),
+        last_name: Schema.optional(Schema.NullOr(Schema.String)),
+        emails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              primary: Schema.optional(Schema.Boolean),
+              type: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
           ),
-          job_title: Schema.optional(Schema.NullOr(Schema.String)),
-          username: Schema.optional(Schema.NullOr(Schema.String)),
-          state: Schema.optional(
-            Schema.Literals(["active", "suspended", "inactive"]),
-          ),
-          raw_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          custom_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          role: Schema.optional(
+        ),
+        job_title: Schema.optional(Schema.NullOr(Schema.String)),
+        username: Schema.optional(Schema.NullOr(Schema.String)),
+        state: Schema.optional(
+          Schema.Literals(["active", "suspended", "inactive"]),
+        ),
+        raw_attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        custom_attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        role: Schema.optional(
+          Schema.Struct({
+            slug: Schema.optional(Schema.String),
+          }),
+        ),
+        roles: Schema.optional(
+          Schema.Array(
             Schema.Struct({
               slug: Schema.optional(Schema.String),
             }),
           ),
-          roles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                slug: Schema.optional(Schema.String),
-              }),
-            ),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        groups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              object: Schema.optional(Schema.String),
+              id: Schema.optional(Schema.String),
+              idp_id: Schema.optional(Schema.String),
+              directory_id: Schema.optional(Schema.String),
+              organization_id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              raw_attributes: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
+              created_at: Schema.optional(Schema.String),
+              updated_at: Schema.optional(Schema.String),
+            }),
           ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          groups: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                object: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-                idp_id: Schema.optional(Schema.String),
-                directory_id: Schema.optional(Schema.String),
-                organization_id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                raw_attributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Unknown),
-                ),
-                created_at: Schema.optional(Schema.String),
-                updated_at: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
-      Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        ),
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type DirectoryUsersControllerListOutput =
   typeof DirectoryUsersControllerListOutput.Type;
 
@@ -108,9 +106,8 @@ export type DirectoryUsersControllerListOutput =
  * @param directory - Unique identifier of the WorkOS Directory. This value can be obtained from the WorkOS dashboard or from the WorkOS API.
  * @param group - Unique identifier of the WorkOS Directory Group. This value can be obtained from the WorkOS API.
  */
-export const DirectoryUsersControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DirectoryUsersControllerListInput,
-    outputSchema: DirectoryUsersControllerListOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+export const DirectoryUsersControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectoryUsersControllerListInput,
+  outputSchema: DirectoryUsersControllerListOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

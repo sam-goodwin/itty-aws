@@ -10,7 +10,7 @@ import {
 
 // Input Schema
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -31,7 +31,7 @@ export type AuthorizationResourcesByExternalIdControllerListOrganizationMembersh
 
 // Output Schema
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -78,7 +78,7 @@ export type AuthorizationResourcesByExternalIdControllerListOrganizationMembersh
  * @param assignment - Filter by assignment type. Use "direct" for direct assignments only, or "indirect" to include inherited assignments.
  */
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput,
     outputSchema:

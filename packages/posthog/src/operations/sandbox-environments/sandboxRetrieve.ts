@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SandboxRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SandboxRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const SandboxRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SandboxRetrieveInput = typeof SandboxRetrieveInput.Type;
 
 // Output Schema
-export const SandboxRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SandboxRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   network_access_level: Schema.optional(
@@ -59,7 +59,7 @@ export type SandboxRetrieveOutput = typeof SandboxRetrieveOutput.Type;
  * @param id - A UUID string identifying this sandbox environment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sandboxRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sandboxRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: SandboxRetrieveInput,
   outputSchema: SandboxRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

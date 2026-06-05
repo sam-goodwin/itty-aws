@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export type AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput 
 
 // Output Schema
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     name: Schema.String,
     description: Schema.NullOr(Schema.String),
@@ -54,7 +54,7 @@ export type AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput
  * @param external_id - An identifier you provide to reference the resource in your system.
  */
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput,
     outputSchema:

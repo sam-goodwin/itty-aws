@@ -3,30 +3,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostInvoicesInvoiceRemoveLinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invoice: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    invoice_metadata: Schema.optional(Schema.Unknown),
-    lines: Schema.Array(
-      Schema.Struct({
-        behavior: Schema.Literals(["delete", "unassign"]),
-        id: Schema.String,
-      }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/invoices/{invoice}/remove_lines",
-      contentType: "form-urlencoded",
+export const PostInvoicesInvoiceRemoveLinesInput = /*@__PURE__*/ Schema.Struct({
+  invoice: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  invoice_metadata: Schema.optional(Schema.Unknown),
+  lines: Schema.Array(
+    Schema.Struct({
+      behavior: Schema.Literals(["delete", "unassign"]),
+      id: Schema.String,
     }),
-  );
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/invoices/{invoice}/remove_lines",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostInvoicesInvoiceRemoveLinesInput =
   typeof PostInvoicesInvoiceRemoveLinesInput.Type;
 
 // Output Schema
-export const PostInvoicesInvoiceRemoveLinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostInvoicesInvoiceRemoveLinesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
@@ -541,7 +540,8 @@ export const PostInvoicesInvoiceRemoveLinesOutput =
       ),
     ),
     webhooks_delivered_at: Schema.NullOr(Schema.Number),
-  });
+  },
+);
 export type PostInvoicesInvoiceRemoveLinesOutput =
   typeof PostInvoicesInvoiceRemoveLinesOutput.Type;
 
@@ -551,8 +551,7 @@ export type PostInvoicesInvoiceRemoveLinesOutput =
  *
  * <p>Removes multiple line items from an invoice. This is only possible when an invoice is still a draft.</p>
  */
-export const PostInvoicesInvoiceRemoveLines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostInvoicesInvoiceRemoveLinesInput,
-    outputSchema: PostInvoicesInvoiceRemoveLinesOutput,
-  }));
+export const PostInvoicesInvoiceRemoveLines = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoiceRemoveLinesInput,
+  outputSchema: PostInvoicesInvoiceRemoveLinesOutput,
+}));

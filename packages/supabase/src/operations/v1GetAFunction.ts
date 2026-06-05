@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1GetAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetAFunctionInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   function_slug: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const V1GetAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1GetAFunctionInput = typeof V1GetAFunctionInput.Type;
 
 // Output Schema
-export const V1GetAFunctionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetAFunctionOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   slug: Schema.String,
   name: Schema.String,
@@ -41,7 +41,7 @@ export type V1GetAFunctionOutput = typeof V1GetAFunctionOutput.Type;
  * @param ref - Project ref
  * @param function_slug - Function slug
  */
-export const v1GetAFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetAFunction = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetAFunctionInput,
   outputSchema: V1GetAFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

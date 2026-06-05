@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationsControllerGetAuditLogConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type OrganizationsControllerGetAuditLogConfigurationInput =
 
 // Output Schema
 export const OrganizationsControllerGetAuditLogConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
     retention_period_in_days: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.Literals(["active", "inactive", "disabled"])),
@@ -51,7 +51,7 @@ export type OrganizationsControllerGetAuditLogConfigurationOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const OrganizationsControllerGetAuditLogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsControllerGetAuditLogConfigurationInput,
     outputSchema: OrganizationsControllerGetAuditLogConfigurationOutput,
     errors: [NotFound] as const,

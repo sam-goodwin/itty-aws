@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AlertsDismissInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsDismissInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -22,7 +22,7 @@ export const AlertsDismissInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertsDismissInput = typeof AlertsDismissInput.Type;
 
 // Output Schema
-export const AlertsDismissOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsDismissOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -51,12 +51,12 @@ export type AlertsDismissOutput = typeof AlertsDismissOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param alertId - Alert ID
  */
-export const AlertsDismiss = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsDismiss = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsDismissInput,
   outputSchema: AlertsDismissOutput,
 }));
 // Input Schema
-export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -69,7 +69,7 @@ export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertsGetInput = typeof AlertsGetInput.Type;
 
 // Output Schema
-export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -98,12 +98,12 @@ export type AlertsGetOutput = typeof AlertsGetOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param alertId - Alert ID
  */
-export const AlertsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetInput,
   outputSchema: AlertsGetOutput,
 }));
 // Input Schema
-export const AlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -115,7 +115,7 @@ export const AlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertsListInput = typeof AlertsListInput.Type;
 
 // Output Schema
-export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -160,65 +160,63 @@ export type AlertsListOutput = typeof AlertsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param scope - The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
  */
-export const AlertsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsListInput,
   outputSchema: AlertsListOutput,
 }));
 // Input Schema
-export const AlertsListExternalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externalCloudProviderType: Schema.Literals([
-      "externalSubscriptions",
-      "externalBillingAccounts",
-    ]).pipe(T.PathParam()),
-    externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
-    }),
-  );
+export const AlertsListExternalInput = /*@__PURE__*/ Schema.Struct({
+  externalCloudProviderType: Schema.Literals([
+    "externalSubscriptions",
+    "externalBillingAccounts",
+  ]).pipe(T.PathParam()),
+  externalCloudProviderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
+  }),
+);
 export type AlertsListExternalInput = typeof AlertsListExternalInput.Type;
 
 // Output Schema
-export const AlertsListExternalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const AlertsListExternalOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AlertsListExternalOutput = typeof AlertsListExternalOutput.Type;
 
 // The operation
@@ -229,65 +227,63 @@ export type AlertsListExternalOutput = typeof AlertsListExternalOutput.Type;
  * @param externalCloudProviderType - The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
  * @param externalCloudProviderId - This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
  */
-export const AlertsListExternal = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsListExternal = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsListExternalInput,
   outputSchema: AlertsListExternalOutput,
 }));
 // Input Schema
-export const BenefitRecommendationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
-    }),
-  );
+export const BenefitRecommendationsListInput = /*@__PURE__*/ Schema.Struct({
+  billingScope: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
+  }),
+);
 export type BenefitRecommendationsListInput =
   typeof BenefitRecommendationsListInput.Type;
 
 // Output Schema
-export const BenefitRecommendationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BenefitRecommendationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BenefitRecommendationsListOutput =
   typeof BenefitRecommendationsListOutput.Type;
 
@@ -301,15 +297,13 @@ export type BenefitRecommendationsListOutput =
  * @param $expand - May be used to expand the properties by: properties/usage, properties/allRecommendationDetails
  * @param billingScope - The scope associated with benefit recommendation operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for enterprise agreement scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope
  */
-export const BenefitRecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BenefitRecommendationsListInput,
-    outputSchema: BenefitRecommendationsListOutput,
-  }),
-);
+export const BenefitRecommendationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BenefitRecommendationsListInput,
+  outputSchema: BenefitRecommendationsListOutput,
+}));
 // Input Schema
 export const BenefitUtilizationSummariesListByBillingAccountIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     grainParameter: Schema.optional(
@@ -327,7 +321,7 @@ export type BenefitUtilizationSummariesListByBillingAccountIdInput =
 
 // Output Schema
 export const BenefitUtilizationSummariesListByBillingAccountIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -376,13 +370,13 @@ export type BenefitUtilizationSummariesListByBillingAccountIdOutput =
  * @param filter - Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate.
  */
 export const BenefitUtilizationSummariesListByBillingAccountId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BenefitUtilizationSummariesListByBillingAccountIdInput,
     outputSchema: BenefitUtilizationSummariesListByBillingAccountIdOutput,
   }));
 // Input Schema
 export const BenefitUtilizationSummariesListByBillingProfileIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -401,7 +395,7 @@ export type BenefitUtilizationSummariesListByBillingProfileIdInput =
 
 // Output Schema
 export const BenefitUtilizationSummariesListByBillingProfileIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -451,13 +445,13 @@ export type BenefitUtilizationSummariesListByBillingProfileIdOutput =
  * @param filter - Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate.
  */
 export const BenefitUtilizationSummariesListByBillingProfileId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BenefitUtilizationSummariesListByBillingProfileIdInput,
     outputSchema: BenefitUtilizationSummariesListByBillingProfileIdOutput,
   }));
 // Input Schema
 export const BenefitUtilizationSummariesListBySavingsPlanIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -476,7 +470,7 @@ export type BenefitUtilizationSummariesListBySavingsPlanIdInput =
 
 // Output Schema
 export const BenefitUtilizationSummariesListBySavingsPlanIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -526,13 +520,13 @@ export type BenefitUtilizationSummariesListBySavingsPlanIdOutput =
  * @param savingsPlanId - Savings plan ID.
  */
 export const BenefitUtilizationSummariesListBySavingsPlanId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BenefitUtilizationSummariesListBySavingsPlanIdInput,
     outputSchema: BenefitUtilizationSummariesListBySavingsPlanIdOutput,
   }));
 // Input Schema
 export const BenefitUtilizationSummariesListBySavingsPlanOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
@@ -550,7 +544,7 @@ export type BenefitUtilizationSummariesListBySavingsPlanOrderInput =
 
 // Output Schema
 export const BenefitUtilizationSummariesListBySavingsPlanOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -599,45 +593,43 @@ export type BenefitUtilizationSummariesListBySavingsPlanOrderOutput =
  * @param savingsPlanOrderId - Savings plan order ID.
  */
 export const BenefitUtilizationSummariesListBySavingsPlanOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BenefitUtilizationSummariesListBySavingsPlanOrderInput,
     outputSchema: BenefitUtilizationSummariesListBySavingsPlanOrderOutput,
   }));
 // Input Schema
-export const BudgetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    budgetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
-    }),
-  );
+export const BudgetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  budgetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+  }),
+);
 export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BudgetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BudgetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BudgetsCreateOrUpdateOutput =
   typeof BudgetsCreateOrUpdateOutput.Type;
 
@@ -649,14 +641,12 @@ export type BudgetsCreateOrUpdateOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BudgetsCreateOrUpdateInput,
-    outputSchema: BudgetsCreateOrUpdateOutput,
-  }),
-);
+export const BudgetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BudgetsCreateOrUpdateInput,
+  outputSchema: BudgetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -669,7 +659,7 @@ export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
 
 // Output Schema
-export const BudgetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BudgetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BudgetsDeleteOutput = typeof BudgetsDeleteOutput.Type;
 
 // The operation
@@ -680,12 +670,12 @@ export type BudgetsDeleteOutput = typeof BudgetsDeleteOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsDeleteInput,
   outputSchema: BudgetsDeleteOutput,
 }));
 // Input Schema
-export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -698,7 +688,7 @@ export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BudgetsGetInput = typeof BudgetsGetInput.Type;
 
 // Output Schema
-export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -727,12 +717,12 @@ export type BudgetsGetOutput = typeof BudgetsGetOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsGetInput,
   outputSchema: BudgetsGetOutput,
 }));
 // Input Schema
-export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
@@ -745,7 +735,7 @@ export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BudgetsListInput = typeof BudgetsListInput.Type;
 
 // Output Schema
-export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -791,13 +781,13 @@ export type BudgetsListOutput = typeof BudgetsListOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param $filter - OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only.
  */
-export const BudgetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsListInput,
   outputSchema: BudgetsListOutput,
 }));
 // Input Schema
 export const CostAllocationRulesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -811,7 +801,7 @@ export type CostAllocationRulesCheckNameAvailabilityInput =
 
 // Output Schema
 export const CostAllocationRulesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["Invalid", "AlreadyExists", "Valid"]),
@@ -828,14 +818,15 @@ export type CostAllocationRulesCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountId - BillingAccount ID
  */
-export const CostAllocationRulesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CostAllocationRulesCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CostAllocationRulesCheckNameAvailabilityInput,
     outputSchema: CostAllocationRulesCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CostAllocationRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -850,7 +841,7 @@ export type CostAllocationRulesCreateOrUpdateInput =
 
 // Output Schema
 export const CostAllocationRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -880,29 +871,26 @@ export type CostAllocationRulesCreateOrUpdateOutput =
  * @param billingAccountId - BillingAccount ID
  * @param ruleName - Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
  */
-export const CostAllocationRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CostAllocationRulesCreateOrUpdateInput,
-    outputSchema: CostAllocationRulesCreateOrUpdateOutput,
-  }));
+export const CostAllocationRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CostAllocationRulesCreateOrUpdateInput,
+  outputSchema: CostAllocationRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CostAllocationRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccountId: Schema.String.pipe(T.PathParam()),
-    ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
-    }),
-  );
+export const CostAllocationRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  billingAccountId: Schema.String.pipe(T.PathParam()),
+  ruleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+  }),
+);
 export type CostAllocationRulesDeleteInput =
   typeof CostAllocationRulesDeleteInput.Type;
 
 // Output Schema
-export const CostAllocationRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CostAllocationRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CostAllocationRulesDeleteOutput =
   typeof CostAllocationRulesDeleteOutput.Type;
 
@@ -914,48 +902,44 @@ export type CostAllocationRulesDeleteOutput =
  * @param billingAccountId - BillingAccount ID
  * @param ruleName - Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
  */
-export const CostAllocationRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CostAllocationRulesDeleteInput,
-    outputSchema: CostAllocationRulesDeleteOutput,
+export const CostAllocationRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CostAllocationRulesDeleteInput,
+  outputSchema: CostAllocationRulesDeleteOutput,
+}));
+// Input Schema
+export const CostAllocationRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  billingAccountId: Schema.String.pipe(T.PathParam()),
+  ruleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
   }),
 );
-// Input Schema
-export const CostAllocationRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccountId: Schema.String.pipe(T.PathParam()),
-    ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
-    }),
-  );
 export type CostAllocationRulesGetInput =
   typeof CostAllocationRulesGetInput.Type;
 
 // Output Schema
-export const CostAllocationRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CostAllocationRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CostAllocationRulesGetOutput =
   typeof CostAllocationRulesGetOutput.Type;
 
@@ -967,64 +951,60 @@ export type CostAllocationRulesGetOutput =
  * @param billingAccountId - BillingAccount ID
  * @param ruleName - Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
  */
-export const CostAllocationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CostAllocationRulesGetInput,
-    outputSchema: CostAllocationRulesGetOutput,
+export const CostAllocationRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CostAllocationRulesGetInput,
+  outputSchema: CostAllocationRulesGetOutput,
+}));
+// Input Schema
+export const CostAllocationRulesListInput = /*@__PURE__*/ Schema.Struct({
+  billingAccountId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
   }),
 );
-// Input Schema
-export const CostAllocationRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
-    }),
-  );
 export type CostAllocationRulesListInput =
   typeof CostAllocationRulesListInput.Type;
 
 // Output Schema
-export const CostAllocationRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CostAllocationRulesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CostAllocationRulesListOutput =
   typeof CostAllocationRulesListOutput.Type;
 
@@ -1035,15 +1015,13 @@ export type CostAllocationRulesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountId - BillingAccount ID
  */
-export const CostAllocationRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CostAllocationRulesListInput,
-    outputSchema: CostAllocationRulesListOutput,
-  }),
-);
+export const CostAllocationRulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CostAllocationRulesListInput,
+  outputSchema: CostAllocationRulesListOutput,
+}));
 // Input Schema
 export const DimensionsByExternalCloudProviderTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     externalCloudProviderType: Schema.Literals([
       "externalSubscriptions",
       "externalBillingAccounts",
@@ -1065,7 +1043,7 @@ export type DimensionsByExternalCloudProviderTypeInput =
 
 // Output Schema
 export const DimensionsByExternalCloudProviderTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1096,13 +1074,14 @@ export type DimensionsByExternalCloudProviderTypeOutput =
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N dimension data.
  */
-export const DimensionsByExternalCloudProviderType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DimensionsByExternalCloudProviderType = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DimensionsByExternalCloudProviderTypeInput,
     outputSchema: DimensionsByExternalCloudProviderTypeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DimensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DimensionsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
@@ -1118,7 +1097,7 @@ export const DimensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DimensionsListInput = typeof DimensionsListInput.Type;
 
 // Output Schema
-export const DimensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DimensionsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1147,45 +1126,43 @@ export type DimensionsListOutput = typeof DimensionsListOutput.Type;
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N dimension data.
  */
-export const DimensionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DimensionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DimensionsListInput,
   outputSchema: DimensionsListOutput,
 }));
 // Input Schema
-export const ExportsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    exportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
-    }),
-  );
+export const ExportsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  exportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+  }),
+);
 export type ExportsCreateOrUpdateInput = typeof ExportsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ExportsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ExportsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ExportsCreateOrUpdateOutput =
   typeof ExportsCreateOrUpdateOutput.Type;
 
@@ -1197,14 +1174,12 @@ export type ExportsCreateOrUpdateOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param exportName - Export Name.
  */
-export const ExportsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExportsCreateOrUpdateInput,
-    outputSchema: ExportsCreateOrUpdateOutput,
-  }),
-);
+export const ExportsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportsCreateOrUpdateInput,
+  outputSchema: ExportsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsDeleteInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1217,7 +1192,7 @@ export const ExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExportsDeleteInput = typeof ExportsDeleteInput.Type;
 
 // Output Schema
-export const ExportsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExportsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ExportsDeleteOutput = typeof ExportsDeleteOutput.Type;
 
 // The operation
@@ -1228,12 +1203,12 @@ export type ExportsDeleteOutput = typeof ExportsDeleteOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param exportName - Export Name.
  */
-export const ExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExportsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportsDeleteInput,
   outputSchema: ExportsDeleteOutput,
 }));
 // Input Schema
-export const ExportsExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsExecuteInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1246,7 +1221,7 @@ export const ExportsExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExportsExecuteInput = typeof ExportsExecuteInput.Type;
 
 // Output Schema
-export const ExportsExecuteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExportsExecuteOutput = /*@__PURE__*/ Schema.Void;
 export type ExportsExecuteOutput = typeof ExportsExecuteOutput.Type;
 
 // The operation
@@ -1257,12 +1232,12 @@ export type ExportsExecuteOutput = typeof ExportsExecuteOutput.Type;
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param exportName - Export Name.
  */
-export const ExportsExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExportsExecute = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportsExecuteInput,
   outputSchema: ExportsExecuteOutput,
 }));
 // Input Schema
-export const ExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1276,7 +1251,7 @@ export const ExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExportsGetInput = typeof ExportsGetInput.Type;
 
 // Output Schema
-export const ExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1306,39 +1281,37 @@ export type ExportsGetOutput = typeof ExportsGetOutput.Type;
  * @param exportName - Export Name.
  * @param $expand - May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export.
  */
-export const ExportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportsGetInput,
   outputSchema: ExportsGetOutput,
 }));
 // Input Schema
-export const ExportsGetExecutionHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    exportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
-    }),
-  );
+export const ExportsGetExecutionHistoryInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  exportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
+  }),
+);
 export type ExportsGetExecutionHistoryInput =
   typeof ExportsGetExecutionHistoryInput.Type;
 
 // Output Schema
-export const ExportsGetExecutionHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-        }),
-      ),
+export const ExportsGetExecutionHistoryOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ExportsGetExecutionHistoryOutput =
   typeof ExportsGetExecutionHistoryOutput.Type;
 
@@ -1350,14 +1323,12 @@ export type ExportsGetExecutionHistoryOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param exportName - Export Name.
  */
-export const ExportsGetExecutionHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExportsGetExecutionHistoryInput,
-    outputSchema: ExportsGetExecutionHistoryOutput,
-  }),
-);
+export const ExportsGetExecutionHistory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportsGetExecutionHistoryInput,
+  outputSchema: ExportsGetExecutionHistoryOutput,
+}));
 // Input Schema
-export const ExportsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
@@ -1370,7 +1341,7 @@ export const ExportsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExportsListInput = typeof ExportsListInput.Type;
 
 // Output Schema
-export const ExportsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1415,13 +1386,13 @@ export type ExportsListOutput = typeof ExportsListOutput.Type;
  * @param scope - The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
  * @param $expand - May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last run of each export.
  */
-export const ExportsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExportsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportsListInput,
   outputSchema: ExportsListOutput,
 }));
 // Input Schema
 export const ForecastExternalCloudProviderUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     externalCloudProviderType: Schema.Literals([
       "externalSubscriptions",
       "externalBillingAccounts",
@@ -1440,7 +1411,7 @@ export type ForecastExternalCloudProviderUsageInput =
 
 // Output Schema
 export const ForecastExternalCloudProviderUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1461,13 +1432,14 @@ export type ForecastExternalCloudProviderUsageOutput =
  * @param externalCloudProviderType - The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
  * @param externalCloudProviderId - This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
  */
-export const ForecastExternalCloudProviderUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForecastExternalCloudProviderUsage = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ForecastExternalCloudProviderUsageInput,
     outputSchema: ForecastExternalCloudProviderUsageOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ForecastUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ForecastUsageInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
@@ -1480,7 +1452,7 @@ export const ForecastUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ForecastUsageInput = typeof ForecastUsageInput.Type;
 
 // Output Schema
-export const ForecastUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ForecastUsageOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1499,13 +1471,13 @@ export type ForecastUsageOutput = typeof ForecastUsageOutput.Type;
  * @param $filter - May be used to filter forecasts by properties/usageDate (Utc time), properties/chargeType or properties/grain. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'.
  * @param scope - The scope associated with forecast operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
  */
-export const ForecastUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForecastUsage = /*@__PURE__*/ API.make(() => ({
   inputSchema: ForecastUsageInput,
   outputSchema: ForecastUsageOutput,
 }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1519,7 +1491,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInp
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -1580,7 +1552,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountOut
  * @param billingAccountId - BillingAccount ID
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInput,
     outputSchema:
@@ -1588,7 +1560,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccount =
   }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1603,7 +1575,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInp
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -1665,7 +1637,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileOut
  * @param billingProfileId - Billing Profile ID.
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInput,
     outputSchema:
@@ -1673,7 +1645,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfile =
   }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1688,7 +1660,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInpu
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -1750,7 +1722,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdOutp
  * @param reservationId - Reservation ID
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInput,
     outputSchema:
@@ -1758,7 +1730,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationId =
   }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1772,7 +1744,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderI
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -1833,7 +1805,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderI
  * @param reservationOrderId - Reservation Order ID
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdInput,
     outputSchema:
@@ -1841,7 +1813,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrder
   }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1856,7 +1828,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInpu
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -1918,7 +1890,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdOutp
  * @param savingsPlanId - Savings plan ID.
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInput,
     outputSchema:
@@ -1926,7 +1898,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanId =
   }));
 // Input Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1940,7 +1912,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderI
 
 // Output Schema
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(
       Schema.Struct({
         billingAccountId: Schema.optional(Schema.String),
@@ -2001,7 +1973,7 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderI
  * @param savingsPlanOrderId - Savings plan order ID.
  */
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdInput,
     outputSchema:
@@ -2009,7 +1981,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
   }));
 // Input Schema
 export const GenerateCostDetailsReportCreateOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2023,7 +1995,7 @@ export type GenerateCostDetailsReportCreateOperationInput =
 
 // Output Schema
 export const GenerateCostDetailsReportCreateOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2085,14 +2057,15 @@ export type GenerateCostDetailsReportCreateOperationOutput =
  * @param api-version - The API version to use for this operation.
  * @param scope - The ARM Resource ID for subscription, billing account, or other billing scopes.Currently Resource Group and Management Group are not supported. For details, see https://aka.ms/costmgmt/scopes.
  */
-export const GenerateCostDetailsReportCreateOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GenerateCostDetailsReportCreateOperation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GenerateCostDetailsReportCreateOperationInput,
     outputSchema: GenerateCostDetailsReportCreateOperationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GenerateCostDetailsReportGetOperationResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2107,7 +2080,7 @@ export type GenerateCostDetailsReportGetOperationResultsInput =
 
 // Output Schema
 export const GenerateCostDetailsReportGetOperationResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2171,13 +2144,13 @@ export type GenerateCostDetailsReportGetOperationResultsOutput =
  * @param operationId - The target operation Id.
  */
 export const GenerateCostDetailsReportGetOperationResults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GenerateCostDetailsReportGetOperationResultsInput,
     outputSchema: GenerateCostDetailsReportGetOperationResultsOutput,
   }));
 // Input Schema
 export const GenerateDetailedCostReportCreateOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2191,7 +2164,7 @@ export type GenerateDetailedCostReportCreateOperationInput =
 
 // Output Schema
 export const GenerateDetailedCostReportCreateOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2220,14 +2193,15 @@ export type GenerateDetailedCostReportCreateOperationOutput =
  * @param api-version - The API version to use for this operation.
  * @param scope - The ARM Resource ID for subscription, resource group, billing account, or other billing scopes. For details, see https://aka.ms/costmgmt/scopes.
  */
-export const GenerateDetailedCostReportCreateOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GenerateDetailedCostReportCreateOperation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GenerateDetailedCostReportCreateOperationInput,
     outputSchema: GenerateDetailedCostReportCreateOperationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GenerateDetailedCostReportOperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2242,7 +2216,7 @@ export type GenerateDetailedCostReportOperationResultsGetInput =
 
 // Output Schema
 export const GenerateDetailedCostReportOperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2273,13 +2247,13 @@ export type GenerateDetailedCostReportOperationResultsGetOutput =
  * @param operationId - The target operation Id.
  */
 export const GenerateDetailedCostReportOperationResultsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GenerateDetailedCostReportOperationResultsGetInput,
     outputSchema: GenerateDetailedCostReportOperationResultsGetOutput,
   }));
 // Input Schema
 export const GenerateDetailedCostReportOperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2294,7 +2268,7 @@ export type GenerateDetailedCostReportOperationStatusGetInput =
 
 // Output Schema
 export const GenerateDetailedCostReportOperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2325,13 +2299,13 @@ export type GenerateDetailedCostReportOperationStatusGetOutput =
  * @param operationId - The target operation Id.
  */
 export const GenerateDetailedCostReportOperationStatusGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GenerateDetailedCostReportOperationStatusGetInput,
     outputSchema: GenerateDetailedCostReportOperationStatusGetOutput,
   }));
 // Input Schema
 export const GenerateReservationDetailsReportByBillingAccountIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     startDate: Schema.String,
@@ -2347,7 +2321,7 @@ export type GenerateReservationDetailsReportByBillingAccountIdInput =
 
 // Output Schema
 export const GenerateReservationDetailsReportByBillingAccountIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["Running", "Completed", "Failed"]),
     ),
@@ -2385,13 +2359,13 @@ export type GenerateReservationDetailsReportByBillingAccountIdOutput =
  * @param endDate - End Date
  */
 export const GenerateReservationDetailsReportByBillingAccountId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GenerateReservationDetailsReportByBillingAccountIdInput,
     outputSchema: GenerateReservationDetailsReportByBillingAccountIdOutput,
   }));
 // Input Schema
 export const GenerateReservationDetailsReportByBillingProfileIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2408,7 +2382,7 @@ export type GenerateReservationDetailsReportByBillingProfileIdInput =
 
 // Output Schema
 export const GenerateReservationDetailsReportByBillingProfileIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["Running", "Completed", "Failed"]),
     ),
@@ -2447,12 +2421,12 @@ export type GenerateReservationDetailsReportByBillingProfileIdOutput =
  * @param endDate - End Date
  */
 export const GenerateReservationDetailsReportByBillingProfileId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GenerateReservationDetailsReportByBillingProfileIdInput,
     outputSchema: GenerateReservationDetailsReportByBillingProfileIdOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2463,7 +2437,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2494,13 +2468,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PriceSheetDownloadByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2515,7 +2489,7 @@ export type PriceSheetDownloadByBillingAccountInput =
 
 // Output Schema
 export const PriceSheetDownloadByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["Running", "Completed", "Failed"]),
     ),
@@ -2558,14 +2532,15 @@ export type PriceSheetDownloadByBillingAccountOutput =
  * @param billingAccountId - BillingAccount ID
  * @param billingPeriodName - Billing Period Name.
  */
-export const PriceSheetDownloadByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PriceSheetDownloadByBillingAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PriceSheetDownloadByBillingAccountInput,
     outputSchema: PriceSheetDownloadByBillingAccountOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PriceSheetDownloadByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2580,7 +2555,7 @@ export type PriceSheetDownloadByBillingProfileInput =
 
 // Output Schema
 export const PriceSheetDownloadByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     downloadUrl: Schema.optional(Schema.String),
     downloadFileProperties: Schema.optional(
@@ -2627,34 +2602,33 @@ export type PriceSheetDownloadByBillingProfileOutput =
  * @param billingAccountName - BillingAccount ID
  * @param billingProfileName - Billing Profile Name.
  */
-export const PriceSheetDownloadByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PriceSheetDownloadByBillingProfile = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PriceSheetDownloadByBillingProfileInput,
     outputSchema: PriceSheetDownloadByBillingProfileOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PriceSheetDownloadByInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccountName: Schema.String.pipe(T.PathParam()),
-    billingProfileName: Schema.String.pipe(T.PathParam()),
-    invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
-    }),
-  );
+export const PriceSheetDownloadByInvoiceInput = /*@__PURE__*/ Schema.Struct({
+  billingAccountName: Schema.String.pipe(T.PathParam()),
+  billingProfileName: Schema.String.pipe(T.PathParam()),
+  invoiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
+  }),
+);
 export type PriceSheetDownloadByInvoiceInput =
   typeof PriceSheetDownloadByInvoiceInput.Type;
 
 // Output Schema
-export const PriceSheetDownloadByInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expiryTime: Schema.optional(Schema.String),
-    validTill: Schema.optional(Schema.String),
-    downloadUrl: Schema.optional(Schema.String),
-  });
+export const PriceSheetDownloadByInvoiceOutput = /*@__PURE__*/ Schema.Struct({
+  expiryTime: Schema.optional(Schema.String),
+  validTill: Schema.optional(Schema.String),
+  downloadUrl: Schema.optional(Schema.String),
+});
 export type PriceSheetDownloadByInvoiceOutput =
   typeof PriceSheetDownloadByInvoiceOutput.Type;
 
@@ -2667,14 +2641,12 @@ export type PriceSheetDownloadByInvoiceOutput =
  * @param billingProfileName - Billing Profile Name.
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
-export const PriceSheetDownloadByInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PriceSheetDownloadByInvoiceInput,
-    outputSchema: PriceSheetDownloadByInvoiceOutput,
-  }),
-);
+export const PriceSheetDownloadByInvoice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PriceSheetDownloadByInvoiceInput,
+  outputSchema: PriceSheetDownloadByInvoiceOutput,
+}));
 // Input Schema
-export const QueryUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUsageInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2686,7 +2658,7 @@ export const QueryUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryUsageInput = typeof QueryUsageInput.Type;
 
 // Output Schema
-export const QueryUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUsageOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2704,13 +2676,13 @@ export type QueryUsageOutput = typeof QueryUsageOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param scope - The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
  */
-export const QueryUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryUsage = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryUsageInput,
   outputSchema: QueryUsageOutput,
 }));
 // Input Schema
 export const QueryUsageByExternalCloudProviderTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     externalCloudProviderType: Schema.Literals([
       "externalSubscriptions",
       "externalBillingAccounts",
@@ -2728,7 +2700,7 @@ export type QueryUsageByExternalCloudProviderTypeInput =
 
 // Output Schema
 export const QueryUsageByExternalCloudProviderTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2748,14 +2720,15 @@ export type QueryUsageByExternalCloudProviderTypeOutput =
  * @param externalCloudProviderType - The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
  * @param externalCloudProviderId - This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
  */
-export const QueryUsageByExternalCloudProviderType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryUsageByExternalCloudProviderType = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: QueryUsageByExternalCloudProviderTypeInput,
     outputSchema: QueryUsageByExternalCloudProviderTypeOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ScheduledActionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2770,7 +2743,7 @@ export type ScheduledActionsCheckNameAvailabilityInput =
 
 // Output Schema
 export const ScheduledActionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -2786,14 +2759,15 @@ export type ScheduledActionsCheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const ScheduledActionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduledActionsCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ScheduledActionsCheckNameAvailabilityInput,
     outputSchema: ScheduledActionsCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ScheduledActionsCheckNameAvailabilityByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     name: Schema.optional(Schema.String),
@@ -2809,7 +2783,7 @@ export type ScheduledActionsCheckNameAvailabilityByScopeInput =
 
 // Output Schema
 export const ScheduledActionsCheckNameAvailabilityByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -2827,27 +2801,26 @@ export type ScheduledActionsCheckNameAvailabilityByScopeOutput =
  * @param type - The resource type.
  */
 export const ScheduledActionsCheckNameAvailabilityByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsCheckNameAvailabilityByScopeInput,
     outputSchema: ScheduledActionsCheckNameAvailabilityByScopeOutput,
   }));
 // Input Schema
-export const ScheduledActionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
-    }),
-  );
+export const ScheduledActionsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+  }),
+);
 export type ScheduledActionsCreateOrUpdateInput =
   typeof ScheduledActionsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ScheduledActionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduledActionsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2865,7 +2838,8 @@ export const ScheduledActionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ScheduledActionsCreateOrUpdateOutput =
   typeof ScheduledActionsCreateOrUpdateOutput.Type;
 
@@ -2877,14 +2851,13 @@ export type ScheduledActionsCreateOrUpdateOutput =
  * @param name - Scheduled action name.
  * @param If-Match - ETag of the Entity. Not required when creating an entity. Optional when updating an entity and can be specified to achieve optimistic concurrency.
  */
-export const ScheduledActionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ScheduledActionsCreateOrUpdateInput,
-    outputSchema: ScheduledActionsCreateOrUpdateOutput,
-  }));
+export const ScheduledActionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsCreateOrUpdateInput,
+  outputSchema: ScheduledActionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ScheduledActionsCreateOrUpdateByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2899,7 +2872,7 @@ export type ScheduledActionsCreateOrUpdateByScopeInput =
 
 // Output Schema
 export const ScheduledActionsCreateOrUpdateByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2930,28 +2903,27 @@ export type ScheduledActionsCreateOrUpdateByScopeOutput =
  * @param name - Scheduled action name.
  * @param If-Match - ETag of the Entity. Not required when creating an entity. Optional when updating an entity and can be specified to achieve optimistic concurrency.
  */
-export const ScheduledActionsCreateOrUpdateByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduledActionsCreateOrUpdateByScope = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ScheduledActionsCreateOrUpdateByScopeInput,
     outputSchema: ScheduledActionsCreateOrUpdateByScopeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ScheduledActionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
-    }),
-  );
+export const ScheduledActionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+  }),
+);
 export type ScheduledActionsDeleteInput =
   typeof ScheduledActionsDeleteInput.Type;
 
 // Output Schema
-export const ScheduledActionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScheduledActionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ScheduledActionsDeleteOutput =
   typeof ScheduledActionsDeleteOutput.Type;
 
@@ -2962,30 +2934,26 @@ export type ScheduledActionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledActionsDeleteInput,
-    outputSchema: ScheduledActionsDeleteOutput,
+export const ScheduledActionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsDeleteInput,
+  outputSchema: ScheduledActionsDeleteOutput,
+}));
+// Input Schema
+export const ScheduledActionsDeleteByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
   }),
 );
-// Input Schema
-export const ScheduledActionsDeleteByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
-    }),
-  );
 export type ScheduledActionsDeleteByScopeInput =
   typeof ScheduledActionsDeleteByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsDeleteByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScheduledActionsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
 export type ScheduledActionsDeleteByScopeOutput =
   typeof ScheduledActionsDeleteByScopeOutput.Type;
 
@@ -2997,45 +2965,42 @@ export type ScheduledActionsDeleteByScopeOutput =
  * @param scope - undefined
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsDeleteByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ScheduledActionsDeleteByScopeInput,
-    outputSchema: ScheduledActionsDeleteByScopeOutput,
-  }));
+export const ScheduledActionsDeleteByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsDeleteByScopeInput,
+  outputSchema: ScheduledActionsDeleteByScopeOutput,
+}));
 // Input Schema
-export const ScheduledActionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
-    }),
-  );
+export const ScheduledActionsGetInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+  }),
+);
 export type ScheduledActionsGetInput = typeof ScheduledActionsGetInput.Type;
 
 // Output Schema
-export const ScheduledActionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScheduledActionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScheduledActionsGetOutput = typeof ScheduledActionsGetOutput.Type;
 
 // The operation
@@ -3045,46 +3010,44 @@ export type ScheduledActionsGetOutput = typeof ScheduledActionsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduledActionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduledActionsGetInput,
   outputSchema: ScheduledActionsGetOutput,
 }));
 // Input Schema
-export const ScheduledActionsGetByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
-    }),
-  );
+export const ScheduledActionsGetByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+  }),
+);
 export type ScheduledActionsGetByScopeInput =
   typeof ScheduledActionsGetByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsGetByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScheduledActionsGetByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScheduledActionsGetByScopeOutput =
   typeof ScheduledActionsGetByScopeOutput.Type;
 
@@ -3096,63 +3059,59 @@ export type ScheduledActionsGetByScopeOutput =
  * @param scope - undefined
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledActionsGetByScopeInput,
-    outputSchema: ScheduledActionsGetByScopeOutput,
+export const ScheduledActionsGetByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsGetByScopeInput,
+  outputSchema: ScheduledActionsGetByScopeOutput,
+}));
+// Input Schema
+export const ScheduledActionsListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.CostManagement/scheduledActions",
   }),
 );
-// Input Schema
-export const ScheduledActionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.CostManagement/scheduledActions",
-    }),
-  );
 export type ScheduledActionsListInput = typeof ScheduledActionsListInput.Type;
 
 // Output Schema
-export const ScheduledActionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ScheduledActionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScheduledActionsListOutput = typeof ScheduledActionsListOutput.Type;
 
 // The operation
@@ -3162,65 +3121,61 @@ export type ScheduledActionsListOutput = typeof ScheduledActionsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param $filter - May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'.
  */
-export const ScheduledActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledActionsListInput,
-    outputSchema: ScheduledActionsListOutput,
+export const ScheduledActionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsListInput,
+  outputSchema: ScheduledActionsListOutput,
+}));
+// Input Schema
+export const ScheduledActionsListByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
   }),
 );
-// Input Schema
-export const ScheduledActionsListByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
-    }),
-  );
 export type ScheduledActionsListByScopeInput =
   typeof ScheduledActionsListByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsListByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ScheduledActionsListByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScheduledActionsListByScopeOutput =
   typeof ScheduledActionsListByScopeOutput.Type;
 
@@ -3232,28 +3187,24 @@ export type ScheduledActionsListByScopeOutput =
  * @param scope - undefined
  * @param $filter - May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'.
  */
-export const ScheduledActionsListByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledActionsListByScopeInput,
-    outputSchema: ScheduledActionsListByScopeOutput,
+export const ScheduledActionsListByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsListByScopeInput,
+  outputSchema: ScheduledActionsListByScopeOutput,
+}));
+// Input Schema
+export const ScheduledActionsRunInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
   }),
 );
-// Input Schema
-export const ScheduledActionsRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
-    }),
-  );
 export type ScheduledActionsRunInput = typeof ScheduledActionsRunInput.Type;
 
 // Output Schema
-export const ScheduledActionsRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScheduledActionsRunOutput = /*@__PURE__*/ Schema.Void;
 export type ScheduledActionsRunOutput = typeof ScheduledActionsRunOutput.Type;
 
 // The operation
@@ -3263,28 +3214,26 @@ export type ScheduledActionsRunOutput = typeof ScheduledActionsRunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduledActionsRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduledActionsRunInput,
   outputSchema: ScheduledActionsRunOutput,
 }));
 // Input Schema
-export const ScheduledActionsRunByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
-    }),
-  );
+export const ScheduledActionsRunByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
+  }),
+);
 export type ScheduledActionsRunByScopeInput =
   typeof ScheduledActionsRunByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsRunByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScheduledActionsRunByScopeOutput = /*@__PURE__*/ Schema.Void;
 export type ScheduledActionsRunByScopeOutput =
   typeof ScheduledActionsRunByScopeOutput.Type;
 
@@ -3296,48 +3245,44 @@ export type ScheduledActionsRunByScopeOutput =
  * @param scope - undefined
  * @param name - Scheduled action name.
  */
-export const ScheduledActionsRunByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledActionsRunByScopeInput,
-    outputSchema: ScheduledActionsRunByScopeOutput,
+export const ScheduledActionsRunByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledActionsRunByScopeInput,
+  outputSchema: ScheduledActionsRunByScopeOutput,
+}));
+// Input Schema
+export const SettingsCreateOrUpdateByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
   }),
 );
-// Input Schema
-export const SettingsCreateOrUpdateByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
-    }),
-  );
 export type SettingsCreateOrUpdateByScopeInput =
   typeof SettingsCreateOrUpdateByScopeInput.Type;
 
 // Output Schema
-export const SettingsCreateOrUpdateByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SettingsCreateOrUpdateByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SettingsCreateOrUpdateByScopeOutput =
   typeof SettingsCreateOrUpdateByScopeOutput.Type;
 
@@ -3349,28 +3294,25 @@ export type SettingsCreateOrUpdateByScopeOutput =
  * @param scope - undefined
  * @param type - Setting type.
  */
-export const SettingsCreateOrUpdateByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SettingsCreateOrUpdateByScopeInput,
-    outputSchema: SettingsCreateOrUpdateByScopeOutput,
-  }));
+export const SettingsCreateOrUpdateByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SettingsCreateOrUpdateByScopeInput,
+  outputSchema: SettingsCreateOrUpdateByScopeOutput,
+}));
 // Input Schema
-export const SettingsDeleteByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
-    }),
-  );
+export const SettingsDeleteByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+  }),
+);
 export type SettingsDeleteByScopeInput = typeof SettingsDeleteByScopeInput.Type;
 
 // Output Schema
-export const SettingsDeleteByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SettingsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
 export type SettingsDeleteByScopeOutput =
   typeof SettingsDeleteByScopeOutput.Type;
 
@@ -3382,47 +3324,43 @@ export type SettingsDeleteByScopeOutput =
  * @param scope - undefined
  * @param type - Setting type.
  */
-export const SettingsDeleteByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SettingsDeleteByScopeInput,
-    outputSchema: SettingsDeleteByScopeOutput,
+export const SettingsDeleteByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SettingsDeleteByScopeInput,
+  outputSchema: SettingsDeleteByScopeOutput,
+}));
+// Input Schema
+export const SettingsGetByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
   }),
 );
-// Input Schema
-export const SettingsGetByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
-    }),
-  );
 export type SettingsGetByScopeInput = typeof SettingsGetByScopeInput.Type;
 
 // Output Schema
-export const SettingsGetByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SettingsGetByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SettingsGetByScopeOutput = typeof SettingsGetByScopeOutput.Type;
 
 // The operation
@@ -3433,12 +3371,12 @@ export type SettingsGetByScopeOutput = typeof SettingsGetByScopeOutput.Type;
  * @param scope - undefined
  * @param type - Setting type.
  */
-export const SettingsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SettingsGetByScope = /*@__PURE__*/ API.make(() => ({
   inputSchema: SettingsGetByScopeInput,
   outputSchema: SettingsGetByScopeOutput,
 }));
 // Input Schema
-export const SettingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -3450,7 +3388,7 @@ export const SettingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SettingsListInput = typeof SettingsListInput.Type;
 
 // Output Schema
-export const SettingsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3494,44 +3432,42 @@ export type SettingsListOutput = typeof SettingsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param scope - undefined
  */
-export const SettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SettingsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SettingsListInput,
   outputSchema: SettingsListOutput,
 }));
 // Input Schema
-export const ViewsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.CostManagement/views/{viewName}",
-    }),
-  );
+export const ViewsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  viewName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.CostManagement/views/{viewName}",
+  }),
+);
 export type ViewsCreateOrUpdateInput = typeof ViewsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ViewsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ViewsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ViewsCreateOrUpdateOutput = typeof ViewsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -3541,46 +3477,44 @@ export type ViewsCreateOrUpdateOutput = typeof ViewsCreateOrUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param viewName - View name
  */
-export const ViewsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsCreateOrUpdateInput,
   outputSchema: ViewsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const ViewsCreateOrUpdateByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
-    }),
-  );
+export const ViewsCreateOrUpdateByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  viewName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+  }),
+);
 export type ViewsCreateOrUpdateByScopeInput =
   typeof ViewsCreateOrUpdateByScopeInput.Type;
 
 // Output Schema
-export const ViewsCreateOrUpdateByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ViewsCreateOrUpdateByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ViewsCreateOrUpdateByScopeOutput =
   typeof ViewsCreateOrUpdateByScopeOutput.Type;
 
@@ -3592,14 +3526,12 @@ export type ViewsCreateOrUpdateByScopeOutput =
  * @param scope - undefined
  * @param viewName - View name
  */
-export const ViewsCreateOrUpdateByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ViewsCreateOrUpdateByScopeInput,
-    outputSchema: ViewsCreateOrUpdateByScopeOutput,
-  }),
-);
+export const ViewsCreateOrUpdateByScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ViewsCreateOrUpdateByScopeInput,
+  outputSchema: ViewsCreateOrUpdateByScopeOutput,
+}));
 // Input Schema
-export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsDeleteInput = /*@__PURE__*/ Schema.Struct({
   viewName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -3611,7 +3543,7 @@ export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ViewsDeleteInput = typeof ViewsDeleteInput.Type;
 
 // Output Schema
-export const ViewsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ViewsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ViewsDeleteOutput = typeof ViewsDeleteOutput.Type;
 
 // The operation
@@ -3621,26 +3553,25 @@ export type ViewsDeleteOutput = typeof ViewsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param viewName - View name
  */
-export const ViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsDeleteInput,
   outputSchema: ViewsDeleteOutput,
 }));
 // Input Schema
-export const ViewsDeleteByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.String.pipe(T.PathParam()),
-    viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
-    }),
-  );
+export const ViewsDeleteByScopeInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  viewName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+  }),
+);
 export type ViewsDeleteByScopeInput = typeof ViewsDeleteByScopeInput.Type;
 
 // Output Schema
-export const ViewsDeleteByScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ViewsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
 export type ViewsDeleteByScopeOutput = typeof ViewsDeleteByScopeOutput.Type;
 
 // The operation
@@ -3651,12 +3582,12 @@ export type ViewsDeleteByScopeOutput = typeof ViewsDeleteByScopeOutput.Type;
  * @param scope - undefined
  * @param viewName - View name
  */
-export const ViewsDeleteByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsDeleteByScope = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsDeleteByScopeInput,
   outputSchema: ViewsDeleteByScopeOutput,
 }));
 // Input Schema
-export const ViewsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetInput = /*@__PURE__*/ Schema.Struct({
   viewName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -3668,7 +3599,7 @@ export const ViewsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ViewsGetInput = typeof ViewsGetInput.Type;
 
 // Output Schema
-export const ViewsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3696,12 +3627,12 @@ export type ViewsGetOutput = typeof ViewsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param viewName - View name
  */
-export const ViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsGetInput,
   outputSchema: ViewsGetOutput,
 }));
 // Input Schema
-export const ViewsGetByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetByScopeInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   viewName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3714,7 +3645,7 @@ export const ViewsGetByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ViewsGetByScopeInput = typeof ViewsGetByScopeInput.Type;
 
 // Output Schema
-export const ViewsGetByScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetByScopeOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3743,12 +3674,12 @@ export type ViewsGetByScopeOutput = typeof ViewsGetByScopeOutput.Type;
  * @param scope - undefined
  * @param viewName - View name
  */
-export const ViewsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsGetByScope = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsGetByScopeInput,
   outputSchema: ViewsGetByScopeOutput,
 }));
 // Input Schema
-export const ViewsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.CostManagement/views" }),
@@ -3756,7 +3687,7 @@ export const ViewsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ViewsListInput = typeof ViewsListInput.Type;
 
 // Output Schema
-export const ViewsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3800,12 +3731,12 @@ export type ViewsListOutput = typeof ViewsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsListInput,
   outputSchema: ViewsListOutput,
 }));
 // Input Schema
-export const ViewsListByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsListByScopeInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -3817,44 +3748,42 @@ export const ViewsListByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ViewsListByScopeInput = typeof ViewsListByScopeInput.Type;
 
 // Output Schema
-export const ViewsListByScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ViewsListByScopeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ViewsListByScopeOutput = typeof ViewsListByScopeOutput.Type;
 
 // The operation
@@ -3864,7 +3793,7 @@ export type ViewsListByScopeOutput = typeof ViewsListByScopeOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param scope - undefined
  */
-export const ViewsListByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsListByScope = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsListByScopeInput,
   outputSchema: ViewsListByScopeOutput,
 }));

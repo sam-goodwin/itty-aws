@@ -4,26 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterSearchIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    collectionName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}",
-    }),
-  );
+export const ListGroupClusterSearchIndexInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  collectionName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}",
+  }),
+);
 export type ListGroupClusterSearchIndexInput =
   typeof ListGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const ListGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterSearchIndexOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterSearchIndexOutput =
   typeof ListGroupClusterSearchIndexOutput.Type;
 
@@ -42,10 +40,8 @@ export type ListGroupClusterSearchIndexOutput =
  * @param collectionName - Name of the collection that contains one or more Atlas Search indexes.
  * @param databaseName - Label that identifies the database that contains the collection with one or more Atlas Search indexes.
  */
-export const listGroupClusterSearchIndex = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupClusterSearchIndexInput,
-    outputSchema: ListGroupClusterSearchIndexOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupClusterSearchIndex = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterSearchIndexInput,
+  outputSchema: ListGroupClusterSearchIndexOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

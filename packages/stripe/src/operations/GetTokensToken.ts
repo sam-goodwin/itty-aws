@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTokensTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokensTokenInput = /*@__PURE__*/ Schema.Struct({
   token: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetTokensTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTokensTokenInput = typeof GetTokensTokenInput.Type;
 
 // Output Schema
-export const GetTokensTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokensTokenOutput = /*@__PURE__*/ Schema.Struct({
   bank_account: Schema.optional(
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
@@ -110,7 +110,7 @@ export type GetTokensTokenOutput = typeof GetTokensTokenOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTokensToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTokensToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTokensTokenInput,
   outputSchema: GetTokensTokenOutput,
 }));

@@ -7,32 +7,30 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const BlobContainersClearLegalHoldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
-    }),
-  );
+export const BlobContainersClearLegalHoldInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
+  }),
+);
 export type BlobContainersClearLegalHoldInput =
   typeof BlobContainersClearLegalHoldInput.Type;
 
 // Output Schema
-export const BlobContainersClearLegalHoldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hasLegalHold: Schema.optional(Schema.Boolean),
-    tags: Schema.Array(Schema.String),
-    allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
-  });
+export const BlobContainersClearLegalHoldOutput = /*@__PURE__*/ Schema.Struct({
+  hasLegalHold: Schema.optional(Schema.Boolean),
+  tags: Schema.Array(Schema.String),
+  allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+});
 export type BlobContainersClearLegalHoldOutput =
   typeof BlobContainersClearLegalHoldOutput.Type;
 
@@ -46,48 +44,45 @@ export type BlobContainersClearLegalHoldOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersClearLegalHold =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BlobContainersClearLegalHoldInput,
-    outputSchema: BlobContainersClearLegalHoldOutput,
-  }));
+export const BlobContainersClearLegalHold = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersClearLegalHoldInput,
+  outputSchema: BlobContainersClearLegalHoldOutput,
+}));
 // Input Schema
-export const BlobContainersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-    }),
-  );
+export const BlobContainersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+  }),
+);
 export type BlobContainersCreateInput = typeof BlobContainersCreateInput.Type;
 
 // Output Schema
-export const BlobContainersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BlobContainersCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BlobContainersCreateOutput = typeof BlobContainersCreateOutput.Type;
 
 // The operation
@@ -100,15 +95,13 @@ export type BlobContainersCreateOutput = typeof BlobContainersCreateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersCreateInput,
-    outputSchema: BlobContainersCreateOutput,
-  }),
-);
+export const BlobContainersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersCreateInput,
+  outputSchema: BlobContainersCreateOutput,
+}));
 // Input Schema
 export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -125,7 +118,7 @@ export type BlobContainersCreateOrUpdateImmutabilityPolicyInput =
 
 // Output Schema
 export const BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -159,29 +152,27 @@ export type BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersCreateOrUpdateImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersCreateOrUpdateImmutabilityPolicyInput,
     outputSchema: BlobContainersCreateOrUpdateImmutabilityPolicyOutput,
   }));
 // Input Schema
-export const BlobContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-    }),
-  );
+export const BlobContainersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+  }),
+);
 export type BlobContainersDeleteInput = typeof BlobContainersDeleteInput.Type;
 
 // Output Schema
-export const BlobContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BlobContainersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BlobContainersDeleteOutput = typeof BlobContainersDeleteOutput.Type;
 
 // The operation
@@ -194,15 +185,13 @@ export type BlobContainersDeleteOutput = typeof BlobContainersDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersDeleteInput,
-    outputSchema: BlobContainersDeleteOutput,
-  }),
-);
+export const BlobContainersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersDeleteInput,
+  outputSchema: BlobContainersDeleteOutput,
+}));
 // Input Schema
 export const BlobContainersDeleteImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -219,7 +208,7 @@ export type BlobContainersDeleteImmutabilityPolicyInput =
 
 // Output Schema
 export const BlobContainersDeleteImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -252,14 +241,15 @@ export type BlobContainersDeleteImmutabilityPolicyOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
-export const BlobContainersDeleteImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersDeleteImmutabilityPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BlobContainersDeleteImmutabilityPolicyInput,
     outputSchema: BlobContainersDeleteImmutabilityPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BlobContainersExtendImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -276,7 +266,7 @@ export type BlobContainersExtendImmutabilityPolicyInput =
 
 // Output Schema
 export const BlobContainersExtendImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -309,21 +299,20 @@ export type BlobContainersExtendImmutabilityPolicyOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
-export const BlobContainersExtendImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersExtendImmutabilityPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BlobContainersExtendImmutabilityPolicyInput,
     outputSchema: BlobContainersExtendImmutabilityPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const BlobContainersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
@@ -332,26 +321,25 @@ export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BlobContainersGetInput = typeof BlobContainersGetInput.Type;
 
 // Output Schema
-export const BlobContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BlobContainersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BlobContainersGetOutput = typeof BlobContainersGetOutput.Type;
 
 // The operation
@@ -364,13 +352,13 @@ export type BlobContainersGetOutput = typeof BlobContainersGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersGetInput,
   outputSchema: BlobContainersGetOutput,
 }));
 // Input Schema
 export const BlobContainersGetImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -387,7 +375,7 @@ export type BlobContainersGetImmutabilityPolicyInput =
 
 // Output Schema
 export const BlobContainersGetImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -420,33 +408,32 @@ export type BlobContainersGetImmutabilityPolicyOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
-export const BlobContainersGetImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersGetImmutabilityPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BlobContainersGetImmutabilityPolicyInput,
     outputSchema: BlobContainersGetImmutabilityPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BlobContainersLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
-    }),
-  );
+export const BlobContainersLeaseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
+  }),
+);
 export type BlobContainersLeaseInput = typeof BlobContainersLeaseInput.Type;
 
 // Output Schema
-export const BlobContainersLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    leaseId: Schema.optional(Schema.String),
-    leaseTimeSeconds: Schema.optional(Schema.String),
-  });
+export const BlobContainersLeaseOutput = /*@__PURE__*/ Schema.Struct({
+  leaseId: Schema.optional(Schema.String),
+  leaseTimeSeconds: Schema.optional(Schema.String),
+});
 export type BlobContainersLeaseOutput = typeof BlobContainersLeaseOutput.Type;
 
 // The operation
@@ -459,64 +446,52 @@ export type BlobContainersLeaseOutput = typeof BlobContainersLeaseOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersLeaseInput,
   outputSchema: BlobContainersLeaseOutput,
 }));
 // Input Schema
-export const BlobContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $maxpagesize: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $include: Schema.optional(Schema.Literals(["deleted"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
-    }),
-  );
+export const BlobContainersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $include: Schema.optional(Schema.Literals(["deleted"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
+  }),
+);
 export type BlobContainersListInput = typeof BlobContainersListInput.Type;
 
 // Output Schema
-export const BlobContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BlobContainersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BlobContainersListOutput = typeof BlobContainersListOutput.Type;
 
 // The operation
@@ -531,13 +506,13 @@ export type BlobContainersListOutput = typeof BlobContainersListOutput.Type;
  * @param $filter - Optional. When specified, only container names starting with the filter will be listed.
  * @param $include - Optional, used to include the properties for soft deleted blob containers.
  */
-export const BlobContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersListInput,
   outputSchema: BlobContainersListOutput,
 }));
 // Input Schema
 export const BlobContainersLockImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -554,7 +529,7 @@ export type BlobContainersLockImmutabilityPolicyInput =
 
 // Output Schema
 export const BlobContainersLockImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -587,31 +562,30 @@ export type BlobContainersLockImmutabilityPolicyOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
-export const BlobContainersLockImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersLockImmutabilityPolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BlobContainersLockImmutabilityPolicyInput,
     outputSchema: BlobContainersLockImmutabilityPolicyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BlobContainersObjectLevelWormInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
-    }),
-  );
+export const BlobContainersObjectLevelWormInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
+  }),
+);
 export type BlobContainersObjectLevelWormInput =
   typeof BlobContainersObjectLevelWormInput.Type;
 
 // Output Schema
-export const BlobContainersObjectLevelWormOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BlobContainersObjectLevelWormOutput = /*@__PURE__*/ Schema.Void;
 export type BlobContainersObjectLevelWormOutput =
   typeof BlobContainersObjectLevelWormOutput.Type;
 
@@ -625,35 +599,32 @@ export type BlobContainersObjectLevelWormOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersObjectLevelWorm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BlobContainersObjectLevelWormInput,
-    outputSchema: BlobContainersObjectLevelWormOutput,
-  }));
+export const BlobContainersObjectLevelWorm = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersObjectLevelWormInput,
+  outputSchema: BlobContainersObjectLevelWormOutput,
+}));
 // Input Schema
-export const BlobContainersSetLegalHoldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
-    }),
-  );
+export const BlobContainersSetLegalHoldInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
+  }),
+);
 export type BlobContainersSetLegalHoldInput =
   typeof BlobContainersSetLegalHoldInput.Type;
 
 // Output Schema
-export const BlobContainersSetLegalHoldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hasLegalHold: Schema.optional(Schema.Boolean),
-    tags: Schema.Array(Schema.String),
-    allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
-  });
+export const BlobContainersSetLegalHoldOutput = /*@__PURE__*/ Schema.Struct({
+  hasLegalHold: Schema.optional(Schema.Boolean),
+  tags: Schema.Array(Schema.String),
+  allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+});
 export type BlobContainersSetLegalHoldOutput =
   typeof BlobContainersSetLegalHoldOutput.Type;
 
@@ -667,49 +638,45 @@ export type BlobContainersSetLegalHoldOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersSetLegalHold = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersSetLegalHoldInput,
-    outputSchema: BlobContainersSetLegalHoldOutput,
+export const BlobContainersSetLegalHold = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersSetLegalHoldInput,
+  outputSchema: BlobContainersSetLegalHoldOutput,
+}));
+// Input Schema
+export const BlobContainersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
   }),
 );
-// Input Schema
-export const BlobContainersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-    }),
-  );
 export type BlobContainersUpdateInput = typeof BlobContainersUpdateInput.Type;
 
 // Output Schema
-export const BlobContainersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BlobContainersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BlobContainersUpdateOutput = typeof BlobContainersUpdateOutput.Type;
 
 // The operation
@@ -722,15 +689,13 @@ export type BlobContainersUpdateOutput = typeof BlobContainersUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersUpdateInput,
-    outputSchema: BlobContainersUpdateOutput,
-  }),
-);
+export const BlobContainersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersUpdateInput,
+  outputSchema: BlobContainersUpdateOutput,
+}));
 // Input Schema
 export const BlobInventoryPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -747,7 +712,7 @@ export type BlobInventoryPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const BlobInventoryPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -779,31 +744,30 @@ export type BlobInventoryPoliciesCreateOrUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
-export const BlobInventoryPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobInventoryPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BlobInventoryPoliciesCreateOrUpdateInput,
     outputSchema: BlobInventoryPoliciesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BlobInventoryPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-    }),
-  );
+export const BlobInventoryPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+  }),
+);
 export type BlobInventoryPoliciesDeleteInput =
   typeof BlobInventoryPoliciesDeleteInput.Type;
 
 // Output Schema
-export const BlobInventoryPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BlobInventoryPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BlobInventoryPoliciesDeleteOutput =
   typeof BlobInventoryPoliciesDeleteOutput.Type;
 
@@ -817,50 +781,46 @@ export type BlobInventoryPoliciesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
-export const BlobInventoryPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesDeleteInput,
-    outputSchema: BlobInventoryPoliciesDeleteOutput,
+export const BlobInventoryPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesDeleteInput,
+  outputSchema: BlobInventoryPoliciesDeleteOutput,
+}));
+// Input Schema
+export const BlobInventoryPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
   }),
 );
-// Input Schema
-export const BlobInventoryPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-    }),
-  );
 export type BlobInventoryPoliciesGetInput =
   typeof BlobInventoryPoliciesGetInput.Type;
 
 // Output Schema
-export const BlobInventoryPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BlobInventoryPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BlobInventoryPoliciesGetOutput =
   typeof BlobInventoryPoliciesGetOutput.Type;
 
@@ -874,66 +834,62 @@ export type BlobInventoryPoliciesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
-export const BlobInventoryPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesGetInput,
-    outputSchema: BlobInventoryPoliciesGetOutput,
+export const BlobInventoryPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesGetInput,
+  outputSchema: BlobInventoryPoliciesGetOutput,
+}));
+// Input Schema
+export const BlobInventoryPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
   }),
 );
-// Input Schema
-export const BlobInventoryPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
-    }),
-  );
 export type BlobInventoryPoliciesListInput =
   typeof BlobInventoryPoliciesListInput.Type;
 
 // Output Schema
-export const BlobInventoryPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BlobInventoryPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BlobInventoryPoliciesListOutput =
   typeof BlobInventoryPoliciesListOutput.Type;
 
@@ -946,15 +902,13 @@ export type BlobInventoryPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobInventoryPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesListInput,
-    outputSchema: BlobInventoryPoliciesListOutput,
-  }),
-);
+export const BlobInventoryPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesListInput,
+  outputSchema: BlobInventoryPoliciesListOutput,
+}));
 // Input Schema
 export const BlobServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -970,7 +924,7 @@ export type BlobServicesGetServicePropertiesInput =
 
 // Output Schema
 export const BlobServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1001,13 +955,12 @@ export type BlobServicesGetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BlobServicesGetServicePropertiesInput,
-    outputSchema: BlobServicesGetServicePropertiesOutput,
-  }));
+export const BlobServicesGetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobServicesGetServicePropertiesInput,
+  outputSchema: BlobServicesGetServicePropertiesOutput,
+}));
 // Input Schema
-export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BlobServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1021,44 +974,42 @@ export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BlobServicesListInput = typeof BlobServicesListInput.Type;
 
 // Output Schema
-export const BlobServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BlobServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BlobServicesListOutput = typeof BlobServicesListOutput.Type;
 
 // The operation
@@ -1070,13 +1021,13 @@ export type BlobServicesListOutput = typeof BlobServicesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobServicesListInput,
   outputSchema: BlobServicesListOutput,
 }));
 // Input Schema
 export const BlobServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1092,7 +1043,7 @@ export type BlobServicesSetServicePropertiesInput =
 
 // Output Schema
 export const BlobServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1123,13 +1074,12 @@ export type BlobServicesSetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BlobServicesSetServicePropertiesInput,
-    outputSchema: BlobServicesSetServicePropertiesOutput,
-  }));
+export const BlobServicesSetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobServicesSetServicePropertiesInput,
+  outputSchema: BlobServicesSetServicePropertiesOutput,
+}));
 // Input Schema
-export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1144,27 +1094,25 @@ export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorsCreateInput = typeof ConnectorsCreateInput.Type;
 
 // Output Schema
-export const ConnectorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ConnectorsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorsCreateOutput = typeof ConnectorsCreateOutput.Type;
 
 // The operation
@@ -1177,12 +1125,12 @@ export type ConnectorsCreateOutput = typeof ConnectorsCreateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsCreateInput,
   outputSchema: ConnectorsCreateOutput,
 }));
 // Input Schema
-export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1197,7 +1145,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
 
 // Output Schema
-export const ConnectorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectorsDeleteOutput = typeof ConnectorsDeleteOutput.Type;
 
 // The operation
@@ -1210,12 +1158,12 @@ export type ConnectorsDeleteOutput = typeof ConnectorsDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsDeleteInput,
   outputSchema: ConnectorsDeleteOutput,
 }));
 // Input Schema
-export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1230,7 +1178,7 @@ export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
 
 // Output Schema
-export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1261,29 +1209,28 @@ export type ConnectorsGetOutput = typeof ConnectorsGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsGetInput,
   outputSchema: ConnectorsGetOutput,
 }));
 // Input Schema
-export const ConnectorsListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
-    }),
-  );
+export const ConnectorsListByStorageAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
+  }),
+);
 export type ConnectorsListByStorageAccountInput =
   typeof ConnectorsListByStorageAccountInput.Type;
 
 // Output Schema
-export const ConnectorsListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsListByStorageAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1316,7 +1263,8 @@ export const ConnectorsListByStorageAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ConnectorsListByStorageAccountOutput =
   typeof ConnectorsListByStorageAccountOutput.Type;
 
@@ -1329,14 +1277,13 @@ export type ConnectorsListByStorageAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const ConnectorsListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectorsListByStorageAccountInput,
-    outputSchema: ConnectorsListByStorageAccountOutput,
-  }));
+export const ConnectorsListByStorageAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorsListByStorageAccountInput,
+  outputSchema: ConnectorsListByStorageAccountOutput,
+}));
 // Input Schema
 export const ConnectorsTestExistingConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1353,7 +1300,7 @@ export type ConnectorsTestExistingConnectionInput =
 
 // Output Schema
 export const ConnectorsTestExistingConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageConnectorMethodName: Schema.String,
     storageConnectorErrorMessage: Schema.optional(Schema.String),
     storageConnectorRequestId: Schema.String,
@@ -1374,13 +1321,12 @@ export type ConnectorsTestExistingConnectionOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsTestExistingConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectorsTestExistingConnectionInput,
-    outputSchema: ConnectorsTestExistingConnectionOutput,
-  }));
+export const ConnectorsTestExistingConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorsTestExistingConnectionInput,
+  outputSchema: ConnectorsTestExistingConnectionOutput,
+}));
 // Input Schema
-export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1395,27 +1341,25 @@ export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorsUpdateInput = typeof ConnectorsUpdateInput.Type;
 
 // Output Schema
-export const ConnectorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ConnectorsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorsUpdateOutput = typeof ConnectorsUpdateOutput.Type;
 
 // The operation
@@ -1428,12 +1372,12 @@ export type ConnectorsUpdateOutput = typeof ConnectorsUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsUpdateInput,
   outputSchema: ConnectorsUpdateOutput,
 }));
 // Input Schema
-export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1448,27 +1392,25 @@ export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSharesCreateInput = typeof DataSharesCreateInput.Type;
 
 // Output Schema
-export const DataSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const DataSharesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataSharesCreateOutput = typeof DataSharesCreateOutput.Type;
 
 // The operation
@@ -1481,12 +1423,12 @@ export type DataSharesCreateOutput = typeof DataSharesCreateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesCreateInput,
   outputSchema: DataSharesCreateOutput,
 }));
 // Input Schema
-export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1443,7 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
 
 // Output Schema
-export const DataSharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataSharesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataSharesDeleteOutput = typeof DataSharesDeleteOutput.Type;
 
 // The operation
@@ -1514,12 +1456,12 @@ export type DataSharesDeleteOutput = typeof DataSharesDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesDeleteInput,
   outputSchema: DataSharesDeleteOutput,
 }));
 // Input Schema
-export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1534,7 +1476,7 @@ export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSharesGetInput = typeof DataSharesGetInput.Type;
 
 // Output Schema
-export const DataSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1565,29 +1507,28 @@ export type DataSharesGetOutput = typeof DataSharesGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesGetInput,
   outputSchema: DataSharesGetOutput,
 }));
 // Input Schema
-export const DataSharesListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
-    }),
-  );
+export const DataSharesListByStorageAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
+  }),
+);
 export type DataSharesListByStorageAccountInput =
   typeof DataSharesListByStorageAccountInput.Type;
 
 // Output Schema
-export const DataSharesListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesListByStorageAccountOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1620,7 +1561,8 @@ export const DataSharesListByStorageAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type DataSharesListByStorageAccountOutput =
   typeof DataSharesListByStorageAccountOutput.Type;
 
@@ -1633,13 +1575,12 @@ export type DataSharesListByStorageAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const DataSharesListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataSharesListByStorageAccountInput,
-    outputSchema: DataSharesListByStorageAccountOutput,
-  }));
+export const DataSharesListByStorageAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSharesListByStorageAccountInput,
+  outputSchema: DataSharesListByStorageAccountOutput,
+}));
 // Input Schema
-export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1654,27 +1595,25 @@ export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSharesUpdateInput = typeof DataSharesUpdateInput.Type;
 
 // Output Schema
-export const DataSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const DataSharesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataSharesUpdateOutput = typeof DataSharesUpdateOutput.Type;
 
 // The operation
@@ -1687,46 +1626,44 @@ export type DataSharesUpdateOutput = typeof DataSharesUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesUpdateInput,
   outputSchema: DataSharesUpdateOutput,
 }));
 // Input Schema
-export const DeletedAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    deletedAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
-    }),
-  );
+export const DeletedAccountsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  deletedAccountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
+  }),
+);
 export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
 
 // Output Schema
-export const DeletedAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DeletedAccountsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
 
 // The operation
@@ -1738,59 +1675,47 @@ export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param deletedAccountName - Name of the deleted storage account.
  */
-export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsGetInput,
   outputSchema: DeletedAccountsGetOutput,
 }));
 // Input Schema
-export const DeletedAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
-    }),
-  );
+export const DeletedAccountsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
+  }),
+);
 export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
 
 // Output Schema
-export const DeletedAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DeletedAccountsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DeletedAccountsListOutput = typeof DeletedAccountsListOutput.Type;
 
 // The operation
@@ -1800,47 +1725,45 @@ export type DeletedAccountsListOutput = typeof DeletedAccountsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsListInput,
   outputSchema: DeletedAccountsListOutput,
 }));
 // Input Schema
-export const EncryptionScopesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-    }),
-  );
+export const EncryptionScopesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  encryptionScopeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+  }),
+);
 export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
 
 // Output Schema
-export const EncryptionScopesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EncryptionScopesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EncryptionScopesGetOutput = typeof EncryptionScopesGetOutput.Type;
 
 // The operation
@@ -1853,64 +1776,52 @@ export type EncryptionScopesGetOutput = typeof EncryptionScopesGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EncryptionScopesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesGetInput,
   outputSchema: EncryptionScopesGetOutput,
 }));
 // Input Schema
-export const EncryptionScopesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $maxpagesize: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-    $include: Schema.optional(Schema.Literals(["All", "Enabled", "Disabled"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
-    }),
-  );
+export const EncryptionScopesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+  $include: Schema.optional(Schema.Literals(["All", "Enabled", "Disabled"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
+  }),
+);
 export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
 
 // Output Schema
-export const EncryptionScopesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EncryptionScopesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EncryptionScopesListOutput = typeof EncryptionScopesListOutput.Type;
 
 // The operation
@@ -1925,49 +1836,45 @@ export type EncryptionScopesListOutput = typeof EncryptionScopesListOutput.Type;
  * @param $filter - Optional. When specified, only encryption scope names starting with the filter will be listed.
  * @param $include - Optional, when specified, will list encryption scopes with the specific state. Defaults to All
  */
-export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesListInput,
-    outputSchema: EncryptionScopesListOutput,
+export const EncryptionScopesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesListInput,
+  outputSchema: EncryptionScopesListOutput,
+}));
+// Input Schema
+export const EncryptionScopesPatchInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  encryptionScopeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
   }),
 );
-// Input Schema
-export const EncryptionScopesPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-    }),
-  );
 export type EncryptionScopesPatchInput = typeof EncryptionScopesPatchInput.Type;
 
 // Output Schema
-export const EncryptionScopesPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EncryptionScopesPatchOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EncryptionScopesPatchOutput =
   typeof EncryptionScopesPatchOutput.Type;
 
@@ -1981,49 +1888,45 @@ export type EncryptionScopesPatchOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesPatchInput,
-    outputSchema: EncryptionScopesPatchOutput,
+export const EncryptionScopesPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesPatchInput,
+  outputSchema: EncryptionScopesPatchOutput,
+}));
+// Input Schema
+export const EncryptionScopesPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  encryptionScopeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
   }),
 );
-// Input Schema
-export const EncryptionScopesPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-    }),
-  );
 export type EncryptionScopesPutInput = typeof EncryptionScopesPutInput.Type;
 
 // Output Schema
-export const EncryptionScopesPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EncryptionScopesPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EncryptionScopesPutOutput = typeof EncryptionScopesPutOutput.Type;
 
 // The operation
@@ -2036,13 +1939,13 @@ export type EncryptionScopesPutOutput = typeof EncryptionScopesPutOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EncryptionScopesPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesPutInput,
   outputSchema: EncryptionScopesPutOutput,
 }));
 // Input Schema
 export const FileServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2058,7 +1961,7 @@ export type FileServicesGetServicePropertiesInput =
 
 // Output Schema
 export const FileServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2089,48 +1992,45 @@ export type FileServicesGetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const FileServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FileServicesGetServicePropertiesInput,
-    outputSchema: FileServicesGetServicePropertiesOutput,
-  }));
+export const FileServicesGetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesGetServicePropertiesInput,
+  outputSchema: FileServicesGetServicePropertiesOutput,
+}));
 // Input Schema
-export const FileServicesGetServiceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
-    }),
-  );
+export const FileServicesGetServiceUsageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
+  }),
+);
 export type FileServicesGetServiceUsageInput =
   typeof FileServicesGetServiceUsageInput.Type;
 
 // Output Schema
-export const FileServicesGetServiceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FileServicesGetServiceUsageOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FileServicesGetServiceUsageOutput =
   typeof FileServicesGetServiceUsageOutput.Type;
 
@@ -2143,14 +2043,12 @@ export type FileServicesGetServiceUsageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const FileServicesGetServiceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileServicesGetServiceUsageInput,
-    outputSchema: FileServicesGetServiceUsageOutput,
-  }),
-);
+export const FileServicesGetServiceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesGetServiceUsageInput,
+  outputSchema: FileServicesGetServiceUsageOutput,
+}));
 // Input Schema
-export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2164,79 +2062,9 @@ export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileServicesListInput = typeof FileServicesListInput.Type;
 
 // Output Schema
-export const FileServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
-  },
-);
-export type FileServicesListOutput = typeof FileServicesListOutput.Type;
-
-// The operation
-/**
- * List all file services in storage accounts
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
- */
-export const FileServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: FileServicesListInput,
-  outputSchema: FileServicesListOutput,
-}));
-// Input Schema
-export const FileServicesListServiceUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $maxpagesize: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
-    }),
-  );
-export type FileServicesListServiceUsagesInput =
-  typeof FileServicesListServiceUsagesInput.Type;
-
-// Output Schema
-export const FileServicesListServiceUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
+export const FileServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
@@ -2267,8 +2095,64 @@ export const FileServicesListServiceUsagesOutput =
         ),
       }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+});
+export type FileServicesListOutput = typeof FileServicesListOutput.Type;
+
+// The operation
+/**
+ * List all file services in storage accounts
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ */
+export const FileServicesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesListInput,
+  outputSchema: FileServicesListOutput,
+}));
+// Input Schema
+export const FileServicesListServiceUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
+  }),
+);
+export type FileServicesListServiceUsagesInput =
+  typeof FileServicesListServiceUsagesInput.Type;
+
+// Output Schema
+export const FileServicesListServiceUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FileServicesListServiceUsagesOutput =
   typeof FileServicesListServiceUsagesOutput.Type;
 
@@ -2282,14 +2166,13 @@ export type FileServicesListServiceUsagesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $maxpagesize - Optional, specifies the maximum number of file service usages to be included in the list response.
  */
-export const FileServicesListServiceUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FileServicesListServiceUsagesInput,
-    outputSchema: FileServicesListServiceUsagesOutput,
-  }));
+export const FileServicesListServiceUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesListServiceUsagesInput,
+  outputSchema: FileServicesListServiceUsagesOutput,
+}));
 // Input Schema
 export const FileServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2305,7 +2188,7 @@ export type FileServicesSetServicePropertiesInput =
 
 // Output Schema
 export const FileServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2336,13 +2219,12 @@ export type FileServicesSetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const FileServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FileServicesSetServicePropertiesInput,
-    outputSchema: FileServicesSetServicePropertiesOutput,
-  }));
+export const FileServicesSetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesSetServicePropertiesInput,
+  outputSchema: FileServicesSetServicePropertiesOutput,
+}));
 // Input Schema
-export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2358,27 +2240,25 @@ export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesCreateInput = typeof FileSharesCreateInput.Type;
 
 // Output Schema
-export const FileSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FileSharesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FileSharesCreateOutput = typeof FileSharesCreateOutput.Type;
 
 // The operation
@@ -2392,12 +2272,12 @@ export type FileSharesCreateOutput = typeof FileSharesCreateOutput.Type;
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: snapshots. Should be passed as a string with delimiter ','
  */
-export const FileSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesCreateInput,
   outputSchema: FileSharesCreateOutput,
 }));
 // Input Schema
-export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2413,7 +2293,7 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
 
 // Output Schema
-export const FileSharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FileSharesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FileSharesDeleteOutput = typeof FileSharesDeleteOutput.Type;
 
 // The operation
@@ -2428,12 +2308,12 @@ export type FileSharesDeleteOutput = typeof FileSharesDeleteOutput.Type;
  * @param x-ms-snapshot - Optional, used to delete a snapshot.
  * @param $include - Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased/unleased). For 'none', the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails.
  */
-export const FileSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesDeleteInput,
   outputSchema: FileSharesDeleteOutput,
 }));
 // Input Schema
-export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2449,7 +2329,7 @@ export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesGetInput = typeof FileSharesGetInput.Type;
 
 // Output Schema
-export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2482,12 +2362,12 @@ export type FileSharesGetOutput = typeof FileSharesGetOutput.Type;
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: stats. Should be passed as a string with delimiter ','.
  * @param x-ms-snapshot - Optional, used to retrieve properties of a snapshot.
  */
-export const FileSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesGetInput,
   outputSchema: FileSharesGetOutput,
 }));
 // Input Schema
-export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesLeaseInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2502,7 +2382,7 @@ export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesLeaseInput = typeof FileSharesLeaseInput.Type;
 
 // Output Schema
-export const FileSharesLeaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesLeaseOutput = /*@__PURE__*/ Schema.Struct({
   leaseId: Schema.optional(Schema.String),
   leaseTimeSeconds: Schema.optional(Schema.String),
 });
@@ -2519,12 +2399,12 @@ export type FileSharesLeaseOutput = typeof FileSharesLeaseOutput.Type;
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param x-ms-snapshot - Optional. Specify the snapshot time to lease a snapshot.
  */
-export const FileSharesLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesLeaseInput,
   outputSchema: FileSharesLeaseOutput,
 }));
 // Input Schema
-export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2541,7 +2421,7 @@ export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesListInput = typeof FileSharesListInput.Type;
 
 // Output Schema
-export const FileSharesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2579,20 +2459,18 @@ export type FileSharesListOutput = typeof FileSharesListOutput.Type;
  * @param $filter - Optional. When specified, only share names starting with the filter will be listed.
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ','
  */
-export const FileSharesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesListInput,
   outputSchema: FileSharesListOutput,
 }));
 // Input Schema
-export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    shareName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const FileSharesRestoreInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  shareName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
@@ -2601,7 +2479,7 @@ export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type FileSharesRestoreInput = typeof FileSharesRestoreInput.Type;
 
 // Output Schema
-export const FileSharesRestoreOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FileSharesRestoreOutput = /*@__PURE__*/ Schema.Void;
 export type FileSharesRestoreOutput = typeof FileSharesRestoreOutput.Type;
 
 // The operation
@@ -2614,12 +2492,12 @@ export type FileSharesRestoreOutput = typeof FileSharesRestoreOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const FileSharesRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesRestore = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesRestoreInput,
   outputSchema: FileSharesRestoreOutput,
 }));
 // Input Schema
-export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2634,27 +2512,25 @@ export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FileSharesUpdateInput = typeof FileSharesUpdateInput.Type;
 
 // Output Schema
-export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FileSharesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FileSharesUpdateOutput = typeof FileSharesUpdateOutput.Type;
 
 // The operation
@@ -2667,48 +2543,46 @@ export type FileSharesUpdateOutput = typeof FileSharesUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const FileSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesUpdateInput,
   outputSchema: FileSharesUpdateOutput,
 }));
 // Input Schema
-export const LocalUsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
-    }),
-  );
+export const LocalUsersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
+  }),
+);
 export type LocalUsersCreateOrUpdateInput =
   typeof LocalUsersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const LocalUsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LocalUsersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LocalUsersCreateOrUpdateOutput =
   typeof LocalUsersCreateOrUpdateOutput.Type;
 
@@ -2722,14 +2596,12 @@ export type LocalUsersCreateOrUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocalUsersCreateOrUpdateInput,
-    outputSchema: LocalUsersCreateOrUpdateOutput,
-  }),
-);
+export const LocalUsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocalUsersCreateOrUpdateInput,
+  outputSchema: LocalUsersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2744,7 +2616,7 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LocalUsersDeleteInput = typeof LocalUsersDeleteInput.Type;
 
 // Output Schema
-export const LocalUsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LocalUsersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LocalUsersDeleteOutput = typeof LocalUsersDeleteOutput.Type;
 
 // The operation
@@ -2757,12 +2629,12 @@ export type LocalUsersDeleteOutput = typeof LocalUsersDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersDeleteInput,
   outputSchema: LocalUsersDeleteOutput,
 }));
 // Input Schema
-export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2777,7 +2649,7 @@ export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LocalUsersGetInput = typeof LocalUsersGetInput.Type;
 
 // Output Schema
-export const LocalUsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2808,12 +2680,12 @@ export type LocalUsersGetOutput = typeof LocalUsersGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersGetInput,
   outputSchema: LocalUsersGetOutput,
 }));
 // Input Schema
-export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2830,7 +2702,7 @@ export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LocalUsersListInput = typeof LocalUsersListInput.Type;
 
 // Output Schema
-export const LocalUsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2868,39 +2740,37 @@ export type LocalUsersListOutput = typeof LocalUsersListOutput.Type;
  * @param $filter - Optional. When specified, only local user names starting with the filter will be listed.
  * @param $include - Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default.
  */
-export const LocalUsersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersListInput,
   outputSchema: LocalUsersListOutput,
 }));
 // Input Schema
-export const LocalUsersListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
-    }),
-  );
+export const LocalUsersListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
+  }),
+);
 export type LocalUsersListKeysInput = typeof LocalUsersListKeysInput.Type;
 
 // Output Schema
-export const LocalUsersListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sshAuthorizedKeys: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          description: Schema.optional(Schema.String),
-          key: Schema.optional(Schema.String),
-        }),
-      ),
+export const LocalUsersListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  sshAuthorizedKeys: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        key: Schema.optional(Schema.String),
+      }),
     ),
-    sharedKey: Schema.optional(Schema.String),
-  });
+  ),
+  sharedKey: Schema.optional(Schema.String),
+});
 export type LocalUsersListKeysOutput = typeof LocalUsersListKeysOutput.Type;
 
 // The operation
@@ -2913,32 +2783,30 @@ export type LocalUsersListKeysOutput = typeof LocalUsersListKeysOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersListKeysInput,
   outputSchema: LocalUsersListKeysOutput,
 }));
 // Input Schema
-export const LocalUsersRegeneratePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
-    }),
-  );
+export const LocalUsersRegeneratePasswordInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
+  }),
+);
 export type LocalUsersRegeneratePasswordInput =
   typeof LocalUsersRegeneratePasswordInput.Type;
 
 // Output Schema
-export const LocalUsersRegeneratePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sshPassword: Schema.optional(SensitiveString),
-  });
+export const LocalUsersRegeneratePasswordOutput = /*@__PURE__*/ Schema.Struct({
+  sshPassword: Schema.optional(SensitiveOutputString),
+});
 export type LocalUsersRegeneratePasswordOutput =
   typeof LocalUsersRegeneratePasswordOutput.Type;
 
@@ -2952,14 +2820,13 @@ export type LocalUsersRegeneratePasswordOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersRegeneratePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LocalUsersRegeneratePasswordInput,
-    outputSchema: LocalUsersRegeneratePasswordOutput,
-  }));
+export const LocalUsersRegeneratePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocalUsersRegeneratePasswordInput,
+  outputSchema: LocalUsersRegeneratePasswordOutput,
+}));
 // Input Schema
 export const ManagementPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2976,7 +2843,7 @@ export type ManagementPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const ManagementPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3008,31 +2875,28 @@ export type ManagementPoliciesCreateOrUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
-export const ManagementPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ManagementPoliciesCreateOrUpdateInput,
-    outputSchema: ManagementPoliciesCreateOrUpdateOutput,
-  }));
+export const ManagementPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementPoliciesCreateOrUpdateInput,
+  outputSchema: ManagementPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ManagementPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-    }),
-  );
+export const ManagementPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
+  }),
+);
 export type ManagementPoliciesDeleteInput =
   typeof ManagementPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ManagementPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ManagementPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ManagementPoliciesDeleteOutput =
   typeof ManagementPoliciesDeleteOutput.Type;
 
@@ -3046,49 +2910,45 @@ export type ManagementPoliciesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
-export const ManagementPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementPoliciesDeleteInput,
-    outputSchema: ManagementPoliciesDeleteOutput,
+export const ManagementPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementPoliciesDeleteInput,
+  outputSchema: ManagementPoliciesDeleteOutput,
+}));
+// Input Schema
+export const ManagementPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
   }),
 );
-// Input Schema
-export const ManagementPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-    }),
-  );
 export type ManagementPoliciesGetInput = typeof ManagementPoliciesGetInput.Type;
 
 // Output Schema
-export const ManagementPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagementPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagementPoliciesGetOutput =
   typeof ManagementPoliciesGetOutput.Type;
 
@@ -3102,15 +2962,13 @@ export type ManagementPoliciesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
-export const ManagementPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementPoliciesGetInput,
-    outputSchema: ManagementPoliciesGetOutput,
-  }),
-);
+export const ManagementPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementPoliciesGetInput,
+  outputSchema: ManagementPoliciesGetOutput,
+}));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3129,7 +2987,7 @@ export type NetworkSecurityPerimeterConfigurationsGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3161,14 +3019,15 @@ export type NetworkSecurityPerimeterConfigurationsGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param networkSecurityPerimeterConfigurationName - The name for Network Security Perimeter configuration
  */
-export const NetworkSecurityPerimeterConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkSecurityPerimeterConfigurationsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsGetInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3184,7 +3043,7 @@ export type NetworkSecurityPerimeterConfigurationsListInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3231,13 +3090,13 @@ export type NetworkSecurityPerimeterConfigurationsListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const NetworkSecurityPerimeterConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsListInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsListOutput,
   }));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3256,7 +3115,7 @@ export type NetworkSecurityPerimeterConfigurationsReconcileInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
   typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
 
@@ -3271,13 +3130,13 @@ export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
  * @param networkSecurityPerimeterConfigurationName - The name for Network Security Perimeter configuration
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsReconcileInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
 export const ObjectReplicationPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3294,7 +3153,7 @@ export type ObjectReplicationPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const ObjectReplicationPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3326,31 +3185,32 @@ export type ObjectReplicationPoliciesCreateOrUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
-export const ObjectReplicationPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ObjectReplicationPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ObjectReplicationPoliciesCreateOrUpdateInput,
     outputSchema: ObjectReplicationPoliciesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ObjectReplicationPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ObjectReplicationPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+  }),
+);
 export type ObjectReplicationPoliciesDeleteInput =
   typeof ObjectReplicationPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ObjectReplicationPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ObjectReplicationPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ObjectReplicationPoliciesDeleteOutput =
   typeof ObjectReplicationPoliciesDeleteOutput.Type;
 
@@ -3364,49 +3224,46 @@ export type ObjectReplicationPoliciesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
-export const ObjectReplicationPoliciesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ObjectReplicationPoliciesDeleteInput,
-    outputSchema: ObjectReplicationPoliciesDeleteOutput,
-  }));
+export const ObjectReplicationPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectReplicationPoliciesDeleteInput,
+  outputSchema: ObjectReplicationPoliciesDeleteOutput,
+}));
 // Input Schema
-export const ObjectReplicationPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-    }),
-  );
+export const ObjectReplicationPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+  }),
+);
 export type ObjectReplicationPoliciesGetInput =
   typeof ObjectReplicationPoliciesGetInput.Type;
 
 // Output Schema
-export const ObjectReplicationPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ObjectReplicationPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ObjectReplicationPoliciesGetOutput =
   typeof ObjectReplicationPoliciesGetOutput.Type;
 
@@ -3420,65 +3277,62 @@ export type ObjectReplicationPoliciesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
-export const ObjectReplicationPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ObjectReplicationPoliciesGetInput,
-    outputSchema: ObjectReplicationPoliciesGetOutput,
-  }));
+export const ObjectReplicationPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectReplicationPoliciesGetInput,
+  outputSchema: ObjectReplicationPoliciesGetOutput,
+}));
 // Input Schema
-export const ObjectReplicationPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
-    }),
-  );
+export const ObjectReplicationPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
+  }),
+);
 export type ObjectReplicationPoliciesListInput =
   typeof ObjectReplicationPoliciesListInput.Type;
 
 // Output Schema
-export const ObjectReplicationPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ObjectReplicationPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ObjectReplicationPoliciesListOutput =
   typeof ObjectReplicationPoliciesListOutput.Type;
 
@@ -3491,13 +3345,12 @@ export type ObjectReplicationPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const ObjectReplicationPoliciesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ObjectReplicationPoliciesListInput,
-    outputSchema: ObjectReplicationPoliciesListOutput,
-  }));
+export const ObjectReplicationPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectReplicationPoliciesListInput,
+  outputSchema: ObjectReplicationPoliciesListOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Storage/operations" }),
@@ -3505,7 +3358,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3564,13 +3417,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3586,8 +3439,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -3601,49 +3453,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -3657,30 +3506,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3715,7 +3562,8 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -3728,49 +3576,46 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsPutInput =
   typeof PrivateEndpointConnectionsPutInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsPutOutput =
   typeof PrivateEndpointConnectionsPutOutput.Type;
 
@@ -3784,14 +3629,13 @@ export type PrivateEndpointConnectionsPutOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
-export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsPutInput,
-    outputSchema: PrivateEndpointConnectionsPutOutput,
-  }));
+export const PrivateEndpointConnectionsPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsPutInput,
+  outputSchema: PrivateEndpointConnectionsPutOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3807,7 +3651,7 @@ export type PrivateLinkResourcesListByStorageAccountInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3854,13 +3698,14 @@ export type PrivateLinkResourcesListByStorageAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const PrivateLinkResourcesListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkResourcesListByStorageAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkResourcesListByStorageAccountInput,
     outputSchema: PrivateLinkResourcesListByStorageAccountOutput,
-  }));
+  }),
+);
 // Input Schema
-export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3875,7 +3720,7 @@ export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueueCreateInput = typeof QueueCreateInput.Type;
 
 // Output Schema
-export const QueueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3906,12 +3751,12 @@ export type QueueCreateOutput = typeof QueueCreateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueCreateInput,
   outputSchema: QueueCreateOutput,
 }));
 // Input Schema
-export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3926,7 +3771,7 @@ export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueueDeleteInput = typeof QueueDeleteInput.Type;
 
 // Output Schema
-export const QueueDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const QueueDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type QueueDeleteOutput = typeof QueueDeleteOutput.Type;
 
 // The operation
@@ -3939,12 +3784,12 @@ export type QueueDeleteOutput = typeof QueueDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueDeleteInput,
   outputSchema: QueueDeleteOutput,
 }));
 // Input Schema
-export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3959,7 +3804,7 @@ export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueueGetInput = typeof QueueGetInput.Type;
 
 // Output Schema
-export const QueueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3990,12 +3835,12 @@ export type QueueGetOutput = typeof QueueGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueGetInput,
   outputSchema: QueueGetOutput,
 }));
 // Input Schema
-export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4011,7 +3856,7 @@ export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueueListInput = typeof QueueListInput.Type;
 
 // Output Schema
-export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -4048,13 +3893,13 @@ export type QueueListOutput = typeof QueueListOutput.Type;
  * @param $maxpagesize - Optional, a maximum number of queues that should be included in a list queue response
  * @param $filter - Optional, When specified, only the queues with a name starting with the given filter will be listed.
  */
-export const QueueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueListInput,
   outputSchema: QueueListOutput,
 }));
 // Input Schema
 export const QueueServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4070,7 +3915,7 @@ export type QueueServicesGetServicePropertiesInput =
 
 // Output Schema
 export const QueueServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4101,20 +3946,17 @@ export type QueueServicesGetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const QueueServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: QueueServicesGetServicePropertiesInput,
-    outputSchema: QueueServicesGetServicePropertiesOutput,
-  }));
+export const QueueServicesGetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueueServicesGetServicePropertiesInput,
+  outputSchema: QueueServicesGetServicePropertiesOutput,
+}));
 // Input Schema
-export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const QueueServicesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
@@ -4123,42 +3965,41 @@ export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type QueueServicesListInput = typeof QueueServicesListInput.Type;
 
 // Output Schema
-export const QueueServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const QueueServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type QueueServicesListOutput = typeof QueueServicesListOutput.Type;
 
 // The operation
@@ -4170,13 +4011,13 @@ export type QueueServicesListOutput = typeof QueueServicesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const QueueServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueServicesListInput,
   outputSchema: QueueServicesListOutput,
 }));
 // Input Schema
 export const QueueServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4192,7 +4033,7 @@ export type QueueServicesSetServicePropertiesInput =
 
 // Output Schema
 export const QueueServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4223,13 +4064,12 @@ export type QueueServicesSetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const QueueServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: QueueServicesSetServicePropertiesInput,
-    outputSchema: QueueServicesSetServicePropertiesOutput,
-  }));
+export const QueueServicesSetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueueServicesSetServicePropertiesInput,
+  outputSchema: QueueServicesSetServicePropertiesOutput,
+}));
 // Input Schema
-export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4244,7 +4084,7 @@ export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueueUpdateInput = typeof QueueUpdateInput.Type;
 
 // Output Schema
-export const QueueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4275,12 +4115,12 @@ export type QueueUpdateOutput = typeof QueueUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueUpdateInput,
   outputSchema: QueueUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -4292,7 +4132,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4365,13 +4205,13 @@ export type SkusListOutput = typeof SkusListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
 export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4387,7 +4227,7 @@ export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
 
 // Output Schema
 export const StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
   typeof StorageAccountsAbortHierarchicalNamespaceMigrationOutput.Type;
 
@@ -4401,13 +4241,13 @@ export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsAbortHierarchicalNamespaceMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsAbortHierarchicalNamespaceMigrationInput,
     outputSchema: StorageAccountsAbortHierarchicalNamespaceMigrationOutput,
   }));
 // Input Schema
 export const StorageAccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -4421,7 +4261,7 @@ export type StorageAccountsCheckNameAvailabilityInput =
 
 // Output Schema
 export const StorageAccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
@@ -4438,47 +4278,46 @@ export type StorageAccountsCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StorageAccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageAccountsCheckNameAvailabilityInput,
     outputSchema: StorageAccountsCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageAccountsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-    }),
-  );
+export const StorageAccountsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  }),
+);
 export type StorageAccountsCreateInput = typeof StorageAccountsCreateInput.Type;
 
 // Output Schema
-export const StorageAccountsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageAccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageAccountsCreateOutput =
   typeof StorageAccountsCreateOutput.Type;
 
@@ -4491,15 +4330,13 @@ export type StorageAccountsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsCreateInput,
-    outputSchema: StorageAccountsCreateOutput,
-  }),
-);
+export const StorageAccountsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsCreateInput,
+  outputSchema: StorageAccountsCreateOutput,
+}));
 // Input Schema
 export const StorageAccountsCustomerInitiatedMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4515,7 +4352,7 @@ export type StorageAccountsCustomerInitiatedMigrationInput =
 
 // Output Schema
 export const StorageAccountsCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StorageAccountsCustomerInitiatedMigrationOutput =
   typeof StorageAccountsCustomerInitiatedMigrationOutput.Type;
 
@@ -4528,29 +4365,28 @@ export type StorageAccountsCustomerInitiatedMigrationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsCustomerInitiatedMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsCustomerInitiatedMigration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageAccountsCustomerInitiatedMigrationInput,
     outputSchema: StorageAccountsCustomerInitiatedMigrationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-    }),
-  );
+export const StorageAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  }),
+);
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
 
 // Output Schema
-export const StorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageAccountsDeleteOutput =
   typeof StorageAccountsDeleteOutput.Type;
 
@@ -4563,32 +4399,28 @@ export type StorageAccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsDeleteInput,
-    outputSchema: StorageAccountsDeleteOutput,
+export const StorageAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsDeleteInput,
+  outputSchema: StorageAccountsDeleteOutput,
+}));
+// Input Schema
+export const StorageAccountsFailoverInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  failoverType: Schema.optional(Schema.Literals(["Planned"])),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
   }),
 );
-// Input Schema
-export const StorageAccountsFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    failoverType: Schema.optional(Schema.Literals(["Planned"])),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
-    }),
-  );
 export type StorageAccountsFailoverInput =
   typeof StorageAccountsFailoverInput.Type;
 
 // Output Schema
-export const StorageAccountsFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageAccountsFailoverOutput = /*@__PURE__*/ Schema.Void;
 export type StorageAccountsFailoverOutput =
   typeof StorageAccountsFailoverOutput.Type;
 
@@ -4602,15 +4434,13 @@ export type StorageAccountsFailoverOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param failoverType - The parameter is set to 'Planned' to indicate whether a Planned failover is requested.
  */
-export const StorageAccountsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsFailoverInput,
-    outputSchema: StorageAccountsFailoverOutput,
-  }),
-);
+export const StorageAccountsFailover = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsFailoverInput,
+  outputSchema: StorageAccountsFailoverOutput,
+}));
 // Input Schema
 export const StorageAccountsGetCustomerInitiatedMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4627,7 +4457,7 @@ export type StorageAccountsGetCustomerInitiatedMigrationInput =
 
 // Output Schema
 export const StorageAccountsGetCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4660,50 +4490,48 @@ export type StorageAccountsGetCustomerInitiatedMigrationOutput =
  * @param migrationName - The name of the Storage Account Migration. It should always be 'default'
  */
 export const StorageAccountsGetCustomerInitiatedMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsGetCustomerInitiatedMigrationInput,
     outputSchema: StorageAccountsGetCustomerInitiatedMigrationOutput,
   }));
 // Input Schema
-export const StorageAccountsGetPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["geoReplicationStats", "blobRestoreStatus"]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-    }),
-  );
+export const StorageAccountsGetPropertiesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(
+    Schema.Literals(["geoReplicationStats", "blobRestoreStatus"]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  }),
+);
 export type StorageAccountsGetPropertiesInput =
   typeof StorageAccountsGetPropertiesInput.Type;
 
 // Output Schema
-export const StorageAccountsGetPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageAccountsGetPropertiesOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageAccountsGetPropertiesOutput =
   typeof StorageAccountsGetPropertiesOutput.Type;
 
@@ -4717,14 +4545,13 @@ export type StorageAccountsGetPropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $expand - May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus.
  */
-export const StorageAccountsGetProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageAccountsGetPropertiesInput,
-    outputSchema: StorageAccountsGetPropertiesOutput,
-  }));
+export const StorageAccountsGetProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsGetPropertiesInput,
+  outputSchema: StorageAccountsGetPropertiesOutput,
+}));
 // Input Schema
 export const StorageAccountsHierarchicalNamespaceMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4741,7 +4568,7 @@ export type StorageAccountsHierarchicalNamespaceMigrationInput =
 
 // Output Schema
 export const StorageAccountsHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StorageAccountsHierarchicalNamespaceMigrationOutput =
   typeof StorageAccountsHierarchicalNamespaceMigrationOutput.Type;
 
@@ -4756,59 +4583,47 @@ export type StorageAccountsHierarchicalNamespaceMigrationOutput =
  * @param requestType - Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request 'HnsOnValidationRequest' or a hydration request 'HnsOnHydrationRequest'. The validation request will validate the migration whereas the hydration request will migrate the account.
  */
 export const StorageAccountsHierarchicalNamespaceMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsHierarchicalNamespaceMigrationInput,
     outputSchema: StorageAccountsHierarchicalNamespaceMigrationOutput,
   }));
 // Input Schema
-export const StorageAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
-    }),
-  );
+export const StorageAccountsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
+  }),
+);
 export type StorageAccountsListInput = typeof StorageAccountsListInput.Type;
 
 // Output Schema
-export const StorageAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StorageAccountsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageAccountsListOutput = typeof StorageAccountsListOutput.Type;
 
 // The operation
@@ -4818,31 +4633,29 @@ export type StorageAccountsListOutput = typeof StorageAccountsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StorageAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageAccountsListInput,
   outputSchema: StorageAccountsListOutput,
 }));
 // Input Schema
-export const StorageAccountsListAccountSASInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
-    }),
-  );
+export const StorageAccountsListAccountSASInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
+  }),
+);
 export type StorageAccountsListAccountSASInput =
   typeof StorageAccountsListAccountSASInput.Type;
 
 // Output Schema
-export const StorageAccountsListAccountSASOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountSasToken: Schema.optional(Schema.String),
-  });
+export const StorageAccountsListAccountSASOutput = /*@__PURE__*/ Schema.Struct({
+  accountSasToken: Schema.optional(Schema.String),
+});
 export type StorageAccountsListAccountSASOutput =
   typeof StorageAccountsListAccountSASOutput.Type;
 
@@ -4855,14 +4668,13 @@ export type StorageAccountsListAccountSASOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsListAccountSAS =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageAccountsListAccountSASInput,
-    outputSchema: StorageAccountsListAccountSASOutput,
-  }));
+export const StorageAccountsListAccountSAS = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsListAccountSASInput,
+  outputSchema: StorageAccountsListAccountSASOutput,
+}));
 // Input Schema
 export const StorageAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4877,7 +4689,7 @@ export type StorageAccountsListByResourceGroupInput =
 
 // Output Schema
 export const StorageAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4922,42 +4734,41 @@ export type StorageAccountsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StorageAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageAccountsListByResourceGroupInput,
     outputSchema: StorageAccountsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageAccountsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.Literals(["kerb"])),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
-    }),
-  );
+export const StorageAccountsListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["kerb"])),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
+  }),
+);
 export type StorageAccountsListKeysInput =
   typeof StorageAccountsListKeysInput.Type;
 
 // Output Schema
-export const StorageAccountsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keys: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          keyName: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-          permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
-          creationTime: Schema.optional(Schema.String),
-        }),
-      ),
+export const StorageAccountsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  keys: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        keyName: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+        permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
+        creationTime: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type StorageAccountsListKeysOutput =
   typeof StorageAccountsListKeysOutput.Type;
 
@@ -4971,33 +4782,29 @@ export type StorageAccountsListKeysOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $expand - Specifies type of the key to be listed. Possible value is kerb.
  */
-export const StorageAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsListKeysInput,
-    outputSchema: StorageAccountsListKeysOutput,
+export const StorageAccountsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsListKeysInput,
+  outputSchema: StorageAccountsListKeysOutput,
+}));
+// Input Schema
+export const StorageAccountsListServiceSASInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
   }),
 );
-// Input Schema
-export const StorageAccountsListServiceSASInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
-    }),
-  );
 export type StorageAccountsListServiceSASInput =
   typeof StorageAccountsListServiceSASInput.Type;
 
 // Output Schema
-export const StorageAccountsListServiceSASOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceSasToken: Schema.optional(Schema.String),
-  });
+export const StorageAccountsListServiceSASOutput = /*@__PURE__*/ Schema.Struct({
+  serviceSasToken: Schema.optional(Schema.String),
+});
 export type StorageAccountsListServiceSASOutput =
   typeof StorageAccountsListServiceSASOutput.Type;
 
@@ -5010,41 +4817,38 @@ export type StorageAccountsListServiceSASOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsListServiceSAS =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageAccountsListServiceSASInput,
-    outputSchema: StorageAccountsListServiceSASOutput,
-  }));
+export const StorageAccountsListServiceSAS = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsListServiceSASInput,
+  outputSchema: StorageAccountsListServiceSASOutput,
+}));
 // Input Schema
-export const StorageAccountsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
-    }),
-  );
+export const StorageAccountsRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
+  }),
+);
 export type StorageAccountsRegenerateKeyInput =
   typeof StorageAccountsRegenerateKeyInput.Type;
 
 // Output Schema
-export const StorageAccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keys: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          keyName: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-          permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
-          creationTime: Schema.optional(Schema.String),
-        }),
-      ),
+export const StorageAccountsRegenerateKeyOutput = /*@__PURE__*/ Schema.Struct({
+  keys: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        keyName: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+        permissions: Schema.optional(Schema.Literals(["Read", "Full"])),
+        creationTime: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type StorageAccountsRegenerateKeyOutput =
   typeof StorageAccountsRegenerateKeyOutput.Type;
 
@@ -5057,14 +4861,13 @@ export type StorageAccountsRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageAccountsRegenerateKeyInput,
-    outputSchema: StorageAccountsRegenerateKeyOutput,
-  }));
+export const StorageAccountsRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsRegenerateKeyInput,
+  outputSchema: StorageAccountsRegenerateKeyOutput,
+}));
 // Input Schema
 export const StorageAccountsRestoreBlobRangesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5080,7 +4883,7 @@ export type StorageAccountsRestoreBlobRangesInput =
 
 // Output Schema
 export const StorageAccountsRestoreBlobRangesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Complete", "Failed"]),
     ),
@@ -5110,14 +4913,13 @@ export type StorageAccountsRestoreBlobRangesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsRestoreBlobRanges =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageAccountsRestoreBlobRangesInput,
-    outputSchema: StorageAccountsRestoreBlobRangesOutput,
-  }));
+export const StorageAccountsRestoreBlobRanges = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsRestoreBlobRangesInput,
+  outputSchema: StorageAccountsRestoreBlobRangesOutput,
+}));
 // Input Schema
 export const StorageAccountsRevokeUserDelegationKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5133,7 +4935,7 @@ export type StorageAccountsRevokeUserDelegationKeysInput =
 
 // Output Schema
 export const StorageAccountsRevokeUserDelegationKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StorageAccountsRevokeUserDelegationKeysOutput =
   typeof StorageAccountsRevokeUserDelegationKeysOutput.Type;
 
@@ -5146,47 +4948,46 @@ export type StorageAccountsRevokeUserDelegationKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsRevokeUserDelegationKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsRevokeUserDelegationKeys = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageAccountsRevokeUserDelegationKeysInput,
     outputSchema: StorageAccountsRevokeUserDelegationKeysOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-    }),
-  );
+export const StorageAccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  }),
+);
 export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;
 
 // Output Schema
-export const StorageAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageAccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageAccountsUpdateOutput =
   typeof StorageAccountsUpdateOutput.Type;
 
@@ -5199,15 +5000,13 @@ export type StorageAccountsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsUpdateInput,
-    outputSchema: StorageAccountsUpdateOutput,
-  }),
-);
+export const StorageAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsUpdateInput,
+  outputSchema: StorageAccountsUpdateOutput,
+}));
 // Input Schema
 export const StorageTaskAssignmentInstancesReportListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5226,7 +5025,7 @@ export type StorageTaskAssignmentInstancesReportListInput =
 
 // Output Schema
 export const StorageTaskAssignmentInstancesReportListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5275,49 +5074,48 @@ export type StorageTaskAssignmentInstancesReportListOutput =
  * @param $maxpagesize - Optional, specifies the maximum number of storage task assignment instances to be included in the list response.
  * @param $filter - Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
  */
-export const StorageTaskAssignmentInstancesReportList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTaskAssignmentInstancesReportList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageTaskAssignmentInstancesReportListInput,
     outputSchema: StorageTaskAssignmentInstancesReportListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageTaskAssignmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-    }),
-  );
+export const StorageTaskAssignmentsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+  }),
+);
 export type StorageTaskAssignmentsCreateInput =
   typeof StorageTaskAssignmentsCreateInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTaskAssignmentsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTaskAssignmentsCreateOutput =
   typeof StorageTaskAssignmentsCreateOutput.Type;
 
@@ -5331,31 +5129,28 @@ export type StorageTaskAssignmentsCreateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageTaskAssignmentsCreateInput,
-    outputSchema: StorageTaskAssignmentsCreateOutput,
-  }));
+export const StorageTaskAssignmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsCreateInput,
+  outputSchema: StorageTaskAssignmentsCreateOutput,
+}));
 // Input Schema
-export const StorageTaskAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-    }),
-  );
+export const StorageTaskAssignmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+  }),
+);
 export type StorageTaskAssignmentsDeleteInput =
   typeof StorageTaskAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTaskAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTaskAssignmentsDeleteOutput =
   typeof StorageTaskAssignmentsDeleteOutput.Type;
 
@@ -5369,49 +5164,46 @@ export type StorageTaskAssignmentsDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageTaskAssignmentsDeleteInput,
-    outputSchema: StorageTaskAssignmentsDeleteOutput,
-  }));
+export const StorageTaskAssignmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsDeleteInput,
+  outputSchema: StorageTaskAssignmentsDeleteOutput,
+}));
 // Input Schema
-export const StorageTaskAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-    }),
-  );
+export const StorageTaskAssignmentsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+  }),
+);
 export type StorageTaskAssignmentsGetInput =
   typeof StorageTaskAssignmentsGetInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTaskAssignmentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTaskAssignmentsGetOutput =
   typeof StorageTaskAssignmentsGetOutput.Type;
 
@@ -5425,15 +5217,13 @@ export type StorageTaskAssignmentsGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTaskAssignmentsGetInput,
-    outputSchema: StorageTaskAssignmentsGetOutput,
-  }),
-);
+export const StorageTaskAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsGetInput,
+  outputSchema: StorageTaskAssignmentsGetOutput,
+}));
 // Input Schema
 export const StorageTaskAssignmentsInstancesReportListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5451,7 +5241,7 @@ export type StorageTaskAssignmentsInstancesReportListInput =
 
 // Output Schema
 export const StorageTaskAssignmentsInstancesReportListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5499,64 +5289,53 @@ export type StorageTaskAssignmentsInstancesReportListOutput =
  * @param $maxpagesize - Optional, specifies the maximum number of storage task assignment instances to be included in the list response.
  * @param $filter - Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
  */
-export const StorageTaskAssignmentsInstancesReportList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTaskAssignmentsInstancesReportList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageTaskAssignmentsInstancesReportListInput,
     outputSchema: StorageTaskAssignmentsInstancesReportListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageTaskAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
-    }),
-  );
+export const StorageTaskAssignmentsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
+  }),
+);
 export type StorageTaskAssignmentsListInput =
   typeof StorageTaskAssignmentsListInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StorageTaskAssignmentsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageTaskAssignmentsListOutput =
   typeof StorageTaskAssignmentsListOutput.Type;
 
@@ -5570,15 +5349,13 @@ export type StorageTaskAssignmentsListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $top - Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
  */
-export const StorageTaskAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTaskAssignmentsListInput,
-    outputSchema: StorageTaskAssignmentsListOutput,
-  }),
-);
+export const StorageTaskAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsListInput,
+  outputSchema: StorageTaskAssignmentsListOutput,
+}));
 // Input Schema
 export const StorageTaskAssignmentsStopAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5595,7 +5372,7 @@ export type StorageTaskAssignmentsStopAssignmentInput =
 
 // Output Schema
 export const StorageTaskAssignmentsStopAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StorageTaskAssignmentsStopAssignmentOutput =
   typeof StorageTaskAssignmentsStopAssignmentOutput.Type;
 
@@ -5609,49 +5386,48 @@ export type StorageTaskAssignmentsStopAssignmentOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsStopAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTaskAssignmentsStopAssignment = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageTaskAssignmentsStopAssignmentInput,
     outputSchema: StorageTaskAssignmentsStopAssignmentOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageTaskAssignmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-    }),
-  );
+export const StorageTaskAssignmentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+  }),
+);
 export type StorageTaskAssignmentsUpdateInput =
   typeof StorageTaskAssignmentsUpdateInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTaskAssignmentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTaskAssignmentsUpdateOutput =
   typeof StorageTaskAssignmentsUpdateOutput.Type;
 
@@ -5665,13 +5441,12 @@ export type StorageTaskAssignmentsUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageTaskAssignmentsUpdateInput,
-    outputSchema: StorageTaskAssignmentsUpdateOutput,
-  }));
+export const StorageTaskAssignmentsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsUpdateInput,
+  outputSchema: StorageTaskAssignmentsUpdateOutput,
+}));
 // Input Schema
-export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5686,7 +5461,7 @@ export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TableCreateInput = typeof TableCreateInput.Type;
 
 // Output Schema
-export const TableCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5717,12 +5492,12 @@ export type TableCreateOutput = typeof TableCreateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableCreateInput,
   outputSchema: TableCreateOutput,
 }));
 // Input Schema
-export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5737,7 +5512,7 @@ export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TableDeleteInput = typeof TableDeleteInput.Type;
 
 // Output Schema
-export const TableDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TableDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TableDeleteOutput = typeof TableDeleteOutput.Type;
 
 // The operation
@@ -5750,12 +5525,12 @@ export type TableDeleteOutput = typeof TableDeleteOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableDeleteInput,
   outputSchema: TableDeleteOutput,
 }));
 // Input Schema
-export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5770,7 +5545,7 @@ export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TableGetInput = typeof TableGetInput.Type;
 
 // Output Schema
-export const TableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5801,12 +5576,12 @@ export type TableGetOutput = typeof TableGetOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableGetInput,
   outputSchema: TableGetOutput,
 }));
 // Input Schema
-export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5820,7 +5595,7 @@ export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TableListInput = typeof TableListInput.Type;
 
 // Output Schema
-export const TableListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -5855,13 +5630,13 @@ export type TableListOutput = typeof TableListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableListInput,
   outputSchema: TableListOutput,
 }));
 // Input Schema
 export const TableServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5877,7 +5652,7 @@ export type TableServicesGetServicePropertiesInput =
 
 // Output Schema
 export const TableServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5908,20 +5683,17 @@ export type TableServicesGetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TableServicesGetServicePropertiesInput,
-    outputSchema: TableServicesGetServicePropertiesOutput,
-  }));
+export const TableServicesGetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableServicesGetServicePropertiesInput,
+  outputSchema: TableServicesGetServicePropertiesOutput,
+}));
 // Input Schema
-export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const TableServicesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
@@ -5930,42 +5702,41 @@ export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TableServicesListInput = typeof TableServicesListInput.Type;
 
 // Output Schema
-export const TableServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const TableServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type TableServicesListOutput = typeof TableServicesListOutput.Type;
 
 // The operation
@@ -5977,13 +5748,13 @@ export type TableServicesListOutput = typeof TableServicesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableServicesListInput,
   outputSchema: TableServicesListOutput,
 }));
 // Input Schema
 export const TableServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5999,7 +5770,7 @@ export type TableServicesSetServicePropertiesInput =
 
 // Output Schema
 export const TableServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6030,13 +5801,12 @@ export type TableServicesSetServicePropertiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TableServicesSetServicePropertiesInput,
-    outputSchema: TableServicesSetServicePropertiesOutput,
-  }));
+export const TableServicesSetServiceProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableServicesSetServicePropertiesInput,
+  outputSchema: TableServicesSetServicePropertiesOutput,
+}));
 // Input Schema
-export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6051,7 +5821,7 @@ export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TableUpdateInput = typeof TableUpdateInput.Type;
 
 // Output Schema
-export const TableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6082,53 +5852,51 @@ export type TableUpdateOutput = typeof TableUpdateOutput.Type;
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableUpdateInput,
   outputSchema: TableUpdateOutput,
 }));
 // Input Schema
-export const UsagesListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
-    }),
-  );
+export const UsagesListByLocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
+  }),
+);
 export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
 
 // Output Schema
-export const UsagesListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountsPerSecond",
-              "BytesPerSecond",
-            ]),
-          ),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const UsagesListByLocationOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountsPerSecond",
+            "BytesPerSecond",
+          ]),
+        ),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
 
 // The operation
@@ -6139,9 +5907,7 @@ export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsagesListByLocationInput,
-    outputSchema: UsagesListByLocationOutput,
-  }),
-);
+export const UsagesListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListByLocationInput,
+  outputSchema: UsagesListByLocationOutput,
+}));

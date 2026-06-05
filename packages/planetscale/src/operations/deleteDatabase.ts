@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDatabaseInput = typeof DeleteDatabaseInput.Type;
 
 // Output Schema
-export const DeleteDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteDatabaseOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
 
 // The operation
@@ -26,7 +26,7 @@ export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const deleteDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDatabaseInput,
   outputSchema: DeleteDatabaseOutput,
   errors: [Forbidden, NotFound] as const,

@@ -31,82 +31,79 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> = /*@__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    done: Schema.optional(Schema.Boolean),
-    error: Schema.optional(Status),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operations: Schema.optional(Schema.Array(Operation)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOperationsResponse" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelOperationRequest",
-  });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
+export const Operation: Schema.Schema<Operation> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ModelOperationMetadata {
+  /** The name of the model we are creating/updating The name must have the form `projects/{project_id}/models/{model_id}` */
+  name?: string;
   basicOperationStatus?:
     | "BASIC_OPERATION_STATUS_UNSPECIFIED"
     | "BASIC_OPERATION_STATUS_UPLOADING"
     | "BASIC_OPERATION_STATUS_VERIFYING"
     | (string & {});
-  /** The name of the model we are creating/updating The name must have the form `projects/{project_id}/models/{model_id}` */
-  name?: string;
 }
 
 export const ModelOperationMetadata: Schema.Schema<ModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    basicOperationStatus: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
+    basicOperationStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ModelOperationMetadata" });
+
+export interface ListOperationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+}
+
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  }).annotate({ identifier: "ListOperationsResponse" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
 
 // ==========================================================================
 // Errors
@@ -167,16 +164,15 @@ export interface DeleteOperationsRequest {
   name: string;
 }
 
-export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+export const DeleteOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -191,41 +187,40 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOperationsRequest {
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page token. */
-  pageToken?: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list filter. */
   filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  name: Schema.String.pipe(T.HttpPath("name")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
   ),
-  name: Schema.String.pipe(T.HttpPath("name")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -235,7 +230,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -252,17 +247,16 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 
-export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+export const CancelOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -277,7 +271,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

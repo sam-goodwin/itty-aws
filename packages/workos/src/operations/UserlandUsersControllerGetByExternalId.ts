@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerGetByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type UserlandUsersControllerGetByExternalIdInput =
 
 // Output Schema
 export const UserlandUsersControllerGetByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -44,9 +44,10 @@ export type UserlandUsersControllerGetByExternalIdOutput =
  *
  * @param external_id - The external ID of the user.
  */
-export const UserlandUsersControllerGetByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandUsersControllerGetByExternalId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandUsersControllerGetByExternalIdInput,
     outputSchema: UserlandUsersControllerGetByExternalIdOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

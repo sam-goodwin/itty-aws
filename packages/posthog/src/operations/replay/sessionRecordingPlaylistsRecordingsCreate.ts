@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const SessionRecordingPlaylistsRecordingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     session_recording_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
@@ -72,7 +72,7 @@ export type SessionRecordingPlaylistsRecordingsCreateInput =
 
 // Output Schema
 export const SessionRecordingPlaylistsRecordingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SessionRecordingPlaylistsRecordingsCreateOutput =
   typeof SessionRecordingPlaylistsRecordingsCreateOutput.Type;
 
@@ -81,9 +81,10 @@ export type SessionRecordingPlaylistsRecordingsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sessionRecordingPlaylistsRecordingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sessionRecordingPlaylistsRecordingsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SessionRecordingPlaylistsRecordingsCreateInput,
     outputSchema: SessionRecordingPlaylistsRecordingsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

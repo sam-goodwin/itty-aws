@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DatasetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatasetsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export const DatasetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatasetsCreateInput = typeof DatasetsCreateInput.Type;
 
 // Output Schema
-export const DatasetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatasetsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -71,7 +71,7 @@ export type DatasetsCreateOutput = typeof DatasetsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const datasetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const datasetsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatasetsCreateInput,
   outputSchema: DatasetsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

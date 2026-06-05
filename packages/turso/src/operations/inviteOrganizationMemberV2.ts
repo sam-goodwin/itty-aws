@@ -3,32 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const InviteOrganizationMemberV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-    email: Schema.String,
-    role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/organizations/{organizationSlug}/invites",
-    }),
-  );
+export const InviteOrganizationMemberV2Input = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+  email: Schema.String,
+  role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v2/organizations/{organizationSlug}/invites",
+  }),
+);
 export type InviteOrganizationMemberV2Input =
   typeof InviteOrganizationMemberV2Input.Type;
 
 // Output Schema
-export const InviteOrganizationMemberV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invited: Schema.optional(
-      Schema.Struct({
-        email: Schema.optional(Schema.String),
-        role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-        organization: Schema.optional(Schema.String),
-        token: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InviteOrganizationMemberV2Output = /*@__PURE__*/ Schema.Struct({
+  invited: Schema.optional(
+    Schema.Struct({
+      email: Schema.optional(Schema.String),
+      role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
+      organization: Schema.optional(Schema.String),
+      token: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InviteOrganizationMemberV2Output =
   typeof InviteOrganizationMemberV2Output.Type;
 
@@ -40,9 +38,7 @@ export type InviteOrganizationMemberV2Output =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const inviteOrganizationMemberV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InviteOrganizationMemberV2Input,
-    outputSchema: InviteOrganizationMemberV2Output,
-  }),
-);
+export const inviteOrganizationMemberV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InviteOrganizationMemberV2Input,
+  outputSchema: InviteOrganizationMemberV2Output,
+}));

@@ -4,13 +4,13 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/api/organizations/{id}/" }));
 export type DestroyInput = typeof DestroyInput.Type;
 
 // Output Schema
-export const DestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DestroyOutput = /*@__PURE__*/ Schema.Void;
 export type DestroyOutput = typeof DestroyOutput.Type;
 
 // The operation
@@ -18,7 +18,7 @@ export type DestroyOutput = typeof DestroyOutput.Type;
  *
  * @param id - A UUID string identifying this organization.
  */
-export const destroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const destroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: DestroyInput,
   outputSchema: DestroyOutput,
   errors: [Forbidden, NotFound] as const,

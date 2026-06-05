@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     card: Schema.String,
     currency: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export type PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput =
 
 // Output Schema
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     authorization: Schema.Unknown,
@@ -495,7 +495,7 @@ export type PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput =
  * <p>Allows the user to refund an arbitrary amount, also known as a unlinked refund.</p>
  */
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput,
     outputSchema: PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput,
   }));

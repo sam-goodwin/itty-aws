@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTaxSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxSettingsInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -15,7 +15,7 @@ export const GetTaxSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTaxSettingsInput = typeof GetTaxSettingsInput.Type;
 
 // Output Schema
-export const GetTaxSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxSettingsOutput = /*@__PURE__*/ Schema.Struct({
   defaults: Schema.Struct({
     provider: Schema.Literals(["anrok", "avalara", "sphere", "stripe"]),
     tax_behavior: Schema.NullOr(
@@ -46,7 +46,7 @@ export type GetTaxSettingsOutput = typeof GetTaxSettingsOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxSettingsInput,
   outputSchema: GetTaxSettingsOutput,
 }));

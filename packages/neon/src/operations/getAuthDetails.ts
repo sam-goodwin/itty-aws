@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetAuthDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/auth" }));
+export const GetAuthDetailsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/auth" }),
+);
 export type GetAuthDetailsInput = typeof GetAuthDetailsInput.Type;
 
 // Output Schema
-export const GetAuthDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAuthDetailsOutput = /*@__PURE__*/ Schema.Struct({
   account_id: Schema.String,
   auth_method: Schema.Literals([
     "keycloak",
@@ -28,7 +28,7 @@ export type GetAuthDetailsOutput = typeof GetAuthDetailsOutput.Type;
  *
  * Returns auth information about the passed credentials. It can refer to an API key, Bearer token or OAuth session.
  */
-export const getAuthDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAuthDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAuthDetailsInput,
   outputSchema: GetAuthDetailsOutput,
 }));

@@ -4,22 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ProductToursDiscardDraftDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductToursDiscardDraftDestroyInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
+  }),
+);
 export type ProductToursDiscardDraftDestroyInput =
   typeof ProductToursDiscardDraftDestroyInput.Type;
 
 // Output Schema
 export const ProductToursDiscardDraftDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -101,9 +102,8 @@ export type ProductToursDiscardDraftDestroyOutput =
  * @param id - A UUID string identifying this product tour.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const productToursDiscardDraftDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProductToursDiscardDraftDestroyInput,
-    outputSchema: ProductToursDiscardDraftDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const productToursDiscardDraftDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductToursDiscardDraftDestroyInput,
+  outputSchema: ProductToursDiscardDraftDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

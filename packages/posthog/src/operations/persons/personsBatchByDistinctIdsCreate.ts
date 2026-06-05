@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsBatchByDistinctIdsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsBatchByDistinctIdsCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     id: Schema.optional(Schema.Number),
@@ -15,18 +15,18 @@ export const PersonsBatchByDistinctIdsCreateInput =
     created_at: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/persons/batch_by_distinct_ids/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/persons/batch_by_distinct_ids/",
+  }),
+);
 export type PersonsBatchByDistinctIdsCreateInput =
   typeof PersonsBatchByDistinctIdsCreateInput.Type;
 
 // Output Schema
-export const PersonsBatchByDistinctIdsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsBatchByDistinctIdsCreateOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsBatchByDistinctIdsCreateOutput =
   typeof PersonsBatchByDistinctIdsCreateOutput.Type;
 
@@ -36,9 +36,8 @@ export type PersonsBatchByDistinctIdsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsBatchByDistinctIdsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PersonsBatchByDistinctIdsCreateInput,
-    outputSchema: PersonsBatchByDistinctIdsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const personsBatchByDistinctIdsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsBatchByDistinctIdsCreateInput,
+  outputSchema: PersonsBatchByDistinctIdsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

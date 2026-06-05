@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostChargesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostChargesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   application_fee: Schema.optional(Schema.Number),
   application_fee_amount: Schema.optional(Schema.Number),
@@ -62,7 +62,7 @@ export const PostChargesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostChargesInput = typeof PostChargesInput.Type;
 
 // Output Schema
-export const PostChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostChargesOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_captured: Schema.Number,
   amount_refunded: Schema.Number,
@@ -336,7 +336,7 @@ export type PostChargesOutput = typeof PostChargesOutput.Type;
  * to initiate a new payment instead. Confirmation of the PaymentIntent creates the <code>Charge</code>
  * object used to request payment.</p>
  */
-export const PostCharges = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCharges = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostChargesInput,
   outputSchema: PostChargesOutput,
 }));

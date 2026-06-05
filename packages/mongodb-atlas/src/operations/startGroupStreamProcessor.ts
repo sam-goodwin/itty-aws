@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const StartGroupStreamProcessorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    processorName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start",
-    }),
-  );
+export const StartGroupStreamProcessorInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  processorName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start",
+  }),
+);
 export type StartGroupStreamProcessorInput =
   typeof StartGroupStreamProcessorInput.Type;
 
 // Output Schema
-export const StartGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StartGroupStreamProcessorOutput = /*@__PURE__*/ Schema.Void;
 export type StartGroupStreamProcessorOutput =
   typeof StartGroupStreamProcessorOutput.Type;
 
@@ -40,10 +38,8 @@ export type StartGroupStreamProcessorOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const startGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StartGroupStreamProcessorInput,
-    outputSchema: StartGroupStreamProcessorOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const startGroupStreamProcessor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StartGroupStreamProcessorInput,
+  outputSchema: StartGroupStreamProcessorOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

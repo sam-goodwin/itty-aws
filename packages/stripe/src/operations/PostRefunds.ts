@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostRefundsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostRefundsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   charge: Schema.optional(Schema.String),
   currency: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export const PostRefundsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostRefundsInput = typeof PostRefundsInput.Type;
 
 // Output Schema
-export const PostRefundsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostRefundsOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.Unknown,
   charge: Schema.Unknown,
@@ -210,7 +210,7 @@ export type PostRefundsOutput = typeof PostRefundsOutput.Type;
  * This method will raise an error when called on an already-refunded charge,
  * or when trying to refund more money than is left on a charge.</p>
  */
-export const PostRefunds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostRefunds = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostRefundsInput,
   outputSchema: PostRefundsOutput,
 }));

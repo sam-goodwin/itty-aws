@@ -9,27 +9,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AzureBareMetalInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
-    }),
-  );
+export const AzureBareMetalInstancesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
+  }),
+);
 export type AzureBareMetalInstancesGetInput =
   typeof AzureBareMetalInstancesGetInput.Type;
 
 // Output Schema
-export const AzureBareMetalInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AzureBareMetalInstancesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AzureBareMetalInstancesGetOutput =
   typeof AzureBareMetalInstancesGetOutput.Type;
 
@@ -43,15 +41,13 @@ export type AzureBareMetalInstancesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureBareMetalInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureBareMetalInstancesGetInput,
-    outputSchema: AzureBareMetalInstancesGetOutput,
-  }),
-);
+export const AzureBareMetalInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureBareMetalInstancesGetInput,
+  outputSchema: AzureBareMetalInstancesGetOutput,
+}));
 // Input Schema
 export const AzureBareMetalInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -66,7 +62,7 @@ export type AzureBareMetalInstancesListByResourceGroupInput =
 
 // Output Schema
 export const AzureBareMetalInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -92,13 +88,13 @@ export type AzureBareMetalInstancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureBareMetalInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalInstancesListByResourceGroupInput,
     outputSchema: AzureBareMetalInstancesListByResourceGroupOutput,
   }));
 // Input Schema
 export const AzureBareMetalInstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -112,7 +108,7 @@ export type AzureBareMetalInstancesListBySubscriptionInput =
 
 // Output Schema
 export const AzureBareMetalInstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -136,33 +132,32 @@ export type AzureBareMetalInstancesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AzureBareMetalInstancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureBareMetalInstancesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureBareMetalInstancesListBySubscriptionInput,
     outputSchema: AzureBareMetalInstancesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AzureBareMetalInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
-    }),
-  );
+export const AzureBareMetalInstancesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
+  }),
+);
 export type AzureBareMetalInstancesUpdateInput =
   typeof AzureBareMetalInstancesUpdateInput.Type;
 
 // Output Schema
-export const AzureBareMetalInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AzureBareMetalInstancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AzureBareMetalInstancesUpdateOutput =
   typeof AzureBareMetalInstancesUpdateOutput.Type;
 
@@ -176,14 +171,13 @@ export type AzureBareMetalInstancesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureBareMetalInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureBareMetalInstancesUpdateInput,
-    outputSchema: AzureBareMetalInstancesUpdateOutput,
-  }));
+export const AzureBareMetalInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureBareMetalInstancesUpdateInput,
+  outputSchema: AzureBareMetalInstancesUpdateOutput,
+}));
 // Input Schema
 export const AzureBareMetalStorageInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -198,7 +192,7 @@ export type AzureBareMetalStorageInstancesCreateInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -214,14 +208,15 @@ export type AzureBareMetalStorageInstancesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureBareMetalStorageInstancesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureBareMetalStorageInstancesCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureBareMetalStorageInstancesCreateInput,
     outputSchema: AzureBareMetalStorageInstancesCreateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureBareMetalStorageInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -236,7 +231,7 @@ export type AzureBareMetalStorageInstancesDeleteInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AzureBareMetalStorageInstancesDeleteOutput =
   typeof AzureBareMetalStorageInstancesDeleteOutput.Type;
 
@@ -248,14 +243,15 @@ export type AzureBareMetalStorageInstancesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureBareMetalStorageInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureBareMetalStorageInstancesDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureBareMetalStorageInstancesDeleteInput,
     outputSchema: AzureBareMetalStorageInstancesDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureBareMetalStorageInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -270,7 +266,7 @@ export type AzureBareMetalStorageInstancesGetInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -288,14 +284,13 @@ export type AzureBareMetalStorageInstancesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureBareMetalStorageInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureBareMetalStorageInstancesGetInput,
-    outputSchema: AzureBareMetalStorageInstancesGetOutput,
-  }));
+export const AzureBareMetalStorageInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureBareMetalStorageInstancesGetInput,
+  outputSchema: AzureBareMetalStorageInstancesGetOutput,
+}));
 // Input Schema
 export const AzureBareMetalStorageInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -310,7 +305,7 @@ export type AzureBareMetalStorageInstancesListByResourceGroupInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -336,13 +331,13 @@ export type AzureBareMetalStorageInstancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureBareMetalStorageInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesListByResourceGroupInput,
     outputSchema: AzureBareMetalStorageInstancesListByResourceGroupOutput,
   }));
 // Input Schema
 export const AzureBareMetalStorageInstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -356,7 +351,7 @@ export type AzureBareMetalStorageInstancesListBySubscriptionInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -381,13 +376,13 @@ export type AzureBareMetalStorageInstancesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AzureBareMetalStorageInstancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesListBySubscriptionInput,
     outputSchema: AzureBareMetalStorageInstancesListBySubscriptionOutput,
   }));
 // Input Schema
 export const AzureBareMetalStorageInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -402,7 +397,7 @@ export type AzureBareMetalStorageInstancesUpdateInput =
 
 // Output Schema
 export const AzureBareMetalStorageInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -420,13 +415,14 @@ export type AzureBareMetalStorageInstancesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureBareMetalStorageInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureBareMetalStorageInstancesUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureBareMetalStorageInstancesUpdateInput,
     outputSchema: AzureBareMetalStorageInstancesUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -437,7 +433,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -463,7 +459,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

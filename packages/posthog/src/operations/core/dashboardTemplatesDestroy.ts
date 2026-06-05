@@ -4,22 +4,20 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DashboardTemplatesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/projects/{project_id}/dashboard_templates/{id}/",
-    }),
-  );
+export const DashboardTemplatesDestroyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/projects/{project_id}/dashboard_templates/{id}/",
+  }),
+);
 export type DashboardTemplatesDestroyInput =
   typeof DashboardTemplatesDestroyInput.Type;
 
 // Output Schema
-export const DashboardTemplatesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DashboardTemplatesDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type DashboardTemplatesDestroyOutput =
   typeof DashboardTemplatesDestroyOutput.Type;
 
@@ -30,10 +28,8 @@ export type DashboardTemplatesDestroyOutput =
  * @param id - A UUID string identifying this dashboard template.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardTemplatesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardTemplatesDestroyInput,
-    outputSchema: DashboardTemplatesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardTemplatesDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardTemplatesDestroyInput,
+  outputSchema: DashboardTemplatesDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -9,53 +9,51 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DpsCertificateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
-    }),
-  );
+export const DpsCertificateCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
+  }),
+);
 export type DpsCertificateCreateOrUpdateInput =
   typeof DpsCertificateCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DpsCertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        certificate: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DpsCertificateCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      subject: Schema.optional(Schema.String),
+      expiry: Schema.optional(Schema.String),
+      thumbprint: Schema.optional(Schema.String),
+      isVerified: Schema.optional(Schema.Boolean),
+      certificate: Schema.optional(Schema.String),
+      created: Schema.optional(Schema.String),
+      updated: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DpsCertificateCreateOrUpdateOutput =
   typeof DpsCertificateCreateOrUpdateOutput.Type;
 
@@ -70,38 +68,35 @@ export type DpsCertificateCreateOrUpdateOutput =
  * @param certificateName - The name of the certificate create or update.
  * @param If-Match - ETag of the certificate. This is required to update an existing certificate, and ignored while creating a brand new certificate.
  */
-export const DpsCertificateCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DpsCertificateCreateOrUpdateInput,
-    outputSchema: DpsCertificateCreateOrUpdateOutput,
-  }));
+export const DpsCertificateCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DpsCertificateCreateOrUpdateInput,
+  outputSchema: DpsCertificateCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DpsCertificateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "certificate.name": Schema.optional(Schema.String),
-    "certificate.rawBytes": Schema.optional(Schema.String),
-    "certificate.isVerified": Schema.optional(Schema.Boolean),
-    "certificate.purpose": Schema.optional(
-      Schema.Literals(["clientAuthentication", "serverAuthentication"]),
-    ),
-    "certificate.created": Schema.optional(Schema.String),
-    "certificate.lastUpdated": Schema.optional(Schema.String),
-    "certificate.hasPrivateKey": Schema.optional(Schema.Boolean),
-    "certificate.nonce": Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
-    }),
-  );
+export const DpsCertificateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "certificate.name": Schema.optional(Schema.String),
+  "certificate.rawBytes": Schema.optional(Schema.String),
+  "certificate.isVerified": Schema.optional(Schema.Boolean),
+  "certificate.purpose": Schema.optional(
+    Schema.Literals(["clientAuthentication", "serverAuthentication"]),
+  ),
+  "certificate.created": Schema.optional(Schema.String),
+  "certificate.lastUpdated": Schema.optional(Schema.String),
+  "certificate.hasPrivateKey": Schema.optional(Schema.Boolean),
+  "certificate.nonce": Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
+  }),
+);
 export type DpsCertificateDeleteInput = typeof DpsCertificateDeleteInput.Type;
 
 // Output Schema
-export const DpsCertificateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DpsCertificateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DpsCertificateDeleteOutput = typeof DpsCertificateDeleteOutput.Type;
 
 // The operation
@@ -123,15 +118,13 @@ export type DpsCertificateDeleteOutput = typeof DpsCertificateDeleteOutput.Type;
  * @param certificate.hasPrivateKey - Indicates if the certificate contains a private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
  */
-export const DpsCertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DpsCertificateDeleteInput,
-    outputSchema: DpsCertificateDeleteOutput,
-  }),
-);
+export const DpsCertificateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DpsCertificateDeleteInput,
+  outputSchema: DpsCertificateDeleteOutput,
+}));
 // Input Schema
 export const DpsCertificateGenerateVerificationCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateName: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
@@ -156,7 +149,7 @@ export type DpsCertificateGenerateVerificationCodeInput =
 
 // Output Schema
 export const DpsCertificateGenerateVerificationCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -194,19 +187,18 @@ export type DpsCertificateGenerateVerificationCodeOutput =
  * @param certificate.hasPrivateKey - Indicates if the certificate contains private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
  */
-export const DpsCertificateGenerateVerificationCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DpsCertificateGenerateVerificationCode = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DpsCertificateGenerateVerificationCodeInput,
     outputSchema: DpsCertificateGenerateVerificationCodeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DpsCertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    certificateName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DpsCertificateGetInput = /*@__PURE__*/ Schema.Struct({
+  certificateName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
@@ -215,38 +207,37 @@ export const DpsCertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DpsCertificateGetInput = typeof DpsCertificateGetInput.Type;
 
 // Output Schema
-export const DpsCertificateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        certificate: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DpsCertificateGetOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      subject: Schema.optional(Schema.String),
+      expiry: Schema.optional(Schema.String),
+      thumbprint: Schema.optional(Schema.String),
+      isVerified: Schema.optional(Schema.Boolean),
+      certificate: Schema.optional(Schema.String),
+      created: Schema.optional(Schema.String),
+      updated: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DpsCertificateGetOutput = typeof DpsCertificateGetOutput.Type;
 
 // The operation
@@ -258,72 +249,70 @@ export type DpsCertificateGetOutput = typeof DpsCertificateGetOutput.Type;
  * @param provisioningServiceName - Name of the provisioning service the certificate is associated with.
  * @param If-Match - ETag of the certificate.
  */
-export const DpsCertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DpsCertificateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DpsCertificateGetInput,
   outputSchema: DpsCertificateGetOutput,
 }));
 // Input Schema
-export const DpsCertificateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates",
-    }),
-  );
+export const DpsCertificateListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates",
+  }),
+);
 export type DpsCertificateListInput = typeof DpsCertificateListInput.Type;
 
 // Output Schema
-export const DpsCertificateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              subject: Schema.optional(Schema.String),
-              expiry: Schema.optional(Schema.String),
-              thumbprint: Schema.optional(Schema.String),
-              isVerified: Schema.optional(Schema.Boolean),
-              certificate: Schema.optional(Schema.String),
-              created: Schema.optional(Schema.String),
-              updated: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const DpsCertificateListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            subject: Schema.optional(Schema.String),
+            expiry: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            isVerified: Schema.optional(Schema.Boolean),
+            certificate: Schema.optional(Schema.String),
+            created: Schema.optional(Schema.String),
+            updated: Schema.optional(Schema.String),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        etag: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type DpsCertificateListOutput = typeof DpsCertificateListOutput.Type;
 
 // The operation
@@ -333,13 +322,13 @@ export type DpsCertificateListOutput = typeof DpsCertificateListOutput.Type;
  * @param resourceGroupName - Name of resource group.
  * @param provisioningServiceName - Name of provisioning service to retrieve certificates for.
  */
-export const DpsCertificateList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DpsCertificateList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DpsCertificateListInput,
   outputSchema: DpsCertificateListOutput,
 }));
 // Input Schema
-export const DpsCertificateVerifyCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DpsCertificateVerifyCertificateInput = /*@__PURE__*/ Schema.Struct(
+  {
     certificateName: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
@@ -353,18 +342,19 @@ export const DpsCertificateVerifyCertificateInput =
     "certificate.lastUpdated": Schema.optional(Schema.String),
     "certificate.hasPrivateKey": Schema.optional(Schema.Boolean),
     "certificate.nonce": Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}/verify",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}/verify",
+  }),
+);
 export type DpsCertificateVerifyCertificateInput =
   typeof DpsCertificateVerifyCertificateInput.Type;
 
 // Output Schema
 export const DpsCertificateVerifyCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -417,14 +407,13 @@ export type DpsCertificateVerifyCertificateOutput =
  * @param certificate.hasPrivateKey - Indicates if the certificate contains private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
  */
-export const DpsCertificateVerifyCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DpsCertificateVerifyCertificateInput,
-    outputSchema: DpsCertificateVerifyCertificateOutput,
-  }));
+export const DpsCertificateVerifyCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DpsCertificateVerifyCertificateInput,
+  outputSchema: DpsCertificateVerifyCertificateOutput,
+}));
 // Input Schema
 export const IotDpsResourceCheckProvisioningServiceNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/checkProvisioningServiceNameAvailability",
@@ -435,7 +424,7 @@ export type IotDpsResourceCheckProvisioningServiceNameAvailabilityInput =
 
 // Output Schema
 export const IotDpsResourceCheckProvisioningServiceNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -450,35 +439,33 @@ export type IotDpsResourceCheckProvisioningServiceNameAvailabilityOutput =
  * Check if a provisioning service name is available. This will validate if the name is syntactically valid and if the name is usable
  */
 export const IotDpsResourceCheckProvisioningServiceNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotDpsResourceCheckProvisioningServiceNameAvailabilityInput,
     outputSchema: IotDpsResourceCheckProvisioningServiceNameAvailabilityOutput,
   }));
 // Input Schema
-export const IotDpsResourceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
-    }),
-  );
+export const IotDpsResourceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+  }),
+);
 export type IotDpsResourceCreateOrUpdateInput =
   typeof IotDpsResourceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IotDpsResourceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    resourcegroup: Schema.optional(Schema.String),
-    subscriptionid: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotDpsResourceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  resourcegroup: Schema.optional(Schema.String),
+  subscriptionid: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotDpsResourceCreateOrUpdateOutput =
   typeof IotDpsResourceCreateOrUpdateOutput.Type;
 
@@ -491,14 +478,13 @@ export type IotDpsResourceCreateOrUpdateOutput =
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of provisioning service to create or update.
  */
-export const IotDpsResourceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IotDpsResourceCreateOrUpdateInput,
-    outputSchema: IotDpsResourceCreateOrUpdateOutput,
-  }));
+export const IotDpsResourceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceCreateOrUpdateInput,
+  outputSchema: IotDpsResourceCreateOrUpdateOutput,
+}));
 // Input Schema
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -509,7 +495,7 @@ export type IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
 
 // Output Schema
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -555,26 +541,24 @@ export type IotDpsResourceCreateOrUpdatePrivateEndpointConnectionOutput =
  * Create or update the status of a private endpoint connection with the specified name
  */
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput,
     outputSchema: IotDpsResourceCreateOrUpdatePrivateEndpointConnectionOutput,
   }));
 // Input Schema
-export const IotDpsResourceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
-    }),
-  );
+export const IotDpsResourceDeleteInput = /*@__PURE__*/ Schema.Struct({
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+  }),
+);
 export type IotDpsResourceDeleteInput = typeof IotDpsResourceDeleteInput.Type;
 
 // Output Schema
-export const IotDpsResourceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IotDpsResourceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IotDpsResourceDeleteOutput = typeof IotDpsResourceDeleteOutput.Type;
 
 // The operation
@@ -586,15 +570,13 @@ export type IotDpsResourceDeleteOutput = typeof IotDpsResourceDeleteOutput.Type;
  * @param provisioningServiceName - Name of provisioning service to delete.
  * @param resourceGroupName - Resource group identifier.
  */
-export const IotDpsResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotDpsResourceDeleteInput,
-    outputSchema: IotDpsResourceDeleteOutput,
-  }),
-);
+export const IotDpsResourceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceDeleteInput,
+  outputSchema: IotDpsResourceDeleteOutput,
+}));
 // Input Schema
 export const IotDpsResourceDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -605,7 +587,7 @@ export type IotDpsResourceDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const IotDpsResourceDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -651,17 +633,15 @@ export type IotDpsResourceDeletePrivateEndpointConnectionOutput =
  * Delete private endpoint connection with the specified name
  */
 export const IotDpsResourceDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotDpsResourceDeletePrivateEndpointConnectionInput,
     outputSchema: IotDpsResourceDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
-export const IotDpsResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const IotDpsResourceGetInput = /*@__PURE__*/ Schema.Struct({
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
@@ -670,16 +650,15 @@ export const IotDpsResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type IotDpsResourceGetInput = typeof IotDpsResourceGetInput.Type;
 
 // Output Schema
-export const IotDpsResourceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    resourcegroup: Schema.optional(Schema.String),
-    subscriptionid: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotDpsResourceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  resourcegroup: Schema.optional(Schema.String),
+  subscriptionid: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotDpsResourceGetOutput = typeof IotDpsResourceGetOutput.Type;
 
 // The operation
@@ -691,13 +670,13 @@ export type IotDpsResourceGetOutput = typeof IotDpsResourceGetOutput.Type;
  * @param provisioningServiceName - Name of the provisioning service to retrieve.
  * @param resourceGroupName - Resource group name.
  */
-export const IotDpsResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IotDpsResourceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IotDpsResourceGetInput,
   outputSchema: IotDpsResourceGetOutput,
 }));
 // Input Schema
 export const IotDpsResourceGetOperationResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
@@ -713,7 +692,7 @@ export type IotDpsResourceGetOperationResultInput =
 
 // Output Schema
 export const IotDpsResourceGetOperationResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -735,14 +714,13 @@ export type IotDpsResourceGetOperationResultOutput =
  * @param provisioningServiceName - Name of provisioning service that the operation is running on.
  * @param asyncinfo - Async header used to poll on the status of the operation, obtained while creating the long running operation.
  */
-export const IotDpsResourceGetOperationResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IotDpsResourceGetOperationResultInput,
-    outputSchema: IotDpsResourceGetOperationResultOutput,
-  }));
+export const IotDpsResourceGetOperationResult = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceGetOperationResultInput,
+  outputSchema: IotDpsResourceGetOperationResultOutput,
+}));
 // Input Schema
 export const IotDpsResourceGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -753,7 +731,7 @@ export type IotDpsResourceGetPrivateEndpointConnectionInput =
 
 // Output Schema
 export const IotDpsResourceGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -799,13 +777,13 @@ export type IotDpsResourceGetPrivateEndpointConnectionOutput =
  * Get private endpoint connection properties
  */
 export const IotDpsResourceGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotDpsResourceGetPrivateEndpointConnectionInput,
     outputSchema: IotDpsResourceGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const IotDpsResourceGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources/{groupId}",
@@ -816,7 +794,7 @@ export type IotDpsResourceGetPrivateLinkResourcesInput =
 
 // Output Schema
 export const IotDpsResourceGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -835,14 +813,15 @@ export type IotDpsResourceGetPrivateLinkResourcesOutput =
  *
  * Get the specified private link resource for the given provisioning service
  */
-export const IotDpsResourceGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IotDpsResourceGetPrivateLinkResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotDpsResourceGetPrivateLinkResourcesInput,
     outputSchema: IotDpsResourceGetPrivateLinkResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IotDpsResourceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -855,7 +834,7 @@ export type IotDpsResourceListByResourceGroupInput =
 
 // Output Schema
 export const IotDpsResourceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -880,14 +859,13 @@ export type IotDpsResourceListByResourceGroupOutput =
  *
  * @param resourceGroupName - Resource group identifier.
  */
-export const IotDpsResourceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IotDpsResourceListByResourceGroupInput,
-    outputSchema: IotDpsResourceListByResourceGroupOutput,
-  }));
+export const IotDpsResourceListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceListByResourceGroupInput,
+  outputSchema: IotDpsResourceListByResourceGroupOutput,
+}));
 // Input Schema
 export const IotDpsResourceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/provisioningServices",
@@ -898,7 +876,7 @@ export type IotDpsResourceListBySubscriptionInput =
 
 // Output Schema
 export const IotDpsResourceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -923,47 +901,44 @@ export type IotDpsResourceListBySubscriptionOutput =
  *
  * List all the provisioning services for a given subscription id.
  */
-export const IotDpsResourceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IotDpsResourceListBySubscriptionInput,
-    outputSchema: IotDpsResourceListBySubscriptionOutput,
-  }));
+export const IotDpsResourceListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceListBySubscriptionInput,
+  outputSchema: IotDpsResourceListBySubscriptionOutput,
+}));
 // Input Schema
-export const IotDpsResourceListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/listkeys",
-    }),
-  );
+export const IotDpsResourceListKeysInput = /*@__PURE__*/ Schema.Struct({
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/listkeys",
+  }),
+);
 export type IotDpsResourceListKeysInput =
   typeof IotDpsResourceListKeysInput.Type;
 
 // Output Schema
-export const IotDpsResourceListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          keyName: Schema.String,
-          primaryKey: Schema.optional(Schema.String),
-          secondaryKey: Schema.optional(Schema.String),
-          rights: Schema.Literals([
-            "ServiceConfig",
-            "EnrollmentRead",
-            "EnrollmentWrite",
-            "DeviceConnect",
-            "RegistrationStatusRead",
-            "RegistrationStatusWrite",
-          ]),
-        }),
-      ),
+export const IotDpsResourceListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        keyName: Schema.String,
+        primaryKey: Schema.optional(Schema.String),
+        secondaryKey: Schema.optional(Schema.String),
+        rights: Schema.Literals([
+          "ServiceConfig",
+          "EnrollmentRead",
+          "EnrollmentWrite",
+          "DeviceConnect",
+          "RegistrationStatusRead",
+          "RegistrationStatusWrite",
+        ]),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotDpsResourceListKeysOutput =
   typeof IotDpsResourceListKeysOutput.Type;
 
@@ -976,15 +951,13 @@ export type IotDpsResourceListKeysOutput =
  * @param provisioningServiceName - The provisioning service name to get the shared access keys for.
  * @param resourceGroupName - resource group name
  */
-export const IotDpsResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotDpsResourceListKeysInput,
-    outputSchema: IotDpsResourceListKeysOutput,
-  }),
-);
+export const IotDpsResourceListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceListKeysInput,
+  outputSchema: IotDpsResourceListKeysOutput,
+}));
 // Input Schema
 export const IotDpsResourceListKeysForKeyNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -999,7 +972,7 @@ export type IotDpsResourceListKeysForKeyNameInput =
 
 // Output Schema
 export const IotDpsResourceListKeysForKeyNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyName: Schema.String,
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
@@ -1025,14 +998,13 @@ export type IotDpsResourceListKeysForKeyNameOutput =
  * @param keyName - Logical key name to get key-values for.
  * @param resourceGroupName - The name of the resource group that contains the provisioning service.
  */
-export const IotDpsResourceListKeysForKeyName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IotDpsResourceListKeysForKeyNameInput,
-    outputSchema: IotDpsResourceListKeysForKeyNameOutput,
-  }));
+export const IotDpsResourceListKeysForKeyName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceListKeysForKeyNameInput,
+  outputSchema: IotDpsResourceListKeysForKeyNameOutput,
+}));
 // Input Schema
 export const IotDpsResourceListPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections",
@@ -1043,7 +1015,7 @@ export type IotDpsResourceListPrivateEndpointConnectionsInput =
 
 // Output Schema
 export const IotDpsResourceListPrivateEndpointConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -1091,13 +1063,13 @@ export type IotDpsResourceListPrivateEndpointConnectionsOutput =
  * List private endpoint connection properties
  */
 export const IotDpsResourceListPrivateEndpointConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotDpsResourceListPrivateEndpointConnectionsInput,
     outputSchema: IotDpsResourceListPrivateEndpointConnectionsOutput,
   }));
 // Input Schema
 export const IotDpsResourceListPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources",
@@ -1108,7 +1080,7 @@ export type IotDpsResourceListPrivateLinkResourcesInput =
 
 // Output Schema
 export const IotDpsResourceListPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1133,37 +1105,36 @@ export type IotDpsResourceListPrivateLinkResourcesOutput =
  *
  * List private link resources for the given provisioning service
  */
-export const IotDpsResourceListPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IotDpsResourceListPrivateLinkResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotDpsResourceListPrivateLinkResourcesInput,
     outputSchema: IotDpsResourceListPrivateLinkResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IotDpsResourceListValidSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/skus",
-    }),
-  );
+export const IotDpsResourceListValidSkusInput = /*@__PURE__*/ Schema.Struct({
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/skus",
+  }),
+);
 export type IotDpsResourceListValidSkusInput =
   typeof IotDpsResourceListValidSkusInput.Type;
 
 // Output Schema
-export const IotDpsResourceListValidSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Literals(["S1"])),
-        }),
-      ),
+export const IotDpsResourceListValidSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.Literals(["S1"])),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotDpsResourceListValidSkusOutput =
   typeof IotDpsResourceListValidSkusOutput.Type;
 
@@ -1176,36 +1147,32 @@ export type IotDpsResourceListValidSkusOutput =
  * @param provisioningServiceName - Name of provisioning service.
  * @param resourceGroupName - Name of resource group.
  */
-export const IotDpsResourceListValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotDpsResourceListValidSkusInput,
-    outputSchema: IotDpsResourceListValidSkusOutput,
+export const IotDpsResourceListValidSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceListValidSkusInput,
+  outputSchema: IotDpsResourceListValidSkusOutput,
+}));
+// Input Schema
+export const IotDpsResourceUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  provisioningServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
   }),
 );
-// Input Schema
-export const IotDpsResourceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    provisioningServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
-    }),
-  );
 export type IotDpsResourceUpdateInput = typeof IotDpsResourceUpdateInput.Type;
 
 // Output Schema
-export const IotDpsResourceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    resourcegroup: Schema.optional(Schema.String),
-    subscriptionid: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotDpsResourceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  resourcegroup: Schema.optional(Schema.String),
+  subscriptionid: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotDpsResourceUpdateOutput = typeof IotDpsResourceUpdateOutput.Type;
 
 // The operation
@@ -1217,22 +1184,18 @@ export type IotDpsResourceUpdateOutput = typeof IotDpsResourceUpdateOutput.Type;
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of provisioning service to create or update.
  */
-export const IotDpsResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotDpsResourceUpdateInput,
-    outputSchema: IotDpsResourceUpdateOutput,
-  }),
-);
+export const IotDpsResourceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotDpsResourceUpdateInput,
+  outputSchema: IotDpsResourceUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Devices/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1255,7 +1218,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available Microsoft.Devices REST API operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

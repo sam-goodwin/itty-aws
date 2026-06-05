@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMemberRoleInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
   role: Schema.Literals(["admin", "member", "viewer"]),
@@ -17,17 +17,15 @@ export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateMemberRoleInput = typeof UpdateMemberRoleInput.Type;
 
 // Output Schema
-export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    member: Schema.optional(
-      Schema.Struct({
-        username: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-      }),
-    ),
-  },
-);
+export const UpdateMemberRoleOutput = /*@__PURE__*/ Schema.Struct({
+  member: Schema.optional(
+    Schema.Struct({
+      username: Schema.optional(Schema.String),
+      email: Schema.optional(Schema.String),
+      role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
+    }),
+  ),
+});
 export type UpdateMemberRoleOutput = typeof UpdateMemberRoleOutput.Type;
 
 // The operation
@@ -39,7 +37,7 @@ export type UpdateMemberRoleOutput = typeof UpdateMemberRoleOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param username - The username of a Turso user or organization member.
  */
-export const updateMemberRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMemberRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMemberRoleInput,
   outputSchema: UpdateMemberRoleOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

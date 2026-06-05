@@ -4,78 +4,76 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ApprovalPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    action_key: Schema.optional(Schema.String),
-    conditions: Schema.optional(Schema.Unknown),
-    approver_config: Schema.optional(Schema.Unknown),
-    allow_self_approve: Schema.optional(Schema.Boolean),
-    bypass_org_membership_levels: Schema.optional(Schema.Unknown),
-    bypass_roles: Schema.optional(Schema.Array(Schema.String)),
-    expires_after: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
+export const ApprovalPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  action_key: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Unknown),
+  approver_config: Schema.optional(Schema.Unknown),
+  allow_self_approve: Schema.optional(Schema.Boolean),
+  bypass_org_membership_levels: Schema.optional(Schema.Unknown),
+  bypass_roles: Schema.optional(Schema.Array(Schema.String)),
+  expires_after: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/api/environments/{project_id}/approval_policies/{id}/",
-    }),
-  );
+  ),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/api/environments/{project_id}/approval_policies/{id}/",
+  }),
+);
 export type ApprovalPoliciesUpdateInput =
   typeof ApprovalPoliciesUpdateInput.Type;
 
 // Output Schema
-export const ApprovalPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    action_key: Schema.optional(Schema.String),
-    conditions: Schema.optional(Schema.Unknown),
-    approver_config: Schema.optional(Schema.Unknown),
-    allow_self_approve: Schema.optional(Schema.Boolean),
-    bypass_org_membership_levels: Schema.optional(Schema.Unknown),
-    bypass_roles: Schema.optional(Schema.Array(Schema.String)),
-    expires_after: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
+export const ApprovalPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  action_key: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Unknown),
+  approver_config: Schema.optional(Schema.Unknown),
+  allow_self_approve: Schema.optional(Schema.Boolean),
+  bypass_org_membership_levels: Schema.optional(Schema.Unknown),
+  bypass_roles: Schema.optional(Schema.Array(Schema.String)),
+  expires_after: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
+  ),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+});
 export type ApprovalPoliciesUpdateOutput =
   typeof ApprovalPoliciesUpdateOutput.Type;
 
@@ -85,10 +83,8 @@ export type ApprovalPoliciesUpdateOutput =
  * @param id - A UUID string identifying this approval policy.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const approvalPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApprovalPoliciesUpdateInput,
-    outputSchema: ApprovalPoliciesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const approvalPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApprovalPoliciesUpdateInput,
+  outputSchema: ApprovalPoliciesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

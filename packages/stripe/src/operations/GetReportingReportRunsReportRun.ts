@@ -3,23 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetReportingReportRunsReportRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetReportingReportRunsReportRunInput = /*@__PURE__*/ Schema.Struct(
+  {
     report_run: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/reporting/report_runs/{report_run}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/reporting/report_runs/{report_run}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetReportingReportRunsReportRunInput =
   typeof GetReportingReportRunsReportRunInput.Type;
 
 // Output Schema
 export const GetReportingReportRunsReportRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     error: Schema.NullOr(Schema.String),
     id: Schema.String,
@@ -51,8 +52,7 @@ export type GetReportingReportRunsReportRunOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetReportingReportRunsReportRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetReportingReportRunsReportRunInput,
-    outputSchema: GetReportingReportRunsReportRunOutput,
-  }));
+export const GetReportingReportRunsReportRun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetReportingReportRunsReportRunInput,
+  outputSchema: GetReportingReportRunsReportRunOutput,
+}));

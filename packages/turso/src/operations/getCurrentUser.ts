@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v1/user" }));
+export const GetCurrentUserInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v1/user" }),
+);
 export type GetCurrentUserInput = typeof GetCurrentUserInput.Type;
 
 // Output Schema
-export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCurrentUserOutput = /*@__PURE__*/ Schema.Struct({
   user: Schema.optional(
     Schema.Struct({
       username: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export type GetCurrentUserOutput = typeof GetCurrentUserOutput.Type;
  *
  * Returns information about the currently authenticated user.
  */
-export const getCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInput,
   outputSchema: GetCurrentUserOutput,
 }));

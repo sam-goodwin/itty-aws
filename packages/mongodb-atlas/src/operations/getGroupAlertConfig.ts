@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    alertConfigId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
-    }),
-  );
+export const GetGroupAlertConfigInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  alertConfigId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
+  }),
+);
 export type GetGroupAlertConfigInput = typeof GetGroupAlertConfigInput.Type;
 
 // Output Schema
-export const GetGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAlertConfigOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupAlertConfigOutput = typeof GetGroupAlertConfigOutput.Type;
 
 // The operation
@@ -37,7 +35,7 @@ export type GetGroupAlertConfigOutput = typeof GetGroupAlertConfigOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration.
  */
-export const getGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupAlertConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupAlertConfigInput,
   outputSchema: GetGroupAlertConfigOutput,
   errors: [Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConnectionURIInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.optional(Schema.String),
   endpoint_id: Schema.optional(Schema.String),
@@ -17,11 +17,9 @@ export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetConnectionURIInput = typeof GetConnectionURIInput.Type;
 
 // Output Schema
-export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    uri: Schema.String,
-  },
-);
+export const GetConnectionURIOutput = /*@__PURE__*/ Schema.Struct({
+  uri: Schema.String,
+});
 export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
 
 // The operation
@@ -40,7 +38,7 @@ export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
  * @param role_name - The role name
  * @param pooled - Adds the `-pooler` option to the connection URI when set to `true`, creating a pooled connection URI.
  */
-export const getConnectionURI = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getConnectionURI = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetConnectionURIInput,
   outputSchema: GetConnectionURIOutput,
   errors: [NotFound] as const,

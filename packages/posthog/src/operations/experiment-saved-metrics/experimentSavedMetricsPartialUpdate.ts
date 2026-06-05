@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExperimentSavedMetricsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export type ExperimentSavedMetricsPartialUpdateInput =
 
 // Output Schema
 export const ExperimentSavedMetricsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -79,9 +79,10 @@ export type ExperimentSavedMetricsPartialUpdateOutput =
  * @param id - A unique integer value identifying this experiment saved metric.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentSavedMetricsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentSavedMetricsPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExperimentSavedMetricsPartialUpdateInput,
     outputSchema: ExperimentSavedMetricsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

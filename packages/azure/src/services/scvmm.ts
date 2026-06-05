@@ -9,24 +9,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AvailabilitySetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
-    }),
-  );
+export const AvailabilitySetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
+  }),
+);
 export type AvailabilitySetsCreateOrUpdateInput =
   typeof AvailabilitySetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AvailabilitySetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AvailabilitySetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -44,7 +43,8 @@ export const AvailabilitySetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type AvailabilitySetsCreateOrUpdateOutput =
   typeof AvailabilitySetsCreateOrUpdateOutput.Type;
 
@@ -59,30 +59,27 @@ export type AvailabilitySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
-export const AvailabilitySetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AvailabilitySetsCreateOrUpdateInput,
-    outputSchema: AvailabilitySetsCreateOrUpdateOutput,
-  }));
+export const AvailabilitySetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsCreateOrUpdateInput,
+  outputSchema: AvailabilitySetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AvailabilitySetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
-    }),
-  );
+export const AvailabilitySetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
+  }),
+);
 export type AvailabilitySetsDeleteInput =
   typeof AvailabilitySetsDeleteInput.Type;
 
 // Output Schema
-export const AvailabilitySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AvailabilitySetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsDeleteOutput =
   typeof AvailabilitySetsDeleteOutput.Type;
 
@@ -97,48 +94,44 @@ export type AvailabilitySetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
-export const AvailabilitySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilitySetsDeleteInput,
-    outputSchema: AvailabilitySetsDeleteOutput,
+export const AvailabilitySetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsDeleteInput,
+  outputSchema: AvailabilitySetsDeleteOutput,
+}));
+// Input Schema
+export const AvailabilitySetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
   }),
 );
-// Input Schema
-export const AvailabilitySetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
-    }),
-  );
 export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
 
 // Output Schema
-export const AvailabilitySetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AvailabilitySetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
 
 // The operation
@@ -152,13 +145,13 @@ export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
-export const AvailabilitySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilitySetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AvailabilitySetsGetInput,
   outputSchema: AvailabilitySetsGetOutput,
 }));
 // Input Schema
 export const AvailabilitySetsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -173,7 +166,7 @@ export type AvailabilitySetsListByResourceGroupInput =
 
 // Output Schema
 export const AvailabilitySetsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -220,14 +213,15 @@ export type AvailabilitySetsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AvailabilitySetsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilitySetsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilitySetsListByResourceGroupInput,
     outputSchema: AvailabilitySetsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AvailabilitySetsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -241,7 +235,7 @@ export type AvailabilitySetsListBySubscriptionInput =
 
 // Output Schema
 export const AvailabilitySetsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -287,48 +281,47 @@ export type AvailabilitySetsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AvailabilitySetsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilitySetsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilitySetsListBySubscriptionInput,
     outputSchema: AvailabilitySetsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AvailabilitySetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
-    }),
-  );
+export const AvailabilitySetsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
+  }),
+);
 export type AvailabilitySetsUpdateInput =
   typeof AvailabilitySetsUpdateInput.Type;
 
 // Output Schema
-export const AvailabilitySetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AvailabilitySetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AvailabilitySetsUpdateOutput =
   typeof AvailabilitySetsUpdateOutput.Type;
 
@@ -343,48 +336,44 @@ export type AvailabilitySetsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
-export const AvailabilitySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilitySetsUpdateInput,
-    outputSchema: AvailabilitySetsUpdateOutput,
+export const AvailabilitySetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsUpdateInput,
+  outputSchema: AvailabilitySetsUpdateOutput,
+}));
+// Input Schema
+export const CloudsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cloudResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
   }),
 );
-// Input Schema
-export const CloudsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cloudResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
-    }),
-  );
 export type CloudsCreateOrUpdateInput = typeof CloudsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CloudsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CloudsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CloudsCreateOrUpdateOutput = typeof CloudsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -398,14 +387,12 @@ export type CloudsCreateOrUpdateOutput = typeof CloudsCreateOrUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudResourceName - Name of the Cloud.
  */
-export const CloudsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudsCreateOrUpdateInput,
-    outputSchema: CloudsCreateOrUpdateOutput,
-  }),
-);
+export const CloudsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudsCreateOrUpdateInput,
+  outputSchema: CloudsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CloudsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cloudResourceName: Schema.String.pipe(T.PathParam()),
@@ -419,7 +406,7 @@ export const CloudsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudsDeleteInput = typeof CloudsDeleteInput.Type;
 
 // Output Schema
-export const CloudsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CloudsDeleteOutput = typeof CloudsDeleteOutput.Type;
 
 // The operation
@@ -433,12 +420,12 @@ export type CloudsDeleteOutput = typeof CloudsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudResourceName - Name of the Cloud.
  */
-export const CloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudsDeleteInput,
   outputSchema: CloudsDeleteOutput,
 }));
 // Input Schema
-export const CloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cloudResourceName: Schema.String.pipe(T.PathParam()),
@@ -452,7 +439,7 @@ export const CloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudsGetInput = typeof CloudsGetInput.Type;
 
 // Output Schema
-export const CloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -484,61 +471,49 @@ export type CloudsGetOutput = typeof CloudsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudResourceName - Name of the Cloud.
  */
-export const CloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudsGetInput,
   outputSchema: CloudsGetOutput,
 }));
 // Input Schema
-export const CloudsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds",
-    }),
-  );
+export const CloudsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds",
+  }),
+);
 export type CloudsListByResourceGroupInput =
   typeof CloudsListByResourceGroupInput.Type;
 
 // Output Schema
-export const CloudsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CloudsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CloudsListByResourceGroupOutput =
   typeof CloudsListByResourceGroupOutput.Type;
 
@@ -552,62 +527,48 @@ export type CloudsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CloudsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudsListByResourceGroupInput,
-    outputSchema: CloudsListByResourceGroupOutput,
+export const CloudsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudsListByResourceGroupInput,
+  outputSchema: CloudsListByResourceGroupOutput,
+}));
+// Input Schema
+export const CloudsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/clouds",
   }),
 );
-// Input Schema
-export const CloudsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/clouds",
-    }),
-  );
 export type CloudsListBySubscriptionInput =
   typeof CloudsListBySubscriptionInput.Type;
 
 // Output Schema
-export const CloudsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CloudsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CloudsListBySubscriptionOutput =
   typeof CloudsListBySubscriptionOutput.Type;
 
@@ -620,14 +581,12 @@ export type CloudsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CloudsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudsListBySubscriptionInput,
-    outputSchema: CloudsListBySubscriptionOutput,
-  }),
-);
+export const CloudsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudsListBySubscriptionInput,
+  outputSchema: CloudsListBySubscriptionOutput,
+}));
 // Input Schema
-export const CloudsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cloudResourceName: Schema.String.pipe(T.PathParam()),
@@ -641,7 +600,7 @@ export const CloudsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloudsUpdateInput = typeof CloudsUpdateInput.Type;
 
 // Output Schema
-export const CloudsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -673,16 +632,14 @@ export type CloudsUpdateOutput = typeof CloudsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudResourceName - Name of the Cloud.
  */
-export const CloudsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudsUpdateInput,
   outputSchema: CloudsUpdateOutput,
 }));
 // Input Schema
-export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GuestAgentsCreateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
@@ -691,26 +648,25 @@ export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GuestAgentsCreateInput = typeof GuestAgentsCreateInput.Type;
 
 // Output Schema
-export const GuestAgentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GuestAgentsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GuestAgentsCreateOutput = typeof GuestAgentsCreateOutput.Type;
 
 // The operation
@@ -721,16 +677,14 @@ export type GuestAgentsCreateOutput = typeof GuestAgentsCreateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsCreateInput,
   outputSchema: GuestAgentsCreateOutput,
 }));
 // Input Schema
-export const GuestAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GuestAgentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
@@ -739,7 +693,7 @@ export const GuestAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GuestAgentsDeleteInput = typeof GuestAgentsDeleteInput.Type;
 
 // Output Schema
-export const GuestAgentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GuestAgentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GuestAgentsDeleteOutput = typeof GuestAgentsDeleteOutput.Type;
 
 // The operation
@@ -750,12 +704,12 @@ export type GuestAgentsDeleteOutput = typeof GuestAgentsDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsDeleteInput,
   outputSchema: GuestAgentsDeleteOutput,
 }));
 // Input Schema
-export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentsGetInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -766,7 +720,7 @@ export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GuestAgentsGetInput = typeof GuestAgentsGetInput.Type;
 
 // Output Schema
-export const GuestAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -795,13 +749,13 @@ export type GuestAgentsGetOutput = typeof GuestAgentsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsGetInput,
   outputSchema: GuestAgentsGetOutput,
 }));
 // Input Schema
 export const GuestAgentsListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -814,7 +768,7 @@ export type GuestAgentsListByVirtualMachineInstanceInput =
 
 // Output Schema
 export const GuestAgentsListByVirtualMachineInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -859,48 +813,47 @@ export type GuestAgentsListByVirtualMachineInstanceOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentsListByVirtualMachineInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentsListByVirtualMachineInstance = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GuestAgentsListByVirtualMachineInstanceInput,
     outputSchema: GuestAgentsListByVirtualMachineInstanceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const InventoryItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmmServerName: Schema.String.pipe(T.PathParam()),
-    inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
-    }),
-  );
+export const InventoryItemsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmmServerName: Schema.String.pipe(T.PathParam()),
+  inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
+  }),
+);
 export type InventoryItemsCreateInput = typeof InventoryItemsCreateInput.Type;
 
 // Output Schema
-export const InventoryItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InventoryItemsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
 
 // The operation
@@ -915,31 +868,27 @@ export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
  * @param vmmServerName - Name of the VmmServer.
  * @param inventoryItemResourceName - Name of the inventoryItem.
  */
-export const InventoryItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InventoryItemsCreateInput,
-    outputSchema: InventoryItemsCreateOutput,
+export const InventoryItemsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsCreateInput,
+  outputSchema: InventoryItemsCreateOutput,
+}));
+// Input Schema
+export const InventoryItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmmServerName: Schema.String.pipe(T.PathParam()),
+  inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
   }),
 );
-// Input Schema
-export const InventoryItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmmServerName: Schema.String.pipe(T.PathParam()),
-    inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
-    }),
-  );
 export type InventoryItemsDeleteInput = typeof InventoryItemsDeleteInput.Type;
 
 // Output Schema
-export const InventoryItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InventoryItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
 
 // The operation
@@ -954,22 +903,18 @@ export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
  * @param vmmServerName - Name of the VmmServer.
  * @param inventoryItemResourceName - Name of the inventoryItem.
  */
-export const InventoryItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InventoryItemsDeleteInput,
-    outputSchema: InventoryItemsDeleteOutput,
-  }),
-);
+export const InventoryItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsDeleteInput,
+  outputSchema: InventoryItemsDeleteOutput,
+}));
 // Input Schema
-export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmmServerName: Schema.String.pipe(T.PathParam()),
-    inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const InventoryItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmmServerName: Schema.String.pipe(T.PathParam()),
+  inventoryItemResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
@@ -978,26 +923,25 @@ export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InventoryItemsGetInput = typeof InventoryItemsGetInput.Type;
 
 // Output Schema
-export const InventoryItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InventoryItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
 
 // The operation
@@ -1012,62 +956,50 @@ export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
  * @param vmmServerName - Name of the VmmServer.
  * @param inventoryItemResourceName - Name of the inventoryItem.
  */
-export const InventoryItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InventoryItemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InventoryItemsGetInput,
   outputSchema: InventoryItemsGetOutput,
 }));
 // Input Schema
-export const InventoryItemsListByVmmServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmmServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems",
-    }),
-  );
+export const InventoryItemsListByVmmServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmmServerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems",
+  }),
+);
 export type InventoryItemsListByVmmServerInput =
   typeof InventoryItemsListByVmmServerInput.Type;
 
 // Output Schema
-export const InventoryItemsListByVmmServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const InventoryItemsListByVmmServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type InventoryItemsListByVmmServerOutput =
   typeof InventoryItemsListByVmmServerOutput.Type;
 
@@ -1082,13 +1014,12 @@ export type InventoryItemsListByVmmServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmmServerName - Name of the VmmServer.
  */
-export const InventoryItemsListByVmmServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: InventoryItemsListByVmmServerInput,
-    outputSchema: InventoryItemsListByVmmServerOutput,
-  }));
+export const InventoryItemsListByVmmServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InventoryItemsListByVmmServerInput,
+  outputSchema: InventoryItemsListByVmmServerOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.ScVmm/operations" }),
@@ -1096,7 +1027,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1127,13 +1058,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const VirtualMachineInstancesCreateCheckpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1146,7 +1077,7 @@ export type VirtualMachineInstancesCreateCheckpointInput =
 
 // Output Schema
 export const VirtualMachineInstancesCreateCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesCreateCheckpointOutput =
   typeof VirtualMachineInstancesCreateCheckpointOutput.Type;
 
@@ -1158,14 +1089,15 @@ export type VirtualMachineInstancesCreateCheckpointOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesCreateCheckpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineInstancesCreateCheckpoint = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineInstancesCreateCheckpointInput,
     outputSchema: VirtualMachineInstancesCreateCheckpointOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1178,7 +1110,7 @@ export type VirtualMachineInstancesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1208,28 +1140,27 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineInstancesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineInstancesCreateOrUpdateInput,
     outputSchema: VirtualMachineInstancesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    deleteFromHost: Schema.optional(Schema.Literals(["true", "false"])),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
-    }),
-  );
+export const VirtualMachineInstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  deleteFromHost: Schema.optional(Schema.Literals(["true", "false"])),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
+  }),
+);
 export type VirtualMachineInstancesDeleteInput =
   typeof VirtualMachineInstancesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesDeleteOutput =
   typeof VirtualMachineInstancesDeleteOutput.Type;
 
@@ -1242,14 +1173,13 @@ export type VirtualMachineInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param deleteFromHost - Whether to disable the VM from azure and also delete it from Vmm.
  */
-export const VirtualMachineInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesDeleteInput,
-    outputSchema: VirtualMachineInstancesDeleteOutput,
-  }));
+export const VirtualMachineInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesDeleteInput,
+  outputSchema: VirtualMachineInstancesDeleteOutput,
+}));
 // Input Schema
 export const VirtualMachineInstancesDeleteCheckpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1262,7 +1192,7 @@ export type VirtualMachineInstancesDeleteCheckpointInput =
 
 // Output Schema
 export const VirtualMachineInstancesDeleteCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesDeleteCheckpointOutput =
   typeof VirtualMachineInstancesDeleteCheckpointOutput.Type;
 
@@ -1274,45 +1204,44 @@ export type VirtualMachineInstancesDeleteCheckpointOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesDeleteCheckpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineInstancesDeleteCheckpoint = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineInstancesDeleteCheckpointInput,
     outputSchema: VirtualMachineInstancesDeleteCheckpointOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
-    }),
-  );
+export const VirtualMachineInstancesGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
+  }),
+);
 export type VirtualMachineInstancesGetInput =
   typeof VirtualMachineInstancesGetInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineInstancesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineInstancesGetOutput =
   typeof VirtualMachineInstancesGetOutput.Type;
 
@@ -1324,61 +1253,47 @@ export type VirtualMachineInstancesGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesGetInput,
-    outputSchema: VirtualMachineInstancesGetOutput,
+export const VirtualMachineInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesGetInput,
+  outputSchema: VirtualMachineInstancesGetOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances",
-    }),
-  );
 export type VirtualMachineInstancesListInput =
   typeof VirtualMachineInstancesListInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachineInstancesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachineInstancesListOutput =
   typeof VirtualMachineInstancesListOutput.Type;
 
@@ -1390,28 +1305,24 @@ export type VirtualMachineInstancesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesListInput,
-    outputSchema: VirtualMachineInstancesListOutput,
+export const VirtualMachineInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesListInput,
+  outputSchema: VirtualMachineInstancesListOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesRestartInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
-    }),
-  );
 export type VirtualMachineInstancesRestartInput =
   typeof VirtualMachineInstancesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesRestartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesRestartOutput =
   typeof VirtualMachineInstancesRestartOutput.Type;
 
@@ -1423,14 +1334,13 @@ export type VirtualMachineInstancesRestartOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesRestartInput,
-    outputSchema: VirtualMachineInstancesRestartOutput,
-  }));
+export const VirtualMachineInstancesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesRestartInput,
+  outputSchema: VirtualMachineInstancesRestartOutput,
+}));
 // Input Schema
 export const VirtualMachineInstancesRestoreCheckpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1443,7 +1353,7 @@ export type VirtualMachineInstancesRestoreCheckpointInput =
 
 // Output Schema
 export const VirtualMachineInstancesRestoreCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesRestoreCheckpointOutput =
   typeof VirtualMachineInstancesRestoreCheckpointOutput.Type;
 
@@ -1455,27 +1365,26 @@ export type VirtualMachineInstancesRestoreCheckpointOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesRestoreCheckpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineInstancesRestoreCheckpoint = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineInstancesRestoreCheckpointInput,
     outputSchema: VirtualMachineInstancesRestoreCheckpointOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
-    }),
-  );
+export const VirtualMachineInstancesStartInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
+  }),
+);
 export type VirtualMachineInstancesStartInput =
   typeof VirtualMachineInstancesStartInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesStartOutput =
   typeof VirtualMachineInstancesStartOutput.Type;
 
@@ -1487,27 +1396,24 @@ export type VirtualMachineInstancesStartOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesStartInput,
-    outputSchema: VirtualMachineInstancesStartOutput,
-  }));
+export const VirtualMachineInstancesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesStartInput,
+  outputSchema: VirtualMachineInstancesStartOutput,
+}));
 // Input Schema
-export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/stop",
-    }),
-  );
+export const VirtualMachineInstancesStopInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/stop",
+  }),
+);
 export type VirtualMachineInstancesStopInput =
   typeof VirtualMachineInstancesStopInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineInstancesStopOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineInstancesStopOutput =
   typeof VirtualMachineInstancesStopOutput.Type;
 
@@ -1519,46 +1425,42 @@ export type VirtualMachineInstancesStopOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesStopInput,
-    outputSchema: VirtualMachineInstancesStopOutput,
+export const VirtualMachineInstancesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesStopInput,
+  outputSchema: VirtualMachineInstancesStopOutput,
+}));
+// Input Schema
+export const VirtualMachineInstancesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
   }),
 );
-// Input Schema
-export const VirtualMachineInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
-    }),
-  );
 export type VirtualMachineInstancesUpdateInput =
   typeof VirtualMachineInstancesUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineInstancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineInstancesUpdateOutput =
   typeof VirtualMachineInstancesUpdateOutput.Type;
 
@@ -1570,14 +1472,13 @@ export type VirtualMachineInstancesUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineInstancesUpdateInput,
-    outputSchema: VirtualMachineInstancesUpdateOutput,
-  }));
+export const VirtualMachineInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesUpdateInput,
+  outputSchema: VirtualMachineInstancesUpdateOutput,
+}));
 // Input Schema
 export const VirtualMachineTemplatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
@@ -1593,7 +1494,7 @@ export type VirtualMachineTemplatesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineTemplatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1626,30 +1527,29 @@ export type VirtualMachineTemplatesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
-export const VirtualMachineTemplatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineTemplatesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineTemplatesCreateOrUpdateInput,
     outputSchema: VirtualMachineTemplatesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineTemplatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesDeleteInput =
   typeof VirtualMachineTemplatesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineTemplatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineTemplatesDeleteOutput =
   typeof VirtualMachineTemplatesDeleteOutput.Type;
 
@@ -1664,48 +1564,45 @@ export type VirtualMachineTemplatesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
-export const VirtualMachineTemplatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineTemplatesDeleteInput,
-    outputSchema: VirtualMachineTemplatesDeleteOutput,
-  }));
+export const VirtualMachineTemplatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesDeleteInput,
+  outputSchema: VirtualMachineTemplatesDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesGetInput =
   typeof VirtualMachineTemplatesGetInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineTemplatesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineTemplatesGetOutput =
   typeof VirtualMachineTemplatesGetOutput.Type;
 
@@ -1720,15 +1617,13 @@ export type VirtualMachineTemplatesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
-export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineTemplatesGetInput,
-    outputSchema: VirtualMachineTemplatesGetOutput,
-  }),
-);
+export const VirtualMachineTemplatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesGetInput,
+  outputSchema: VirtualMachineTemplatesGetOutput,
+}));
 // Input Schema
 export const VirtualMachineTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1743,7 +1638,7 @@ export type VirtualMachineTemplatesListByResourceGroupInput =
 
 // Output Schema
 export const VirtualMachineTemplatesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1791,13 +1686,13 @@ export type VirtualMachineTemplatesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineTemplatesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineTemplatesListByResourceGroupInput,
     outputSchema: VirtualMachineTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
 export const VirtualMachineTemplatesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1811,7 +1706,7 @@ export type VirtualMachineTemplatesListBySubscriptionInput =
 
 // Output Schema
 export const VirtualMachineTemplatesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1857,48 +1752,47 @@ export type VirtualMachineTemplatesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VirtualMachineTemplatesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineTemplatesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineTemplatesListBySubscriptionInput,
     outputSchema: VirtualMachineTemplatesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineTemplatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
-    }),
-  );
+export const VirtualMachineTemplatesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
+  }),
+);
 export type VirtualMachineTemplatesUpdateInput =
   typeof VirtualMachineTemplatesUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineTemplatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineTemplatesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineTemplatesUpdateOutput =
   typeof VirtualMachineTemplatesUpdateOutput.Type;
 
@@ -1913,48 +1807,45 @@ export type VirtualMachineTemplatesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
-export const VirtualMachineTemplatesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineTemplatesUpdateInput,
-    outputSchema: VirtualMachineTemplatesUpdateOutput,
-  }));
+export const VirtualMachineTemplatesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineTemplatesUpdateInput,
+  outputSchema: VirtualMachineTemplatesUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksCreateOrUpdateInput =
   typeof VirtualNetworksCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksCreateOrUpdateOutput =
   typeof VirtualNetworksCreateOrUpdateOutput.Type;
 
@@ -1969,29 +1860,26 @@ export type VirtualNetworksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
-export const VirtualNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworksCreateOrUpdateInput,
-    outputSchema: VirtualNetworksCreateOrUpdateOutput,
-  }));
+export const VirtualNetworksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksCreateOrUpdateInput,
+  outputSchema: VirtualNetworksCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualNetworksDeleteOutput =
   typeof VirtualNetworksDeleteOutput.Type;
 
@@ -2006,48 +1894,44 @@ export type VirtualNetworksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
-export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksDeleteInput,
-    outputSchema: VirtualNetworksDeleteOutput,
+export const VirtualNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksDeleteInput,
+  outputSchema: VirtualNetworksDeleteOutput,
+}));
+// Input Schema
+export const VirtualNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
 
 // Output Schema
-export const VirtualNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
 
 // The operation
@@ -2061,13 +1945,13 @@ export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
-export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksGetInput,
   outputSchema: VirtualNetworksGetOutput,
 }));
 // Input Schema
 export const VirtualNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2082,7 +1966,7 @@ export type VirtualNetworksListByResourceGroupInput =
 
 // Output Schema
 export const VirtualNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2129,14 +2013,15 @@ export type VirtualNetworksListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualNetworksListByResourceGroupInput,
     outputSchema: VirtualNetworksListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualNetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2150,7 +2035,7 @@ export type VirtualNetworksListBySubscriptionInput =
 
 // Output Schema
 export const VirtualNetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2196,47 +2081,44 @@ export type VirtualNetworksListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VirtualNetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworksListBySubscriptionInput,
-    outputSchema: VirtualNetworksListBySubscriptionOutput,
-  }));
+export const VirtualNetworksListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksListBySubscriptionInput,
+  outputSchema: VirtualNetworksListBySubscriptionOutput,
+}));
 // Input Schema
-export const VirtualNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
-    }),
-  );
+export const VirtualNetworksUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
+  }),
+);
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworksUpdateOutput =
   typeof VirtualNetworksUpdateOutput.Type;
 
@@ -2251,15 +2133,13 @@ export type VirtualNetworksUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
-export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksUpdateInput,
-    outputSchema: VirtualNetworksUpdateOutput,
-  }),
-);
+export const VirtualNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksUpdateInput,
+  outputSchema: VirtualNetworksUpdateOutput,
+}));
 // Input Schema
 export const VmInstanceHybridIdentityMetadatasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2272,7 +2152,7 @@ export type VmInstanceHybridIdentityMetadatasGetInput =
 
 // Output Schema
 export const VmInstanceHybridIdentityMetadatasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2302,14 +2182,15 @@ export type VmInstanceHybridIdentityMetadatasGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const VmInstanceHybridIdentityMetadatasGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmInstanceHybridIdentityMetadatasGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VmInstanceHybridIdentityMetadatasGetInput,
     outputSchema: VmInstanceHybridIdentityMetadatasGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2322,7 +2203,7 @@ export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput =
 
 // Output Schema
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2368,49 +2249,47 @@ export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput 
  * @param api-version - The API version to use for this operation.
  */
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput,
     outputSchema:
       VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput,
   }));
 // Input Schema
-export const VmmServersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmmServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
-    }),
-  );
+export const VmmServersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmmServerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
+  }),
+);
 export type VmmServersCreateOrUpdateInput =
   typeof VmmServersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VmmServersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VmmServersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VmmServersCreateOrUpdateOutput =
   typeof VmmServersCreateOrUpdateOutput.Type;
 
@@ -2425,14 +2304,12 @@ export type VmmServersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmmServerName - Name of the VmmServer.
  */
-export const VmmServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VmmServersCreateOrUpdateInput,
-    outputSchema: VmmServersCreateOrUpdateOutput,
-  }),
-);
+export const VmmServersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VmmServersCreateOrUpdateInput,
+  outputSchema: VmmServersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VmmServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmmServersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vmmServerName: Schema.String.pipe(T.PathParam()),
@@ -2446,7 +2323,7 @@ export const VmmServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VmmServersDeleteInput = typeof VmmServersDeleteInput.Type;
 
 // Output Schema
-export const VmmServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VmmServersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VmmServersDeleteOutput = typeof VmmServersDeleteOutput.Type;
 
 // The operation
@@ -2460,12 +2337,12 @@ export type VmmServersDeleteOutput = typeof VmmServersDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmmServerName - Name of the VmmServer.
  */
-export const VmmServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmmServersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VmmServersDeleteInput,
   outputSchema: VmmServersDeleteOutput,
 }));
 // Input Schema
-export const VmmServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmmServersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vmmServerName: Schema.String.pipe(T.PathParam()),
@@ -2479,7 +2356,7 @@ export const VmmServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VmmServersGetInput = typeof VmmServersGetInput.Type;
 
 // Output Schema
-export const VmmServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmmServersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2511,61 +2388,49 @@ export type VmmServersGetOutput = typeof VmmServersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmmServerName - Name of the VmmServer.
  */
-export const VmmServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmmServersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VmmServersGetInput,
   outputSchema: VmmServersGetOutput,
 }));
 // Input Schema
-export const VmmServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers",
-    }),
-  );
+export const VmmServersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers",
+  }),
+);
 export type VmmServersListByResourceGroupInput =
   typeof VmmServersListByResourceGroupInput.Type;
 
 // Output Schema
-export const VmmServersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VmmServersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VmmServersListByResourceGroupOutput =
   typeof VmmServersListByResourceGroupOutput.Type;
 
@@ -2579,61 +2444,48 @@ export type VmmServersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VmmServersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VmmServersListByResourceGroupInput,
-    outputSchema: VmmServersListByResourceGroupOutput,
-  }));
+export const VmmServersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VmmServersListByResourceGroupInput,
+  outputSchema: VmmServersListByResourceGroupOutput,
+}));
 // Input Schema
-export const VmmServersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/vmmServers",
-    }),
-  );
+export const VmmServersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/vmmServers",
+  }),
+);
 export type VmmServersListBySubscriptionInput =
   typeof VmmServersListBySubscriptionInput.Type;
 
 // Output Schema
-export const VmmServersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VmmServersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VmmServersListBySubscriptionOutput =
   typeof VmmServersListBySubscriptionOutput.Type;
 
@@ -2646,13 +2498,12 @@ export type VmmServersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VmmServersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VmmServersListBySubscriptionInput,
-    outputSchema: VmmServersListBySubscriptionOutput,
-  }));
+export const VmmServersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VmmServersListBySubscriptionInput,
+  outputSchema: VmmServersListBySubscriptionOutput,
+}));
 // Input Schema
-export const VmmServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmmServersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vmmServerName: Schema.String.pipe(T.PathParam()),
@@ -2666,27 +2517,25 @@ export const VmmServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VmmServersUpdateInput = typeof VmmServersUpdateInput.Type;
 
 // Output Schema
-export const VmmServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const VmmServersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VmmServersUpdateOutput = typeof VmmServersUpdateOutput.Type;
 
 // The operation
@@ -2700,7 +2549,7 @@ export type VmmServersUpdateOutput = typeof VmmServersUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmmServerName - Name of the VmmServer.
  */
-export const VmmServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmmServersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VmmServersUpdateInput,
   outputSchema: VmmServersUpdateOutput,
 }));

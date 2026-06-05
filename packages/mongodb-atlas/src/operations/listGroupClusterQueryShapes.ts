@@ -4,28 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupClusterQueryShapesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    status: Schema.optional(Schema.Literals(["REJECTED"])),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes",
-    }),
-  );
+export const ListGroupClusterQueryShapesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  status: Schema.optional(Schema.Literals(["REJECTED"])),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes",
+  }),
+);
 export type ListGroupClusterQueryShapesInput =
   typeof ListGroupClusterQueryShapesInput.Type;
 
 // Output Schema
-export const ListGroupClusterQueryShapesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupClusterQueryShapesOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterQueryShapesOutput =
   typeof ListGroupClusterQueryShapesOutput.Type;
 
@@ -46,10 +44,8 @@ export type ListGroupClusterQueryShapesOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupClusterQueryShapes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupClusterQueryShapesInput,
-    outputSchema: ListGroupClusterQueryShapesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupClusterQueryShapes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterQueryShapesInput,
+  outputSchema: ListGroupClusterQueryShapesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

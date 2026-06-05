@@ -22,13 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface DeleteReaderResponse {}
-
-export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteReaderResponse",
-  });
-
 export interface Entitlement {
   /** Required. The publication's product ID that the user has access to. This is the same product ID as can be found in Schema.org markup (http://schema.org/productID). E.g. "dailybugle.com:basic" */
   productId?: string;
@@ -41,12 +34,40 @@ export interface Entitlement {
 }
 
 export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
     subscriptionToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "Entitlement" });
+
+export interface Reader {
+  /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
+  name?: string;
+  /** Output only. Time the publication reader was created and associated with a Google user. */
+  createTime?: string;
+  /** Output only. The publisher provided id of the reader. */
+  ppid?: string;
+  /** Output only. The SwG publication id that the reader has linked their subscription to. */
+  publicationId?: string;
+  /** Output only. The SwG publication id that the reader's subscription linking was originating from. */
+  originatingPublicationId?: string;
+}
+
+export const Reader: Schema.Schema<Reader> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  ppid: Schema.optional(Schema.String),
+  publicationId: Schema.optional(Schema.String),
+  originatingPublicationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reader" });
+
+export interface DeleteReaderResponse {}
+
+export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
+  /*@__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteReaderResponse",
+  });
 
 export interface ReaderEntitlements {
   /** Output only. The resource name of the singleton. */
@@ -56,32 +77,10 @@ export interface ReaderEntitlements {
 }
 
 export const ReaderEntitlements: Schema.Schema<ReaderEntitlements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entitlements: Schema.optional(Schema.Array(Entitlement)),
   }).annotate({ identifier: "ReaderEntitlements" });
-
-export interface Reader {
-  /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
-  name?: string;
-  /** Output only. The SwG publication id that the reader's subscription linking was originating from. */
-  originatingPublicationId?: string;
-  /** Output only. The SwG publication id that the reader has linked their subscription to. */
-  publicationId?: string;
-  /** Output only. Time the publication reader was created and associated with a Google user. */
-  createTime?: string;
-  /** Output only. The publisher provided id of the reader. */
-  ppid?: string;
-}
-
-export const Reader: Schema.Schema<Reader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    originatingPublicationId: Schema.optional(Schema.String),
-    publicationId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    ppid: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Reader" });
 
 // ==========================================================================
 // Errors
@@ -143,7 +142,7 @@ export interface GetEntitlementsPublicationsReadersRequest {
 }
 
 export const GetEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -152,7 +151,7 @@ export const GetEntitlementsPublicationsReadersRequest =
 
 export type GetEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const GetEntitlementsPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
+  /*@__PURE__*/ ReaderEntitlements;
 
 export type GetEntitlementsPublicationsReadersError =
   | DefaultErrors
@@ -165,80 +164,10 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
   GetEntitlementsPublicationsReadersResponse,
   GetEntitlementsPublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitlementsPublicationsReadersRequest,
   output: GetEntitlementsPublicationsReadersResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface GetPublicationsReadersRequest {
-  /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
-  name: string;
-}
-
-export const GetPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetPublicationsReadersRequest>;
-
-export type GetPublicationsReadersResponse = Reader;
-export const GetPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Reader;
-
-export type GetPublicationsReadersError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist. */
-export const getPublicationsReaders: API.OperationMethod<
-  GetPublicationsReadersRequest,
-  GetPublicationsReadersResponse,
-  GetPublicationsReadersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPublicationsReadersRequest,
-  output: GetPublicationsReadersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeletePublicationsReadersRequest {
-  /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
-  name: string;
-  /** If set to true, any entitlements under the reader will also be purged. */
-  force?: boolean;
-}
-
-export const DeletePublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeletePublicationsReadersRequest>;
-
-export type DeletePublicationsReadersResponse = DeleteReaderResponse;
-export const DeletePublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeleteReaderResponse;
-
-export type DeletePublicationsReadersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present. */
-export const deletePublicationsReaders: API.OperationMethod<
-  DeletePublicationsReadersRequest,
-  DeletePublicationsReadersResponse,
-  DeletePublicationsReadersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeletePublicationsReadersRequest,
-  output: DeletePublicationsReadersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEntitlementsPublicationsReadersRequest {
@@ -251,7 +180,7 @@ export interface UpdateEntitlementsPublicationsReadersRequest {
 }
 
 export const UpdateEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ReaderEntitlements).pipe(T.HttpBody()),
@@ -262,7 +191,7 @@ export const UpdateEntitlementsPublicationsReadersRequest =
 
 export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const UpdateEntitlementsPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
+  /*@__PURE__*/ ReaderEntitlements;
 
 export type UpdateEntitlementsPublicationsReadersError =
   | DefaultErrors
@@ -277,8 +206,75 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   UpdateEntitlementsPublicationsReadersResponse,
   UpdateEntitlementsPublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEntitlementsPublicationsReadersRequest,
   output: UpdateEntitlementsPublicationsReadersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetPublicationsReadersRequest {
+  /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
+  name: string;
+}
+
+export const GetPublicationsReadersRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetPublicationsReadersRequest>;
+
+export type GetPublicationsReadersResponse = Reader;
+export const GetPublicationsReadersResponse = /*@__PURE__*/ Reader;
+
+export type GetPublicationsReadersError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist. */
+export const getPublicationsReaders: API.OperationMethod<
+  GetPublicationsReadersRequest,
+  GetPublicationsReadersResponse,
+  GetPublicationsReadersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPublicationsReadersRequest,
+  output: GetPublicationsReadersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeletePublicationsReadersRequest {
+  /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
+  name: string;
+  /** If set to true, any entitlements under the reader will also be purged. */
+  force?: boolean;
+}
+
+export const DeletePublicationsReadersRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeletePublicationsReadersRequest>;
+
+export type DeletePublicationsReadersResponse = DeleteReaderResponse;
+export const DeletePublicationsReadersResponse =
+  /*@__PURE__*/ DeleteReaderResponse;
+
+export type DeletePublicationsReadersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present. */
+export const deletePublicationsReaders: API.OperationMethod<
+  DeletePublicationsReadersRequest,
+  DeletePublicationsReadersResponse,
+  DeletePublicationsReadersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePublicationsReadersRequest,
+  output: DeletePublicationsReadersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

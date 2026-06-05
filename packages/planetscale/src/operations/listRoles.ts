@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -20,8 +20,7 @@ export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRolesInput = typeof ListRolesInput.Type;
 
 // Output Schema
-export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListRolesOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -35,7 +34,6 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       private_access_host_url: Schema.String,
       private_connection_service_name: Schema.String,
       username: Schema.String,
-      base_username: Schema.String,
       password: SensitiveOutputNullableString,
       database_name: Schema.String,
       created_at: Schema.String,
@@ -96,7 +94,7 @@ export type ListRolesOutput = typeof ListRolesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listRoles = /*@__PURE__*/ API.makePaginated(() => ({
   inputSchema: ListRolesInput,
   outputSchema: ListRolesOutput,
   errors: [Forbidden, NotFound] as const,

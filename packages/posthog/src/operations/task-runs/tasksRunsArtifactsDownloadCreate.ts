@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const TasksRunsArtifactsDownloadCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -20,8 +20,7 @@ export type TasksRunsArtifactsDownloadCreateInput =
   typeof TasksRunsArtifactsDownloadCreateInput.Type;
 
 // Output Schema
-export const TasksRunsArtifactsDownloadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TasksRunsArtifactsDownloadCreateOutput = /*@__PURE__*/ Schema.Void;
 export type TasksRunsArtifactsDownloadCreateOutput =
   typeof TasksRunsArtifactsDownloadCreateOutput.Type;
 
@@ -34,9 +33,8 @@ export type TasksRunsArtifactsDownloadCreateOutput =
  * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsArtifactsDownloadCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TasksRunsArtifactsDownloadCreateInput,
-    outputSchema: TasksRunsArtifactsDownloadCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const tasksRunsArtifactsDownloadCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsArtifactsDownloadCreateInput,
+  outputSchema: TasksRunsArtifactsDownloadCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

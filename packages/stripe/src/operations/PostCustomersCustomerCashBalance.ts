@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostCustomersCustomerCashBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     settings: Schema.optional(
@@ -26,7 +26,7 @@ export type PostCustomersCustomerCashBalanceInput =
 
 // Output Schema
 export const PostCustomersCustomerCashBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available: Schema.NullOr(Schema.Record(Schema.String, Schema.Number)),
     customer: Schema.String,
     customer_account: Schema.NullOr(Schema.String),
@@ -46,8 +46,7 @@ export type PostCustomersCustomerCashBalanceOutput =
  *
  * <p>Changes the settings on a customer’s cash balance.</p>
  */
-export const PostCustomersCustomerCashBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostCustomersCustomerCashBalanceInput,
-    outputSchema: PostCustomersCustomerCashBalanceOutput,
-  }));
+export const PostCustomersCustomerCashBalance = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCustomersCustomerCashBalanceInput,
+  outputSchema: PostCustomersCustomerCashBalanceOutput,
+}));

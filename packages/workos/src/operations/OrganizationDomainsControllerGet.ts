@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationDomainsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "GET", path: "/organization_domains/{id}" }));
 export type OrganizationDomainsControllerGetInput =
@@ -13,7 +13,7 @@ export type OrganizationDomainsControllerGetInput =
 
 // Output Schema
 export const OrganizationDomainsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -44,9 +44,8 @@ export type OrganizationDomainsControllerGetOutput =
  *
  * @param id - Unique identifier of the organization domain.
  */
-export const OrganizationDomainsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OrganizationDomainsControllerGetInput,
-    outputSchema: OrganizationDomainsControllerGetOutput,
-    errors: [NotFound] as const,
-  }));
+export const OrganizationDomainsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationDomainsControllerGetInput,
+  outputSchema: OrganizationDomainsControllerGetOutput,
+  errors: [NotFound] as const,
+}));

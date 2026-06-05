@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RemoveGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemoveGroupTeamInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -17,7 +17,7 @@ export const RemoveGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RemoveGroupTeamInput = typeof RemoveGroupTeamInput.Type;
 
 // Output Schema
-export const RemoveGroupTeamOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveGroupTeamOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveGroupTeamOutput = typeof RemoveGroupTeamOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type RemoveGroupTeamOutput = typeof RemoveGroupTeamOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team that you want to remove from the specified project.
  */
-export const removeGroupTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupTeamInput,
   outputSchema: RemoveGroupTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

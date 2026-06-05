@@ -33,7 +33,7 @@ export interface Document {
   description?: string;
 }
 
-export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Document: Schema.Schema<Document> = /*@__PURE__*/ Schema.Struct({
   uri: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
@@ -49,11 +49,12 @@ export interface DocumentChunk {
   id?: string;
 }
 
-export const DocumentChunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  content: Schema.optional(Schema.String),
-  parent: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "DocumentChunk" });
+export const DocumentChunk: Schema.Schema<DocumentChunk> =
+  /*@__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DocumentChunk" });
 
 export interface SearchDocumentChunksResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -62,8 +63,8 @@ export interface SearchDocumentChunksResponse {
   results?: ReadonlyArray<DocumentChunk>;
 }
 
-export const SearchDocumentChunksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(DocumentChunk)),
   }).annotate({ identifier: "SearchDocumentChunksResponse" });
@@ -73,8 +74,8 @@ export interface BatchGetDocumentsResponse {
   documents?: ReadonlyArray<Document>;
 }
 
-export const BatchGetDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
+  /*@__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
@@ -114,19 +115,18 @@ export interface BatchGetDocumentsRequest {
   names?: string[];
 }
 
-export const BatchGetDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    names: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("names"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/documents:batchGet" }),
-    svc,
-  ) as unknown as Schema.Schema<BatchGetDocumentsRequest>;
+export const BatchGetDocumentsRequest = /*@__PURE__*/ Schema.Struct({
+  names: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("names"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha/documents:batchGet" }),
+  svc,
+) as unknown as Schema.Schema<BatchGetDocumentsRequest>;
 
 export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
+  /*@__PURE__*/ BatchGetDocumentsResponse;
 
 export type BatchGetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -136,7 +136,7 @@ export const batchGetDocuments: API.OperationMethod<
   BatchGetDocumentsResponse_Op,
   BatchGetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDocumentsRequest,
   output: BatchGetDocumentsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -147,7 +147,7 @@ export interface GetDocumentsRequest {
   name: string;
 }
 
-export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -155,7 +155,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
-export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
+export const GetDocumentsResponse = /*@__PURE__*/ Document;
 
 export type GetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -165,7 +165,7 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsResponse,
   GetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentsRequest,
   output: GetDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -180,20 +180,21 @@ export interface SearchDocumentChunksDocumentsRequest {
   query?: string;
 }
 
-export const SearchDocumentChunksDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ Schema.Struct(
+  {
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/documents:searchDocumentChunks" }),
-    svc,
-  ) as unknown as Schema.Schema<SearchDocumentChunksDocumentsRequest>;
+  },
+).pipe(
+  T.Http({ method: "GET", path: "v1alpha/documents:searchDocumentChunks" }),
+  svc,
+) as unknown as Schema.Schema<SearchDocumentChunksDocumentsRequest>;
 
 export type SearchDocumentChunksDocumentsResponse =
   SearchDocumentChunksResponse;
 export const SearchDocumentChunksDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchDocumentChunksResponse;
+  /*@__PURE__*/ SearchDocumentChunksResponse;
 
 export type SearchDocumentChunksDocumentsError =
   | DefaultErrors
@@ -206,7 +207,7 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   SearchDocumentChunksDocumentsResponse,
   SearchDocumentChunksDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDocumentChunksDocumentsRequest,
   output: SearchDocumentChunksDocumentsResponse,
   errors: [NotFound, Forbidden],

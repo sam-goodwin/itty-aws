@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const RolesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const RolesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesDestroyInput = typeof RolesDestroyInput.Type;
 
 // Output Schema
-export const RolesDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RolesDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type RolesDestroyOutput = typeof RolesDestroyOutput.Type;
 
 // The operation
@@ -24,7 +24,7 @@ export type RolesDestroyOutput = typeof RolesDestroyOutput.Type;
  *
  * @param id - A UUID string identifying this role.
  */
-export const rolesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const rolesDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesDestroyInput,
   outputSchema: RolesDestroyOutput,
   errors: [Forbidden, NotFound] as const,

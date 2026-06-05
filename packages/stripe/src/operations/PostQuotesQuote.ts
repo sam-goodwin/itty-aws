@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesQuoteInput = /*@__PURE__*/ Schema.Struct({
   quote: Schema.String.pipe(T.PathParam()),
   application_fee_amount: Schema.optional(Schema.Unknown),
   application_fee_percent: Schema.optional(Schema.Unknown),
@@ -90,7 +90,7 @@ export const PostQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostQuotesQuoteInput = typeof PostQuotesQuoteInput.Type;
 
 // Output Schema
-export const PostQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesQuoteOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.Unknown,
@@ -638,7 +638,7 @@ export type PostQuotesQuoteOutput = typeof PostQuotesQuoteOutput.Type;
  *
  * <p>A quote models prices and services for a customer.</p>
  */
-export const PostQuotesQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostQuotesQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostQuotesQuoteInput,
   outputSchema: PostQuotesQuoteOutput,
 }));

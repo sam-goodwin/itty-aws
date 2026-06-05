@@ -3,26 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteRadarValueListsValueListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value_list: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v1/radar/value_lists/{value_list}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const DeleteRadarValueListsValueListInput = /*@__PURE__*/ Schema.Struct({
+  value_list: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/radar/value_lists/{value_list}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type DeleteRadarValueListsValueListInput =
   typeof DeleteRadarValueListsValueListInput.Type;
 
 // Output Schema
-export const DeleteRadarValueListsValueListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRadarValueListsValueListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     deleted: Schema.Literals(["true"]),
     id: Schema.String,
     object: Schema.Literals(["radar.value_list"]),
-  });
+  },
+);
 export type DeleteRadarValueListsValueListOutput =
   typeof DeleteRadarValueListsValueListOutput.Type;
 
@@ -32,8 +32,7 @@ export type DeleteRadarValueListsValueListOutput =
  *
  * <p>Deletes a <code>ValueList</code> object, also deleting any items contained within the value list. To be deleted, a value list must not be referenced in any rules.</p>
  */
-export const DeleteRadarValueListsValueList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteRadarValueListsValueListInput,
-    outputSchema: DeleteRadarValueListsValueListOutput,
-  }));
+export const DeleteRadarValueListsValueList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteRadarValueListsValueListInput,
+  outputSchema: DeleteRadarValueListsValueListOutput,
+}));

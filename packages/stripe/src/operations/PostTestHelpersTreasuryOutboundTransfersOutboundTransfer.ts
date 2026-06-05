@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outbound_transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     tracking_details: Schema.Struct({
@@ -34,7 +34,7 @@ export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferInput =
 
 // Output Schema
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -111,7 +111,7 @@ export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferOutput =
  * <p>Updates a test mode created OutboundTransfer with tracking details. The OutboundTransfer must not be cancelable, and cannot be in the <code>canceled</code> or <code>failed</code> states.</p>
  */
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransfer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryOutboundTransfersOutboundTransferInput,
     outputSchema:
       PostTestHelpersTreasuryOutboundTransfersOutboundTransferOutput,

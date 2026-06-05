@@ -4,15 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DeleteV1ProjectsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{id}" }));
+export const DeleteV1ProjectsByIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{id}" }));
 export type DeleteV1ProjectsByIdInput = typeof DeleteV1ProjectsByIdInput.Type;
 
 // Output Schema
-export const DeleteV1ProjectsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteV1ProjectsByIdOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteV1ProjectsByIdOutput = typeof DeleteV1ProjectsByIdOutput.Type;
 
 // The operation
@@ -21,10 +19,8 @@ export type DeleteV1ProjectsByIdOutput = typeof DeleteV1ProjectsByIdOutput.Type;
  *
  * Deletes the project with the given ID.
  */
-export const deleteV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteV1ProjectsByIdInput,
-    outputSchema: DeleteV1ProjectsByIdOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteV1ProjectsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteV1ProjectsByIdInput,
+  outputSchema: DeleteV1ProjectsByIdOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

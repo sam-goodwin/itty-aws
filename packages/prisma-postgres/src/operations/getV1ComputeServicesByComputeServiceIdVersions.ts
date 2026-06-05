@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesByComputeServiceIdVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -20,7 +20,7 @@ export type GetV1ComputeServicesByComputeServiceIdVersionsInput =
 
 // Output Schema
 export const GetV1ComputeServicesByComputeServiceIdVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -46,7 +46,7 @@ export type GetV1ComputeServicesByComputeServiceIdVersionsOutput =
  * Returns all compute versions belonging to a compute service, ordered by creation time (newest first). Supports cursor-based pagination.
  */
 export const getV1ComputeServicesByComputeServiceIdVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ComputeServicesByComputeServiceIdVersionsInput,
     outputSchema: GetV1ComputeServicesByComputeServiceIdVersionsOutput,
     errors: [Forbidden, NotFound] as const,

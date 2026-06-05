@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueueItemsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type LlmAnalyticsReviewQueueItemsDestroyInput =
 
 // Output Schema
 export const LlmAnalyticsReviewQueueItemsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type LlmAnalyticsReviewQueueItemsDestroyOutput =
   typeof LlmAnalyticsReviewQueueItemsDestroyOutput.Type;
 
@@ -29,9 +29,10 @@ export type LlmAnalyticsReviewQueueItemsDestroyOutput =
  * @param id - A UUID string identifying this review queue item.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsReviewQueueItemsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsReviewQueueItemsDestroy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsReviewQueueItemsDestroyInput,
     outputSchema: LlmAnalyticsReviewQueueItemsDestroyOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

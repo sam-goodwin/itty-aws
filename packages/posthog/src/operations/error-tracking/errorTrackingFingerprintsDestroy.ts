@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingFingerprintsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -18,8 +18,7 @@ export type ErrorTrackingFingerprintsDestroyInput =
   typeof ErrorTrackingFingerprintsDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingFingerprintsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ErrorTrackingFingerprintsDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingFingerprintsDestroyOutput =
   typeof ErrorTrackingFingerprintsDestroyOutput.Type;
 
@@ -29,9 +28,8 @@ export type ErrorTrackingFingerprintsDestroyOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingFingerprintsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ErrorTrackingFingerprintsDestroyInput,
-    outputSchema: ErrorTrackingFingerprintsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const errorTrackingFingerprintsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingFingerprintsDestroyInput,
+  outputSchema: ErrorTrackingFingerprintsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -4,20 +4,18 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const CountProjectBranchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    search: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/projects/{project_id}/branches/count" }),
-  );
+export const CountProjectBranchesInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  search: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}/branches/count" }),
+);
 export type CountProjectBranchesInput = typeof CountProjectBranchesInput.Type;
 
 // Output Schema
-export const CountProjectBranchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
-  });
+export const CountProjectBranchesOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.Number,
+});
 export type CountProjectBranchesOutput = typeof CountProjectBranchesOutput.Type;
 
 // The operation
@@ -30,10 +28,8 @@ export type CountProjectBranchesOutput = typeof CountProjectBranchesOutput.Type;
  * @param project_id - The Neon project ID
  * @param search - Count branches matching the `name` in search query
  */
-export const countProjectBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CountProjectBranchesInput,
-    outputSchema: CountProjectBranchesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const countProjectBranches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CountProjectBranchesInput,
+  outputSchema: CountProjectBranchesOutput,
+  errors: [NotFound] as const,
+}));

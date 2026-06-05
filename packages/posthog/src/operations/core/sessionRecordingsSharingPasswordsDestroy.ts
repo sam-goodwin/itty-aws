@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const SessionRecordingsSharingPasswordsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     password_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     recording_id: Schema.String.pipe(T.PathParam()),
@@ -20,7 +20,7 @@ export type SessionRecordingsSharingPasswordsDestroyInput =
 
 // Output Schema
 export const SessionRecordingsSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SessionRecordingsSharingPasswordsDestroyOutput =
   typeof SessionRecordingsSharingPasswordsDestroyOutput.Type;
 
@@ -30,9 +30,10 @@ export type SessionRecordingsSharingPasswordsDestroyOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sessionRecordingsSharingPasswordsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sessionRecordingsSharingPasswordsDestroy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SessionRecordingsSharingPasswordsDestroyInput,
     outputSchema: SessionRecordingsSharingPasswordsDestroyOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

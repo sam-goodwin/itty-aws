@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const CreateGroupServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export type CreateGroupServiceAccountAccessListInput =
 
 // Output Schema
 export const CreateGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateGroupServiceAccountAccessListOutput =
   typeof CreateGroupServiceAccountAccessListOutput.Type;
 
@@ -44,9 +44,10 @@ export type CreateGroupServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const createGroupServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupServiceAccountAccessList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateGroupServiceAccountAccessListInput,
     outputSchema: CreateGroupServiceAccountAccessListOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

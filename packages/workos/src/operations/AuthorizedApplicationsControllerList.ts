@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizedApplicationsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type AuthorizedApplicationsControllerListInput =
 
 // Output Schema
 export const AuthorizedApplicationsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -66,9 +66,10 @@ export type AuthorizedApplicationsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
  */
-export const AuthorizedApplicationsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizedApplicationsControllerList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizedApplicationsControllerListInput,
     outputSchema: AuthorizedApplicationsControllerListOutput,
     errors: [NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

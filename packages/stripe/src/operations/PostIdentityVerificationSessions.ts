@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostIdentityVerificationSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -43,9 +43,9 @@ export type PostIdentityVerificationSessionsInput =
 
 // Output Schema
 export const PostIdentityVerificationSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     id: Schema.String,
     last_error: Schema.Unknown,
@@ -87,8 +87,7 @@ export type PostIdentityVerificationSessionsOutput =
  * <p>If your API key is in test mode, verification checks won’t actually process, though everything else will occur as if in live mode.</p>
  * <p>Related guide: <a href="/docs/identity/verify-identity-documents">Verify your users’ identity documents</a></p>
  */
-export const PostIdentityVerificationSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostIdentityVerificationSessionsInput,
-    outputSchema: PostIdentityVerificationSessionsOutput,
-  }));
+export const PostIdentityVerificationSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIdentityVerificationSessionsInput,
+  outputSchema: PostIdentityVerificationSessionsOutput,
+}));

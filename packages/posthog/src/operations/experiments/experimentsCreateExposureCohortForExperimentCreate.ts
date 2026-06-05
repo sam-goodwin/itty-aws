@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExperimentsCreateExposureCohortForExperimentCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -1001,7 +1001,7 @@ export type ExperimentsCreateExposureCohortForExperimentCreateInput =
 
 // Output Schema
 export const ExperimentsCreateExposureCohortForExperimentCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ExperimentsCreateExposureCohortForExperimentCreateOutput =
   typeof ExperimentsCreateExposureCohortForExperimentCreateOutput.Type;
 
@@ -1016,7 +1016,7 @@ export type ExperimentsCreateExposureCohortForExperimentCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const experimentsCreateExposureCohortForExperimentCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentsCreateExposureCohortForExperimentCreateInput,
     outputSchema: ExperimentsCreateExposureCohortForExperimentCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

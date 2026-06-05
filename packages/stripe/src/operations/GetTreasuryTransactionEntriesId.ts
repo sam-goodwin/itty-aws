@@ -3,23 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTreasuryTransactionEntriesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTreasuryTransactionEntriesIdInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/treasury/transaction_entries/{id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/treasury/transaction_entries/{id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetTreasuryTransactionEntriesIdInput =
   typeof GetTreasuryTransactionEntriesIdInput.Type;
 
 // Output Schema
 export const GetTreasuryTransactionEntriesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balance_impact: Schema.Struct({
       cash: Schema.Number,
       inbound_pending: Schema.Number,
@@ -80,8 +81,7 @@ export type GetTreasuryTransactionEntriesIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTreasuryTransactionEntriesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetTreasuryTransactionEntriesIdInput,
-    outputSchema: GetTreasuryTransactionEntriesIdOutput,
-  }));
+export const GetTreasuryTransactionEntriesId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryTransactionEntriesIdInput,
+  outputSchema: GetTreasuryTransactionEntriesIdOutput,
+}));

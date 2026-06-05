@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const FeatureFlagsEvaluationReasonsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     distinct_id: Schema.String,
     groups: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type FeatureFlagsEvaluationReasonsRetrieveInput =
 
 // Output Schema
 export const FeatureFlagsEvaluationReasonsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type FeatureFlagsEvaluationReasonsRetrieveOutput =
   typeof FeatureFlagsEvaluationReasonsRetrieveOutput.Type;
 
@@ -33,9 +33,10 @@ export type FeatureFlagsEvaluationReasonsRetrieveOutput =
  * @param groups - Groups for feature flag evaluation (JSON object string)
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsEvaluationReasonsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const featureFlagsEvaluationReasonsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FeatureFlagsEvaluationReasonsRetrieveInput,
     outputSchema: FeatureFlagsEvaluationReasonsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

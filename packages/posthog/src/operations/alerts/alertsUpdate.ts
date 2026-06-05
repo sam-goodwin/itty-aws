@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const AlertsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(
@@ -132,7 +132,7 @@ export const AlertsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertsUpdateInput = typeof AlertsUpdateInput.Type;
 
 // Output Schema
-export const AlertsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -262,7 +262,7 @@ export type AlertsUpdateOutput = typeof AlertsUpdateOutput.Type;
  * @param id - A UUID string identifying this alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const alertsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const alertsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsUpdateInput,
   outputSchema: AlertsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetV2CoreAccountsAccountIdPersonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
   }).pipe(
@@ -15,7 +15,7 @@ export type GetV2CoreAccountsAccountIdPersonsInput =
 
 // Output Schema
 export const GetV2CoreAccountsAccountIdPersonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account: Schema.String,
@@ -283,8 +283,7 @@ export type GetV2CoreAccountsAccountIdPersonsOutput =
  * @param account_id - Account the Persons are associated with.
  * @param limit - The upper limit on the number of accounts returned by the List Account request.
  */
-export const GetV2CoreAccountsAccountIdPersons =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetV2CoreAccountsAccountIdPersonsInput,
-    outputSchema: GetV2CoreAccountsAccountIdPersonsOutput,
-  }));
+export const GetV2CoreAccountsAccountIdPersons = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV2CoreAccountsAccountIdPersonsInput,
+  outputSchema: GetV2CoreAccountsAccountIdPersonsOutput,
+}));

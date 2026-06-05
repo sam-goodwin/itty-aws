@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetSubscriptionSchedulesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetSubscriptionSchedulesScheduleInput =
 
 // Output Schema
 export const GetSubscriptionSchedulesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     billing_mode: Schema.Struct({
       flexible: Schema.Unknown,
@@ -352,8 +352,7 @@ export type GetSubscriptionSchedulesScheduleOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetSubscriptionSchedulesSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetSubscriptionSchedulesScheduleInput,
-    outputSchema: GetSubscriptionSchedulesScheduleOutput,
-  }));
+export const GetSubscriptionSchedulesSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSubscriptionSchedulesScheduleInput,
+  outputSchema: GetSubscriptionSchedulesScheduleOutput,
+}));

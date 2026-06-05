@@ -4,25 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const FeatureFlagsStatusRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/feature_flags/{id}/status/",
-    }),
-  );
+export const FeatureFlagsStatusRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/feature_flags/{id}/status/",
+  }),
+);
 export type FeatureFlagsStatusRetrieveInput =
   typeof FeatureFlagsStatusRetrieveInput.Type;
 
 // Output Schema
-export const FeatureFlagsStatusRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Schema.String),
-    reason: Schema.optional(Schema.String),
-  });
+export const FeatureFlagsStatusRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+});
 export type FeatureFlagsStatusRetrieveOutput =
   typeof FeatureFlagsStatusRetrieveOutput.Type;
 
@@ -34,10 +32,8 @@ export type FeatureFlagsStatusRetrieveOutput =
  * @param id - A unique integer value identifying this feature flag.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsStatusRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeatureFlagsStatusRetrieveInput,
-    outputSchema: FeatureFlagsStatusRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const featureFlagsStatusRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsStatusRetrieveInput,
+  outputSchema: FeatureFlagsStatusRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const StartGroupClusterOutageSimulationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type StartGroupClusterOutageSimulationInput =
 
 // Output Schema
 export const StartGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StartGroupClusterOutageSimulationOutput =
   typeof StartGroupClusterOutageSimulationOutput.Type;
 
@@ -38,9 +38,8 @@ export type StartGroupClusterOutageSimulationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies the cluster to undergo an outage simulation.
  */
-export const startGroupClusterOutageSimulation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StartGroupClusterOutageSimulationInput,
-    outputSchema: StartGroupClusterOutageSimulationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const startGroupClusterOutageSimulation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StartGroupClusterOutageSimulationInput,
+  outputSchema: StartGroupClusterOutageSimulationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

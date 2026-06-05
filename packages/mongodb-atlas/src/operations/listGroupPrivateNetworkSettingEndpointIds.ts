@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupPrivateNetworkSettingEndpointIdsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -23,7 +23,7 @@ export type ListGroupPrivateNetworkSettingEndpointIdsInput =
 
 // Output Schema
 export const ListGroupPrivateNetworkSettingEndpointIdsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupPrivateNetworkSettingEndpointIdsOutput =
   typeof ListGroupPrivateNetworkSettingEndpointIdsOutput.Type;
 
@@ -42,9 +42,10 @@ export type ListGroupPrivateNetworkSettingEndpointIdsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupPrivateNetworkSettingEndpointIds =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupPrivateNetworkSettingEndpointIds = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupPrivateNetworkSettingEndpointIdsInput,
     outputSchema: ListGroupPrivateNetworkSettingEndpointIdsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTopupsTopupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsTopupInput = /*@__PURE__*/ Schema.Struct({
   topup: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.Array(Schema.String)),
@@ -18,7 +18,7 @@ export const PostTopupsTopupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTopupsTopupInput = typeof PostTopupsTopupInput.Type;
 
 // Output Schema
-export const PostTopupsTopupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsTopupOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.Unknown,
   created: Schema.Number,
@@ -50,7 +50,7 @@ export type PostTopupsTopupOutput = typeof PostTopupsTopupOutput.Type;
  *
  * <p>Updates the metadata of a top-up. Other top-up details are not editable by design.</p>
  */
-export const PostTopupsTopup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTopupsTopup = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTopupsTopupInput,
   outputSchema: PostTopupsTopupOutput,
 }));

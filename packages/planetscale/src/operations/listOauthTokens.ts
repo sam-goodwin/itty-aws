@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const ListOauthTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOauthTokensInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -19,8 +19,7 @@ export const ListOauthTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOauthTokensInput = typeof ListOauthTokensInput.Type;
 
 // Output Schema
-export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListOauthTokensOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -38,97 +37,93 @@ export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       updated_at: Schema.String,
       expires_at: Schema.optional(Schema.NullOr(Schema.String)),
       last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-      actor_id: Schema.NullOr(Schema.String),
-      actor_display_name: Schema.NullOr(Schema.String),
-      actor_type: Schema.NullOr(Schema.String),
+      actor_id: Schema.String,
+      actor_display_name: Schema.String,
+      actor_type: Schema.String,
       service_token_accesses: Schema.optional(
-        Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              access: Schema.String,
-              description: Schema.String,
-              resource_name: Schema.String,
-              resource_id: Schema.String,
-              resource_type: Schema.String,
-              resource: Schema.Struct({
-                id: Schema.String,
-                name: Schema.String,
-                created_at: Schema.String,
-                updated_at: Schema.String,
-                deleted_at: Schema.NullOr(Schema.String),
-              }),
-            }),
-          ),
-        ),
-      ),
-      oauth_accesses_by_resource: Schema.optional(
-        Schema.NullOr(
+        Schema.Array(
           Schema.Struct({
-            database: Schema.Struct({
-              databases: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  id: Schema.String,
-                  organization: Schema.String,
-                  url: Schema.String,
-                }),
-              ),
-              accesses: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.String,
-                }),
-              ),
-            }),
-            organization: Schema.Struct({
-              organizations: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  id: Schema.String,
-                  url: Schema.String,
-                }),
-              ),
-              accesses: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.String,
-                }),
-              ),
-            }),
-            branch: Schema.Struct({
-              branches: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  id: Schema.String,
-                  database: Schema.String,
-                  organization: Schema.String,
-                  url: Schema.String,
-                }),
-              ),
-              accesses: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.String,
-                }),
-              ),
-            }),
-            user: Schema.Struct({
-              users: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  id: Schema.String,
-                }),
-              ),
-              accesses: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.String,
-                }),
-              ),
+            id: Schema.String,
+            access: Schema.String,
+            description: Schema.String,
+            resource_name: Schema.String,
+            resource_id: Schema.String,
+            resource_type: Schema.String,
+            resource: Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+              created_at: Schema.String,
+              updated_at: Schema.String,
+              deleted_at: Schema.String,
             }),
           }),
         ),
+      ),
+      oauth_accesses_by_resource: Schema.optional(
+        Schema.Struct({
+          database: Schema.Struct({
+            databases: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                id: Schema.String,
+                organization: Schema.String,
+                url: Schema.String,
+              }),
+            ),
+            accesses: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                description: Schema.String,
+              }),
+            ),
+          }),
+          organization: Schema.Struct({
+            organizations: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                id: Schema.String,
+                url: Schema.String,
+              }),
+            ),
+            accesses: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                description: Schema.String,
+              }),
+            ),
+          }),
+          branch: Schema.Struct({
+            branches: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                id: Schema.String,
+                database: Schema.String,
+                organization: Schema.String,
+                url: Schema.String,
+              }),
+            ),
+            accesses: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                description: Schema.String,
+              }),
+            ),
+          }),
+          user: Schema.Struct({
+            users: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                id: Schema.String,
+              }),
+            ),
+            accesses: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                description: Schema.String,
+              }),
+            ),
+          }),
+        }),
       ),
     }),
   ),
@@ -146,16 +141,14 @@ export type ListOauthTokensOutput = typeof ListOauthTokensOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listOauthTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListOauthTokensInput,
-    outputSchema: ListOauthTokensOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listOauthTokens = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListOauthTokensInput,
+  outputSchema: ListOauthTokensOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

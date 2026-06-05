@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const NotebooksRecordingCommentsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type NotebooksRecordingCommentsRetrieveInput =
 
 // Output Schema
 export const NotebooksRecordingCommentsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NotebooksRecordingCommentsRetrieveOutput =
   typeof NotebooksRecordingCommentsRetrieveOutput.Type;
 
@@ -28,9 +28,10 @@ export type NotebooksRecordingCommentsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksRecordingCommentsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const notebooksRecordingCommentsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotebooksRecordingCommentsRetrieveInput,
     outputSchema: NotebooksRecordingCommentsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ListOrganizationVPCEndpointsAllRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,7 +17,7 @@ export type ListOrganizationVPCEndpointsAllRegionsInput =
 
 // Output Schema
 export const ListOrganizationVPCEndpointsAllRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
       Schema.Struct({
         vpc_endpoint_id: Schema.String,
@@ -37,8 +37,9 @@ export type ListOrganizationVPCEndpointsAllRegionsOutput =
  *
  * @param org_id - The Neon organization ID
  */
-export const listOrganizationVPCEndpointsAllRegions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrganizationVPCEndpointsAllRegions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListOrganizationVPCEndpointsAllRegionsInput,
     outputSchema: ListOrganizationVPCEndpointsAllRegionsOutput,
-  }));
+  }),
+);

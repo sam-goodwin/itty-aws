@@ -4,16 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DeleteV1ConnectionsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/connections/{id}" }));
+export const DeleteV1ConnectionsByIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/v1/connections/{id}" }));
 export type DeleteV1ConnectionsByIdInput =
   typeof DeleteV1ConnectionsByIdInput.Type;
 
 // Output Schema
-export const DeleteV1ConnectionsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteV1ConnectionsByIdOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteV1ConnectionsByIdOutput =
   typeof DeleteV1ConnectionsByIdOutput.Type;
 
@@ -23,10 +21,8 @@ export type DeleteV1ConnectionsByIdOutput =
  *
  * Deletes the connection with the given ID.
  */
-export const deleteV1ConnectionsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteV1ConnectionsByIdInput,
-    outputSchema: DeleteV1ConnectionsByIdOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteV1ConnectionsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteV1ConnectionsByIdInput,
+  outputSchema: DeleteV1ConnectionsByIdOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

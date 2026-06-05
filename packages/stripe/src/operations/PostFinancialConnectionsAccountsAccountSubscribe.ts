@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostFinancialConnectionsAccountsAccountSubscribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.Array(Schema.Literals(["transactions"])),
@@ -20,7 +20,7 @@ export type PostFinancialConnectionsAccountsAccountSubscribeInput =
 
 // Output Schema
 export const PostFinancialConnectionsAccountsAccountSubscribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
@@ -84,7 +84,7 @@ export type PostFinancialConnectionsAccountsAccountSubscribeOutput =
  * <p>Subscribes to periodic refreshes of data associated with a Financial Connections <code>Account</code>. When the account status is active, data is typically refreshed once a day.</p>
  */
 export const PostFinancialConnectionsAccountsAccountSubscribe =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountSubscribeInput,
     outputSchema: PostFinancialConnectionsAccountsAccountSubscribeOutput,
   }));

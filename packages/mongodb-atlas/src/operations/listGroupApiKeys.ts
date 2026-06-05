@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupApiKeysInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -17,7 +17,7 @@ export const ListGroupApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGroupApiKeysInput = typeof ListGroupApiKeysInput.Type;
 
 // Output Schema
-export const ListGroupApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupApiKeysOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupApiKeysOutput = typeof ListGroupApiKeysOutput.Type;
 
 // The operation
@@ -35,7 +35,7 @@ export type ListGroupApiKeysOutput = typeof ListGroupApiKeysOutput.Type;
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupApiKeysInput,
   outputSchema: ListGroupApiKeysOutput,
   errors: [Forbidden, NotFound] as const,

@@ -3,21 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const SendSolanaTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.Literals(["solana", "solana-devnet"]),
-    transaction: Schema.String,
-    useCdpSponsor: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({ method: "POST", path: "/v2/solana/accounts/send/transaction" }),
-  );
+export const SendSolanaTransactionInput = /*@__PURE__*/ Schema.Struct({
+  network: Schema.Literals(["solana", "solana-devnet"]),
+  transaction: Schema.String,
+  useCdpSponsor: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/solana/accounts/send/transaction" }),
+);
 export type SendSolanaTransactionInput = typeof SendSolanaTransactionInput.Type;
 
 // Output Schema
-export const SendSolanaTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    transactionSignature: Schema.String,
-  });
+export const SendSolanaTransactionOutput = /*@__PURE__*/ Schema.Struct({
+  transactionSignature: Schema.String,
+});
 export type SendSolanaTransactionOutput =
   typeof SendSolanaTransactionOutput.Type;
 
@@ -48,9 +46,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const sendSolanaTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SendSolanaTransactionInput,
-    outputSchema: SendSolanaTransactionOutput,
-  }),
-);
+export const sendSolanaTransaction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SendSolanaTransactionInput,
+  outputSchema: SendSolanaTransactionOutput,
+}));

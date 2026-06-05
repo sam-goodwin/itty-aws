@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const EarlyAccessFeaturePartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EarlyAccessFeaturePartialUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     feature_flag: Schema.optional(
@@ -42,18 +42,19 @@ export const EarlyAccessFeaturePartialUpdateInput =
     documentation_url: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/projects/{project_id}/early_access_feature/{id}/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/projects/{project_id}/early_access_feature/{id}/",
+  }),
+);
 export type EarlyAccessFeaturePartialUpdateInput =
   typeof EarlyAccessFeaturePartialUpdateInput.Type;
 
 // Output Schema
 export const EarlyAccessFeaturePartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     feature_flag: Schema.optional(
       Schema.Struct({
@@ -99,9 +100,8 @@ export type EarlyAccessFeaturePartialUpdateOutput =
  * @param id - A UUID string identifying this early access feature.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const earlyAccessFeaturePartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EarlyAccessFeaturePartialUpdateInput,
-    outputSchema: EarlyAccessFeaturePartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const earlyAccessFeaturePartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EarlyAccessFeaturePartialUpdateInput,
+  outputSchema: EarlyAccessFeaturePartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

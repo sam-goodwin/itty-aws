@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const UsersRequestEmailVerificationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -756,14 +756,15 @@ export type UsersRequestEmailVerificationCreateInput =
 
 // Output Schema
 export const UsersRequestEmailVerificationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UsersRequestEmailVerificationCreateOutput =
   typeof UsersRequestEmailVerificationCreateOutput.Type;
 
 // The operation
-export const usersRequestEmailVerificationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersRequestEmailVerificationCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UsersRequestEmailVerificationCreateInput,
     outputSchema: UsersRequestEmailVerificationCreateOutput,
     errors: [BadRequest, Forbidden] as const,
-  }));
+  }),
+);

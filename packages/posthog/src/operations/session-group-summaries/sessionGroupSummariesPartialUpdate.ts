@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const SessionGroupSummariesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     title: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export type SessionGroupSummariesPartialUpdateInput =
 
 // Output Schema
 export const SessionGroupSummariesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     session_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -80,9 +80,10 @@ export type SessionGroupSummariesPartialUpdateOutput =
  * @param id - A UUID string identifying this session group summary.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sessionGroupSummariesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sessionGroupSummariesPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SessionGroupSummariesPartialUpdateInput,
     outputSchema: SessionGroupSummariesPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

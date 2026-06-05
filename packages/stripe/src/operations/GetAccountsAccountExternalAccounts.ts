@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetAccountsAccountExternalAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export type GetAccountsAccountExternalAccountsInput =
 
 // Output Schema
 export const GetAccountsAccountExternalAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(Schema.Unknown),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
@@ -44,8 +44,9 @@ export type GetAccountsAccountExternalAccountsOutput =
  * @param object - Filter external accounts according to a particular object type.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetAccountsAccountExternalAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAccountsAccountExternalAccounts = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetAccountsAccountExternalAccountsInput,
     outputSchema: GetAccountsAccountExternalAccountsOutput,
-  }));
+  }),
+);

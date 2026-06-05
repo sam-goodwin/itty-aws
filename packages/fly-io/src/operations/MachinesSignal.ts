@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesSignalInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   signal: Schema.optional(
@@ -34,7 +34,7 @@ export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesSignalInput = typeof MachinesSignalInput.Type;
 
 // Output Schema
-export const MachinesSignalOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesSignalOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesSignalOutput = typeof MachinesSignalOutput.Type;
 
 // The operation
@@ -46,7 +46,7 @@ export type MachinesSignalOutput = typeof MachinesSignalOutput.Type;
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesSignal = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesSignal = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesSignalInput,
   outputSchema: MachinesSignalOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

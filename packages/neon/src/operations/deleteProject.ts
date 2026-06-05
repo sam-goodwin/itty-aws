@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/projects/{project_id}" }));
 export type DeleteProjectInput = typeof DeleteProjectInput.Type;
 
 // Output Schema
-export const DeleteProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -130,7 +130,7 @@ export type DeleteProjectOutput = typeof DeleteProjectOutput.Type;
  *
  * @param project_id - The Neon project ID
  */
-export const deleteProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteProjectInput,
   outputSchema: DeleteProjectOutput,
   errors: [NotFound] as const,

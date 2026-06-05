@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetConsumptionHistoryPerProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConsumptionHistoryPerProjectInput = /*@__PURE__*/ Schema.Struct(
+  {
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     project_ids: Schema.optional(Schema.String),
@@ -15,13 +15,14 @@ export const GetConsumptionHistoryPerProjectInput =
     org_id: Schema.optional(Schema.String),
     include_v1_metrics: Schema.optional(Schema.Boolean),
     metrics: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/consumption_history/projects" }));
+  },
+).pipe(T.Http({ method: "GET", path: "/consumption_history/projects" }));
 export type GetConsumptionHistoryPerProjectInput =
   typeof GetConsumptionHistoryPerProjectInput.Type;
 
 // Output Schema
 export const GetConsumptionHistoryPerProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         project_id: Schema.String,
@@ -121,8 +122,8 @@ A list of metrics can be specified as an array of parameter values or as a comma
 - As a comma-separated list in a single parameter value: `metrics=cpu_seconds,ram_bytes`
 
  */
-export const getConsumptionHistoryPerProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const getConsumptionHistoryPerProject = /*@__PURE__*/ API.makePaginated(
+  () => ({
     inputSchema: GetConsumptionHistoryPerProjectInput,
     outputSchema: GetConsumptionHistoryPerProjectOutput,
     errors: [Forbidden, NotFound] as const,
@@ -132,4 +133,5 @@ export const getConsumptionHistoryPerProject =
       outputToken: "pagination.cursor",
       items: "projects",
     },
-  }));
+  }),
+);

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupStreamActiveVpcPeeringConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -22,7 +22,7 @@ export type ListGroupStreamActiveVpcPeeringConnectionsInput =
 
 // Output Schema
 export const ListGroupStreamActiveVpcPeeringConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupStreamActiveVpcPeeringConnectionsOutput =
   typeof ListGroupStreamActiveVpcPeeringConnectionsOutput.Type;
 
@@ -41,7 +41,7 @@ export type ListGroupStreamActiveVpcPeeringConnectionsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupStreamActiveVpcPeeringConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupStreamActiveVpcPeeringConnectionsInput,
     outputSchema: ListGroupStreamActiveVpcPeeringConnectionsOutput,
     errors: [Forbidden, NotFound] as const,

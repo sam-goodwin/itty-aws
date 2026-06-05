@@ -1,34 +1,33 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const PostPaymentIntentsIntentCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    intent: Schema.String.pipe(T.PathParam()),
-    cancellation_reason: Schema.optional(
-      Schema.Literals([
-        "abandoned",
-        "duplicate",
-        "fraudulent",
-        "requested_by_customer",
-      ]),
-    ),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/payment_intents/{intent}/cancel",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const PostPaymentIntentsIntentCancelInput = /*@__PURE__*/ Schema.Struct({
+  intent: Schema.String.pipe(T.PathParam()),
+  cancellation_reason: Schema.optional(
+    Schema.Literals([
+      "abandoned",
+      "duplicate",
+      "fraudulent",
+      "requested_by_customer",
+    ]),
+  ),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/payment_intents/{intent}/cancel",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPaymentIntentsIntentCancelInput =
   typeof PostPaymentIntentsIntentCancelInput.Type;
 
 // Output Schema
-export const PostPaymentIntentsIntentCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPaymentIntentsIntentCancelOutput = /*@__PURE__*/ Schema.Struct(
+  {
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -105,7 +104,7 @@ export const PostPaymentIntentsIntentCancelOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -226,7 +225,8 @@ export const PostPaymentIntentsIntentCancelOutput =
     ]),
     transfer_data: Schema.optional(Schema.Unknown),
     transfer_group: Schema.NullOr(Schema.String),
-  });
+  },
+);
 export type PostPaymentIntentsIntentCancelOutput =
   typeof PostPaymentIntentsIntentCancelOutput.Type;
 
@@ -238,8 +238,7 @@ export type PostPaymentIntentsIntentCancelOutput =
  * <p>After it’s canceled, no additional charges are made by the PaymentIntent and any operations on the PaymentIntent fail with an error. For PaymentIntents with a <code>status</code> of <code>requires_capture</code>, the remaining <code>amount_capturable</code> is automatically refunded. </p>
  * <p>You can directly cancel the PaymentIntent for a Checkout Session only when the PaymentIntent has a status of <code>requires_capture</code>. Otherwise, you must <a href="/docs/api/checkout/sessions/expire">expire the Checkout Session</a>.</p>
  */
-export const PostPaymentIntentsIntentCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPaymentIntentsIntentCancelInput,
-    outputSchema: PostPaymentIntentsIntentCancelOutput,
-  }));
+export const PostPaymentIntentsIntentCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentIntentsIntentCancelInput,
+  outputSchema: PostPaymentIntentsIntentCancelOutput,
+}));

@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
@@ -25,13 +25,11 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
 
 // Output Schema
-export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ExtensionsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
 
 // The operation
@@ -45,12 +43,12 @@ export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsCreateInput,
   outputSchema: ExtensionsCreateOutput,
 }));
 // Input Schema
-export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
@@ -67,7 +65,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
 
 // Output Schema
-export const ExtensionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
 
 // The operation
@@ -82,12 +80,12 @@ export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
-export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsDeleteInput,
   outputSchema: ExtensionsDeleteOutput,
 }));
 // Input Schema
-export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
@@ -103,7 +101,7 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
 
 // Output Schema
-export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -121,12 +119,12 @@ export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsGetInput,
   outputSchema: ExtensionsGetOutput,
 }));
 // Input Schema
-export const ExtensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
@@ -142,7 +140,7 @@ export const ExtensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsListInput = typeof ExtensionsListInput.Type;
 
 // Output Schema
-export const ExtensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -167,12 +165,12 @@ export type ExtensionsListOutput = typeof ExtensionsListOutput.Type;
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ExtensionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsListInput,
   outputSchema: ExtensionsListOutput,
 }));
 // Input Schema
-export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
@@ -188,13 +186,11 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
 
 // Output Schema
-export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ExtensionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
 
 // The operation
@@ -208,72 +204,70 @@ export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsUpdateInput,
   outputSchema: ExtensionsUpdateOutput,
 }));
 // Input Schema
-export const FluxConfigOperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
-    }),
-  );
+export const FluxConfigOperationStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
+  }),
+);
 export type FluxConfigOperationStatusGetInput =
   typeof FluxConfigOperationStatusGetInput.Type;
 
 // Output Schema
-export const FluxConfigOperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    properties: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+export const FluxConfigOperationStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  properties: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
+            ),
+          }),
         ),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+      ),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type FluxConfigOperationStatusGetOutput =
   typeof FluxConfigOperationStatusGetOutput.Type;
 
@@ -289,14 +283,13 @@ export type FluxConfigOperationStatusGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
-export const FluxConfigOperationStatusGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FluxConfigOperationStatusGetInput,
-    outputSchema: FluxConfigOperationStatusGetOutput,
-  }));
+export const FluxConfigOperationStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigOperationStatusGetInput,
+  outputSchema: FluxConfigOperationStatusGetOutput,
+}));
 // Input Schema
 export const FluxConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterRp: Schema.String.pipe(T.PathParam()),
@@ -314,7 +307,7 @@ export type FluxConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const FluxConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -333,33 +326,30 @@ export type FluxConfigurationsCreateOrUpdateOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const FluxConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FluxConfigurationsCreateOrUpdateInput,
-    outputSchema: FluxConfigurationsCreateOrUpdateOutput,
-  }));
+export const FluxConfigurationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigurationsCreateOrUpdateInput,
+  outputSchema: FluxConfigurationsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const FluxConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    forceDelete: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
-    }),
-  );
+export const FluxConfigurationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  forceDelete: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+  }),
+);
 export type FluxConfigurationsDeleteInput =
   typeof FluxConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const FluxConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FluxConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FluxConfigurationsDeleteOutput =
   typeof FluxConfigurationsDeleteOutput.Type;
 
@@ -375,36 +365,32 @@ export type FluxConfigurationsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
-export const FluxConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluxConfigurationsDeleteInput,
-    outputSchema: FluxConfigurationsDeleteOutput,
+export const FluxConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigurationsDeleteInput,
+  outputSchema: FluxConfigurationsDeleteOutput,
+}));
+// Input Schema
+export const FluxConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
   }),
 );
-// Input Schema
-export const FluxConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
-    }),
-  );
 export type FluxConfigurationsGetInput = typeof FluxConfigurationsGetInput.Type;
 
 // Output Schema
-export const FluxConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FluxConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FluxConfigurationsGetOutput =
   typeof FluxConfigurationsGetOutput.Type;
 
@@ -419,44 +405,40 @@ export type FluxConfigurationsGetOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const FluxConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluxConfigurationsGetInput,
-    outputSchema: FluxConfigurationsGetOutput,
+export const FluxConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigurationsGetInput,
+  outputSchema: FluxConfigurationsGetOutput,
+}));
+// Input Schema
+export const FluxConfigurationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations",
   }),
 );
-// Input Schema
-export const FluxConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations",
-    }),
-  );
 export type FluxConfigurationsListInput =
   typeof FluxConfigurationsListInput.Type;
 
 // Output Schema
-export const FluxConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const FluxConfigurationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FluxConfigurationsListOutput =
   typeof FluxConfigurationsListOutput.Type;
 
@@ -471,37 +453,33 @@ export type FluxConfigurationsListOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const FluxConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluxConfigurationsListInput,
-    outputSchema: FluxConfigurationsListOutput,
+export const FluxConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigurationsListInput,
+  outputSchema: FluxConfigurationsListOutput,
+}));
+// Input Schema
+export const FluxConfigurationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
   }),
 );
-// Input Schema
-export const FluxConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
-    }),
-  );
 export type FluxConfigurationsUpdateInput =
   typeof FluxConfigurationsUpdateInput.Type;
 
 // Output Schema
-export const FluxConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FluxConfigurationsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FluxConfigurationsUpdateOutput =
   typeof FluxConfigurationsUpdateOutput.Type;
 
@@ -516,14 +494,12 @@ export type FluxConfigurationsUpdateOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const FluxConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluxConfigurationsUpdateInput,
-    outputSchema: FluxConfigurationsUpdateOutput,
-  }),
-);
+export const FluxConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluxConfigurationsUpdateInput,
+  outputSchema: FluxConfigurationsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -534,7 +510,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -562,71 +538,69 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
-    }),
-  );
+export const OperationStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
+  }),
+);
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
 
 // Output Schema
-export const OperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    properties: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+export const OperationStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  properties: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
+            ),
+          }),
         ),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+      ),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
 
 // The operation
@@ -641,77 +615,75 @@ export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
-export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationStatusGetInput,
   outputSchema: OperationStatusGetOutput,
 }));
 // Input Schema
-export const OperationStatusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
-    }),
-  );
+export const OperationStatusListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
+  }),
+);
 export type OperationStatusListInput = typeof OperationStatusListInput.Type;
 
 // Output Schema
-export const OperationStatusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          properties: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
+export const OperationStatusListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        properties: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
                     ),
-                  }),
-                ),
+                  ),
+                }),
               ),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
-        }),
-      ),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OperationStatusListOutput = typeof OperationStatusListOutput.Type;
 
 // The operation
@@ -725,13 +697,13 @@ export type OperationStatusListOutput = typeof OperationStatusListOutput.Type;
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const OperationStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationStatusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationStatusListInput,
   outputSchema: OperationStatusListOutput,
 }));
 // Input Schema
 export const SourceControlConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterRp: Schema.String.pipe(T.PathParam()),
@@ -749,7 +721,7 @@ export type SourceControlConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const SourceControlConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -768,14 +740,15 @@ export type SourceControlConfigurationsCreateOrUpdateOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const SourceControlConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlConfigurationsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SourceControlConfigurationsCreateOrUpdateInput,
     outputSchema: SourceControlConfigurationsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SourceControlConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterRp: Schema.String.pipe(T.PathParam()),
@@ -793,7 +766,7 @@ export type SourceControlConfigurationsDeleteInput =
 
 // Output Schema
 export const SourceControlConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SourceControlConfigurationsDeleteOutput =
   typeof SourceControlConfigurationsDeleteOutput.Type;
 
@@ -808,36 +781,35 @@ export type SourceControlConfigurationsDeleteOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const SourceControlConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SourceControlConfigurationsDeleteInput,
-    outputSchema: SourceControlConfigurationsDeleteOutput,
-  }));
+export const SourceControlConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlConfigurationsDeleteInput,
+  outputSchema: SourceControlConfigurationsDeleteOutput,
+}));
 // Input Schema
-export const SourceControlConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterRp: Schema.String.pipe(T.PathParam()),
-    clusterResourceName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
-    }),
-  );
+export const SourceControlConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterRp: Schema.String.pipe(T.PathParam()),
+  clusterResourceName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+  }),
+);
 export type SourceControlConfigurationsGetInput =
   typeof SourceControlConfigurationsGetInput.Type;
 
 // Output Schema
-export const SourceControlConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SourceControlConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type SourceControlConfigurationsGetOutput =
   typeof SourceControlConfigurationsGetOutput.Type;
 
@@ -852,32 +824,32 @@ export type SourceControlConfigurationsGetOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const SourceControlConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SourceControlConfigurationsGetInput,
-    outputSchema: SourceControlConfigurationsGetOutput,
-  }));
+export const SourceControlConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlConfigurationsGetInput,
+  outputSchema: SourceControlConfigurationsGetOutput,
+}));
 // Input Schema
-export const SourceControlConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SourceControlConfigurationsListInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
+  }),
+);
 export type SourceControlConfigurationsListInput =
   typeof SourceControlConfigurationsListInput.Type;
 
 // Output Schema
 export const SourceControlConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -903,8 +875,7 @@ export type SourceControlConfigurationsListOutput =
  * @param clusterName - The name of the kubernetes cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const SourceControlConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SourceControlConfigurationsListInput,
-    outputSchema: SourceControlConfigurationsListOutput,
-  }));
+export const SourceControlConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlConfigurationsListInput,
+  outputSchema: SourceControlConfigurationsListOutput,
+}));

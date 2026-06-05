@@ -4,26 +4,24 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupDatabaseUsersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/databaseUsers",
-    }),
-  );
+export const ListGroupDatabaseUsersInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/databaseUsers",
+  }),
+);
 export type ListGroupDatabaseUsersInput =
   typeof ListGroupDatabaseUsersInput.Type;
 
 // Output Schema
-export const ListGroupDatabaseUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupDatabaseUsersOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupDatabaseUsersOutput =
   typeof ListGroupDatabaseUsersOutput.Type;
 
@@ -42,10 +40,8 @@ export type ListGroupDatabaseUsersOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupDatabaseUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupDatabaseUsersInput,
-    outputSchema: ListGroupDatabaseUsersOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupDatabaseUsers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupDatabaseUsersInput,
+  outputSchema: ListGroupDatabaseUsersOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

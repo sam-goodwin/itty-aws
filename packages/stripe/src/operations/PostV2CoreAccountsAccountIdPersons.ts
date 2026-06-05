@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostV2CoreAccountsAccountIdPersonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -256,7 +256,7 @@ export type PostV2CoreAccountsAccountIdPersonsInput =
 
 // Output Schema
 export const PostV2CoreAccountsAccountIdPersonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -515,8 +515,9 @@ export type PostV2CoreAccountsAccountIdPersonsOutput =
  *
  * @param account_id - Account the Person should be associated with.
  */
-export const PostV2CoreAccountsAccountIdPersons =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostV2CoreAccountsAccountIdPersons = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV2CoreAccountsAccountIdPersonsInput,
     outputSchema: PostV2CoreAccountsAccountIdPersonsOutput,
-  }));
+  }),
+);

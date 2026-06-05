@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupCloudProviderAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    roleId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}",
-    }),
-  );
+export const GetGroupCloudProviderAccessInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  roleId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}",
+  }),
+);
 export type GetGroupCloudProviderAccessInput =
   typeof GetGroupCloudProviderAccessInput.Type;
 
 // Output Schema
-export const GetGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupCloudProviderAccessOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupCloudProviderAccessOutput =
   typeof GetGroupCloudProviderAccessOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupCloudProviderAccessOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const getGroupCloudProviderAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupCloudProviderAccessInput,
-    outputSchema: GetGroupCloudProviderAccessOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupCloudProviderAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupCloudProviderAccessInput,
+  outputSchema: GetGroupCloudProviderAccessOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

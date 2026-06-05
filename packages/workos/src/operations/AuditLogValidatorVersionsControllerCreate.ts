@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuditLogValidatorVersionsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
     actor: Schema.optional(
       Schema.Struct({
@@ -32,7 +32,7 @@ export type AuditLogValidatorVersionsControllerCreateInput =
 
 // Output Schema
 export const AuditLogValidatorVersionsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
     actor: Schema.optional(
@@ -64,9 +64,10 @@ export type AuditLogValidatorVersionsControllerCreateOutput =
  *
  * @param actionName - The name of the Audit Log action.
  */
-export const AuditLogValidatorVersionsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuditLogValidatorVersionsControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuditLogValidatorVersionsControllerCreateInput,
     outputSchema: AuditLogValidatorVersionsControllerCreateOutput,
     errors: [UnprocessableEntity] as const,
-  }));
+  }),
+);

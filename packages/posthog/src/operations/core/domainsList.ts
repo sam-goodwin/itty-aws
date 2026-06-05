@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -17,7 +17,7 @@ export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsListInput = typeof DomainsListInput.Type;
 
 // Output Schema
-export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -51,7 +51,7 @@ export type DomainsListOutput = typeof DomainsListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const domainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsListInput,
   outputSchema: DomainsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

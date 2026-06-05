@@ -5,7 +5,7 @@ import { BadRequest } from "../errors.ts";
 
 // Input Schema
 export const OrganizationDomainsControllerVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/organization_domains/{id}/verify" }),
@@ -15,7 +15,7 @@ export type OrganizationDomainsControllerVerifyInput =
 
 // Output Schema
 export const OrganizationDomainsControllerVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -46,9 +46,10 @@ export type OrganizationDomainsControllerVerifyOutput =
  *
  * @param id - Unique identifier of the organization domain.
  */
-export const OrganizationDomainsControllerVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationDomainsControllerVerify = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationDomainsControllerVerifyInput,
     outputSchema: OrganizationDomainsControllerVerifyOutput,
     errors: [BadRequest] as const,
-  }));
+  }),
+);

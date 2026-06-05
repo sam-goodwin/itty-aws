@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSubscriptionsSubscriptionMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.PathParam()),
     billing_mode: Schema.Struct({
       flexible: Schema.optional(
@@ -29,7 +29,7 @@ export type PostSubscriptionsSubscriptionMigrateInput =
 
 // Output Schema
 export const PostSubscriptionsSubscriptionMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     application_fee_percent: Schema.NullOr(Schema.Number),
     automatic_tax: Schema.Struct({
@@ -337,8 +337,9 @@ export type PostSubscriptionsSubscriptionMigrateOutput =
  *
  * <p>Upgrade the billing_mode of an existing subscription.</p>
  */
-export const PostSubscriptionsSubscriptionMigrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSubscriptionsSubscriptionMigrate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostSubscriptionsSubscriptionMigrateInput,
     outputSchema: PostSubscriptionsSubscriptionMigrateOutput,
-  }));
+  }),
+);

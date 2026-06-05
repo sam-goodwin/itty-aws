@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupStreamWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeConnections: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
-    }),
-  );
+export const GetGroupStreamWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeConnections: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
+  }),
+);
 export type GetGroupStreamWorkspaceInput =
   typeof GetGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const GetGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupStreamWorkspaceOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupStreamWorkspaceOutput =
   typeof GetGroupStreamWorkspaceOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupStreamWorkspaceOutput =
  * @param tenantName - Label that identifies the stream workspace to return.
  * @param includeConnections - Flag to indicate whether connections information should be included in the stream workspace.
  */
-export const getGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamWorkspaceInput,
-    outputSchema: GetGroupStreamWorkspaceOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamWorkspaceInput,
+  outputSchema: GetGroupStreamWorkspaceOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

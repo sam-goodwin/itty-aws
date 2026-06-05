@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
   projectOwnerId: Schema.optional(Schema.String),
@@ -12,7 +12,7 @@ export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupInput = typeof CreateGroupInput.Type;
 
 // Output Schema
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupOutput = typeof CreateGroupOutput.Type;
 
 // The operation
@@ -25,7 +25,7 @@ export type CreateGroupOutput = typeof CreateGroupOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param projectOwnerId - Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user to whom to grant the Project Owner role on the specified project. If you set this parameter, it overrides the default value of the oldest Organization Owner.
  */
-export const createGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupInput,
   outputSchema: CreateGroupOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

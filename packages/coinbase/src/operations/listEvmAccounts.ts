@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListEvmAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEvmAccountsInput = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/v2/evm/accounts" }));
 export type ListEvmAccountsInput = typeof ListEvmAccountsInput.Type;
 
 // Output Schema
-export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEvmAccountsOutput = /*@__PURE__*/ Schema.Struct({
   accounts: Schema.Array(
     Schema.Struct({
       address: Schema.String,
@@ -34,7 +34,7 @@ export type ListEvmAccountsOutput = typeof ListEvmAccountsOutput.Type;
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listEvmAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEvmAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEvmAccountsInput,
   outputSchema: ListEvmAccountsOutput,
 }));

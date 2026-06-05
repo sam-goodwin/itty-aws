@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const AuthorizationRolesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -22,7 +22,7 @@ export type AuthorizationRolesControllerCreateInput =
 
 // Output Schema
 export const AuthorizationRolesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -43,8 +43,8 @@ export type AuthorizationRolesControllerCreateOutput =
  *
  * Create a new environment role.
  */
-export const AuthorizationRolesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationRolesControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationRolesControllerCreateInput,
     outputSchema: AuthorizationRolesControllerCreateOutput,
     errors: [
@@ -54,4 +54,5 @@ export const AuthorizationRolesControllerCreate =
       Conflict,
       UnprocessableEntity,
     ] as const,
-  }));
+  }),
+);

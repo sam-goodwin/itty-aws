@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const UpdateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAnnotationInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -17,18 +17,16 @@ export const UpdateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAnnotationInput = typeof UpdateAnnotationInput.Type;
 
 // Output Schema
-export const UpdateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    datasets: Schema.Array(Schema.String),
-    description: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.NullOr(Schema.String)),
-    id: Schema.String,
-    time: Schema.String,
-    title: Schema.optional(Schema.String),
-    type: Schema.String,
-    url: Schema.optional(Schema.String),
-  },
-);
+export const UpdateAnnotationOutput = /*@__PURE__*/ Schema.Struct({
+  datasets: Schema.Array(Schema.String),
+  description: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.NullOr(Schema.String)),
+  id: Schema.String,
+  time: Schema.String,
+  title: Schema.optional(Schema.String),
+  type: Schema.String,
+  url: Schema.optional(Schema.String),
+});
 export type UpdateAnnotationOutput = typeof UpdateAnnotationOutput.Type;
 
 // The operation
@@ -37,7 +35,7 @@ export type UpdateAnnotationOutput = typeof UpdateAnnotationOutput.Type;
  *
  * @param id - Unique ID of the annotation
  */
-export const updateAnnotation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateAnnotation = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateAnnotationInput,
   outputSchema: UpdateAnnotationOutput,
   errors: [BadRequest, NotFound, UnprocessableEntity] as const,

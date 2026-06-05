@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTopupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   currency: Schema.String,
   description: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export const PostTopupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTopupsInput = typeof PostTopupsInput.Type;
 
 // Output Schema
-export const PostTopupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.Unknown,
   created: Schema.Number,
@@ -54,7 +54,7 @@ export type PostTopupsOutput = typeof PostTopupsOutput.Type;
  *
  * <p>Top up the balance of an account</p>
  */
-export const PostTopups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTopups = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTopupsInput,
   outputSchema: PostTopupsOutput,
 }));

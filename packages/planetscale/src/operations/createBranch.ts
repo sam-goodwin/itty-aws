@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
@@ -30,14 +30,14 @@ export const CreateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateBranchInput = typeof CreateBranchInput.Type;
 
 // Output Schema
-export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
   updated_at: Schema.String,
   deleted_at: Schema.NullOr(Schema.String),
   restore_checklist_completed_at: Schema.NullOr(Schema.String),
-  schema_last_updated_at: Schema.NullOr(Schema.String),
+  schema_last_updated_at: Schema.String,
   kind: Schema.Literals(["mysql", "postgresql"]),
   mysql_address: Schema.optional(Schema.String),
   mysql_edge_address: Schema.optional(Schema.String),
@@ -61,13 +61,11 @@ export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sharded: Schema.optional(Schema.Boolean),
   shard_count: Schema.optional(Schema.Number),
   stale_schema: Schema.Boolean,
-  actor: Schema.NullOr(
-    Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  ),
+  actor: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
   restored_from_branch: Schema.NullOr(
     Schema.Struct({
       id: Schema.String,
@@ -91,8 +89,6 @@ export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   parent_branch: Schema.NullOr(Schema.String),
   vtgate_options: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -115,7 +111,7 @@ export type CreateBranchOutput = typeof CreateBranchOutput.Type;
  * @param cluster_size - The database cluster size. Required if a backup_id is provided, optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800
  * @param major_version - For PostgreSQL databases, the PostgreSQL major version to use for the branch. Defaults to the major version of the parent branch if it exists or the database's default branch major version. Ignored for branches restored from backups.
  */
-export const createBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBranchInput,
   outputSchema: CreateBranchOutput,
   errors: [Forbidden, NotFound] as const,

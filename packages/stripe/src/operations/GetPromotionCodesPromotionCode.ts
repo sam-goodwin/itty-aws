@@ -3,23 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPromotionCodesPromotionCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    promotion_code: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/promotion_codes/{promotion_code}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetPromotionCodesPromotionCodeInput = /*@__PURE__*/ Schema.Struct({
+  promotion_code: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/promotion_codes/{promotion_code}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetPromotionCodesPromotionCodeInput =
   typeof GetPromotionCodesPromotionCodeInput.Type;
 
 // Output Schema
-export const GetPromotionCodesPromotionCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPromotionCodesPromotionCodeOutput = /*@__PURE__*/ Schema.Struct(
+  {
     active: Schema.Boolean,
     code: Schema.String,
     created: Schema.Number,
@@ -49,7 +48,8 @@ export const GetPromotionCodesPromotionCodeOutput =
       minimum_amount_currency: Schema.NullOr(Schema.String),
     }),
     times_redeemed: Schema.Number,
-  });
+  },
+);
 export type GetPromotionCodesPromotionCodeOutput =
   typeof GetPromotionCodesPromotionCodeOutput.Type;
 
@@ -61,8 +61,7 @@ export type GetPromotionCodesPromotionCodeOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPromotionCodesPromotionCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetPromotionCodesPromotionCodeInput,
-    outputSchema: GetPromotionCodesPromotionCodeOutput,
-  }));
+export const GetPromotionCodesPromotionCode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPromotionCodesPromotionCodeInput,
+  outputSchema: GetPromotionCodesPromotionCodeOutput,
+}));

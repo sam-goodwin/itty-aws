@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const AuthorizationResourcesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_id: Schema.String,
     name: Schema.String,
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -23,7 +23,7 @@ export type AuthorizationResourcesControllerCreateInput =
 
 // Output Schema
 export const AuthorizationResourcesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     name: Schema.String,
     description: Schema.NullOr(Schema.String),
@@ -44,8 +44,8 @@ export type AuthorizationResourcesControllerCreateOutput =
  *
  * Create a new authorization resource.
  */
-export const AuthorizationResourcesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationResourcesControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationResourcesControllerCreateInput,
     outputSchema: AuthorizationResourcesControllerCreateOutput,
     errors: [
@@ -55,4 +55,5 @@ export const AuthorizationResourcesControllerCreate =
       Conflict,
       UnprocessableEntity,
     ] as const,
-  }));
+  }),
+);

@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupClusterProcessArgsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs",
-    }),
-  );
+export const UpdateGroupClusterProcessArgsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs",
+  }),
+);
 export type UpdateGroupClusterProcessArgsInput =
   typeof UpdateGroupClusterProcessArgsInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterProcessArgsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupClusterProcessArgsOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupClusterProcessArgsOutput =
   typeof UpdateGroupClusterProcessArgsOutput.Type;
 
@@ -38,9 +36,8 @@ export type UpdateGroupClusterProcessArgsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const updateGroupClusterProcessArgs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupClusterProcessArgsInput,
-    outputSchema: UpdateGroupClusterProcessArgsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const updateGroupClusterProcessArgs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupClusterProcessArgsInput,
+  outputSchema: UpdateGroupClusterProcessArgsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

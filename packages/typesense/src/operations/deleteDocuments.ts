@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   deleteDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -13,7 +13,7 @@ export const DeleteDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDocumentsInput = typeof DeleteDocumentsInput.Type;
 
 // Output Schema
-export const DeleteDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentsOutput = /*@__PURE__*/ Schema.Struct({
   num_deleted: Schema.Number,
 });
 export type DeleteDocumentsOutput = typeof DeleteDocumentsOutput.Type;
@@ -26,7 +26,7 @@ export type DeleteDocumentsOutput = typeof DeleteDocumentsOutput.Type;
  *
  * @param collectionName - The name of the collection to delete documents from
  */
-export const deleteDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDocumentsInput,
   outputSchema: DeleteDocumentsOutput,
   errors: [NotFound] as const,

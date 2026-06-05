@@ -4,27 +4,25 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupAlertAlertConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    alertId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs",
-    }),
-  );
+export const GetGroupAlertAlertConfigsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  alertId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs",
+  }),
+);
 export type GetGroupAlertAlertConfigsInput =
   typeof GetGroupAlertAlertConfigsInput.Type;
 
 // Output Schema
-export const GetGroupAlertAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAlertAlertConfigsOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupAlertAlertConfigsOutput =
   typeof GetGroupAlertAlertConfigsOutput.Type;
 
@@ -45,10 +43,8 @@ export type GetGroupAlertAlertConfigsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const getGroupAlertAlertConfigs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAlertAlertConfigsInput,
-    outputSchema: GetGroupAlertAlertConfigsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupAlertAlertConfigs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAlertAlertConfigsInput,
+  outputSchema: GetGroupAlertAlertConfigsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

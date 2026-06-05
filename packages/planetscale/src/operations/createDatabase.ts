@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   region: Schema.optional(Schema.String),
@@ -24,7 +24,7 @@ export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateDatabaseInput = typeof CreateDatabaseInput.Type;
 
 // Output Schema
-export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   branches_url: Schema.String,
@@ -32,7 +32,7 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   open_schema_recommendations_count: Schema.optional(Schema.Number),
   development_branches_count: Schema.optional(Schema.Number),
   production_branches_count: Schema.optional(Schema.Number),
-  issues_count: Schema.optional(Schema.NullOr(Schema.Number)),
+  issues_count: Schema.optional(Schema.Number),
   multiple_admins_required_for_deletion: Schema.optional(Schema.Boolean),
   ready: Schema.Boolean,
   at_backup_restore_branches_limit: Schema.optional(Schema.Boolean),
@@ -42,8 +42,8 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         state: Schema.String,
         import_check_errors: Schema.String,
-        started_at: Schema.NullOr(Schema.String),
-        finished_at: Schema.NullOr(Schema.String),
+        started_at: Schema.String,
+        finished_at: Schema.String,
         data_source: Schema.Struct({
           hostname: Schema.String,
           port: Schema.Number,
@@ -61,8 +61,6 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   html_url: Schema.String,
   name: Schema.String,
@@ -97,7 +95,7 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   migration_framework: Schema.optional(Schema.NullOr(Schema.String)),
   created_at: Schema.String,
   updated_at: Schema.String,
-  schema_last_updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+  schema_last_updated_at: Schema.optional(Schema.String),
   kind: Schema.Literals(["mysql", "postgresql"]),
 });
 export type CreateDatabaseOutput = typeof CreateDatabaseOutput.Type;
@@ -114,7 +112,7 @@ export type CreateDatabaseOutput = typeof CreateDatabaseOutput.Type;
  * @param kind - The kind of database to create.
  * @param major_version - For PostgreSQL databases, the PostgreSQL major version to use for the database. Defaults to the latest available major version.
  */
-export const createDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatabaseInput,
   outputSchema: CreateDatabaseOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

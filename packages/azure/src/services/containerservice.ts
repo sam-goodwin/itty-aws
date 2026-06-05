@@ -9,19 +9,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AgentPoolsAbortLatestOperationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    agentPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
-    }),
-  );
+export const AgentPoolsAbortLatestOperationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
+  }),
+);
 export type AgentPoolsAbortLatestOperationInput =
   typeof AgentPoolsAbortLatestOperationInput.Type;
 
@@ -42,49 +41,46 @@ export type AgentPoolsAbortLatestOperationOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param agentPoolName - The name of the agent pool.
  */
-export const AgentPoolsAbortLatestOperation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AgentPoolsAbortLatestOperationInput,
-    outputSchema: AgentPoolsAbortLatestOperationOutput,
-  }));
+export const AgentPoolsAbortLatestOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolsAbortLatestOperationInput,
+  outputSchema: AgentPoolsAbortLatestOperationOutput,
+}));
 // Input Schema
-export const AgentPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    agentPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
-    }),
-  );
+export const AgentPoolsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
+  }),
+);
 export type AgentPoolsCreateOrUpdateInput =
   typeof AgentPoolsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AgentPoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AgentPoolsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AgentPoolsCreateOrUpdateOutput =
   typeof AgentPoolsCreateOrUpdateOutput.Type;
 
@@ -141,19 +137,18 @@ export const AgentPoolsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: AgentPoolsDeleteOutput,
 }));
 // Input Schema
-export const AgentPoolsDeleteMachinesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    agentPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
-    }),
-  );
+export const AgentPoolsDeleteMachinesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
+  }),
+);
 export type AgentPoolsDeleteMachinesInput =
   typeof AgentPoolsDeleteMachinesInput.Type;
 
@@ -275,49 +270,48 @@ export type AgentPoolsGetAvailableAgentPoolVersionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const AgentPoolsGetAvailableAgentPoolVersions =
-  /*@__PURE__*/ API.make(() => ({
+export const AgentPoolsGetAvailableAgentPoolVersions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AgentPoolsGetAvailableAgentPoolVersionsInput,
     outputSchema: AgentPoolsGetAvailableAgentPoolVersionsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AgentPoolsGetUpgradeProfileInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    agentPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
-    }),
-  );
+export const AgentPoolsGetUpgradeProfileInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
+  }),
+);
 export type AgentPoolsGetUpgradeProfileInput =
   typeof AgentPoolsGetUpgradeProfileInput.Type;
 
 // Output Schema
-export const AgentPoolsGetUpgradeProfileOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AgentPoolsGetUpgradeProfileOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AgentPoolsGetUpgradeProfileOutput =
   typeof AgentPoolsGetUpgradeProfileOutput.Type;
 
@@ -424,11 +418,10 @@ export type AgentPoolsUpgradeNodeImageVersionOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param agentPoolName - The name of the agent pool.
  */
-export const AgentPoolsUpgradeNodeImageVersion =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AgentPoolsUpgradeNodeImageVersionInput,
-    outputSchema: AgentPoolsUpgradeNodeImageVersionOutput,
-  }));
+export const AgentPoolsUpgradeNodeImageVersion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolsUpgradeNodeImageVersionInput,
+  outputSchema: AgentPoolsUpgradeNodeImageVersionOutput,
+}));
 // Input Schema
 export const AutoUpgradeProfileOperationsGenerateUpdateRunInput =
   /*@__PURE__*/ Schema.Struct({
@@ -522,25 +515,23 @@ export type AutoUpgradeProfilesCreateOrUpdateOutput =
  * @param fleetName - The name of the Fleet resource.
  * @param autoUpgradeProfileName - The name of the AutoUpgradeProfile resource.
  */
-export const AutoUpgradeProfilesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AutoUpgradeProfilesCreateOrUpdateInput,
-    outputSchema: AutoUpgradeProfilesCreateOrUpdateOutput,
-  }));
+export const AutoUpgradeProfilesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoUpgradeProfilesCreateOrUpdateInput,
+  outputSchema: AutoUpgradeProfilesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AutoUpgradeProfilesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    autoUpgradeProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
-    }),
-  );
+export const AutoUpgradeProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  autoUpgradeProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
+  }),
+);
 export type AutoUpgradeProfilesDeleteInput =
   typeof AutoUpgradeProfilesDeleteInput.Type;
 
@@ -565,43 +556,41 @@ export const AutoUpgradeProfilesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: AutoUpgradeProfilesDeleteOutput,
 }));
 // Input Schema
-export const AutoUpgradeProfilesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    autoUpgradeProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
-    }),
-  );
+export const AutoUpgradeProfilesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  autoUpgradeProfileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
+  }),
+);
 export type AutoUpgradeProfilesGetInput =
   typeof AutoUpgradeProfilesGetInput.Type;
 
 // Output Schema
-export const AutoUpgradeProfilesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoUpgradeProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoUpgradeProfilesGetOutput =
   typeof AutoUpgradeProfilesGetOutput.Type;
 
@@ -620,24 +609,23 @@ export const AutoUpgradeProfilesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: AutoUpgradeProfilesGetOutput,
 }));
 // Input Schema
-export const AutoUpgradeProfilesListByFleetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles",
-    }),
-  );
+export const AutoUpgradeProfilesListByFleetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles",
+  }),
+);
 export type AutoUpgradeProfilesListByFleetInput =
   typeof AutoUpgradeProfilesListByFleetInput.Type;
 
 // Output Schema
-export const AutoUpgradeProfilesListByFleetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const AutoUpgradeProfilesListByFleetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -670,7 +658,8 @@ export const AutoUpgradeProfilesListByFleetOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type AutoUpgradeProfilesListByFleetOutput =
   typeof AutoUpgradeProfilesListByFleetOutput.Type;
 
@@ -683,45 +672,42 @@ export type AutoUpgradeProfilesListByFleetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
  */
-export const AutoUpgradeProfilesListByFleet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AutoUpgradeProfilesListByFleetInput,
-    outputSchema: AutoUpgradeProfilesListByFleetOutput,
-  }));
+export const AutoUpgradeProfilesListByFleet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoUpgradeProfilesListByFleetInput,
+  outputSchema: AutoUpgradeProfilesListByFleetOutput,
+}));
 // Input Schema
-export const DeploymentSafeguardsCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
-    }),
-  );
+export const DeploymentSafeguardsCreateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
+  }),
+);
 export type DeploymentSafeguardsCreateInput =
   typeof DeploymentSafeguardsCreateInput.Type;
 
 // Output Schema
-export const DeploymentSafeguardsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DeploymentSafeguardsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DeploymentSafeguardsCreateOutput =
   typeof DeploymentSafeguardsCreateOutput.Type;
 
@@ -736,15 +722,14 @@ export const DeploymentSafeguardsCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentSafeguardsCreateOutput,
 }));
 // Input Schema
-export const DeploymentSafeguardsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
-    }),
-  );
+export const DeploymentSafeguardsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
+  }),
+);
 export type DeploymentSafeguardsDeleteInput =
   typeof DeploymentSafeguardsDeleteInput.Type;
 
@@ -764,39 +749,37 @@ export const DeploymentSafeguardsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentSafeguardsDeleteOutput,
 }));
 // Input Schema
-export const DeploymentSafeguardsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
-    }),
-  );
+export const DeploymentSafeguardsGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
+  }),
+);
 export type DeploymentSafeguardsGetInput =
   typeof DeploymentSafeguardsGetInput.Type;
 
 // Output Schema
-export const DeploymentSafeguardsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DeploymentSafeguardsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DeploymentSafeguardsGetOutput =
   typeof DeploymentSafeguardsGetOutput.Type;
 
@@ -811,54 +794,42 @@ export const DeploymentSafeguardsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentSafeguardsGetOutput,
 }));
 // Input Schema
-export const DeploymentSafeguardsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards",
-    }),
-  );
+export const DeploymentSafeguardsListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards",
+  }),
+);
 export type DeploymentSafeguardsListInput =
   typeof DeploymentSafeguardsListInput.Type;
 
 // Output Schema
-export const DeploymentSafeguardsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DeploymentSafeguardsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DeploymentSafeguardsListOutput =
   typeof DeploymentSafeguardsListOutput.Type;
 
@@ -873,42 +844,40 @@ export const DeploymentSafeguardsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentSafeguardsListOutput,
 }));
 // Input Schema
-export const FleetMembersCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    fleetMemberName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
-    }),
-  );
+export const FleetMembersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetMemberName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
+  }),
+);
 export type FleetMembersCreateInput = typeof FleetMembersCreateInput.Type;
 
 // Output Schema
-export const FleetMembersCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetMembersCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetMembersCreateOutput = typeof FleetMembersCreateOutput.Type;
 
 // The operation
@@ -928,19 +897,18 @@ export const FleetMembersCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetMembersCreateOutput,
 }));
 // Input Schema
-export const FleetMembersDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    fleetMemberName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
-    }),
-  );
+export const FleetMembersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetMemberName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
+  }),
+);
 export type FleetMembersDeleteInput = typeof FleetMembersDeleteInput.Type;
 
 // Output Schema
@@ -1014,57 +982,45 @@ export const FleetMembersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetMembersGetOutput,
 }));
 // Input Schema
-export const FleetMembersListByFleetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members",
-    }),
-  );
+export const FleetMembersListByFleetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members",
+  }),
+);
 export type FleetMembersListByFleetInput =
   typeof FleetMembersListByFleetInput.Type;
 
 // Output Schema
-export const FleetMembersListByFleetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FleetMembersListByFleetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FleetMembersListByFleetOutput =
   typeof FleetMembersListByFleetOutput.Type;
 
@@ -1082,42 +1038,40 @@ export const FleetMembersListByFleet = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetMembersListByFleetOutput,
 }));
 // Input Schema
-export const FleetMembersUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    fleetMemberName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
-    }),
-  );
+export const FleetMembersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetMemberName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
+  }),
+);
 export type FleetMembersUpdateInput = typeof FleetMembersUpdateInput.Type;
 
 // Output Schema
-export const FleetMembersUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetMembersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetMembersUpdateOutput = typeof FleetMembersUpdateOutput.Type;
 
 // The operation
@@ -1136,41 +1090,39 @@ export const FleetMembersUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetMembersUpdateOutput,
 }));
 // Input Schema
-export const FleetsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
-    }),
-  );
+export const FleetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
+  }),
+);
 export type FleetsCreateOrUpdateInput = typeof FleetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FleetsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetsCreateOrUpdateOutput = typeof FleetsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -1270,56 +1222,44 @@ export const FleetsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetsGetOutput,
 }));
 // Input Schema
-export const FleetsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets",
-    }),
-  );
+export const FleetsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets",
+  }),
+);
 export type FleetsListByResourceGroupInput =
   typeof FleetsListByResourceGroupInput.Type;
 
 // Output Schema
-export const FleetsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FleetsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FleetsListByResourceGroupOutput =
   typeof FleetsListByResourceGroupOutput.Type;
 
@@ -1336,55 +1276,43 @@ export const FleetsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetsListByResourceGroupOutput,
 }));
 // Input Schema
-export const FleetsListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/fleets",
-    }),
-  );
+export const FleetsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/fleets",
+  }),
+);
 export type FleetsListBySubscriptionInput =
   typeof FleetsListBySubscriptionInput.Type;
 
 // Output Schema
-export const FleetsListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FleetsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FleetsListBySubscriptionOutput =
   typeof FleetsListBySubscriptionOutput.Type;
 
@@ -1400,32 +1328,30 @@ export const FleetsListBySubscription = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetsListBySubscriptionOutput,
 }));
 // Input Schema
-export const FleetsListCredentialsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/listCredentials",
-    }),
-  );
+export const FleetsListCredentialsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/listCredentials",
+  }),
+);
 export type FleetsListCredentialsInput = typeof FleetsListCredentialsInput.Type;
 
 // Output Schema
-export const FleetsListCredentialsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    kubeconfigs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
+export const FleetsListCredentialsOutput = /*@__PURE__*/ Schema.Struct({
+  kubeconfigs: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type FleetsListCredentialsOutput =
   typeof FleetsListCredentialsOutput.Type;
 
@@ -1545,25 +1471,25 @@ export type FleetUpdateStrategiesCreateOrUpdateOutput =
  * @param fleetName - The name of the Fleet resource.
  * @param updateStrategyName - The name of the UpdateStrategy resource.
  */
-export const FleetUpdateStrategiesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const FleetUpdateStrategiesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FleetUpdateStrategiesCreateOrUpdateInput,
     outputSchema: FleetUpdateStrategiesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const FleetUpdateStrategiesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    updateStrategyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
-    }),
-  );
+export const FleetUpdateStrategiesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  updateStrategyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
+  }),
+);
 export type FleetUpdateStrategiesDeleteInput =
   typeof FleetUpdateStrategiesDeleteInput.Type;
 
@@ -1588,43 +1514,41 @@ export const FleetUpdateStrategiesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: FleetUpdateStrategiesDeleteOutput,
 }));
 // Input Schema
-export const FleetUpdateStrategiesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    updateStrategyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
-    }),
-  );
+export const FleetUpdateStrategiesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  updateStrategyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
+  }),
+);
 export type FleetUpdateStrategiesGetInput =
   typeof FleetUpdateStrategiesGetInput.Type;
 
 // Output Schema
-export const FleetUpdateStrategiesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetUpdateStrategiesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetUpdateStrategiesGetOutput =
   typeof FleetUpdateStrategiesGetOutput.Type;
 
@@ -1706,11 +1630,10 @@ export type FleetUpdateStrategiesListByFleetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
  */
-export const FleetUpdateStrategiesListByFleet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FleetUpdateStrategiesListByFleetInput,
-    outputSchema: FleetUpdateStrategiesListByFleetOutput,
-  }));
+export const FleetUpdateStrategiesListByFleet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetUpdateStrategiesListByFleetInput,
+  outputSchema: FleetUpdateStrategiesListByFleetOutput,
+}));
 // Input Schema
 export const MachinesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1871,25 +1794,27 @@ export type MaintenanceConfigurationsCreateOrUpdateOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param configName - The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'.
  */
-export const MaintenanceConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const MaintenanceConfigurationsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MaintenanceConfigurationsCreateOrUpdateInput,
     outputSchema: MaintenanceConfigurationsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const MaintenanceConfigurationsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const MaintenanceConfigurationsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
+  }),
+);
 export type MaintenanceConfigurationsDeleteInput =
   typeof MaintenanceConfigurationsDeleteInput.Type;
 
@@ -1908,49 +1833,46 @@ export type MaintenanceConfigurationsDeleteOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param configName - The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'.
  */
-export const MaintenanceConfigurationsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsDeleteInput,
-    outputSchema: MaintenanceConfigurationsDeleteOutput,
-  }));
+export const MaintenanceConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsDeleteInput,
+  outputSchema: MaintenanceConfigurationsDeleteOutput,
+}));
 // Input Schema
-export const MaintenanceConfigurationsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    configName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
-    }),
-  );
+export const MaintenanceConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  configName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
+  }),
+);
 export type MaintenanceConfigurationsGetInput =
   typeof MaintenanceConfigurationsGetInput.Type;
 
 // Output Schema
-export const MaintenanceConfigurationsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MaintenanceConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MaintenanceConfigurationsGetOutput =
   typeof MaintenanceConfigurationsGetOutput.Type;
 
@@ -1964,11 +1886,10 @@ export type MaintenanceConfigurationsGetOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param configName - The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'.
  */
-export const MaintenanceConfigurationsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MaintenanceConfigurationsGetInput,
-    outputSchema: MaintenanceConfigurationsGetOutput,
-  }));
+export const MaintenanceConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenanceConfigurationsGetInput,
+  outputSchema: MaintenanceConfigurationsGetOutput,
+}));
 // Input Schema
 export const MaintenanceConfigurationsListByManagedClusterInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2071,48 +1992,47 @@ export type ManagedClustersAbortLatestOperationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ManagedClustersAbortLatestOperation =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersAbortLatestOperation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersAbortLatestOperationInput,
     outputSchema: ManagedClustersAbortLatestOperationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ManagedClustersCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-    }),
-  );
+export const ManagedClustersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
+  }),
+);
 export type ManagedClustersCreateOrUpdateInput =
   typeof ManagedClustersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ManagedClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedClustersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedClustersCreateOrUpdateOutput =
   typeof ManagedClustersCreateOrUpdateOutput.Type;
 
@@ -2127,24 +2047,22 @@ export type ManagedClustersCreateOrUpdateOutput =
  * @param if-match - The request should only proceed if an entity matches this string.
  * @param if-none-match - The request should only proceed if no entity matches this string.
  */
-export const ManagedClustersCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManagedClustersCreateOrUpdateInput,
-    outputSchema: ManagedClustersCreateOrUpdateOutput,
-  }));
+export const ManagedClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedClustersCreateOrUpdateInput,
+  outputSchema: ManagedClustersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ManagedClustersDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-    }),
-  );
+export const ManagedClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
+  }),
+);
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
 
 // Output Schema
@@ -2167,41 +2085,39 @@ export const ManagedClustersDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersDeleteOutput,
 }));
 // Input Schema
-export const ManagedClustersGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-    }),
-  );
+export const ManagedClustersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
+  }),
+);
 export type ManagedClustersGetInput = typeof ManagedClustersGetInput.Type;
 
 // Output Schema
-export const ManagedClustersGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedClustersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedClustersGetOutput = typeof ManagedClustersGetOutput.Type;
 
 // The operation
@@ -2218,19 +2134,20 @@ export const ManagedClustersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersGetOutput,
 }));
 // Input Schema
-export const ManagedClustersGetCommandResultInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ManagedClustersGetCommandResultInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     commandId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
+  }),
+);
 export type ManagedClustersGetCommandResultInput =
   typeof ManagedClustersGetCommandResultInput.Type;
 
@@ -2262,11 +2179,10 @@ export type ManagedClustersGetCommandResultOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param commandId - Id of the command.
  */
-export const ManagedClustersGetCommandResult =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManagedClustersGetCommandResultInput,
-    outputSchema: ManagedClustersGetCommandResultOutput,
-  }));
+export const ManagedClustersGetCommandResult = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedClustersGetCommandResultInput,
+  outputSchema: ManagedClustersGetCommandResultOutput,
+}));
 // Input Schema
 export const ManagedClustersGetMeshRevisionProfileInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2318,11 +2234,12 @@ export type ManagedClustersGetMeshRevisionProfileOutput =
  * @param location - The name of the Azure region.
  * @param mode - The mode of the mesh.
  */
-export const ManagedClustersGetMeshRevisionProfile =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersGetMeshRevisionProfile = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersGetMeshRevisionProfileInput,
     outputSchema: ManagedClustersGetMeshRevisionProfileOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersGetMeshUpgradeProfileInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2374,11 +2291,12 @@ export type ManagedClustersGetMeshUpgradeProfileOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param mode - The mode of the mesh.
  */
-export const ManagedClustersGetMeshUpgradeProfile =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersGetMeshUpgradeProfile = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersGetMeshUpgradeProfileInput,
     outputSchema: ManagedClustersGetMeshUpgradeProfileOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersGetUpgradeProfileInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2428,60 +2346,47 @@ export type ManagedClustersGetUpgradeProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ManagedClustersGetUpgradeProfile =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManagedClustersGetUpgradeProfileInput,
-    outputSchema: ManagedClustersGetUpgradeProfileOutput,
-  }));
+export const ManagedClustersGetUpgradeProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedClustersGetUpgradeProfileInput,
+  outputSchema: ManagedClustersGetUpgradeProfileOutput,
+}));
 // Input Schema
-export const ManagedClustersListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
-    }),
-  );
+export const ManagedClustersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
+  }),
+);
 export type ManagedClustersListInput = typeof ManagedClustersListInput.Type;
 
 // Output Schema
-export const ManagedClustersListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ManagedClustersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ManagedClustersListOutput = typeof ManagedClustersListOutput.Type;
 
 // The operation
@@ -2557,11 +2462,12 @@ export type ManagedClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ManagedClustersListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersListByResourceGroupInput,
     outputSchema: ManagedClustersListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersListClusterAdminCredentialsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2700,11 +2606,12 @@ export type ManagedClustersListClusterUserCredentialsOutput =
  * @param server-fqdn - server fqdn type for credentials to be returned
  * @param format - Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path.
  */
-export const ManagedClustersListClusterUserCredentials =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersListClusterUserCredentials = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersListClusterUserCredentialsInput,
     outputSchema: ManagedClustersListClusterUserCredentialsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersListKubernetesVersionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2763,11 +2670,12 @@ export type ManagedClustersListKubernetesVersionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const ManagedClustersListKubernetesVersions =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersListKubernetesVersions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersListKubernetesVersionsInput,
     outputSchema: ManagedClustersListKubernetesVersionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersListMeshRevisionProfilesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2832,11 +2740,12 @@ export type ManagedClustersListMeshRevisionProfilesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const ManagedClustersListMeshRevisionProfiles =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersListMeshRevisionProfiles = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersListMeshRevisionProfilesInput,
     outputSchema: ManagedClustersListMeshRevisionProfilesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersListMeshUpgradeProfilesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2901,11 +2810,12 @@ export type ManagedClustersListMeshUpgradeProfilesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ManagedClustersListMeshUpgradeProfiles =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersListMeshUpgradeProfiles = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersListMeshUpgradeProfilesInput,
     outputSchema: ManagedClustersListMeshUpgradeProfilesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3039,11 +2949,12 @@ export type ManagedClustersRotateClusterCertificatesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ManagedClustersRotateClusterCertificates =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedClustersRotateClusterCertificates = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedClustersRotateClusterCertificatesInput,
     outputSchema: ManagedClustersRotateClusterCertificatesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ManagedClustersRotateServiceAccountSigningKeysInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3081,36 +2992,34 @@ export const ManagedClustersRotateServiceAccountSigningKeys =
     outputSchema: ManagedClustersRotateServiceAccountSigningKeysOutput,
   }));
 // Input Schema
-export const ManagedClustersRunCommandInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
-    }),
-  );
+export const ManagedClustersRunCommandInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
+  }),
+);
 export type ManagedClustersRunCommandInput =
   typeof ManagedClustersRunCommandInput.Type;
 
 // Output Schema
-export const ManagedClustersRunCommandOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
-        exitCode: Schema.optional(Schema.Number),
-        startedAt: Schema.optional(Schema.String),
-        finishedAt: Schema.optional(Schema.String),
-        logs: Schema.optional(Schema.String),
-        reason: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedClustersRunCommandOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      exitCode: Schema.optional(Schema.Number),
+      startedAt: Schema.optional(Schema.String),
+      finishedAt: Schema.optional(Schema.String),
+      logs: Schema.optional(Schema.String),
+      reason: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedClustersRunCommandOutput =
   typeof ManagedClustersRunCommandOutput.Type;
 
@@ -3130,18 +3039,17 @@ export const ManagedClustersRunCommand = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersRunCommandOutput,
 }));
 // Input Schema
-export const ManagedClustersStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
-    }),
-  );
+export const ManagedClustersStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
+  }),
+);
 export type ManagedClustersStartInput = typeof ManagedClustersStartInput.Type;
 
 // Output Schema
@@ -3164,18 +3072,17 @@ export const ManagedClustersStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersStartOutput,
 }));
 // Input Schema
-export const ManagedClustersStopInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
-    }),
-  );
+export const ManagedClustersStopInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
+  }),
+);
 export type ManagedClustersStopInput = typeof ManagedClustersStopInput.Type;
 
 // Output Schema
@@ -3198,42 +3105,40 @@ export const ManagedClustersStop = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersStopOutput,
 }));
 // Input Schema
-export const ManagedClustersUpdateTagsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-    }),
-  );
+export const ManagedClustersUpdateTagsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
+  }),
+);
 export type ManagedClustersUpdateTagsInput =
   typeof ManagedClustersUpdateTagsInput.Type;
 
 // Output Schema
-export const ManagedClustersUpdateTagsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedClustersUpdateTagsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedClustersUpdateTagsOutput =
   typeof ManagedClustersUpdateTagsOutput.Type;
 
@@ -3252,19 +3157,20 @@ export const ManagedClustersUpdateTags = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedClustersUpdateTagsOutput,
 }));
 // Input Schema
-export const ManagedNamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ManagedNamespacesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     managedNamespaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+  }),
+);
 export type ManagedNamespacesCreateOrUpdateInput =
   typeof ManagedNamespacesCreateOrUpdateInput.Type;
 
@@ -3302,25 +3208,23 @@ export type ManagedNamespacesCreateOrUpdateOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param managedNamespaceName - The name of the managed namespace.
  */
-export const ManagedNamespacesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManagedNamespacesCreateOrUpdateInput,
-    outputSchema: ManagedNamespacesCreateOrUpdateOutput,
-  }));
+export const ManagedNamespacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNamespacesCreateOrUpdateInput,
+  outputSchema: ManagedNamespacesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ManagedNamespacesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    managedNamespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-    }),
-  );
+export const ManagedNamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  managedNamespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+  }),
+);
 export type ManagedNamespacesDeleteInput =
   typeof ManagedNamespacesDeleteInput.Type;
 
@@ -3344,42 +3248,40 @@ export const ManagedNamespacesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ManagedNamespacesDeleteOutput,
 }));
 // Input Schema
-export const ManagedNamespacesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    managedNamespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-    }),
-  );
+export const ManagedNamespacesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  managedNamespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+  }),
+);
 export type ManagedNamespacesGetInput = typeof ManagedNamespacesGetInput.Type;
 
 // Output Schema
-export const ManagedNamespacesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedNamespacesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedNamespacesGetOutput = typeof ManagedNamespacesGetOutput.Type;
 
 // The operation
@@ -3460,25 +3362,27 @@ export type ManagedNamespacesListByManagedClusterOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ManagedNamespacesListByManagedCluster =
-  /*@__PURE__*/ API.make(() => ({
+export const ManagedNamespacesListByManagedCluster = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManagedNamespacesListByManagedClusterInput,
     outputSchema: ManagedNamespacesListByManagedClusterOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ManagedNamespacesListCredentialInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ManagedNamespacesListCredentialInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     managedNamespaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
+  }),
+);
 export type ManagedNamespacesListCredentialInput =
   typeof ManagedNamespacesListCredentialInput.Type;
 
@@ -3507,49 +3411,46 @@ export type ManagedNamespacesListCredentialOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param managedNamespaceName - The name of the managed namespace.
  */
-export const ManagedNamespacesListCredential =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManagedNamespacesListCredentialInput,
-    outputSchema: ManagedNamespacesListCredentialOutput,
-  }));
+export const ManagedNamespacesListCredential = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNamespacesListCredentialInput,
+  outputSchema: ManagedNamespacesListCredentialOutput,
+}));
 // Input Schema
-export const ManagedNamespacesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    managedNamespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-    }),
-  );
+export const ManagedNamespacesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  managedNamespaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+  }),
+);
 export type ManagedNamespacesUpdateInput =
   typeof ManagedNamespacesUpdateInput.Type;
 
 // Output Schema
-export const ManagedNamespacesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManagedNamespacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManagedNamespacesUpdateOutput =
   typeof ManagedNamespacesUpdateOutput.Type;
 
@@ -3580,19 +3481,25 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      origin: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          operation: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          provider: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -3600,7 +3507,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Gets a list of operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -3640,49 +3547,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -3698,30 +3602,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3755,7 +3657,8 @@ export const PrivateEndpointConnectionsListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -3770,11 +3673,10 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3826,43 +3728,40 @@ export type PrivateEndpointConnectionsUpdateOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsUpdateInput,
-    outputSchema: PrivateEndpointConnectionsUpdateOutput,
-  }));
+export const PrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsUpdateInput,
+  outputSchema: PrivateEndpointConnectionsUpdateOutput,
+}));
 // Input Schema
-export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
-    }),
-  );
+export const PrivateLinkResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
+  }),
+);
 export type PrivateLinkResourcesListInput =
   typeof PrivateLinkResourcesListInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          groupId: Schema.optional(Schema.String),
-          requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-          privateLinkServiceID: Schema.optional(Schema.String),
-        }),
-      ),
+export const PrivateLinkResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        groupId: Schema.optional(Schema.String),
+        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceID: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type PrivateLinkResourcesListOutput =
   typeof PrivateLinkResourcesListOutput.Type;
 
@@ -3882,18 +3781,19 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: PrivateLinkResourcesListOutput,
 }));
 // Input Schema
-export const ResolvePrivateLinkServiceIdPOSTInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ResolvePrivateLinkServiceIdPOSTInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
+  }),
+);
 export type ResolvePrivateLinkServiceIdPOSTInput =
   typeof ResolvePrivateLinkServiceIdPOSTInput.Type;
 
@@ -3919,48 +3819,45 @@ export type ResolvePrivateLinkServiceIdPOSTOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const ResolvePrivateLinkServiceIdPOST =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ResolvePrivateLinkServiceIdPOSTInput,
-    outputSchema: ResolvePrivateLinkServiceIdPOSTOutput,
-  }));
+export const ResolvePrivateLinkServiceIdPOST = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResolvePrivateLinkServiceIdPOSTInput,
+  outputSchema: ResolvePrivateLinkServiceIdPOSTOutput,
+}));
 // Input Schema
-export const SnapshotsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-    }),
-  );
+export const SnapshotsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
+  }),
+);
 export type SnapshotsCreateOrUpdateInput =
   typeof SnapshotsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SnapshotsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SnapshotsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotsCreateOrUpdateOutput =
   typeof SnapshotsCreateOrUpdateOutput.Type;
 
@@ -4108,56 +4005,44 @@ export const SnapshotsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsListOutput,
 }));
 // Input Schema
-export const SnapshotsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
-    }),
-  );
+export const SnapshotsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
+  }),
+);
 export type SnapshotsListByResourceGroupInput =
   typeof SnapshotsListByResourceGroupInput.Type;
 
 // Output Schema
-export const SnapshotsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SnapshotsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SnapshotsListByResourceGroupOutput =
   typeof SnapshotsListByResourceGroupOutput.Type;
 
@@ -4169,47 +4054,44 @@ export type SnapshotsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const SnapshotsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SnapshotsListByResourceGroupInput,
-    outputSchema: SnapshotsListByResourceGroupOutput,
-  }));
+export const SnapshotsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotsListByResourceGroupInput,
+  outputSchema: SnapshotsListByResourceGroupOutput,
+}));
 // Input Schema
-export const SnapshotsUpdateTagsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-    }),
-  );
+export const SnapshotsUpdateTagsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
+  }),
+);
 export type SnapshotsUpdateTagsInput = typeof SnapshotsUpdateTagsInput.Type;
 
 // Output Schema
-export const SnapshotsUpdateTagsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SnapshotsUpdateTagsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotsUpdateTagsOutput = typeof SnapshotsUpdateTagsOutput.Type;
 
 // The operation
@@ -4276,25 +4158,27 @@ export type TrustedAccessRoleBindingsCreateOrUpdateOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param trustedAccessRoleBindingName - The name of trusted access role binding.
  */
-export const TrustedAccessRoleBindingsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const TrustedAccessRoleBindingsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: TrustedAccessRoleBindingsCreateOrUpdateInput,
     outputSchema: TrustedAccessRoleBindingsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TrustedAccessRoleBindingsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const TrustedAccessRoleBindingsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     trustedAccessRoleBindingName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
+  }),
+);
 export type TrustedAccessRoleBindingsDeleteInput =
   typeof TrustedAccessRoleBindingsDeleteInput.Type;
 
@@ -4313,49 +4197,46 @@ export type TrustedAccessRoleBindingsDeleteOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param trustedAccessRoleBindingName - The name of trusted access role binding.
  */
-export const TrustedAccessRoleBindingsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrustedAccessRoleBindingsDeleteInput,
-    outputSchema: TrustedAccessRoleBindingsDeleteOutput,
-  }));
+export const TrustedAccessRoleBindingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedAccessRoleBindingsDeleteInput,
+  outputSchema: TrustedAccessRoleBindingsDeleteOutput,
+}));
 // Input Schema
-export const TrustedAccessRoleBindingsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    trustedAccessRoleBindingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
-    }),
-  );
+export const TrustedAccessRoleBindingsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  trustedAccessRoleBindingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
+  }),
+);
 export type TrustedAccessRoleBindingsGetInput =
   typeof TrustedAccessRoleBindingsGetInput.Type;
 
 // Output Schema
-export const TrustedAccessRoleBindingsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TrustedAccessRoleBindingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TrustedAccessRoleBindingsGetOutput =
   typeof TrustedAccessRoleBindingsGetOutput.Type;
 
@@ -4369,63 +4250,50 @@ export type TrustedAccessRoleBindingsGetOutput =
  * @param resourceName - The name of the managed cluster resource.
  * @param trustedAccessRoleBindingName - The name of trusted access role binding.
  */
-export const TrustedAccessRoleBindingsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrustedAccessRoleBindingsGetInput,
-    outputSchema: TrustedAccessRoleBindingsGetOutput,
-  }));
+export const TrustedAccessRoleBindingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedAccessRoleBindingsGetInput,
+  outputSchema: TrustedAccessRoleBindingsGetOutput,
+}));
 // Input Schema
-export const TrustedAccessRoleBindingsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
-    }),
-  );
+export const TrustedAccessRoleBindingsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
+  }),
+);
 export type TrustedAccessRoleBindingsListInput =
   typeof TrustedAccessRoleBindingsListInput.Type;
 
 // Output Schema
-export const TrustedAccessRoleBindingsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TrustedAccessRoleBindingsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TrustedAccessRoleBindingsListOutput =
   typeof TrustedAccessRoleBindingsListOutput.Type;
 
@@ -4438,48 +4306,45 @@ export type TrustedAccessRoleBindingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the managed cluster resource.
  */
-export const TrustedAccessRoleBindingsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TrustedAccessRoleBindingsListInput,
-    outputSchema: TrustedAccessRoleBindingsListOutput,
-  }));
+export const TrustedAccessRoleBindingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedAccessRoleBindingsListInput,
+  outputSchema: TrustedAccessRoleBindingsListOutput,
+}));
 // Input Schema
-export const TrustedAccessRolesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
-    }),
-  );
+export const TrustedAccessRolesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
+  }),
+);
 export type TrustedAccessRolesListInput =
   typeof TrustedAccessRolesListInput.Type;
 
 // Output Schema
-export const TrustedAccessRolesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        sourceResourceType: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              verbs: Schema.optional(Schema.Array(Schema.String)),
-              apiGroups: Schema.optional(Schema.Array(Schema.String)),
-              resources: Schema.optional(Schema.Array(Schema.String)),
-              resourceNames: Schema.optional(Schema.Array(Schema.String)),
-              nonResourceURLs: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+export const TrustedAccessRolesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      sourceResourceType: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      rules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            verbs: Schema.optional(Schema.Array(Schema.String)),
+            apiGroups: Schema.optional(Schema.Array(Schema.String)),
+            resources: Schema.optional(Schema.Array(Schema.String)),
+            resourceNames: Schema.optional(Schema.Array(Schema.String)),
+            nonResourceURLs: Schema.optional(Schema.Array(Schema.String)),
+          }),
         ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TrustedAccessRolesListOutput =
   typeof TrustedAccessRolesListOutput.Type;
 
@@ -4496,43 +4361,41 @@ export const TrustedAccessRolesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: TrustedAccessRolesListOutput,
 }));
 // Input Schema
-export const UpdateRunsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    updateRunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
-    }),
-  );
+export const UpdateRunsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  updateRunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
+  }),
+);
 export type UpdateRunsCreateOrUpdateInput =
   typeof UpdateRunsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const UpdateRunsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UpdateRunsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UpdateRunsCreateOrUpdateOutput =
   typeof UpdateRunsCreateOrUpdateOutput.Type;
 
@@ -4638,56 +4501,44 @@ export const UpdateRunsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: UpdateRunsGetOutput,
 }));
 // Input Schema
-export const UpdateRunsListByFleetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    fleetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns",
-    }),
-  );
+export const UpdateRunsListByFleetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns",
+  }),
+);
 export type UpdateRunsListByFleetInput = typeof UpdateRunsListByFleetInput.Type;
 
 // Output Schema
-export const UpdateRunsListByFleetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const UpdateRunsListByFleetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type UpdateRunsListByFleetOutput =
   typeof UpdateRunsListByFleetOutput.Type;
 

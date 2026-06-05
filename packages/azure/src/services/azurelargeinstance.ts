@@ -9,41 +9,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AzureLargeInstanceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
-    }),
-  );
+export const AzureLargeInstanceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
+  }),
+);
 export type AzureLargeInstanceGetInput = typeof AzureLargeInstanceGetInput.Type;
 
 // Output Schema
-export const AzureLargeInstanceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureLargeInstanceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureLargeInstanceGetOutput =
   typeof AzureLargeInstanceGetOutput.Type;
 
@@ -124,11 +122,12 @@ export type AzureLargeInstanceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureLargeInstanceListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const AzureLargeInstanceListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureLargeInstanceListByResourceGroupInput,
     outputSchema: AzureLargeInstanceListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureLargeInstanceListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -190,84 +189,83 @@ export type AzureLargeInstanceListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AzureLargeInstanceListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const AzureLargeInstanceListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureLargeInstanceListBySubscriptionInput,
     outputSchema: AzureLargeInstanceListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AzureLargeInstanceRestartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/restart",
-    }),
-  );
+export const AzureLargeInstanceRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/restart",
+  }),
+);
 export type AzureLargeInstanceRestartInput =
   typeof AzureLargeInstanceRestartInput.Type;
 
 // Output Schema
-export const AzureLargeInstanceRestartOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    percentComplete: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const AzureLargeInstanceRestartOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
         ),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
 export type AzureLargeInstanceRestartOutput =
   typeof AzureLargeInstanceRestartOutput.Type;
 
@@ -285,78 +283,76 @@ export const AzureLargeInstanceRestart = /*@__PURE__*/ API.make(() => ({
   outputSchema: AzureLargeInstanceRestartOutput,
 }));
 // Input Schema
-export const AzureLargeInstanceShutdownInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/shutdown",
-    }),
-  );
+export const AzureLargeInstanceShutdownInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/shutdown",
+  }),
+);
 export type AzureLargeInstanceShutdownInput =
   typeof AzureLargeInstanceShutdownInput.Type;
 
 // Output Schema
-export const AzureLargeInstanceShutdownOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    percentComplete: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const AzureLargeInstanceShutdownOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
         ),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
 export type AzureLargeInstanceShutdownOutput =
   typeof AzureLargeInstanceShutdownOutput.Type;
 
@@ -374,78 +370,76 @@ export const AzureLargeInstanceShutdown = /*@__PURE__*/ API.make(() => ({
   outputSchema: AzureLargeInstanceShutdownOutput,
 }));
 // Input Schema
-export const AzureLargeInstanceStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/start",
-    }),
-  );
+export const AzureLargeInstanceStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/start",
+  }),
+);
 export type AzureLargeInstanceStartInput =
   typeof AzureLargeInstanceStartInput.Type;
 
 // Output Schema
-export const AzureLargeInstanceStartOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    percentComplete: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const AzureLargeInstanceStartOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
         ),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
 export type AzureLargeInstanceStartOutput =
   typeof AzureLargeInstanceStartOutput.Type;
 
@@ -463,42 +457,40 @@ export const AzureLargeInstanceStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: AzureLargeInstanceStartOutput,
 }));
 // Input Schema
-export const AzureLargeInstanceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
-    }),
-  );
+export const AzureLargeInstanceUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
+  }),
+);
 export type AzureLargeInstanceUpdateInput =
   typeof AzureLargeInstanceUpdateInput.Type;
 
 // Output Schema
-export const AzureLargeInstanceUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureLargeInstanceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureLargeInstanceUpdateOutput =
   typeof AzureLargeInstanceUpdateOutput.Type;
 
@@ -517,42 +509,40 @@ export const AzureLargeInstanceUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: AzureLargeInstanceUpdateOutput,
 }));
 // Input Schema
-export const AzureLargeStorageInstanceGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
-    }),
-  );
+export const AzureLargeStorageInstanceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+  }),
+);
 export type AzureLargeStorageInstanceGetInput =
   typeof AzureLargeStorageInstanceGetInput.Type;
 
 // Output Schema
-export const AzureLargeStorageInstanceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureLargeStorageInstanceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureLargeStorageInstanceGetOutput =
   typeof AzureLargeStorageInstanceGetOutput.Type;
 
@@ -566,11 +556,10 @@ export type AzureLargeStorageInstanceGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeStorageInstanceName - Name of the AzureLargeStorageInstance.
  */
-export const AzureLargeStorageInstanceGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AzureLargeStorageInstanceGetInput,
-    outputSchema: AzureLargeStorageInstanceGetOutput,
-  }));
+export const AzureLargeStorageInstanceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeStorageInstanceGetInput,
+  outputSchema: AzureLargeStorageInstanceGetOutput,
+}));
 // Input Schema
 export const AzureLargeStorageInstanceListByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -707,18 +696,19 @@ export const AzureLargeStorageInstanceListBySubscription =
     outputSchema: AzureLargeStorageInstanceListBySubscriptionOutput,
   }));
 // Input Schema
-export const AzureLargeStorageInstanceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const AzureLargeStorageInstanceUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+  }),
+);
 export type AzureLargeStorageInstanceUpdateInput =
   typeof AzureLargeStorageInstanceUpdateInput.Type;
 
@@ -756,11 +746,10 @@ export type AzureLargeStorageInstanceUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeStorageInstanceName - Name of the AzureLargeStorageInstance.
  */
-export const AzureLargeStorageInstanceUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AzureLargeStorageInstanceUpdateInput,
-    outputSchema: AzureLargeStorageInstanceUpdateOutput,
-  }));
+export const AzureLargeStorageInstanceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeStorageInstanceUpdateInput,
+  outputSchema: AzureLargeStorageInstanceUpdateOutput,
+}));
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,

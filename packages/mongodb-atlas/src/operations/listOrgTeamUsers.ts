@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgTeamUsersInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -23,7 +23,7 @@ export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOrgTeamUsersInput = typeof ListOrgTeamUsersInput.Type;
 
 // Output Schema
-export const ListOrgTeamUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListOrgTeamUsersOutput = /*@__PURE__*/ Schema.Void;
 export type ListOrgTeamUsersOutput = typeof ListOrgTeamUsersOutput.Type;
 
 // The operation
@@ -44,7 +44,7 @@ export type ListOrgTeamUsersOutput = typeof ListOrgTeamUsersOutput.Type;
  * @param orgMembershipStatus - Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
  * @param userId - Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions.
  */
-export const listOrgTeamUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgTeamUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgTeamUsersInput,
   outputSchema: ListOrgTeamUsersOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

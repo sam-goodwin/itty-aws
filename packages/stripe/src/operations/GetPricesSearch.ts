@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPricesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPricesSearchInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   page: Schema.optional(Schema.String),
@@ -18,7 +18,7 @@ export const GetPricesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPricesSearchInput = typeof GetPricesSearchInput.Type;
 
 // Output Schema
-export const GetPricesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPricesSearchOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       active: Schema.Boolean,
@@ -101,15 +101,13 @@ export type GetPricesSearchOutput = typeof GetPricesSearchOutput.Type;
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for prices](https://docs.stripe.com/search#query-fields-for-prices).
  */
-export const GetPricesSearch = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: GetPricesSearchInput,
-    outputSchema: GetPricesSearchOutput,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const GetPricesSearch = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: GetPricesSearchInput,
+  outputSchema: GetPricesSearchOutput,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

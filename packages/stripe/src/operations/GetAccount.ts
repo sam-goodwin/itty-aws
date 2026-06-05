@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -15,7 +15,7 @@ export const GetAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountInput = typeof GetAccountInput.Type;
 
 // Output Schema
-export const GetAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountOutput = /*@__PURE__*/ Schema.Struct({
   business_profile: Schema.optional(Schema.Unknown),
   business_type: Schema.optional(
     Schema.NullOr(
@@ -738,7 +738,7 @@ export type GetAccountOutput = typeof GetAccountOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAccountInput,
   outputSchema: GetAccountOutput,
 }));

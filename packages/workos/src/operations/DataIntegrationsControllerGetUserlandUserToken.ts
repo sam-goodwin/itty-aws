@@ -5,7 +5,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DataIntegrationsControllerGetUserlandUserTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
     organization_id: Schema.optional(Schema.String),
@@ -15,7 +15,7 @@ export type DataIntegrationsControllerGetUserlandUserTokenInput =
 
 // Output Schema
 export const DataIntegrationsControllerGetUserlandUserTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type DataIntegrationsControllerGetUserlandUserTokenOutput =
   typeof DataIntegrationsControllerGetUserlandUserTokenOutput.Type;
 
@@ -28,7 +28,7 @@ export type DataIntegrationsControllerGetUserlandUserTokenOutput =
  * @param slug - The identifier of the integration.
  */
 export const DataIntegrationsControllerGetUserlandUserToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataIntegrationsControllerGetUserlandUserTokenInput,
     outputSchema: DataIntegrationsControllerGetUserlandUserTokenOutput,
     errors: [BadRequest, NotFound] as const,

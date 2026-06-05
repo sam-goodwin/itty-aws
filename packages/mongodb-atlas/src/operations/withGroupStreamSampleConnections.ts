@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const WithGroupStreamSampleConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -19,8 +19,7 @@ export type WithGroupStreamSampleConnectionsInput =
   typeof WithGroupStreamSampleConnectionsInput.Type;
 
 // Output Schema
-export const WithGroupStreamSampleConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WithGroupStreamSampleConnectionsOutput = /*@__PURE__*/ Schema.Void;
 export type WithGroupStreamSampleConnectionsOutput =
   typeof WithGroupStreamSampleConnectionsOutput.Type;
 
@@ -36,9 +35,8 @@ export type WithGroupStreamSampleConnectionsOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const withGroupStreamSampleConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WithGroupStreamSampleConnectionsInput,
-    outputSchema: WithGroupStreamSampleConnectionsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const withGroupStreamSampleConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WithGroupStreamSampleConnectionsInput,
+  outputSchema: WithGroupStreamSampleConnectionsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,18 +4,16 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const RetrieveConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/conversations/models/{modelId}" }));
+export const RetrieveConversationModelInput = /*@__PURE__*/ Schema.Struct({
+  modelId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/conversations/models/{modelId}" }));
 export type RetrieveConversationModelInput =
   typeof RetrieveConversationModelInput.Type;
 
 // Output Schema
-export const RetrieveConversationModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  });
+export const RetrieveConversationModelOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
 export type RetrieveConversationModelOutput =
   typeof RetrieveConversationModelOutput.Type;
 
@@ -25,10 +23,8 @@ export type RetrieveConversationModelOutput =
  *
  * @param modelId - The id of the conversation model to retrieve
  */
-export const retrieveConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveConversationModelInput,
-    outputSchema: RetrieveConversationModelOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveConversationModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveConversationModelInput,
+  outputSchema: RetrieveConversationModelOutput,
+  errors: [NotFound] as const,
+}));

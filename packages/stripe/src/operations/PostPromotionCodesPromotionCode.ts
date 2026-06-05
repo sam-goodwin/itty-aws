@@ -3,8 +3,8 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPromotionCodesPromotionCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPromotionCodesPromotionCodeInput = /*@__PURE__*/ Schema.Struct(
+  {
     promotion_code: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -21,19 +21,20 @@ export const PostPromotionCodesPromotionCodeInput =
         ),
       }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/promotion_codes/{promotion_code}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/promotion_codes/{promotion_code}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPromotionCodesPromotionCodeInput =
   typeof PostPromotionCodesPromotionCodeInput.Type;
 
 // Output Schema
 export const PostPromotionCodesPromotionCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     code: Schema.String,
     created: Schema.Number,
@@ -73,8 +74,7 @@ export type PostPromotionCodesPromotionCodeOutput =
  *
  * <p>Updates the specified promotion code by setting the values of the parameters passed. Most fields are, by design, not editable.</p>
  */
-export const PostPromotionCodesPromotionCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPromotionCodesPromotionCodeInput,
-    outputSchema: PostPromotionCodesPromotionCodeOutput,
-  }));
+export const PostPromotionCodesPromotionCode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPromotionCodesPromotionCodeInput,
+  outputSchema: PostPromotionCodesPromotionCodeOutput,
+}));

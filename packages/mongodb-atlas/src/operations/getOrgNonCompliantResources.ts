@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgNonCompliantResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/nonCompliantResources",
-    }),
-  );
+export const GetOrgNonCompliantResourcesInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/nonCompliantResources",
+  }),
+);
 export type GetOrgNonCompliantResourcesInput =
   typeof GetOrgNonCompliantResourcesInput.Type;
 
 // Output Schema
-export const GetOrgNonCompliantResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgNonCompliantResourcesOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgNonCompliantResourcesOutput =
   typeof GetOrgNonCompliantResourcesOutput.Type;
 
@@ -34,10 +32,8 @@ export type GetOrgNonCompliantResourcesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
-export const getOrgNonCompliantResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgNonCompliantResourcesInput,
-    outputSchema: GetOrgNonCompliantResourcesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgNonCompliantResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgNonCompliantResourcesInput,
+  outputSchema: GetOrgNonCompliantResourcesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

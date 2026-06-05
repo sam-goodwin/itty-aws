@@ -4,14 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RemoveOrgTeamUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    orgId: Schema.String.pipe(T.PathParam()),
-    teamId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const RemoveOrgTeamUserInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  teamId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser",
@@ -20,7 +18,7 @@ export const RemoveOrgTeamUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type RemoveOrgTeamUserInput = typeof RemoveOrgTeamUserInput.Type;
 
 // Output Schema
-export const RemoveOrgTeamUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveOrgTeamUserOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveOrgTeamUserOutput = typeof RemoveOrgTeamUserOutput.Type;
 
 // The operation
@@ -35,7 +33,7 @@ export type RemoveOrgTeamUserOutput = typeof RemoveOrgTeamUserOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team to remove the MongoDB user from.
  */
-export const removeOrgTeamUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeOrgTeamUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveOrgTeamUserInput,
   outputSchema: RemoveOrgTeamUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

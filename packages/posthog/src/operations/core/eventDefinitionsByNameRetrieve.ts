@@ -4,22 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const EventDefinitionsByNameRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    name: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/event_definitions/by_name/",
-    }),
-  );
+export const EventDefinitionsByNameRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  name: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/event_definitions/by_name/",
+  }),
+);
 export type EventDefinitionsByNameRetrieveInput =
   typeof EventDefinitionsByNameRetrieveInput.Type;
 
 // Output Schema
-export const EventDefinitionsByNameRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventDefinitionsByNameRetrieveOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -49,7 +48,8 @@ export const EventDefinitionsByNameRetrieveOutput =
       ),
     ),
     post_to_slack: Schema.optional(Schema.Boolean),
-  });
+  },
+);
 export type EventDefinitionsByNameRetrieveOutput =
   typeof EventDefinitionsByNameRetrieveOutput.Type;
 
@@ -60,9 +60,8 @@ export type EventDefinitionsByNameRetrieveOutput =
  * @param name - The exact event name to look up
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventDefinitionsByNameRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventDefinitionsByNameRetrieveInput,
-    outputSchema: EventDefinitionsByNameRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const eventDefinitionsByNameRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventDefinitionsByNameRetrieveInput,
+  outputSchema: EventDefinitionsByNameRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

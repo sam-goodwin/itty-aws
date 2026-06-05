@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostAccountsAccountPersonsPersonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     person: Schema.String.pipe(T.PathParam()),
     additional_tos_acceptances: Schema.optional(
@@ -197,7 +197,7 @@ export type PostAccountsAccountPersonsPersonInput =
 
 // Output Schema
 export const PostAccountsAccountPersonsPersonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -294,8 +294,7 @@ export type PostAccountsAccountPersonsPersonOutput =
  *
  * <p>Updates an existing person.</p>
  */
-export const PostAccountsAccountPersonsPerson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostAccountsAccountPersonsPersonInput,
-    outputSchema: PostAccountsAccountPersonsPersonOutput,
-  }));
+export const PostAccountsAccountPersonsPerson = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostAccountsAccountPersonsPersonInput,
+  outputSchema: PostAccountsAccountPersonsPersonOutput,
+}));

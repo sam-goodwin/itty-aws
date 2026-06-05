@@ -9,27 +9,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
-    }),
-  );
+export const AccountsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
+  }),
+);
 export type AccountsCreateOrUpdateInput =
   typeof AccountsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccountsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccountsCreateOrUpdateOutput =
   typeof AccountsCreateOrUpdateOutput.Type;
 
@@ -108,34 +106,32 @@ export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
-export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
-    }),
-  );
+export const AccountsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
+  }),
+);
 export type AccountsListByResourceGroupInput =
   typeof AccountsListByResourceGroupInput.Type;
 
 // Output Schema
-export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AccountsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccountsListByResourceGroupOutput =
   typeof AccountsListByResourceGroupOutput.Type;
 
@@ -152,33 +148,31 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsListByResourceGroupOutput,
 }));
 // Input Schema
-export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
-    }),
-  );
+export const AccountsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
+  }),
+);
 export type AccountsListBySubscriptionInput =
   typeof AccountsListBySubscriptionInput.Type;
 
 // Output Schema
-export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AccountsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccountsListBySubscriptionOutput =
   typeof AccountsListBySubscriptionOutput.Type;
 
@@ -262,28 +256,26 @@ export const AccountsListSas = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsListSasOutput,
 }));
 // Input Schema
-export const AccountsRegenerateKeysInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/regenerateKey",
-    }),
-  );
+export const AccountsRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/regenerateKey",
+  }),
+);
 export type AccountsRegenerateKeysInput =
   typeof AccountsRegenerateKeysInput.Type;
 
 // Output Schema
-export const AccountsRegenerateKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    primaryKeyLastUpdated: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    secondaryKeyLastUpdated: Schema.optional(Schema.String),
-  });
+export const AccountsRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKeyLastUpdated: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  secondaryKeyLastUpdated: Schema.optional(Schema.String),
+});
 export type AccountsRegenerateKeysOutput =
   typeof AccountsRegenerateKeysOutput.Type;
 
@@ -333,27 +325,25 @@ export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const CreatorsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
-    }),
-  );
+export const CreatorsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
+  }),
+);
 export type CreatorsCreateOrUpdateInput =
   typeof CreatorsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CreatorsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const CreatorsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CreatorsCreateOrUpdateOutput =
   typeof CreatorsCreateOrUpdateOutput.Type;
 
@@ -432,33 +422,31 @@ export const CreatorsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CreatorsGetOutput,
 }));
 // Input Schema
-export const CreatorsListByAccountInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
-    }),
-  );
+export const CreatorsListByAccountInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
+  }),
+);
 export type CreatorsListByAccountInput = typeof CreatorsListByAccountInput.Type;
 
 // Output Schema
-export const CreatorsListByAccountOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const CreatorsListByAccountOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CreatorsListByAccountOutput =
   typeof CreatorsListByAccountOutput.Type;
 
@@ -508,85 +496,77 @@ export const CreatorsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CreatorsUpdateOutput,
 }));
 // Input Schema
-export const MapsListOperationsInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Maps/operations" }),
-  );
+export const MapsListOperationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Maps/operations" }),
+);
 export type MapsListOperationsInput = typeof MapsListOperationsInput.Type;
 
 // Output Schema
-export const MapsListOperationsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              serviceSpecification: Schema.optional(
-                Schema.Struct({
-                  metricSpecifications: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        displayName: Schema.optional(Schema.String),
-                        displayDescription: Schema.optional(Schema.String),
-                        unit: Schema.optional(Schema.String),
-                        dimensions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              displayName: Schema.optional(Schema.String),
-                              internalName: Schema.optional(Schema.String),
-                              internalMetricName: Schema.optional(
-                                Schema.String,
-                              ),
-                              sourceMdmNamespace: Schema.optional(
-                                Schema.String,
-                              ),
-                              toBeExportedToShoebox: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
+export const MapsListOperationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            serviceSpecification: Schema.optional(
+              Schema.Struct({
+                metricSpecifications: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                      displayDescription: Schema.optional(Schema.String),
+                      unit: Schema.optional(Schema.String),
+                      dimensions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            displayName: Schema.optional(Schema.String),
+                            internalName: Schema.optional(Schema.String),
+                            internalMetricName: Schema.optional(Schema.String),
+                            sourceMdmNamespace: Schema.optional(Schema.String),
+                            toBeExportedToShoebox: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                          }),
                         ),
-                        aggregationType: Schema.optional(Schema.String),
-                        fillGapWithZero: Schema.optional(Schema.Boolean),
-                        category: Schema.optional(Schema.String),
-                        resourceIdDimensionNameOverride: Schema.optional(
-                          Schema.String,
-                        ),
-                        sourceMdmAccount: Schema.optional(Schema.String),
-                        internalMetricName: Schema.optional(Schema.String),
-                        lockAggregationType: Schema.optional(Schema.String),
-                        sourceMdmNamespace: Schema.optional(Schema.String),
-                        supportedAggregationTypes: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
+                      ),
+                      aggregationType: Schema.optional(Schema.String),
+                      fillGapWithZero: Schema.optional(Schema.Boolean),
+                      category: Schema.optional(Schema.String),
+                      resourceIdDimensionNameOverride: Schema.optional(
+                        Schema.String,
+                      ),
+                      sourceMdmAccount: Schema.optional(Schema.String),
+                      internalMetricName: Schema.optional(Schema.String),
+                      lockAggregationType: Schema.optional(Schema.String),
+                      sourceMdmNamespace: Schema.optional(Schema.String),
+                      supportedAggregationTypes: Schema.optional(Schema.String),
+                    }),
                   ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MapsListOperationsOutput = typeof MapsListOperationsOutput.Type;
 
 // The operation
@@ -600,22 +580,21 @@ export const MapsListOperations = /*@__PURE__*/ API.make(() => ({
   outputSchema: MapsListOperationsOutput,
 }));
 // Input Schema
-export const MapsListSubscriptionOperationsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
-    }),
-  );
+export const MapsListSubscriptionOperationsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
+  }),
+);
 export type MapsListSubscriptionOperationsInput =
   typeof MapsListSubscriptionOperationsInput.Type;
 
 // Output Schema
-export const MapsListSubscriptionOperationsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const MapsListSubscriptionOperationsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -683,7 +662,8 @@ export const MapsListSubscriptionOperationsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type MapsListSubscriptionOperationsOutput =
   typeof MapsListSubscriptionOperationsOutput.Type;
 
@@ -694,8 +674,7 @@ export type MapsListSubscriptionOperationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MapsListSubscriptionOperations =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MapsListSubscriptionOperationsInput,
-    outputSchema: MapsListSubscriptionOperationsOutput,
-  }));
+export const MapsListSubscriptionOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MapsListSubscriptionOperationsInput,
+  outputSchema: MapsListSubscriptionOperationsOutput,
+}));

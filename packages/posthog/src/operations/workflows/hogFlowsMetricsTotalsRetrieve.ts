@@ -4,31 +4,29 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const HogFlowsMetricsTotalsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    after: Schema.optional(Schema.String),
-    before: Schema.optional(Schema.String),
-    breakdown_by: Schema.optional(Schema.Literals(["name", "kind"])),
-    instance_id: Schema.optional(Schema.String),
-    interval: Schema.optional(Schema.Literals(["hour", "day", "week"])),
-    kind: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/hog_flows/{id}/metrics/totals/",
-    }),
-  );
+export const HogFlowsMetricsTotalsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  after: Schema.optional(Schema.String),
+  before: Schema.optional(Schema.String),
+  breakdown_by: Schema.optional(Schema.Literals(["name", "kind"])),
+  instance_id: Schema.optional(Schema.String),
+  interval: Schema.optional(Schema.Literals(["hour", "day", "week"])),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/hog_flows/{id}/metrics/totals/",
+  }),
+);
 export type HogFlowsMetricsTotalsRetrieveInput =
   typeof HogFlowsMetricsTotalsRetrieveInput.Type;
 
 // Output Schema
-export const HogFlowsMetricsTotalsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-  });
+export const HogFlowsMetricsTotalsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+});
 export type HogFlowsMetricsTotalsRetrieveOutput =
   typeof HogFlowsMetricsTotalsRetrieveOutput.Type;
 
@@ -52,9 +50,8 @@ export type HogFlowsMetricsTotalsRetrieveOutput =
  * @param name - Comma-separated metric names to filter by.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsMetricsTotalsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HogFlowsMetricsTotalsRetrieveInput,
-    outputSchema: HogFlowsMetricsTotalsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const hogFlowsMetricsTotalsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsMetricsTotalsRetrieveInput,
+  outputSchema: HogFlowsMetricsTotalsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RecoverProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecoverProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/recover" }));
 export type RecoverProjectInput = typeof RecoverProjectInput.Type;
 
 // Output Schema
-export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecoverProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -159,13 +159,6 @@ export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
         ),
       ),
-      recovery: Schema.optional(
-        Schema.Struct({
-          deleted_at: Schema.String,
-          recoverable_until: Schema.String,
-          deletion_method: Schema.Literals(["user", "ttl"]),
-        }),
-      ),
     }),
   ),
 });
@@ -180,7 +173,7 @@ export type RecoverProjectOutput = typeof RecoverProjectOutput.Type;
  *
  * @param project_id - The Neon project ID
  */
-export const recoverProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const recoverProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoverProjectInput,
   outputSchema: RecoverProjectOutput,
 }));

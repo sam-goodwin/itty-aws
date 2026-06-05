@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAuditLogsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   starting_after: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -15,8 +15,7 @@ export const ListAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAuditLogsInput = typeof ListAuditLogsInput.Type;
 
 // Output Schema
-export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListAuditLogsOutput = /*@__PURE__*/ Schema.Struct({
   has_next: Schema.Boolean,
   has_prev: Schema.Boolean,
   cursor_start: Schema.NullOr(Schema.String),
@@ -24,14 +23,14 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      actor_id: Schema.NullOr(Schema.String),
-      actor_type: Schema.NullOr(Schema.String),
-      auditable_id: Schema.NullOr(Schema.String),
-      auditable_type: Schema.NullOr(Schema.String),
-      target_id: Schema.NullOr(Schema.String),
-      target_type: Schema.NullOr(Schema.String),
+      actor_id: Schema.String,
+      actor_type: Schema.String,
+      auditable_id: Schema.String,
+      auditable_type: Schema.String,
+      target_id: Schema.String,
+      target_type: Schema.String,
       location: Schema.NullOr(Schema.String),
-      target_display_name: Schema.NullOr(Schema.String),
+      target_display_name: Schema.String,
       audit_action: Schema.String,
       action: Schema.String,
       actor_display_name: Schema.String,
@@ -39,7 +38,7 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       remote_ip: Schema.NullOr(Schema.String),
       created_at: Schema.String,
       updated_at: Schema.String,
-      metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+      metadata: Schema.Record(Schema.String, Schema.Unknown),
     }),
   ),
 });
@@ -54,7 +53,7 @@ export type ListAuditLogsOutput = typeof ListAuditLogsOutput.Type;
  * @param ending_before - If provided, returns results before the specified cursor
  * @param limit - If provided, specifies the number of returned results (max 100)
  */
-export const listAuditLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listAuditLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListAuditLogsInput,
   outputSchema: ListAuditLogsOutput,
   errors: [Forbidden, NotFound] as const,

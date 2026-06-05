@@ -4,22 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupMaintenanceWindowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
-    }),
-  );
+export const UpdateGroupMaintenanceWindowInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
+  }),
+);
 export type UpdateGroupMaintenanceWindowInput =
   typeof UpdateGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const UpdateGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupMaintenanceWindowOutput =
   typeof UpdateGroupMaintenanceWindowOutput.Type;
 
@@ -34,9 +32,8 @@ export type UpdateGroupMaintenanceWindowOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const updateGroupMaintenanceWindow =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupMaintenanceWindowInput,
-    outputSchema: UpdateGroupMaintenanceWindowOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const updateGroupMaintenanceWindow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupMaintenanceWindowInput,
+  outputSchema: UpdateGroupMaintenanceWindowOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

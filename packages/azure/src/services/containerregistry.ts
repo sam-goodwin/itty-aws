@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -24,27 +24,25 @@ export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheRulesCreateInput = typeof CacheRulesCreateInput.Type;
 
 // Output Schema
-export const CacheRulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CacheRulesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CacheRulesCreateOutput = typeof CacheRulesCreateOutput.Type;
 
 // The operation
@@ -57,12 +55,12 @@ export type CacheRulesCreateOutput = typeof CacheRulesCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesCreateInput,
   outputSchema: CacheRulesCreateOutput,
 }));
 // Input Schema
-export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -77,7 +75,7 @@ export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheRulesDeleteInput = typeof CacheRulesDeleteInput.Type;
 
 // Output Schema
-export const CacheRulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CacheRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CacheRulesDeleteOutput = typeof CacheRulesDeleteOutput.Type;
 
 // The operation
@@ -90,12 +88,12 @@ export type CacheRulesDeleteOutput = typeof CacheRulesDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesDeleteInput,
   outputSchema: CacheRulesDeleteOutput,
 }));
 // Input Schema
-export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -110,7 +108,7 @@ export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheRulesGetInput = typeof CacheRulesGetInput.Type;
 
 // Output Schema
-export const CacheRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -141,12 +139,12 @@ export type CacheRulesGetOutput = typeof CacheRulesGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesGetInput,
   outputSchema: CacheRulesGetOutput,
 }));
 // Input Schema
-export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -160,7 +158,7 @@ export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheRulesListInput = typeof CacheRulesListInput.Type;
 
 // Output Schema
-export const CacheRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -207,12 +205,12 @@ export type CacheRulesListOutput = typeof CacheRulesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const CacheRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesListInput,
   outputSchema: CacheRulesListOutput,
 }));
 // Input Schema
-export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -227,27 +225,25 @@ export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheRulesUpdateInput = typeof CacheRulesUpdateInput.Type;
 
 // Output Schema
-export const CacheRulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CacheRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CacheRulesUpdateOutput = typeof CacheRulesUpdateOutput.Type;
 
 // The operation
@@ -260,48 +256,46 @@ export type CacheRulesUpdateOutput = typeof CacheRulesUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesUpdateInput,
   outputSchema: CacheRulesUpdateOutput,
 }));
 // Input Schema
-export const ConnectedRegistriesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
-    }),
-  );
+export const ConnectedRegistriesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  connectedRegistryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+  }),
+);
 export type ConnectedRegistriesCreateInput =
   typeof ConnectedRegistriesCreateInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectedRegistriesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectedRegistriesCreateOutput =
   typeof ConnectedRegistriesCreateOutput.Type;
 
@@ -315,32 +309,28 @@ export type ConnectedRegistriesCreateOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesCreateInput,
-    outputSchema: ConnectedRegistriesCreateOutput,
+export const ConnectedRegistriesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesCreateInput,
+  outputSchema: ConnectedRegistriesCreateOutput,
+}));
+// Input Schema
+export const ConnectedRegistriesDeactivateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  connectedRegistryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}/deactivate",
   }),
 );
-// Input Schema
-export const ConnectedRegistriesDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}/deactivate",
-    }),
-  );
 export type ConnectedRegistriesDeactivateInput =
   typeof ConnectedRegistriesDeactivateInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectedRegistriesDeactivateOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectedRegistriesDeactivateOutput =
   typeof ConnectedRegistriesDeactivateOutput.Type;
 
@@ -354,31 +344,28 @@ export type ConnectedRegistriesDeactivateOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesDeactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectedRegistriesDeactivateInput,
-    outputSchema: ConnectedRegistriesDeactivateOutput,
-  }));
+export const ConnectedRegistriesDeactivate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesDeactivateInput,
+  outputSchema: ConnectedRegistriesDeactivateOutput,
+}));
 // Input Schema
-export const ConnectedRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
-    }),
-  );
+export const ConnectedRegistriesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  connectedRegistryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+  }),
+);
 export type ConnectedRegistriesDeleteInput =
   typeof ConnectedRegistriesDeleteInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectedRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectedRegistriesDeleteOutput =
   typeof ConnectedRegistriesDeleteOutput.Type;
 
@@ -392,50 +379,46 @@ export type ConnectedRegistriesDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesDeleteInput,
-    outputSchema: ConnectedRegistriesDeleteOutput,
+export const ConnectedRegistriesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesDeleteInput,
+  outputSchema: ConnectedRegistriesDeleteOutput,
+}));
+// Input Schema
+export const ConnectedRegistriesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  connectedRegistryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
   }),
 );
-// Input Schema
-export const ConnectedRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
-    }),
-  );
 export type ConnectedRegistriesGetInput =
   typeof ConnectedRegistriesGetInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectedRegistriesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectedRegistriesGetOutput =
   typeof ConnectedRegistriesGetOutput.Type;
 
@@ -449,67 +432,63 @@ export type ConnectedRegistriesGetOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesGetInput,
-    outputSchema: ConnectedRegistriesGetOutput,
+export const ConnectedRegistriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesGetInput,
+  outputSchema: ConnectedRegistriesGetOutput,
+}));
+// Input Schema
+export const ConnectedRegistriesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
   }),
 );
-// Input Schema
-export const ConnectedRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
-    }),
-  );
 export type ConnectedRegistriesListInput =
   typeof ConnectedRegistriesListInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConnectedRegistriesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConnectedRegistriesListOutput =
   typeof ConnectedRegistriesListOutput.Type;
 
@@ -523,50 +502,46 @@ export type ConnectedRegistriesListOutput =
  * @param registryName - The name of the container registry.
  * @param $filter - An OData filter expression that describes a subset of connectedRegistries to return. The parameters that can be filtered are parent.id (the resource id of the connectedRegistry parent), mode, and connectionState. The supported operator is eq.
  */
-export const ConnectedRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesListInput,
-    outputSchema: ConnectedRegistriesListOutput,
+export const ConnectedRegistriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesListInput,
+  outputSchema: ConnectedRegistriesListOutput,
+}));
+// Input Schema
+export const ConnectedRegistriesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  connectedRegistryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
   }),
 );
-// Input Schema
-export const ConnectedRegistriesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
-    }),
-  );
 export type ConnectedRegistriesUpdateInput =
   typeof ConnectedRegistriesUpdateInput.Type;
 
 // Output Schema
-export const ConnectedRegistriesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectedRegistriesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectedRegistriesUpdateOutput =
   typeof ConnectedRegistriesUpdateOutput.Type;
 
@@ -580,49 +555,45 @@ export type ConnectedRegistriesUpdateOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesUpdateInput,
-    outputSchema: ConnectedRegistriesUpdateOutput,
+export const ConnectedRegistriesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesUpdateInput,
+  outputSchema: ConnectedRegistriesUpdateOutput,
+}));
+// Input Schema
+export const CredentialSetsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  credentialSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
   }),
 );
-// Input Schema
-export const CredentialSetsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
-    }),
-  );
 export type CredentialSetsCreateInput = typeof CredentialSetsCreateInput.Type;
 
 // Output Schema
-export const CredentialSetsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CredentialSetsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CredentialSetsCreateOutput = typeof CredentialSetsCreateOutput.Type;
 
 // The operation
@@ -635,31 +606,27 @@ export type CredentialSetsCreateOutput = typeof CredentialSetsCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsCreateInput,
-    outputSchema: CredentialSetsCreateOutput,
+export const CredentialSetsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsCreateInput,
+  outputSchema: CredentialSetsCreateOutput,
+}));
+// Input Schema
+export const CredentialSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  credentialSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
   }),
 );
-// Input Schema
-export const CredentialSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
-    }),
-  );
 export type CredentialSetsDeleteInput = typeof CredentialSetsDeleteInput.Type;
 
 // Output Schema
-export const CredentialSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CredentialSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CredentialSetsDeleteOutput = typeof CredentialSetsDeleteOutput.Type;
 
 // The operation
@@ -672,22 +639,18 @@ export type CredentialSetsDeleteOutput = typeof CredentialSetsDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsDeleteInput,
-    outputSchema: CredentialSetsDeleteOutput,
-  }),
-);
+export const CredentialSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsDeleteInput,
+  outputSchema: CredentialSetsDeleteOutput,
+}));
 // Input Schema
-export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CredentialSetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  credentialSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
@@ -696,26 +659,25 @@ export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CredentialSetsGetInput = typeof CredentialSetsGetInput.Type;
 
 // Output Schema
-export const CredentialSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CredentialSetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CredentialSetsGetOutput = typeof CredentialSetsGetOutput.Type;
 
 // The operation
@@ -728,63 +690,61 @@ export type CredentialSetsGetOutput = typeof CredentialSetsGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialSetsGetInput,
   outputSchema: CredentialSetsGetOutput,
 }));
 // Input Schema
-export const CredentialSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
-    }),
-  );
+export const CredentialSetsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
+  }),
+);
 export type CredentialSetsListInput = typeof CredentialSetsListInput.Type;
 
 // Output Schema
-export const CredentialSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CredentialSetsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CredentialSetsListOutput = typeof CredentialSetsListOutput.Type;
 
 // The operation
@@ -796,47 +756,45 @@ export type CredentialSetsListOutput = typeof CredentialSetsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const CredentialSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialSetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialSetsListInput,
   outputSchema: CredentialSetsListOutput,
 }));
 // Input Schema
-export const CredentialSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
-    }),
-  );
+export const CredentialSetsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  credentialSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
+  }),
+);
 export type CredentialSetsUpdateInput = typeof CredentialSetsUpdateInput.Type;
 
 // Output Schema
-export const CredentialSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CredentialSetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CredentialSetsUpdateOutput = typeof CredentialSetsUpdateOutput.Type;
 
 // The operation
@@ -849,14 +807,12 @@ export type CredentialSetsUpdateOutput = typeof CredentialSetsUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsUpdateInput,
-    outputSchema: CredentialSetsUpdateOutput,
-  }),
-);
+export const CredentialSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsUpdateInput,
+  outputSchema: CredentialSetsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -867,7 +823,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -924,13 +880,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -947,7 +903,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -979,14 +935,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param registryName - The name of the container registry.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1002,8 +959,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1017,49 +973,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -1073,30 +1026,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param registryName - The name of the container registry.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1131,7 +1082,8 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -1144,28 +1096,28 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const RegistriesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability",
+  }),
+);
 export type RegistriesCheckNameAvailabilityInput =
   typeof RegistriesCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const RegistriesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1180,13 +1132,12 @@ export type RegistriesCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RegistriesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesCheckNameAvailabilityInput,
-    outputSchema: RegistriesCheckNameAvailabilityOutput,
-  }));
+export const RegistriesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesCheckNameAvailabilityInput,
+  outputSchema: RegistriesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -1200,27 +1151,25 @@ export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistriesCreateInput = typeof RegistriesCreateInput.Type;
 
 // Output Schema
-export const RegistriesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const RegistriesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegistriesCreateOutput = typeof RegistriesCreateOutput.Type;
 
 // The operation
@@ -1232,12 +1181,12 @@ export type RegistriesCreateOutput = typeof RegistriesCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesCreateInput,
   outputSchema: RegistriesCreateOutput,
 }));
 // Input Schema
-export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -1251,7 +1200,7 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
 
 // Output Schema
-export const RegistriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegistriesDeleteOutput = typeof RegistriesDeleteOutput.Type;
 
 // The operation
@@ -1263,41 +1212,39 @@ export type RegistriesDeleteOutput = typeof RegistriesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesDeleteInput,
   outputSchema: RegistriesDeleteOutput,
 }));
 // Input Schema
-export const RegistriesGenerateCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials",
-    }),
-  );
+export const RegistriesGenerateCredentialsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials",
+  }),
+);
 export type RegistriesGenerateCredentialsInput =
   typeof RegistriesGenerateCredentialsInput.Type;
 
 // Output Schema
-export const RegistriesGenerateCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    username: Schema.optional(Schema.String),
-    passwords: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          creationTime: Schema.optional(Schema.String),
-          expiry: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.Literals(["password1", "password2"])),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
+export const RegistriesGenerateCredentialsOutput = /*@__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  passwords: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        creationTime: Schema.optional(Schema.String),
+        expiry: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.Literals(["password1", "password2"])),
+        value: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RegistriesGenerateCredentialsOutput =
   typeof RegistriesGenerateCredentialsOutput.Type;
 
@@ -1310,13 +1257,12 @@ export type RegistriesGenerateCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesGenerateCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesGenerateCredentialsInput,
-    outputSchema: RegistriesGenerateCredentialsOutput,
-  }));
+export const RegistriesGenerateCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesGenerateCredentialsInput,
+  outputSchema: RegistriesGenerateCredentialsOutput,
+}));
 // Input Schema
-export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -1330,7 +1276,7 @@ export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistriesGetInput = typeof RegistriesGetInput.Type;
 
 // Output Schema
-export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1360,13 +1306,13 @@ export type RegistriesGetOutput = typeof RegistriesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesGetInput,
   outputSchema: RegistriesGetOutput,
 }));
 // Input Schema
 export const RegistriesGetBuildSourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listBuildSourceUploadUrl",
@@ -1377,7 +1323,7 @@ export type RegistriesGetBuildSourceUploadUrlInput =
 
 // Output Schema
 export const RegistriesGetBuildSourceUploadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadUrl: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
   });
@@ -1388,14 +1334,13 @@ export type RegistriesGetBuildSourceUploadUrlOutput =
 /**
  * Get the upload location for the user to be able to upload the source.
  */
-export const RegistriesGetBuildSourceUploadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesGetBuildSourceUploadUrlInput,
-    outputSchema: RegistriesGetBuildSourceUploadUrlOutput,
-  }));
+export const RegistriesGetBuildSourceUploadUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesGetBuildSourceUploadUrlInput,
+  outputSchema: RegistriesGetBuildSourceUploadUrlOutput,
+}));
 // Input Schema
 export const RegistriesGetPrivateLinkResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1412,7 +1357,7 @@ export type RegistriesGetPrivateLinkResourceInput =
 
 // Output Schema
 export const RegistriesGetPrivateLinkResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1444,29 +1389,26 @@ export type RegistriesGetPrivateLinkResourceOutput =
  * @param registryName - The name of the container registry.
  * @param groupName - The name of the private link associated with the Azure resource.
  */
-export const RegistriesGetPrivateLinkResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesGetPrivateLinkResourceInput,
-    outputSchema: RegistriesGetPrivateLinkResourceOutput,
-  }));
+export const RegistriesGetPrivateLinkResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesGetPrivateLinkResourceInput,
+  outputSchema: RegistriesGetPrivateLinkResourceOutput,
+}));
 // Input Schema
-export const RegistriesImportImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage",
-    }),
-  );
+export const RegistriesImportImageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage",
+  }),
+);
 export type RegistriesImportImageInput = typeof RegistriesImportImageInput.Type;
 
 // Output Schema
-export const RegistriesImportImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistriesImportImageOutput = /*@__PURE__*/ Schema.Void;
 export type RegistriesImportImageOutput =
   typeof RegistriesImportImageOutput.Type;
 
@@ -1479,14 +1421,12 @@ export type RegistriesImportImageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesImportImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesImportImageInput,
-    outputSchema: RegistriesImportImageOutput,
-  }),
-);
+export const RegistriesImportImage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesImportImageInput,
+  outputSchema: RegistriesImportImageOutput,
+}));
 // Input Schema
-export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1498,7 +1438,7 @@ export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistriesListInput = typeof RegistriesListInput.Type;
 
 // Output Schema
-export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1543,63 +1483,61 @@ export type RegistriesListOutput = typeof RegistriesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesListInput,
   outputSchema: RegistriesListOutput,
 }));
 // Input Schema
-export const RegistriesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
-    }),
-  );
+export const RegistriesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
+  }),
+);
 export type RegistriesListByResourceGroupInput =
   typeof RegistriesListByResourceGroupInput.Type;
 
 // Output Schema
-export const RegistriesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const RegistriesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RegistriesListByResourceGroupOutput =
   typeof RegistriesListByResourceGroupOutput.Type;
 
@@ -1611,40 +1549,37 @@ export type RegistriesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RegistriesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesListByResourceGroupInput,
-    outputSchema: RegistriesListByResourceGroupOutput,
-  }));
+export const RegistriesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesListByResourceGroupInput,
+  outputSchema: RegistriesListByResourceGroupOutput,
+}));
 // Input Schema
-export const RegistriesListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listCredentials",
-    }),
-  );
+export const RegistriesListCredentialsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listCredentials",
+  }),
+);
 export type RegistriesListCredentialsInput =
   typeof RegistriesListCredentialsInput.Type;
 
 // Output Schema
-export const RegistriesListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    username: Schema.optional(Schema.String),
-    passwords: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Literals(["password", "password2"])),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
+export const RegistriesListCredentialsOutput = /*@__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  passwords: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.Literals(["password", "password2"])),
+        value: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RegistriesListCredentialsOutput =
   typeof RegistriesListCredentialsOutput.Type;
 
@@ -1657,15 +1592,13 @@ export type RegistriesListCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesListCredentialsInput,
-    outputSchema: RegistriesListCredentialsOutput,
-  }),
-);
+export const RegistriesListCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesListCredentialsInput,
+  outputSchema: RegistriesListCredentialsOutput,
+}));
 // Input Schema
 export const RegistriesListPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1681,7 +1614,7 @@ export type RegistriesListPrivateLinkResourcesInput =
 
 // Output Schema
 export const RegistriesListPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1729,40 +1662,39 @@ export type RegistriesListPrivateLinkResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesListPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesListPrivateLinkResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RegistriesListPrivateLinkResourcesInput,
     outputSchema: RegistriesListPrivateLinkResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RegistriesListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listUsages",
-    }),
-  );
+export const RegistriesListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listUsages",
+  }),
+);
 export type RegistriesListUsagesInput = typeof RegistriesListUsagesInput.Type;
 
 // Output Schema
-export const RegistriesListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          limit: Schema.optional(Schema.Number),
-          currentValue: Schema.optional(Schema.Number),
-          unit: Schema.optional(Schema.Literals(["Count", "Bytes"])),
-        }),
-      ),
+export const RegistriesListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        currentValue: Schema.optional(Schema.Number),
+        unit: Schema.optional(Schema.Literals(["Count", "Bytes"])),
+      }),
     ),
-  });
+  ),
+});
 export type RegistriesListUsagesOutput = typeof RegistriesListUsagesOutput.Type;
 
 // The operation
@@ -1774,31 +1706,28 @@ export type RegistriesListUsagesOutput = typeof RegistriesListUsagesOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesListUsagesInput,
-    outputSchema: RegistriesListUsagesOutput,
+export const RegistriesListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesListUsagesInput,
+  outputSchema: RegistriesListUsagesOutput,
+}));
+// Input Schema
+export const RegistriesRegenerateCredentialInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential",
   }),
 );
-// Input Schema
-export const RegistriesRegenerateCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential",
-    }),
-  );
 export type RegistriesRegenerateCredentialInput =
   typeof RegistriesRegenerateCredentialInput.Type;
 
 // Output Schema
-export const RegistriesRegenerateCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesRegenerateCredentialOutput = /*@__PURE__*/ Schema.Struct(
+  {
     username: Schema.optional(Schema.String),
     passwords: Schema.optional(
       Schema.Array(
@@ -1808,7 +1737,8 @@ export const RegistriesRegenerateCredentialOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RegistriesRegenerateCredentialOutput =
   typeof RegistriesRegenerateCredentialOutput.Type;
 
@@ -1821,28 +1751,25 @@ export type RegistriesRegenerateCredentialOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesRegenerateCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegistriesRegenerateCredentialInput,
-    outputSchema: RegistriesRegenerateCredentialOutput,
-  }));
+export const RegistriesRegenerateCredential = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesRegenerateCredentialInput,
+  outputSchema: RegistriesRegenerateCredentialOutput,
+}));
 // Input Schema
-export const RegistriesScheduleRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scheduleRun",
-    }),
-  );
+export const RegistriesScheduleRunInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scheduleRun",
+  }),
+);
 export type RegistriesScheduleRunInput = typeof RegistriesScheduleRunInput.Type;
 
 // Output Schema
-export const RegistriesScheduleRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RegistriesScheduleRunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RegistriesScheduleRunOutput =
   typeof RegistriesScheduleRunOutput.Type;
 
@@ -1850,14 +1777,12 @@ export type RegistriesScheduleRunOutput =
 /**
  * Schedules a new run based on the request parameters and add it to the run queue.
  */
-export const RegistriesScheduleRun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesScheduleRunInput,
-    outputSchema: RegistriesScheduleRunOutput,
-  }),
-);
+export const RegistriesScheduleRun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesScheduleRunInput,
+  outputSchema: RegistriesScheduleRunOutput,
+}));
 // Input Schema
-export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -1871,27 +1796,25 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
 
 // Output Schema
-export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const RegistriesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegistriesUpdateOutput = typeof RegistriesUpdateOutput.Type;
 
 // The operation
@@ -1903,47 +1826,45 @@ export type RegistriesUpdateOutput = typeof RegistriesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesUpdateInput,
   outputSchema: RegistriesUpdateOutput,
 }));
 // Input Schema
-export const ReplicationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
-    }),
-  );
+export const ReplicationsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  replicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+  }),
+);
 export type ReplicationsCreateInput = typeof ReplicationsCreateInput.Type;
 
 // Output Schema
-export const ReplicationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationsCreateOutput = typeof ReplicationsCreateOutput.Type;
 
 // The operation
@@ -1956,28 +1877,27 @@ export type ReplicationsCreateOutput = typeof ReplicationsCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsCreateInput,
   outputSchema: ReplicationsCreateOutput,
 }));
 // Input Schema
-export const ReplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
-    }),
-  );
+export const ReplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  replicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+  }),
+);
 export type ReplicationsDeleteInput = typeof ReplicationsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationsDeleteOutput = typeof ReplicationsDeleteOutput.Type;
 
 // The operation
@@ -1990,12 +1910,12 @@ export type ReplicationsDeleteOutput = typeof ReplicationsDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsDeleteInput,
   outputSchema: ReplicationsDeleteOutput,
 }));
 // Input Schema
-export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2010,7 +1930,7 @@ export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReplicationsGetInput = typeof ReplicationsGetInput.Type;
 
 // Output Schema
-export const ReplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2041,12 +1961,12 @@ export type ReplicationsGetOutput = typeof ReplicationsGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsGetInput,
   outputSchema: ReplicationsGetOutput,
 }));
 // Input Schema
-export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2060,44 +1980,42 @@ export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReplicationsListInput = typeof ReplicationsListInput.Type;
 
 // Output Schema
-export const ReplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ReplicationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationsListOutput = typeof ReplicationsListOutput.Type;
 
 // The operation
@@ -2109,47 +2027,45 @@ export type ReplicationsListOutput = typeof ReplicationsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const ReplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsListInput,
   outputSchema: ReplicationsListOutput,
 }));
 // Input Schema
-export const ReplicationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
-    }),
-  );
+export const ReplicationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  replicationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+  }),
+);
 export type ReplicationsUpdateInput = typeof ReplicationsUpdateInput.Type;
 
 // Output Schema
-export const ReplicationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationsUpdateOutput = typeof ReplicationsUpdateOutput.Type;
 
 // The operation
@@ -2162,12 +2078,12 @@ export type ReplicationsUpdateOutput = typeof ReplicationsUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsUpdateInput,
   outputSchema: ReplicationsUpdateOutput,
 }));
 // Input Schema
-export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsCancelInput = /*@__PURE__*/ Schema.Struct({
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2178,7 +2094,7 @@ export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunsCancelInput = typeof RunsCancelInput.Type;
 
 // Output Schema
-export const RunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RunsCancelOutput = /*@__PURE__*/ Schema.Void;
 export type RunsCancelOutput = typeof RunsCancelOutput.Type;
 
 // The operation
@@ -2187,12 +2103,12 @@ export type RunsCancelOutput = typeof RunsCancelOutput.Type;
  *
  * @param runId - The run ID.
  */
-export const RunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsCancelInput,
   outputSchema: RunsCancelOutput,
 }));
 // Input Schema
-export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetInput = /*@__PURE__*/ Schema.Struct({
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2203,7 +2119,7 @@ export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunsGetInput = typeof RunsGetInput.Type;
 
 // Output Schema
-export const RunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2216,12 +2132,12 @@ export type RunsGetOutput = typeof RunsGetOutput.Type;
  *
  * @param runId - The run ID.
  */
-export const RunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsGetInput,
   outputSchema: RunsGetOutput,
 }));
 // Input Schema
-export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetLogSasUrlInput = /*@__PURE__*/ Schema.Struct({
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2232,11 +2148,9 @@ export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunsGetLogSasUrlInput = typeof RunsGetLogSasUrlInput.Type;
 
 // Output Schema
-export const RunsGetLogSasUrlOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    logLink: Schema.optional(Schema.String),
-  },
-);
+export const RunsGetLogSasUrlOutput = /*@__PURE__*/ Schema.Struct({
+  logLink: Schema.optional(Schema.String),
+});
 export type RunsGetLogSasUrlOutput = typeof RunsGetLogSasUrlOutput.Type;
 
 // The operation
@@ -2245,12 +2159,12 @@ export type RunsGetLogSasUrlOutput = typeof RunsGetLogSasUrlOutput.Type;
  *
  * @param runId - The run ID.
  */
-export const RunsGetLogSasUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsGetLogSasUrl = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsGetLogSasUrlInput,
   outputSchema: RunsGetLogSasUrlOutput,
 }));
 // Input Schema
-export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsListInput = /*@__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
 }).pipe(
@@ -2262,7 +2176,7 @@ export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunsListInput = typeof RunsListInput.Type;
 
 // Output Schema
-export const RunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2283,12 +2197,12 @@ export type RunsListOutput = typeof RunsListOutput.Type;
  * @param $filter - The runs filter to apply on the operation. Arithmetic operators are not supported. The allowed string function is 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
  * @param $top - $top is supported for get list of runs, which limits the maximum number of runs to return.
  */
-export const RunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsListInput,
   outputSchema: RunsListOutput,
 }));
 // Input Schema
-export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsUpdateInput = /*@__PURE__*/ Schema.Struct({
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2299,7 +2213,7 @@ export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunsUpdateInput = typeof RunsUpdateInput.Type;
 
 // Output Schema
-export const RunsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2312,12 +2226,12 @@ export type RunsUpdateOutput = typeof RunsUpdateOutput.Type;
  *
  * @param runId - The run ID.
  */
-export const RunsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsUpdateInput,
   outputSchema: RunsUpdateOutput,
 }));
 // Input Schema
-export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2332,7 +2246,7 @@ export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScopeMapsCreateInput = typeof ScopeMapsCreateInput.Type;
 
 // Output Schema
-export const ScopeMapsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2363,12 +2277,12 @@ export type ScopeMapsCreateOutput = typeof ScopeMapsCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsCreateInput,
   outputSchema: ScopeMapsCreateOutput,
 }));
 // Input Schema
-export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2383,7 +2297,7 @@ export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScopeMapsDeleteInput = typeof ScopeMapsDeleteInput.Type;
 
 // Output Schema
-export const ScopeMapsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScopeMapsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ScopeMapsDeleteOutput = typeof ScopeMapsDeleteOutput.Type;
 
 // The operation
@@ -2396,12 +2310,12 @@ export type ScopeMapsDeleteOutput = typeof ScopeMapsDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsDeleteInput,
   outputSchema: ScopeMapsDeleteOutput,
 }));
 // Input Schema
-export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2416,7 +2330,7 @@ export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScopeMapsGetInput = typeof ScopeMapsGetInput.Type;
 
 // Output Schema
-export const ScopeMapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2447,12 +2361,12 @@ export type ScopeMapsGetOutput = typeof ScopeMapsGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsGetInput,
   outputSchema: ScopeMapsGetOutput,
 }));
 // Input Schema
-export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2466,7 +2380,7 @@ export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScopeMapsListInput = typeof ScopeMapsListInput.Type;
 
 // Output Schema
-export const ScopeMapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2513,12 +2427,12 @@ export type ScopeMapsListOutput = typeof ScopeMapsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const ScopeMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsListInput,
   outputSchema: ScopeMapsListOutput,
 }));
 // Input Schema
-export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2533,7 +2447,7 @@ export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ScopeMapsUpdateInput = typeof ScopeMapsUpdateInput.Type;
 
 // Output Schema
-export const ScopeMapsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2564,14 +2478,12 @@ export type ScopeMapsUpdateOutput = typeof ScopeMapsUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsUpdateInput,
   outputSchema: ScopeMapsUpdateOutput,
 }));
 // Input Schema
-export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksCreateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -2580,7 +2492,7 @@ export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TasksCreateInput = typeof TasksCreateInput.Type;
 
 // Output Schema
-export const TasksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2593,14 +2505,12 @@ export type TasksCreateOutput = typeof TasksCreateOutput.Type;
 /**
  * Creates a task for a container registry with the specified parameters.
  */
-export const TasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCreateInput,
   outputSchema: TasksCreateOutput,
 }));
 // Input Schema
-export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -2609,19 +2519,19 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TasksDeleteInput = typeof TasksDeleteInput.Type;
 
 // Output Schema
-export const TasksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TasksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
 
 // The operation
 /**
  * Deletes a specified task.
  */
-export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksDeleteInput,
   outputSchema: TasksDeleteOutput,
 }));
 // Input Schema
-export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const TasksGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -2630,7 +2540,7 @@ export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type TasksGetInput = typeof TasksGetInput.Type;
 
 // Output Schema
-export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2643,14 +2553,12 @@ export type TasksGetOutput = typeof TasksGetOutput.Type;
 /**
  * Get the properties of a specified task.
  */
-export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksGetInput,
   outputSchema: TasksGetOutput,
 }));
 // Input Schema
-export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksGetDetailsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}/listDetails",
@@ -2659,7 +2567,7 @@ export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TasksGetDetailsInput = typeof TasksGetDetailsInput.Type;
 
 // Output Schema
-export const TasksGetDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetDetailsOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2672,14 +2580,12 @@ export type TasksGetDetailsOutput = typeof TasksGetDetailsOutput.Type;
 /**
  * Returns a task with extended information that includes all secrets.
  */
-export const TasksGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksGetDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksGetDetailsInput,
   outputSchema: TasksGetDetailsOutput,
 }));
 // Input Schema
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
@@ -2688,7 +2594,7 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TasksListInput = typeof TasksListInput.Type;
 
 // Output Schema
-export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2708,14 +2614,12 @@ export type TasksListOutput = typeof TasksListOutput.Type;
 /**
  * Lists all the tasks for a specified container registry.
  */
-export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
   outputSchema: TasksListOutput,
 }));
 // Input Schema
-export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -2724,7 +2628,7 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type TasksUpdateInput = typeof TasksUpdateInput.Type;
 
 // Output Schema
-export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2737,12 +2641,12 @@ export type TasksUpdateOutput = typeof TasksUpdateOutput.Type;
 /**
  * Updates a task with the specified parameters.
  */
-export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksUpdateInput,
   outputSchema: TasksUpdateOutput,
 }));
 // Input Schema
-export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2757,7 +2661,7 @@ export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokensCreateInput = typeof TokensCreateInput.Type;
 
 // Output Schema
-export const TokensCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2788,12 +2692,12 @@ export type TokensCreateOutput = typeof TokensCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensCreateInput,
   outputSchema: TokensCreateOutput,
 }));
 // Input Schema
-export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2808,7 +2712,7 @@ export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokensDeleteInput = typeof TokensDeleteInput.Type;
 
 // Output Schema
-export const TokensDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TokensDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TokensDeleteOutput = typeof TokensDeleteOutput.Type;
 
 // The operation
@@ -2821,12 +2725,12 @@ export type TokensDeleteOutput = typeof TokensDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensDeleteInput,
   outputSchema: TokensDeleteOutput,
 }));
 // Input Schema
-export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2841,7 +2745,7 @@ export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokensGetInput = typeof TokensGetInput.Type;
 
 // Output Schema
-export const TokensGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2872,12 +2776,12 @@ export type TokensGetOutput = typeof TokensGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensGetInput,
   outputSchema: TokensGetOutput,
 }));
 // Input Schema
-export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2891,7 +2795,7 @@ export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokensListInput = typeof TokensListInput.Type;
 
 // Output Schema
-export const TokensListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2938,12 +2842,12 @@ export type TokensListOutput = typeof TokensListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const TokensList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensListInput,
   outputSchema: TokensListOutput,
 }));
 // Input Schema
-export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2958,7 +2862,7 @@ export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokensUpdateInput = typeof TokensUpdateInput.Type;
 
 // Output Schema
-export const TokensUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2989,12 +2893,12 @@ export type TokensUpdateOutput = typeof TokensUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensUpdateInput,
   outputSchema: TokensUpdateOutput,
 }));
 // Input Schema
-export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3009,7 +2913,7 @@ export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksCreateInput = typeof WebhooksCreateInput.Type;
 
 // Output Schema
-export const WebhooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3040,12 +2944,12 @@ export type WebhooksCreateOutput = typeof WebhooksCreateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksCreateInput,
   outputSchema: WebhooksCreateOutput,
 }));
 // Input Schema
-export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3060,7 +2964,7 @@ export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksDeleteInput = typeof WebhooksDeleteInput.Type;
 
 // Output Schema
-export const WebhooksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebhooksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebhooksDeleteOutput = typeof WebhooksDeleteOutput.Type;
 
 // The operation
@@ -3073,12 +2977,12 @@ export type WebhooksDeleteOutput = typeof WebhooksDeleteOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksDeleteInput,
   outputSchema: WebhooksDeleteOutput,
 }));
 // Input Schema
-export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3093,7 +2997,7 @@ export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksGetInput = typeof WebhooksGetInput.Type;
 
 // Output Schema
-export const WebhooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3124,33 +3028,31 @@ export type WebhooksGetOutput = typeof WebhooksGetOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksGetInput,
   outputSchema: WebhooksGetOutput,
 }));
 // Input Schema
-export const WebhooksGetCallbackConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/getCallbackConfig",
-    }),
-  );
+export const WebhooksGetCallbackConfigInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  webhookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/getCallbackConfig",
+  }),
+);
 export type WebhooksGetCallbackConfigInput =
   typeof WebhooksGetCallbackConfigInput.Type;
 
 // Output Schema
-export const WebhooksGetCallbackConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceUri: Schema.String,
-    customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const WebhooksGetCallbackConfigOutput = /*@__PURE__*/ Schema.Struct({
+  serviceUri: Schema.String,
+  customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type WebhooksGetCallbackConfigOutput =
   typeof WebhooksGetCallbackConfigOutput.Type;
 
@@ -3164,14 +3066,12 @@ export type WebhooksGetCallbackConfigOutput =
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksGetCallbackConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhooksGetCallbackConfigInput,
-    outputSchema: WebhooksGetCallbackConfigOutput,
-  }),
-);
+export const WebhooksGetCallbackConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhooksGetCallbackConfigInput,
+  outputSchema: WebhooksGetCallbackConfigOutput,
+}));
 // Input Schema
-export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3185,7 +3085,7 @@ export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksListInput = typeof WebhooksListInput.Type;
 
 // Output Schema
-export const WebhooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3232,38 +3132,36 @@ export type WebhooksListOutput = typeof WebhooksListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const WebhooksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksListInput,
   outputSchema: WebhooksListOutput,
 }));
 // Input Schema
-export const WebhooksListEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
-    }),
-  );
+export const WebhooksListEventsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  webhookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
+  }),
+);
 export type WebhooksListEventsInput = typeof WebhooksListEventsInput.Type;
 
 // Output Schema
-export const WebhooksListEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WebhooksListEventsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebhooksListEventsOutput = typeof WebhooksListEventsOutput.Type;
 
 // The operation
@@ -3276,12 +3174,12 @@ export type WebhooksListEventsOutput = typeof WebhooksListEventsOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksListEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksListEventsInput,
   outputSchema: WebhooksListEventsOutput,
 }));
 // Input Schema
-export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksPingInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3296,7 +3194,7 @@ export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksPingInput = typeof WebhooksPingInput.Type;
 
 // Output Schema
-export const WebhooksPingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksPingOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
 });
 export type WebhooksPingOutput = typeof WebhooksPingOutput.Type;
@@ -3311,12 +3209,12 @@ export type WebhooksPingOutput = typeof WebhooksPingOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksPing = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksPing = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksPingInput,
   outputSchema: WebhooksPingOutput,
 }));
 // Input Schema
-export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3331,7 +3229,7 @@ export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhooksUpdateInput = typeof WebhooksUpdateInput.Type;
 
 // Output Schema
-export const WebhooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3362,7 +3260,7 @@ export type WebhooksUpdateOutput = typeof WebhooksUpdateOutput.Type;
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksUpdateInput,
   outputSchema: WebhooksUpdateOutput,
 }));

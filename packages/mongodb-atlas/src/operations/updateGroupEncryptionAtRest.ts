@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupEncryptionAtRestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest",
-    }),
-  );
+export const UpdateGroupEncryptionAtRestInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest",
+  }),
+);
 export type UpdateGroupEncryptionAtRestInput =
   typeof UpdateGroupEncryptionAtRestInput.Type;
 
 // Output Schema
-export const UpdateGroupEncryptionAtRestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupEncryptionAtRestOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupEncryptionAtRestOutput =
   typeof UpdateGroupEncryptionAtRestOutput.Type;
 
@@ -37,10 +35,8 @@ export type UpdateGroupEncryptionAtRestOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const updateGroupEncryptionAtRest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupEncryptionAtRestInput,
-    outputSchema: UpdateGroupEncryptionAtRestOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const updateGroupEncryptionAtRest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupEncryptionAtRestInput,
+  outputSchema: UpdateGroupEncryptionAtRestOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const QueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   async: Schema.optional(Schema.NullOr(Schema.Boolean)),
   client_query_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -106,7 +106,7 @@ export const QueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryCreateInput = typeof QueryCreateInput.Type;
 
 // Output Schema
-export const QueryCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const QueryCreateOutput = /*@__PURE__*/ Schema.Unknown;
 export type QueryCreateOutput = typeof QueryCreateOutput.Type;
 
 // The operation
@@ -119,7 +119,7 @@ export type QueryCreateOutput = typeof QueryCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const queryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryCreateInput,
   outputSchema: QueryCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

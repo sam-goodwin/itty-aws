@@ -4,26 +4,26 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListBranchBouncerResizeRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBranchBouncerResizeRequestsInput = /*@__PURE__*/ Schema.Struct(
+  {
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncer-resizes",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncer-resizes",
+  }),
+);
 export type ListBranchBouncerResizeRequestsInput =
   typeof ListBranchBouncerResizeRequestsInput.Type;
 
 // Output Schema
 export const ListBranchBouncerResizeRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.String,
+  /*@__PURE__*/ Schema.Struct({
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -42,8 +42,8 @@ export const ListBranchBouncerResizeRequestsOutput =
         parameters: Schema.Record(Schema.String, Schema.Unknown),
         previous_replicas_per_cell: Schema.Number,
         previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
-        started_at: Schema.NullOr(Schema.String),
-        completed_at: Schema.NullOr(Schema.String),
+        started_at: Schema.String,
+        completed_at: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
         actor: Schema.Struct({
@@ -56,7 +56,7 @@ export const ListBranchBouncerResizeRequestsOutput =
           name: Schema.String,
           created_at: Schema.String,
           updated_at: Schema.String,
-          deleted_at: Schema.NullOr(Schema.String),
+          deleted_at: Schema.String,
         }),
         sku: Schema.Struct({
           name: Schema.String,
@@ -88,8 +88,8 @@ export type ListBranchBouncerResizeRequestsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBranchBouncerResizeRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listBranchBouncerResizeRequests = /*@__PURE__*/ API.makePaginated(
+  () => ({
     inputSchema: ListBranchBouncerResizeRequestsInput,
     outputSchema: ListBranchBouncerResizeRequestsOutput,
     errors: [Forbidden, NotFound] as const,
@@ -99,4 +99,5 @@ export const listBranchBouncerResizeRequests =
       outputToken: "next_page",
       items: "data",
     },
-  }));
+  }),
+);

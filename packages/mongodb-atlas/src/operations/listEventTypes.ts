@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
-export const ListEventTypesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEventTypesInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -14,7 +14,7 @@ export const ListEventTypesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListEventTypesInput = typeof ListEventTypesInput.Type;
 
 // Output Schema
-export const ListEventTypesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListEventTypesOutput = /*@__PURE__*/ Schema.Void;
 export type ListEventTypesOutput = typeof ListEventTypesOutput.Type;
 
 // The operation
@@ -29,7 +29,7 @@ export type ListEventTypesOutput = typeof ListEventTypesOutput.Type;
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEventTypes = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEventTypesInput,
   outputSchema: ListEventTypesOutput,
   errors: [Forbidden] as const,

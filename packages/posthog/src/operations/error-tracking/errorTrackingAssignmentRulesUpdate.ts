@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
@@ -35,7 +35,7 @@ export type ErrorTrackingAssignmentRulesUpdateInput =
 
 // Output Schema
 export const ErrorTrackingAssignmentRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingAssignmentRulesUpdateOutput =
   typeof ErrorTrackingAssignmentRulesUpdateOutput.Type;
 
@@ -45,9 +45,10 @@ export type ErrorTrackingAssignmentRulesUpdateOutput =
  * @param id - A UUID string identifying this error tracking assignment rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingAssignmentRulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingAssignmentRulesUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingAssignmentRulesUpdateInput,
     outputSchema: ErrorTrackingAssignmentRulesUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

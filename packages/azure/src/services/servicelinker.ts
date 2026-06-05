@@ -9,104 +9,102 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ConfigurationNamesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ServiceLinker/configurationNames",
-    }),
-  );
+export const ConfigurationNamesListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ServiceLinker/configurationNames",
+  }),
+);
 export type ConfigurationNamesListInput =
   typeof ConfigurationNamesListInput.Type;
 
 // Output Schema
-export const ConfigurationNamesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              targetService: Schema.optional(Schema.String),
-              clientType: Schema.optional(
-                Schema.Literals([
-                  "none",
-                  "dotnet",
-                  "java",
-                  "python",
-                  "go",
-                  "php",
-                  "ruby",
-                  "django",
-                  "nodejs",
-                  "springBoot",
-                  "kafka-springBoot",
-                  "jms-springBoot",
-                  "dapr",
-                ]),
-              ),
-              authType: Schema.optional(
-                Schema.Literals([
-                  "systemAssignedIdentity",
-                  "userAssignedIdentity",
-                  "servicePrincipalSecret",
-                  "servicePrincipalCertificate",
-                  "secret",
-                  "accessKey",
-                  "userAccount",
-                  "easyAuthMicrosoftEntraID",
-                ]),
-              ),
-              secretType: Schema.optional(
-                Schema.Literals(["rawValue", "keyVaultSecret"]),
-              ),
-              daprProperties: Schema.optional(
+export const ConfigurationNamesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            targetService: Schema.optional(Schema.String),
+            clientType: Schema.optional(
+              Schema.Literals([
+                "none",
+                "dotnet",
+                "java",
+                "python",
+                "go",
+                "php",
+                "ruby",
+                "django",
+                "nodejs",
+                "springBoot",
+                "kafka-springBoot",
+                "jms-springBoot",
+                "dapr",
+              ]),
+            ),
+            authType: Schema.optional(
+              Schema.Literals([
+                "systemAssignedIdentity",
+                "userAssignedIdentity",
+                "servicePrincipalSecret",
+                "servicePrincipalCertificate",
+                "secret",
+                "accessKey",
+                "userAccount",
+                "easyAuthMicrosoftEntraID",
+              ]),
+            ),
+            secretType: Schema.optional(
+              Schema.Literals(["rawValue", "keyVaultSecret"]),
+            ),
+            daprProperties: Schema.optional(
+              Schema.Struct({
+                version: Schema.optional(Schema.NullOr(Schema.String)),
+                componentType: Schema.optional(Schema.NullOr(Schema.String)),
+                secretStoreComponent: Schema.optional(
+                  Schema.NullOr(Schema.String),
+                ),
+                metadata: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                      secretRef: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      required: Schema.optional(
+                        Schema.Literals(["true", "false"]),
+                      ),
+                    }),
+                  ),
+                ),
+                scopes: Schema.optional(Schema.Array(Schema.String)),
+                runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
+                bindingComponentDirection: Schema.optional(
+                  Schema.NullOr(Schema.Literals(["input", "output"])),
+                ),
+              }),
+            ),
+            names: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
-                  version: Schema.optional(Schema.NullOr(Schema.String)),
-                  componentType: Schema.optional(Schema.NullOr(Schema.String)),
-                  secretStoreComponent: Schema.optional(
-                    Schema.NullOr(Schema.String),
-                  ),
-                  metadata: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                        secretRef: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        required: Schema.optional(
-                          Schema.Literals(["true", "false"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  scopes: Schema.optional(Schema.Array(Schema.String)),
-                  runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-                  bindingComponentDirection: Schema.optional(
-                    Schema.NullOr(Schema.Literals(["input", "output"])),
-                  ),
+                  value: Schema.optional(Schema.String),
+                  description: Schema.optional(Schema.String),
+                  required: Schema.optional(Schema.Boolean),
                 }),
               ),
-              names: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationNamesListOutput =
   typeof ConfigurationNamesListOutput.Type;
 
@@ -118,48 +116,44 @@ export type ConfigurationNamesListOutput =
  * @param $filter - OData filter options.
  * @param $skipToken - OData skipToken option for pagination.
  */
-export const ConfigurationNamesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationNamesListInput,
-    outputSchema: ConfigurationNamesListOutput,
+export const ConfigurationNamesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationNamesListInput,
+  outputSchema: ConfigurationNamesListOutput,
+}));
+// Input Schema
+export const ConnectorCreateDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
   }),
 );
-// Input Schema
-export const ConnectorCreateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-    }),
-  );
 export type ConnectorCreateDryrunInput = typeof ConnectorCreateDryrunInput.Type;
 
 // Output Schema
-export const ConnectorCreateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectorCreateDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorCreateDryrunOutput =
   typeof ConnectorCreateDryrunOutput.Type;
 
@@ -172,48 +166,44 @@ export type ConnectorCreateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorCreateDryrunInput,
-    outputSchema: ConnectorCreateDryrunOutput,
+export const ConnectorCreateDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorCreateDryrunInput,
+  outputSchema: ConnectorCreateDryrunOutput,
+}));
+// Input Schema
+export const ConnectorCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
   }),
 );
-// Input Schema
-export const ConnectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-    }),
-  );
 export type ConnectorCreateOrUpdateInput =
   typeof ConnectorCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ConnectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectorCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorCreateOrUpdateOutput =
   typeof ConnectorCreateOrUpdateOutput.Type;
 
@@ -225,14 +215,12 @@ export type ConnectorCreateOrUpdateOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorCreateOrUpdateInput,
-    outputSchema: ConnectorCreateOrUpdateOutput,
-  }),
-);
+export const ConnectorCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorCreateOrUpdateInput,
+  outputSchema: ConnectorCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -245,7 +233,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
 
 // Output Schema
-export const ConnectorDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectorDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
 
 // The operation
@@ -256,28 +244,26 @@ export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorDeleteInput,
   outputSchema: ConnectorDeleteOutput,
 }));
 // Input Schema
-export const ConnectorDeleteDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-    }),
-  );
+export const ConnectorDeleteDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+  }),
+);
 export type ConnectorDeleteDryrunInput = typeof ConnectorDeleteDryrunInput.Type;
 
 // Output Schema
-export const ConnectorDeleteDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectorDeleteDryrunOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectorDeleteDryrunOutput =
   typeof ConnectorDeleteDryrunOutput.Type;
 
@@ -290,30 +276,29 @@ export type ConnectorDeleteDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorDeleteDryrunInput,
-    outputSchema: ConnectorDeleteDryrunOutput,
-  }),
-);
+export const ConnectorDeleteDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorDeleteDryrunInput,
+  outputSchema: ConnectorDeleteDryrunOutput,
+}));
 // Input Schema
-export const ConnectorGenerateConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGenerateConfigurationsInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
+  }),
+);
 export type ConnectorGenerateConfigurationsInput =
   typeof ConnectorGenerateConfigurationsInput.Type;
 
 // Output Schema
 export const ConnectorGenerateConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -341,13 +326,12 @@ export type ConnectorGenerateConfigurationsOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorGenerateConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConnectorGenerateConfigurationsInput,
-    outputSchema: ConnectorGenerateConfigurationsOutput,
-  }));
+export const ConnectorGenerateConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorGenerateConfigurationsInput,
+  outputSchema: ConnectorGenerateConfigurationsOutput,
+}));
 // Input Schema
-export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -360,7 +344,7 @@ export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorGetInput = typeof ConnectorGetInput.Type;
 
 // Output Schema
-export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -389,46 +373,44 @@ export type ConnectorGetOutput = typeof ConnectorGetOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorGetInput,
   outputSchema: ConnectorGetOutput,
 }));
 // Input Schema
-export const ConnectorGetDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-    }),
-  );
+export const ConnectorGetDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+  }),
+);
 export type ConnectorGetDryrunInput = typeof ConnectorGetDryrunInput.Type;
 
 // Output Schema
-export const ConnectorGetDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectorGetDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorGetDryrunOutput = typeof ConnectorGetDryrunOutput.Type;
 
 // The operation
@@ -440,12 +422,12 @@ export type ConnectorGetDryrunOutput = typeof ConnectorGetDryrunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorGetDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorGetDryrunInput,
   outputSchema: ConnectorGetDryrunOutput,
 }));
 // Input Schema
-export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -458,7 +440,7 @@ export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorListInput = typeof ConnectorListInput.Type;
 
 // Output Schema
-export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
     Schema.Array(
@@ -504,62 +486,60 @@ export type ConnectorListOutput = typeof ConnectorListOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorListInput,
   outputSchema: ConnectorListOutput,
 }));
 // Input Schema
-export const ConnectorListDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns",
-    }),
-  );
+export const ConnectorListDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns",
+  }),
+);
 export type ConnectorListDryrunInput = typeof ConnectorListDryrunInput.Type;
 
 // Output Schema
-export const ConnectorListDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConnectorListDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type ConnectorListDryrunOutput = typeof ConnectorListDryrunOutput.Type;
 
 // The operation
@@ -570,12 +550,12 @@ export type ConnectorListDryrunOutput = typeof ConnectorListDryrunOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorListDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorListDryrunInput,
   outputSchema: ConnectorListDryrunOutput,
 }));
 // Input Schema
-export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -588,7 +568,7 @@ export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectorUpdateInput = typeof ConnectorUpdateInput.Type;
 
 // Output Schema
-export const ConnectorUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -617,46 +597,44 @@ export type ConnectorUpdateOutput = typeof ConnectorUpdateOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorUpdateInput,
   outputSchema: ConnectorUpdateOutput,
 }));
 // Input Schema
-export const ConnectorUpdateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-    }),
-  );
+export const ConnectorUpdateDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+  }),
+);
 export type ConnectorUpdateDryrunInput = typeof ConnectorUpdateDryrunInput.Type;
 
 // Output Schema
-export const ConnectorUpdateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectorUpdateDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectorUpdateDryrunOutput =
   typeof ConnectorUpdateDryrunOutput.Type;
 
@@ -669,20 +647,16 @@ export type ConnectorUpdateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorUpdateDryrunInput,
-    outputSchema: ConnectorUpdateDryrunOutput,
-  }),
-);
+export const ConnectorUpdateDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorUpdateDryrunInput,
+  outputSchema: ConnectorUpdateDryrunOutput,
+}));
 // Input Schema
-export const ConnectorValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConnectorValidateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/validate",
@@ -691,48 +665,45 @@ export const ConnectorValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConnectorValidateInput = typeof ConnectorValidateInput.Type;
 
 // Output Schema
-export const ConnectorValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        linkerName: Schema.optional(Schema.NullOr(Schema.String)),
-        isConnectionAvailable: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        reportStartTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-        reportEndTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-        sourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        targetId: Schema.optional(Schema.NullOr(Schema.String)),
-        authType: Schema.optional(
-          Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
+export const ConnectorValidateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      linkerName: Schema.optional(Schema.NullOr(Schema.String)),
+      isConnectionAvailable: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      reportStartTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
+      reportEndTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
+      sourceId: Schema.optional(Schema.NullOr(Schema.String)),
+      targetId: Schema.optional(Schema.NullOr(Schema.String)),
+      authType: Schema.optional(
+        Schema.Literals([
+          "systemAssignedIdentity",
+          "userAssignedIdentity",
+          "servicePrincipalSecret",
+          "servicePrincipalCertificate",
+          "secret",
+          "accessKey",
+          "userAccount",
+          "easyAuthMicrosoftEntraID",
+        ]),
+      ),
+      validationDetail: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.NullOr(Schema.String)),
+            result: Schema.optional(
+              Schema.NullOr(Schema.Literals(["success", "failure", "warning"])),
+            ),
+            errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+            errorCode: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
         ),
-        validationDetail: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.NullOr(Schema.String)),
-              result: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals(["success", "failure", "warning"]),
-                ),
-              ),
-              errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
-              errorCode: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
-      }),
-    ),
-    resourceId: Schema.optional(Schema.NullOr(Schema.String)),
-    status: Schema.optional(Schema.NullOr(Schema.String)),
-  });
+      ),
+    }),
+  ),
+  resourceId: Schema.optional(Schema.NullOr(Schema.String)),
+  status: Schema.optional(Schema.NullOr(Schema.String)),
+});
 export type ConnectorValidateOutput = typeof ConnectorValidateOutput.Type;
 
 // The operation
@@ -743,43 +714,41 @@ export type ConnectorValidateOutput = typeof ConnectorValidateOutput.Type;
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorValidateInput,
   outputSchema: ConnectorValidateOutput,
 }));
 // Input Schema
-export const LinkerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
-    }),
-  );
+export const LinkerCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+  }),
+);
 export type LinkerCreateOrUpdateInput = typeof LinkerCreateOrUpdateInput.Type;
 
 // Output Schema
-export const LinkerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LinkerCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LinkerCreateOrUpdateOutput = typeof LinkerCreateOrUpdateOutput.Type;
 
 // The operation
@@ -788,14 +757,12 @@ export type LinkerCreateOrUpdateOutput = typeof LinkerCreateOrUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkerCreateOrUpdateInput,
-    outputSchema: LinkerCreateOrUpdateOutput,
-  }),
-);
+export const LinkerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkerCreateOrUpdateInput,
+  outputSchema: LinkerCreateOrUpdateOutput,
+}));
 // Input Schema
-export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerDeleteInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -806,7 +773,7 @@ export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkerDeleteInput = typeof LinkerDeleteInput.Type;
 
 // Output Schema
-export const LinkerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LinkerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LinkerDeleteOutput = typeof LinkerDeleteOutput.Type;
 
 // The operation
@@ -815,12 +782,12 @@ export type LinkerDeleteOutput = typeof LinkerDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerDeleteInput,
   outputSchema: LinkerDeleteOutput,
 }));
 // Input Schema
-export const LinkerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerGetInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -831,7 +798,7 @@ export const LinkerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkerGetInput = typeof LinkerGetInput.Type;
 
 // Output Schema
-export const LinkerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -858,12 +825,12 @@ export type LinkerGetOutput = typeof LinkerGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerGetInput,
   outputSchema: LinkerGetOutput,
 }));
 // Input Schema
-export const LinkerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -874,7 +841,7 @@ export const LinkerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkerListInput = typeof LinkerListInput.Type;
 
 // Output Schema
-export const LinkerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
     Schema.Array(
@@ -918,42 +885,40 @@ export type LinkerListOutput = typeof LinkerListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerListInput,
   outputSchema: LinkerListOutput,
 }));
 // Input Schema
-export const LinkerListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/listConfigurations",
-    }),
-  );
+export const LinkerListConfigurationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/listConfigurations",
+  }),
+);
 export type LinkerListConfigurationsInput =
   typeof LinkerListConfigurationsInput.Type;
 
 // Output Schema
-export const LinkerListConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configurations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.NullOr(Schema.String)),
-          configType: Schema.optional(
-            Schema.Literals(["Default", "KeyVaultSecret"]),
-          ),
-          keyVaultReferenceIdentity: Schema.optional(
-            Schema.NullOr(Schema.String),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+export const LinkerListConfigurationsOutput = /*@__PURE__*/ Schema.Struct({
+  configurations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.NullOr(Schema.String)),
+        configType: Schema.optional(
+          Schema.Literals(["Default", "KeyVaultSecret"]),
+        ),
+        keyVaultReferenceIdentity: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type LinkerListConfigurationsOutput =
   typeof LinkerListConfigurationsOutput.Type;
 
@@ -963,46 +928,42 @@ export type LinkerListConfigurationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkerListConfigurationsInput,
-    outputSchema: LinkerListConfigurationsOutput,
+export const LinkerListConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkerListConfigurationsInput,
+  outputSchema: LinkerListConfigurationsOutput,
+}));
+// Input Schema
+export const LinkersCreateDryrunInput = /*@__PURE__*/ Schema.Struct({
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
   }),
 );
-// Input Schema
-export const LinkersCreateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-    }),
-  );
 export type LinkersCreateDryrunInput = typeof LinkersCreateDryrunInput.Type;
 
 // Output Schema
-export const LinkersCreateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LinkersCreateDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LinkersCreateDryrunOutput = typeof LinkersCreateDryrunOutput.Type;
 
 // The operation
@@ -1012,26 +973,24 @@ export type LinkersCreateDryrunOutput = typeof LinkersCreateDryrunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersCreateDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersCreateDryrunInput,
   outputSchema: LinkersCreateDryrunOutput,
 }));
 // Input Schema
-export const LinkersDeleteDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-    }),
-  );
+export const LinkersDeleteDryrunInput = /*@__PURE__*/ Schema.Struct({
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+  }),
+);
 export type LinkersDeleteDryrunInput = typeof LinkersDeleteDryrunInput.Type;
 
 // Output Schema
-export const LinkersDeleteDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LinkersDeleteDryrunOutput = /*@__PURE__*/ Schema.Void;
 export type LinkersDeleteDryrunOutput = typeof LinkersDeleteDryrunOutput.Type;
 
 // The operation
@@ -1041,42 +1000,40 @@ export type LinkersDeleteDryrunOutput = typeof LinkersDeleteDryrunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersDeleteDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersDeleteDryrunInput,
   outputSchema: LinkersDeleteDryrunOutput,
 }));
 // Input Schema
-export const LinkersGenerateConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
-    }),
-  );
+export const LinkersGenerateConfigurationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
+  }),
+);
 export type LinkersGenerateConfigurationsInput =
   typeof LinkersGenerateConfigurationsInput.Type;
 
 // Output Schema
-export const LinkersGenerateConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configurations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.NullOr(Schema.String)),
-          configType: Schema.optional(
-            Schema.Literals(["Default", "KeyVaultSecret"]),
-          ),
-          keyVaultReferenceIdentity: Schema.optional(
-            Schema.NullOr(Schema.String),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+export const LinkersGenerateConfigurationsOutput = /*@__PURE__*/ Schema.Struct({
+  configurations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.NullOr(Schema.String)),
+        configType: Schema.optional(
+          Schema.Literals(["Default", "KeyVaultSecret"]),
+        ),
+        keyVaultReferenceIdentity: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type LinkersGenerateConfigurationsOutput =
   typeof LinkersGenerateConfigurationsOutput.Type;
 
@@ -1086,13 +1043,12 @@ export type LinkersGenerateConfigurationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkersGenerateConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LinkersGenerateConfigurationsInput,
-    outputSchema: LinkersGenerateConfigurationsOutput,
-  }));
+export const LinkersGenerateConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkersGenerateConfigurationsInput,
+  outputSchema: LinkersGenerateConfigurationsOutput,
+}));
 // Input Schema
-export const LinkersGetDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkersGetDryrunInput = /*@__PURE__*/ Schema.Struct({
   dryrunName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1104,27 +1060,25 @@ export const LinkersGetDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkersGetDryrunInput = typeof LinkersGetDryrunInput.Type;
 
 // Output Schema
-export const LinkersGetDryrunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const LinkersGetDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LinkersGetDryrunOutput = typeof LinkersGetDryrunOutput.Type;
 
 // The operation
@@ -1134,78 +1088,76 @@ export type LinkersGetDryrunOutput = typeof LinkersGetDryrunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersGetDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersGetDryrunInput,
   outputSchema: LinkersGetDryrunOutput,
 }));
 // Input Schema
-export const LinkersListDaprConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
-    }),
-  );
+export const LinkersListDaprConfigurationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
+  }),
+);
 export type LinkersListDaprConfigurationsInput =
   typeof LinkersListDaprConfigurationsInput.Type;
 
 // Output Schema
-export const LinkersListDaprConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              targetType: Schema.optional(Schema.String),
-              authType: Schema.optional(
-                Schema.Literals([
-                  "systemAssignedIdentity",
-                  "userAssignedIdentity",
-                  "servicePrincipalSecret",
-                  "servicePrincipalCertificate",
-                  "secret",
-                  "accessKey",
-                  "userAccount",
-                  "easyAuthMicrosoftEntraID",
-                ]),
-              ),
-              daprProperties: Schema.optional(
-                Schema.Struct({
-                  version: Schema.optional(Schema.NullOr(Schema.String)),
-                  componentType: Schema.optional(Schema.NullOr(Schema.String)),
-                  secretStoreComponent: Schema.optional(
-                    Schema.NullOr(Schema.String),
+export const LinkersListDaprConfigurationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            targetType: Schema.optional(Schema.String),
+            authType: Schema.optional(
+              Schema.Literals([
+                "systemAssignedIdentity",
+                "userAssignedIdentity",
+                "servicePrincipalSecret",
+                "servicePrincipalCertificate",
+                "secret",
+                "accessKey",
+                "userAccount",
+                "easyAuthMicrosoftEntraID",
+              ]),
+            ),
+            daprProperties: Schema.optional(
+              Schema.Struct({
+                version: Schema.optional(Schema.NullOr(Schema.String)),
+                componentType: Schema.optional(Schema.NullOr(Schema.String)),
+                secretStoreComponent: Schema.optional(
+                  Schema.NullOr(Schema.String),
+                ),
+                metadata: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                      secretRef: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      required: Schema.optional(
+                        Schema.Literals(["true", "false"]),
+                      ),
+                    }),
                   ),
-                  metadata: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                        secretRef: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        required: Schema.optional(
-                          Schema.Literals(["true", "false"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  scopes: Schema.optional(Schema.Array(Schema.String)),
-                  runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-                  bindingComponentDirection: Schema.optional(
-                    Schema.NullOr(Schema.Literals(["input", "output"])),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+                ),
+                scopes: Schema.optional(Schema.Array(Schema.String)),
+                runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
+                bindingComponentDirection: Schema.optional(
+                  Schema.NullOr(Schema.Literals(["input", "output"])),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LinkersListDaprConfigurationsOutput =
   typeof LinkersListDaprConfigurationsOutput.Type;
 
@@ -1215,17 +1167,14 @@ export type LinkersListDaprConfigurationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkersListDaprConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LinkersListDaprConfigurationsInput,
-    outputSchema: LinkersListDaprConfigurationsOutput,
-  }));
+export const LinkersListDaprConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkersListDaprConfigurationsInput,
+  outputSchema: LinkersListDaprConfigurationsOutput,
+}));
 // Input Schema
-export const LinkersListDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const LinkersListDryrunInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns",
@@ -1234,43 +1183,42 @@ export const LinkersListDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LinkersListDryrunInput = typeof LinkersListDryrunInput.Type;
 
 // Output Schema
-export const LinkersListDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const LinkersListDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type LinkersListDryrunOutput = typeof LinkersListDryrunOutput.Type;
 
 // The operation
@@ -1279,44 +1227,42 @@ export type LinkersListDryrunOutput = typeof LinkersListDryrunOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkersListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersListDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersListDryrunInput,
   outputSchema: LinkersListDryrunOutput,
 }));
 // Input Schema
-export const LinkersUpdateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dryrunName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-    }),
-  );
+export const LinkersUpdateDryrunInput = /*@__PURE__*/ Schema.Struct({
+  dryrunName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+  }),
+);
 export type LinkersUpdateDryrunInput = typeof LinkersUpdateDryrunInput.Type;
 
 // Output Schema
-export const LinkersUpdateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LinkersUpdateDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LinkersUpdateDryrunOutput = typeof LinkersUpdateDryrunOutput.Type;
 
 // The operation
@@ -1326,12 +1272,12 @@ export type LinkersUpdateDryrunOutput = typeof LinkersUpdateDryrunOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersUpdateDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersUpdateDryrunInput,
   outputSchema: LinkersUpdateDryrunOutput,
 }));
 // Input Schema
-export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerUpdateInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1342,7 +1288,7 @@ export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkerUpdateInput = typeof LinkerUpdateInput.Type;
 
 // Output Schema
-export const LinkerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1369,12 +1315,12 @@ export type LinkerUpdateOutput = typeof LinkerUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerUpdateInput,
   outputSchema: LinkerUpdateOutput,
 }));
 // Input Schema
-export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerValidateInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1385,7 +1331,7 @@ export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkerValidateInput = typeof LinkerValidateInput.Type;
 
 // Output Schema
-export const LinkerValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerValidateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       linkerName: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1432,12 +1378,12 @@ export type LinkerValidateOutput = typeof LinkerValidateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerValidateInput,
   outputSchema: LinkerValidateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1448,7 +1394,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1479,7 +1425,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

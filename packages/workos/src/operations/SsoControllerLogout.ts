@@ -4,15 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const SsoControllerLogoutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/sso/logout" }), T.NoFollowRedirect());
+export const SsoControllerLogoutInput = /*@__PURE__*/ Schema.Struct({
+  token: Schema.String,
+}).pipe(T.Http({ method: "GET", path: "/sso/logout" }), T.NoFollowRedirect());
 export type SsoControllerLogoutInput = typeof SsoControllerLogoutInput.Type;
 
 // Output Schema
-export const SsoControllerLogoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SsoControllerLogoutOutput = /*@__PURE__*/ Schema.Void;
 export type SsoControllerLogoutOutput = typeof SsoControllerLogoutOutput.Type;
 
 // The operation
@@ -24,7 +22,7 @@ export type SsoControllerLogoutOutput = typeof SsoControllerLogoutOutput.Type;
  *
  * @param token - The logout token returned from the [Logout Authorize](/reference/sso/logout/authorize) endpoint.
  */
-export const SsoControllerLogout = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SsoControllerLogout = /*@__PURE__*/ API.make(() => ({
   inputSchema: SsoControllerLogoutInput,
   outputSchema: SsoControllerLogoutOutput,
   errors: [NotFound] as const,

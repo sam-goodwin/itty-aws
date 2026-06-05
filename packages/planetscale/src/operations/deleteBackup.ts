@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBackupInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const DeleteBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteBackupInput = typeof DeleteBackupInput.Type;
 
 // Output Schema
-export const DeleteBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteBackupOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteBackupOutput = typeof DeleteBackupOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type DeleteBackupOutput = typeof DeleteBackupOutput.Type;
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const deleteBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBackupInput,
   outputSchema: DeleteBackupOutput,
   errors: [Forbidden, NotFound] as const,

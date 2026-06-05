@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupDatabaseUserCertInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
-    }),
-  );
+export const CreateGroupDatabaseUserCertInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
+  }),
+);
 export type CreateGroupDatabaseUserCertInput =
   typeof CreateGroupDatabaseUserCertInput.Type;
 
 // Output Schema
-export const CreateGroupDatabaseUserCertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupDatabaseUserCertOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupDatabaseUserCertOutput =
   typeof CreateGroupDatabaseUserCertOutput.Type;
 
@@ -40,10 +38,8 @@ export type CreateGroupDatabaseUserCertOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param username - Human-readable label that represents the MongoDB database user account for whom to create a certificate.
  */
-export const createGroupDatabaseUserCert = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupDatabaseUserCertInput,
-    outputSchema: CreateGroupDatabaseUserCertOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupDatabaseUserCert = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupDatabaseUserCertInput,
+  outputSchema: CreateGroupDatabaseUserCertOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

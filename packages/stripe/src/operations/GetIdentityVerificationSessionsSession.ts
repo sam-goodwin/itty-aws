@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetIdentityVerificationSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -20,9 +20,9 @@ export type GetIdentityVerificationSessionsSessionInput =
 
 // Output Schema
 export const GetIdentityVerificationSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     id: Schema.String,
     last_error: Schema.Unknown,
@@ -65,8 +65,9 @@ export type GetIdentityVerificationSessionsSessionOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIdentityVerificationSessionsSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIdentityVerificationSessionsSession = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetIdentityVerificationSessionsSessionInput,
     outputSchema: GetIdentityVerificationSessionsSessionOutput,
-  }));
+  }),
+);

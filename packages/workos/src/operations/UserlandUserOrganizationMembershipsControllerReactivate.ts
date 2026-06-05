@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserOrganizationMembershipsControllerReactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type UserlandUserOrganizationMembershipsControllerReactivateInput =
 
 // Output Schema
 export const UserlandUserOrganizationMembershipsControllerReactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export type UserlandUserOrganizationMembershipsControllerReactivateOutput =
  * @param id - The unique ID of the organization membership.
  */
 export const UserlandUserOrganizationMembershipsControllerReactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerReactivateInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerReactivateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

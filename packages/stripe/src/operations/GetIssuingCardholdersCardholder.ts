@@ -3,23 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetIssuingCardholdersCardholderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIssuingCardholdersCardholderInput = /*@__PURE__*/ Schema.Struct(
+  {
     cardholder: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/issuing/cardholders/{cardholder}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/issuing/cardholders/{cardholder}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetIssuingCardholdersCardholderInput =
   typeof GetIssuingCardholdersCardholderInput.Type;
 
 // Output Schema
 export const GetIssuingCardholdersCardholderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing: Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -83,8 +84,7 @@ export type GetIssuingCardholdersCardholderOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingCardholdersCardholder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetIssuingCardholdersCardholderInput,
-    outputSchema: GetIssuingCardholdersCardholderOutput,
-  }));
+export const GetIssuingCardholdersCardholder = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingCardholdersCardholderInput,
+  outputSchema: GetIssuingCardholdersCardholderOutput,
+}));

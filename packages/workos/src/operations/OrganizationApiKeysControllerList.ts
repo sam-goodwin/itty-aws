@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationApiKeysControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -19,7 +19,7 @@ export type OrganizationApiKeysControllerListInput =
 
 // Output Schema
 export const OrganizationApiKeysControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -63,9 +63,8 @@ export type OrganizationApiKeysControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time.
  */
-export const OrganizationApiKeysControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OrganizationApiKeysControllerListInput,
-    outputSchema: OrganizationApiKeysControllerListOutput,
-    errors: [NotFound] as const,
-  }));
+export const OrganizationApiKeysControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationApiKeysControllerListInput,
+  outputSchema: OrganizationApiKeysControllerListOutput,
+  errors: [NotFound] as const,
+}));

@@ -3,20 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RetrieveAllNLSearchModelsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/nl_search_models" }),
-  );
+export const RetrieveAllNLSearchModelsInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/nl_search_models" }));
 export type RetrieveAllNLSearchModelsInput =
   typeof RetrieveAllNLSearchModelsInput.Type;
 
 // Output Schema
-export const RetrieveAllNLSearchModelsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-    }),
-  );
+export const RetrieveAllNLSearchModelsOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.String,
+  }),
+);
 export type RetrieveAllNLSearchModelsOutput =
   typeof RetrieveAllNLSearchModelsOutput.Type;
 
@@ -26,9 +24,7 @@ export type RetrieveAllNLSearchModelsOutput =
  *
  * Retrieve all NL search models.
  */
-export const retrieveAllNLSearchModels = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveAllNLSearchModelsInput,
-    outputSchema: RetrieveAllNLSearchModelsOutput,
-  }),
-);
+export const retrieveAllNLSearchModels = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveAllNLSearchModelsInput,
+  outputSchema: RetrieveAllNLSearchModelsOutput,
+}));

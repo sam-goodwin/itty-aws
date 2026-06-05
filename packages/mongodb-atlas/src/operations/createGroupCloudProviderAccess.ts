@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupCloudProviderAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
-    }),
-  );
+export const CreateGroupCloudProviderAccessInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
+  }),
+);
 export type CreateGroupCloudProviderAccessInput =
   typeof CreateGroupCloudProviderAccessInput.Type;
 
 // Output Schema
-export const CreateGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupCloudProviderAccessOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupCloudProviderAccessOutput =
   typeof CreateGroupCloudProviderAccessOutput.Type;
 
@@ -36,9 +34,8 @@ export type CreateGroupCloudProviderAccessOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupCloudProviderAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupCloudProviderAccessInput,
-    outputSchema: CreateGroupCloudProviderAccessOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const createGroupCloudProviderAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupCloudProviderAccessInput,
+  outputSchema: CreateGroupCloudProviderAccessOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

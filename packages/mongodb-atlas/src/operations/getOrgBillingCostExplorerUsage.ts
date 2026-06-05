@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgBillingCostExplorerUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    token: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}",
-    }),
-  );
+export const GetOrgBillingCostExplorerUsageInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  token: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}",
+  }),
+);
 export type GetOrgBillingCostExplorerUsageInput =
   typeof GetOrgBillingCostExplorerUsageInput.Type;
 
 // Output Schema
-export const GetOrgBillingCostExplorerUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgBillingCostExplorerUsageOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgBillingCostExplorerUsageOutput =
   typeof GetOrgBillingCostExplorerUsageOutput.Type;
 
@@ -34,9 +32,8 @@ export type GetOrgBillingCostExplorerUsageOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param token - Unique 64 digit string that identifies the Cost Explorer query.
  */
-export const getOrgBillingCostExplorerUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetOrgBillingCostExplorerUsageInput,
-    outputSchema: GetOrgBillingCostExplorerUsageOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const getOrgBillingCostExplorerUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgBillingCostExplorerUsageInput,
+  outputSchema: GetOrgBillingCostExplorerUsageOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

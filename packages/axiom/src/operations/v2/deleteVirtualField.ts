@@ -1,13 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import { NotFound } from "../../errors.ts";
 import * as T from "../../traits.ts";
+import { NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DeleteVirtualFieldInput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v2/vfields/{id}" }));
+export const DeleteVirtualFieldInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/v2/vfields/{id}" }));
 export type DeleteVirtualFieldInput = typeof DeleteVirtualFieldInput.Type;
 
 // Output Schema

@@ -3,33 +3,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListOrganizationMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/organizations/{organizationSlug}/members",
-    }),
-  );
+export const ListOrganizationMembersInput = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/organizations/{organizationSlug}/members",
+  }),
+);
 export type ListOrganizationMembersInput =
   typeof ListOrganizationMembersInput.Type;
 
 // Output Schema
-export const ListOrganizationMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          role: Schema.optional(
-            Schema.Literals(["owner", "admin", "member", "viewer"]),
-          ),
-          email: Schema.optional(Schema.String),
-        }),
-      ),
+export const ListOrganizationMembersOutput = /*@__PURE__*/ Schema.Struct({
+  members: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        role: Schema.optional(
+          Schema.Literals(["owner", "admin", "member", "viewer"]),
+        ),
+        email: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ListOrganizationMembersOutput =
   typeof ListOrganizationMembersOutput.Type;
 
@@ -41,9 +39,7 @@ export type ListOrganizationMembersOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listOrganizationMembers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationMembersInput,
-    outputSchema: ListOrganizationMembersOutput,
-  }),
-);
+export const listOrganizationMembers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationMembersInput,
+  outputSchema: ListOrganizationMembersOutput,
+}));

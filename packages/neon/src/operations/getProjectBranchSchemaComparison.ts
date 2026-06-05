@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetProjectBranchSchemaComparisonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     base_branch_id: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export type GetProjectBranchSchemaComparisonInput =
 
 // Output Schema
 export const GetProjectBranchSchemaComparisonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diff: Schema.optional(Schema.String),
   });
 export type GetProjectBranchSchemaComparisonOutput =
@@ -50,9 +50,8 @@ export type GetProjectBranchSchemaComparisonOutput =
  * @param base_timestamp - The point in time for the base branch schema
 
  */
-export const getProjectBranchSchemaComparison =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetProjectBranchSchemaComparisonInput,
-    outputSchema: GetProjectBranchSchemaComparisonOutput,
-    errors: [NotFound] as const,
-  }));
+export const getProjectBranchSchemaComparison = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProjectBranchSchemaComparisonInput,
+  outputSchema: GetProjectBranchSchemaComparisonOutput,
+  errors: [NotFound] as const,
+}));

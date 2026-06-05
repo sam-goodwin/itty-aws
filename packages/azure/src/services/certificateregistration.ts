@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AppServiceCertificateOrdersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type AppServiceCertificateOrdersCreateOrUpdateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,14 +59,15 @@ export type AppServiceCertificateOrdersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServiceCertificateOrdersCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceCertificateOrdersCreateOrUpdateInput,
     outputSchema: AppServiceCertificateOrdersCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -83,7 +84,7 @@ export type AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -118,13 +119,13 @@ export type AppServiceCertificateOrdersCreateOrUpdateCertificateOutput =
  * @param name - Name of the certificate.
  */
 export const AppServiceCertificateOrdersCreateOrUpdateCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersCreateOrUpdateCertificateInput,
     outputSchema: AppServiceCertificateOrdersCreateOrUpdateCertificateOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -140,7 +141,7 @@ export type AppServiceCertificateOrdersDeleteInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersDeleteOutput =
   typeof AppServiceCertificateOrdersDeleteOutput.Type;
 
@@ -155,14 +156,13 @@ export type AppServiceCertificateOrdersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceCertificateOrdersDeleteInput,
-    outputSchema: AppServiceCertificateOrdersDeleteOutput,
-  }));
+export const AppServiceCertificateOrdersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceCertificateOrdersDeleteInput,
+  outputSchema: AppServiceCertificateOrdersDeleteOutput,
+}));
 // Input Schema
 export const AppServiceCertificateOrdersDeleteCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -179,7 +179,7 @@ export type AppServiceCertificateOrdersDeleteCertificateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersDeleteCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersDeleteCertificateOutput =
   typeof AppServiceCertificateOrdersDeleteCertificateOutput.Type;
 
@@ -196,29 +196,28 @@ export type AppServiceCertificateOrdersDeleteCertificateOutput =
  * @param name - Name of the certificate.
  */
 export const AppServiceCertificateOrdersDeleteCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersDeleteCertificateInput,
     outputSchema: AppServiceCertificateOrdersDeleteCertificateOutput,
   }));
 // Input Schema
-export const AppServiceCertificateOrdersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
-    }),
-  );
+export const AppServiceCertificateOrdersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  certificateOrderName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
+  }),
+);
 export type AppServiceCertificateOrdersGetInput =
   typeof AppServiceCertificateOrdersGetInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppServiceCertificateOrdersGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -236,7 +235,8 @@ export const AppServiceCertificateOrdersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type AppServiceCertificateOrdersGetOutput =
   typeof AppServiceCertificateOrdersGetOutput.Type;
 
@@ -251,14 +251,13 @@ export type AppServiceCertificateOrdersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceCertificateOrdersGetInput,
-    outputSchema: AppServiceCertificateOrdersGetOutput,
-  }));
+export const AppServiceCertificateOrdersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceCertificateOrdersGetInput,
+  outputSchema: AppServiceCertificateOrdersGetOutput,
+}));
 // Input Schema
 export const AppServiceCertificateOrdersGetCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -275,7 +274,7 @@ export type AppServiceCertificateOrdersGetCertificateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersGetCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -309,28 +308,30 @@ export type AppServiceCertificateOrdersGetCertificateOutput =
  * @param certificateOrderName - Name of the certificate order..
  * @param name - Name of the certificate.
  */
-export const AppServiceCertificateOrdersGetCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServiceCertificateOrdersGetCertificate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceCertificateOrdersGetCertificateInput,
     outputSchema: AppServiceCertificateOrdersGetCertificateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServiceCertificateOrdersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppServiceCertificateOrdersListInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
+  }),
+);
 export type AppServiceCertificateOrdersListInput =
   typeof AppServiceCertificateOrdersListInput.Type;
 
 // Output Schema
 export const AppServiceCertificateOrdersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -376,14 +377,13 @@ export type AppServiceCertificateOrdersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AppServiceCertificateOrdersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceCertificateOrdersListInput,
-    outputSchema: AppServiceCertificateOrdersListOutput,
-  }));
+export const AppServiceCertificateOrdersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceCertificateOrdersListInput,
+  outputSchema: AppServiceCertificateOrdersListOutput,
+}));
 // Input Schema
 export const AppServiceCertificateOrdersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -398,7 +398,7 @@ export type AppServiceCertificateOrdersListByResourceGroupInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -446,13 +446,13 @@ export type AppServiceCertificateOrdersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AppServiceCertificateOrdersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersListByResourceGroupInput,
     outputSchema: AppServiceCertificateOrdersListByResourceGroupOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersListCertificatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -468,7 +468,7 @@ export type AppServiceCertificateOrdersListCertificatesInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersListCertificatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -517,13 +517,13 @@ export type AppServiceCertificateOrdersListCertificatesOutput =
  * @param certificateOrderName - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersListCertificates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersListCertificatesInput,
     outputSchema: AppServiceCertificateOrdersListCertificatesOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersReissueInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -539,7 +539,7 @@ export type AppServiceCertificateOrdersReissueInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersReissueOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersReissueOutput =
   typeof AppServiceCertificateOrdersReissueOutput.Type;
 
@@ -554,14 +554,15 @@ export type AppServiceCertificateOrdersReissueOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersReissue =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServiceCertificateOrdersReissue = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceCertificateOrdersReissueInput,
     outputSchema: AppServiceCertificateOrdersReissueOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceCertificateOrdersRenewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -576,8 +577,7 @@ export type AppServiceCertificateOrdersRenewInput =
   typeof AppServiceCertificateOrdersRenewInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersRenewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersRenewOutput = /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersRenewOutput =
   typeof AppServiceCertificateOrdersRenewOutput.Type;
 
@@ -592,14 +592,13 @@ export type AppServiceCertificateOrdersRenewOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersRenew =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceCertificateOrdersRenewInput,
-    outputSchema: AppServiceCertificateOrdersRenewOutput,
-  }));
+export const AppServiceCertificateOrdersRenew = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceCertificateOrdersRenewInput,
+  outputSchema: AppServiceCertificateOrdersRenewOutput,
+}));
 // Input Schema
 export const AppServiceCertificateOrdersResendEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -615,7 +614,7 @@ export type AppServiceCertificateOrdersResendEmailInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersResendEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersResendEmailOutput =
   typeof AppServiceCertificateOrdersResendEmailOutput.Type;
 
@@ -630,14 +629,15 @@ export type AppServiceCertificateOrdersResendEmailOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersResendEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServiceCertificateOrdersResendEmail = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceCertificateOrdersResendEmailInput,
     outputSchema: AppServiceCertificateOrdersResendEmailOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceCertificateOrdersResendRequestEmailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -653,7 +653,7 @@ export type AppServiceCertificateOrdersResendRequestEmailsInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersResendRequestEmailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersResendRequestEmailsOutput =
   typeof AppServiceCertificateOrdersResendRequestEmailsOutput.Type;
 
@@ -669,13 +669,13 @@ export type AppServiceCertificateOrdersResendRequestEmailsOutput =
  * @param certificateOrderName - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersResendRequestEmails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersResendRequestEmailsInput,
     outputSchema: AppServiceCertificateOrdersResendRequestEmailsOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersRetrieveCertificateActionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -691,7 +691,7 @@ export type AppServiceCertificateOrdersRetrieveCertificateActionsInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersRetrieveCertificateActionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       actionType: Schema.optional(
         Schema.Literals([
@@ -729,13 +729,13 @@ export type AppServiceCertificateOrdersRetrieveCertificateActionsOutput =
  * @param name - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersRetrieveCertificateActions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersRetrieveCertificateActionsInput,
     outputSchema: AppServiceCertificateOrdersRetrieveCertificateActionsOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -751,7 +751,7 @@ export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       emailId: Schema.optional(Schema.String),
       timeStamp: Schema.optional(Schema.String),
@@ -772,7 +772,7 @@ export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput =
  * @param name - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput,
     outputSchema:
@@ -780,7 +780,7 @@ export const AppServiceCertificateOrdersRetrieveCertificateEmailHistory =
   }));
 // Input Schema
 export const AppServiceCertificateOrdersRetrieveSiteSealInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -796,7 +796,7 @@ export type AppServiceCertificateOrdersRetrieveSiteSealInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersRetrieveSiteSealOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     html: Schema.String,
   });
 export type AppServiceCertificateOrdersRetrieveSiteSealOutput =
@@ -814,13 +814,13 @@ export type AppServiceCertificateOrdersRetrieveSiteSealOutput =
  * @param certificateOrderName - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersRetrieveSiteSeal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersRetrieveSiteSealInput,
     outputSchema: AppServiceCertificateOrdersRetrieveSiteSealOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -836,7 +836,7 @@ export type AppServiceCertificateOrdersUpdateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -869,14 +869,13 @@ export type AppServiceCertificateOrdersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param certificateOrderName - Name of the certificate order..
  */
-export const AppServiceCertificateOrdersUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceCertificateOrdersUpdateInput,
-    outputSchema: AppServiceCertificateOrdersUpdateOutput,
-  }));
+export const AppServiceCertificateOrdersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceCertificateOrdersUpdateInput,
+  outputSchema: AppServiceCertificateOrdersUpdateOutput,
+}));
 // Input Schema
 export const AppServiceCertificateOrdersUpdateCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -893,7 +892,7 @@ export type AppServiceCertificateOrdersUpdateCertificateInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersUpdateCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -928,13 +927,13 @@ export type AppServiceCertificateOrdersUpdateCertificateOutput =
  * @param name - Name of the certificate.
  */
 export const AppServiceCertificateOrdersUpdateCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersUpdateCertificateInput,
     outputSchema: AppServiceCertificateOrdersUpdateCertificateOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersValidatePurchaseInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -948,7 +947,7 @@ export type AppServiceCertificateOrdersValidatePurchaseInformationInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersValidatePurchaseInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersValidatePurchaseInformationOutput =
   typeof AppServiceCertificateOrdersValidatePurchaseInformationOutput.Type;
 
@@ -962,13 +961,13 @@ export type AppServiceCertificateOrdersValidatePurchaseInformationOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AppServiceCertificateOrdersValidatePurchaseInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersValidatePurchaseInformationInput,
     outputSchema: AppServiceCertificateOrdersValidatePurchaseInformationOutput,
   }));
 // Input Schema
 export const AppServiceCertificateOrdersVerifyDomainOwnershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -984,7 +983,7 @@ export type AppServiceCertificateOrdersVerifyDomainOwnershipInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
   typeof AppServiceCertificateOrdersVerifyDomainOwnershipOutput.Type;
 
@@ -1000,13 +999,13 @@ export type AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
  * @param certificateOrderName - Name of the certificate order..
  */
 export const AppServiceCertificateOrdersVerifyDomainOwnership =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceCertificateOrdersVerifyDomainOwnershipInput,
     outputSchema: AppServiceCertificateOrdersVerifyDomainOwnershipOutput,
   }));
 // Input Schema
 export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -1026,7 +1025,7 @@ export type CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRes
 
 // Output Schema
 export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1064,7 +1063,7 @@ export type CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRes
  * @param timeGrain - The time grain for the detector response.
  */
 export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput,
     outputSchema:
@@ -1072,7 +1071,7 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
   }));
 // Input Schema
 export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
@@ -1088,7 +1087,7 @@ export type CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorRe
 
 // Output Schema
 export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1137,7 +1136,7 @@ export type CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorRe
  * @param certificateOrderName - Name of the certificate order..
  */
 export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput,
     outputSchema:
@@ -1145,7 +1144,7 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
   }));
 // Input Schema
 export const CertificateRegistrationProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1158,7 +1157,7 @@ export type CertificateRegistrationProviderListOperationsInput =
 
 // Output Schema
 export const CertificateRegistrationProviderListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -1253,7 +1252,7 @@ export type CertificateRegistrationProviderListOperationsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CertificateRegistrationProviderListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificateRegistrationProviderListOperationsInput,
     outputSchema: CertificateRegistrationProviderListOperationsOutput,
   }));

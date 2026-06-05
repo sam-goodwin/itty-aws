@@ -4,21 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes" }),
-  );
+export const ListGroupProcessesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes" }),
+);
 export type ListGroupProcessesInput = typeof ListGroupProcessesInput.Type;
 
 // Output Schema
-export const ListGroupProcessesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupProcessesOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupProcessesOutput = typeof ListGroupProcessesOutput.Type;
 
 // The operation
@@ -36,7 +35,7 @@ export type ListGroupProcessesOutput = typeof ListGroupProcessesOutput.Type;
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupProcesses = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupProcessesInput,
   outputSchema: ListGroupProcessesOutput,
   errors: [Forbidden, NotFound] as const,

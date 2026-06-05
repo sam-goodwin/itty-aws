@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ToggleGroupAwsCustomDnsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/awsCustomDNS",
-    }),
-  );
+export const ToggleGroupAwsCustomDnsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/awsCustomDNS",
+  }),
+);
 export type ToggleGroupAwsCustomDnsInput =
   typeof ToggleGroupAwsCustomDnsInput.Type;
 
 // Output Schema
-export const ToggleGroupAwsCustomDnsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ToggleGroupAwsCustomDnsOutput = /*@__PURE__*/ Schema.Void;
 export type ToggleGroupAwsCustomDnsOutput =
   typeof ToggleGroupAwsCustomDnsOutput.Type;
 
@@ -36,10 +34,8 @@ export type ToggleGroupAwsCustomDnsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const toggleGroupAwsCustomDns = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ToggleGroupAwsCustomDnsInput,
-    outputSchema: ToggleGroupAwsCustomDnsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const toggleGroupAwsCustomDns = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ToggleGroupAwsCustomDnsInput,
+  outputSchema: ToggleGroupAwsCustomDnsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

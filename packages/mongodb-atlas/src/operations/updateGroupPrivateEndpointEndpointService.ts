@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type UpdateGroupPrivateEndpointEndpointServiceInput =
 
 // Output Schema
 export const UpdateGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UpdateGroupPrivateEndpointEndpointServiceOutput =
   typeof UpdateGroupPrivateEndpointEndpointServiceOutput.Type;
 
@@ -38,9 +38,10 @@ export type UpdateGroupPrivateEndpointEndpointServiceOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update.
  */
-export const updateGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupPrivateEndpointEndpointService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UpdateGroupPrivateEndpointEndpointServiceInput,
     outputSchema: UpdateGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

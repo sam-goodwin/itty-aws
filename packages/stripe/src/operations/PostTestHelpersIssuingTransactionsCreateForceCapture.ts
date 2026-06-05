@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     card: Schema.String,
     currency: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export type PostTestHelpersIssuingTransactionsCreateForceCaptureInput =
 
 // Output Schema
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     authorization: Schema.Unknown,
@@ -495,7 +495,7 @@ export type PostTestHelpersIssuingTransactionsCreateForceCaptureOutput =
  * <p>Allows the user to capture an arbitrary amount, also known as a forced capture.</p>
  */
 export const PostTestHelpersIssuingTransactionsCreateForceCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsCreateForceCaptureInput,
     outputSchema: PostTestHelpersIssuingTransactionsCreateForceCaptureOutput,
   }));

@@ -3,160 +3,156 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetCreditNotesPreviewLinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amount: Schema.optional(Schema.Number),
-    credit_amount: Schema.optional(Schema.Number),
-    effective_at: Schema.optional(Schema.Number),
-    email_type: Schema.optional(Schema.Literals(["credit_note", "none"])),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    invoice: Schema.String,
-    limit: Schema.optional(Schema.Number),
-    lines: Schema.optional(Schema.String),
-    memo: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.String),
-    out_of_band_amount: Schema.optional(Schema.Number),
-    reason: Schema.optional(
-      Schema.Literals([
-        "duplicate",
-        "fraudulent",
-        "order_change",
-        "product_unsatisfactory",
-      ]),
-    ),
-    refund_amount: Schema.optional(Schema.Number),
-    refunds: Schema.optional(Schema.String),
-    shipping_cost: Schema.optional(Schema.String),
-    starting_after: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/credit_notes/preview/lines",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetCreditNotesPreviewLinesInput = /*@__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  credit_amount: Schema.optional(Schema.Number),
+  effective_at: Schema.optional(Schema.Number),
+  email_type: Schema.optional(Schema.Literals(["credit_note", "none"])),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  invoice: Schema.String,
+  limit: Schema.optional(Schema.Number),
+  lines: Schema.optional(Schema.String),
+  memo: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.String),
+  out_of_band_amount: Schema.optional(Schema.Number),
+  reason: Schema.optional(
+    Schema.Literals([
+      "duplicate",
+      "fraudulent",
+      "order_change",
+      "product_unsatisfactory",
+    ]),
+  ),
+  refund_amount: Schema.optional(Schema.Number),
+  refunds: Schema.optional(Schema.String),
+  shipping_cost: Schema.optional(Schema.String),
+  starting_after: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/credit_notes/preview/lines",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetCreditNotesPreviewLinesInput =
   typeof GetCreditNotesPreviewLinesInput.Type;
 
 // Output Schema
-export const GetCreditNotesPreviewLinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        description: Schema.NullOr(Schema.String),
-        discount_amount: Schema.Number,
-        discount_amounts: Schema.Array(
-          Schema.Struct({
-            amount: Schema.Number,
-            discount: Schema.Unknown,
-          }),
-        ),
-        id: Schema.String,
-        invoice_line_item: Schema.optional(Schema.String),
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["credit_note_line_item"]),
-        pretax_credit_amounts: Schema.Array(
-          Schema.Struct({
-            amount: Schema.Number,
-            credit_balance_transaction: Schema.optional(Schema.Unknown),
-            discount: Schema.optional(Schema.Unknown),
-            type: Schema.Literals(["credit_balance_transaction", "discount"]),
-          }),
-        ),
-        quantity: Schema.NullOr(Schema.Number),
-        tax_rates: Schema.Array(
-          Schema.Struct({
-            active: Schema.Boolean,
-            country: Schema.NullOr(Schema.String),
-            created: Schema.Number,
-            description: Schema.NullOr(Schema.String),
-            display_name: Schema.String,
-            effective_percentage: Schema.NullOr(Schema.Number),
-            flat_amount: Schema.Unknown,
-            id: Schema.String,
-            inclusive: Schema.Boolean,
-            jurisdiction: Schema.NullOr(Schema.String),
-            jurisdiction_level: Schema.NullOr(
-              Schema.Literals([
-                "city",
-                "country",
-                "county",
-                "district",
-                "multiple",
-                "state",
-              ]),
-            ),
-            livemode: Schema.Boolean,
-            metadata: Schema.NullOr(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            object: Schema.Literals(["tax_rate"]),
-            percentage: Schema.Number,
-            rate_type: Schema.NullOr(
-              Schema.Literals(["flat_amount", "percentage"]),
-            ),
-            state: Schema.NullOr(Schema.String),
-            tax_type: Schema.NullOr(
-              Schema.Literals([
-                "amusement_tax",
-                "communications_tax",
-                "gst",
-                "hst",
-                "igst",
-                "jct",
-                "lease_tax",
-                "pst",
-                "qst",
-                "retail_delivery_fee",
-                "rst",
-                "sales_tax",
-                "service_tax",
-                "vat",
-              ]),
-            ),
-          }),
-        ),
-        taxes: Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-              tax_rate_details: Schema.Unknown,
-              taxability_reason: Schema.Literals([
-                "customer_exempt",
-                "not_available",
-                "not_collecting",
-                "not_subject_to_tax",
-                "not_supported",
-                "portion_product_exempt",
-                "portion_reduced_rated",
-                "portion_standard_rated",
-                "product_exempt",
-                "product_exempt_holiday",
-                "proportionally_rated",
-                "reduced_rated",
-                "reverse_charge",
-                "standard_rated",
-                "taxable_basis_reduced",
-                "zero_rated",
-              ]),
-              taxable_amount: Schema.NullOr(Schema.Number),
-              type: Schema.Literals(["tax_rate_details"]),
-            }),
+export const GetCreditNotesPreviewLinesOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      amount: Schema.Number,
+      description: Schema.NullOr(Schema.String),
+      discount_amount: Schema.Number,
+      discount_amounts: Schema.Array(
+        Schema.Struct({
+          amount: Schema.Number,
+          discount: Schema.Unknown,
+        }),
+      ),
+      id: Schema.String,
+      invoice_line_item: Schema.optional(Schema.String),
+      livemode: Schema.Boolean,
+      metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      object: Schema.Literals(["credit_note_line_item"]),
+      pretax_credit_amounts: Schema.Array(
+        Schema.Struct({
+          amount: Schema.Number,
+          credit_balance_transaction: Schema.optional(Schema.Unknown),
+          discount: Schema.optional(Schema.Unknown),
+          type: Schema.Literals(["credit_balance_transaction", "discount"]),
+        }),
+      ),
+      quantity: Schema.NullOr(Schema.Number),
+      tax_rates: Schema.Array(
+        Schema.Struct({
+          active: Schema.Boolean,
+          country: Schema.NullOr(Schema.String),
+          created: Schema.Number,
+          description: Schema.NullOr(Schema.String),
+          display_name: Schema.String,
+          effective_percentage: Schema.NullOr(Schema.Number),
+          flat_amount: Schema.Unknown,
+          id: Schema.String,
+          inclusive: Schema.Boolean,
+          jurisdiction: Schema.NullOr(Schema.String),
+          jurisdiction_level: Schema.NullOr(
+            Schema.Literals([
+              "city",
+              "country",
+              "county",
+              "district",
+              "multiple",
+              "state",
+            ]),
           ),
+          livemode: Schema.Boolean,
+          metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+          object: Schema.Literals(["tax_rate"]),
+          percentage: Schema.Number,
+          rate_type: Schema.NullOr(
+            Schema.Literals(["flat_amount", "percentage"]),
+          ),
+          state: Schema.NullOr(Schema.String),
+          tax_type: Schema.NullOr(
+            Schema.Literals([
+              "amusement_tax",
+              "communications_tax",
+              "gst",
+              "hst",
+              "igst",
+              "jct",
+              "lease_tax",
+              "pst",
+              "qst",
+              "retail_delivery_fee",
+              "rst",
+              "sales_tax",
+              "service_tax",
+              "vat",
+            ]),
+          ),
+        }),
+      ),
+      taxes: Schema.NullOr(
+        Schema.Array(
+          Schema.Struct({
+            amount: Schema.Number,
+            tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
+            tax_rate_details: Schema.Unknown,
+            taxability_reason: Schema.Literals([
+              "customer_exempt",
+              "not_available",
+              "not_collecting",
+              "not_subject_to_tax",
+              "not_supported",
+              "portion_product_exempt",
+              "portion_reduced_rated",
+              "portion_standard_rated",
+              "product_exempt",
+              "product_exempt_holiday",
+              "proportionally_rated",
+              "reduced_rated",
+              "reverse_charge",
+              "standard_rated",
+              "taxable_basis_reduced",
+              "zero_rated",
+            ]),
+            taxable_amount: Schema.NullOr(Schema.Number),
+            type: Schema.Literals(["tax_rate_details"]),
+          }),
         ),
-        type: Schema.Literals(["custom_line_item", "invoice_line_item"]),
-        unit_amount: Schema.NullOr(Schema.Number),
-        unit_amount_decimal: Schema.NullOr(Schema.String),
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+      ),
+      type: Schema.Literals(["custom_line_item", "invoice_line_item"]),
+      unit_amount: Schema.NullOr(Schema.Number),
+      unit_amount_decimal: Schema.NullOr(Schema.String),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetCreditNotesPreviewLinesOutput =
   typeof GetCreditNotesPreviewLinesOutput.Type;
 
@@ -184,9 +180,7 @@ export type GetCreditNotesPreviewLinesOutput =
  * @param shipping_cost - When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is included in the credit note. One of `amount`, `lines`, or `shipping_cost` must be provided.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetCreditNotesPreviewLines = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCreditNotesPreviewLinesInput,
-    outputSchema: GetCreditNotesPreviewLinesOutput,
-  }),
-);
+export const GetCreditNotesPreviewLines = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCreditNotesPreviewLinesInput,
+  outputSchema: GetCreditNotesPreviewLinesOutput,
+}));

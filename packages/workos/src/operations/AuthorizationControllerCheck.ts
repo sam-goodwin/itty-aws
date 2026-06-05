@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const AuthorizationControllerCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_membership_id: Schema.String.pipe(T.PathParam()),
-    permission_slug: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/authorization/organization_memberships/{organization_membership_id}/check",
-    }),
-  );
+export const AuthorizationControllerCheckInput = /*@__PURE__*/ Schema.Struct({
+  organization_membership_id: Schema.String.pipe(T.PathParam()),
+  permission_slug: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/authorization/organization_memberships/{organization_membership_id}/check",
+  }),
+);
 export type AuthorizationControllerCheckInput =
   typeof AuthorizationControllerCheckInput.Type;
 
 // Output Schema
-export const AuthorizationControllerCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorized: Schema.optional(Schema.Boolean),
-  });
+export const AuthorizationControllerCheckOutput = /*@__PURE__*/ Schema.Struct({
+  authorized: Schema.optional(Schema.Boolean),
+});
 export type AuthorizationControllerCheckOutput =
   typeof AuthorizationControllerCheckOutput.Type;
 
@@ -33,9 +31,8 @@ export type AuthorizationControllerCheckOutput =
  *
  * @param organization_membership_id - The ID of the organization membership to check.
  */
-export const AuthorizationControllerCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuthorizationControllerCheckInput,
-    outputSchema: AuthorizationControllerCheckOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+export const AuthorizationControllerCheck = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationControllerCheckInput,
+  outputSchema: AuthorizationControllerCheckOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

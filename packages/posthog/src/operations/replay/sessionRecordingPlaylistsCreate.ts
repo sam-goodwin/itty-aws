@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SessionRecordingPlaylistsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SessionRecordingPlaylistsCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
     short_id: Schema.optional(Schema.String),
@@ -60,18 +60,19 @@ export const SessionRecordingPlaylistsCreateInput =
     type: Schema.optional(Schema.Unknown),
     is_synthetic: Schema.optional(Schema.Boolean),
     _create_in_folder: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/session_recording_playlists/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/session_recording_playlists/",
+  }),
+);
 export type SessionRecordingPlaylistsCreateInput =
   typeof SessionRecordingPlaylistsCreateInput.Type;
 
 // Output Schema
 export const SessionRecordingPlaylistsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -134,9 +135,8 @@ export type SessionRecordingPlaylistsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sessionRecordingPlaylistsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SessionRecordingPlaylistsCreateInput,
-    outputSchema: SessionRecordingPlaylistsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const sessionRecordingPlaylistsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SessionRecordingPlaylistsCreateInput,
+  outputSchema: SessionRecordingPlaylistsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

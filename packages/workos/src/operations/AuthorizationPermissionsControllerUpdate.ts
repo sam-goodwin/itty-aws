@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationPermissionsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -17,7 +17,7 @@ export type AuthorizationPermissionsControllerUpdateInput =
 
 // Output Schema
 export const AuthorizationPermissionsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -39,9 +39,10 @@ export type AuthorizationPermissionsControllerUpdateOutput =
  *
  * @param slug - A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks.
  */
-export const AuthorizationPermissionsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationPermissionsControllerUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationPermissionsControllerUpdateInput,
     outputSchema: AuthorizationPermissionsControllerUpdateOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

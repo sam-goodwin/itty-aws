@@ -4,94 +4,92 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppCertificatesCustomDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    hostname: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apps/{app_name}/certificates/{hostname}/custom",
-    }),
-  );
+export const AppCertificatesCustomDeleteInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  hostname: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apps/{app_name}/certificates/{hostname}/custom",
+  }),
+);
 export type AppCertificatesCustomDeleteInput =
   typeof AppCertificatesCustomDeleteInput.Type;
 
 // Output Schema
-export const AppCertificatesCustomDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    acme_requested: Schema.optional(Schema.Boolean),
-    certificates: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          created_at: Schema.optional(Schema.String),
-          expires_at: Schema.optional(Schema.String),
-          issued: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                certificate_authority: Schema.optional(Schema.String),
-                expires_at: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.Literals(["rsa", "ecdsa"])),
-              }),
-            ),
-          ),
-          issuer: Schema.optional(Schema.String),
-          source: Schema.optional(Schema.Literals(["custom", "fly"])),
-          status: Schema.optional(
-            Schema.Literals([
-              "active",
-              "pending_ownership",
-              "pending_validation",
-            ]),
-          ),
-        }),
-      ),
-    ),
-    configured: Schema.optional(Schema.Boolean),
-    dns_provider: Schema.optional(Schema.String),
-    dns_requirements: Schema.optional(
+export const AppCertificatesCustomDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  acme_requested: Schema.optional(Schema.Boolean),
+  certificates: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        a: Schema.optional(Schema.Array(Schema.String)),
-        aaaa: Schema.optional(Schema.Array(Schema.String)),
-        acme_challenge: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-          }),
+        created_at: Schema.optional(Schema.String),
+        expires_at: Schema.optional(Schema.String),
+        issued: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              certificate_authority: Schema.optional(Schema.String),
+              expires_at: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.Literals(["rsa", "ecdsa"])),
+            }),
+          ),
         ),
-        cname: Schema.optional(Schema.String),
-        ownership: Schema.optional(
-          Schema.Struct({
-            app_value: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            org_value: Schema.optional(Schema.String),
-          }),
+        issuer: Schema.optional(Schema.String),
+        source: Schema.optional(Schema.Literals(["custom", "fly"])),
+        status: Schema.optional(
+          Schema.Literals([
+            "active",
+            "pending_ownership",
+            "pending_validation",
+          ]),
         ),
       }),
     ),
-    hostname: Schema.optional(Schema.String),
-    rate_limited_until: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    validation: Schema.optional(
-      Schema.Struct({
-        alpn_configured: Schema.optional(Schema.Boolean),
-        dns_configured: Schema.optional(Schema.Boolean),
-        http_configured: Schema.optional(Schema.Boolean),
-        ownership_txt_configured: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    validation_errors: Schema.optional(
-      Schema.Array(
+  ),
+  configured: Schema.optional(Schema.Boolean),
+  dns_provider: Schema.optional(Schema.String),
+  dns_requirements: Schema.optional(
+    Schema.Struct({
+      a: Schema.optional(Schema.Array(Schema.String)),
+      aaaa: Schema.optional(Schema.Array(Schema.String)),
+      acme_challenge: Schema.optional(
         Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
         }),
       ),
+      cname: Schema.optional(Schema.String),
+      ownership: Schema.optional(
+        Schema.Struct({
+          app_value: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          org_value: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  hostname: Schema.optional(Schema.String),
+  rate_limited_until: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  validation: Schema.optional(
+    Schema.Struct({
+      alpn_configured: Schema.optional(Schema.Boolean),
+      dns_configured: Schema.optional(Schema.Boolean),
+      http_configured: Schema.optional(Schema.Boolean),
+      ownership_txt_configured: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  validation_errors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        remediation: Schema.optional(Schema.String),
+        timestamp: Schema.optional(Schema.String),
+      }),
     ),
-    warning: Schema.optional(Schema.String),
-  });
+  ),
+  warning: Schema.optional(Schema.String),
+});
 export type AppCertificatesCustomDeleteOutput =
   typeof AppCertificatesCustomDeleteOutput.Type;
 
@@ -102,10 +100,8 @@ export type AppCertificatesCustomDeleteOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesCustomDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesCustomDeleteInput,
-    outputSchema: AppCertificatesCustomDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesCustomDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesCustomDeleteInput,
+  outputSchema: AppCertificatesCustomDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

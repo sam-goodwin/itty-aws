@@ -4,27 +4,25 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupProcessDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases",
-    }),
-  );
+export const ListGroupProcessDatabasesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases",
+  }),
+);
 export type ListGroupProcessDatabasesInput =
   typeof ListGroupProcessDatabasesInput.Type;
 
 // Output Schema
-export const ListGroupProcessDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupProcessDatabasesOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupProcessDatabasesOutput =
   typeof ListGroupProcessDatabasesOutput.Type;
 
@@ -44,10 +42,8 @@ export type ListGroupProcessDatabasesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param processId - Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod`). The port must be the IANA port on which the MongoDB process listens for requests.
  */
-export const listGroupProcessDatabases = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupProcessDatabasesInput,
-    outputSchema: ListGroupProcessDatabasesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupProcessDatabases = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupProcessDatabasesInput,
+  outputSchema: ListGroupProcessDatabasesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

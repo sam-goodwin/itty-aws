@@ -4,46 +4,44 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DirectoryGroupsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-    directory: Schema.optional(Schema.String),
-    user: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/directory_groups" }));
+export const DirectoryGroupsControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+  directory: Schema.optional(Schema.String),
+  user: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/directory_groups" }));
 export type DirectoryGroupsControllerListInput =
   typeof DirectoryGroupsControllerListInput.Type;
 
 // Output Schema
-export const DirectoryGroupsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          idp_id: Schema.optional(Schema.String),
-          directory_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          raw_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+export const DirectoryGroupsControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        idp_id: Schema.optional(Schema.String),
+        directory_id: Schema.optional(Schema.String),
+        organization_id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        raw_attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type DirectoryGroupsControllerListOutput =
   typeof DirectoryGroupsControllerListOutput.Type;
 
@@ -60,9 +58,8 @@ export type DirectoryGroupsControllerListOutput =
  * @param directory - Unique identifier of the WorkOS Directory. This value can be obtained from the WorkOS dashboard or from the WorkOS API.
  * @param user - Unique identifier of the WorkOS Directory User. This value can be obtained from the WorkOS API.
  */
-export const DirectoryGroupsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DirectoryGroupsControllerListInput,
-    outputSchema: DirectoryGroupsControllerListOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+export const DirectoryGroupsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectoryGroupsControllerListInput,
+  outputSchema: DirectoryGroupsControllerListOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

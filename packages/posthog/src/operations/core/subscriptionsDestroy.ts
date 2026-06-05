@@ -4,21 +4,19 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SubscriptionsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/projects/{project_id}/subscriptions/{id}/",
-    }),
-  );
+export const SubscriptionsDestroyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/projects/{project_id}/subscriptions/{id}/",
+  }),
+);
 export type SubscriptionsDestroyInput = typeof SubscriptionsDestroyInput.Type;
 
 // Output Schema
-export const SubscriptionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SubscriptionsDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type SubscriptionsDestroyOutput = typeof SubscriptionsDestroyOutput.Type;
 
 // The operation
@@ -28,10 +26,8 @@ export type SubscriptionsDestroyOutput = typeof SubscriptionsDestroyOutput.Type;
  * @param id - A unique integer value identifying this subscription.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const subscriptionsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionsDestroyInput,
-    outputSchema: SubscriptionsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const subscriptionsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionsDestroyInput,
+  outputSchema: SubscriptionsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

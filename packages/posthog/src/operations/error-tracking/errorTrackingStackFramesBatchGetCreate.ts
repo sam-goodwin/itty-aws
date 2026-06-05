@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingStackFramesBatchGetCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     raw_id: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export type ErrorTrackingStackFramesBatchGetCreateInput =
 
 // Output Schema
 export const ErrorTrackingStackFramesBatchGetCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingStackFramesBatchGetCreateOutput =
   typeof ErrorTrackingStackFramesBatchGetCreateOutput.Type;
 
@@ -45,9 +45,10 @@ export type ErrorTrackingStackFramesBatchGetCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingStackFramesBatchGetCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingStackFramesBatchGetCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingStackFramesBatchGetCreateInput,
     outputSchema: ErrorTrackingStackFramesBatchGetCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

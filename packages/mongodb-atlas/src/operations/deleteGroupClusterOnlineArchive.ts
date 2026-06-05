@@ -4,25 +4,25 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupClusterOnlineArchiveInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     archiveId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+  }),
+);
 export type DeleteGroupClusterOnlineArchiveInput =
   typeof DeleteGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupClusterOnlineArchiveOutput =
   typeof DeleteGroupClusterOnlineArchiveOutput.Type;
 
@@ -40,9 +40,8 @@ export type DeleteGroupClusterOnlineArchiveOutput =
  * @param archiveId - Unique 24-hexadecimal digit string that identifies the online archive to delete.
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection from which you want to remove an online archive.
  */
-export const deleteGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupClusterOnlineArchiveInput,
-    outputSchema: DeleteGroupClusterOnlineArchiveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const deleteGroupClusterOnlineArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupClusterOnlineArchiveInput,
+  outputSchema: DeleteGroupClusterOnlineArchiveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

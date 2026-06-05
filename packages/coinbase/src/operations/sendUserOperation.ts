@@ -3,13 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const SendUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String.pipe(T.PathParam()),
-    userOpHash: Schema.String.pipe(T.PathParam()),
-    signature: Schema.String,
-  },
-).pipe(
+export const SendUserOperationInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  userOpHash: Schema.String.pipe(T.PathParam()),
+  signature: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v2/evm/smart-accounts/{address}/user-operations/{userOpHash}/send",
@@ -18,55 +16,54 @@ export const SendUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SendUserOperationInput = typeof SendUserOperationInput.Type;
 
 // Output Schema
-export const SendUserOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.Literals([
-      "base-sepolia",
-      "base",
-      "arbitrum",
-      "optimism",
-      "zora",
-      "polygon",
-      "bnb",
-      "avalanche",
-      "ethereum",
-      "ethereum-sepolia",
-    ]),
-    userOpHash: Schema.String,
-    calls: Schema.Array(
+export const SendUserOperationOutput = /*@__PURE__*/ Schema.Struct({
+  network: Schema.Literals([
+    "base-sepolia",
+    "base",
+    "arbitrum",
+    "optimism",
+    "zora",
+    "polygon",
+    "bnb",
+    "avalanche",
+    "ethereum",
+    "ethereum-sepolia",
+  ]),
+  userOpHash: Schema.String,
+  calls: Schema.Array(
+    Schema.Struct({
+      to: Schema.String,
+      value: Schema.String,
+      data: Schema.String,
+      overrideGasLimit: Schema.optional(Schema.String),
+    }),
+  ),
+  status: Schema.Literals([
+    "pending",
+    "signed",
+    "broadcast",
+    "complete",
+    "dropped",
+    "failed",
+  ]),
+  transactionHash: Schema.optional(Schema.String),
+  receipts: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        to: Schema.String,
-        value: Schema.String,
-        data: Schema.String,
-        overrideGasLimit: Schema.optional(Schema.String),
+        revert: Schema.optional(
+          Schema.Struct({
+            data: Schema.String,
+            message: Schema.String,
+          }),
+        ),
+        transactionHash: Schema.optional(Schema.String),
+        blockHash: Schema.optional(Schema.String),
+        blockNumber: Schema.optional(Schema.Number),
+        gasUsed: Schema.optional(Schema.String),
       }),
     ),
-    status: Schema.Literals([
-      "pending",
-      "signed",
-      "broadcast",
-      "complete",
-      "dropped",
-      "failed",
-    ]),
-    transactionHash: Schema.optional(Schema.String),
-    receipts: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          revert: Schema.optional(
-            Schema.Struct({
-              data: Schema.String,
-              message: Schema.String,
-            }),
-          ),
-          transactionHash: Schema.optional(Schema.String),
-          blockHash: Schema.optional(Schema.String),
-          blockNumber: Schema.optional(Schema.Number),
-          gasUsed: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-  });
+  ),
+});
 export type SendUserOperationOutput = typeof SendUserOperationOutput.Type;
 
 // The operation
@@ -81,7 +78,7 @@ export type SendUserOperationOutput = typeof SendUserOperationOutput.Type;
  * @param address - The address of the Smart Account to send the user operation from.
  * @param userOpHash - The hash of the user operation to send.
  */
-export const sendUserOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sendUserOperation = /*@__PURE__*/ API.make(() => ({
   inputSchema: SendUserOperationInput,
   outputSchema: SendUserOperationOutput,
 }));

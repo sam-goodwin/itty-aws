@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostPaymentMethodsPaymentMethodDetachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostPaymentMethodsPaymentMethodDetachInput =
 
 // Output Schema
 export const PostPaymentMethodsPaymentMethodDetachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -527,8 +527,9 @@ export type PostPaymentMethodsPaymentMethodDetachOutput =
  *
  * <p>Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached, it can no longer be used for a payment or re-attached to a Customer.</p>
  */
-export const PostPaymentMethodsPaymentMethodDetach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPaymentMethodsPaymentMethodDetach = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostPaymentMethodsPaymentMethodDetachInput,
     outputSchema: PostPaymentMethodsPaymentMethodDetachOutput,
-  }));
+  }),
+);

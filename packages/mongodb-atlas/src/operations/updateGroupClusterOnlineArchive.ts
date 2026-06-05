@@ -4,25 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupClusterOnlineArchiveInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     archiveId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+  }),
+);
 export type UpdateGroupClusterOnlineArchiveInput =
   typeof UpdateGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupClusterOnlineArchiveOutput =
   typeof UpdateGroupClusterOnlineArchiveOutput.Type;
 
@@ -40,9 +40,8 @@ export type UpdateGroupClusterOnlineArchiveOutput =
  * @param archiveId - Unique 24-hexadecimal digit string that identifies the online archive to update.
  * @param clusterName - Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
  */
-export const updateGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupClusterOnlineArchiveInput,
-    outputSchema: UpdateGroupClusterOnlineArchiveOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const updateGroupClusterOnlineArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupClusterOnlineArchiveInput,
+  outputSchema: UpdateGroupClusterOnlineArchiveOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

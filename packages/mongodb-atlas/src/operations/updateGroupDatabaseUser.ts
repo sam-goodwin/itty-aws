@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
-    }),
-  );
+export const UpdateGroupDatabaseUserInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
+  }),
+);
 export type UpdateGroupDatabaseUserInput =
   typeof UpdateGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const UpdateGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupDatabaseUserOutput =
   typeof UpdateGroupDatabaseUserOutput.Type;
 
@@ -53,10 +51,8 @@ export type UpdateGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const updateGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupDatabaseUserInput,
-    outputSchema: UpdateGroupDatabaseUserOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const updateGroupDatabaseUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupDatabaseUserInput,
+  outputSchema: UpdateGroupDatabaseUserOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

@@ -4,34 +4,32 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    integrationType: Schema.Literals([
-      "PAGER_DUTY",
-      "SLACK",
-      "DATADOG",
-      "NEW_RELIC",
-      "OPS_GENIE",
-      "VICTOR_OPS",
-      "WEBHOOK",
-      "HIP_CHAT",
-      "PROMETHEUS",
-      "MICROSOFT_TEAMS",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-    }),
-  );
+export const GetGroupIntegrationInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  integrationType: Schema.Literals([
+    "PAGER_DUTY",
+    "SLACK",
+    "DATADOG",
+    "NEW_RELIC",
+    "OPS_GENIE",
+    "VICTOR_OPS",
+    "WEBHOOK",
+    "HIP_CHAT",
+    "PROMETHEUS",
+    "MICROSOFT_TEAMS",
+  ]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
+  }),
+);
 export type GetGroupIntegrationInput = typeof GetGroupIntegrationInput.Type;
 
 // Output Schema
-export const GetGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
 
 // The operation
@@ -47,7 +45,7 @@ export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param integrationType - Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
  */
-export const getGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupIntegration = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupIntegrationInput,
   outputSchema: GetGroupIntegrationOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

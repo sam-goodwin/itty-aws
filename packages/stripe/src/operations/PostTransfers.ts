@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTransfersInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   currency: Schema.String,
   description: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export const PostTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTransfersInput = typeof PostTransfersInput.Type;
 
 // Output Schema
-export const PostTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTransfersOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_reversed: Schema.Number,
   balance_transaction: Schema.Unknown,
@@ -70,7 +70,7 @@ export type PostTransfersOutput = typeof PostTransfersOutput.Type;
  *
  * <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.</p>
  */
-export const PostTransfers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTransfers = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTransfersInput,
   outputSchema: PostTransfersOutput,
 }));

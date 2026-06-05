@@ -4,67 +4,65 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const HogFunctionTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-    template_id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    types: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/hog_function_templates/",
-    }),
-  );
+export const HogFunctionTemplatesListInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+  template_id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  types: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/hog_function_templates/",
+  }),
+);
 export type HogFunctionTemplatesListInput =
   typeof HogFunctionTemplatesListInput.Type;
 
 // Output Schema
-export const HogFunctionTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.optional(Schema.Number),
-    next: Schema.optional(Schema.NullOr(Schema.String)),
-    previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          code: Schema.optional(Schema.String),
-          code_language: Schema.optional(Schema.String),
-          inputs_schema: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          category: Schema.optional(Schema.Unknown),
-          free: Schema.optional(Schema.Boolean),
-          icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          mapping_templates: Schema.optional(
-            Schema.NullOr(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  include_by_default: Schema.optional(
-                    Schema.NullOr(Schema.Boolean),
-                  ),
-                  use_all_events_by_default: Schema.optional(
-                    Schema.NullOr(Schema.Boolean),
-                  ),
-                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                }),
-              ),
+export const HogFunctionTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  next: Schema.optional(Schema.NullOr(Schema.String)),
+  previous: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+        code: Schema.optional(Schema.String),
+        code_language: Schema.optional(Schema.String),
+        inputs_schema: Schema.optional(Schema.Unknown),
+        type: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        category: Schema.optional(Schema.Unknown),
+        free: Schema.optional(Schema.Boolean),
+        icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+        filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        mapping_templates: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                include_by_default: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                use_all_events_by_default: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+              }),
             ),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type HogFunctionTemplatesListOutput =
   typeof HogFunctionTemplatesListOutput.Type;
 
@@ -78,10 +76,8 @@ export type HogFunctionTemplatesListOutput =
  * @param type - Filter by template type (e.g. destination, email, sms_provider, broadcast). Defaults to destination if neither type nor types is provided.
  * @param types - Comma-separated list of template types to include (e.g. destination,email,sms_provider).
  */
-export const hogFunctionTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFunctionTemplatesListInput,
-    outputSchema: HogFunctionTemplatesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFunctionTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFunctionTemplatesListInput,
+  outputSchema: HogFunctionTemplatesListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

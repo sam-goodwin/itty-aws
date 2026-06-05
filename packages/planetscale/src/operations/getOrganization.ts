@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrganizationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrganizationInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/organizations/{organization}" }));
 export type GetOrganizationInput = typeof GetOrganizationInput.Type;
 
 // Output Schema
-export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrganizationOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   billing_email: Schema.String,
@@ -22,9 +22,9 @@ export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sso_directory: Schema.Boolean,
   single_tenancy: Schema.Boolean,
   managed_tenancy: Schema.Boolean,
-  has_past_due_invoices: Schema.optional(Schema.NullOr(Schema.Boolean)),
+  has_past_due_invoices: Schema.optional(Schema.Boolean),
   database_count: Schema.Number,
-  sso_portal_url: Schema.optional(Schema.NullOr(Schema.String)),
+  sso_portal_url: Schema.optional(Schema.String),
   features: Schema.Record(Schema.String, Schema.Unknown),
   idp_managed_roles: Schema.Boolean,
   invoice_budget_amount: Schema.String,
@@ -40,7 +40,7 @@ export type GetOrganizationOutput = typeof GetOrganizationOutput.Type;
  *
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  */
-export const getOrganization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrganization = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrganizationInput,
   outputSchema: GetOrganizationOutput,
   errors: [Forbidden, NotFound] as const,

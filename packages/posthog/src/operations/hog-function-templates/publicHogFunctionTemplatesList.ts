@@ -4,22 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
 
 // Input Schema
-export const PublicHogFunctionTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-    template_id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    types: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/public_hog_function_templates/" }),
-  );
+export const PublicHogFunctionTemplatesListInput = /*@__PURE__*/ Schema.Struct({
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+  template_id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  types: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/api/public_hog_function_templates/" }));
 export type PublicHogFunctionTemplatesListInput =
   typeof PublicHogFunctionTemplatesListInput.Type;
 
 // Output Schema
-export const PublicHogFunctionTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublicHogFunctionTemplatesListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -60,7 +57,8 @@ export const PublicHogFunctionTemplatesListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type PublicHogFunctionTemplatesListOutput =
   typeof PublicHogFunctionTemplatesListOutput.Type;
 
@@ -73,9 +71,8 @@ export type PublicHogFunctionTemplatesListOutput =
  * @param type - Filter by template type (e.g. destination, email, sms_provider, broadcast). Defaults to destination if neither type nor types is provided.
  * @param types - Comma-separated list of template types to include (e.g. destination,email,sms_provider).
  */
-export const publicHogFunctionTemplatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PublicHogFunctionTemplatesListInput,
-    outputSchema: PublicHogFunctionTemplatesListOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }));
+export const publicHogFunctionTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublicHogFunctionTemplatesListInput,
+  outputSchema: PublicHogFunctionTemplatesListOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

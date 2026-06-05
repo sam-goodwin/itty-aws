@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOauthTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   token_id: Schema.String.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteOauthTokenInput = typeof DeleteOauthTokenInput.Type;
 
 // Output Schema
-export const DeleteOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOauthTokenOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOauthTokenOutput = typeof DeleteOauthTokenOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type DeleteOauthTokenOutput = typeof DeleteOauthTokenOutput.Type;
  * @param application_id - The ID of the OAuth application
  * @param token_id - The ID of the OAuth application token
  */
-export const deleteOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteOauthToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteOauthTokenInput,
   outputSchema: DeleteOauthTokenOutput,
   errors: [Forbidden, NotFound] as const,

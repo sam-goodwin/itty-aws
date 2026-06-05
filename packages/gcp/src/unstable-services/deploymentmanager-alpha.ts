@@ -29,11 +29,10 @@ export interface DebugInfo {
   detail?: string;
 }
 
-export const DebugInfo: Schema.Schema<DebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stackEntries: Schema.optional(Schema.Array(Schema.String)),
-    detail: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DebugInfo" });
+export const DebugInfo: Schema.Schema<DebugInfo> = /*@__PURE__*/ Schema.Struct({
+  stackEntries: Schema.optional(Schema.Array(Schema.String)),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "DebugInfo" });
 
 export interface ErrorInfo {
   /** The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE. */
@@ -44,12 +43,11 @@ export interface ErrorInfo {
   metadatas?: Record<string, string>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reason: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    metadatas: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "ErrorInfo" });
+export const ErrorInfo: Schema.Schema<ErrorInfo> = /*@__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  metadatas: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ErrorInfo" });
 
 export interface QuotaExceededInfo {
   /** The Compute Engine quota metric name. */
@@ -67,7 +65,7 @@ export interface QuotaExceededInfo {
 }
 
 export const QuotaExceededInfo: Schema.Schema<QuotaExceededInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
     limitName: Schema.optional(Schema.String),
     dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -83,21 +81,19 @@ export interface HelpLink {
   url?: string;
 }
 
-export const HelpLink: Schema.Schema<HelpLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    url: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HelpLink" });
+export const HelpLink: Schema.Schema<HelpLink> = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "HelpLink" });
 
 export interface Help {
   /** URL(s) pointing to additional information on handling the current error. */
   links?: ReadonlyArray<HelpLink>;
 }
 
-export const Help: Schema.Schema<Help> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    links: Schema.optional(Schema.Array(HelpLink)),
-  }).annotate({ identifier: "Help" });
+export const Help: Schema.Schema<Help> = /*@__PURE__*/ Schema.Struct({
+  links: Schema.optional(Schema.Array(HelpLink)),
+}).annotate({ identifier: "Help" });
 
 export interface LocalizedMessage {
   /** The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX" */
@@ -107,7 +103,7 @@ export interface LocalizedMessage {
 }
 
 export const LocalizedMessage: Schema.Schema<LocalizedMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocalizedMessage" });
@@ -121,14 +117,13 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> = /*@__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo {
   /** [Output Only] Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`. */
@@ -145,7 +140,7 @@ export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationI
 }
 
 export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo: Schema.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(Status),
   }).annotate({
@@ -164,7 +159,7 @@ export interface SetCommonInstanceMetadataOperationMetadata {
 }
 
 export const SetCommonInstanceMetadataOperationMetadata: Schema.Schema<SetCommonInstanceMetadataOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientOperationId: Schema.optional(Schema.String),
     perLocationOperations: Schema.optional(
       Schema.Record(
@@ -193,7 +188,7 @@ export interface BulkInsertOperationStatus {
 }
 
 export const BulkInsertOperationStatus: Schema.Schema<BulkInsertOperationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     targetVmCount: Schema.optional(Schema.Number),
     createdVmCount: Schema.optional(Schema.Number),
@@ -209,7 +204,7 @@ export interface InstancesBulkInsertOperationMetadata {
 }
 
 export const InstancesBulkInsertOperationMetadata: Schema.Schema<InstancesBulkInsertOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     perLocationStatus: Schema.optional(
       Schema.Record(Schema.String, BulkInsertOperationStatus),
     ),
@@ -224,7 +219,7 @@ export interface GetVersionOperationMetadataSbomInfo {
 }
 
 export const GetVersionOperationMetadataSbomInfo: Schema.Schema<GetVersionOperationMetadataSbomInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentComponentVersions: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -238,7 +233,7 @@ export interface GetVersionOperationMetadata {
 }
 
 export const GetVersionOperationMetadata: Schema.Schema<GetVersionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineSbomInfo: Schema.optional(GetVersionOperationMetadataSbomInfo),
   }).annotate({ identifier: "GetVersionOperationMetadata" });
 
@@ -248,7 +243,7 @@ export interface FirewallPolicyRuleOperationMetadata {
 }
 
 export const FirewallPolicyRuleOperationMetadata: Schema.Schema<FirewallPolicyRuleOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allocatedPriority: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FirewallPolicyRuleOperationMetadata" });
 
@@ -260,7 +255,7 @@ export interface SetAutoscalerLinkOperationMetadata {
 }
 
 export const SetAutoscalerLinkOperationMetadata: Schema.Schema<SetAutoscalerLinkOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zonalIgmIds: Schema.optional(Schema.Array(Schema.String)),
     zoneToIgmIds: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "SetAutoscalerLinkOperationMetadata" });
@@ -385,86 +380,85 @@ export interface Operation {
   setAutoscalerLinkOperationMetadata?: SetAutoscalerLinkOperationMetadata;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    creationTimestamp: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    zone: Schema.optional(Schema.String),
-    clientOperationId: Schema.optional(Schema.String),
-    operationType: Schema.optional(Schema.String),
-    targetLink: Schema.optional(Schema.String),
-    targetId: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    user: Schema.optional(Schema.String),
-    progress: Schema.optional(Schema.Number),
-    insertTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
+export const Operation: Schema.Schema<Operation> = /*@__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  creationTimestamp: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  clientOperationId: Schema.optional(Schema.String),
+  operationType: Schema.optional(Schema.String),
+  targetLink: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  user: Schema.optional(Schema.String),
+  progress: Schema.optional(Schema.Number),
+  insertTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      errors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            arguments: Schema.optional(Schema.Array(Schema.String)),
+            debugInfo: Schema.optional(DebugInfo),
+            errorDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  errorInfo: Schema.optional(ErrorInfo),
+                  quotaInfo: Schema.optional(QuotaExceededInfo),
+                  help: Schema.optional(Help),
+                  localizedMessage: Schema.optional(LocalizedMessage),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
+  warnings: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        errors: Schema.optional(
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        data: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              code: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              arguments: Schema.optional(Schema.Array(Schema.String)),
-              debugInfo: Schema.optional(DebugInfo),
-              errorDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    errorInfo: Schema.optional(ErrorInfo),
-                    quotaInfo: Schema.optional(QuotaExceededInfo),
-                    help: Schema.optional(Help),
-                    localizedMessage: Schema.optional(LocalizedMessage),
-                  }),
-                ),
-              ),
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
             }),
           ),
         ),
       }),
     ),
-    warnings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-    httpErrorStatusCode: Schema.optional(Schema.Number),
-    httpErrorMessage: Schema.optional(Schema.String),
-    selfLink: Schema.optional(Schema.String),
-    selfLinkWithId: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    operationGroupId: Schema.optional(Schema.String),
-    setCommonInstanceMetadataOperationMetadata: Schema.optional(
-      SetCommonInstanceMetadataOperationMetadata,
-    ),
-    instancesBulkInsertOperationMetadata: Schema.optional(
-      InstancesBulkInsertOperationMetadata,
-    ),
-    getVersionOperationMetadata: Schema.optional(GetVersionOperationMetadata),
-    firewallPolicyRuleOperationMetadata: Schema.optional(
-      FirewallPolicyRuleOperationMetadata,
-    ),
-    setAutoscalerLinkOperationMetadata: Schema.optional(
-      SetAutoscalerLinkOperationMetadata,
-    ),
-  }).annotate({ identifier: "Operation" });
+  ),
+  httpErrorStatusCode: Schema.optional(Schema.Number),
+  httpErrorMessage: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  selfLinkWithId: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  operationGroupId: Schema.optional(Schema.String),
+  setCommonInstanceMetadataOperationMetadata: Schema.optional(
+    SetCommonInstanceMetadataOperationMetadata,
+  ),
+  instancesBulkInsertOperationMetadata: Schema.optional(
+    InstancesBulkInsertOperationMetadata,
+  ),
+  getVersionOperationMetadata: Schema.optional(GetVersionOperationMetadata),
+  firewallPolicyRuleOperationMetadata: Schema.optional(
+    FirewallPolicyRuleOperationMetadata,
+  ),
+  setAutoscalerLinkOperationMetadata: Schema.optional(
+    SetAutoscalerLinkOperationMetadata,
+  ),
+}).annotate({ identifier: "Operation" });
 
 export interface CompositeTypeLabelEntry {
   /** Key of the label */
@@ -474,7 +468,7 @@ export interface CompositeTypeLabelEntry {
 }
 
 export const CompositeTypeLabelEntry: Schema.Schema<CompositeTypeLabelEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "CompositeTypeLabelEntry" });
@@ -487,7 +481,7 @@ export interface ImportFile {
 }
 
 export const ImportFile: Schema.Schema<ImportFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImportFile" });
@@ -506,7 +500,7 @@ export interface TemplateContents {
 }
 
 export const TemplateContents: Schema.Schema<TemplateContents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.String),
     schema: Schema.optional(Schema.String),
     imports: Schema.optional(Schema.Array(ImportFile)),
@@ -539,7 +533,7 @@ export interface CompositeType {
 }
 
 export const CompositeType: Schema.Schema<CompositeType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     insertTime: Schema.optional(Schema.String),
@@ -559,7 +553,7 @@ export interface CompositeTypesListResponse {
 }
 
 export const CompositeTypesListResponse: Schema.Schema<CompositeTypesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     compositeTypes: Schema.optional(Schema.Array(CompositeType)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "CompositeTypesListResponse" });
@@ -572,7 +566,7 @@ export interface DeploymentUpdateLabelEntry {
 }
 
 export const DeploymentUpdateLabelEntry: Schema.Schema<DeploymentUpdateLabelEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentUpdateLabelEntry" });
@@ -582,11 +576,10 @@ export interface BasicAuth {
   password?: string;
 }
 
-export const BasicAuth: Schema.Schema<BasicAuth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user: Schema.optional(Schema.String),
-    password: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BasicAuth" });
+export const BasicAuth: Schema.Schema<BasicAuth> = /*@__PURE__*/ Schema.Struct({
+  user: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicAuth" });
 
 export interface ServiceAccount {
   /** The IAM service account email address like test@myproject.iam.gserviceaccount.com */
@@ -594,7 +587,7 @@ export interface ServiceAccount {
 }
 
 export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceAccount" });
 
@@ -608,7 +601,7 @@ export interface Credential {
 }
 
 export const Credential: Schema.Schema<Credential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     basicAuth: Schema.optional(BasicAuth),
     serviceAccount: Schema.optional(ServiceAccount),
     useProjectDefault: Schema.optional(Schema.Boolean),
@@ -626,7 +619,7 @@ export interface DeploymentUpdate {
 }
 
 export const DeploymentUpdate: Schema.Schema<DeploymentUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manifest: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(DeploymentUpdateLabelEntry)),
     description: Schema.optional(Schema.String),
@@ -639,7 +632,7 @@ export interface ConfigFile {
 }
 
 export const ConfigFile: Schema.Schema<ConfigFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigFile" });
 
@@ -651,7 +644,7 @@ export interface TargetConfiguration {
 }
 
 export const TargetConfiguration: Schema.Schema<TargetConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(ConfigFile),
     imports: Schema.optional(Schema.Array(ImportFile)),
   }).annotate({ identifier: "TargetConfiguration" });
@@ -664,7 +657,7 @@ export interface DeploymentLabelEntry {
 }
 
 export const DeploymentLabelEntry: Schema.Schema<DeploymentLabelEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentLabelEntry" });
@@ -677,7 +670,7 @@ export interface DeploymentOutputEntry {
 }
 
 export const DeploymentOutputEntry: Schema.Schema<DeploymentOutputEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentOutputEntry" });
@@ -713,7 +706,7 @@ export interface Deployment {
 }
 
 export const Deployment: Schema.Schema<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -738,7 +731,7 @@ export interface DeploymentsListResponse {
 }
 
 export const DeploymentsListResponse: Schema.Schema<DeploymentsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(Deployment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentsListResponse" });
@@ -749,7 +742,7 @@ export interface DeploymentsCancelPreviewRequest {
 }
 
 export const DeploymentsCancelPreviewRequest: Schema.Schema<DeploymentsCancelPreviewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentsCancelPreviewRequest" });
 
@@ -759,7 +752,7 @@ export interface DeploymentsStopRequest {
 }
 
 export const DeploymentsStopRequest: Schema.Schema<DeploymentsStopRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeploymentsStopRequest" });
 
@@ -774,13 +767,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> = /*@__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -791,12 +783,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-    condition: Schema.optional(Expr),
-  }).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> = /*@__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -811,7 +802,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -824,7 +815,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
@@ -840,13 +831,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.Number),
-    bindings: Schema.optional(Schema.Array(Binding)),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> = /*@__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface GlobalSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
@@ -860,7 +850,7 @@ export interface GlobalSetPolicyRequest {
 }
 
 export const GlobalSetPolicyRequest: Schema.Schema<GlobalSetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -873,7 +863,7 @@ export interface TestPermissionsRequest {
 }
 
 export const TestPermissionsRequest: Schema.Schema<TestPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestPermissionsRequest" });
 
@@ -883,7 +873,7 @@ export interface TestPermissionsResponse {
 }
 
 export const TestPermissionsResponse: Schema.Schema<TestPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestPermissionsResponse" });
 
@@ -909,19 +899,18 @@ export interface Manifest {
   manifestSizeLimitBytes?: string;
 }
 
-export const Manifest: Schema.Schema<Manifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    selfLink: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    config: Schema.optional(ConfigFile),
-    imports: Schema.optional(Schema.Array(ImportFile)),
-    expandedConfig: Schema.optional(Schema.String),
-    insertTime: Schema.optional(Schema.String),
-    layout: Schema.optional(Schema.String),
-    manifestSizeBytes: Schema.optional(Schema.String),
-    manifestSizeLimitBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Manifest" });
+export const Manifest: Schema.Schema<Manifest> = /*@__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  config: Schema.optional(ConfigFile),
+  imports: Schema.optional(Schema.Array(ImportFile)),
+  expandedConfig: Schema.optional(Schema.String),
+  insertTime: Schema.optional(Schema.String),
+  layout: Schema.optional(Schema.String),
+  manifestSizeBytes: Schema.optional(Schema.String),
+  manifestSizeLimitBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Manifest" });
 
 export interface ManifestsListResponse {
   /** Output only. Manifests contained in this list response. */
@@ -931,7 +920,7 @@ export interface ManifestsListResponse {
 }
 
 export const ManifestsListResponse: Schema.Schema<ManifestsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manifests: Schema.optional(Schema.Array(Manifest)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManifestsListResponse" });
@@ -944,7 +933,7 @@ export interface OperationsListResponse {
 }
 
 export const OperationsListResponse: Schema.Schema<OperationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "OperationsListResponse" });
@@ -955,7 +944,7 @@ export interface ResourceAccessControl {
 }
 
 export const ResourceAccessControl: Schema.Schema<ResourceAccessControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcpIamPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourceAccessControl" });
 
@@ -1058,7 +1047,7 @@ export interface ResourceUpdate {
 }
 
 export const ResourceUpdate: Schema.Schema<ResourceUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manifest: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -1188,38 +1177,37 @@ export interface Resource {
   >;
 }
 
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    manifest: Schema.optional(Schema.String),
-    url: Schema.optional(Schema.String),
-    properties: Schema.optional(Schema.String),
-    finalProperties: Schema.optional(Schema.String),
-    accessControl: Schema.optional(ResourceAccessControl),
-    update: Schema.optional(ResourceUpdate),
-    insertTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    warnings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
+export const Resource: Schema.Schema<Resource> = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  manifest: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.String),
+  finalProperties: Schema.optional(Schema.String),
+  accessControl: Schema.optional(ResourceAccessControl),
+  update: Schema.optional(ResourceUpdate),
+  insertTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  warnings: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        data: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-    lastUsedCredential: Schema.optional(Credential),
-    runtimePolicies: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Resource" });
+  ),
+  lastUsedCredential: Schema.optional(Credential),
+  runtimePolicies: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Resource" });
 
 export interface ResourcesListResponse {
   /** Resources contained in this list response. */
@@ -1229,7 +1217,7 @@ export interface ResourcesListResponse {
 }
 
 export const ResourcesListResponse: Schema.Schema<ResourcesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Resource)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourcesListResponse" });
@@ -1242,7 +1230,7 @@ export interface TypeProviderLabelEntry {
 }
 
 export const TypeProviderLabelEntry: Schema.Schema<TypeProviderLabelEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypeProviderLabelEntry" });
@@ -1259,7 +1247,7 @@ export interface InputMapping {
 }
 
 export const InputMapping: Schema.Schema<InputMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     methodMatch: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1286,7 +1274,7 @@ export interface ValidationOptions {
 }
 
 export const ValidationOptions: Schema.Schema<ValidationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     undeclaredProperties: Schema.optional(Schema.String),
     schemaValidation: Schema.optional(Schema.String),
   }).annotate({ identifier: "ValidationOptions" });
@@ -1299,7 +1287,7 @@ export interface Diagnostic {
 }
 
 export const Diagnostic: Schema.Schema<Diagnostic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     level: Schema.optional(Schema.String),
   }).annotate({ identifier: "Diagnostic" });
@@ -1318,7 +1306,7 @@ export interface PollingOptions {
 }
 
 export const PollingOptions: Schema.Schema<PollingOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishCondition: Schema.optional(Schema.String),
     failCondition: Schema.optional(Schema.String),
     targetLink: Schema.optional(Schema.String),
@@ -1334,7 +1322,7 @@ export interface AsyncOptions {
 }
 
 export const AsyncOptions: Schema.Schema<AsyncOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methodMatch: Schema.optional(Schema.String),
     pollingOptions: Schema.optional(PollingOptions),
   }).annotate({ identifier: "AsyncOptions" });
@@ -1350,13 +1338,12 @@ export interface Options {
   asyncOptions?: ReadonlyArray<AsyncOptions>;
 }
 
-export const Options: Schema.Schema<Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameProperty: Schema.optional(Schema.String),
-    inputMappings: Schema.optional(Schema.Array(InputMapping)),
-    validationOptions: Schema.optional(ValidationOptions),
-    asyncOptions: Schema.optional(Schema.Array(AsyncOptions)),
-  }).annotate({ identifier: "Options" });
+export const Options: Schema.Schema<Options> = /*@__PURE__*/ Schema.Struct({
+  nameProperty: Schema.optional(Schema.String),
+  inputMappings: Schema.optional(Schema.Array(InputMapping)),
+  validationOptions: Schema.optional(ValidationOptions),
+  asyncOptions: Schema.optional(Schema.Array(AsyncOptions)),
+}).annotate({ identifier: "Options" });
 
 export interface MethodMap {
   /** The action identifier for the get method to be used for this collection */
@@ -1371,14 +1358,13 @@ export interface MethodMap {
   setIamPolicy?: string;
 }
 
-export const MethodMap: Schema.Schema<MethodMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    get: Schema.optional(Schema.String),
-    create: Schema.optional(Schema.String),
-    delete: Schema.optional(Schema.String),
-    update: Schema.optional(Schema.String),
-    setIamPolicy: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MethodMap" });
+export const MethodMap: Schema.Schema<MethodMap> = /*@__PURE__*/ Schema.Struct({
+  get: Schema.optional(Schema.String),
+  create: Schema.optional(Schema.String),
+  delete: Schema.optional(Schema.String),
+  update: Schema.optional(Schema.String),
+  setIamPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MethodMap" });
 
 export interface CollectionOverride {
   /** The collection that identifies this resource within its service. */
@@ -1390,7 +1376,7 @@ export interface CollectionOverride {
 }
 
 export const CollectionOverride: Schema.Schema<CollectionOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     collection: Schema.optional(Schema.String),
     options: Schema.optional(Options),
     methodMap: Schema.optional(MethodMap),
@@ -1424,7 +1410,7 @@ export interface TypeProvider {
 }
 
 export const TypeProvider: Schema.Schema<TypeProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     insertTime: Schema.optional(Schema.String),
@@ -1449,7 +1435,7 @@ export interface TypeProvidersListResponse {
 }
 
 export const TypeProvidersListResponse: Schema.Schema<TypeProvidersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     typeProviders: Schema.optional(Schema.Array(TypeProvider)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypeProvidersListResponse" });
@@ -1462,7 +1448,7 @@ export interface TypeInfoSchemaInfo {
 }
 
 export const TypeInfoSchemaInfo: Schema.Schema<TypeInfoSchemaInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(Schema.String),
     output: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypeInfoSchemaInfo" });
@@ -1484,16 +1470,15 @@ export interface TypeInfo {
   selfLink?: string;
 }
 
-export const TypeInfo: Schema.Schema<TypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    documentationLink: Schema.optional(Schema.String),
-    schema: Schema.optional(TypeInfoSchemaInfo),
-    kind: Schema.optional(Schema.String),
-    selfLink: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TypeInfo" });
+export const TypeInfo: Schema.Schema<TypeInfo> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  documentationLink: Schema.optional(Schema.String),
+  schema: Schema.optional(TypeInfoSchemaInfo),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "TypeInfo" });
 
 export interface TypeProvidersListTypesResponse {
   /** Output only. A list of resource type info. */
@@ -1503,7 +1488,7 @@ export interface TypeProvidersListTypesResponse {
 }
 
 export const TypeProvidersListTypesResponse: Schema.Schema<TypeProvidersListTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(TypeInfo)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypeProvidersListTypesResponse" });
@@ -1519,13 +1504,12 @@ export interface BaseType {
   collectionOverrides?: ReadonlyArray<CollectionOverride>;
 }
 
-export const BaseType: Schema.Schema<BaseType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    descriptorUrl: Schema.optional(Schema.String),
-    credential: Schema.optional(Credential),
-    options: Schema.optional(Options),
-    collectionOverrides: Schema.optional(Schema.Array(CollectionOverride)),
-  }).annotate({ identifier: "BaseType" });
+export const BaseType: Schema.Schema<BaseType> = /*@__PURE__*/ Schema.Struct({
+  descriptorUrl: Schema.optional(Schema.String),
+  credential: Schema.optional(Credential),
+  options: Schema.optional(Options),
+  collectionOverrides: Schema.optional(Schema.Array(CollectionOverride)),
+}).annotate({ identifier: "BaseType" });
 
 export interface TypeLabelEntry {
   /** Key of the label */
@@ -1535,7 +1519,7 @@ export interface TypeLabelEntry {
 }
 
 export const TypeLabelEntry: Schema.Schema<TypeLabelEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypeLabelEntry" });
@@ -1558,17 +1542,16 @@ export interface Type {
   labels?: ReadonlyArray<TypeLabelEntry>;
 }
 
-export const Type: Schema.Schema<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    base: Schema.optional(BaseType),
-    id: Schema.optional(Schema.String),
-    insertTime: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    selfLink: Schema.optional(Schema.String),
-    operation: Schema.optional(Operation),
-    labels: Schema.optional(Schema.Array(TypeLabelEntry)),
-  }).annotate({ identifier: "Type" });
+export const Type: Schema.Schema<Type> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  base: Schema.optional(BaseType),
+  id: Schema.optional(Schema.String),
+  insertTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  operation: Schema.optional(Operation),
+  labels: Schema.optional(Schema.Array(TypeLabelEntry)),
+}).annotate({ identifier: "Type" });
 
 export interface TypesListResponse {
   /** Output only. A list of resource types supported by Deployment Manager. */
@@ -1578,7 +1561,7 @@ export interface TypesListResponse {
 }
 
 export const TypesListResponse: Schema.Schema<TypesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Type)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypesListResponse" });
@@ -1645,25 +1628,23 @@ export interface InsertCompositeTypesRequest {
   body?: CompositeType;
 }
 
-export const InsertCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(CompositeType).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertCompositeTypesRequest>;
+export const InsertCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(CompositeType).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<InsertCompositeTypesRequest>;
 
 export type InsertCompositeTypesResponse = Operation;
-export const InsertCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const InsertCompositeTypesResponse = /*@__PURE__*/ Operation;
 
 export type InsertCompositeTypesError =
   | DefaultErrors
@@ -1678,7 +1659,7 @@ export const insertCompositeTypes: API.OperationMethod<
   InsertCompositeTypesResponse,
   InsertCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertCompositeTypesRequest,
   output: InsertCompositeTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1694,26 +1675,24 @@ export interface UpdateCompositeTypesRequest {
   body?: CompositeType;
 }
 
-export const UpdateCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(CompositeType).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateCompositeTypesRequest>;
+export const UpdateCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(CompositeType).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateCompositeTypesRequest>;
 
 export type UpdateCompositeTypesResponse = Operation;
-export const UpdateCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UpdateCompositeTypesResponse = /*@__PURE__*/ Operation;
 
 export type UpdateCompositeTypesError =
   | DefaultErrors
@@ -1728,7 +1707,7 @@ export const updateCompositeTypes: API.OperationMethod<
   UpdateCompositeTypesResponse,
   UpdateCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCompositeTypesRequest,
   output: UpdateCompositeTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1744,26 +1723,24 @@ export interface PatchCompositeTypesRequest {
   body?: CompositeType;
 }
 
-export const PatchCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(CompositeType).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchCompositeTypesRequest>;
+export const PatchCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(CompositeType).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PatchCompositeTypesRequest>;
 
 export type PatchCompositeTypesResponse = Operation;
-export const PatchCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchCompositeTypesResponse = /*@__PURE__*/ Operation;
 
 export type PatchCompositeTypesError =
   | DefaultErrors
@@ -1778,7 +1755,7 @@ export const patchCompositeTypes: API.OperationMethod<
   PatchCompositeTypesResponse,
   PatchCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCompositeTypesRequest,
   output: PatchCompositeTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1792,24 +1769,22 @@ export interface DeleteCompositeTypesRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const DeleteCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteCompositeTypesRequest>;
+export const DeleteCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteCompositeTypesRequest>;
 
 export type DeleteCompositeTypesResponse = Operation;
-export const DeleteCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteCompositeTypesResponse = /*@__PURE__*/ Operation;
 
 export type DeleteCompositeTypesError =
   | DefaultErrors
@@ -1824,7 +1799,7 @@ export const deleteCompositeTypes: API.OperationMethod<
   DeleteCompositeTypesResponse,
   DeleteCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCompositeTypesRequest,
   output: DeleteCompositeTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1838,24 +1813,22 @@ export interface GetCompositeTypesRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetCompositeTypesRequest>;
+export const GetCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  compositeType: Schema.String.pipe(T.HttpPath("compositeType")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetCompositeTypesRequest>;
 
 export type GetCompositeTypesResponse = CompositeType;
-export const GetCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CompositeType;
+export const GetCompositeTypesResponse = /*@__PURE__*/ CompositeType;
 
 export type GetCompositeTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1865,7 +1838,7 @@ export const getCompositeTypes: API.OperationMethod<
   GetCompositeTypesResponse,
   GetCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCompositeTypesRequest,
   output: GetCompositeTypesResponse,
   errors: [NotFound, Forbidden],
@@ -1884,24 +1857,23 @@ export interface ListCompositeTypesRequest {
   orderBy?: string;
 }
 
-export const ListCompositeTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListCompositeTypesRequest>;
+export const ListCompositeTypesRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/compositeTypes",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListCompositeTypesRequest>;
 
 export type ListCompositeTypesResponse = CompositeTypesListResponse;
 export const ListCompositeTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CompositeTypesListResponse;
+  /*@__PURE__*/ CompositeTypesListResponse;
 
 export type ListCompositeTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1911,7 +1883,7 @@ export const listCompositeTypes: API.PaginatedOperationMethod<
   ListCompositeTypesResponse,
   ListCompositeTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositeTypesRequest,
   output: ListCompositeTypesResponse,
   errors: [NotFound, Forbidden],
@@ -1933,28 +1905,27 @@ export interface InsertDeploymentsRequest {
   body?: Deployment;
 }
 
-export const InsertDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
-    createPolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createPolicy"),
-    ),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(Deployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertDeploymentsRequest>;
+export const InsertDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
+  createPolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("createPolicy"),
+  ),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(Deployment).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<InsertDeploymentsRequest>;
 
 export type InsertDeploymentsResponse = Operation;
-export const InsertDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const InsertDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type InsertDeploymentsError =
   | DefaultErrors
@@ -1969,7 +1940,7 @@ export const insertDeployments: API.OperationMethod<
   InsertDeploymentsResponse,
   InsertDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertDeploymentsRequest,
   output: InsertDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1991,32 +1962,31 @@ export interface UpdateDeploymentsRequest {
   body?: Deployment;
 }
 
-export const UpdateDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    deployment: Schema.String.pipe(T.HttpPath("deployment")),
-    createPolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createPolicy"),
-    ),
-    deletePolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("deletePolicy"),
-    ),
-    preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(Deployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateDeploymentsRequest>;
+export const UpdateDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  deployment: Schema.String.pipe(T.HttpPath("deployment")),
+  createPolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("createPolicy"),
+  ),
+  deletePolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("deletePolicy"),
+  ),
+  preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(Deployment).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateDeploymentsRequest>;
 
 export type UpdateDeploymentsResponse = Operation;
-export const UpdateDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UpdateDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type UpdateDeploymentsError =
   | DefaultErrors
@@ -2031,7 +2001,7 @@ export const updateDeployments: API.OperationMethod<
   UpdateDeploymentsResponse,
   UpdateDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentsRequest,
   output: UpdateDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2053,32 +2023,31 @@ export interface PatchDeploymentsRequest {
   body?: Deployment;
 }
 
-export const PatchDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    deployment: Schema.String.pipe(T.HttpPath("deployment")),
-    createPolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createPolicy"),
-    ),
-    deletePolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("deletePolicy"),
-    ),
-    preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(Deployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchDeploymentsRequest>;
+export const PatchDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  deployment: Schema.String.pipe(T.HttpPath("deployment")),
+  createPolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("createPolicy"),
+  ),
+  deletePolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("deletePolicy"),
+  ),
+  preview: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preview")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(Deployment).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PatchDeploymentsRequest>;
 
 export type PatchDeploymentsResponse = Operation;
-export const PatchDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type PatchDeploymentsError =
   | DefaultErrors
@@ -2093,7 +2062,7 @@ export const patchDeployments: API.OperationMethod<
   PatchDeploymentsResponse,
   PatchDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDeploymentsRequest,
   output: PatchDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2109,26 +2078,25 @@ export interface DeleteDeploymentsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const DeleteDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    deployment: Schema.String.pipe(T.HttpPath("deployment")),
-    deletePolicy: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("deletePolicy"),
-    ),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteDeploymentsRequest>;
+export const DeleteDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  deployment: Schema.String.pipe(T.HttpPath("deployment")),
+  deletePolicy: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("deletePolicy"),
+  ),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteDeploymentsRequest>;
 
 export type DeleteDeploymentsResponse = Operation;
-export const DeleteDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type DeleteDeploymentsError =
   | DefaultErrors
@@ -2143,7 +2111,7 @@ export const deleteDeployments: API.OperationMethod<
   DeleteDeploymentsResponse,
   DeleteDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentsRequest,
   output: DeleteDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2157,7 +2125,7 @@ export interface GetDeploymentsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   deployment: Schema.String.pipe(T.HttpPath("deployment")),
   "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
@@ -2172,7 +2140,7 @@ export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetDeploymentsRequest>;
 
 export type GetDeploymentsResponse = Deployment;
-export const GetDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Deployment;
+export const GetDeploymentsResponse = /*@__PURE__*/ Deployment;
 
 export type GetDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2182,7 +2150,7 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsResponse,
   GetDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -2201,15 +2169,13 @@ export interface ListDeploymentsRequest {
   orderBy?: string;
 }
 
-export const ListDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  },
-).pipe(
+export const ListDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "deploymentmanager/alpha/projects/{project}/global/deployments",
@@ -2218,8 +2184,7 @@ export const ListDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<ListDeploymentsRequest>;
 
 export type ListDeploymentsResponse = DeploymentsListResponse;
-export const ListDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeploymentsListResponse;
+export const ListDeploymentsResponse = /*@__PURE__*/ DeploymentsListResponse;
 
 export type ListDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2229,7 +2194,7 @@ export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsResponse,
   ListDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -2248,23 +2213,21 @@ export interface CancelPreviewDeploymentsRequest {
   body?: DeploymentsCancelPreviewRequest;
 }
 
-export const CancelPreviewDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    deployment: Schema.String.pipe(T.HttpPath("deployment")),
-    body: Schema.optional(DeploymentsCancelPreviewRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/cancelPreview",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelPreviewDeploymentsRequest>;
+export const CancelPreviewDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  deployment: Schema.String.pipe(T.HttpPath("deployment")),
+  body: Schema.optional(DeploymentsCancelPreviewRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/cancelPreview",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CancelPreviewDeploymentsRequest>;
 
 export type CancelPreviewDeploymentsResponse = Operation;
-export const CancelPreviewDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CancelPreviewDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type CancelPreviewDeploymentsError =
   | DefaultErrors
@@ -2279,7 +2242,7 @@ export const cancelPreviewDeployments: API.OperationMethod<
   CancelPreviewDeploymentsResponse,
   CancelPreviewDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPreviewDeploymentsRequest,
   output: CancelPreviewDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2294,13 +2257,11 @@ export interface StopDeploymentsRequest {
   body?: DeploymentsStopRequest;
 }
 
-export const StopDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    project: Schema.String.pipe(T.HttpPath("project")),
-    deployment: Schema.String.pipe(T.HttpPath("deployment")),
-    body: Schema.optional(DeploymentsStopRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const StopDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  deployment: Schema.String.pipe(T.HttpPath("deployment")),
+  body: Schema.optional(DeploymentsStopRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/stop",
@@ -2310,7 +2271,7 @@ export const StopDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<StopDeploymentsRequest>;
 
 export type StopDeploymentsResponse = Operation;
-export const StopDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const StopDeploymentsResponse = /*@__PURE__*/ Operation;
 
 export type StopDeploymentsError =
   | DefaultErrors
@@ -2325,7 +2286,7 @@ export const stopDeployments: API.OperationMethod<
   StopDeploymentsResponse,
   StopDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDeploymentsRequest,
   output: StopDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2341,27 +2302,25 @@ export interface GetIamPolicyDeploymentsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetIamPolicyDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("optionsRequestedPolicyVersion"),
-    ),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyDeploymentsRequest>;
+export const GetIamPolicyDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  resource: Schema.String.pipe(T.HttpPath("resource")),
+  optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("optionsRequestedPolicyVersion"),
+  ),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/getIamPolicy",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetIamPolicyDeploymentsRequest>;
 
 export type GetIamPolicyDeploymentsResponse = Policy;
-export const GetIamPolicyDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyDeploymentsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2371,7 +2330,7 @@ export const getIamPolicyDeployments: API.OperationMethod<
   GetIamPolicyDeploymentsResponse,
   GetIamPolicyDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyDeploymentsRequest,
   output: GetIamPolicyDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -2386,23 +2345,21 @@ export interface SetIamPolicyDeploymentsRequest {
   body?: GlobalSetPolicyRequest;
 }
 
-export const SetIamPolicyDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GlobalSetPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyDeploymentsRequest>;
+export const SetIamPolicyDeploymentsRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  resource: Schema.String.pipe(T.HttpPath("resource")),
+  body: Schema.optional(GlobalSetPolicyRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/setIamPolicy",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<SetIamPolicyDeploymentsRequest>;
 
 export type SetIamPolicyDeploymentsResponse = Policy;
-export const SetIamPolicyDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyDeploymentsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyDeploymentsError =
   | DefaultErrors
@@ -2417,7 +2374,7 @@ export const setIamPolicyDeployments: API.OperationMethod<
   SetIamPolicyDeploymentsResponse,
   SetIamPolicyDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyDeploymentsRequest,
   output: SetIamPolicyDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2433,26 +2390,27 @@ export interface TestIamPermissionsDeploymentsRequest {
   body?: TestPermissionsRequest;
 }
 
-export const TestIamPermissionsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestIamPermissionsDeploymentsRequest = /*@__PURE__*/ Schema.Struct(
+  {
     project: Schema.String.pipe(T.HttpPath("project")),
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("header.bypassBillingFilter"),
     ),
     body: Schema.optional(TestPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsDeploymentsRequest>;
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/testIamPermissions",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<TestIamPermissionsDeploymentsRequest>;
 
 export type TestIamPermissionsDeploymentsResponse = TestPermissionsResponse;
 export const TestIamPermissionsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
+  /*@__PURE__*/ TestPermissionsResponse;
 
 export type TestIamPermissionsDeploymentsError =
   | DefaultErrors
@@ -2467,7 +2425,7 @@ export const testIamPermissionsDeployments: API.OperationMethod<
   TestIamPermissionsDeploymentsResponse,
   TestIamPermissionsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsDeploymentsRequest,
   output: TestIamPermissionsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2483,7 +2441,7 @@ export interface GetManifestsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetManifestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetManifestsRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   deployment: Schema.String.pipe(T.HttpPath("deployment")),
   manifest: Schema.String.pipe(T.HttpPath("manifest")),
@@ -2499,7 +2457,7 @@ export const GetManifestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetManifestsRequest>;
 
 export type GetManifestsResponse = Manifest;
-export const GetManifestsResponse = /*@__PURE__*/ /*#__PURE__*/ Manifest;
+export const GetManifestsResponse = /*@__PURE__*/ Manifest;
 
 export type GetManifestsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2509,7 +2467,7 @@ export const getManifests: API.OperationMethod<
   GetManifestsResponse,
   GetManifestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManifestsRequest,
   output: GetManifestsResponse,
   errors: [NotFound, Forbidden],
@@ -2530,7 +2488,7 @@ export interface ListManifestsRequest {
   orderBy?: string;
 }
 
-export const ListManifestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListManifestsRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   deployment: Schema.String.pipe(T.HttpPath("deployment")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -2546,8 +2504,7 @@ export const ListManifestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListManifestsRequest>;
 
 export type ListManifestsResponse = ManifestsListResponse;
-export const ListManifestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManifestsListResponse;
+export const ListManifestsResponse = /*@__PURE__*/ ManifestsListResponse;
 
 export type ListManifestsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2557,7 +2514,7 @@ export const listManifests: API.PaginatedOperationMethod<
   ListManifestsResponse,
   ListManifestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManifestsRequest,
   output: ListManifestsResponse,
   errors: [NotFound, Forbidden],
@@ -2575,7 +2532,7 @@ export interface GetOperationsRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   operation: Schema.String.pipe(T.HttpPath("operation")),
   "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
@@ -2590,7 +2547,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2600,7 +2557,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2619,7 +2576,7 @@ export interface ListOperationsRequest {
   orderBy?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2634,8 +2591,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
 export type ListOperationsResponse = OperationsListResponse;
-export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OperationsListResponse;
+export const ListOperationsResponse = /*@__PURE__*/ OperationsListResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2645,7 +2601,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2665,7 +2621,7 @@ export interface GetResourcesRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetResourcesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   deployment: Schema.String.pipe(T.HttpPath("deployment")),
   resource: Schema.String.pipe(T.HttpPath("resource")),
@@ -2681,7 +2637,7 @@ export const GetResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetResourcesRequest>;
 
 export type GetResourcesResponse = Resource;
-export const GetResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Resource;
+export const GetResourcesResponse = /*@__PURE__*/ Resource;
 
 export type GetResourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2691,7 +2647,7 @@ export const getResources: API.OperationMethod<
   GetResourcesResponse,
   GetResourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcesRequest,
   output: GetResourcesResponse,
   errors: [NotFound, Forbidden],
@@ -2712,7 +2668,7 @@ export interface ListResourcesRequest {
   orderBy?: string;
 }
 
-export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListResourcesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   deployment: Schema.String.pipe(T.HttpPath("deployment")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -2728,8 +2684,7 @@ export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListResourcesRequest>;
 
 export type ListResourcesResponse = ResourcesListResponse;
-export const ListResourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourcesListResponse;
+export const ListResourcesResponse = /*@__PURE__*/ ResourcesListResponse;
 
 export type ListResourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2739,7 +2694,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesResponse,
   ListResourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [NotFound, Forbidden],
@@ -2757,25 +2712,23 @@ export interface InsertTypeProvidersRequest {
   body?: TypeProvider;
 }
 
-export const InsertTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertTypeProvidersRequest>;
+export const InsertTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<InsertTypeProvidersRequest>;
 
 export type InsertTypeProvidersResponse = Operation;
-export const InsertTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const InsertTypeProvidersResponse = /*@__PURE__*/ Operation;
 
 export type InsertTypeProvidersError =
   | DefaultErrors
@@ -2790,7 +2743,7 @@ export const insertTypeProviders: API.OperationMethod<
   InsertTypeProvidersResponse,
   InsertTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTypeProvidersRequest,
   output: InsertTypeProvidersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2806,26 +2759,24 @@ export interface UpdateTypeProvidersRequest {
   body?: TypeProvider;
 }
 
-export const UpdateTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateTypeProvidersRequest>;
+export const UpdateTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateTypeProvidersRequest>;
 
 export type UpdateTypeProvidersResponse = Operation;
-export const UpdateTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UpdateTypeProvidersResponse = /*@__PURE__*/ Operation;
 
 export type UpdateTypeProvidersError =
   | DefaultErrors
@@ -2840,7 +2791,7 @@ export const updateTypeProviders: API.OperationMethod<
   UpdateTypeProvidersResponse,
   UpdateTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTypeProvidersRequest,
   output: UpdateTypeProvidersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2856,25 +2807,24 @@ export interface PatchTypeProvidersRequest {
   body?: TypeProvider;
 }
 
-export const PatchTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-    body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchTypeProvidersRequest>;
+export const PatchTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+  body: Schema.optional(TypeProvider).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PatchTypeProvidersRequest>;
 
 export type PatchTypeProvidersResponse = Operation;
-export const PatchTypeProvidersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchTypeProvidersResponse = /*@__PURE__*/ Operation;
 
 export type PatchTypeProvidersError =
   | DefaultErrors
@@ -2889,7 +2839,7 @@ export const patchTypeProviders: API.OperationMethod<
   PatchTypeProvidersResponse,
   PatchTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTypeProvidersRequest,
   output: PatchTypeProvidersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2903,24 +2853,22 @@ export interface DeleteTypeProvidersRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const DeleteTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteTypeProvidersRequest>;
+export const DeleteTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteTypeProvidersRequest>;
 
 export type DeleteTypeProvidersResponse = Operation;
-export const DeleteTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteTypeProvidersResponse = /*@__PURE__*/ Operation;
 
 export type DeleteTypeProvidersError =
   | DefaultErrors
@@ -2935,7 +2883,7 @@ export const deleteTypeProviders: API.OperationMethod<
   DeleteTypeProvidersResponse,
   DeleteTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTypeProvidersRequest,
   output: DeleteTypeProvidersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2949,24 +2897,22 @@ export interface GetTypeProvidersRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetTypeProvidersRequest>;
+export const GetTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetTypeProvidersRequest>;
 
 export type GetTypeProvidersResponse = TypeProvider;
-export const GetTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TypeProvider;
+export const GetTypeProvidersResponse = /*@__PURE__*/ TypeProvider;
 
 export type GetTypeProvidersError = DefaultErrors | NotFound | Forbidden;
 
@@ -2976,7 +2922,7 @@ export const getTypeProviders: API.OperationMethod<
   GetTypeProvidersResponse,
   GetTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTypeProvidersRequest,
   output: GetTypeProvidersResponse,
   errors: [NotFound, Forbidden],
@@ -2995,24 +2941,23 @@ export interface ListTypeProvidersRequest {
   orderBy?: string;
 }
 
-export const ListTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListTypeProvidersRequest>;
+export const ListTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListTypeProvidersRequest>;
 
 export type ListTypeProvidersResponse = TypeProvidersListResponse;
 export const ListTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TypeProvidersListResponse;
+  /*@__PURE__*/ TypeProvidersListResponse;
 
 export type ListTypeProvidersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3022,7 +2967,7 @@ export const listTypeProviders: API.PaginatedOperationMethod<
   ListTypeProvidersResponse,
   ListTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeProvidersRequest,
   output: ListTypeProvidersResponse,
   errors: [NotFound, Forbidden],
@@ -3047,25 +2992,24 @@ export interface ListTypesTypeProvidersRequest {
   orderBy?: string;
 }
 
-export const ListTypesTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListTypesTypeProvidersRequest>;
+export const ListTypesTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListTypesTypeProvidersRequest>;
 
 export type ListTypesTypeProvidersResponse = TypeProvidersListTypesResponse;
 export const ListTypesTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TypeProvidersListTypesResponse;
+  /*@__PURE__*/ TypeProvidersListTypesResponse;
 
 export type ListTypesTypeProvidersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3075,7 +3019,7 @@ export const listTypesTypeProviders: API.PaginatedOperationMethod<
   ListTypesTypeProvidersResponse,
   ListTypesTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesTypeProvidersRequest,
   output: ListTypesTypeProvidersResponse,
   errors: [NotFound, Forbidden],
@@ -3095,25 +3039,23 @@ export interface GetTypeTypeProvidersRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetTypeTypeProvidersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
-    type: Schema.String.pipe(T.HttpPath("type")),
-    "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("header.bypassBillingFilter"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types/{type}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetTypeTypeProvidersRequest>;
+export const GetTypeTypeProvidersRequest = /*@__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  typeProvider: Schema.String.pipe(T.HttpPath("typeProvider")),
+  type: Schema.String.pipe(T.HttpPath("type")),
+  "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("header.bypassBillingFilter"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types/{type}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetTypeTypeProvidersRequest>;
 
 export type GetTypeTypeProvidersResponse = TypeInfo;
-export const GetTypeTypeProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TypeInfo;
+export const GetTypeTypeProvidersResponse = /*@__PURE__*/ TypeInfo;
 
 export type GetTypeTypeProvidersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3123,7 +3065,7 @@ export const getTypeTypeProviders: API.OperationMethod<
   GetTypeTypeProvidersResponse,
   GetTypeTypeProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTypeTypeProvidersRequest,
   output: GetTypeTypeProvidersResponse,
   errors: [NotFound, Forbidden],
@@ -3137,7 +3079,7 @@ export interface GetTypesRequest {
   "header.bypassBillingFilter"?: boolean;
 }
 
-export const GetTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTypesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   type: Schema.String.pipe(T.HttpPath("type")),
   "header.bypassBillingFilter": Schema.optional(Schema.Boolean).pipe(
@@ -3152,7 +3094,7 @@ export const GetTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetTypesRequest>;
 
 export type GetTypesResponse = Type;
-export const GetTypesResponse = /*@__PURE__*/ /*#__PURE__*/ Type;
+export const GetTypesResponse = /*@__PURE__*/ Type;
 
 export type GetTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3162,7 +3104,7 @@ export const getTypes: API.OperationMethod<
   GetTypesResponse,
   GetTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTypesRequest,
   output: GetTypesResponse,
   errors: [NotFound, Forbidden],
@@ -3181,7 +3123,7 @@ export interface ListTypesRequest {
   orderBy?: string;
 }
 
-export const ListTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTypesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3196,7 +3138,7 @@ export const ListTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListTypesRequest>;
 
 export type ListTypesResponse = TypesListResponse;
-export const ListTypesResponse = /*@__PURE__*/ /*#__PURE__*/ TypesListResponse;
+export const ListTypesResponse = /*@__PURE__*/ TypesListResponse;
 
 export type ListTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3206,7 +3148,7 @@ export const listTypes: API.PaginatedOperationMethod<
   ListTypesResponse,
   ListTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
   output: ListTypesResponse,
   errors: [NotFound, Forbidden],

@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const RevokeGroupClusterMongoDbEmployeeAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type RevokeGroupClusterMongoDbEmployeeAccessInput =
 
 // Output Schema
 export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RevokeGroupClusterMongoDbEmployeeAccessOutput =
   typeof RevokeGroupClusterMongoDbEmployeeAccessOutput.Type;
 
@@ -38,9 +38,10 @@ export type RevokeGroupClusterMongoDbEmployeeAccessOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const revokeGroupClusterMongoDbEmployeeAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const revokeGroupClusterMongoDbEmployeeAccess = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RevokeGroupClusterMongoDbEmployeeAccessInput,
     outputSchema: RevokeGroupClusterMongoDbEmployeeAccessOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

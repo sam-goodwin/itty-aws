@@ -4,18 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
-export const ListClusterDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/clusters" }));
+export const ListClusterDetailsInput = /*@__PURE__*/ Schema.Struct({
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/clusters" }));
 export type ListClusterDetailsInput = typeof ListClusterDetailsInput.Type;
 
 // Output Schema
-export const ListClusterDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListClusterDetailsOutput = /*@__PURE__*/ Schema.Void;
 export type ListClusterDetailsOutput = typeof ListClusterDetailsOutput.Type;
 
 // The operation
@@ -30,7 +29,7 @@ export type ListClusterDetailsOutput = typeof ListClusterDetailsOutput.Type;
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listClusterDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listClusterDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListClusterDetailsInput,
   outputSchema: ListClusterDetailsOutput,
   errors: [Forbidden] as const,

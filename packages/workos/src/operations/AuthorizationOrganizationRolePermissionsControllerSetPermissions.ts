@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsInpu
 
 // Output Schema
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -45,7 +45,7 @@ export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutp
  * @param slug - The slug of the role.
  */
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput,
     outputSchema:

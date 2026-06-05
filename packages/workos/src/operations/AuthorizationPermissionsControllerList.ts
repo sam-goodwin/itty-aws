@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationPermissionsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -16,7 +16,7 @@ export type AuthorizationPermissionsControllerListInput =
 
 // Output Schema
 export const AuthorizationPermissionsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -54,9 +54,10 @@ export type AuthorizationPermissionsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
  */
-export const AuthorizationPermissionsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationPermissionsControllerList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizationPermissionsControllerListInput,
     outputSchema: AuthorizationPermissionsControllerListOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

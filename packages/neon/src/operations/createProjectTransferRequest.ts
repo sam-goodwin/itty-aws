@@ -3,27 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateProjectTransferRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    ttl_seconds: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/projects/{project_id}/transfer_requests",
-    }),
-  );
+export const CreateProjectTransferRequestInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  ttl_seconds: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({ method: "POST", path: "/projects/{project_id}/transfer_requests" }),
+);
 export type CreateProjectTransferRequestInput =
   typeof CreateProjectTransferRequestInput.Type;
 
 // Output Schema
-export const CreateProjectTransferRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    project_id: Schema.String,
-    created_at: Schema.String,
-    expires_at: Schema.String,
-  });
+export const CreateProjectTransferRequestOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  project_id: Schema.String,
+  created_at: Schema.String,
+  expires_at: Schema.String,
+});
 export type CreateProjectTransferRequestOutput =
   typeof CreateProjectTransferRequestOutput.Type;
 
@@ -42,8 +37,7 @@ export type CreateProjectTransferRequestOutput =
  *
  * @param project_id - The Neon project ID
  */
-export const createProjectTransferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateProjectTransferRequestInput,
-    outputSchema: CreateProjectTransferRequestOutput,
-  }));
+export const createProjectTransferRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectTransferRequestInput,
+  outputSchema: CreateProjectTransferRequestOutput,
+}));

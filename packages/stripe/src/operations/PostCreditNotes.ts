@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostCreditNotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCreditNotesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   credit_amount: Schema.optional(Schema.Number),
   effective_at: Schema.optional(Schema.Number),
@@ -70,7 +70,7 @@ export const PostCreditNotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostCreditNotesInput = typeof PostCreditNotesInput.Type;
 
 // Output Schema
-export const PostCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCreditNotesOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_shipping: Schema.Number,
   created: Schema.Number,
@@ -292,7 +292,7 @@ export type PostCreditNotesOutput = typeof PostCreditNotesOutput.Type;
  * <p>You may issue multiple credit notes for an invoice. Each credit note may increment the invoice’s <code>pre_payment_credit_notes_amount</code>,
  * <code>post_payment_credit_notes_amount</code>, or both, depending on the invoice’s <code>amount_remaining</code> at the time of credit note creation.</p>
  */
-export const PostCreditNotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCreditNotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCreditNotesInput,
   outputSchema: PostCreditNotesOutput,
 }));

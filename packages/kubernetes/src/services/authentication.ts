@@ -11,7 +11,7 @@ import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAuthenticationV1SelfSubjectReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/selfsubjectreviews",
@@ -22,7 +22,7 @@ export type CreateAuthenticationV1SelfSubjectReviewInput =
 
 // Output Schema
 export const CreateAuthenticationV1SelfSubjectReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -91,15 +91,16 @@ export type CreateAuthenticationV1SelfSubjectReviewOutput =
 /**
  * create a SelfSubjectReview
  */
-export const createAuthenticationV1SelfSubjectReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAuthenticationV1SelfSubjectReview = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateAuthenticationV1SelfSubjectReviewInput,
     outputSchema: CreateAuthenticationV1SelfSubjectReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateAuthenticationV1TokenReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/tokenreviews",
@@ -110,7 +111,7 @@ export type CreateAuthenticationV1TokenReviewInput =
 
 // Output Schema
 export const CreateAuthenticationV1TokenReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -186,47 +187,44 @@ export type CreateAuthenticationV1TokenReviewOutput =
 /**
  * create a TokenReview
  */
-export const createAuthenticationV1TokenReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateAuthenticationV1TokenReviewInput,
-    outputSchema: CreateAuthenticationV1TokenReviewOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createAuthenticationV1TokenReview = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAuthenticationV1TokenReviewInput,
+  outputSchema: CreateAuthenticationV1TokenReviewOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
-export const GetAuthenticationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/authentication.k8s.io/" }),
-  );
+export const GetAuthenticationAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/authentication.k8s.io/" }));
 export type GetAuthenticationAPIGroupInput =
   typeof GetAuthenticationAPIGroupInput.Type;
 
 // Output Schema
-export const GetAuthenticationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetAuthenticationAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetAuthenticationAPIGroupOutput =
   typeof GetAuthenticationAPIGroupOutput.Type;
 
@@ -234,23 +232,20 @@ export type GetAuthenticationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAuthenticationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAuthenticationAPIGroupInput,
-    outputSchema: GetAuthenticationAPIGroupOutput,
-  }),
-);
+export const getAuthenticationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthenticationAPIGroupInput,
+  outputSchema: GetAuthenticationAPIGroupOutput,
+}));
 // Input Schema
-export const GetAuthenticationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/authentication.k8s.io/v1/" }),
-  );
+export const GetAuthenticationV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/authentication.k8s.io/v1/" }));
 export type GetAuthenticationV1APIResourcesInput =
   typeof GetAuthenticationV1APIResourcesInput.Type;
 
 // Output Schema
 export const GetAuthenticationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -276,8 +271,7 @@ export type GetAuthenticationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getAuthenticationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetAuthenticationV1APIResourcesInput,
-    outputSchema: GetAuthenticationV1APIResourcesOutput,
-  }));
+export const getAuthenticationV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthenticationV1APIResourcesInput,
+  outputSchema: GetAuthenticationV1APIResourcesOutput,
+}));

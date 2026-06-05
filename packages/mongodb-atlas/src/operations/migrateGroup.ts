@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { PaymentRequired, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MigrateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrateGroupInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -13,7 +13,7 @@ export const MigrateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MigrateGroupInput = typeof MigrateGroupInput.Type;
 
 // Output Schema
-export const MigrateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MigrateGroupOutput = /*@__PURE__*/ Schema.Void;
 export type MigrateGroupOutput = typeof MigrateGroupOutput.Type;
 
 // The operation
@@ -27,7 +27,7 @@ export type MigrateGroupOutput = typeof MigrateGroupOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
-export const migrateGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const migrateGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: MigrateGroupInput,
   outputSchema: MigrateGroupOutput,
   errors: [PaymentRequired, Forbidden, NotFound] as const,

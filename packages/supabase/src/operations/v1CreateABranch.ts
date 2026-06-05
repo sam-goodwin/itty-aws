@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1CreateABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateABranchInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   branch_name: Schema.String,
   git_branch: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export const V1CreateABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1CreateABranchInput = typeof V1CreateABranchInput.Type;
 
 // Output Schema
-export const V1CreateABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateABranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   project_ref: Schema.String,
@@ -107,7 +107,7 @@ export type V1CreateABranchOutput = typeof V1CreateABranchOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1CreateABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateABranchInput,
   outputSchema: V1CreateABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

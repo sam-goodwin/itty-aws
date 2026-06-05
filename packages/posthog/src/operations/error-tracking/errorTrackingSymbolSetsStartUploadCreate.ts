@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingSymbolSetsStartUploadCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export type ErrorTrackingSymbolSetsStartUploadCreateInput =
 
 // Output Schema
 export const ErrorTrackingSymbolSetsStartUploadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingSymbolSetsStartUploadCreateOutput =
   typeof ErrorTrackingSymbolSetsStartUploadCreateOutput.Type;
 
@@ -38,9 +38,10 @@ export type ErrorTrackingSymbolSetsStartUploadCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingSymbolSetsStartUploadCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingSymbolSetsStartUploadCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingSymbolSetsStartUploadCreateInput,
     outputSchema: ErrorTrackingSymbolSetsStartUploadCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

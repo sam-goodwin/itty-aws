@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListMigrationHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/v1/projects/{ref}/database/migrations" }),
-  );
+export const V1ListMigrationHistoryInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}/database/migrations" }),
+);
 export type V1ListMigrationHistoryInput =
   typeof V1ListMigrationHistoryInput.Type;
 
 // Output Schema
-export const V1ListMigrationHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      version: Schema.String,
-      name: Schema.optional(Schema.String),
-    }),
-  );
+export const V1ListMigrationHistoryOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    version: Schema.String,
+    name: Schema.optional(Schema.String),
+  }),
+);
 export type V1ListMigrationHistoryOutput =
   typeof V1ListMigrationHistoryOutput.Type;
 
@@ -32,10 +30,8 @@ export type V1ListMigrationHistoryOutput =
  *
  * @param ref - Project ref
  */
-export const v1ListMigrationHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListMigrationHistoryInput,
-    outputSchema: V1ListMigrationHistoryOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ListMigrationHistory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListMigrationHistoryInput,
+  outputSchema: V1ListMigrationHistoryOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

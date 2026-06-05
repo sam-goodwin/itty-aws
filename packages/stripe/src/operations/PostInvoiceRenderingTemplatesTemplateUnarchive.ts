@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostInvoiceRenderingTemplatesTemplateUnarchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     template: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostInvoiceRenderingTemplatesTemplateUnarchiveInput =
 
 // Output Schema
 export const PostInvoiceRenderingTemplatesTemplateUnarchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -39,7 +39,7 @@ export type PostInvoiceRenderingTemplatesTemplateUnarchiveOutput =
  * <p>Unarchive an invoice rendering template so it can be used on new Stripe objects again.</p>
  */
 export const PostInvoiceRenderingTemplatesTemplateUnarchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostInvoiceRenderingTemplatesTemplateUnarchiveInput,
     outputSchema: PostInvoiceRenderingTemplatesTemplateUnarchiveOutput,
   }));

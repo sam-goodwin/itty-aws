@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
+import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import * as T from "../traits.ts";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 
 // Service metadata
 const svc = T.Service({
@@ -31,29 +31,26 @@ export interface File {
   fingerprint?: string;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ Schema.Struct({
-    content: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    fingerprint: Schema.optional(Schema.String),
-  }).annotate({ identifier: "File" });
+export const File: Schema.Schema<File> = /*@__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "File" });
 
 export interface Source {
   /** Required. `File` set constituting the `Source` bundle. */
   files?: ReadonlyArray<File>;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ Schema.Struct({
-    files: Schema.optional(Schema.Array(File)),
-  }).annotate({ identifier: "Source" });
+export const Source: Schema.Schema<Source> = /*@__PURE__*/ Schema.Struct({
+  files: Schema.optional(Schema.Array(File)),
+}).annotate({ identifier: "Source" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
 
 export interface Arg {
   /** Argument exactly matches value provided. */
@@ -62,11 +59,10 @@ export interface Arg {
   anyValue?: Empty;
 }
 
-export const Arg: Schema.Schema<Arg> =
-  /*@__PURE__*/ Schema.Struct({
-    exactValue: Schema.optional(Schema.Unknown),
-    anyValue: Schema.optional(Empty),
-  }).annotate({ identifier: "Arg" });
+export const Arg: Schema.Schema<Arg> = /*@__PURE__*/ Schema.Struct({
+  exactValue: Schema.optional(Schema.Unknown),
+  anyValue: Schema.optional(Empty),
+}).annotate({ identifier: "Arg" });
 
 export interface Result {
   /** The result is an actual value. The type of the value must match that of the type declared by the service. */
@@ -75,11 +71,10 @@ export interface Result {
   undefined?: Empty;
 }
 
-export const Result: Schema.Schema<Result> =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Unknown),
-    undefined: Schema.optional(Empty),
-  }).annotate({ identifier: "Result" });
+export const Result: Schema.Schema<Result> = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Unknown),
+  undefined: Schema.optional(Empty),
+}).annotate({ identifier: "Result" });
 
 export interface FunctionMock {
   /** The name of the function. The function name must match one provided by a service declaration. */
@@ -121,25 +116,23 @@ export interface TestCase {
     | (string & {});
 }
 
-export const TestCase: Schema.Schema<TestCase> =
-  /*@__PURE__*/ Schema.Struct({
-    expectation: Schema.optional(Schema.String),
-    request: Schema.optional(Schema.Unknown),
-    resource: Schema.optional(Schema.Unknown),
-    functionMocks: Schema.optional(Schema.Array(FunctionMock)),
-    pathEncoding: Schema.optional(Schema.String),
-    expressionReportLevel: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TestCase" });
+export const TestCase: Schema.Schema<TestCase> = /*@__PURE__*/ Schema.Struct({
+  expectation: Schema.optional(Schema.String),
+  request: Schema.optional(Schema.Unknown),
+  resource: Schema.optional(Schema.Unknown),
+  functionMocks: Schema.optional(Schema.Array(FunctionMock)),
+  pathEncoding: Schema.optional(Schema.String),
+  expressionReportLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestCase" });
 
 export interface TestSuite {
   /** Collection of test cases associated with the `TestSuite`. */
   testCases?: ReadonlyArray<TestCase>;
 }
 
-export const TestSuite: Schema.Schema<TestSuite> =
-  /*@__PURE__*/ Schema.Struct({
-    testCases: Schema.optional(Schema.Array(TestCase)),
-  }).annotate({ identifier: "TestSuite" });
+export const TestSuite: Schema.Schema<TestSuite> = /*@__PURE__*/ Schema.Struct({
+  testCases: Schema.optional(Schema.Array(TestCase)),
+}).annotate({ identifier: "TestSuite" });
 
 export interface TestRulesetRequest {
   /** Optional. Optional `Source` to be checked for correctness. This field must not be set when the resource name refers to a `Ruleset`. */
@@ -190,12 +183,11 @@ export interface Issue {
     | (string & {});
 }
 
-export const Issue: Schema.Schema<Issue> =
-  /*@__PURE__*/ Schema.Struct({
-    sourcePosition: Schema.optional(SourcePosition),
-    description: Schema.optional(Schema.String),
-    severity: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Issue" });
+export const Issue: Schema.Schema<Issue> = /*@__PURE__*/ Schema.Struct({
+  sourcePosition: Schema.optional(SourcePosition),
+  description: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "Issue" });
 
 export interface FunctionCall {
   /** Name of the function invoked. */
@@ -299,10 +291,9 @@ export interface Metadata {
   services?: ReadonlyArray<string>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ Schema.Struct({
-    services: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Metadata" });
+export const Metadata: Schema.Schema<Metadata> = /*@__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Metadata" });
 
 export interface Ruleset {
   /** Output only. Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
@@ -317,14 +308,13 @@ export interface Ruleset {
   attachmentPoint?: string;
 }
 
-export const Ruleset: Schema.Schema<Ruleset> =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    source: Schema.optional(Source),
-    createTime: Schema.optional(Schema.String),
-    metadata: Schema.optional(Metadata),
-    attachmentPoint: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Ruleset" });
+export const Ruleset: Schema.Schema<Ruleset> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  createTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Metadata),
+  attachmentPoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Ruleset" });
 
 export interface ListRulesetsResponse {
   /** List of `Ruleset` instances. */
@@ -350,13 +340,12 @@ export interface Release {
   updateTime?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    rulesetName: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Release" });
+export const Release: Schema.Schema<Release> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  rulesetName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface UpdateReleaseRequest {
   /** Required. `Release` to update. */
@@ -515,14 +504,13 @@ export interface CreateProjectsRulesetsRequest {
   body?: Ruleset;
 }
 
-export const CreateProjectsRulesetsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Ruleset).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}/rulesets", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsRulesetsRequest>;
+export const CreateProjectsRulesetsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(Ruleset).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+name}/rulesets", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsRulesetsRequest>;
 
 export type CreateProjectsRulesetsResponse = Ruleset;
 export const CreateProjectsRulesetsResponse = /*@__PURE__*/ Ruleset;
@@ -551,13 +539,12 @@ export interface GetProjectsRulesetsRequest {
   name: string;
 }
 
-export const GetProjectsRulesetsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsRulesetsRequest>;
+export const GetProjectsRulesetsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsRulesetsRequest>;
 
 export type GetProjectsRulesetsResponse = Ruleset;
 export const GetProjectsRulesetsResponse = /*@__PURE__*/ Ruleset;
@@ -587,16 +574,15 @@ export interface ListProjectsRulesetsRequest {
   pageToken?: string;
 }
 
-export const ListProjectsRulesetsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/rulesets" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsRulesetsRequest>;
+export const ListProjectsRulesetsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/rulesets" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsRulesetsRequest>;
 
 export type ListProjectsRulesetsResponse = ListRulesetsResponse;
 export const ListProjectsRulesetsResponse = /*@__PURE__*/ ListRulesetsResponse;
@@ -624,13 +610,12 @@ export interface DeleteProjectsRulesetsRequest {
   name: string;
 }
 
-export const DeleteProjectsRulesetsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsRulesetsRequest>;
+export const DeleteProjectsRulesetsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsRulesetsRequest>;
 
 export type DeleteProjectsRulesetsResponse = Empty;
 export const DeleteProjectsRulesetsResponse = /*@__PURE__*/ Empty;
@@ -661,14 +646,13 @@ export interface CreateProjectsReleasesRequest {
   body?: Release;
 }
 
-export const CreateProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Release).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}/releases", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsReleasesRequest>;
+export const CreateProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(Release).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+name}/releases", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsReleasesRequest>;
 
 export type CreateProjectsReleasesResponse = Release;
 export const CreateProjectsReleasesResponse = /*@__PURE__*/ Release;
@@ -699,14 +683,13 @@ export interface PatchProjectsReleasesRequest {
   body?: UpdateReleaseRequest;
 }
 
-export const PatchProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UpdateReleaseRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsReleasesRequest>;
+export const PatchProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(UpdateReleaseRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchProjectsReleasesRequest>;
 
 export type PatchProjectsReleasesResponse = Release;
 export const PatchProjectsReleasesResponse = /*@__PURE__*/ Release;
@@ -735,13 +718,12 @@ export interface GetProjectsReleasesRequest {
   name: string;
 }
 
-export const GetProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsReleasesRequest>;
+export const GetProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsReleasesRequest>;
 
 export type GetProjectsReleasesResponse = Release;
 export const GetProjectsReleasesResponse = /*@__PURE__*/ Release;
@@ -771,16 +753,15 @@ export interface ListProjectsReleasesRequest {
   pageToken?: string;
 }
 
-export const ListProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/releases" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsReleasesRequest>;
+export const ListProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/releases" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsReleasesRequest>;
 
 export type ListProjectsReleasesResponse = ListReleasesResponse;
 export const ListProjectsReleasesResponse = /*@__PURE__*/ ListReleasesResponse;
@@ -808,13 +789,12 @@ export interface DeleteProjectsReleasesRequest {
   name: string;
 }
 
-export const DeleteProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsReleasesRequest>;
+export const DeleteProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsReleasesRequest>;
 
 export type DeleteProjectsReleasesResponse = Empty;
 export const DeleteProjectsReleasesResponse = /*@__PURE__*/ Empty;
@@ -849,16 +829,17 @@ export interface GetExecutableProjectsReleasesRequest {
     | (string & {});
 }
 
-export const GetExecutableProjectsReleasesRequest =
-  /*@__PURE__*/ Schema.Struct({
+export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ Schema.Struct(
+  {
     name: Schema.String.pipe(T.HttpPath("name")),
     executableVersion: Schema.optional(Schema.String).pipe(
       T.HttpQuery("executableVersion"),
     ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getExecutable" }),
-    svc,
-  ) as unknown as Schema.Schema<GetExecutableProjectsReleasesRequest>;
+  },
+).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}:getExecutable" }),
+  svc,
+) as unknown as Schema.Schema<GetExecutableProjectsReleasesRequest>;
 
 export type GetExecutableProjectsReleasesResponse =
   GetReleaseExecutableResponse;

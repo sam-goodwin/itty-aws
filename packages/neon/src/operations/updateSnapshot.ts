@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
   snapshot: Schema.Struct({
@@ -18,7 +18,7 @@ export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateSnapshotInput = typeof UpdateSnapshotInput.Type;
 
 // Output Schema
-export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -28,8 +28,6 @@ export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
     expires_at: Schema.optional(Schema.String),
     manual: Schema.optional(Schema.Boolean),
-    full_size: Schema.optional(Schema.Number),
-    diff_size: Schema.optional(Schema.Number),
   }),
 });
 export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;
@@ -44,7 +42,7 @@ export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;
  * @param project_id - The Neon project ID
  * @param snapshot_id - The snapshot ID
  */
-export const updateSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSnapshotInput,
   outputSchema: UpdateSnapshotOutput,
 }));

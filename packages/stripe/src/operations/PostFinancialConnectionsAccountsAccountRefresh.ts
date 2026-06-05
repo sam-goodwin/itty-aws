@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostFinancialConnectionsAccountsAccountRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.Array(
@@ -22,7 +22,7 @@ export type PostFinancialConnectionsAccountsAccountRefreshInput =
 
 // Output Schema
 export const PostFinancialConnectionsAccountsAccountRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
@@ -86,7 +86,7 @@ export type PostFinancialConnectionsAccountsAccountRefreshOutput =
  * <p>Refreshes the data associated with a Financial Connections <code>Account</code>.</p>
  */
 export const PostFinancialConnectionsAccountsAccountRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountRefreshInput,
     outputSchema: PostFinancialConnectionsAccountsAccountRefreshOutput,
   }));

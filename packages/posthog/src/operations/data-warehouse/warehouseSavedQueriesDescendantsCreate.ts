@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const WarehouseSavedQueriesDescendantsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -58,7 +58,7 @@ export type WarehouseSavedQueriesDescendantsCreateInput =
 
 // Output Schema
 export const WarehouseSavedQueriesDescendantsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
     name: Schema.optional(Schema.String),
@@ -113,9 +113,10 @@ export type WarehouseSavedQueriesDescendantsCreateOutput =
  * @param id - A UUID string identifying this data warehouse saved query.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseSavedQueriesDescendantsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const warehouseSavedQueriesDescendantsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WarehouseSavedQueriesDescendantsCreateInput,
     outputSchema: WarehouseSavedQueriesDescendantsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

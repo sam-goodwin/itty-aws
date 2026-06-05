@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AdminKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AdminKeysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const AdminKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AdminKeysGetInput = typeof AdminKeysGetInput.Type;
 
 // Output Schema
-export const AdminKeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AdminKeysGetOutput = /*@__PURE__*/ Schema.Struct({
   primaryKey: Schema.optional(Schema.String),
   secondaryKey: Schema.optional(Schema.String),
 });
@@ -39,32 +39,30 @@ export type AdminKeysGetOutput = typeof AdminKeysGetOutput.Type;
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const AdminKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AdminKeysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AdminKeysGetInput,
   outputSchema: AdminKeysGetOutput,
 }));
 // Input Schema
-export const AdminKeysRegenerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    searchServiceName: Schema.String.pipe(T.PathParam()),
-    keyKind: Schema.Literals(["primary", "secondary"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/regenerateAdminKey/{keyKind}",
-    }),
-  );
+export const AdminKeysRegenerateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  searchServiceName: Schema.String.pipe(T.PathParam()),
+  keyKind: Schema.Literals(["primary", "secondary"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/regenerateAdminKey/{keyKind}",
+  }),
+);
 export type AdminKeysRegenerateInput = typeof AdminKeysRegenerateInput.Type;
 
 // Output Schema
-export const AdminKeysRegenerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-  });
+export const AdminKeysRegenerateOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+});
 export type AdminKeysRegenerateOutput = typeof AdminKeysRegenerateOutput.Type;
 
 // The operation
@@ -78,13 +76,13 @@ export type AdminKeysRegenerateOutput = typeof AdminKeysRegenerateOutput.Type;
  * @param keyKind - Specifies which key to regenerate. Valid values include 'primary' and 'secondary'.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const AdminKeysRegenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AdminKeysRegenerate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AdminKeysRegenerateInput,
   outputSchema: AdminKeysRegenerateOutput,
 }));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -101,7 +99,7 @@ export type NetworkSecurityPerimeterConfigurationsGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -133,14 +131,15 @@ export type NetworkSecurityPerimeterConfigurationsGetOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param nspConfigName - The network security perimeter configuration name.
  */
-export const NetworkSecurityPerimeterConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkSecurityPerimeterConfigurationsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsGetInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -156,7 +155,7 @@ export type NetworkSecurityPerimeterConfigurationsListByServiceInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -203,13 +202,13 @@ export type NetworkSecurityPerimeterConfigurationsListByServiceOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  */
 export const NetworkSecurityPerimeterConfigurationsListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsListByServiceInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsListByServiceOutput,
   }));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -226,7 +225,7 @@ export type NetworkSecurityPerimeterConfigurationsReconcileInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
   typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
 
@@ -241,12 +240,12 @@ export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
  * @param nspConfigName - The network security perimeter configuration name.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsReconcileInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Search/operations" }),
@@ -254,7 +253,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -285,13 +284,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -308,7 +307,7 @@ export type PrivateEndpointConnectionsDeleteInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -343,49 +342,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    searchServiceName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  searchServiceName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -400,14 +396,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -423,7 +418,7 @@ export type PrivateEndpointConnectionsListByServiceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -472,14 +467,15 @@ export type PrivateEndpointConnectionsListByServiceOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const PrivateEndpointConnectionsListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsListByService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsListByServiceInput,
     outputSchema: PrivateEndpointConnectionsListByServiceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -496,7 +492,7 @@ export type PrivateEndpointConnectionsUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -529,14 +525,13 @@ export type PrivateEndpointConnectionsUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsUpdateInput,
-    outputSchema: PrivateEndpointConnectionsUpdateOutput,
-  }));
+export const PrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsUpdateInput,
+  outputSchema: PrivateEndpointConnectionsUpdateOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListSupportedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -552,7 +547,7 @@ export type PrivateLinkResourcesListSupportedInput =
 
 // Output Schema
 export const PrivateLinkResourcesListSupportedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -601,13 +596,12 @@ export type PrivateLinkResourcesListSupportedOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const PrivateLinkResourcesListSupported =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkResourcesListSupportedInput,
-    outputSchema: PrivateLinkResourcesListSupportedOutput,
-  }));
+export const PrivateLinkResourcesListSupported = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListSupportedInput,
+  outputSchema: PrivateLinkResourcesListSupportedOutput,
+}));
 // Input Schema
-export const QueryKeysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryKeysCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -622,7 +616,7 @@ export const QueryKeysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryKeysCreateInput = typeof QueryKeysCreateInput.Type;
 
 // Output Schema
-export const QueryKeysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryKeysCreateOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   key: Schema.optional(Schema.String),
 });
@@ -639,12 +633,12 @@ export type QueryKeysCreateOutput = typeof QueryKeysCreateOutput.Type;
  * @param name - The name of the new query API key.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const QueryKeysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryKeysCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryKeysCreateInput,
   outputSchema: QueryKeysCreateOutput,
 }));
 // Input Schema
-export const QueryKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryKeysDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -659,7 +653,7 @@ export const QueryKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryKeysDeleteInput = typeof QueryKeysDeleteInput.Type;
 
 // Output Schema
-export const QueryKeysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const QueryKeysDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type QueryKeysDeleteOutput = typeof QueryKeysDeleteOutput.Type;
 
 // The operation
@@ -675,39 +669,37 @@ export type QueryKeysDeleteOutput = typeof QueryKeysDeleteOutput.Type;
  * @param key - The query key to be deleted. Query keys are identified by value, not by name.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const QueryKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryKeysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryKeysDeleteInput,
   outputSchema: QueryKeysDeleteOutput,
 }));
 // Input Schema
-export const QueryKeysListBySearchServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listQueryKeys",
-    }),
-  );
+export const QueryKeysListBySearchServiceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  searchServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listQueryKeys",
+  }),
+);
 export type QueryKeysListBySearchServiceInput =
   typeof QueryKeysListBySearchServiceInput.Type;
 
 // Output Schema
-export const QueryKeysListBySearchServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          key: Schema.optional(Schema.String),
-        }),
-      ),
+export const QueryKeysListBySearchServiceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        key: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type QueryKeysListBySearchServiceOutput =
   typeof QueryKeysListBySearchServiceOutput.Type;
 
@@ -721,32 +713,29 @@ export type QueryKeysListBySearchServiceOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const QueryKeysListBySearchService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: QueryKeysListBySearchServiceInput,
-    outputSchema: QueryKeysListBySearchServiceOutput,
-  }));
+export const QueryKeysListBySearchService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueryKeysListBySearchServiceInput,
+  outputSchema: QueryKeysListBySearchServiceOutput,
+}));
 // Input Schema
-export const ServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/checkNameAvailability",
-    }),
-  );
+export const ServicesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/checkNameAvailability",
+  }),
+);
 export type ServicesCheckNameAvailabilityInput =
   typeof ServicesCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const ServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const ServicesCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type ServicesCheckNameAvailabilityOutput =
   typeof ServicesCheckNameAvailabilityOutput.Type;
 
@@ -758,48 +747,45 @@ export type ServicesCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ServicesCheckNameAvailabilityInput,
-    outputSchema: ServicesCheckNameAvailabilityOutput,
-  }));
+export const ServicesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCheckNameAvailabilityInput,
+  outputSchema: ServicesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
-    }),
-  );
+export const ServicesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  searchServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
+  }),
+);
 export type ServicesCreateOrUpdateInput =
   typeof ServicesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServicesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServicesCreateOrUpdateOutput =
   typeof ServicesCreateOrUpdateOutput.Type;
 
@@ -813,14 +799,12 @@ export type ServicesCreateOrUpdateOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -834,7 +818,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -848,12 +832,12 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +851,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesGetInput = typeof ServicesGetInput.Type;
 
 // Output Schema
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -898,63 +882,61 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices",
-    }),
-  );
+export const ServicesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices",
+  }),
+);
 export type ServicesListByResourceGroupInput =
   typeof ServicesListByResourceGroupInput.Type;
 
 // Output Schema
-export const ServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServicesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServicesListByResourceGroupOutput =
   typeof ServicesListByResourceGroupOutput.Type;
 
@@ -967,64 +949,60 @@ export type ServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListByResourceGroupInput,
-    outputSchema: ServicesListByResourceGroupOutput,
+export const ServicesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListByResourceGroupInput,
+  outputSchema: ServicesListByResourceGroupOutput,
+}));
+// Input Schema
+export const ServicesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/searchServices",
   }),
 );
-// Input Schema
-export const ServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/searchServices",
-    }),
-  );
 export type ServicesListBySubscriptionInput =
   typeof ServicesListBySubscriptionInput.Type;
 
 // Output Schema
-export const ServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServicesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServicesListBySubscriptionOutput =
   typeof ServicesListBySubscriptionOutput.Type;
 
@@ -1036,14 +1014,12 @@ export type ServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListBySubscriptionInput,
-    outputSchema: ServicesListBySubscriptionOutput,
-  }),
-);
+export const ServicesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListBySubscriptionInput,
+  outputSchema: ServicesListBySubscriptionOutput,
+}));
 // Input Schema
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -1057,7 +1033,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
 
 // Output Schema
-export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1088,12 +1064,12 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
-export const ServicesUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpgradeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -1107,7 +1083,7 @@ export const ServicesUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesUpgradeInput = typeof ServicesUpgradeInput.Type;
 
 // Output Schema
-export const ServicesUpgradeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpgradeOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1137,13 +1113,13 @@ export type ServicesUpgradeOutput = typeof ServicesUpgradeOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  */
-export const ServicesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesUpgrade = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpgradeInput,
   outputSchema: ServicesUpgradeOutput,
 }));
 // Input Schema
 export const SharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -1160,7 +1136,7 @@ export type SharedPrivateLinkResourcesCreateOrUpdateInput =
 
 // Output Schema
 export const SharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1193,14 +1169,15 @@ export type SharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param sharedPrivateLinkResourceName - The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const SharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedPrivateLinkResourcesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema: SharedPrivateLinkResourcesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -1216,8 +1193,7 @@ export type SharedPrivateLinkResourcesDeleteInput =
   typeof SharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SharedPrivateLinkResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SharedPrivateLinkResourcesDeleteOutput =
   typeof SharedPrivateLinkResourcesDeleteOutput.Type;
 
@@ -1234,49 +1210,46 @@ export type SharedPrivateLinkResourcesDeleteOutput =
  * @param sharedPrivateLinkResourceName - The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const SharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharedPrivateLinkResourcesDeleteInput,
-    outputSchema: SharedPrivateLinkResourcesDeleteOutput,
-  }));
+export const SharedPrivateLinkResourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedPrivateLinkResourcesDeleteInput,
+  outputSchema: SharedPrivateLinkResourcesDeleteOutput,
+}));
 // Input Schema
-export const SharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    searchServiceName: Schema.String.pipe(T.PathParam()),
-    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
-    }),
-  );
+export const SharedPrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  searchServiceName: Schema.String.pipe(T.PathParam()),
+  sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+  }),
+);
 export type SharedPrivateLinkResourcesGetInput =
   typeof SharedPrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SharedPrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SharedPrivateLinkResourcesGetOutput =
   typeof SharedPrivateLinkResourcesGetOutput.Type;
 
@@ -1291,14 +1264,13 @@ export type SharedPrivateLinkResourcesGetOutput =
  * @param sharedPrivateLinkResourceName - The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const SharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharedPrivateLinkResourcesGetInput,
-    outputSchema: SharedPrivateLinkResourcesGetOutput,
-  }));
+export const SharedPrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedPrivateLinkResourcesGetInput,
+  outputSchema: SharedPrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const SharedPrivateLinkResourcesListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
@@ -1314,7 +1286,7 @@ export type SharedPrivateLinkResourcesListByServiceInput =
 
 // Output Schema
 export const SharedPrivateLinkResourcesListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1363,41 +1335,40 @@ export type SharedPrivateLinkResourcesListByServiceOutput =
  * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  */
-export const SharedPrivateLinkResourcesListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedPrivateLinkResourcesListByService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SharedPrivateLinkResourcesListByServiceInput,
     outputSchema: SharedPrivateLinkResourcesListByServiceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const UsageBySubscriptionSkuInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    skuName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages/{skuName}",
-    }),
-  );
+export const UsageBySubscriptionSkuInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  skuName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages/{skuName}",
+  }),
+);
 export type UsageBySubscriptionSkuInput =
   typeof UsageBySubscriptionSkuInput.Type;
 
 // Output Schema
-export const UsageBySubscriptionSkuOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    unit: Schema.optional(Schema.String),
-    currentValue: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    name: Schema.optional(
-      Schema.Struct({
-        value: Schema.optional(Schema.String),
-        localizedValue: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UsageBySubscriptionSkuOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(
+    Schema.Struct({
+      value: Schema.optional(Schema.String),
+      localizedValue: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UsageBySubscriptionSkuOutput =
   typeof UsageBySubscriptionSkuOutput.Type;
 
@@ -1411,48 +1382,44 @@ export type UsageBySubscriptionSkuOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param skuName - The unique SKU name that identifies a billable tier.
  */
-export const UsageBySubscriptionSku = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsageBySubscriptionSkuInput,
-    outputSchema: UsageBySubscriptionSkuOutput,
+export const UsageBySubscriptionSku = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsageBySubscriptionSkuInput,
+  outputSchema: UsageBySubscriptionSkuOutput,
+}));
+// Input Schema
+export const UsagesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages",
   }),
 );
-// Input Schema
-export const UsagesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages",
-    }),
-  );
 export type UsagesListBySubscriptionInput =
   typeof UsagesListBySubscriptionInput.Type;
 
 // Output Schema
-export const UsagesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const UsagesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        unit: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type UsagesListBySubscriptionOutput =
   typeof UsagesListBySubscriptionOutput.Type;
 
@@ -1465,9 +1432,7 @@ export type UsagesListBySubscriptionOutput =
  * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
  * @param location - The name of the Azure region.
  */
-export const UsagesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsagesListBySubscriptionInput,
-    outputSchema: UsagesListBySubscriptionOutput,
-  }),
-);
+export const UsagesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListBySubscriptionInput,
+  outputSchema: UsagesListBySubscriptionOutput,
+}));

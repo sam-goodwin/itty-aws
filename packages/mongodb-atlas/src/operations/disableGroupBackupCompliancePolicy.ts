@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DisableGroupBackupCompliancePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type DisableGroupBackupCompliancePolicyInput =
 
 // Output Schema
 export const DisableGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DisableGroupBackupCompliancePolicyOutput =
   typeof DisableGroupBackupCompliancePolicyOutput.Type;
 
@@ -36,9 +36,10 @@ export type DisableGroupBackupCompliancePolicyOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const disableGroupBackupCompliancePolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const disableGroupBackupCompliancePolicy = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DisableGroupBackupCompliancePolicyInput,
     outputSchema: DisableGroupBackupCompliancePolicyOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

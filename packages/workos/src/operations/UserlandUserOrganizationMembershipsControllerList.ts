@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserOrganizationMembershipsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export type UserlandUserOrganizationMembershipsControllerListInput =
 
 // Output Schema
 export const UserlandUserOrganizationMembershipsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -76,7 +76,7 @@ export type UserlandUserOrganizationMembershipsControllerListOutput =
  * @param user_id - The ID of the [user](/reference/authkit/user).
  */
 export const UserlandUserOrganizationMembershipsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerListInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerListOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const PostPaymentIntentsIntentCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPaymentIntentsIntentCaptureInput = /*@__PURE__*/ Schema.Struct(
+  {
     intent: Schema.String.pipe(T.PathParam()),
     amount_details: Schema.optional(
       Schema.Struct({
@@ -42,19 +42,20 @@ export const PostPaymentIntentsIntentCaptureInput =
         amount: Schema.optional(Schema.Number),
       }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/payment_intents/{intent}/capture",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/payment_intents/{intent}/capture",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPaymentIntentsIntentCaptureInput =
   typeof PostPaymentIntentsIntentCaptureInput.Type;
 
 // Output Schema
 export const PostPaymentIntentsIntentCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -131,7 +132,7 @@ export const PostPaymentIntentsIntentCaptureOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -264,8 +265,7 @@ export type PostPaymentIntentsIntentCaptureOutput =
  * <p>Uncaptured PaymentIntents are cancelled a set number of days (7 by default) after their creation.</p>
  * <p>Learn more about <a href="/docs/payments/capture-later">separate authorization and capture</a>.</p>
  */
-export const PostPaymentIntentsIntentCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPaymentIntentsIntentCaptureInput,
-    outputSchema: PostPaymentIntentsIntentCaptureOutput,
-  }));
+export const PostPaymentIntentsIntentCapture = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentIntentsIntentCaptureInput,
+  outputSchema: PostPaymentIntentsIntentCaptureOutput,
+}));

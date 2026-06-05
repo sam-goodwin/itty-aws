@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetMaskingRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMaskingRulesInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -15,7 +15,7 @@ export const GetMaskingRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetMaskingRulesInput = typeof GetMaskingRulesInput.Type;
 
 // Output Schema
-export const GetMaskingRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMaskingRulesOutput = /*@__PURE__*/ Schema.Struct({
   masking_rules: Schema.Array(
     Schema.Struct({
       database_name: Schema.String,
@@ -42,7 +42,7 @@ export type GetMaskingRulesOutput = typeof GetMaskingRulesOutput.Type;
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const getMaskingRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getMaskingRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMaskingRulesInput,
   outputSchema: GetMaskingRulesOutput,
 }));

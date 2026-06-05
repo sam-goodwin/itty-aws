@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -89,12 +89,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -107,7 +107,7 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UsagesListInput = typeof UsagesListInput.Type;
 
 // Output Schema
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -136,32 +136,32 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));
 // Input Schema
-export const WebPubSubCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
-    }),
-  );
+export const WebPubSubCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
+  }),
+);
 export type WebPubSubCheckNameAvailabilityInput =
   typeof WebPubSubCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const WebPubSubCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct(
+  {
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebPubSubCheckNameAvailabilityOutput =
   typeof WebPubSubCheckNameAvailabilityOutput.Type;
 
@@ -173,47 +173,44 @@ export type WebPubSubCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WebPubSubCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubCheckNameAvailabilityInput,
-    outputSchema: WebPubSubCheckNameAvailabilityOutput,
-  }));
+export const WebPubSubCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCheckNameAvailabilityInput,
+  outputSchema: WebPubSubCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const WebPubSubCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
-    }),
-  );
+export const WebPubSubCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
+  }),
+);
 export type WebPubSubCreateOrUpdateInput =
   typeof WebPubSubCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WebPubSubCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebPubSubCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubCreateOrUpdateOutput =
   typeof WebPubSubCreateOrUpdateOutput.Type;
 
@@ -225,15 +222,13 @@ export type WebPubSubCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCreateOrUpdateInput,
-    outputSchema: WebPubSubCreateOrUpdateOutput,
-  }),
-);
+export const WebPubSubCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCreateOrUpdateInput,
+  outputSchema: WebPubSubCreateOrUpdateOutput,
+}));
 // Input Schema
 export const WebPubSubCustomCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -249,7 +244,7 @@ export type WebPubSubCustomCertificatesCreateOrUpdateInput =
 
 // Output Schema
 export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -280,14 +275,15 @@ export type WebPubSubCustomCertificatesCreateOrUpdateOutput =
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubCustomCertificatesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubCustomCertificatesCreateOrUpdateInput,
     outputSchema: WebPubSubCustomCertificatesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubCustomCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -303,7 +299,7 @@ export type WebPubSubCustomCertificatesDeleteInput =
 
 // Output Schema
 export const WebPubSubCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebPubSubCustomCertificatesDeleteOutput =
   typeof WebPubSubCustomCertificatesDeleteOutput.Type;
 
@@ -316,30 +312,28 @@ export type WebPubSubCustomCertificatesDeleteOutput =
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomCertificatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubCustomCertificatesDeleteInput,
-    outputSchema: WebPubSubCustomCertificatesDeleteOutput,
-  }));
+export const WebPubSubCustomCertificatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomCertificatesDeleteInput,
+  outputSchema: WebPubSubCustomCertificatesDeleteOutput,
+}));
 // Input Schema
-export const WebPubSubCustomCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
-    }),
-  );
+export const WebPubSubCustomCertificatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
+  }),
+);
 export type WebPubSubCustomCertificatesGetInput =
   typeof WebPubSubCustomCertificatesGetInput.Type;
 
 // Output Schema
-export const WebPubSubCustomCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubCustomCertificatesGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -357,7 +351,8 @@ export const WebPubSubCustomCertificatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebPubSubCustomCertificatesGetOutput =
   typeof WebPubSubCustomCertificatesGetOutput.Type;
 
@@ -370,29 +365,29 @@ export type WebPubSubCustomCertificatesGetOutput =
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomCertificatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubCustomCertificatesGetInput,
-    outputSchema: WebPubSubCustomCertificatesGetOutput,
-  }));
+export const WebPubSubCustomCertificatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomCertificatesGetInput,
+  outputSchema: WebPubSubCustomCertificatesGetOutput,
+}));
 // Input Schema
-export const WebPubSubCustomCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubCustomCertificatesListInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates",
+  }),
+);
 export type WebPubSubCustomCertificatesListInput =
   typeof WebPubSubCustomCertificatesListInput.Type;
 
 // Output Schema
 export const WebPubSubCustomCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -439,14 +434,13 @@ export type WebPubSubCustomCertificatesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomCertificatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubCustomCertificatesListInput,
-    outputSchema: WebPubSubCustomCertificatesListOutput,
-  }));
+export const WebPubSubCustomCertificatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomCertificatesListInput,
+  outputSchema: WebPubSubCustomCertificatesListOutput,
+}));
 // Input Schema
 export const WebPubSubCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -462,7 +456,7 @@ export type WebPubSubCustomDomainsCreateOrUpdateInput =
 
 // Output Schema
 export const WebPubSubCustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -493,30 +487,29 @@ export type WebPubSubCustomDomainsCreateOrUpdateOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubCustomDomainsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubCustomDomainsCreateOrUpdateInput,
     outputSchema: WebPubSubCustomDomainsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebPubSubCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
-    }),
-  );
+export const WebPubSubCustomDomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
+  }),
+);
 export type WebPubSubCustomDomainsDeleteInput =
   typeof WebPubSubCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubCustomDomainsDeleteOutput =
   typeof WebPubSubCustomDomainsDeleteOutput.Type;
 
@@ -529,48 +522,45 @@ export type WebPubSubCustomDomainsDeleteOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubCustomDomainsDeleteInput,
-    outputSchema: WebPubSubCustomDomainsDeleteOutput,
-  }));
+export const WebPubSubCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomDomainsDeleteInput,
+  outputSchema: WebPubSubCustomDomainsDeleteOutput,
+}));
 // Input Schema
-export const WebPubSubCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
-    }),
-  );
+export const WebPubSubCustomDomainsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
+  }),
+);
 export type WebPubSubCustomDomainsGetInput =
   typeof WebPubSubCustomDomainsGetInput.Type;
 
 // Output Schema
-export const WebPubSubCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebPubSubCustomDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubCustomDomainsGetOutput =
   typeof WebPubSubCustomDomainsGetOutput.Type;
 
@@ -583,65 +573,61 @@ export type WebPubSubCustomDomainsGetOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCustomDomainsGetInput,
-    outputSchema: WebPubSubCustomDomainsGetOutput,
+export const WebPubSubCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomDomainsGetInput,
+  outputSchema: WebPubSubCustomDomainsGetOutput,
+}));
+// Input Schema
+export const WebPubSubCustomDomainsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains",
   }),
 );
-// Input Schema
-export const WebPubSubCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains",
-    }),
-  );
 export type WebPubSubCustomDomainsListInput =
   typeof WebPubSubCustomDomainsListInput.Type;
 
 // Output Schema
-export const WebPubSubCustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubCustomDomainsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubCustomDomainsListOutput =
   typeof WebPubSubCustomDomainsListOutput.Type;
 
@@ -653,14 +639,12 @@ export type WebPubSubCustomDomainsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCustomDomainsListInput,
-    outputSchema: WebPubSubCustomDomainsListOutput,
-  }),
-);
+export const WebPubSubCustomDomainsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomDomainsListInput,
+  outputSchema: WebPubSubCustomDomainsListOutput,
+}));
 // Input Schema
-export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -673,7 +657,7 @@ export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebPubSubDeleteInput = typeof WebPubSubDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubDeleteOutput = typeof WebPubSubDeleteOutput.Type;
 
 // The operation
@@ -684,12 +668,12 @@ export type WebPubSubDeleteOutput = typeof WebPubSubDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubDeleteInput,
   outputSchema: WebPubSubDeleteOutput,
 }));
 // Input Schema
-export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -702,7 +686,7 @@ export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebPubSubGetInput = typeof WebPubSubGetInput.Type;
 
 // Output Schema
-export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -731,47 +715,45 @@ export type WebPubSubGetOutput = typeof WebPubSubGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubGetInput,
   outputSchema: WebPubSubGetOutput,
 }));
 // Input Schema
-export const WebPubSubHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hubName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
-    }),
-  );
+export const WebPubSubHubsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  hubName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
+  }),
+);
 export type WebPubSubHubsCreateOrUpdateInput =
   typeof WebPubSubHubsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WebPubSubHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebPubSubHubsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubHubsCreateOrUpdateOutput =
   typeof WebPubSubHubsCreateOrUpdateOutput.Type;
 
@@ -784,30 +766,26 @@ export type WebPubSubHubsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubHubsCreateOrUpdateInput,
-    outputSchema: WebPubSubHubsCreateOrUpdateOutput,
+export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubHubsCreateOrUpdateInput,
+  outputSchema: WebPubSubHubsCreateOrUpdateOutput,
+}));
+// Input Schema
+export const WebPubSubHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  hubName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
   }),
 );
-// Input Schema
-export const WebPubSubHubsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hubName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
-    }),
-  );
 export type WebPubSubHubsDeleteInput = typeof WebPubSubHubsDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubHubsDeleteOutput = typeof WebPubSubHubsDeleteOutput.Type;
 
 // The operation
@@ -819,12 +797,12 @@ export type WebPubSubHubsDeleteOutput = typeof WebPubSubHubsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsDeleteInput,
   outputSchema: WebPubSubHubsDeleteOutput,
 }));
 // Input Schema
-export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubHubsGetInput = /*@__PURE__*/ Schema.Struct({
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -838,27 +816,25 @@ export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebPubSubHubsGetInput = typeof WebPubSubHubsGetInput.Type;
 
 // Output Schema
-export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const WebPubSubHubsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubHubsGetOutput = typeof WebPubSubHubsGetOutput.Type;
 
 // The operation
@@ -870,18 +846,16 @@ export type WebPubSubHubsGetOutput = typeof WebPubSubHubsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsGetInput,
   outputSchema: WebPubSubHubsGetOutput,
 }));
 // Input Schema
-export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebPubSubHubsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs",
@@ -890,43 +864,42 @@ export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WebPubSubHubsListInput = typeof WebPubSubHubsListInput.Type;
 
 // Output Schema
-export const WebPubSubHubsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubHubsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubHubsListOutput = typeof WebPubSubHubsListOutput.Type;
 
 // The operation
@@ -937,63 +910,61 @@ export type WebPubSubHubsListOutput = typeof WebPubSubHubsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsListInput,
   outputSchema: WebPubSubHubsListOutput,
 }));
 // Input Schema
-export const WebPubSubListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub",
-    }),
-  );
+export const WebPubSubListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub",
+  }),
+);
 export type WebPubSubListByResourceGroupInput =
   typeof WebPubSubListByResourceGroupInput.Type;
 
 // Output Schema
-export const WebPubSubListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubListByResourceGroupOutput =
   typeof WebPubSubListByResourceGroupOutput.Type;
 
@@ -1005,63 +976,60 @@ export type WebPubSubListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubListByResourceGroupInput,
-    outputSchema: WebPubSubListByResourceGroupOutput,
-  }));
+export const WebPubSubListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubListByResourceGroupInput,
+  outputSchema: WebPubSubListByResourceGroupOutput,
+}));
 // Input Schema
-export const WebPubSubListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/webPubSub",
-    }),
-  );
+export const WebPubSubListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/webPubSub",
+  }),
+);
 export type WebPubSubListBySubscriptionInput =
   typeof WebPubSubListBySubscriptionInput.Type;
 
 // Output Schema
-export const WebPubSubListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubListBySubscriptionOutput =
   typeof WebPubSubListBySubscriptionOutput.Type;
 
@@ -1072,20 +1040,16 @@ export type WebPubSubListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WebPubSubListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubListBySubscriptionInput,
-    outputSchema: WebPubSubListBySubscriptionOutput,
-  }),
-);
+export const WebPubSubListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubListBySubscriptionInput,
+  outputSchema: WebPubSubListBySubscriptionOutput,
+}));
 // Input Schema
-export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebPubSubListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/listKeys",
@@ -1094,13 +1058,12 @@ export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WebPubSubListKeysInput = typeof WebPubSubListKeysInput.Type;
 
 // Output Schema
-export const WebPubSubListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-  });
+export const WebPubSubListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+});
 export type WebPubSubListKeysOutput = typeof WebPubSubListKeysOutput.Type;
 
 // The operation
@@ -1111,59 +1074,57 @@ export type WebPubSubListKeysOutput = typeof WebPubSubListKeysOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListKeysInput,
   outputSchema: WebPubSubListKeysOutput,
 }));
 // Input Schema
-export const WebPubSubListReplicaSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/skus",
-    }),
-  );
+export const WebPubSubListReplicaSkusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/skus",
+  }),
+);
 export type WebPubSubListReplicaSkusInput =
   typeof WebPubSubListReplicaSkusInput.Type;
 
 // Output Schema
-export const WebPubSubListReplicaSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-              scaleType: Schema.optional(
-                Schema.Literals(["None", "Manual", "Automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubListReplicaSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+            ),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        capacity: Schema.optional(
+          Schema.Struct({
+            minimum: Schema.optional(Schema.Number),
+            maximum: Schema.optional(Schema.Number),
+            default: Schema.optional(Schema.Number),
+            allowedValues: Schema.optional(Schema.Array(Schema.Number)),
+            scaleType: Schema.optional(
+              Schema.Literals(["None", "Manual", "Automatic"]),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubListReplicaSkusOutput =
   typeof WebPubSubListReplicaSkusOutput.Type;
 
@@ -1175,20 +1136,16 @@ export type WebPubSubListReplicaSkusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubListReplicaSkusInput,
-    outputSchema: WebPubSubListReplicaSkusOutput,
-  }),
-);
+export const WebPubSubListReplicaSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubListReplicaSkusInput,
+  outputSchema: WebPubSubListReplicaSkusOutput,
+}));
 // Input Schema
-export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebPubSubListSkusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/skus",
@@ -1197,39 +1154,38 @@ export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WebPubSubListSkusInput = typeof WebPubSubListSkusInput.Type;
 
 // Output Schema
-export const WebPubSubListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-              scaleType: Schema.optional(
-                Schema.Literals(["None", "Manual", "Automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubListSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+            ),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        capacity: Schema.optional(
+          Schema.Struct({
+            minimum: Schema.optional(Schema.Number),
+            maximum: Schema.optional(Schema.Number),
+            default: Schema.optional(Schema.Number),
+            allowedValues: Schema.optional(Schema.Array(Schema.Number)),
+            scaleType: Schema.optional(
+              Schema.Literals(["None", "Manual", "Automatic"]),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubListSkusOutput = typeof WebPubSubListSkusOutput.Type;
 
 // The operation
@@ -1240,13 +1196,13 @@ export type WebPubSubListSkusOutput = typeof WebPubSubListSkusOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListSkusInput,
   outputSchema: WebPubSubListSkusOutput,
 }));
 // Input Schema
 export const WebPubSubPrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1262,7 +1218,7 @@ export type WebPubSubPrivateEndpointConnectionsDeleteInput =
 
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebPubSubPrivateEndpointConnectionsDeleteOutput =
   typeof WebPubSubPrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1275,14 +1231,15 @@ export type WebPubSubPrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubPrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubPrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsDeleteInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubPrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1298,7 +1255,7 @@ export type WebPubSubPrivateEndpointConnectionsGetInput =
 
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1329,14 +1286,15 @@ export type WebPubSubPrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubPrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubPrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsGetInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubPrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1351,7 +1309,7 @@ export type WebPubSubPrivateEndpointConnectionsListInput =
 
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1398,14 +1356,15 @@ export type WebPubSubPrivateEndpointConnectionsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubPrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubPrivateEndpointConnectionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsListInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubPrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1421,7 +1380,7 @@ export type WebPubSubPrivateEndpointConnectionsUpdateInput =
 
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1452,14 +1411,15 @@ export type WebPubSubPrivateEndpointConnectionsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubPrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubPrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsUpdateInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1474,7 +1434,7 @@ export type WebPubSubPrivateLinkResourcesListInput =
 
 // Output Schema
 export const WebPubSubPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1521,34 +1481,31 @@ export type WebPubSubPrivateLinkResourcesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubPrivateLinkResourcesListInput,
-    outputSchema: WebPubSubPrivateLinkResourcesListOutput,
-  }));
+export const WebPubSubPrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubPrivateLinkResourcesListInput,
+  outputSchema: WebPubSubPrivateLinkResourcesListOutput,
+}));
 // Input Schema
-export const WebPubSubRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/regenerateKey",
-    }),
-  );
+export const WebPubSubRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/regenerateKey",
+  }),
+);
 export type WebPubSubRegenerateKeyInput =
   typeof WebPubSubRegenerateKeyInput.Type;
 
 // Output Schema
-export const WebPubSubRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-  });
+export const WebPubSubRegenerateKeyOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+});
 export type WebPubSubRegenerateKeyOutput =
   typeof WebPubSubRegenerateKeyOutput.Type;
 
@@ -1560,30 +1517,29 @@ export type WebPubSubRegenerateKeyOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubRegenerateKeyInput,
-    outputSchema: WebPubSubRegenerateKeyOutput,
-  }),
-);
+export const WebPubSubRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubRegenerateKeyInput,
+  outputSchema: WebPubSubRegenerateKeyOutput,
+}));
 // Input Schema
-export const WebPubSubReplicasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubReplicasCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
+  }),
+);
 export type WebPubSubReplicasCreateOrUpdateInput =
   typeof WebPubSubReplicasCreateOrUpdateInput.Type;
 
 // Output Schema
 export const WebPubSubReplicasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1613,29 +1569,26 @@ export type WebPubSubReplicasCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebPubSubReplicasCreateOrUpdateInput,
-    outputSchema: WebPubSubReplicasCreateOrUpdateOutput,
-  }));
+export const WebPubSubReplicasCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasCreateOrUpdateInput,
+  outputSchema: WebPubSubReplicasCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WebPubSubReplicasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
-    }),
-  );
+export const WebPubSubReplicasDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
+  }),
+);
 export type WebPubSubReplicasDeleteInput =
   typeof WebPubSubReplicasDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubReplicasDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubReplicasDeleteOutput =
   typeof WebPubSubReplicasDeleteOutput.Type;
 
@@ -1647,47 +1600,43 @@ export type WebPubSubReplicasDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasDeleteInput,
-    outputSchema: WebPubSubReplicasDeleteOutput,
+export const WebPubSubReplicasDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasDeleteInput,
+  outputSchema: WebPubSubReplicasDeleteOutput,
+}));
+// Input Schema
+export const WebPubSubReplicasGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
   }),
 );
-// Input Schema
-export const WebPubSubReplicasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
-    }),
-  );
 export type WebPubSubReplicasGetInput = typeof WebPubSubReplicasGetInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebPubSubReplicasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubReplicasGetOutput = typeof WebPubSubReplicasGetOutput.Type;
 
 // The operation
@@ -1698,15 +1647,13 @@ export type WebPubSubReplicasGetOutput = typeof WebPubSubReplicasGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasGetInput,
-    outputSchema: WebPubSubReplicasGetOutput,
-  }),
-);
+export const WebPubSubReplicasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasGetInput,
+  outputSchema: WebPubSubReplicasGetOutput,
+}));
 // Input Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1721,7 +1668,7 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
 
 // Output Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1752,14 +1699,14 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema:
       WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1774,7 +1721,7 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
 
 // Output Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1805,13 +1752,13 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesGetInput,
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1826,7 +1773,7 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesListInput =
 
 // Output Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1874,62 +1821,60 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesListInput,
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesListOutput,
   }));
 // Input Schema
-export const WebPubSubReplicasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas",
-    }),
-  );
+export const WebPubSubReplicasListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas",
+  }),
+);
 export type WebPubSubReplicasListInput = typeof WebPubSubReplicasListInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const WebPubSubReplicasListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebPubSubReplicasListOutput =
   typeof WebPubSubReplicasListOutput.Type;
 
@@ -1941,30 +1886,26 @@ export type WebPubSubReplicasListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasListInput,
-    outputSchema: WebPubSubReplicasListOutput,
+export const WebPubSubReplicasList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasListInput,
+  outputSchema: WebPubSubReplicasListOutput,
+}));
+// Input Schema
+export const WebPubSubReplicasRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/restart",
   }),
 );
-// Input Schema
-export const WebPubSubReplicasRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/restart",
-    }),
-  );
 export type WebPubSubReplicasRestartInput =
   typeof WebPubSubReplicasRestartInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubReplicasRestartOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubReplicasRestartOutput =
   typeof WebPubSubReplicasRestartOutput.Type;
 
@@ -1976,48 +1917,44 @@ export type WebPubSubReplicasRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasRestartInput,
-    outputSchema: WebPubSubReplicasRestartOutput,
+export const WebPubSubReplicasRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasRestartInput,
+  outputSchema: WebPubSubReplicasRestartOutput,
+}));
+// Input Schema
+export const WebPubSubReplicasUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
   }),
 );
-// Input Schema
-export const WebPubSubReplicasUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
-    }),
-  );
 export type WebPubSubReplicasUpdateInput =
   typeof WebPubSubReplicasUpdateInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebPubSubReplicasUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebPubSubReplicasUpdateOutput =
   typeof WebPubSubReplicasUpdateOutput.Type;
 
@@ -2029,14 +1966,12 @@ export type WebPubSubReplicasUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasUpdateInput,
-    outputSchema: WebPubSubReplicasUpdateOutput,
-  }),
-);
+export const WebPubSubReplicasUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasUpdateInput,
+  outputSchema: WebPubSubReplicasUpdateOutput,
+}));
 // Input Schema
-export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2049,7 +1984,7 @@ export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebPubSubRestartInput = typeof WebPubSubRestartInput.Type;
 
 // Output Schema
-export const WebPubSubRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebPubSubRestartOutput = /*@__PURE__*/ Schema.Void;
 export type WebPubSubRestartOutput = typeof WebPubSubRestartOutput.Type;
 
 // The operation
@@ -2060,13 +1995,13 @@ export type WebPubSubRestartOutput = typeof WebPubSubRestartOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubRestartInput,
   outputSchema: WebPubSubRestartOutput,
 }));
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2081,7 +2016,7 @@ export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
 
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2112,13 +2047,13 @@ export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2133,7 +2068,7 @@ export type WebPubSubSharedPrivateLinkResourcesDeleteInput =
 
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebPubSubSharedPrivateLinkResourcesDeleteOutput =
   typeof WebPubSubSharedPrivateLinkResourcesDeleteOutput.Type;
 
@@ -2145,14 +2080,15 @@ export type WebPubSubSharedPrivateLinkResourcesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubSharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubSharedPrivateLinkResourcesDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesDeleteInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2167,7 +2103,7 @@ export type WebPubSubSharedPrivateLinkResourcesGetInput =
 
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2197,14 +2133,15 @@ export type WebPubSubSharedPrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubSharedPrivateLinkResourcesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesGetInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2219,7 +2156,7 @@ export type WebPubSubSharedPrivateLinkResourcesListInput =
 
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2266,13 +2203,14 @@ export type WebPubSubSharedPrivateLinkResourcesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubSharedPrivateLinkResourcesList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesListInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2285,7 +2223,7 @@ export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebPubSubUpdateInput = typeof WebPubSubUpdateInput.Type;
 
 // Output Schema
-export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2314,7 +2252,7 @@ export type WebPubSubUpdateOutput = typeof WebPubSubUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebPubSubUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubUpdateInput,
   outputSchema: WebPubSubUpdateOutput,
 }));

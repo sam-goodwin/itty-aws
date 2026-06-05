@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostInvoicesInvoiceMarkUncollectibleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostInvoicesInvoiceMarkUncollectibleInput =
 
 // Output Schema
 export const PostInvoicesInvoiceMarkUncollectibleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
@@ -544,8 +544,9 @@ export type PostInvoicesInvoiceMarkUncollectibleOutput =
  *
  * <p>Marking an invoice as uncollectible is useful for keeping track of bad debts that can be written off for accounting purposes.</p>
  */
-export const PostInvoicesInvoiceMarkUncollectible =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostInvoicesInvoiceMarkUncollectible = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostInvoicesInvoiceMarkUncollectibleInput,
     outputSchema: PostInvoicesInvoiceMarkUncollectibleOutput,
-  }));
+  }),
+);

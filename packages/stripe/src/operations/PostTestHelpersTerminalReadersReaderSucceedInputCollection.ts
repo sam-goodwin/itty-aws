@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTerminalReadersReaderSucceedInputCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     skip_non_required_inputs: Schema.optional(Schema.Literals(["all", "none"])),
@@ -20,7 +20,7 @@ export type PostTestHelpersTerminalReadersReaderSucceedInputCollectionInput =
 
 // Output Schema
 export const PostTestHelpersTerminalReadersReaderSucceedInputCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -57,7 +57,7 @@ export type PostTestHelpersTerminalReadersReaderSucceedInputCollectionOutput =
  * <p>Use this endpoint to trigger a successful input collection on a simulated reader.</p>
  */
 export const PostTestHelpersTerminalReadersReaderSucceedInputCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersTerminalReadersReaderSucceedInputCollectionInput,
     outputSchema:

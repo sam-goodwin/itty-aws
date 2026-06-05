@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const UpdateNeonAuthOrganizationPluginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -23,7 +23,7 @@ export type UpdateNeonAuthOrganizationPluginInput =
 
 // Output Schema
 export const UpdateNeonAuthOrganizationPluginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     organization_limit: Schema.Number,
     membership_limit: Schema.Number,
@@ -43,8 +43,7 @@ export type UpdateNeonAuthOrganizationPluginOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const updateNeonAuthOrganizationPlugin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateNeonAuthOrganizationPluginInput,
-    outputSchema: UpdateNeonAuthOrganizationPluginOutput,
-  }));
+export const updateNeonAuthOrganizationPlugin = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateNeonAuthOrganizationPluginInput,
+  outputSchema: UpdateNeonAuthOrganizationPluginOutput,
+}));

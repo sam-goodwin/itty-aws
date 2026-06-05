@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetFinancialConnectionsTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -24,7 +24,7 @@ export type GetFinancialConnectionsTransactionsInput =
 
 // Output Schema
 export const GetFinancialConnectionsTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account: Schema.String,
@@ -65,8 +65,9 @@ export type GetFinancialConnectionsTransactionsOutput =
  * @param transacted_at - A filter on the list based on the object `transacted_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with the following options:
  * @param transaction_refresh - A filter on the list based on the object `transaction_refresh` field. The value can be a dictionary with the following options:
  */
-export const GetFinancialConnectionsTransactions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFinancialConnectionsTransactions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetFinancialConnectionsTransactionsInput,
     outputSchema: GetFinancialConnectionsTransactionsOutput,
-  }));
+  }),
+);

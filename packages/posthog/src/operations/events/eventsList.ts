@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   after: Schema.optional(Schema.String),
   before: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EventsListInput = typeof EventsListInput.Type;
 
 // Output Schema
-export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventsListOutput = /*@__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
     Schema.Array(
@@ -81,7 +81,7 @@ export type EventsListOutput = typeof EventsListOutput.Type;
  * @param select - (Experimental) JSON-serialized array of HogQL expressions to return
  * @param where - (Experimental) JSON-serialized array of HogQL expressions that must pass
  */
-export const eventsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventsListInput,
   outputSchema: EventsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostProductsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostProductsInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   default_price_data: Schema.optional(
     Schema.Struct({
@@ -98,7 +98,7 @@ export const PostProductsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostProductsInput = typeof PostProductsInput.Type;
 
 // Output Schema
-export const PostProductsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostProductsOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   created: Schema.Number,
   default_price: Schema.optional(Schema.Unknown),
@@ -131,7 +131,7 @@ export type PostProductsOutput = typeof PostProductsOutput.Type;
  *
  * <p>Creates a new product object.</p>
  */
-export const PostProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostProducts = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostProductsInput,
   outputSchema: PostProductsOutput,
 }));

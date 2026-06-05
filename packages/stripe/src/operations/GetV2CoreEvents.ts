@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetV2CoreEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2CoreEventsInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   object_id: Schema.optional(Schema.String),
@@ -12,7 +12,7 @@ export const GetV2CoreEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetV2CoreEventsInput = typeof GetV2CoreEventsInput.Type;
 
 // Output Schema
-export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2CoreEventsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       changes: Schema.optional(Schema.Unknown),
@@ -51,7 +51,7 @@ export type GetV2CoreEventsOutput = typeof GetV2CoreEventsOutput.Type;
  * @param object_id - Primary object ID used to retrieve related events.
  * @param types - An array of up to 20 strings containing specific event names.
  */
-export const GetV2CoreEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreEventsInput,
   outputSchema: GetV2CoreEventsOutput,
 }));

@@ -4,17 +4,15 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const RetrieveNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/nl_search_models/{modelId}" }));
+export const RetrieveNLSearchModelInput = /*@__PURE__*/ Schema.Struct({
+  modelId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/nl_search_models/{modelId}" }));
 export type RetrieveNLSearchModelInput = typeof RetrieveNLSearchModelInput.Type;
 
 // Output Schema
-export const RetrieveNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  });
+export const RetrieveNLSearchModelOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
 export type RetrieveNLSearchModelOutput =
   typeof RetrieveNLSearchModelOutput.Type;
 
@@ -26,10 +24,8 @@ export type RetrieveNLSearchModelOutput =
  *
  * @param modelId - The ID of the NL search model to retrieve
  */
-export const retrieveNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveNLSearchModelInput,
-    outputSchema: RetrieveNLSearchModelOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveNLSearchModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveNLSearchModelInput,
+  outputSchema: RetrieveNLSearchModelOutput,
+  errors: [NotFound] as const,
+}));

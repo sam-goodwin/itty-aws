@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const IntegrationAccountAgreementsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export type IntegrationAccountAgreementsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountAgreementsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -44,13 +44,13 @@ export type IntegrationAccountAgreementsCreateOrUpdateOutput =
  * @param agreementName - The integration account agreement name.
  */
 export const IntegrationAccountAgreementsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsCreateOrUpdateInput,
     outputSchema: IntegrationAccountAgreementsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IntegrationAccountAgreementsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -65,7 +65,7 @@ export type IntegrationAccountAgreementsDeleteInput =
 
 // Output Schema
 export const IntegrationAccountAgreementsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountAgreementsDeleteOutput =
   typeof IntegrationAccountAgreementsDeleteOutput.Type;
 
@@ -77,29 +77,31 @@ export type IntegrationAccountAgreementsDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
  */
-export const IntegrationAccountAgreementsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountAgreementsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountAgreementsDeleteInput,
     outputSchema: IntegrationAccountAgreementsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationAccountAgreementsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationAccountAgreementsGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}",
+  }),
+);
 export type IntegrationAccountAgreementsGetInput =
   typeof IntegrationAccountAgreementsGetInput.Type;
 
 // Output Schema
 export const IntegrationAccountAgreementsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -117,14 +119,13 @@ export type IntegrationAccountAgreementsGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
  */
-export const IntegrationAccountAgreementsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountAgreementsGetInput,
-    outputSchema: IntegrationAccountAgreementsGetOutput,
-  }));
+export const IntegrationAccountAgreementsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountAgreementsGetInput,
+  outputSchema: IntegrationAccountAgreementsGetOutput,
+}));
 // Input Schema
 export const IntegrationAccountAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -140,7 +141,7 @@ export type IntegrationAccountAgreementsListInput =
 
 // Output Schema
 export const IntegrationAccountAgreementsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -166,14 +167,13 @@ export type IntegrationAccountAgreementsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: AgreementType.
  */
-export const IntegrationAccountAgreementsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountAgreementsListInput,
-    outputSchema: IntegrationAccountAgreementsListOutput,
-  }));
+export const IntegrationAccountAgreementsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountAgreementsListInput,
+  outputSchema: IntegrationAccountAgreementsListOutput,
+}));
 // Input Schema
 export const IntegrationAccountAgreementsListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -188,7 +188,7 @@ export type IntegrationAccountAgreementsListContentCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountAgreementsListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -216,13 +216,13 @@ export type IntegrationAccountAgreementsListContentCallbackUrlOutput =
  * @param agreementName - The integration account agreement name.
  */
 export const IntegrationAccountAgreementsListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsListContentCallbackUrlInput,
     outputSchema: IntegrationAccountAgreementsListContentCallbackUrlOutput,
   }));
 // Input Schema
 export const IntegrationAccountAssembliesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -237,7 +237,7 @@ export type IntegrationAccountAssembliesCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountAssembliesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -256,13 +256,13 @@ export type IntegrationAccountAssembliesCreateOrUpdateOutput =
  * @param assemblyArtifactName - The assembly artifact name.
  */
 export const IntegrationAccountAssembliesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesCreateOrUpdateInput,
     outputSchema: IntegrationAccountAssembliesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IntegrationAccountAssembliesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -277,7 +277,7 @@ export type IntegrationAccountAssembliesDeleteInput =
 
 // Output Schema
 export const IntegrationAccountAssembliesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountAssembliesDeleteOutput =
   typeof IntegrationAccountAssembliesDeleteOutput.Type;
 
@@ -289,29 +289,31 @@ export type IntegrationAccountAssembliesDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
  */
-export const IntegrationAccountAssembliesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountAssembliesDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountAssembliesDeleteInput,
     outputSchema: IntegrationAccountAssembliesDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationAccountAssembliesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationAccountAssembliesGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+  }),
+);
 export type IntegrationAccountAssembliesGetInput =
   typeof IntegrationAccountAssembliesGetInput.Type;
 
 // Output Schema
 export const IntegrationAccountAssembliesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -329,14 +331,13 @@ export type IntegrationAccountAssembliesGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
  */
-export const IntegrationAccountAssembliesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountAssembliesGetInput,
-    outputSchema: IntegrationAccountAssembliesGetOutput,
-  }));
+export const IntegrationAccountAssembliesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountAssembliesGetInput,
+  outputSchema: IntegrationAccountAssembliesGetOutput,
+}));
 // Input Schema
 export const IntegrationAccountAssembliesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -350,7 +351,7 @@ export type IntegrationAccountAssembliesListInput =
 
 // Output Schema
 export const IntegrationAccountAssembliesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -373,14 +374,13 @@ export type IntegrationAccountAssembliesListOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountAssembliesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountAssembliesListInput,
-    outputSchema: IntegrationAccountAssembliesListOutput,
-  }));
+export const IntegrationAccountAssembliesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountAssembliesListInput,
+  outputSchema: IntegrationAccountAssembliesListOutput,
+}));
 // Input Schema
 export const IntegrationAccountAssembliesListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -395,7 +395,7 @@ export type IntegrationAccountAssembliesListContentCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountAssembliesListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -423,13 +423,13 @@ export type IntegrationAccountAssembliesListContentCallbackUrlOutput =
  * @param assemblyArtifactName - The assembly artifact name.
  */
 export const IntegrationAccountAssembliesListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesListContentCallbackUrlInput,
     outputSchema: IntegrationAccountAssembliesListContentCallbackUrlOutput,
   }));
 // Input Schema
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -444,7 +444,7 @@ export type IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -463,13 +463,13 @@ export type IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
  * @param batchConfigurationName - The batch configuration name.
  */
 export const IntegrationAccountBatchConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsCreateOrUpdateInput,
     outputSchema: IntegrationAccountBatchConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IntegrationAccountBatchConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -484,7 +484,7 @@ export type IntegrationAccountBatchConfigurationsDeleteInput =
 
 // Output Schema
 export const IntegrationAccountBatchConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountBatchConfigurationsDeleteOutput =
   typeof IntegrationAccountBatchConfigurationsDeleteOutput.Type;
 
@@ -497,13 +497,13 @@ export type IntegrationAccountBatchConfigurationsDeleteOutput =
  * @param batchConfigurationName - The batch configuration name.
  */
 export const IntegrationAccountBatchConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsDeleteInput,
     outputSchema: IntegrationAccountBatchConfigurationsDeleteOutput,
   }));
 // Input Schema
 export const IntegrationAccountBatchConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -518,7 +518,7 @@ export type IntegrationAccountBatchConfigurationsGetInput =
 
 // Output Schema
 export const IntegrationAccountBatchConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -536,14 +536,15 @@ export type IntegrationAccountBatchConfigurationsGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param batchConfigurationName - The batch configuration name.
  */
-export const IntegrationAccountBatchConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountBatchConfigurationsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountBatchConfigurationsGetInput,
     outputSchema: IntegrationAccountBatchConfigurationsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountBatchConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -557,7 +558,7 @@ export type IntegrationAccountBatchConfigurationsListInput =
 
 // Output Schema
 export const IntegrationAccountBatchConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -580,14 +581,15 @@ export type IntegrationAccountBatchConfigurationsListOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountBatchConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountBatchConfigurationsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountBatchConfigurationsListInput,
     outputSchema: IntegrationAccountBatchConfigurationsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -602,7 +604,7 @@ export type IntegrationAccountCertificatesCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -621,13 +623,13 @@ export type IntegrationAccountCertificatesCreateOrUpdateOutput =
  * @param certificateName - The integration account certificate name.
  */
 export const IntegrationAccountCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountCertificatesCreateOrUpdateInput,
     outputSchema: IntegrationAccountCertificatesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IntegrationAccountCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -642,7 +644,7 @@ export type IntegrationAccountCertificatesDeleteInput =
 
 // Output Schema
 export const IntegrationAccountCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountCertificatesDeleteOutput =
   typeof IntegrationAccountCertificatesDeleteOutput.Type;
 
@@ -654,14 +656,15 @@ export type IntegrationAccountCertificatesDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param certificateName - The integration account certificate name.
  */
-export const IntegrationAccountCertificatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountCertificatesDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountCertificatesDeleteInput,
     outputSchema: IntegrationAccountCertificatesDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -676,7 +679,7 @@ export type IntegrationAccountCertificatesGetInput =
 
 // Output Schema
 export const IntegrationAccountCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -694,14 +697,13 @@ export type IntegrationAccountCertificatesGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param certificateName - The integration account certificate name.
  */
-export const IntegrationAccountCertificatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountCertificatesGetInput,
-    outputSchema: IntegrationAccountCertificatesGetOutput,
-  }));
+export const IntegrationAccountCertificatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountCertificatesGetInput,
+  outputSchema: IntegrationAccountCertificatesGetOutput,
+}));
 // Input Schema
 export const IntegrationAccountCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -716,7 +718,7 @@ export type IntegrationAccountCertificatesListInput =
 
 // Output Schema
 export const IntegrationAccountCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -741,14 +743,15 @@ export type IntegrationAccountCertificatesListOutput =
  * @param integrationAccountName - The integration account name.
  * @param $top - The number of items to be included in the result.
  */
-export const IntegrationAccountCertificatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountCertificatesList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountCertificatesListInput,
     outputSchema: IntegrationAccountCertificatesListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountMapsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -763,7 +766,7 @@ export type IntegrationAccountMapsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountMapsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -781,29 +784,28 @@ export type IntegrationAccountMapsCreateOrUpdateOutput =
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
  */
-export const IntegrationAccountMapsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountMapsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountMapsCreateOrUpdateInput,
     outputSchema: IntegrationAccountMapsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationAccountMapsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    mapName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
-    }),
-  );
+export const IntegrationAccountMapsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  mapName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+  }),
+);
 export type IntegrationAccountMapsDeleteInput =
   typeof IntegrationAccountMapsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountMapsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationAccountMapsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountMapsDeleteOutput =
   typeof IntegrationAccountMapsDeleteOutput.Type;
 
@@ -815,35 +817,32 @@ export type IntegrationAccountMapsDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
  */
-export const IntegrationAccountMapsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountMapsDeleteInput,
-    outputSchema: IntegrationAccountMapsDeleteOutput,
-  }));
+export const IntegrationAccountMapsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountMapsDeleteInput,
+  outputSchema: IntegrationAccountMapsDeleteOutput,
+}));
 // Input Schema
-export const IntegrationAccountMapsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    mapName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
-    }),
-  );
+export const IntegrationAccountMapsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  mapName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+  }),
+);
 export type IntegrationAccountMapsGetInput =
   typeof IntegrationAccountMapsGetInput.Type;
 
 // Output Schema
-export const IntegrationAccountMapsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountMapsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountMapsGetOutput =
   typeof IntegrationAccountMapsGetOutput.Type;
 
@@ -855,44 +854,40 @@ export type IntegrationAccountMapsGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
  */
-export const IntegrationAccountMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountMapsGetInput,
-    outputSchema: IntegrationAccountMapsGetOutput,
+export const IntegrationAccountMapsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountMapsGetInput,
+  outputSchema: IntegrationAccountMapsGetOutput,
+}));
+// Input Schema
+export const IntegrationAccountMapsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps",
   }),
 );
-// Input Schema
-export const IntegrationAccountMapsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps",
-    }),
-  );
 export type IntegrationAccountMapsListInput =
   typeof IntegrationAccountMapsListInput.Type;
 
 // Output Schema
-export const IntegrationAccountMapsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const IntegrationAccountMapsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IntegrationAccountMapsListOutput =
   typeof IntegrationAccountMapsListOutput.Type;
 
@@ -905,15 +900,13 @@ export type IntegrationAccountMapsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: MapType.
  */
-export const IntegrationAccountMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountMapsListInput,
-    outputSchema: IntegrationAccountMapsListOutput,
-  }),
-);
+export const IntegrationAccountMapsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountMapsListInput,
+  outputSchema: IntegrationAccountMapsListOutput,
+}));
 // Input Schema
 export const IntegrationAccountMapsListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -928,7 +921,7 @@ export type IntegrationAccountMapsListContentCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountMapsListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -956,13 +949,13 @@ export type IntegrationAccountMapsListContentCallbackUrlOutput =
  * @param mapName - The integration account map name.
  */
 export const IntegrationAccountMapsListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountMapsListContentCallbackUrlInput,
     outputSchema: IntegrationAccountMapsListContentCallbackUrlOutput,
   }));
 // Input Schema
 export const IntegrationAccountPartnersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -977,7 +970,7 @@ export type IntegrationAccountPartnersCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountPartnersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -995,14 +988,15 @@ export type IntegrationAccountPartnersCreateOrUpdateOutput =
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
  */
-export const IntegrationAccountPartnersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountPartnersCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountPartnersCreateOrUpdateInput,
     outputSchema: IntegrationAccountPartnersCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountPartnersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -1016,8 +1010,7 @@ export type IntegrationAccountPartnersDeleteInput =
   typeof IntegrationAccountPartnersDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountPartnersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationAccountPartnersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountPartnersDeleteOutput =
   typeof IntegrationAccountPartnersDeleteOutput.Type;
 
@@ -1029,35 +1022,32 @@ export type IntegrationAccountPartnersDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
  */
-export const IntegrationAccountPartnersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountPartnersDeleteInput,
-    outputSchema: IntegrationAccountPartnersDeleteOutput,
-  }));
+export const IntegrationAccountPartnersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountPartnersDeleteInput,
+  outputSchema: IntegrationAccountPartnersDeleteOutput,
+}));
 // Input Schema
-export const IntegrationAccountPartnersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    partnerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}",
-    }),
-  );
+export const IntegrationAccountPartnersGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  partnerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}",
+  }),
+);
 export type IntegrationAccountPartnersGetInput =
   typeof IntegrationAccountPartnersGetInput.Type;
 
 // Output Schema
-export const IntegrationAccountPartnersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountPartnersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountPartnersGetOutput =
   typeof IntegrationAccountPartnersGetOutput.Type;
 
@@ -1069,30 +1059,28 @@ export type IntegrationAccountPartnersGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
  */
-export const IntegrationAccountPartnersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountPartnersGetInput,
-    outputSchema: IntegrationAccountPartnersGetOutput,
-  }));
+export const IntegrationAccountPartnersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountPartnersGetInput,
+  outputSchema: IntegrationAccountPartnersGetOutput,
+}));
 // Input Schema
-export const IntegrationAccountPartnersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners",
-    }),
-  );
+export const IntegrationAccountPartnersListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners",
+  }),
+);
 export type IntegrationAccountPartnersListInput =
   typeof IntegrationAccountPartnersListInput.Type;
 
 // Output Schema
-export const IntegrationAccountPartnersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationAccountPartnersListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1105,7 +1093,8 @@ export const IntegrationAccountPartnersListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type IntegrationAccountPartnersListOutput =
   typeof IntegrationAccountPartnersListOutput.Type;
 
@@ -1118,14 +1107,13 @@ export type IntegrationAccountPartnersListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: PartnerType.
  */
-export const IntegrationAccountPartnersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountPartnersListInput,
-    outputSchema: IntegrationAccountPartnersListOutput,
-  }));
+export const IntegrationAccountPartnersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountPartnersListInput,
+  outputSchema: IntegrationAccountPartnersListOutput,
+}));
 // Input Schema
 export const IntegrationAccountPartnersListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -1140,7 +1128,7 @@ export type IntegrationAccountPartnersListContentCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountPartnersListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -1168,13 +1156,13 @@ export type IntegrationAccountPartnersListContentCallbackUrlOutput =
  * @param partnerName - The integration account partner name.
  */
 export const IntegrationAccountPartnersListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersListContentCallbackUrlInput,
     outputSchema: IntegrationAccountPartnersListContentCallbackUrlOutput,
   }));
 // Input Schema
 export const IntegrationAccountSchemasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -1189,7 +1177,7 @@ export type IntegrationAccountSchemasCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountSchemasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1207,29 +1195,30 @@ export type IntegrationAccountSchemasCreateOrUpdateOutput =
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
  */
-export const IntegrationAccountSchemasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountSchemasCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountSchemasCreateOrUpdateInput,
     outputSchema: IntegrationAccountSchemasCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationAccountSchemasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationAccountSchemasDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
+  }),
+);
 export type IntegrationAccountSchemasDeleteInput =
   typeof IntegrationAccountSchemasDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationAccountSchemasDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountSchemasDeleteOutput =
   typeof IntegrationAccountSchemasDeleteOutput.Type;
 
@@ -1241,35 +1230,32 @@ export type IntegrationAccountSchemasDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
  */
-export const IntegrationAccountSchemasDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSchemasDeleteInput,
-    outputSchema: IntegrationAccountSchemasDeleteOutput,
-  }));
+export const IntegrationAccountSchemasDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSchemasDeleteInput,
+  outputSchema: IntegrationAccountSchemasDeleteOutput,
+}));
 // Input Schema
-export const IntegrationAccountSchemasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
-    }),
-  );
+export const IntegrationAccountSchemasGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
+  }),
+);
 export type IntegrationAccountSchemasGetInput =
   typeof IntegrationAccountSchemasGetInput.Type;
 
 // Output Schema
-export const IntegrationAccountSchemasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountSchemasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountSchemasGetOutput =
   typeof IntegrationAccountSchemasGetOutput.Type;
 
@@ -1281,43 +1267,40 @@ export type IntegrationAccountSchemasGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
  */
-export const IntegrationAccountSchemasGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSchemasGetInput,
-    outputSchema: IntegrationAccountSchemasGetOutput,
-  }));
+export const IntegrationAccountSchemasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSchemasGetInput,
+  outputSchema: IntegrationAccountSchemasGetOutput,
+}));
 // Input Schema
-export const IntegrationAccountSchemasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas",
-    }),
-  );
+export const IntegrationAccountSchemasListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas",
+  }),
+);
 export type IntegrationAccountSchemasListInput =
   typeof IntegrationAccountSchemasListInput.Type;
 
 // Output Schema
-export const IntegrationAccountSchemasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const IntegrationAccountSchemasListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IntegrationAccountSchemasListOutput =
   typeof IntegrationAccountSchemasListOutput.Type;
 
@@ -1330,14 +1313,13 @@ export type IntegrationAccountSchemasListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: SchemaType.
  */
-export const IntegrationAccountSchemasList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSchemasListInput,
-    outputSchema: IntegrationAccountSchemasListOutput,
-  }));
+export const IntegrationAccountSchemasList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSchemasListInput,
+  outputSchema: IntegrationAccountSchemasListOutput,
+}));
 // Input Schema
 export const IntegrationAccountSchemasListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -1352,7 +1334,7 @@ export type IntegrationAccountSchemasListContentCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountSchemasListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -1380,13 +1362,13 @@ export type IntegrationAccountSchemasListContentCallbackUrlOutput =
  * @param schemaName - The integration account schema name.
  */
 export const IntegrationAccountSchemasListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasListContentCallbackUrlInput,
     outputSchema: IntegrationAccountSchemasListContentCallbackUrlOutput,
   }));
 // Input Schema
 export const IntegrationAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1400,7 +1382,7 @@ export type IntegrationAccountsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1417,28 +1399,25 @@ export type IntegrationAccountsCreateOrUpdateOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountsCreateOrUpdateInput,
-    outputSchema: IntegrationAccountsCreateOrUpdateOutput,
-  }));
+export const IntegrationAccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsCreateOrUpdateInput,
+  outputSchema: IntegrationAccountsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IntegrationAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
-    }),
-  );
+export const IntegrationAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+  }),
+);
 export type IntegrationAccountsDeleteInput =
   typeof IntegrationAccountsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountsDeleteOutput =
   typeof IntegrationAccountsDeleteOutput.Type;
 
@@ -1449,15 +1428,13 @@ export type IntegrationAccountsDeleteOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsDeleteInput,
-    outputSchema: IntegrationAccountsDeleteOutput,
-  }),
-);
+export const IntegrationAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsDeleteInput,
+  outputSchema: IntegrationAccountsDeleteOutput,
+}));
 // Input Schema
 export const IntegrationAccountSessionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
@@ -1472,7 +1449,7 @@ export type IntegrationAccountSessionsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationAccountSessionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1490,14 +1467,15 @@ export type IntegrationAccountSessionsCreateOrUpdateOutput =
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
  */
-export const IntegrationAccountSessionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountSessionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountSessionsCreateOrUpdateInput,
     outputSchema: IntegrationAccountSessionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountSessionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
@@ -1511,8 +1489,7 @@ export type IntegrationAccountSessionsDeleteInput =
   typeof IntegrationAccountSessionsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountSessionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationAccountSessionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountSessionsDeleteOutput =
   typeof IntegrationAccountSessionsDeleteOutput.Type;
 
@@ -1524,35 +1501,32 @@ export type IntegrationAccountSessionsDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
  */
-export const IntegrationAccountSessionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSessionsDeleteInput,
-    outputSchema: IntegrationAccountSessionsDeleteOutput,
-  }));
+export const IntegrationAccountSessionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSessionsDeleteInput,
+  outputSchema: IntegrationAccountSessionsDeleteOutput,
+}));
 // Input Schema
-export const IntegrationAccountSessionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    sessionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
-    }),
-  );
+export const IntegrationAccountSessionsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  sessionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+  }),
+);
 export type IntegrationAccountSessionsGetInput =
   typeof IntegrationAccountSessionsGetInput.Type;
 
 // Output Schema
-export const IntegrationAccountSessionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountSessionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountSessionsGetOutput =
   typeof IntegrationAccountSessionsGetOutput.Type;
 
@@ -1564,30 +1538,28 @@ export type IntegrationAccountSessionsGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
  */
-export const IntegrationAccountSessionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSessionsGetInput,
-    outputSchema: IntegrationAccountSessionsGetOutput,
-  }));
+export const IntegrationAccountSessionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSessionsGetInput,
+  outputSchema: IntegrationAccountSessionsGetOutput,
+}));
 // Input Schema
-export const IntegrationAccountSessionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions",
-    }),
-  );
+export const IntegrationAccountSessionsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions",
+  }),
+);
 export type IntegrationAccountSessionsListInput =
   typeof IntegrationAccountSessionsListInput.Type;
 
 // Output Schema
-export const IntegrationAccountSessionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationAccountSessionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1600,7 +1572,8 @@ export const IntegrationAccountSessionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type IntegrationAccountSessionsListOutput =
   typeof IntegrationAccountSessionsListOutput.Type;
 
@@ -1613,34 +1586,31 @@ export type IntegrationAccountSessionsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: ChangedTime.
  */
-export const IntegrationAccountSessionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationAccountSessionsListInput,
-    outputSchema: IntegrationAccountSessionsListOutput,
-  }));
+export const IntegrationAccountSessionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountSessionsListInput,
+  outputSchema: IntegrationAccountSessionsListOutput,
+}));
 // Input Schema
-export const IntegrationAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
-    }),
-  );
+export const IntegrationAccountsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+  }),
+);
 export type IntegrationAccountsGetInput =
   typeof IntegrationAccountsGetInput.Type;
 
 // Output Schema
-export const IntegrationAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountsGetOutput =
   typeof IntegrationAccountsGetOutput.Type;
 
@@ -1651,15 +1621,13 @@ export type IntegrationAccountsGetOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsGetInput,
-    outputSchema: IntegrationAccountsGetOutput,
-  }),
-);
+export const IntegrationAccountsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsGetInput,
+  outputSchema: IntegrationAccountsGetOutput,
+}));
 // Input Schema
 export const IntegrationAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -1673,7 +1641,7 @@ export type IntegrationAccountsListByResourceGroupInput =
 
 // Output Schema
 export const IntegrationAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1697,14 +1665,15 @@ export type IntegrationAccountsListByResourceGroupOutput =
  * @param resourceGroupName - The resource group name.
  * @param $top - The number of items to be included in the result.
  */
-export const IntegrationAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsListByResourceGroupInput,
     outputSchema: IntegrationAccountsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -1717,7 +1686,7 @@ export type IntegrationAccountsListBySubscriptionInput =
 
 // Output Schema
 export const IntegrationAccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1740,14 +1709,15 @@ export type IntegrationAccountsListBySubscriptionOutput =
  *
  * @param $top - The number of items to be included in the result.
  */
-export const IntegrationAccountsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsListBySubscriptionInput,
     outputSchema: IntegrationAccountsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountsListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1761,7 +1731,7 @@ export type IntegrationAccountsListCallbackUrlInput =
 
 // Output Schema
 export const IntegrationAccountsListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type IntegrationAccountsListCallbackUrlOutput =
@@ -1774,14 +1744,15 @@ export type IntegrationAccountsListCallbackUrlOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsListCallbackUrl = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsListCallbackUrlInput,
     outputSchema: IntegrationAccountsListCallbackUrlOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountsListKeyVaultKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1795,7 +1766,7 @@ export type IntegrationAccountsListKeyVaultKeysInput =
 
 // Output Schema
 export const IntegrationAccountsListKeyVaultKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1822,14 +1793,15 @@ export type IntegrationAccountsListKeyVaultKeysOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsListKeyVaultKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsListKeyVaultKeys = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsListKeyVaultKeysInput,
     outputSchema: IntegrationAccountsListKeyVaultKeysOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountsLogTrackingEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1843,7 +1815,7 @@ export type IntegrationAccountsLogTrackingEventsInput =
 
 // Output Schema
 export const IntegrationAccountsLogTrackingEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationAccountsLogTrackingEventsOutput =
   typeof IntegrationAccountsLogTrackingEventsOutput.Type;
 
@@ -1854,14 +1826,15 @@ export type IntegrationAccountsLogTrackingEventsOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsLogTrackingEvents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsLogTrackingEvents = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsLogTrackingEventsInput,
     outputSchema: IntegrationAccountsLogTrackingEventsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationAccountsRegenerateAccessKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1875,7 +1848,7 @@ export type IntegrationAccountsRegenerateAccessKeyInput =
 
 // Output Schema
 export const IntegrationAccountsRegenerateAccessKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1892,34 +1865,33 @@ export type IntegrationAccountsRegenerateAccessKeyOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsRegenerateAccessKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationAccountsRegenerateAccessKey = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationAccountsRegenerateAccessKeyInput,
     outputSchema: IntegrationAccountsRegenerateAccessKeyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    integrationAccountName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
-    }),
-  );
+export const IntegrationAccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  integrationAccountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+  }),
+);
 export type IntegrationAccountsUpdateInput =
   typeof IntegrationAccountsUpdateInput.Type;
 
 // Output Schema
-export const IntegrationAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IntegrationAccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IntegrationAccountsUpdateOutput =
   typeof IntegrationAccountsUpdateOutput.Type;
 
@@ -1930,15 +1902,13 @@ export type IntegrationAccountsUpdateOutput =
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  */
-export const IntegrationAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsUpdateInput,
-    outputSchema: IntegrationAccountsUpdateOutput,
-  }),
-);
+export const IntegrationAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsUpdateInput,
+  outputSchema: IntegrationAccountsUpdateOutput,
+}));
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApiOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -1953,7 +1923,7 @@ export type IntegrationServiceEnvironmentManagedApiOperationsListInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApiOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1979,13 +1949,13 @@ export type IntegrationServiceEnvironmentManagedApiOperationsListOutput =
  * @param apiName - The api name.
  */
 export const IntegrationServiceEnvironmentManagedApiOperationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApiOperationsListInput,
     outputSchema: IntegrationServiceEnvironmentManagedApiOperationsListOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -2000,7 +1970,7 @@ export type IntegrationServiceEnvironmentManagedApisDeleteInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationServiceEnvironmentManagedApisDeleteOutput =
   typeof IntegrationServiceEnvironmentManagedApisDeleteOutput.Type;
 
@@ -2013,13 +1983,13 @@ export type IntegrationServiceEnvironmentManagedApisDeleteOutput =
  * @param apiName - The api name.
  */
 export const IntegrationServiceEnvironmentManagedApisDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisDeleteInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisDeleteOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -2034,7 +2004,7 @@ export type IntegrationServiceEnvironmentManagedApisGetInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2053,13 +2023,13 @@ export type IntegrationServiceEnvironmentManagedApisGetOutput =
  * @param apiName - The api name.
  */
 export const IntegrationServiceEnvironmentManagedApisGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisGetInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisGetOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2073,7 +2043,7 @@ export type IntegrationServiceEnvironmentManagedApisListInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2098,13 +2068,13 @@ export type IntegrationServiceEnvironmentManagedApisListOutput =
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
 export const IntegrationServiceEnvironmentManagedApisList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisListInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisListOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -2119,7 +2089,7 @@ export type IntegrationServiceEnvironmentManagedApisPutInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2138,13 +2108,13 @@ export type IntegrationServiceEnvironmentManagedApisPutOutput =
  * @param apiName - The api name.
  */
 export const IntegrationServiceEnvironmentManagedApisPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisPutInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisPutOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentNetworkHealthGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2158,7 +2128,7 @@ export type IntegrationServiceEnvironmentNetworkHealthGetInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentNetworkHealthGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Struct({
       outboundNetworkDependencies: Schema.optional(
@@ -2244,13 +2214,13 @@ export type IntegrationServiceEnvironmentNetworkHealthGetOutput =
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
 export const IntegrationServiceEnvironmentNetworkHealthGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentNetworkHealthGetInput,
     outputSchema: IntegrationServiceEnvironmentNetworkHealthGetOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2264,7 +2234,7 @@ export type IntegrationServiceEnvironmentsCreateOrUpdateInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2282,13 +2252,13 @@ export type IntegrationServiceEnvironmentsCreateOrUpdateOutput =
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
 export const IntegrationServiceEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsCreateOrUpdateInput,
     outputSchema: IntegrationServiceEnvironmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2302,7 +2272,7 @@ export type IntegrationServiceEnvironmentsDeleteInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationServiceEnvironmentsDeleteOutput =
   typeof IntegrationServiceEnvironmentsDeleteOutput.Type;
 
@@ -2313,14 +2283,15 @@ export type IntegrationServiceEnvironmentsDeleteOutput =
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
-export const IntegrationServiceEnvironmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationServiceEnvironmentsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationServiceEnvironmentsDeleteInput,
     outputSchema: IntegrationServiceEnvironmentsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationServiceEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2334,7 +2305,7 @@ export type IntegrationServiceEnvironmentsGetInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2351,14 +2322,13 @@ export type IntegrationServiceEnvironmentsGetOutput =
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
-export const IntegrationServiceEnvironmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationServiceEnvironmentsGetInput,
-    outputSchema: IntegrationServiceEnvironmentsGetOutput,
-  }));
+export const IntegrationServiceEnvironmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationServiceEnvironmentsGetInput,
+  outputSchema: IntegrationServiceEnvironmentsGetOutput,
+}));
 // Input Schema
 export const IntegrationServiceEnvironmentSkusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2372,7 +2342,7 @@ export type IntegrationServiceEnvironmentSkusListInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentSkusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2410,14 +2380,15 @@ export type IntegrationServiceEnvironmentSkusListOutput =
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
-export const IntegrationServiceEnvironmentSkusList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationServiceEnvironmentSkusList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationServiceEnvironmentSkusListInput,
     outputSchema: IntegrationServiceEnvironmentSkusListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationServiceEnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -2431,7 +2402,7 @@ export type IntegrationServiceEnvironmentsListByResourceGroupInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2456,13 +2427,13 @@ export type IntegrationServiceEnvironmentsListByResourceGroupOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsListByResourceGroupInput,
     outputSchema: IntegrationServiceEnvironmentsListByResourceGroupOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2475,7 +2446,7 @@ export type IntegrationServiceEnvironmentsListBySubscriptionInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2499,13 +2470,13 @@ export type IntegrationServiceEnvironmentsListBySubscriptionOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsListBySubscriptionInput,
     outputSchema: IntegrationServiceEnvironmentsListBySubscriptionOutput,
   }));
 // Input Schema
 export const IntegrationServiceEnvironmentsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2519,7 +2490,7 @@ export type IntegrationServiceEnvironmentsRestartInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationServiceEnvironmentsRestartOutput =
   typeof IntegrationServiceEnvironmentsRestartOutput.Type;
 
@@ -2530,14 +2501,15 @@ export type IntegrationServiceEnvironmentsRestartOutput =
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
-export const IntegrationServiceEnvironmentsRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationServiceEnvironmentsRestart = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationServiceEnvironmentsRestartInput,
     outputSchema: IntegrationServiceEnvironmentsRestartOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationServiceEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2551,7 +2523,7 @@ export type IntegrationServiceEnvironmentsUpdateInput =
 
 // Output Schema
 export const IntegrationServiceEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2568,21 +2540,20 @@ export type IntegrationServiceEnvironmentsUpdateOutput =
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  */
-export const IntegrationServiceEnvironmentsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationServiceEnvironmentsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationServiceEnvironmentsUpdateInput,
     outputSchema: IntegrationServiceEnvironmentsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Logic/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2608,30 +2579,31 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available Logic REST API operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const WorkflowRunActionRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunActionRepetitionsGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
     actionName: Schema.String.pipe(T.PathParam()),
     repetitionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
+  }),
+);
 export type WorkflowRunActionRepetitionsGetInput =
   typeof WorkflowRunActionRepetitionsGetInput.Type;
 
 // Output Schema
 export const WorkflowRunActionRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2651,14 +2623,13 @@ export type WorkflowRunActionRepetitionsGetOutput =
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
  */
-export const WorkflowRunActionRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowRunActionRepetitionsGetInput,
-    outputSchema: WorkflowRunActionRepetitionsGetOutput,
-  }));
+export const WorkflowRunActionRepetitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionRepetitionsGetInput,
+  outputSchema: WorkflowRunActionRepetitionsGetOutput,
+}));
 // Input Schema
 export const WorkflowRunActionRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2674,7 +2645,7 @@ export type WorkflowRunActionRepetitionsListInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2700,14 +2671,13 @@ export type WorkflowRunActionRepetitionsListOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowRunActionRepetitionsListInput,
-    outputSchema: WorkflowRunActionRepetitionsListOutput,
-  }));
+export const WorkflowRunActionRepetitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionRepetitionsListInput,
+  outputSchema: WorkflowRunActionRepetitionsListOutput,
+}));
 // Input Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2724,7 +2694,7 @@ export type WorkflowRunActionRepetitionsListExpressionTracesInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2754,13 +2724,13 @@ export type WorkflowRunActionRepetitionsListExpressionTracesOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionRepetitionsListExpressionTracesOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2778,7 +2748,7 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2800,13 +2770,13 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
  * @param requestHistoryName - The request history name.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2823,7 +2793,7 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2851,13 +2821,13 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesListInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesListOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRequestHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2874,7 +2844,7 @@ export type WorkflowRunActionRequestHistoriesGetInput =
 
 // Output Schema
 export const WorkflowRunActionRequestHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2894,14 +2864,15 @@ export type WorkflowRunActionRequestHistoriesGetOutput =
  * @param actionName - The workflow action name.
  * @param requestHistoryName - The request history name.
  */
-export const WorkflowRunActionRequestHistoriesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunActionRequestHistoriesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionRequestHistoriesGetInput,
     outputSchema: WorkflowRunActionRequestHistoriesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkflowRunActionRequestHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2917,7 +2888,7 @@ export type WorkflowRunActionRequestHistoriesListInput =
 
 // Output Schema
 export const WorkflowRunActionRequestHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2943,14 +2914,15 @@ export type WorkflowRunActionRequestHistoriesListOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionRequestHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunActionRequestHistoriesList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionRequestHistoriesListInput,
     outputSchema: WorkflowRunActionRequestHistoriesListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -2967,7 +2939,7 @@ export type WorkflowRunActionScopeRepetitionsGetInput =
 
 // Output Schema
 export const WorkflowRunActionScopeRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2987,14 +2959,15 @@ export type WorkflowRunActionScopeRepetitionsGetOutput =
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
  */
-export const WorkflowRunActionScopeRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunActionScopeRepetitionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionScopeRepetitionsGetInput,
     outputSchema: WorkflowRunActionScopeRepetitionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -3010,7 +2983,7 @@ export type WorkflowRunActionScopeRepetitionsListInput =
 
 // Output Schema
 export const WorkflowRunActionScopeRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3036,31 +3009,30 @@ export type WorkflowRunActionScopeRepetitionsListOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionScopeRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunActionScopeRepetitionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionScopeRepetitionsListInput,
     outputSchema: WorkflowRunActionScopeRepetitionsListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowRunActionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    actionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
-    }),
-  );
+export const WorkflowRunActionsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  actionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
+  }),
+);
 export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
 
 // Output Schema
-export const WorkflowRunActionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const WorkflowRunActionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type WorkflowRunActionsGetOutput =
   typeof WorkflowRunActionsGetOutput.Type;
 
@@ -3073,41 +3045,37 @@ export type WorkflowRunActionsGetOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsGetInput,
-    outputSchema: WorkflowRunActionsGetOutput,
+export const WorkflowRunActionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsGetInput,
+  outputSchema: WorkflowRunActionsGetOutput,
+}));
+// Input Schema
+export const WorkflowRunActionsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions",
   }),
 );
-// Input Schema
-export const WorkflowRunActionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions",
-    }),
-  );
 export type WorkflowRunActionsListInput =
   typeof WorkflowRunActionsListInput.Type;
 
 // Output Schema
-export const WorkflowRunActionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkflowRunActionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowRunActionsListOutput =
   typeof WorkflowRunActionsListOutput.Type;
 
@@ -3121,15 +3089,13 @@ export type WorkflowRunActionsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status.
  */
-export const WorkflowRunActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsListInput,
-    outputSchema: WorkflowRunActionsListOutput,
-  }),
-);
+export const WorkflowRunActionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsListInput,
+  outputSchema: WorkflowRunActionsListOutput,
+}));
 // Input Schema
 export const WorkflowRunActionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -3145,7 +3111,7 @@ export type WorkflowRunActionsListExpressionTracesInput =
 
 // Output Schema
 export const WorkflowRunActionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3173,32 +3139,31 @@ export type WorkflowRunActionsListExpressionTracesOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunActionsListExpressionTraces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionsListExpressionTracesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowRunOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/operations/{operationId}",
-    }),
-  );
+export const WorkflowRunOperationsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/operations/{operationId}",
+  }),
+);
 export type WorkflowRunOperationsGetInput =
   typeof WorkflowRunOperationsGetInput.Type;
 
 // Output Schema
-export const WorkflowRunOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const WorkflowRunOperationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type WorkflowRunOperationsGetOutput =
   typeof WorkflowRunOperationsGetOutput.Type;
 
@@ -3211,28 +3176,25 @@ export type WorkflowRunOperationsGetOutput =
  * @param runName - The workflow run name.
  * @param operationId - The workflow operation id.
  */
-export const WorkflowRunOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunOperationsGetInput,
-    outputSchema: WorkflowRunOperationsGetOutput,
+export const WorkflowRunOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunOperationsGetInput,
+  outputSchema: WorkflowRunOperationsGetOutput,
+}));
+// Input Schema
+export const WorkflowRunsCancelInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/cancel",
   }),
 );
-// Input Schema
-export const WorkflowRunsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/cancel",
-    }),
-  );
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
 
 // Output Schema
-export const WorkflowRunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowRunsCancelOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
 
 // The operation
@@ -3243,12 +3205,12 @@ export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  */
-export const WorkflowRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsCancelInput,
   outputSchema: WorkflowRunsCancelOutput,
 }));
 // Input Schema
-export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
   runName: Schema.String.pipe(T.PathParam()),
@@ -3261,7 +3223,7 @@ export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowRunsGetInput = typeof WorkflowRunsGetInput.Type;
 
 // Output Schema
-export const WorkflowRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
 });
 export type WorkflowRunsGetOutput = typeof WorkflowRunsGetOutput.Type;
@@ -3274,12 +3236,12 @@ export type WorkflowRunsGetOutput = typeof WorkflowRunsGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  */
-export const WorkflowRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsGetInput,
   outputSchema: WorkflowRunsGetOutput,
 }));
 // Input Schema
-export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -3293,18 +3255,16 @@ export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowRunsListInput = typeof WorkflowRunsListInput.Type;
 
 // Output Schema
-export const WorkflowRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkflowRunsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowRunsListOutput = typeof WorkflowRunsListOutput.Type;
 
 // The operation
@@ -3316,33 +3276,31 @@ export type WorkflowRunsListOutput = typeof WorkflowRunsListOutput.Type;
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
-export const WorkflowRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsListInput,
   outputSchema: WorkflowRunsListOutput,
 }));
 // Input Schema
-export const WorkflowsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
-    }),
-  );
+export const WorkflowsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
+  }),
+);
 export type WorkflowsCreateOrUpdateInput =
   typeof WorkflowsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WorkflowsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const WorkflowsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type WorkflowsCreateOrUpdateOutput =
   typeof WorkflowsCreateOrUpdateOutput.Type;
 
@@ -3353,14 +3311,12 @@ export type WorkflowsCreateOrUpdateOutput =
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsCreateOrUpdateInput,
-    outputSchema: WorkflowsCreateOrUpdateOutput,
-  }),
-);
+export const WorkflowsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsCreateOrUpdateInput,
+  outputSchema: WorkflowsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3372,7 +3328,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
 
 // Output Schema
-export const WorkflowsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsDeleteOutput = typeof WorkflowsDeleteOutput.Type;
 
 // The operation
@@ -3382,12 +3338,12 @@ export type WorkflowsDeleteOutput = typeof WorkflowsDeleteOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDeleteInput,
   outputSchema: WorkflowsDeleteOutput,
 }));
 // Input Schema
-export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsDisableInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3399,7 +3355,7 @@ export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsDisableInput = typeof WorkflowsDisableInput.Type;
 
 // Output Schema
-export const WorkflowsDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsDisableOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsDisableOutput = typeof WorkflowsDisableOutput.Type;
 
 // The operation
@@ -3409,12 +3365,12 @@ export type WorkflowsDisableOutput = typeof WorkflowsDisableOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsDisable = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDisableInput,
   outputSchema: WorkflowsDisableOutput,
 }));
 // Input Schema
-export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsEnableInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3426,7 +3382,7 @@ export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsEnableInput = typeof WorkflowsEnableInput.Type;
 
 // Output Schema
-export const WorkflowsEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsEnableOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsEnableOutput = typeof WorkflowsEnableOutput.Type;
 
 // The operation
@@ -3436,13 +3392,13 @@ export type WorkflowsEnableOutput = typeof WorkflowsEnableOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsEnable = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsEnableInput,
   outputSchema: WorkflowsEnableOutput,
 }));
 // Input Schema
 export const WorkflowsGenerateUpgradedDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3456,7 +3412,7 @@ export type WorkflowsGenerateUpgradedDefinitionInput =
 
 // Output Schema
 export const WorkflowsGenerateUpgradedDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ Schema.Struct({});
 export type WorkflowsGenerateUpgradedDefinitionOutput =
   typeof WorkflowsGenerateUpgradedDefinitionOutput.Type;
 
@@ -3467,13 +3423,14 @@ export type WorkflowsGenerateUpgradedDefinitionOutput =
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsGenerateUpgradedDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsGenerateUpgradedDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowsGenerateUpgradedDefinitionInput,
     outputSchema: WorkflowsGenerateUpgradedDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3485,7 +3442,7 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
 
 // Output Schema
-export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3501,41 +3458,39 @@ export type WorkflowsGetOutput = typeof WorkflowsGetOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsGetInput,
   outputSchema: WorkflowsGetOutput,
 }));
 // Input Schema
-export const WorkflowsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows",
-    }),
-  );
+export const WorkflowsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows",
+  }),
+);
 export type WorkflowsListByResourceGroupInput =
   typeof WorkflowsListByResourceGroupInput.Type;
 
 // Output Schema
-export const WorkflowsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const WorkflowsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowsListByResourceGroupOutput =
   typeof WorkflowsListByResourceGroupOutput.Type;
 
@@ -3547,41 +3502,38 @@ export type WorkflowsListByResourceGroupOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
-export const WorkflowsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowsListByResourceGroupInput,
-    outputSchema: WorkflowsListByResourceGroupOutput,
-  }));
+export const WorkflowsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListByResourceGroupInput,
+  outputSchema: WorkflowsListByResourceGroupOutput,
+}));
 // Input Schema
-export const WorkflowsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/workflows",
-    }),
-  );
+export const WorkflowsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/workflows",
+  }),
+);
 export type WorkflowsListBySubscriptionInput =
   typeof WorkflowsListBySubscriptionInput.Type;
 
 // Output Schema
-export const WorkflowsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const WorkflowsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowsListBySubscriptionOutput =
   typeof WorkflowsListBySubscriptionOutput.Type;
 
@@ -3592,44 +3544,40 @@ export type WorkflowsListBySubscriptionOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
-export const WorkflowsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListBySubscriptionInput,
-    outputSchema: WorkflowsListBySubscriptionOutput,
+export const WorkflowsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListBySubscriptionInput,
+  outputSchema: WorkflowsListBySubscriptionOutput,
+}));
+// Input Schema
+export const WorkflowsListCallbackUrlInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listCallbackUrl",
   }),
 );
-// Input Schema
-export const WorkflowsListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listCallbackUrl",
-    }),
-  );
 export type WorkflowsListCallbackUrlInput =
   typeof WorkflowsListCallbackUrlInput.Type;
 
 // Output Schema
-export const WorkflowsListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.String),
-    method: Schema.optional(Schema.String),
-    basePath: Schema.optional(Schema.String),
-    relativePath: Schema.optional(Schema.String),
-    relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
-    queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkflowsListCallbackUrlOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  method: Schema.optional(Schema.String),
+  basePath: Schema.optional(Schema.String),
+  relativePath: Schema.optional(Schema.String),
+  relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
+  queries: Schema.optional(
+    Schema.Struct({
+      "api-version": Schema.optional(Schema.String),
+      sp: Schema.optional(Schema.String),
+      sv: Schema.optional(Schema.String),
+      sig: Schema.optional(Schema.String),
+      se: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkflowsListCallbackUrlOutput =
   typeof WorkflowsListCallbackUrlOutput.Type;
 
@@ -3640,28 +3588,24 @@ export type WorkflowsListCallbackUrlOutput =
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsListCallbackUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListCallbackUrlInput,
-    outputSchema: WorkflowsListCallbackUrlOutput,
+export const WorkflowsListCallbackUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListCallbackUrlInput,
+  outputSchema: WorkflowsListCallbackUrlOutput,
+}));
+// Input Schema
+export const WorkflowsListSwaggerInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listSwagger",
   }),
 );
-// Input Schema
-export const WorkflowsListSwaggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listSwagger",
-    }),
-  );
 export type WorkflowsListSwaggerInput = typeof WorkflowsListSwaggerInput.Type;
 
 // Output Schema
-export const WorkflowsListSwaggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const WorkflowsListSwaggerOutput = /*@__PURE__*/ Schema.Struct({});
 export type WorkflowsListSwaggerOutput = typeof WorkflowsListSwaggerOutput.Type;
 
 // The operation
@@ -3671,14 +3615,12 @@ export type WorkflowsListSwaggerOutput = typeof WorkflowsListSwaggerOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsListSwagger = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListSwaggerInput,
-    outputSchema: WorkflowsListSwaggerOutput,
-  }),
-);
+export const WorkflowsListSwagger = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListSwaggerInput,
+  outputSchema: WorkflowsListSwaggerOutput,
+}));
 // Input Schema
-export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsMoveInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3690,7 +3632,7 @@ export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsMoveInput = typeof WorkflowsMoveInput.Type;
 
 // Output Schema
-export const WorkflowsMoveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsMoveOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsMoveOutput = typeof WorkflowsMoveOutput.Type;
 
 // The operation
@@ -3700,27 +3642,25 @@ export type WorkflowsMoveOutput = typeof WorkflowsMoveOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsMove = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsMoveInput,
   outputSchema: WorkflowsMoveOutput,
 }));
 // Input Schema
-export const WorkflowsRegenerateAccessKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey",
-    }),
-  );
+export const WorkflowsRegenerateAccessKeyInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey",
+  }),
+);
 export type WorkflowsRegenerateAccessKeyInput =
   typeof WorkflowsRegenerateAccessKeyInput.Type;
 
 // Output Schema
-export const WorkflowsRegenerateAccessKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsRegenerateAccessKeyOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsRegenerateAccessKeyOutput =
   typeof WorkflowsRegenerateAccessKeyOutput.Type;
 
@@ -3731,13 +3671,12 @@ export type WorkflowsRegenerateAccessKeyOutput =
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsRegenerateAccessKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowsRegenerateAccessKeyInput,
-    outputSchema: WorkflowsRegenerateAccessKeyOutput,
-  }));
+export const WorkflowsRegenerateAccessKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsRegenerateAccessKeyInput,
+  outputSchema: WorkflowsRegenerateAccessKeyOutput,
+}));
 // Input Schema
-export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3749,7 +3688,7 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
 
 // Output Schema
-export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3765,28 +3704,26 @@ export type WorkflowsUpdateOutput = typeof WorkflowsUpdateOutput.Type;
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsUpdateInput,
   outputSchema: WorkflowsUpdateOutput,
 }));
 // Input Schema
-export const WorkflowsValidateByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/locations/{location}/workflows/{workflowName}/validate",
-    }),
-  );
+export const WorkflowsValidateByLocationInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/locations/{location}/workflows/{workflowName}/validate",
+  }),
+);
 export type WorkflowsValidateByLocationInput =
   typeof WorkflowsValidateByLocationInput.Type;
 
 // Output Schema
-export const WorkflowsValidateByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsValidateByLocationOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsValidateByLocationOutput =
   typeof WorkflowsValidateByLocationOutput.Type;
 
@@ -3798,15 +3735,13 @@ export type WorkflowsValidateByLocationOutput =
  * @param location - The workflow location.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsValidateByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsValidateByLocationInput,
-    outputSchema: WorkflowsValidateByLocationOutput,
-  }),
-);
+export const WorkflowsValidateByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsValidateByLocationInput,
+  outputSchema: WorkflowsValidateByLocationOutput,
+}));
 // Input Schema
 export const WorkflowsValidateByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3819,8 +3754,7 @@ export type WorkflowsValidateByResourceGroupInput =
   typeof WorkflowsValidateByResourceGroupInput.Type;
 
 // Output Schema
-export const WorkflowsValidateByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsValidateByResourceGroupOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsValidateByResourceGroupOutput =
   typeof WorkflowsValidateByResourceGroupOutput.Type;
 
@@ -3831,32 +3765,29 @@ export type WorkflowsValidateByResourceGroupOutput =
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsValidateByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowsValidateByResourceGroupInput,
-    outputSchema: WorkflowsValidateByResourceGroupOutput,
-  }));
+export const WorkflowsValidateByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsValidateByResourceGroupInput,
+  outputSchema: WorkflowsValidateByResourceGroupOutput,
+}));
 // Input Schema
-export const WorkflowTriggerHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    historyName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
-    }),
-  );
+export const WorkflowTriggerHistoriesGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  historyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
+  }),
+);
 export type WorkflowTriggerHistoriesGetInput =
   typeof WorkflowTriggerHistoriesGetInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggerHistoriesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type WorkflowTriggerHistoriesGetOutput =
   typeof WorkflowTriggerHistoriesGetOutput.Type;
 
@@ -3869,41 +3800,37 @@ export type WorkflowTriggerHistoriesGetOutput =
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  */
-export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggerHistoriesGetInput,
-    outputSchema: WorkflowTriggerHistoriesGetOutput,
+export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesGetInput,
+  outputSchema: WorkflowTriggerHistoriesGetOutput,
+}));
+// Input Schema
+export const WorkflowTriggerHistoriesListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories",
   }),
 );
-// Input Schema
-export const WorkflowTriggerHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories",
-    }),
-  );
 export type WorkflowTriggerHistoriesListInput =
   typeof WorkflowTriggerHistoriesListInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkflowTriggerHistoriesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowTriggerHistoriesListOutput =
   typeof WorkflowTriggerHistoriesListOutput.Type;
 
@@ -3917,14 +3844,13 @@ export type WorkflowTriggerHistoriesListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
-export const WorkflowTriggerHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggerHistoriesListInput,
-    outputSchema: WorkflowTriggerHistoriesListOutput,
-  }));
+export const WorkflowTriggerHistoriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesListInput,
+  outputSchema: WorkflowTriggerHistoriesListOutput,
+}));
 // Input Schema
 export const WorkflowTriggerHistoriesResubmitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -3939,8 +3865,7 @@ export type WorkflowTriggerHistoriesResubmitInput =
   typeof WorkflowTriggerHistoriesResubmitInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesResubmitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggerHistoriesResubmitOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggerHistoriesResubmitOutput =
   typeof WorkflowTriggerHistoriesResubmitOutput.Type;
 
@@ -3953,30 +3878,27 @@ export type WorkflowTriggerHistoriesResubmitOutput =
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  */
-export const WorkflowTriggerHistoriesResubmit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggerHistoriesResubmitInput,
-    outputSchema: WorkflowTriggerHistoriesResubmitOutput,
-  }));
+export const WorkflowTriggerHistoriesResubmit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesResubmitInput,
+  outputSchema: WorkflowTriggerHistoriesResubmitOutput,
+}));
 // Input Schema
-export const WorkflowTriggersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}",
-    }),
-  );
+export const WorkflowTriggersGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}",
+  }),
+);
 export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
 
 // Output Schema
-export const WorkflowTriggersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
 
 // The operation
@@ -3987,31 +3909,29 @@ export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersGetInput,
   outputSchema: WorkflowTriggersGetOutput,
 }));
 // Input Schema
-export const WorkflowTriggersGetSchemaJsonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
-    }),
-  );
+export const WorkflowTriggersGetSchemaJsonInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
+  }),
+);
 export type WorkflowTriggersGetSchemaJsonInput =
   typeof WorkflowTriggersGetSchemaJsonInput.Type;
 
 // Output Schema
-export const WorkflowTriggersGetSchemaJsonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
-    content: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggersGetSchemaJsonOutput = /*@__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+});
 export type WorkflowTriggersGetSchemaJsonOutput =
   typeof WorkflowTriggersGetSchemaJsonOutput.Type;
 
@@ -4023,38 +3943,35 @@ export type WorkflowTriggersGetSchemaJsonOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersGetSchemaJson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggersGetSchemaJsonInput,
-    outputSchema: WorkflowTriggersGetSchemaJsonOutput,
-  }));
+export const WorkflowTriggersGetSchemaJson = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersGetSchemaJsonInput,
+  outputSchema: WorkflowTriggersGetSchemaJsonOutput,
+}));
 // Input Schema
-export const WorkflowTriggersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers",
-    }),
-  );
+export const WorkflowTriggersListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers",
+  }),
+);
 export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
 
 // Output Schema
-export const WorkflowTriggersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkflowTriggersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowTriggersListOutput = typeof WorkflowTriggersListOutput.Type;
 
 // The operation
@@ -4066,30 +3983,29 @@ export type WorkflowTriggersListOutput = typeof WorkflowTriggersListOutput.Type;
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation.
  */
-export const WorkflowTriggersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersListInput,
-    outputSchema: WorkflowTriggersListOutput,
-  }),
-);
+export const WorkflowTriggersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersListInput,
+  outputSchema: WorkflowTriggersListOutput,
+}));
 // Input Schema
-export const WorkflowTriggersListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowTriggersListCallbackUrlInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
+  }),
+);
 export type WorkflowTriggersListCallbackUrlInput =
   typeof WorkflowTriggersListCallbackUrlInput.Type;
 
 // Output Schema
 export const WorkflowTriggersListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -4116,28 +4032,25 @@ export type WorkflowTriggersListCallbackUrlOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggersListCallbackUrlInput,
-    outputSchema: WorkflowTriggersListCallbackUrlOutput,
-  }));
+export const WorkflowTriggersListCallbackUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersListCallbackUrlInput,
+  outputSchema: WorkflowTriggersListCallbackUrlOutput,
+}));
 // Input Schema
-export const WorkflowTriggersResetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/reset",
-    }),
-  );
+export const WorkflowTriggersResetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/reset",
+  }),
+);
 export type WorkflowTriggersResetInput = typeof WorkflowTriggersResetInput.Type;
 
 // Output Schema
-export const WorkflowTriggersResetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggersResetOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggersResetOutput =
   typeof WorkflowTriggersResetOutput.Type;
 
@@ -4149,29 +4062,25 @@ export type WorkflowTriggersResetOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersReset = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersResetInput,
-    outputSchema: WorkflowTriggersResetOutput,
+export const WorkflowTriggersReset = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersResetInput,
+  outputSchema: WorkflowTriggersResetOutput,
+}));
+// Input Schema
+export const WorkflowTriggersRunInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/run",
   }),
 );
-// Input Schema
-export const WorkflowTriggersRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/run",
-    }),
-  );
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
 
 // Output Schema
-export const WorkflowTriggersRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggersRunOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
 
 // The operation
@@ -4182,28 +4091,26 @@ export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersRunInput,
   outputSchema: WorkflowTriggersRunOutput,
 }));
 // Input Schema
-export const WorkflowTriggersSetStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/setState",
-    }),
-  );
+export const WorkflowTriggersSetStateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/setState",
+  }),
+);
 export type WorkflowTriggersSetStateInput =
   typeof WorkflowTriggersSetStateInput.Type;
 
 // Output Schema
-export const WorkflowTriggersSetStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggersSetStateOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggersSetStateOutput =
   typeof WorkflowTriggersSetStateOutput.Type;
 
@@ -4215,35 +4122,31 @@ export type WorkflowTriggersSetStateOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersSetState = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersSetStateInput,
-    outputSchema: WorkflowTriggersSetStateOutput,
+export const WorkflowTriggersSetState = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersSetStateInput,
+  outputSchema: WorkflowTriggersSetStateOutput,
+}));
+// Input Schema
+export const WorkflowVersionsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  versionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}",
   }),
 );
-// Input Schema
-export const WorkflowVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    versionId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}",
-    }),
-  );
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
 
 // Output Schema
-export const WorkflowVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const WorkflowVersionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
 
 // The operation
@@ -4254,40 +4157,38 @@ export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param versionId - The workflow versionId.
  */
-export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowVersionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowVersionsGetInput,
   outputSchema: WorkflowVersionsGetOutput,
 }));
 // Input Schema
-export const WorkflowVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions",
-    }),
-  );
+export const WorkflowVersionsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions",
+  }),
+);
 export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;
 
 // Output Schema
-export const WorkflowVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const WorkflowVersionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowVersionsListOutput = typeof WorkflowVersionsListOutput.Type;
 
 // The operation
@@ -4298,15 +4199,13 @@ export type WorkflowVersionsListOutput = typeof WorkflowVersionsListOutput.Type;
  * @param workflowName - The workflow name.
  * @param $top - The number of items to be included in the result.
  */
-export const WorkflowVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowVersionsListInput,
-    outputSchema: WorkflowVersionsListOutput,
-  }),
-);
+export const WorkflowVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowVersionsListInput,
+  outputSchema: WorkflowVersionsListOutput,
+}));
 // Input Schema
 export const WorkflowVersionTriggersListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionId: Schema.String.pipe(T.PathParam()),
@@ -4322,7 +4221,7 @@ export type WorkflowVersionTriggersListCallbackUrlInput =
 
 // Output Schema
 export const WorkflowVersionTriggersListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -4350,8 +4249,9 @@ export type WorkflowVersionTriggersListCallbackUrlOutput =
  * @param versionId - The workflow versionId.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowVersionTriggersListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowVersionTriggersListCallbackUrl = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowVersionTriggersListCallbackUrlInput,
     outputSchema: WorkflowVersionTriggersListCallbackUrlOutput,
-  }));
+  }),
+);

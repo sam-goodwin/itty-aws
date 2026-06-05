@@ -4,16 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
 
 // Input Schema
-export const CodeInvitesRedeemCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/api/code/invites/redeem/" }));
+export const CodeInvitesRedeemCreateInput = /*@__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "POST", path: "/api/code/invites/redeem/" }));
 export type CodeInvitesRedeemCreateInput =
   typeof CodeInvitesRedeemCreateInput.Type;
 
 // Output Schema
-export const CodeInvitesRedeemCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CodeInvitesRedeemCreateOutput = /*@__PURE__*/ Schema.Void;
 export type CodeInvitesRedeemCreateOutput =
   typeof CodeInvitesRedeemCreateOutput.Type;
 
@@ -23,10 +21,8 @@ export type CodeInvitesRedeemCreateOutput =
  *
  * Redeem a PostHog Code invite code to enable access.
  */
-export const codeInvitesRedeemCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CodeInvitesRedeemCreateInput,
-    outputSchema: CodeInvitesRedeemCreateOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const codeInvitesRedeemCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CodeInvitesRedeemCreateInput,
+  outputSchema: CodeInvitesRedeemCreateOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

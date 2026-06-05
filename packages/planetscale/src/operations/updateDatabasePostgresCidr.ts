@@ -4,39 +4,37 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const UpdateDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    schema: Schema.optional(Schema.String),
-    role: Schema.optional(Schema.String),
-    cidrs: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
-    }),
-  );
+export const UpdateDatabasePostgresCidrInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  schema: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  cidrs: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
+  }),
+);
 export type UpdateDatabasePostgresCidrInput =
   typeof UpdateDatabasePostgresCidrInput.Type;
 
 // Output Schema
-export const UpdateDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatabasePostgresCidrOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  schema: Schema.String,
+  role: Schema.String,
+  cidrs: Schema.Array(Schema.String),
+  created_at: Schema.String,
+  updated_at: Schema.String,
+  deleted_at: Schema.String,
+  actor: Schema.Struct({
     id: Schema.String,
-    schema: Schema.String,
-    role: Schema.String,
-    cidrs: Schema.Array(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    deleted_at: Schema.NullOr(Schema.String),
-    actor: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  });
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+});
 export type UpdateDatabasePostgresCidrOutput =
   typeof UpdateDatabasePostgresCidrOutput.Type;
 
@@ -51,10 +49,8 @@ export type UpdateDatabasePostgresCidrOutput =
  * @param role - The PostgreSQL role to restrict access to. Leave empty to allow access for all roles.
  * @param cidrs - List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated.
  */
-export const updateDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabasePostgresCidrInput,
-    outputSchema: UpdateDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabasePostgresCidrInput,
+  outputSchema: UpdateDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

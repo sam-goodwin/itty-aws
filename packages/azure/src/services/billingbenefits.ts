@@ -54,37 +54,37 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ReservationOrderAliasCreateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
-    }),
-  );
+export const ReservationOrderAliasCreateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+  }),
+);
 export type ReservationOrderAliasCreateInput =
   typeof ReservationOrderAliasCreateInput.Type;
 
 // Output Schema
-export const ReservationOrderAliasCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReservationOrderAliasCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReservationOrderAliasCreateOutput =
   typeof ReservationOrderAliasCreateOutput.Type;
 
@@ -97,37 +97,37 @@ export const ReservationOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReservationOrderAliasCreateOutput,
 }));
 // Input Schema
-export const ReservationOrderAliasGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
-    }),
-  );
+export const ReservationOrderAliasGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+  }),
+);
 export type ReservationOrderAliasGetInput =
   typeof ReservationOrderAliasGetInput.Type;
 
 // Output Schema
-export const ReservationOrderAliasGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReservationOrderAliasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReservationOrderAliasGetOutput =
   typeof ReservationOrderAliasGetOutput.Type;
 
@@ -235,80 +235,78 @@ export const SavingsPlanList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanListOutput,
 }));
 // Input Schema
-export const SavingsPlanListAllInput =
-  /*@__PURE__*/ Schema.Struct({
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    refreshSummary: Schema.optional(Schema.String),
-    $skiptoken: Schema.optional(Schema.Number),
-    selectedState: Schema.optional(Schema.String),
-    take: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlans",
-    }),
-  );
+export const SavingsPlanListAllInput = /*@__PURE__*/ Schema.Struct({
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  refreshSummary: Schema.optional(Schema.String),
+  $skiptoken: Schema.optional(Schema.Number),
+  selectedState: Schema.optional(Schema.String),
+  take: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlans",
+  }),
+);
 export type SavingsPlanListAllInput = typeof SavingsPlanListAllInput.Type;
 
 // Output Schema
-export const SavingsPlanListAllOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const SavingsPlanListAllOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-    additionalProperties: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(
-            Schema.Struct({
-              succeededCount: Schema.optional(Schema.Number),
-              failedCount: Schema.optional(Schema.Number),
-              expiringCount: Schema.optional(Schema.Number),
-              expiredCount: Schema.optional(Schema.Number),
-              pendingCount: Schema.optional(Schema.Number),
-              cancelledCount: Schema.optional(Schema.Number),
-              processingCount: Schema.optional(Schema.Number),
-              noBenefitCount: Schema.optional(Schema.Number),
-              warningCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+  additionalProperties: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        value: Schema.optional(
+          Schema.Struct({
+            succeededCount: Schema.optional(Schema.Number),
+            failedCount: Schema.optional(Schema.Number),
+            expiringCount: Schema.optional(Schema.Number),
+            expiredCount: Schema.optional(Schema.Number),
+            pendingCount: Schema.optional(Schema.Number),
+            cancelledCount: Schema.optional(Schema.Number),
+            processingCount: Schema.optional(Schema.Number),
+            noBenefitCount: Schema.optional(Schema.Number),
+            warningCount: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type SavingsPlanListAllOutput = typeof SavingsPlanListAllOutput.Type;
 
 // The operation
@@ -327,37 +325,37 @@ export const SavingsPlanListAll = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanListAllOutput,
 }));
 // Input Schema
-export const SavingsPlanOrderAliasCreateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
-    }),
-  );
+export const SavingsPlanOrderAliasCreateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+  }),
+);
 export type SavingsPlanOrderAliasCreateInput =
   typeof SavingsPlanOrderAliasCreateInput.Type;
 
 // Output Schema
-export const SavingsPlanOrderAliasCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SavingsPlanOrderAliasCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SavingsPlanOrderAliasCreateOutput =
   typeof SavingsPlanOrderAliasCreateOutput.Type;
 
@@ -370,37 +368,37 @@ export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanOrderAliasCreateOutput,
 }));
 // Input Schema
-export const SavingsPlanOrderAliasGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
-    }),
-  );
+export const SavingsPlanOrderAliasGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+  }),
+);
 export type SavingsPlanOrderAliasGetInput =
   typeof SavingsPlanOrderAliasGetInput.Type;
 
 // Output Schema
-export const SavingsPlanOrderAliasGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SavingsPlanOrderAliasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SavingsPlanOrderAliasGetOutput =
   typeof SavingsPlanOrderAliasGetOutput.Type;
 
@@ -413,29 +411,29 @@ export const SavingsPlanOrderAliasGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanOrderAliasGetOutput,
 }));
 // Input Schema
-export const SavingsPlanOrderElevateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
-    }),
-  );
+export const SavingsPlanOrderElevateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
+  }),
+);
 export type SavingsPlanOrderElevateInput =
   typeof SavingsPlanOrderElevateInput.Type;
 
 // Output Schema
-export const SavingsPlanOrderElevateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SavingsPlanOrderElevateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      roleDefinitionId: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SavingsPlanOrderElevateOutput =
   typeof SavingsPlanOrderElevateOutput.Type;
 
@@ -448,36 +446,34 @@ export const SavingsPlanOrderElevate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanOrderElevateOutput,
 }));
 // Input Schema
-export const SavingsPlanOrderGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
-    }),
-  );
+export const SavingsPlanOrderGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
+  }),
+);
 export type SavingsPlanOrderGetInput = typeof SavingsPlanOrderGetInput.Type;
 
 // Output Schema
-export const SavingsPlanOrderGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SavingsPlanOrderGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SavingsPlanOrderGetOutput = typeof SavingsPlanOrderGetOutput.Type;
 
 // The operation
@@ -489,53 +485,51 @@ export const SavingsPlanOrderGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanOrderGetOutput,
 }));
 // Input Schema
-export const SavingsPlanOrderListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
-    }),
-  );
+export const SavingsPlanOrderListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
+  }),
+);
 export type SavingsPlanOrderListInput = typeof SavingsPlanOrderListInput.Type;
 
 // Output Schema
-export const SavingsPlanOrderListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const SavingsPlanOrderListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SavingsPlanOrderListOutput = typeof SavingsPlanOrderListOutput.Type;
 
 // The operation
@@ -556,26 +550,25 @@ export const SavingsPlanUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type SavingsPlanUpdateInput = typeof SavingsPlanUpdateInput.Type;
 
 // Output Schema
-export const SavingsPlanUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SavingsPlanUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SavingsPlanUpdateOutput = typeof SavingsPlanUpdateOutput.Type;
 
 // The operation
@@ -587,30 +580,30 @@ export const SavingsPlanUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SavingsPlanUpdateOutput,
 }));
 // Input Schema
-export const SavingsPlanValidateUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
-    }),
-  );
+export const SavingsPlanValidateUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
+  }),
+);
 export type SavingsPlanValidateUpdateInput =
   typeof SavingsPlanValidateUpdateInput.Type;
 
 // Output Schema
-export const SavingsPlanValidateUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    benefits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          valid: Schema.optional(Schema.Boolean),
-          reasonCode: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+export const SavingsPlanValidateUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  benefits: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        valid: Schema.optional(Schema.Boolean),
+        reasonCode: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SavingsPlanValidateUpdateOutput =
   typeof SavingsPlanValidateUpdateOutput.Type;
 

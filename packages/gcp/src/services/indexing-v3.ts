@@ -23,8 +23,6 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface UrlNotification {
-  /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
-  notifyTime?: string;
   /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
   url?: string;
   /** The URL life cycle event that Google is being notified about. */
@@ -33,29 +31,31 @@ export interface UrlNotification {
     | "URL_UPDATED"
     | "URL_DELETED"
     | (string & {});
+  /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
+  notifyTime?: string;
 }
 
 export const UrlNotification: Schema.Schema<UrlNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    notifyTime: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    notifyTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "UrlNotification" });
 
 export interface UrlNotificationMetadata {
   /** URL to which this metadata refers. */
   url?: string;
-  /** Latest notification received with type `URL_REMOVED`. */
-  latestRemove?: UrlNotification;
   /** Latest notification received with type `URL_UPDATED`. */
   latestUpdate?: UrlNotification;
+  /** Latest notification received with type `URL_REMOVED`. */
+  latestRemove?: UrlNotification;
 }
 
 export const UrlNotificationMetadata: Schema.Schema<UrlNotificationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-    latestRemove: Schema.optional(UrlNotification),
     latestUpdate: Schema.optional(UrlNotification),
+    latestRemove: Schema.optional(UrlNotification),
   }).annotate({ identifier: "UrlNotificationMetadata" });
 
 export interface PublishUrlNotificationResponse {
@@ -64,7 +64,7 @@ export interface PublishUrlNotificationResponse {
 }
 
 export const PublishUrlNotificationResponse: Schema.Schema<PublishUrlNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
   }).annotate({ identifier: "PublishUrlNotificationResponse" });
 
@@ -127,21 +127,20 @@ export interface PublishUrlNotificationsRequest {
   body?: UrlNotification;
 }
 
-export const PublishUrlNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(UrlNotification).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/urlNotifications:publish",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PublishUrlNotificationsRequest>;
+export const PublishUrlNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(UrlNotification).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "v3/urlNotifications:publish",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PublishUrlNotificationsRequest>;
 
 export type PublishUrlNotificationsResponse = PublishUrlNotificationResponse;
 export const PublishUrlNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PublishUrlNotificationResponse;
+  /*@__PURE__*/ PublishUrlNotificationResponse;
 
 export type PublishUrlNotificationsError =
   | DefaultErrors
@@ -156,7 +155,7 @@ export const publishUrlNotifications: API.OperationMethod<
   PublishUrlNotificationsResponse,
   PublishUrlNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishUrlNotificationsRequest,
   output: PublishUrlNotificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -167,17 +166,16 @@ export interface GetMetadataUrlNotificationsRequest {
   url?: string;
 }
 
-export const GetMetadataUrlNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    url: Schema.optional(Schema.String).pipe(T.HttpQuery("url")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v3/urlNotifications/metadata" }),
-    svc,
-  ) as unknown as Schema.Schema<GetMetadataUrlNotificationsRequest>;
+export const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String).pipe(T.HttpQuery("url")),
+}).pipe(
+  T.Http({ method: "GET", path: "v3/urlNotifications/metadata" }),
+  svc,
+) as unknown as Schema.Schema<GetMetadataUrlNotificationsRequest>;
 
 export type GetMetadataUrlNotificationsResponse = UrlNotificationMetadata;
 export const GetMetadataUrlNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UrlNotificationMetadata;
+  /*@__PURE__*/ UrlNotificationMetadata;
 
 export type GetMetadataUrlNotificationsError =
   | DefaultErrors
@@ -190,7 +188,7 @@ export const getMetadataUrlNotifications: API.OperationMethod<
   GetMetadataUrlNotificationsResponse,
   GetMetadataUrlNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataUrlNotificationsRequest,
   output: GetMetadataUrlNotificationsResponse,
   errors: [NotFound, Forbidden],

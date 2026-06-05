@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsCreateInput = /*@__PURE__*/ Schema.Struct({
   enable_subdomains: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   network: Schema.optional(Schema.String),
@@ -13,7 +13,7 @@ export const AppsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AppsCreateInput = typeof AppsCreateInput.Type;
 
 // Output Schema
-export const AppsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppsCreateOutput = /*@__PURE__*/ Schema.Void;
 export type AppsCreateOutput = typeof AppsCreateOutput.Type;
 
 // The operation
@@ -22,7 +22,7 @@ export type AppsCreateOutput = typeof AppsCreateOutput.Type;
  *
  * Create an app with the specified details in the request body.
  */
-export const AppsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateInput,
   outputSchema: AppsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSubscriptionsSubscriptionResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.PathParam()),
     billing_cycle_anchor: Schema.optional(
       Schema.Literals(["now", "unchanged"]),
@@ -26,7 +26,7 @@ export type PostSubscriptionsSubscriptionResumeInput =
 
 // Output Schema
 export const PostSubscriptionsSubscriptionResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     application_fee_percent: Schema.NullOr(Schema.Number),
     automatic_tax: Schema.Struct({
@@ -334,8 +334,9 @@ export type PostSubscriptionsSubscriptionResumeOutput =
  *
  * <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle anchor and creating prorations. If no resumption invoice is generated, the subscription becomes <code>active</code> immediately. If a resumption invoice is generated, the subscription remains <code>paused</code> until the invoice is paid or marked uncollectible. If the invoice is not paid by the expiration date, it is voided and the subscription remains <code>paused</code>.</p>
  */
-export const PostSubscriptionsSubscriptionResume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSubscriptionsSubscriptionResume = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostSubscriptionsSubscriptionResumeInput,
     outputSchema: PostSubscriptionsSubscriptionResumeOutput,
-  }));
+  }),
+);

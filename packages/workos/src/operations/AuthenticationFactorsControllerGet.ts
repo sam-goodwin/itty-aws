@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthenticationFactorsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "GET", path: "/auth/factors/{id}" }));
 export type AuthenticationFactorsControllerGetInput =
@@ -13,7 +13,7 @@ export type AuthenticationFactorsControllerGetInput =
 
 // Output Schema
 export const AuthenticationFactorsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     type: Schema.optional(
@@ -45,9 +45,10 @@ export type AuthenticationFactorsControllerGetOutput =
  *
  * @param id - The unique ID of the Factor.
  */
-export const AuthenticationFactorsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthenticationFactorsControllerGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthenticationFactorsControllerGetInput,
     outputSchema: AuthenticationFactorsControllerGetOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

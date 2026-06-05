@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTreasuryFinancialAccountsFinancialAccountCloseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     forwarding_settings: Schema.optional(
@@ -26,7 +26,7 @@ export type PostTreasuryFinancialAccountsFinancialAccountCloseInput =
 
 // Output Schema
 export const PostTreasuryFinancialAccountsFinancialAccountCloseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_features: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -425,7 +425,7 @@ export type PostTreasuryFinancialAccountsFinancialAccountCloseOutput =
  * <p>Closes a FinancialAccount. A FinancialAccount can only be closed if it has a zero balance, has no pending InboundTransfers, and has canceled all attached Issuing cards.</p>
  */
 export const PostTreasuryFinancialAccountsFinancialAccountClose =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryFinancialAccountsFinancialAccountCloseInput,
     outputSchema: PostTreasuryFinancialAccountsFinancialAccountCloseOutput,
   }));

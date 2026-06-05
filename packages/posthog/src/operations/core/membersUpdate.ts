@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const MembersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersUpdateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   user__uuid: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const MembersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MembersUpdateInput = typeof MembersUpdateInput.Type;
 
 // Output Schema
-export const MembersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   user: Schema.optional(
     Schema.NullOr(
@@ -69,7 +69,7 @@ export const MembersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MembersUpdateOutput = typeof MembersUpdateOutput.Type;
 
 // The operation
-export const membersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const membersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MembersUpdateInput,
   outputSchema: MembersUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

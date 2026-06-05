@@ -47,19 +47,21 @@ export type ApiPortalCustomDomainsCreateOrUpdateOutput =
 /**
  * Create or update the API portal custom domain.
  */
-export const ApiPortalCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ApiPortalCustomDomainsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ApiPortalCustomDomainsCreateOrUpdateInput,
     outputSchema: ApiPortalCustomDomainsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ApiPortalCustomDomainsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
-    }),
-  );
+export const ApiPortalCustomDomainsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+  }),
+);
 export type ApiPortalCustomDomainsDeleteInput =
   typeof ApiPortalCustomDomainsDeleteInput.Type;
 
@@ -72,43 +74,42 @@ export type ApiPortalCustomDomainsDeleteOutput =
 /**
  * Delete the API portal custom domain.
  */
-export const ApiPortalCustomDomainsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ApiPortalCustomDomainsDeleteInput,
-    outputSchema: ApiPortalCustomDomainsDeleteOutput,
-  }));
+export const ApiPortalCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPortalCustomDomainsDeleteInput,
+  outputSchema: ApiPortalCustomDomainsDeleteOutput,
+}));
 // Input Schema
-export const ApiPortalCustomDomainsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
-    }),
-  );
+export const ApiPortalCustomDomainsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+  }),
+);
 export type ApiPortalCustomDomainsGetInput =
   typeof ApiPortalCustomDomainsGetInput.Type;
 
 // Output Schema
-export const ApiPortalCustomDomainsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApiPortalCustomDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApiPortalCustomDomainsGetOutput =
   typeof ApiPortalCustomDomainsGetOutput.Type;
 
@@ -121,54 +122,54 @@ export const ApiPortalCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApiPortalCustomDomainsGetOutput,
 }));
 // Input Schema
-export const ApiPortalCustomDomainsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
-    }),
-  );
+export const ApiPortalCustomDomainsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
+  }),
+);
 export type ApiPortalCustomDomainsListInput =
   typeof ApiPortalCustomDomainsListInput.Type;
 
 // Output Schema
-export const ApiPortalCustomDomainsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ApiPortalCustomDomainsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ApiPortalCustomDomainsListOutput =
   typeof ApiPortalCustomDomainsListOutput.Type;
 
@@ -181,37 +182,37 @@ export const ApiPortalCustomDomainsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApiPortalCustomDomainsListOutput,
 }));
 // Input Schema
-export const ApiPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
-    }),
-  );
+export const ApiPortalsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
+  }),
+);
 export type ApiPortalsCreateOrUpdateInput =
   typeof ApiPortalsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ApiPortalsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApiPortalsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApiPortalsCreateOrUpdateOutput =
   typeof ApiPortalsCreateOrUpdateOutput.Type;
 
@@ -340,22 +341,22 @@ export const ApiPortalsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApiPortalsListOutput,
 }));
 // Input Schema
-export const ApiPortalsValidateDomainInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/validateDomain",
-    }),
-  );
+export const ApiPortalsValidateDomainInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/validateDomain",
+  }),
+);
 export type ApiPortalsValidateDomainInput =
   typeof ApiPortalsValidateDomainInput.Type;
 
 // Output Schema
-export const ApiPortalsValidateDomainOutput =
-  /*@__PURE__*/ Schema.Struct({
-    isValid: Schema.optional(Schema.Boolean),
-    message: Schema.optional(Schema.String),
-  });
+export const ApiPortalsValidateDomainOutput = /*@__PURE__*/ Schema.Struct({
+  isValid: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Schema.String),
+});
 export type ApiPortalsValidateDomainOutput =
   typeof ApiPortalsValidateDomainOutput.Type;
 
@@ -368,36 +369,34 @@ export const ApiPortalsValidateDomain = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApiPortalsValidateDomainOutput,
 }));
 // Input Schema
-export const ApmsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
-    }),
-  );
+export const ApmsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
+  }),
+);
 export type ApmsCreateOrUpdateInput = typeof ApmsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ApmsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApmsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApmsCreateOrUpdateOutput = typeof ApmsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -525,20 +524,18 @@ export const ApmsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApmsListOutput,
 }));
 // Input Schema
-export const ApmsListSecretKeysInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
-    }),
-  );
+export const ApmsListSecretKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
+  }),
+);
 export type ApmsListSecretKeysInput = typeof ApmsListSecretKeysInput.Type;
 
 // Output Schema
-export const ApmsListSecretKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ApmsListSecretKeysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ApmsListSecretKeysOutput = typeof ApmsListSecretKeysOutput.Type;
 
 // The operation
@@ -588,19 +585,21 @@ export type ApplicationAcceleratorsCreateOrUpdateOutput =
 /**
  * Create or update the application accelerator.
  */
-export const ApplicationAcceleratorsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ApplicationAcceleratorsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ApplicationAcceleratorsCreateOrUpdateInput,
     outputSchema: ApplicationAcceleratorsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ApplicationAcceleratorsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
-    }),
-  );
+export const ApplicationAcceleratorsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
+  }),
+);
 export type ApplicationAcceleratorsDeleteInput =
   typeof ApplicationAcceleratorsDeleteInput.Type;
 
@@ -613,43 +612,42 @@ export type ApplicationAcceleratorsDeleteOutput =
 /**
  * Delete the application accelerator.
  */
-export const ApplicationAcceleratorsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ApplicationAcceleratorsDeleteInput,
-    outputSchema: ApplicationAcceleratorsDeleteOutput,
-  }));
+export const ApplicationAcceleratorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationAcceleratorsDeleteInput,
+  outputSchema: ApplicationAcceleratorsDeleteOutput,
+}));
 // Input Schema
-export const ApplicationAcceleratorsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
-    }),
-  );
+export const ApplicationAcceleratorsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
+  }),
+);
 export type ApplicationAcceleratorsGetInput =
   typeof ApplicationAcceleratorsGetInput.Type;
 
 // Output Schema
-export const ApplicationAcceleratorsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationAcceleratorsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationAcceleratorsGetOutput =
   typeof ApplicationAcceleratorsGetOutput.Type;
 
@@ -662,54 +660,54 @@ export const ApplicationAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApplicationAcceleratorsGetOutput,
 }));
 // Input Schema
-export const ApplicationAcceleratorsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
-    }),
-  );
+export const ApplicationAcceleratorsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
+  }),
+);
 export type ApplicationAcceleratorsListInput =
   typeof ApplicationAcceleratorsListInput.Type;
 
 // Output Schema
-export const ApplicationAcceleratorsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ApplicationAcceleratorsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ApplicationAcceleratorsListOutput =
   typeof ApplicationAcceleratorsListOutput.Type;
 
@@ -760,19 +758,21 @@ export type ApplicationLiveViewsCreateOrUpdateOutput =
 /**
  * Create the default Application Live View or update the existing Application Live View.
  */
-export const ApplicationLiveViewsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ApplicationLiveViewsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ApplicationLiveViewsCreateOrUpdateInput,
     outputSchema: ApplicationLiveViewsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ApplicationLiveViewsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
-    }),
-  );
+export const ApplicationLiveViewsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+  }),
+);
 export type ApplicationLiveViewsDeleteInput =
   typeof ApplicationLiveViewsDeleteInput.Type;
 
@@ -790,37 +790,37 @@ export const ApplicationLiveViewsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApplicationLiveViewsDeleteOutput,
 }));
 // Input Schema
-export const ApplicationLiveViewsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
-    }),
-  );
+export const ApplicationLiveViewsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+  }),
+);
 export type ApplicationLiveViewsGetInput =
   typeof ApplicationLiveViewsGetInput.Type;
 
 // Output Schema
-export const ApplicationLiveViewsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ApplicationLiveViewsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ApplicationLiveViewsGetOutput =
   typeof ApplicationLiveViewsGetOutput.Type;
 
@@ -833,54 +833,54 @@ export const ApplicationLiveViewsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApplicationLiveViewsGetOutput,
 }));
 // Input Schema
-export const ApplicationLiveViewsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
-    }),
-  );
+export const ApplicationLiveViewsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
+  }),
+);
 export type ApplicationLiveViewsListInput =
   typeof ApplicationLiveViewsListInput.Type;
 
 // Output Schema
-export const ApplicationLiveViewsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ApplicationLiveViewsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ApplicationLiveViewsListOutput =
   typeof ApplicationLiveViewsListOutput.Type;
 
@@ -893,36 +893,34 @@ export const ApplicationLiveViewsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ApplicationLiveViewsListOutput,
 }));
 // Input Schema
-export const AppsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
-    }),
-  );
+export const AppsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+  }),
+);
 export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AppsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppsCreateOrUpdateOutput = typeof AppsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -998,22 +996,22 @@ export const AppsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppsGetOutput,
 }));
 // Input Schema
-export const AppsGetResourceUploadUrlInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
-    }),
-  );
+export const AppsGetResourceUploadUrlInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
+  }),
+);
 export type AppsGetResourceUploadUrlInput =
   typeof AppsGetResourceUploadUrlInput.Type;
 
 // Output Schema
-export const AppsGetResourceUploadUrlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    relativePath: Schema.optional(Schema.String),
-    uploadUrl: Schema.optional(Schema.String),
-  });
+export const AppsGetResourceUploadUrlOutput = /*@__PURE__*/ Schema.Struct({
+  relativePath: Schema.optional(Schema.String),
+  uploadUrl: Schema.optional(Schema.String),
+});
 export type AppsGetResourceUploadUrlOutput =
   typeof AppsGetResourceUploadUrlOutput.Type;
 
@@ -1082,37 +1080,37 @@ export const AppsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppsListOutput,
 }));
 // Input Schema
-export const AppsSetActiveDeploymentsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
-    }),
-  );
+export const AppsSetActiveDeploymentsInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
+  }),
+);
 export type AppsSetActiveDeploymentsInput =
   typeof AppsSetActiveDeploymentsInput.Type;
 
 // Output Schema
-export const AppsSetActiveDeploymentsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppsSetActiveDeploymentsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppsSetActiveDeploymentsOutput =
   typeof AppsSetActiveDeploymentsOutput.Type;
 
@@ -1164,21 +1162,19 @@ export const AppsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppsUpdateOutput,
 }));
 // Input Schema
-export const AppsValidateDomainInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
-    }),
-  );
+export const AppsValidateDomainInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
+  }),
+);
 export type AppsValidateDomainInput = typeof AppsValidateDomainInput.Type;
 
 // Output Schema
-export const AppsValidateDomainOutput =
-  /*@__PURE__*/ Schema.Struct({
-    isValid: Schema.optional(Schema.Boolean),
-    message: Schema.optional(Schema.String),
-  });
+export const AppsValidateDomainOutput = /*@__PURE__*/ Schema.Struct({
+  isValid: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Schema.String),
+});
 export type AppsValidateDomainOutput = typeof AppsValidateDomainOutput.Type;
 
 // The operation
@@ -1190,37 +1186,35 @@ export const AppsValidateDomain = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppsValidateDomainOutput,
 }));
 // Input Schema
-export const BindingsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
-    }),
-  );
+export const BindingsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
+  }),
+);
 export type BindingsCreateOrUpdateInput =
   typeof BindingsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BindingsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BindingsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BindingsCreateOrUpdateOutput =
   typeof BindingsCreateOrUpdateOutput.Type;
 
@@ -1388,19 +1382,20 @@ export const BindingsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: BindingsUpdateOutput,
 }));
 // Input Schema
-export const BuildpackBindingCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
-    }),
-  );
+export const BuildpackBindingCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+  }),
+);
 export type BuildpackBindingCreateOrUpdateInput =
   typeof BuildpackBindingCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BuildpackBindingCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const BuildpackBindingCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1418,7 +1413,8 @@ export const BuildpackBindingCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type BuildpackBindingCreateOrUpdateOutput =
   typeof BuildpackBindingCreateOrUpdateOutput.Type;
 
@@ -1426,19 +1422,17 @@ export type BuildpackBindingCreateOrUpdateOutput =
 /**
  * Create or update a buildpack binding.
  */
-export const BuildpackBindingCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildpackBindingCreateOrUpdateInput,
-    outputSchema: BuildpackBindingCreateOrUpdateOutput,
-  }));
+export const BuildpackBindingCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildpackBindingCreateOrUpdateInput,
+  outputSchema: BuildpackBindingCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BuildpackBindingDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
-    }),
-  );
+export const BuildpackBindingDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+  }),
+);
 export type BuildpackBindingDeleteInput =
   typeof BuildpackBindingDeleteInput.Type;
 
@@ -1456,36 +1450,34 @@ export const BuildpackBindingDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildpackBindingDeleteOutput,
 }));
 // Input Schema
-export const BuildpackBindingGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
-    }),
-  );
+export const BuildpackBindingGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+  }),
+);
 export type BuildpackBindingGetInput = typeof BuildpackBindingGetInput.Type;
 
 // Output Schema
-export const BuildpackBindingGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildpackBindingGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildpackBindingGetOutput = typeof BuildpackBindingGetOutput.Type;
 
 // The operation
@@ -1497,53 +1489,51 @@ export const BuildpackBindingGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildpackBindingGetOutput,
 }));
 // Input Schema
-export const BuildpackBindingListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
-    }),
-  );
+export const BuildpackBindingListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
+  }),
+);
 export type BuildpackBindingListInput = typeof BuildpackBindingListInput.Type;
 
 // Output Schema
-export const BuildpackBindingListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildpackBindingListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildpackBindingListOutput = typeof BuildpackBindingListOutput.Type;
 
 // The operation
@@ -1555,19 +1545,20 @@ export const BuildpackBindingList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildpackBindingListOutput,
 }));
 // Input Schema
-export const BuildpackBindingListForClusterInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
-    }),
-  );
+export const BuildpackBindingListForClusterInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
+  }),
+);
 export type BuildpackBindingListForClusterInput =
   typeof BuildpackBindingListForClusterInput.Type;
 
 // Output Schema
-export const BuildpackBindingListForClusterOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const BuildpackBindingListForClusterOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1602,7 +1593,8 @@ export const BuildpackBindingListForClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type BuildpackBindingListForClusterOutput =
   typeof BuildpackBindingListForClusterOutput.Type;
 
@@ -1610,43 +1602,42 @@ export type BuildpackBindingListForClusterOutput =
 /**
  * Get collection of buildpack bindings under all builders.
  */
-export const BuildpackBindingListForCluster =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildpackBindingListForClusterInput,
-    outputSchema: BuildpackBindingListForClusterOutput,
-  }));
+export const BuildpackBindingListForCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildpackBindingListForClusterInput,
+  outputSchema: BuildpackBindingListForClusterOutput,
+}));
 // Input Schema
-export const BuildServiceAgentPoolGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
-    }),
-  );
+export const BuildServiceAgentPoolGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
+  }),
+);
 export type BuildServiceAgentPoolGetInput =
   typeof BuildServiceAgentPoolGetInput.Type;
 
 // Output Schema
-export const BuildServiceAgentPoolGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceAgentPoolGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceAgentPoolGetOutput =
   typeof BuildServiceAgentPoolGetOutput.Type;
 
@@ -1659,54 +1650,54 @@ export const BuildServiceAgentPoolGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceAgentPoolGetOutput,
 }));
 // Input Schema
-export const BuildServiceAgentPoolListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
-    }),
-  );
+export const BuildServiceAgentPoolListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
+  }),
+);
 export type BuildServiceAgentPoolListInput =
   typeof BuildServiceAgentPoolListInput.Type;
 
 // Output Schema
-export const BuildServiceAgentPoolListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildServiceAgentPoolListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildServiceAgentPoolListOutput =
   typeof BuildServiceAgentPoolListOutput.Type;
 
@@ -1719,19 +1710,20 @@ export const BuildServiceAgentPoolList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceAgentPoolListOutput,
 }));
 // Input Schema
-export const BuildServiceAgentPoolUpdatePutInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
-    }),
-  );
+export const BuildServiceAgentPoolUpdatePutInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
+  }),
+);
 export type BuildServiceAgentPoolUpdatePutInput =
   typeof BuildServiceAgentPoolUpdatePutInput.Type;
 
 // Output Schema
-export const BuildServiceAgentPoolUpdatePutOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const BuildServiceAgentPoolUpdatePutOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1749,7 +1741,8 @@ export const BuildServiceAgentPoolUpdatePutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type BuildServiceAgentPoolUpdatePutOutput =
   typeof BuildServiceAgentPoolUpdatePutOutput.Type;
 
@@ -1757,11 +1750,10 @@ export type BuildServiceAgentPoolUpdatePutOutput =
 /**
  * Create or update build service agent pool.
  */
-export const BuildServiceAgentPoolUpdatePut =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceAgentPoolUpdatePutInput,
-    outputSchema: BuildServiceAgentPoolUpdatePutOutput,
-  }));
+export const BuildServiceAgentPoolUpdatePut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceAgentPoolUpdatePutInput,
+  outputSchema: BuildServiceAgentPoolUpdatePutOutput,
+}));
 // Input Schema
 export const BuildServiceBuilderCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1801,19 +1793,19 @@ export type BuildServiceBuilderCreateOrUpdateOutput =
 /**
  * Create or update a KPack builder.
  */
-export const BuildServiceBuilderCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceBuilderCreateOrUpdateInput,
-    outputSchema: BuildServiceBuilderCreateOrUpdateOutput,
-  }));
+export const BuildServiceBuilderCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceBuilderCreateOrUpdateInput,
+  outputSchema: BuildServiceBuilderCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BuildServiceBuilderDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
-    }),
-  );
+export const BuildServiceBuilderDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
+  }),
+);
 export type BuildServiceBuilderDeleteInput =
   typeof BuildServiceBuilderDeleteInput.Type;
 
@@ -1831,37 +1823,35 @@ export const BuildServiceBuilderDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceBuilderDeleteOutput,
 }));
 // Input Schema
-export const BuildServiceBuilderGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
-    }),
-  );
+export const BuildServiceBuilderGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
+  }),
+);
 export type BuildServiceBuilderGetInput =
   typeof BuildServiceBuilderGetInput.Type;
 
 // Output Schema
-export const BuildServiceBuilderGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceBuilderGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceBuilderGetOutput =
   typeof BuildServiceBuilderGetOutput.Type;
 
@@ -1874,54 +1864,54 @@ export const BuildServiceBuilderGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceBuilderGetOutput,
 }));
 // Input Schema
-export const BuildServiceBuilderListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
-    }),
-  );
+export const BuildServiceBuilderListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
+  }),
+);
 export type BuildServiceBuilderListInput =
   typeof BuildServiceBuilderListInput.Type;
 
 // Output Schema
-export const BuildServiceBuilderListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildServiceBuilderListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildServiceBuilderListOutput =
   typeof BuildServiceBuilderListOutput.Type;
 
@@ -1956,43 +1946,44 @@ export type BuildServiceBuilderListDeploymentsOutput =
 /**
  * List deployments that are using the builder.
  */
-export const BuildServiceBuilderListDeployments =
-  /*@__PURE__*/ API.make(() => ({
+export const BuildServiceBuilderListDeployments = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BuildServiceBuilderListDeploymentsInput,
     outputSchema: BuildServiceBuilderListDeploymentsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BuildServiceCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
-    }),
-  );
+export const BuildServiceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
+  }),
+);
 export type BuildServiceCreateOrUpdateInput =
   typeof BuildServiceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BuildServiceCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceCreateOrUpdateOutput =
   typeof BuildServiceCreateOrUpdateOutput.Type;
 
@@ -2005,13 +1996,14 @@ export const BuildServiceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceCreateOrUpdateOutput,
 }));
 // Input Schema
-export const BuildServiceCreateOrUpdateBuildInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
-    }),
-  );
+export const BuildServiceCreateOrUpdateBuildInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+  }),
+);
 export type BuildServiceCreateOrUpdateBuildInput =
   typeof BuildServiceCreateOrUpdateBuildInput.Type;
 
@@ -2043,19 +2035,19 @@ export type BuildServiceCreateOrUpdateBuildOutput =
 /**
  * Create or update a KPack build.
  */
-export const BuildServiceCreateOrUpdateBuild =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceCreateOrUpdateBuildInput,
-    outputSchema: BuildServiceCreateOrUpdateBuildOutput,
-  }));
+export const BuildServiceCreateOrUpdateBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceCreateOrUpdateBuildInput,
+  outputSchema: BuildServiceCreateOrUpdateBuildOutput,
+}));
 // Input Schema
-export const BuildServiceDeleteBuildInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
-    }),
-  );
+export const BuildServiceDeleteBuildInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+  }),
+);
 export type BuildServiceDeleteBuildInput =
   typeof BuildServiceDeleteBuildInput.Type;
 
@@ -2073,36 +2065,34 @@ export const BuildServiceDeleteBuild = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceDeleteBuildOutput,
 }));
 // Input Schema
-export const BuildServiceGetBuildInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
-    }),
-  );
+export const BuildServiceGetBuildInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+  }),
+);
 export type BuildServiceGetBuildInput = typeof BuildServiceGetBuildInput.Type;
 
 // Output Schema
-export const BuildServiceGetBuildOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceGetBuildOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceGetBuildOutput = typeof BuildServiceGetBuildOutput.Type;
 
 // The operation
@@ -2114,37 +2104,37 @@ export const BuildServiceGetBuild = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceGetBuildOutput,
 }));
 // Input Schema
-export const BuildServiceGetBuildResultInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
-    }),
-  );
+export const BuildServiceGetBuildResultInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
+  }),
+);
 export type BuildServiceGetBuildResultInput =
   typeof BuildServiceGetBuildResultInput.Type;
 
 // Output Schema
-export const BuildServiceGetBuildResultOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceGetBuildResultOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceGetBuildResultOutput =
   typeof BuildServiceGetBuildResultOutput.Type;
 
@@ -2157,21 +2147,21 @@ export const BuildServiceGetBuildResult = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceGetBuildResultOutput,
 }));
 // Input Schema
-export const BuildServiceGetBuildResultLogInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
-    }),
-  );
+export const BuildServiceGetBuildResultLogInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
+  }),
+);
 export type BuildServiceGetBuildResultLogInput =
   typeof BuildServiceGetBuildResultLogInput.Type;
 
 // Output Schema
-export const BuildServiceGetBuildResultLogOutput =
-  /*@__PURE__*/ Schema.Struct({
-    blobUrl: Schema.optional(Schema.String),
-  });
+export const BuildServiceGetBuildResultLogOutput = /*@__PURE__*/ Schema.Struct({
+  blobUrl: Schema.optional(Schema.String),
+});
 export type BuildServiceGetBuildResultLogOutput =
   typeof BuildServiceGetBuildResultLogOutput.Type;
 
@@ -2179,43 +2169,42 @@ export type BuildServiceGetBuildResultLogOutput =
 /**
  * Get a KPack build result log download URL.
  */
-export const BuildServiceGetBuildResultLog =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceGetBuildResultLogInput,
-    outputSchema: BuildServiceGetBuildResultLogOutput,
-  }));
+export const BuildServiceGetBuildResultLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetBuildResultLogInput,
+  outputSchema: BuildServiceGetBuildResultLogOutput,
+}));
 // Input Schema
-export const BuildServiceGetBuildServiceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
-    }),
-  );
+export const BuildServiceGetBuildServiceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
+  }),
+);
 export type BuildServiceGetBuildServiceInput =
   typeof BuildServiceGetBuildServiceInput.Type;
 
 // Output Schema
-export const BuildServiceGetBuildServiceOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceGetBuildServiceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceGetBuildServiceOutput =
   typeof BuildServiceGetBuildServiceOutput.Type;
 
@@ -2251,11 +2240,10 @@ export type BuildServiceGetResourceUploadUrlOutput =
 /**
  * Get an resource upload URL for build service, which may be artifacts or source archive.
  */
-export const BuildServiceGetResourceUploadUrl =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceGetResourceUploadUrlInput,
-    outputSchema: BuildServiceGetResourceUploadUrlOutput,
-  }));
+export const BuildServiceGetResourceUploadUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetResourceUploadUrlInput,
+  outputSchema: BuildServiceGetResourceUploadUrlOutput,
+}));
 // Input Schema
 export const BuildServiceGetSupportedBuildpackInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2295,43 +2283,42 @@ export type BuildServiceGetSupportedBuildpackOutput =
 /**
  * Get the supported buildpack resource.
  */
-export const BuildServiceGetSupportedBuildpack =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceGetSupportedBuildpackInput,
-    outputSchema: BuildServiceGetSupportedBuildpackOutput,
-  }));
+export const BuildServiceGetSupportedBuildpack = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetSupportedBuildpackInput,
+  outputSchema: BuildServiceGetSupportedBuildpackOutput,
+}));
 // Input Schema
-export const BuildServiceGetSupportedStackInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
-    }),
-  );
+export const BuildServiceGetSupportedStackInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
+  }),
+);
 export type BuildServiceGetSupportedStackInput =
   typeof BuildServiceGetSupportedStackInput.Type;
 
 // Output Schema
-export const BuildServiceGetSupportedStackOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BuildServiceGetSupportedStackOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BuildServiceGetSupportedStackOutput =
   typeof BuildServiceGetSupportedStackOutput.Type;
 
@@ -2339,60 +2326,59 @@ export type BuildServiceGetSupportedStackOutput =
 /**
  * Get the supported stack resource.
  */
-export const BuildServiceGetSupportedStack =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceGetSupportedStackInput,
-    outputSchema: BuildServiceGetSupportedStackOutput,
-  }));
+export const BuildServiceGetSupportedStack = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetSupportedStackInput,
+  outputSchema: BuildServiceGetSupportedStackOutput,
+}));
 // Input Schema
-export const BuildServiceListBuildResultsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
-    }),
-  );
+export const BuildServiceListBuildResultsInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
+  }),
+);
 export type BuildServiceListBuildResultsInput =
   typeof BuildServiceListBuildResultsInput.Type;
 
 // Output Schema
-export const BuildServiceListBuildResultsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildServiceListBuildResultsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildServiceListBuildResultsOutput =
   typeof BuildServiceListBuildResultsOutput.Type;
 
@@ -2400,60 +2386,57 @@ export type BuildServiceListBuildResultsOutput =
 /**
  * List KPack build results.
  */
-export const BuildServiceListBuildResults =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceListBuildResultsInput,
-    outputSchema: BuildServiceListBuildResultsOutput,
-  }));
+export const BuildServiceListBuildResults = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceListBuildResultsInput,
+  outputSchema: BuildServiceListBuildResultsOutput,
+}));
 // Input Schema
-export const BuildServiceListBuildsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
-    }),
-  );
+export const BuildServiceListBuildsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
+  }),
+);
 export type BuildServiceListBuildsInput =
   typeof BuildServiceListBuildsInput.Type;
 
 // Output Schema
-export const BuildServiceListBuildsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildServiceListBuildsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildServiceListBuildsOutput =
   typeof BuildServiceListBuildsOutput.Type;
 
@@ -2466,54 +2449,54 @@ export const BuildServiceListBuilds = /*@__PURE__*/ API.make(() => ({
   outputSchema: BuildServiceListBuildsOutput,
 }));
 // Input Schema
-export const BuildServiceListBuildServicesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
-    }),
-  );
+export const BuildServiceListBuildServicesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
+  }),
+);
 export type BuildServiceListBuildServicesInput =
   typeof BuildServiceListBuildServicesInput.Type;
 
 // Output Schema
-export const BuildServiceListBuildServicesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BuildServiceListBuildServicesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BuildServiceListBuildServicesOutput =
   typeof BuildServiceListBuildServicesOutput.Type;
 
@@ -2521,11 +2504,10 @@ export type BuildServiceListBuildServicesOutput =
 /**
  * List build services resource.
  */
-export const BuildServiceListBuildServices =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceListBuildServicesInput,
-    outputSchema: BuildServiceListBuildServicesOutput,
-  }));
+export const BuildServiceListBuildServices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceListBuildServicesInput,
+  outputSchema: BuildServiceListBuildServicesOutput,
+}));
 // Input Schema
 export const BuildServiceListSupportedBuildpacksInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -2582,19 +2564,21 @@ export type BuildServiceListSupportedBuildpacksOutput =
 /**
  * Get all supported buildpacks.
  */
-export const BuildServiceListSupportedBuildpacks =
-  /*@__PURE__*/ API.make(() => ({
+export const BuildServiceListSupportedBuildpacks = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BuildServiceListSupportedBuildpacksInput,
     outputSchema: BuildServiceListSupportedBuildpacksOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BuildServiceListSupportedStacksInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
-    }),
-  );
+export const BuildServiceListSupportedStacksInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
+  }),
+);
 export type BuildServiceListSupportedStacksInput =
   typeof BuildServiceListSupportedStacksInput.Type;
 
@@ -2643,43 +2627,42 @@ export type BuildServiceListSupportedStacksOutput =
 /**
  * Get all supported stacks.
  */
-export const BuildServiceListSupportedStacks =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BuildServiceListSupportedStacksInput,
-    outputSchema: BuildServiceListSupportedStacksOutput,
-  }));
+export const BuildServiceListSupportedStacks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceListSupportedStacksInput,
+  outputSchema: BuildServiceListSupportedStacksOutput,
+}));
 // Input Schema
-export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
-    }),
-  );
+export const CertificatesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
+  }),
+);
 export type CertificatesCreateOrUpdateInput =
   typeof CertificatesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CertificatesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CertificatesCreateOrUpdateOutput =
   typeof CertificatesCreateOrUpdateOutput.Type;
 
@@ -2692,13 +2675,12 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesCreateOrUpdateOutput,
 }));
 // Input Schema
-export const CertificatesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
-    }),
-  );
+export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
+  }),
+);
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
@@ -2848,37 +2830,37 @@ export const ConfigServersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigServersGetOutput,
 }));
 // Input Schema
-export const ConfigServersUpdatePatchInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
-    }),
-  );
+export const ConfigServersUpdatePatchInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+  }),
+);
 export type ConfigServersUpdatePatchInput =
   typeof ConfigServersUpdatePatchInput.Type;
 
 // Output Schema
-export const ConfigServersUpdatePatchOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigServersUpdatePatchOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigServersUpdatePatchOutput =
   typeof ConfigServersUpdatePatchOutput.Type;
 
@@ -2891,37 +2873,35 @@ export const ConfigServersUpdatePatch = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigServersUpdatePatchOutput,
 }));
 // Input Schema
-export const ConfigServersUpdatePutInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
-    }),
-  );
+export const ConfigServersUpdatePutInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+  }),
+);
 export type ConfigServersUpdatePutInput =
   typeof ConfigServersUpdatePutInput.Type;
 
 // Output Schema
-export const ConfigServersUpdatePutOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigServersUpdatePutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigServersUpdatePutOutput =
   typeof ConfigServersUpdatePutOutput.Type;
 
@@ -2934,29 +2914,27 @@ export const ConfigServersUpdatePut = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigServersUpdatePutOutput,
 }));
 // Input Schema
-export const ConfigServersValidateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
-    }),
-  );
+export const ConfigServersValidateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
+  }),
+);
 export type ConfigServersValidateInput = typeof ConfigServersValidateInput.Type;
 
 // Output Schema
-export const ConfigServersValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    isValid: Schema.optional(Schema.Boolean),
-    details: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          uri: Schema.optional(Schema.String),
-          messages: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+export const ConfigServersValidateOutput = /*@__PURE__*/ Schema.Struct({
+  isValid: Schema.optional(Schema.Boolean),
+  details: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        uri: Schema.optional(Schema.String),
+        messages: Schema.optional(Schema.Array(Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type ConfigServersValidateOutput =
   typeof ConfigServersValidateOutput.Type;
 
@@ -3007,19 +2985,21 @@ export type ConfigurationServicesCreateOrUpdateOutput =
 /**
  * Create the default Application Configuration Service or update the existing Application Configuration Service.
  */
-export const ConfigurationServicesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ConfigurationServicesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationServicesCreateOrUpdateInput,
     outputSchema: ConfigurationServicesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConfigurationServicesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
-    }),
-  );
+export const ConfigurationServicesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+  }),
+);
 export type ConfigurationServicesDeleteInput =
   typeof ConfigurationServicesDeleteInput.Type;
 
@@ -3037,37 +3017,37 @@ export const ConfigurationServicesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationServicesDeleteOutput,
 }));
 // Input Schema
-export const ConfigurationServicesGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
-    }),
-  );
+export const ConfigurationServicesGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+  }),
+);
 export type ConfigurationServicesGetInput =
   typeof ConfigurationServicesGetInput.Type;
 
 // Output Schema
-export const ConfigurationServicesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationServicesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationServicesGetOutput =
   typeof ConfigurationServicesGetOutput.Type;
 
@@ -3080,54 +3060,54 @@ export const ConfigurationServicesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationServicesGetOutput,
 }));
 // Input Schema
-export const ConfigurationServicesListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
-    }),
-  );
+export const ConfigurationServicesListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
+  }),
+);
 export type ConfigurationServicesListInput =
   typeof ConfigurationServicesListInput.Type;
 
 // Output Schema
-export const ConfigurationServicesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ConfigurationServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationServicesListOutput =
   typeof ConfigurationServicesListOutput.Type;
 
@@ -3140,33 +3120,33 @@ export const ConfigurationServicesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationServicesListOutput,
 }));
 // Input Schema
-export const ConfigurationServicesValidateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
-    }),
-  );
+export const ConfigurationServicesValidateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
+  }),
+);
 export type ConfigurationServicesValidateInput =
   typeof ConfigurationServicesValidateInput.Type;
 
 // Output Schema
-export const ConfigurationServicesValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    gitPropertyValidationResult: Schema.optional(
-      Schema.Struct({
-        isValid: Schema.optional(Schema.Boolean),
-        gitReposValidationResult: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              messages: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+export const ConfigurationServicesValidateOutput = /*@__PURE__*/ Schema.Struct({
+  gitPropertyValidationResult: Schema.optional(
+    Schema.Struct({
+      isValid: Schema.optional(Schema.Boolean),
+      gitReposValidationResult: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            messages: Schema.optional(Schema.Array(Schema.String)),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ConfigurationServicesValidateOutput =
   typeof ConfigurationServicesValidateOutput.Type;
 
@@ -3174,11 +3154,10 @@ export type ConfigurationServicesValidateOutput =
 /**
  * Check if the Application Configuration Service settings are valid.
  */
-export const ConfigurationServicesValidate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationServicesValidateInput,
-    outputSchema: ConfigurationServicesValidateOutput,
-  }));
+export const ConfigurationServicesValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationServicesValidateInput,
+  outputSchema: ConfigurationServicesValidateOutput,
+}));
 // Input Schema
 export const ConfigurationServicesValidateResourceInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -3214,11 +3193,12 @@ export type ConfigurationServicesValidateResourceOutput =
 /**
  * Check if the Application Configuration Service resource is valid.
  */
-export const ConfigurationServicesValidateResource =
-  /*@__PURE__*/ API.make(() => ({
+export const ConfigurationServicesValidateResource = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationServicesValidateResourceInput,
     outputSchema: ConfigurationServicesValidateResourceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ContainerRegistriesCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -3258,19 +3238,19 @@ export type ContainerRegistriesCreateOrUpdateOutput =
 /**
  * Create or update container registry resource.
  */
-export const ContainerRegistriesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ContainerRegistriesCreateOrUpdateInput,
-    outputSchema: ContainerRegistriesCreateOrUpdateOutput,
-  }));
+export const ContainerRegistriesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerRegistriesCreateOrUpdateInput,
+  outputSchema: ContainerRegistriesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ContainerRegistriesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
-    }),
-  );
+export const ContainerRegistriesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
+  }),
+);
 export type ContainerRegistriesDeleteInput =
   typeof ContainerRegistriesDeleteInput.Type;
 
@@ -3288,37 +3268,35 @@ export const ContainerRegistriesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerRegistriesDeleteOutput,
 }));
 // Input Schema
-export const ContainerRegistriesGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
-    }),
-  );
+export const ContainerRegistriesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
+  }),
+);
 export type ContainerRegistriesGetInput =
   typeof ContainerRegistriesGetInput.Type;
 
 // Output Schema
-export const ContainerRegistriesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ContainerRegistriesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ContainerRegistriesGetOutput =
   typeof ContainerRegistriesGetOutput.Type;
 
@@ -3331,54 +3309,54 @@ export const ContainerRegistriesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerRegistriesGetOutput,
 }));
 // Input Schema
-export const ContainerRegistriesListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
-    }),
-  );
+export const ContainerRegistriesListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
+  }),
+);
 export type ContainerRegistriesListInput =
   typeof ContainerRegistriesListInput.Type;
 
 // Output Schema
-export const ContainerRegistriesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ContainerRegistriesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ContainerRegistriesListOutput =
   typeof ContainerRegistriesListOutput.Type;
 
@@ -3391,22 +3369,22 @@ export const ContainerRegistriesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerRegistriesListOutput,
 }));
 // Input Schema
-export const ContainerRegistriesValidateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
-    }),
-  );
+export const ContainerRegistriesValidateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
+  }),
+);
 export type ContainerRegistriesValidateInput =
   typeof ContainerRegistriesValidateInput.Type;
 
 // Output Schema
-export const ContainerRegistriesValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    isValid: Schema.optional(Schema.Boolean),
-    message: Schema.optional(Schema.String),
-  });
+export const ContainerRegistriesValidateOutput = /*@__PURE__*/ Schema.Struct({
+  isValid: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Schema.String),
+});
 export type ContainerRegistriesValidateOutput =
   typeof ContainerRegistriesValidateOutput.Type;
 
@@ -3419,37 +3397,37 @@ export const ContainerRegistriesValidate = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerRegistriesValidateOutput,
 }));
 // Input Schema
-export const CustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
-    }),
-  );
+export const CustomDomainsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+  }),
+);
 export type CustomDomainsCreateOrUpdateInput =
   typeof CustomDomainsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CustomDomainsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CustomDomainsCreateOrUpdateOutput =
   typeof CustomDomainsCreateOrUpdateOutput.Type;
 
@@ -3462,13 +3440,12 @@ export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CustomDomainsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const CustomDomainsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
-    }),
-  );
+export const CustomDomainsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+  }),
+);
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
 
 // Output Schema
@@ -3532,43 +3509,42 @@ export const CustomDomainsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type CustomDomainsListInput = typeof CustomDomainsListInput.Type;
 
 // Output Schema
-export const CustomDomainsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CustomDomainsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CustomDomainsListOutput = typeof CustomDomainsListOutput.Type;
 
 // The operation
@@ -3580,36 +3556,34 @@ export const CustomDomainsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: CustomDomainsListOutput,
 }));
 // Input Schema
-export const CustomDomainsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
-    }),
-  );
+export const CustomDomainsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+  }),
+);
 export type CustomDomainsUpdateInput = typeof CustomDomainsUpdateInput.Type;
 
 // Output Schema
-export const CustomDomainsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CustomDomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CustomDomainsUpdateOutput = typeof CustomDomainsUpdateOutput.Type;
 
 // The operation
@@ -3659,19 +3633,21 @@ export type CustomizedAcceleratorsCreateOrUpdateOutput =
 /**
  * Create or update the customized accelerator.
  */
-export const CustomizedAcceleratorsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const CustomizedAcceleratorsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CustomizedAcceleratorsCreateOrUpdateInput,
     outputSchema: CustomizedAcceleratorsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CustomizedAcceleratorsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
-    }),
-  );
+export const CustomizedAcceleratorsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+  }),
+);
 export type CustomizedAcceleratorsDeleteInput =
   typeof CustomizedAcceleratorsDeleteInput.Type;
 
@@ -3684,43 +3660,42 @@ export type CustomizedAcceleratorsDeleteOutput =
 /**
  * Delete the customized accelerator.
  */
-export const CustomizedAcceleratorsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CustomizedAcceleratorsDeleteInput,
-    outputSchema: CustomizedAcceleratorsDeleteOutput,
-  }));
+export const CustomizedAcceleratorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomizedAcceleratorsDeleteInput,
+  outputSchema: CustomizedAcceleratorsDeleteOutput,
+}));
 // Input Schema
-export const CustomizedAcceleratorsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
-    }),
-  );
+export const CustomizedAcceleratorsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+  }),
+);
 export type CustomizedAcceleratorsGetInput =
   typeof CustomizedAcceleratorsGetInput.Type;
 
 // Output Schema
-export const CustomizedAcceleratorsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CustomizedAcceleratorsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CustomizedAcceleratorsGetOutput =
   typeof CustomizedAcceleratorsGetOutput.Type;
 
@@ -3733,54 +3708,54 @@ export const CustomizedAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CustomizedAcceleratorsGetOutput,
 }));
 // Input Schema
-export const CustomizedAcceleratorsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
-    }),
-  );
+export const CustomizedAcceleratorsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
+  }),
+);
 export type CustomizedAcceleratorsListInput =
   typeof CustomizedAcceleratorsListInput.Type;
 
 // Output Schema
-export const CustomizedAcceleratorsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CustomizedAcceleratorsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CustomizedAcceleratorsListOutput =
   typeof CustomizedAcceleratorsListOutput.Type;
 
@@ -3793,22 +3768,24 @@ export const CustomizedAcceleratorsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: CustomizedAcceleratorsListOutput,
 }));
 // Input Schema
-export const CustomizedAcceleratorsValidateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
-    }),
-  );
+export const CustomizedAcceleratorsValidateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
+  }),
+);
 export type CustomizedAcceleratorsValidateInput =
   typeof CustomizedAcceleratorsValidateInput.Type;
 
 // Output Schema
-export const CustomizedAcceleratorsValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const CustomizedAcceleratorsValidateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     state: Schema.optional(Schema.Literals(["Valid", "Invalid"])),
     errorMessage: Schema.optional(Schema.String),
-  });
+  },
+);
 export type CustomizedAcceleratorsValidateOutput =
   typeof CustomizedAcceleratorsValidateOutput.Type;
 
@@ -3816,43 +3793,42 @@ export type CustomizedAcceleratorsValidateOutput =
 /**
  * Check the customized accelerator are valid.
  */
-export const CustomizedAcceleratorsValidate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CustomizedAcceleratorsValidateInput,
-    outputSchema: CustomizedAcceleratorsValidateOutput,
-  }));
+export const CustomizedAcceleratorsValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomizedAcceleratorsValidateInput,
+  outputSchema: CustomizedAcceleratorsValidateOutput,
+}));
 // Input Schema
-export const DeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
-    }),
-  );
+export const DeploymentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+  }),
+);
 export type DeploymentsCreateOrUpdateInput =
   typeof DeploymentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DeploymentsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DeploymentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DeploymentsCreateOrUpdateOutput =
   typeof DeploymentsCreateOrUpdateOutput.Type;
 
@@ -3909,11 +3885,10 @@ export type DeploymentsDisableRemoteDebuggingOutput =
 /**
  * Disable remote debugging.
  */
-export const DeploymentsDisableRemoteDebugging =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeploymentsDisableRemoteDebuggingInput,
-    outputSchema: DeploymentsDisableRemoteDebuggingOutput,
-  }));
+export const DeploymentsDisableRemoteDebugging = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsDisableRemoteDebuggingInput,
+  outputSchema: DeploymentsDisableRemoteDebuggingOutput,
+}));
 // Input Schema
 export const DeploymentsEnableRemoteDebuggingInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -3938,19 +3913,19 @@ export type DeploymentsEnableRemoteDebuggingOutput =
 /**
  * Enable remote debugging.
  */
-export const DeploymentsEnableRemoteDebugging =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeploymentsEnableRemoteDebuggingInput,
-    outputSchema: DeploymentsEnableRemoteDebuggingOutput,
-  }));
+export const DeploymentsEnableRemoteDebugging = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsEnableRemoteDebuggingInput,
+  outputSchema: DeploymentsEnableRemoteDebuggingOutput,
+}));
 // Input Schema
-export const DeploymentsGenerateHeapDumpInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
-    }),
-  );
+export const DeploymentsGenerateHeapDumpInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
+  }),
+);
 export type DeploymentsGenerateHeapDumpInput =
   typeof DeploymentsGenerateHeapDumpInput.Type;
 
@@ -3968,13 +3943,14 @@ export const DeploymentsGenerateHeapDump = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGenerateHeapDumpOutput,
 }));
 // Input Schema
-export const DeploymentsGenerateThreadDumpInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
-    }),
-  );
+export const DeploymentsGenerateThreadDumpInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
+  }),
+);
 export type DeploymentsGenerateThreadDumpInput =
   typeof DeploymentsGenerateThreadDumpInput.Type;
 
@@ -3987,11 +3963,10 @@ export type DeploymentsGenerateThreadDumpOutput =
 /**
  * Generate Thread Dump
  */
-export const DeploymentsGenerateThreadDump =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeploymentsGenerateThreadDumpInput,
-    outputSchema: DeploymentsGenerateThreadDumpOutput,
-  }));
+export const DeploymentsGenerateThreadDump = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsGenerateThreadDumpInput,
+  outputSchema: DeploymentsGenerateThreadDumpOutput,
+}));
 // Input Schema
 export const DeploymentsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
@@ -4032,21 +4007,21 @@ export const DeploymentsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
-export const DeploymentsGetLogFileUrlInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
-    }),
-  );
+export const DeploymentsGetLogFileUrlInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
+  }),
+);
 export type DeploymentsGetLogFileUrlInput =
   typeof DeploymentsGetLogFileUrlInput.Type;
 
 // Output Schema
-export const DeploymentsGetLogFileUrlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    url: Schema.String,
-  });
+export const DeploymentsGetLogFileUrlOutput = /*@__PURE__*/ Schema.Struct({
+  url: Schema.String,
+});
 export type DeploymentsGetLogFileUrlOutput =
   typeof DeploymentsGetLogFileUrlOutput.Type;
 
@@ -4082,11 +4057,12 @@ export type DeploymentsGetRemoteDebuggingConfigOutput =
 /**
  * Get remote debugging config.
  */
-export const DeploymentsGetRemoteDebuggingConfig =
-  /*@__PURE__*/ API.make(() => ({
+export const DeploymentsGetRemoteDebuggingConfig = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeploymentsGetRemoteDebuggingConfigInput,
     outputSchema: DeploymentsGetRemoteDebuggingConfigOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DeploymentsListInput = /*@__PURE__*/ Schema.Struct({
   version: Schema.optional(Schema.String),
@@ -4148,57 +4124,55 @@ export const DeploymentsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListOutput,
 }));
 // Input Schema
-export const DeploymentsListForClusterInput =
-  /*@__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments",
-    }),
-  );
+export const DeploymentsListForClusterInput = /*@__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments",
+  }),
+);
 export type DeploymentsListForClusterInput =
   typeof DeploymentsListForClusterInput.Type;
 
 // Output Schema
-export const DeploymentsListForClusterOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const DeploymentsListForClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DeploymentsListForClusterOutput =
   typeof DeploymentsListForClusterOutput.Type;
 
@@ -4214,13 +4188,12 @@ export const DeploymentsListForCluster = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListForClusterOutput,
 }));
 // Input Schema
-export const DeploymentsRestartInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
-    }),
-  );
+export const DeploymentsRestartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
+  }),
+);
 export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
 
 // Output Schema
@@ -4257,13 +4230,12 @@ export const DeploymentsStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsStartOutput,
 }));
 // Input Schema
-export const DeploymentsStartJFRInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
-    }),
-  );
+export const DeploymentsStartJFRInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
+  }),
+);
 export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
 
 // Output Schema
@@ -4309,26 +4281,25 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
 
 // Output Schema
-export const DeploymentsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DeploymentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
 
 // The operation
@@ -4340,37 +4311,37 @@ export const DeploymentsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsUpdateOutput,
 }));
 // Input Schema
-export const DevToolPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
-    }),
-  );
+export const DevToolPortalsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+  }),
+);
 export type DevToolPortalsCreateOrUpdateInput =
   typeof DevToolPortalsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DevToolPortalsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DevToolPortalsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DevToolPortalsCreateOrUpdateOutput =
   typeof DevToolPortalsCreateOrUpdateOutput.Type;
 
@@ -4378,19 +4349,17 @@ export type DevToolPortalsCreateOrUpdateOutput =
 /**
  * Create the default Dev Tool Portal or update the existing Dev Tool Portal.
  */
-export const DevToolPortalsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DevToolPortalsCreateOrUpdateInput,
-    outputSchema: DevToolPortalsCreateOrUpdateOutput,
-  }));
+export const DevToolPortalsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevToolPortalsCreateOrUpdateInput,
+  outputSchema: DevToolPortalsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DevToolPortalsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
-    }),
-  );
+export const DevToolPortalsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+  }),
+);
 export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
 
 // Output Schema
@@ -4415,26 +4384,25 @@ export const DevToolPortalsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DevToolPortalsGetInput = typeof DevToolPortalsGetInput.Type;
 
 // Output Schema
-export const DevToolPortalsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DevToolPortalsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DevToolPortalsGetOutput = typeof DevToolPortalsGetOutput.Type;
 
 // The operation
@@ -4446,53 +4414,51 @@ export const DevToolPortalsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: DevToolPortalsGetOutput,
 }));
 // Input Schema
-export const DevToolPortalsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
-    }),
-  );
+export const DevToolPortalsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
+  }),
+);
 export type DevToolPortalsListInput = typeof DevToolPortalsListInput.Type;
 
 // Output Schema
-export const DevToolPortalsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const DevToolPortalsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DevToolPortalsListOutput = typeof DevToolPortalsListOutput.Type;
 
 // The operation
@@ -4542,19 +4508,21 @@ export type GatewayCustomDomainsCreateOrUpdateOutput =
 /**
  * Create or update the Spring Cloud Gateway custom domain.
  */
-export const GatewayCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const GatewayCustomDomainsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GatewayCustomDomainsCreateOrUpdateInput,
     outputSchema: GatewayCustomDomainsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const GatewayCustomDomainsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
-    }),
-  );
+export const GatewayCustomDomainsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+  }),
+);
 export type GatewayCustomDomainsDeleteInput =
   typeof GatewayCustomDomainsDeleteInput.Type;
 
@@ -4572,37 +4540,37 @@ export const GatewayCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewayCustomDomainsDeleteOutput,
 }));
 // Input Schema
-export const GatewayCustomDomainsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
-    }),
-  );
+export const GatewayCustomDomainsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+  }),
+);
 export type GatewayCustomDomainsGetInput =
   typeof GatewayCustomDomainsGetInput.Type;
 
 // Output Schema
-export const GatewayCustomDomainsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GatewayCustomDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GatewayCustomDomainsGetOutput =
   typeof GatewayCustomDomainsGetOutput.Type;
 
@@ -4615,54 +4583,54 @@ export const GatewayCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewayCustomDomainsGetOutput,
 }));
 // Input Schema
-export const GatewayCustomDomainsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
-    }),
-  );
+export const GatewayCustomDomainsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
+  }),
+);
 export type GatewayCustomDomainsListInput =
   typeof GatewayCustomDomainsListInput.Type;
 
 // Output Schema
-export const GatewayCustomDomainsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const GatewayCustomDomainsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GatewayCustomDomainsListOutput =
   typeof GatewayCustomDomainsListOutput.Type;
 
@@ -4713,19 +4681,19 @@ export type GatewayRouteConfigsCreateOrUpdateOutput =
 /**
  * Create the default Spring Cloud Gateway route configs or update the existing Spring Cloud Gateway route configs.
  */
-export const GatewayRouteConfigsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GatewayRouteConfigsCreateOrUpdateInput,
-    outputSchema: GatewayRouteConfigsCreateOrUpdateOutput,
-  }));
+export const GatewayRouteConfigsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayRouteConfigsCreateOrUpdateInput,
+  outputSchema: GatewayRouteConfigsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const GatewayRouteConfigsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
-    }),
-  );
+export const GatewayRouteConfigsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+  }),
+);
 export type GatewayRouteConfigsDeleteInput =
   typeof GatewayRouteConfigsDeleteInput.Type;
 
@@ -4743,37 +4711,35 @@ export const GatewayRouteConfigsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewayRouteConfigsDeleteOutput,
 }));
 // Input Schema
-export const GatewayRouteConfigsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
-    }),
-  );
+export const GatewayRouteConfigsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+  }),
+);
 export type GatewayRouteConfigsGetInput =
   typeof GatewayRouteConfigsGetInput.Type;
 
 // Output Schema
-export const GatewayRouteConfigsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GatewayRouteConfigsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GatewayRouteConfigsGetOutput =
   typeof GatewayRouteConfigsGetOutput.Type;
 
@@ -4786,54 +4752,54 @@ export const GatewayRouteConfigsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewayRouteConfigsGetOutput,
 }));
 // Input Schema
-export const GatewayRouteConfigsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
-    }),
-  );
+export const GatewayRouteConfigsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
+  }),
+);
 export type GatewayRouteConfigsListInput =
   typeof GatewayRouteConfigsListInput.Type;
 
 // Output Schema
-export const GatewayRouteConfigsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const GatewayRouteConfigsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GatewayRouteConfigsListOutput =
   typeof GatewayRouteConfigsListOutput.Type;
 
@@ -4846,37 +4812,35 @@ export const GatewayRouteConfigsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewayRouteConfigsListOutput,
 }));
 // Input Schema
-export const GatewaysCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
-    }),
-  );
+export const GatewaysCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
+  }),
+);
 export type GatewaysCreateOrUpdateInput =
   typeof GatewaysCreateOrUpdateInput.Type;
 
 // Output Schema
-export const GatewaysCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GatewaysCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GatewaysCreateOrUpdateOutput =
   typeof GatewaysCreateOrUpdateOutput.Type;
 
@@ -5005,19 +4969,20 @@ export const GatewaysList = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewaysListOutput,
 }));
 // Input Schema
-export const GatewaysListEnvSecretsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
-    }),
-  );
+export const GatewaysListEnvSecretsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
+  }),
+);
 export type GatewaysListEnvSecretsInput =
   typeof GatewaysListEnvSecretsInput.Type;
 
 // Output Schema
-export const GatewaysListEnvSecretsOutput =
-  /*@__PURE__*/ Schema.Record(Schema.String, Schema.String);
+export const GatewaysListEnvSecretsOutput = /*@__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.String,
+);
 export type GatewaysListEnvSecretsOutput =
   typeof GatewaysListEnvSecretsOutput.Type;
 
@@ -5051,22 +5016,20 @@ export const GatewaysRestart = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewaysRestartOutput,
 }));
 // Input Schema
-export const GatewaysValidateDomainInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/validateDomain",
-    }),
-  );
+export const GatewaysValidateDomainInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/validateDomain",
+  }),
+);
 export type GatewaysValidateDomainInput =
   typeof GatewaysValidateDomainInput.Type;
 
 // Output Schema
-export const GatewaysValidateDomainOutput =
-  /*@__PURE__*/ Schema.Struct({
-    isValid: Schema.optional(Schema.Boolean),
-    message: Schema.optional(Schema.String),
-  });
+export const GatewaysValidateDomainOutput = /*@__PURE__*/ Schema.Struct({
+  isValid: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Schema.String),
+});
 export type GatewaysValidateDomainOutput =
   typeof GatewaysValidateDomainOutput.Type;
 
@@ -5079,36 +5042,34 @@ export const GatewaysValidateDomain = /*@__PURE__*/ API.make(() => ({
   outputSchema: GatewaysValidateDomainOutput,
 }));
 // Input Schema
-export const MonitoringSettingsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
-    }),
-  );
+export const MonitoringSettingsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+  }),
+);
 export type MonitoringSettingsGetInput = typeof MonitoringSettingsGetInput.Type;
 
 // Output Schema
-export const MonitoringSettingsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MonitoringSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MonitoringSettingsGetOutput =
   typeof MonitoringSettingsGetOutput.Type;
 
@@ -5121,37 +5082,37 @@ export const MonitoringSettingsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: MonitoringSettingsGetOutput,
 }));
 // Input Schema
-export const MonitoringSettingsUpdatePatchInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
-    }),
-  );
+export const MonitoringSettingsUpdatePatchInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+  }),
+);
 export type MonitoringSettingsUpdatePatchInput =
   typeof MonitoringSettingsUpdatePatchInput.Type;
 
 // Output Schema
-export const MonitoringSettingsUpdatePatchOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MonitoringSettingsUpdatePatchOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MonitoringSettingsUpdatePatchOutput =
   typeof MonitoringSettingsUpdatePatchOutput.Type;
 
@@ -5159,43 +5120,42 @@ export type MonitoringSettingsUpdatePatchOutput =
 /**
  * Update the Monitoring Setting.
  */
-export const MonitoringSettingsUpdatePatch =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MonitoringSettingsUpdatePatchInput,
-    outputSchema: MonitoringSettingsUpdatePatchOutput,
-  }));
+export const MonitoringSettingsUpdatePatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoringSettingsUpdatePatchInput,
+  outputSchema: MonitoringSettingsUpdatePatchOutput,
+}));
 // Input Schema
-export const MonitoringSettingsUpdatePutInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
-    }),
-  );
+export const MonitoringSettingsUpdatePutInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+  }),
+);
 export type MonitoringSettingsUpdatePutInput =
   typeof MonitoringSettingsUpdatePutInput.Type;
 
 // Output Schema
-export const MonitoringSettingsUpdatePutOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MonitoringSettingsUpdatePutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MonitoringSettingsUpdatePutOutput =
   typeof MonitoringSettingsUpdatePutOutput.Type;
 
@@ -5297,13 +5257,14 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PredefinedAcceleratorsDisableInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
-    }),
-  );
+export const PredefinedAcceleratorsDisableInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
+  }),
+);
 export type PredefinedAcceleratorsDisableInput =
   typeof PredefinedAcceleratorsDisableInput.Type;
 
@@ -5316,19 +5277,19 @@ export type PredefinedAcceleratorsDisableOutput =
 /**
  * Disable predefined accelerator.
  */
-export const PredefinedAcceleratorsDisable =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PredefinedAcceleratorsDisableInput,
-    outputSchema: PredefinedAcceleratorsDisableOutput,
-  }));
+export const PredefinedAcceleratorsDisable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredefinedAcceleratorsDisableInput,
+  outputSchema: PredefinedAcceleratorsDisableOutput,
+}));
 // Input Schema
-export const PredefinedAcceleratorsEnableInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
-    }),
-  );
+export const PredefinedAcceleratorsEnableInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
+  }),
+);
 export type PredefinedAcceleratorsEnableInput =
   typeof PredefinedAcceleratorsEnableInput.Type;
 
@@ -5341,43 +5302,42 @@ export type PredefinedAcceleratorsEnableOutput =
 /**
  * Enable predefined accelerator.
  */
-export const PredefinedAcceleratorsEnable =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PredefinedAcceleratorsEnableInput,
-    outputSchema: PredefinedAcceleratorsEnableOutput,
-  }));
+export const PredefinedAcceleratorsEnable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredefinedAcceleratorsEnableInput,
+  outputSchema: PredefinedAcceleratorsEnableOutput,
+}));
 // Input Schema
-export const PredefinedAcceleratorsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
-    }),
-  );
+export const PredefinedAcceleratorsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
+  }),
+);
 export type PredefinedAcceleratorsGetInput =
   typeof PredefinedAcceleratorsGetInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PredefinedAcceleratorsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PredefinedAcceleratorsGetOutput =
   typeof PredefinedAcceleratorsGetOutput.Type;
 
@@ -5390,54 +5350,54 @@ export const PredefinedAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: PredefinedAcceleratorsGetOutput,
 }));
 // Input Schema
-export const PredefinedAcceleratorsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
-    }),
-  );
+export const PredefinedAcceleratorsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
+  }),
+);
 export type PredefinedAcceleratorsListInput =
   typeof PredefinedAcceleratorsListInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const PredefinedAcceleratorsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PredefinedAcceleratorsListOutput =
   typeof PredefinedAcceleratorsListOutput.Type;
 
@@ -5482,19 +5442,21 @@ export type RuntimeVersionsListRuntimeVersionsOutput =
 /**
  * Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
  */
-export const RuntimeVersionsListRuntimeVersions =
-  /*@__PURE__*/ API.make(() => ({
+export const RuntimeVersionsListRuntimeVersions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RuntimeVersionsListRuntimeVersionsInput,
     outputSchema: RuntimeVersionsListRuntimeVersionsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ServiceRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
-    }),
-  );
+export const ServiceRegistriesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+  }),
+);
 export type ServiceRegistriesCreateOrUpdateInput =
   typeof ServiceRegistriesCreateOrUpdateInput.Type;
 
@@ -5526,19 +5488,19 @@ export type ServiceRegistriesCreateOrUpdateOutput =
 /**
  * Create the default Service Registry or update the existing Service Registry.
  */
-export const ServiceRegistriesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ServiceRegistriesCreateOrUpdateInput,
-    outputSchema: ServiceRegistriesCreateOrUpdateOutput,
-  }));
+export const ServiceRegistriesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRegistriesCreateOrUpdateInput,
+  outputSchema: ServiceRegistriesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServiceRegistriesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
-    }),
-  );
+export const ServiceRegistriesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+  }),
+);
 export type ServiceRegistriesDeleteInput =
   typeof ServiceRegistriesDeleteInput.Type;
 
@@ -5556,36 +5518,34 @@ export const ServiceRegistriesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServiceRegistriesDeleteOutput,
 }));
 // Input Schema
-export const ServiceRegistriesGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
-    }),
-  );
+export const ServiceRegistriesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+  }),
+);
 export type ServiceRegistriesGetInput = typeof ServiceRegistriesGetInput.Type;
 
 // Output Schema
-export const ServiceRegistriesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServiceRegistriesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServiceRegistriesGetOutput = typeof ServiceRegistriesGetOutput.Type;
 
 // The operation
@@ -5597,53 +5557,51 @@ export const ServiceRegistriesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServiceRegistriesGetOutput,
 }));
 // Input Schema
-export const ServiceRegistriesListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
-    }),
-  );
+export const ServiceRegistriesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
+  }),
+);
 export type ServiceRegistriesListInput = typeof ServiceRegistriesListInput.Type;
 
 // Output Schema
-export const ServiceRegistriesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServiceRegistriesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServiceRegistriesListOutput =
   typeof ServiceRegistriesListOutput.Type;
 
@@ -5656,25 +5614,23 @@ export const ServiceRegistriesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServiceRegistriesListOutput,
 }));
 // Input Schema
-export const ServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability",
-    }),
-  );
+export const ServicesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability",
+  }),
+);
 export type ServicesCheckNameAvailabilityInput =
   typeof ServicesCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const ServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-  });
+export const ServicesCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
 export type ServicesCheckNameAvailabilityOutput =
   typeof ServicesCheckNameAvailabilityOutput.Type;
 
@@ -5684,43 +5640,40 @@ export type ServicesCheckNameAvailabilityOutput =
  *
  * @param location - the region
  */
-export const ServicesCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ServicesCheckNameAvailabilityInput,
-    outputSchema: ServicesCheckNameAvailabilityOutput,
-  }));
+export const ServicesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCheckNameAvailabilityInput,
+  outputSchema: ServicesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
-    }),
-  );
+export const ServicesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+  }),
+);
 export type ServicesCreateOrUpdateInput =
   typeof ServicesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServicesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServicesCreateOrUpdateOutput =
   typeof ServicesCreateOrUpdateOutput.Type;
 
@@ -5754,13 +5707,14 @@ export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
-export const ServicesDisableApmGloballyInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
-    }),
-  );
+export const ServicesDisableApmGloballyInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
+  }),
+);
 export type ServicesDisableApmGloballyInput =
   typeof ServicesDisableApmGloballyInput.Type;
 
@@ -5778,13 +5732,14 @@ export const ServicesDisableApmGlobally = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesDisableApmGloballyOutput,
 }));
 // Input Schema
-export const ServicesDisableTestEndpointInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
-    }),
-  );
+export const ServicesDisableTestEndpointInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
+  }),
+);
 export type ServicesDisableTestEndpointInput =
   typeof ServicesDisableTestEndpointInput.Type;
 
@@ -5802,13 +5757,14 @@ export const ServicesDisableTestEndpoint = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesDisableTestEndpointOutput,
 }));
 // Input Schema
-export const ServicesEnableApmGloballyInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
-    }),
-  );
+export const ServicesEnableApmGloballyInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
+  }),
+);
 export type ServicesEnableApmGloballyInput =
   typeof ServicesEnableApmGloballyInput.Type;
 
@@ -5826,25 +5782,25 @@ export const ServicesEnableApmGlobally = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesEnableApmGloballyOutput,
 }));
 // Input Schema
-export const ServicesEnableTestEndpointInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
-    }),
-  );
+export const ServicesEnableTestEndpointInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
+  }),
+);
 export type ServicesEnableTestEndpointInput =
   typeof ServicesEnableTestEndpointInput.Type;
 
 // Output Schema
-export const ServicesEnableTestEndpointOutput =
-  /*@__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    primaryTestEndpoint: Schema.optional(Schema.String),
-    secondaryTestEndpoint: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  });
+export const ServicesEnableTestEndpointOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  primaryTestEndpoint: Schema.optional(Schema.String),
+  secondaryTestEndpoint: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+});
 export type ServicesEnableTestEndpointOutput =
   typeof ServicesEnableTestEndpointOutput.Type;
 
@@ -5857,13 +5813,14 @@ export const ServicesEnableTestEndpoint = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesEnableTestEndpointOutput,
 }));
 // Input Schema
-export const ServicesFlushVnetDnsSettingInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
-    }),
-  );
+export const ServicesFlushVnetDnsSettingInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
+  }),
+);
 export type ServicesFlushVnetDnsSettingInput =
   typeof ServicesFlushVnetDnsSettingInput.Type;
 
@@ -5976,54 +5933,54 @@ export const ServicesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
-export const ServicesListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
-    }),
-  );
+export const ServicesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
+  }),
+);
 export type ServicesListBySubscriptionInput =
   typeof ServicesListBySubscriptionInput.Type;
 
 // Output Schema
-export const ServicesListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServicesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServicesListBySubscriptionOutput =
   typeof ServicesListBySubscriptionOutput.Type;
 
@@ -6036,13 +5993,14 @@ export const ServicesListBySubscription = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesListBySubscriptionOutput,
 }));
 // Input Schema
-export const ServicesListGloballyEnabledApmsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
-    }),
-  );
+export const ServicesListGloballyEnabledApmsInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
+  }),
+);
 export type ServicesListGloballyEnabledApmsInput =
   typeof ServicesListGloballyEnabledApmsInput.Type;
 
@@ -6058,34 +6016,33 @@ export type ServicesListGloballyEnabledApmsOutput =
 /**
  * List globally enabled APMs for a Service.
  */
-export const ServicesListGloballyEnabledApms =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ServicesListGloballyEnabledApmsInput,
-    outputSchema: ServicesListGloballyEnabledApmsOutput,
-  }));
+export const ServicesListGloballyEnabledApms = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListGloballyEnabledApmsInput,
+  outputSchema: ServicesListGloballyEnabledApmsOutput,
+}));
 // Input Schema
-export const ServicesListSupportedApmTypesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
-    }),
-  );
+export const ServicesListSupportedApmTypesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
+  }),
+);
 export type ServicesListSupportedApmTypesInput =
   typeof ServicesListSupportedApmTypesInput.Type;
 
 // Output Schema
-export const ServicesListSupportedApmTypesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-        }),
-      ),
+export const ServicesListSupportedApmTypesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServicesListSupportedApmTypesOutput =
   typeof ServicesListSupportedApmTypesOutput.Type;
 
@@ -6093,11 +6050,10 @@ export type ServicesListSupportedApmTypesOutput =
 /**
  * List supported APM types for a Service.
  */
-export const ServicesListSupportedApmTypes =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ServicesListSupportedApmTypesInput,
-    outputSchema: ServicesListSupportedApmTypesOutput,
-  }));
+export const ServicesListSupportedApmTypes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListSupportedApmTypesInput,
+  outputSchema: ServicesListSupportedApmTypesOutput,
+}));
 // Input Schema
 export const ServicesListSupportedServerVersionsInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -6130,30 +6086,29 @@ export type ServicesListSupportedServerVersionsOutput =
 /**
  * Lists all of the available server versions supported by Microsoft.AppPlatform provider.
  */
-export const ServicesListSupportedServerVersions =
-  /*@__PURE__*/ API.make(() => ({
+export const ServicesListSupportedServerVersions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ServicesListSupportedServerVersionsInput,
     outputSchema: ServicesListSupportedServerVersionsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ServicesListTestKeysInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
-    }),
-  );
+export const ServicesListTestKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
+  }),
+);
 export type ServicesListTestKeysInput = typeof ServicesListTestKeysInput.Type;
 
 // Output Schema
-export const ServicesListTestKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    primaryTestEndpoint: Schema.optional(Schema.String),
-    secondaryTestEndpoint: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  });
+export const ServicesListTestKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  primaryTestEndpoint: Schema.optional(Schema.String),
+  secondaryTestEndpoint: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+});
 export type ServicesListTestKeysOutput = typeof ServicesListTestKeysOutput.Type;
 
 // The operation
@@ -6165,25 +6120,25 @@ export const ServicesListTestKeys = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServicesListTestKeysOutput,
 }));
 // Input Schema
-export const ServicesRegenerateTestKeyInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey",
-    }),
-  );
+export const ServicesRegenerateTestKeyInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey",
+  }),
+);
 export type ServicesRegenerateTestKeyInput =
   typeof ServicesRegenerateTestKeyInput.Type;
 
 // Output Schema
-export const ServicesRegenerateTestKeyOutput =
-  /*@__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    primaryTestEndpoint: Schema.optional(Schema.String),
-    secondaryTestEndpoint: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  });
+export const ServicesRegenerateTestKeyOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  primaryTestEndpoint: Schema.optional(Schema.String),
+  secondaryTestEndpoint: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+});
 export type ServicesRegenerateTestKeyOutput =
   typeof ServicesRegenerateTestKeyOutput.Type;
 
@@ -6360,37 +6315,35 @@ export const SkusList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SkusListOutput,
 }));
 // Input Schema
-export const StoragesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
-    }),
-  );
+export const StoragesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
+  }),
+);
 export type StoragesCreateOrUpdateInput =
   typeof StoragesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const StoragesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StoragesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StoragesCreateOrUpdateOutput =
   typeof StoragesCreateOrUpdateOutput.Type;
 

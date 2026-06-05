@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPayoutsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPayoutsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   currency: Schema.String,
   description: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export const PostPayoutsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostPayoutsInput = typeof PostPayoutsInput.Type;
 
 // Output Schema
-export const PostPayoutsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPayoutsOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   application_fee: Schema.Unknown,
   application_fee_amount: Schema.NullOr(Schema.Number),
@@ -69,7 +69,7 @@ export type PostPayoutsOutput = typeof PostPayoutsOutput.Type;
  * <p>If your API key is in test mode, money won’t actually be sent, though every other action occurs as if you’re in live mode.</p>
  * <p>If you create a manual payout on a Stripe account that uses multiple payment source types, you need to specify the source type balance that the payout draws from. The <a href="/api/balances/object">balance object</a> details available and pending amounts by source type.</p>
  */
-export const PostPayouts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPayouts = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPayoutsInput,
   outputSchema: PostPayoutsOutput,
 }));

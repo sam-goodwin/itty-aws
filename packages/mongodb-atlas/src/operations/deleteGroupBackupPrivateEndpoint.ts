@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupBackupPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
@@ -21,8 +21,7 @@ export type DeleteGroupBackupPrivateEndpointInput =
   typeof DeleteGroupBackupPrivateEndpointInput.Type;
 
 // Output Schema
-export const DeleteGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupBackupPrivateEndpointOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupBackupPrivateEndpointOutput =
   typeof DeleteGroupBackupPrivateEndpointOutput.Type;
 
@@ -40,9 +39,8 @@ export type DeleteGroupBackupPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint to delete.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
  */
-export const deleteGroupBackupPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupBackupPrivateEndpointInput,
-    outputSchema: DeleteGroupBackupPrivateEndpointOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const deleteGroupBackupPrivateEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupBackupPrivateEndpointInput,
+  outputSchema: DeleteGroupBackupPrivateEndpointOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

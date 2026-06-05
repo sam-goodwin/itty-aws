@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesCustomCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullchain: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
     private_key: Schema.optional(Schema.String),
@@ -16,7 +16,7 @@ export type App_CertificatesCustomCreateInput =
 
 // Output Schema
 export const App_CertificatesCustomCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -96,7 +96,7 @@ export type App_CertificatesCustomCreateOutput =
  * Upload custom certificate
  */
 export const App_CertificatesCustomCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: App_CertificatesCustomCreateInput,
     outputSchema: App_CertificatesCustomCreateOutput,
   }));

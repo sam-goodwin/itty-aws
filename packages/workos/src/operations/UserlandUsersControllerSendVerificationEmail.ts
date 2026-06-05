@@ -5,7 +5,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerSendVerificationEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type UserlandUsersControllerSendVerificationEmailInput =
 
 // Output Schema
 export const UserlandUsersControllerSendVerificationEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export type UserlandUsersControllerSendVerificationEmailOutput =
  * @param id - The ID of the user.
  */
 export const UserlandUsersControllerSendVerificationEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerSendVerificationEmailInput,
     outputSchema: UserlandUsersControllerSendVerificationEmailOutput,
     errors: [BadRequest, NotFound] as const,

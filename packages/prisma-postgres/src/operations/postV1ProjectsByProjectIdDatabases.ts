@@ -7,11 +7,14 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
 
 // Input Schema
 export const PostV1ProjectsByProjectIdDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     region: Schema.optional(
       Schema.Literals([
@@ -41,7 +44,7 @@ export type PostV1ProjectsByProjectIdDatabasesInput =
 
 // Output Schema
 export const PostV1ProjectsByProjectIdDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -64,21 +67,21 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
             pooled: Schema.optional(
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
             accelerate: Schema.optional(
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
           }),
@@ -136,7 +139,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
               }),
             ),
           }),
-          connectionString: SensitiveString,
+          connectionString: SensitiveOutputString,
           directConnection: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -148,7 +151,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
           ),
         }),
       ),
-      connectionString: SensitiveNullableString,
+      connectionString: SensitiveOutputNullableString,
       directConnection: Schema.NullOr(
         Schema.Struct({
           host: Schema.String,
@@ -167,9 +170,10 @@ export type PostV1ProjectsByProjectIdDatabasesOutput =
  *
  * Creates a new database for the given project.
  */
-export const postV1ProjectsByProjectIdDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1ProjectsByProjectIdDatabases = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV1ProjectsByProjectIdDatabasesInput,
     outputSchema: PostV1ProjectsByProjectIdDatabasesOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

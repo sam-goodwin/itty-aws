@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1RemoveProjectAddonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    addon_variant: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v1/projects/{ref}/billing/addons/{addon_variant}",
-    }),
-  );
+export const V1RemoveProjectAddonInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  addon_variant: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/projects/{ref}/billing/addons/{addon_variant}",
+  }),
+);
 export type V1RemoveProjectAddonInput = typeof V1RemoveProjectAddonInput.Type;
 
 // Output Schema
-export const V1RemoveProjectAddonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1RemoveProjectAddonOutput = /*@__PURE__*/ Schema.Void;
 export type V1RemoveProjectAddonOutput = typeof V1RemoveProjectAddonOutput.Type;
 
 // The operation
@@ -29,10 +27,8 @@ export type V1RemoveProjectAddonOutput = typeof V1RemoveProjectAddonOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1RemoveProjectAddon = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RemoveProjectAddonInput,
-    outputSchema: V1RemoveProjectAddonOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1RemoveProjectAddon = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RemoveProjectAddonInput,
+  outputSchema: V1RemoveProjectAddonOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,78 +4,75 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListBranchChangeRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    page: Schema.optional(Schema.Number),
-    per_page: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/changes",
-    }),
-  );
+export const ListBranchChangeRequestsInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  page: Schema.optional(Schema.Number),
+  per_page: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/changes",
+  }),
+);
 export type ListBranchChangeRequestsInput =
   typeof ListBranchChangeRequestsInput.Type;
 
 // Output Schema
-export const ListBranchChangeRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.String,
-    current_page: Schema.Number,
-    next_page: Schema.NullOr(Schema.Number),
-    next_page_url: Schema.NullOr(Schema.String),
-    prev_page: Schema.NullOr(Schema.Number),
-    prev_page_url: Schema.NullOr(Schema.String),
-    data: Schema.Array(
-      Schema.Struct({
+export const ListBranchChangeRequestsOutput = /*@__PURE__*/ Schema.Struct({
+  current_page: Schema.Number,
+  next_page: Schema.NullOr(Schema.Number),
+  next_page_url: Schema.NullOr(Schema.String),
+  prev_page: Schema.NullOr(Schema.Number),
+  prev_page_url: Schema.NullOr(Schema.String),
+  data: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      restart: Schema.Array(Schema.Number),
+      state: Schema.Literals([
+        "queued",
+        "pending",
+        "resizing",
+        "canceled",
+        "completed",
+      ]),
+      started_at: Schema.String,
+      completed_at: Schema.optional(Schema.NullOr(Schema.String)),
+      created_at: Schema.String,
+      updated_at: Schema.String,
+      actor: Schema.Struct({
         id: Schema.String,
-        restart: Schema.Array(Schema.Number),
-        state: Schema.Literals([
-          "queued",
-          "pending",
-          "resizing",
-          "canceled",
-          "completed",
-        ]),
-        started_at: Schema.NullOr(Schema.String),
-        completed_at: Schema.optional(Schema.NullOr(Schema.String)),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        actor: Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-        cluster_name: Schema.String,
-        cluster_display_name: Schema.String,
-        cluster_metal: Schema.Boolean,
-        replicas: Schema.Number,
-        parameters: Schema.Record(Schema.String, Schema.Unknown),
-        previous_cluster_name: Schema.String,
-        previous_cluster_display_name: Schema.String,
-        previous_cluster_metal: Schema.Boolean,
-        previous_replicas: Schema.Number,
-        previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
-        minimum_storage_bytes: Schema.Number,
-        maximum_storage_bytes: Schema.Number,
-        storage_autoscaling: Schema.Boolean,
-        storage_shrinking: Schema.Boolean,
-        storage_type: Schema.Literals(["gp3", "io2", "pd_ssd"]),
-        storage_iops: Schema.Number,
-        storage_throughput_mibs: Schema.Number,
-        previous_minimum_storage_bytes: Schema.Number,
-        previous_maximum_storage_bytes: Schema.Number,
-        previous_storage_autoscaling: Schema.Boolean,
-        previous_storage_shrinking: Schema.Boolean,
-        previous_storage_type: Schema.String,
-        previous_storage_iops: Schema.Number,
-        previous_storage_throughput_mibs: Schema.Number,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
       }),
-    ),
-  });
+      cluster_name: Schema.String,
+      cluster_display_name: Schema.String,
+      cluster_metal: Schema.Boolean,
+      replicas: Schema.Number,
+      parameters: Schema.Record(Schema.String, Schema.Unknown),
+      previous_cluster_name: Schema.String,
+      previous_cluster_display_name: Schema.String,
+      previous_cluster_metal: Schema.Boolean,
+      previous_replicas: Schema.Number,
+      previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
+      minimum_storage_bytes: Schema.Number,
+      maximum_storage_bytes: Schema.Number,
+      storage_autoscaling: Schema.Boolean,
+      storage_shrinking: Schema.Boolean,
+      storage_type: Schema.Literals(["gp3", "io2", "pd_ssd"]),
+      storage_iops: Schema.Number,
+      storage_throughput_mibs: Schema.Number,
+      previous_minimum_storage_bytes: Schema.Number,
+      previous_maximum_storage_bytes: Schema.Number,
+      previous_storage_autoscaling: Schema.Boolean,
+      previous_storage_shrinking: Schema.Boolean,
+      previous_storage_type: Schema.String,
+      previous_storage_iops: Schema.Number,
+      previous_storage_throughput_mibs: Schema.Number,
+    }),
+  ),
+});
 export type ListBranchChangeRequestsOutput =
   typeof ListBranchChangeRequestsOutput.Type;
 
@@ -89,15 +86,14 @@ export type ListBranchChangeRequestsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBranchChangeRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-    inputSchema: ListBranchChangeRequestsInput,
-    outputSchema: ListBranchChangeRequestsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }));
+export const listBranchChangeRequests = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBranchChangeRequestsInput,
+  outputSchema: ListBranchChangeRequestsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

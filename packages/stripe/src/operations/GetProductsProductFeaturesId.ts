@@ -3,37 +3,35 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetProductsProductFeaturesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    product: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/products/{product}/features/{id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetProductsProductFeaturesIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  product: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/products/{product}/features/{id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetProductsProductFeaturesIdInput =
   typeof GetProductsProductFeaturesIdInput.Type;
 
 // Output Schema
-export const GetProductsProductFeaturesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlement_feature: Schema.Struct({
-      active: Schema.Boolean,
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      lookup_key: Schema.String,
-      metadata: Schema.Record(Schema.String, Schema.String),
-      name: Schema.String,
-      object: Schema.Literals(["entitlements.feature"]),
-    }),
+export const GetProductsProductFeaturesIdOutput = /*@__PURE__*/ Schema.Struct({
+  entitlement_feature: Schema.Struct({
+    active: Schema.Boolean,
     id: Schema.String,
     livemode: Schema.Boolean,
-    object: Schema.Literals(["product_feature"]),
-  });
+    lookup_key: Schema.String,
+    metadata: Schema.Record(Schema.String, Schema.String),
+    name: Schema.String,
+    object: Schema.Literals(["entitlements.feature"]),
+  }),
+  id: Schema.String,
+  livemode: Schema.Boolean,
+  object: Schema.Literals(["product_feature"]),
+});
 export type GetProductsProductFeaturesIdOutput =
   typeof GetProductsProductFeaturesIdOutput.Type;
 
@@ -47,8 +45,7 @@ export type GetProductsProductFeaturesIdOutput =
  * @param id - The ID of the product_feature.
  * @param product - The ID of the product.
  */
-export const GetProductsProductFeaturesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetProductsProductFeaturesIdInput,
-    outputSchema: GetProductsProductFeaturesIdOutput,
-  }));
+export const GetProductsProductFeaturesId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProductsProductFeaturesIdInput,
+  outputSchema: GetProductsProductFeaturesIdOutput,
+}));

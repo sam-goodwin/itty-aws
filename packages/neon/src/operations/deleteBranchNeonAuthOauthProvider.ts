@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteBranchNeonAuthOauthProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     oauth_provider_id: Schema.String.pipe(T.PathParam()),
@@ -19,7 +19,7 @@ export type DeleteBranchNeonAuthOauthProviderInput =
 
 // Output Schema
 export const DeleteBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteBranchNeonAuthOauthProviderOutput =
   typeof DeleteBranchNeonAuthOauthProviderOutput.Type;
 
@@ -33,8 +33,7 @@ export type DeleteBranchNeonAuthOauthProviderOutput =
  * @param branch_id - The Neon branch ID
  * @param oauth_provider_id - The OAuth provider ID
  */
-export const deleteBranchNeonAuthOauthProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteBranchNeonAuthOauthProviderInput,
-    outputSchema: DeleteBranchNeonAuthOauthProviderOutput,
-  }));
+export const deleteBranchNeonAuthOauthProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteBranchNeonAuthOauthProviderInput,
+  outputSchema: DeleteBranchNeonAuthOauthProviderOutput,
+}));

@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const CohortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CohortsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -63,7 +63,7 @@ export const CohortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CohortsCreateInput = typeof CohortsCreateInput.Type;
 
 // Output Schema
-export const CohortsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CohortsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export type CohortsCreateOutput = typeof CohortsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const cohortsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const cohortsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CohortsCreateInput,
   outputSchema: CohortsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

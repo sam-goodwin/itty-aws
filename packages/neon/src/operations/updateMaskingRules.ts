@@ -3,42 +3,40 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateMaskingRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    branch_id: Schema.String.pipe(T.PathParam()),
-    masking_rules: Schema.Array(
-      Schema.Struct({
-        database_name: Schema.String,
-        schema_name: Schema.String,
-        table_name: Schema.String,
-        column_name: Schema.String,
-        masking_function: Schema.optional(Schema.String),
-        masking_value: Schema.optional(Schema.String),
-      }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/projects/{project_id}/branches/{branch_id}/masking_rules",
+export const UpdateMaskingRulesInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  branch_id: Schema.String.pipe(T.PathParam()),
+  masking_rules: Schema.Array(
+    Schema.Struct({
+      database_name: Schema.String,
+      schema_name: Schema.String,
+      table_name: Schema.String,
+      column_name: Schema.String,
+      masking_function: Schema.optional(Schema.String),
+      masking_value: Schema.optional(Schema.String),
     }),
-  );
+  ),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/projects/{project_id}/branches/{branch_id}/masking_rules",
+  }),
+);
 export type UpdateMaskingRulesInput = typeof UpdateMaskingRulesInput.Type;
 
 // Output Schema
-export const UpdateMaskingRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    masking_rules: Schema.Array(
-      Schema.Struct({
-        database_name: Schema.String,
-        schema_name: Schema.String,
-        table_name: Schema.String,
-        column_name: Schema.String,
-        masking_function: Schema.optional(Schema.String),
-        masking_value: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UpdateMaskingRulesOutput = /*@__PURE__*/ Schema.Struct({
+  masking_rules: Schema.Array(
+    Schema.Struct({
+      database_name: Schema.String,
+      schema_name: Schema.String,
+      table_name: Schema.String,
+      column_name: Schema.String,
+      masking_function: Schema.optional(Schema.String),
+      masking_value: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UpdateMaskingRulesOutput = typeof UpdateMaskingRulesOutput.Type;
 
 // The operation
@@ -54,7 +52,7 @@ export type UpdateMaskingRulesOutput = typeof UpdateMaskingRulesOutput.Type;
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const updateMaskingRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMaskingRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMaskingRulesInput,
   outputSchema: UpdateMaskingRulesOutput,
 }));

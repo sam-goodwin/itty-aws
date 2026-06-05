@@ -9,42 +9,40 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const EmployeesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    employeeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
-    }),
-  );
+export const EmployeesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  employeeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
+  }),
+);
 export type EmployeesCreateOrUpdateInput =
   typeof EmployeesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const EmployeesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EmployeesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EmployeesCreateOrUpdateOutput =
   typeof EmployeesCreateOrUpdateOutput.Type;
 
@@ -57,14 +55,12 @@ export type EmployeesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param employeeName - The name of the Employee
  */
-export const EmployeesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmployeesCreateOrUpdateInput,
-    outputSchema: EmployeesCreateOrUpdateOutput,
-  }),
-);
+export const EmployeesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmployeesCreateOrUpdateInput,
+  outputSchema: EmployeesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmployeesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
@@ -78,7 +74,7 @@ export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EmployeesDeleteInput = typeof EmployeesDeleteInput.Type;
 
 // Output Schema
-export const EmployeesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EmployeesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EmployeesDeleteOutput = typeof EmployeesDeleteOutput.Type;
 
 // The operation
@@ -90,12 +86,12 @@ export type EmployeesDeleteOutput = typeof EmployeesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param employeeName - The name of the Employee
  */
-export const EmployeesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmployeesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmployeesDeleteInput,
   outputSchema: EmployeesDeleteOutput,
 }));
 // Input Schema
-export const EmployeesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmployeesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
@@ -109,7 +105,7 @@ export const EmployeesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EmployeesGetInput = typeof EmployeesGetInput.Type;
 
 // Output Schema
-export const EmployeesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmployeesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -139,61 +135,49 @@ export type EmployeesGetOutput = typeof EmployeesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param employeeName - The name of the Employee
  */
-export const EmployeesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmployeesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmployeesGetInput,
   outputSchema: EmployeesGetOutput,
 }));
 // Input Schema
-export const EmployeesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees",
-    }),
-  );
+export const EmployeesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees",
+  }),
+);
 export type EmployeesListByResourceGroupInput =
   typeof EmployeesListByResourceGroupInput.Type;
 
 // Output Schema
-export const EmployeesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EmployeesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EmployeesListByResourceGroupOutput =
   typeof EmployeesListByResourceGroupOutput.Type;
 
@@ -205,61 +189,48 @@ export type EmployeesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const EmployeesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EmployeesListByResourceGroupInput,
-    outputSchema: EmployeesListByResourceGroupOutput,
-  }));
+export const EmployeesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmployeesListByResourceGroupInput,
+  outputSchema: EmployeesListByResourceGroupOutput,
+}));
 // Input Schema
-export const EmployeesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Contoso/employees",
-    }),
-  );
+export const EmployeesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Contoso/employees",
+  }),
+);
 export type EmployeesListBySubscriptionInput =
   typeof EmployeesListBySubscriptionInput.Type;
 
 // Output Schema
-export const EmployeesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EmployeesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EmployeesListBySubscriptionOutput =
   typeof EmployeesListBySubscriptionOutput.Type;
 
@@ -270,14 +241,12 @@ export type EmployeesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const EmployeesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmployeesListBySubscriptionInput,
-    outputSchema: EmployeesListBySubscriptionOutput,
-  }),
-);
+export const EmployeesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmployeesListBySubscriptionInput,
+  outputSchema: EmployeesListBySubscriptionOutput,
+}));
 // Input Schema
-export const EmployeesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmployeesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
@@ -291,7 +260,7 @@ export const EmployeesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EmployeesUpdateInput = typeof EmployeesUpdateInput.Type;
 
 // Output Schema
-export const EmployeesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmployeesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -321,12 +290,12 @@ export type EmployeesUpdateOutput = typeof EmployeesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param employeeName - The name of the Employee
  */
-export const EmployeesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmployeesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmployeesUpdateInput,
   outputSchema: EmployeesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Contoso/operations" }),
@@ -334,7 +303,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -365,7 +334,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

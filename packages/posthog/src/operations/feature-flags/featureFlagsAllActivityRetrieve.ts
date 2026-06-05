@@ -4,23 +4,24 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const FeatureFlagsAllActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeatureFlagsAllActivityRetrieveInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     page: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/feature_flags/activity/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/feature_flags/activity/",
+  }),
+);
 export type FeatureFlagsAllActivityRetrieveInput =
   typeof FeatureFlagsAllActivityRetrieveInput.Type;
 
 // Output Schema
 export const FeatureFlagsAllActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -82,9 +83,8 @@ export type FeatureFlagsAllActivityRetrieveOutput =
  * @param page - Page number
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsAllActivityRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FeatureFlagsAllActivityRetrieveInput,
-    outputSchema: FeatureFlagsAllActivityRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const featureFlagsAllActivityRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsAllActivityRetrieveInput,
+  outputSchema: FeatureFlagsAllActivityRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

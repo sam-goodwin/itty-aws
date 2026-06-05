@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostIssuingCardholdersCardholderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardholder: Schema.String.pipe(T.PathParam()),
     billing: Schema.optional(
       Schema.Struct({
@@ -1006,7 +1006,7 @@ export type PostIssuingCardholdersCardholderInput =
 
 // Output Schema
 export const PostIssuingCardholdersCardholderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing: Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -1068,8 +1068,7 @@ export type PostIssuingCardholdersCardholderOutput =
  *
  * <p>Updates the specified Issuing <code>Cardholder</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostIssuingCardholdersCardholder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostIssuingCardholdersCardholderInput,
-    outputSchema: PostIssuingCardholdersCardholderOutput,
-  }));
+export const PostIssuingCardholdersCardholder = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingCardholdersCardholderInput,
+  outputSchema: PostIssuingCardholdersCardholderOutput,
+}));

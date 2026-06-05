@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgApiKeyAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    ipAddress: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
-    }),
-  );
+export const GetOrgApiKeyAccessListEntryInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  ipAddress: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
+  }),
+);
 export type GetOrgApiKeyAccessListEntryInput =
   typeof GetOrgApiKeyAccessListEntryInput.Type;
 
 // Output Schema
-export const GetOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgApiKeyAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgApiKeyAccessListEntryOutput =
   typeof GetOrgApiKeyAccessListEntryOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetOrgApiKeyAccessListEntryOutput =
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block to limit  requests to API resources in the specified organization. When adding a CIDR block with a subnet mask, such as  192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for  which you want to return access list entries.
  */
-export const getOrgApiKeyAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgApiKeyAccessListEntryInput,
-    outputSchema: GetOrgApiKeyAccessListEntryOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgApiKeyAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgApiKeyAccessListEntryInput,
+  outputSchema: GetOrgApiKeyAccessListEntryOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

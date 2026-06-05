@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    skipRoleValidation: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation",
-    }),
-  );
+export const CreateGroupDataFederationInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  skipRoleValidation: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation",
+  }),
+);
 export type CreateGroupDataFederationInput =
   typeof CreateGroupDataFederationInput.Type;
 
 // Output Schema
-export const CreateGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupDataFederationOutput =
   typeof CreateGroupDataFederationOutput.Type;
 
@@ -38,10 +36,8 @@ export type CreateGroupDataFederationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param skipRoleValidation - Flag that indicates whether this request should check if the requesting IAM role can read from the S3 bucket. AWS checks if the role can list the objects in the bucket before writing to it. Some IAM roles only need write permissions. This flag allows you to skip that check.
  */
-export const createGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupDataFederationInput,
-    outputSchema: CreateGroupDataFederationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupDataFederationInput,
+  outputSchema: CreateGroupDataFederationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

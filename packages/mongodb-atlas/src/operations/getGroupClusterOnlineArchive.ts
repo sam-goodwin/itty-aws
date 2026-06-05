@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    archiveId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
-    }),
-  );
+export const GetGroupClusterOnlineArchiveInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  archiveId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+  }),
+);
 export type GetGroupClusterOnlineArchiveInput =
   typeof GetGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const GetGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterOnlineArchiveOutput =
   typeof GetGroupClusterOnlineArchiveOutput.Type;
 
@@ -40,9 +38,8 @@ export type GetGroupClusterOnlineArchiveOutput =
  * @param archiveId - Unique 24-hexadecimal digit string that identifies the online archive to return.
  * @param clusterName - Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
  */
-export const getGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterOnlineArchiveInput,
-    outputSchema: GetGroupClusterOnlineArchiveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const getGroupClusterOnlineArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterOnlineArchiveInput,
+  outputSchema: GetGroupClusterOnlineArchiveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const TakeSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TakeSnapshotInput = /*@__PURE__*/ Schema.Struct({
   snapshot_path: Schema.String,
 }).pipe(T.Http({ method: "POST", path: "/operations/snapshot" }));
 export type TakeSnapshotInput = typeof TakeSnapshotInput.Type;
 
 // Output Schema
-export const TakeSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TakeSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
 });
 export type TakeSnapshotOutput = typeof TakeSnapshotOutput.Type;
@@ -22,7 +22,7 @@ export type TakeSnapshotOutput = typeof TakeSnapshotOutput.Type;
  *
  * @param snapshot_path - The directory on the server where the snapshot should be saved.
  */
-export const takeSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const takeSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: TakeSnapshotInput,
   outputSchema: TakeSnapshotOutput,
 }));

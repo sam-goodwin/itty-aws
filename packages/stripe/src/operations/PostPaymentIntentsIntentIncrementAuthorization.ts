@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentIncrementAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount: Schema.Number,
     amount_details: Schema.optional(
@@ -58,7 +58,7 @@ export type PostPaymentIntentsIntentIncrementAuthorizationInput =
 
 // Output Schema
 export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -135,7 +135,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -286,7 +286,7 @@ export type PostPaymentIntentsIntentIncrementAuthorizationOutput =
  * <p>Learn more about <a href="/docs/terminal/features/incremental-authorizations">incremental authorizations</a>.</p>
  */
 export const PostPaymentIntentsIntentIncrementAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentIncrementAuthorizationInput,
     outputSchema: PostPaymentIntentsIntentIncrementAuthorizationOutput,
   }));

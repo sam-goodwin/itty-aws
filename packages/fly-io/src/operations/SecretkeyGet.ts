@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const SecretkeyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeyGetInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -14,7 +14,7 @@ export const SecretkeyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SecretkeyGetInput = typeof SecretkeyGetInput.Type;
 
 // Output Schema
-export const SecretkeyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeyGetOutput = /*@__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   public_key: Schema.optional(Schema.Array(Schema.Number)),
@@ -31,7 +31,7 @@ export type SecretkeyGetOutput = typeof SecretkeyGetOutput.Type;
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyGetInput,
   outputSchema: SecretkeyGetOutput,
   errors: [Forbidden, NotFound] as const,

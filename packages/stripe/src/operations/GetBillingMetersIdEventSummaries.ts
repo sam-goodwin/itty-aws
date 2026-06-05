@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetBillingMetersIdEventSummariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     customer: Schema.String,
     end_time: Schema.Number,
@@ -26,7 +26,7 @@ export type GetBillingMetersIdEventSummariesInput =
 
 // Output Schema
 export const GetBillingMetersIdEventSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         aggregated_value: Schema.Number,
@@ -61,8 +61,7 @@ export type GetBillingMetersIdEventSummariesOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param value_grouping_window - Specifies what granularity to use when generating event summaries. If not specified, a single event summary would be returned for the specified time range. For hourly granularity, start and end times must align with hour boundaries (e.g., 00:00, 01:00, ..., 23:00). For daily granularity, start and end times must align with UTC day boundaries (00:00 UTC).
  */
-export const GetBillingMetersIdEventSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetBillingMetersIdEventSummariesInput,
-    outputSchema: GetBillingMetersIdEventSummariesOutput,
-  }));
+export const GetBillingMetersIdEventSummaries = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBillingMetersIdEventSummariesInput,
+  outputSchema: GetBillingMetersIdEventSummariesOutput,
+}));

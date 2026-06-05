@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(Schema.Number),
   internal: Schema.optional(Schema.Boolean),
@@ -29,7 +29,7 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TasksListInput = typeof TasksListInput.Type;
 
 // Output Schema
-export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -116,7 +116,7 @@ export type TasksListOutput = typeof TasksListOutput.Type;
 * `failed` - failed
 * `cancelled` - cancelled
  */
-export const tasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
   outputSchema: TasksListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

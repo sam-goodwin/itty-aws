@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCouponsInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -19,7 +19,7 @@ export const GetCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCouponsInput = typeof GetCouponsInput.Type;
 
 // Output Schema
-export const GetCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCouponsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount_off: Schema.NullOr(Schema.Number),
@@ -70,7 +70,7 @@ export type GetCouponsOutput = typeof GetCouponsOutput.Type;
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetCoupons = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCoupons = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCouponsInput,
   outputSchema: GetCouponsOutput,
 }));

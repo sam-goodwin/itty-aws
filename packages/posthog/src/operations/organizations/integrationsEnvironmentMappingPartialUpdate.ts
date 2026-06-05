@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const IntegrationsEnvironmentMappingPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["vercel"])),
@@ -41,7 +41,7 @@ export type IntegrationsEnvironmentMappingPartialUpdateInput =
 
 // Output Schema
 export const IntegrationsEnvironmentMappingPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.Literals(["vercel"])),
     integration_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -81,7 +81,7 @@ export type IntegrationsEnvironmentMappingPartialUpdateOutput =
  * @param id - A UUID string identifying this organization integration.
  */
 export const integrationsEnvironmentMappingPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsEnvironmentMappingPartialUpdateInput,
     outputSchema: IntegrationsEnvironmentMappingPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

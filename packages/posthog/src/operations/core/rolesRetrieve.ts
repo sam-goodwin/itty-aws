@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const RolesRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const RolesRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesRetrieveInput = typeof RolesRetrieveInput.Type;
 
 // Output Schema
-export const RolesRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   created_at: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export type RolesRetrieveOutput = typeof RolesRetrieveOutput.Type;
  *
  * @param id - A UUID string identifying this role.
  */
-export const rolesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const rolesRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesRetrieveInput,
   outputSchema: RolesRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

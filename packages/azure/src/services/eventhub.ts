@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ApplicationGroupCreateOrUpdateApplicationGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     applicationGroupName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type ApplicationGroupCreateOrUpdateApplicationGroupInput =
 
 // Output Schema
 export const ApplicationGroupCreateOrUpdateApplicationGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -47,30 +47,28 @@ export type ApplicationGroupCreateOrUpdateApplicationGroupOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ApplicationGroupCreateOrUpdateApplicationGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationGroupCreateOrUpdateApplicationGroupInput,
     outputSchema: ApplicationGroupCreateOrUpdateApplicationGroupOutput,
   }));
 // Input Schema
-export const ApplicationGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    applicationGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
-    }),
-  );
+export const ApplicationGroupDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
+  }),
+);
 export type ApplicationGroupDeleteInput =
   typeof ApplicationGroupDeleteInput.Type;
 
 // Output Schema
-export const ApplicationGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApplicationGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApplicationGroupDeleteOutput =
   typeof ApplicationGroupDeleteOutput.Type;
 
@@ -84,36 +82,32 @@ export type ApplicationGroupDeleteOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ApplicationGroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationGroupDeleteInput,
-    outputSchema: ApplicationGroupDeleteOutput,
+export const ApplicationGroupDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationGroupDeleteInput,
+  outputSchema: ApplicationGroupDeleteOutput,
+}));
+// Input Schema
+export const ApplicationGroupGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
   }),
 );
-// Input Schema
-export const ApplicationGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    applicationGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
-    }),
-  );
 export type ApplicationGroupGetInput = typeof ApplicationGroupGetInput.Type;
 
 // Output Schema
-export const ApplicationGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const ApplicationGroupGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type ApplicationGroupGetOutput = typeof ApplicationGroupGetOutput.Type;
 
 // The operation
@@ -126,29 +120,30 @@ export type ApplicationGroupGetOutput = typeof ApplicationGroupGetOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ApplicationGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationGroupGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationGroupGetInput,
   outputSchema: ApplicationGroupGetOutput,
 }));
 // Input Schema
-export const ApplicationGroupListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationGroupListByNamespaceInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups",
+  }),
+);
 export type ApplicationGroupListByNamespaceInput =
   typeof ApplicationGroupListByNamespaceInput.Type;
 
 // Output Schema
 export const ApplicationGroupListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -173,34 +168,31 @@ export type ApplicationGroupListByNamespaceOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ApplicationGroupListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ApplicationGroupListByNamespaceInput,
-    outputSchema: ApplicationGroupListByNamespaceOutput,
-  }));
+export const ApplicationGroupListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationGroupListByNamespaceInput,
+  outputSchema: ApplicationGroupListByNamespaceOutput,
+}));
 // Input Schema
-export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
-    }),
-  );
+export const ClustersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
+  }),
+);
 export type ClustersCreateOrUpdateInput =
   typeof ClustersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ClustersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
 
@@ -213,14 +205,12 @@ export type ClustersCreateOrUpdateOutput =
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -234,7 +224,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -246,12 +236,12 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -265,7 +255,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -281,13 +271,13 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
 export const ClustersListAvailableClusterRegionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -301,7 +291,7 @@ export type ClustersListAvailableClusterRegionInput =
 
 // Output Schema
 export const ClustersListAvailableClusterRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -320,40 +310,39 @@ export type ClustersListAvailableClusterRegionOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param api-version - Client API Version.
  */
-export const ClustersListAvailableClusterRegion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersListAvailableClusterRegion = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ClustersListAvailableClusterRegionInput,
     outputSchema: ClustersListAvailableClusterRegionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters",
-    }),
-  );
+export const ClustersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters",
+  }),
+);
 export type ClustersListByResourceGroupInput =
   typeof ClustersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
 
@@ -365,40 +354,36 @@ export type ClustersListByResourceGroupOutput =
  * @param resourceGroupName - Name of the resource group within the azure subscription.
  * @param api-version - Client API Version.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
+// Input Schema
+export const ClustersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/clusters",
   }),
 );
-// Input Schema
-export const ClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/clusters",
-    }),
-  );
 export type ClustersListBySubscriptionInput =
   typeof ClustersListBySubscriptionInput.Type;
 
 // Output Schema
-export const ClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListBySubscriptionOutput =
   typeof ClustersListBySubscriptionOutput.Type;
 
@@ -409,39 +394,35 @@ export type ClustersListBySubscriptionOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param api-version - Client API Version.
  */
-export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListBySubscriptionInput,
-    outputSchema: ClustersListBySubscriptionOutput,
+export const ClustersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListBySubscriptionInput,
+  outputSchema: ClustersListBySubscriptionOutput,
+}));
+// Input Schema
+export const ClustersListNamespacesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/namespaces",
   }),
 );
-// Input Schema
-export const ClustersListNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/namespaces",
-    }),
-  );
 export type ClustersListNamespacesInput =
   typeof ClustersListNamespacesInput.Type;
 
 // Output Schema
-export const ClustersListNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListNamespacesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ClustersListNamespacesOutput =
   typeof ClustersListNamespacesOutput.Type;
 
@@ -454,14 +435,12 @@ export type ClustersListNamespacesOutput =
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ClustersListNamespaces = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListNamespacesInput,
-    outputSchema: ClustersListNamespacesOutput,
-  }),
-);
+export const ClustersListNamespaces = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListNamespacesInput,
+  outputSchema: ClustersListNamespacesOutput,
+}));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -475,7 +454,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -491,12 +470,12 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
-export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConfigurationGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -510,11 +489,9 @@ export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConfigurationGetInput = typeof ConfigurationGetInput.Type;
 
 // Output Schema
-export const ConfigurationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    settings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-);
+export const ConfigurationGetOutput = /*@__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ConfigurationGetOutput = typeof ConfigurationGetOutput.Type;
 
 // The operation
@@ -526,30 +503,28 @@ export type ConfigurationGetOutput = typeof ConfigurationGetOutput.Type;
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationGetInput,
   outputSchema: ConfigurationGetOutput,
 }));
 // Input Schema
-export const ConfigurationPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/quotaConfiguration/default",
-    }),
-  );
+export const ConfigurationPatchInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/quotaConfiguration/default",
+  }),
+);
 export type ConfigurationPatchInput = typeof ConfigurationPatchInput.Type;
 
 // Output Schema
-export const ConfigurationPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ConfigurationPatchOutput = /*@__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ConfigurationPatchOutput = typeof ConfigurationPatchOutput.Type;
 
 // The operation
@@ -561,36 +536,34 @@ export type ConfigurationPatchOutput = typeof ConfigurationPatchOutput.Type;
  * @param clusterName - The name of the Event Hubs Cluster.
  * @param api-version - Client API Version.
  */
-export const ConfigurationPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationPatch = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationPatchInput,
   outputSchema: ConfigurationPatchOutput,
 }));
 // Input Schema
-export const ConsumerGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    consumerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
-    }),
-  );
+export const ConsumerGroupsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  consumerGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
+  }),
+);
 export type ConsumerGroupsCreateOrUpdateInput =
   typeof ConsumerGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ConsumerGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const ConsumerGroupsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type ConsumerGroupsCreateOrUpdateOutput =
   typeof ConsumerGroupsCreateOrUpdateOutput.Type;
 
@@ -605,31 +578,28 @@ export type ConsumerGroupsCreateOrUpdateOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConsumerGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConsumerGroupsCreateOrUpdateInput,
-    outputSchema: ConsumerGroupsCreateOrUpdateOutput,
-  }));
+export const ConsumerGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsumerGroupsCreateOrUpdateInput,
+  outputSchema: ConsumerGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConsumerGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    consumerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
-    }),
-  );
+export const ConsumerGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  consumerGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
+  }),
+);
 export type ConsumerGroupsDeleteInput = typeof ConsumerGroupsDeleteInput.Type;
 
 // Output Schema
-export const ConsumerGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConsumerGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConsumerGroupsDeleteOutput = typeof ConsumerGroupsDeleteOutput.Type;
 
 // The operation
@@ -643,23 +613,19 @@ export type ConsumerGroupsDeleteOutput = typeof ConsumerGroupsDeleteOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConsumerGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConsumerGroupsDeleteInput,
-    outputSchema: ConsumerGroupsDeleteOutput,
-  }),
-);
+export const ConsumerGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsumerGroupsDeleteInput,
+  outputSchema: ConsumerGroupsDeleteOutput,
+}));
 // Input Schema
-export const ConsumerGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    consumerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConsumerGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  consumerGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
@@ -668,13 +634,12 @@ export const ConsumerGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConsumerGroupsGetInput = typeof ConsumerGroupsGetInput.Type;
 
 // Output Schema
-export const ConsumerGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const ConsumerGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type ConsumerGroupsGetOutput = typeof ConsumerGroupsGetOutput.Type;
 
 // The operation
@@ -688,44 +653,42 @@ export type ConsumerGroupsGetOutput = typeof ConsumerGroupsGetOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConsumerGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsumerGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConsumerGroupsGetInput,
   outputSchema: ConsumerGroupsGetOutput,
 }));
 // Input Schema
-export const ConsumerGroupsListByEventHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skip: Schema.optional(Schema.Number),
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups",
-    }),
-  );
+export const ConsumerGroupsListByEventHubInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skip: Schema.optional(Schema.Number),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups",
+  }),
+);
 export type ConsumerGroupsListByEventHubInput =
   typeof ConsumerGroupsListByEventHubInput.Type;
 
 // Output Schema
-export const ConsumerGroupsListByEventHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+export const ConsumerGroupsListByEventHubOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConsumerGroupsListByEventHubOutput =
   typeof ConsumerGroupsListByEventHubOutput.Type;
 
@@ -741,14 +704,13 @@ export type ConsumerGroupsListByEventHubOutput =
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
-export const ConsumerGroupsListByEventHub =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConsumerGroupsListByEventHubInput,
-    outputSchema: ConsumerGroupsListByEventHubOutput,
-  }));
+export const ConsumerGroupsListByEventHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsumerGroupsListByEventHubInput,
+  outputSchema: ConsumerGroupsListByEventHubOutput,
+}));
 // Input Schema
 export const DisasterRecoveryConfigsBreakPairingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
@@ -765,7 +727,7 @@ export type DisasterRecoveryConfigsBreakPairingInput =
 
 // Output Schema
 export const DisasterRecoveryConfigsBreakPairingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DisasterRecoveryConfigsBreakPairingOutput =
   typeof DisasterRecoveryConfigsBreakPairingOutput.Type;
 
@@ -779,14 +741,15 @@ export type DisasterRecoveryConfigsBreakPairingOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsBreakPairing =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisasterRecoveryConfigsBreakPairing = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DisasterRecoveryConfigsBreakPairingInput,
     outputSchema: DisasterRecoveryConfigsBreakPairingOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DisasterRecoveryConfigsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -802,7 +765,7 @@ export type DisasterRecoveryConfigsCheckNameAvailabilityInput =
 
 // Output Schema
 export const DisasterRecoveryConfigsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
@@ -829,13 +792,13 @@ export type DisasterRecoveryConfigsCheckNameAvailabilityOutput =
  * @param namespaceName - The Namespace name
  */
 export const DisasterRecoveryConfigsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DisasterRecoveryConfigsCheckNameAvailabilityInput,
     outputSchema: DisasterRecoveryConfigsCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const DisasterRecoveryConfigsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
@@ -852,7 +815,7 @@ export type DisasterRecoveryConfigsCreateOrUpdateInput =
 
 // Output Schema
 export const DisasterRecoveryConfigsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -871,31 +834,30 @@ export type DisasterRecoveryConfigsCreateOrUpdateOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisasterRecoveryConfigsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DisasterRecoveryConfigsCreateOrUpdateInput,
     outputSchema: DisasterRecoveryConfigsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DisasterRecoveryConfigsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
-    }),
-  );
+export const DisasterRecoveryConfigsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  alias: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+  }),
+);
 export type DisasterRecoveryConfigsDeleteInput =
   typeof DisasterRecoveryConfigsDeleteInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DisasterRecoveryConfigsDeleteOutput =
   typeof DisasterRecoveryConfigsDeleteOutput.Type;
 
@@ -909,31 +871,30 @@ export type DisasterRecoveryConfigsDeleteOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DisasterRecoveryConfigsDeleteInput,
-    outputSchema: DisasterRecoveryConfigsDeleteOutput,
-  }));
+export const DisasterRecoveryConfigsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisasterRecoveryConfigsDeleteInput,
+  outputSchema: DisasterRecoveryConfigsDeleteOutput,
+}));
 // Input Schema
-export const DisasterRecoveryConfigsFailOverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisasterRecoveryConfigsFailOverInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover",
+  }),
+);
 export type DisasterRecoveryConfigsFailOverInput =
   typeof DisasterRecoveryConfigsFailOverInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsFailOverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsFailOverOutput = /*@__PURE__*/ Schema.Void;
 export type DisasterRecoveryConfigsFailOverOutput =
   typeof DisasterRecoveryConfigsFailOverOutput.Type;
 
@@ -947,36 +908,33 @@ export type DisasterRecoveryConfigsFailOverOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsFailOver =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DisasterRecoveryConfigsFailOverInput,
-    outputSchema: DisasterRecoveryConfigsFailOverOutput,
-  }));
+export const DisasterRecoveryConfigsFailOver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisasterRecoveryConfigsFailOverInput,
+  outputSchema: DisasterRecoveryConfigsFailOverOutput,
+}));
 // Input Schema
-export const DisasterRecoveryConfigsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
-    }),
-  );
+export const DisasterRecoveryConfigsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  alias: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+  }),
+);
 export type DisasterRecoveryConfigsGetInput =
   typeof DisasterRecoveryConfigsGetInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const DisasterRecoveryConfigsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type DisasterRecoveryConfigsGetOutput =
   typeof DisasterRecoveryConfigsGetOutput.Type;
 
@@ -990,15 +948,13 @@ export type DisasterRecoveryConfigsGetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DisasterRecoveryConfigsGetInput,
-    outputSchema: DisasterRecoveryConfigsGetOutput,
-  }),
-);
+export const DisasterRecoveryConfigsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisasterRecoveryConfigsGetInput,
+  outputSchema: DisasterRecoveryConfigsGetOutput,
+}));
 // Input Schema
 export const DisasterRecoveryConfigsGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
@@ -1016,7 +972,7 @@ export type DisasterRecoveryConfigsGetAuthorizationRuleInput =
 
 // Output Schema
 export const DisasterRecoveryConfigsGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1037,41 +993,39 @@ export type DisasterRecoveryConfigsGetAuthorizationRuleOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DisasterRecoveryConfigsGetAuthorizationRuleInput,
     outputSchema: DisasterRecoveryConfigsGetAuthorizationRuleOutput,
   }));
 // Input Schema
-export const DisasterRecoveryConfigsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs",
-    }),
-  );
+export const DisasterRecoveryConfigsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs",
+  }),
+);
 export type DisasterRecoveryConfigsListInput =
   typeof DisasterRecoveryConfigsListInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+export const DisasterRecoveryConfigsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DisasterRecoveryConfigsListOutput =
   typeof DisasterRecoveryConfigsListOutput.Type;
 
@@ -1084,15 +1038,13 @@ export type DisasterRecoveryConfigsListOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DisasterRecoveryConfigsListInput,
-    outputSchema: DisasterRecoveryConfigsListOutput,
-  }),
-);
+export const DisasterRecoveryConfigsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisasterRecoveryConfigsListInput,
+  outputSchema: DisasterRecoveryConfigsListOutput,
+}));
 // Input Schema
 export const DisasterRecoveryConfigsListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
@@ -1109,7 +1061,7 @@ export type DisasterRecoveryConfigsListAuthorizationRulesInput =
 
 // Output Schema
 export const DisasterRecoveryConfigsListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1136,31 +1088,32 @@ export type DisasterRecoveryConfigsListAuthorizationRulesOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DisasterRecoveryConfigsListAuthorizationRulesInput,
     outputSchema: DisasterRecoveryConfigsListAuthorizationRulesOutput,
   }));
 // Input Schema
-export const DisasterRecoveryConfigsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisasterRecoveryConfigsListKeysInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type DisasterRecoveryConfigsListKeysInput =
   typeof DisasterRecoveryConfigsListKeysInput.Type;
 
 // Output Schema
 export const DisasterRecoveryConfigsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
     aliasPrimaryConnectionString: Schema.optional(Schema.String),
@@ -1183,36 +1136,33 @@ export type DisasterRecoveryConfigsListKeysOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DisasterRecoveryConfigsListKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DisasterRecoveryConfigsListKeysInput,
-    outputSchema: DisasterRecoveryConfigsListKeysOutput,
-  }));
+export const DisasterRecoveryConfigsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisasterRecoveryConfigsListKeysInput,
+  outputSchema: DisasterRecoveryConfigsListKeysOutput,
+}));
 // Input Schema
-export const EventHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}",
-    }),
-  );
+export const EventHubsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}",
+  }),
+);
 export type EventHubsCreateOrUpdateInput =
   typeof EventHubsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const EventHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const EventHubsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type EventHubsCreateOrUpdateOutput =
   typeof EventHubsCreateOrUpdateOutput.Type;
 
@@ -1226,15 +1176,13 @@ export type EventHubsCreateOrUpdateOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventHubsCreateOrUpdateInput,
-    outputSchema: EventHubsCreateOrUpdateOutput,
-  }),
-);
+export const EventHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsCreateOrUpdateInput,
+  outputSchema: EventHubsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const EventHubsCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
@@ -1252,7 +1200,7 @@ export type EventHubsCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const EventHubsCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1272,13 +1220,14 @@ export type EventHubsCreateOrUpdateAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventHubsCreateOrUpdateAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: EventHubsCreateOrUpdateAuthorizationRuleInput,
     outputSchema: EventHubsCreateOrUpdateAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
-export const EventHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   eventHubName: Schema.String.pipe(T.PathParam()),
@@ -1293,7 +1242,7 @@ export const EventHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EventHubsDeleteInput = typeof EventHubsDeleteInput.Type;
 
 // Output Schema
-export const EventHubsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EventHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EventHubsDeleteOutput = typeof EventHubsDeleteOutput.Type;
 
 // The operation
@@ -1306,13 +1255,13 @@ export type EventHubsDeleteOutput = typeof EventHubsDeleteOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventHubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventHubsDeleteInput,
   outputSchema: EventHubsDeleteOutput,
 }));
 // Input Schema
 export const EventHubsDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
@@ -1329,8 +1278,7 @@ export type EventHubsDeleteAuthorizationRuleInput =
   typeof EventHubsDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const EventHubsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EventHubsDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
 export type EventHubsDeleteAuthorizationRuleOutput =
   typeof EventHubsDeleteAuthorizationRuleOutput.Type;
 
@@ -1345,13 +1293,12 @@ export type EventHubsDeleteAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventHubsDeleteAuthorizationRuleInput,
-    outputSchema: EventHubsDeleteAuthorizationRuleOutput,
-  }));
+export const EventHubsDeleteAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsDeleteAuthorizationRuleInput,
+  outputSchema: EventHubsDeleteAuthorizationRuleOutput,
+}));
 // Input Schema
-export const EventHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventHubsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   eventHubName: Schema.String.pipe(T.PathParam()),
@@ -1366,7 +1313,7 @@ export const EventHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EventHubsGetInput = typeof EventHubsGetInput.Type;
 
 // Output Schema
-export const EventHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventHubsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1384,36 +1331,34 @@ export type EventHubsGetOutput = typeof EventHubsGetOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventHubsGetInput,
   outputSchema: EventHubsGetOutput,
 }));
 // Input Schema
-export const EventHubsGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}",
-    }),
-  );
+export const EventHubsGetAuthorizationRuleInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}",
+  }),
+);
 export type EventHubsGetAuthorizationRuleInput =
   typeof EventHubsGetAuthorizationRuleInput.Type;
 
 // Output Schema
-export const EventHubsGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const EventHubsGetAuthorizationRuleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type EventHubsGetAuthorizationRuleOutput =
   typeof EventHubsGetAuthorizationRuleOutput.Type;
 
@@ -1428,31 +1373,31 @@ export type EventHubsGetAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventHubsGetAuthorizationRuleInput,
-    outputSchema: EventHubsGetAuthorizationRuleOutput,
-  }));
+export const EventHubsGetAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsGetAuthorizationRuleInput,
+  outputSchema: EventHubsGetAuthorizationRuleOutput,
+}));
 // Input Schema
-export const EventHubsListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventHubsListAuthorizationRulesInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules",
+  }),
+);
 export type EventHubsListAuthorizationRulesInput =
   typeof EventHubsListAuthorizationRulesInput.Type;
 
 // Output Schema
 export const EventHubsListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1478,44 +1423,41 @@ export type EventHubsListAuthorizationRulesOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventHubsListAuthorizationRulesInput,
-    outputSchema: EventHubsListAuthorizationRulesOutput,
-  }));
+export const EventHubsListAuthorizationRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsListAuthorizationRulesInput,
+  outputSchema: EventHubsListAuthorizationRulesOutput,
+}));
 // Input Schema
-export const EventHubsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skip: Schema.optional(Schema.Number),
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs",
-    }),
-  );
+export const EventHubsListByNamespaceInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skip: Schema.optional(Schema.Number),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs",
+  }),
+);
 export type EventHubsListByNamespaceInput =
   typeof EventHubsListByNamespaceInput.Type;
 
 // Output Schema
-export const EventHubsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+export const EventHubsListByNamespaceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EventHubsListByNamespaceOutput =
   typeof EventHubsListByNamespaceOutput.Type;
 
@@ -1530,23 +1472,19 @@ export type EventHubsListByNamespaceOutput =
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
-export const EventHubsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventHubsListByNamespaceInput,
-    outputSchema: EventHubsListByNamespaceOutput,
-  }),
-);
+export const EventHubsListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsListByNamespaceInput,
+  outputSchema: EventHubsListByNamespaceOutput,
+}));
 // Input Schema
-export const EventHubsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const EventHubsListKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/listKeys",
@@ -1555,16 +1493,15 @@ export const EventHubsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type EventHubsListKeysInput = typeof EventHubsListKeysInput.Type;
 
 // Output Schema
-export const EventHubsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    aliasPrimaryConnectionString: Schema.optional(Schema.String),
-    aliasSecondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const EventHubsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  aliasPrimaryConnectionString: Schema.optional(Schema.String),
+  aliasSecondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type EventHubsListKeysOutput = typeof EventHubsListKeysOutput.Type;
 
 // The operation
@@ -1578,39 +1515,37 @@ export type EventHubsListKeysOutput = typeof EventHubsListKeysOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventHubsListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventHubsListKeysInput,
   outputSchema: EventHubsListKeysOutput,
 }));
 // Input Schema
-export const EventHubsRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    eventHubName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+export const EventHubsRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  eventHubName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type EventHubsRegenerateKeysInput =
   typeof EventHubsRegenerateKeysInput.Type;
 
 // Output Schema
-export const EventHubsRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    aliasPrimaryConnectionString: Schema.optional(Schema.String),
-    aliasSecondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const EventHubsRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  aliasPrimaryConnectionString: Schema.optional(Schema.String),
+  aliasSecondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type EventHubsRegenerateKeysOutput =
   typeof EventHubsRegenerateKeysOutput.Type;
 
@@ -1625,29 +1560,28 @@ export type EventHubsRegenerateKeysOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const EventHubsRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventHubsRegenerateKeysInput,
-    outputSchema: EventHubsRegenerateKeysOutput,
-  }),
-);
+export const EventHubsRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventHubsRegenerateKeysInput,
+  outputSchema: EventHubsRegenerateKeysOutput,
+}));
 // Input Schema
-export const NamespacesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/checkNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/checkNameAvailability",
+  }),
+);
 export type NamespacesCheckNameAvailabilityInput =
   typeof NamespacesCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const NamespacesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
@@ -1671,34 +1605,31 @@ export type NamespacesCheckNameAvailabilityOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesCheckNameAvailabilityInput,
-    outputSchema: NamespacesCheckNameAvailabilityOutput,
-  }));
+export const NamespacesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCheckNameAvailabilityInput,
+  outputSchema: NamespacesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const NamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
-    }),
-  );
+export const NamespacesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
+  }),
+);
 export type NamespacesCreateOrUpdateInput =
   typeof NamespacesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const NamespacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const NamespacesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
 
@@ -1711,15 +1642,13 @@ export type NamespacesCreateOrUpdateOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCreateOrUpdateInput,
-    outputSchema: NamespacesCreateOrUpdateOutput,
-  }),
-);
+export const NamespacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCreateOrUpdateInput,
+  outputSchema: NamespacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
@@ -1736,7 +1665,7 @@ export type NamespacesCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1755,14 +1684,15 @@ export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesCreateOrUpdateAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NamespacesCreateOrUpdateAuthorizationRuleInput,
     outputSchema: NamespacesCreateOrUpdateAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1778,7 +1708,7 @@ export type NamespacesCreateOrUpdateNetworkRuleSetInput =
 
 // Output Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1796,13 +1726,14 @@ export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesCreateOrUpdateNetworkRuleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesCreateOrUpdateNetworkRuleSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NamespacesCreateOrUpdateNetworkRuleSetInput,
     outputSchema: NamespacesCreateOrUpdateNetworkRuleSetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1816,7 +1747,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -1828,13 +1759,13 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
 export const NamespacesDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
@@ -1851,7 +1782,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -1865,13 +1796,12 @@ export type NamespacesDeleteAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesDeleteAuthorizationRuleInput,
-    outputSchema: NamespacesDeleteAuthorizationRuleOutput,
-  }));
+export const NamespacesDeleteAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesDeleteAuthorizationRuleInput,
+  outputSchema: NamespacesDeleteAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1885,7 +1815,7 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
-export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1901,35 +1831,35 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
-export const NamespacesGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
-    }),
-  );
+export const NamespacesGetAuthorizationRuleInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+  }),
+);
 export type NamespacesGetAuthorizationRuleInput =
   typeof NamespacesGetAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetAuthorizationRuleOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  });
+  },
+);
 export type NamespacesGetAuthorizationRuleOutput =
   typeof NamespacesGetAuthorizationRuleOutput.Type;
 
@@ -1943,35 +1873,32 @@ export type NamespacesGetAuthorizationRuleOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesGetAuthorizationRuleInput,
-    outputSchema: NamespacesGetAuthorizationRuleOutput,
-  }));
+export const NamespacesGetAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetAuthorizationRuleInput,
+  outputSchema: NamespacesGetAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetNetworkRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default",
-    }),
-  );
+export const NamespacesGetNetworkRuleSetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default",
+  }),
+);
 export type NamespacesGetNetworkRuleSetInput =
   typeof NamespacesGetNetworkRuleSetInput.Type;
 
 // Output Schema
-export const NamespacesGetNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const NamespacesGetNetworkRuleSetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type NamespacesGetNetworkRuleSetOutput =
   typeof NamespacesGetNetworkRuleSetOutput.Type;
 
@@ -1984,14 +1911,12 @@ export type NamespacesGetNetworkRuleSetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesGetNetworkRuleSetInput,
-    outputSchema: NamespacesGetNetworkRuleSetOutput,
-  }),
-);
+export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetNetworkRuleSetInput,
+  outputSchema: NamespacesGetNetworkRuleSetOutput,
+}));
 // Input Schema
-export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2003,7 +1928,7 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
-export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2024,13 +1949,13 @@ export type NamespacesListOutput = typeof NamespacesListOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListInput,
   outputSchema: NamespacesListOutput,
 }));
 // Input Schema
 export const NamespacesListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2046,7 +1971,7 @@ export type NamespacesListAuthorizationRulesInput =
 
 // Output Schema
 export const NamespacesListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2071,40 +1996,37 @@ export type NamespacesListAuthorizationRulesOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListAuthorizationRulesInput,
-    outputSchema: NamespacesListAuthorizationRulesOutput,
-  }));
+export const NamespacesListAuthorizationRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListAuthorizationRulesInput,
+  outputSchema: NamespacesListAuthorizationRulesOutput,
+}));
 // Input Schema
-export const NamespacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces",
-    }),
-  );
+export const NamespacesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces",
+  }),
+);
 export type NamespacesListByResourceGroupInput =
   typeof NamespacesListByResourceGroupInput.Type;
 
 // Output Schema
-export const NamespacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const NamespacesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NamespacesListByResourceGroupOutput =
   typeof NamespacesListByResourceGroupOutput.Type;
 
@@ -2116,38 +2038,35 @@ export type NamespacesListByResourceGroupOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListByResourceGroupInput,
-    outputSchema: NamespacesListByResourceGroupOutput,
-  }));
+export const NamespacesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListByResourceGroupInput,
+  outputSchema: NamespacesListByResourceGroupOutput,
+}));
 // Input Schema
-export const NamespacesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+export const NamespacesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
 
 // Output Schema
-export const NamespacesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    aliasPrimaryConnectionString: Schema.optional(Schema.String),
-    aliasSecondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  aliasPrimaryConnectionString: Schema.optional(Schema.String),
+  aliasSecondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
 
 // The operation
@@ -2160,41 +2079,39 @@ export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListKeysInput,
   outputSchema: NamespacesListKeysOutput,
 }));
 // Input Schema
-export const NamespacesListNetworkRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets",
-    }),
-  );
+export const NamespacesListNetworkRuleSetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets",
+  }),
+);
 export type NamespacesListNetworkRuleSetInput =
   typeof NamespacesListNetworkRuleSetInput.Type;
 
 // Output Schema
-export const NamespacesListNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+export const NamespacesListNetworkRuleSetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NamespacesListNetworkRuleSetOutput =
   typeof NamespacesListNetworkRuleSetOutput.Type;
 
@@ -2207,39 +2124,36 @@ export type NamespacesListNetworkRuleSetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesListNetworkRuleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListNetworkRuleSetInput,
-    outputSchema: NamespacesListNetworkRuleSetOutput,
-  }));
+export const NamespacesListNetworkRuleSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListNetworkRuleSetInput,
+  outputSchema: NamespacesListNetworkRuleSetOutput,
+}));
 // Input Schema
-export const NamespacesRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+export const NamespacesRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  authorizationRuleName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type NamespacesRegenerateKeysInput =
   typeof NamespacesRegenerateKeysInput.Type;
 
 // Output Schema
-export const NamespacesRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    aliasPrimaryConnectionString: Schema.optional(Schema.String),
-    aliasSecondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  aliasPrimaryConnectionString: Schema.optional(Schema.String),
+  aliasSecondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesRegenerateKeysOutput =
   typeof NamespacesRegenerateKeysOutput.Type;
 
@@ -2253,14 +2167,12 @@ export type NamespacesRegenerateKeysOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesRegenerateKeysInput,
-    outputSchema: NamespacesRegenerateKeysOutput,
-  }),
-);
+export const NamespacesRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesRegenerateKeysInput,
+  outputSchema: NamespacesRegenerateKeysOutput,
+}));
 // Input Schema
-export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2274,13 +2186,11 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 
 // Output Schema
-export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const NamespacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
 
 // The operation
@@ -2292,13 +2202,13 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2314,7 +2224,7 @@ export type NetworkSecurityPerimeterConfigurationListInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2338,14 +2248,15 @@ export type NetworkSecurityPerimeterConfigurationListOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const NetworkSecurityPerimeterConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetworkSecurityPerimeterConfigurationListInput,
     outputSchema: NetworkSecurityPerimeterConfigurationListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -2362,7 +2273,7 @@ export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput.Type;
 
@@ -2377,13 +2288,13 @@ export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput =
  * @param resourceAssociationName - The ResourceAssociation Name
  */
 export const NetworkSecurityPerimeterConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -2400,7 +2311,7 @@ export type NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInpu
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2420,14 +2331,14 @@ export type NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutp
  * @param resourceAssociationName - The ResourceAssociation Name
  */
 export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput,
     outputSchema:
       NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.EventHub/operations" }),
@@ -2435,7 +2346,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2464,13 +2375,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - Client API Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -2487,7 +2398,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2506,14 +2417,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param namespaceName - The Namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2529,8 +2441,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2544,36 +2455,33 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -2587,30 +2495,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2622,7 +2528,8 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -2635,48 +2542,45 @@ export type PrivateEndpointConnectionsListOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateLinkResources",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateLinkResources",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupId: Schema.optional(Schema.String),
-              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            groupId: Schema.optional(Schema.String),
+            requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+            requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -2689,37 +2593,33 @@ export type PrivateLinkResourcesGetOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
+// Input Schema
+export const SchemaRegistryCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  schemaGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
   }),
 );
-// Input Schema
-export const SchemaRegistryCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    schemaGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
-    }),
-  );
 export type SchemaRegistryCreateOrUpdateInput =
   typeof SchemaRegistryCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SchemaRegistryCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const SchemaRegistryCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type SchemaRegistryCreateOrUpdateOutput =
   typeof SchemaRegistryCreateOrUpdateOutput.Type;
 
@@ -2733,30 +2633,27 @@ export type SchemaRegistryCreateOrUpdateOutput =
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const SchemaRegistryCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SchemaRegistryCreateOrUpdateInput,
-    outputSchema: SchemaRegistryCreateOrUpdateOutput,
-  }));
+export const SchemaRegistryCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchemaRegistryCreateOrUpdateInput,
+  outputSchema: SchemaRegistryCreateOrUpdateOutput,
+}));
 // Input Schema
-export const SchemaRegistryDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    schemaGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
-    }),
-  );
+export const SchemaRegistryDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  schemaGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
+  }),
+);
 export type SchemaRegistryDeleteInput = typeof SchemaRegistryDeleteInput.Type;
 
 // Output Schema
-export const SchemaRegistryDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SchemaRegistryDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SchemaRegistryDeleteOutput = typeof SchemaRegistryDeleteOutput.Type;
 
 // The operation
@@ -2769,22 +2666,18 @@ export type SchemaRegistryDeleteOutput = typeof SchemaRegistryDeleteOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const SchemaRegistryDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchemaRegistryDeleteInput,
-    outputSchema: SchemaRegistryDeleteOutput,
-  }),
-);
+export const SchemaRegistryDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchemaRegistryDeleteInput,
+  outputSchema: SchemaRegistryDeleteOutput,
+}));
 // Input Schema
-export const SchemaRegistryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    schemaGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SchemaRegistryGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  schemaGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
@@ -2793,13 +2686,12 @@ export const SchemaRegistryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SchemaRegistryGetInput = typeof SchemaRegistryGetInput.Type;
 
 // Output Schema
-export const SchemaRegistryGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
+export const SchemaRegistryGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
 export type SchemaRegistryGetOutput = typeof SchemaRegistryGetOutput.Type;
 
 // The operation
@@ -2812,43 +2704,41 @@ export type SchemaRegistryGetOutput = typeof SchemaRegistryGetOutput.Type;
  * @param api-version - Client API Version.
  * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const SchemaRegistryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchemaRegistryGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchemaRegistryGetInput,
   outputSchema: SchemaRegistryGetOutput,
 }));
 // Input Schema
-export const SchemaRegistryListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skip: Schema.optional(Schema.Number),
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups",
-    }),
-  );
+export const SchemaRegistryListByNamespaceInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skip: Schema.optional(Schema.Number),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups",
+  }),
+);
 export type SchemaRegistryListByNamespaceInput =
   typeof SchemaRegistryListByNamespaceInput.Type;
 
 // Output Schema
-export const SchemaRegistryListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+export const SchemaRegistryListByNamespaceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SchemaRegistryListByNamespaceOutput =
   typeof SchemaRegistryListByNamespaceOutput.Type;
 
@@ -2863,8 +2753,7 @@ export type SchemaRegistryListByNamespaceOutput =
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
-export const SchemaRegistryListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SchemaRegistryListByNamespaceInput,
-    outputSchema: SchemaRegistryListByNamespaceOutput,
-  }));
+export const SchemaRegistryListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchemaRegistryListByNamespaceInput,
+  outputSchema: SchemaRegistryListByNamespaceOutput,
+}));

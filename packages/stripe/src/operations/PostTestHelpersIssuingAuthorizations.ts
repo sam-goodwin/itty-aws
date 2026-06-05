@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingAuthorizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     amount_details: Schema.optional(
       Schema.Struct({
@@ -513,7 +513,7 @@ export type PostTestHelpersIssuingAuthorizationsInput =
 
 // Output Schema
 export const PostTestHelpersIssuingAuthorizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1765,8 +1765,9 @@ export type PostTestHelpersIssuingAuthorizationsOutput =
  *
  * <p>Create a test-mode authorization.</p>
  */
-export const PostTestHelpersIssuingAuthorizations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTestHelpersIssuingAuthorizations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTestHelpersIssuingAuthorizationsInput,
     outputSchema: PostTestHelpersIssuingAuthorizationsOutput,
-  }));
+  }),
+);

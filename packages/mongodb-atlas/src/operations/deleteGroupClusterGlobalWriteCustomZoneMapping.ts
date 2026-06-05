@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
 
 // Output Schema
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
   typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
 
@@ -39,7 +39,7 @@ export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const deleteGroupClusterGlobalWriteCustomZoneMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingInput,
     outputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingOutput,
     errors: [Forbidden, NotFound] as const,

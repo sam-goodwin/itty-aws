@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DnsForwardingRulesetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type DnsForwardingRulesetsCreateOrUpdateInput =
 
 // Output Schema
 export const DnsForwardingRulesetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,30 +59,29 @@ export type DnsForwardingRulesetsCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsForwardingRulesetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsForwardingRulesetsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsForwardingRulesetsCreateOrUpdateInput,
     outputSchema: DnsForwardingRulesetsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DnsForwardingRulesetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
-    }),
-  );
+export const DnsForwardingRulesetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+  }),
+);
 export type DnsForwardingRulesetsDeleteInput =
   typeof DnsForwardingRulesetsDeleteInput.Type;
 
 // Output Schema
-export const DnsForwardingRulesetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DnsForwardingRulesetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DnsForwardingRulesetsDeleteOutput =
   typeof DnsForwardingRulesetsDeleteOutput.Type;
 
@@ -96,49 +95,45 @@ export type DnsForwardingRulesetsDeleteOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsForwardingRulesetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsDeleteInput,
-    outputSchema: DnsForwardingRulesetsDeleteOutput,
+export const DnsForwardingRulesetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsDeleteInput,
+  outputSchema: DnsForwardingRulesetsDeleteOutput,
+}));
+// Input Schema
+export const DnsForwardingRulesetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
   }),
 );
-// Input Schema
-export const DnsForwardingRulesetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
-    }),
-  );
 export type DnsForwardingRulesetsGetInput =
   typeof DnsForwardingRulesetsGetInput.Type;
 
 // Output Schema
-export const DnsForwardingRulesetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsForwardingRulesetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsForwardingRulesetsGetOutput =
   typeof DnsForwardingRulesetsGetOutput.Type;
 
@@ -151,63 +146,49 @@ export type DnsForwardingRulesetsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  */
-export const DnsForwardingRulesetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsGetInput,
-    outputSchema: DnsForwardingRulesetsGetOutput,
+export const DnsForwardingRulesetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsGetInput,
+  outputSchema: DnsForwardingRulesetsGetOutput,
+}));
+// Input Schema
+export const DnsForwardingRulesetsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets",
   }),
 );
-// Input Schema
-export const DnsForwardingRulesetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets",
-    }),
-  );
 export type DnsForwardingRulesetsListInput =
   typeof DnsForwardingRulesetsListInput.Type;
 
 // Output Schema
-export const DnsForwardingRulesetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DnsForwardingRulesetsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DnsForwardingRulesetsListOutput =
   typeof DnsForwardingRulesetsListOutput.Type;
 
@@ -219,15 +200,13 @@ export type DnsForwardingRulesetsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsForwardingRulesetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsListInput,
-    outputSchema: DnsForwardingRulesetsListOutput,
-  }),
-);
+export const DnsForwardingRulesetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsListInput,
+  outputSchema: DnsForwardingRulesetsListOutput,
+}));
 // Input Schema
 export const DnsForwardingRulesetsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -243,7 +222,7 @@ export type DnsForwardingRulesetsListByResourceGroupInput =
 
 // Output Schema
 export const DnsForwardingRulesetsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -289,14 +268,15 @@ export type DnsForwardingRulesetsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsForwardingRulesetsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsForwardingRulesetsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsForwardingRulesetsListByResourceGroupInput,
     outputSchema: DnsForwardingRulesetsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DnsForwardingRulesetsListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -313,7 +293,7 @@ export type DnsForwardingRulesetsListByVirtualNetworkInput =
 
 // Output Schema
 export const DnsForwardingRulesetsListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -343,48 +323,47 @@ export type DnsForwardingRulesetsListByVirtualNetworkOutput =
  * @param virtualNetworkName - The name of the VirtualNetwork
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsForwardingRulesetsListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsForwardingRulesetsListByVirtualNetwork = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsForwardingRulesetsListByVirtualNetworkInput,
     outputSchema: DnsForwardingRulesetsListByVirtualNetworkOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DnsForwardingRulesetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
-    }),
-  );
+export const DnsForwardingRulesetsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+  }),
+);
 export type DnsForwardingRulesetsUpdateInput =
   typeof DnsForwardingRulesetsUpdateInput.Type;
 
 // Output Schema
-export const DnsForwardingRulesetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsForwardingRulesetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsForwardingRulesetsUpdateOutput =
   typeof DnsForwardingRulesetsUpdateOutput.Type;
 
@@ -398,49 +377,45 @@ export type DnsForwardingRulesetsUpdateOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsForwardingRulesetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsUpdateInput,
-    outputSchema: DnsForwardingRulesetsUpdateOutput,
+export const DnsForwardingRulesetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsUpdateInput,
+  outputSchema: DnsForwardingRulesetsUpdateOutput,
+}));
+// Input Schema
+export const DnsResolverDomainListsBulkInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
   }),
 );
-// Input Schema
-export const DnsResolverDomainListsBulkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
-    }),
-  );
 export type DnsResolverDomainListsBulkInput =
   typeof DnsResolverDomainListsBulkInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsBulkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolverDomainListsBulkOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolverDomainListsBulkOutput =
   typeof DnsResolverDomainListsBulkOutput.Type;
 
@@ -455,15 +430,13 @@ export type DnsResolverDomainListsBulkOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolverDomainListsBulk = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsBulkInput,
-    outputSchema: DnsResolverDomainListsBulkOutput,
-  }),
-);
+export const DnsResolverDomainListsBulk = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsBulkInput,
+  outputSchema: DnsResolverDomainListsBulkOutput,
+}));
 // Input Schema
 export const DnsResolverDomainListsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -479,7 +452,7 @@ export type DnsResolverDomainListsCreateOrUpdateInput =
 
 // Output Schema
 export const DnsResolverDomainListsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -512,30 +485,29 @@ export type DnsResolverDomainListsCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolverDomainListsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverDomainListsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverDomainListsCreateOrUpdateInput,
     outputSchema: DnsResolverDomainListsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DnsResolverDomainListsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
-    }),
-  );
+export const DnsResolverDomainListsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+  }),
+);
 export type DnsResolverDomainListsDeleteInput =
   typeof DnsResolverDomainListsDeleteInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DnsResolverDomainListsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DnsResolverDomainListsDeleteOutput =
   typeof DnsResolverDomainListsDeleteOutput.Type;
 
@@ -549,48 +521,45 @@ export type DnsResolverDomainListsDeleteOutput =
  * @param dnsResolverDomainListName - The name of the DNS resolver domain list.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverDomainListsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsResolverDomainListsDeleteInput,
-    outputSchema: DnsResolverDomainListsDeleteOutput,
-  }));
+export const DnsResolverDomainListsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsDeleteInput,
+  outputSchema: DnsResolverDomainListsDeleteOutput,
+}));
 // Input Schema
-export const DnsResolverDomainListsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
-    }),
-  );
+export const DnsResolverDomainListsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+  }),
+);
 export type DnsResolverDomainListsGetInput =
   typeof DnsResolverDomainListsGetInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolverDomainListsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolverDomainListsGetOutput =
   typeof DnsResolverDomainListsGetOutput.Type;
 
@@ -603,63 +572,49 @@ export type DnsResolverDomainListsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverDomainListName - The name of the DNS resolver domain list.
  */
-export const DnsResolverDomainListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsGetInput,
-    outputSchema: DnsResolverDomainListsGetOutput,
+export const DnsResolverDomainListsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsGetInput,
+  outputSchema: DnsResolverDomainListsGetOutput,
+}));
+// Input Schema
+export const DnsResolverDomainListsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists",
   }),
 );
-// Input Schema
-export const DnsResolverDomainListsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists",
-    }),
-  );
 export type DnsResolverDomainListsListInput =
   typeof DnsResolverDomainListsListInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DnsResolverDomainListsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DnsResolverDomainListsListOutput =
   typeof DnsResolverDomainListsListOutput.Type;
 
@@ -671,15 +626,13 @@ export type DnsResolverDomainListsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverDomainListsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsListInput,
-    outputSchema: DnsResolverDomainListsListOutput,
-  }),
-);
+export const DnsResolverDomainListsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsListInput,
+  outputSchema: DnsResolverDomainListsListOutput,
+}));
 // Input Schema
 export const DnsResolverDomainListsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -695,7 +648,7 @@ export type DnsResolverDomainListsListByResourceGroupInput =
 
 // Output Schema
 export const DnsResolverDomainListsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -741,48 +694,47 @@ export type DnsResolverDomainListsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverDomainListsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverDomainListsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverDomainListsListByResourceGroupInput,
     outputSchema: DnsResolverDomainListsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DnsResolverDomainListsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
-    }),
-  );
+export const DnsResolverDomainListsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+  }),
+);
 export type DnsResolverDomainListsUpdateInput =
   typeof DnsResolverDomainListsUpdateInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolverDomainListsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolverDomainListsUpdateOutput =
   typeof DnsResolverDomainListsUpdateOutput.Type;
 
@@ -796,14 +748,13 @@ export type DnsResolverDomainListsUpdateOutput =
  * @param dnsResolverDomainListName - The name of the DNS resolver domain list.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverDomainListsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsResolverDomainListsUpdateInput,
-    outputSchema: DnsResolverDomainListsUpdateOutput,
-  }));
+export const DnsResolverDomainListsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsUpdateInput,
+  outputSchema: DnsResolverDomainListsUpdateOutput,
+}));
 // Input Schema
 export const DnsResolverPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -819,7 +770,7 @@ export type DnsResolverPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const DnsResolverPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -852,30 +803,27 @@ export type DnsResolverPoliciesCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolverPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsResolverPoliciesCreateOrUpdateInput,
-    outputSchema: DnsResolverPoliciesCreateOrUpdateOutput,
-  }));
+export const DnsResolverPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesCreateOrUpdateInput,
+  outputSchema: DnsResolverPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DnsResolverPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
-    }),
-  );
+export const DnsResolverPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+  }),
+);
 export type DnsResolverPoliciesDeleteInput =
   typeof DnsResolverPoliciesDeleteInput.Type;
 
 // Output Schema
-export const DnsResolverPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DnsResolverPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DnsResolverPoliciesDeleteOutput =
   typeof DnsResolverPoliciesDeleteOutput.Type;
 
@@ -889,49 +837,45 @@ export type DnsResolverPoliciesDeleteOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesDeleteInput,
-    outputSchema: DnsResolverPoliciesDeleteOutput,
+export const DnsResolverPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesDeleteInput,
+  outputSchema: DnsResolverPoliciesDeleteOutput,
+}));
+// Input Schema
+export const DnsResolverPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
   }),
 );
-// Input Schema
-export const DnsResolverPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
-    }),
-  );
 export type DnsResolverPoliciesGetInput =
   typeof DnsResolverPoliciesGetInput.Type;
 
 // Output Schema
-export const DnsResolverPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolverPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolverPoliciesGetOutput =
   typeof DnsResolverPoliciesGetOutput.Type;
 
@@ -944,63 +888,49 @@ export type DnsResolverPoliciesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  */
-export const DnsResolverPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesGetInput,
-    outputSchema: DnsResolverPoliciesGetOutput,
+export const DnsResolverPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesGetInput,
+  outputSchema: DnsResolverPoliciesGetOutput,
+}));
+// Input Schema
+export const DnsResolverPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverPolicies",
   }),
 );
-// Input Schema
-export const DnsResolverPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverPolicies",
-    }),
-  );
 export type DnsResolverPoliciesListInput =
   typeof DnsResolverPoliciesListInput.Type;
 
 // Output Schema
-export const DnsResolverPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DnsResolverPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DnsResolverPoliciesListOutput =
   typeof DnsResolverPoliciesListOutput.Type;
 
@@ -1012,15 +942,13 @@ export type DnsResolverPoliciesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesListInput,
-    outputSchema: DnsResolverPoliciesListOutput,
-  }),
-);
+export const DnsResolverPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesListInput,
+  outputSchema: DnsResolverPoliciesListOutput,
+}));
 // Input Schema
 export const DnsResolverPoliciesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1036,7 +964,7 @@ export type DnsResolverPoliciesListByResourceGroupInput =
 
 // Output Schema
 export const DnsResolverPoliciesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1082,14 +1010,15 @@ export type DnsResolverPoliciesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverPoliciesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverPoliciesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverPoliciesListByResourceGroupInput,
     outputSchema: DnsResolverPoliciesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DnsResolverPoliciesListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -1105,7 +1034,7 @@ export type DnsResolverPoliciesListByVirtualNetworkInput =
 
 // Output Schema
 export const DnsResolverPoliciesListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -1125,48 +1054,47 @@ export type DnsResolverPoliciesListByVirtualNetworkOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualNetworkName - The name of the VirtualNetwork
  */
-export const DnsResolverPoliciesListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverPoliciesListByVirtualNetwork = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverPoliciesListByVirtualNetworkInput,
     outputSchema: DnsResolverPoliciesListByVirtualNetworkOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DnsResolverPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
-    }),
-  );
+export const DnsResolverPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+  }),
+);
 export type DnsResolverPoliciesUpdateInput =
   typeof DnsResolverPoliciesUpdateInput.Type;
 
 // Output Schema
-export const DnsResolverPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolverPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolverPoliciesUpdateOutput =
   typeof DnsResolverPoliciesUpdateOutput.Type;
 
@@ -1180,15 +1108,13 @@ export type DnsResolverPoliciesUpdateOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesUpdateInput,
-    outputSchema: DnsResolverPoliciesUpdateOutput,
-  }),
-);
+export const DnsResolverPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesUpdateInput,
+  outputSchema: DnsResolverPoliciesUpdateOutput,
+}));
 // Input Schema
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1205,7 +1131,7 @@ export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
 
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1240,13 +1166,13 @@ export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput,
   }));
 // Input Schema
 export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1263,7 +1189,7 @@ export type DnsResolverPolicyVirtualNetworkLinksDeleteInput =
 
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
   typeof DnsResolverPolicyVirtualNetworkLinksDeleteOutput.Type;
 
@@ -1279,13 +1205,13 @@ export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverPolicyVirtualNetworkLinksDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksDeleteInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksDeleteOutput,
   }));
 // Input Schema
 export const DnsResolverPolicyVirtualNetworkLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1302,7 +1228,7 @@ export type DnsResolverPolicyVirtualNetworkLinksGetInput =
 
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1334,14 +1260,15 @@ export type DnsResolverPolicyVirtualNetworkLinksGetOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param dnsResolverPolicyVirtualNetworkLinkName - The name of the DNS resolver policy virtual network link for the DNS resolver policy.
  */
-export const DnsResolverPolicyVirtualNetworkLinksGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverPolicyVirtualNetworkLinksGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksGetInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DnsResolverPolicyVirtualNetworkLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1358,7 +1285,7 @@ export type DnsResolverPolicyVirtualNetworkLinksListInput =
 
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1405,14 +1332,15 @@ export type DnsResolverPolicyVirtualNetworkLinksListOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverPolicyVirtualNetworkLinksList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolverPolicyVirtualNetworkLinksList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksListInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1429,7 +1357,7 @@ export type DnsResolverPolicyVirtualNetworkLinksUpdateInput =
 
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1463,47 +1391,45 @@ export type DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverPolicyVirtualNetworkLinksUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksUpdateInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksUpdateOutput,
   }));
 // Input Schema
-export const DnsResolversCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
-    }),
-  );
+export const DnsResolversCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+  }),
+);
 export type DnsResolversCreateOrUpdateInput =
   typeof DnsResolversCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DnsResolversCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolversCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolversCreateOrUpdateOutput =
   typeof DnsResolversCreateOrUpdateOutput.Type;
 
@@ -1518,29 +1444,26 @@ export type DnsResolversCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolversCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolversCreateOrUpdateInput,
-    outputSchema: DnsResolversCreateOrUpdateOutput,
+export const DnsResolversCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolversCreateOrUpdateInput,
+  outputSchema: DnsResolversCreateOrUpdateOutput,
+}));
+// Input Schema
+export const DnsResolversDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
   }),
 );
-// Input Schema
-export const DnsResolversDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
-    }),
-  );
 export type DnsResolversDeleteInput = typeof DnsResolversDeleteInput.Type;
 
 // Output Schema
-export const DnsResolversDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DnsResolversDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DnsResolversDeleteOutput = typeof DnsResolversDeleteOutput.Type;
 
 // The operation
@@ -1553,12 +1476,12 @@ export type DnsResolversDeleteOutput = typeof DnsResolversDeleteOutput.Type;
  * @param dnsResolverName - The name of the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolversDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversDeleteInput,
   outputSchema: DnsResolversDeleteOutput,
 }));
 // Input Schema
-export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -1572,7 +1495,7 @@ export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DnsResolversGetInput = typeof DnsResolversGetInput.Type;
 
 // Output Schema
-export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1602,12 +1525,12 @@ export type DnsResolversGetOutput = typeof DnsResolversGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverName - The name of the DNS resolver.
  */
-export const DnsResolversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversGetInput,
   outputSchema: DnsResolversGetOutput,
 }));
 // Input Schema
-export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
@@ -1620,42 +1543,30 @@ export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DnsResolversListInput = typeof DnsResolversListInput.Type;
 
 // Output Schema
-export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const DnsResolversListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DnsResolversListOutput = typeof DnsResolversListOutput.Type;
 
 // The operation
@@ -1666,29 +1577,30 @@ export type DnsResolversListOutput = typeof DnsResolversListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversListInput,
   outputSchema: DnsResolversListOutput,
 }));
 // Input Schema
-export const DnsResolversListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
+  }),
+);
 export type DnsResolversListByResourceGroupInput =
   typeof DnsResolversListByResourceGroupInput.Type;
 
 // Output Schema
 export const DnsResolversListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1734,14 +1646,13 @@ export type DnsResolversListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolversListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsResolversListByResourceGroupInput,
-    outputSchema: DnsResolversListByResourceGroupOutput,
-  }));
+export const DnsResolversListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolversListByResourceGroupInput,
+  outputSchema: DnsResolversListByResourceGroupOutput,
+}));
 // Input Schema
 export const DnsResolversListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -1758,7 +1669,7 @@ export type DnsResolversListByVirtualNetworkInput =
 
 // Output Schema
 export const DnsResolversListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -1779,47 +1690,44 @@ export type DnsResolversListByVirtualNetworkOutput =
  * @param virtualNetworkName - The name of the VirtualNetwork
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolversListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsResolversListByVirtualNetworkInput,
-    outputSchema: DnsResolversListByVirtualNetworkOutput,
-  }));
+export const DnsResolversListByVirtualNetwork = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolversListByVirtualNetworkInput,
+  outputSchema: DnsResolversListByVirtualNetworkOutput,
+}));
 // Input Schema
-export const DnsResolversUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
-    }),
-  );
+export const DnsResolversUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+  }),
+);
 export type DnsResolversUpdateInput = typeof DnsResolversUpdateInput.Type;
 
 // Output Schema
-export const DnsResolversUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsResolversUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsResolversUpdateOutput = typeof DnsResolversUpdateOutput.Type;
 
 // The operation
@@ -1832,30 +1740,29 @@ export type DnsResolversUpdateOutput = typeof DnsResolversUpdateOutput.Type;
  * @param dnsResolverName - The name of the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolversUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversUpdateInput,
   outputSchema: DnsResolversUpdateOutput,
 }));
 // Input Schema
-export const DnsSecurityRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-    }),
-  );
+export const DnsSecurityRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+  }),
+);
 export type DnsSecurityRulesCreateOrUpdateInput =
   typeof DnsSecurityRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsSecurityRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1873,7 +1780,8 @@ export const DnsSecurityRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type DnsSecurityRulesCreateOrUpdateOutput =
   typeof DnsSecurityRulesCreateOrUpdateOutput.Type;
 
@@ -1889,31 +1797,28 @@ export type DnsSecurityRulesCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsSecurityRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DnsSecurityRulesCreateOrUpdateInput,
-    outputSchema: DnsSecurityRulesCreateOrUpdateOutput,
-  }));
+export const DnsSecurityRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesCreateOrUpdateInput,
+  outputSchema: DnsSecurityRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DnsSecurityRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-    }),
-  );
+export const DnsSecurityRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+  }),
+);
 export type DnsSecurityRulesDeleteInput =
   typeof DnsSecurityRulesDeleteInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DnsSecurityRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DnsSecurityRulesDeleteOutput =
   typeof DnsSecurityRulesDeleteOutput.Type;
 
@@ -1928,49 +1833,45 @@ export type DnsSecurityRulesDeleteOutput =
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsSecurityRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesDeleteInput,
-    outputSchema: DnsSecurityRulesDeleteOutput,
+export const DnsSecurityRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesDeleteInput,
+  outputSchema: DnsSecurityRulesDeleteOutput,
+}));
+// Input Schema
+export const DnsSecurityRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
   }),
 );
-// Input Schema
-export const DnsSecurityRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-    }),
-  );
 export type DnsSecurityRulesGetInput = typeof DnsSecurityRulesGetInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsSecurityRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsSecurityRulesGetOutput = typeof DnsSecurityRulesGetOutput.Type;
 
 // The operation
@@ -1983,62 +1884,50 @@ export type DnsSecurityRulesGetOutput = typeof DnsSecurityRulesGetOutput.Type;
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  */
-export const DnsSecurityRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsSecurityRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsSecurityRulesGetInput,
   outputSchema: DnsSecurityRulesGetOutput,
 }));
 // Input Schema
-export const DnsSecurityRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules",
-    }),
-  );
+export const DnsSecurityRulesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules",
+  }),
+);
 export type DnsSecurityRulesListInput = typeof DnsSecurityRulesListInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DnsSecurityRulesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DnsSecurityRulesListOutput = typeof DnsSecurityRulesListOutput.Type;
 
 // The operation
@@ -2051,50 +1940,46 @@ export type DnsSecurityRulesListOutput = typeof DnsSecurityRulesListOutput.Type;
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsSecurityRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesListInput,
-    outputSchema: DnsSecurityRulesListOutput,
+export const DnsSecurityRulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesListInput,
+  outputSchema: DnsSecurityRulesListOutput,
+}));
+// Input Schema
+export const DnsSecurityRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
+  dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
   }),
 );
-// Input Schema
-export const DnsSecurityRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-    }),
-  );
 export type DnsSecurityRulesUpdateInput =
   typeof DnsSecurityRulesUpdateInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DnsSecurityRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DnsSecurityRulesUpdateOutput =
   typeof DnsSecurityRulesUpdateOutput.Type;
 
@@ -2109,50 +1994,46 @@ export type DnsSecurityRulesUpdateOutput =
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsSecurityRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesUpdateInput,
-    outputSchema: DnsSecurityRulesUpdateOutput,
+export const DnsSecurityRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesUpdateInput,
+  outputSchema: DnsSecurityRulesUpdateOutput,
+}));
+// Input Schema
+export const ForwardingRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  forwardingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
   }),
 );
-// Input Schema
-export const ForwardingRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-    }),
-  );
 export type ForwardingRulesCreateOrUpdateInput =
   typeof ForwardingRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ForwardingRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ForwardingRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ForwardingRulesCreateOrUpdateOutput =
   typeof ForwardingRulesCreateOrUpdateOutput.Type;
 
@@ -2168,30 +2049,27 @@ export type ForwardingRulesCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const ForwardingRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ForwardingRulesCreateOrUpdateInput,
-    outputSchema: ForwardingRulesCreateOrUpdateOutput,
-  }));
+export const ForwardingRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForwardingRulesCreateOrUpdateInput,
+  outputSchema: ForwardingRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ForwardingRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-    }),
-  );
+export const ForwardingRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  forwardingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+  }),
+);
 export type ForwardingRulesDeleteInput = typeof ForwardingRulesDeleteInput.Type;
 
 // Output Schema
-export const ForwardingRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ForwardingRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ForwardingRulesDeleteOutput =
   typeof ForwardingRulesDeleteOutput.Type;
 
@@ -2206,49 +2084,45 @@ export type ForwardingRulesDeleteOutput =
  * @param forwardingRuleName - The name of the forwarding rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const ForwardingRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForwardingRulesDeleteInput,
-    outputSchema: ForwardingRulesDeleteOutput,
+export const ForwardingRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForwardingRulesDeleteInput,
+  outputSchema: ForwardingRulesDeleteOutput,
+}));
+// Input Schema
+export const ForwardingRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  forwardingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
   }),
 );
-// Input Schema
-export const ForwardingRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-    }),
-  );
 export type ForwardingRulesGetInput = typeof ForwardingRulesGetInput.Type;
 
 // Output Schema
-export const ForwardingRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ForwardingRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ForwardingRulesGetOutput = typeof ForwardingRulesGetOutput.Type;
 
 // The operation
@@ -2261,62 +2135,50 @@ export type ForwardingRulesGetOutput = typeof ForwardingRulesGetOutput.Type;
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param forwardingRuleName - The name of the forwarding rule.
  */
-export const ForwardingRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForwardingRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ForwardingRulesGetInput,
   outputSchema: ForwardingRulesGetOutput,
 }));
 // Input Schema
-export const ForwardingRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules",
-    }),
-  );
+export const ForwardingRulesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules",
+  }),
+);
 export type ForwardingRulesListInput = typeof ForwardingRulesListInput.Type;
 
 // Output Schema
-export const ForwardingRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ForwardingRulesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ForwardingRulesListOutput = typeof ForwardingRulesListOutput.Type;
 
 // The operation
@@ -2329,47 +2191,45 @@ export type ForwardingRulesListOutput = typeof ForwardingRulesListOutput.Type;
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const ForwardingRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForwardingRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ForwardingRulesListInput,
   outputSchema: ForwardingRulesListOutput,
 }));
 // Input Schema
-export const ForwardingRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-    }),
-  );
+export const ForwardingRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  forwardingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+  }),
+);
 export type ForwardingRulesUpdateInput = typeof ForwardingRulesUpdateInput.Type;
 
 // Output Schema
-export const ForwardingRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ForwardingRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ForwardingRulesUpdateOutput =
   typeof ForwardingRulesUpdateOutput.Type;
 
@@ -2384,32 +2244,29 @@ export type ForwardingRulesUpdateOutput =
  * @param forwardingRuleName - The name of the forwarding rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const ForwardingRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForwardingRulesUpdateInput,
-    outputSchema: ForwardingRulesUpdateOutput,
+export const ForwardingRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForwardingRulesUpdateInput,
+  outputSchema: ForwardingRulesUpdateOutput,
+}));
+// Input Schema
+export const InboundEndpointsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  inboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
   }),
 );
-// Input Schema
-export const InboundEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-    }),
-  );
 export type InboundEndpointsCreateOrUpdateInput =
   typeof InboundEndpointsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const InboundEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InboundEndpointsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2427,7 +2284,8 @@ export const InboundEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type InboundEndpointsCreateOrUpdateOutput =
   typeof InboundEndpointsCreateOrUpdateOutput.Type;
 
@@ -2443,31 +2301,28 @@ export type InboundEndpointsCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const InboundEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: InboundEndpointsCreateOrUpdateInput,
-    outputSchema: InboundEndpointsCreateOrUpdateOutput,
-  }));
+export const InboundEndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsCreateOrUpdateInput,
+  outputSchema: InboundEndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const InboundEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-    }),
-  );
+export const InboundEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  inboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+  }),
+);
 export type InboundEndpointsDeleteInput =
   typeof InboundEndpointsDeleteInput.Type;
 
 // Output Schema
-export const InboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InboundEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InboundEndpointsDeleteOutput =
   typeof InboundEndpointsDeleteOutput.Type;
 
@@ -2482,49 +2337,45 @@ export type InboundEndpointsDeleteOutput =
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const InboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsDeleteInput,
-    outputSchema: InboundEndpointsDeleteOutput,
+export const InboundEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsDeleteInput,
+  outputSchema: InboundEndpointsDeleteOutput,
+}));
+// Input Schema
+export const InboundEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  inboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
   }),
 );
-// Input Schema
-export const InboundEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-    }),
-  );
 export type InboundEndpointsGetInput = typeof InboundEndpointsGetInput.Type;
 
 // Output Schema
-export const InboundEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InboundEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InboundEndpointsGetOutput = typeof InboundEndpointsGetOutput.Type;
 
 // The operation
@@ -2537,62 +2388,50 @@ export type InboundEndpointsGetOutput = typeof InboundEndpointsGetOutput.Type;
  * @param dnsResolverName - The name of the DNS resolver.
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  */
-export const InboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InboundEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InboundEndpointsGetInput,
   outputSchema: InboundEndpointsGetOutput,
 }));
 // Input Schema
-export const InboundEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
-    }),
-  );
+export const InboundEndpointsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
+  }),
+);
 export type InboundEndpointsListInput = typeof InboundEndpointsListInput.Type;
 
 // Output Schema
-export const InboundEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const InboundEndpointsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type InboundEndpointsListOutput = typeof InboundEndpointsListOutput.Type;
 
 // The operation
@@ -2605,50 +2444,46 @@ export type InboundEndpointsListOutput = typeof InboundEndpointsListOutput.Type;
  * @param dnsResolverName - The name of the DNS resolver.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const InboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsListInput,
-    outputSchema: InboundEndpointsListOutput,
+export const InboundEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsListInput,
+  outputSchema: InboundEndpointsListOutput,
+}));
+// Input Schema
+export const InboundEndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  inboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
   }),
 );
-// Input Schema
-export const InboundEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-    }),
-  );
 export type InboundEndpointsUpdateInput =
   typeof InboundEndpointsUpdateInput.Type;
 
 // Output Schema
-export const InboundEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InboundEndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InboundEndpointsUpdateOutput =
   typeof InboundEndpointsUpdateOutput.Type;
 
@@ -2663,32 +2498,31 @@ export type InboundEndpointsUpdateOutput =
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const InboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsUpdateInput,
-    outputSchema: InboundEndpointsUpdateOutput,
-  }),
-);
+export const InboundEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsUpdateInput,
+  outputSchema: InboundEndpointsUpdateOutput,
+}));
 // Input Schema
-export const OutboundEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutboundEndpointsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+  }),
+);
 export type OutboundEndpointsCreateOrUpdateInput =
   typeof OutboundEndpointsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const OutboundEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2722,31 +2556,28 @@ export type OutboundEndpointsCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const OutboundEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OutboundEndpointsCreateOrUpdateInput,
-    outputSchema: OutboundEndpointsCreateOrUpdateOutput,
-  }));
+export const OutboundEndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsCreateOrUpdateInput,
+  outputSchema: OutboundEndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const OutboundEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
-    }),
-  );
+export const OutboundEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  outboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+  }),
+);
 export type OutboundEndpointsDeleteInput =
   typeof OutboundEndpointsDeleteInput.Type;
 
 // Output Schema
-export const OutboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const OutboundEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type OutboundEndpointsDeleteOutput =
   typeof OutboundEndpointsDeleteOutput.Type;
 
@@ -2761,49 +2592,45 @@ export type OutboundEndpointsDeleteOutput =
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const OutboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsDeleteInput,
-    outputSchema: OutboundEndpointsDeleteOutput,
+export const OutboundEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsDeleteInput,
+  outputSchema: OutboundEndpointsDeleteOutput,
+}));
+// Input Schema
+export const OutboundEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  outboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
   }),
 );
-// Input Schema
-export const OutboundEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
-    }),
-  );
 export type OutboundEndpointsGetInput = typeof OutboundEndpointsGetInput.Type;
 
 // Output Schema
-export const OutboundEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OutboundEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OutboundEndpointsGetOutput = typeof OutboundEndpointsGetOutput.Type;
 
 // The operation
@@ -2816,64 +2643,50 @@ export type OutboundEndpointsGetOutput = typeof OutboundEndpointsGetOutput.Type;
  * @param dnsResolverName - The name of the DNS resolver.
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  */
-export const OutboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsGetInput,
-    outputSchema: OutboundEndpointsGetOutput,
+export const OutboundEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsGetInput,
+  outputSchema: OutboundEndpointsGetOutput,
+}));
+// Input Schema
+export const OutboundEndpointsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
   }),
 );
-// Input Schema
-export const OutboundEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
-    }),
-  );
 export type OutboundEndpointsListInput = typeof OutboundEndpointsListInput.Type;
 
 // Output Schema
-export const OutboundEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const OutboundEndpointsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OutboundEndpointsListOutput =
   typeof OutboundEndpointsListOutput.Type;
 
@@ -2887,50 +2700,46 @@ export type OutboundEndpointsListOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const OutboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsListInput,
-    outputSchema: OutboundEndpointsListOutput,
+export const OutboundEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsListInput,
+  outputSchema: OutboundEndpointsListOutput,
+}));
+// Input Schema
+export const OutboundEndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsResolverName: Schema.String.pipe(T.PathParam()),
+  outboundEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
   }),
 );
-// Input Schema
-export const OutboundEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsResolverName: Schema.String.pipe(T.PathParam()),
-    outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
-    }),
-  );
 export type OutboundEndpointsUpdateInput =
   typeof OutboundEndpointsUpdateInput.Type;
 
 // Output Schema
-export const OutboundEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const OutboundEndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OutboundEndpointsUpdateOutput =
   typeof OutboundEndpointsUpdateOutput.Type;
 
@@ -2945,15 +2754,13 @@ export type OutboundEndpointsUpdateOutput =
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const OutboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsUpdateInput,
-    outputSchema: OutboundEndpointsUpdateOutput,
-  }),
-);
+export const OutboundEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsUpdateInput,
+  outputSchema: OutboundEndpointsUpdateOutput,
+}));
 // Input Schema
 export const VirtualNetworkLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -2970,7 +2777,7 @@ export type VirtualNetworkLinksCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualNetworkLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3004,31 +2811,28 @@ export type VirtualNetworkLinksCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const VirtualNetworkLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworkLinksCreateOrUpdateInput,
-    outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
-  }));
+export const VirtualNetworkLinksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksCreateOrUpdateInput,
+  outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VirtualNetworkLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-    }),
-  );
+export const VirtualNetworkLinksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+  }),
+);
 export type VirtualNetworkLinksDeleteInput =
   typeof VirtualNetworkLinksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualNetworkLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualNetworkLinksDeleteOutput =
   typeof VirtualNetworkLinksDeleteOutput.Type;
 
@@ -3043,50 +2847,46 @@ export type VirtualNetworkLinksDeleteOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const VirtualNetworkLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksDeleteInput,
-    outputSchema: VirtualNetworkLinksDeleteOutput,
+export const VirtualNetworkLinksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksDeleteInput,
+  outputSchema: VirtualNetworkLinksDeleteOutput,
+}));
+// Input Schema
+export const VirtualNetworkLinksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworkLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-    }),
-  );
 export type VirtualNetworkLinksGetInput =
   typeof VirtualNetworkLinksGetInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworkLinksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworkLinksGetOutput =
   typeof VirtualNetworkLinksGetOutput.Type;
 
@@ -3100,65 +2900,51 @@ export type VirtualNetworkLinksGetOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param virtualNetworkLinkName - The name of the virtual network link.
  */
-export const VirtualNetworkLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksGetInput,
-    outputSchema: VirtualNetworkLinksGetOutput,
+export const VirtualNetworkLinksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksGetInput,
+  outputSchema: VirtualNetworkLinksGetOutput,
+}));
+// Input Schema
+export const VirtualNetworkLinksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks",
   }),
 );
-// Input Schema
-export const VirtualNetworkLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks",
-    }),
-  );
 export type VirtualNetworkLinksListInput =
   typeof VirtualNetworkLinksListInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualNetworkLinksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualNetworkLinksListOutput =
   typeof VirtualNetworkLinksListOutput.Type;
 
@@ -3172,50 +2958,46 @@ export type VirtualNetworkLinksListOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const VirtualNetworkLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksListInput,
-    outputSchema: VirtualNetworkLinksListOutput,
+export const VirtualNetworkLinksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksListInput,
+  outputSchema: VirtualNetworkLinksListOutput,
+}));
+// Input Schema
+export const VirtualNetworkLinksUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
+  virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
   }),
 );
-// Input Schema
-export const VirtualNetworkLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-    }),
-  );
 export type VirtualNetworkLinksUpdateInput =
   typeof VirtualNetworkLinksUpdateInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualNetworkLinksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualNetworkLinksUpdateOutput =
   typeof VirtualNetworkLinksUpdateOutput.Type;
 
@@ -3230,9 +3012,7 @@ export type VirtualNetworkLinksUpdateOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const VirtualNetworkLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksUpdateInput,
-    outputSchema: VirtualNetworkLinksUpdateOutput,
-  }),
-);
+export const VirtualNetworkLinksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksUpdateInput,
+  outputSchema: VirtualNetworkLinksUpdateOutput,
+}));

@@ -2,28 +2,26 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const GetProjectBranchRolePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    branch_id: Schema.String.pipe(T.PathParam()),
-    role_name: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reveal_password",
-    }),
-  );
+export const GetProjectBranchRolePasswordInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  branch_id: Schema.String.pipe(T.PathParam()),
+  role_name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reveal_password",
+  }),
+);
 export type GetProjectBranchRolePasswordInput =
   typeof GetProjectBranchRolePasswordInput.Type;
 
 // Output Schema
-export const GetProjectBranchRolePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    password: SensitiveString,
-  });
+export const GetProjectBranchRolePasswordOutput = /*@__PURE__*/ Schema.Struct({
+  password: SensitiveOutputString,
+});
 export type GetProjectBranchRolePasswordOutput =
   typeof GetProjectBranchRolePasswordOutput.Type;
 
@@ -41,9 +39,8 @@ export type GetProjectBranchRolePasswordOutput =
  * @param branch_id - The branch ID
  * @param role_name - The role name
  */
-export const getProjectBranchRolePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetProjectBranchRolePasswordInput,
-    outputSchema: GetProjectBranchRolePasswordOutput,
-    errors: [NotFound] as const,
-  }));
+export const getProjectBranchRolePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProjectBranchRolePasswordInput,
+  outputSchema: GetProjectBranchRolePasswordOutput,
+  errors: [NotFound] as const,
+}));

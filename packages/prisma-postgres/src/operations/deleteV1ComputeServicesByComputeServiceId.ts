@@ -5,7 +5,7 @@ import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const DeleteV1ComputeServicesByComputeServiceIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type DeleteV1ComputeServicesByComputeServiceIdInput =
 
 // Output Schema
 export const DeleteV1ComputeServicesByComputeServiceIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteV1ComputeServicesByComputeServiceIdOutput =
   typeof DeleteV1ComputeServicesByComputeServiceIdOutput.Type;
 
@@ -29,9 +29,10 @@ export type DeleteV1ComputeServicesByComputeServiceIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Deletes a compute service. All compute versions under the service must already be stopped or deleted.
  */
-export const deleteV1ComputeServicesByComputeServiceId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteV1ComputeServicesByComputeServiceId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteV1ComputeServicesByComputeServiceIdInput,
     outputSchema: DeleteV1ComputeServicesByComputeServiceIdOutput,
     errors: [Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupUserSecurityLdapUserToDnMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type DeleteGroupUserSecurityLdapUserToDnMappingInput =
 
 // Output Schema
 export const DeleteGroupUserSecurityLdapUserToDnMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteGroupUserSecurityLdapUserToDnMappingOutput =
   typeof DeleteGroupUserSecurityLdapUserToDnMappingOutput.Type;
 
@@ -37,7 +37,7 @@ export type DeleteGroupUserSecurityLdapUserToDnMappingOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const deleteGroupUserSecurityLdapUserToDnMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupUserSecurityLdapUserToDnMappingInput,
     outputSchema: DeleteGroupUserSecurityLdapUserToDnMappingOutput,
     errors: [Forbidden, NotFound] as const,

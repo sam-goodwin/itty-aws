@@ -3,22 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateNeonAuthEmailProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    branch_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/projects/{project_id}/branches/{branch_id}/auth/email_provider",
-    }),
-  );
+export const UpdateNeonAuthEmailProviderInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  branch_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/projects/{project_id}/branches/{branch_id}/auth/email_provider",
+  }),
+);
 export type UpdateNeonAuthEmailProviderInput =
   typeof UpdateNeonAuthEmailProviderInput.Type;
 
 // Output Schema
-export const UpdateNeonAuthEmailProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const UpdateNeonAuthEmailProviderOutput = /*@__PURE__*/ Schema.Unknown;
 export type UpdateNeonAuthEmailProviderOutput =
   typeof UpdateNeonAuthEmailProviderOutput.Type;
 
@@ -31,9 +29,7 @@ export type UpdateNeonAuthEmailProviderOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const updateNeonAuthEmailProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateNeonAuthEmailProviderInput,
-    outputSchema: UpdateNeonAuthEmailProviderOutput,
-  }),
-);
+export const updateNeonAuthEmailProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateNeonAuthEmailProviderInput,
+  outputSchema: UpdateNeonAuthEmailProviderOutput,
+}));

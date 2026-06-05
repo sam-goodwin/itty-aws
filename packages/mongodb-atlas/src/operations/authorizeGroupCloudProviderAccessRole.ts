@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const AuthorizeGroupCloudProviderAccessRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     roleId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type AuthorizeGroupCloudProviderAccessRoleInput =
 
 // Output Schema
 export const AuthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizeGroupCloudProviderAccessRoleOutput =
   typeof AuthorizeGroupCloudProviderAccessRoleOutput.Type;
 
@@ -38,9 +38,10 @@ export type AuthorizeGroupCloudProviderAccessRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const authorizeGroupCloudProviderAccessRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const authorizeGroupCloudProviderAccessRole = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizeGroupCloudProviderAccessRoleInput,
     outputSchema: AuthorizeGroupCloudProviderAccessRoleOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

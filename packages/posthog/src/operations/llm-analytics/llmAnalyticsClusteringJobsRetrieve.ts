@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsClusteringJobsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type LlmAnalyticsClusteringJobsRetrieveInput =
 
 // Output Schema
 export const LlmAnalyticsClusteringJobsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     analysis_level: Schema.optional(
@@ -40,9 +40,10 @@ export type LlmAnalyticsClusteringJobsRetrieveOutput =
  * @param id - A UUID string identifying this clustering job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsClusteringJobsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsClusteringJobsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsClusteringJobsRetrieveInput,
     outputSchema: LlmAnalyticsClusteringJobsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

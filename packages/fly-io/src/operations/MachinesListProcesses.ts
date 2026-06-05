@@ -4,41 +4,36 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesListProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-    sort_by: Schema.optional(Schema.String),
-    order: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apps/{app_name}/machines/{machine_id}/ps",
-    }),
-  );
+export const MachinesListProcessesInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+  sort_by: Schema.optional(Schema.String),
+  order: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/apps/{app_name}/machines/{machine_id}/ps" }),
+);
 export type MachinesListProcessesInput = typeof MachinesListProcessesInput.Type;
 
 // Output Schema
-export const MachinesListProcessesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      command: Schema.optional(Schema.String),
-      cpu: Schema.optional(Schema.Number),
-      directory: Schema.optional(Schema.String),
-      listen_sockets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            address: Schema.optional(Schema.String),
-            proto: Schema.optional(Schema.String),
-          }),
-        ),
+export const MachinesListProcessesOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    command: Schema.optional(Schema.String),
+    cpu: Schema.optional(Schema.Number),
+    directory: Schema.optional(Schema.String),
+    listen_sockets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          address: Schema.optional(Schema.String),
+          proto: Schema.optional(Schema.String),
+        }),
       ),
-      pid: Schema.optional(Schema.Number),
-      rss: Schema.optional(Schema.Number),
-      rtime: Schema.optional(Schema.Number),
-      stime: Schema.optional(Schema.Number),
-    }),
-  );
+    ),
+    pid: Schema.optional(Schema.Number),
+    rss: Schema.optional(Schema.Number),
+    rtime: Schema.optional(Schema.Number),
+    stime: Schema.optional(Schema.Number),
+  }),
+);
 export type MachinesListProcessesOutput =
   typeof MachinesListProcessesOutput.Type;
 
@@ -53,10 +48,8 @@ export type MachinesListProcessesOutput =
  * @param sort_by - Sort by
  * @param order - Order
  */
-export const MachinesListProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesListProcessesInput,
-    outputSchema: MachinesListProcessesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesListProcesses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesListProcessesInput,
+  outputSchema: MachinesListProcessesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

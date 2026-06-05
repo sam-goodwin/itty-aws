@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesVersionsByVersionIdLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionId: Schema.String.pipe(T.PathParam()),
     tail: Schema.optional(Schema.Number),
     from_start: Schema.optional(Schema.Literals(["true", "false"])),
@@ -21,7 +21,7 @@ export type GetV1ComputeServicesVersionsByVersionIdLogsInput =
 
 // Output Schema
 export const GetV1ComputeServicesVersionsByVersionIdLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetV1ComputeServicesVersionsByVersionIdLogsOutput =
   typeof GetV1ComputeServicesVersionsByVersionIdLogsOutput.Type;
 
@@ -33,7 +33,7 @@ export type GetV1ComputeServicesVersionsByVersionIdLogsOutput =
  * Upgrades to a WebSocket connection that streams log output for the specified compute version. Each message is a JSON object with `type: "log"` (log text + byte metadata) or `type: "terminal"` (end-of-segment signal with reconnect cursor). The stream ends after 10 minutes; reconnect with the `cursor` query parameter to continue.
  */
 export const getV1ComputeServicesVersionsByVersionIdLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ComputeServicesVersionsByVersionIdLogsInput,
     outputSchema: GetV1ComputeServicesVersionsByVersionIdLogsOutput,
     errors: [Forbidden, NotFound] as const,

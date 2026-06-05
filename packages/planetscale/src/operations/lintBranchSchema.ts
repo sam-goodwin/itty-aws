@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const LintBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LintBranchSchemaInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -19,37 +19,34 @@ export const LintBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LintBranchSchemaInput = typeof LintBranchSchemaInput.Type;
 
 // Output Schema
-export const LintBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    type: Schema.String,
-    current_page: Schema.Number,
-    next_page: Schema.NullOr(Schema.Number),
-    next_page_url: Schema.NullOr(Schema.String),
-    prev_page: Schema.NullOr(Schema.Number),
-    prev_page_url: Schema.NullOr(Schema.String),
-    data: Schema.Array(
-      Schema.Struct({
-        lint_error: Schema.String,
-        subject_type: Schema.Literals(["table", "vschema", "routing_rules"]),
-        keyspace_name: Schema.String,
-        table_name: Schema.String,
-        error_description: Schema.String,
-        docs_url: Schema.String,
-        column_name: Schema.String,
-        foreign_key_column_names: Schema.Array(Schema.String),
-        auto_increment_column_names: Schema.Array(Schema.String),
-        charset_name: Schema.String,
-        engine_name: Schema.String,
-        vindex_name: Schema.String,
-        json_path: Schema.String,
-        check_constraint_name: Schema.String,
-        enum_value: Schema.String,
-        partitioning_type: Schema.String,
-        partition_name: Schema.String,
-      }),
-    ),
-  },
-);
+export const LintBranchSchemaOutput = /*@__PURE__*/ Schema.Struct({
+  current_page: Schema.Number,
+  next_page: Schema.NullOr(Schema.Number),
+  next_page_url: Schema.NullOr(Schema.String),
+  prev_page: Schema.NullOr(Schema.Number),
+  prev_page_url: Schema.NullOr(Schema.String),
+  data: Schema.Array(
+    Schema.Struct({
+      lint_error: Schema.String,
+      subject_type: Schema.Literals(["table", "vschema", "routing_rules"]),
+      keyspace_name: Schema.String,
+      table_name: Schema.String,
+      error_description: Schema.String,
+      docs_url: Schema.String,
+      column_name: Schema.String,
+      foreign_key_column_names: Schema.Array(Schema.String),
+      auto_increment_column_names: Schema.Array(Schema.String),
+      charset_name: Schema.String,
+      engine_name: Schema.String,
+      vindex_name: Schema.String,
+      json_path: Schema.String,
+      check_constraint_name: Schema.String,
+      enum_value: Schema.String,
+      partitioning_type: Schema.String,
+      partition_name: Schema.String,
+    }),
+  ),
+});
 export type LintBranchSchemaOutput = typeof LintBranchSchemaOutput.Type;
 
 // The operation
@@ -62,16 +59,14 @@ export type LintBranchSchemaOutput = typeof LintBranchSchemaOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const lintBranchSchema = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: LintBranchSchemaInput,
-    outputSchema: LintBranchSchemaOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const lintBranchSchema = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: LintBranchSchemaInput,
+  outputSchema: LintBranchSchemaOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

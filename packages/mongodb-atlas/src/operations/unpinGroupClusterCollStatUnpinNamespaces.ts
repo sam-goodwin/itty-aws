@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UnpinGroupClusterCollStatUnpinNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type UnpinGroupClusterCollStatUnpinNamespacesInput =
 
 // Output Schema
 export const UnpinGroupClusterCollStatUnpinNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UnpinGroupClusterCollStatUnpinNamespacesOutput =
   typeof UnpinGroupClusterCollStatUnpinNamespacesOutput.Type;
 
@@ -36,9 +36,10 @@ export type UnpinGroupClusterCollStatUnpinNamespacesOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param clusterName - Human-readable label that identifies the cluster to unpin namespaces from.
  */
-export const unpinGroupClusterCollStatUnpinNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const unpinGroupClusterCollStatUnpinNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UnpinGroupClusterCollStatUnpinNamespacesInput,
     outputSchema: UnpinGroupClusterCollStatUnpinNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

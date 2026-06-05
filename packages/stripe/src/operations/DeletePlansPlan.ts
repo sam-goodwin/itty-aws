@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeletePlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePlansPlanInput = /*@__PURE__*/ Schema.Struct({
   plan: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -15,7 +15,7 @@ export const DeletePlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeletePlansPlanInput = typeof DeletePlansPlanInput.Type;
 
 // Output Schema
-export const DeletePlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePlansPlanOutput = /*@__PURE__*/ Schema.Struct({
   deleted: Schema.Literals(["true"]),
   id: Schema.String,
   object: Schema.Literals(["plan"]),
@@ -28,7 +28,7 @@ export type DeletePlansPlanOutput = typeof DeletePlansPlanOutput.Type;
  *
  * <p>Deleting plans means new subscribers can’t be added. Existing subscribers aren’t affected.</p>
  */
-export const DeletePlansPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletePlansPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletePlansPlanInput,
   outputSchema: DeletePlansPlanOutput,
 }));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -12,7 +12,7 @@ export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteGroupInput = typeof DeleteGroupInput.Type;
 
 // Output Schema
-export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
 
 // The operation
@@ -27,7 +27,7 @@ export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupInput,
   outputSchema: DeleteGroupOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

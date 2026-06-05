@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsScoreDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     archived: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -24,7 +24,7 @@ export type LlmAnalyticsScoreDefinitionsListInput =
 
 // Output Schema
 export const LlmAnalyticsScoreDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -80,9 +80,8 @@ export type LlmAnalyticsScoreDefinitionsListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Search scorers by name or description.
  */
-export const llmAnalyticsScoreDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LlmAnalyticsScoreDefinitionsListInput,
-    outputSchema: LlmAnalyticsScoreDefinitionsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const llmAnalyticsScoreDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsScoreDefinitionsListInput,
+  outputSchema: LlmAnalyticsScoreDefinitionsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

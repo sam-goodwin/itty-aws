@@ -3,22 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    accountPolicy: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/solana/accounts" }));
+export const CreateSolanaAccountInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accountPolicy: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "POST", path: "/v2/solana/accounts" }));
 export type CreateSolanaAccountInput = typeof CreateSolanaAccountInput.Type;
 
 // Output Schema
-export const CreateSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String,
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  });
+export const CreateSolanaAccountOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+});
 export type CreateSolanaAccountOutput = typeof CreateSolanaAccountOutput.Type;
 
 // The operation
@@ -36,7 +34,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateSolanaAccountInput,
   outputSchema: CreateSolanaAccountOutput,
 }));

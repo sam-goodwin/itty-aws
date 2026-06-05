@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1GetJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetJitAccessInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/database/jit" }));
 export type V1GetJitAccessInput = typeof V1GetJitAccessInput.Type;
 
 // Output Schema
-export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetJitAccessOutput = /*@__PURE__*/ Schema.Struct({
   user_id: Schema.String,
   user_roles: Schema.Array(
     Schema.Struct({
@@ -47,7 +47,7 @@ export type V1GetJitAccessOutput = typeof V1GetJitAccessOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1GetJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetJitAccessInput,
   outputSchema: V1GetJitAccessOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDocumentInput = typeof DeleteDocumentInput.Type;
 
 // Output Schema
-export const DeleteDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const DeleteDocumentOutput = /*@__PURE__*/ Schema.Unknown;
 export type DeleteDocumentOutput = typeof DeleteDocumentOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type DeleteDocumentOutput = typeof DeleteDocumentOutput.Type;
  * @param collectionName - The name of the collection to search for the document under
  * @param documentId - The Document ID
  */
-export const deleteDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDocumentInput,
   outputSchema: DeleteDocumentOutput,
   errors: [NotFound] as const,

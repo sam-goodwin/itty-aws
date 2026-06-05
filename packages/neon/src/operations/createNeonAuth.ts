@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNeonAuthInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
@@ -17,7 +17,7 @@ export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateNeonAuthInput = typeof CreateNeonAuthInput.Type;
 
 // Output Schema
-export const CreateNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNeonAuthOutput = /*@__PURE__*/ Schema.Struct({
   auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
   auth_provider_project_id: Schema.String,
   pub_client_key: Schema.String,
@@ -39,7 +39,7 @@ export type CreateNeonAuthOutput = typeof CreateNeonAuthOutput.Type;
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const createNeonAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNeonAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateNeonAuthInput,
   outputSchema: CreateNeonAuthOutput,
 }));

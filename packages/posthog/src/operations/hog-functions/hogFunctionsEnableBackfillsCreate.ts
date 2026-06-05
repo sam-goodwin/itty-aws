@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const HogFunctionsEnableBackfillsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     type: Schema.optional(Schema.Unknown),
@@ -267,7 +267,7 @@ export type HogFunctionsEnableBackfillsCreateInput =
 
 // Output Schema
 export const HogFunctionsEnableBackfillsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type HogFunctionsEnableBackfillsCreateOutput =
   typeof HogFunctionsEnableBackfillsCreateOutput.Type;
 
@@ -277,9 +277,8 @@ export type HogFunctionsEnableBackfillsCreateOutput =
  * @param id - A UUID string identifying this hog function.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFunctionsEnableBackfillsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HogFunctionsEnableBackfillsCreateInput,
-    outputSchema: HogFunctionsEnableBackfillsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const hogFunctionsEnableBackfillsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFunctionsEnableBackfillsCreateInput,
+  outputSchema: HogFunctionsEnableBackfillsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

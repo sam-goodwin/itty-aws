@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesCreateInput = typeof RolesCreateInput.Type;
 
 // Output Schema
-export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   created_at: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RolesCreateOutput = typeof RolesCreateOutput.Type;
 
 // The operation
-export const rolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const rolesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesCreateInput,
   outputSchema: RolesCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

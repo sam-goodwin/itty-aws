@@ -9,22 +9,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
-    }),
-  );
+export const ImagesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
+  }),
+);
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ImagesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
 
 // The operation
@@ -33,16 +31,12 @@ export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
  *
  * Updates an image resource via PUT. Creating new resources via PUT will not function.
  */
-export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImagesCreateOrUpdateInput,
-    outputSchema: ImagesCreateOrUpdateOutput,
-  }),
-);
+export const ImagesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImagesCreateOrUpdateInput,
+  outputSchema: ImagesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ImagesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
@@ -51,7 +45,7 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ImagesGetInput = typeof ImagesGetInput.Type;
 
 // Output Schema
-export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -64,34 +58,32 @@ export type ImagesGetOutput = typeof ImagesGetOutput.Type;
  *
  * Gets an image resource.
  */
-export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetInput,
   outputSchema: ImagesGetOutput,
 }));
 // Input Schema
-export const ImagesListByLabPlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images",
-    }),
-  );
+export const ImagesListByLabPlanInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images",
+  }),
+);
 export type ImagesListByLabPlanInput = typeof ImagesListByLabPlanInput.Type;
 
 // Output Schema
-export const ImagesListByLabPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ImagesListByLabPlanOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ImagesListByLabPlanOutput = typeof ImagesListByLabPlanOutput.Type;
 
 // The operation
@@ -100,14 +92,12 @@ export type ImagesListByLabPlanOutput = typeof ImagesListByLabPlanOutput.Type;
  *
  * Gets all images from galleries attached to a lab plan.
  */
-export const ImagesListByLabPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesListByLabPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesListByLabPlanInput,
   outputSchema: ImagesListByLabPlanOutput,
 }));
 // Input Schema
-export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ImagesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
@@ -116,7 +106,7 @@ export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
 
 // Output Schema
-export const ImagesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -129,28 +119,26 @@ export type ImagesUpdateOutput = typeof ImagesUpdateOutput.Type;
  *
  * Updates an image resource.
  */
-export const ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesUpdateInput,
   outputSchema: ImagesUpdateOutput,
 }));
 // Input Schema
-export const LabPlansCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
-    }),
-  );
+export const LabPlansCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
+  }),
+);
 export type LabPlansCreateOrUpdateInput =
   typeof LabPlansCreateOrUpdateInput.Type;
 
 // Output Schema
-export const LabPlansCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const LabPlansCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type LabPlansCreateOrUpdateOutput =
   typeof LabPlansCreateOrUpdateOutput.Type;
 
@@ -160,16 +148,12 @@ export type LabPlansCreateOrUpdateOutput =
  *
  * Operation to create or update a Lab Plan resource.
  */
-export const LabPlansCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabPlansCreateOrUpdateInput,
-    outputSchema: LabPlansCreateOrUpdateOutput,
-  }),
-);
+export const LabPlansCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabPlansCreateOrUpdateInput,
+  outputSchema: LabPlansCreateOrUpdateOutput,
+}));
 // Input Schema
-export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
@@ -178,7 +162,7 @@ export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabPlansDeleteInput = typeof LabPlansDeleteInput.Type;
 
 // Output Schema
-export const LabPlansDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LabPlansDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LabPlansDeleteOutput = typeof LabPlansDeleteOutput.Type;
 
 // The operation
@@ -187,14 +171,12 @@ export type LabPlansDeleteOutput = typeof LabPlansDeleteOutput.Type;
  *
  * Operation to delete a Lab Plan resource. Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
  */
-export const LabPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabPlansDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabPlansDeleteInput,
   outputSchema: LabPlansDeleteOutput,
 }));
 // Input Schema
-export const LabPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
@@ -203,7 +185,7 @@ export const LabPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabPlansGetInput = typeof LabPlansGetInput.Type;
 
 // Output Schema
-export const LabPlansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabPlansGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -216,35 +198,35 @@ export type LabPlansGetOutput = typeof LabPlansGetOutput.Type;
  *
  * Retrieves the properties of a Lab Plan.
  */
-export const LabPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabPlansGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabPlansGetInput,
   outputSchema: LabPlansGetOutput,
 }));
 // Input Schema
-export const LabPlansListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans",
-    }),
-  );
+export const LabPlansListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans",
+  }),
+);
 export type LabPlansListByResourceGroupInput =
   typeof LabPlansListByResourceGroupInput.Type;
 
 // Output Schema
-export const LabPlansListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const LabPlansListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LabPlansListByResourceGroupOutput =
   typeof LabPlansListByResourceGroupOutput.Type;
 
@@ -254,37 +236,35 @@ export type LabPlansListByResourceGroupOutput =
  *
  * Returns a list of all lab plans for a subscription and resource group.
  */
-export const LabPlansListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabPlansListByResourceGroupInput,
-    outputSchema: LabPlansListByResourceGroupOutput,
+export const LabPlansListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabPlansListByResourceGroupInput,
+  outputSchema: LabPlansListByResourceGroupOutput,
+}));
+// Input Schema
+export const LabPlansListBySubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labPlans",
   }),
 );
-// Input Schema
-export const LabPlansListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labPlans",
-    }),
-  );
 export type LabPlansListBySubscriptionInput =
   typeof LabPlansListBySubscriptionInput.Type;
 
 // Output Schema
-export const LabPlansListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const LabPlansListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LabPlansListBySubscriptionOutput =
   typeof LabPlansListBySubscriptionOutput.Type;
 
@@ -294,16 +274,12 @@ export type LabPlansListBySubscriptionOutput =
  *
  * Returns a list of all lab plans within a subscription
  */
-export const LabPlansListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabPlansListBySubscriptionInput,
-    outputSchema: LabPlansListBySubscriptionOutput,
-  }),
-);
+export const LabPlansListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabPlansListBySubscriptionInput,
+  outputSchema: LabPlansListBySubscriptionOutput,
+}));
 // Input Schema
-export const LabPlansSaveImageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansSaveImageInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/saveImage",
@@ -312,7 +288,7 @@ export const LabPlansSaveImageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabPlansSaveImageInput = typeof LabPlansSaveImageInput.Type;
 
 // Output Schema
-export const LabPlansSaveImageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LabPlansSaveImageOutput = /*@__PURE__*/ Schema.Void;
 export type LabPlansSaveImageOutput = typeof LabPlansSaveImageOutput.Type;
 
 // The operation
@@ -321,14 +297,12 @@ export type LabPlansSaveImageOutput = typeof LabPlansSaveImageOutput.Type;
  *
  * Saves an image from a lab VM to the attached shared image gallery.
  */
-export const LabPlansSaveImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabPlansSaveImage = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabPlansSaveImageInput,
   outputSchema: LabPlansSaveImageOutput,
 }));
 // Input Schema
-export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
@@ -337,7 +311,7 @@ export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabPlansUpdateInput = typeof LabPlansUpdateInput.Type;
 
 // Output Schema
-export const LabPlansUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabPlansUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -350,27 +324,25 @@ export type LabPlansUpdateOutput = typeof LabPlansUpdateOutput.Type;
  *
  * Operation to update a Lab Plan resource.
  */
-export const LabPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabPlansUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabPlansUpdateInput,
   outputSchema: LabPlansUpdateOutput,
 }));
 // Input Schema
-export const LabsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
-    }),
-  );
+export const LabsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
+  }),
+);
 export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const LabsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const LabsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type LabsCreateOrUpdateOutput = typeof LabsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -379,14 +351,12 @@ export type LabsCreateOrUpdateOutput = typeof LabsCreateOrUpdateOutput.Type;
  *
  * Operation to create or update a lab resource.
  */
-export const LabsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsCreateOrUpdateInput,
   outputSchema: LabsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
@@ -395,7 +365,7 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
 
 // Output Schema
-export const LabsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LabsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
 
 // The operation
@@ -404,12 +374,12 @@ export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
  *
  * Operation to delete a lab resource.
  */
-export const LabsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsDeleteInput,
   outputSchema: LabsDeleteOutput,
 }));
 // Input Schema
-export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const LabsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
@@ -418,7 +388,7 @@ export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type LabsGetInput = typeof LabsGetInput.Type;
 
 // Output Schema
-export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -431,35 +401,35 @@ export type LabsGetOutput = typeof LabsGetOutput.Type;
  *
  * Returns the properties of a lab resource.
  */
-export const LabsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsGetInput,
   outputSchema: LabsGetOutput,
 }));
 // Input Schema
-export const LabsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs",
-    }),
-  );
+export const LabsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs",
+  }),
+);
 export type LabsListByResourceGroupInput =
   typeof LabsListByResourceGroupInput.Type;
 
 // Output Schema
-export const LabsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const LabsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LabsListByResourceGroupOutput =
   typeof LabsListByResourceGroupOutput.Type;
 
@@ -469,37 +439,33 @@ export type LabsListByResourceGroupOutput =
  *
  * Returns a list of all labs in a resource group.
  */
-export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsListByResourceGroupInput,
-    outputSchema: LabsListByResourceGroupOutput,
+export const LabsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsListByResourceGroupInput,
+  outputSchema: LabsListByResourceGroupOutput,
+}));
+// Input Schema
+export const LabsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labs",
   }),
 );
-// Input Schema
-export const LabsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labs",
-    }),
-  );
 export type LabsListBySubscriptionInput =
   typeof LabsListBySubscriptionInput.Type;
 
 // Output Schema
-export const LabsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const LabsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LabsListBySubscriptionOutput =
   typeof LabsListBySubscriptionOutput.Type;
 
@@ -509,16 +475,12 @@ export type LabsListBySubscriptionOutput =
  *
  * Returns a list of all labs for a subscription.
  */
-export const LabsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsListBySubscriptionInput,
-    outputSchema: LabsListBySubscriptionOutput,
-  }),
-);
+export const LabsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsListBySubscriptionInput,
+  outputSchema: LabsListBySubscriptionOutput,
+}));
 // Input Schema
-export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsPublishInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/publish",
@@ -527,7 +489,7 @@ export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabsPublishInput = typeof LabsPublishInput.Type;
 
 // Output Schema
-export const LabsPublishOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LabsPublishOutput = /*@__PURE__*/ Schema.Void;
 export type LabsPublishOutput = typeof LabsPublishOutput.Type;
 
 // The operation
@@ -536,14 +498,12 @@ export type LabsPublishOutput = typeof LabsPublishOutput.Type;
  *
  * Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines.
  */
-export const LabsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsPublish = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsPublishInput,
   outputSchema: LabsPublishOutput,
 }));
 // Input Schema
-export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsSyncGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/syncGroup",
@@ -552,7 +512,7 @@ export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabsSyncGroupInput = typeof LabsSyncGroupInput.Type;
 
 // Output Schema
-export const LabsSyncGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LabsSyncGroupOutput = /*@__PURE__*/ Schema.Void;
 export type LabsSyncGroupOutput = typeof LabsSyncGroupOutput.Type;
 
 // The operation
@@ -561,14 +521,12 @@ export type LabsSyncGroupOutput = typeof LabsSyncGroupOutput.Type;
  *
  * Action used to manually kick off an AAD group sync job.
  */
-export const LabsSyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsSyncGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsSyncGroupInput,
   outputSchema: LabsSyncGroupOutput,
 }));
 // Input Schema
-export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
@@ -577,7 +535,7 @@ export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type LabsUpdateInput = typeof LabsUpdateInput.Type;
 
 // Output Schema
-export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -590,69 +548,67 @@ export type LabsUpdateOutput = typeof LabsUpdateOutput.Type;
  *
  * Operation to update a lab resource.
  */
-export const LabsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsUpdateInput,
   outputSchema: LabsUpdateOutput,
 }));
 // Input Schema
-export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/operationResults/{operationResultId}",
-    }),
-  );
+export const OperationResultsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/operationResults/{operationResultId}",
+  }),
+);
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
 
 // Output Schema
-export const OperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.Literals([
-      "NotStarted",
-      "InProgress",
-      "Succeeded",
-      "Failed",
-      "Canceled",
-    ]),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    percentComplete: Schema.optional(Schema.Number),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+export const OperationResultsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.Literals([
+    "NotStarted",
+    "InProgress",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+  ]),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  percentComplete: Schema.optional(Schema.Number),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
+            ),
+          }),
         ),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+      ),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
 
 // The operation
@@ -661,14 +617,12 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
  *
  * Returns an azure operation result.
  */
-export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationResultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.LabServices/operations",
@@ -677,7 +631,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -708,28 +662,28 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * Returns a list of all operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const SchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
-    }),
-  );
+export const SchedulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
+  }),
+);
 export type SchedulesCreateOrUpdateInput =
   typeof SchedulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SchedulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SchedulesCreateOrUpdateOutput =
   typeof SchedulesCreateOrUpdateOutput.Type;
 
@@ -739,16 +693,12 @@ export type SchedulesCreateOrUpdateOutput =
  *
  * Operation to create or update a lab schedule.
  */
-export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulesCreateOrUpdateInput,
-    outputSchema: SchedulesCreateOrUpdateOutput,
-  }),
-);
+export const SchedulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesCreateOrUpdateInput,
+  outputSchema: SchedulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
@@ -757,7 +707,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
 
 // The operation
@@ -766,14 +716,12 @@ export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
  *
  * Operation to delete a schedule resource.
  */
-export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesDeleteInput,
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
-export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
@@ -782,7 +730,7 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SchedulesGetInput = typeof SchedulesGetInput.Type;
 
 // Output Schema
-export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -795,34 +743,32 @@ export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
  *
  * Returns the properties of a lab Schedule.
  */
-export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesGetInput,
   outputSchema: SchedulesGetOutput,
 }));
 // Input Schema
-export const SchedulesListByLabInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules",
-    }),
-  );
+export const SchedulesListByLabInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules",
+  }),
+);
 export type SchedulesListByLabInput = typeof SchedulesListByLabInput.Type;
 
 // Output Schema
-export const SchedulesListByLabOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SchedulesListByLabOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SchedulesListByLabOutput = typeof SchedulesListByLabOutput.Type;
 
 // The operation
@@ -831,14 +777,12 @@ export type SchedulesListByLabOutput = typeof SchedulesListByLabOutput.Type;
  *
  * Returns a list of all schedules for a lab.
  */
-export const SchedulesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesListByLab = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesListByLabInput,
   outputSchema: SchedulesListByLabOutput,
 }));
 // Input Schema
-export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
@@ -847,7 +791,7 @@ export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
 
 // Output Schema
-export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -860,12 +804,12 @@ export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
  *
  * Operation to update a lab schedule.
  */
-export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesUpdateInput,
   outputSchema: SchedulesUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/skus",
@@ -874,7 +818,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -935,42 +879,40 @@ export type SkusListOutput = typeof SkusListOutput.Type;
  *
  * Returns a list of Azure Lab Services resource SKUs.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
-export const UsagesListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{location}/usages",
-    }),
-  );
+export const UsagesListByLocationInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{location}/usages",
+  }),
+);
 export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
 
 // Output Schema
-export const UsagesListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          unit: Schema.optional(Schema.Literals(["Count"])),
-          name: Schema.optional(
-            Schema.Struct({
-              localizedValue: Schema.optional(Schema.String),
-              skuInstances: Schema.optional(Schema.Array(Schema.String)),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const UsagesListByLocationOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        unit: Schema.optional(Schema.Literals(["Count"])),
+        name: Schema.optional(
+          Schema.Struct({
+            localizedValue: Schema.optional(Schema.String),
+            skuInstances: Schema.optional(Schema.Array(Schema.String)),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
 
 // The operation
@@ -979,29 +921,25 @@ export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
  *
  * Returns list of usage per SKU family for the specified subscription in the specified region.
  */
-export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsagesListByLocationInput,
-    outputSchema: UsagesListByLocationOutput,
+export const UsagesListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListByLocationInput,
+  outputSchema: UsagesListByLocationOutput,
+}));
+// Input Schema
+export const UsersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
   }),
 );
-// Input Schema
-export const UsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
-    }),
-  );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const UsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const UsersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
 
 // The operation
@@ -1010,14 +948,12 @@ export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
  *
  * Operation to create or update a lab user.
  */
-export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersCreateOrUpdateInput,
   outputSchema: UsersCreateOrUpdateOutput,
 }));
 // Input Schema
-export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
@@ -1026,7 +962,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
 
 // The operation
@@ -1035,12 +971,12 @@ export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
  *
  * Operation to delete a user resource.
  */
-export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersDeleteInput,
   outputSchema: UsersDeleteOutput,
 }));
 // Input Schema
-export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const UsersGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
@@ -1049,7 +985,7 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type UsersGetInput = typeof UsersGetInput.Type;
 
 // Output Schema
-export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1062,14 +998,12 @@ export type UsersGetOutput = typeof UsersGetOutput.Type;
  *
  * Returns the properties of a lab user.
  */
-export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersGetInput,
   outputSchema: UsersGetOutput,
 }));
 // Input Schema
-export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersInviteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}/invite",
@@ -1078,7 +1012,7 @@ export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UsersInviteInput = typeof UsersInviteInput.Type;
 
 // Output Schema
-export const UsersInviteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersInviteOutput = /*@__PURE__*/ Schema.Void;
 export type UsersInviteOutput = typeof UsersInviteOutput.Type;
 
 // The operation
@@ -1087,14 +1021,12 @@ export type UsersInviteOutput = typeof UsersInviteOutput.Type;
  *
  * Operation to invite a user to a lab.
  */
-export const UsersInvite = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersInvite = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersInviteInput,
   outputSchema: UsersInviteOutput,
 }));
 // Input Schema
-export const UsersListByLabInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersListByLabInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users",
@@ -1103,7 +1035,7 @@ export const UsersListByLabInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UsersListByLabInput = typeof UsersListByLabInput.Type;
 
 // Output Schema
-export const UsersListByLabOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListByLabOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1123,14 +1055,12 @@ export type UsersListByLabOutput = typeof UsersListByLabOutput.Type;
  *
  * Returns a list of all users for a lab.
  */
-export const UsersListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersListByLab = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersListByLabInput,
   outputSchema: UsersListByLabOutput,
 }));
 // Input Schema
-export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
@@ -1139,7 +1069,7 @@ export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UsersUpdateInput = typeof UsersUpdateInput.Type;
 
 // Output Schema
-export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1152,27 +1082,25 @@ export type UsersUpdateOutput = typeof UsersUpdateOutput.Type;
  *
  * Operation to update a lab user.
  */
-export const UsersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersUpdateInput,
   outputSchema: UsersUpdateOutput,
 }));
 // Input Schema
-export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}",
-    }),
-  );
+export const VirtualMachinesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}",
+  }),
+);
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 
 // Output Schema
-export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
 
 // The operation
@@ -1181,35 +1109,35 @@ export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
  *
  * Returns the properties for a lab virtual machine.
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
-export const VirtualMachinesListByLabInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines",
-    }),
-  );
+export const VirtualMachinesListByLabInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines",
+  }),
+);
 export type VirtualMachinesListByLabInput =
   typeof VirtualMachinesListByLabInput.Type;
 
 // Output Schema
-export const VirtualMachinesListByLabOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const VirtualMachinesListByLabOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachinesListByLabOutput =
   typeof VirtualMachinesListByLabOutput.Type;
 
@@ -1219,26 +1147,24 @@ export type VirtualMachinesListByLabOutput =
  *
  * Returns a list of all virtual machines for a lab.
  */
-export const VirtualMachinesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesListByLabInput,
-    outputSchema: VirtualMachinesListByLabOutput,
+export const VirtualMachinesListByLab = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesListByLabInput,
+  outputSchema: VirtualMachinesListByLabOutput,
+}));
+// Input Schema
+export const VirtualMachinesRedeployInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
   }),
 );
-// Input Schema
-export const VirtualMachinesRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
-    }),
-  );
 export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesRedeployOutput =
   typeof VirtualMachinesRedeployOutput.Type;
 
@@ -1248,26 +1174,22 @@ export type VirtualMachinesRedeployOutput =
  *
  * Action to redeploy a lab virtual machine to a different compute node. For troubleshooting connectivity.
  */
-export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRedeployInput,
-    outputSchema: VirtualMachinesRedeployOutput,
+export const VirtualMachinesRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRedeployInput,
+  outputSchema: VirtualMachinesRedeployOutput,
+}));
+// Input Schema
+export const VirtualMachinesReimageInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/reimage",
   }),
 );
-// Input Schema
-export const VirtualMachinesReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/reimage",
-    }),
-  );
 export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
 // Output Schema
-export const VirtualMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesReimageOutput =
   typeof VirtualMachinesReimageOutput.Type;
 
@@ -1277,26 +1199,24 @@ export type VirtualMachinesReimageOutput =
  *
  * Re-image a lab virtual machine. The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
  */
-export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesReimageInput,
-    outputSchema: VirtualMachinesReimageOutput,
+export const VirtualMachinesReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesReimageInput,
+  outputSchema: VirtualMachinesReimageOutput,
+}));
+// Input Schema
+export const VirtualMachinesResetPasswordInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/resetPassword",
   }),
 );
-// Input Schema
-export const VirtualMachinesResetPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/resetPassword",
-    }),
-  );
 export type VirtualMachinesResetPasswordInput =
   typeof VirtualMachinesResetPasswordInput.Type;
 
 // Output Schema
-export const VirtualMachinesResetPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesResetPasswordOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesResetPasswordOutput =
   typeof VirtualMachinesResetPasswordOutput.Type;
 
@@ -1306,24 +1226,21 @@ export type VirtualMachinesResetPasswordOutput =
  *
  * Resets a lab virtual machine password.
  */
-export const VirtualMachinesResetPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesResetPasswordInput,
-    outputSchema: VirtualMachinesResetPasswordOutput,
-  }));
+export const VirtualMachinesResetPassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesResetPasswordInput,
+  outputSchema: VirtualMachinesResetPasswordOutput,
+}));
 // Input Schema
-export const VirtualMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
-    }),
-  );
+export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
+  }),
+);
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -1332,25 +1249,21 @@ export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
  *
  * Action to start a lab virtual machine.
  */
-export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesStartInput,
-    outputSchema: VirtualMachinesStartOutput,
+export const VirtualMachinesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesStartInput,
+  outputSchema: VirtualMachinesStartOutput,
+}));
+// Input Schema
+export const VirtualMachinesStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
   }),
 );
-// Input Schema
-export const VirtualMachinesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
-    }),
-  );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
 
 // Output Schema
-export const VirtualMachinesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesStopOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
 
 // The operation
@@ -1359,7 +1272,7 @@ export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
  *
  * Action to stop a lab virtual machine.
  */
-export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesStopInput,
   outputSchema: VirtualMachinesStopOutput,
 }));

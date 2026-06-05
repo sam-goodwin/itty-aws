@@ -79,25 +79,27 @@ export type AdministratorsMicrosoftEntraDeleteOutput =
  * @param serverName - The name of the server.
  * @param objectId - Object identifier of the Microsoft Entra principal.
  */
-export const AdministratorsMicrosoftEntraDelete =
-  /*@__PURE__*/ API.make(() => ({
+export const AdministratorsMicrosoftEntraDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AdministratorsMicrosoftEntraDeleteInput,
     outputSchema: AdministratorsMicrosoftEntraDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AdministratorsMicrosoftEntraGetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const AdministratorsMicrosoftEntraGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     objectId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
+  }),
+);
 export type AdministratorsMicrosoftEntraGetInput =
   typeof AdministratorsMicrosoftEntraGetInput.Type;
 
@@ -135,11 +137,10 @@ export type AdministratorsMicrosoftEntraGetOutput =
  * @param serverName - The name of the server.
  * @param objectId - Object identifier of the Microsoft Entra principal.
  */
-export const AdministratorsMicrosoftEntraGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AdministratorsMicrosoftEntraGetInput,
-    outputSchema: AdministratorsMicrosoftEntraGetOutput,
-  }));
+export const AdministratorsMicrosoftEntraGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AdministratorsMicrosoftEntraGetInput,
+  outputSchema: AdministratorsMicrosoftEntraGetOutput,
+}));
 // Input Schema
 export const AdministratorsMicrosoftEntraListByServerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -204,11 +205,12 @@ export type AdministratorsMicrosoftEntraListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const AdministratorsMicrosoftEntraListByServer =
-  /*@__PURE__*/ API.make(() => ({
+export const AdministratorsMicrosoftEntraListByServer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AdministratorsMicrosoftEntraListByServerInput,
     outputSchema: AdministratorsMicrosoftEntraListByServerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -260,11 +262,12 @@ export type AdvancedThreatProtectionSettingsGetOutput =
  * @param serverName - The name of the server.
  * @param threatProtectionName - Name of the advanced threat protection settings.
  */
-export const AdvancedThreatProtectionSettingsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const AdvancedThreatProtectionSettingsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AdvancedThreatProtectionSettingsGetInput,
     outputSchema: AdvancedThreatProtectionSettingsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AdvancedThreatProtectionSettingsListByServerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -367,11 +370,10 @@ export type BackupsAutomaticAndOnDemandCreateOutput =
  * @param serverName - The name of the server.
  * @param backupName - Name of the backup.
  */
-export const BackupsAutomaticAndOnDemandCreate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsAutomaticAndOnDemandCreateInput,
-    outputSchema: BackupsAutomaticAndOnDemandCreateOutput,
-  }));
+export const BackupsAutomaticAndOnDemandCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsAutomaticAndOnDemandCreateInput,
+  outputSchema: BackupsAutomaticAndOnDemandCreateOutput,
+}));
 // Input Schema
 export const BackupsAutomaticAndOnDemandDeleteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -405,31 +407,29 @@ export type BackupsAutomaticAndOnDemandDeleteOutput =
  * @param serverName - The name of the server.
  * @param backupName - Name of the backup.
  */
-export const BackupsAutomaticAndOnDemandDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsAutomaticAndOnDemandDeleteInput,
-    outputSchema: BackupsAutomaticAndOnDemandDeleteOutput,
-  }));
+export const BackupsAutomaticAndOnDemandDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsAutomaticAndOnDemandDeleteInput,
+  outputSchema: BackupsAutomaticAndOnDemandDeleteOutput,
+}));
 // Input Schema
-export const BackupsAutomaticAndOnDemandGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    backupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
-    }),
-  );
+export const BackupsAutomaticAndOnDemandGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  backupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
+  }),
+);
 export type BackupsAutomaticAndOnDemandGetInput =
   typeof BackupsAutomaticAndOnDemandGetInput.Type;
 
 // Output Schema
-export const BackupsAutomaticAndOnDemandGetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const BackupsAutomaticAndOnDemandGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -447,7 +447,8 @@ export const BackupsAutomaticAndOnDemandGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type BackupsAutomaticAndOnDemandGetOutput =
   typeof BackupsAutomaticAndOnDemandGetOutput.Type;
 
@@ -461,11 +462,10 @@ export type BackupsAutomaticAndOnDemandGetOutput =
  * @param serverName - The name of the server.
  * @param backupName - Name of the backup.
  */
-export const BackupsAutomaticAndOnDemandGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsAutomaticAndOnDemandGetInput,
-    outputSchema: BackupsAutomaticAndOnDemandGetOutput,
-  }));
+export const BackupsAutomaticAndOnDemandGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsAutomaticAndOnDemandGetInput,
+  outputSchema: BackupsAutomaticAndOnDemandGetOutput,
+}));
 // Input Schema
 export const BackupsAutomaticAndOnDemandListByServerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -530,11 +530,12 @@ export type BackupsAutomaticAndOnDemandListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const BackupsAutomaticAndOnDemandListByServer =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupsAutomaticAndOnDemandListByServer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupsAutomaticAndOnDemandListByServerInput,
     outputSchema: BackupsAutomaticAndOnDemandListByServerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupsLongTermRetentionCheckPrerequisitesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -576,43 +577,41 @@ export const BackupsLongTermRetentionCheckPrerequisites =
     outputSchema: BackupsLongTermRetentionCheckPrerequisitesOutput,
   }));
 // Input Schema
-export const BackupsLongTermRetentionGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    backupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrBackupOperations/{backupName}",
-    }),
-  );
+export const BackupsLongTermRetentionGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  backupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrBackupOperations/{backupName}",
+  }),
+);
 export type BackupsLongTermRetentionGetInput =
   typeof BackupsLongTermRetentionGetInput.Type;
 
 // Output Schema
-export const BackupsLongTermRetentionGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupsLongTermRetentionGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupsLongTermRetentionGetOutput =
   typeof BackupsLongTermRetentionGetOutput.Type;
 
@@ -694,50 +693,44 @@ export type BackupsLongTermRetentionListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const BackupsLongTermRetentionListByServer =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupsLongTermRetentionListByServer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupsLongTermRetentionListByServerInput,
     outputSchema: BackupsLongTermRetentionListByServerOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BackupsLongTermRetentionStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/startLtrBackup",
-    }),
-  );
+export const BackupsLongTermRetentionStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/startLtrBackup",
+  }),
+);
 export type BackupsLongTermRetentionStartInput =
   typeof BackupsLongTermRetentionStartInput.Type;
 
 // Output Schema
-export const BackupsLongTermRetentionStartOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        datasourceSizeInBytes: Schema.optional(Schema.Number),
-        dataTransferredInBytes: Schema.optional(Schema.Number),
-        backupName: Schema.optional(Schema.String),
-        backupMetadata: Schema.optional(Schema.String),
-        status: Schema.Literals([
-          "Running",
-          "Cancelled",
-          "Failed",
-          "Succeeded",
-        ]),
-        startTime: Schema.String,
-        endTime: Schema.optional(Schema.String),
-        percentComplete: Schema.optional(Schema.Number),
-        errorCode: Schema.optional(Schema.String),
-        errorMessage: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupsLongTermRetentionStartOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      datasourceSizeInBytes: Schema.optional(Schema.Number),
+      dataTransferredInBytes: Schema.optional(Schema.Number),
+      backupName: Schema.optional(Schema.String),
+      backupMetadata: Schema.optional(Schema.String),
+      status: Schema.Literals(["Running", "Cancelled", "Failed", "Succeeded"]),
+      startTime: Schema.String,
+      endTime: Schema.optional(Schema.String),
+      percentComplete: Schema.optional(Schema.Number),
+      errorCode: Schema.optional(Schema.String),
+      errorMessage: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupsLongTermRetentionStartOutput =
   typeof BackupsLongTermRetentionStartOutput.Type;
 
@@ -750,39 +743,36 @@ export type BackupsLongTermRetentionStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const BackupsLongTermRetentionStart =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsLongTermRetentionStartInput,
-    outputSchema: BackupsLongTermRetentionStartOutput,
-  }));
+export const BackupsLongTermRetentionStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsLongTermRetentionStartInput,
+  outputSchema: BackupsLongTermRetentionStartOutput,
+}));
 // Input Schema
-export const CapabilitiesByLocationListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities",
-    }),
-  );
+export const CapabilitiesByLocationListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities",
+  }),
+);
 export type CapabilitiesByLocationListInput =
   typeof CapabilitiesByLocationListInput.Type;
 
 // Output Schema
-export const CapabilitiesByLocationListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        status: Schema.optional(
-          Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-        ),
-        reason: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CapabilitiesByLocationListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      status: Schema.optional(
+        Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
+      ),
+      reason: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CapabilitiesByLocationListOutput =
   typeof CapabilitiesByLocationListOutput.Type;
 
@@ -799,34 +789,32 @@ export const CapabilitiesByLocationList = /*@__PURE__*/ API.make(() => ({
   outputSchema: CapabilitiesByLocationListOutput,
 }));
 // Input Schema
-export const CapabilitiesByServerListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/capabilities",
-    }),
-  );
+export const CapabilitiesByServerListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/capabilities",
+  }),
+);
 export type CapabilitiesByServerListInput =
   typeof CapabilitiesByServerListInput.Type;
 
 // Output Schema
-export const CapabilitiesByServerListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        status: Schema.optional(
-          Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-        ),
-        reason: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CapabilitiesByServerListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      status: Schema.optional(
+        Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
+      ),
+      reason: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CapabilitiesByServerListOutput =
   typeof CapabilitiesByServerListOutput.Type;
 
@@ -844,57 +832,45 @@ export const CapabilitiesByServerList = /*@__PURE__*/ API.make(() => ({
   outputSchema: CapabilitiesByServerListOutput,
 }));
 // Input Schema
-export const CapturedLogsListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/logFiles",
-    }),
-  );
+export const CapturedLogsListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/logFiles",
+  }),
+);
 export type CapturedLogsListByServerInput =
   typeof CapturedLogsListByServerInput.Type;
 
 // Output Schema
-export const CapturedLogsListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CapturedLogsListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CapturedLogsListByServerOutput =
   typeof CapturedLogsListByServerOutput.Type;
 
@@ -927,26 +903,25 @@ export const ConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
 
 // Output Schema
-export const ConfigurationsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConfigurationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
 
 // The operation
@@ -964,57 +939,45 @@ export const ConfigurationsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
-export const ConfigurationsListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations",
-    }),
-  );
+export const ConfigurationsListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations",
+  }),
+);
 export type ConfigurationsListByServerInput =
   typeof ConfigurationsListByServerInput.Type;
 
 // Output Schema
-export const ConfigurationsListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ConfigurationsListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationsListByServerOutput =
   typeof ConfigurationsListByServerOutput.Type;
 
@@ -1065,19 +1028,18 @@ export const ConfigurationsPut = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsPutOutput,
 }));
 // Input Schema
-export const ConfigurationsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
-    }),
-  );
+export const ConfigurationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
+  }),
+);
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
 
 // Output Schema
@@ -1216,56 +1178,44 @@ export const DatabasesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: DatabasesGetOutput,
 }));
 // Input Schema
-export const DatabasesListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases",
-    }),
-  );
+export const DatabasesListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases",
+  }),
+);
 export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
 
 // Output Schema
-export const DatabasesListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DatabasesListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DatabasesListByServerOutput =
   typeof DatabasesListByServerOutput.Type;
 
@@ -1283,19 +1233,18 @@ export const DatabasesListByServer = /*@__PURE__*/ API.make(() => ({
   outputSchema: DatabasesListByServerOutput,
 }));
 // Input Schema
-export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
-    }),
-  );
+export const FirewallRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+  }),
+);
 export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
@@ -1319,19 +1268,18 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesCreateOrUpdateOutput,
 }));
 // Input Schema
-export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
-    }),
-  );
+export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+  }),
+);
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
@@ -1404,57 +1352,45 @@ export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
-export const FirewallRulesListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules",
-    }),
-  );
+export const FirewallRulesListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules",
+  }),
+);
 export type FirewallRulesListByServerInput =
   typeof FirewallRulesListByServerInput.Type;
 
 // Output Schema
-export const FirewallRulesListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FirewallRulesListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FirewallRulesListByServerOutput =
   typeof FirewallRulesListByServerOutput.Type;
 
@@ -1523,18 +1459,19 @@ export const MigrationsCancel = /*@__PURE__*/ API.make(() => ({
   outputSchema: MigrationsCancelOutput,
 }));
 // Input Schema
-export const MigrationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ Schema.Struct({
+export const MigrationsCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/checkMigrationNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/checkMigrationNameAvailability",
+  }),
+);
 export type MigrationsCheckNameAvailabilityInput =
   typeof MigrationsCheckNameAvailabilityInput.Type;
 
@@ -1561,11 +1498,10 @@ export type MigrationsCheckNameAvailabilityOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const MigrationsCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MigrationsCheckNameAvailabilityInput,
-    outputSchema: MigrationsCheckNameAvailabilityOutput,
-  }));
+export const MigrationsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationsCheckNameAvailabilityInput,
+  outputSchema: MigrationsCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export const MigrationsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1669,58 +1605,46 @@ export const MigrationsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: MigrationsGetOutput,
 }));
 // Input Schema
-export const MigrationsListByTargetServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    migrationListFilter: Schema.optional(Schema.Literals(["Active", "All"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations",
-    }),
-  );
+export const MigrationsListByTargetServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  migrationListFilter: Schema.optional(Schema.Literals(["Active", "All"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations",
+  }),
+);
 export type MigrationsListByTargetServerInput =
   typeof MigrationsListByTargetServerInput.Type;
 
 // Output Schema
-export const MigrationsListByTargetServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const MigrationsListByTargetServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MigrationsListByTargetServerOutput =
   typeof MigrationsListByTargetServerOutput.Type;
 
@@ -1734,11 +1658,10 @@ export type MigrationsListByTargetServerOutput =
  * @param serverName - The name of the server.
  * @param migrationListFilter - Migration list filter. Indicates if the request should retrieve only active migrations or all migrations. Defaults to Active.
  */
-export const MigrationsListByTargetServer =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: MigrationsListByTargetServerInput,
-    outputSchema: MigrationsListByTargetServerOutput,
-  }));
+export const MigrationsListByTargetServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationsListByTargetServerInput,
+  outputSchema: MigrationsListByTargetServerOutput,
+}));
 // Input Schema
 export const MigrationsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1791,28 +1714,26 @@ export const MigrationsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: MigrationsUpdateOutput,
 }));
 // Input Schema
-export const NameAvailabilityCheckGloballyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
-    }),
-  );
+export const NameAvailabilityCheckGloballyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
+  }),
+);
 export type NameAvailabilityCheckGloballyInput =
   typeof NameAvailabilityCheckGloballyInput.Type;
 
 // Output Schema
-export const NameAvailabilityCheckGloballyOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const NameAvailabilityCheckGloballyOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type NameAvailabilityCheckGloballyOutput =
   typeof NameAvailabilityCheckGloballyOutput.Type;
 
@@ -1825,11 +1746,10 @@ export type NameAvailabilityCheckGloballyOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const NameAvailabilityCheckGlobally =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NameAvailabilityCheckGloballyInput,
-    outputSchema: NameAvailabilityCheckGloballyOutput,
-  }));
+export const NameAvailabilityCheckGlobally = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NameAvailabilityCheckGloballyInput,
+  outputSchema: NameAvailabilityCheckGloballyOutput,
+}));
 // Input Schema
 export const NameAvailabilityCheckWithLocationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1867,11 +1787,10 @@ export type NameAvailabilityCheckWithLocationOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const NameAvailabilityCheckWithLocation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NameAvailabilityCheckWithLocationInput,
-    outputSchema: NameAvailabilityCheckWithLocationOutput,
-  }));
+export const NameAvailabilityCheckWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NameAvailabilityCheckWithLocationInput,
+  outputSchema: NameAvailabilityCheckWithLocationOutput,
+}));
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
@@ -1952,15 +1871,14 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PrivateDnsZoneSuffixGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix",
-    }),
-  );
+export const PrivateDnsZoneSuffixGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix",
+  }),
+);
 export type PrivateDnsZoneSuffixGetInput =
   typeof PrivateDnsZoneSuffixGetInput.Type;
 
@@ -2011,49 +1929,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param serverName - The name of the server.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -2067,11 +1982,10 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param serverName - The name of the server.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByServerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2136,11 +2050,12 @@ export type PrivateEndpointConnectionsListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const PrivateEndpointConnectionsListByServer =
-  /*@__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsListByServer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsListByServerInput,
     outputSchema: PrivateEndpointConnectionsListByServerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2194,49 +2109,46 @@ export type PrivateEndpointConnectionsUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  * @param properties - Resource properties.
  */
-export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsUpdateInput,
-    outputSchema: PrivateEndpointConnectionsUpdateOutput,
-  }));
+export const PrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsUpdateInput,
+  outputSchema: PrivateEndpointConnectionsUpdateOutput,
+}));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateLinkResources/{groupName}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  groupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateLinkResources/{groupName}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -2318,11 +2230,10 @@ export type PrivateLinkResourcesListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const PrivateLinkResourcesListByServer =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkResourcesListByServerInput,
-    outputSchema: PrivateLinkResourcesListByServerOutput,
-  }));
+export const PrivateLinkResourcesListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListByServerInput,
+  outputSchema: PrivateLinkResourcesListByServerOutput,
+}));
 // Input Schema
 export const QuotaUsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2369,56 +2280,44 @@ export const QuotaUsagesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: QuotaUsagesListOutput,
 }));
 // Input Schema
-export const ReplicasListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/replicas",
-    }),
-  );
+export const ReplicasListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/replicas",
+  }),
+);
 export type ReplicasListByServerInput = typeof ReplicasListByServerInput.Type;
 
 // Output Schema
-export const ReplicasListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicasListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicasListByServerOutput = typeof ReplicasListByServerOutput.Type;
 
 // The operation
@@ -2435,18 +2334,17 @@ export const ReplicasListByServer = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReplicasListByServerOutput,
 }));
 // Input Schema
-export const ServersCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
-    }),
-  );
+export const ServersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
+  }),
+);
 export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
 
 // Output Schema
@@ -2548,56 +2446,44 @@ export const ServersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServersGetOutput,
 }));
 // Input Schema
-export const ServersListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
-    }),
-  );
+export const ServersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
+  }),
+);
 export type ServersListByResourceGroupInput =
   typeof ServersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ServersListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ServersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServersListByResourceGroupOutput =
   typeof ServersListByResourceGroupOutput.Type;
 
@@ -2614,55 +2500,43 @@ export const ServersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: ServersListByResourceGroupOutput,
 }));
 // Input Schema
-export const ServersListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
-    }),
-  );
+export const ServersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
+  }),
+);
 export type ServersListBySubscriptionInput =
   typeof ServersListBySubscriptionInput.Type;
 
 // Output Schema
-export const ServersListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ServersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ServersListBySubscriptionOutput =
   typeof ServersListBySubscriptionOutput.Type;
 
@@ -2891,57 +2765,45 @@ export const TuningOptionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: TuningOptionsGetOutput,
 }));
 // Input Schema
-export const TuningOptionsListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions",
-    }),
-  );
+export const TuningOptionsListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions",
+  }),
+);
 export type TuningOptionsListByServerInput =
   typeof TuningOptionsListByServerInput.Type;
 
 // Output Schema
-export const TuningOptionsListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TuningOptionsListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TuningOptionsListByServerOutput =
   typeof TuningOptionsListByServerOutput.Type;
 
@@ -3028,25 +2890,23 @@ export type TuningOptionsListRecommendationsOutput =
  * @param tuningOption - The name of the tuning option.
  * @param recommendationType - Recommendations list filter. Retrieves recommendations based on type.
  */
-export const TuningOptionsListRecommendations =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TuningOptionsListRecommendationsInput,
-    outputSchema: TuningOptionsListRecommendationsOutput,
-  }));
+export const TuningOptionsListRecommendations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TuningOptionsListRecommendationsInput,
+  outputSchema: TuningOptionsListRecommendationsOutput,
+}));
 // Input Schema
-export const VirtualEndpointsCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    virtualEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
-    }),
-  );
+export const VirtualEndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  virtualEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+  }),
+);
 export type VirtualEndpointsCreateInput =
   typeof VirtualEndpointsCreateInput.Type;
 
@@ -3070,19 +2930,18 @@ export const VirtualEndpointsCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualEndpointsCreateOutput,
 }));
 // Input Schema
-export const VirtualEndpointsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    virtualEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
-    }),
-  );
+export const VirtualEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  virtualEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+  }),
+);
 export type VirtualEndpointsDeleteInput =
   typeof VirtualEndpointsDeleteInput.Type;
 
@@ -3106,42 +2965,40 @@ export const VirtualEndpointsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualEndpointsDeleteOutput,
 }));
 // Input Schema
-export const VirtualEndpointsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    virtualEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
-    }),
-  );
+export const VirtualEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  virtualEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+  }),
+);
 export type VirtualEndpointsGetInput = typeof VirtualEndpointsGetInput.Type;
 
 // Output Schema
-export const VirtualEndpointsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualEndpointsGetOutput = typeof VirtualEndpointsGetOutput.Type;
 
 // The operation
@@ -3159,57 +3016,45 @@ export const VirtualEndpointsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualEndpointsGetOutput,
 }));
 // Input Schema
-export const VirtualEndpointsListByServerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints",
-    }),
-  );
+export const VirtualEndpointsListByServerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints",
+  }),
+);
 export type VirtualEndpointsListByServerInput =
   typeof VirtualEndpointsListByServerInput.Type;
 
 // Output Schema
-export const VirtualEndpointsListByServerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualEndpointsListByServerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualEndpointsListByServerOutput =
   typeof VirtualEndpointsListByServerOutput.Type;
 
@@ -3222,25 +3067,23 @@ export type VirtualEndpointsListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const VirtualEndpointsListByServer =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualEndpointsListByServerInput,
-    outputSchema: VirtualEndpointsListByServerOutput,
-  }));
+export const VirtualEndpointsListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualEndpointsListByServerInput,
+  outputSchema: VirtualEndpointsListByServerOutput,
+}));
 // Input Schema
-export const VirtualEndpointsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    virtualEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
-    }),
-  );
+export const VirtualEndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  virtualEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+  }),
+);
 export type VirtualEndpointsUpdateInput =
   typeof VirtualEndpointsUpdateInput.Type;
 
@@ -3264,34 +3107,32 @@ export const VirtualEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualEndpointsUpdateOutput,
 }));
 // Input Schema
-export const VirtualNetworkSubnetUsageListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage",
-    }),
-  );
+export const VirtualNetworkSubnetUsageListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage",
+  }),
+);
 export type VirtualNetworkSubnetUsageListInput =
   typeof VirtualNetworkSubnetUsageListInput.Type;
 
 // Output Schema
-export const VirtualNetworkSubnetUsageListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    delegatedSubnetsUsage: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subnetName: Schema.optional(Schema.String),
-          usage: Schema.optional(Schema.Number),
-        }),
-      ),
+export const VirtualNetworkSubnetUsageListOutput = /*@__PURE__*/ Schema.Struct({
+  delegatedSubnetsUsage: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        subnetName: Schema.optional(Schema.String),
+        usage: Schema.optional(Schema.Number),
+      }),
     ),
-    location: Schema.optional(Schema.String),
-    subscriptionId: Schema.optional(Schema.String),
-  });
+  ),
+  location: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+});
 export type VirtualNetworkSubnetUsageListOutput =
   typeof VirtualNetworkSubnetUsageListOutput.Type;
 
@@ -3303,8 +3144,7 @@ export type VirtualNetworkSubnetUsageListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the location.
  */
-export const VirtualNetworkSubnetUsageList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualNetworkSubnetUsageListInput,
-    outputSchema: VirtualNetworkSubnetUsageListOutput,
-  }));
+export const VirtualNetworkSubnetUsageList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkSubnetUsageListInput,
+  outputSchema: VirtualNetworkSubnetUsageListOutput,
+}));

@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput =
@@ -135,11 +135,10 @@ export type AppServiceEnvironmentsChangeVnetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsChangeVnet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsChangeVnetInput,
-    outputSchema: AppServiceEnvironmentsChangeVnetOutput,
-  }));
+export const AppServiceEnvironmentsChangeVnet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsChangeVnetInput,
+  outputSchema: AppServiceEnvironmentsChangeVnetOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -191,11 +190,12 @@ export type AppServiceEnvironmentsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsCreateOrUpdateInput,
     outputSchema: AppServiceEnvironmentsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
   /*@__PURE__*/ Schema.Struct({
@@ -311,19 +311,18 @@ export const AppServiceEnvironmentsCreateOrUpdateWorkerPool =
     outputSchema: AppServiceEnvironmentsCreateOrUpdateWorkerPoolOutput,
   }));
 // Input Schema
-export const AppServiceEnvironmentsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    forceDelete: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-    }),
-  );
+export const AppServiceEnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  forceDelete: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
+  }),
+);
 export type AppServiceEnvironmentsDeleteInput =
   typeof AppServiceEnvironmentsDeleteInput.Type;
 
@@ -344,11 +343,10 @@ export type AppServiceEnvironmentsDeleteOutput =
  * @param name - Name of the App Service Environment.
  * @param forceDelete - Specify <code>true</code> to force the deletion even if the App Service Environment contains resources. The default is <code>false</code>.
  */
-export const AppServiceEnvironmentsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsDeleteInput,
-    outputSchema: AppServiceEnvironmentsDeleteOutput,
-  }));
+export const AppServiceEnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsDeleteInput,
+  outputSchema: AppServiceEnvironmentsDeleteOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -428,42 +426,40 @@ export const AppServiceEnvironmentsDeletePrivateEndpointConnection =
     outputSchema: AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
-export const AppServiceEnvironmentsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-    }),
-  );
+export const AppServiceEnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
+  }),
+);
 export type AppServiceEnvironmentsGetInput =
   typeof AppServiceEnvironmentsGetInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServiceEnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServiceEnvironmentsGetOutput =
   typeof AppServiceEnvironmentsGetOutput.Type;
 
@@ -630,11 +626,12 @@ export type AppServiceEnvironmentsGetDiagnosticsItemOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const AppServiceEnvironmentsGetDiagnosticsItem =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsGetDiagnosticsItem = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsGetDiagnosticsItemInput,
     outputSchema: AppServiceEnvironmentsGetDiagnosticsItemOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -735,11 +732,12 @@ export type AppServiceEnvironmentsGetMultiRolePoolOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsGetMultiRolePool =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsGetMultiRolePool = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsGetMultiRolePoolInput,
     outputSchema: AppServiceEnvironmentsGetMultiRolePoolOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1035,11 +1033,10 @@ export type AppServiceEnvironmentsGetVipInfoOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsGetVipInfo =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsGetVipInfoInput,
-    outputSchema: AppServiceEnvironmentsGetVipInfoOutput,
-  }));
+export const AppServiceEnvironmentsGetVipInfo = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsGetVipInfoInput,
+  outputSchema: AppServiceEnvironmentsGetVipInfoOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsGetWorkerPoolInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1093,61 +1090,50 @@ export type AppServiceEnvironmentsGetWorkerPoolOutput =
  * @param name - Name of the App Service Environment.
  * @param workerPoolName - Name of the worker pool.
  */
-export const AppServiceEnvironmentsGetWorkerPool =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsGetWorkerPool = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsGetWorkerPoolInput,
     outputSchema: AppServiceEnvironmentsGetWorkerPoolOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServiceEnvironmentsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/hostingEnvironments",
-    }),
-  );
+export const AppServiceEnvironmentsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/hostingEnvironments",
+  }),
+);
 export type AppServiceEnvironmentsListInput =
   typeof AppServiceEnvironmentsListInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServiceEnvironmentsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServiceEnvironmentsListOutput =
   typeof AppServiceEnvironmentsListOutput.Type;
 
@@ -1230,11 +1216,12 @@ export type AppServiceEnvironmentsListAppServicePlansOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListAppServicePlans =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListAppServicePlans = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListAppServicePlansInput,
     outputSchema: AppServiceEnvironmentsListAppServicePlansOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1299,11 +1286,12 @@ export type AppServiceEnvironmentsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AppServiceEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListByResourceGroupInput,
     outputSchema: AppServiceEnvironmentsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListCapacitiesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1371,11 +1359,12 @@ export type AppServiceEnvironmentsListCapacitiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListCapacities =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListCapacities = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListCapacitiesInput,
     outputSchema: AppServiceEnvironmentsListCapacitiesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListDiagnosticsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1414,11 +1403,12 @@ export type AppServiceEnvironmentsListDiagnosticsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListDiagnostics =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListDiagnostics = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListDiagnosticsInput,
     outputSchema: AppServiceEnvironmentsListDiagnosticsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1585,11 +1575,12 @@ export type AppServiceEnvironmentsListMultiRolePoolsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListMultiRolePools =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListMultiRolePools = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListMultiRolePoolsInput,
     outputSchema: AppServiceEnvironmentsListMultiRolePoolsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListMultiRolePoolSkusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1715,11 +1706,12 @@ export type AppServiceEnvironmentsListMultiRoleUsagesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListMultiRoleUsages =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListMultiRoleUsages = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListMultiRoleUsagesInput,
     outputSchema: AppServiceEnvironmentsListMultiRoleUsagesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListOperationsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1785,11 +1777,12 @@ export type AppServiceEnvironmentsListOperationsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListOperations =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListOperations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListOperationsInput,
     outputSchema: AppServiceEnvironmentsListOperationsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListUsagesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1841,11 +1834,10 @@ export type AppServiceEnvironmentsListUsagesOutput =
  * @param name - Name of the App Service Environment.
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
-export const AppServiceEnvironmentsListUsages =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsListUsagesInput,
-    outputSchema: AppServiceEnvironmentsListUsagesOutput,
-  }));
+export const AppServiceEnvironmentsListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsListUsagesInput,
+  outputSchema: AppServiceEnvironmentsListUsagesOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsListWebAppsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1914,11 +1906,10 @@ export type AppServiceEnvironmentsListWebAppsOutput =
  * @param name - Name of the App Service Environment.
  * @param propertiesToInclude - Comma separated list of app properties to include.
  */
-export const AppServiceEnvironmentsListWebApps =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsListWebAppsInput,
-    outputSchema: AppServiceEnvironmentsListWebAppsOutput,
-  }));
+export const AppServiceEnvironmentsListWebApps = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsListWebAppsInput,
+  outputSchema: AppServiceEnvironmentsListWebAppsOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2014,11 +2005,12 @@ export type AppServiceEnvironmentsListWebWorkerUsagesOutput =
  * @param name - Name of the App Service Environment.
  * @param workerPoolName - Name of the worker pool.
  */
-export const AppServiceEnvironmentsListWebWorkerUsages =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListWebWorkerUsages = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListWebWorkerUsagesInput,
     outputSchema: AppServiceEnvironmentsListWebWorkerUsagesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2139,11 +2131,12 @@ export type AppServiceEnvironmentsListWorkerPoolsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsListWorkerPools =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListWorkerPools = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListWorkerPoolsInput,
     outputSchema: AppServiceEnvironmentsListWorkerPoolsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsListWorkerPoolSkusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2223,24 +2216,24 @@ export type AppServiceEnvironmentsListWorkerPoolSkusOutput =
  * @param name - Name of the App Service Environment.
  * @param workerPoolName - Name of the worker pool.
  */
-export const AppServiceEnvironmentsListWorkerPoolSkus =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsListWorkerPoolSkus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsListWorkerPoolSkusInput,
     outputSchema: AppServiceEnvironmentsListWorkerPoolSkusOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServiceEnvironmentsRebootInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/reboot",
-    }),
-  );
+export const AppServiceEnvironmentsRebootInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/reboot",
+  }),
+);
 export type AppServiceEnvironmentsRebootInput =
   typeof AppServiceEnvironmentsRebootInput.Type;
 
@@ -2260,63 +2253,50 @@ export type AppServiceEnvironmentsRebootOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsReboot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsRebootInput,
-    outputSchema: AppServiceEnvironmentsRebootOutput,
-  }));
+export const AppServiceEnvironmentsReboot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsRebootInput,
+  outputSchema: AppServiceEnvironmentsRebootOutput,
+}));
 // Input Schema
-export const AppServiceEnvironmentsResumeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume",
-    }),
-  );
+export const AppServiceEnvironmentsResumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume",
+  }),
+);
 export type AppServiceEnvironmentsResumeInput =
   typeof AppServiceEnvironmentsResumeInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsResumeOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServiceEnvironmentsResumeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServiceEnvironmentsResumeOutput =
   typeof AppServiceEnvironmentsResumeOutput.Type;
 
@@ -2331,63 +2311,50 @@ export type AppServiceEnvironmentsResumeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsResume =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsResumeInput,
-    outputSchema: AppServiceEnvironmentsResumeOutput,
-  }));
+export const AppServiceEnvironmentsResume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsResumeInput,
+  outputSchema: AppServiceEnvironmentsResumeOutput,
+}));
 // Input Schema
-export const AppServiceEnvironmentsSuspendInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend",
-    }),
-  );
+export const AppServiceEnvironmentsSuspendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend",
+  }),
+);
 export type AppServiceEnvironmentsSuspendInput =
   typeof AppServiceEnvironmentsSuspendInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsSuspendOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServiceEnvironmentsSuspendOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServiceEnvironmentsSuspendOutput =
   typeof AppServiceEnvironmentsSuspendOutput.Type;
 
@@ -2402,11 +2369,10 @@ export type AppServiceEnvironmentsSuspendOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsSuspend =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsSuspendInput,
-    outputSchema: AppServiceEnvironmentsSuspendOutput,
-  }));
+export const AppServiceEnvironmentsSuspend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsSuspendInput,
+  outputSchema: AppServiceEnvironmentsSuspendOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2444,42 +2410,40 @@ export const AppServiceEnvironmentsTestUpgradeAvailableNotification =
     outputSchema: AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput,
   }));
 // Input Schema
-export const AppServiceEnvironmentsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-    }),
-  );
+export const AppServiceEnvironmentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
+  }),
+);
 export type AppServiceEnvironmentsUpdateInput =
   typeof AppServiceEnvironmentsUpdateInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServiceEnvironmentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServiceEnvironmentsUpdateOutput =
   typeof AppServiceEnvironmentsUpdateOutput.Type;
 
@@ -2494,11 +2458,10 @@ export type AppServiceEnvironmentsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsUpdateInput,
-    outputSchema: AppServiceEnvironmentsUpdateOutput,
-  }));
+export const AppServiceEnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsUpdateInput,
+  outputSchema: AppServiceEnvironmentsUpdateOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2662,11 +2625,12 @@ export type AppServiceEnvironmentsUpdateMultiRolePoolOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsUpdateMultiRolePool =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsUpdateMultiRolePool = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsUpdateMultiRolePoolInput,
     outputSchema: AppServiceEnvironmentsUpdateMultiRolePoolOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServiceEnvironmentsUpdateWorkerPoolInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2720,24 +2684,24 @@ export type AppServiceEnvironmentsUpdateWorkerPoolOutput =
  * @param name - Name of the App Service Environment.
  * @param workerPoolName - Name of the worker pool.
  */
-export const AppServiceEnvironmentsUpdateWorkerPool =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServiceEnvironmentsUpdateWorkerPool = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServiceEnvironmentsUpdateWorkerPoolInput,
     outputSchema: AppServiceEnvironmentsUpdateWorkerPoolOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServiceEnvironmentsUpgradeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/upgrade",
-    }),
-  );
+export const AppServiceEnvironmentsUpgradeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/upgrade",
+  }),
+);
 export type AppServiceEnvironmentsUpgradeInput =
   typeof AppServiceEnvironmentsUpgradeInput.Type;
 
@@ -2757,48 +2721,45 @@ export type AppServiceEnvironmentsUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsUpgrade =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServiceEnvironmentsUpgradeInput,
-    outputSchema: AppServiceEnvironmentsUpgradeOutput,
-  }));
+export const AppServiceEnvironmentsUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsUpgradeInput,
+  outputSchema: AppServiceEnvironmentsUpgradeOutput,
+}));
 // Input Schema
-export const AppServicePlansCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-    }),
-  );
+export const AppServicePlansCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
+  }),
+);
 export type AppServicePlansCreateOrUpdateInput =
   typeof AppServicePlansCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AppServicePlansCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServicePlansCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServicePlansCreateOrUpdateOutput =
   typeof AppServicePlansCreateOrUpdateOutput.Type;
 
@@ -2813,11 +2774,10 @@ export type AppServicePlansCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansCreateOrUpdateInput,
-    outputSchema: AppServicePlansCreateOrUpdateOutput,
-  }));
+export const AppServicePlansCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansCreateOrUpdateInput,
+  outputSchema: AppServicePlansCreateOrUpdateOutput,
+}));
 // Input Schema
 export const AppServicePlansCreateOrUpdateVnetRouteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2873,24 +2833,24 @@ export type AppServicePlansCreateOrUpdateVnetRouteOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param routeName - Name of the Virtual Network route.
  */
-export const AppServicePlansCreateOrUpdateVnetRoute =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansCreateOrUpdateVnetRoute = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansCreateOrUpdateVnetRouteInput,
     outputSchema: AppServicePlansCreateOrUpdateVnetRouteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServicePlansDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-    }),
-  );
+export const AppServicePlansDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
+  }),
+);
 export type AppServicePlansDeleteInput = typeof AppServicePlansDeleteInput.Type;
 
 // Output Schema
@@ -2950,26 +2910,26 @@ export type AppServicePlansDeleteHybridConnectionOutput =
  * @param namespaceName - Name of the Service Bus namespace.
  * @param relayName - Name of the Service Bus relay.
  */
-export const AppServicePlansDeleteHybridConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansDeleteHybridConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansDeleteHybridConnectionInput,
     outputSchema: AppServicePlansDeleteHybridConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServicePlansDeleteVnetRouteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    routeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-    }),
-  );
+export const AppServicePlansDeleteVnetRouteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  routeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
+  }),
+);
 export type AppServicePlansDeleteVnetRouteInput =
   typeof AppServicePlansDeleteVnetRouteInput.Type;
 
@@ -2991,47 +2951,44 @@ export type AppServicePlansDeleteVnetRouteOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param routeName - Name of the Virtual Network route.
  */
-export const AppServicePlansDeleteVnetRoute =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansDeleteVnetRouteInput,
-    outputSchema: AppServicePlansDeleteVnetRouteOutput,
-  }));
+export const AppServicePlansDeleteVnetRoute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansDeleteVnetRouteInput,
+  outputSchema: AppServicePlansDeleteVnetRouteOutput,
+}));
 // Input Schema
-export const AppServicePlansGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-    }),
-  );
+export const AppServicePlansGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
+  }),
+);
 export type AppServicePlansGetInput = typeof AppServicePlansGetInput.Type;
 
 // Output Schema
-export const AppServicePlansGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServicePlansGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServicePlansGetOutput = typeof AppServicePlansGetOutput.Type;
 
 // The operation
@@ -3104,11 +3061,12 @@ export type AppServicePlansGetHybridConnectionOutput =
  * @param namespaceName - Name of the Service Bus namespace.
  * @param relayName - Name of the Service Bus relay.
  */
-export const AppServicePlansGetHybridConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansGetHybridConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansGetHybridConnectionInput,
     outputSchema: AppServicePlansGetHybridConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServicePlansGetHybridConnectionPlanLimitInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3166,46 +3124,44 @@ export const AppServicePlansGetHybridConnectionPlanLimit =
     outputSchema: AppServicePlansGetHybridConnectionPlanLimitOutput,
   }));
 // Input Schema
-export const AppServicePlansGetRouteForVnetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    routeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-    }),
-  );
+export const AppServicePlansGetRouteForVnetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  routeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
+  }),
+);
 export type AppServicePlansGetRouteForVnetInput =
   typeof AppServicePlansGetRouteForVnetInput.Type;
 
 // Output Schema
-export const AppServicePlansGetRouteForVnetOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  );
+export const AppServicePlansGetRouteForVnetOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }),
+);
 export type AppServicePlansGetRouteForVnetOutput =
   typeof AppServicePlansGetRouteForVnetOutput.Type;
 
@@ -3222,11 +3178,10 @@ export type AppServicePlansGetRouteForVnetOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param routeName - Name of the Virtual Network route.
  */
-export const AppServicePlansGetRouteForVnet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansGetRouteForVnetInput,
-    outputSchema: AppServicePlansGetRouteForVnetOutput,
-  }));
+export const AppServicePlansGetRouteForVnet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansGetRouteForVnetInput,
+  outputSchema: AppServicePlansGetRouteForVnetOutput,
+}));
 // Input Schema
 export const AppServicePlansGetServerFarmInstanceDetailsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3296,8 +3251,8 @@ export type AppServicePlansGetServerFarmRdpPasswordInput =
 // Output Schema
 export const AppServicePlansGetServerFarmRdpPasswordOutput =
   /*@__PURE__*/ Schema.Struct({
-    rdpPassword: Schema.optional(SensitiveString),
-    rdpPasswordExpiry: Schema.optional(SensitiveString),
+    rdpPassword: Schema.optional(SensitiveOutputString),
+    rdpPasswordExpiry: Schema.optional(SensitiveOutputString),
   });
 export type AppServicePlansGetServerFarmRdpPasswordOutput =
   typeof AppServicePlansGetServerFarmRdpPasswordOutput.Type;
@@ -3313,11 +3268,12 @@ export type AppServicePlansGetServerFarmRdpPasswordOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansGetServerFarmRdpPassword =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansGetServerFarmRdpPassword = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansGetServerFarmRdpPasswordInput,
     outputSchema: AppServicePlansGetServerFarmRdpPasswordOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServicePlansGetServerFarmSkusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3351,11 +3307,10 @@ export type AppServicePlansGetServerFarmSkusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansGetServerFarmSkus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansGetServerFarmSkusInput,
-    outputSchema: AppServicePlansGetServerFarmSkusOutput,
-  }));
+export const AppServicePlansGetServerFarmSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansGetServerFarmSkusInput,
+  outputSchema: AppServicePlansGetServerFarmSkusOutput,
+}));
 // Input Schema
 export const AppServicePlansGetVnetFromServerFarmInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3409,50 +3364,49 @@ export type AppServicePlansGetVnetFromServerFarmOutput =
  * @param name - Name of the App Service plan.
  * @param vnetName - Name of the Virtual Network.
  */
-export const AppServicePlansGetVnetFromServerFarm =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansGetVnetFromServerFarm = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansGetVnetFromServerFarmInput,
     outputSchema: AppServicePlansGetVnetFromServerFarmOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServicePlansGetVnetGatewayInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    gatewayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-    }),
-  );
+export const AppServicePlansGetVnetGatewayInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
+  }),
+);
 export type AppServicePlansGetVnetGatewayInput =
   typeof AppServicePlansGetVnetGatewayInput.Type;
 
 // Output Schema
-export const AppServicePlansGetVnetGatewayOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServicePlansGetVnetGatewayOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServicePlansGetVnetGatewayOutput =
   typeof AppServicePlansGetVnetGatewayOutput.Type;
 
@@ -3469,61 +3423,48 @@ export type AppServicePlansGetVnetGatewayOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Only the 'primary' gateway is supported.
  */
-export const AppServicePlansGetVnetGateway =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansGetVnetGatewayInput,
-    outputSchema: AppServicePlansGetVnetGatewayOutput,
-  }));
+export const AppServicePlansGetVnetGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansGetVnetGatewayInput,
+  outputSchema: AppServicePlansGetVnetGatewayOutput,
+}));
 // Input Schema
-export const AppServicePlansListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    detailed: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/serverfarms",
-    }),
-  );
+export const AppServicePlansListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  detailed: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/serverfarms",
+  }),
+);
 export type AppServicePlansListInput = typeof AppServicePlansListInput.Type;
 
 // Output Schema
-export const AppServicePlansListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServicePlansListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServicePlansListOutput = typeof AppServicePlansListOutput.Type;
 
 // The operation
@@ -3605,36 +3546,37 @@ export type AppServicePlansListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AppServicePlansListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansListByResourceGroupInput,
     outputSchema: AppServicePlansListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AppServicePlansListCapabilitiesInput =
-  /*@__PURE__*/ Schema.Struct({
+export const AppServicePlansListCapabilitiesInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/capabilities",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/capabilities",
+  }),
+);
 export type AppServicePlansListCapabilitiesInput =
   typeof AppServicePlansListCapabilitiesInput.Type;
 
 // Output Schema
-export const AppServicePlansListCapabilitiesOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  );
+export const AppServicePlansListCapabilitiesOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  }),
+);
 export type AppServicePlansListCapabilitiesOutput =
   typeof AppServicePlansListCapabilitiesOutput.Type;
 
@@ -3649,11 +3591,10 @@ export type AppServicePlansListCapabilitiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansListCapabilities =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansListCapabilitiesInput,
-    outputSchema: AppServicePlansListCapabilitiesOutput,
-  }));
+export const AppServicePlansListCapabilities = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansListCapabilitiesInput,
+  outputSchema: AppServicePlansListCapabilitiesOutput,
+}));
 // Input Schema
 export const AppServicePlansListHybridConnectionKeysInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3696,11 +3637,12 @@ export type AppServicePlansListHybridConnectionKeysOutput =
  * @param namespaceName - Name of the Service Bus namespace.
  * @param relayName - Name of the Service Bus relay.
  */
-export const AppServicePlansListHybridConnectionKeys =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansListHybridConnectionKeys = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansListHybridConnectionKeysInput,
     outputSchema: AppServicePlansListHybridConnectionKeysOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServicePlansListHybridConnectionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3767,11 +3709,12 @@ export type AppServicePlansListHybridConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansListHybridConnections =
-  /*@__PURE__*/ API.make(() => ({
+export const AppServicePlansListHybridConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AppServicePlansListHybridConnectionsInput,
     outputSchema: AppServicePlansListHybridConnectionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AppServicePlansListRoutesForVnetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3827,47 +3770,44 @@ export type AppServicePlansListRoutesForVnetOutput =
  * @param name - Name of the App Service plan.
  * @param vnetName - Name of the Virtual Network.
  */
-export const AppServicePlansListRoutesForVnet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansListRoutesForVnetInput,
-    outputSchema: AppServicePlansListRoutesForVnetOutput,
-  }));
+export const AppServicePlansListRoutesForVnet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansListRoutesForVnetInput,
+  outputSchema: AppServicePlansListRoutesForVnetOutput,
+}));
 // Input Schema
-export const AppServicePlansListUsagesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/usages",
-    }),
-  );
+export const AppServicePlansListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/usages",
+  }),
+);
 export type AppServicePlansListUsagesInput =
   typeof AppServicePlansListUsagesInput.Type;
 
 // Output Schema
-export const AppServicePlansListUsagesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServicePlansListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      unit: Schema.optional(Schema.String),
+      nextResetTime: Schema.optional(Schema.String),
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServicePlansListUsagesOutput =
   typeof AppServicePlansListUsagesOutput.Type;
 
@@ -3888,44 +3828,42 @@ export const AppServicePlansListUsages = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppServicePlansListUsagesOutput,
 }));
 // Input Schema
-export const AppServicePlansListVnetsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections",
-    }),
-  );
+export const AppServicePlansListVnetsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections",
+  }),
+);
 export type AppServicePlansListVnetsInput =
   typeof AppServicePlansListVnetsInput.Type;
 
 // Output Schema
-export const AppServicePlansListVnetsOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  );
+export const AppServicePlansListVnetsOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }),
+);
 export type AppServicePlansListVnetsOutput =
   typeof AppServicePlansListVnetsOutput.Type;
 
@@ -3945,60 +3883,48 @@ export const AppServicePlansListVnets = /*@__PURE__*/ API.make(() => ({
   outputSchema: AppServicePlansListVnetsOutput,
 }));
 // Input Schema
-export const AppServicePlansListWebAppsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/sites",
-    }),
-  );
+export const AppServicePlansListWebAppsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/sites",
+  }),
+);
 export type AppServicePlansListWebAppsInput =
   typeof AppServicePlansListWebAppsInput.Type;
 
 // Output Schema
-export const AppServicePlansListWebAppsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AppServicePlansListWebAppsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AppServicePlansListWebAppsOutput =
   typeof AppServicePlansListWebAppsOutput.Type;
 
@@ -4066,19 +3992,18 @@ export const AppServicePlansListWebAppsByHybridConnection =
     outputSchema: AppServicePlansListWebAppsByHybridConnectionOutput,
   }));
 // Input Schema
-export const AppServicePlansRebootWorkerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/serverfarms/{name}/workers/{workerName}/reboot",
-    }),
-  );
+export const AppServicePlansRebootWorkerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/serverfarms/{name}/workers/{workerName}/reboot",
+  }),
+);
 export type AppServicePlansRebootWorkerInput =
   typeof AppServicePlansRebootWorkerInput.Type;
 
@@ -4174,19 +4099,18 @@ export const AppServicePlansRecycleManagedInstanceWorker =
     outputSchema: AppServicePlansRecycleManagedInstanceWorkerOutput,
   }));
 // Input Schema
-export const AppServicePlansRestartWebAppsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    softRestart: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/restartSites",
-    }),
-  );
+export const AppServicePlansRestartWebAppsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  softRestart: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/restartSites",
+  }),
+);
 export type AppServicePlansRestartWebAppsInput =
   typeof AppServicePlansRestartWebAppsInput.Type;
 
@@ -4207,47 +4131,44 @@ export type AppServicePlansRestartWebAppsOutput =
  * @param name - Name of the App Service plan.
  * @param softRestart - Specify <code>true</code> to perform a soft restart, applies the configuration settings and restarts the apps if necessary. The default is <code>false</code>, which always restarts and reprovisions the apps
  */
-export const AppServicePlansRestartWebApps =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansRestartWebAppsInput,
-    outputSchema: AppServicePlansRestartWebAppsOutput,
-  }));
+export const AppServicePlansRestartWebApps = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansRestartWebAppsInput,
+  outputSchema: AppServicePlansRestartWebAppsOutput,
+}));
 // Input Schema
-export const AppServicePlansUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-    }),
-  );
+export const AppServicePlansUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
+  }),
+);
 export type AppServicePlansUpdateInput = typeof AppServicePlansUpdateInput.Type;
 
 // Output Schema
-export const AppServicePlansUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AppServicePlansUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AppServicePlansUpdateOutput =
   typeof AppServicePlansUpdateOutput.Type;
 
@@ -4321,32 +4242,30 @@ export type AppServicePlansUpdateVnetGatewayOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Only the 'primary' gateway is supported.
  */
-export const AppServicePlansUpdateVnetGateway =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansUpdateVnetGatewayInput,
-    outputSchema: AppServicePlansUpdateVnetGatewayOutput,
-  }));
+export const AppServicePlansUpdateVnetGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansUpdateVnetGatewayInput,
+  outputSchema: AppServicePlansUpdateVnetGatewayOutput,
+}));
 // Input Schema
-export const AppServicePlansUpdateVnetRouteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    routeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-    }),
-  );
+export const AppServicePlansUpdateVnetRouteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  routeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
+  }),
+);
 export type AppServicePlansUpdateVnetRouteInput =
   typeof AppServicePlansUpdateVnetRouteInput.Type;
 
 // Output Schema
-export const AppServicePlansUpdateVnetRouteOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const AppServicePlansUpdateVnetRouteOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4364,7 +4283,8 @@ export const AppServicePlansUpdateVnetRouteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type AppServicePlansUpdateVnetRouteOutput =
   typeof AppServicePlansUpdateVnetRouteOutput.Type;
 
@@ -4381,48 +4301,45 @@ export type AppServicePlansUpdateVnetRouteOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param routeName - Name of the Virtual Network route.
  */
-export const AppServicePlansUpdateVnetRoute =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AppServicePlansUpdateVnetRouteInput,
-    outputSchema: AppServicePlansUpdateVnetRouteOutput,
-  }));
+export const AppServicePlansUpdateVnetRoute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansUpdateVnetRouteInput,
+  outputSchema: AppServicePlansUpdateVnetRouteOutput,
+}));
 // Input Schema
-export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-    }),
-  );
+export const CertificatesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
+  }),
+);
 export type CertificatesCreateOrUpdateInput =
   typeof CertificatesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CertificatesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CertificatesCreateOrUpdateOutput =
   typeof CertificatesCreateOrUpdateOutput.Type;
 
@@ -4442,18 +4359,17 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesCreateOrUpdateOutput,
 }));
 // Input Schema
-export const CertificatesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-    }),
-  );
+export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
+  }),
+);
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
@@ -4581,17 +4497,18 @@ export const CertificatesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesListOutput,
 }));
 // Input Schema
-export const CertificatesListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
+export const CertificatesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates",
+  }),
+);
 export type CertificatesListByResourceGroupInput =
   typeof CertificatesListByResourceGroupInput.Type;
 
@@ -4644,47 +4561,44 @@ export type CertificatesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CertificatesListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CertificatesListByResourceGroupInput,
-    outputSchema: CertificatesListByResourceGroupOutput,
-  }));
+export const CertificatesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesListByResourceGroupInput,
+  outputSchema: CertificatesListByResourceGroupOutput,
+}));
 // Input Schema
-export const CertificatesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-    }),
-  );
+export const CertificatesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
+  }),
+);
 export type CertificatesUpdateInput = typeof CertificatesUpdateInput.Type;
 
 // Output Schema
-export const CertificatesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CertificatesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CertificatesUpdateOutput = typeof CertificatesUpdateOutput.Type;
 
 // The operation
@@ -4703,25 +4617,23 @@ export const CertificatesUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesUpdateOutput,
 }));
 // Input Schema
-export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability",
-    }),
-  );
+export const CheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability",
+  }),
+);
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const CheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type CheckNameAvailabilityOutput =
   typeof CheckNameAvailabilityOutput.Type;
 
@@ -4789,60 +4701,49 @@ export type DeletedWebAppsGetDeletedWebAppByLocationOutput =
  * @param location - The name of the Azure region.
  * @param deletedSiteId - The numeric ID of the deleted app, e.g. 12345
  */
-export const DeletedWebAppsGetDeletedWebAppByLocation =
-  /*@__PURE__*/ API.make(() => ({
+export const DeletedWebAppsGetDeletedWebAppByLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeletedWebAppsGetDeletedWebAppByLocationInput,
     outputSchema: DeletedWebAppsGetDeletedWebAppByLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DeletedWebAppsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites",
-    }),
-  );
+export const DeletedWebAppsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites",
+  }),
+);
 export type DeletedWebAppsListInput = typeof DeletedWebAppsListInput.Type;
 
 // Output Schema
-export const DeletedWebAppsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DeletedWebAppsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DeletedWebAppsListOutput = typeof DeletedWebAppsListOutput.Type;
 
 // The operation
@@ -4859,56 +4760,44 @@ export const DeletedWebAppsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: DeletedWebAppsListOutput,
 }));
 // Input Schema
-export const DeletedWebAppsListByLocationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites",
-    }),
-  );
+export const DeletedWebAppsListByLocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites",
+  }),
+);
 export type DeletedWebAppsListByLocationInput =
   typeof DeletedWebAppsListByLocationInput.Type;
 
 // Output Schema
-export const DeletedWebAppsListByLocationOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DeletedWebAppsListByLocationOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DeletedWebAppsListByLocationOutput =
   typeof DeletedWebAppsListByLocationOutput.Type;
 
@@ -4922,40 +4811,39 @@ export type DeletedWebAppsListByLocationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const DeletedWebAppsListByLocation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeletedWebAppsListByLocationInput,
-    outputSchema: DeletedWebAppsListByLocationOutput,
-  }));
+export const DeletedWebAppsListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedWebAppsListByLocationInput,
+  outputSchema: DeletedWebAppsListByLocationOutput,
+}));
 // Input Schema
-export const DiagnosticsExecuteSiteAnalysisInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    analysisName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    timeGrain: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute",
-    }),
-  );
+export const DiagnosticsExecuteSiteAnalysisInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  analysisName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  timeGrain: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute",
+  }),
+);
 export type DiagnosticsExecuteSiteAnalysisInput =
   typeof DiagnosticsExecuteSiteAnalysisInput.Type;
 
 // Output Schema
-export const DiagnosticsExecuteSiteAnalysisOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const DiagnosticsExecuteSiteAnalysisOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type DiagnosticsExecuteSiteAnalysisOutput =
   typeof DiagnosticsExecuteSiteAnalysisOutput.Type;
 
@@ -4975,11 +4863,10 @@ export type DiagnosticsExecuteSiteAnalysisOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsExecuteSiteAnalysis =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsExecuteSiteAnalysisInput,
-    outputSchema: DiagnosticsExecuteSiteAnalysisOutput,
-  }));
+export const DiagnosticsExecuteSiteAnalysis = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsExecuteSiteAnalysisInput,
+  outputSchema: DiagnosticsExecuteSiteAnalysisOutput,
+}));
 // Input Schema
 export const DiagnosticsExecuteSiteAnalysisSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5030,40 +4917,41 @@ export type DiagnosticsExecuteSiteAnalysisSlotOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsExecuteSiteAnalysisSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsExecuteSiteAnalysisSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsExecuteSiteAnalysisSlotInput,
     outputSchema: DiagnosticsExecuteSiteAnalysisSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DiagnosticsExecuteSiteDetectorInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    detectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    timeGrain: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute",
-    }),
-  );
+export const DiagnosticsExecuteSiteDetectorInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  detectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  timeGrain: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute",
+  }),
+);
 export type DiagnosticsExecuteSiteDetectorInput =
   typeof DiagnosticsExecuteSiteDetectorInput.Type;
 
 // Output Schema
-export const DiagnosticsExecuteSiteDetectorOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const DiagnosticsExecuteSiteDetectorOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type DiagnosticsExecuteSiteDetectorOutput =
   typeof DiagnosticsExecuteSiteDetectorOutput.Type;
 
@@ -5083,11 +4971,10 @@ export type DiagnosticsExecuteSiteDetectorOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsExecuteSiteDetector =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsExecuteSiteDetectorInput,
-    outputSchema: DiagnosticsExecuteSiteDetectorOutput,
-  }));
+export const DiagnosticsExecuteSiteDetector = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsExecuteSiteDetectorInput,
+  outputSchema: DiagnosticsExecuteSiteDetectorOutput,
+}));
 // Input Schema
 export const DiagnosticsExecuteSiteDetectorSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5138,11 +5025,12 @@ export type DiagnosticsExecuteSiteDetectorSlotOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsExecuteSiteDetectorSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsExecuteSiteDetectorSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsExecuteSiteDetectorSlotInput,
     outputSchema: DiagnosticsExecuteSiteDetectorSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsGetHostingEnvironmentDetectorResponseInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5208,44 +5096,42 @@ export const DiagnosticsGetHostingEnvironmentDetectorResponse =
     outputSchema: DiagnosticsGetHostingEnvironmentDetectorResponseOutput,
   }));
 // Input Schema
-export const DiagnosticsGetSiteAnalysisInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    analysisName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
-    }),
-  );
+export const DiagnosticsGetSiteAnalysisInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  analysisName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
+  }),
+);
 export type DiagnosticsGetSiteAnalysisInput =
   typeof DiagnosticsGetSiteAnalysisInput.Type;
 
 // Output Schema
-export const DiagnosticsGetSiteAnalysisOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DiagnosticsGetSiteAnalysisOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DiagnosticsGetSiteAnalysisOutput =
   typeof DiagnosticsGetSiteAnalysisOutput.Type;
 
@@ -5267,27 +5153,26 @@ export const DiagnosticsGetSiteAnalysis = /*@__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsGetSiteAnalysisOutput,
 }));
 // Input Schema
-export const DiagnosticsGetSiteAnalysisSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    analysisName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
-    }),
-  );
+export const DiagnosticsGetSiteAnalysisSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  analysisName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
+  }),
+);
 export type DiagnosticsGetSiteAnalysisSlotInput =
   typeof DiagnosticsGetSiteAnalysisSlotInput.Type;
 
 // Output Schema
-export const DiagnosticsGetSiteAnalysisSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const DiagnosticsGetSiteAnalysisSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5305,7 +5190,8 @@ export const DiagnosticsGetSiteAnalysisSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type DiagnosticsGetSiteAnalysisSlotOutput =
   typeof DiagnosticsGetSiteAnalysisSlotOutput.Type;
 
@@ -5323,50 +5209,47 @@ export type DiagnosticsGetSiteAnalysisSlotOutput =
  * @param diagnosticCategory - Diagnostic Category
  * @param analysisName - Analysis Name
  */
-export const DiagnosticsGetSiteAnalysisSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsGetSiteAnalysisSlotInput,
-    outputSchema: DiagnosticsGetSiteAnalysisSlotOutput,
-  }));
+export const DiagnosticsGetSiteAnalysisSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsGetSiteAnalysisSlotInput,
+  outputSchema: DiagnosticsGetSiteAnalysisSlotOutput,
+}));
 // Input Schema
-export const DiagnosticsGetSiteDetectorInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    detectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
-    }),
-  );
+export const DiagnosticsGetSiteDetectorInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  detectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
+  }),
+);
 export type DiagnosticsGetSiteDetectorInput =
   typeof DiagnosticsGetSiteDetectorInput.Type;
 
 // Output Schema
-export const DiagnosticsGetSiteDetectorOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DiagnosticsGetSiteDetectorOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DiagnosticsGetSiteDetectorOutput =
   typeof DiagnosticsGetSiteDetectorOutput.Type;
 
@@ -5446,11 +5329,12 @@ export type DiagnosticsGetSiteDetectorResponseOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsGetSiteDetectorResponse =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsGetSiteDetectorResponse = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsGetSiteDetectorResponseInput,
     outputSchema: DiagnosticsGetSiteDetectorResponseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsGetSiteDetectorResponseSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5512,33 +5396,33 @@ export type DiagnosticsGetSiteDetectorResponseSlotOutput =
  * @param endTime - End Time
  * @param timeGrain - Time Grain
  */
-export const DiagnosticsGetSiteDetectorResponseSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsGetSiteDetectorResponseSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsGetSiteDetectorResponseSlotInput,
     outputSchema: DiagnosticsGetSiteDetectorResponseSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DiagnosticsGetSiteDetectorSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    detectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
-    }),
-  );
+export const DiagnosticsGetSiteDetectorSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  detectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
+  }),
+);
 export type DiagnosticsGetSiteDetectorSlotInput =
   typeof DiagnosticsGetSiteDetectorSlotInput.Type;
 
 // Output Schema
-export const DiagnosticsGetSiteDetectorSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const DiagnosticsGetSiteDetectorSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5556,7 +5440,8 @@ export const DiagnosticsGetSiteDetectorSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type DiagnosticsGetSiteDetectorSlotOutput =
   typeof DiagnosticsGetSiteDetectorSlotOutput.Type;
 
@@ -5574,11 +5459,10 @@ export type DiagnosticsGetSiteDetectorSlotOutput =
  * @param diagnosticCategory - Diagnostic Category
  * @param detectorName - Detector Name
  */
-export const DiagnosticsGetSiteDetectorSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsGetSiteDetectorSlotInput,
-    outputSchema: DiagnosticsGetSiteDetectorSlotOutput,
-  }));
+export const DiagnosticsGetSiteDetectorSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsGetSiteDetectorSlotInput,
+  outputSchema: DiagnosticsGetSiteDetectorSlotOutput,
+}));
 // Input Schema
 export const DiagnosticsGetSiteDiagnosticCategoryInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5632,11 +5516,12 @@ export type DiagnosticsGetSiteDiagnosticCategoryOutput =
  * @param siteName - Site Name
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsGetSiteDiagnosticCategory =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsGetSiteDiagnosticCategory = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsGetSiteDiagnosticCategoryInput,
     outputSchema: DiagnosticsGetSiteDiagnosticCategoryOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsGetSiteDiagnosticCategorySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5692,11 +5577,12 @@ export type DiagnosticsGetSiteDiagnosticCategorySlotOutput =
  * @param slot - Slot Name
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsGetSiteDiagnosticCategorySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsGetSiteDiagnosticCategorySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsGetSiteDiagnosticCategorySlotInput,
     outputSchema: DiagnosticsGetSiteDiagnosticCategorySlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsListHostingEnvironmentDetectorResponsesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5769,58 +5655,46 @@ export const DiagnosticsListHostingEnvironmentDetectorResponses =
     outputSchema: DiagnosticsListHostingEnvironmentDetectorResponsesOutput,
   }));
 // Input Schema
-export const DiagnosticsListSiteAnalysesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses",
-    }),
-  );
+export const DiagnosticsListSiteAnalysesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses",
+  }),
+);
 export type DiagnosticsListSiteAnalysesInput =
   typeof DiagnosticsListSiteAnalysesInput.Type;
 
 // Output Schema
-export const DiagnosticsListSiteAnalysesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DiagnosticsListSiteAnalysesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DiagnosticsListSiteAnalysesOutput =
   typeof DiagnosticsListSiteAnalysesOutput.Type;
 
@@ -5841,20 +5715,21 @@ export const DiagnosticsListSiteAnalyses = /*@__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsListSiteAnalysesOutput,
 }));
 // Input Schema
-export const DiagnosticsListSiteAnalysesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const DiagnosticsListSiteAnalysesSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     diagnosticCategory: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses",
+  }),
+);
 export type DiagnosticsListSiteAnalysesSlotInput =
   typeof DiagnosticsListSiteAnalysesSlotInput.Type;
 
@@ -5910,11 +5785,10 @@ export type DiagnosticsListSiteAnalysesSlotOutput =
  * @param slot - Slot - optional
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsListSiteAnalysesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsListSiteAnalysesSlotInput,
-    outputSchema: DiagnosticsListSiteAnalysesSlotOutput,
-  }));
+export const DiagnosticsListSiteAnalysesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsListSiteAnalysesSlotInput,
+  outputSchema: DiagnosticsListSiteAnalysesSlotOutput,
+}));
 // Input Schema
 export const DiagnosticsListSiteDetectorResponsesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5981,11 +5855,12 @@ export type DiagnosticsListSiteDetectorResponsesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site Name
  */
-export const DiagnosticsListSiteDetectorResponses =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsListSiteDetectorResponses = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsListSiteDetectorResponsesInput,
     outputSchema: DiagnosticsListSiteDetectorResponsesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsListSiteDetectorResponsesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6054,64 +5929,53 @@ export type DiagnosticsListSiteDetectorResponsesSlotOutput =
  * @param siteName - Site Name
  * @param slot - Slot Name
  */
-export const DiagnosticsListSiteDetectorResponsesSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsListSiteDetectorResponsesSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsListSiteDetectorResponsesSlotInput,
     outputSchema: DiagnosticsListSiteDetectorResponsesSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DiagnosticsListSiteDetectorsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    siteName: Schema.String.pipe(T.PathParam()),
-    diagnosticCategory: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors",
-    }),
-  );
+export const DiagnosticsListSiteDetectorsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  siteName: Schema.String.pipe(T.PathParam()),
+  diagnosticCategory: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors",
+  }),
+);
 export type DiagnosticsListSiteDetectorsInput =
   typeof DiagnosticsListSiteDetectorsInput.Type;
 
 // Output Schema
-export const DiagnosticsListSiteDetectorsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DiagnosticsListSiteDetectorsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DiagnosticsListSiteDetectorsOutput =
   typeof DiagnosticsListSiteDetectorsOutput.Type;
 
@@ -6127,11 +5991,10 @@ export type DiagnosticsListSiteDetectorsOutput =
  * @param siteName - Site Name
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsListSiteDetectors =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsListSiteDetectorsInput,
-    outputSchema: DiagnosticsListSiteDetectorsOutput,
-  }));
+export const DiagnosticsListSiteDetectors = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsListSiteDetectorsInput,
+  outputSchema: DiagnosticsListSiteDetectorsOutput,
+}));
 // Input Schema
 export const DiagnosticsListSiteDetectorsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6202,11 +6065,10 @@ export type DiagnosticsListSiteDetectorsSlotOutput =
  * @param slot - Slot Name
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsListSiteDetectorsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DiagnosticsListSiteDetectorsSlotInput,
-    outputSchema: DiagnosticsListSiteDetectorsSlotOutput,
-  }));
+export const DiagnosticsListSiteDetectorsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsListSiteDetectorsSlotInput,
+  outputSchema: DiagnosticsListSiteDetectorsSlotOutput,
+}));
 // Input Schema
 export const DiagnosticsListSiteDiagnosticCategoriesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6273,11 +6135,12 @@ export type DiagnosticsListSiteDiagnosticCategoriesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site Name
  */
-export const DiagnosticsListSiteDiagnosticCategories =
-  /*@__PURE__*/ API.make(() => ({
+export const DiagnosticsListSiteDiagnosticCategories = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DiagnosticsListSiteDiagnosticCategoriesInput,
     outputSchema: DiagnosticsListSiteDiagnosticCategoriesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DiagnosticsListSiteDiagnosticCategoriesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6363,26 +6226,25 @@ export const GetPublishingUserInput = /*@__PURE__*/ Schema.Struct({
 export type GetPublishingUserInput = typeof GetPublishingUserInput.Type;
 
 // Output Schema
-export const GetPublishingUserOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetPublishingUserOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetPublishingUserOutput = typeof GetPublishingUserOutput.Type;
 
 // The operation
@@ -6606,45 +6468,44 @@ export type GetSubscriptionDeploymentLocationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GetSubscriptionDeploymentLocations =
-  /*@__PURE__*/ API.make(() => ({
+export const GetSubscriptionDeploymentLocations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetSubscriptionDeploymentLocationsInput,
     outputSchema: GetSubscriptionDeploymentLocationsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const GetUsagesInLocationListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/usages",
-    }),
-  );
+export const GetUsagesInLocationListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/usages",
+  }),
+);
 export type GetUsagesInLocationListInput =
   typeof GetUsagesInLocationListInput.Type;
 
 // Output Schema
-export const GetUsagesInLocationListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const GetUsagesInLocationListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      unit: Schema.optional(Schema.String),
+      nextResetTime: Schema.optional(Schema.String),
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type GetUsagesInLocationListOutput =
   typeof GetUsagesInLocationListOutput.Type;
 
@@ -6663,41 +6524,39 @@ export const GetUsagesInLocationList = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetUsagesInLocationListOutput,
 }));
 // Input Schema
-export const GlobalGetDeletedWebAppInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    deletedSiteId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}",
-    }),
-  );
+export const GlobalGetDeletedWebAppInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  deletedSiteId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}",
+  }),
+);
 export type GlobalGetDeletedWebAppInput =
   typeof GlobalGetDeletedWebAppInput.Type;
 
 // Output Schema
-export const GlobalGetDeletedWebAppOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GlobalGetDeletedWebAppOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GlobalGetDeletedWebAppOutput =
   typeof GlobalGetDeletedWebAppOutput.Type;
 
@@ -6716,30 +6575,30 @@ export const GlobalGetDeletedWebApp = /*@__PURE__*/ API.make(() => ({
   outputSchema: GlobalGetDeletedWebAppOutput,
 }));
 // Input Schema
-export const GlobalGetDeletedWebAppSnapshotsInput =
-  /*@__PURE__*/ Schema.Struct({
+export const GlobalGetDeletedWebAppSnapshotsInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deletedSiteId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}/snapshots",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}/snapshots",
+  }),
+);
 export type GlobalGetDeletedWebAppSnapshotsInput =
   typeof GlobalGetDeletedWebAppSnapshotsInput.Type;
 
 // Output Schema
-export const GlobalGetDeletedWebAppSnapshotsOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  );
+export const GlobalGetDeletedWebAppSnapshotsOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }),
+);
 export type GlobalGetDeletedWebAppSnapshotsOutput =
   typeof GlobalGetDeletedWebAppSnapshotsOutput.Type;
 
@@ -6753,11 +6612,10 @@ export type GlobalGetDeletedWebAppSnapshotsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deletedSiteId - The numeric ID of the deleted app, e.g. 12345
  */
-export const GlobalGetDeletedWebAppSnapshots =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GlobalGetDeletedWebAppSnapshotsInput,
-    outputSchema: GlobalGetDeletedWebAppSnapshotsOutput,
-  }));
+export const GlobalGetDeletedWebAppSnapshots = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalGetDeletedWebAppSnapshotsInput,
+  outputSchema: GlobalGetDeletedWebAppSnapshotsOutput,
+}));
 // Input Schema
 export const GlobalGetSubscriptionOperationWithAsyncResponseInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6797,24 +6655,23 @@ export const GlobalGetSubscriptionOperationWithAsyncResponse =
     outputSchema: GlobalGetSubscriptionOperationWithAsyncResponseOutput,
   }));
 // Input Schema
-export const KubeEnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-    }),
-  );
+export const KubeEnvironmentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
+  }),
+);
 export type KubeEnvironmentsCreateOrUpdateInput =
   typeof KubeEnvironmentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const KubeEnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const KubeEnvironmentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6832,7 +6689,8 @@ export const KubeEnvironmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type KubeEnvironmentsCreateOrUpdateOutput =
   typeof KubeEnvironmentsCreateOrUpdateOutput.Type;
 
@@ -6847,24 +6705,22 @@ export type KubeEnvironmentsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the Kubernetes Environment.
  */
-export const KubeEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: KubeEnvironmentsCreateOrUpdateInput,
-    outputSchema: KubeEnvironmentsCreateOrUpdateOutput,
-  }));
+export const KubeEnvironmentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubeEnvironmentsCreateOrUpdateInput,
+  outputSchema: KubeEnvironmentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const KubeEnvironmentsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-    }),
-  );
+export const KubeEnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
+  }),
+);
 export type KubeEnvironmentsDeleteInput =
   typeof KubeEnvironmentsDeleteInput.Type;
 
@@ -6889,41 +6745,39 @@ export const KubeEnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: KubeEnvironmentsDeleteOutput,
 }));
 // Input Schema
-export const KubeEnvironmentsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-    }),
-  );
+export const KubeEnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
+  }),
+);
 export type KubeEnvironmentsGetInput = typeof KubeEnvironmentsGetInput.Type;
 
 // Output Schema
-export const KubeEnvironmentsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const KubeEnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type KubeEnvironmentsGetOutput = typeof KubeEnvironmentsGetOutput.Type;
 
 // The operation
@@ -7005,11 +6859,12 @@ export type KubeEnvironmentsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const KubeEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const KubeEnvironmentsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: KubeEnvironmentsListByResourceGroupInput,
     outputSchema: KubeEnvironmentsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const KubeEnvironmentsListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7072,48 +6927,47 @@ export type KubeEnvironmentsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const KubeEnvironmentsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const KubeEnvironmentsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: KubeEnvironmentsListBySubscriptionInput,
     outputSchema: KubeEnvironmentsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const KubeEnvironmentsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-    }),
-  );
+export const KubeEnvironmentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
+  }),
+);
 export type KubeEnvironmentsUpdateInput =
   typeof KubeEnvironmentsUpdateInput.Type;
 
 // Output Schema
-export const KubeEnvironmentsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const KubeEnvironmentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type KubeEnvironmentsUpdateOutput =
   typeof KubeEnvironmentsUpdateOutput.Type;
 
@@ -7186,18 +7040,17 @@ export const ListBillingMetersInput = /*@__PURE__*/ Schema.Struct({
 export type ListBillingMetersInput = typeof ListBillingMetersInput.Type;
 
 // Output Schema
-export const ListBillingMetersOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ListBillingMetersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ListBillingMetersOutput = typeof ListBillingMetersOutput.Type;
 
 // The operation
@@ -7216,33 +7069,31 @@ export const ListBillingMeters = /*@__PURE__*/ API.make(() => ({
   outputSchema: ListBillingMetersOutput,
 }));
 // Input Schema
-export const ListCustomHostNameSitesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    hostname: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/customhostnameSites",
-    }),
-  );
+export const ListCustomHostNameSitesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  hostname: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/customhostnameSites",
+  }),
+);
 export type ListCustomHostNameSitesInput =
   typeof ListCustomHostNameSitesInput.Type;
 
 // Output Schema
-export const ListCustomHostNameSitesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ListCustomHostNameSitesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ListCustomHostNameSitesOutput =
   typeof ListCustomHostNameSitesOutput.Type;
 
@@ -7325,32 +7176,30 @@ export const ListGeoRegions = /*@__PURE__*/ API.make(() => ({
   outputSchema: ListGeoRegionsOutput,
 }));
 // Input Schema
-export const ListPremierAddOnOffersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers",
-    }),
-  );
+export const ListPremierAddOnOffersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers",
+  }),
+);
 export type ListPremierAddOnOffersInput =
   typeof ListPremierAddOnOffersInput.Type;
 
 // Output Schema
-export const ListPremierAddOnOffersOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ListPremierAddOnOffersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ListPremierAddOnOffersOutput =
   typeof ListPremierAddOnOffersOutput.Type;
 
@@ -7429,11 +7278,12 @@ export type ListSiteIdentifiersAssignedToHostNameOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ListSiteIdentifiersAssignedToHostName =
-  /*@__PURE__*/ API.make(() => ({
+export const ListSiteIdentifiersAssignedToHostName = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListSiteIdentifiersAssignedToHostNameInput,
     outputSchema: ListSiteIdentifiersAssignedToHostNameOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7495,50 +7345,38 @@ export const ListSkus = /*@__PURE__*/ API.make(() => ({
   outputSchema: ListSkusOutput,
 }));
 // Input Schema
-export const ListSourceControlsInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Web/sourcecontrols" }),
-  );
+export const ListSourceControlsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Web/sourcecontrols" }),
+);
 export type ListSourceControlsInput = typeof ListSourceControlsInput.Type;
 
 // Output Schema
-export const ListSourceControlsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ListSourceControlsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ListSourceControlsOutput = typeof ListSourceControlsOutput.Type;
 
 // The operation
@@ -7585,37 +7423,35 @@ export const Move = /*@__PURE__*/ API.make(() => ({
   outputSchema: MoveOutput,
 }));
 // Input Schema
-export const ProviderGetAvailableStacksInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    osTypeSelected: Schema.optional(
-      Schema.Literals([
-        "Windows",
-        "Linux",
-        "WindowsFunctions",
-        "LinuxFunctions",
-        "All",
-      ]),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Web/availableStacks" }),
-  );
+export const ProviderGetAvailableStacksInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  osTypeSelected: Schema.optional(
+    Schema.Literals([
+      "Windows",
+      "Linux",
+      "WindowsFunctions",
+      "LinuxFunctions",
+      "All",
+    ]),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Web/availableStacks" }),
+);
 export type ProviderGetAvailableStacksInput =
   typeof ProviderGetAvailableStacksInput.Type;
 
 // Output Schema
-export const ProviderGetAvailableStacksOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProviderGetAvailableStacksOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProviderGetAvailableStacksOutput =
   typeof ProviderGetAvailableStacksOutput.Type;
 
@@ -7679,38 +7515,32 @@ export type ProviderGetAvailableStacksOnPremOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProviderGetAvailableStacksOnPrem =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProviderGetAvailableStacksOnPremInput,
-    outputSchema: ProviderGetAvailableStacksOnPremOutput,
-  }));
+export const ProviderGetAvailableStacksOnPrem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderGetAvailableStacksOnPremInput,
+  outputSchema: ProviderGetAvailableStacksOnPremOutput,
+}));
 // Input Schema
-export const ProviderGetFunctionAppStacksInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Web/functionAppStacks",
-    }),
-  );
+export const ProviderGetFunctionAppStacksInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Web/functionAppStacks" }),
+);
 export type ProviderGetFunctionAppStacksInput =
   typeof ProviderGetFunctionAppStacksInput.Type;
 
 // Output Schema
-export const ProviderGetFunctionAppStacksOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProviderGetFunctionAppStacksOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProviderGetFunctionAppStacksOutput =
   typeof ProviderGetFunctionAppStacksOutput.Type;
 
@@ -7723,11 +7553,10 @@ export type ProviderGetFunctionAppStacksOutput =
  * @param api-version - The API version to use for this operation.
  * @param stackOsType - Stack OS Type
  */
-export const ProviderGetFunctionAppStacks =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProviderGetFunctionAppStacksInput,
-    outputSchema: ProviderGetFunctionAppStacksOutput,
-  }));
+export const ProviderGetFunctionAppStacks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderGetFunctionAppStacksInput,
+  outputSchema: ProviderGetFunctionAppStacksOutput,
+}));
 // Input Schema
 export const ProviderGetFunctionAppStacksForLocationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7769,35 +7598,34 @@ export type ProviderGetFunctionAppStacksForLocationOutput =
  * @param location - The name of the Azure region.
  * @param stackOsType - Stack OS Type
  */
-export const ProviderGetFunctionAppStacksForLocation =
-  /*@__PURE__*/ API.make(() => ({
+export const ProviderGetFunctionAppStacksForLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderGetFunctionAppStacksForLocationInput,
     outputSchema: ProviderGetFunctionAppStacksForLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ProviderGetWebAppStacksInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-    stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Web/webAppStacks" }),
-  );
+export const ProviderGetWebAppStacksInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+  stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Web/webAppStacks" }),
+);
 export type ProviderGetWebAppStacksInput =
   typeof ProviderGetWebAppStacksInput.Type;
 
 // Output Schema
-export const ProviderGetWebAppStacksOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProviderGetWebAppStacksOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProviderGetWebAppStacksOutput =
   typeof ProviderGetWebAppStacksOutput.Type;
 
@@ -7855,106 +7683,103 @@ export type ProviderGetWebAppStacksForLocationOutput =
  * @param location - The name of the Azure region.
  * @param stackOsType - Stack OS Type
  */
-export const ProviderGetWebAppStacksForLocation =
-  /*@__PURE__*/ API.make(() => ({
+export const ProviderGetWebAppStacksForLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderGetWebAppStacksForLocationInput,
     outputSchema: ProviderGetWebAppStacksForLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ProviderListOperationsInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Web/operations" }),
-  );
+export const ProviderListOperationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(T.Http({ method: "GET", path: "/providers/Microsoft.Web/operations" }));
 export type ProviderListOperationsInput =
   typeof ProviderListOperationsInput.Type;
 
 // Output Schema
-export const ProviderListOperationsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      supportsInstanceLevelAggregation: Schema.optional(
-                        Schema.Boolean,
+export const ProviderListOperationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      isDataAction: Schema.optional(Schema.Boolean),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          serviceSpecification: Schema.optional(
+            Schema.Struct({
+              metricSpecifications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    displayDescription: Schema.optional(Schema.String),
+                    unit: Schema.optional(Schema.String),
+                    aggregationType: Schema.optional(Schema.String),
+                    supportsInstanceLevelAggregation: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                    enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
+                    sourceMdmAccount: Schema.optional(Schema.String),
+                    sourceMdmNamespace: Schema.optional(Schema.String),
+                    metricFilterPattern: Schema.optional(Schema.String),
+                    fillGapWithZero: Schema.optional(Schema.Boolean),
+                    isInternal: Schema.optional(Schema.Boolean),
+                    dimensions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          displayName: Schema.optional(Schema.String),
+                          internalName: Schema.optional(Schema.String),
+                          toBeExportedForShoebox: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                        }),
                       ),
-                      enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
-                      sourceMdmAccount: Schema.optional(Schema.String),
-                      sourceMdmNamespace: Schema.optional(Schema.String),
-                      metricFilterPattern: Schema.optional(Schema.String),
-                      fillGapWithZero: Schema.optional(Schema.Boolean),
-                      isInternal: Schema.optional(Schema.Boolean),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            internalName: Schema.optional(Schema.String),
-                            toBeExportedForShoebox: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                          }),
-                        ),
+                    ),
+                    category: Schema.optional(Schema.String),
+                    availabilities: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          timeGrain: Schema.optional(Schema.String),
+                          blobDuration: Schema.optional(Schema.String),
+                        }),
                       ),
-                      category: Schema.optional(Schema.String),
-                      availabilities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            timeGrain: Schema.optional(Schema.String),
-                            blobDuration: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedTimeGrainTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      supportedAggregationTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
+                    ),
+                    supportedTimeGrainTypes: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    supportedAggregationTypes: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                  }),
                 ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                      logFilterPattern: Schema.optional(Schema.String),
-                    }),
-                  ),
+              ),
+              logSpecifications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    blobDuration: Schema.optional(Schema.String),
+                    logFilterPattern: Schema.optional(Schema.String),
+                  }),
                 ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProviderListOperationsOutput =
   typeof ProviderListOperationsOutput.Type;
 
@@ -8043,11 +7868,12 @@ export type RecommendationsDisableAllForWebAppOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Name of the app.
  */
-export const RecommendationsDisableAllForWebApp =
-  /*@__PURE__*/ API.make(() => ({
+export const RecommendationsDisableAllForWebApp = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RecommendationsDisableAllForWebAppInput,
     outputSchema: RecommendationsDisableAllForWebAppOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RecommendationsDisableRecommendationForHostingEnvironmentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8286,39 +8112,38 @@ export type RecommendationsGetRuleDetailsByWebAppOutput =
  * @param updateSeen - Specify <code>true</code> to update the last-seen timestamp of the recommendation object.
  * @param recommendationId - The GUID of the recommendation object if you query an expired one. You don't need to specify it to query an active entry.
  */
-export const RecommendationsGetRuleDetailsByWebApp =
-  /*@__PURE__*/ API.make(() => ({
+export const RecommendationsGetRuleDetailsByWebApp = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RecommendationsGetRuleDetailsByWebAppInput,
     outputSchema: RecommendationsGetRuleDetailsByWebAppOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RecommendationsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    featured: Schema.optional(Schema.Boolean),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations",
-    }),
-  );
+export const RecommendationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  featured: Schema.optional(Schema.Boolean),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations",
+  }),
+);
 export type RecommendationsListInput = typeof RecommendationsListInput.Type;
 
 // Output Schema
-export const RecommendationsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RecommendationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RecommendationsListOutput = typeof RecommendationsListOutput.Type;
 
 // The operation
@@ -8435,11 +8260,12 @@ export type RecommendationsListHistoryForWebAppOutput =
  * @param expiredOnly - Specify <code>false</code> to return all recommendations. The default is <code>true</code>, which returns only expired recommendations.
  * @param $filter - Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[PT1H|PT1M|P1D]
  */
-export const RecommendationsListHistoryForWebApp =
-  /*@__PURE__*/ API.make(() => ({
+export const RecommendationsListHistoryForWebApp = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RecommendationsListHistoryForWebAppInput,
     outputSchema: RecommendationsListHistoryForWebAppOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RecommendationsListRecommendedRulesForHostingEnvironmentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8546,16 +8372,15 @@ export const RecommendationsListRecommendedRulesForWebApp =
     outputSchema: RecommendationsListRecommendedRulesForWebAppOutput,
   }));
 // Input Schema
-export const RecommendationsResetAllFiltersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/reset",
-    }),
-  );
+export const RecommendationsResetAllFiltersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/reset",
+  }),
+);
 export type RecommendationsResetAllFiltersInput =
   typeof RecommendationsResetAllFiltersInput.Type;
 
@@ -8573,11 +8398,10 @@ export type RecommendationsResetAllFiltersOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RecommendationsResetAllFilters =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RecommendationsResetAllFiltersInput,
-    outputSchema: RecommendationsResetAllFiltersOutput,
-  }));
+export const RecommendationsResetAllFilters = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationsResetAllFiltersInput,
+  outputSchema: RecommendationsResetAllFiltersOutput,
+}));
 // Input Schema
 export const RecommendationsResetAllFiltersForHostingEnvironmentInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8651,34 +8475,33 @@ export type RecommendationsResetAllFiltersForWebAppOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Name of the app.
  */
-export const RecommendationsResetAllFiltersForWebApp =
-  /*@__PURE__*/ API.make(() => ({
+export const RecommendationsResetAllFiltersForWebApp = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RecommendationsResetAllFiltersForWebAppInput,
     outputSchema: RecommendationsResetAllFiltersForWebAppOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RegionalCheckNameAvailabilityInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/checknameavailability",
-    }),
-  );
+export const RegionalCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/checknameavailability",
+  }),
+);
 export type RegionalCheckNameAvailabilityInput =
   typeof RegionalCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const RegionalCheckNameAvailabilityOutput =
-  /*@__PURE__*/ Schema.Struct({
-    hostName: Schema.optional(Schema.String),
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const RegionalCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  hostName: Schema.optional(Schema.String),
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type RegionalCheckNameAvailabilityOutput =
   typeof RegionalCheckNameAvailabilityOutput.Type;
 
@@ -8690,24 +8513,24 @@ export type RegionalCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const RegionalCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RegionalCheckNameAvailabilityInput,
-    outputSchema: RegionalCheckNameAvailabilityOutput,
-  }));
+export const RegionalCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegionalCheckNameAvailabilityInput,
+  outputSchema: RegionalCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const ResourceHealthMetadataGetBySiteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ResourceHealthMetadataGetBySiteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resourceHealthMetadata/default",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resourceHealthMetadata/default",
+  }),
+);
 export type ResourceHealthMetadataGetBySiteInput =
   typeof ResourceHealthMetadataGetBySiteInput.Type;
 
@@ -8746,11 +8569,10 @@ export type ResourceHealthMetadataGetBySiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app
  */
-export const ResourceHealthMetadataGetBySite =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ResourceHealthMetadataGetBySiteInput,
-    outputSchema: ResourceHealthMetadataGetBySiteOutput,
-  }));
+export const ResourceHealthMetadataGetBySite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceHealthMetadataGetBySiteInput,
+  outputSchema: ResourceHealthMetadataGetBySiteOutput,
+}));
 // Input Schema
 export const ResourceHealthMetadataGetBySiteSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8804,61 +8626,50 @@ export type ResourceHealthMetadataGetBySiteSlotOutput =
  * @param name - Name of web app
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
-export const ResourceHealthMetadataGetBySiteSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const ResourceHealthMetadataGetBySiteSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ResourceHealthMetadataGetBySiteSlotInput,
     outputSchema: ResourceHealthMetadataGetBySiteSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ResourceHealthMetadataListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/resourceHealthMetadata",
-    }),
-  );
+export const ResourceHealthMetadataListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/resourceHealthMetadata",
+  }),
+);
 export type ResourceHealthMetadataListInput =
   typeof ResourceHealthMetadataListInput.Type;
 
 // Output Schema
-export const ResourceHealthMetadataListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ResourceHealthMetadataListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ResourceHealthMetadataListOutput =
   typeof ResourceHealthMetadataListOutput.Type;
 
@@ -8939,11 +8750,12 @@ export type ResourceHealthMetadataListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ResourceHealthMetadataListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const ResourceHealthMetadataListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ResourceHealthMetadataListByResourceGroupInput,
     outputSchema: ResourceHealthMetadataListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ResourceHealthMetadataListBySiteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9010,11 +8822,10 @@ export type ResourceHealthMetadataListBySiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app
  */
-export const ResourceHealthMetadataListBySite =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ResourceHealthMetadataListBySiteInput,
-    outputSchema: ResourceHealthMetadataListBySiteOutput,
-  }));
+export const ResourceHealthMetadataListBySite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceHealthMetadataListBySiteInput,
+  outputSchema: ResourceHealthMetadataListBySiteOutput,
+}));
 // Input Schema
 export const ResourceHealthMetadataListBySiteSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9083,31 +8894,31 @@ export type ResourceHealthMetadataListBySiteSlotOutput =
  * @param name - Name of web app
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
-export const ResourceHealthMetadataListBySiteSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const ResourceHealthMetadataListBySiteSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ResourceHealthMetadataListBySiteSlotInput,
     outputSchema: ResourceHealthMetadataListBySiteSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SiteCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesCreateOrUpdateInput =
   typeof SiteCertificatesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SiteCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const SiteCertificatesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9125,7 +8936,8 @@ export const SiteCertificatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type SiteCertificatesCreateOrUpdateOutput =
   typeof SiteCertificatesCreateOrUpdateOutput.Type;
 
@@ -9139,11 +8951,10 @@ export type SiteCertificatesCreateOrUpdateOutput =
  * @param name - Name of the site.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SiteCertificatesCreateOrUpdateInput,
-    outputSchema: SiteCertificatesCreateOrUpdateOutput,
-  }));
+export const SiteCertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesCreateOrUpdateInput,
+  outputSchema: SiteCertificatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const SiteCertificatesCreateOrUpdateSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9197,25 +9008,25 @@ export type SiteCertificatesCreateOrUpdateSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesCreateOrUpdateSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const SiteCertificatesCreateOrUpdateSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SiteCertificatesCreateOrUpdateSlotInput,
     outputSchema: SiteCertificatesCreateOrUpdateSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SiteCertificatesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesDeleteInput =
   typeof SiteCertificatesDeleteInput.Type;
 
@@ -9239,20 +9050,19 @@ export const SiteCertificatesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesDeleteOutput,
 }));
 // Input Schema
-export const SiteCertificatesDeleteSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesDeleteSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesDeleteSlotInput =
   typeof SiteCertificatesDeleteSlotInput.Type;
 
@@ -9277,42 +9087,40 @@ export const SiteCertificatesDeleteSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesDeleteSlotOutput,
 }));
 // Input Schema
-export const SiteCertificatesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesGetInput = typeof SiteCertificatesGetInput.Type;
 
 // Output Schema
-export const SiteCertificatesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SiteCertificatesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SiteCertificatesGetOutput = typeof SiteCertificatesGetOutput.Type;
 
 // The operation
@@ -9330,44 +9138,42 @@ export const SiteCertificatesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesGetOutput,
 }));
 // Input Schema
-export const SiteCertificatesGetSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesGetSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesGetSlotInput =
   typeof SiteCertificatesGetSlotInput.Type;
 
 // Output Schema
-export const SiteCertificatesGetSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SiteCertificatesGetSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SiteCertificatesGetSlotOutput =
   typeof SiteCertificatesGetSlotOutput.Type;
 
@@ -9387,56 +9193,44 @@ export const SiteCertificatesGetSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesGetSlotOutput,
 }));
 // Input Schema
-export const SiteCertificatesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates",
-    }),
-  );
+export const SiteCertificatesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates",
+  }),
+);
 export type SiteCertificatesListInput = typeof SiteCertificatesListInput.Type;
 
 // Output Schema
-export const SiteCertificatesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SiteCertificatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SiteCertificatesListOutput = typeof SiteCertificatesListOutput.Type;
 
 // The operation
@@ -9453,58 +9247,46 @@ export const SiteCertificatesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesListOutput,
 }));
 // Input Schema
-export const SiteCertificatesListSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates",
-    }),
-  );
+export const SiteCertificatesListSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates",
+  }),
+);
 export type SiteCertificatesListSlotInput =
   typeof SiteCertificatesListSlotInput.Type;
 
 // Output Schema
-export const SiteCertificatesListSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SiteCertificatesListSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SiteCertificatesListSlotOutput =
   typeof SiteCertificatesListSlotOutput.Type;
 
@@ -9523,43 +9305,41 @@ export const SiteCertificatesListSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesListSlotOutput,
 }));
 // Input Schema
-export const SiteCertificatesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesUpdateInput =
   typeof SiteCertificatesUpdateInput.Type;
 
 // Output Schema
-export const SiteCertificatesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SiteCertificatesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SiteCertificatesUpdateOutput =
   typeof SiteCertificatesUpdateOutput.Type;
 
@@ -9578,44 +9358,42 @@ export const SiteCertificatesUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SiteCertificatesUpdateOutput,
 }));
 // Input Schema
-export const SiteCertificatesUpdateSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-    }),
-  );
+export const SiteCertificatesUpdateSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
+  }),
+);
 export type SiteCertificatesUpdateSlotInput =
   typeof SiteCertificatesUpdateSlotInput.Type;
 
 // Output Schema
-export const SiteCertificatesUpdateSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SiteCertificatesUpdateSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SiteCertificatesUpdateSlotOutput =
   typeof SiteCertificatesUpdateSlotOutput.Type;
 
@@ -9745,11 +9523,12 @@ export type StaticSitesCreateOrUpdateBasicAuthOutput =
  * @param name - Name of the static site.
  * @param basicAuthName - name of the basic auth entry.
  */
-export const StaticSitesCreateOrUpdateBasicAuth =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesCreateOrUpdateBasicAuth = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesCreateOrUpdateBasicAuthInput,
     outputSchema: StaticSitesCreateOrUpdateBasicAuthOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesCreateOrUpdateBuildDatabaseConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9919,11 +9698,12 @@ export type StaticSitesCreateOrUpdateStaticSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesCreateOrUpdateStaticSite =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesCreateOrUpdateStaticSite = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10198,11 +9978,12 @@ export type StaticSitesCreateUserRolesInvitationLinkOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesCreateUserRolesInvitationLink =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesCreateUserRolesInvitationLink = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesCreateUserRolesInvitationLinkInput,
     outputSchema: StaticSitesCreateUserRolesInvitationLinkOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10316,11 +10097,12 @@ export type StaticSitesDeleteBuildDatabaseConnectionOutput =
  * @param environmentName - The stage site identifier.
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesDeleteBuildDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesDeleteBuildDatabaseConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesDeleteBuildDatabaseConnectionInput,
     outputSchema: StaticSitesDeleteBuildDatabaseConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesDeleteDatabaseConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10354,11 +10136,12 @@ export type StaticSitesDeleteDatabaseConnectionOutput =
  * @param name - Name of the static site
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesDeleteDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesDeleteDatabaseConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesDeleteDatabaseConnectionInput,
     outputSchema: StaticSitesDeleteDatabaseConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesDeletePrivateEndpointConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10400,18 +10183,17 @@ export const StaticSitesDeletePrivateEndpointConnection =
     outputSchema: StaticSitesDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
-export const StaticSitesDeleteStaticSiteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-    }),
-  );
+export const StaticSitesDeleteStaticSiteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
+  }),
+);
 export type StaticSitesDeleteStaticSiteInput =
   typeof StaticSitesDeleteStaticSiteInput.Type;
 
@@ -10469,11 +10251,10 @@ export type StaticSitesDeleteStaticSiteBuildOutput =
  * @param name - Name of the static site.
  * @param environmentName - The stage site identifier.
  */
-export const StaticSitesDeleteStaticSiteBuild =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesDeleteStaticSiteBuildInput,
-    outputSchema: StaticSitesDeleteStaticSiteBuildOutput,
-  }));
+export const StaticSitesDeleteStaticSiteBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesDeleteStaticSiteBuildInput,
+  outputSchema: StaticSitesDeleteStaticSiteBuildOutput,
+}));
 // Input Schema
 export const StaticSitesDeleteStaticSiteCustomDomainInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10509,26 +10290,28 @@ export type StaticSitesDeleteStaticSiteCustomDomainOutput =
  * @param name - Name of the static site.
  * @param domainName - The custom domain name.
  */
-export const StaticSitesDeleteStaticSiteCustomDomain =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesDeleteStaticSiteCustomDomain = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesDeleteStaticSiteCustomDomainInput,
     outputSchema: StaticSitesDeleteStaticSiteCustomDomainOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StaticSitesDeleteStaticSiteUserInput =
-  /*@__PURE__*/ Schema.Struct({
+export const StaticSitesDeleteStaticSiteUserInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     authprovider: Schema.String.pipe(T.PathParam()),
     userid: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
+  }),
+);
 export type StaticSitesDeleteStaticSiteUserInput =
   typeof StaticSitesDeleteStaticSiteUserInput.Type;
 
@@ -10547,24 +10330,22 @@ export type StaticSitesDeleteStaticSiteUserOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StaticSitesDeleteStaticSiteUser =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesDeleteStaticSiteUserInput,
-    outputSchema: StaticSitesDeleteStaticSiteUserOutput,
-  }));
+export const StaticSitesDeleteStaticSiteUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesDeleteStaticSiteUserInput,
+  outputSchema: StaticSitesDeleteStaticSiteUserOutput,
+}));
 // Input Schema
-export const StaticSitesDetachStaticSiteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/detach",
-    }),
-  );
+export const StaticSitesDetachStaticSiteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/detach",
+  }),
+);
 export type StaticSitesDetachStaticSiteInput =
   typeof StaticSitesDetachStaticSiteInput.Type;
 
@@ -10673,43 +10454,41 @@ export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuild =
       StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput,
   }));
 // Input Schema
-export const StaticSitesGetBasicAuthInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    basicAuthName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth/{basicAuthName}",
-    }),
-  );
+export const StaticSitesGetBasicAuthInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  basicAuthName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth/{basicAuthName}",
+  }),
+);
 export type StaticSitesGetBasicAuthInput =
   typeof StaticSitesGetBasicAuthInput.Type;
 
 // Output Schema
-export const StaticSitesGetBasicAuthOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesGetBasicAuthOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesGetBasicAuthOutput =
   typeof StaticSitesGetBasicAuthOutput.Type;
 
@@ -10782,11 +10561,12 @@ export type StaticSitesGetBuildDatabaseConnectionOutput =
  * @param environmentName - The stage site identifier.
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesGetBuildDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetBuildDatabaseConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -10853,11 +10633,12 @@ export type StaticSitesGetBuildDatabaseConnectionsOutput =
  * @param name - Name of the static site
  * @param environmentName - The stage site identifier.
  */
-export const StaticSitesGetBuildDatabaseConnections =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetBuildDatabaseConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionsInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionsWithDetailsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11038,11 +10819,10 @@ export type StaticSitesGetDatabaseConnectionOutput =
  * @param name - Name of the static site
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesGetDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesGetDatabaseConnectionInput,
-    outputSchema: StaticSitesGetDatabaseConnectionOutput,
-  }));
+export const StaticSitesGetDatabaseConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetDatabaseConnectionInput,
+  outputSchema: StaticSitesGetDatabaseConnectionOutput,
+}));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11107,11 +10887,10 @@ export type StaticSitesGetDatabaseConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site
  */
-export const StaticSitesGetDatabaseConnections =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesGetDatabaseConnectionsInput,
-    outputSchema: StaticSitesGetDatabaseConnectionsOutput,
-  }));
+export const StaticSitesGetDatabaseConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetDatabaseConnectionsInput,
+  outputSchema: StaticSitesGetDatabaseConnectionsOutput,
+}));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionsWithDetailsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11238,43 +11017,41 @@ export const StaticSitesGetDatabaseConnectionWithDetails =
     outputSchema: StaticSitesGetDatabaseConnectionWithDetailsOutput,
   }));
 // Input Schema
-export const StaticSitesGetLinkedBackendInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedBackendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-    }),
-  );
+export const StaticSitesGetLinkedBackendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedBackendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
+  }),
+);
 export type StaticSitesGetLinkedBackendInput =
   typeof StaticSitesGetLinkedBackendInput.Type;
 
 // Output Schema
-export const StaticSitesGetLinkedBackendOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesGetLinkedBackendOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesGetLinkedBackendOutput =
   typeof StaticSitesGetLinkedBackendOutput.Type;
 
@@ -11345,63 +11122,52 @@ export type StaticSitesGetLinkedBackendForBuildOutput =
  * @param environmentName - The stage site identifier
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesGetLinkedBackendForBuild =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetLinkedBackendForBuild = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetLinkedBackendForBuildInput,
     outputSchema: StaticSitesGetLinkedBackendForBuildOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StaticSitesGetLinkedBackendsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends",
-    }),
-  );
+export const StaticSitesGetLinkedBackendsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends",
+  }),
+);
 export type StaticSitesGetLinkedBackendsInput =
   typeof StaticSitesGetLinkedBackendsInput.Type;
 
 // Output Schema
-export const StaticSitesGetLinkedBackendsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StaticSitesGetLinkedBackendsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StaticSitesGetLinkedBackendsOutput =
   typeof StaticSitesGetLinkedBackendsOutput.Type;
 
@@ -11414,11 +11180,10 @@ export type StaticSitesGetLinkedBackendsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site
  */
-export const StaticSitesGetLinkedBackends =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesGetLinkedBackendsInput,
-    outputSchema: StaticSitesGetLinkedBackendsOutput,
-  }));
+export const StaticSitesGetLinkedBackends = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetLinkedBackendsInput,
+  outputSchema: StaticSitesGetLinkedBackendsOutput,
+}));
 // Input Schema
 export const StaticSitesGetLinkedBackendsForBuildInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11485,11 +11250,12 @@ export type StaticSitesGetLinkedBackendsForBuildOutput =
  * @param name - Name of the static site
  * @param environmentName - The stage site identifier
  */
-export const StaticSitesGetLinkedBackendsForBuild =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetLinkedBackendsForBuild = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetLinkedBackendsForBuildInput,
     outputSchema: StaticSitesGetLinkedBackendsForBuildOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetPrivateEndpointConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11543,11 +11309,12 @@ export type StaticSitesGetPrivateEndpointConnectionOutput =
  * @param name - Name of the static site.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
-export const StaticSitesGetPrivateEndpointConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetPrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetPrivateEndpointConnectionInput,
     outputSchema: StaticSitesGetPrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetPrivateEndpointConnectionListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11665,48 +11432,47 @@ export type StaticSitesGetPrivateLinkResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesGetPrivateLinkResources =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetPrivateLinkResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetPrivateLinkResourcesInput,
     outputSchema: StaticSitesGetPrivateLinkResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StaticSitesGetStaticSiteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-    }),
-  );
+export const StaticSitesGetStaticSiteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
+  }),
+);
 export type StaticSitesGetStaticSiteInput =
   typeof StaticSitesGetStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesGetStaticSiteOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesGetStaticSiteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesGetStaticSiteOutput =
   typeof StaticSitesGetStaticSiteOutput.Type;
 
@@ -11726,43 +11492,41 @@ export const StaticSitesGetStaticSite = /*@__PURE__*/ API.make(() => ({
   outputSchema: StaticSitesGetStaticSiteOutput,
 }));
 // Input Schema
-export const StaticSitesGetStaticSiteBuildInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    environmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}",
-    }),
-  );
+export const StaticSitesGetStaticSiteBuildInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  environmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}",
+  }),
+);
 export type StaticSitesGetStaticSiteBuildInput =
   typeof StaticSitesGetStaticSiteBuildInput.Type;
 
 // Output Schema
-export const StaticSitesGetStaticSiteBuildOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesGetStaticSiteBuildOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesGetStaticSiteBuildOutput =
   typeof StaticSitesGetStaticSiteBuildOutput.Type;
 
@@ -11778,30 +11542,28 @@ export type StaticSitesGetStaticSiteBuildOutput =
  * @param name - Name of the static site.
  * @param environmentName - The stage site identifier.
  */
-export const StaticSitesGetStaticSiteBuild =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesGetStaticSiteBuildInput,
-    outputSchema: StaticSitesGetStaticSiteBuildOutput,
-  }));
+export const StaticSitesGetStaticSiteBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetStaticSiteBuildInput,
+  outputSchema: StaticSitesGetStaticSiteBuildOutput,
+}));
 // Input Schema
-export const StaticSitesGetStaticSiteBuildsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds",
-    }),
-  );
+export const StaticSitesGetStaticSiteBuildsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds",
+  }),
+);
 export type StaticSitesGetStaticSiteBuildsInput =
   typeof StaticSitesGetStaticSiteBuildsInput.Type;
 
 // Output Schema
-export const StaticSitesGetStaticSiteBuildsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const StaticSitesGetStaticSiteBuildsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11834,7 +11596,8 @@ export const StaticSitesGetStaticSiteBuildsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type StaticSitesGetStaticSiteBuildsOutput =
   typeof StaticSitesGetStaticSiteBuildsOutput.Type;
 
@@ -11849,11 +11612,10 @@ export type StaticSitesGetStaticSiteBuildsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesGetStaticSiteBuilds =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesGetStaticSiteBuildsInput,
-    outputSchema: StaticSitesGetStaticSiteBuildsOutput,
-  }));
+export const StaticSitesGetStaticSiteBuilds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetStaticSiteBuildsInput,
+  outputSchema: StaticSitesGetStaticSiteBuildsOutput,
+}));
 // Input Schema
 export const StaticSitesGetStaticSiteCustomDomainInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11907,11 +11669,12 @@ export type StaticSitesGetStaticSiteCustomDomainOutput =
  * @param name - Name of the static site.
  * @param domainName - The custom domain name.
  */
-export const StaticSitesGetStaticSiteCustomDomain =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetStaticSiteCustomDomain = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetStaticSiteCustomDomainInput,
     outputSchema: StaticSitesGetStaticSiteCustomDomainOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetStaticSitesByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -11976,11 +11739,12 @@ export type StaticSitesGetStaticSitesByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StaticSitesGetStaticSitesByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesGetStaticSitesByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesGetStaticSitesByResourceGroupInput,
     outputSchema: StaticSitesGetStaticSitesByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12245,43 +12009,41 @@ export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuild =
       StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildOutput,
   }));
 // Input Schema
-export const StaticSitesLinkBackendInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedBackendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-    }),
-  );
+export const StaticSitesLinkBackendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedBackendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
+  }),
+);
 export type StaticSitesLinkBackendInput =
   typeof StaticSitesLinkBackendInput.Type;
 
 // Output Schema
-export const StaticSitesLinkBackendOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesLinkBackendOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesLinkBackendOutput =
   typeof StaticSitesLinkBackendOutput.Type;
 
@@ -12300,44 +12062,42 @@ export const StaticSitesLinkBackend = /*@__PURE__*/ API.make(() => ({
   outputSchema: StaticSitesLinkBackendOutput,
 }));
 // Input Schema
-export const StaticSitesLinkBackendToBuildInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    environmentName: Schema.String.pipe(T.PathParam()),
-    linkedBackendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
-    }),
-  );
+export const StaticSitesLinkBackendToBuildInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  environmentName: Schema.String.pipe(T.PathParam()),
+  linkedBackendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
+  }),
+);
 export type StaticSitesLinkBackendToBuildInput =
   typeof StaticSitesLinkBackendToBuildInput.Type;
 
 // Output Schema
-export const StaticSitesLinkBackendToBuildOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesLinkBackendToBuildOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesLinkBackendToBuildOutput =
   typeof StaticSitesLinkBackendToBuildOutput.Type;
 
@@ -12352,11 +12112,10 @@ export type StaticSitesLinkBackendToBuildOutput =
  * @param environmentName - The stage site identifier
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesLinkBackendToBuild =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesLinkBackendToBuildInput,
-    outputSchema: StaticSitesLinkBackendToBuildOutput,
-  }));
+export const StaticSitesLinkBackendToBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesLinkBackendToBuildInput,
+  outputSchema: StaticSitesLinkBackendToBuildOutput,
+}));
 // Input Schema
 export const StaticSitesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12410,57 +12169,45 @@ export const StaticSitesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: StaticSitesListOutput,
 }));
 // Input Schema
-export const StaticSitesListBasicAuthInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth",
-    }),
-  );
+export const StaticSitesListBasicAuthInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth",
+  }),
+);
 export type StaticSitesListBasicAuthInput =
   typeof StaticSitesListBasicAuthInput.Type;
 
 // Output Schema
-export const StaticSitesListBasicAuthOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StaticSitesListBasicAuthOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StaticSitesListBasicAuthOutput =
   typeof StaticSitesListBasicAuthOutput.Type;
 
@@ -12517,11 +12264,12 @@ export type StaticSitesListStaticSiteAppSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListStaticSiteAppSettings =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteAppSettings = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteAppSettingsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteBuildAppSettingsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12562,11 +12310,12 @@ export type StaticSitesListStaticSiteBuildAppSettingsOutput =
  * @param name - Name of the static site.
  * @param environmentName - The stage site identifier.
  */
-export const StaticSitesListStaticSiteBuildAppSettings =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteBuildAppSettings = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteBuildAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteBuildAppSettingsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteBuildFunctionAppSettingsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12657,11 +12406,12 @@ export type StaticSitesListStaticSiteBuildFunctionsOutput =
  * @param name - Name of the static site.
  * @param environmentName - The stage site identifier.
  */
-export const StaticSitesListStaticSiteBuildFunctions =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteBuildFunctions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteBuildFunctionsInput,
     outputSchema: StaticSitesListStaticSiteBuildFunctionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteConfiguredRolesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12700,11 +12450,12 @@ export type StaticSitesListStaticSiteConfiguredRolesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListStaticSiteConfiguredRoles =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteConfiguredRoles = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteConfiguredRolesInput,
     outputSchema: StaticSitesListStaticSiteConfiguredRolesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteCustomDomainsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12771,11 +12522,12 @@ export type StaticSitesListStaticSiteCustomDomainsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListStaticSiteCustomDomains =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteCustomDomains = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteCustomDomainsInput,
     outputSchema: StaticSitesListStaticSiteCustomDomainsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteFunctionAppSettingsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12862,11 +12614,12 @@ export type StaticSitesListStaticSiteFunctionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListStaticSiteFunctions =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesListStaticSiteFunctions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesListStaticSiteFunctionsInput,
     outputSchema: StaticSitesListStaticSiteFunctionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesListStaticSiteSecretsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -12905,31 +12658,29 @@ export type StaticSitesListStaticSiteSecretsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListStaticSiteSecrets =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesListStaticSiteSecretsInput,
-    outputSchema: StaticSitesListStaticSiteSecretsOutput,
-  }));
+export const StaticSitesListStaticSiteSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesListStaticSiteSecretsInput,
+  outputSchema: StaticSitesListStaticSiteSecretsOutput,
+}));
 // Input Schema
-export const StaticSitesListStaticSiteUsersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    authprovider: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/listUsers",
-    }),
-  );
+export const StaticSitesListStaticSiteUsersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  authprovider: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/listUsers",
+  }),
+);
 export type StaticSitesListStaticSiteUsersInput =
   typeof StaticSitesListStaticSiteUsersInput.Type;
 
 // Output Schema
-export const StaticSitesListStaticSiteUsersOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const StaticSitesListStaticSiteUsersOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12939,7 +12690,8 @@ export const StaticSitesListStaticSiteUsersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type StaticSitesListStaticSiteUsersOutput =
   typeof StaticSitesListStaticSiteUsersOutput.Type;
 
@@ -12954,34 +12706,31 @@ export type StaticSitesListStaticSiteUsersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param authprovider - The auth provider for the users.
  */
-export const StaticSitesListStaticSiteUsers =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesListStaticSiteUsersInput,
-    outputSchema: StaticSitesListStaticSiteUsersOutput,
-  }));
+export const StaticSitesListStaticSiteUsers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesListStaticSiteUsersInput,
+  outputSchema: StaticSitesListStaticSiteUsersOutput,
+}));
 // Input Schema
-export const StaticSitesPreviewWorkflowInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/previewStaticSiteWorkflowFile",
-    }),
-  );
+export const StaticSitesPreviewWorkflowInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/previewStaticSiteWorkflowFile",
+  }),
+);
 export type StaticSitesPreviewWorkflowInput =
   typeof StaticSitesPreviewWorkflowInput.Type;
 
 // Output Schema
-export const StaticSitesPreviewWorkflowOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const StaticSitesPreviewWorkflowOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type StaticSitesPreviewWorkflowOutput =
   typeof StaticSitesPreviewWorkflowOutput.Type;
 
@@ -13156,26 +12905,24 @@ export type StaticSitesResetStaticSiteApiKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesResetStaticSiteApiKey =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesResetStaticSiteApiKeyInput,
-    outputSchema: StaticSitesResetStaticSiteApiKeyOutput,
-  }));
+export const StaticSitesResetStaticSiteApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesResetStaticSiteApiKeyInput,
+  outputSchema: StaticSitesResetStaticSiteApiKeyOutput,
+}));
 // Input Schema
-export const StaticSitesUnlinkBackendInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedBackendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    isCleaningAuthConfig: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-    }),
-  );
+export const StaticSitesUnlinkBackendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedBackendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  isCleaningAuthConfig: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
+  }),
+);
 export type StaticSitesUnlinkBackendInput =
   typeof StaticSitesUnlinkBackendInput.Type;
 
@@ -13236,11 +12983,10 @@ export type StaticSitesUnlinkBackendFromBuildOutput =
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  * @param isCleaningAuthConfig - Decides if auth will be removed from backend configuration
  */
-export const StaticSitesUnlinkBackendFromBuild =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesUnlinkBackendFromBuildInput,
-    outputSchema: StaticSitesUnlinkBackendFromBuildOutput,
-  }));
+export const StaticSitesUnlinkBackendFromBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesUnlinkBackendFromBuildInput,
+  outputSchema: StaticSitesUnlinkBackendFromBuildOutput,
+}));
 // Input Schema
 export const StaticSitesUpdateBuildDatabaseConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13296,11 +13042,12 @@ export type StaticSitesUpdateBuildDatabaseConnectionOutput =
  * @param environmentName - The stage site identifier.
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesUpdateBuildDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesUpdateBuildDatabaseConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesUpdateBuildDatabaseConnectionInput,
     outputSchema: StaticSitesUpdateBuildDatabaseConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesUpdateDatabaseConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13354,48 +13101,47 @@ export type StaticSitesUpdateDatabaseConnectionOutput =
  * @param name - Name of the static site
  * @param databaseConnectionName - Name of the database connection.
  */
-export const StaticSitesUpdateDatabaseConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesUpdateDatabaseConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesUpdateDatabaseConnectionInput,
     outputSchema: StaticSitesUpdateDatabaseConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StaticSitesUpdateStaticSiteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-    }),
-  );
+export const StaticSitesUpdateStaticSiteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
+  }),
+);
 export type StaticSitesUpdateStaticSiteInput =
   typeof StaticSitesUpdateStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesUpdateStaticSiteOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StaticSitesUpdateStaticSiteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticSitesUpdateStaticSiteOutput =
   typeof StaticSitesUpdateStaticSiteOutput.Type;
 
@@ -13415,20 +13161,21 @@ export const StaticSitesUpdateStaticSite = /*@__PURE__*/ API.make(() => ({
   outputSchema: StaticSitesUpdateStaticSiteOutput,
 }));
 // Input Schema
-export const StaticSitesUpdateStaticSiteUserInput =
-  /*@__PURE__*/ Schema.Struct({
+export const StaticSitesUpdateStaticSiteUserInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     authprovider: Schema.String.pipe(T.PathParam()),
     userid: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
+  }),
+);
 export type StaticSitesUpdateStaticSiteUserInput =
   typeof StaticSitesUpdateStaticSiteUserInput.Type;
 
@@ -13453,25 +13200,23 @@ export type StaticSitesUpdateStaticSiteUserOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StaticSitesUpdateStaticSiteUser =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StaticSitesUpdateStaticSiteUserInput,
-    outputSchema: StaticSitesUpdateStaticSiteUserOutput,
-  }));
+export const StaticSitesUpdateStaticSiteUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesUpdateStaticSiteUserInput,
+  outputSchema: StaticSitesUpdateStaticSiteUserOutput,
+}));
 // Input Schema
-export const StaticSitesValidateBackendInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedBackendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}/validate",
-    }),
-  );
+export const StaticSitesValidateBackendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedBackendName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}/validate",
+  }),
+);
 export type StaticSitesValidateBackendInput =
   typeof StaticSitesValidateBackendInput.Type;
 
@@ -13529,11 +13274,12 @@ export type StaticSitesValidateBackendForBuildOutput =
  * @param environmentName - The stage site identifier
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesValidateBackendForBuild =
-  /*@__PURE__*/ API.make(() => ({
+export const StaticSitesValidateBackendForBuild = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StaticSitesValidateBackendForBuildInput,
     outputSchema: StaticSitesValidateBackendForBuildOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13575,38 +13321,36 @@ export const StaticSitesValidateCustomDomainCanBeAddedToStaticSite =
     outputSchema: StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput,
   }));
 // Input Schema
-export const UpdatePublishingUserInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Web/publishingUsers/web",
-    }),
-  );
+export const UpdatePublishingUserInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Web/publishingUsers/web",
+  }),
+);
 export type UpdatePublishingUserInput = typeof UpdatePublishingUserInput.Type;
 
 // Output Schema
-export const UpdatePublishingUserOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UpdatePublishingUserOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UpdatePublishingUserOutput = typeof UpdatePublishingUserOutput.Type;
 
 // The operation
@@ -13622,39 +13366,37 @@ export const UpdatePublishingUser = /*@__PURE__*/ API.make(() => ({
   outputSchema: UpdatePublishingUserOutput,
 }));
 // Input Schema
-export const UpdateSourceControlInput =
-  /*@__PURE__*/ Schema.Struct({
-    sourceControlType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Web/sourcecontrols/{sourceControlType}",
-    }),
-  );
+export const UpdateSourceControlInput = /*@__PURE__*/ Schema.Struct({
+  sourceControlType: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Web/sourcecontrols/{sourceControlType}",
+  }),
+);
 export type UpdateSourceControlInput = typeof UpdateSourceControlInput.Type;
 
 // Output Schema
-export const UpdateSourceControlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const UpdateSourceControlOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type UpdateSourceControlOutput = typeof UpdateSourceControlOutput.Type;
 
 // The operation
@@ -13741,27 +13483,25 @@ export const ValidateMove = /*@__PURE__*/ API.make(() => ({
   outputSchema: ValidateMoveOutput,
 }));
 // Input Schema
-export const VerifyHostingEnvironmentVnetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet",
-    }),
-  );
+export const VerifyHostingEnvironmentVnetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet",
+  }),
+);
 export type VerifyHostingEnvironmentVnetInput =
   typeof VerifyHostingEnvironmentVnetInput.Type;
 
 // Output Schema
-export const VerifyHostingEnvironmentVnetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const VerifyHostingEnvironmentVnetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type VerifyHostingEnvironmentVnetOutput =
   typeof VerifyHostingEnvironmentVnetOutput.Type;
 
@@ -13774,49 +13514,46 @@ export type VerifyHostingEnvironmentVnetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VerifyHostingEnvironmentVnet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VerifyHostingEnvironmentVnetInput,
-    outputSchema: VerifyHostingEnvironmentVnetOutput,
-  }));
+export const VerifyHostingEnvironmentVnet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VerifyHostingEnvironmentVnetInput,
+  outputSchema: VerifyHostingEnvironmentVnetOutput,
+}));
 // Input Schema
-export const WebAppsAddPremierAddOnInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsAddPremierAddOnInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsAddPremierAddOnInput =
   typeof WebAppsAddPremierAddOnInput.Type;
 
 // Output Schema
-export const WebAppsAddPremierAddOnOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsAddPremierAddOnOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsAddPremierAddOnOutput =
   typeof WebAppsAddPremierAddOnOutput.Type;
 
@@ -13837,44 +13574,42 @@ export const WebAppsAddPremierAddOn = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsAddPremierAddOnOutput,
 }));
 // Input Schema
-export const WebAppsAddPremierAddOnSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsAddPremierAddOnSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsAddPremierAddOnSlotInput =
   typeof WebAppsAddPremierAddOnSlotInput.Type;
 
 // Output Schema
-export const WebAppsAddPremierAddOnSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsAddPremierAddOnSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsAddPremierAddOnSlotOutput =
   typeof WebAppsAddPremierAddOnSlotOutput.Type;
 
@@ -13896,30 +13631,28 @@ export const WebAppsAddPremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsAddPremierAddOnSlotOutput,
 }));
 // Input Schema
-export const WebAppsAnalyzeCustomHostnameInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    hostName: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname",
-    }),
-  );
+export const WebAppsAnalyzeCustomHostnameInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  hostName: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname",
+  }),
+);
 export type WebAppsAnalyzeCustomHostnameInput =
   typeof WebAppsAnalyzeCustomHostnameInput.Type;
 
 // Output Schema
-export const WebAppsAnalyzeCustomHostnameOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsAnalyzeCustomHostnameOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsAnalyzeCustomHostnameOutput =
   typeof WebAppsAnalyzeCustomHostnameOutput.Type;
 
@@ -13935,11 +13668,10 @@ export type WebAppsAnalyzeCustomHostnameOutput =
  * @param name - Name of the app.
  * @param hostName - Custom hostname.
  */
-export const WebAppsAnalyzeCustomHostname =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsAnalyzeCustomHostnameInput,
-    outputSchema: WebAppsAnalyzeCustomHostnameOutput,
-  }));
+export const WebAppsAnalyzeCustomHostname = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsAnalyzeCustomHostnameInput,
+  outputSchema: WebAppsAnalyzeCustomHostnameOutput,
+}));
 // Input Schema
 export const WebAppsAnalyzeCustomHostnameSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -13982,11 +13714,10 @@ export type WebAppsAnalyzeCustomHostnameSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param hostName - Custom hostname.
  */
-export const WebAppsAnalyzeCustomHostnameSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsAnalyzeCustomHostnameSlotInput,
-    outputSchema: WebAppsAnalyzeCustomHostnameSlotOutput,
-  }));
+export const WebAppsAnalyzeCustomHostnameSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsAnalyzeCustomHostnameSlotInput,
+  outputSchema: WebAppsAnalyzeCustomHostnameSlotOutput,
+}));
 // Input Schema
 export const WebAppsApplySlotConfigToProductionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14020,11 +13751,12 @@ export type WebAppsApplySlotConfigToProductionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsApplySlotConfigToProduction =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsApplySlotConfigToProduction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsApplySlotConfigToProductionInput,
     outputSchema: WebAppsApplySlotConfigToProductionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsApplySlotConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14060,11 +13792,10 @@ export type WebAppsApplySlotConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsApplySlotConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsApplySlotConfigurationSlotInput,
-    outputSchema: WebAppsApplySlotConfigurationSlotOutput,
-  }));
+export const WebAppsApplySlotConfigurationSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsApplySlotConfigurationSlotInput,
+  outputSchema: WebAppsApplySlotConfigurationSlotOutput,
+}));
 // Input Schema
 export const WebAppsApproveOrRejectPrivateEndpointConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14250,26 +13981,25 @@ export const WebAppsBackupSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsBackupSlotInput = typeof WebAppsBackupSlotInput.Type;
 
 // Output Schema
-export const WebAppsBackupSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsBackupSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsBackupSlotOutput = typeof WebAppsBackupSlotOutput.Type;
 
 // The operation
@@ -14289,43 +14019,41 @@ export const WebAppsBackupSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsBackupSlotOutput,
 }));
 // Input Schema
-export const WebAppsCreateDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-    }),
-  );
+export const WebAppsCreateDeploymentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
+  }),
+);
 export type WebAppsCreateDeploymentInput =
   typeof WebAppsCreateDeploymentInput.Type;
 
 // Output Schema
-export const WebAppsCreateDeploymentOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsCreateDeploymentOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsCreateDeploymentOutput =
   typeof WebAppsCreateDeploymentOutput.Type;
 
@@ -14346,44 +14074,42 @@ export const WebAppsCreateDeployment = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsCreateDeploymentOutput,
 }));
 // Input Schema
-export const WebAppsCreateDeploymentSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-    }),
-  );
+export const WebAppsCreateDeploymentSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
+  }),
+);
 export type WebAppsCreateDeploymentSlotInput =
   typeof WebAppsCreateDeploymentSlotInput.Type;
 
 // Output Schema
-export const WebAppsCreateDeploymentSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsCreateDeploymentSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsCreateDeploymentSlotOutput =
   typeof WebAppsCreateDeploymentSlotOutput.Type;
 
@@ -14405,42 +14131,40 @@ export const WebAppsCreateDeploymentSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsCreateDeploymentSlotOutput,
 }));
 // Input Schema
-export const WebAppsCreateFunctionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-    }),
-  );
+export const WebAppsCreateFunctionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
+  }),
+);
 export type WebAppsCreateFunctionInput = typeof WebAppsCreateFunctionInput.Type;
 
 // Output Schema
-export const WebAppsCreateFunctionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsCreateFunctionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsCreateFunctionOutput =
   typeof WebAppsCreateFunctionOutput.Type;
 
@@ -14515,11 +14239,10 @@ export type WebAppsCreateInstanceFunctionSlotOutput =
  * @param slot - Name of the deployment slot.
  * @param functionName - Function name.
  */
-export const WebAppsCreateInstanceFunctionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsCreateInstanceFunctionSlotInput,
-    outputSchema: WebAppsCreateInstanceFunctionSlotOutput,
-  }));
+export const WebAppsCreateInstanceFunctionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateInstanceFunctionSlotInput,
+  outputSchema: WebAppsCreateInstanceFunctionSlotOutput,
+}));
 // Input Schema
 export const WebAppsCreateInstanceMSDeployOperationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14573,11 +14296,12 @@ export type WebAppsCreateInstanceMSDeployOperationOutput =
  * @param name - Name of web app.
  * @param instanceId - ID of web app instance.
  */
-export const WebAppsCreateInstanceMSDeployOperation =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateInstanceMSDeployOperation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateInstanceMSDeployOperationInput,
     outputSchema: WebAppsCreateInstanceMSDeployOperationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateInstanceMSDeployOperationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14639,24 +14363,23 @@ export const WebAppsCreateInstanceMSDeployOperationSlot =
     outputSchema: WebAppsCreateInstanceMSDeployOperationSlotOutput,
   }));
 // Input Schema
-export const WebAppsCreateMSDeployOperationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
-    }),
-  );
+export const WebAppsCreateMSDeployOperationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
+  }),
+);
 export type WebAppsCreateMSDeployOperationInput =
   typeof WebAppsCreateMSDeployOperationInput.Type;
 
 // Output Schema
-export const WebAppsCreateMSDeployOperationOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsCreateMSDeployOperationOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14674,7 +14397,8 @@ export const WebAppsCreateMSDeployOperationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsCreateMSDeployOperationOutput =
   typeof WebAppsCreateMSDeployOperationOutput.Type;
 
@@ -14689,11 +14413,10 @@ export type WebAppsCreateMSDeployOperationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app.
  */
-export const WebAppsCreateMSDeployOperation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsCreateMSDeployOperationInput,
-    outputSchema: WebAppsCreateMSDeployOperationOutput,
-  }));
+export const WebAppsCreateMSDeployOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateMSDeployOperationInput,
+  outputSchema: WebAppsCreateMSDeployOperationOutput,
+}));
 // Input Schema
 export const WebAppsCreateMSDeployOperationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14747,24 +14470,26 @@ export type WebAppsCreateMSDeployOperationSlotOutput =
  * @param name - Name of web app.
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
-export const WebAppsCreateMSDeployOperationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateMSDeployOperationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateMSDeployOperationSlotInput,
     outputSchema: WebAppsCreateMSDeployOperationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsCreateOneDeployOperationInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsCreateOneDeployOperationInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
+  }),
+);
 export type WebAppsCreateOneDeployOperationInput =
   typeof WebAppsCreateOneDeployOperationInput.Type;
 
@@ -14785,47 +14510,44 @@ export type WebAppsCreateOneDeployOperationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsCreateOneDeployOperation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsCreateOneDeployOperationInput,
-    outputSchema: WebAppsCreateOneDeployOperationOutput,
-  }));
+export const WebAppsCreateOneDeployOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateOneDeployOperationInput,
+  outputSchema: WebAppsCreateOneDeployOperationOutput,
+}));
 // Input Schema
-export const WebAppsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
-    }),
-  );
+export const WebAppsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
+  }),
+);
 export type WebAppsCreateOrUpdateInput = typeof WebAppsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WebAppsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsCreateOrUpdateOutput =
   typeof WebAppsCreateOrUpdateOutput.Type;
 
@@ -14895,11 +14617,12 @@ export type WebAppsCreateOrUpdateConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsCreateOrUpdateConfiguration =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateConfiguration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateConfigurationInput,
     outputSchema: WebAppsCreateOrUpdateConfigurationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -14953,11 +14676,12 @@ export type WebAppsCreateOrUpdateConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
-export const WebAppsCreateOrUpdateConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateConfigurationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateConfigurationSlotInput,
     outputSchema: WebAppsCreateOrUpdateConfigurationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15113,11 +14837,12 @@ export type WebAppsCreateOrUpdateFunctionSecretOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebAppsCreateOrUpdateFunctionSecret =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateFunctionSecret = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateFunctionSecretInput,
     outputSchema: WebAppsCreateOrUpdateFunctionSecretOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateFunctionSecretSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15156,11 +14881,12 @@ export type WebAppsCreateOrUpdateFunctionSecretSlotOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebAppsCreateOrUpdateFunctionSecretSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateFunctionSecretSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateFunctionSecretSlotInput,
     outputSchema: WebAppsCreateOrUpdateFunctionSecretSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateHostNameBindingInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15214,11 +14940,12 @@ export type WebAppsCreateOrUpdateHostNameBindingOutput =
  * @param name - Name of the app.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsCreateOrUpdateHostNameBinding =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateHostNameBinding = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateHostNameBindingInput,
     outputSchema: WebAppsCreateOrUpdateHostNameBindingOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateHostNameBindingSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15274,26 +15001,28 @@ export type WebAppsCreateOrUpdateHostNameBindingSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsCreateOrUpdateHostNameBindingSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateHostNameBindingSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateHostNameBindingSlotInput,
     outputSchema: WebAppsCreateOrUpdateHostNameBindingSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsCreateOrUpdateHostSecretInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsCreateOrUpdateHostSecretInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     keyType: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
+  }),
+);
 export type WebAppsCreateOrUpdateHostSecretInput =
   typeof WebAppsCreateOrUpdateHostSecretInput.Type;
 
@@ -15319,11 +15048,10 @@ export type WebAppsCreateOrUpdateHostSecretOutput =
  * @param keyType - The type of host key.
  * @param keyName - The name of the key.
  */
-export const WebAppsCreateOrUpdateHostSecret =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsCreateOrUpdateHostSecretInput,
-    outputSchema: WebAppsCreateOrUpdateHostSecretOutput,
-  }));
+export const WebAppsCreateOrUpdateHostSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateOrUpdateHostSecretInput,
+  outputSchema: WebAppsCreateOrUpdateHostSecretOutput,
+}));
 // Input Schema
 export const WebAppsCreateOrUpdateHostSecretSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15366,11 +15094,12 @@ export type WebAppsCreateOrUpdateHostSecretSlotOutput =
  * @param keyType - The type of host key.
  * @param keyName - The name of the key.
  */
-export const WebAppsCreateOrUpdateHostSecretSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateHostSecretSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateHostSecretSlotInput,
     outputSchema: WebAppsCreateOrUpdateHostSecretSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateHybridConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15426,11 +15155,12 @@ export type WebAppsCreateOrUpdateHybridConnectionOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsCreateOrUpdateHybridConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateHybridConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateHybridConnectionInput,
     outputSchema: WebAppsCreateOrUpdateHybridConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateHybridConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15488,11 +15218,12 @@ export type WebAppsCreateOrUpdateHybridConnectionSlotOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsCreateOrUpdateHybridConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateHybridConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateHybridConnectionSlotInput,
     outputSchema: WebAppsCreateOrUpdateHybridConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdatePublicCertificateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15546,11 +15277,12 @@ export type WebAppsCreateOrUpdatePublicCertificateOutput =
  * @param name - Name of the app.
  * @param publicCertificateName - Public certificate name.
  */
-export const WebAppsCreateOrUpdatePublicCertificate =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdatePublicCertificate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdatePublicCertificateInput,
     outputSchema: WebAppsCreateOrUpdatePublicCertificateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdatePublicCertificateSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15780,11 +15512,12 @@ export type WebAppsCreateOrUpdateSiteContainerOutput =
  * @param name - Name of the app.
  * @param containerName - Site Container Name
  */
-export const WebAppsCreateOrUpdateSiteContainer =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateSiteContainer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateSiteContainerInput,
     outputSchema: WebAppsCreateOrUpdateSiteContainerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateSiteContainerSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -15838,49 +15571,48 @@ export type WebAppsCreateOrUpdateSiteContainerSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
  * @param containerName - Site Container Name
  */
-export const WebAppsCreateOrUpdateSiteContainerSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateSiteContainerSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateSiteContainerSlotInput,
     outputSchema: WebAppsCreateOrUpdateSiteContainerSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsCreateOrUpdateSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
-    }),
-  );
+export const WebAppsCreateOrUpdateSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
+  }),
+);
 export type WebAppsCreateOrUpdateSlotInput =
   typeof WebAppsCreateOrUpdateSlotInput.Type;
 
 // Output Schema
-export const WebAppsCreateOrUpdateSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsCreateOrUpdateSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsCreateOrUpdateSlotOutput =
   typeof WebAppsCreateOrUpdateSlotOutput.Type;
 
@@ -15951,11 +15683,12 @@ export type WebAppsCreateOrUpdateSourceControlOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsCreateOrUpdateSourceControl =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateSourceControl = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateSourceControlInput,
     outputSchema: WebAppsCreateOrUpdateSourceControlOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateSourceControlSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16009,11 +15742,12 @@ export type WebAppsCreateOrUpdateSourceControlSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
-export const WebAppsCreateOrUpdateSourceControlSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateSourceControlSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateSourceControlSlotInput,
     outputSchema: WebAppsCreateOrUpdateSourceControlSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16189,11 +15923,12 @@ export type WebAppsCreateOrUpdateVnetConnectionOutput =
  * @param name - Name of the app.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsCreateOrUpdateVnetConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateVnetConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsCreateOrUpdateVnetConnectionGatewayInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16371,11 +16106,12 @@ export type WebAppsCreateOrUpdateVnetConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsCreateOrUpdateVnetConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsCreateOrUpdateVnetConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionSlotInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16414,19 +16150,18 @@ export const WebAppsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteOutput,
 }));
 // Input Schema
-export const WebAppsDeleteBackupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
-    }),
-  );
+export const WebAppsDeleteBackupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
+  }),
+);
 export type WebAppsDeleteBackupInput = typeof WebAppsDeleteBackupInput.Type;
 
 // Output Schema
@@ -16481,11 +16216,10 @@ export type WebAppsDeleteBackupConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsDeleteBackupConfiguration =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteBackupConfigurationInput,
-    outputSchema: WebAppsDeleteBackupConfigurationOutput,
-  }));
+export const WebAppsDeleteBackupConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteBackupConfigurationInput,
+  outputSchema: WebAppsDeleteBackupConfigurationOutput,
+}));
 // Input Schema
 export const WebAppsDeleteBackupConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16521,26 +16255,26 @@ export type WebAppsDeleteBackupConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsDeleteBackupConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeleteBackupConfigurationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeleteBackupConfigurationSlotInput,
     outputSchema: WebAppsDeleteBackupConfigurationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsDeleteBackupSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
-    }),
-  );
+export const WebAppsDeleteBackupSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
+  }),
+);
 export type WebAppsDeleteBackupSlotInput =
   typeof WebAppsDeleteBackupSlotInput.Type;
 
@@ -16567,19 +16301,18 @@ export const WebAppsDeleteBackupSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteBackupSlotOutput,
 }));
 // Input Schema
-export const WebAppsDeleteContinuousWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsDeleteContinuousWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
+  }),
+);
 export type WebAppsDeleteContinuousWebJobInput =
   typeof WebAppsDeleteContinuousWebJobInput.Type;
 
@@ -16600,11 +16333,10 @@ export type WebAppsDeleteContinuousWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsDeleteContinuousWebJob =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteContinuousWebJobInput,
-    outputSchema: WebAppsDeleteContinuousWebJobOutput,
-  }));
+export const WebAppsDeleteContinuousWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteContinuousWebJobInput,
+  outputSchema: WebAppsDeleteContinuousWebJobOutput,
+}));
 // Input Schema
 export const WebAppsDeleteContinuousWebJobSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16642,25 +16374,23 @@ export type WebAppsDeleteContinuousWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsDeleteContinuousWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteContinuousWebJobSlotInput,
-    outputSchema: WebAppsDeleteContinuousWebJobSlotOutput,
-  }));
+export const WebAppsDeleteContinuousWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteContinuousWebJobSlotInput,
+  outputSchema: WebAppsDeleteContinuousWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-    }),
-  );
+export const WebAppsDeleteDeploymentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
+  }),
+);
 export type WebAppsDeleteDeploymentInput =
   typeof WebAppsDeleteDeploymentInput.Type;
 
@@ -16686,20 +16416,19 @@ export const WebAppsDeleteDeployment = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteDeploymentOutput,
 }));
 // Input Schema
-export const WebAppsDeleteDeploymentSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-    }),
-  );
+export const WebAppsDeleteDeploymentSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
+  }),
+);
 export type WebAppsDeleteDeploymentSlotInput =
   typeof WebAppsDeleteDeploymentSlotInput.Type;
 
@@ -16760,11 +16489,12 @@ export type WebAppsDeleteDomainOwnershipIdentifierOutput =
  * @param name - Name of the app.
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
-export const WebAppsDeleteDomainOwnershipIdentifier =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeleteDomainOwnershipIdentifier = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeleteDomainOwnershipIdentifierInput,
     outputSchema: WebAppsDeleteDomainOwnershipIdentifierOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsDeleteDomainOwnershipIdentifierSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16808,19 +16538,18 @@ export const WebAppsDeleteDomainOwnershipIdentifierSlot =
     outputSchema: WebAppsDeleteDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
-export const WebAppsDeleteFunctionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-    }),
-  );
+export const WebAppsDeleteFunctionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
+  }),
+);
 export type WebAppsDeleteFunctionInput = typeof WebAppsDeleteFunctionInput.Type;
 
 // Output Schema
@@ -16845,20 +16574,19 @@ export const WebAppsDeleteFunction = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteFunctionOutput,
 }));
 // Input Schema
-export const WebAppsDeleteFunctionSecretInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
-    }),
-  );
+export const WebAppsDeleteFunctionSecretInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
+  }),
+);
 export type WebAppsDeleteFunctionSecretInput =
   typeof WebAppsDeleteFunctionSecretInput.Type;
 
@@ -16882,8 +16610,8 @@ export const WebAppsDeleteFunctionSecret = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteFunctionSecretOutput,
 }));
 // Input Schema
-export const WebAppsDeleteFunctionSecretSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsDeleteFunctionSecretSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16891,12 +16619,13 @@ export const WebAppsDeleteFunctionSecretSlotInput =
     functionName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}",
+  }),
+);
 export type WebAppsDeleteFunctionSecretSlotInput =
   typeof WebAppsDeleteFunctionSecretSlotInput.Type;
 
@@ -16915,25 +16644,23 @@ export type WebAppsDeleteFunctionSecretSlotOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebAppsDeleteFunctionSecretSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteFunctionSecretSlotInput,
-    outputSchema: WebAppsDeleteFunctionSecretSlotOutput,
-  }));
+export const WebAppsDeleteFunctionSecretSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteFunctionSecretSlotInput,
+  outputSchema: WebAppsDeleteFunctionSecretSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteHostNameBindingInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
-    }),
-  );
+export const WebAppsDeleteHostNameBindingInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
+  }),
+);
 export type WebAppsDeleteHostNameBindingInput =
   typeof WebAppsDeleteHostNameBindingInput.Type;
 
@@ -16954,11 +16681,10 @@ export type WebAppsDeleteHostNameBindingOutput =
  * @param name - Name of the app.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsDeleteHostNameBinding =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteHostNameBindingInput,
-    outputSchema: WebAppsDeleteHostNameBindingOutput,
-  }));
+export const WebAppsDeleteHostNameBinding = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHostNameBindingInput,
+  outputSchema: WebAppsDeleteHostNameBindingOutput,
+}));
 // Input Schema
 export const WebAppsDeleteHostNameBindingSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -16995,26 +16721,24 @@ export type WebAppsDeleteHostNameBindingSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsDeleteHostNameBindingSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteHostNameBindingSlotInput,
-    outputSchema: WebAppsDeleteHostNameBindingSlotOutput,
-  }));
+export const WebAppsDeleteHostNameBindingSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHostNameBindingSlotInput,
+  outputSchema: WebAppsDeleteHostNameBindingSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteHostSecretInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
-    }),
-  );
+export const WebAppsDeleteHostSecretInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  keyType: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
+  }),
+);
 export type WebAppsDeleteHostSecretInput =
   typeof WebAppsDeleteHostSecretInput.Type;
 
@@ -17041,21 +16765,20 @@ export const WebAppsDeleteHostSecret = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteHostSecretOutput,
 }));
 // Input Schema
-export const WebAppsDeleteHostSecretSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
-    }),
-  );
+export const WebAppsDeleteHostSecretSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  keyType: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
+  }),
+);
 export type WebAppsDeleteHostSecretSlotInput =
   typeof WebAppsDeleteHostSecretSlotInput.Type;
 
@@ -17083,20 +16806,19 @@ export const WebAppsDeleteHostSecretSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteHostSecretSlotOutput,
 }));
 // Input Schema
-export const WebAppsDeleteHybridConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-    }),
-  );
+export const WebAppsDeleteHybridConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
+  }),
+);
 export type WebAppsDeleteHybridConnectionInput =
   typeof WebAppsDeleteHybridConnectionInput.Type;
 
@@ -17118,11 +16840,10 @@ export type WebAppsDeleteHybridConnectionOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsDeleteHybridConnection =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteHybridConnectionInput,
-    outputSchema: WebAppsDeleteHybridConnectionOutput,
-  }));
+export const WebAppsDeleteHybridConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHybridConnectionInput,
+  outputSchema: WebAppsDeleteHybridConnectionOutput,
+}));
 // Input Schema
 export const WebAppsDeleteHybridConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17162,11 +16883,10 @@ export type WebAppsDeleteHybridConnectionSlotOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsDeleteHybridConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteHybridConnectionSlotInput,
-    outputSchema: WebAppsDeleteHybridConnectionSlotOutput,
-  }));
+export const WebAppsDeleteHybridConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHybridConnectionSlotInput,
+  outputSchema: WebAppsDeleteHybridConnectionSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteInstanceFunctionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17204,26 +16924,24 @@ export type WebAppsDeleteInstanceFunctionSlotOutput =
  * @param slot - Name of the deployment slot.
  * @param functionName - Function name.
  */
-export const WebAppsDeleteInstanceFunctionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteInstanceFunctionSlotInput,
-    outputSchema: WebAppsDeleteInstanceFunctionSlotOutput,
-  }));
+export const WebAppsDeleteInstanceFunctionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteInstanceFunctionSlotInput,
+  outputSchema: WebAppsDeleteInstanceFunctionSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteInstanceProcessInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
-    }),
-  );
+export const WebAppsDeleteInstanceProcessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
+  }),
+);
 export type WebAppsDeleteInstanceProcessInput =
   typeof WebAppsDeleteInstanceProcessInput.Type;
 
@@ -17245,11 +16963,10 @@ export type WebAppsDeleteInstanceProcessOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsDeleteInstanceProcess =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteInstanceProcessInput,
-    outputSchema: WebAppsDeleteInstanceProcessOutput,
-  }));
+export const WebAppsDeleteInstanceProcess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteInstanceProcessInput,
+  outputSchema: WebAppsDeleteInstanceProcessOutput,
+}));
 // Input Schema
 export const WebAppsDeleteInstanceProcessSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17288,25 +17005,23 @@ export type WebAppsDeleteInstanceProcessSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsDeleteInstanceProcessSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteInstanceProcessSlotInput,
-    outputSchema: WebAppsDeleteInstanceProcessSlotOutput,
-  }));
+export const WebAppsDeleteInstanceProcessSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteInstanceProcessSlotInput,
+  outputSchema: WebAppsDeleteInstanceProcessSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeletePremierAddOnInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsDeletePremierAddOnInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsDeletePremierAddOnInput =
   typeof WebAppsDeletePremierAddOnInput.Type;
 
@@ -17332,20 +17047,19 @@ export const WebAppsDeletePremierAddOn = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeletePremierAddOnOutput,
 }));
 // Input Schema
-export const WebAppsDeletePremierAddOnSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsDeletePremierAddOnSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsDeletePremierAddOnSlotInput =
   typeof WebAppsDeletePremierAddOnSlotInput.Type;
 
@@ -17367,11 +17081,10 @@ export type WebAppsDeletePremierAddOnSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsDeletePremierAddOnSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeletePremierAddOnSlotInput,
-    outputSchema: WebAppsDeletePremierAddOnSlotOutput,
-  }));
+export const WebAppsDeletePremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeletePremierAddOnSlotInput,
+  outputSchema: WebAppsDeletePremierAddOnSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeletePrivateEndpointConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17407,11 +17120,12 @@ export type WebAppsDeletePrivateEndpointConnectionOutput =
  * @param name - Name of the site.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
-export const WebAppsDeletePrivateEndpointConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeletePrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeletePrivateEndpointConnectionInput,
     outputSchema: WebAppsDeletePrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsDeletePrivateEndpointConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17455,19 +17169,18 @@ export const WebAppsDeletePrivateEndpointConnectionSlot =
     outputSchema: WebAppsDeletePrivateEndpointConnectionSlotOutput,
   }));
 // Input Schema
-export const WebAppsDeleteProcessInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}",
-    }),
-  );
+export const WebAppsDeleteProcessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}",
+  }),
+);
 export type WebAppsDeleteProcessInput = typeof WebAppsDeleteProcessInput.Type;
 
 // Output Schema
@@ -17491,20 +17204,19 @@ export const WebAppsDeleteProcess = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteProcessOutput,
 }));
 // Input Schema
-export const WebAppsDeleteProcessSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
-    }),
-  );
+export const WebAppsDeleteProcessSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
+  }),
+);
 export type WebAppsDeleteProcessSlotInput =
   typeof WebAppsDeleteProcessSlotInput.Type;
 
@@ -17531,19 +17243,18 @@ export const WebAppsDeleteProcessSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteProcessSlotOutput,
 }));
 // Input Schema
-export const WebAppsDeletePublicCertificateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    publicCertificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
-    }),
-  );
+export const WebAppsDeletePublicCertificateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  publicCertificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
+  }),
+);
 export type WebAppsDeletePublicCertificateInput =
   typeof WebAppsDeletePublicCertificateInput.Type;
 
@@ -17564,11 +17275,10 @@ export type WebAppsDeletePublicCertificateOutput =
  * @param name - Name of the app.
  * @param publicCertificateName - Public certificate name.
  */
-export const WebAppsDeletePublicCertificate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeletePublicCertificateInput,
-    outputSchema: WebAppsDeletePublicCertificateOutput,
-  }));
+export const WebAppsDeletePublicCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeletePublicCertificateInput,
+  outputSchema: WebAppsDeletePublicCertificateOutput,
+}));
 // Input Schema
 export const WebAppsDeletePublicCertificateSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17606,11 +17316,12 @@ export type WebAppsDeletePublicCertificateSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  * @param publicCertificateName - Public certificate name.
  */
-export const WebAppsDeletePublicCertificateSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeletePublicCertificateSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeletePublicCertificateSlotInput,
     outputSchema: WebAppsDeletePublicCertificateSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsDeleteRelayServiceConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17646,11 +17357,12 @@ export type WebAppsDeleteRelayServiceConnectionOutput =
  * @param name - Name of the app.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsDeleteRelayServiceConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeleteRelayServiceConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeleteRelayServiceConnectionInput,
     outputSchema: WebAppsDeleteRelayServiceConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsDeleteRelayServiceConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17688,25 +17400,25 @@ export type WebAppsDeleteRelayServiceConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsDeleteRelayServiceConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeleteRelayServiceConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeleteRelayServiceConnectionSlotInput,
     outputSchema: WebAppsDeleteRelayServiceConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsDeleteSiteContainerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-    }),
-  );
+export const WebAppsDeleteSiteContainerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
+  }),
+);
 export type WebAppsDeleteSiteContainerInput =
   typeof WebAppsDeleteSiteContainerInput.Type;
 
@@ -17730,20 +17442,19 @@ export const WebAppsDeleteSiteContainer = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteSiteContainerOutput,
 }));
 // Input Schema
-export const WebAppsDeleteSiteContainerSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
-    }),
-  );
+export const WebAppsDeleteSiteContainerSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
+  }),
+);
 export type WebAppsDeleteSiteContainerSlotInput =
   typeof WebAppsDeleteSiteContainerSlotInput.Type;
 
@@ -17763,25 +17474,23 @@ export type WebAppsDeleteSiteContainerSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
  * @param containerName - Site Container Name
  */
-export const WebAppsDeleteSiteContainerSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteSiteContainerSlotInput,
-    outputSchema: WebAppsDeleteSiteContainerSlotOutput,
-  }));
+export const WebAppsDeleteSiteContainerSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSiteContainerSlotInput,
+  outputSchema: WebAppsDeleteSiteContainerSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteSiteExtensionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    siteExtensionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-    }),
-  );
+export const WebAppsDeleteSiteExtensionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  siteExtensionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsDeleteSiteExtensionInput =
   typeof WebAppsDeleteSiteExtensionInput.Type;
 
@@ -17807,20 +17516,19 @@ export const WebAppsDeleteSiteExtension = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteSiteExtensionOutput,
 }));
 // Input Schema
-export const WebAppsDeleteSiteExtensionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    siteExtensionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-    }),
-  );
+export const WebAppsDeleteSiteExtensionSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  siteExtensionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsDeleteSiteExtensionSlotInput =
   typeof WebAppsDeleteSiteExtensionSlotInput.Type;
 
@@ -17842,11 +17550,10 @@ export type WebAppsDeleteSiteExtensionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsDeleteSiteExtensionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteSiteExtensionSlotInput,
-    outputSchema: WebAppsDeleteSiteExtensionSlotOutput,
-  }));
+export const WebAppsDeleteSiteExtensionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSiteExtensionSlotInput,
+  outputSchema: WebAppsDeleteSiteExtensionSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17887,19 +17594,18 @@ export const WebAppsDeleteSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteSlotOutput,
 }));
 // Input Schema
-export const WebAppsDeleteSourceControlInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    additionalFlags: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsDeleteSourceControlInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  additionalFlags: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
+  }),
+);
 export type WebAppsDeleteSourceControlInput =
   typeof WebAppsDeleteSourceControlInput.Type;
 
@@ -17924,20 +17630,19 @@ export const WebAppsDeleteSourceControl = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteSourceControlOutput,
 }));
 // Input Schema
-export const WebAppsDeleteSourceControlSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    additionalFlags: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsDeleteSourceControlSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  additionalFlags: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
+  }),
+);
 export type WebAppsDeleteSourceControlSlotInput =
   typeof WebAppsDeleteSourceControlSlotInput.Type;
 
@@ -17958,11 +17663,10 @@ export type WebAppsDeleteSourceControlSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
-export const WebAppsDeleteSourceControlSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteSourceControlSlotInput,
-    outputSchema: WebAppsDeleteSourceControlSlotOutput,
-  }));
+export const WebAppsDeleteSourceControlSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSourceControlSlotInput,
+  outputSchema: WebAppsDeleteSourceControlSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSwiftVirtualNetworkInput =
   /*@__PURE__*/ Schema.Struct({
@@ -17995,11 +17699,10 @@ export type WebAppsDeleteSwiftVirtualNetworkOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsDeleteSwiftVirtualNetwork =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteSwiftVirtualNetworkInput,
-    outputSchema: WebAppsDeleteSwiftVirtualNetworkOutput,
-  }));
+export const WebAppsDeleteSwiftVirtualNetwork = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSwiftVirtualNetworkInput,
+  outputSchema: WebAppsDeleteSwiftVirtualNetworkOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSwiftVirtualNetworkSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18035,25 +17738,25 @@ export type WebAppsDeleteSwiftVirtualNetworkSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
  */
-export const WebAppsDeleteSwiftVirtualNetworkSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeleteSwiftVirtualNetworkSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeleteSwiftVirtualNetworkSlotInput,
     outputSchema: WebAppsDeleteSwiftVirtualNetworkSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsDeleteTriggeredWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsDeleteTriggeredWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
+  }),
+);
 export type WebAppsDeleteTriggeredWebJobInput =
   typeof WebAppsDeleteTriggeredWebJobInput.Type;
 
@@ -18074,11 +17777,10 @@ export type WebAppsDeleteTriggeredWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsDeleteTriggeredWebJob =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteTriggeredWebJobInput,
-    outputSchema: WebAppsDeleteTriggeredWebJobOutput,
-  }));
+export const WebAppsDeleteTriggeredWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteTriggeredWebJobInput,
+  outputSchema: WebAppsDeleteTriggeredWebJobOutput,
+}));
 // Input Schema
 export const WebAppsDeleteTriggeredWebJobSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18115,25 +17817,23 @@ export type WebAppsDeleteTriggeredWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsDeleteTriggeredWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteTriggeredWebJobSlotInput,
-    outputSchema: WebAppsDeleteTriggeredWebJobSlotOutput,
-  }));
+export const WebAppsDeleteTriggeredWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteTriggeredWebJobSlotInput,
+  outputSchema: WebAppsDeleteTriggeredWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeleteVnetConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+export const WebAppsDeleteVnetConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsDeleteVnetConnectionInput =
   typeof WebAppsDeleteVnetConnectionInput.Type;
 
@@ -18159,20 +17859,21 @@ export const WebAppsDeleteVnetConnection = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDeleteVnetConnectionOutput,
 }));
 // Input Schema
-export const WebAppsDeleteVnetConnectionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsDeleteVnetConnectionSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     vnetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsDeleteVnetConnectionSlotInput =
   typeof WebAppsDeleteVnetConnectionSlotInput.Type;
 
@@ -18194,24 +17895,22 @@ export type WebAppsDeleteVnetConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsDeleteVnetConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeleteVnetConnectionSlotInput,
-    outputSchema: WebAppsDeleteVnetConnectionSlotOutput,
-  }));
+export const WebAppsDeleteVnetConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteVnetConnectionSlotInput,
+  outputSchema: WebAppsDeleteVnetConnectionSlotOutput,
+}));
 // Input Schema
-export const WebAppsDeployWorkflowArtifactsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployWorkflowArtifacts",
-    }),
-  );
+export const WebAppsDeployWorkflowArtifactsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployWorkflowArtifacts",
+  }),
+);
 export type WebAppsDeployWorkflowArtifactsInput =
   typeof WebAppsDeployWorkflowArtifactsInput.Type;
 
@@ -18231,11 +17930,10 @@ export type WebAppsDeployWorkflowArtifactsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsDeployWorkflowArtifacts =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsDeployWorkflowArtifactsInput,
-    outputSchema: WebAppsDeployWorkflowArtifactsOutput,
-  }));
+export const WebAppsDeployWorkflowArtifacts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeployWorkflowArtifactsInput,
+  outputSchema: WebAppsDeployWorkflowArtifactsOutput,
+}));
 // Input Schema
 export const WebAppsDeployWorkflowArtifactsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18271,34 +17969,33 @@ export type WebAppsDeployWorkflowArtifactsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsDeployWorkflowArtifactsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsDeployWorkflowArtifactsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsDeployWorkflowArtifactsSlotInput,
     outputSchema: WebAppsDeployWorkflowArtifactsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsDiscoverBackupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup",
-    }),
-  );
+export const WebAppsDiscoverBackupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup",
+  }),
+);
 export type WebAppsDiscoverBackupInput = typeof WebAppsDiscoverBackupInput.Type;
 
 // Output Schema
-export const WebAppsDiscoverBackupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsDiscoverBackupOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsDiscoverBackupOutput =
   typeof WebAppsDiscoverBackupOutput.Type;
 
@@ -18318,30 +18015,28 @@ export const WebAppsDiscoverBackup = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsDiscoverBackupOutput,
 }));
 // Input Schema
-export const WebAppsDiscoverBackupSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/discoverbackup",
-    }),
-  );
+export const WebAppsDiscoverBackupSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/discoverbackup",
+  }),
+);
 export type WebAppsDiscoverBackupSlotInput =
   typeof WebAppsDiscoverBackupSlotInput.Type;
 
 // Output Schema
-export const WebAppsDiscoverBackupSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsDiscoverBackupSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsDiscoverBackupSlotOutput =
   typeof WebAppsDiscoverBackupSlotOutput.Type;
 
@@ -18394,11 +18089,12 @@ export type WebAppsGenerateNewSitePublishingPasswordOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGenerateNewSitePublishingPassword =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGenerateNewSitePublishingPassword = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGenerateNewSitePublishingPasswordInput,
     outputSchema: WebAppsGenerateNewSitePublishingPasswordOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGenerateNewSitePublishingPasswordSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18543,11 +18239,12 @@ export type WebAppsGetAppSettingKeyVaultReferenceOutput =
  * @param name - Name of the app.
  * @param appSettingKey - App Setting key name.
  */
-export const WebAppsGetAppSettingKeyVaultReference =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetAppSettingKeyVaultReference = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetAppSettingKeyVaultReferenceInput,
     outputSchema: WebAppsGetAppSettingKeyVaultReferenceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetAppSettingKeyVaultReferenceSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18602,11 +18299,12 @@ export type WebAppsGetAppSettingKeyVaultReferenceSlotOutput =
  * @param name - Name of the app.
  * @param appSettingKey - App Setting key name.
  */
-export const WebAppsGetAppSettingKeyVaultReferenceSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetAppSettingKeyVaultReferenceSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetAppSettingKeyVaultReferenceSlotInput,
     outputSchema: WebAppsGetAppSettingKeyVaultReferenceSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18673,11 +18371,12 @@ export type WebAppsGetAppSettingsKeyVaultReferencesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetAppSettingsKeyVaultReferences =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetAppSettingsKeyVaultReferences = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetAppSettingsKeyVaultReferencesInput,
     outputSchema: WebAppsGetAppSettingsKeyVaultReferencesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -18751,29 +18450,27 @@ export const WebAppsGetAppSettingsKeyVaultReferencesSlot =
     outputSchema: WebAppsGetAppSettingsKeyVaultReferencesSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetAuthSettingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings/list",
-    }),
-  );
+export const WebAppsGetAuthSettingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings/list",
+  }),
+);
 export type WebAppsGetAuthSettingsInput =
   typeof WebAppsGetAuthSettingsInput.Type;
 
 // Output Schema
-export const WebAppsGetAuthSettingsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetAuthSettingsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetAuthSettingsOutput =
   typeof WebAppsGetAuthSettingsOutput.Type;
 
@@ -18793,30 +18490,28 @@ export const WebAppsGetAuthSettings = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetAuthSettingsOutput,
 }));
 // Input Schema
-export const WebAppsGetAuthSettingsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings/list",
-    }),
-  );
+export const WebAppsGetAuthSettingsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings/list",
+  }),
+);
 export type WebAppsGetAuthSettingsSlotInput =
   typeof WebAppsGetAuthSettingsSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetAuthSettingsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetAuthSettingsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetAuthSettingsSlotOutput =
   typeof WebAppsGetAuthSettingsSlotOutput.Type;
 
@@ -18837,42 +18532,40 @@ export const WebAppsGetAuthSettingsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetAuthSettingsSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetAuthSettingsV2Input =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2/list",
-    }),
-  );
+export const WebAppsGetAuthSettingsV2Input = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2/list",
+  }),
+);
 export type WebAppsGetAuthSettingsV2Input =
   typeof WebAppsGetAuthSettingsV2Input.Type;
 
 // Output Schema
-export const WebAppsGetAuthSettingsV2Output =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetAuthSettingsV2Output = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetAuthSettingsV2Output =
   typeof WebAppsGetAuthSettingsV2Output.Type;
 
@@ -18892,43 +18585,41 @@ export const WebAppsGetAuthSettingsV2 = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetAuthSettingsV2Output,
 }));
 // Input Schema
-export const WebAppsGetAuthSettingsV2SlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2/list",
-    }),
-  );
+export const WebAppsGetAuthSettingsV2SlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2/list",
+  }),
+);
 export type WebAppsGetAuthSettingsV2SlotInput =
   typeof WebAppsGetAuthSettingsV2SlotInput.Type;
 
 // Output Schema
-export const WebAppsGetAuthSettingsV2SlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetAuthSettingsV2SlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetAuthSettingsV2SlotOutput =
   typeof WebAppsGetAuthSettingsV2SlotOutput.Type;
 
@@ -18944,11 +18635,10 @@ export type WebAppsGetAuthSettingsV2SlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
  */
-export const WebAppsGetAuthSettingsV2Slot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetAuthSettingsV2SlotInput,
-    outputSchema: WebAppsGetAuthSettingsV2SlotOutput,
-  }));
+export const WebAppsGetAuthSettingsV2Slot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetAuthSettingsV2SlotInput,
+  outputSchema: WebAppsGetAuthSettingsV2SlotOutput,
+}));
 // Input Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19000,11 +18690,12 @@ export type WebAppsGetAuthSettingsV2WithoutSecretsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetAuthSettingsV2WithoutSecrets =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetAuthSettingsV2WithoutSecrets = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetAuthSettingsV2WithoutSecretsInput,
     outputSchema: WebAppsGetAuthSettingsV2WithoutSecretsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19062,29 +18753,27 @@ export const WebAppsGetAuthSettingsV2WithoutSecretsSlot =
     outputSchema: WebAppsGetAuthSettingsV2WithoutSecretsSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetBackupConfigurationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list",
-    }),
-  );
+export const WebAppsGetBackupConfigurationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list",
+  }),
+);
 export type WebAppsGetBackupConfigurationInput =
   typeof WebAppsGetBackupConfigurationInput.Type;
 
 // Output Schema
-export const WebAppsGetBackupConfigurationOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetBackupConfigurationOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetBackupConfigurationOutput =
   typeof WebAppsGetBackupConfigurationOutput.Type;
 
@@ -19099,11 +18788,10 @@ export type WebAppsGetBackupConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetBackupConfiguration =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetBackupConfigurationInput,
-    outputSchema: WebAppsGetBackupConfigurationOutput,
-  }));
+export const WebAppsGetBackupConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetBackupConfigurationInput,
+  outputSchema: WebAppsGetBackupConfigurationOutput,
+}));
 // Input Schema
 export const WebAppsGetBackupConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19144,49 +18832,46 @@ export type WebAppsGetBackupConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetBackupConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetBackupConfigurationSlotInput,
-    outputSchema: WebAppsGetBackupConfigurationSlotOutput,
-  }));
+export const WebAppsGetBackupConfigurationSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetBackupConfigurationSlotInput,
+  outputSchema: WebAppsGetBackupConfigurationSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetBackupStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
-    }),
-  );
+export const WebAppsGetBackupStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
+  }),
+);
 export type WebAppsGetBackupStatusInput =
   typeof WebAppsGetBackupStatusInput.Type;
 
 // Output Schema
-export const WebAppsGetBackupStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetBackupStatusOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetBackupStatusOutput =
   typeof WebAppsGetBackupStatusOutput.Type;
 
@@ -19207,44 +18892,42 @@ export const WebAppsGetBackupStatus = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetBackupStatusOutput,
 }));
 // Input Schema
-export const WebAppsGetBackupStatusSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
-    }),
-  );
+export const WebAppsGetBackupStatusSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
+  }),
+);
 export type WebAppsGetBackupStatusSlotInput =
   typeof WebAppsGetBackupStatusSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetBackupStatusSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetBackupStatusSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetBackupStatusSlotOutput =
   typeof WebAppsGetBackupStatusSlotOutput.Type;
 
@@ -19266,42 +18949,40 @@ export const WebAppsGetBackupStatusSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetBackupStatusSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetConfigurationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
-    }),
-  );
+export const WebAppsGetConfigurationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
+  }),
+);
 export type WebAppsGetConfigurationInput =
   typeof WebAppsGetConfigurationInput.Type;
 
 // Output Schema
-export const WebAppsGetConfigurationOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetConfigurationOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetConfigurationOutput =
   typeof WebAppsGetConfigurationOutput.Type;
 
@@ -19321,43 +19002,41 @@ export const WebAppsGetConfiguration = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetConfigurationOutput,
 }));
 // Input Schema
-export const WebAppsGetConfigurationSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
-    }),
-  );
+export const WebAppsGetConfigurationSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
+  }),
+);
 export type WebAppsGetConfigurationSlotInput =
   typeof WebAppsGetConfigurationSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetConfigurationSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetConfigurationSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetConfigurationSlotOutput =
   typeof WebAppsGetConfigurationSlotOutput.Type;
 
@@ -19378,19 +19057,20 @@ export const WebAppsGetConfigurationSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetConfigurationSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetConfigurationSnapshotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetConfigurationSnapshotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}",
+  }),
+);
 export type WebAppsGetConfigurationSnapshotInput =
   typeof WebAppsGetConfigurationSnapshotInput.Type;
 
@@ -19430,11 +19110,10 @@ export type WebAppsGetConfigurationSnapshotOutput =
  * @param name - Name of the app.
  * @param snapshotId - The ID of the snapshot to read.
  */
-export const WebAppsGetConfigurationSnapshot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetConfigurationSnapshotInput,
-    outputSchema: WebAppsGetConfigurationSnapshotOutput,
-  }));
+export const WebAppsGetConfigurationSnapshot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetConfigurationSnapshotInput,
+  outputSchema: WebAppsGetConfigurationSnapshotOutput,
+}));
 // Input Schema
 export const WebAppsGetConfigurationSnapshotSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19490,24 +19169,24 @@ export type WebAppsGetConfigurationSnapshotSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  * @param snapshotId - The ID of the snapshot to read.
  */
-export const WebAppsGetConfigurationSnapshotSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetConfigurationSnapshotSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetConfigurationSnapshotSlotInput,
     outputSchema: WebAppsGetConfigurationSnapshotSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetContainerLogsZipInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download",
-    }),
-  );
+export const WebAppsGetContainerLogsZipInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download",
+  }),
+);
 export type WebAppsGetContainerLogsZipInput =
   typeof WebAppsGetContainerLogsZipInput.Type;
 
@@ -19532,19 +19211,18 @@ export const WebAppsGetContainerLogsZip = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetContainerLogsZipOutput,
 }));
 // Input Schema
-export const WebAppsGetContainerLogsZipSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download",
-    }),
-  );
+export const WebAppsGetContainerLogsZipSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download",
+  }),
+);
 export type WebAppsGetContainerLogsZipSlotInput =
   typeof WebAppsGetContainerLogsZipSlotInput.Type;
 
@@ -19566,49 +19244,46 @@ export type WebAppsGetContainerLogsZipSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetContainerLogsZipSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetContainerLogsZipSlotInput,
-    outputSchema: WebAppsGetContainerLogsZipSlotOutput,
-  }));
+export const WebAppsGetContainerLogsZipSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetContainerLogsZipSlotInput,
+  outputSchema: WebAppsGetContainerLogsZipSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetContinuousWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsGetContinuousWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
+  }),
+);
 export type WebAppsGetContinuousWebJobInput =
   typeof WebAppsGetContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsGetContinuousWebJobOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetContinuousWebJobOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetContinuousWebJobOutput =
   typeof WebAppsGetContinuousWebJobOutput.Type;
 
@@ -19629,26 +19304,25 @@ export const WebAppsGetContinuousWebJob = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetContinuousWebJobOutput,
 }));
 // Input Schema
-export const WebAppsGetContinuousWebJobSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsGetContinuousWebJobSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
+  }),
+);
 export type WebAppsGetContinuousWebJobSlotInput =
   typeof WebAppsGetContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetContinuousWebJobSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetContinuousWebJobSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19666,7 +19340,8 @@ export const WebAppsGetContinuousWebJobSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsGetContinuousWebJobSlotOutput =
   typeof WebAppsGetContinuousWebJobSlotOutput.Type;
 
@@ -19683,48 +19358,45 @@ export type WebAppsGetContinuousWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsGetContinuousWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetContinuousWebJobSlotInput,
-    outputSchema: WebAppsGetContinuousWebJobSlotOutput,
-  }));
+export const WebAppsGetContinuousWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetContinuousWebJobSlotInput,
+  outputSchema: WebAppsGetContinuousWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetDeploymentInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-    }),
-  );
+export const WebAppsGetDeploymentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
+  }),
+);
 export type WebAppsGetDeploymentInput = typeof WebAppsGetDeploymentInput.Type;
 
 // Output Schema
-export const WebAppsGetDeploymentOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetDeploymentOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetDeploymentOutput = typeof WebAppsGetDeploymentOutput.Type;
 
 // The operation
@@ -19744,44 +19416,42 @@ export const WebAppsGetDeployment = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetDeploymentOutput,
 }));
 // Input Schema
-export const WebAppsGetDeploymentSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-    }),
-  );
+export const WebAppsGetDeploymentSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
+  }),
+);
 export type WebAppsGetDeploymentSlotInput =
   typeof WebAppsGetDeploymentSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetDeploymentSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetDeploymentSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetDeploymentSlotOutput =
   typeof WebAppsGetDeploymentSlotOutput.Type;
 
@@ -19853,11 +19523,12 @@ export type WebAppsGetDiagnosticLogsConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetDiagnosticLogsConfiguration =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetDiagnosticLogsConfiguration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetDiagnosticLogsConfigurationInput,
     outputSchema: WebAppsGetDiagnosticLogsConfigurationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetDiagnosticLogsConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19911,11 +19582,12 @@ export type WebAppsGetDiagnosticLogsConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the logging configuration for the production slot.
  */
-export const WebAppsGetDiagnosticLogsConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetDiagnosticLogsConfigurationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetDiagnosticLogsConfigurationSlotInput,
     outputSchema: WebAppsGetDiagnosticLogsConfigurationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetDomainOwnershipIdentifierInput =
   /*@__PURE__*/ Schema.Struct({
@@ -19969,11 +19641,12 @@ export type WebAppsGetDomainOwnershipIdentifierOutput =
  * @param name - Name of the app.
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
-export const WebAppsGetDomainOwnershipIdentifier =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetDomainOwnershipIdentifier = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetDomainOwnershipIdentifierInput,
     outputSchema: WebAppsGetDomainOwnershipIdentifierOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetDomainOwnershipIdentifierSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -20029,47 +19702,46 @@ export type WebAppsGetDomainOwnershipIdentifierSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
-export const WebAppsGetDomainOwnershipIdentifierSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetDomainOwnershipIdentifierSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetDomainOwnershipIdentifierSlotInput,
     outputSchema: WebAppsGetDomainOwnershipIdentifierSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetFtpAllowedInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
-    }),
-  );
+export const WebAppsGetFtpAllowedInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
+  }),
+);
 export type WebAppsGetFtpAllowedInput = typeof WebAppsGetFtpAllowedInput.Type;
 
 // Output Schema
-export const WebAppsGetFtpAllowedOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetFtpAllowedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetFtpAllowedOutput = typeof WebAppsGetFtpAllowedOutput.Type;
 
 // The operation
@@ -20088,43 +19760,41 @@ export const WebAppsGetFtpAllowed = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetFtpAllowedOutput,
 }));
 // Input Schema
-export const WebAppsGetFtpAllowedSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
-    }),
-  );
+export const WebAppsGetFtpAllowedSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
+  }),
+);
 export type WebAppsGetFtpAllowedSlotInput =
   typeof WebAppsGetFtpAllowedSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetFtpAllowedSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetFtpAllowedSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetFtpAllowedSlotOutput =
   typeof WebAppsGetFtpAllowedSlotOutput.Type;
 
@@ -20144,42 +19814,40 @@ export const WebAppsGetFtpAllowedSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetFtpAllowedSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetFunctionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-    }),
-  );
+export const WebAppsGetFunctionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
+  }),
+);
 export type WebAppsGetFunctionInput = typeof WebAppsGetFunctionInput.Type;
 
 // Output Schema
-export const WebAppsGetFunctionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetFunctionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetFunctionOutput = typeof WebAppsGetFunctionOutput.Type;
 
 // The operation
@@ -20199,18 +19867,17 @@ export const WebAppsGetFunction = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetFunctionOutput,
 }));
 // Input Schema
-export const WebAppsGetFunctionsAdminTokenInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token",
-    }),
-  );
+export const WebAppsGetFunctionsAdminTokenInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token",
+  }),
+);
 export type WebAppsGetFunctionsAdminTokenInput =
   typeof WebAppsGetFunctionsAdminTokenInput.Type;
 
@@ -20230,11 +19897,10 @@ export type WebAppsGetFunctionsAdminTokenOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetFunctionsAdminToken =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetFunctionsAdminTokenInput,
-    outputSchema: WebAppsGetFunctionsAdminTokenOutput,
-  }));
+export const WebAppsGetFunctionsAdminToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetFunctionsAdminTokenInput,
+  outputSchema: WebAppsGetFunctionsAdminTokenOutput,
+}));
 // Input Schema
 export const WebAppsGetFunctionsAdminTokenSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -20270,49 +19936,46 @@ export type WebAppsGetFunctionsAdminTokenSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetFunctionsAdminTokenSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetFunctionsAdminTokenSlotInput,
-    outputSchema: WebAppsGetFunctionsAdminTokenSlotOutput,
-  }));
+export const WebAppsGetFunctionsAdminTokenSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetFunctionsAdminTokenSlotInput,
+  outputSchema: WebAppsGetFunctionsAdminTokenSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetHostNameBindingInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
-    }),
-  );
+export const WebAppsGetHostNameBindingInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
+  }),
+);
 export type WebAppsGetHostNameBindingInput =
   typeof WebAppsGetHostNameBindingInput.Type;
 
 // Output Schema
-export const WebAppsGetHostNameBindingOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetHostNameBindingOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetHostNameBindingOutput =
   typeof WebAppsGetHostNameBindingOutput.Type;
 
@@ -20333,44 +19996,42 @@ export const WebAppsGetHostNameBinding = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetHostNameBindingOutput,
 }));
 // Input Schema
-export const WebAppsGetHostNameBindingSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}",
-    }),
-  );
+export const WebAppsGetHostNameBindingSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}",
+  }),
+);
 export type WebAppsGetHostNameBindingSlotInput =
   typeof WebAppsGetHostNameBindingSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetHostNameBindingSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetHostNameBindingSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetHostNameBindingSlotOutput =
   typeof WebAppsGetHostNameBindingSlotOutput.Type;
 
@@ -20387,50 +20048,47 @@ export type WebAppsGetHostNameBindingSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsGetHostNameBindingSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetHostNameBindingSlotInput,
-    outputSchema: WebAppsGetHostNameBindingSlotOutput,
-  }));
+export const WebAppsGetHostNameBindingSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetHostNameBindingSlotInput,
+  outputSchema: WebAppsGetHostNameBindingSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetHybridConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-    }),
-  );
+export const WebAppsGetHybridConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
+  }),
+);
 export type WebAppsGetHybridConnectionInput =
   typeof WebAppsGetHybridConnectionInput.Type;
 
 // Output Schema
-export const WebAppsGetHybridConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetHybridConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetHybridConnectionOutput =
   typeof WebAppsGetHybridConnectionOutput.Type;
 
@@ -20452,27 +20110,26 @@ export const WebAppsGetHybridConnection = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetHybridConnectionOutput,
 }));
 // Input Schema
-export const WebAppsGetHybridConnectionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-    }),
-  );
+export const WebAppsGetHybridConnectionSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
+  }),
+);
 export type WebAppsGetHybridConnectionSlotInput =
   typeof WebAppsGetHybridConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetHybridConnectionSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetHybridConnectionSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20490,7 +20147,8 @@ export const WebAppsGetHybridConnectionSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsGetHybridConnectionSlotOutput =
   typeof WebAppsGetHybridConnectionSlotOutput.Type;
 
@@ -20508,32 +20166,30 @@ export type WebAppsGetHybridConnectionSlotOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsGetHybridConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetHybridConnectionSlotInput,
-    outputSchema: WebAppsGetHybridConnectionSlotOutput,
-  }));
+export const WebAppsGetHybridConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetHybridConnectionSlotInput,
+  outputSchema: WebAppsGetHybridConnectionSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetInstanceFunctionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
-    }),
-  );
+export const WebAppsGetInstanceFunctionSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
+  }),
+);
 export type WebAppsGetInstanceFunctionSlotInput =
   typeof WebAppsGetInstanceFunctionSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceFunctionSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetInstanceFunctionSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20551,7 +20207,8 @@ export const WebAppsGetInstanceFunctionSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsGetInstanceFunctionSlotOutput =
   typeof WebAppsGetInstanceFunctionSlotOutput.Type;
 
@@ -20568,49 +20225,46 @@ export type WebAppsGetInstanceFunctionSlotOutput =
  * @param slot - Name of the deployment slot.
  * @param functionName - Function name.
  */
-export const WebAppsGetInstanceFunctionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceFunctionSlotInput,
-    outputSchema: WebAppsGetInstanceFunctionSlotOutput,
-  }));
+export const WebAppsGetInstanceFunctionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceFunctionSlotInput,
+  outputSchema: WebAppsGetInstanceFunctionSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetInstanceInfoInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}",
-    }),
-  );
+export const WebAppsGetInstanceInfoInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}",
+  }),
+);
 export type WebAppsGetInstanceInfoInput =
   typeof WebAppsGetInstanceInfoInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceInfoOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetInstanceInfoOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetInstanceInfoOutput =
   typeof WebAppsGetInstanceInfoOutput.Type;
 
@@ -20630,44 +20284,42 @@ export const WebAppsGetInstanceInfo = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetInstanceInfoOutput,
 }));
 // Input Schema
-export const WebAppsGetInstanceInfoSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}",
-    }),
-  );
+export const WebAppsGetInstanceInfoSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}",
+  }),
+);
 export type WebAppsGetInstanceInfoSlotInput =
   typeof WebAppsGetInstanceInfoSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceInfoSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetInstanceInfoSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetInstanceInfoSlotOutput =
   typeof WebAppsGetInstanceInfoSlotOutput.Type;
 
@@ -20688,30 +20340,28 @@ export const WebAppsGetInstanceInfoSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetInstanceInfoSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetInstanceMSDeployLogInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log",
-    }),
-  );
+export const WebAppsGetInstanceMSDeployLogInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log",
+  }),
+);
 export type WebAppsGetInstanceMSDeployLogInput =
   typeof WebAppsGetInstanceMSDeployLogInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceMSDeployLogOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetInstanceMSDeployLogOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetInstanceMSDeployLogOutput =
   typeof WebAppsGetInstanceMSDeployLogOutput.Type;
 
@@ -20727,11 +20377,10 @@ export type WebAppsGetInstanceMSDeployLogOutput =
  * @param name - Name of web app.
  * @param instanceId - ID of web app instance.
  */
-export const WebAppsGetInstanceMSDeployLog =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceMSDeployLogInput,
-    outputSchema: WebAppsGetInstanceMSDeployLogOutput,
-  }));
+export const WebAppsGetInstanceMSDeployLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceMSDeployLogInput,
+  outputSchema: WebAppsGetInstanceMSDeployLogOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceMSDeployLogSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -20774,11 +20423,10 @@ export type WebAppsGetInstanceMSDeployLogSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  * @param instanceId - ID of web app instance.
  */
-export const WebAppsGetInstanceMSDeployLogSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceMSDeployLogSlotInput,
-    outputSchema: WebAppsGetInstanceMSDeployLogSlotOutput,
-  }));
+export const WebAppsGetInstanceMSDeployLogSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceMSDeployLogSlotInput,
+  outputSchema: WebAppsGetInstanceMSDeployLogSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceMsDeployStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -20832,11 +20480,10 @@ export type WebAppsGetInstanceMsDeployStatusOutput =
  * @param name - Name of web app.
  * @param instanceId - ID of web app instance.
  */
-export const WebAppsGetInstanceMsDeployStatus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceMsDeployStatusInput,
-    outputSchema: WebAppsGetInstanceMsDeployStatusOutput,
-  }));
+export const WebAppsGetInstanceMsDeployStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceMsDeployStatusInput,
+  outputSchema: WebAppsGetInstanceMsDeployStatusOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceMsDeployStatusSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -20892,50 +20539,49 @@ export type WebAppsGetInstanceMsDeployStatusSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  * @param instanceId - ID of web app instance.
  */
-export const WebAppsGetInstanceMsDeployStatusSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetInstanceMsDeployStatusSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetInstanceMsDeployStatusSlotInput,
     outputSchema: WebAppsGetInstanceMsDeployStatusSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetInstanceProcessInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
-    }),
-  );
+export const WebAppsGetInstanceProcessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
+  }),
+);
 export type WebAppsGetInstanceProcessInput =
   typeof WebAppsGetInstanceProcessInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceProcessOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetInstanceProcessOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetInstanceProcessOutput =
   typeof WebAppsGetInstanceProcessOutput.Type;
 
@@ -20957,20 +20603,19 @@ export const WebAppsGetInstanceProcess = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetInstanceProcessOutput,
 }));
 // Input Schema
-export const WebAppsGetInstanceProcessDumpInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/dump",
-    }),
-  );
+export const WebAppsGetInstanceProcessDumpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/dump",
+  }),
+);
 export type WebAppsGetInstanceProcessDumpInput =
   typeof WebAppsGetInstanceProcessDumpInput.Type;
 
@@ -20992,11 +20637,10 @@ export type WebAppsGetInstanceProcessDumpOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsGetInstanceProcessDump =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceProcessDumpInput,
-    outputSchema: WebAppsGetInstanceProcessDumpOutput,
-  }));
+export const WebAppsGetInstanceProcessDump = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceProcessDumpInput,
+  outputSchema: WebAppsGetInstanceProcessDumpOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceProcessDumpSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21036,14 +20680,13 @@ export type WebAppsGetInstanceProcessDumpSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsGetInstanceProcessDumpSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceProcessDumpSlotInput,
-    outputSchema: WebAppsGetInstanceProcessDumpSlotOutput,
-  }));
+export const WebAppsGetInstanceProcessDumpSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceProcessDumpSlotInput,
+  outputSchema: WebAppsGetInstanceProcessDumpSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetInstanceProcessModuleInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetInstanceProcessModuleInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21051,12 +20694,13 @@ export const WebAppsGetInstanceProcessModuleInput =
     processId: Schema.String.pipe(T.PathParam()),
     baseAddress: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}",
+  }),
+);
 export type WebAppsGetInstanceProcessModuleInput =
   typeof WebAppsGetInstanceProcessModuleInput.Type;
 
@@ -21098,11 +20742,10 @@ export type WebAppsGetInstanceProcessModuleOutput =
  * @param processId - PID.
  * @param baseAddress - Module base address.
  */
-export const WebAppsGetInstanceProcessModule =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceProcessModuleInput,
-    outputSchema: WebAppsGetInstanceProcessModuleOutput,
-  }));
+export const WebAppsGetInstanceProcessModule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceProcessModuleInput,
+  outputSchema: WebAppsGetInstanceProcessModuleOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceProcessModuleSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21162,51 +20805,50 @@ export type WebAppsGetInstanceProcessModuleSlotOutput =
  * @param processId - PID.
  * @param baseAddress - Module base address.
  */
-export const WebAppsGetInstanceProcessModuleSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetInstanceProcessModuleSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetInstanceProcessModuleSlotInput,
     outputSchema: WebAppsGetInstanceProcessModuleSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetInstanceProcessSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}",
-    }),
-  );
+export const WebAppsGetInstanceProcessSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}",
+  }),
+);
 export type WebAppsGetInstanceProcessSlotInput =
   typeof WebAppsGetInstanceProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceProcessSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetInstanceProcessSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetInstanceProcessSlotOutput =
   typeof WebAppsGetInstanceProcessSlotOutput.Type;
 
@@ -21224,32 +20866,30 @@ export type WebAppsGetInstanceProcessSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsGetInstanceProcessSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceProcessSlotInput,
-    outputSchema: WebAppsGetInstanceProcessSlotOutput,
-  }));
+export const WebAppsGetInstanceProcessSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceProcessSlotInput,
+  outputSchema: WebAppsGetInstanceProcessSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetInstanceWorkflowSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/workflows/{workflowName}",
-    }),
-  );
+export const WebAppsGetInstanceWorkflowSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/workflows/{workflowName}",
+  }),
+);
 export type WebAppsGetInstanceWorkflowSlotInput =
   typeof WebAppsGetInstanceWorkflowSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceWorkflowSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetInstanceWorkflowSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21267,7 +20907,8 @@ export const WebAppsGetInstanceWorkflowSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsGetInstanceWorkflowSlotOutput =
   typeof WebAppsGetInstanceWorkflowSlotOutput.Type;
 
@@ -21282,48 +20923,45 @@ export type WebAppsGetInstanceWorkflowSlotOutput =
  * @param slot - Name of the deployment slot.
  * @param workflowName - Workflow name.
  */
-export const WebAppsGetInstanceWorkflowSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetInstanceWorkflowSlotInput,
-    outputSchema: WebAppsGetInstanceWorkflowSlotOutput,
-  }));
+export const WebAppsGetInstanceWorkflowSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceWorkflowSlotInput,
+  outputSchema: WebAppsGetInstanceWorkflowSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetMigrateMySqlStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status",
-    }),
-  );
+export const WebAppsGetMigrateMySqlStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status",
+  }),
+);
 export type WebAppsGetMigrateMySqlStatusInput =
   typeof WebAppsGetMigrateMySqlStatusInput.Type;
 
 // Output Schema
-export const WebAppsGetMigrateMySqlStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetMigrateMySqlStatusOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetMigrateMySqlStatusOutput =
   typeof WebAppsGetMigrateMySqlStatusOutput.Type;
 
@@ -21338,11 +20976,10 @@ export type WebAppsGetMigrateMySqlStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app.
  */
-export const WebAppsGetMigrateMySqlStatus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetMigrateMySqlStatusInput,
-    outputSchema: WebAppsGetMigrateMySqlStatusOutput,
-  }));
+export const WebAppsGetMigrateMySqlStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMigrateMySqlStatusInput,
+  outputSchema: WebAppsGetMigrateMySqlStatusOutput,
+}));
 // Input Schema
 export const WebAppsGetMigrateMySqlStatusSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21396,34 +21033,31 @@ export type WebAppsGetMigrateMySqlStatusSlotOutput =
  * @param name - Name of web app.
  * @param slot - Name of the deployment slot.
  */
-export const WebAppsGetMigrateMySqlStatusSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetMigrateMySqlStatusSlotInput,
-    outputSchema: WebAppsGetMigrateMySqlStatusSlotOutput,
-  }));
+export const WebAppsGetMigrateMySqlStatusSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMigrateMySqlStatusSlotInput,
+  outputSchema: WebAppsGetMigrateMySqlStatusSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetMSDeployLogInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log",
-    }),
-  );
+export const WebAppsGetMSDeployLogInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log",
+  }),
+);
 export type WebAppsGetMSDeployLogInput = typeof WebAppsGetMSDeployLogInput.Type;
 
 // Output Schema
-export const WebAppsGetMSDeployLogOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetMSDeployLogOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetMSDeployLogOutput =
   typeof WebAppsGetMSDeployLogOutput.Type;
 
@@ -21443,30 +21077,28 @@ export const WebAppsGetMSDeployLog = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetMSDeployLogOutput,
 }));
 // Input Schema
-export const WebAppsGetMSDeployLogSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log",
-    }),
-  );
+export const WebAppsGetMSDeployLogSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log",
+  }),
+);
 export type WebAppsGetMSDeployLogSlotInput =
   typeof WebAppsGetMSDeployLogSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetMSDeployLogSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetMSDeployLogSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetMSDeployLogSlotOutput =
   typeof WebAppsGetMSDeployLogSlotOutput.Type;
 
@@ -21487,42 +21119,40 @@ export const WebAppsGetMSDeployLogSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetMSDeployLogSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetMSDeployStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
-    }),
-  );
+export const WebAppsGetMSDeployStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
+  }),
+);
 export type WebAppsGetMSDeployStatusInput =
   typeof WebAppsGetMSDeployStatusInput.Type;
 
 // Output Schema
-export const WebAppsGetMSDeployStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetMSDeployStatusOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetMSDeployStatusOutput =
   typeof WebAppsGetMSDeployStatusOutput.Type;
 
@@ -21542,43 +21172,41 @@ export const WebAppsGetMSDeployStatus = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetMSDeployStatusOutput,
 }));
 // Input Schema
-export const WebAppsGetMSDeployStatusSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy",
-    }),
-  );
+export const WebAppsGetMSDeployStatusSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy",
+  }),
+);
 export type WebAppsGetMSDeployStatusSlotInput =
   typeof WebAppsGetMSDeployStatusSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetMSDeployStatusSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetMSDeployStatusSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetMSDeployStatusSlotOutput =
   typeof WebAppsGetMSDeployStatusSlotOutput.Type;
 
@@ -21594,37 +21222,36 @@ export type WebAppsGetMSDeployStatusSlotOutput =
  * @param name - Name of web app.
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
-export const WebAppsGetMSDeployStatusSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetMSDeployStatusSlotInput,
-    outputSchema: WebAppsGetMSDeployStatusSlotOutput,
-  }));
+export const WebAppsGetMSDeployStatusSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMSDeployStatusSlotInput,
+  outputSchema: WebAppsGetMSDeployStatusSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetNetworkTraceOperationInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetNetworkTraceOperationInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}",
+  }),
+);
 export type WebAppsGetNetworkTraceOperationInput =
   typeof WebAppsGetNetworkTraceOperationInput.Type;
 
 // Output Schema
-export const WebAppsGetNetworkTraceOperationOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsGetNetworkTraceOperationOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsGetNetworkTraceOperationOutput =
   typeof WebAppsGetNetworkTraceOperationOutput.Type;
 
@@ -21640,11 +21267,10 @@ export type WebAppsGetNetworkTraceOperationOutput =
  * @param name - Name of the app.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTraceOperation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetNetworkTraceOperationInput,
-    outputSchema: WebAppsGetNetworkTraceOperationOutput,
-  }));
+export const WebAppsGetNetworkTraceOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTraceOperationInput,
+  outputSchema: WebAppsGetNetworkTraceOperationOutput,
+}));
 // Input Schema
 export const WebAppsGetNetworkTraceOperationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -21688,11 +21314,12 @@ export type WebAppsGetNetworkTraceOperationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTraceOperationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetNetworkTraceOperationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetNetworkTraceOperationSlotInput,
     outputSchema: WebAppsGetNetworkTraceOperationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetNetworkTraceOperationSlotV2Input =
   /*@__PURE__*/ Schema.Struct({
@@ -21736,11 +21363,12 @@ export type WebAppsGetNetworkTraceOperationSlotV2Output =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTraceOperationSlotV2 =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetNetworkTraceOperationSlotV2 = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetNetworkTraceOperationSlotV2Input,
     outputSchema: WebAppsGetNetworkTraceOperationSlotV2Output,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetNetworkTraceOperationV2Input =
   /*@__PURE__*/ Schema.Struct({
@@ -21782,37 +21410,34 @@ export type WebAppsGetNetworkTraceOperationV2Output =
  * @param name - Name of the app.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTraceOperationV2 =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetNetworkTraceOperationV2Input,
-    outputSchema: WebAppsGetNetworkTraceOperationV2Output,
-  }));
+export const WebAppsGetNetworkTraceOperationV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTraceOperationV2Input,
+  outputSchema: WebAppsGetNetworkTraceOperationV2Output,
+}));
 // Input Schema
-export const WebAppsGetNetworkTracesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/{operationId}",
-    }),
-  );
+export const WebAppsGetNetworkTracesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/{operationId}",
+  }),
+);
 export type WebAppsGetNetworkTracesInput =
   typeof WebAppsGetNetworkTracesInput.Type;
 
 // Output Schema
-export const WebAppsGetNetworkTracesOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsGetNetworkTracesOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsGetNetworkTracesOutput =
   typeof WebAppsGetNetworkTracesOutput.Type;
 
@@ -21833,32 +21458,30 @@ export const WebAppsGetNetworkTraces = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetNetworkTracesOutput,
 }));
 // Input Schema
-export const WebAppsGetNetworkTracesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}",
-    }),
-  );
+export const WebAppsGetNetworkTracesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}",
+  }),
+);
 export type WebAppsGetNetworkTracesSlotInput =
   typeof WebAppsGetNetworkTracesSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetNetworkTracesSlotOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsGetNetworkTracesSlotOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsGetNetworkTracesSlotOutput =
   typeof WebAppsGetNetworkTracesSlotOutput.Type;
 
@@ -21880,32 +21503,30 @@ export const WebAppsGetNetworkTracesSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetNetworkTracesSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetNetworkTracesSlotV2Input =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}",
-    }),
-  );
+export const WebAppsGetNetworkTracesSlotV2Input = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}",
+  }),
+);
 export type WebAppsGetNetworkTracesSlotV2Input =
   typeof WebAppsGetNetworkTracesSlotV2Input.Type;
 
 // Output Schema
-export const WebAppsGetNetworkTracesSlotV2Output =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsGetNetworkTracesSlotV2Output = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsGetNetworkTracesSlotV2Output =
   typeof WebAppsGetNetworkTracesSlotV2Output.Type;
 
@@ -21922,37 +21543,34 @@ export type WebAppsGetNetworkTracesSlotV2Output =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTracesSlotV2 =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetNetworkTracesSlotV2Input,
-    outputSchema: WebAppsGetNetworkTracesSlotV2Output,
-  }));
+export const WebAppsGetNetworkTracesSlotV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTracesSlotV2Input,
+  outputSchema: WebAppsGetNetworkTracesSlotV2Output,
+}));
 // Input Schema
-export const WebAppsGetNetworkTracesV2Input =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTraces/{operationId}",
-    }),
-  );
+export const WebAppsGetNetworkTracesV2Input = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTraces/{operationId}",
+  }),
+);
 export type WebAppsGetNetworkTracesV2Input =
   typeof WebAppsGetNetworkTracesV2Input.Type;
 
 // Output Schema
-export const WebAppsGetNetworkTracesV2Output =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsGetNetworkTracesV2Output = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsGetNetworkTracesV2Output =
   typeof WebAppsGetNetworkTracesV2Output.Type;
 
@@ -21973,18 +21591,17 @@ export const WebAppsGetNetworkTracesV2 = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetNetworkTracesV2Output,
 }));
 // Input Schema
-export const WebAppsGetOneDeployStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
-    }),
-  );
+export const WebAppsGetOneDeployStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
+  }),
+);
 export type WebAppsGetOneDeployStatusInput =
   typeof WebAppsGetOneDeployStatusInput.Type;
 
@@ -22009,43 +21626,41 @@ export const WebAppsGetOneDeployStatus = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetOneDeployStatusOutput,
 }));
 // Input Schema
-export const WebAppsGetPremierAddOnInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsGetPremierAddOnInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsGetPremierAddOnInput =
   typeof WebAppsGetPremierAddOnInput.Type;
 
 // Output Schema
-export const WebAppsGetPremierAddOnOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetPremierAddOnOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetPremierAddOnOutput =
   typeof WebAppsGetPremierAddOnOutput.Type;
 
@@ -22066,44 +21681,42 @@ export const WebAppsGetPremierAddOn = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetPremierAddOnOutput,
 }));
 // Input Schema
-export const WebAppsGetPremierAddOnSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsGetPremierAddOnSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsGetPremierAddOnSlotInput =
   typeof WebAppsGetPremierAddOnSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetPremierAddOnSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetPremierAddOnSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetPremierAddOnSlotOutput =
   typeof WebAppsGetPremierAddOnSlotOutput.Type;
 
@@ -22125,42 +21738,40 @@ export const WebAppsGetPremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetPremierAddOnSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetPrivateAccessInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
-    }),
-  );
+export const WebAppsGetPrivateAccessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
+  }),
+);
 export type WebAppsGetPrivateAccessInput =
   typeof WebAppsGetPrivateAccessInput.Type;
 
 // Output Schema
-export const WebAppsGetPrivateAccessOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetPrivateAccessOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetPrivateAccessOutput =
   typeof WebAppsGetPrivateAccessOutput.Type;
 
@@ -22180,43 +21791,41 @@ export const WebAppsGetPrivateAccess = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetPrivateAccessOutput,
 }));
 // Input Schema
-export const WebAppsGetPrivateAccessSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
-    }),
-  );
+export const WebAppsGetPrivateAccessSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
+  }),
+);
 export type WebAppsGetPrivateAccessSlotInput =
   typeof WebAppsGetPrivateAccessSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetPrivateAccessSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetPrivateAccessSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetPrivateAccessSlotOutput =
   typeof WebAppsGetPrivateAccessSlotOutput.Type;
 
@@ -22289,11 +21898,12 @@ export type WebAppsGetPrivateEndpointConnectionOutput =
  * @param name - Name of the site.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
-export const WebAppsGetPrivateEndpointConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetPrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -22360,11 +21970,12 @@ export type WebAppsGetPrivateEndpointConnectionListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the site.
  */
-export const WebAppsGetPrivateEndpointConnectionList =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetPrivateEndpointConnectionList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionListInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionListSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -22493,30 +22104,30 @@ export type WebAppsGetPrivateEndpointConnectionSlotOutput =
  * @param slot - Name of the site deployment slot.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
-export const WebAppsGetPrivateEndpointConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetPrivateEndpointConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionSlotInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateLinkResources",
-    }),
-  );
+export const WebAppsGetPrivateLinkResourcesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateLinkResources",
+  }),
+);
 export type WebAppsGetPrivateLinkResourcesInput =
   typeof WebAppsGetPrivateLinkResourcesInput.Type;
 
 // Output Schema
-export const WebAppsGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetPrivateLinkResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -22529,7 +22140,8 @@ export const WebAppsGetPrivateLinkResourcesOutput =
         }),
       }),
     ),
-  });
+  },
+);
 export type WebAppsGetPrivateLinkResourcesOutput =
   typeof WebAppsGetPrivateLinkResourcesOutput.Type;
 
@@ -22544,11 +22156,10 @@ export type WebAppsGetPrivateLinkResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetPrivateLinkResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetPrivateLinkResourcesInput,
-    outputSchema: WebAppsGetPrivateLinkResourcesOutput,
-  }));
+export const WebAppsGetPrivateLinkResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPrivateLinkResourcesInput,
+  outputSchema: WebAppsGetPrivateLinkResourcesOutput,
+}));
 // Input Schema
 export const WebAppsGetPrivateLinkResourcesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -22597,11 +22208,12 @@ export type WebAppsGetPrivateLinkResourcesSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetPrivateLinkResourcesSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetPrivateLinkResourcesSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetPrivateLinkResourcesSlotInput,
     outputSchema: WebAppsGetPrivateLinkResourcesSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetProcessInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22618,26 +22230,25 @@ export const WebAppsGetProcessInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsGetProcessInput = typeof WebAppsGetProcessInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetProcessOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetProcessOutput = typeof WebAppsGetProcessOutput.Type;
 
 // The operation
@@ -22657,19 +22268,18 @@ export const WebAppsGetProcess = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetProcessOutput,
 }));
 // Input Schema
-export const WebAppsGetProcessDumpInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/dump",
-    }),
-  );
+export const WebAppsGetProcessDumpInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/dump",
+  }),
+);
 export type WebAppsGetProcessDumpInput = typeof WebAppsGetProcessDumpInput.Type;
 
 // Output Schema
@@ -22694,20 +22304,19 @@ export const WebAppsGetProcessDump = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetProcessDumpOutput,
 }));
 // Input Schema
-export const WebAppsGetProcessDumpSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/dump",
-    }),
-  );
+export const WebAppsGetProcessDumpSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/dump",
+  }),
+);
 export type WebAppsGetProcessDumpSlotInput =
   typeof WebAppsGetProcessDumpSlotInput.Type;
 
@@ -22734,44 +22343,42 @@ export const WebAppsGetProcessDumpSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetProcessDumpSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetProcessModuleInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    baseAddress: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}",
-    }),
-  );
+export const WebAppsGetProcessModuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  baseAddress: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}",
+  }),
+);
 export type WebAppsGetProcessModuleInput =
   typeof WebAppsGetProcessModuleInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessModuleOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetProcessModuleOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetProcessModuleOutput =
   typeof WebAppsGetProcessModuleOutput.Type;
 
@@ -22793,45 +22400,43 @@ export const WebAppsGetProcessModule = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetProcessModuleOutput,
 }));
 // Input Schema
-export const WebAppsGetProcessModuleSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    baseAddress: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}",
-    }),
-  );
+export const WebAppsGetProcessModuleSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  baseAddress: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}",
+  }),
+);
 export type WebAppsGetProcessModuleSlotInput =
   typeof WebAppsGetProcessModuleSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessModuleSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetProcessModuleSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetProcessModuleSlotOutput =
   typeof WebAppsGetProcessModuleSlotOutput.Type;
 
@@ -22854,43 +22459,41 @@ export const WebAppsGetProcessModuleSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetProcessModuleSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetProcessSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
-    }),
-  );
+export const WebAppsGetProcessSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
+  }),
+);
 export type WebAppsGetProcessSlotInput = typeof WebAppsGetProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetProcessSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetProcessSlotOutput =
   typeof WebAppsGetProcessSlotOutput.Type;
 
@@ -22962,49 +22565,48 @@ export type WebAppsGetProductionSiteDeploymentStatusOutput =
  * @param name - Name of the app.
  * @param deploymentStatusId - GUID of the deployment operation.
  */
-export const WebAppsGetProductionSiteDeploymentStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetProductionSiteDeploymentStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetProductionSiteDeploymentStatusInput,
     outputSchema: WebAppsGetProductionSiteDeploymentStatusOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetPublicCertificateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    publicCertificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
-    }),
-  );
+export const WebAppsGetPublicCertificateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  publicCertificateName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
+  }),
+);
 export type WebAppsGetPublicCertificateInput =
   typeof WebAppsGetPublicCertificateInput.Type;
 
 // Output Schema
-export const WebAppsGetPublicCertificateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetPublicCertificateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetPublicCertificateOutput =
   typeof WebAppsGetPublicCertificateOutput.Type;
 
@@ -23025,20 +22627,21 @@ export const WebAppsGetPublicCertificate = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetPublicCertificateOutput,
 }));
 // Input Schema
-export const WebAppsGetPublicCertificateSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetPublicCertificateSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     publicCertificateName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}",
+  }),
+);
 export type WebAppsGetPublicCertificateSlotInput =
   typeof WebAppsGetPublicCertificateSlotInput.Type;
 
@@ -23079,11 +22682,10 @@ export type WebAppsGetPublicCertificateSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  * @param publicCertificateName - Public certificate name.
  */
-export const WebAppsGetPublicCertificateSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetPublicCertificateSlotInput,
-    outputSchema: WebAppsGetPublicCertificateSlotOutput,
-  }));
+export const WebAppsGetPublicCertificateSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPublicCertificateSlotInput,
+  outputSchema: WebAppsGetPublicCertificateSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetRelayServiceConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23137,11 +22739,10 @@ export type WebAppsGetRelayServiceConnectionOutput =
  * @param name - Name of the app.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsGetRelayServiceConnection =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetRelayServiceConnectionInput,
-    outputSchema: WebAppsGetRelayServiceConnectionOutput,
-  }));
+export const WebAppsGetRelayServiceConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetRelayServiceConnectionInput,
+  outputSchema: WebAppsGetRelayServiceConnectionOutput,
+}));
 // Input Schema
 export const WebAppsGetRelayServiceConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23197,47 +22798,46 @@ export type WebAppsGetRelayServiceConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsGetRelayServiceConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetRelayServiceConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetRelayServiceConnectionSlotInput,
     outputSchema: WebAppsGetRelayServiceConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetScmAllowedInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
-    }),
-  );
+export const WebAppsGetScmAllowedInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
+  }),
+);
 export type WebAppsGetScmAllowedInput = typeof WebAppsGetScmAllowedInput.Type;
 
 // Output Schema
-export const WebAppsGetScmAllowedOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetScmAllowedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetScmAllowedOutput = typeof WebAppsGetScmAllowedOutput.Type;
 
 // The operation
@@ -23256,43 +22856,41 @@ export const WebAppsGetScmAllowed = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetScmAllowedOutput,
 }));
 // Input Schema
-export const WebAppsGetScmAllowedSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
-    }),
-  );
+export const WebAppsGetScmAllowedSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
+  }),
+);
 export type WebAppsGetScmAllowedSlotInput =
   typeof WebAppsGetScmAllowedSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetScmAllowedSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetScmAllowedSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetScmAllowedSlotOutput =
   typeof WebAppsGetScmAllowedSlotOutput.Type;
 
@@ -23570,43 +23168,41 @@ export const WebAppsGetSiteConnectionStringKeyVaultReferencesSlot =
     outputSchema: WebAppsGetSiteConnectionStringKeyVaultReferencesSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetSiteContainerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-    }),
-  );
+export const WebAppsGetSiteContainerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
+  }),
+);
 export type WebAppsGetSiteContainerInput =
   typeof WebAppsGetSiteContainerInput.Type;
 
 // Output Schema
-export const WebAppsGetSiteContainerOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSiteContainerOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSiteContainerOutput =
   typeof WebAppsGetSiteContainerOutput.Type;
 
@@ -23625,44 +23221,42 @@ export const WebAppsGetSiteContainer = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetSiteContainerOutput,
 }));
 // Input Schema
-export const WebAppsGetSiteContainerSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
-    }),
-  );
+export const WebAppsGetSiteContainerSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
+  }),
+);
 export type WebAppsGetSiteContainerSlotInput =
   typeof WebAppsGetSiteContainerSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetSiteContainerSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSiteContainerSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSiteContainerSlotOutput =
   typeof WebAppsGetSiteContainerSlotOutput.Type;
 
@@ -23682,43 +23276,41 @@ export const WebAppsGetSiteContainerSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetSiteContainerSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetSiteExtensionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    siteExtensionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-    }),
-  );
+export const WebAppsGetSiteExtensionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  siteExtensionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsGetSiteExtensionInput =
   typeof WebAppsGetSiteExtensionInput.Type;
 
 // Output Schema
-export const WebAppsGetSiteExtensionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSiteExtensionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSiteExtensionOutput =
   typeof WebAppsGetSiteExtensionOutput.Type;
 
@@ -23739,44 +23331,42 @@ export const WebAppsGetSiteExtension = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetSiteExtensionOutput,
 }));
 // Input Schema
-export const WebAppsGetSiteExtensionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    siteExtensionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-    }),
-  );
+export const WebAppsGetSiteExtensionSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  siteExtensionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsGetSiteExtensionSlotInput =
   typeof WebAppsGetSiteExtensionSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetSiteExtensionSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSiteExtensionSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSiteExtensionSlotOutput =
   typeof WebAppsGetSiteExtensionSlotOutput.Type;
 
@@ -23798,29 +23388,27 @@ export const WebAppsGetSiteExtensionSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetSiteExtensionSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetSitePhpErrorLogFlagInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/phplogging",
-    }),
-  );
+export const WebAppsGetSitePhpErrorLogFlagInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/phplogging",
+  }),
+);
 export type WebAppsGetSitePhpErrorLogFlagInput =
   typeof WebAppsGetSitePhpErrorLogFlagInput.Type;
 
 // Output Schema
-export const WebAppsGetSitePhpErrorLogFlagOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsGetSitePhpErrorLogFlagOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsGetSitePhpErrorLogFlagOutput =
   typeof WebAppsGetSitePhpErrorLogFlagOutput.Type;
 
@@ -23835,11 +23423,10 @@ export type WebAppsGetSitePhpErrorLogFlagOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetSitePhpErrorLogFlag =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetSitePhpErrorLogFlagInput,
-    outputSchema: WebAppsGetSitePhpErrorLogFlagOutput,
-  }));
+export const WebAppsGetSitePhpErrorLogFlag = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSitePhpErrorLogFlagInput,
+  outputSchema: WebAppsGetSitePhpErrorLogFlagOutput,
+}));
 // Input Schema
 export const WebAppsGetSitePhpErrorLogFlagSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -23880,11 +23467,10 @@ export type WebAppsGetSitePhpErrorLogFlagSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetSitePhpErrorLogFlagSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetSitePhpErrorLogFlagSlotInput,
-    outputSchema: WebAppsGetSitePhpErrorLogFlagSlotOutput,
-  }));
+export const WebAppsGetSitePhpErrorLogFlagSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSitePhpErrorLogFlagSlotInput,
+  outputSchema: WebAppsGetSitePhpErrorLogFlagSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -23991,48 +23577,47 @@ export type WebAppsGetSlotSiteDeploymentStatusSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the deployment status for the production slot.
  * @param deploymentStatusId - GUID of the deployment operation.
  */
-export const WebAppsGetSlotSiteDeploymentStatusSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetSlotSiteDeploymentStatusSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetSlotSiteDeploymentStatusSlotInput,
     outputSchema: WebAppsGetSlotSiteDeploymentStatusSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetSourceControlInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsGetSourceControlInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
+  }),
+);
 export type WebAppsGetSourceControlInput =
   typeof WebAppsGetSourceControlInput.Type;
 
 // Output Schema
-export const WebAppsGetSourceControlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSourceControlOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSourceControlOutput =
   typeof WebAppsGetSourceControlOutput.Type;
 
@@ -24052,43 +23637,41 @@ export const WebAppsGetSourceControl = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetSourceControlOutput,
 }));
 // Input Schema
-export const WebAppsGetSourceControlSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsGetSourceControlSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
+  }),
+);
 export type WebAppsGetSourceControlSlotInput =
   typeof WebAppsGetSourceControlSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetSourceControlSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetSourceControlSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetSourceControlSlotOutput =
   typeof WebAppsGetSourceControlSlotOutput.Type;
 
@@ -24159,11 +23742,12 @@ export type WebAppsGetSwiftVirtualNetworkConnectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetSwiftVirtualNetworkConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetSwiftVirtualNetworkConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetSwiftVirtualNetworkConnectionInput,
     outputSchema: WebAppsGetSwiftVirtualNetworkConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsGetSwiftVirtualNetworkConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -24223,43 +23807,41 @@ export const WebAppsGetSwiftVirtualNetworkConnectionSlot =
     outputSchema: WebAppsGetSwiftVirtualNetworkConnectionSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetTriggeredWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsGetTriggeredWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
+  }),
+);
 export type WebAppsGetTriggeredWebJobInput =
   typeof WebAppsGetTriggeredWebJobInput.Type;
 
 // Output Schema
-export const WebAppsGetTriggeredWebJobOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetTriggeredWebJobOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetTriggeredWebJobOutput =
   typeof WebAppsGetTriggeredWebJobOutput.Type;
 
@@ -24334,11 +23916,10 @@ export type WebAppsGetTriggeredWebJobHistoryOutput =
  * @param webJobName - Name of Web Job.
  * @param id - History ID.
  */
-export const WebAppsGetTriggeredWebJobHistory =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetTriggeredWebJobHistoryInput,
-    outputSchema: WebAppsGetTriggeredWebJobHistoryOutput,
-  }));
+export const WebAppsGetTriggeredWebJobHistory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetTriggeredWebJobHistoryInput,
+  outputSchema: WebAppsGetTriggeredWebJobHistoryOutput,
+}));
 // Input Schema
 export const WebAppsGetTriggeredWebJobHistorySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -24396,50 +23977,49 @@ export type WebAppsGetTriggeredWebJobHistorySlotOutput =
  * @param webJobName - Name of Web Job.
  * @param id - History ID.
  */
-export const WebAppsGetTriggeredWebJobHistorySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetTriggeredWebJobHistorySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetTriggeredWebJobHistorySlotInput,
     outputSchema: WebAppsGetTriggeredWebJobHistorySlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetTriggeredWebJobSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}",
-    }),
-  );
+export const WebAppsGetTriggeredWebJobSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}",
+  }),
+);
 export type WebAppsGetTriggeredWebJobSlotInput =
   typeof WebAppsGetTriggeredWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetTriggeredWebJobSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetTriggeredWebJobSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetTriggeredWebJobSlotOutput =
   typeof WebAppsGetTriggeredWebJobSlotOutput.Type;
 
@@ -24456,49 +24036,46 @@ export type WebAppsGetTriggeredWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsGetTriggeredWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetTriggeredWebJobSlotInput,
-    outputSchema: WebAppsGetTriggeredWebJobSlotOutput,
-  }));
+export const WebAppsGetTriggeredWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetTriggeredWebJobSlotInput,
+  outputSchema: WebAppsGetTriggeredWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsGetVnetConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+export const WebAppsGetVnetConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsGetVnetConnectionInput =
   typeof WebAppsGetVnetConnectionInput.Type;
 
 // Output Schema
-export const WebAppsGetVnetConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetVnetConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetVnetConnectionOutput =
   typeof WebAppsGetVnetConnectionOutput.Type;
 
@@ -24519,20 +24096,21 @@ export const WebAppsGetVnetConnection = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetVnetConnectionOutput,
 }));
 // Input Schema
-export const WebAppsGetVnetConnectionGatewayInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsGetVnetConnectionGatewayInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     vnetName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
+  }),
+);
 export type WebAppsGetVnetConnectionGatewayInput =
   typeof WebAppsGetVnetConnectionGatewayInput.Type;
 
@@ -24573,11 +24151,10 @@ export type WebAppsGetVnetConnectionGatewayOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
-export const WebAppsGetVnetConnectionGateway =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetVnetConnectionGatewayInput,
-    outputSchema: WebAppsGetVnetConnectionGatewayOutput,
-  }));
+export const WebAppsGetVnetConnectionGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetVnetConnectionGatewayInput,
+  outputSchema: WebAppsGetVnetConnectionGatewayOutput,
+}));
 // Input Schema
 export const WebAppsGetVnetConnectionGatewaySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -24635,50 +24212,49 @@ export type WebAppsGetVnetConnectionGatewaySlotOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
-export const WebAppsGetVnetConnectionGatewaySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetVnetConnectionGatewaySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetVnetConnectionGatewaySlotInput,
     outputSchema: WebAppsGetVnetConnectionGatewaySlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetVnetConnectionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+export const WebAppsGetVnetConnectionSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsGetVnetConnectionSlotInput =
   typeof WebAppsGetVnetConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetVnetConnectionSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetVnetConnectionSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetVnetConnectionSlotOutput =
   typeof WebAppsGetVnetConnectionSlotOutput.Type;
 
@@ -24695,11 +24271,10 @@ export type WebAppsGetVnetConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsGetVnetConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetVnetConnectionSlotInput,
-    outputSchema: WebAppsGetVnetConnectionSlotOutput,
-  }));
+export const WebAppsGetVnetConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetVnetConnectionSlotInput,
+  outputSchema: WebAppsGetVnetConnectionSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetWebJobInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24754,43 +24329,41 @@ export const WebAppsGetWebJob = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetWebJobOutput,
 }));
 // Input Schema
-export const WebAppsGetWebJobSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}",
-    }),
-  );
+export const WebAppsGetWebJobSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}",
+  }),
+);
 export type WebAppsGetWebJobSlotInput = typeof WebAppsGetWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetWebJobSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetWebJobSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetWebJobSlotOutput = typeof WebAppsGetWebJobSlotOutput.Type;
 
 // The operation
@@ -24811,18 +24384,17 @@ export const WebAppsGetWebJobSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetWebJobSlotOutput,
 }));
 // Input Schema
-export const WebAppsGetWebSiteContainerLogsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs",
-    }),
-  );
+export const WebAppsGetWebSiteContainerLogsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs",
+  }),
+);
 export type WebAppsGetWebSiteContainerLogsInput =
   typeof WebAppsGetWebSiteContainerLogsInput.Type;
 
@@ -24843,11 +24415,10 @@ export type WebAppsGetWebSiteContainerLogsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetWebSiteContainerLogs =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsGetWebSiteContainerLogsInput,
-    outputSchema: WebAppsGetWebSiteContainerLogsOutput,
-  }));
+export const WebAppsGetWebSiteContainerLogs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetWebSiteContainerLogsInput,
+  outputSchema: WebAppsGetWebSiteContainerLogsOutput,
+}));
 // Input Schema
 export const WebAppsGetWebSiteContainerLogsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -24883,48 +24454,47 @@ export type WebAppsGetWebSiteContainerLogsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetWebSiteContainerLogsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsGetWebSiteContainerLogsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsGetWebSiteContainerLogsSlotInput,
     outputSchema: WebAppsGetWebSiteContainerLogsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsGetWorkflowInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows/{workflowName}",
-    }),
-  );
+export const WebAppsGetWorkflowInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows/{workflowName}",
+  }),
+);
 export type WebAppsGetWorkflowInput = typeof WebAppsGetWorkflowInput.Type;
 
 // Output Schema
-export const WebAppsGetWorkflowOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsGetWorkflowOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetWorkflowOutput = typeof WebAppsGetWorkflowOutput.Type;
 
 // The operation
@@ -24942,43 +24512,41 @@ export const WebAppsGetWorkflow = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsGetWorkflowOutput,
 }));
 // Input Schema
-export const WebAppsInstallSiteExtensionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    siteExtensionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-    }),
-  );
+export const WebAppsInstallSiteExtensionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  siteExtensionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsInstallSiteExtensionInput =
   typeof WebAppsInstallSiteExtensionInput.Type;
 
 // Output Schema
-export const WebAppsInstallSiteExtensionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsInstallSiteExtensionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsInstallSiteExtensionOutput =
   typeof WebAppsInstallSiteExtensionOutput.Type;
 
@@ -24999,20 +24567,21 @@ export const WebAppsInstallSiteExtension = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsInstallSiteExtensionOutput,
 }));
 // Input Schema
-export const WebAppsInstallSiteExtensionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsInstallSiteExtensionSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     siteExtensionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
+  }),
+);
 export type WebAppsInstallSiteExtensionSlotInput =
   typeof WebAppsInstallSiteExtensionSlotInput.Type;
 
@@ -25053,57 +24622,54 @@ export type WebAppsInstallSiteExtensionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsInstallSiteExtensionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsInstallSiteExtensionSlotInput,
-    outputSchema: WebAppsInstallSiteExtensionSlotOutput,
-  }));
+export const WebAppsInstallSiteExtensionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsInstallSiteExtensionSlotInput,
+  outputSchema: WebAppsInstallSiteExtensionSlotOutput,
+}));
 // Input Schema
-export const WebAppsIsCloneableInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/iscloneable",
-    }),
-  );
+export const WebAppsIsCloneableInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/iscloneable",
+  }),
+);
 export type WebAppsIsCloneableInput = typeof WebAppsIsCloneableInput.Type;
 
 // Output Schema
-export const WebAppsIsCloneableOutput =
-  /*@__PURE__*/ Schema.Struct({
-    result: Schema.optional(
-      Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
+export const WebAppsIsCloneableOutput = /*@__PURE__*/ Schema.Struct({
+  result: Schema.optional(
+    Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
+  ),
+  blockingFeatures: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    blockingFeatures: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  unsupportedFeatures: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    unsupportedFeatures: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  blockingCharacteristics: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    blockingCharacteristics: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-  });
+  ),
+});
 export type WebAppsIsCloneableOutput = typeof WebAppsIsCloneableOutput.Type;
 
 // The operation
@@ -25122,53 +24688,51 @@ export const WebAppsIsCloneable = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsIsCloneableOutput,
 }));
 // Input Schema
-export const WebAppsIsCloneableSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/iscloneable",
-    }),
-  );
+export const WebAppsIsCloneableSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/iscloneable",
+  }),
+);
 export type WebAppsIsCloneableSlotInput =
   typeof WebAppsIsCloneableSlotInput.Type;
 
 // Output Schema
-export const WebAppsIsCloneableSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    result: Schema.optional(
-      Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
+export const WebAppsIsCloneableSlotOutput = /*@__PURE__*/ Schema.Struct({
+  result: Schema.optional(
+    Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
+  ),
+  blockingFeatures: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    blockingFeatures: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  unsupportedFeatures: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    unsupportedFeatures: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  blockingCharacteristics: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
     ),
-    blockingCharacteristics: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-  });
+  ),
+});
 export type WebAppsIsCloneableSlotOutput =
   typeof WebAppsIsCloneableSlotOutput.Type;
 
@@ -25241,29 +24805,29 @@ export const WebAppsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListOutput,
 }));
 // Input Schema
-export const WebAppsListApplicationSettingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list",
-    }),
-  );
+export const WebAppsListApplicationSettingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list",
+  }),
+);
 export type WebAppsListApplicationSettingsInput =
   typeof WebAppsListApplicationSettingsInput.Type;
 
 // Output Schema
-export const WebAppsListApplicationSettingsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListApplicationSettingsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsListApplicationSettingsOutput =
   typeof WebAppsListApplicationSettingsOutput.Type;
 
@@ -25278,11 +24842,10 @@ export type WebAppsListApplicationSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListApplicationSettings =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListApplicationSettingsInput,
-    outputSchema: WebAppsListApplicationSettingsOutput,
-  }));
+export const WebAppsListApplicationSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListApplicationSettingsInput,
+  outputSchema: WebAppsListApplicationSettingsOutput,
+}));
 // Input Schema
 export const WebAppsListApplicationSettingsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25323,24 +24886,26 @@ export type WebAppsListApplicationSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListApplicationSettingsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListApplicationSettingsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListApplicationSettingsSlotInput,
     outputSchema: WebAppsListApplicationSettingsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListAzureStorageAccountsInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListAzureStorageAccountsInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list",
+  }),
+);
 export type WebAppsListAzureStorageAccountsInput =
   typeof WebAppsListAzureStorageAccountsInput.Type;
 
@@ -25366,11 +24931,10 @@ export type WebAppsListAzureStorageAccountsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListAzureStorageAccounts =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListAzureStorageAccountsInput,
-    outputSchema: WebAppsListAzureStorageAccountsOutput,
-  }));
+export const WebAppsListAzureStorageAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListAzureStorageAccountsInput,
+  outputSchema: WebAppsListAzureStorageAccountsOutput,
+}));
 // Input Schema
 export const WebAppsListAzureStorageAccountsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25411,62 +24975,51 @@ export type WebAppsListAzureStorageAccountsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListAzureStorageAccountsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListAzureStorageAccountsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListAzureStorageAccountsSlotInput,
     outputSchema: WebAppsListAzureStorageAccountsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListBackupsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups",
-    }),
-  );
+export const WebAppsListBackupsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups",
+  }),
+);
 export type WebAppsListBackupsInput = typeof WebAppsListBackupsInput.Type;
 
 // Output Schema
-export const WebAppsListBackupsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListBackupsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListBackupsOutput = typeof WebAppsListBackupsOutput.Type;
 
 // The operation
@@ -25485,58 +25038,46 @@ export const WebAppsListBackups = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListBackupsOutput,
 }));
 // Input Schema
-export const WebAppsListBackupsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups",
-    }),
-  );
+export const WebAppsListBackupsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups",
+  }),
+);
 export type WebAppsListBackupsSlotInput =
   typeof WebAppsListBackupsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListBackupsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListBackupsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListBackupsSlotOutput =
   typeof WebAppsListBackupsSlotOutput.Type;
 
@@ -25557,25 +25098,24 @@ export const WebAppsListBackupsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListBackupsSlotOutput,
 }));
 // Input Schema
-export const WebAppsListBackupStatusSecretsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list",
-    }),
-  );
+export const WebAppsListBackupStatusSecretsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list",
+  }),
+);
 export type WebAppsListBackupStatusSecretsInput =
   typeof WebAppsListBackupStatusSecretsInput.Type;
 
 // Output Schema
-export const WebAppsListBackupStatusSecretsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListBackupStatusSecretsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25593,7 +25133,8 @@ export const WebAppsListBackupStatusSecretsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsListBackupStatusSecretsOutput =
   typeof WebAppsListBackupStatusSecretsOutput.Type;
 
@@ -25609,11 +25150,10 @@ export type WebAppsListBackupStatusSecretsOutput =
  * @param name - Name of the app.
  * @param backupId - ID of the backup.
  */
-export const WebAppsListBackupStatusSecrets =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListBackupStatusSecretsInput,
-    outputSchema: WebAppsListBackupStatusSecretsOutput,
-  }));
+export const WebAppsListBackupStatusSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListBackupStatusSecretsInput,
+  outputSchema: WebAppsListBackupStatusSecretsOutput,
+}));
 // Input Schema
 export const WebAppsListBackupStatusSecretsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25669,11 +25209,12 @@ export type WebAppsListBackupStatusSecretsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
  * @param backupId - ID of the backup.
  */
-export const WebAppsListBackupStatusSecretsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListBackupStatusSecretsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListBackupStatusSecretsSlotInput,
     outputSchema: WebAppsListBackupStatusSecretsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListBasicPublishingCredentialsPoliciesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25818,57 +25359,45 @@ export const WebAppsListBasicPublishingCredentialsPoliciesSlot =
     outputSchema: WebAppsListBasicPublishingCredentialsPoliciesSlotOutput,
   }));
 // Input Schema
-export const WebAppsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    includeSlots: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites",
-    }),
-  );
+export const WebAppsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  includeSlots: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites",
+  }),
+);
 export type WebAppsListByResourceGroupInput =
   typeof WebAppsListByResourceGroupInput.Type;
 
 // Output Schema
-export const WebAppsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListByResourceGroupOutput =
   typeof WebAppsListByResourceGroupOutput.Type;
 
@@ -25888,57 +25417,45 @@ export const WebAppsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListByResourceGroupOutput,
 }));
 // Input Schema
-export const WebAppsListConfigurationsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config",
-    }),
-  );
+export const WebAppsListConfigurationsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config",
+  }),
+);
 export type WebAppsListConfigurationsInput =
   typeof WebAppsListConfigurationsInput.Type;
 
 // Output Schema
-export const WebAppsListConfigurationsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListConfigurationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListConfigurationsOutput =
   typeof WebAppsListConfigurationsOutput.Type;
 
@@ -26000,11 +25517,12 @@ export type WebAppsListConfigurationSnapshotInfoOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListConfigurationSnapshotInfo =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListConfigurationSnapshotInfo = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListConfigurationSnapshotInfoInput,
     outputSchema: WebAppsListConfigurationSnapshotInfoOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListConfigurationSnapshotInfoSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -26050,64 +25568,53 @@ export type WebAppsListConfigurationSnapshotInfoSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
-export const WebAppsListConfigurationSnapshotInfoSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListConfigurationSnapshotInfoSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListConfigurationSnapshotInfoSlotInput,
     outputSchema: WebAppsListConfigurationSnapshotInfoSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListConfigurationsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config",
-    }),
-  );
+export const WebAppsListConfigurationsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config",
+  }),
+);
 export type WebAppsListConfigurationsSlotInput =
   typeof WebAppsListConfigurationsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListConfigurationsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListConfigurationsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListConfigurationsSlotOutput =
   typeof WebAppsListConfigurationsSlotOutput.Type;
 
@@ -26123,35 +25630,32 @@ export type WebAppsListConfigurationsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
-export const WebAppsListConfigurationsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListConfigurationsSlotInput,
-    outputSchema: WebAppsListConfigurationsSlotOutput,
-  }));
+export const WebAppsListConfigurationsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListConfigurationsSlotInput,
+  outputSchema: WebAppsListConfigurationsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListConnectionStringsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings/list",
-    }),
-  );
+export const WebAppsListConnectionStringsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings/list",
+  }),
+);
 export type WebAppsListConnectionStringsInput =
   typeof WebAppsListConnectionStringsInput.Type;
 
 // Output Schema
-export const WebAppsListConnectionStringsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListConnectionStringsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListConnectionStringsOutput =
   typeof WebAppsListConnectionStringsOutput.Type;
 
@@ -26166,11 +25670,10 @@ export type WebAppsListConnectionStringsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListConnectionStrings =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListConnectionStringsInput,
-    outputSchema: WebAppsListConnectionStringsOutput,
-  }));
+export const WebAppsListConnectionStrings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListConnectionStringsInput,
+  outputSchema: WebAppsListConnectionStringsOutput,
+}));
 // Input Schema
 export const WebAppsListConnectionStringsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -26211,63 +25714,50 @@ export type WebAppsListConnectionStringsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListConnectionStringsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListConnectionStringsSlotInput,
-    outputSchema: WebAppsListConnectionStringsSlotOutput,
-  }));
+export const WebAppsListConnectionStringsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListConnectionStringsSlotInput,
+  outputSchema: WebAppsListConnectionStringsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListContinuousWebJobsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs",
-    }),
-  );
+export const WebAppsListContinuousWebJobsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs",
+  }),
+);
 export type WebAppsListContinuousWebJobsInput =
   typeof WebAppsListContinuousWebJobsInput.Type;
 
 // Output Schema
-export const WebAppsListContinuousWebJobsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListContinuousWebJobsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListContinuousWebJobsOutput =
   typeof WebAppsListContinuousWebJobsOutput.Type;
 
@@ -26282,11 +25772,10 @@ export type WebAppsListContinuousWebJobsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListContinuousWebJobs =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListContinuousWebJobsInput,
-    outputSchema: WebAppsListContinuousWebJobsOutput,
-  }));
+export const WebAppsListContinuousWebJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListContinuousWebJobsInput,
+  outputSchema: WebAppsListContinuousWebJobsOutput,
+}));
 // Input Schema
 export const WebAppsListContinuousWebJobsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -26355,49 +25844,46 @@ export type WebAppsListContinuousWebJobsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  */
-export const WebAppsListContinuousWebJobsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListContinuousWebJobsSlotInput,
-    outputSchema: WebAppsListContinuousWebJobsSlotOutput,
-  }));
+export const WebAppsListContinuousWebJobsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListContinuousWebJobsSlotInput,
+  outputSchema: WebAppsListContinuousWebJobsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListDeploymentLogInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}/log",
-    }),
-  );
+export const WebAppsListDeploymentLogInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}/log",
+  }),
+);
 export type WebAppsListDeploymentLogInput =
   typeof WebAppsListDeploymentLogInput.Type;
 
 // Output Schema
-export const WebAppsListDeploymentLogOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListDeploymentLogOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListDeploymentLogOutput =
   typeof WebAppsListDeploymentLogOutput.Type;
 
@@ -26418,44 +25904,42 @@ export const WebAppsListDeploymentLog = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListDeploymentLogOutput,
 }));
 // Input Schema
-export const WebAppsListDeploymentLogSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}/log",
-    }),
-  );
+export const WebAppsListDeploymentLogSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}/log",
+  }),
+);
 export type WebAppsListDeploymentLogSlotInput =
   typeof WebAppsListDeploymentLogSlotInput.Type;
 
 // Output Schema
-export const WebAppsListDeploymentLogSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListDeploymentLogSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListDeploymentLogSlotOutput =
   typeof WebAppsListDeploymentLogSlotOutput.Type;
 
@@ -26472,63 +25956,50 @@ export type WebAppsListDeploymentLogSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
  * @param id - Deployment ID.
  */
-export const WebAppsListDeploymentLogSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListDeploymentLogSlotInput,
-    outputSchema: WebAppsListDeploymentLogSlotOutput,
-  }));
+export const WebAppsListDeploymentLogSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListDeploymentLogSlotInput,
+  outputSchema: WebAppsListDeploymentLogSlotOutput,
+}));
 // Input Schema
-export const WebAppsListDeploymentsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments",
-    }),
-  );
+export const WebAppsListDeploymentsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments",
+  }),
+);
 export type WebAppsListDeploymentsInput =
   typeof WebAppsListDeploymentsInput.Type;
 
 // Output Schema
-export const WebAppsListDeploymentsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListDeploymentsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListDeploymentsOutput =
   typeof WebAppsListDeploymentsOutput.Type;
 
@@ -26548,58 +26019,46 @@ export const WebAppsListDeployments = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListDeploymentsOutput,
 }));
 // Input Schema
-export const WebAppsListDeploymentsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments",
-    }),
-  );
+export const WebAppsListDeploymentsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments",
+  }),
+);
 export type WebAppsListDeploymentsSlotInput =
   typeof WebAppsListDeploymentsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListDeploymentsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListDeploymentsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListDeploymentsSlotOutput =
   typeof WebAppsListDeploymentsSlotOutput.Type;
 
@@ -26685,11 +26144,12 @@ export type WebAppsListDomainOwnershipIdentifiersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListDomainOwnershipIdentifiers =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListDomainOwnershipIdentifiers = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListDomainOwnershipIdentifiersInput,
     outputSchema: WebAppsListDomainOwnershipIdentifiersOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListDomainOwnershipIdentifiersSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -26758,36 +26218,35 @@ export type WebAppsListDomainOwnershipIdentifiersSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
  */
-export const WebAppsListDomainOwnershipIdentifiersSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListDomainOwnershipIdentifiersSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListDomainOwnershipIdentifiersSlotInput,
     outputSchema: WebAppsListDomainOwnershipIdentifiersSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListFunctionKeysInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listkeys",
-    }),
-  );
+export const WebAppsListFunctionKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listkeys",
+  }),
+);
 export type WebAppsListFunctionKeysInput =
   typeof WebAppsListFunctionKeysInput.Type;
 
 // Output Schema
-export const WebAppsListFunctionKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListFunctionKeysOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListFunctionKeysOutput =
   typeof WebAppsListFunctionKeysOutput.Type;
 
@@ -26808,31 +26267,29 @@ export const WebAppsListFunctionKeys = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListFunctionKeysOutput,
 }));
 // Input Schema
-export const WebAppsListFunctionKeysSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listkeys",
-    }),
-  );
+export const WebAppsListFunctionKeysSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listkeys",
+  }),
+);
 export type WebAppsListFunctionKeysSlotInput =
   typeof WebAppsListFunctionKeysSlotInput.Type;
 
 // Output Schema
-export const WebAppsListFunctionKeysSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListFunctionKeysSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListFunctionKeysSlotOutput =
   typeof WebAppsListFunctionKeysSlotOutput.Type;
 
@@ -26851,56 +26308,44 @@ export const WebAppsListFunctionKeysSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListFunctionKeysSlotOutput,
 }));
 // Input Schema
-export const WebAppsListFunctionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions",
-    }),
-  );
+export const WebAppsListFunctionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions",
+  }),
+);
 export type WebAppsListFunctionsInput = typeof WebAppsListFunctionsInput.Type;
 
 // Output Schema
-export const WebAppsListFunctionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListFunctionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListFunctionsOutput = typeof WebAppsListFunctionsOutput.Type;
 
 // The operation
@@ -26919,28 +26364,26 @@ export const WebAppsListFunctions = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListFunctionsOutput,
 }));
 // Input Schema
-export const WebAppsListFunctionSecretsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listsecrets",
-    }),
-  );
+export const WebAppsListFunctionSecretsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listsecrets",
+  }),
+);
 export type WebAppsListFunctionSecretsInput =
   typeof WebAppsListFunctionSecretsInput.Type;
 
 // Output Schema
-export const WebAppsListFunctionSecretsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    key: Schema.optional(Schema.String),
-    trigger_url: Schema.optional(Schema.String),
-  });
+export const WebAppsListFunctionSecretsOutput = /*@__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  trigger_url: Schema.optional(Schema.String),
+});
 export type WebAppsListFunctionSecretsOutput =
   typeof WebAppsListFunctionSecretsOutput.Type;
 
@@ -26961,29 +26404,29 @@ export const WebAppsListFunctionSecrets = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListFunctionSecretsOutput,
 }));
 // Input Schema
-export const WebAppsListFunctionSecretsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    functionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listsecrets",
-    }),
-  );
+export const WebAppsListFunctionSecretsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listsecrets",
+  }),
+);
 export type WebAppsListFunctionSecretsSlotInput =
   typeof WebAppsListFunctionSecretsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListFunctionSecretsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListFunctionSecretsSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     key: Schema.optional(Schema.String),
     trigger_url: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsListFunctionSecretsSlotOutput =
   typeof WebAppsListFunctionSecretsSlotOutput.Type;
 
@@ -27000,33 +26443,30 @@ export type WebAppsListFunctionSecretsSlotOutput =
  * @param slot - Name of the deployment slot.
  * @param functionName - Function name.
  */
-export const WebAppsListFunctionSecretsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListFunctionSecretsSlotInput,
-    outputSchema: WebAppsListFunctionSecretsSlotOutput,
-  }));
+export const WebAppsListFunctionSecretsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListFunctionSecretsSlotInput,
+  outputSchema: WebAppsListFunctionSecretsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListHostKeysInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys",
-    }),
-  );
+export const WebAppsListHostKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys",
+  }),
+);
 export type WebAppsListHostKeysInput = typeof WebAppsListHostKeysInput.Type;
 
 // Output Schema
-export const WebAppsListHostKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    masterKey: Schema.optional(Schema.String),
-    functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const WebAppsListHostKeysOutput = /*@__PURE__*/ Schema.Struct({
+  masterKey: Schema.optional(Schema.String),
+  functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type WebAppsListHostKeysOutput = typeof WebAppsListHostKeysOutput.Type;
 
 // The operation
@@ -27045,29 +26485,27 @@ export const WebAppsListHostKeys = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListHostKeysOutput,
 }));
 // Input Schema
-export const WebAppsListHostKeysSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listkeys",
-    }),
-  );
+export const WebAppsListHostKeysSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listkeys",
+  }),
+);
 export type WebAppsListHostKeysSlotInput =
   typeof WebAppsListHostKeysSlotInput.Type;
 
 // Output Schema
-export const WebAppsListHostKeysSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    masterKey: Schema.optional(Schema.String),
-    functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const WebAppsListHostKeysSlotOutput = /*@__PURE__*/ Schema.Struct({
+  masterKey: Schema.optional(Schema.String),
+  functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type WebAppsListHostKeysSlotOutput =
   typeof WebAppsListHostKeysSlotOutput.Type;
 
@@ -27088,57 +26526,45 @@ export const WebAppsListHostKeysSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListHostKeysSlotOutput,
 }));
 // Input Schema
-export const WebAppsListHostNameBindingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings",
-    }),
-  );
+export const WebAppsListHostNameBindingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings",
+  }),
+);
 export type WebAppsListHostNameBindingsInput =
   typeof WebAppsListHostNameBindingsInput.Type;
 
 // Output Schema
-export const WebAppsListHostNameBindingsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListHostNameBindingsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListHostNameBindingsOutput =
   typeof WebAppsListHostNameBindingsOutput.Type;
 
@@ -27158,19 +26584,20 @@ export const WebAppsListHostNameBindings = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListHostNameBindingsOutput,
 }));
 // Input Schema
-export const WebAppsListHostNameBindingsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListHostNameBindingsSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings",
+  }),
+);
 export type WebAppsListHostNameBindingsSlotInput =
   typeof WebAppsListHostNameBindingsSlotInput.Type;
 
@@ -27225,48 +26652,45 @@ export type WebAppsListHostNameBindingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  */
-export const WebAppsListHostNameBindingsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListHostNameBindingsSlotInput,
-    outputSchema: WebAppsListHostNameBindingsSlotOutput,
-  }));
+export const WebAppsListHostNameBindingsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListHostNameBindingsSlotInput,
+  outputSchema: WebAppsListHostNameBindingsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListHybridConnectionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionRelays",
-    }),
-  );
+export const WebAppsListHybridConnectionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionRelays",
+  }),
+);
 export type WebAppsListHybridConnectionsInput =
   typeof WebAppsListHybridConnectionsInput.Type;
 
 // Output Schema
-export const WebAppsListHybridConnectionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListHybridConnectionsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListHybridConnectionsOutput =
   typeof WebAppsListHybridConnectionsOutput.Type;
 
@@ -27281,11 +26705,10 @@ export type WebAppsListHybridConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListHybridConnections =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListHybridConnectionsInput,
-    outputSchema: WebAppsListHybridConnectionsOutput,
-  }));
+export const WebAppsListHybridConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListHybridConnectionsInput,
+  outputSchema: WebAppsListHybridConnectionsOutput,
+}));
 // Input Schema
 export const WebAppsListHybridConnectionsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27339,11 +26762,10 @@ export type WebAppsListHybridConnectionsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListHybridConnectionsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListHybridConnectionsSlotInput,
-    outputSchema: WebAppsListHybridConnectionsSlotOutput,
-  }));
+export const WebAppsListHybridConnectionsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListHybridConnectionsSlotInput,
+  outputSchema: WebAppsListHybridConnectionsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceFunctionsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27412,30 +26834,28 @@ export type WebAppsListInstanceFunctionsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot.
  */
-export const WebAppsListInstanceFunctionsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceFunctionsSlotInput,
-    outputSchema: WebAppsListInstanceFunctionsSlotOutput,
-  }));
+export const WebAppsListInstanceFunctionsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceFunctionsSlotInput,
+  outputSchema: WebAppsListInstanceFunctionsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListInstanceIdentifiersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances",
-    }),
-  );
+export const WebAppsListInstanceIdentifiersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances",
+  }),
+);
 export type WebAppsListInstanceIdentifiersInput =
   typeof WebAppsListInstanceIdentifiersInput.Type;
 
 // Output Schema
-export const WebAppsListInstanceIdentifiersOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListInstanceIdentifiersOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27468,7 +26888,8 @@ export const WebAppsListInstanceIdentifiersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsListInstanceIdentifiersOutput =
   typeof WebAppsListInstanceIdentifiersOutput.Type;
 
@@ -27483,11 +26904,10 @@ export type WebAppsListInstanceIdentifiersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListInstanceIdentifiers =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceIdentifiersInput,
-    outputSchema: WebAppsListInstanceIdentifiersOutput,
-  }));
+export const WebAppsListInstanceIdentifiers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceIdentifiersInput,
+  outputSchema: WebAppsListInstanceIdentifiersOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceIdentifiersSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27556,64 +26976,53 @@ export type WebAppsListInstanceIdentifiersSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets the production slot instances.
  */
-export const WebAppsListInstanceIdentifiersSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListInstanceIdentifiersSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListInstanceIdentifiersSlotInput,
     outputSchema: WebAppsListInstanceIdentifiersSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListInstanceProcessesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes",
-    }),
-  );
+export const WebAppsListInstanceProcessesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes",
+  }),
+);
 export type WebAppsListInstanceProcessesInput =
   typeof WebAppsListInstanceProcessesInput.Type;
 
 // Output Schema
-export const WebAppsListInstanceProcessesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListInstanceProcessesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListInstanceProcessesOutput =
   typeof WebAppsListInstanceProcessesOutput.Type;
 
@@ -27629,11 +27038,10 @@ export type WebAppsListInstanceProcessesOutput =
  * @param name - Site name.
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  */
-export const WebAppsListInstanceProcesses =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceProcessesInput,
-    outputSchema: WebAppsListInstanceProcessesOutput,
-  }));
+export const WebAppsListInstanceProcesses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceProcessesInput,
+  outputSchema: WebAppsListInstanceProcessesOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceProcessesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27704,11 +27112,10 @@ export type WebAppsListInstanceProcessesSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  */
-export const WebAppsListInstanceProcessesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceProcessesSlotInput,
-    outputSchema: WebAppsListInstanceProcessesSlotOutput,
-  }));
+export const WebAppsListInstanceProcessesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceProcessesSlotInput,
+  outputSchema: WebAppsListInstanceProcessesSlotOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceProcessModulesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27779,11 +27186,10 @@ export type WebAppsListInstanceProcessModulesOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsListInstanceProcessModules =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceProcessModulesInput,
-    outputSchema: WebAppsListInstanceProcessModulesOutput,
-  }));
+export const WebAppsListInstanceProcessModules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceProcessModulesInput,
+  outputSchema: WebAppsListInstanceProcessModulesOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceProcessModulesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27856,11 +27262,12 @@ export type WebAppsListInstanceProcessModulesSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsListInstanceProcessModulesSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListInstanceProcessModulesSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListInstanceProcessModulesSlotInput,
     outputSchema: WebAppsListInstanceProcessModulesSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListInstanceProcessThreadsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27908,11 +27315,10 @@ export type WebAppsListInstanceProcessThreadsOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsListInstanceProcessThreads =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceProcessThreadsInput,
-    outputSchema: WebAppsListInstanceProcessThreadsOutput,
-  }));
+export const WebAppsListInstanceProcessThreads = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceProcessThreadsInput,
+  outputSchema: WebAppsListInstanceProcessThreadsOutput,
+}));
 // Input Schema
 export const WebAppsListInstanceProcessThreadsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -27962,11 +27368,12 @@ export type WebAppsListInstanceProcessThreadsSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsListInstanceProcessThreadsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListInstanceProcessThreadsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListInstanceProcessThreadsSlotInput,
     outputSchema: WebAppsListInstanceProcessThreadsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListInstanceWorkflowsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -28033,34 +27440,31 @@ export type WebAppsListInstanceWorkflowsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot.
  */
-export const WebAppsListInstanceWorkflowsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListInstanceWorkflowsSlotInput,
-    outputSchema: WebAppsListInstanceWorkflowsSlotOutput,
-  }));
+export const WebAppsListInstanceWorkflowsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListInstanceWorkflowsSlotInput,
+  outputSchema: WebAppsListInstanceWorkflowsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListMetadataInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata/list",
-    }),
-  );
+export const WebAppsListMetadataInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata/list",
+  }),
+);
 export type WebAppsListMetadataInput = typeof WebAppsListMetadataInput.Type;
 
 // Output Schema
-export const WebAppsListMetadataOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListMetadataOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListMetadataOutput = typeof WebAppsListMetadataOutput.Type;
 
 // The operation
@@ -28079,30 +27483,28 @@ export const WebAppsListMetadata = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListMetadataOutput,
 }));
 // Input Schema
-export const WebAppsListMetadataSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata/list",
-    }),
-  );
+export const WebAppsListMetadataSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata/list",
+  }),
+);
 export type WebAppsListMetadataSlotInput =
   typeof WebAppsListMetadataSlotInput.Type;
 
 // Output Schema
-export const WebAppsListMetadataSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListMetadataSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListMetadataSlotOutput =
   typeof WebAppsListMetadataSlotOutput.Type;
 
@@ -28123,43 +27525,41 @@ export const WebAppsListMetadataSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListMetadataSlotOutput,
 }));
 // Input Schema
-export const WebAppsListNetworkFeaturesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    view: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkFeatures/{view}",
-    }),
-  );
+export const WebAppsListNetworkFeaturesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  view: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkFeatures/{view}",
+  }),
+);
 export type WebAppsListNetworkFeaturesInput =
   typeof WebAppsListNetworkFeaturesInput.Type;
 
 // Output Schema
-export const WebAppsListNetworkFeaturesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListNetworkFeaturesOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListNetworkFeaturesOutput =
   typeof WebAppsListNetworkFeaturesOutput.Type;
 
@@ -28180,26 +27580,25 @@ export const WebAppsListNetworkFeatures = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListNetworkFeaturesOutput,
 }));
 // Input Schema
-export const WebAppsListNetworkFeaturesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    view: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkFeatures/{view}",
-    }),
-  );
+export const WebAppsListNetworkFeaturesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  view: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkFeatures/{view}",
+  }),
+);
 export type WebAppsListNetworkFeaturesSlotInput =
   typeof WebAppsListNetworkFeaturesSlotInput.Type;
 
 // Output Schema
-export const WebAppsListNetworkFeaturesSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListNetworkFeaturesSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28217,7 +27616,8 @@ export const WebAppsListNetworkFeaturesSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsListNetworkFeaturesSlotOutput =
   typeof WebAppsListNetworkFeaturesSlotOutput.Type;
 
@@ -28234,56 +27634,53 @@ export type WebAppsListNetworkFeaturesSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get network features for the production slot.
  * @param view - The type of view. Only "summary" is supported at this time.
  */
-export const WebAppsListNetworkFeaturesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListNetworkFeaturesSlotInput,
-    outputSchema: WebAppsListNetworkFeaturesSlotOutput,
-  }));
+export const WebAppsListNetworkFeaturesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListNetworkFeaturesSlotInput,
+  outputSchema: WebAppsListNetworkFeaturesSlotOutput,
+}));
 // Input Schema
-export const WebAppsListPerfMonCountersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/perfcounters",
-    }),
-  );
+export const WebAppsListPerfMonCountersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/perfcounters",
+  }),
+);
 export type WebAppsListPerfMonCountersInput =
   typeof WebAppsListPerfMonCountersInput.Type;
 
 // Output Schema
-export const WebAppsListPerfMonCountersOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        data: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            timeGrain: Schema.optional(Schema.String),
-            values: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  time: Schema.optional(Schema.String),
-                  instanceName: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.Number),
-                }),
-              ),
+export const WebAppsListPerfMonCountersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      data: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          timeGrain: Schema.optional(Schema.String),
+          values: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                time: Schema.optional(Schema.String),
+                instanceName: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.Number),
+              }),
             ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListPerfMonCountersOutput =
   typeof WebAppsListPerfMonCountersOutput.Type;
 
@@ -28304,26 +27701,25 @@ export const WebAppsListPerfMonCounters = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListPerfMonCountersOutput,
 }));
 // Input Schema
-export const WebAppsListPerfMonCountersSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/perfcounters",
-    }),
-  );
+export const WebAppsListPerfMonCountersSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/perfcounters",
+  }),
+);
 export type WebAppsListPerfMonCountersSlotInput =
   typeof WebAppsListPerfMonCountersSlotInput.Type;
 
 // Output Schema
-export const WebAppsListPerfMonCountersSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListPerfMonCountersSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -28348,7 +27744,8 @@ export const WebAppsListPerfMonCountersSlotOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsListPerfMonCountersSlotOutput =
   typeof WebAppsListPerfMonCountersSlotOutput.Type;
 
@@ -28365,48 +27762,45 @@ export type WebAppsListPerfMonCountersSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
-export const WebAppsListPerfMonCountersSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListPerfMonCountersSlotInput,
-    outputSchema: WebAppsListPerfMonCountersSlotOutput,
-  }));
+export const WebAppsListPerfMonCountersSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPerfMonCountersSlotInput,
+  outputSchema: WebAppsListPerfMonCountersSlotOutput,
+}));
 // Input Schema
-export const WebAppsListPremierAddOnsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons",
-    }),
-  );
+export const WebAppsListPremierAddOnsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons",
+  }),
+);
 export type WebAppsListPremierAddOnsInput =
   typeof WebAppsListPremierAddOnsInput.Type;
 
 // Output Schema
-export const WebAppsListPremierAddOnsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListPremierAddOnsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListPremierAddOnsOutput =
   typeof WebAppsListPremierAddOnsOutput.Type;
 
@@ -28426,43 +27820,41 @@ export const WebAppsListPremierAddOns = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListPremierAddOnsOutput,
 }));
 // Input Schema
-export const WebAppsListPremierAddOnsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons",
-    }),
-  );
+export const WebAppsListPremierAddOnsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons",
+  }),
+);
 export type WebAppsListPremierAddOnsSlotInput =
   typeof WebAppsListPremierAddOnsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListPremierAddOnsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsListPremierAddOnsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsListPremierAddOnsSlotOutput =
   typeof WebAppsListPremierAddOnsSlotOutput.Type;
 
@@ -28478,62 +27870,49 @@ export type WebAppsListPremierAddOnsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListPremierAddOnsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListPremierAddOnsSlotInput,
-    outputSchema: WebAppsListPremierAddOnsSlotOutput,
-  }));
+export const WebAppsListPremierAddOnsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPremierAddOnsSlotInput,
+  outputSchema: WebAppsListPremierAddOnsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListProcessesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes",
-    }),
-  );
+export const WebAppsListProcessesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes",
+  }),
+);
 export type WebAppsListProcessesInput = typeof WebAppsListProcessesInput.Type;
 
 // Output Schema
-export const WebAppsListProcessesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessesOutput = typeof WebAppsListProcessesOutput.Type;
 
 // The operation
@@ -28552,58 +27931,46 @@ export const WebAppsListProcesses = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListProcessesOutput,
 }));
 // Input Schema
-export const WebAppsListProcessesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes",
-    }),
-  );
+export const WebAppsListProcessesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes",
+  }),
+);
 export type WebAppsListProcessesSlotInput =
   typeof WebAppsListProcessesSlotInput.Type;
 
 // Output Schema
-export const WebAppsListProcessesSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessesSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessesSlotOutput =
   typeof WebAppsListProcessesSlotOutput.Type;
 
@@ -28624,58 +27991,46 @@ export const WebAppsListProcessesSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListProcessesSlotOutput,
 }));
 // Input Schema
-export const WebAppsListProcessModulesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules",
-    }),
-  );
+export const WebAppsListProcessModulesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules",
+  }),
+);
 export type WebAppsListProcessModulesInput =
   typeof WebAppsListProcessModulesInput.Type;
 
 // Output Schema
-export const WebAppsListProcessModulesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessModulesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessModulesOutput =
   typeof WebAppsListProcessModulesOutput.Type;
 
@@ -28696,59 +28051,47 @@ export const WebAppsListProcessModules = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListProcessModulesOutput,
 }));
 // Input Schema
-export const WebAppsListProcessModulesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules",
-    }),
-  );
+export const WebAppsListProcessModulesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules",
+  }),
+);
 export type WebAppsListProcessModulesSlotInput =
   typeof WebAppsListProcessModulesSlotInput.Type;
 
 // Output Schema
-export const WebAppsListProcessModulesSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessModulesSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessModulesSlotOutput =
   typeof WebAppsListProcessModulesSlotOutput.Type;
 
@@ -28765,41 +28108,38 @@ export type WebAppsListProcessModulesSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param processId - PID.
  */
-export const WebAppsListProcessModulesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListProcessModulesSlotInput,
-    outputSchema: WebAppsListProcessModulesSlotOutput,
-  }));
+export const WebAppsListProcessModulesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessModulesSlotInput,
+  outputSchema: WebAppsListProcessModulesSlotOutput,
+}));
 // Input Schema
-export const WebAppsListProcessThreadsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/threads",
-    }),
-  );
+export const WebAppsListProcessThreadsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/threads",
+  }),
+);
 export type WebAppsListProcessThreadsInput =
   typeof WebAppsListProcessThreadsInput.Type;
 
 // Output Schema
-export const WebAppsListProcessThreadsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessThreadsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessThreadsOutput =
   typeof WebAppsListProcessThreadsOutput.Type;
 
@@ -28820,36 +28160,34 @@ export const WebAppsListProcessThreads = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListProcessThreadsOutput,
 }));
 // Input Schema
-export const WebAppsListProcessThreadsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/threads",
-    }),
-  );
+export const WebAppsListProcessThreadsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/threads",
+  }),
+);
 export type WebAppsListProcessThreadsSlotInput =
   typeof WebAppsListProcessThreadsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListProcessThreadsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListProcessThreadsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListProcessThreadsSlotOutput =
   typeof WebAppsListProcessThreadsSlotOutput.Type;
 
@@ -28866,11 +28204,10 @@ export type WebAppsListProcessThreadsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param processId - PID.
  */
-export const WebAppsListProcessThreadsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListProcessThreadsSlotInput,
-    outputSchema: WebAppsListProcessThreadsSlotOutput,
-  }));
+export const WebAppsListProcessThreadsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessThreadsSlotInput,
+  outputSchema: WebAppsListProcessThreadsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListProductionSiteDeploymentStatusesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -28941,57 +28278,45 @@ export const WebAppsListProductionSiteDeploymentStatuses =
     outputSchema: WebAppsListProductionSiteDeploymentStatusesOutput,
   }));
 // Input Schema
-export const WebAppsListPublicCertificatesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates",
-    }),
-  );
+export const WebAppsListPublicCertificatesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates",
+  }),
+);
 export type WebAppsListPublicCertificatesInput =
   typeof WebAppsListPublicCertificatesInput.Type;
 
 // Output Schema
-export const WebAppsListPublicCertificatesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListPublicCertificatesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListPublicCertificatesOutput =
   typeof WebAppsListPublicCertificatesOutput.Type;
 
@@ -29006,11 +28331,10 @@ export type WebAppsListPublicCertificatesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListPublicCertificates =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListPublicCertificatesInput,
-    outputSchema: WebAppsListPublicCertificatesOutput,
-  }));
+export const WebAppsListPublicCertificates = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPublicCertificatesInput,
+  outputSchema: WebAppsListPublicCertificatesOutput,
+}));
 // Input Schema
 export const WebAppsListPublicCertificatesSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29079,11 +28403,10 @@ export type WebAppsListPublicCertificatesSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  */
-export const WebAppsListPublicCertificatesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListPublicCertificatesSlotInput,
-    outputSchema: WebAppsListPublicCertificatesSlotOutput,
-  }));
+export const WebAppsListPublicCertificatesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPublicCertificatesSlotInput,
+  outputSchema: WebAppsListPublicCertificatesSlotOutput,
+}));
 // Input Schema
 export const WebAppsListPublishingCredentialsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29135,11 +28458,10 @@ export type WebAppsListPublishingCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListPublishingCredentials =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListPublishingCredentialsInput,
-    outputSchema: WebAppsListPublishingCredentialsOutput,
-  }));
+export const WebAppsListPublishingCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPublishingCredentialsInput,
+  outputSchema: WebAppsListPublishingCredentialsOutput,
+}));
 // Input Schema
 export const WebAppsListPublishingCredentialsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29193,11 +28515,12 @@ export type WebAppsListPublishingCredentialsSlotOutput =
  * @param name - Name of the app.
  * @param slot - If true, the password is included in the response. The default is false.
  */
-export const WebAppsListPublishingCredentialsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListPublishingCredentialsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListPublishingCredentialsSlotInput,
     outputSchema: WebAppsListPublishingCredentialsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListPublishingProfileXmlWithSecretsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29327,11 +28650,12 @@ export type WebAppsListRelayServiceConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListRelayServiceConnections =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListRelayServiceConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListRelayServiceConnectionsInput,
     outputSchema: WebAppsListRelayServiceConnectionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListRelayServiceConnectionsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29385,63 +28709,52 @@ export type WebAppsListRelayServiceConnectionsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListRelayServiceConnectionsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListRelayServiceConnectionsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListRelayServiceConnectionsSlotInput,
     outputSchema: WebAppsListRelayServiceConnectionsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListSiteBackupsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listbackups",
-    }),
-  );
+export const WebAppsListSiteBackupsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listbackups",
+  }),
+);
 export type WebAppsListSiteBackupsInput =
   typeof WebAppsListSiteBackupsInput.Type;
 
 // Output Schema
-export const WebAppsListSiteBackupsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteBackupsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteBackupsOutput =
   typeof WebAppsListSiteBackupsOutput.Type;
 
@@ -29461,58 +28774,46 @@ export const WebAppsListSiteBackups = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSiteBackupsOutput,
 }));
 // Input Schema
-export const WebAppsListSiteBackupsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listbackups",
-    }),
-  );
+export const WebAppsListSiteBackupsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listbackups",
+  }),
+);
 export type WebAppsListSiteBackupsSlotInput =
   typeof WebAppsListSiteBackupsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSiteBackupsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteBackupsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteBackupsSlotOutput =
   typeof WebAppsListSiteBackupsSlotOutput.Type;
 
@@ -29533,57 +28834,45 @@ export const WebAppsListSiteBackupsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSiteBackupsSlotOutput,
 }));
 // Input Schema
-export const WebAppsListSiteContainersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers",
-    }),
-  );
+export const WebAppsListSiteContainersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers",
+  }),
+);
 export type WebAppsListSiteContainersInput =
   typeof WebAppsListSiteContainersInput.Type;
 
 // Output Schema
-export const WebAppsListSiteContainersOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteContainersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteContainersOutput =
   typeof WebAppsListSiteContainersOutput.Type;
 
@@ -29601,58 +28890,46 @@ export const WebAppsListSiteContainers = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSiteContainersOutput,
 }));
 // Input Schema
-export const WebAppsListSiteContainersSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers",
-    }),
-  );
+export const WebAppsListSiteContainersSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers",
+  }),
+);
 export type WebAppsListSiteContainersSlotInput =
   typeof WebAppsListSiteContainersSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSiteContainersSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteContainersSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteContainersSlotOutput =
   typeof WebAppsListSiteContainersSlotOutput.Type;
 
@@ -29666,63 +28943,50 @@ export type WebAppsListSiteContainersSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
  */
-export const WebAppsListSiteContainersSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSiteContainersSlotInput,
-    outputSchema: WebAppsListSiteContainersSlotOutput,
-  }));
+export const WebAppsListSiteContainersSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteContainersSlotInput,
+  outputSchema: WebAppsListSiteContainersSlotOutput,
+}));
 // Input Schema
-export const WebAppsListSiteExtensionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions",
-    }),
-  );
+export const WebAppsListSiteExtensionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions",
+  }),
+);
 export type WebAppsListSiteExtensionsInput =
   typeof WebAppsListSiteExtensionsInput.Type;
 
 // Output Schema
-export const WebAppsListSiteExtensionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteExtensionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteExtensionsOutput =
   typeof WebAppsListSiteExtensionsOutput.Type;
 
@@ -29742,58 +29006,46 @@ export const WebAppsListSiteExtensions = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSiteExtensionsOutput,
 }));
 // Input Schema
-export const WebAppsListSiteExtensionsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions",
-    }),
-  );
+export const WebAppsListSiteExtensionsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions",
+  }),
+);
 export type WebAppsListSiteExtensionsSlotInput =
   typeof WebAppsListSiteExtensionsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSiteExtensionsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSiteExtensionsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSiteExtensionsSlotOutput =
   typeof WebAppsListSiteExtensionsSlotOutput.Type;
 
@@ -29809,35 +29061,32 @@ export type WebAppsListSiteExtensionsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  */
-export const WebAppsListSiteExtensionsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSiteExtensionsSlotInput,
-    outputSchema: WebAppsListSiteExtensionsSlotOutput,
-  }));
+export const WebAppsListSiteExtensionsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteExtensionsSlotInput,
+  outputSchema: WebAppsListSiteExtensionsSlotOutput,
+}));
 // Input Schema
-export const WebAppsListSitePushSettingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings/list",
-    }),
-  );
+export const WebAppsListSitePushSettingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings/list",
+  }),
+);
 export type WebAppsListSitePushSettingsInput =
   typeof WebAppsListSitePushSettingsInput.Type;
 
 // Output Schema
-export const WebAppsListSitePushSettingsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsListSitePushSettingsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsListSitePushSettingsOutput =
   typeof WebAppsListSitePushSettingsOutput.Type;
 
@@ -29857,19 +29106,20 @@ export const WebAppsListSitePushSettings = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSitePushSettingsOutput,
 }));
 // Input Schema
-export const WebAppsListSitePushSettingsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListSitePushSettingsSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings/list",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings/list",
+  }),
+);
 export type WebAppsListSitePushSettingsSlotInput =
   typeof WebAppsListSitePushSettingsSlotInput.Type;
 
@@ -29896,11 +29146,10 @@ export type WebAppsListSitePushSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSitePushSettingsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSitePushSettingsSlotInput,
-    outputSchema: WebAppsListSitePushSettingsSlotOutput,
-  }));
+export const WebAppsListSitePushSettingsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSitePushSettingsSlotInput,
+  outputSchema: WebAppsListSitePushSettingsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListSlotConfigurationNamesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -29952,11 +29201,10 @@ export type WebAppsListSlotConfigurationNamesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSlotConfigurationNames =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSlotConfigurationNamesInput,
-    outputSchema: WebAppsListSlotConfigurationNamesOutput,
-  }));
+export const WebAppsListSlotConfigurationNames = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSlotConfigurationNamesInput,
+  outputSchema: WebAppsListSlotConfigurationNamesOutput,
+}));
 // Input Schema
 export const WebAppsListSlotDifferencesFromProductionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -30000,31 +29248,31 @@ export type WebAppsListSlotDifferencesFromProductionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSlotDifferencesFromProduction =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListSlotDifferencesFromProduction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListSlotDifferencesFromProductionInput,
     outputSchema: WebAppsListSlotDifferencesFromProductionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListSlotDifferencesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsdiffs",
-    }),
-  );
+export const WebAppsListSlotDifferencesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsdiffs",
+  }),
+);
 export type WebAppsListSlotDifferencesSlotInput =
   typeof WebAppsListSlotDifferencesSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSlotDifferencesSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListSlotDifferencesSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30034,7 +29282,8 @@ export const WebAppsListSlotDifferencesSlotOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsListSlotDifferencesSlotOutput =
   typeof WebAppsListSlotDifferencesSlotOutput.Type;
 
@@ -30050,11 +29299,10 @@ export type WebAppsListSlotDifferencesSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSlotDifferencesSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSlotDifferencesSlotInput,
-    outputSchema: WebAppsListSlotDifferencesSlotOutput,
-  }));
+export const WebAppsListSlotDifferencesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSlotDifferencesSlotInput,
+  outputSchema: WebAppsListSlotDifferencesSlotOutput,
+}));
 // Input Schema
 export const WebAppsListSlotsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -30177,39 +29425,38 @@ export type WebAppsListSlotSiteDeploymentStatusesSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the deployment status for the production slot.
  */
-export const WebAppsListSlotSiteDeploymentStatusesSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListSlotSiteDeploymentStatusesSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListSlotSiteDeploymentStatusesSlotInput,
     outputSchema: WebAppsListSlotSiteDeploymentStatusesSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListSnapshotsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshots",
-    }),
-  );
+export const WebAppsListSnapshotsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshots",
+  }),
+);
 export type WebAppsListSnapshotsInput = typeof WebAppsListSnapshotsInput.Type;
 
 // Output Schema
-export const WebAppsListSnapshotsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSnapshotsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSnapshotsOutput = typeof WebAppsListSnapshotsOutput.Type;
 
 // The operation
@@ -30270,11 +29517,12 @@ export type WebAppsListSnapshotsFromDRSecondaryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSnapshotsFromDRSecondary =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListSnapshotsFromDRSecondary = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListSnapshotsFromDRSecondaryInput,
     outputSchema: WebAppsListSnapshotsFromDRSecondaryOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsListSnapshotsFromDRSecondarySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -30320,41 +29568,40 @@ export type WebAppsListSnapshotsFromDRSecondarySlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSnapshotsFromDRSecondarySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListSnapshotsFromDRSecondarySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListSnapshotsFromDRSecondarySlotInput,
     outputSchema: WebAppsListSnapshotsFromDRSecondarySlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListSnapshotsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshots",
-    }),
-  );
+export const WebAppsListSnapshotsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshots",
+  }),
+);
 export type WebAppsListSnapshotsSlotInput =
   typeof WebAppsListSnapshotsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSnapshotsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListSnapshotsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSnapshotsSlotOutput =
   typeof WebAppsListSnapshotsSlotOutput.Type;
 
@@ -30375,18 +29622,19 @@ export const WebAppsListSnapshotsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSnapshotsSlotOutput,
 }));
 // Input Schema
-export const WebAppsListSyncFunctionTriggersInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListSyncFunctionTriggersInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listsyncfunctiontriggerstatus",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listsyncfunctiontriggerstatus",
+  }),
+);
 export type WebAppsListSyncFunctionTriggersInput =
   typeof WebAppsListSyncFunctionTriggersInput.Type;
 
@@ -30410,11 +29658,10 @@ export type WebAppsListSyncFunctionTriggersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSyncFunctionTriggers =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListSyncFunctionTriggersInput,
-    outputSchema: WebAppsListSyncFunctionTriggersOutput,
-  }));
+export const WebAppsListSyncFunctionTriggers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSyncFunctionTriggersInput,
+  outputSchema: WebAppsListSyncFunctionTriggersOutput,
+}));
 // Input Schema
 export const WebAppsListSyncFunctionTriggersSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -30453,24 +29700,24 @@ export type WebAppsListSyncFunctionTriggersSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSyncFunctionTriggersSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListSyncFunctionTriggersSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListSyncFunctionTriggersSlotInput,
     outputSchema: WebAppsListSyncFunctionTriggersSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListSyncStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listsyncstatus",
-    }),
-  );
+export const WebAppsListSyncStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listsyncstatus",
+  }),
+);
 export type WebAppsListSyncStatusInput = typeof WebAppsListSyncStatusInput.Type;
 
 // Output Schema
@@ -30494,19 +29741,18 @@ export const WebAppsListSyncStatus = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListSyncStatusOutput,
 }));
 // Input Schema
-export const WebAppsListSyncStatusSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus",
-    }),
-  );
+export const WebAppsListSyncStatusSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus",
+  }),
+);
 export type WebAppsListSyncStatusSlotInput =
   typeof WebAppsListSyncStatusSlotInput.Type;
 
@@ -30599,11 +29845,10 @@ export type WebAppsListTriggeredWebJobHistoryOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsListTriggeredWebJobHistory =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListTriggeredWebJobHistoryInput,
-    outputSchema: WebAppsListTriggeredWebJobHistoryOutput,
-  }));
+export const WebAppsListTriggeredWebJobHistory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListTriggeredWebJobHistoryInput,
+  outputSchema: WebAppsListTriggeredWebJobHistoryOutput,
+}));
 // Input Schema
 export const WebAppsListTriggeredWebJobHistorySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -30674,63 +29919,52 @@ export type WebAppsListTriggeredWebJobHistorySlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsListTriggeredWebJobHistorySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListTriggeredWebJobHistorySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListTriggeredWebJobHistorySlotInput,
     outputSchema: WebAppsListTriggeredWebJobHistorySlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsListTriggeredWebJobsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs",
-    }),
-  );
+export const WebAppsListTriggeredWebJobsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs",
+  }),
+);
 export type WebAppsListTriggeredWebJobsInput =
   typeof WebAppsListTriggeredWebJobsInput.Type;
 
 // Output Schema
-export const WebAppsListTriggeredWebJobsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListTriggeredWebJobsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListTriggeredWebJobsOutput =
   typeof WebAppsListTriggeredWebJobsOutput.Type;
 
@@ -30750,19 +29984,20 @@ export const WebAppsListTriggeredWebJobs = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListTriggeredWebJobsOutput,
 }));
 // Input Schema
-export const WebAppsListTriggeredWebJobsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListTriggeredWebJobsSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs",
+  }),
+);
 export type WebAppsListTriggeredWebJobsSlotInput =
   typeof WebAppsListTriggeredWebJobsSlotInput.Type;
 
@@ -30817,11 +30052,10 @@ export type WebAppsListTriggeredWebJobsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  */
-export const WebAppsListTriggeredWebJobsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListTriggeredWebJobsSlotInput,
-    outputSchema: WebAppsListTriggeredWebJobsSlotOutput,
-  }));
+export const WebAppsListTriggeredWebJobsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListTriggeredWebJobsSlotInput,
+  outputSchema: WebAppsListTriggeredWebJobsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListUsagesInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -30838,24 +30072,23 @@ export const WebAppsListUsagesInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsListUsagesInput = typeof WebAppsListUsagesInput.Type;
 
 // Output Schema
-export const WebAppsListUsagesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      unit: Schema.optional(Schema.String),
+      nextResetTime: Schema.optional(Schema.String),
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListUsagesOutput = typeof WebAppsListUsagesOutput.Type;
 
 // The operation
@@ -30875,41 +30108,39 @@ export const WebAppsListUsages = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListUsagesOutput,
 }));
 // Input Schema
-export const WebAppsListUsagesSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages",
-    }),
-  );
+export const WebAppsListUsagesSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages",
+  }),
+);
 export type WebAppsListUsagesSlotInput = typeof WebAppsListUsagesSlotInput.Type;
 
 // Output Schema
-export const WebAppsListUsagesSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListUsagesSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      unit: Schema.optional(Schema.String),
+      nextResetTime: Schema.optional(Schema.String),
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListUsagesSlotOutput =
   typeof WebAppsListUsagesSlotOutput.Type;
 
@@ -30931,44 +30162,42 @@ export const WebAppsListUsagesSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListUsagesSlotOutput,
 }));
 // Input Schema
-export const WebAppsListVnetConnectionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections",
-    }),
-  );
+export const WebAppsListVnetConnectionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections",
+  }),
+);
 export type WebAppsListVnetConnectionsInput =
   typeof WebAppsListVnetConnectionsInput.Type;
 
 // Output Schema
-export const WebAppsListVnetConnectionsOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  );
+export const WebAppsListVnetConnectionsOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }),
+);
 export type WebAppsListVnetConnectionsOutput =
   typeof WebAppsListVnetConnectionsOutput.Type;
 
@@ -30988,25 +30217,79 @@ export const WebAppsListVnetConnections = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListVnetConnectionsOutput,
 }));
 // Input Schema
-export const WebAppsListVnetConnectionsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections",
-    }),
-  );
+export const WebAppsListVnetConnectionsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections",
+  }),
+);
 export type WebAppsListVnetConnectionsSlotInput =
   typeof WebAppsListVnetConnectionsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListVnetConnectionsSlotOutput =
-  /*@__PURE__*/ Schema.Array(
+export const WebAppsListVnetConnectionsSlotOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }),
+);
+export type WebAppsListVnetConnectionsSlotOutput =
+  typeof WebAppsListVnetConnectionsSlotOutput.Type;
+
+// The operation
+/**
+ * Gets the virtual networks the app (or deployment slot) is connected to.
+ *
+ * Description for Gets the virtual networks the app (or deployment slot) is connected to.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - Name of the app.
+ * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
+ */
+export const WebAppsListVnetConnectionsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListVnetConnectionsSlotInput,
+  outputSchema: WebAppsListVnetConnectionsSlotOutput,
+}));
+// Input Schema
+export const WebAppsListWebJobsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs",
+  }),
+);
+export type WebAppsListWebJobsInput = typeof WebAppsListWebJobsInput.Type;
+
+// Output Schema
+export const WebAppsListWebJobsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -31026,78 +30309,9 @@ export const WebAppsListVnetConnectionsSlotOutput =
         }),
       ),
     }),
-  );
-export type WebAppsListVnetConnectionsSlotOutput =
-  typeof WebAppsListVnetConnectionsSlotOutput.Type;
-
-// The operation
-/**
- * Gets the virtual networks the app (or deployment slot) is connected to.
- *
- * Description for Gets the virtual networks the app (or deployment slot) is connected to.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param name - Name of the app.
- * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
- */
-export const WebAppsListVnetConnectionsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListVnetConnectionsSlotInput,
-    outputSchema: WebAppsListVnetConnectionsSlotOutput,
-  }));
-// Input Schema
-export const WebAppsListWebJobsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs",
-    }),
-  );
-export type WebAppsListWebJobsInput = typeof WebAppsListWebJobsInput.Type;
-
-// Output Schema
-export const WebAppsListWebJobsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListWebJobsOutput = typeof WebAppsListWebJobsOutput.Type;
 
 // The operation
@@ -31116,58 +30330,46 @@ export const WebAppsListWebJobs = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListWebJobsOutput,
 }));
 // Input Schema
-export const WebAppsListWebJobsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs",
-    }),
-  );
+export const WebAppsListWebJobsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs",
+  }),
+);
 export type WebAppsListWebJobsSlotInput =
   typeof WebAppsListWebJobsSlotInput.Type;
 
 // Output Schema
-export const WebAppsListWebJobsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListWebJobsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListWebJobsSlotOutput =
   typeof WebAppsListWebJobsSlotOutput.Type;
 
@@ -31188,56 +30390,44 @@ export const WebAppsListWebJobsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListWebJobsSlotOutput,
 }));
 // Input Schema
-export const WebAppsListWorkflowsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows",
-    }),
-  );
+export const WebAppsListWorkflowsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows",
+  }),
+);
 export type WebAppsListWorkflowsInput = typeof WebAppsListWorkflowsInput.Type;
 
 // Output Schema
-export const WebAppsListWorkflowsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WebAppsListWorkflowsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListWorkflowsOutput = typeof WebAppsListWorkflowsOutput.Type;
 
 // The operation
@@ -31254,18 +30444,19 @@ export const WebAppsListWorkflows = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsListWorkflowsOutput,
 }));
 // Input Schema
-export const WebAppsListWorkflowsConnectionsInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsListWorkflowsConnectionsInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listWorkflowsConnections",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listWorkflowsConnections",
+  }),
+);
 export type WebAppsListWorkflowsConnectionsInput =
   typeof WebAppsListWorkflowsConnectionsInput.Type;
 
@@ -31302,11 +30493,10 @@ export type WebAppsListWorkflowsConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListWorkflowsConnections =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsListWorkflowsConnectionsInput,
-    outputSchema: WebAppsListWorkflowsConnectionsOutput,
-  }));
+export const WebAppsListWorkflowsConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListWorkflowsConnectionsInput,
+  outputSchema: WebAppsListWorkflowsConnectionsOutput,
+}));
 // Input Schema
 export const WebAppsListWorkflowsConnectionsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -31358,59 +30548,58 @@ export type WebAppsListWorkflowsConnectionsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListWorkflowsConnectionsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsListWorkflowsConnectionsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsListWorkflowsConnectionsSlotInput,
     outputSchema: WebAppsListWorkflowsConnectionsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsMigrateMySqlInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql",
-    }),
-  );
+export const WebAppsMigrateMySqlInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql",
+  }),
+);
 export type WebAppsMigrateMySqlInput = typeof WebAppsMigrateMySqlInput.Type;
 
 // Output Schema
-export const WebAppsMigrateMySqlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "InProgress",
-        "Failed",
-        "Succeeded",
-        "TimedOut",
-        "Created",
-      ]),
+export const WebAppsMigrateMySqlOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "InProgress",
+      "Failed",
+      "Succeeded",
+      "TimedOut",
+      "Created",
+    ]),
+  ),
+  errors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        extendedCode: Schema.optional(Schema.String),
+        messageTemplate: Schema.optional(Schema.String),
+        parameters: Schema.optional(Schema.Array(Schema.String)),
+        innerErrors: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        target: Schema.optional(Schema.String),
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
     ),
-    errors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          extendedCode: Schema.optional(Schema.String),
-          messageTemplate: Schema.optional(Schema.String),
-          parameters: Schema.optional(Schema.Array(Schema.String)),
-          innerErrors: Schema.optional(Schema.Array(Schema.Unknown)),
-          details: Schema.optional(Schema.Array(Schema.Unknown)),
-          target: Schema.optional(Schema.String),
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    createdTime: Schema.optional(Schema.String),
-    modifiedTime: Schema.optional(Schema.String),
-    expirationTime: Schema.optional(Schema.String),
-    geoMasterOperationId: Schema.optional(Schema.String),
-  });
+  ),
+  createdTime: Schema.optional(Schema.String),
+  modifiedTime: Schema.optional(Schema.String),
+  expirationTime: Schema.optional(Schema.String),
+  geoMasterOperationId: Schema.optional(Schema.String),
+});
 export type WebAppsMigrateMySqlOutput = typeof WebAppsMigrateMySqlOutput.Type;
 
 // The operation
@@ -31429,29 +30618,27 @@ export const WebAppsMigrateMySql = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsMigrateMySqlOutput,
 }));
 // Input Schema
-export const WebAppsMigrateStorageInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    subscriptionName: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate",
-    }),
-  );
+export const WebAppsMigrateStorageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  subscriptionName: Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate",
+  }),
+);
 export type WebAppsMigrateStorageInput = typeof WebAppsMigrateStorageInput.Type;
 
 // Output Schema
-export const WebAppsMigrateStorageOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsMigrateStorageOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsMigrateStorageOutput =
   typeof WebAppsMigrateStorageOutput.Type;
 
@@ -31472,42 +30659,40 @@ export const WebAppsMigrateStorage = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsMigrateStorageOutput,
 }));
 // Input Schema
-export const WebAppsPutPrivateAccessVnetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
-    }),
-  );
+export const WebAppsPutPrivateAccessVnetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
+  }),
+);
 export type WebAppsPutPrivateAccessVnetInput =
   typeof WebAppsPutPrivateAccessVnetInput.Type;
 
 // Output Schema
-export const WebAppsPutPrivateAccessVnetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsPutPrivateAccessVnetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsPutPrivateAccessVnetOutput =
   typeof WebAppsPutPrivateAccessVnetOutput.Type;
 
@@ -31527,19 +30712,20 @@ export const WebAppsPutPrivateAccessVnet = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsPutPrivateAccessVnetOutput,
 }));
 // Input Schema
-export const WebAppsPutPrivateAccessVnetSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsPutPrivateAccessVnetSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
+  }),
+);
 export type WebAppsPutPrivateAccessVnetSlotInput =
   typeof WebAppsPutPrivateAccessVnetSlotInput.Type;
 
@@ -31579,11 +30765,10 @@ export type WebAppsPutPrivateAccessVnetSlotOutput =
  * @param name - The name of the web app.
  * @param slot - The name of the slot for the web app.
  */
-export const WebAppsPutPrivateAccessVnetSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsPutPrivateAccessVnetSlotInput,
-    outputSchema: WebAppsPutPrivateAccessVnetSlotOutput,
-  }));
+export const WebAppsPutPrivateAccessVnetSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsPutPrivateAccessVnetSlotInput,
+  outputSchema: WebAppsPutPrivateAccessVnetSlotOutput,
+}));
 // Input Schema
 export const WebAppsRecoverSiteConfigurationSnapshotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -31619,11 +30804,12 @@ export type WebAppsRecoverSiteConfigurationSnapshotOutput =
  * @param name - Name of the app.
  * @param snapshotId - The ID of the snapshot to read.
  */
-export const WebAppsRecoverSiteConfigurationSnapshot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsRecoverSiteConfigurationSnapshot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsRecoverSiteConfigurationSnapshotInput,
     outputSchema: WebAppsRecoverSiteConfigurationSnapshotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsRecoverSiteConfigurationSnapshotSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -31698,11 +30884,10 @@ export type WebAppsResetProductionSlotConfigOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsResetProductionSlotConfig =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsResetProductionSlotConfigInput,
-    outputSchema: WebAppsResetProductionSlotConfigOutput,
-  }));
+export const WebAppsResetProductionSlotConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsResetProductionSlotConfigInput,
+  outputSchema: WebAppsResetProductionSlotConfigOutput,
+}));
 // Input Schema
 export const WebAppsResetSlotConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -31738,11 +30923,10 @@ export type WebAppsResetSlotConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsResetSlotConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsResetSlotConfigurationSlotInput,
-    outputSchema: WebAppsResetSlotConfigurationSlotOutput,
-  }));
+export const WebAppsResetSlotConfigurationSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsResetSlotConfigurationSlotInput,
+  outputSchema: WebAppsResetSlotConfigurationSlotOutput,
+}));
 // Input Schema
 export const WebAppsRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -31781,21 +30965,20 @@ export const WebAppsRestart = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRestartOutput,
 }));
 // Input Schema
-export const WebAppsRestartSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    softRestart: Schema.optional(Schema.Boolean),
-    synchronous: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restart",
-    }),
-  );
+export const WebAppsRestartSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  softRestart: Schema.optional(Schema.Boolean),
+  synchronous: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restart",
+  }),
+);
 export type WebAppsRestartSlotInput = typeof WebAppsRestartSlotInput.Type;
 
 // Output Schema
@@ -31856,18 +31039,17 @@ export const WebAppsRestore = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRestoreOutput,
 }));
 // Input Schema
-export const WebAppsRestoreFromBackupBlobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob",
-    }),
-  );
+export const WebAppsRestoreFromBackupBlobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob",
+  }),
+);
 export type WebAppsRestoreFromBackupBlobInput =
   typeof WebAppsRestoreFromBackupBlobInput.Type;
 
@@ -31887,11 +31069,10 @@ export type WebAppsRestoreFromBackupBlobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsRestoreFromBackupBlob =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsRestoreFromBackupBlobInput,
-    outputSchema: WebAppsRestoreFromBackupBlobOutput,
-  }));
+export const WebAppsRestoreFromBackupBlob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreFromBackupBlobInput,
+  outputSchema: WebAppsRestoreFromBackupBlobOutput,
+}));
 // Input Schema
 export const WebAppsRestoreFromBackupBlobSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -31926,24 +31107,22 @@ export type WebAppsRestoreFromBackupBlobSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsRestoreFromBackupBlobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsRestoreFromBackupBlobSlotInput,
-    outputSchema: WebAppsRestoreFromBackupBlobSlotOutput,
-  }));
+export const WebAppsRestoreFromBackupBlobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreFromBackupBlobSlotInput,
+  outputSchema: WebAppsRestoreFromBackupBlobSlotOutput,
+}));
 // Input Schema
-export const WebAppsRestoreFromDeletedAppInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp",
-    }),
-  );
+export const WebAppsRestoreFromDeletedAppInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp",
+  }),
+);
 export type WebAppsRestoreFromDeletedAppInput =
   typeof WebAppsRestoreFromDeletedAppInput.Type;
 
@@ -31963,11 +31142,10 @@ export type WebAppsRestoreFromDeletedAppOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsRestoreFromDeletedApp =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsRestoreFromDeletedAppInput,
-    outputSchema: WebAppsRestoreFromDeletedAppOutput,
-  }));
+export const WebAppsRestoreFromDeletedApp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreFromDeletedAppInput,
+  outputSchema: WebAppsRestoreFromDeletedAppOutput,
+}));
 // Input Schema
 export const WebAppsRestoreFromDeletedAppSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -32002,26 +31180,24 @@ export type WebAppsRestoreFromDeletedAppSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsRestoreFromDeletedAppSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsRestoreFromDeletedAppSlotInput,
-    outputSchema: WebAppsRestoreFromDeletedAppSlotOutput,
-  }));
+export const WebAppsRestoreFromDeletedAppSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreFromDeletedAppSlotInput,
+  outputSchema: WebAppsRestoreFromDeletedAppSlotOutput,
+}));
 // Input Schema
-export const WebAppsRestoreSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    backupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore",
-    }),
-  );
+export const WebAppsRestoreSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  backupId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore",
+  }),
+);
 export type WebAppsRestoreSlotInput = typeof WebAppsRestoreSlotInput.Type;
 
 // Output Schema
@@ -32046,18 +31222,17 @@ export const WebAppsRestoreSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRestoreSlotOutput,
 }));
 // Input Schema
-export const WebAppsRestoreSnapshotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot",
-    }),
-  );
+export const WebAppsRestoreSnapshotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot",
+  }),
+);
 export type WebAppsRestoreSnapshotInput =
   typeof WebAppsRestoreSnapshotInput.Type;
 
@@ -32082,19 +31257,18 @@ export const WebAppsRestoreSnapshot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRestoreSnapshotOutput,
 }));
 // Input Schema
-export const WebAppsRestoreSnapshotSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot",
-    }),
-  );
+export const WebAppsRestoreSnapshotSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot",
+  }),
+);
 export type WebAppsRestoreSnapshotSlotInput =
   typeof WebAppsRestoreSnapshotSlotInput.Type;
 
@@ -32120,19 +31294,18 @@ export const WebAppsRestoreSnapshotSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRestoreSnapshotSlotOutput,
 }));
 // Input Schema
-export const WebAppsRunTriggeredWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run",
-    }),
-  );
+export const WebAppsRunTriggeredWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run",
+  }),
+);
 export type WebAppsRunTriggeredWebJobInput =
   typeof WebAppsRunTriggeredWebJobInput.Type;
 
@@ -32158,20 +31331,19 @@ export const WebAppsRunTriggeredWebJob = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsRunTriggeredWebJobOutput,
 }));
 // Input Schema
-export const WebAppsRunTriggeredWebJobSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run",
-    }),
-  );
+export const WebAppsRunTriggeredWebJobSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run",
+  }),
+);
 export type WebAppsRunTriggeredWebJobSlotInput =
   typeof WebAppsRunTriggeredWebJobSlotInput.Type;
 
@@ -32193,11 +31365,10 @@ export type WebAppsRunTriggeredWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsRunTriggeredWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsRunTriggeredWebJobSlotInput,
-    outputSchema: WebAppsRunTriggeredWebJobSlotOutput,
-  }));
+export const WebAppsRunTriggeredWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRunTriggeredWebJobSlotInput,
+  outputSchema: WebAppsRunTriggeredWebJobSlotOutput,
+}));
 // Input Schema
 export const WebAppsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -32232,19 +31403,18 @@ export const WebAppsStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStartOutput,
 }));
 // Input Schema
-export const WebAppsStartContinuousWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start",
-    }),
-  );
+export const WebAppsStartContinuousWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start",
+  }),
+);
 export type WebAppsStartContinuousWebJobInput =
   typeof WebAppsStartContinuousWebJobInput.Type;
 
@@ -32265,11 +31435,10 @@ export type WebAppsStartContinuousWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsStartContinuousWebJob =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStartContinuousWebJobInput,
-    outputSchema: WebAppsStartContinuousWebJobOutput,
-  }));
+export const WebAppsStartContinuousWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStartContinuousWebJobInput,
+  outputSchema: WebAppsStartContinuousWebJobOutput,
+}));
 // Input Schema
 export const WebAppsStartContinuousWebJobSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -32306,39 +31475,36 @@ export type WebAppsStartContinuousWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsStartContinuousWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStartContinuousWebJobSlotInput,
-    outputSchema: WebAppsStartContinuousWebJobSlotOutput,
-  }));
+export const WebAppsStartContinuousWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStartContinuousWebJobSlotInput,
+  outputSchema: WebAppsStartContinuousWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsStartNetworkTraceInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    durationInSeconds: Schema.optional(Schema.Number),
-    maxFrameLength: Schema.optional(Schema.Number),
-    sasUrl: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace",
-    }),
-  );
+export const WebAppsStartNetworkTraceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  durationInSeconds: Schema.optional(Schema.Number),
+  maxFrameLength: Schema.optional(Schema.Number),
+  sasUrl: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace",
+  }),
+);
 export type WebAppsStartNetworkTraceInput =
   typeof WebAppsStartNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStartNetworkTraceOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsStartNetworkTraceOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsStartNetworkTraceOutput =
   typeof WebAppsStartNetworkTraceOutput.Type;
 
@@ -32361,34 +31527,32 @@ export const WebAppsStartNetworkTrace = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStartNetworkTraceOutput,
 }));
 // Input Schema
-export const WebAppsStartNetworkTraceSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    durationInSeconds: Schema.optional(Schema.Number),
-    maxFrameLength: Schema.optional(Schema.Number),
-    sasUrl: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace",
-    }),
-  );
+export const WebAppsStartNetworkTraceSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  durationInSeconds: Schema.optional(Schema.Number),
+  maxFrameLength: Schema.optional(Schema.Number),
+  sasUrl: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace",
+  }),
+);
 export type WebAppsStartNetworkTraceSlotInput =
   typeof WebAppsStartNetworkTraceSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartNetworkTraceSlotOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  );
+export const WebAppsStartNetworkTraceSlotOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    path: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }),
+);
 export type WebAppsStartNetworkTraceSlotOutput =
   typeof WebAppsStartNetworkTraceSlotOutput.Type;
 
@@ -32407,11 +31571,10 @@ export type WebAppsStartNetworkTraceSlotOutput =
  * @param maxFrameLength - The maximum frame length in bytes (Optional).
  * @param sasUrl - The Blob URL to store capture file.
  */
-export const WebAppsStartNetworkTraceSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStartNetworkTraceSlotInput,
-    outputSchema: WebAppsStartNetworkTraceSlotOutput,
-  }));
+export const WebAppsStartNetworkTraceSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStartNetworkTraceSlotInput,
+  outputSchema: WebAppsStartNetworkTraceSlotOutput,
+}));
 // Input Schema
 export const WebAppsStartSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -32448,8 +31611,8 @@ export const WebAppsStartSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStartSlotOutput,
 }));
 // Input Schema
-export const WebAppsStartWebSiteNetworkTraceInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsStartWebSiteNetworkTraceInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32457,12 +31620,13 @@ export const WebAppsStartWebSiteNetworkTraceInput =
     durationInSeconds: Schema.optional(Schema.Number),
     maxFrameLength: Schema.optional(Schema.Number),
     sasUrl: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/start",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/start",
+  }),
+);
 export type WebAppsStartWebSiteNetworkTraceInput =
   typeof WebAppsStartWebSiteNetworkTraceInput.Type;
 
@@ -32486,11 +31650,10 @@ export type WebAppsStartWebSiteNetworkTraceOutput =
  * @param maxFrameLength - The maximum frame length in bytes (Optional).
  * @param sasUrl - The Blob URL to store capture file.
  */
-export const WebAppsStartWebSiteNetworkTrace =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStartWebSiteNetworkTraceInput,
-    outputSchema: WebAppsStartWebSiteNetworkTraceOutput,
-  }));
+export const WebAppsStartWebSiteNetworkTrace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStartWebSiteNetworkTraceInput,
+  outputSchema: WebAppsStartWebSiteNetworkTraceOutput,
+}));
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceOperationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -32536,11 +31699,12 @@ export type WebAppsStartWebSiteNetworkTraceOperationOutput =
  * @param maxFrameLength - The maximum frame length in bytes (Optional).
  * @param sasUrl - The Blob URL to store capture file.
  */
-export const WebAppsStartWebSiteNetworkTraceOperation =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsStartWebSiteNetworkTraceOperation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceOperationInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceOperationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceOperationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -32634,11 +31798,12 @@ export type WebAppsStartWebSiteNetworkTraceSlotOutput =
  * @param maxFrameLength - The maximum frame length in bytes (Optional).
  * @param sasUrl - The Blob URL to store capture file.
  */
-export const WebAppsStartWebSiteNetworkTraceSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsStartWebSiteNetworkTraceSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceSlotInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -32673,19 +31838,18 @@ export const WebAppsStop = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStopOutput,
 }));
 // Input Schema
-export const WebAppsStopContinuousWebJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    webJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop",
-    }),
-  );
+export const WebAppsStopContinuousWebJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  webJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop",
+  }),
+);
 export type WebAppsStopContinuousWebJobInput =
   typeof WebAppsStopContinuousWebJobInput.Type;
 
@@ -32711,20 +31875,21 @@ export const WebAppsStopContinuousWebJob = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStopContinuousWebJobOutput,
 }));
 // Input Schema
-export const WebAppsStopContinuousWebJobSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsStopContinuousWebJobSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     webJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop",
+  }),
+);
 export type WebAppsStopContinuousWebJobSlotInput =
   typeof WebAppsStopContinuousWebJobSlotInput.Type;
 
@@ -32746,24 +31911,22 @@ export type WebAppsStopContinuousWebJobSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsStopContinuousWebJobSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStopContinuousWebJobSlotInput,
-    outputSchema: WebAppsStopContinuousWebJobSlotOutput,
-  }));
+export const WebAppsStopContinuousWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStopContinuousWebJobSlotInput,
+  outputSchema: WebAppsStopContinuousWebJobSlotOutput,
+}));
 // Input Schema
-export const WebAppsStopNetworkTraceInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stopNetworkTrace",
-    }),
-  );
+export const WebAppsStopNetworkTraceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stopNetworkTrace",
+  }),
+);
 export type WebAppsStopNetworkTraceInput =
   typeof WebAppsStopNetworkTraceInput.Type;
 
@@ -32788,19 +31951,18 @@ export const WebAppsStopNetworkTrace = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStopNetworkTraceOutput,
 }));
 // Input Schema
-export const WebAppsStopNetworkTraceSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stopNetworkTrace",
-    }),
-  );
+export const WebAppsStopNetworkTraceSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stopNetworkTrace",
+  }),
+);
 export type WebAppsStopNetworkTraceSlotInput =
   typeof WebAppsStopNetworkTraceSlotInput.Type;
 
@@ -32861,18 +32023,17 @@ export const WebAppsStopSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsStopSlotOutput,
 }));
 // Input Schema
-export const WebAppsStopWebSiteNetworkTraceInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/stop",
-    }),
-  );
+export const WebAppsStopWebSiteNetworkTraceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/stop",
+  }),
+);
 export type WebAppsStopWebSiteNetworkTraceInput =
   typeof WebAppsStopWebSiteNetworkTraceInput.Type;
 
@@ -32892,11 +32053,10 @@ export type WebAppsStopWebSiteNetworkTraceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsStopWebSiteNetworkTrace =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsStopWebSiteNetworkTraceInput,
-    outputSchema: WebAppsStopWebSiteNetworkTraceOutput,
-  }));
+export const WebAppsStopWebSiteNetworkTrace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStopWebSiteNetworkTraceInput,
+  outputSchema: WebAppsStopWebSiteNetworkTraceOutput,
+}));
 // Input Schema
 export const WebAppsStopWebSiteNetworkTraceSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -32932,25 +32092,25 @@ export type WebAppsStopWebSiteNetworkTraceSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsStopWebSiteNetworkTraceSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsStopWebSiteNetworkTraceSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsStopWebSiteNetworkTraceSlotInput,
     outputSchema: WebAppsStopWebSiteNetworkTraceSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsSwapSlotSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap",
-    }),
-  );
+export const WebAppsSwapSlotSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap",
+  }),
+);
 export type WebAppsSwapSlotSlotInput = typeof WebAppsSwapSlotSlotInput.Type;
 
 // Output Schema
@@ -32974,18 +32134,17 @@ export const WebAppsSwapSlotSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsSwapSlotSlotOutput,
 }));
 // Input Schema
-export const WebAppsSwapSlotWithProductionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap",
-    }),
-  );
+export const WebAppsSwapSlotWithProductionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap",
+  }),
+);
 export type WebAppsSwapSlotWithProductionInput =
   typeof WebAppsSwapSlotWithProductionInput.Type;
 
@@ -33005,24 +32164,22 @@ export type WebAppsSwapSlotWithProductionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsSwapSlotWithProduction =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsSwapSlotWithProductionInput,
-    outputSchema: WebAppsSwapSlotWithProductionOutput,
-  }));
+export const WebAppsSwapSlotWithProduction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSwapSlotWithProductionInput,
+  outputSchema: WebAppsSwapSlotWithProductionOutput,
+}));
 // Input Schema
-export const WebAppsSyncFunctionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/sync",
-    }),
-  );
+export const WebAppsSyncFunctionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/sync",
+  }),
+);
 export type WebAppsSyncFunctionsInput = typeof WebAppsSyncFunctionsInput.Type;
 
 // Output Schema
@@ -33045,19 +32202,18 @@ export const WebAppsSyncFunctions = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsSyncFunctionsOutput,
 }));
 // Input Schema
-export const WebAppsSyncFunctionsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync",
-    }),
-  );
+export const WebAppsSyncFunctionsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync",
+  }),
+);
 export type WebAppsSyncFunctionsSlotInput =
   typeof WebAppsSyncFunctionsSlotInput.Type;
 
@@ -33083,18 +32239,17 @@ export const WebAppsSyncFunctionsSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsSyncFunctionsSlotOutput,
 }));
 // Input Schema
-export const WebAppsSyncFunctionTriggersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/syncfunctiontriggers",
-    }),
-  );
+export const WebAppsSyncFunctionTriggersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/syncfunctiontriggers",
+  }),
+);
 export type WebAppsSyncFunctionTriggersInput =
   typeof WebAppsSyncFunctionTriggersInput.Type;
 
@@ -33119,19 +32274,20 @@ export const WebAppsSyncFunctionTriggers = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsSyncFunctionTriggersOutput,
 }));
 // Input Schema
-export const WebAppsSyncFunctionTriggersSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsSyncFunctionTriggersSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/syncfunctiontriggers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/syncfunctiontriggers",
+  }),
+);
 export type WebAppsSyncFunctionTriggersSlotInput =
   typeof WebAppsSyncFunctionTriggersSlotInput.Type;
 
@@ -33152,24 +32308,22 @@ export type WebAppsSyncFunctionTriggersSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsSyncFunctionTriggersSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsSyncFunctionTriggersSlotInput,
-    outputSchema: WebAppsSyncFunctionTriggersSlotOutput,
-  }));
+export const WebAppsSyncFunctionTriggersSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncFunctionTriggersSlotInput,
+  outputSchema: WebAppsSyncFunctionTriggersSlotOutput,
+}));
 // Input Schema
-export const WebAppsSyncRepositoryInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sync",
-    }),
-  );
+export const WebAppsSyncRepositoryInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sync",
+  }),
+);
 export type WebAppsSyncRepositoryInput = typeof WebAppsSyncRepositoryInput.Type;
 
 // Output Schema
@@ -33193,19 +32347,18 @@ export const WebAppsSyncRepository = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsSyncRepositoryOutput,
 }));
 // Input Schema
-export const WebAppsSyncRepositorySlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sync",
-    }),
-  );
+export const WebAppsSyncRepositorySlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sync",
+  }),
+);
 export type WebAppsSyncRepositorySlotInput =
   typeof WebAppsSyncRepositorySlotInput.Type;
 
@@ -33319,11 +32472,10 @@ export type WebAppsUpdateApplicationSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateApplicationSettings =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateApplicationSettingsInput,
-    outputSchema: WebAppsUpdateApplicationSettingsOutput,
-  }));
+export const WebAppsUpdateApplicationSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateApplicationSettingsInput,
+  outputSchema: WebAppsUpdateApplicationSettingsOutput,
+}));
 // Input Schema
 export const WebAppsUpdateApplicationSettingsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33364,35 +32516,34 @@ export type WebAppsUpdateApplicationSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateApplicationSettingsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateApplicationSettingsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateApplicationSettingsSlotInput,
     outputSchema: WebAppsUpdateApplicationSettingsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsUpdateAuthSettingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings",
-    }),
-  );
+export const WebAppsUpdateAuthSettingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings",
+  }),
+);
 export type WebAppsUpdateAuthSettingsInput =
   typeof WebAppsUpdateAuthSettingsInput.Type;
 
 // Output Schema
-export const WebAppsUpdateAuthSettingsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsUpdateAuthSettingsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsUpdateAuthSettingsOutput =
   typeof WebAppsUpdateAuthSettingsOutput.Type;
 
@@ -33412,30 +32563,28 @@ export const WebAppsUpdateAuthSettings = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateAuthSettingsOutput,
 }));
 // Input Schema
-export const WebAppsUpdateAuthSettingsSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings",
-    }),
-  );
+export const WebAppsUpdateAuthSettingsSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings",
+  }),
+);
 export type WebAppsUpdateAuthSettingsSlotInput =
   typeof WebAppsUpdateAuthSettingsSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateAuthSettingsSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsUpdateAuthSettingsSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsUpdateAuthSettingsSlotOutput =
   typeof WebAppsUpdateAuthSettingsSlotOutput.Type;
 
@@ -33451,48 +32600,45 @@ export type WebAppsUpdateAuthSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateAuthSettingsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateAuthSettingsSlotInput,
-    outputSchema: WebAppsUpdateAuthSettingsSlotOutput,
-  }));
+export const WebAppsUpdateAuthSettingsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateAuthSettingsSlotInput,
+  outputSchema: WebAppsUpdateAuthSettingsSlotOutput,
+}));
 // Input Schema
-export const WebAppsUpdateAuthSettingsV2Input =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2",
-    }),
-  );
+export const WebAppsUpdateAuthSettingsV2Input = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2",
+  }),
+);
 export type WebAppsUpdateAuthSettingsV2Input =
   typeof WebAppsUpdateAuthSettingsV2Input.Type;
 
 // Output Schema
-export const WebAppsUpdateAuthSettingsV2Output =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateAuthSettingsV2Output = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateAuthSettingsV2Output =
   typeof WebAppsUpdateAuthSettingsV2Output.Type;
 
@@ -33512,19 +32658,20 @@ export const WebAppsUpdateAuthSettingsV2 = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateAuthSettingsV2Output,
 }));
 // Input Schema
-export const WebAppsUpdateAuthSettingsV2SlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsUpdateAuthSettingsV2SlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2",
+  }),
+);
 export type WebAppsUpdateAuthSettingsV2SlotInput =
   typeof WebAppsUpdateAuthSettingsV2SlotInput.Type;
 
@@ -33564,11 +32711,10 @@ export type WebAppsUpdateAuthSettingsV2SlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
  */
-export const WebAppsUpdateAuthSettingsV2Slot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateAuthSettingsV2SlotInput,
-    outputSchema: WebAppsUpdateAuthSettingsV2SlotOutput,
-  }));
+export const WebAppsUpdateAuthSettingsV2Slot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateAuthSettingsV2SlotInput,
+  outputSchema: WebAppsUpdateAuthSettingsV2SlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateAzureStorageAccountsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33607,11 +32753,10 @@ export type WebAppsUpdateAzureStorageAccountsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateAzureStorageAccounts =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateAzureStorageAccountsInput,
-    outputSchema: WebAppsUpdateAzureStorageAccountsOutput,
-  }));
+export const WebAppsUpdateAzureStorageAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateAzureStorageAccountsInput,
+  outputSchema: WebAppsUpdateAzureStorageAccountsOutput,
+}));
 // Input Schema
 export const WebAppsUpdateAzureStorageAccountsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33652,11 +32797,12 @@ export type WebAppsUpdateAzureStorageAccountsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateAzureStorageAccountsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateAzureStorageAccountsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateAzureStorageAccountsSlotInput,
     outputSchema: WebAppsUpdateAzureStorageAccountsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateBackupConfigurationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33695,11 +32841,10 @@ export type WebAppsUpdateBackupConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateBackupConfiguration =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateBackupConfigurationInput,
-    outputSchema: WebAppsUpdateBackupConfigurationOutput,
-  }));
+export const WebAppsUpdateBackupConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateBackupConfigurationInput,
+  outputSchema: WebAppsUpdateBackupConfigurationOutput,
+}));
 // Input Schema
 export const WebAppsUpdateBackupConfigurationSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33740,48 +32885,47 @@ export type WebAppsUpdateBackupConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateBackupConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateBackupConfigurationSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateBackupConfigurationSlotInput,
     outputSchema: WebAppsUpdateBackupConfigurationSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsUpdateConfigurationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
-    }),
-  );
+export const WebAppsUpdateConfigurationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
+  }),
+);
 export type WebAppsUpdateConfigurationInput =
   typeof WebAppsUpdateConfigurationInput.Type;
 
 // Output Schema
-export const WebAppsUpdateConfigurationOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateConfigurationOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateConfigurationOutput =
   typeof WebAppsUpdateConfigurationOutput.Type;
 
@@ -33801,25 +32945,24 @@ export const WebAppsUpdateConfiguration = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateConfigurationOutput,
 }));
 // Input Schema
-export const WebAppsUpdateConfigurationSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
-    }),
-  );
+export const WebAppsUpdateConfigurationSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
+  }),
+);
 export type WebAppsUpdateConfigurationSlotInput =
   typeof WebAppsUpdateConfigurationSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateConfigurationSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsUpdateConfigurationSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -33837,7 +32980,8 @@ export const WebAppsUpdateConfigurationSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsUpdateConfigurationSlotOutput =
   typeof WebAppsUpdateConfigurationSlotOutput.Type;
 
@@ -33853,35 +32997,34 @@ export type WebAppsUpdateConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
-export const WebAppsUpdateConfigurationSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateConfigurationSlotInput,
-    outputSchema: WebAppsUpdateConfigurationSlotOutput,
-  }));
+export const WebAppsUpdateConfigurationSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateConfigurationSlotInput,
+  outputSchema: WebAppsUpdateConfigurationSlotOutput,
+}));
 // Input Schema
-export const WebAppsUpdateConnectionStringsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings",
-    }),
-  );
+export const WebAppsUpdateConnectionStringsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings",
+  }),
+);
 export type WebAppsUpdateConnectionStringsInput =
   typeof WebAppsUpdateConnectionStringsInput.Type;
 
 // Output Schema
-export const WebAppsUpdateConnectionStringsOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsUpdateConnectionStringsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type WebAppsUpdateConnectionStringsOutput =
   typeof WebAppsUpdateConnectionStringsOutput.Type;
 
@@ -33896,11 +33039,10 @@ export type WebAppsUpdateConnectionStringsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateConnectionStrings =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateConnectionStringsInput,
-    outputSchema: WebAppsUpdateConnectionStringsOutput,
-  }));
+export const WebAppsUpdateConnectionStrings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateConnectionStringsInput,
+  outputSchema: WebAppsUpdateConnectionStringsOutput,
+}));
 // Input Schema
 export const WebAppsUpdateConnectionStringsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33941,11 +33083,12 @@ export type WebAppsUpdateConnectionStringsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateConnectionStringsSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateConnectionStringsSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateConnectionStringsSlotInput,
     outputSchema: WebAppsUpdateConnectionStringsSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateDiagnosticLogsConfigInput =
   /*@__PURE__*/ Schema.Struct({
@@ -33997,11 +33140,10 @@ export type WebAppsUpdateDiagnosticLogsConfigOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateDiagnosticLogsConfig =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateDiagnosticLogsConfigInput,
-    outputSchema: WebAppsUpdateDiagnosticLogsConfigOutput,
-  }));
+export const WebAppsUpdateDiagnosticLogsConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateDiagnosticLogsConfigInput,
+  outputSchema: WebAppsUpdateDiagnosticLogsConfigOutput,
+}));
 // Input Schema
 export const WebAppsUpdateDiagnosticLogsConfigSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34055,11 +33197,12 @@ export type WebAppsUpdateDiagnosticLogsConfigSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the logging configuration for the production slot.
  */
-export const WebAppsUpdateDiagnosticLogsConfigSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateDiagnosticLogsConfigSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateDiagnosticLogsConfigSlotInput,
     outputSchema: WebAppsUpdateDiagnosticLogsConfigSlotOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateDomainOwnershipIdentifierInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34113,11 +33256,12 @@ export type WebAppsUpdateDomainOwnershipIdentifierOutput =
  * @param name - Name of the app.
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
-export const WebAppsUpdateDomainOwnershipIdentifier =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateDomainOwnershipIdentifier = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateDomainOwnershipIdentifierInput,
     outputSchema: WebAppsUpdateDomainOwnershipIdentifierOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateDomainOwnershipIdentifierSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34179,42 +33323,40 @@ export const WebAppsUpdateDomainOwnershipIdentifierSlot =
     outputSchema: WebAppsUpdateDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
-export const WebAppsUpdateFtpAllowedInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
-    }),
-  );
+export const WebAppsUpdateFtpAllowedInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
+  }),
+);
 export type WebAppsUpdateFtpAllowedInput =
   typeof WebAppsUpdateFtpAllowedInput.Type;
 
 // Output Schema
-export const WebAppsUpdateFtpAllowedOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateFtpAllowedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateFtpAllowedOutput =
   typeof WebAppsUpdateFtpAllowedOutput.Type;
 
@@ -34234,43 +33376,41 @@ export const WebAppsUpdateFtpAllowed = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateFtpAllowedOutput,
 }));
 // Input Schema
-export const WebAppsUpdateFtpAllowedSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
-    }),
-  );
+export const WebAppsUpdateFtpAllowedSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
+  }),
+);
 export type WebAppsUpdateFtpAllowedSlotInput =
   typeof WebAppsUpdateFtpAllowedSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateFtpAllowedSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateFtpAllowedSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateFtpAllowedSlotOutput =
   typeof WebAppsUpdateFtpAllowedSlotOutput.Type;
 
@@ -34290,44 +33430,42 @@ export const WebAppsUpdateFtpAllowedSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateFtpAllowedSlotOutput,
 }));
 // Input Schema
-export const WebAppsUpdateHybridConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    relayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-    }),
-  );
+export const WebAppsUpdateHybridConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  relayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
+  }),
+);
 export type WebAppsUpdateHybridConnectionInput =
   typeof WebAppsUpdateHybridConnectionInput.Type;
 
 // Output Schema
-export const WebAppsUpdateHybridConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateHybridConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateHybridConnectionOutput =
   typeof WebAppsUpdateHybridConnectionOutput.Type;
 
@@ -34344,11 +33482,10 @@ export type WebAppsUpdateHybridConnectionOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsUpdateHybridConnection =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateHybridConnectionInput,
-    outputSchema: WebAppsUpdateHybridConnectionOutput,
-  }));
+export const WebAppsUpdateHybridConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateHybridConnectionInput,
+  outputSchema: WebAppsUpdateHybridConnectionOutput,
+}));
 // Input Schema
 export const WebAppsUpdateHybridConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34406,24 +33543,22 @@ export type WebAppsUpdateHybridConnectionSlotOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsUpdateHybridConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateHybridConnectionSlotInput,
-    outputSchema: WebAppsUpdateHybridConnectionSlotOutput,
-  }));
+export const WebAppsUpdateHybridConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateHybridConnectionSlotInput,
+  outputSchema: WebAppsUpdateHybridConnectionSlotOutput,
+}));
 // Input Schema
-export const WebAppsUpdateMachineKeyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/updatemachinekey",
-    }),
-  );
+export const WebAppsUpdateMachineKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/updatemachinekey",
+  }),
+);
 export type WebAppsUpdateMachineKeyInput =
   typeof WebAppsUpdateMachineKeyInput.Type;
 
@@ -34446,28 +33581,26 @@ export const WebAppsUpdateMachineKey = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateMachineKeyOutput,
 }));
 // Input Schema
-export const WebAppsUpdateMetadataInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata",
-    }),
-  );
+export const WebAppsUpdateMetadataInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata",
+  }),
+);
 export type WebAppsUpdateMetadataInput = typeof WebAppsUpdateMetadataInput.Type;
 
 // Output Schema
-export const WebAppsUpdateMetadataOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsUpdateMetadataOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsUpdateMetadataOutput =
   typeof WebAppsUpdateMetadataOutput.Type;
 
@@ -34487,30 +33620,28 @@ export const WebAppsUpdateMetadata = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateMetadataOutput,
 }));
 // Input Schema
-export const WebAppsUpdateMetadataSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata",
-    }),
-  );
+export const WebAppsUpdateMetadataSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata",
+  }),
+);
 export type WebAppsUpdateMetadataSlotInput =
   typeof WebAppsUpdateMetadataSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateMetadataSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsUpdateMetadataSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsUpdateMetadataSlotOutput =
   typeof WebAppsUpdateMetadataSlotOutput.Type;
 
@@ -34531,43 +33662,41 @@ export const WebAppsUpdateMetadataSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateMetadataSlotOutput,
 }));
 // Input Schema
-export const WebAppsUpdatePremierAddOnInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsUpdatePremierAddOnInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsUpdatePremierAddOnInput =
   typeof WebAppsUpdatePremierAddOnInput.Type;
 
 // Output Schema
-export const WebAppsUpdatePremierAddOnOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdatePremierAddOnOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdatePremierAddOnOutput =
   typeof WebAppsUpdatePremierAddOnOutput.Type;
 
@@ -34588,44 +33717,42 @@ export const WebAppsUpdatePremierAddOn = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdatePremierAddOnOutput,
 }));
 // Input Schema
-export const WebAppsUpdatePremierAddOnSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    premierAddOnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-    }),
-  );
+export const WebAppsUpdatePremierAddOnSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  premierAddOnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
+  }),
+);
 export type WebAppsUpdatePremierAddOnSlotInput =
   typeof WebAppsUpdatePremierAddOnSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdatePremierAddOnSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdatePremierAddOnSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdatePremierAddOnSlotOutput =
   typeof WebAppsUpdatePremierAddOnSlotOutput.Type;
 
@@ -34642,11 +33769,10 @@ export type WebAppsUpdatePremierAddOnSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsUpdatePremierAddOnSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdatePremierAddOnSlotInput,
-    outputSchema: WebAppsUpdatePremierAddOnSlotOutput,
-  }));
+export const WebAppsUpdatePremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdatePremierAddOnSlotInput,
+  outputSchema: WebAppsUpdatePremierAddOnSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateRelayServiceConnectionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34700,11 +33826,12 @@ export type WebAppsUpdateRelayServiceConnectionOutput =
  * @param name - Name of the app.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsUpdateRelayServiceConnection =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateRelayServiceConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateRelayServiceConnectionInput,
     outputSchema: WebAppsUpdateRelayServiceConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateRelayServiceConnectionSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34760,48 +33887,47 @@ export type WebAppsUpdateRelayServiceConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
  * @param entityName - Name of the hybrid connection.
  */
-export const WebAppsUpdateRelayServiceConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateRelayServiceConnectionSlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateRelayServiceConnectionSlotInput,
     outputSchema: WebAppsUpdateRelayServiceConnectionSlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsUpdateScmAllowedInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
-    }),
-  );
+export const WebAppsUpdateScmAllowedInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
+  }),
+);
 export type WebAppsUpdateScmAllowedInput =
   typeof WebAppsUpdateScmAllowedInput.Type;
 
 // Output Schema
-export const WebAppsUpdateScmAllowedOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateScmAllowedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateScmAllowedOutput =
   typeof WebAppsUpdateScmAllowedOutput.Type;
 
@@ -34821,43 +33947,41 @@ export const WebAppsUpdateScmAllowed = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateScmAllowedOutput,
 }));
 // Input Schema
-export const WebAppsUpdateScmAllowedSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
-    }),
-  );
+export const WebAppsUpdateScmAllowedSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
+  }),
+);
 export type WebAppsUpdateScmAllowedSlotInput =
   typeof WebAppsUpdateScmAllowedSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateScmAllowedSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateScmAllowedSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateScmAllowedSlotOutput =
   typeof WebAppsUpdateScmAllowedSlotOutput.Type;
 
@@ -34877,29 +34001,27 @@ export const WebAppsUpdateScmAllowedSlot = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateScmAllowedSlotOutput,
 }));
 // Input Schema
-export const WebAppsUpdateSitePushSettingsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings",
-    }),
-  );
+export const WebAppsUpdateSitePushSettingsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings",
+  }),
+);
 export type WebAppsUpdateSitePushSettingsInput =
   typeof WebAppsUpdateSitePushSettingsInput.Type;
 
 // Output Schema
-export const WebAppsUpdateSitePushSettingsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WebAppsUpdateSitePushSettingsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WebAppsUpdateSitePushSettingsOutput =
   typeof WebAppsUpdateSitePushSettingsOutput.Type;
 
@@ -34914,11 +34036,10 @@ export type WebAppsUpdateSitePushSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateSitePushSettings =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateSitePushSettingsInput,
-    outputSchema: WebAppsUpdateSitePushSettingsOutput,
-  }));
+export const WebAppsUpdateSitePushSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateSitePushSettingsInput,
+  outputSchema: WebAppsUpdateSitePushSettingsOutput,
+}));
 // Input Schema
 export const WebAppsUpdateSitePushSettingsSlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -34959,11 +34080,10 @@ export type WebAppsUpdateSitePushSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateSitePushSettingsSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateSitePushSettingsSlotInput,
-    outputSchema: WebAppsUpdateSitePushSettingsSlotOutput,
-  }));
+export const WebAppsUpdateSitePushSettingsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateSitePushSettingsSlotInput,
+  outputSchema: WebAppsUpdateSitePushSettingsSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -34980,26 +34100,25 @@ export const WebAppsUpdateSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsUpdateSlotInput = typeof WebAppsUpdateSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateSlotOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateSlotOutput = typeof WebAppsUpdateSlotOutput.Type;
 
 // The operation
@@ -35069,48 +34188,47 @@ export type WebAppsUpdateSlotConfigurationNamesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateSlotConfigurationNames =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateSlotConfigurationNames = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateSlotConfigurationNamesInput,
     outputSchema: WebAppsUpdateSlotConfigurationNamesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsUpdateSourceControlInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsUpdateSourceControlInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
+  }),
+);
 export type WebAppsUpdateSourceControlInput =
   typeof WebAppsUpdateSourceControlInput.Type;
 
 // Output Schema
-export const WebAppsUpdateSourceControlOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateSourceControlOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateSourceControlOutput =
   typeof WebAppsUpdateSourceControlOutput.Type;
 
@@ -35130,25 +34248,24 @@ export const WebAppsUpdateSourceControl = /*@__PURE__*/ API.make(() => ({
   outputSchema: WebAppsUpdateSourceControlOutput,
 }));
 // Input Schema
-export const WebAppsUpdateSourceControlSlotInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-    }),
-  );
+export const WebAppsUpdateSourceControlSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
+  }),
+);
 export type WebAppsUpdateSourceControlSlotInput =
   typeof WebAppsUpdateSourceControlSlotInput.Type;
 
 // Output Schema
-export const WebAppsUpdateSourceControlSlotOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsUpdateSourceControlSlotOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35166,7 +34283,8 @@ export const WebAppsUpdateSourceControlSlotOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type WebAppsUpdateSourceControlSlotOutput =
   typeof WebAppsUpdateSourceControlSlotOutput.Type;
 
@@ -35182,11 +34300,10 @@ export type WebAppsUpdateSourceControlSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
-export const WebAppsUpdateSourceControlSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateSourceControlSlotInput,
-    outputSchema: WebAppsUpdateSourceControlSlotOutput,
-  }));
+export const WebAppsUpdateSourceControlSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateSourceControlSlotInput,
+  outputSchema: WebAppsUpdateSourceControlSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput =
   /*@__PURE__*/ Schema.Struct({
@@ -35306,43 +34423,41 @@ export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlot =
     outputSchema: WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotOutput,
   }));
 // Input Schema
-export const WebAppsUpdateVnetConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    vnetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+export const WebAppsUpdateVnetConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  vnetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsUpdateVnetConnectionInput =
   typeof WebAppsUpdateVnetConnectionInput.Type;
 
 // Output Schema
-export const WebAppsUpdateVnetConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebAppsUpdateVnetConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsUpdateVnetConnectionOutput =
   typeof WebAppsUpdateVnetConnectionOutput.Type;
 
@@ -35417,11 +34532,12 @@ export type WebAppsUpdateVnetConnectionGatewayOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
-export const WebAppsUpdateVnetConnectionGateway =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateVnetConnectionGateway = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateVnetConnectionGatewayInput,
     outputSchema: WebAppsUpdateVnetConnectionGatewayOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WebAppsUpdateVnetConnectionGatewaySlotInput =
   /*@__PURE__*/ Schema.Struct({
@@ -35479,26 +34595,28 @@ export type WebAppsUpdateVnetConnectionGatewaySlotOutput =
  * @param vnetName - Name of the Virtual Network.
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
-export const WebAppsUpdateVnetConnectionGatewaySlot =
-  /*@__PURE__*/ API.make(() => ({
+export const WebAppsUpdateVnetConnectionGatewaySlot = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WebAppsUpdateVnetConnectionGatewaySlotInput,
     outputSchema: WebAppsUpdateVnetConnectionGatewaySlotOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WebAppsUpdateVnetConnectionSlotInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WebAppsUpdateVnetConnectionSlotInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     slot: Schema.String.pipe(T.PathParam()),
     vnetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
+  }),
+);
 export type WebAppsUpdateVnetConnectionSlotInput =
   typeof WebAppsUpdateVnetConnectionSlotInput.Type;
 
@@ -35539,14 +34657,13 @@ export type WebAppsUpdateVnetConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsUpdateVnetConnectionSlot =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WebAppsUpdateVnetConnectionSlotInput,
-    outputSchema: WebAppsUpdateVnetConnectionSlotOutput,
-  }));
+export const WebAppsUpdateVnetConnectionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateVnetConnectionSlotInput,
+  outputSchema: WebAppsUpdateVnetConnectionSlotOutput,
+}));
 // Input Schema
-export const WorkflowRunActionRepetitionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WorkflowRunActionRepetitionsGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35555,12 +34672,13 @@ export const WorkflowRunActionRepetitionsGetInput =
     actionName: Schema.String.pipe(T.PathParam()),
     repetitionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
+  }),
+);
 export type WorkflowRunActionRepetitionsGetInput =
   typeof WorkflowRunActionRepetitionsGetInput.Type;
 
@@ -35601,11 +34719,10 @@ export type WorkflowRunActionRepetitionsGetOutput =
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
  */
-export const WorkflowRunActionRepetitionsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowRunActionRepetitionsGetInput,
-    outputSchema: WorkflowRunActionRepetitionsGetOutput,
-  }));
+export const WorkflowRunActionRepetitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionRepetitionsGetInput,
+  outputSchema: WorkflowRunActionRepetitionsGetOutput,
+}));
 // Input Schema
 export const WorkflowRunActionRepetitionsListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -35676,11 +34793,10 @@ export type WorkflowRunActionRepetitionsListOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionRepetitionsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowRunActionRepetitionsListInput,
-    outputSchema: WorkflowRunActionRepetitionsListOutput,
-  }));
+export const WorkflowRunActionRepetitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionRepetitionsListInput,
+  outputSchema: WorkflowRunActionRepetitionsListOutput,
+}));
 // Input Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -35940,11 +35056,12 @@ export type WorkflowRunActionScopeRepetitionsGetOutput =
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
  */
-export const WorkflowRunActionScopeRepetitionsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkflowRunActionScopeRepetitionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionScopeRepetitionsGetInput,
     outputSchema: WorkflowRunActionScopeRepetitionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -36015,50 +35132,49 @@ export type WorkflowRunActionScopeRepetitionsListOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionScopeRepetitionsList =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkflowRunActionScopeRepetitionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionScopeRepetitionsListInput,
     outputSchema: WorkflowRunActionScopeRepetitionsListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowRunActionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    actionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
-    }),
-  );
+export const WorkflowRunActionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  actionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
+  }),
+);
 export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
 
 // Output Schema
-export const WorkflowRunActionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkflowRunActionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkflowRunActionsGetOutput =
   typeof WorkflowRunActionsGetOutput.Type;
 
@@ -36079,61 +35195,49 @@ export const WorkflowRunActionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowRunActionsGetOutput,
 }));
 // Input Schema
-export const WorkflowRunActionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions",
-    }),
-  );
+export const WorkflowRunActionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions",
+  }),
+);
 export type WorkflowRunActionsListInput =
   typeof WorkflowRunActionsListInput.Type;
 
 // Output Schema
-export const WorkflowRunActionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkflowRunActionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowRunActionsListOutput =
   typeof WorkflowRunActionsListOutput.Type;
 
@@ -36208,26 +35312,26 @@ export type WorkflowRunActionsListExpressionTracesOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionsListExpressionTraces =
-  /*@__PURE__*/ API.make(() => ({
+export const WorkflowRunActionsListExpressionTraces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkflowRunActionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionsListExpressionTracesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowRunsCancelInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    runName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/cancel",
-    }),
-  );
+export const WorkflowRunsCancelInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  runName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/cancel",
+  }),
+);
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
 
 // Output Schema
@@ -36363,19 +35467,18 @@ export const WorkflowRunsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowRunsListOutput,
 }));
 // Input Schema
-export const WorkflowsRegenerateAccessKeyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/regenerateAccessKey",
-    }),
-  );
+export const WorkflowsRegenerateAccessKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/regenerateAccessKey",
+  }),
+);
 export type WorkflowsRegenerateAccessKeyInput =
   typeof WorkflowsRegenerateAccessKeyInput.Type;
 
@@ -36394,11 +35497,10 @@ export type WorkflowsRegenerateAccessKeyOutput =
  * @param name - Site name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsRegenerateAccessKey =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowsRegenerateAccessKeyInput,
-    outputSchema: WorkflowsRegenerateAccessKeyOutput,
-  }));
+export const WorkflowsRegenerateAccessKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsRegenerateAccessKeyInput,
+  outputSchema: WorkflowsRegenerateAccessKeyOutput,
+}));
 // Input Schema
 export const WorkflowsValidateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -36433,45 +35535,43 @@ export const WorkflowsValidate = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowsValidateOutput,
 }));
 // Input Schema
-export const WorkflowTriggerHistoriesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    historyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
-    }),
-  );
+export const WorkflowTriggerHistoriesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  historyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
+  }),
+);
 export type WorkflowTriggerHistoriesGetInput =
   typeof WorkflowTriggerHistoriesGetInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkflowTriggerHistoriesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkflowTriggerHistoriesGetOutput =
   typeof WorkflowTriggerHistoriesGetOutput.Type;
 
@@ -36492,61 +35592,49 @@ export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowTriggerHistoriesGetOutput,
 }));
 // Input Schema
-export const WorkflowTriggerHistoriesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories",
-    }),
-  );
+export const WorkflowTriggerHistoriesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories",
+  }),
+);
 export type WorkflowTriggerHistoriesListInput =
   typeof WorkflowTriggerHistoriesListInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggerHistoriesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowTriggerHistoriesListOutput =
   typeof WorkflowTriggerHistoriesListOutput.Type;
 
@@ -36563,11 +35651,10 @@ export type WorkflowTriggerHistoriesListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
-export const WorkflowTriggerHistoriesList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggerHistoriesListInput,
-    outputSchema: WorkflowTriggerHistoriesListOutput,
-  }));
+export const WorkflowTriggerHistoriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesListInput,
+  outputSchema: WorkflowTriggerHistoriesListOutput,
+}));
 // Input Schema
 export const WorkflowTriggerHistoriesResubmitInput =
   /*@__PURE__*/ Schema.Struct({
@@ -36604,49 +35691,46 @@ export type WorkflowTriggerHistoriesResubmitOutput =
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  */
-export const WorkflowTriggerHistoriesResubmit =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggerHistoriesResubmitInput,
-    outputSchema: WorkflowTriggerHistoriesResubmitOutput,
-  }));
+export const WorkflowTriggerHistoriesResubmit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesResubmitInput,
+  outputSchema: WorkflowTriggerHistoriesResubmitOutput,
+}));
 // Input Schema
-export const WorkflowTriggersGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}",
-    }),
-  );
+export const WorkflowTriggersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}",
+  }),
+);
 export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
 
 // Output Schema
-export const WorkflowTriggersGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkflowTriggersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
 
 // The operation
@@ -36665,29 +35749,27 @@ export const WorkflowTriggersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowTriggersGetOutput,
 }));
 // Input Schema
-export const WorkflowTriggersGetSchemaJsonInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
-    }),
-  );
+export const WorkflowTriggersGetSchemaJsonInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
+  }),
+);
 export type WorkflowTriggersGetSchemaJsonInput =
   typeof WorkflowTriggersGetSchemaJsonInput.Type;
 
 // Output Schema
-export const WorkflowTriggersGetSchemaJsonOutput =
-  /*@__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
-    content: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggersGetSchemaJsonOutput = /*@__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+});
 export type WorkflowTriggersGetSchemaJsonOutput =
   typeof WorkflowTriggersGetSchemaJsonOutput.Type;
 
@@ -36702,65 +35784,52 @@ export type WorkflowTriggersGetSchemaJsonOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersGetSchemaJson =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggersGetSchemaJsonInput,
-    outputSchema: WorkflowTriggersGetSchemaJsonOutput,
-  }));
+export const WorkflowTriggersGetSchemaJson = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersGetSchemaJsonInput,
+  outputSchema: WorkflowTriggersGetSchemaJsonOutput,
+}));
 // Input Schema
-export const WorkflowTriggersListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers",
-    }),
-  );
+export const WorkflowTriggersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers",
+  }),
+);
 export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
 
 // Output Schema
-export const WorkflowTriggersListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkflowTriggersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowTriggersListOutput = typeof WorkflowTriggersListOutput.Type;
 
 // The operation
@@ -36780,20 +35849,21 @@ export const WorkflowTriggersList = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowTriggersListOutput,
 }));
 // Input Schema
-export const WorkflowTriggersListCallbackUrlInput =
-  /*@__PURE__*/ Schema.Struct({
+export const WorkflowTriggersListCallbackUrlInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
+  }),
+);
 export type WorkflowTriggersListCallbackUrlInput =
   typeof WorkflowTriggersListCallbackUrlInput.Type;
 
@@ -36829,26 +35899,24 @@ export type WorkflowTriggersListCallbackUrlOutput =
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersListCallbackUrl =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowTriggersListCallbackUrlInput,
-    outputSchema: WorkflowTriggersListCallbackUrlOutput,
-  }));
+export const WorkflowTriggersListCallbackUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersListCallbackUrlInput,
+  outputSchema: WorkflowTriggersListCallbackUrlOutput,
+}));
 // Input Schema
-export const WorkflowTriggersRunInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/run",
-    }),
-  );
+export const WorkflowTriggersRunInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/run",
+  }),
+);
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
 
 // Output Schema
@@ -36871,43 +35939,41 @@ export const WorkflowTriggersRun = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowTriggersRunOutput,
 }));
 // Input Schema
-export const WorkflowVersionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    versionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions/{versionId}",
-    }),
-  );
+export const WorkflowVersionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  versionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions/{versionId}",
+  }),
+);
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
 
 // Output Schema
-export const WorkflowVersionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WorkflowVersionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
 
 // The operation
@@ -36926,58 +35992,46 @@ export const WorkflowVersionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: WorkflowVersionsGetOutput,
 }));
 // Input Schema
-export const WorkflowVersionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $top: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions",
-    }),
-  );
+export const WorkflowVersionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $top: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions",
+  }),
+);
 export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;
 
 // Output Schema
-export const WorkflowVersionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WorkflowVersionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowVersionsListOutput = typeof WorkflowVersionsListOutput.Type;
 
 // The operation

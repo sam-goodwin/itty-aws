@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListSnapshotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnapshotsInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/snapshots" }));
 export type ListSnapshotsInput = typeof ListSnapshotsInput.Type;
 
 // Output Schema
-export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnapshotsOutput = /*@__PURE__*/ Schema.Struct({
   snapshots: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -20,8 +20,6 @@ export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       created_at: Schema.String,
       expires_at: Schema.optional(Schema.String),
       manual: Schema.optional(Schema.Boolean),
-      full_size: Schema.optional(Schema.Number),
-      diff_size: Schema.optional(Schema.Number),
     }),
   ),
 });
@@ -36,7 +34,7 @@ export type ListSnapshotsOutput = typeof ListSnapshotsOutput.Type;
  *
  * @param project_id - The Neon project ID
  */
-export const listSnapshots = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listSnapshots = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSnapshotsInput,
   outputSchema: ListSnapshotsOutput,
 }));

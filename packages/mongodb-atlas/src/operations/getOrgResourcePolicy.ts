@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgResourcePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    resourcePolicyId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
-    }),
-  );
+export const GetOrgResourcePolicyInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  resourcePolicyId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
+  }),
+);
 export type GetOrgResourcePolicyInput = typeof GetOrgResourcePolicyInput.Type;
 
 // Output Schema
-export const GetOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgResourcePolicyOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgResourcePolicyOutput = typeof GetOrgResourcePolicyOutput.Type;
 
 // The operation
@@ -34,10 +32,8 @@ export type GetOrgResourcePolicyOutput = typeof GetOrgResourcePolicyOutput.Type;
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param resourcePolicyId - Unique 24-hexadecimal digit string that identifies an atlas resource policy.
  */
-export const getOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgResourcePolicyInput,
-    outputSchema: GetOrgResourcePolicyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgResourcePolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgResourcePolicyInput,
+  outputSchema: GetOrgResourcePolicyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

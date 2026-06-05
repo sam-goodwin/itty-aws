@@ -3,14 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenInput = /*@__PURE__*/ Schema.Struct({
   tokenName: Schema.String.pipe(T.PathParam()),
   organization: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "POST", path: "/v1/auth/api-tokens/{tokenName}" }));
 export type CreateAPITokenInput = typeof CreateAPITokenInput.Type;
 
 // Output Schema
-export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   token: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export type CreateAPITokenOutput = typeof CreateAPITokenOutput.Type;
  *
  * @param tokenName - The name of the api token.
  */
-export const createAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAPITokenInput,
   outputSchema: CreateAPITokenOutput,
 }));

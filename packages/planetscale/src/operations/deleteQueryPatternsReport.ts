@@ -1,21 +1,20 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { Forbidden, NotFound } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteQueryPatternsReportInput =
-  /*@__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
-    }),
-  );
+export const DeleteQueryPatternsReportInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
+  }),
+);
 export type DeleteQueryPatternsReportInput =
   typeof DeleteQueryPatternsReportInput.Type;
 

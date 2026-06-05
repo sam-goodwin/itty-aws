@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostPaymentRecordsIdReportPaymentAttemptGuaranteedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     guaranteed_at: Schema.Number,
@@ -21,7 +21,7 @@ export type PostPaymentRecordsIdReportPaymentAttemptGuaranteedInput =
 
 // Output Schema
 export const PostPaymentRecordsIdReportPaymentAttemptGuaranteedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -87,7 +87,7 @@ export type PostPaymentRecordsIdReportPaymentAttemptGuaranteedOutput =
  * @param id - The ID of the Payment Record.
  */
 export const PostPaymentRecordsIdReportPaymentAttemptGuaranteed =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentRecordsIdReportPaymentAttemptGuaranteedInput,
     outputSchema: PostPaymentRecordsIdReportPaymentAttemptGuaranteedOutput,
   }));

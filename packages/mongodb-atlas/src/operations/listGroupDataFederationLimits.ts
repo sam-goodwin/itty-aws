@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupDataFederationLimitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits",
-    }),
-  );
+export const ListGroupDataFederationLimitsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits",
+  }),
+);
 export type ListGroupDataFederationLimitsInput =
   typeof ListGroupDataFederationLimitsInput.Type;
 
 // Output Schema
-export const ListGroupDataFederationLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupDataFederationLimitsOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupDataFederationLimitsOutput =
   typeof ListGroupDataFederationLimitsOutput.Type;
 
@@ -38,9 +36,8 @@ export type ListGroupDataFederationLimitsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Human-readable label that identifies the federated database instance for which you want to retrieve query limits.
  */
-export const listGroupDataFederationLimits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupDataFederationLimitsInput,
-    outputSchema: ListGroupDataFederationLimitsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGroupDataFederationLimits = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupDataFederationLimitsInput,
+  outputSchema: ListGroupDataFederationLimitsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

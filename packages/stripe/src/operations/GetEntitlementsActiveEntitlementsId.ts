@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetEntitlementsActiveEntitlementsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetEntitlementsActiveEntitlementsIdInput =
 
 // Output Schema
 export const GetEntitlementsActiveEntitlementsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feature: Schema.Unknown,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -38,8 +38,9 @@ export type GetEntitlementsActiveEntitlementsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - The ID of the entitlement.
  */
-export const GetEntitlementsActiveEntitlementsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetEntitlementsActiveEntitlementsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetEntitlementsActiveEntitlementsIdInput,
     outputSchema: GetEntitlementsActiveEntitlementsIdOutput,
-  }));
+  }),
+);

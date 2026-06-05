@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupPrivateNetworkSettingEndpointIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type DeleteGroupPrivateNetworkSettingEndpointIdInput =
 
 // Output Schema
 export const DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
   typeof DeleteGroupPrivateNetworkSettingEndpointIdOutput.Type;
 
@@ -39,7 +39,7 @@ export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
  * @param endpointId - Unique 22-character alphanumeric string that identifies the private endpoint to remove. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
  */
 export const deleteGroupPrivateNetworkSettingEndpointId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupPrivateNetworkSettingEndpointIdInput,
     outputSchema: DeleteGroupPrivateNetworkSettingEndpointIdOutput,
     errors: [Forbidden, NotFound] as const,

@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const FeatureFlagsControllerDisableFlagInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "PUT", path: "/feature-flags/{slug}/disable" }));
 export type FeatureFlagsControllerDisableFlagInput =
@@ -13,7 +13,7 @@ export type FeatureFlagsControllerDisableFlagInput =
 
 // Output Schema
 export const FeatureFlagsControllerDisableFlagOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     slug: Schema.String,
@@ -37,9 +37,8 @@ export type FeatureFlagsControllerDisableFlagOutput =
  *
  * @param slug - A unique key to reference the Feature Flag.
  */
-export const FeatureFlagsControllerDisableFlag =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FeatureFlagsControllerDisableFlagInput,
-    outputSchema: FeatureFlagsControllerDisableFlagOutput,
-    errors: [NotFound] as const,
-  }));
+export const FeatureFlagsControllerDisableFlag = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsControllerDisableFlagInput,
+  outputSchema: FeatureFlagsControllerDisableFlagOutput,
+  errors: [NotFound] as const,
+}));

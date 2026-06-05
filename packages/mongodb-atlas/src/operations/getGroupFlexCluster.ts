@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const GetGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
-    }),
-  );
+export const GetGroupFlexClusterInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
+  }),
+);
 export type GetGroupFlexClusterInput = typeof GetGroupFlexClusterInput.Type;
 
 // Output Schema
-export const GetGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupFlexClusterOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupFlexClusterOutput = typeof GetGroupFlexClusterOutput.Type;
 
 // The operation
@@ -36,7 +34,7 @@ export type GetGroupFlexClusterOutput = typeof GetGroupFlexClusterOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const getGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupFlexCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupFlexClusterInput,
   outputSchema: GetGroupFlexClusterOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

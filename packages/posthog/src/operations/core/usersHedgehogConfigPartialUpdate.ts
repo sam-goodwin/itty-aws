@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const UsersHedgehogConfigPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -755,15 +755,13 @@ export type UsersHedgehogConfigPartialUpdateInput =
   typeof UsersHedgehogConfigPartialUpdateInput.Type;
 
 // Output Schema
-export const UsersHedgehogConfigPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersHedgehogConfigPartialUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type UsersHedgehogConfigPartialUpdateOutput =
   typeof UsersHedgehogConfigPartialUpdateOutput.Type;
 
 // The operation
-export const usersHedgehogConfigPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UsersHedgehogConfigPartialUpdateInput,
-    outputSchema: UsersHedgehogConfigPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const usersHedgehogConfigPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersHedgehogConfigPartialUpdateInput,
+  outputSchema: UsersHedgehogConfigPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

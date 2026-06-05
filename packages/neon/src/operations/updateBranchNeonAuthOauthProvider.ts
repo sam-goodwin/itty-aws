@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UpdateBranchNeonAuthOauthProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     oauth_provider_id: Schema.String.pipe(T.PathParam()),
@@ -23,11 +23,11 @@ export type UpdateBranchNeonAuthOauthProviderInput =
 
 // Output Schema
 export const UpdateBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
+    client_secret: Schema.optional(SensitiveOutputString),
   });
 export type UpdateBranchNeonAuthOauthProviderOutput =
   typeof UpdateBranchNeonAuthOauthProviderOutput.Type;
@@ -42,8 +42,7 @@ export type UpdateBranchNeonAuthOauthProviderOutput =
  * @param branch_id - The Neon branch ID
  * @param oauth_provider_id - The OAuth provider ID
  */
-export const updateBranchNeonAuthOauthProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateBranchNeonAuthOauthProviderInput,
-    outputSchema: UpdateBranchNeonAuthOauthProviderOutput,
-  }));
+export const updateBranchNeonAuthOauthProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBranchNeonAuthOauthProviderInput,
+  outputSchema: UpdateBranchNeonAuthOauthProviderOutput,
+}));

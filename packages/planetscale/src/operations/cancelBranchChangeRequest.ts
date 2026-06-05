@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CancelBranchChangeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
-    }),
-  );
+export const CancelBranchChangeRequestInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
+  }),
+);
 export type CancelBranchChangeRequestInput =
   typeof CancelBranchChangeRequestInput.Type;
 
 // Output Schema
-export const CancelBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CancelBranchChangeRequestOutput = /*@__PURE__*/ Schema.Void;
 export type CancelBranchChangeRequestOutput =
   typeof CancelBranchChangeRequestOutput.Type;
 
@@ -32,10 +30,8 @@ export type CancelBranchChangeRequestOutput =
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const cancelBranchChangeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CancelBranchChangeRequestInput,
-    outputSchema: CancelBranchChangeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const cancelBranchChangeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CancelBranchChangeRequestInput,
+  outputSchema: CancelBranchChangeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

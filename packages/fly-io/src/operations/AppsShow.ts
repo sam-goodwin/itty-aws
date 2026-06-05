@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppsShowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsShowInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/apps/{app_name}" }));
 export type AppsShowInput = typeof AppsShowInput.Type;
 
 // Output Schema
-export const AppsShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsShowOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   internal_numeric_id: Schema.optional(Schema.Number),
   machine_count: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export type AppsShowOutput = typeof AppsShowOutput.Type;
  *
  * @param app_name - Fly App Name
  */
-export const AppsShow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsShow = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsShowInput,
   outputSchema: AppsShowOutput,
   errors: [Forbidden, NotFound] as const,

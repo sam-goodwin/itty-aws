@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTreasuryFinancialAccountsFinancialAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTreasuryFinancialAccountsFinancialAccountInput =
 
 // Output Schema
 export const GetTreasuryFinancialAccountsFinancialAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_features: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -420,7 +420,7 @@ export type GetTreasuryFinancialAccountsFinancialAccountOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryFinancialAccountsFinancialAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryFinancialAccountsFinancialAccountInput,
     outputSchema: GetTreasuryFinancialAccountsFinancialAccountOutput,
   }));

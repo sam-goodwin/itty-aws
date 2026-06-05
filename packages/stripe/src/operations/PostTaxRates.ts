@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTaxRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxRatesInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   country: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export const PostTaxRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTaxRatesInput = typeof PostTaxRatesInput.Type;
 
 // Output Schema
-export const PostTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxRatesOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   country: Schema.NullOr(Schema.String),
   created: Schema.Number,
@@ -96,7 +96,7 @@ export type PostTaxRatesOutput = typeof PostTaxRatesOutput.Type;
  *
  * <p>Creates a new tax rate.</p>
  */
-export const PostTaxRates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTaxRates = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTaxRatesInput,
   outputSchema: PostTaxRatesOutput,
 }));

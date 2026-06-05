@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
-    delete_protection: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
-    }),
-  );
+export const UpdateGroupConfigurationInput = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+  groupName: Schema.String.pipe(T.PathParam()),
+  delete_protection: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
+  }),
+);
 export type UpdateGroupConfigurationInput =
   typeof UpdateGroupConfigurationInput.Type;
 
 // Output Schema
-export const UpdateGroupConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    delete_protection: Schema.optional(Schema.Boolean),
-  });
+export const UpdateGroupConfigurationOutput = /*@__PURE__*/ Schema.Struct({
+  delete_protection: Schema.optional(Schema.Boolean),
+});
 export type UpdateGroupConfigurationOutput =
   typeof UpdateGroupConfigurationOutput.Type;
 
@@ -35,10 +33,8 @@ export type UpdateGroupConfigurationOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const updateGroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupConfigurationInput,
-    outputSchema: UpdateGroupConfigurationOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateGroupConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupConfigurationInput,
+  outputSchema: UpdateGroupConfigurationOutput,
+  errors: [NotFound] as const,
+}));

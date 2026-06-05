@@ -4,15 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1ListAllBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/branches" }));
+export const V1ListAllBranchesInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/branches" }));
 export type V1ListAllBranchesInput = typeof V1ListAllBranchesInput.Type;
 
 // Output Schema
-export const V1ListAllBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListAllBranchesOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -68,7 +66,7 @@ export type V1ListAllBranchesOutput = typeof V1ListAllBranchesOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListAllBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllBranches = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllBranchesInput,
   outputSchema: V1ListAllBranchesOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -49,46 +49,44 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const TriggersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
-    }),
-  );
+export const TriggersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
+  }),
+);
 export type TriggersCreateOrUpdateInput =
   typeof TriggersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const TriggersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TriggersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TriggersCreateOrUpdateOutput =
   typeof TriggersCreateOrUpdateOutput.Type;
 
@@ -100,14 +98,12 @@ export type TriggersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersCreateOrUpdateInput,
-    outputSchema: TriggersCreateOrUpdateOutput,
-  }),
-);
+export const TriggersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersCreateOrUpdateInput,
+  outputSchema: TriggersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -120,7 +116,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
 
 // The operation
@@ -131,12 +127,12 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -149,7 +145,7 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TriggersGetInput = typeof TriggersGetInput.Type;
 
 // Output Schema
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -178,61 +174,49 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
 // Input Schema
-export const TriggersListByImageTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers",
-    }),
-  );
+export const TriggersListByImageTemplateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers",
+  }),
+);
 export type TriggersListByImageTemplateInput =
   typeof TriggersListByImageTemplateInput.Type;
 
 // Output Schema
-export const TriggersListByImageTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TriggersListByImageTemplateOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TriggersListByImageTemplateOutput =
   typeof TriggersListByImageTemplateOutput.Type;
 
@@ -244,15 +228,13 @@ export type TriggersListByImageTemplateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const TriggersListByImageTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersListByImageTemplateInput,
-    outputSchema: TriggersListByImageTemplateOutput,
-  }),
-);
+export const TriggersListByImageTemplate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersListByImageTemplateInput,
+  outputSchema: TriggersListByImageTemplateOutput,
+}));
 // Input Schema
 export const VirtualMachineImageTemplatesCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -267,7 +249,7 @@ export type VirtualMachineImageTemplatesCancelInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineImageTemplatesCancelOutput =
   typeof VirtualMachineImageTemplatesCancelOutput.Type;
 
@@ -279,14 +261,15 @@ export type VirtualMachineImageTemplatesCancelOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineImageTemplatesCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineImageTemplatesCancel = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImageTemplatesCancelInput,
     outputSchema: VirtualMachineImageTemplatesCancelOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineImageTemplatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -301,7 +284,7 @@ export type VirtualMachineImageTemplatesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -332,13 +315,13 @@ export type VirtualMachineImageTemplatesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesCreateOrUpdateInput,
     outputSchema: VirtualMachineImageTemplatesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -353,7 +336,7 @@ export type VirtualMachineImageTemplatesDeleteInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineImageTemplatesDeleteOutput =
   typeof VirtualMachineImageTemplatesDeleteOutput.Type;
 
@@ -365,29 +348,31 @@ export type VirtualMachineImageTemplatesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineImageTemplatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineImageTemplatesDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImageTemplatesDeleteInput,
     outputSchema: VirtualMachineImageTemplatesDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineImageTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VirtualMachineImageTemplatesGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+  }),
+);
 export type VirtualMachineImageTemplatesGetInput =
   typeof VirtualMachineImageTemplatesGetInput.Type;
 
 // Output Schema
 export const VirtualMachineImageTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -417,14 +402,13 @@ export type VirtualMachineImageTemplatesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineImageTemplatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImageTemplatesGetInput,
-    outputSchema: VirtualMachineImageTemplatesGetOutput,
-  }));
+export const VirtualMachineImageTemplatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImageTemplatesGetInput,
+  outputSchema: VirtualMachineImageTemplatesGetOutput,
+}));
 // Input Schema
 export const VirtualMachineImageTemplatesGetRunOutputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -439,7 +423,7 @@ export type VirtualMachineImageTemplatesGetRunOutputInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesGetRunOutputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -469,14 +453,15 @@ export type VirtualMachineImageTemplatesGetRunOutputOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineImageTemplatesGetRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineImageTemplatesGetRunOutput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImageTemplatesGetRunOutputInput,
     outputSchema: VirtualMachineImageTemplatesGetRunOutputOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineImageTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -490,7 +475,7 @@ export type VirtualMachineImageTemplatesListInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -536,14 +521,13 @@ export type VirtualMachineImageTemplatesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineImageTemplatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImageTemplatesListInput,
-    outputSchema: VirtualMachineImageTemplatesListOutput,
-  }));
+export const VirtualMachineImageTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImageTemplatesListInput,
+  outputSchema: VirtualMachineImageTemplatesListOutput,
+}));
 // Input Schema
 export const VirtualMachineImageTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -558,7 +542,7 @@ export type VirtualMachineImageTemplatesListByResourceGroupInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -606,13 +590,13 @@ export type VirtualMachineImageTemplatesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineImageTemplatesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesListByResourceGroupInput,
     outputSchema: VirtualMachineImageTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesListRunOutputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -627,7 +611,7 @@ export type VirtualMachineImageTemplatesListRunOutputsInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesListRunOutputsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -675,28 +659,28 @@ export type VirtualMachineImageTemplatesListRunOutputsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesListRunOutputs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesListRunOutputsInput,
     outputSchema: VirtualMachineImageTemplatesListRunOutputsOutput,
   }));
 // Input Schema
-export const VirtualMachineImageTemplatesRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VirtualMachineImageTemplatesRunInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
+  }),
+);
 export type VirtualMachineImageTemplatesRunInput =
   typeof VirtualMachineImageTemplatesRunInput.Type;
 
 // Output Schema
-export const VirtualMachineImageTemplatesRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineImageTemplatesRunOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineImageTemplatesRunOutput =
   typeof VirtualMachineImageTemplatesRunOutput.Type;
 
@@ -708,14 +692,13 @@ export type VirtualMachineImageTemplatesRunOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineImageTemplatesRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImageTemplatesRunInput,
-    outputSchema: VirtualMachineImageTemplatesRunOutput,
-  }));
+export const VirtualMachineImageTemplatesRun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImageTemplatesRunInput,
+  outputSchema: VirtualMachineImageTemplatesRunOutput,
+}));
 // Input Schema
 export const VirtualMachineImageTemplatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -730,7 +713,7 @@ export type VirtualMachineImageTemplatesUpdateInput =
 
 // Output Schema
 export const VirtualMachineImageTemplatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -760,8 +743,9 @@ export type VirtualMachineImageTemplatesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineImageTemplatesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachineImageTemplatesUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImageTemplatesUpdateInput,
     outputSchema: VirtualMachineImageTemplatesUpdateOutput,
-  }));
+  }),
+);

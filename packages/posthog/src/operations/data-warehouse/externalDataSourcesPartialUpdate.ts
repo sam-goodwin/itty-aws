@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const ExternalDataSourcesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -190,12 +190,12 @@ export type ExternalDataSourcesPartialUpdateInput =
 
 // Output Schema
 export const ExternalDataSourcesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.String)),
     status: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
+    client_secret: Schema.optional(SensitiveOutputString),
     account_id: Schema.optional(Schema.String),
     source_type: Schema.optional(
       Schema.Literals([
@@ -373,9 +373,8 @@ export type ExternalDataSourcesPartialUpdateOutput =
  * @param id - A UUID string identifying this external data source.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ExternalDataSourcesPartialUpdateInput,
-    outputSchema: ExternalDataSourcesPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const externalDataSourcesPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalDataSourcesPartialUpdateInput,
+  outputSchema: ExternalDataSourcesPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

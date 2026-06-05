@@ -3,22 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteCustomersCustomerDiscountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCustomersCustomerDiscountInput = /*@__PURE__*/ Schema.Struct(
+  {
     customer: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v1/customers/{customer}/discount",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/customers/{customer}/discount",
+    contentType: "form-urlencoded",
+  }),
+);
 export type DeleteCustomersCustomerDiscountInput =
   typeof DeleteCustomersCustomerDiscountInput.Type;
 
 // Output Schema
 export const DeleteCustomersCustomerDiscountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checkout_session: Schema.NullOr(Schema.String),
     customer: Schema.Unknown,
     customer_account: Schema.NullOr(Schema.String),
@@ -45,8 +46,7 @@ export type DeleteCustomersCustomerDiscountOutput =
  *
  * <p>Removes the currently applied discount on a customer.</p>
  */
-export const DeleteCustomersCustomerDiscount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteCustomersCustomerDiscountInput,
-    outputSchema: DeleteCustomersCustomerDiscountOutput,
-  }));
+export const DeleteCustomersCustomerDiscount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCustomersCustomerDiscountInput,
+  outputSchema: DeleteCustomersCustomerDiscountOutput,
+}));

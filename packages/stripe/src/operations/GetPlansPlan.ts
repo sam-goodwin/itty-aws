@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPlansPlanInput = /*@__PURE__*/ Schema.Struct({
   plan: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetPlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPlansPlanInput = typeof GetPlansPlanInput.Type;
 
 // Output Schema
-export const GetPlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPlansPlanOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   amount: Schema.NullOr(Schema.Number),
   amount_decimal: Schema.NullOr(Schema.String),
@@ -58,7 +58,7 @@ export type GetPlansPlanOutput = typeof GetPlansPlanOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPlansPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPlansPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPlansPlanInput,
   outputSchema: GetPlansPlanOutput,
 }));

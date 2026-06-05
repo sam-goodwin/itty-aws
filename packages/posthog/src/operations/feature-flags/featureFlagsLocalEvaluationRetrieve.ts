@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const FeatureFlagsLocalEvaluationRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     send_cohorts: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -19,7 +19,7 @@ export type FeatureFlagsLocalEvaluationRetrieveInput =
 
 // Output Schema
 export const FeatureFlagsLocalEvaluationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flags: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -61,9 +61,10 @@ export type FeatureFlagsLocalEvaluationRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param send_cohorts - Include cohorts in response
  */
-export const featureFlagsLocalEvaluationRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const featureFlagsLocalEvaluationRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FeatureFlagsLocalEvaluationRetrieveInput,
     outputSchema: FeatureFlagsLocalEvaluationRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

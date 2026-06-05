@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemoveGroupUserInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RemoveGroupUserInput = typeof RemoveGroupUserInput.Type;
 
 // Output Schema
-export const RemoveGroupUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveGroupUserOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveGroupUserOutput = typeof RemoveGroupUserOutput.Type;
 
 // The operation
@@ -36,7 +36,7 @@ export type RemoveGroupUserOutput = typeof RemoveGroupUserOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by `username`.
  */
-export const removeGroupUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupUserInput,
   outputSchema: RemoveGroupUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

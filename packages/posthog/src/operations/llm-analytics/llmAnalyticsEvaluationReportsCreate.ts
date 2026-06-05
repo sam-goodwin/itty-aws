@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsEvaluationReportsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     evaluation: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export type LlmAnalyticsEvaluationReportsCreateInput =
 
 // Output Schema
 export const LlmAnalyticsEvaluationReportsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     evaluation: Schema.optional(Schema.String),
     frequency: Schema.optional(Schema.Literals(["scheduled", "every_n"])),
@@ -65,9 +65,10 @@ export type LlmAnalyticsEvaluationReportsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsEvaluationReportsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsEvaluationReportsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsEvaluationReportsCreateInput,
     outputSchema: LlmAnalyticsEvaluationReportsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

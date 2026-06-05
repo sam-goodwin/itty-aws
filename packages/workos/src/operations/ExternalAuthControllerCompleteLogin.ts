@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const ExternalAuthControllerCompleteLoginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_auth_id: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.Struct({
@@ -39,7 +39,7 @@ export type ExternalAuthControllerCompleteLoginInput =
 
 // Output Schema
 export const ExternalAuthControllerCompleteLoginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     redirect_uri: Schema.optional(Schema.String),
   });
 export type ExternalAuthControllerCompleteLoginOutput =
@@ -56,9 +56,10 @@ export type ExternalAuthControllerCompleteLoginOutput =
  * Users are automatically created or updated based on the `id` and `email` provided. If a user with the same `id` exists, their information is updated. Otherwise, a new user is created.
  * If you provide a new `id` with an `email` that already belongs to an existing user, the request will fail with an error as email addresses are unique to a user.
  */
-export const ExternalAuthControllerCompleteLogin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExternalAuthControllerCompleteLogin = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExternalAuthControllerCompleteLoginInput,
     outputSchema: ExternalAuthControllerCompleteLoginOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

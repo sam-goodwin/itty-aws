@@ -3,43 +3,41 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetRadarValueListItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    created: Schema.optional(Schema.String),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    starting_after: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-    value_list: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/radar/value_list_items",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetRadarValueListItemsInput = /*@__PURE__*/ Schema.Struct({
+  created: Schema.optional(Schema.String),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  starting_after: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  value_list: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/radar/value_list_items",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetRadarValueListItemsInput =
   typeof GetRadarValueListItemsInput.Type;
 
 // Output Schema
-export const GetRadarValueListItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        created_by: Schema.String,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["radar.value_list_item"]),
-        value: Schema.String,
-        value_list: Schema.String,
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+export const GetRadarValueListItemsOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      created: Schema.Number,
+      created_by: Schema.String,
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      object: Schema.Literals(["radar.value_list_item"]),
+      value: Schema.String,
+      value_list: Schema.String,
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetRadarValueListItemsOutput =
   typeof GetRadarValueListItemsOutput.Type;
 
@@ -57,9 +55,7 @@ export type GetRadarValueListItemsOutput =
  * @param value - Return items belonging to the parent list whose value matches the specified value (using an "is like" match).
  * @param value_list - Identifier for the parent value list this item belongs to.
  */
-export const GetRadarValueListItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetRadarValueListItemsInput,
-    outputSchema: GetRadarValueListItemsOutput,
-  }),
-);
+export const GetRadarValueListItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRadarValueListItemsInput,
+  outputSchema: GetRadarValueListItemsOutput,
+}));

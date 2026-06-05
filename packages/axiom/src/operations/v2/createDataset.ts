@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const CreateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetInput = /*@__PURE__*/ Schema.Struct({
   referrer: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
   edgeDeployment: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const CreateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateDatasetInput = typeof CreateDatasetInput.Type;
 
 // Output Schema
-export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -50,7 +50,7 @@ export type CreateDatasetOutput = typeof CreateDatasetOutput.Type;
  *
  * @param referrer - Referrer slug
  */
-export const createDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatasetInput,
   outputSchema: CreateDatasetOutput,
   errors: [BadRequest, Forbidden, UnprocessableEntity] as const,

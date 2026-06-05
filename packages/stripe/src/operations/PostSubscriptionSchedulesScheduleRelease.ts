@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSubscriptionSchedulesScheduleReleaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     preserve_cancel_date: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type PostSubscriptionSchedulesScheduleReleaseInput =
 
 // Output Schema
 export const PostSubscriptionSchedulesScheduleReleaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     billing_mode: Schema.Struct({
       flexible: Schema.Unknown,
@@ -351,8 +351,9 @@ export type PostSubscriptionSchedulesScheduleReleaseOutput =
  *
  * <p>Releases the subscription schedule immediately, which will stop scheduling of its phases, but leave any existing subscription in place. A schedule can only be released if its status is <code>not_started</code> or <code>active</code>. If the subscription schedule is currently associated with a subscription, releasing it will remove its <code>subscription</code> property and set the subscription’s ID to the <code>released_subscription</code> property.</p>
  */
-export const PostSubscriptionSchedulesScheduleRelease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSubscriptionSchedulesScheduleRelease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostSubscriptionSchedulesScheduleReleaseInput,
     outputSchema: PostSubscriptionSchedulesScheduleReleaseOutput,
-  }));
+  }),
+);

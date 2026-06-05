@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyInput = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.Number.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/keys/{keyId}" }));
 export type GetKeyInput = typeof GetKeyInput.Type;
 
 // Output Schema
-export const GetKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
   actions: Schema.Array(Schema.String),
@@ -29,7 +29,7 @@ export type GetKeyOutput = typeof GetKeyOutput.Type;
  *
  * @param keyId - The ID of the key to retrieve
  */
-export const getKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyInput,
   outputSchema: GetKeyOutput,
   errors: [NotFound] as const,

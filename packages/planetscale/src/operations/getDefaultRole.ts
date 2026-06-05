@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const GetDefaultRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDefaultRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,14 +18,13 @@ export const GetDefaultRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDefaultRoleInput = typeof GetDefaultRoleInput.Type;
 
 // Output Schema
-export const GetDefaultRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDefaultRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
   private_access_host_url: Schema.String,
   private_connection_service_name: Schema.String,
   username: Schema.String,
-  base_username: Schema.String,
   password: SensitiveOutputNullableString,
   database_name: Schema.String,
   created_at: Schema.String,
@@ -82,7 +81,7 @@ export type GetDefaultRoleOutput = typeof GetDefaultRoleOutput.Type;
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const getDefaultRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDefaultRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDefaultRoleInput,
   outputSchema: GetDefaultRoleOutput,
   errors: [Forbidden, NotFound] as const,

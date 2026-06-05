@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostIssuingTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Unknown),
@@ -20,7 +20,7 @@ export type PostIssuingTransactionsTransactionInput =
 
 // Output Schema
 export const PostIssuingTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     authorization: Schema.Unknown,
@@ -67,8 +67,9 @@ export type PostIssuingTransactionsTransactionOutput =
  *
  * <p>Updates the specified Issuing <code>Transaction</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostIssuingTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostIssuingTransactionsTransaction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostIssuingTransactionsTransactionInput,
     outputSchema: PostIssuingTransactionsTransactionOutput,
-  }));
+  }),
+);

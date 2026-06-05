@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const PostPaymentIntentsIntentConfirmInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPaymentIntentsIntentConfirmInput = /*@__PURE__*/ Schema.Struct(
+  {
     intent: Schema.String.pipe(T.PathParam()),
     amount_details: Schema.optional(Schema.Unknown),
     capture_method: Schema.optional(
@@ -435,19 +435,20 @@ export const PostPaymentIntentsIntentConfirmInput =
     ),
     shipping: Schema.optional(Schema.Unknown),
     use_stripe_sdk: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/payment_intents/{intent}/confirm",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/payment_intents/{intent}/confirm",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPaymentIntentsIntentConfirmInput =
   typeof PostPaymentIntentsIntentConfirmInput.Type;
 
 // Output Schema
 export const PostPaymentIntentsIntentConfirmOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -524,7 +525,7 @@ export const PostPaymentIntentsIntentConfirmOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -679,8 +680,7 @@ export type PostPaymentIntentsIntentConfirmOutput =
  * After this limit is reached, any further calls to this endpoint will
  * transition the PaymentIntent to the <code>canceled</code> state.</p>
  */
-export const PostPaymentIntentsIntentConfirm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPaymentIntentsIntentConfirmInput,
-    outputSchema: PostPaymentIntentsIntentConfirmOutput,
-  }));
+export const PostPaymentIntentsIntentConfirm = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentIntentsIntentConfirmInput,
+  outputSchema: PostPaymentIntentsIntentConfirmOutput,
+}));

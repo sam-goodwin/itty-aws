@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const TransferGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransferGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   organization: Schema.optional(Schema.String),
@@ -17,7 +17,7 @@ export const TransferGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TransferGroupInput = typeof TransferGroupInput.Type;
 
 // Output Schema
-export const TransferGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransferGroupOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   version: Schema.optional(Schema.String),
   uuid: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export type TransferGroupOutput = typeof TransferGroupOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const transferGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const transferGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransferGroupInput,
   outputSchema: TransferGroupOutput,
   errors: [NotFound] as const,

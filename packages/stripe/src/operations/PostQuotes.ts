@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostQuotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesInput = /*@__PURE__*/ Schema.Struct({
   application_fee_amount: Schema.optional(Schema.Unknown),
   application_fee_percent: Schema.optional(Schema.Unknown),
   automatic_tax: Schema.optional(
@@ -107,7 +107,7 @@ export const PostQuotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostQuotesInput = typeof PostQuotesInput.Type;
 
 // Output Schema
-export const PostQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.Unknown,
@@ -655,7 +655,7 @@ export type PostQuotesOutput = typeof PostQuotesOutput.Type;
  *
  * <p>A quote models prices and services for a customer. Default options for <code>header</code>, <code>description</code>, <code>footer</code>, and <code>expires_at</code> can be set in the dashboard via the <a href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.</p>
  */
-export const PostQuotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostQuotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostQuotesInput,
   outputSchema: PostQuotesOutput,
 }));

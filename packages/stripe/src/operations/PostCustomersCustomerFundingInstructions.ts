@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostCustomersCustomerFundingInstructionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     bank_transfer: Schema.Struct({
       eu_bank_transfer: Schema.optional(
@@ -38,7 +38,7 @@ export type PostCustomersCustomerFundingInstructionsInput =
 
 // Output Schema
 export const PostCustomersCustomerFundingInstructionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bank_transfer: Schema.Struct({
       country: Schema.String,
       financial_addresses: Schema.Array(
@@ -233,8 +233,9 @@ export type PostCustomersCustomerFundingInstructionsOutput =
  * funding instructions will be created. If funding instructions have already been created for a given customer, the same
  * funding instructions will be retrieved. In other words, we will return the same funding instructions each time.</p>
  */
-export const PostCustomersCustomerFundingInstructions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCustomersCustomerFundingInstructions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostCustomersCustomerFundingInstructionsInput,
     outputSchema: PostCustomersCustomerFundingInstructionsOutput,
-  }));
+  }),
+);

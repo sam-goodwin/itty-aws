@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupProcessDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}",
-    }),
-  );
+export const GetGroupProcessDatabaseInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}",
+  }),
+);
 export type GetGroupProcessDatabaseInput =
   typeof GetGroupProcessDatabaseInput.Type;
 
 // Output Schema
-export const GetGroupProcessDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupProcessDatabaseOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupProcessDatabaseOutput =
   typeof GetGroupProcessDatabaseOutput.Type;
 
@@ -40,10 +38,8 @@ export type GetGroupProcessDatabaseOutput =
  * @param databaseName - Human-readable label that identifies the database that the specified MongoDB process serves.
  * @param processId - Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
  */
-export const getGroupProcessDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupProcessDatabaseInput,
-    outputSchema: GetGroupProcessDatabaseOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupProcessDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupProcessDatabaseInput,
+  outputSchema: GetGroupProcessDatabaseOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

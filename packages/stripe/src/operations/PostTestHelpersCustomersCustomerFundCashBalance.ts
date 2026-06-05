@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersCustomersCustomerFundCashBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     amount: Schema.Number,
     currency: Schema.String,
@@ -22,7 +22,7 @@ export type PostTestHelpersCustomersCustomerFundCashBalanceInput =
 
 // Output Schema
 export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjusted_for_overdraft: Schema.optional(
       Schema.Struct({
         balance_transaction: Schema.Unknown,
@@ -123,7 +123,7 @@ export type PostTestHelpersCustomersCustomerFundCashBalanceOutput =
  * <p>Create an incoming testmode bank transfer</p>
  */
 export const PostTestHelpersCustomersCustomerFundCashBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersCustomersCustomerFundCashBalanceInput,
     outputSchema: PostTestHelpersCustomersCustomerFundCashBalanceOutput,
   }));

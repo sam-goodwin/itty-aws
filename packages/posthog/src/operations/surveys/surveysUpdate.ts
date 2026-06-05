@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SurveysUpdateInput = typeof SurveysUpdateInput.Type;
 
 // Output Schema
-export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -252,7 +252,7 @@ export type SurveysUpdateOutput = typeof SurveysUpdateOutput.Type;
  * @param id - A UUID string identifying this survey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const surveysUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SurveysUpdateInput,
   outputSchema: SurveysUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

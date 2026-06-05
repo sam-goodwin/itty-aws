@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -12,7 +12,7 @@ export const GetGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupInput = typeof GetGroupInput.Type;
 
 // Output Schema
-export const GetGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupOutput = typeof GetGroupOutput.Type;
 
 // The operation
@@ -27,7 +27,7 @@ export type GetGroupOutput = typeof GetGroupOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupInput,
   outputSchema: GetGroupOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

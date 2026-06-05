@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AvailabilityStatusesGetByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export type AvailabilityStatusesGetByResourceInput =
 
 // Output Schema
 export const AvailabilityStatusesGetByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -104,107 +104,104 @@ export type AvailabilityStatusesGetByResourceOutput =
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
  */
-export const AvailabilityStatusesGetByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AvailabilityStatusesGetByResourceInput,
-    outputSchema: AvailabilityStatusesGetByResourceOutput,
-  }));
+export const AvailabilityStatusesGetByResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilityStatusesGetByResourceInput,
+  outputSchema: AvailabilityStatusesGetByResourceOutput,
+}));
 // Input Schema
-export const AvailabilityStatusesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-    }),
-  );
+export const AvailabilityStatusesListInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+  }),
+);
 export type AvailabilityStatusesListInput =
   typeof AvailabilityStatusesListInput.Type;
 
 // Output Schema
-export const AvailabilityStatusesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
+export const AvailabilityStatusesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          availabilityState: Schema.optional(
+            Schema.Literals([
+              "Available",
+              "Unavailable",
+              "Degraded",
+              "Unknown",
+            ]),
+          ),
+          title: Schema.optional(Schema.String),
+          summary: Schema.optional(Schema.String),
+          detailedStatus: Schema.optional(Schema.String),
+          reasonType: Schema.optional(Schema.String),
+          context: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.String),
+          articleId: Schema.optional(Schema.String),
+          rootCauseAttributionTime: Schema.optional(Schema.String),
+          healthEventType: Schema.optional(Schema.String),
+          healthEventCause: Schema.optional(Schema.String),
+          healthEventCategory: Schema.optional(Schema.String),
+          healthEventId: Schema.optional(Schema.String),
+          resolutionETA: Schema.optional(Schema.String),
+          occuredTime: Schema.optional(Schema.String),
+          reasonChronicity: Schema.optional(
+            Schema.Literals(["Transient", "Persistent"]),
+          ),
+          reportedTime: Schema.optional(Schema.String),
+          recentlyResolved: Schema.optional(
+            Schema.Struct({
+              unavailableOccuredTime: Schema.optional(Schema.String),
+              resolvedTime: Schema.optional(Schema.String),
+              unavailableSummary: Schema.optional(Schema.String),
+            }),
+          ),
+          recommendedActions: Schema.optional(
+            Schema.Array(
               Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
+                action: Schema.optional(Schema.String),
+                actionUrl: Schema.optional(Schema.String),
+                "_ActionUrl.Comment": Schema.optional(Schema.String),
+                actionUrlText: Schema.optional(Schema.String),
               }),
             ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
+          ),
+          serviceImpactingEvents: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                eventStartTime: Schema.optional(Schema.String),
+                eventStatusLastModifiedTime: Schema.optional(Schema.String),
+                correlationId: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+                incidentProperties: Schema.optional(
+                  Schema.Struct({
+                    title: Schema.optional(Schema.String),
+                    service: Schema.optional(Schema.String),
+                    region: Schema.optional(Schema.String),
+                    incidentType: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
             ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AvailabilityStatusesListOutput =
   typeof AvailabilityStatusesListOutput.Type;
 
@@ -215,15 +212,13 @@ export type AvailabilityStatusesListOutput =
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
  */
-export const AvailabilityStatusesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilityStatusesListInput,
-    outputSchema: AvailabilityStatusesListOutput,
-  }),
-);
+export const AvailabilityStatusesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilityStatusesListInput,
+  outputSchema: AvailabilityStatusesListOutput,
+}));
 // Input Schema
 export const AvailabilityStatusesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -238,7 +233,7 @@ export type AvailabilityStatusesListByResourceGroupInput =
 
 // Output Schema
 export const AvailabilityStatusesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -329,14 +324,15 @@ export type AvailabilityStatusesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AvailabilityStatusesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilityStatusesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilityStatusesListByResourceGroupInput,
     outputSchema: AvailabilityStatusesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AvailabilityStatusesListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -350,7 +346,7 @@ export type AvailabilityStatusesListBySubscriptionIdInput =
 
 // Output Schema
 export const AvailabilityStatusesListBySubscriptionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -440,14 +436,15 @@ export type AvailabilityStatusesListBySubscriptionIdOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AvailabilityStatusesListBySubscriptionId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilityStatusesListBySubscriptionId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilityStatusesListBySubscriptionIdInput,
     outputSchema: AvailabilityStatusesListBySubscriptionIdOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ChildAvailabilityStatusesGetByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -461,7 +458,7 @@ export type ChildAvailabilityStatusesGetByResourceInput =
 
 // Output Schema
 export const ChildAvailabilityStatusesGetByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -541,107 +538,106 @@ export type ChildAvailabilityStatusesGetByResourceOutput =
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
  */
-export const ChildAvailabilityStatusesGetByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChildAvailabilityStatusesGetByResource = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ChildAvailabilityStatusesGetByResourceInput,
     outputSchema: ChildAvailabilityStatusesGetByResourceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ChildAvailabilityStatusesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
-    }),
-  );
+export const ChildAvailabilityStatusesListInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
+  }),
+);
 export type ChildAvailabilityStatusesListInput =
   typeof ChildAvailabilityStatusesListInput.Type;
 
 // Output Schema
-export const ChildAvailabilityStatusesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
+export const ChildAvailabilityStatusesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          availabilityState: Schema.optional(
+            Schema.Literals([
+              "Available",
+              "Unavailable",
+              "Degraded",
+              "Unknown",
+            ]),
+          ),
+          title: Schema.optional(Schema.String),
+          summary: Schema.optional(Schema.String),
+          detailedStatus: Schema.optional(Schema.String),
+          reasonType: Schema.optional(Schema.String),
+          context: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.String),
+          articleId: Schema.optional(Schema.String),
+          rootCauseAttributionTime: Schema.optional(Schema.String),
+          healthEventType: Schema.optional(Schema.String),
+          healthEventCause: Schema.optional(Schema.String),
+          healthEventCategory: Schema.optional(Schema.String),
+          healthEventId: Schema.optional(Schema.String),
+          resolutionETA: Schema.optional(Schema.String),
+          occuredTime: Schema.optional(Schema.String),
+          reasonChronicity: Schema.optional(
+            Schema.Literals(["Transient", "Persistent"]),
+          ),
+          reportedTime: Schema.optional(Schema.String),
+          recentlyResolved: Schema.optional(
+            Schema.Struct({
+              unavailableOccuredTime: Schema.optional(Schema.String),
+              resolvedTime: Schema.optional(Schema.String),
+              unavailableSummary: Schema.optional(Schema.String),
+            }),
+          ),
+          recommendedActions: Schema.optional(
+            Schema.Array(
               Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
+                action: Schema.optional(Schema.String),
+                actionUrl: Schema.optional(Schema.String),
+                "_ActionUrl.Comment": Schema.optional(Schema.String),
+                actionUrlText: Schema.optional(Schema.String),
               }),
             ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
+          ),
+          serviceImpactingEvents: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                eventStartTime: Schema.optional(Schema.String),
+                eventStatusLastModifiedTime: Schema.optional(Schema.String),
+                correlationId: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+                incidentProperties: Schema.optional(
+                  Schema.Struct({
+                    title: Schema.optional(Schema.String),
+                    service: Schema.optional(Schema.String),
+                    region: Schema.optional(Schema.String),
+                    incidentType: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
             ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ChildAvailabilityStatusesListOutput =
   typeof ChildAvailabilityStatusesListOutput.Type;
 
@@ -652,106 +648,103 @@ export type ChildAvailabilityStatusesListOutput =
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
  */
-export const ChildAvailabilityStatusesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ChildAvailabilityStatusesListInput,
-    outputSchema: ChildAvailabilityStatusesListOutput,
-  }));
+export const ChildAvailabilityStatusesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChildAvailabilityStatusesListInput,
+  outputSchema: ChildAvailabilityStatusesListOutput,
+}));
 // Input Schema
-export const ChildResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
-    }),
-  );
+export const ChildResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
+  }),
+);
 export type ChildResourcesListInput = typeof ChildResourcesListInput.Type;
 
 // Output Schema
-export const ChildResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
+export const ChildResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          availabilityState: Schema.optional(
+            Schema.Literals([
+              "Available",
+              "Unavailable",
+              "Degraded",
+              "Unknown",
+            ]),
+          ),
+          title: Schema.optional(Schema.String),
+          summary: Schema.optional(Schema.String),
+          detailedStatus: Schema.optional(Schema.String),
+          reasonType: Schema.optional(Schema.String),
+          context: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.String),
+          articleId: Schema.optional(Schema.String),
+          rootCauseAttributionTime: Schema.optional(Schema.String),
+          healthEventType: Schema.optional(Schema.String),
+          healthEventCause: Schema.optional(Schema.String),
+          healthEventCategory: Schema.optional(Schema.String),
+          healthEventId: Schema.optional(Schema.String),
+          resolutionETA: Schema.optional(Schema.String),
+          occuredTime: Schema.optional(Schema.String),
+          reasonChronicity: Schema.optional(
+            Schema.Literals(["Transient", "Persistent"]),
+          ),
+          reportedTime: Schema.optional(Schema.String),
+          recentlyResolved: Schema.optional(
+            Schema.Struct({
+              unavailableOccuredTime: Schema.optional(Schema.String),
+              resolvedTime: Schema.optional(Schema.String),
+              unavailableSummary: Schema.optional(Schema.String),
+            }),
+          ),
+          recommendedActions: Schema.optional(
+            Schema.Array(
               Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
+                action: Schema.optional(Schema.String),
+                actionUrl: Schema.optional(Schema.String),
+                "_ActionUrl.Comment": Schema.optional(Schema.String),
+                actionUrlText: Schema.optional(Schema.String),
               }),
             ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
+          ),
+          serviceImpactingEvents: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                eventStartTime: Schema.optional(Schema.String),
+                eventStatusLastModifiedTime: Schema.optional(Schema.String),
+                correlationId: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+                incidentProperties: Schema.optional(
+                  Schema.Struct({
+                    title: Schema.optional(Schema.String),
+                    service: Schema.optional(Schema.String),
+                    region: Schema.optional(Schema.String),
+                    incidentType: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
             ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ChildResourcesListOutput = typeof ChildResourcesListOutput.Type;
 
 // The operation
@@ -761,16 +754,14 @@ export type ChildResourcesListOutput = typeof ChildResourcesListOutput.Type;
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support not nested parent resource type: /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name}
  * @param api-version - The API version to use for this operation.
  */
-export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChildResourcesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChildResourcesListInput,
   outputSchema: ChildResourcesListOutput,
 }));
 // Input Schema
-export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const EmergingIssuesGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
@@ -779,26 +770,25 @@ export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type EmergingIssuesGetInput = typeof EmergingIssuesGetInput.Type;
 
 // Output Schema
-export const EmergingIssuesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EmergingIssuesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EmergingIssuesGetOutput = typeof EmergingIssuesGetOutput.Type;
 
 // The operation
@@ -807,60 +797,58 @@ export type EmergingIssuesGetOutput = typeof EmergingIssuesGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EmergingIssuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmergingIssuesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmergingIssuesGetInput,
   outputSchema: EmergingIssuesGetOutput,
 }));
 // Input Schema
-export const EmergingIssuesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ResourceHealth/emergingIssues",
-    }),
-  );
+export const EmergingIssuesListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ResourceHealth/emergingIssues",
+  }),
+);
 export type EmergingIssuesListInput = typeof EmergingIssuesListInput.Type;
 
 // Output Schema
-export const EmergingIssuesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const EmergingIssuesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EmergingIssuesListOutput = typeof EmergingIssuesListOutput.Type;
 
 // The operation
@@ -869,13 +857,13 @@ export type EmergingIssuesListOutput = typeof EmergingIssuesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EmergingIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmergingIssuesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmergingIssuesListInput,
   outputSchema: EmergingIssuesListOutput,
 }));
 // Input Schema
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -889,7 +877,7 @@ export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdI
 
 // Output Schema
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -919,7 +907,7 @@ export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdO
  * @param subscriptionId - The ID of the target subscription.
  */
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput,
     outputSchema:
@@ -927,7 +915,7 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
   }));
 // Input Schema
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -941,7 +929,7 @@ export type EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
 
 // Output Schema
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -971,13 +959,13 @@ export type EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const EventFetchDetailsBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventFetchDetailsBySubscriptionIdAndTrackingIdInput,
     outputSchema: EventFetchDetailsBySubscriptionIdAndTrackingIdOutput,
   }));
 // Input Schema
 export const EventFetchDetailsByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -990,7 +978,7 @@ export type EventFetchDetailsByTenantIdAndTrackingIdInput =
 
 // Output Schema
 export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1018,14 +1006,15 @@ export type EventFetchDetailsByTenantIdAndTrackingIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EventFetchDetailsByTenantIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventFetchDetailsByTenantIdAndTrackingId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: EventFetchDetailsByTenantIdAndTrackingIdInput,
     outputSchema: EventFetchDetailsByTenantIdAndTrackingIdOutput,
-  }));
+  }),
+);
 // Input Schema
 export const EventGetBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1039,7 +1028,7 @@ export type EventGetBySubscriptionIdAndTrackingIdInput =
 
 // Output Schema
 export const EventGetBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1068,27 +1057,29 @@ export type EventGetBySubscriptionIdAndTrackingIdOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const EventGetBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventGetBySubscriptionIdAndTrackingId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: EventGetBySubscriptionIdAndTrackingIdInput,
     outputSchema: EventGetBySubscriptionIdAndTrackingIdOutput,
-  }));
+  }),
+);
 // Input Schema
-export const EventGetByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventGetByTenantIdAndTrackingIdInput = /*@__PURE__*/ Schema.Struct(
+  {
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
+  }),
+);
 export type EventGetByTenantIdAndTrackingIdInput =
   typeof EventGetByTenantIdAndTrackingIdInput.Type;
 
 // Output Schema
 export const EventGetByTenantIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1116,61 +1107,48 @@ export type EventGetByTenantIdAndTrackingIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EventGetByTenantIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EventGetByTenantIdAndTrackingIdInput,
-    outputSchema: EventGetByTenantIdAndTrackingIdOutput,
-  }));
+export const EventGetByTenantIdAndTrackingId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventGetByTenantIdAndTrackingIdInput,
+  outputSchema: EventGetByTenantIdAndTrackingIdOutput,
+}));
 // Input Schema
-export const EventsListBySingleResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
-    }),
-  );
+export const EventsListBySingleResourceInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
+  }),
+);
 export type EventsListBySingleResourceInput =
   typeof EventsListBySingleResourceInput.Type;
 
 // Output Schema
-export const EventsListBySingleResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EventsListBySingleResourceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EventsListBySingleResourceOutput =
   typeof EventsListBySingleResourceOutput.Type;
 
@@ -1181,62 +1159,48 @@ export type EventsListBySingleResourceOutput =
  * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
  */
-export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListBySingleResourceInput,
-    outputSchema: EventsListBySingleResourceOutput,
+export const EventsListBySingleResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListBySingleResourceInput,
+  outputSchema: EventsListBySingleResourceOutput,
+}));
+// Input Schema
+export const EventsListBySubscriptionIdInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
   }),
 );
-// Input Schema
-export const EventsListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
-    }),
-  );
 export type EventsListBySubscriptionIdInput =
   typeof EventsListBySubscriptionIdInput.Type;
 
 // Output Schema
-export const EventsListBySubscriptionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EventsListBySubscriptionIdOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EventsListBySubscriptionIdOutput =
   typeof EventsListBySubscriptionIdOutput.Type;
 
@@ -1247,60 +1211,43 @@ export type EventsListBySubscriptionIdOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListBySubscriptionIdInput,
-    outputSchema: EventsListBySubscriptionIdOutput,
-  }),
-);
+export const EventsListBySubscriptionId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListBySubscriptionIdInput,
+  outputSchema: EventsListBySubscriptionIdOutput,
+}));
 // Input Schema
-export const EventsListByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ResourceHealth/events",
-    }),
-  );
+export const EventsListByTenantIdInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.ResourceHealth/events" }),
+);
 export type EventsListByTenantIdInput = typeof EventsListByTenantIdInput.Type;
 
 // Output Schema
-export const EventsListByTenantIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EventsListByTenantIdOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EventsListByTenantIdOutput = typeof EventsListByTenantIdOutput.Type;
 
 // The operation
@@ -1309,46 +1256,42 @@ export type EventsListByTenantIdOutput = typeof EventsListByTenantIdOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListByTenantIdInput,
-    outputSchema: EventsListByTenantIdOutput,
+export const EventsListByTenantId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListByTenantIdInput,
+  outputSchema: EventsListByTenantIdOutput,
+}));
+// Input Schema
+export const ImpactedResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
   }),
 );
-// Input Schema
-export const ImpactedResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
-    }),
-  );
 export type ImpactedResourcesGetInput = typeof ImpactedResourcesGetInput.Type;
 
 // Output Schema
-export const ImpactedResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ImpactedResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ImpactedResourcesGetOutput = typeof ImpactedResourcesGetOutput.Type;
 
 // The operation
@@ -1358,28 +1301,25 @@ export type ImpactedResourcesGetOutput = typeof ImpactedResourcesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImpactedResourcesGetInput,
-    outputSchema: ImpactedResourcesGetOutput,
+export const ImpactedResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImpactedResourcesGetInput,
+  outputSchema: ImpactedResourcesGetOutput,
+}));
+// Input Schema
+export const ImpactedResourcesGetByTenantIdInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
   }),
 );
-// Input Schema
-export const ImpactedResourcesGetByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
-    }),
-  );
 export type ImpactedResourcesGetByTenantIdInput =
   typeof ImpactedResourcesGetByTenantIdInput.Type;
 
 // Output Schema
-export const ImpactedResourcesGetByTenantIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImpactedResourcesGetByTenantIdOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1397,7 +1337,8 @@ export const ImpactedResourcesGetByTenantIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ImpactedResourcesGetByTenantIdOutput =
   typeof ImpactedResourcesGetByTenantIdOutput.Type;
 
@@ -1407,14 +1348,13 @@ export type ImpactedResourcesGetByTenantIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ImpactedResourcesGetByTenantId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ImpactedResourcesGetByTenantIdInput,
-    outputSchema: ImpactedResourcesGetByTenantIdOutput,
-  }));
+export const ImpactedResourcesGetByTenantId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImpactedResourcesGetByTenantIdInput,
+  outputSchema: ImpactedResourcesGetByTenantIdOutput,
+}));
 // Input Schema
 export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1428,7 +1368,7 @@ export type ImpactedResourcesListBySubscriptionIdAndEventIdInput =
 
 // Output Schema
 export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1473,13 +1413,13 @@ export type ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ImpactedResourcesListBySubscriptionIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImpactedResourcesListBySubscriptionIdAndEventIdInput,
     outputSchema: ImpactedResourcesListBySubscriptionIdAndEventIdOutput,
   }));
 // Input Schema
 export const ImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1492,7 +1432,7 @@ export type ImpactedResourcesListByTenantIdAndEventIdInput =
 
 // Output Schema
 export const ImpactedResourcesListByTenantIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1535,18 +1475,17 @@ export type ImpactedResourcesListByTenantIdAndEventIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ImpactedResourcesListByTenantIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImpactedResourcesListByTenantIdAndEventId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ImpactedResourcesListByTenantIdAndEventIdInput,
     outputSchema: ImpactedResourcesListByTenantIdAndEventIdOutput,
-  }));
+  }),
+);
 // Input Schema
-export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const MetadataGetEntityInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/metadata/{name}",
@@ -1555,26 +1494,25 @@ export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type MetadataGetEntityInput = typeof MetadataGetEntityInput.Type;
 
 // Output Schema
-export const MetadataGetEntityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MetadataGetEntityOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MetadataGetEntityOutput = typeof MetadataGetEntityOutput.Type;
 
 // The operation
@@ -1584,12 +1522,12 @@ export type MetadataGetEntityOutput = typeof MetadataGetEntityOutput.Type;
  * @param name - Name of metadata entity.
  * @param api-version - The API version to use for this operation.
  */
-export const MetadataGetEntity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataGetEntity = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetEntityInput,
   outputSchema: MetadataGetEntityOutput,
 }));
 // Input Schema
-export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1600,7 +1538,7 @@ export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataListInput = typeof MetadataListInput.Type;
 
 // Output Schema
-export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1644,12 +1582,12 @@ export type MetadataListOutput = typeof MetadataListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataListInput,
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1660,7 +1598,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1683,13 +1621,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1703,7 +1641,7 @@ export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput
 
 // Output Schema
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1748,7 +1686,7 @@ export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutpu
  * @param api-version - The API version to use for this operation.
  */
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput,
     outputSchema:
@@ -1756,7 +1694,7 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
   }));
 // Input Schema
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1769,7 +1707,7 @@ export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
 
 // Output Schema
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1813,7 +1751,7 @@ export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput,
     outputSchema:
       SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput,

@@ -3,39 +3,34 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListEvmTokenBalancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    network: Schema.String.pipe(T.PathParam()),
-    pageSize: Schema.optional(Schema.Number),
-    pageToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v2/evm/token-balances/{network}/{address}",
-    }),
-  );
+export const ListEvmTokenBalancesInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  network: Schema.String.pipe(T.PathParam()),
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/evm/token-balances/{network}/{address}" }),
+);
 export type ListEvmTokenBalancesInput = typeof ListEvmTokenBalancesInput.Type;
 
 // Output Schema
-export const ListEvmTokenBalancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balances: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          amount: Schema.String,
-          decimals: Schema.Number,
-        }),
-        token: Schema.Struct({
-          network: Schema.Literals(["base", "base-sepolia", "ethereum"]),
-          symbol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          contractAddress: Schema.String,
-        }),
+export const ListEvmTokenBalancesOutput = /*@__PURE__*/ Schema.Struct({
+  balances: Schema.Array(
+    Schema.Struct({
+      amount: Schema.Struct({
+        amount: Schema.String,
+        decimals: Schema.Number,
       }),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  });
+      token: Schema.Struct({
+        network: Schema.Literals(["base", "base-sepolia", "ethereum"]),
+        symbol: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        contractAddress: Schema.String,
+      }),
+    }),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+});
 export type ListEvmTokenBalancesOutput = typeof ListEvmTokenBalancesOutput.Type;
 
 // The operation
@@ -50,9 +45,7 @@ export type ListEvmTokenBalancesOutput = typeof ListEvmTokenBalancesOutput.Type;
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listEvmTokenBalances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListEvmTokenBalancesInput,
-    outputSchema: ListEvmTokenBalancesOutput,
-  }),
-);
+export const listEvmTokenBalances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListEvmTokenBalancesInput,
+  outputSchema: ListEvmTokenBalancesOutput,
+}));

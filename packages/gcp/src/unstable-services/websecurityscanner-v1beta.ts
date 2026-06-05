@@ -22,44 +22,9 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface Schedule {
-  /** A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately. */
-  scheduleTime?: string;
-  /** Required. The duration of time between executions in days. */
-  intervalDurationDays?: number;
-}
-
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scheduleTime: Schema.optional(Schema.String),
-    intervalDurationDays: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Schedule" });
-
-export interface ScanRunWarningTrace {
-  /** Indicates the warning code. */
-  code?:
-    | "CODE_UNSPECIFIED"
-    | "INSUFFICIENT_CRAWL_RESULTS"
-    | "TOO_MANY_CRAWL_RESULTS"
-    | "TOO_MANY_FUZZ_TASKS"
-    | "BLOCKED_BY_IAP"
-    | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN"
-    | (string & {});
-}
-
-export const ScanRunWarningTrace: Schema.Schema<ScanRunWarningTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ScanRunWarningTrace" });
-
 export interface ScanConfigError {
+  /** Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future. */
+  fieldName?: string;
   /** Indicates the reason code for a configuration failure. */
   code?:
     | "CODE_UNSPECIFIED"
@@ -106,17 +71,75 @@ export interface ScanConfigError {
     | "UNSUPPORTED_URL_SCHEME"
     | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND"
     | (string & {});
-  /** Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future. */
-  fieldName?: string;
 }
 
 export const ScanConfigError: Schema.Schema<ScanConfigError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.String),
+  /*@__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
   }).annotate({ identifier: "ScanConfigError" });
 
+export interface Schedule {
+  /** A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately. */
+  scheduleTime?: string;
+  /** Required. The duration of time between executions in days. */
+  intervalDurationDays?: number;
+}
+
+export const Schedule: Schema.Schema<Schedule> = /*@__PURE__*/ Schema.Struct({
+  scheduleTime: Schema.optional(Schema.String),
+  intervalDurationDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Schedule" });
+
+export interface ScanRunWarningTrace {
+  /** Indicates the warning code. */
+  code?:
+    | "CODE_UNSPECIFIED"
+    | "INSUFFICIENT_CRAWL_RESULTS"
+    | "TOO_MANY_CRAWL_RESULTS"
+    | "TOO_MANY_FUZZ_TASKS"
+    | "BLOCKED_BY_IAP"
+    | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN"
+    | (string & {});
+}
+
+export const ScanRunWarningTrace: Schema.Schema<ScanRunWarningTrace> =
+  /*@__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScanRunWarningTrace" });
+
+export interface CrawledUrl {
+  /** The http method of the request that was used to visit the URL, in uppercase. */
+  httpMethod?: string;
+  /** The body of the request that was used to visit the URL. */
+  body?: string;
+  /** The URL that was crawled. */
+  url?: string;
+}
+
+export const CrawledUrl: Schema.Schema<CrawledUrl> =
+  /*@__PURE__*/ Schema.Struct({
+    httpMethod: Schema.optional(Schema.String),
+    body: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CrawledUrl" });
+
+export interface ListCrawledUrlsResponse {
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** The list of CrawledUrls returned. */
+  crawledUrls?: ReadonlyArray<CrawledUrl>;
+}
+
+export const ListCrawledUrlsResponse: Schema.Schema<ListCrawledUrlsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
+  }).annotate({ identifier: "ListCrawledUrlsResponse" });
+
 export interface ScanRunErrorTrace {
+  /** If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses. */
+  mostCommonHttpErrorCode?: number;
   /** If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run. */
   scanConfigError?: ScanConfigError;
   /** Indicates the error reason code. */
@@ -130,28 +153,26 @@ export interface ScanRunErrorTrace {
     | "TOO_MANY_HTTP_ERRORS"
     | "STARTING_URLS_CRAWL_HTTP_ERRORS"
     | (string & {});
-  /** If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses. */
-  mostCommonHttpErrorCode?: number;
 }
 
 export const ScanRunErrorTrace: Schema.Schema<ScanRunErrorTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
+    mostCommonHttpErrorCode: Schema.optional(Schema.Number),
     scanConfigError: Schema.optional(ScanConfigError),
     code: Schema.optional(Schema.String),
-    mostCommonHttpErrorCode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ScanRunErrorTrace" });
 
 export interface ScanRun {
-  /** The time at which the ScanRun started. */
-  startTime?: string;
-  /** A list of warnings, if such are encountered during this scan run. */
-  warningTraces?: ReadonlyArray<ScanRunWarningTrace>;
-  /** The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100. */
-  progressPercent?: number;
-  /** The resource name of the ScanRun. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the system. */
-  name?: string;
+  /** If result_state is an ERROR, this field provides the primary reason for scan's termination and more details, if such are available. */
+  errorTrace?: ScanRunErrorTrace;
   /** The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads. */
   urlsTestedCount?: string;
+  /** The time at which the ScanRun started. */
+  startTime?: string;
+  /** The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user. */
+  endTime?: string;
+  /** A list of warnings, if such are encountered during this scan run. */
+  warningTraces?: ReadonlyArray<ScanRunWarningTrace>;
   /** The execution state of the ScanRun. */
   executionState?:
     | "EXECUTION_STATE_UNSPECIFIED"
@@ -159,10 +180,14 @@ export interface ScanRun {
     | "SCANNING"
     | "FINISHED"
     | (string & {});
-  /** If result_state is an ERROR, this field provides the primary reason for scan's termination and more details, if such are available. */
-  errorTrace?: ScanRunErrorTrace;
+  /** The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100. */
+  progressPercent?: number;
   /** Whether the scan run has found any vulnerabilities. */
   hasVulnerabilities?: boolean;
+  /** The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now. */
+  urlsCrawledCount?: string;
+  /** The resource name of the ScanRun. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the system. */
+  name?: string;
   /** The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED". */
   resultState?:
     | "RESULT_STATE_UNSPECIFIED"
@@ -170,240 +195,56 @@ export interface ScanRun {
     | "ERROR"
     | "KILLED"
     | (string & {});
-  /** The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now. */
-  urlsCrawledCount?: string;
-  /** The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user. */
-  endTime?: string;
 }
 
-export const ScanRun: Schema.Schema<ScanRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    warningTraces: Schema.optional(Schema.Array(ScanRunWarningTrace)),
-    progressPercent: Schema.optional(Schema.Number),
-    name: Schema.optional(Schema.String),
-    urlsTestedCount: Schema.optional(Schema.String),
-    executionState: Schema.optional(Schema.String),
-    errorTrace: Schema.optional(ScanRunErrorTrace),
-    hasVulnerabilities: Schema.optional(Schema.Boolean),
-    resultState: Schema.optional(Schema.String),
-    urlsCrawledCount: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ScanRun" });
+export const ScanRun: Schema.Schema<ScanRun> = /*@__PURE__*/ Schema.Struct({
+  errorTrace: Schema.optional(ScanRunErrorTrace),
+  urlsTestedCount: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  warningTraces: Schema.optional(Schema.Array(ScanRunWarningTrace)),
+  executionState: Schema.optional(Schema.String),
+  progressPercent: Schema.optional(Schema.Number),
+  hasVulnerabilities: Schema.optional(Schema.Boolean),
+  urlsCrawledCount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  resultState: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScanRun" });
 
-export interface GoogleAccount {
-  /** Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
-  password?: string;
-  /** Required. The user name of the Google account. */
-  username?: string;
+export interface ViolatingResource {
+  /** URL of this violating resource. */
+  resourceUrl?: string;
+  /** The MIME type of this resource. */
+  contentType?: string;
 }
 
-export const GoogleAccount: Schema.Schema<GoogleAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    password: Schema.optional(Schema.String),
-    username: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleAccount" });
+export const ViolatingResource: Schema.Schema<ViolatingResource> =
+  /*@__PURE__*/ Schema.Struct({
+    resourceUrl: Schema.optional(Schema.String),
+    contentType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ViolatingResource" });
 
-export interface CustomAccount {
-  /** Required. The login form URL of the website. */
-  loginUrl?: string;
-  /** Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
-  password?: string;
-  /** Required. The user name of the custom account. */
-  username?: string;
-}
+export interface StopScanRunRequest {}
 
-export const CustomAccount: Schema.Schema<CustomAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loginUrl: Schema.optional(Schema.String),
-    password: Schema.optional(Schema.String),
-    username: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CustomAccount" });
-
-export interface IapTestServiceAccountInfo {
-  /** Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP). */
-  targetAudienceClientId?: string;
-}
-
-export const IapTestServiceAccountInfo: Schema.Schema<IapTestServiceAccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetAudienceClientId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "IapTestServiceAccountInfo" });
-
-export interface IapCredential {
-  /** Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies. */
-  iapTestServiceAccountInfo?: IapTestServiceAccountInfo;
-}
-
-export const IapCredential: Schema.Schema<IapCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    iapTestServiceAccountInfo: Schema.optional(IapTestServiceAccountInfo),
-  }).annotate({ identifier: "IapCredential" });
-
-export interface Authentication {
-  /** Authentication using a Google account. */
-  googleAccount?: GoogleAccount;
-  /** Authentication using a custom account. */
-  customAccount?: CustomAccount;
-  /** Authentication using Identity-Aware-Proxy (IAP). */
-  iapCredential?: IapCredential;
-}
-
-export const Authentication: Schema.Schema<Authentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    googleAccount: Schema.optional(GoogleAccount),
-    customAccount: Schema.optional(CustomAccount),
-    iapCredential: Schema.optional(IapCredential),
-  }).annotate({ identifier: "Authentication" });
-
-export interface ScanConfig {
-  /** Required. The user provided display name of the ScanConfig. */
-  displayName?: string;
-  /** Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default. */
-  targetPlatforms?: ReadonlyArray<
-    | "TARGET_PLATFORM_UNSPECIFIED"
-    | "APP_ENGINE"
-    | "COMPUTE"
-    | "CLOUD_RUN"
-    | "CLOUD_FUNCTIONS"
-    | (string & {})
-  >;
-  /** The risk level selected for the scan */
-  riskLevel?: "RISK_LEVEL_UNSPECIFIED" | "NORMAL" | "LOW" | (string & {});
-  /** The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls */
-  blacklistPatterns?: ReadonlyArray<string>;
-  /** The schedule of the ScanConfig. */
-  schedule?: Schedule;
-  /** Whether to keep scanning even if most requests return HTTP error codes. */
-  ignoreHttpStatusErrors?: boolean;
-  /** The user agent used during scanning. */
-  userAgent?:
-    | "USER_AGENT_UNSPECIFIED"
-    | "CHROME_LINUX"
-    | "CHROME_ANDROID"
-    | "SAFARI_IPHONE"
-    | (string & {});
-  /** Controls export of scan configurations and results to Security Command Center. */
-  exportToSecurityCommandCenter?:
-    | "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"
-    | "ENABLED"
-    | "DISABLED"
-    | (string & {});
-  /** Latest ScanRun if available. */
-  latestRun?: ScanRun;
-  /** Whether the scan config is managed by Web Security Scanner, output only. */
-  managedScan?: boolean;
-  /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
-  name?: string;
-  /** The authentication configuration. If specified, service will use the authentication configuration during scanning. */
-  authentication?: Authentication;
-  /** The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error. */
-  maxQps?: number;
-  /** Required. The starting URLs from which the scanner finds site pages. */
-  startingUrls?: ReadonlyArray<string>;
-  /** Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses. */
-  staticIpScan?: boolean;
-}
-
-export const ScanConfig: Schema.Schema<ScanConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    targetPlatforms: Schema.optional(Schema.Array(Schema.String)),
-    riskLevel: Schema.optional(Schema.String),
-    blacklistPatterns: Schema.optional(Schema.Array(Schema.String)),
-    schedule: Schema.optional(Schedule),
-    ignoreHttpStatusErrors: Schema.optional(Schema.Boolean),
-    userAgent: Schema.optional(Schema.String),
-    exportToSecurityCommandCenter: Schema.optional(Schema.String),
-    latestRun: Schema.optional(ScanRun),
-    managedScan: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    authentication: Schema.optional(Authentication),
-    maxQps: Schema.optional(Schema.Number),
-    startingUrls: Schema.optional(Schema.Array(Schema.String)),
-    staticIpScan: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ScanConfig" });
-
-export interface Form {
-  /** ! The names of form fields related to the vulnerability. */
-  fields?: ReadonlyArray<string>;
-  /** ! The URI where to send the form when it's submitted. */
-  actionUri?: string;
-}
-
-export const Form: Schema.Schema<Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fields: Schema.optional(Schema.Array(Schema.String)),
-    actionUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Form" });
-
-export interface CrawledUrl {
-  /** The http method of the request that was used to visit the URL, in uppercase. */
-  httpMethod?: string;
-  /** The body of the request that was used to visit the URL. */
-  body?: string;
-  /** The URL that was crawled. */
-  url?: string;
-}
-
-export const CrawledUrl: Schema.Schema<CrawledUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    httpMethod: Schema.optional(Schema.String),
-    body: Schema.optional(Schema.String),
-    url: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CrawledUrl" });
-
-export interface ListCrawledUrlsResponse {
-  /** The list of CrawledUrls returned. */
-  crawledUrls?: ReadonlyArray<CrawledUrl>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListCrawledUrlsResponse: Schema.Schema<ListCrawledUrlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListCrawledUrlsResponse" });
+export const StopScanRunRequest: Schema.Schema<StopScanRunRequest> =
+  /*@__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StopScanRunRequest",
+  });
 
 export interface Xxe {
+  /** The XML string that triggered the XXE vulnerability. Non-payload values might be redacted. */
+  payloadValue?: string;
   /** Location within the request where the payload was placed. */
   payloadLocation?:
     | "LOCATION_UNSPECIFIED"
     | "COMPLETE_REQUEST_BODY"
     | (string & {});
-  /** The XML string that triggered the XXE vulnerability. Non-payload values might be redacted. */
-  payloadValue?: string;
 }
 
-export const Xxe: Schema.Schema<Xxe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    payloadLocation: Schema.optional(Schema.String),
-    payloadValue: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Xxe" });
-
-export interface ViolatingResource {
-  /** The MIME type of this resource. */
-  contentType?: string;
-  /** URL of this violating resource. */
-  resourceUrl?: string;
-}
-
-export const ViolatingResource: Schema.Schema<ViolatingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    contentType: Schema.optional(Schema.String),
-    resourceUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ViolatingResource" });
-
-export interface VulnerableParameters {
-  /** The vulnerable parameter names. */
-  parameterNames?: ReadonlyArray<string>;
-}
-
-export const VulnerableParameters: Schema.Schema<VulnerableParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parameterNames: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "VulnerableParameters" });
+export const Xxe: Schema.Schema<Xxe> = /*@__PURE__*/ Schema.Struct({
+  payloadValue: Schema.optional(Schema.String),
+  payloadLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "Xxe" });
 
 export interface Xss {
   /** Stack traces leading to the point where the XSS occurred. */
@@ -412,26 +253,25 @@ export interface Xss {
   errorMessage?: string;
 }
 
-export const Xss: Schema.Schema<Xss> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stackTraces: Schema.optional(Schema.Array(Schema.String)),
-    errorMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Xss" });
+export const Xss: Schema.Schema<Xss> = /*@__PURE__*/ Schema.Struct({
+  stackTraces: Schema.optional(Schema.Array(Schema.String)),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Xss" });
 
 export interface OutdatedLibrary {
+  /** The name of the outdated library. */
+  libraryName?: string;
   /** URLs to learn more information about the vulnerabilities in the library. */
   learnMoreUrls?: ReadonlyArray<string>;
   /** The version number. */
   version?: string;
-  /** The name of the outdated library. */
-  libraryName?: string;
 }
 
 export const OutdatedLibrary: Schema.Schema<OutdatedLibrary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
+    libraryName: Schema.optional(Schema.String),
     learnMoreUrls: Schema.optional(Schema.Array(Schema.String)),
     version: Schema.optional(Schema.String),
-    libraryName: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutdatedLibrary" });
 
 export interface Header {
@@ -441,11 +281,10 @@ export interface Header {
   value?: string;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Header" });
+export const Header: Schema.Schema<Header> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Header" });
 
 export interface VulnerableHeaders {
   /** List of missing headers. */
@@ -455,14 +294,38 @@ export interface VulnerableHeaders {
 }
 
 export const VulnerableHeaders: Schema.Schema<VulnerableHeaders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     missingHeaders: Schema.optional(Schema.Array(Header)),
     headers: Schema.optional(Schema.Array(Header)),
   }).annotate({ identifier: "VulnerableHeaders" });
 
+export interface Form {
+  /** ! The URI where to send the form when it's submitted. */
+  actionUri?: string;
+  /** ! The names of form fields related to the vulnerability. */
+  fields?: ReadonlyArray<string>;
+}
+
+export const Form: Schema.Schema<Form> = /*@__PURE__*/ Schema.Struct({
+  actionUri: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Form" });
+
+export interface VulnerableParameters {
+  /** The vulnerable parameter names. */
+  parameterNames?: ReadonlyArray<string>;
+}
+
+export const VulnerableParameters: Schema.Schema<VulnerableParameters> =
+  /*@__PURE__*/ Schema.Struct({
+    parameterNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "VulnerableParameters" });
+
 export interface Finding {
-  /** An addon containing detailed information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc. */
-  violatingResource?: ViolatingResource;
+  /** An addon containing information reported for an XXE, if any. */
+  xxe?: Xxe;
+  /** The body of the request that triggered the vulnerability. */
+  body?: string;
   /** The severity level of the reported vulnerability. */
   severity?:
     | "SEVERITY_UNSPECIFIED"
@@ -471,111 +334,58 @@ export interface Finding {
     | "MEDIUM"
     | "LOW"
     | (string & {});
-  /** An addon containing information about request parameters which were found to be vulnerable. */
-  vulnerableParameters?: VulnerableParameters;
-  /** The body of the request that triggered the vulnerability. */
-  body?: string;
-  /** The URL containing human-readable payload that user can leverage to reproduce the vulnerability. */
-  reproductionUrl?: string;
-  /** The URL where the browser lands when the vulnerability is detected. */
-  finalUrl?: string;
   /** An addon containing information reported for an XSS, if any. */
   xss?: Xss;
   /** An addon containing information about outdated libraries. */
   outdatedLibrary?: OutdatedLibrary;
-  /** An addon containing information reported for a vulnerability with an HTML form, if any. */
-  form?: Form;
-  /** The description of the vulnerability. */
-  description?: string;
-  /** The URL produced by the server-side fuzzer and used in the request that triggered the vulnerability. */
-  fuzzedUrl?: string;
   /** The tracking ID uniquely identifies a vulnerability instance across multiple ScanRuns. */
   trackingId?: string;
-  /** The resource name of the Finding. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs are generated by the system. */
-  name?: string;
-  /** If the vulnerability was originated from nested IFrame, the immediate parent IFrame is reported. */
-  frameUrl?: string;
-  /** An addon containing information reported for an XXE, if any. */
-  xxe?: Xxe;
-  /** An addon containing information about vulnerable or missing HTTP headers. */
-  vulnerableHeaders?: VulnerableHeaders;
+  /** The URL produced by the server-side fuzzer and used in the request that triggered the vulnerability. */
+  fuzzedUrl?: string;
   /** The type of the Finding. Detailed and up-to-date information on findings can be found here: https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner */
   findingType?: string;
+  /** An addon containing information about vulnerable or missing HTTP headers. */
+  vulnerableHeaders?: VulnerableHeaders;
+  /** An addon containing detailed information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc. */
+  violatingResource?: ViolatingResource;
+  /** The description of the vulnerability. */
+  description?: string;
+  /** The URL where the browser lands when the vulnerability is detected. */
+  finalUrl?: string;
+  /** The URL containing human-readable payload that user can leverage to reproduce the vulnerability. */
+  reproductionUrl?: string;
   /** The http method of the request that triggered the vulnerability, in uppercase. */
   httpMethod?: string;
+  /** The resource name of the Finding. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs are generated by the system. */
+  name?: string;
+  /** An addon containing information reported for a vulnerability with an HTML form, if any. */
+  form?: Form;
+  /** If the vulnerability was originated from nested IFrame, the immediate parent IFrame is reported. */
+  frameUrl?: string;
+  /** An addon containing information about request parameters which were found to be vulnerable. */
+  vulnerableParameters?: VulnerableParameters;
 }
 
-export const Finding: Schema.Schema<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    violatingResource: Schema.optional(ViolatingResource),
-    severity: Schema.optional(Schema.String),
-    vulnerableParameters: Schema.optional(VulnerableParameters),
-    body: Schema.optional(Schema.String),
-    reproductionUrl: Schema.optional(Schema.String),
-    finalUrl: Schema.optional(Schema.String),
-    xss: Schema.optional(Xss),
-    outdatedLibrary: Schema.optional(OutdatedLibrary),
-    form: Schema.optional(Form),
-    description: Schema.optional(Schema.String),
-    fuzzedUrl: Schema.optional(Schema.String),
-    trackingId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    frameUrl: Schema.optional(Schema.String),
-    xxe: Schema.optional(Xxe),
-    vulnerableHeaders: Schema.optional(VulnerableHeaders),
-    findingType: Schema.optional(Schema.String),
-    httpMethod: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Finding" });
-
-export interface ListScanConfigsResponse {
-  /** The list of ScanConfigs returned. */
-  scanConfigs?: ReadonlyArray<ScanConfig>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListScanConfigsResponse: Schema.Schema<ListScanConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListScanConfigsResponse" });
-
-export interface FindingTypeStats {
-  /** The finding type associated with the stats. */
-  findingType?: string;
-  /** The count of findings belonging to this finding type. */
-  findingCount?: number;
-}
-
-export const FindingTypeStats: Schema.Schema<FindingTypeStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    findingType: Schema.optional(Schema.String),
-    findingCount: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "FindingTypeStats" });
-
-export interface ListFindingTypeStatsResponse {
-  /** The list of FindingTypeStats returned. */
-  findingTypeStats?: ReadonlyArray<FindingTypeStats>;
-}
-
-export const ListFindingTypeStatsResponse: Schema.Schema<ListFindingTypeStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
-  }).annotate({ identifier: "ListFindingTypeStatsResponse" });
-
-export interface StartScanRunRequest {}
-
-export const StartScanRunRequest: Schema.Schema<StartScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StartScanRunRequest",
-  });
-
-export interface StopScanRunRequest {}
-
-export const StopScanRunRequest: Schema.Schema<StopScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StopScanRunRequest",
-  });
+export const Finding: Schema.Schema<Finding> = /*@__PURE__*/ Schema.Struct({
+  xxe: Schema.optional(Xxe),
+  body: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  xss: Schema.optional(Xss),
+  outdatedLibrary: Schema.optional(OutdatedLibrary),
+  trackingId: Schema.optional(Schema.String),
+  fuzzedUrl: Schema.optional(Schema.String),
+  findingType: Schema.optional(Schema.String),
+  vulnerableHeaders: Schema.optional(VulnerableHeaders),
+  violatingResource: Schema.optional(ViolatingResource),
+  description: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  reproductionUrl: Schema.optional(Schema.String),
+  httpMethod: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  form: Schema.optional(Form),
+  frameUrl: Schema.optional(Schema.String),
+  vulnerableParameters: Schema.optional(VulnerableParameters),
+}).annotate({ identifier: "Finding" });
 
 export interface ListFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -585,7 +395,7 @@ export interface ListFindingsResponse {
 }
 
 export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     findings: Schema.optional(Schema.Array(Finding)),
   }).annotate({ identifier: "ListFindingsResponse" });
@@ -598,10 +408,192 @@ export interface ListScanRunsResponse {
 }
 
 export const ListScanRunsResponse: Schema.Schema<ListScanRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scanRuns: Schema.optional(Schema.Array(ScanRun)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListScanRunsResponse" });
+
+export interface StartScanRunRequest {}
+
+export const StartScanRunRequest: Schema.Schema<StartScanRunRequest> =
+  /*@__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StartScanRunRequest",
+  });
+
+export interface IapTestServiceAccountInfo {
+  /** Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP). */
+  targetAudienceClientId?: string;
+}
+
+export const IapTestServiceAccountInfo: Schema.Schema<IapTestServiceAccountInfo> =
+  /*@__PURE__*/ Schema.Struct({
+    targetAudienceClientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IapTestServiceAccountInfo" });
+
+export interface IapCredential {
+  /** Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies. */
+  iapTestServiceAccountInfo?: IapTestServiceAccountInfo;
+}
+
+export const IapCredential: Schema.Schema<IapCredential> =
+  /*@__PURE__*/ Schema.Struct({
+    iapTestServiceAccountInfo: Schema.optional(IapTestServiceAccountInfo),
+  }).annotate({ identifier: "IapCredential" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
+
+export interface GoogleAccount {
+  /** Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
+  password?: string;
+  /** Required. The user name of the Google account. */
+  username?: string;
+}
+
+export const GoogleAccount: Schema.Schema<GoogleAccount> =
+  /*@__PURE__*/ Schema.Struct({
+    password: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAccount" });
+
+export interface CustomAccount {
+  /** Required. The user name of the custom account. */
+  username?: string;
+  /** Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
+  password?: string;
+  /** Required. The login form URL of the website. */
+  loginUrl?: string;
+}
+
+export const CustomAccount: Schema.Schema<CustomAccount> =
+  /*@__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    loginUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomAccount" });
+
+export interface Authentication {
+  /** Authentication using a Google account. */
+  googleAccount?: GoogleAccount;
+  /** Authentication using a custom account. */
+  customAccount?: CustomAccount;
+  /** Authentication using Identity-Aware-Proxy (IAP). */
+  iapCredential?: IapCredential;
+}
+
+export const Authentication: Schema.Schema<Authentication> =
+  /*@__PURE__*/ Schema.Struct({
+    googleAccount: Schema.optional(GoogleAccount),
+    customAccount: Schema.optional(CustomAccount),
+    iapCredential: Schema.optional(IapCredential),
+  }).annotate({ identifier: "Authentication" });
+
+export interface FindingTypeStats {
+  /** The finding type associated with the stats. */
+  findingType?: string;
+  /** The count of findings belonging to this finding type. */
+  findingCount?: number;
+}
+
+export const FindingTypeStats: Schema.Schema<FindingTypeStats> =
+  /*@__PURE__*/ Schema.Struct({
+    findingType: Schema.optional(Schema.String),
+    findingCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FindingTypeStats" });
+
+export interface ScanConfig {
+  /** Whether the scan config is managed by Web Security Scanner, output only. */
+  managedScan?: boolean;
+  /** Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses. */
+  staticIpScan?: boolean;
+  /** Controls export of scan configurations and results to Security Command Center. */
+  exportToSecurityCommandCenter?:
+    | "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"
+    | "ENABLED"
+    | "DISABLED"
+    | (string & {});
+  /** The authentication configuration. If specified, service will use the authentication configuration during scanning. */
+  authentication?: Authentication;
+  /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
+  name?: string;
+  /** The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error. */
+  maxQps?: number;
+  /** The risk level selected for the scan */
+  riskLevel?: "RISK_LEVEL_UNSPECIFIED" | "NORMAL" | "LOW" | (string & {});
+  /** Required. The user provided display name of the ScanConfig. */
+  displayName?: string;
+  /** The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls */
+  blacklistPatterns?: ReadonlyArray<string>;
+  /** Latest ScanRun if available. */
+  latestRun?: ScanRun;
+  /** The schedule of the ScanConfig. */
+  schedule?: Schedule;
+  /** Whether to keep scanning even if most requests return HTTP error codes. */
+  ignoreHttpStatusErrors?: boolean;
+  /** The user agent used during scanning. */
+  userAgent?:
+    | "USER_AGENT_UNSPECIFIED"
+    | "CHROME_LINUX"
+    | "CHROME_ANDROID"
+    | "SAFARI_IPHONE"
+    | (string & {});
+  /** Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default. */
+  targetPlatforms?: ReadonlyArray<
+    | "TARGET_PLATFORM_UNSPECIFIED"
+    | "APP_ENGINE"
+    | "COMPUTE"
+    | "CLOUD_RUN"
+    | "CLOUD_FUNCTIONS"
+    | (string & {})
+  >;
+  /** Required. The starting URLs from which the scanner finds site pages. */
+  startingUrls?: ReadonlyArray<string>;
+}
+
+export const ScanConfig: Schema.Schema<ScanConfig> =
+  /*@__PURE__*/ Schema.Struct({
+    managedScan: Schema.optional(Schema.Boolean),
+    staticIpScan: Schema.optional(Schema.Boolean),
+    exportToSecurityCommandCenter: Schema.optional(Schema.String),
+    authentication: Schema.optional(Authentication),
+    name: Schema.optional(Schema.String),
+    maxQps: Schema.optional(Schema.Number),
+    riskLevel: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    blacklistPatterns: Schema.optional(Schema.Array(Schema.String)),
+    latestRun: Schema.optional(ScanRun),
+    schedule: Schema.optional(Schedule),
+    ignoreHttpStatusErrors: Schema.optional(Schema.Boolean),
+    userAgent: Schema.optional(Schema.String),
+    targetPlatforms: Schema.optional(Schema.Array(Schema.String)),
+    startingUrls: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ScanConfig" });
+
+export interface ListScanConfigsResponse {
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** The list of ScanConfigs returned. */
+  scanConfigs?: ReadonlyArray<ScanConfig>;
+}
+
+export const ListScanConfigsResponse: Schema.Schema<ListScanConfigsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
+  }).annotate({ identifier: "ListScanConfigsResponse" });
+
+export interface ListFindingTypeStatsResponse {
+  /** The list of FindingTypeStats returned. */
+  findingTypeStats?: ReadonlyArray<FindingTypeStats>;
+}
+
+export const ListFindingTypeStatsResponse: Schema.Schema<ListFindingTypeStatsResponse> =
+  /*@__PURE__*/ Schema.Struct({
+    findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
+  }).annotate({ identifier: "ListFindingTypeStatsResponse" });
 
 // ==========================================================================
 // Errors
@@ -657,162 +649,33 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface DeleteProjectsScanConfigsRequest {
-  /** Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
+export interface GetProjectsScanConfigsRequest {
+  /** Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
 
-export const DeleteProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsScanConfigsRequest>;
+export const GetProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsScanConfigsRequest>;
 
-export type DeleteProjectsScanConfigsResponse = Empty;
-export const DeleteProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type GetProjectsScanConfigsResponse = ScanConfig;
+export const GetProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
 
-export type DeleteProjectsScanConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
-/** Deletes an existing ScanConfig and its child resources. */
-export const deleteProjectsScanConfigs: API.OperationMethod<
-  DeleteProjectsScanConfigsRequest,
-  DeleteProjectsScanConfigsResponse,
-  DeleteProjectsScanConfigsError,
+/** Gets a ScanConfig. */
+export const getProjectsScanConfigs: API.OperationMethod<
+  GetProjectsScanConfigsRequest,
+  GetProjectsScanConfigsResponse,
+  GetProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsScanConfigsRequest,
-  output: DeleteProjectsScanConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StartProjectsScanConfigsRequest {
-  /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
-  name: string;
-  /** Request body */
-  body?: StartScanRunRequest;
-}
-
-export const StartProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(StartScanRunRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{+name}:start", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<StartProjectsScanConfigsRequest>;
-
-export type StartProjectsScanConfigsResponse = ScanRun;
-export const StartProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
-
-export type StartProjectsScanConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Start a ScanRun according to the given ScanConfig. */
-export const startProjectsScanConfigs: API.OperationMethod<
-  StartProjectsScanConfigsRequest,
-  StartProjectsScanConfigsResponse,
-  StartProjectsScanConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartProjectsScanConfigsRequest,
-  output: StartProjectsScanConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsScanConfigsRequest {
-  /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
-  name: string;
-  /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
-  updateMask?: string;
-  /** Request body */
-  body?: ScanConfig;
-}
-
-export const PatchProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsScanConfigsRequest>;
-
-export type PatchProjectsScanConfigsResponse = ScanConfig;
-export const PatchProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
-
-export type PatchProjectsScanConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a ScanConfig. This method support partial update of a ScanConfig. */
-export const patchProjectsScanConfigs: API.OperationMethod<
-  PatchProjectsScanConfigsRequest,
-  PatchProjectsScanConfigsResponse,
-  PatchProjectsScanConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsScanConfigsRequest,
-  output: PatchProjectsScanConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsScanConfigsRequest {
-  /** Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'. */
-  parent: string;
-  /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
-  pageToken?: string;
-  /** The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
-  pageSize?: number;
-}
-
-export const ListProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/scanConfigs" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsRequest>;
-
-export type ListProjectsScanConfigsResponse = ListScanConfigsResponse;
-export const ListProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListScanConfigsResponse;
-
-export type ListProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists ScanConfigs under a given project. */
-export const listProjectsScanConfigs: API.PaginatedOperationMethod<
-  ListProjectsScanConfigsRequest,
-  ListProjectsScanConfigsResponse,
-  ListProjectsScanConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsScanConfigsRequest,
-  output: ListProjectsScanConfigsResponse,
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProjectsScanConfigsRequest,
+  output: GetProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface CreateProjectsScanConfigsRequest {
@@ -822,22 +685,20 @@ export interface CreateProjectsScanConfigsRequest {
   body?: ScanConfig;
 }
 
-export const CreateProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+parent}/scanConfigs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsScanConfigsRequest>;
+export const CreateProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "v1beta/{+parent}/scanConfigs",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsScanConfigsRequest>;
 
 export type CreateProjectsScanConfigsResponse = ScanConfig;
-export const CreateProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
+export const CreateProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
 
 export type CreateProjectsScanConfigsError =
   | DefaultErrors
@@ -852,85 +713,194 @@ export const createProjectsScanConfigs: API.OperationMethod<
   CreateProjectsScanConfigsResponse,
   CreateProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsScanConfigsRequest,
   output: CreateProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsScanConfigsRequest {
-  /** Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
-  name: string;
-}
-
-export const GetProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsScanConfigsRequest>;
-
-export type GetProjectsScanConfigsResponse = ScanConfig;
-export const GetProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
-
-export type GetProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a ScanConfig. */
-export const getProjectsScanConfigs: API.OperationMethod<
-  GetProjectsScanConfigsRequest,
-  GetProjectsScanConfigsResponse,
-  GetProjectsScanConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsScanConfigsRequest,
-  output: GetProjectsScanConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsScanConfigsScanRunsRequest {
-  /** Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
+export interface ListProjectsScanConfigsRequest {
+  /** Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'. */
   parent: string;
-  /** The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
+  /** The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
 
-export const ListProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/scanRuns" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsRequest>;
+export const ListProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta/{+parent}/scanConfigs" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsScanConfigsRequest>;
 
-export type ListProjectsScanConfigsScanRunsResponse = ListScanRunsResponse;
-export const ListProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListScanRunsResponse;
+export type ListProjectsScanConfigsResponse = ListScanConfigsResponse;
+export const ListProjectsScanConfigsResponse =
+  /*@__PURE__*/ ListScanConfigsResponse;
 
-export type ListProjectsScanConfigsScanRunsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+export type ListProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time. */
-export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
-  ListProjectsScanConfigsScanRunsRequest,
-  ListProjectsScanConfigsScanRunsResponse,
-  ListProjectsScanConfigsScanRunsError,
+/** Lists ScanConfigs under a given project. */
+export const listProjectsScanConfigs: API.PaginatedOperationMethod<
+  ListProjectsScanConfigsRequest,
+  ListProjectsScanConfigsResponse,
+  ListProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsScanConfigsScanRunsRequest,
-  output: ListProjectsScanConfigsScanRunsResponse,
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsScanConfigsRequest,
+  output: ListProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface DeleteProjectsScanConfigsRequest {
+  /** Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
+  name: string;
+}
+
+export const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsScanConfigsRequest>;
+
+export type DeleteProjectsScanConfigsResponse = Empty;
+export const DeleteProjectsScanConfigsResponse = /*@__PURE__*/ Empty;
+
+export type DeleteProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing ScanConfig and its child resources. */
+export const deleteProjectsScanConfigs: API.OperationMethod<
+  DeleteProjectsScanConfigsRequest,
+  DeleteProjectsScanConfigsResponse,
+  DeleteProjectsScanConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectsScanConfigsRequest,
+  output: DeleteProjectsScanConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsScanConfigsRequest {
+  /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
+  name: string;
+  /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
+  updateMask?: string;
+  /** Request body */
+  body?: ScanConfig;
+}
+
+export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchProjectsScanConfigsRequest>;
+
+export type PatchProjectsScanConfigsResponse = ScanConfig;
+export const PatchProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
+
+export type PatchProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a ScanConfig. This method support partial update of a ScanConfig. */
+export const patchProjectsScanConfigs: API.OperationMethod<
+  PatchProjectsScanConfigsRequest,
+  PatchProjectsScanConfigsResponse,
+  PatchProjectsScanConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchProjectsScanConfigsRequest,
+  output: PatchProjectsScanConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface StartProjectsScanConfigsRequest {
+  /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
+  name: string;
+  /** Request body */
+  body?: StartScanRunRequest;
+}
+
+export const StartProjectsScanConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(StartScanRunRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1beta/{+name}:start", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<StartProjectsScanConfigsRequest>;
+
+export type StartProjectsScanConfigsResponse = ScanRun;
+export const StartProjectsScanConfigsResponse = /*@__PURE__*/ ScanRun;
+
+export type StartProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Start a ScanRun according to the given ScanConfig. */
+export const startProjectsScanConfigs: API.OperationMethod<
+  StartProjectsScanConfigsRequest,
+  StartProjectsScanConfigsResponse,
+  StartProjectsScanConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartProjectsScanConfigsRequest,
+  output: StartProjectsScanConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsScanConfigsScanRunsRequest {
+  /** Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
+  name: string;
+}
+
+export const GetProjectsScanConfigsScanRunsRequest =
+  /*@__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsRequest>;
+
+export type GetProjectsScanConfigsScanRunsResponse = ScanRun;
+export const GetProjectsScanConfigsScanRunsResponse = /*@__PURE__*/ ScanRun;
+
+export type GetProjectsScanConfigsScanRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a ScanRun. */
+export const getProjectsScanConfigsScanRuns: API.OperationMethod<
+  GetProjectsScanConfigsScanRunsRequest,
+  GetProjectsScanConfigsScanRunsResponse,
+  GetProjectsScanConfigsScanRunsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProjectsScanConfigsScanRunsRequest,
+  output: GetProjectsScanConfigsScanRunsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopProjectsScanConfigsScanRunsRequest {
@@ -941,7 +911,7 @@ export interface StopProjectsScanConfigsScanRunsRequest {
 }
 
 export const StopProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopScanRunRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -950,8 +920,7 @@ export const StopProjectsScanConfigsScanRunsRequest =
   ) as unknown as Schema.Schema<StopProjectsScanConfigsScanRunsRequest>;
 
 export type StopProjectsScanConfigsScanRunsResponse = ScanRun;
-export const StopProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
+export const StopProjectsScanConfigsScanRunsResponse = /*@__PURE__*/ ScanRun;
 
 export type StopProjectsScanConfigsScanRunsError =
   | DefaultErrors
@@ -966,119 +935,49 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   StopProjectsScanConfigsScanRunsResponse,
   StopProjectsScanConfigsScanRunsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProjectsScanConfigsScanRunsRequest,
   output: StopProjectsScanConfigsScanRunsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsScanConfigsScanRunsRequest {
-  /** Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
-  name: string;
-}
-
-export const GetProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsRequest>;
-
-export type GetProjectsScanConfigsScanRunsResponse = ScanRun;
-export const GetProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
-
-export type GetProjectsScanConfigsScanRunsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a ScanRun. */
-export const getProjectsScanConfigsScanRuns: API.OperationMethod<
-  GetProjectsScanConfigsScanRunsRequest,
-  GetProjectsScanConfigsScanRunsResponse,
-  GetProjectsScanConfigsScanRunsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsScanConfigsScanRunsRequest,
-  output: GetProjectsScanConfigsScanRunsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
-  /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
+export interface ListProjectsScanConfigsScanRunsRequest {
+  /** Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   parent: string;
-}
-
-export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/findingTypeStats" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
-
-export type ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
-  ListFindingTypeStatsResponse;
-export const ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFindingTypeStatsResponse;
-
-export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List all FindingTypeStats under a given ScanRun. */
-export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMethod<
-  ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
-  ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
-  ListProjectsScanConfigsScanRunsFindingTypeStatsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
-  output: ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
   pageToken?: string;
-  /** The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
+  /** The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
-  /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
-  parent: string;
 }
 
-export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProjectsScanConfigsScanRunsRequest =
+  /*@__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/crawledUrls" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/scanRuns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
-export type ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
-  ListCrawledUrlsResponse;
-export const ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCrawledUrlsResponse;
+export type ListProjectsScanConfigsScanRunsResponse = ListScanRunsResponse;
+export const ListProjectsScanConfigsScanRunsResponse =
+  /*@__PURE__*/ ListScanRunsResponse;
 
-export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
+export type ListProjectsScanConfigsScanRunsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List CrawledUrls under a given ScanRun. */
-export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationMethod<
-  ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
-  ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
-  ListProjectsScanConfigsScanRunsCrawledUrlsError,
+/** Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time. */
+export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
+  ListProjectsScanConfigsScanRunsRequest,
+  ListProjectsScanConfigsScanRunsResponse,
+  ListProjectsScanConfigsScanRunsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
-  output: ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsScanConfigsScanRunsRequest,
+  output: ListProjectsScanConfigsScanRunsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1092,7 +991,7 @@ export interface GetProjectsScanConfigsScanRunsFindingsRequest {
 }
 
 export const GetProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1101,7 +1000,7 @@ export const GetProjectsScanConfigsScanRunsFindingsRequest =
 
 export type GetProjectsScanConfigsScanRunsFindingsResponse = Finding;
 export const GetProjectsScanConfigsScanRunsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Finding;
+  /*@__PURE__*/ Finding;
 
 export type GetProjectsScanConfigsScanRunsFindingsError =
   | DefaultErrors
@@ -1114,28 +1013,28 @@ export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
   GetProjectsScanConfigsScanRunsFindingsResponse,
   GetProjectsScanConfigsScanRunsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsScanRunsFindingsRequest,
   output: GetProjectsScanConfigsScanRunsFindingsResponse,
   errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsScanConfigsScanRunsFindingsRequest {
-  /** Required. The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. */
-  filter?: string;
   /** The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
   pageToken?: string;
+  /** Required. The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. */
+  filter?: string;
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
 }
 
 export const ListProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/findings" }),
@@ -1145,7 +1044,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
 export type ListProjectsScanConfigsScanRunsFindingsResponse =
   ListFindingsResponse;
 export const ListProjectsScanConfigsScanRunsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
+  /*@__PURE__*/ ListFindingsResponse;
 
 export type ListProjectsScanConfigsScanRunsFindingsError =
   | DefaultErrors
@@ -1158,9 +1057,89 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   ListProjectsScanConfigsScanRunsFindingsResponse,
   ListProjectsScanConfigsScanRunsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsFindingsRequest,
   output: ListProjectsScanConfigsScanRunsFindingsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
+  /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
+  parent: string;
+}
+
+export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
+  /*@__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/findingTypeStats" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
+
+export type ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
+  ListFindingTypeStatsResponse;
+export const ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
+  /*@__PURE__*/ ListFindingTypeStatsResponse;
+
+export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List all FindingTypeStats under a given ScanRun. */
+export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMethod<
+  ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
+  ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
+  ListProjectsScanConfigsScanRunsFindingTypeStatsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
+  output: ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
+  /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
+  parent: string;
+  /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. */
+  pageToken?: string;
+  /** The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
+  pageSize?: number;
+}
+
+export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
+  /*@__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/crawledUrls" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
+
+export type ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
+  ListCrawledUrlsResponse;
+export const ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
+  /*@__PURE__*/ ListCrawledUrlsResponse;
+
+export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List CrawledUrls under a given ScanRun. */
+export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationMethod<
+  ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
+  ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
+  ListProjectsScanConfigsScanRunsCrawledUrlsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
+  output: ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",

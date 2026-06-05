@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DomainsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsCreateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const DomainsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsCreateInput = typeof DomainsCreateInput.Type;
 
 // Output Schema
-export const DomainsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
   is_verified: Schema.optional(Schema.Boolean),
@@ -50,7 +50,7 @@ export const DomainsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsCreateOutput = typeof DomainsCreateOutput.Type;
 
 // The operation
-export const domainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsCreateInput,
   outputSchema: DomainsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

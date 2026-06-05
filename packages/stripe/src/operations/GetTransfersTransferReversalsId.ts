@@ -3,24 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTransfersTransferReversalsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransfersTransferReversalsIdInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/transfers/{transfer}/reversals/{id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/transfers/{transfer}/reversals/{id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetTransfersTransferReversalsIdInput =
   typeof GetTransfersTransferReversalsIdInput.Type;
 
 // Output Schema
 export const GetTransfersTransferReversalsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.Unknown,
     created: Schema.Number,
@@ -43,8 +44,7 @@ export type GetTransfersTransferReversalsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTransfersTransferReversalsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetTransfersTransferReversalsIdInput,
-    outputSchema: GetTransfersTransferReversalsIdOutput,
-  }));
+export const GetTransfersTransferReversalsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTransfersTransferReversalsIdInput,
+  outputSchema: GetTransfersTransferReversalsIdOutput,
+}));

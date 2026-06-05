@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupClusterInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupClusterInput = typeof GetGroupClusterInput.Type;
 
 // Output Schema
-export const GetGroupClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterOutput = typeof GetGroupClusterOutput.Type;
 
 // The operation
@@ -37,7 +37,7 @@ export type GetGroupClusterOutput = typeof GetGroupClusterOutput.Type;
  * @param Use-Effective-Instance-Fields - Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
  * @param Use-Effective-Fields-Replication-Specs - Controls how `replicationSpecs` are returned in the response. When set to `true`, returns the client-specified view in `replicationSpecs` and the actual cluster state in `effectiveReplicationSpecs`. When `false` (default), `replicationSpecs` contains the actual cluster state.
  */
-export const getGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupClusterInput,
   outputSchema: GetGroupClusterOutput,
   errors: [Forbidden, NotFound, Conflict] as const,

@@ -4,16 +4,17 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const ApiKeysControllerValidateApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiKeysControllerValidateApiKeyInput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/api_keys/validations" }));
+  },
+).pipe(T.Http({ method: "POST", path: "/api_keys/validations" }));
 export type ApiKeysControllerValidateApiKeyInput =
   typeof ApiKeysControllerValidateApiKeyInput.Type;
 
 // Output Schema
 export const ApiKeysControllerValidateApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_key: Schema.optional(Schema.Unknown),
   });
 export type ApiKeysControllerValidateApiKeyOutput =
@@ -25,9 +26,8 @@ export type ApiKeysControllerValidateApiKeyOutput =
  *
  * Validate an API key value and return the API key object if valid.
  */
-export const ApiKeysControllerValidateApiKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ApiKeysControllerValidateApiKeyInput,
-    outputSchema: ApiKeysControllerValidateApiKeyOutput,
-    errors: [UnprocessableEntity] as const,
-  }));
+export const ApiKeysControllerValidateApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiKeysControllerValidateApiKeyInput,
+  outputSchema: ApiKeysControllerValidateApiKeyOutput,
+  errors: [UnprocessableEntity] as const,
+}));

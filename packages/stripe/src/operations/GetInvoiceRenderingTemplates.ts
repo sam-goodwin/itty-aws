@@ -3,42 +3,40 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetInvoiceRenderingTemplatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    starting_after: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.Literals(["active", "archived"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/invoice_rendering_templates",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetInvoiceRenderingTemplatesInput = /*@__PURE__*/ Schema.Struct({
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  starting_after: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Literals(["active", "archived"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/invoice_rendering_templates",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetInvoiceRenderingTemplatesInput =
   typeof GetInvoiceRenderingTemplatesInput.Type;
 
 // Output Schema
-export const GetInvoiceRenderingTemplatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        nickname: Schema.NullOr(Schema.String),
-        object: Schema.Literals(["invoice_rendering_template"]),
-        status: Schema.Literals(["active", "archived"]),
-        version: Schema.Number,
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+export const GetInvoiceRenderingTemplatesOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      created: Schema.Number,
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      nickname: Schema.NullOr(Schema.String),
+      object: Schema.Literals(["invoice_rendering_template"]),
+      status: Schema.Literals(["active", "archived"]),
+      version: Schema.Number,
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetInvoiceRenderingTemplatesOutput =
   typeof GetInvoiceRenderingTemplatesOutput.Type;
 
@@ -53,8 +51,7 @@ export type GetInvoiceRenderingTemplatesOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetInvoiceRenderingTemplates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetInvoiceRenderingTemplatesInput,
-    outputSchema: GetInvoiceRenderingTemplatesOutput,
-  }));
+export const GetInvoiceRenderingTemplates = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetInvoiceRenderingTemplatesInput,
+  outputSchema: GetInvoiceRenderingTemplatesOutput,
+}));

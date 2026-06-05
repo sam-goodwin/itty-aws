@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     processIds: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
 
 // Output Schema
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
   typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
 
@@ -49,7 +49,7 @@ export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
 - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
  */
 export const listGroupClusterPerformanceAdvisorSuggestedIndexes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesInput,
     outputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

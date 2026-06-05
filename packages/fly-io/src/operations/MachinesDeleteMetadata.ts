@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesDeleteMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-    key: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-    }),
-  );
+export const MachinesDeleteMetadataInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+  key: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
+  }),
+);
 export type MachinesDeleteMetadataInput =
   typeof MachinesDeleteMetadataInput.Type;
 
 // Output Schema
-export const MachinesDeleteMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesDeleteMetadataOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesDeleteMetadataOutput =
   typeof MachinesDeleteMetadataOutput.Type;
 
@@ -34,10 +32,8 @@ export type MachinesDeleteMetadataOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesDeleteMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesDeleteMetadataInput,
-    outputSchema: MachinesDeleteMetadataOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesDeleteMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesDeleteMetadataInput,
+  outputSchema: MachinesDeleteMetadataOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

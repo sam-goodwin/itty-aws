@@ -3,28 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateEvmSwapQuoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.Literals([
-      "base",
-      "ethereum",
-      "arbitrum",
-      "optimism",
-      "polygon",
-    ]),
-    toToken: Schema.String,
-    fromToken: Schema.String,
-    fromAmount: Schema.String,
-    taker: Schema.String,
-    signerAddress: Schema.optional(Schema.String),
-    gasPrice: Schema.optional(Schema.String),
-    slippageBps: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "POST", path: "/v2/evm/swaps" }));
+export const CreateEvmSwapQuoteInput = /*@__PURE__*/ Schema.Struct({
+  network: Schema.Literals([
+    "base",
+    "ethereum",
+    "arbitrum",
+    "optimism",
+    "polygon",
+  ]),
+  toToken: Schema.String,
+  fromToken: Schema.String,
+  fromAmount: Schema.String,
+  taker: Schema.String,
+  signerAddress: Schema.optional(Schema.String),
+  gasPrice: Schema.optional(Schema.String),
+  slippageBps: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "POST", path: "/v2/evm/swaps" }));
 export type CreateEvmSwapQuoteInput = typeof CreateEvmSwapQuoteInput.Type;
 
 // Output Schema
-export const CreateEvmSwapQuoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const CreateEvmSwapQuoteOutput = /*@__PURE__*/ Schema.Unknown;
 export type CreateEvmSwapQuoteOutput = typeof CreateEvmSwapQuoteOutput.Type;
 
 // The operation
@@ -38,7 +36,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createEvmSwapQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createEvmSwapQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateEvmSwapQuoteInput,
   outputSchema: CreateEvmSwapQuoteOutput,
 }));

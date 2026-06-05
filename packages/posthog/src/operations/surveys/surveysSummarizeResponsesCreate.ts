@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SurveysSummarizeResponsesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysSummarizeResponsesCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -120,18 +120,18 @@ export const SurveysSummarizeResponsesCreateInput =
     translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
     _create_in_folder: Schema.optional(Schema.String),
     form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/surveys/{id}/summarize_responses/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/surveys/{id}/summarize_responses/",
+  }),
+);
 export type SurveysSummarizeResponsesCreateInput =
   typeof SurveysSummarizeResponsesCreateInput.Type;
 
 // Output Schema
-export const SurveysSummarizeResponsesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SurveysSummarizeResponsesCreateOutput = /*@__PURE__*/ Schema.Void;
 export type SurveysSummarizeResponsesCreateOutput =
   typeof SurveysSummarizeResponsesCreateOutput.Type;
 
@@ -141,9 +141,8 @@ export type SurveysSummarizeResponsesCreateOutput =
  * @param id - A UUID string identifying this survey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysSummarizeResponsesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SurveysSummarizeResponsesCreateInput,
-    outputSchema: SurveysSummarizeResponsesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const surveysSummarizeResponsesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SurveysSummarizeResponsesCreateInput,
+  outputSchema: SurveysSummarizeResponsesCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

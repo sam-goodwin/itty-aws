@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     account_holder_name: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export type PostAccountsAccountExternalAccountsIdInput =
 
 // Output Schema
 export const PostAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type PostAccountsAccountExternalAccountsIdOutput =
   typeof PostAccountsAccountExternalAccountsIdOutput.Type;
 
@@ -60,8 +60,9 @@ export type PostAccountsAccountExternalAccountsIdOutput =
  * <p>You can re-enable a disabled bank account by performing an update call without providing any
  * arguments or changes.</p>
  */
-export const PostAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccountsAccountExternalAccountsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostAccountsAccountExternalAccountsIdInput,
     outputSchema: PostAccountsAccountExternalAccountsIdOutput,
-  }));
+  }),
+);

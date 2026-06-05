@@ -3,67 +3,65 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetApplicationFeesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    charge: Schema.optional(Schema.String),
-    created: Schema.optional(Schema.String),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    starting_after: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/application_fees",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetApplicationFeesInput = /*@__PURE__*/ Schema.Struct({
+  charge: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  starting_after: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/application_fees",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetApplicationFeesInput = typeof GetApplicationFeesInput.Type;
 
 // Output Schema
-export const GetApplicationFeesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        account: Schema.Unknown,
-        amount: Schema.Number,
-        amount_refunded: Schema.Number,
-        application: Schema.Unknown,
-        balance_transaction: Schema.Unknown,
-        charge: Schema.Unknown,
-        created: Schema.Number,
-        currency: Schema.String,
-        fee_source: Schema.Unknown,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["application_fee"]),
-        originating_transaction: Schema.Unknown,
-        refunded: Schema.Boolean,
-        refunds: Schema.Struct({
-          data: Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              balance_transaction: Schema.Unknown,
-              created: Schema.Number,
-              currency: Schema.String,
-              fee: Schema.Unknown,
-              id: Schema.String,
-              metadata: Schema.NullOr(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              object: Schema.Literals(["fee_refund"]),
-            }),
-          ),
-          has_more: Schema.Boolean,
-          object: Schema.Literals(["list"]),
-          url: Schema.String,
-        }),
+export const GetApplicationFeesOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      account: Schema.Unknown,
+      amount: Schema.Number,
+      amount_refunded: Schema.Number,
+      application: Schema.Unknown,
+      balance_transaction: Schema.Unknown,
+      charge: Schema.Unknown,
+      created: Schema.Number,
+      currency: Schema.String,
+      fee_source: Schema.Unknown,
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      object: Schema.Literals(["application_fee"]),
+      originating_transaction: Schema.Unknown,
+      refunded: Schema.Boolean,
+      refunds: Schema.Struct({
+        data: Schema.Array(
+          Schema.Struct({
+            amount: Schema.Number,
+            balance_transaction: Schema.Unknown,
+            created: Schema.Number,
+            currency: Schema.String,
+            fee: Schema.Unknown,
+            id: Schema.String,
+            metadata: Schema.NullOr(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            object: Schema.Literals(["fee_refund"]),
+          }),
+        ),
+        has_more: Schema.Boolean,
+        object: Schema.Literals(["list"]),
+        url: Schema.String,
       }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  });
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetApplicationFeesOutput = typeof GetApplicationFeesOutput.Type;
 
 // The operation
@@ -79,7 +77,7 @@ export type GetApplicationFeesOutput = typeof GetApplicationFeesOutput.Type;
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetApplicationFees = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetApplicationFees = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetApplicationFeesInput,
   outputSchema: GetApplicationFeesOutput,
 }));

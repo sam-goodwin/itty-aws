@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GroupMembershipsControllerAddMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     organization_membership_id: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type GroupMembershipsControllerAddMemberInput =
 
 // Output Schema
 export const GroupMembershipsControllerAddMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -41,9 +41,10 @@ export type GroupMembershipsControllerAddMemberOutput =
  * @param organizationId - Unique identifier of the Organization.
  * @param groupId - Unique identifier of the Group.
  */
-export const GroupMembershipsControllerAddMember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupMembershipsControllerAddMember = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GroupMembershipsControllerAddMemberInput,
     outputSchema: GroupMembershipsControllerAddMemberOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

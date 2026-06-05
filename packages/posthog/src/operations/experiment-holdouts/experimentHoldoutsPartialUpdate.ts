@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ExperimentHoldoutsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentHoldoutsPartialUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -30,18 +30,19 @@ export const ExperimentHoldoutsPartialUpdateInput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/projects/{project_id}/experiment_holdouts/{id}/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/projects/{project_id}/experiment_holdouts/{id}/",
+  }),
+);
 export type ExperimentHoldoutsPartialUpdateInput =
   typeof ExperimentHoldoutsPartialUpdateInput.Type;
 
 // Output Schema
 export const ExperimentHoldoutsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -75,9 +76,8 @@ export type ExperimentHoldoutsPartialUpdateOutput =
  * @param id - A unique integer value identifying this experiment holdout.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentHoldoutsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ExperimentHoldoutsPartialUpdateInput,
-    outputSchema: ExperimentHoldoutsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const experimentHoldoutsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentHoldoutsPartialUpdateInput,
+  outputSchema: ExperimentHoldoutsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

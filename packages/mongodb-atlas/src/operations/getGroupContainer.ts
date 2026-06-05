@@ -4,14 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupContainerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    containerId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const GetGroupContainerInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  containerId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/containers/{containerId}",
@@ -20,7 +18,7 @@ export const GetGroupContainerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetGroupContainerInput = typeof GetGroupContainerInput.Type;
 
 // Output Schema
-export const GetGroupContainerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupContainerOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupContainerOutput = typeof GetGroupContainerOutput.Type;
 
 // The operation
@@ -36,7 +34,7 @@ export type GetGroupContainerOutput = typeof GetGroupContainerOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param containerId - Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container.
  */
-export const getGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupContainer = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupContainerInput,
   outputSchema: GetGroupContainerOutput,
   errors: [Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupEventInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -19,7 +19,7 @@ export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupEventInput = typeof GetGroupEventInput.Type;
 
 // Output Schema
-export const GetGroupEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupEventOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupEventOutput = typeof GetGroupEventOutput.Type;
 
 // The operation
@@ -37,7 +37,7 @@ export type GetGroupEventOutput = typeof GetGroupEventOutput.Type;
  * @param eventId - Unique 24-hexadecimal digit string that identifies the event that you want to return.
  * @param includeRaw - Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event.
  */
-export const getGroupEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupEvent = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupEventInput,
   outputSchema: GetGroupEventOutput,
   errors: [Forbidden, NotFound] as const,

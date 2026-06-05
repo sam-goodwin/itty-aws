@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetFileLinksLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFileLinksLinkInput = /*@__PURE__*/ Schema.Struct({
   link: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,19 +16,17 @@ export const GetFileLinksLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFileLinksLinkInput = typeof GetFileLinksLinkInput.Type;
 
 // Output Schema
-export const GetFileLinksLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    created: Schema.Number,
-    expired: Schema.Boolean,
-    expires_at: Schema.NullOr(Schema.Number),
-    file: Schema.Unknown,
-    id: Schema.String,
-    livemode: Schema.Boolean,
-    metadata: Schema.Record(Schema.String, Schema.String),
-    object: Schema.Literals(["file_link"]),
-    url: Schema.NullOr(Schema.String),
-  },
-);
+export const GetFileLinksLinkOutput = /*@__PURE__*/ Schema.Struct({
+  created: Schema.Number,
+  expired: Schema.Boolean,
+  expires_at: Schema.NullOr(Schema.Number),
+  file: Schema.Unknown,
+  id: Schema.String,
+  livemode: Schema.Boolean,
+  metadata: Schema.Record(Schema.String, Schema.String),
+  object: Schema.Literals(["file_link"]),
+  url: Schema.NullOr(Schema.String),
+});
 export type GetFileLinksLinkOutput = typeof GetFileLinksLinkOutput.Type;
 
 // The operation
@@ -39,7 +37,7 @@ export type GetFileLinksLinkOutput = typeof GetFileLinksLinkOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetFileLinksLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFileLinksLink = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFileLinksLinkInput,
   outputSchema: GetFileLinksLinkOutput,
 }));

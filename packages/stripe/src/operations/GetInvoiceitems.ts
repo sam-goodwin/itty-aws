@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetInvoiceitemsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceitemsInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
   customer_account: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const GetInvoiceitemsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInvoiceitemsInput = typeof GetInvoiceitemsInput.Type;
 
 // Output Schema
-export const GetInvoiceitemsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceitemsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -138,7 +138,7 @@ export type GetInvoiceitemsOutput = typeof GetInvoiceitemsOutput.Type;
  * @param pending - Set to `true` to only show pending invoice items, which are not yet attached to any invoices. Set to `false` to only show invoice items already attached to invoices. If unspecified, no filter is applied.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetInvoiceitems = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoiceitems = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoiceitemsInput,
   outputSchema: GetInvoiceitemsOutput,
 }));

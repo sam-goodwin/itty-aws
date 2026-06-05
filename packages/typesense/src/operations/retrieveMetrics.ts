@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RetrieveMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/metrics.json" }));
+export const RetrieveMetricsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/metrics.json" }),
+);
 export type RetrieveMetricsInput = typeof RetrieveMetricsInput.Type;
 
 // Output Schema
-export const RetrieveMetricsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const RetrieveMetricsOutput = /*@__PURE__*/ Schema.Unknown;
 export type RetrieveMetricsOutput = typeof RetrieveMetricsOutput.Type;
 
 // The operation
@@ -18,7 +18,7 @@ export type RetrieveMetricsOutput = typeof RetrieveMetricsOutput.Type;
  *
  * Retrieve the metrics.
  */
-export const retrieveMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrieveMetrics = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrieveMetricsInput,
   outputSchema: RetrieveMetricsOutput,
 }));

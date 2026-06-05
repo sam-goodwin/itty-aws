@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListJitAccessInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}/database/jit/list" }),
@@ -12,7 +12,7 @@ export const V1ListJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1ListJitAccessInput = typeof V1ListJitAccessInput.Type;
 
 // Output Schema
-export const V1ListJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListJitAccessOutput = /*@__PURE__*/ Schema.Struct({
   items: Schema.Array(
     Schema.Struct({
       user_id: Schema.String,
@@ -53,7 +53,7 @@ export type V1ListJitAccessOutput = typeof V1ListJitAccessOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListJitAccessInput,
   outputSchema: V1ListJitAccessOutput,
   errors: [BadRequest, Forbidden] as const,

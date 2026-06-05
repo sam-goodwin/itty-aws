@@ -2,10 +2,10 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
-export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateNotifierInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateNotifierInput = typeof UpdateNotifierInput.Type;
 
 // Output Schema
-export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateNotifierOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
   disabledUntil: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     opsgenie: Schema.optional(
       Schema.Struct({
-        apiKey: Schema.optional(SensitiveString),
+        apiKey: Schema.optional(SensitiveOutputString),
         isEU: Schema.optional(Schema.Boolean),
       }),
     ),
@@ -138,7 +138,7 @@ export type UpdateNotifierOutput = typeof UpdateNotifierOutput.Type;
 /**
  * Update notifier
  */
-export const updateNotifier = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateNotifier = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateNotifierInput,
   outputSchema: UpdateNotifierOutput,
   errors: [NotFound, UnprocessableEntity] as const,

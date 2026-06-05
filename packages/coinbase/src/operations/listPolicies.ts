@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListPoliciesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoliciesInput = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
   scope: Schema.optional(Schema.Literals(["project", "account"])),
@@ -11,7 +11,7 @@ export const ListPoliciesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPoliciesInput = typeof ListPoliciesInput.Type;
 
 // Output Schema
-export const ListPoliciesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoliciesOutput = /*@__PURE__*/ Schema.Struct({
   policies: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -37,7 +37,7 @@ export type ListPoliciesOutput = typeof ListPoliciesOutput.Type;
  * @param pageToken - The token for the next page of resources, if any.
  * @param scope - The scope of the policies to return. If `project`, the response will include exactly one policy, which is the project-level policy. If `account`, the response will include all account-level policies for the developer's CDP Project.
  */
-export const listPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listPolicies = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListPoliciesInput,
   outputSchema: ListPoliciesOutput,
 }));

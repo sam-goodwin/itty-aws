@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AddProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddProjectJWKSInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   jwks_url: Schema.String,
   provider_name: Schema.String,
@@ -15,7 +15,7 @@ export const AddProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddProjectJWKSInput = typeof AddProjectJWKSInput.Type;
 
 // Output Schema
-export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddProjectJWKSOutput = /*@__PURE__*/ Schema.Struct({
   jwks: Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
@@ -59,13 +59,10 @@ export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
-        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
-        "finalize_migration",
-        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",
@@ -101,7 +98,7 @@ export type AddProjectJWKSOutput = typeof AddProjectJWKSOutput.Type;
  *
  * @param project_id - The Neon project ID
  */
-export const addProjectJWKS = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addProjectJWKS = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddProjectJWKSInput,
   outputSchema: AddProjectJWKSOutput,
 }));

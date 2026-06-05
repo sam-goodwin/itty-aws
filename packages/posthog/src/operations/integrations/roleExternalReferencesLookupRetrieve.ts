@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const RoleExternalReferencesLookupRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     provider: Schema.String,
     provider_organization_id: Schema.String,
@@ -22,7 +22,7 @@ export type RoleExternalReferencesLookupRetrieveInput =
 
 // Output Schema
 export const RoleExternalReferencesLookupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reference: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -68,9 +68,10 @@ export type RoleExternalReferencesLookupRetrieveOutput =
  * @param provider_role_id - Stable provider role identifier.
  * @param provider_role_slug - Human-friendly provider role identifier.
  */
-export const roleExternalReferencesLookupRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const roleExternalReferencesLookupRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RoleExternalReferencesLookupRetrieveInput,
     outputSchema: RoleExternalReferencesLookupRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

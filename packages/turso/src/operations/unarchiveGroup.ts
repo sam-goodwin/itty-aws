@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnarchiveGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UnarchiveGroupInput = typeof UnarchiveGroupInput.Type;
 
 // Output Schema
-export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnarchiveGroupOutput = /*@__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export type UnarchiveGroupOutput = typeof UnarchiveGroupOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const unarchiveGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const unarchiveGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: UnarchiveGroupInput,
   outputSchema: UnarchiveGroupOutput,
   errors: [NotFound] as const,

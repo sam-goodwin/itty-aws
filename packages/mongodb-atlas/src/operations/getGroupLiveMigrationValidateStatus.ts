@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupLiveMigrationValidateStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     validationId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type GetGroupLiveMigrationValidateStatusInput =
 
 // Output Schema
 export const GetGroupLiveMigrationValidateStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupLiveMigrationValidateStatusOutput =
   typeof GetGroupLiveMigrationValidateStatusOutput.Type;
 
@@ -36,9 +36,10 @@ export type GetGroupLiveMigrationValidateStatusOutput =
  * @param validationId - Unique 24-hexadecimal digit string that identifies the validation job.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
-export const getGroupLiveMigrationValidateStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupLiveMigrationValidateStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetGroupLiveMigrationValidateStatusInput,
     outputSchema: GetGroupLiveMigrationValidateStatusOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

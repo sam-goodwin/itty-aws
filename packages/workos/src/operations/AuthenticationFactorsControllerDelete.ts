@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthenticationFactorsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/auth/factors/{id}" }));
 export type AuthenticationFactorsControllerDeleteInput =
@@ -13,7 +13,7 @@ export type AuthenticationFactorsControllerDeleteInput =
 
 // Output Schema
 export const AuthenticationFactorsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthenticationFactorsControllerDeleteOutput =
   typeof AuthenticationFactorsControllerDeleteOutput.Type;
 
@@ -25,9 +25,10 @@ export type AuthenticationFactorsControllerDeleteOutput =
  *
  * @param id - The unique ID of the Factor.
  */
-export const AuthenticationFactorsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthenticationFactorsControllerDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthenticationFactorsControllerDeleteInput,
     outputSchema: AuthenticationFactorsControllerDeleteOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

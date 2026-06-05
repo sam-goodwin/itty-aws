@@ -4,20 +4,15 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ElementsStatsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/elements/stats/",
-    }),
-  );
+export const ElementsStatsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/elements/stats/" }),
+);
 export type ElementsStatsRetrieveInput = typeof ElementsStatsRetrieveInput.Type;
 
 // Output Schema
-export const ElementsStatsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ElementsStatsRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type ElementsStatsRetrieveOutput =
   typeof ElementsStatsRetrieveOutput.Type;
 
@@ -30,10 +25,8 @@ export type ElementsStatsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const elementsStatsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ElementsStatsRetrieveInput,
-    outputSchema: ElementsStatsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const elementsStatsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ElementsStatsRetrieveInput,
+  outputSchema: ElementsStatsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

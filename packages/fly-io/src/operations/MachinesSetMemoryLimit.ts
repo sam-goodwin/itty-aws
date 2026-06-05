@@ -4,26 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesSetMemoryLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-    limit_mb: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/apps/{app_name}/machines/{machine_id}/memory",
-    }),
-  );
+export const MachinesSetMemoryLimitInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+  limit_mb: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/apps/{app_name}/machines/{machine_id}/memory",
+  }),
+);
 export type MachinesSetMemoryLimitInput =
   typeof MachinesSetMemoryLimitInput.Type;
 
 // Output Schema
-export const MachinesSetMemoryLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    available_mb: Schema.optional(Schema.Number),
-    limit_mb: Schema.optional(Schema.Number),
-  });
+export const MachinesSetMemoryLimitOutput = /*@__PURE__*/ Schema.Struct({
+  available_mb: Schema.optional(Schema.Number),
+  limit_mb: Schema.optional(Schema.Number),
+});
 export type MachinesSetMemoryLimitOutput =
   typeof MachinesSetMemoryLimitOutput.Type;
 
@@ -36,10 +34,8 @@ export type MachinesSetMemoryLimitOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesSetMemoryLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesSetMemoryLimitInput,
-    outputSchema: MachinesSetMemoryLimitOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesSetMemoryLimit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesSetMemoryLimitInput,
+  outputSchema: MachinesSetMemoryLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

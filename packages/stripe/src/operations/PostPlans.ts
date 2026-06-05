@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPlansInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   amount: Schema.optional(Schema.Number),
   amount_decimal: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export const PostPlansInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostPlansInput = typeof PostPlansInput.Type;
 
 // Output Schema
-export const PostPlansOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   amount: Schema.NullOr(Schema.Number),
   amount_decimal: Schema.NullOr(Schema.String),
@@ -83,7 +83,7 @@ export type PostPlansOutput = typeof PostPlansOutput.Type;
  *
  * <p>You can now model subscriptions more flexibly using the <a href="#prices">Prices API</a>. It replaces the Plans API and is backwards compatible to simplify your migration.</p>
  */
-export const PostPlans = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPlans = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPlansInput,
   outputSchema: PostPlansOutput,
 }));

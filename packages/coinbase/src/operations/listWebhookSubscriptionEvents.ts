@@ -3,50 +3,48 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListWebhookSubscriptionEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    eventId: Schema.optional(Schema.String),
-    minCreatedAt: Schema.optional(Schema.String),
-    maxCreatedAt: Schema.optional(Schema.String),
-    eventTypeNames: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v2/data/webhooks/subscriptions/{subscriptionId}/events",
-    }),
-  );
+export const ListWebhookSubscriptionEventsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  eventId: Schema.optional(Schema.String),
+  minCreatedAt: Schema.optional(Schema.String),
+  maxCreatedAt: Schema.optional(Schema.String),
+  eventTypeNames: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v2/data/webhooks/subscriptions/{subscriptionId}/events",
+  }),
+);
 export type ListWebhookSubscriptionEventsInput =
   typeof ListWebhookSubscriptionEventsInput.Type;
 
 // Output Schema
-export const ListWebhookSubscriptionEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    events: Schema.Array(
-      Schema.Struct({
-        eventId: Schema.String,
-        eventTypeName: Schema.String,
-        status: Schema.Literals([
-          "pending",
-          "processing",
-          "succeeded",
-          "failed",
-          "retrying",
-        ]),
-        createdAt: Schema.String,
-        succeededAt: Schema.optional(Schema.String),
-        retryCount: Schema.Number,
-        response: Schema.optional(
-          Schema.Struct({
-            httpCode: Schema.optional(Schema.Number),
-            elapsedTimeMs: Schema.optional(Schema.Number),
-            body: Schema.optional(Schema.String),
-            errorName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const ListWebhookSubscriptionEventsOutput = /*@__PURE__*/ Schema.Struct({
+  events: Schema.Array(
+    Schema.Struct({
+      eventId: Schema.String,
+      eventTypeName: Schema.String,
+      status: Schema.Literals([
+        "pending",
+        "processing",
+        "succeeded",
+        "failed",
+        "retrying",
+      ]),
+      createdAt: Schema.String,
+      succeededAt: Schema.optional(Schema.String),
+      retryCount: Schema.Number,
+      response: Schema.optional(
+        Schema.Struct({
+          httpCode: Schema.optional(Schema.Number),
+          elapsedTimeMs: Schema.optional(Schema.Number),
+          body: Schema.optional(Schema.String),
+          errorName: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type ListWebhookSubscriptionEventsOutput =
   typeof ListWebhookSubscriptionEventsOutput.Type;
 
@@ -75,8 +73,7 @@ export type ListWebhookSubscriptionEventsOutput =
  * @param maxCreatedAt - Filter events created at or before this timestamp (RFC 3339 format).
  * @param eventTypeNames - Filter by event type names (comma-separated).
  */
-export const listWebhookSubscriptionEvents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListWebhookSubscriptionEventsInput,
-    outputSchema: ListWebhookSubscriptionEventsOutput,
-  }));
+export const listWebhookSubscriptionEvents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListWebhookSubscriptionEventsInput,
+  outputSchema: ListWebhookSubscriptionEventsOutput,
+}));

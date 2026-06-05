@@ -3,24 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AssignOrganizationVPCEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    org_id: Schema.String.pipe(T.PathParam()),
-    region_id: Schema.String.pipe(T.PathParam()),
-    vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
-    label: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
-    }),
-  );
+export const AssignOrganizationVPCEndpointInput = /*@__PURE__*/ Schema.Struct({
+  org_id: Schema.String.pipe(T.PathParam()),
+  region_id: Schema.String.pipe(T.PathParam()),
+  vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
+  label: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
+  }),
+);
 export type AssignOrganizationVPCEndpointInput =
   typeof AssignOrganizationVPCEndpointInput.Type;
 
 // Output Schema
-export const AssignOrganizationVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AssignOrganizationVPCEndpointOutput = /*@__PURE__*/ Schema.Void;
 export type AssignOrganizationVPCEndpointOutput =
   typeof AssignOrganizationVPCEndpointOutput.Type;
 
@@ -36,8 +34,7 @@ Azure regions are currently not supported.
 
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
-export const assignOrganizationVPCEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AssignOrganizationVPCEndpointInput,
-    outputSchema: AssignOrganizationVPCEndpointOutput,
-  }));
+export const assignOrganizationVPCEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssignOrganizationVPCEndpointInput,
+  outputSchema: AssignOrganizationVPCEndpointOutput,
+}));

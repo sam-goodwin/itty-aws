@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const BatchExportsBackfillsCancelCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -51,7 +51,7 @@ export type BatchExportsBackfillsCancelCreateInput =
 
 // Output Schema
 export const BatchExportsBackfillsCancelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type BatchExportsBackfillsCancelCreateOutput =
   typeof BatchExportsBackfillsCancelCreateOutput.Type;
 
@@ -62,9 +62,8 @@ export type BatchExportsBackfillsCancelCreateOutput =
  * @param id - A UUID string identifying this batch export backfill.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsBackfillsCancelCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BatchExportsBackfillsCancelCreateInput,
-    outputSchema: BatchExportsBackfillsCancelCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const batchExportsBackfillsCancelCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsBackfillsCancelCreateInput,
+  outputSchema: BatchExportsBackfillsCancelCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

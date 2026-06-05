@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const HogFlowsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HogFlowsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -106,7 +106,7 @@ export const HogFlowsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HogFlowsCreateInput = typeof HogFlowsCreateInput.Type;
 
 // Output Schema
-export const HogFlowsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HogFlowsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export type HogFlowsCreateOutput = typeof HogFlowsCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const hogFlowsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: HogFlowsCreateInput,
   outputSchema: HogFlowsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

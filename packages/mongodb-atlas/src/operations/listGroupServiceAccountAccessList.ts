@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export type ListGroupServiceAccountAccessListInput =
 
 // Output Schema
 export const ListGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupServiceAccountAccessListOutput =
   typeof ListGroupServiceAccountAccessListOutput.Type;
 
@@ -44,9 +44,8 @@ export type ListGroupServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const listGroupServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupServiceAccountAccessListInput,
-    outputSchema: ListGroupServiceAccountAccessListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGroupServiceAccountAccessList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupServiceAccountAccessListInput,
+  outputSchema: ListGroupServiceAccountAccessListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

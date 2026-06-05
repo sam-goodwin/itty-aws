@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingSuppressionRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(Schema.Unknown),
@@ -25,7 +25,7 @@ export type ErrorTrackingSuppressionRulesUpdateInput =
 
 // Output Schema
 export const ErrorTrackingSuppressionRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
     order_key: Schema.optional(Schema.Number),
@@ -43,9 +43,10 @@ export type ErrorTrackingSuppressionRulesUpdateOutput =
  * @param id - A UUID string identifying this error tracking suppression rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingSuppressionRulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const errorTrackingSuppressionRulesUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ErrorTrackingSuppressionRulesUpdateInput,
     outputSchema: ErrorTrackingSuppressionRulesUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

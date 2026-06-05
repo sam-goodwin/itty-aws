@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupClusterBackupExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    exportId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}",
-    }),
-  );
+export const GetGroupClusterBackupExportInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  exportId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}",
+  }),
+);
 export type GetGroupClusterBackupExportInput =
   typeof GetGroupClusterBackupExportInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterBackupExportOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterBackupExportOutput =
   typeof GetGroupClusterBackupExportOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupClusterBackupExportOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param exportId - Unique 24-hexadecimal character string that identifies the Export Job.
  */
-export const getGroupClusterBackupExport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterBackupExportInput,
-    outputSchema: GetGroupClusterBackupExportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterBackupExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterBackupExportInput,
+  outputSchema: GetGroupClusterBackupExportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

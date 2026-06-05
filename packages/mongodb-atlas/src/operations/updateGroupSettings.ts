@@ -4,22 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/settings",
-    }),
-  );
+export const UpdateGroupSettingsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/settings" }),
+);
 export type UpdateGroupSettingsInput = typeof UpdateGroupSettingsInput.Type;
 
 // Output Schema
-export const UpdateGroupSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupSettingsOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
 
 // The operation
@@ -34,7 +29,7 @@ export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupSettingsInput,
   outputSchema: UpdateGroupSettingsOutput,
   errors: [Forbidden, NotFound] as const,

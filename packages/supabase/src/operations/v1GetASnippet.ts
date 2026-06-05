@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1GetASnippetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetASnippetInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/snippets/{id}" }));
 export type V1GetASnippetInput = typeof V1GetASnippetInput.Type;
 
 // Output Schema
-export const V1GetASnippetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetASnippetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   inserted_at: Schema.String,
   updated_at: Schema.String,
@@ -43,7 +43,7 @@ export type V1GetASnippetOutput = typeof V1GetASnippetOutput.Type;
 /**
  * Gets a specific SQL snippet
  */
-export const v1GetASnippet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetASnippet = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetASnippetInput,
   outputSchema: V1GetASnippetOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

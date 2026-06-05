@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CommunicationsGatewaysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationsGatewayName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type CommunicationsGatewaysCreateOrUpdateInput =
 
 // Output Schema
 export const CommunicationsGatewaysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -57,30 +57,29 @@ export type CommunicationsGatewaysCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationsGatewayName - Unique identifier for this deployment
  */
-export const CommunicationsGatewaysCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommunicationsGatewaysCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CommunicationsGatewaysCreateOrUpdateInput,
     outputSchema: CommunicationsGatewaysCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CommunicationsGatewaysDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    communicationsGatewayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
-    }),
-  );
+export const CommunicationsGatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  communicationsGatewayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
+  }),
+);
 export type CommunicationsGatewaysDeleteInput =
   typeof CommunicationsGatewaysDeleteInput.Type;
 
 // Output Schema
-export const CommunicationsGatewaysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CommunicationsGatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CommunicationsGatewaysDeleteOutput =
   typeof CommunicationsGatewaysDeleteOutput.Type;
 
@@ -93,48 +92,45 @@ export type CommunicationsGatewaysDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationsGatewayName - Unique identifier for this deployment
  */
-export const CommunicationsGatewaysDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CommunicationsGatewaysDeleteInput,
-    outputSchema: CommunicationsGatewaysDeleteOutput,
-  }));
+export const CommunicationsGatewaysDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationsGatewaysDeleteInput,
+  outputSchema: CommunicationsGatewaysDeleteOutput,
+}));
 // Input Schema
-export const CommunicationsGatewaysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    communicationsGatewayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
-    }),
-  );
+export const CommunicationsGatewaysGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  communicationsGatewayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
+  }),
+);
 export type CommunicationsGatewaysGetInput =
   typeof CommunicationsGatewaysGetInput.Type;
 
 // Output Schema
-export const CommunicationsGatewaysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CommunicationsGatewaysGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CommunicationsGatewaysGetOutput =
   typeof CommunicationsGatewaysGetOutput.Type;
 
@@ -147,15 +143,13 @@ export type CommunicationsGatewaysGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationsGatewayName - Unique identifier for this deployment
  */
-export const CommunicationsGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunicationsGatewaysGetInput,
-    outputSchema: CommunicationsGatewaysGetOutput,
-  }),
-);
+export const CommunicationsGatewaysGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationsGatewaysGetInput,
+  outputSchema: CommunicationsGatewaysGetOutput,
+}));
 // Input Schema
 export const CommunicationsGatewaysListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -170,7 +164,7 @@ export type CommunicationsGatewaysListByResourceGroupInput =
 
 // Output Schema
 export const CommunicationsGatewaysListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -215,14 +209,15 @@ export type CommunicationsGatewaysListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CommunicationsGatewaysListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommunicationsGatewaysListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CommunicationsGatewaysListByResourceGroupInput,
     outputSchema: CommunicationsGatewaysListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CommunicationsGatewaysListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -236,7 +231,7 @@ export type CommunicationsGatewaysListBySubscriptionInput =
 
 // Output Schema
 export const CommunicationsGatewaysListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -280,48 +275,47 @@ export type CommunicationsGatewaysListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CommunicationsGatewaysListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommunicationsGatewaysListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CommunicationsGatewaysListBySubscriptionInput,
     outputSchema: CommunicationsGatewaysListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CommunicationsGatewaysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    communicationsGatewayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
-    }),
-  );
+export const CommunicationsGatewaysUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  communicationsGatewayName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
+  }),
+);
 export type CommunicationsGatewaysUpdateInput =
   typeof CommunicationsGatewaysUpdateInput.Type;
 
 // Output Schema
-export const CommunicationsGatewaysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CommunicationsGatewaysUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CommunicationsGatewaysUpdateOutput =
   typeof CommunicationsGatewaysUpdateOutput.Type;
 
@@ -334,33 +328,30 @@ export type CommunicationsGatewaysUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationsGatewayName - Unique identifier for this deployment
  */
-export const CommunicationsGatewaysUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CommunicationsGatewaysUpdateInput,
-    outputSchema: CommunicationsGatewaysUpdateOutput,
-  }));
+export const CommunicationsGatewaysUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationsGatewaysUpdateInput,
+  outputSchema: CommunicationsGatewaysUpdateOutput,
+}));
 // Input Schema
-export const NameAvailabilityCheckLocalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.VoiceServices/locations/{location}/checkNameAvailability",
-    }),
-  );
+export const NameAvailabilityCheckLocalInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.VoiceServices/locations/{location}/checkNameAvailability",
+  }),
+);
 export type NameAvailabilityCheckLocalInput =
   typeof NameAvailabilityCheckLocalInput.Type;
 
 // Output Schema
-export const NameAvailabilityCheckLocalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const NameAvailabilityCheckLocalOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type NameAvailabilityCheckLocalOutput =
   typeof NameAvailabilityCheckLocalOutput.Type;
 
@@ -372,14 +363,12 @@ export type NameAvailabilityCheckLocalOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const NameAvailabilityCheckLocal = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NameAvailabilityCheckLocalInput,
-    outputSchema: NameAvailabilityCheckLocalOutput,
-  }),
-);
+export const NameAvailabilityCheckLocal = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NameAvailabilityCheckLocalInput,
+  outputSchema: NameAvailabilityCheckLocalOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -390,7 +379,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -421,48 +410,46 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const TestLinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    communicationsGatewayName: Schema.String.pipe(T.PathParam()),
-    testLineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
-    }),
-  );
+export const TestLinesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  communicationsGatewayName: Schema.String.pipe(T.PathParam()),
+  testLineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
+  }),
+);
 export type TestLinesCreateOrUpdateInput =
   typeof TestLinesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const TestLinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TestLinesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TestLinesCreateOrUpdateOutput =
   typeof TestLinesCreateOrUpdateOutput.Type;
 
@@ -476,14 +463,12 @@ export type TestLinesCreateOrUpdateOutput =
  * @param communicationsGatewayName - Unique identifier for this deployment
  * @param testLineName - Unique identifier for this test line
  */
-export const TestLinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TestLinesCreateOrUpdateInput,
-    outputSchema: TestLinesCreateOrUpdateOutput,
-  }),
-);
+export const TestLinesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TestLinesCreateOrUpdateInput,
+  outputSchema: TestLinesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TestLinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestLinesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   communicationsGatewayName: Schema.String.pipe(T.PathParam()),
@@ -498,7 +483,7 @@ export const TestLinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestLinesDeleteInput = typeof TestLinesDeleteInput.Type;
 
 // Output Schema
-export const TestLinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TestLinesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TestLinesDeleteOutput = typeof TestLinesDeleteOutput.Type;
 
 // The operation
@@ -511,12 +496,12 @@ export type TestLinesDeleteOutput = typeof TestLinesDeleteOutput.Type;
  * @param communicationsGatewayName - Unique identifier for this deployment
  * @param testLineName - Unique identifier for this test line
  */
-export const TestLinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestLinesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestLinesDeleteInput,
   outputSchema: TestLinesDeleteOutput,
 }));
 // Input Schema
-export const TestLinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestLinesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   communicationsGatewayName: Schema.String.pipe(T.PathParam()),
@@ -531,7 +516,7 @@ export const TestLinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestLinesGetInput = typeof TestLinesGetInput.Type;
 
 // Output Schema
-export const TestLinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestLinesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -562,13 +547,13 @@ export type TestLinesGetOutput = typeof TestLinesGetOutput.Type;
  * @param communicationsGatewayName - Unique identifier for this deployment
  * @param testLineName - Unique identifier for this test line
  */
-export const TestLinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestLinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestLinesGetInput,
   outputSchema: TestLinesGetOutput,
 }));
 // Input Schema
 export const TestLinesListByCommunicationsGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationsGatewayName: Schema.String.pipe(T.PathParam()),
@@ -584,7 +569,7 @@ export type TestLinesListByCommunicationsGatewayInput =
 
 // Output Schema
 export const TestLinesListByCommunicationsGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -630,13 +615,14 @@ export type TestLinesListByCommunicationsGatewayOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationsGatewayName - Unique identifier for this deployment
  */
-export const TestLinesListByCommunicationsGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestLinesListByCommunicationsGateway = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: TestLinesListByCommunicationsGatewayInput,
     outputSchema: TestLinesListByCommunicationsGatewayOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TestLinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestLinesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   communicationsGatewayName: Schema.String.pipe(T.PathParam()),
@@ -651,7 +637,7 @@ export const TestLinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TestLinesUpdateInput = typeof TestLinesUpdateInput.Type;
 
 // Output Schema
-export const TestLinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestLinesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -682,7 +668,7 @@ export type TestLinesUpdateOutput = typeof TestLinesUpdateOutput.Type;
  * @param communicationsGatewayName - Unique identifier for this deployment
  * @param testLineName - Unique identifier for this test line
  */
-export const TestLinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestLinesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestLinesUpdateInput,
   outputSchema: TestLinesUpdateOutput,
 }));

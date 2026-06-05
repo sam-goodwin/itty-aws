@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsSecretsInput = /*@__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
@@ -19,7 +19,7 @@ export const GetAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAppsSecretsInput = typeof GetAppsSecretsInput.Type;
 
 // Output Schema
-export const GetAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsSecretsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       created: Schema.Number,
@@ -54,7 +54,7 @@ export type GetAppsSecretsOutput = typeof GetAppsSecretsOutput.Type;
  * @param scope - Specifies the scoping of the secret. Requests originating from UI extensions can only access account-scoped secrets or secrets scoped to their own user.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetAppsSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAppsSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAppsSecretsInput,
   outputSchema: GetAppsSecretsOutput,
 }));

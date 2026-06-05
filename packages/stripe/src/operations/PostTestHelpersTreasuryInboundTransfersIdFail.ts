@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTreasuryInboundTransfersIdFailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     failure_details: Schema.optional(
@@ -40,7 +40,7 @@ export type PostTestHelpersTreasuryInboundTransfersIdFailInput =
 
 // Output Schema
 export const PostTestHelpersTreasuryInboundTransfersIdFailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -78,7 +78,7 @@ export type PostTestHelpersTreasuryInboundTransfersIdFailOutput =
  * <p>Transitions a test mode created InboundTransfer to the <code>failed</code> status. The InboundTransfer must already be in the <code>processing</code> state.</p>
  */
 export const PostTestHelpersTreasuryInboundTransfersIdFail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryInboundTransfersIdFailInput,
     outputSchema: PostTestHelpersTreasuryInboundTransfersIdFailOutput,
   }));

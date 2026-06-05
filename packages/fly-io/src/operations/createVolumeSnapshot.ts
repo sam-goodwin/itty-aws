@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateVolumeSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    volume_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/apps/{app_name}/volumes/{volume_id}/snapshots",
-    }),
-  );
+export const CreateVolumeSnapshotInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  volume_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apps/{app_name}/volumes/{volume_id}/snapshots",
+  }),
+);
 export type CreateVolumeSnapshotInput = typeof CreateVolumeSnapshotInput.Type;
 
 // Output Schema
-export const CreateVolumeSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateVolumeSnapshotOutput = /*@__PURE__*/ Schema.Void;
 export type CreateVolumeSnapshotOutput = typeof CreateVolumeSnapshotOutput.Type;
 
 // The operation
@@ -30,10 +28,8 @@ export type CreateVolumeSnapshotOutput = typeof CreateVolumeSnapshotOutput.Type;
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const createVolumeSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateVolumeSnapshotInput,
-    outputSchema: CreateVolumeSnapshotOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createVolumeSnapshot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateVolumeSnapshotInput,
+  outputSchema: CreateVolumeSnapshotOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

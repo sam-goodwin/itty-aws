@@ -9,41 +9,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AutoScaleVCoresCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-    }),
-  );
+export const AutoScaleVCoresCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vcoreName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+  }),
+);
 export type AutoScaleVCoresCreateInput = typeof AutoScaleVCoresCreateInput.Type;
 
 // Output Schema
-export const AutoScaleVCoresCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoScaleVCoresCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoScaleVCoresCreateOutput =
   typeof AutoScaleVCoresCreateOutput.Type;
 
@@ -56,30 +54,26 @@ export type AutoScaleVCoresCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresCreateInput,
-    outputSchema: AutoScaleVCoresCreateOutput,
+export const AutoScaleVCoresCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresCreateInput,
+  outputSchema: AutoScaleVCoresCreateOutput,
+}));
+// Input Schema
+export const AutoScaleVCoresDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vcoreName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
   }),
 );
-// Input Schema
-export const AutoScaleVCoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-    }),
-  );
 export type AutoScaleVCoresDeleteInput = typeof AutoScaleVCoresDeleteInput.Type;
 
 // Output Schema
-export const AutoScaleVCoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AutoScaleVCoresDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AutoScaleVCoresDeleteOutput =
   typeof AutoScaleVCoresDeleteOutput.Type;
 
@@ -92,48 +86,44 @@ export type AutoScaleVCoresDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresDeleteInput,
-    outputSchema: AutoScaleVCoresDeleteOutput,
+export const AutoScaleVCoresDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresDeleteInput,
+  outputSchema: AutoScaleVCoresDeleteOutput,
+}));
+// Input Schema
+export const AutoScaleVCoresGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vcoreName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
   }),
 );
-// Input Schema
-export const AutoScaleVCoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-    }),
-  );
 export type AutoScaleVCoresGetInput = typeof AutoScaleVCoresGetInput.Type;
 
 // Output Schema
-export const AutoScaleVCoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoScaleVCoresGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoScaleVCoresGetOutput = typeof AutoScaleVCoresGetOutput.Type;
 
 // The operation
@@ -145,13 +135,13 @@ export type AutoScaleVCoresGetOutput = typeof AutoScaleVCoresGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutoScaleVCoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoScaleVCoresGetInput,
   outputSchema: AutoScaleVCoresGetOutput,
 }));
 // Input Schema
 export const AutoScaleVCoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -166,7 +156,7 @@ export type AutoScaleVCoresListByResourceGroupInput =
 
 // Output Schema
 export const AutoScaleVCoresListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -211,14 +201,15 @@ export type AutoScaleVCoresListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AutoScaleVCoresListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutoScaleVCoresListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AutoScaleVCoresListByResourceGroupInput,
     outputSchema: AutoScaleVCoresListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AutoScaleVCoresListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -232,7 +223,7 @@ export type AutoScaleVCoresListBySubscriptionInput =
 
 // Output Schema
 export const AutoScaleVCoresListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -276,47 +267,44 @@ export type AutoScaleVCoresListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AutoScaleVCoresListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutoScaleVCoresListBySubscriptionInput,
-    outputSchema: AutoScaleVCoresListBySubscriptionOutput,
-  }));
+export const AutoScaleVCoresListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresListBySubscriptionInput,
+  outputSchema: AutoScaleVCoresListBySubscriptionOutput,
+}));
 // Input Schema
-export const AutoScaleVCoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-    }),
-  );
+export const AutoScaleVCoresUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vcoreName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+  }),
+);
 export type AutoScaleVCoresUpdateInput = typeof AutoScaleVCoresUpdateInput.Type;
 
 // Output Schema
-export const AutoScaleVCoresUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoScaleVCoresUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoScaleVCoresUpdateOutput =
   typeof AutoScaleVCoresUpdateOutput.Type;
 
@@ -329,30 +317,29 @@ export type AutoScaleVCoresUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresUpdateInput,
-    outputSchema: AutoScaleVCoresUpdateOutput,
-  }),
-);
+export const AutoScaleVCoresUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresUpdateInput,
+  outputSchema: AutoScaleVCoresUpdateOutput,
+}));
 // Input Schema
-export const CapacitiesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/locations/{location}/checkNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/locations/{location}/checkNameAvailability",
+  }),
+);
 export type CapacitiesCheckNameAvailabilityInput =
   typeof CapacitiesCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const CapacitiesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -368,13 +355,12 @@ export type CapacitiesCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const CapacitiesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CapacitiesCheckNameAvailabilityInput,
-    outputSchema: CapacitiesCheckNameAvailabilityOutput,
-  }));
+export const CapacitiesCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacitiesCheckNameAvailabilityInput,
+  outputSchema: CapacitiesCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -388,27 +374,25 @@ export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CapacitiesCreateInput = typeof CapacitiesCreateInput.Type;
 
 // Output Schema
-export const CapacitiesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CapacitiesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacitiesCreateOutput = typeof CapacitiesCreateOutput.Type;
 
 // The operation
@@ -420,12 +404,12 @@ export type CapacitiesCreateOutput = typeof CapacitiesCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesCreateInput,
   outputSchema: CapacitiesCreateOutput,
 }));
 // Input Schema
-export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -439,7 +423,7 @@ export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CapacitiesDeleteInput = typeof CapacitiesDeleteInput.Type;
 
 // Output Schema
-export const CapacitiesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CapacitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CapacitiesDeleteOutput = typeof CapacitiesDeleteOutput.Type;
 
 // The operation
@@ -451,46 +435,44 @@ export type CapacitiesDeleteOutput = typeof CapacitiesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesDeleteInput,
   outputSchema: CapacitiesDeleteOutput,
 }));
 // Input Schema
-export const CapacitiesGetDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
-    }),
-  );
+export const CapacitiesGetDetailsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+  }),
+);
 export type CapacitiesGetDetailsInput = typeof CapacitiesGetDetailsInput.Type;
 
 // Output Schema
-export const CapacitiesGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CapacitiesGetDetailsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacitiesGetDetailsOutput = typeof CapacitiesGetDetailsOutput.Type;
 
 // The operation
@@ -502,14 +484,12 @@ export type CapacitiesGetDetailsOutput = typeof CapacitiesGetDetailsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapacitiesGetDetailsInput,
-    outputSchema: CapacitiesGetDetailsOutput,
-  }),
-);
+export const CapacitiesGetDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacitiesGetDetailsInput,
+  outputSchema: CapacitiesGetDetailsOutput,
+}));
 // Input Schema
-export const CapacitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -521,7 +501,7 @@ export const CapacitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CapacitiesListInput = typeof CapacitiesListInput.Type;
 
 // Output Schema
-export const CapacitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -554,61 +534,49 @@ export type CapacitiesListOutput = typeof CapacitiesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesListInput,
   outputSchema: CapacitiesListOutput,
 }));
 // Input Schema
-export const CapacitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
-    }),
-  );
+export const CapacitiesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
+  }),
+);
 export type CapacitiesListByResourceGroupInput =
   typeof CapacitiesListByResourceGroupInput.Type;
 
 // Output Schema
-export const CapacitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CapacitiesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CapacitiesListByResourceGroupOutput =
   typeof CapacitiesListByResourceGroupOutput.Type;
 
@@ -620,39 +588,36 @@ export type CapacitiesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CapacitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CapacitiesListByResourceGroupInput,
-    outputSchema: CapacitiesListByResourceGroupOutput,
-  }));
+export const CapacitiesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacitiesListByResourceGroupInput,
+  outputSchema: CapacitiesListByResourceGroupOutput,
+}));
 // Input Schema
-export const CapacitiesListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/skus",
-    }),
-  );
+export const CapacitiesListSkusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/skus",
+  }),
+);
 export type CapacitiesListSkusInput = typeof CapacitiesListSkusInput.Type;
 
 // Output Schema
-export const CapacitiesListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-      ),
+export const CapacitiesListSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type CapacitiesListSkusOutput = typeof CapacitiesListSkusOutput.Type;
 
 // The operation
@@ -662,46 +627,44 @@ export type CapacitiesListSkusOutput = typeof CapacitiesListSkusOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CapacitiesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesListSkusInput,
   outputSchema: CapacitiesListSkusOutput,
 }));
 // Input Schema
-export const CapacitiesListSkusForCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/skus",
-    }),
-  );
+export const CapacitiesListSkusForCapacityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/skus",
+  }),
+);
 export type CapacitiesListSkusForCapacityInput =
   typeof CapacitiesListSkusForCapacityInput.Type;
 
 // Output Schema
-export const CapacitiesListSkusForCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-              ),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+export const CapacitiesListSkusForCapacityOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
+            ),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type CapacitiesListSkusForCapacityOutput =
   typeof CapacitiesListSkusForCapacityOutput.Type;
 
@@ -714,13 +677,12 @@ export type CapacitiesListSkusForCapacityOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesListSkusForCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CapacitiesListSkusForCapacityInput,
-    outputSchema: CapacitiesListSkusForCapacityOutput,
-  }));
+export const CapacitiesListSkusForCapacity = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacitiesListSkusForCapacityInput,
+  outputSchema: CapacitiesListSkusForCapacityOutput,
+}));
 // Input Schema
-export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -734,7 +696,7 @@ export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CapacitiesResumeInput = typeof CapacitiesResumeInput.Type;
 
 // Output Schema
-export const CapacitiesResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CapacitiesResumeOutput = /*@__PURE__*/ Schema.Void;
 export type CapacitiesResumeOutput = typeof CapacitiesResumeOutput.Type;
 
 // The operation
@@ -746,19 +708,17 @@ export type CapacitiesResumeOutput = typeof CapacitiesResumeOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesResumeInput,
   outputSchema: CapacitiesResumeOutput,
 }));
 // Input Schema
-export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CapacitiesSuspendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
@@ -767,7 +727,7 @@ export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CapacitiesSuspendInput = typeof CapacitiesSuspendInput.Type;
 
 // Output Schema
-export const CapacitiesSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CapacitiesSuspendOutput = /*@__PURE__*/ Schema.Void;
 export type CapacitiesSuspendOutput = typeof CapacitiesSuspendOutput.Type;
 
 // The operation
@@ -779,12 +739,12 @@ export type CapacitiesSuspendOutput = typeof CapacitiesSuspendOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesSuspendInput,
   outputSchema: CapacitiesSuspendOutput,
 }));
 // Input Schema
-export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -798,27 +758,25 @@ export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CapacitiesUpdateInput = typeof CapacitiesUpdateInput.Type;
 
 // Output Schema
-export const CapacitiesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CapacitiesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacitiesUpdateOutput = typeof CapacitiesUpdateOutput.Type;
 
 // The operation
@@ -830,12 +788,12 @@ export type CapacitiesUpdateOutput = typeof CapacitiesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesUpdateInput,
   outputSchema: CapacitiesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -846,7 +804,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -910,7 +868,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

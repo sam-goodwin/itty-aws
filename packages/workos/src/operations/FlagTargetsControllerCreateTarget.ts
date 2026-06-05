@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const FlagTargetsControllerCreateTargetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type FlagTargetsControllerCreateTargetInput =
 
 // Output Schema
 export const FlagTargetsControllerCreateTargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type FlagTargetsControllerCreateTargetOutput =
   typeof FlagTargetsControllerCreateTargetOutput.Type;
 
@@ -32,9 +32,8 @@ export type FlagTargetsControllerCreateTargetOutput =
  * @param resourceId - The resource ID in format "user_<id>" or "org_<id>".
  * @param slug - The unique slug identifier of the feature flag.
  */
-export const FlagTargetsControllerCreateTarget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FlagTargetsControllerCreateTargetInput,
-    outputSchema: FlagTargetsControllerCreateTargetOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const FlagTargetsControllerCreateTarget = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlagTargetsControllerCreateTargetInput,
+  outputSchema: FlagTargetsControllerCreateTargetOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Conflict, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const WebhookEndpointsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint_url: Schema.optional(Schema.String),
     events: Schema.optional(
       Schema.Array(
@@ -97,11 +97,11 @@ export type WebhookEndpointsControllerCreateInput =
 
 // Output Schema
 export const WebhookEndpointsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     endpoint_url: Schema.optional(Schema.String),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
     status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
     events: Schema.optional(Schema.Array(Schema.String)),
     created_at: Schema.optional(Schema.String),
@@ -116,9 +116,8 @@ export type WebhookEndpointsControllerCreateOutput =
  *
  * Create a new webhook endpoint to receive event notifications.
  */
-export const WebhookEndpointsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WebhookEndpointsControllerCreateInput,
-    outputSchema: WebhookEndpointsControllerCreateOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const WebhookEndpointsControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookEndpointsControllerCreateInput,
+  outputSchema: WebhookEndpointsControllerCreateOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));

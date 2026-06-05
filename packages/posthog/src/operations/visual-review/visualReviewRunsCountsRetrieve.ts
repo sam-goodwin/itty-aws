@@ -4,26 +4,26 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const VisualReviewRunsCountsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/visual_review/runs/counts/",
-    }),
-  );
+export const VisualReviewRunsCountsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/visual_review/runs/counts/",
+  }),
+);
 export type VisualReviewRunsCountsRetrieveInput =
   typeof VisualReviewRunsCountsRetrieveInput.Type;
 
 // Output Schema
-export const VisualReviewRunsCountsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VisualReviewRunsCountsRetrieveOutput = /*@__PURE__*/ Schema.Struct(
+  {
     needs_review: Schema.optional(Schema.Number),
     clean: Schema.optional(Schema.Number),
     processing: Schema.optional(Schema.Number),
     stale: Schema.optional(Schema.Number),
-  });
+  },
+);
 export type VisualReviewRunsCountsRetrieveOutput =
   typeof VisualReviewRunsCountsRetrieveOutput.Type;
 
@@ -33,9 +33,8 @@ export type VisualReviewRunsCountsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visualReviewRunsCountsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VisualReviewRunsCountsRetrieveInput,
-    outputSchema: VisualReviewRunsCountsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const visualReviewRunsCountsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsCountsRetrieveInput,
+  outputSchema: VisualReviewRunsCountsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

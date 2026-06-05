@@ -4,13 +4,13 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
-export const GetOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/orgs/{id}" }));
 export type GetOrgInput = typeof GetOrgInput.Type;
 
 // Output Schema
-export const GetOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   defaultRegion: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export const GetOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgOutput = typeof GetOrgOutput.Type;
 
 // The operation
-export const getOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInput,
   outputSchema: GetOrgOutput,
   errors: [NotFound] as const,

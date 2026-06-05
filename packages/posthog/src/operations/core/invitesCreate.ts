@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesCreateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   target_email: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InvitesCreateInput = typeof InvitesCreateInput.Type;
 
 // Output Schema
-export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   target_email: Schema.optional(Schema.String),
   first_name: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InvitesCreateOutput = typeof InvitesCreateOutput.Type;
 
 // The operation
-export const invitesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const invitesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitesCreateInput,
   outputSchema: InvitesCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

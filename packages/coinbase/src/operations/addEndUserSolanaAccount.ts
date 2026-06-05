@@ -3,21 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AddEndUserSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }));
+export const AddEndUserSolanaAccountInput = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }));
 export type AddEndUserSolanaAccountInput =
   typeof AddEndUserSolanaAccountInput.Type;
 
 // Output Schema
-export const AddEndUserSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    solanaAccount: Schema.Struct({
-      address: Schema.String,
-      createdAt: Schema.String,
-    }),
-  });
+export const AddEndUserSolanaAccountOutput = /*@__PURE__*/ Schema.Struct({
+  solanaAccount: Schema.Struct({
+    address: Schema.String,
+    createdAt: Schema.String,
+  }),
+});
 export type AddEndUserSolanaAccountOutput =
   typeof AddEndUserSolanaAccountOutput.Type;
 
@@ -38,9 +36,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const addEndUserSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddEndUserSolanaAccountInput,
-    outputSchema: AddEndUserSolanaAccountOutput,
-  }),
-);
+export const addEndUserSolanaAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddEndUserSolanaAccountInput,
+  outputSchema: AddEndUserSolanaAccountOutput,
+}));

@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupUserSecurityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/userSecurity",
-    }),
-  );
+export const UpdateGroupUserSecurityInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/userSecurity",
+  }),
+);
 export type UpdateGroupUserSecurityInput =
   typeof UpdateGroupUserSecurityInput.Type;
 
 // Output Schema
-export const UpdateGroupUserSecurityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupUserSecurityOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupUserSecurityOutput =
   typeof UpdateGroupUserSecurityOutput.Type;
 
@@ -37,10 +35,8 @@ export type UpdateGroupUserSecurityOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupUserSecurity = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupUserSecurityInput,
-    outputSchema: UpdateGroupUserSecurityOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupUserSecurity = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupUserSecurityInput,
+  outputSchema: UpdateGroupUserSecurityOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

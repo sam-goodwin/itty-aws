@@ -4,38 +4,36 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    integrationType: Schema.Literals([
-      "PAGER_DUTY",
-      "SLACK",
-      "DATADOG",
-      "NEW_RELIC",
-      "OPS_GENIE",
-      "VICTOR_OPS",
-      "WEBHOOK",
-      "HIP_CHAT",
-      "PROMETHEUS",
-      "MICROSOFT_TEAMS",
-    ]).pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-    }),
-  );
+export const CreateGroupIntegrationInput = /*@__PURE__*/ Schema.Struct({
+  integrationType: Schema.Literals([
+    "PAGER_DUTY",
+    "SLACK",
+    "DATADOG",
+    "NEW_RELIC",
+    "OPS_GENIE",
+    "VICTOR_OPS",
+    "WEBHOOK",
+    "HIP_CHAT",
+    "PROMETHEUS",
+    "MICROSOFT_TEAMS",
+  ]).pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
+  }),
+);
 export type CreateGroupIntegrationInput =
   typeof CreateGroupIntegrationInput.Type;
 
 // Output Schema
-export const CreateGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupIntegrationOutput =
   typeof CreateGroupIntegrationOutput.Type;
 
@@ -55,10 +53,8 @@ export type CreateGroupIntegrationOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupIntegrationInput,
-    outputSchema: CreateGroupIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupIntegrationInput,
+  outputSchema: CreateGroupIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

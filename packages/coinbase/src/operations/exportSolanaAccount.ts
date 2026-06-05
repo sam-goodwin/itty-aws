@@ -3,20 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ExportSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    exportEncryptionKey: Schema.String,
-  }).pipe(
-    T.Http({ method: "POST", path: "/v2/solana/accounts/{address}/export" }),
-  );
+export const ExportSolanaAccountInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  exportEncryptionKey: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/solana/accounts/{address}/export" }),
+);
 export type ExportSolanaAccountInput = typeof ExportSolanaAccountInput.Type;
 
 // Output Schema
-export const ExportSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptedPrivateKey: Schema.String,
-  });
+export const ExportSolanaAccountOutput = /*@__PURE__*/ Schema.Struct({
+  encryptedPrivateKey: Schema.String,
+});
 export type ExportSolanaAccountOutput = typeof ExportSolanaAccountOutput.Type;
 
 // The operation
@@ -35,7 +33,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The base58 encoded address of the Solana account.
  */
-export const exportSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const exportSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportSolanaAccountInput,
   outputSchema: ExportSolanaAccountOutput,
 }));

@@ -3,22 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetCustomersCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customer: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/customers/{customer}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetCustomersCustomerInput = /*@__PURE__*/ Schema.Struct({
+  customer: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/customers/{customer}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetCustomersCustomerInput = typeof GetCustomersCustomerInput.Type;
 
 // Output Schema
-export const GetCustomersCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const GetCustomersCustomerOutput = /*@__PURE__*/ Schema.Unknown;
 export type GetCustomersCustomerOutput = typeof GetCustomersCustomerOutput.Type;
 
 // The operation
@@ -29,9 +27,7 @@ export type GetCustomersCustomerOutput = typeof GetCustomersCustomerOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetCustomersCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCustomersCustomerInput,
-    outputSchema: GetCustomersCustomerOutput,
-  }),
-);
+export const GetCustomersCustomer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCustomersCustomerInput,
+  outputSchema: GetCustomersCustomerOutput,
+}));

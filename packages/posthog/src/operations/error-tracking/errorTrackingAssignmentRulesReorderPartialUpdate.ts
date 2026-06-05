@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesReorderPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
@@ -32,7 +32,7 @@ export type ErrorTrackingAssignmentRulesReorderPartialUpdateInput =
 
 // Output Schema
 export const ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
   typeof ErrorTrackingAssignmentRulesReorderPartialUpdateOutput.Type;
 
@@ -42,7 +42,7 @@ export type ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingAssignmentRulesReorderPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesReorderPartialUpdateInput,
     outputSchema: ErrorTrackingAssignmentRulesReorderPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

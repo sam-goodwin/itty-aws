@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const IntegrationsGithubBranchesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -23,7 +23,7 @@ export type IntegrationsGithubBranchesRetrieveInput =
 
 // Output Schema
 export const IntegrationsGithubBranchesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branches: Schema.optional(Schema.Array(Schema.String)),
     default_branch: Schema.optional(Schema.NullOr(Schema.String)),
     has_more: Schema.optional(Schema.Boolean),
@@ -41,9 +41,10 @@ export type IntegrationsGithubBranchesRetrieveOutput =
  * @param repo - Repository in owner/repo format
  * @param search - Optional case-insensitive branch name search query.
  */
-export const integrationsGithubBranchesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const integrationsGithubBranchesRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationsGithubBranchesRetrieveInput,
     outputSchema: IntegrationsGithubBranchesRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

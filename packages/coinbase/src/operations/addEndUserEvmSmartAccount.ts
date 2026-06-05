@@ -3,28 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AddEndUserEvmSmartAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.PathParam()),
-    enableSpendPermissions: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/end-users/{userId}/evm-smart-account",
-    }),
-  );
+export const AddEndUserEvmSmartAccountInput = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.PathParam()),
+  enableSpendPermissions: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/end-users/{userId}/evm-smart-account" }),
+);
 export type AddEndUserEvmSmartAccountInput =
   typeof AddEndUserEvmSmartAccountInput.Type;
 
 // Output Schema
-export const AddEndUserEvmSmartAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    evmSmartAccount: Schema.Struct({
-      address: Schema.String,
-      ownerAddresses: Schema.Array(Schema.String),
-      createdAt: Schema.String,
-    }),
-  });
+export const AddEndUserEvmSmartAccountOutput = /*@__PURE__*/ Schema.Struct({
+  evmSmartAccount: Schema.Struct({
+    address: Schema.String,
+    ownerAddresses: Schema.Array(Schema.String),
+    createdAt: Schema.String,
+  }),
+});
 export type AddEndUserEvmSmartAccountOutput =
   typeof AddEndUserEvmSmartAccountOutput.Type;
 
@@ -45,9 +40,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const addEndUserEvmSmartAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddEndUserEvmSmartAccountInput,
-    outputSchema: AddEndUserEvmSmartAccountOutput,
-  }),
-);
+export const addEndUserEvmSmartAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddEndUserEvmSmartAccountInput,
+  outputSchema: AddEndUserEvmSmartAccountOutput,
+}));

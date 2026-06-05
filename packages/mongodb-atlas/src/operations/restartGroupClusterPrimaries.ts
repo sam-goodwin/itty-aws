@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RestartGroupClusterPrimariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries",
-    }),
-  );
+export const RestartGroupClusterPrimariesInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries",
+  }),
+);
 export type RestartGroupClusterPrimariesInput =
   typeof RestartGroupClusterPrimariesInput.Type;
 
 // Output Schema
-export const RestartGroupClusterPrimariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RestartGroupClusterPrimariesOutput = /*@__PURE__*/ Schema.Void;
 export type RestartGroupClusterPrimariesOutput =
   typeof RestartGroupClusterPrimariesOutput.Type;
 
@@ -38,9 +36,8 @@ export type RestartGroupClusterPrimariesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const restartGroupClusterPrimaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestartGroupClusterPrimariesInput,
-    outputSchema: RestartGroupClusterPrimariesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const restartGroupClusterPrimaries = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestartGroupClusterPrimariesInput,
+  outputSchema: RestartGroupClusterPrimariesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

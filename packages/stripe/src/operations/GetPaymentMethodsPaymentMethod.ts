@@ -3,23 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPaymentMethodsPaymentMethodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    payment_method: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/payment_methods/{payment_method}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetPaymentMethodsPaymentMethodInput = /*@__PURE__*/ Schema.Struct({
+  payment_method: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/payment_methods/{payment_method}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetPaymentMethodsPaymentMethodInput =
   typeof GetPaymentMethodsPaymentMethodInput.Type;
 
 // Output Schema
-export const GetPaymentMethodsPaymentMethodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPaymentMethodsPaymentMethodOutput = /*@__PURE__*/ Schema.Struct(
+  {
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -517,7 +516,8 @@ export const GetPaymentMethodsPaymentMethodOutput =
     ),
     wechat_pay: Schema.optional(Schema.Struct({})),
     zip: Schema.optional(Schema.Struct({})),
-  });
+  },
+);
 export type GetPaymentMethodsPaymentMethodOutput =
   typeof GetPaymentMethodsPaymentMethodOutput.Type;
 
@@ -529,8 +529,7 @@ export type GetPaymentMethodsPaymentMethodOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPaymentMethodsPaymentMethod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetPaymentMethodsPaymentMethodInput,
-    outputSchema: GetPaymentMethodsPaymentMethodOutput,
-  }));
+export const GetPaymentMethodsPaymentMethod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentMethodsPaymentMethodInput,
+  outputSchema: GetPaymentMethodsPaymentMethodOutput,
+}));

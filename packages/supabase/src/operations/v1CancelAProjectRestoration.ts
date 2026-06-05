@@ -4,18 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1CancelAProjectRestorationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "POST", path: "/v1/projects/{ref}/restore/cancel" }),
-  );
+export const V1CancelAProjectRestorationInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/restore/cancel" }));
 export type V1CancelAProjectRestorationInput =
   typeof V1CancelAProjectRestorationInput.Type;
 
 // Output Schema
-export const V1CancelAProjectRestorationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1CancelAProjectRestorationOutput = /*@__PURE__*/ Schema.Void;
 export type V1CancelAProjectRestorationOutput =
   typeof V1CancelAProjectRestorationOutput.Type;
 
@@ -25,10 +21,8 @@ export type V1CancelAProjectRestorationOutput =
  *
  * @param ref - Project ref
  */
-export const v1CancelAProjectRestoration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CancelAProjectRestorationInput,
-    outputSchema: V1CancelAProjectRestorationOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1CancelAProjectRestoration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CancelAProjectRestorationInput,
+  outputSchema: V1CancelAProjectRestorationOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

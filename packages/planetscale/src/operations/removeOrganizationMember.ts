@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const RemoveOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    delete_passwords: Schema.optional(Schema.Boolean),
-    delete_service_tokens: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/organizations/{organization}/members/{id}",
-    }),
-  );
+export const RemoveOrganizationMemberInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  delete_passwords: Schema.optional(Schema.Boolean),
+  delete_service_tokens: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/organizations/{organization}/members/{id}",
+  }),
+);
 export type RemoveOrganizationMemberInput =
   typeof RemoveOrganizationMemberInput.Type;
 
 // Output Schema
-export const RemoveOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveOrganizationMemberOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveOrganizationMemberOutput =
   typeof RemoveOrganizationMemberOutput.Type;
 
@@ -34,10 +32,8 @@ export type RemoveOrganizationMemberOutput =
  * @param delete_passwords - Whether to delete all passwords associated with the member. Only available when removing other members (not yourself).
  * @param delete_service_tokens - Whether to delete all service tokens associated with the member. Only available when removing other members (not yourself).
  */
-export const removeOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemoveOrganizationMemberInput,
-    outputSchema: RemoveOrganizationMemberOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const removeOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemoveOrganizationMemberInput,
+  outputSchema: RemoveOrganizationMemberOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

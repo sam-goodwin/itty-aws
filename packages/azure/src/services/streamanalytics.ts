@@ -9,27 +9,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
-    }),
-  );
+export const ClustersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+  }),
+);
 export type ClustersCreateOrUpdateInput =
   typeof ClustersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ClustersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
 
@@ -43,14 +41,12 @@ export type ClustersCreateOrUpdateOutput =
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -63,7 +59,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -74,12 +70,12 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -92,7 +88,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -107,39 +103,37 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
-export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters",
-    }),
-  );
+export const ClustersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters",
+  }),
+);
 export type ClustersListByResourceGroupInput =
   typeof ClustersListByResourceGroupInput.Type;
 
 // Output Schema
-export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
 
@@ -151,40 +145,36 @@ export type ClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
+// Input Schema
+export const ClustersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/clusters",
   }),
 );
-// Input Schema
-export const ClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/clusters",
-    }),
-  );
 export type ClustersListBySubscriptionInput =
   typeof ClustersListBySubscriptionInput.Type;
 
 // Output Schema
-export const ClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ClustersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListBySubscriptionOutput =
   typeof ClustersListBySubscriptionOutput.Type;
 
@@ -195,54 +185,50 @@ export type ClustersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListBySubscriptionInput,
-    outputSchema: ClustersListBySubscriptionOutput,
+export const ClustersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListBySubscriptionInput,
+  outputSchema: ClustersListBySubscriptionOutput,
+}));
+// Input Schema
+export const ClustersListStreamingJobsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/listStreamingJobs",
   }),
 );
-// Input Schema
-export const ClustersListStreamingJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/listStreamingJobs",
-    }),
-  );
 export type ClustersListStreamingJobsInput =
   typeof ClustersListStreamingJobsInput.Type;
 
 // Output Schema
-export const ClustersListStreamingJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          streamingUnits: Schema.optional(Schema.Number),
-          jobState: Schema.optional(
-            Schema.Literals([
-              "Created",
-              "Starting",
-              "Running",
-              "Stopping",
-              "Stopped",
-              "Deleting",
-              "Failed",
-              "Degraded",
-              "Restarting",
-              "Scaling",
-            ]),
-          ),
-        }),
-      ),
+export const ClustersListStreamingJobsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        streamingUnits: Schema.optional(Schema.Number),
+        jobState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Starting",
+            "Running",
+            "Stopping",
+            "Stopped",
+            "Deleting",
+            "Failed",
+            "Degraded",
+            "Restarting",
+            "Scaling",
+          ]),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ClustersListStreamingJobsOutput =
   typeof ClustersListStreamingJobsOutput.Type;
 
@@ -254,14 +240,12 @@ export type ClustersListStreamingJobsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListStreamingJobsInput,
-    outputSchema: ClustersListStreamingJobsOutput,
-  }),
-);
+export const ClustersListStreamingJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListStreamingJobsInput,
+  outputSchema: ClustersListStreamingJobsOutput,
+}));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -274,7 +258,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -290,33 +274,31 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
-export const FunctionsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
-    }),
-  );
+export const FunctionsCreateOrReplaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+  }),
+);
 export type FunctionsCreateOrReplaceInput =
   typeof FunctionsCreateOrReplaceInput.Type;
 
 // Output Schema
-export const FunctionsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FunctionsCreateOrReplaceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FunctionsCreateOrReplaceOutput =
   typeof FunctionsCreateOrReplaceOutput.Type;
 
@@ -331,14 +313,12 @@ export type FunctionsCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FunctionsCreateOrReplaceInput,
-    outputSchema: FunctionsCreateOrReplaceOutput,
-  }),
-);
+export const FunctionsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FunctionsCreateOrReplaceInput,
+  outputSchema: FunctionsCreateOrReplaceOutput,
+}));
 // Input Schema
-export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -352,7 +332,7 @@ export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FunctionsDeleteInput = typeof FunctionsDeleteInput.Type;
 
 // Output Schema
-export const FunctionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FunctionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FunctionsDeleteOutput = typeof FunctionsDeleteOutput.Type;
 
 // The operation
@@ -364,12 +344,12 @@ export type FunctionsDeleteOutput = typeof FunctionsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsDeleteInput,
   outputSchema: FunctionsDeleteOutput,
 }));
 // Input Schema
-export const FunctionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -383,7 +363,7 @@ export const FunctionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FunctionsGetInput = typeof FunctionsGetInput.Type;
 
 // Output Schema
-export const FunctionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -399,41 +379,39 @@ export type FunctionsGetOutput = typeof FunctionsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsGetInput,
   outputSchema: FunctionsGetOutput,
 }));
 // Input Schema
-export const FunctionsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions",
-    }),
-  );
+export const FunctionsListByStreamingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  $select: Schema.optional(Schema.String),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions",
+  }),
+);
 export type FunctionsListByStreamingJobInput =
   typeof FunctionsListByStreamingJobInput.Type;
 
 // Output Schema
-export const FunctionsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const FunctionsListByStreamingJobOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FunctionsListByStreamingJobOutput =
   typeof FunctionsListByStreamingJobOutput.Type;
 
@@ -447,15 +425,13 @@ export type FunctionsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FunctionsListByStreamingJobInput,
-    outputSchema: FunctionsListByStreamingJobOutput,
-  }),
-);
+export const FunctionsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FunctionsListByStreamingJobInput,
+  outputSchema: FunctionsListByStreamingJobOutput,
+}));
 // Input Schema
 export const FunctionsRetrieveDefaultDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -471,7 +447,7 @@ export type FunctionsRetrieveDefaultDefinitionInput =
 
 // Output Schema
 export const FunctionsRetrieveDefaultDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -488,13 +464,14 @@ export type FunctionsRetrieveDefaultDefinitionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsRetrieveDefaultDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsRetrieveDefaultDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: FunctionsRetrieveDefaultDefinitionInput,
     outputSchema: FunctionsRetrieveDefaultDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -508,7 +485,7 @@ export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FunctionsTestInput = typeof FunctionsTestInput.Type;
 
 // Output Schema
-export const FunctionsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -528,12 +505,12 @@ export type FunctionsTestOutput = typeof FunctionsTestOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsTestInput,
   outputSchema: FunctionsTestOutput,
 }));
 // Input Schema
-export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -547,7 +524,7 @@ export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FunctionsUpdateInput = typeof FunctionsUpdateInput.Type;
 
 // Output Schema
-export const FunctionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -564,32 +541,30 @@ export type FunctionsUpdateOutput = typeof FunctionsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsUpdateInput,
   outputSchema: FunctionsUpdateOutput,
 }));
 // Input Schema
-export const InputsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
-    }),
-  );
+export const InputsCreateOrReplaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+  }),
+);
 export type InputsCreateOrReplaceInput = typeof InputsCreateOrReplaceInput.Type;
 
 // Output Schema
-export const InputsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const InputsCreateOrReplaceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type InputsCreateOrReplaceOutput =
   typeof InputsCreateOrReplaceOutput.Type;
 
@@ -604,14 +579,12 @@ export type InputsCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InputsCreateOrReplaceInput,
-    outputSchema: InputsCreateOrReplaceOutput,
-  }),
-);
+export const InputsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InputsCreateOrReplaceInput,
+  outputSchema: InputsCreateOrReplaceOutput,
+}));
 // Input Schema
-export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -625,7 +598,7 @@ export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InputsDeleteInput = typeof InputsDeleteInput.Type;
 
 // Output Schema
-export const InputsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InputsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InputsDeleteOutput = typeof InputsDeleteOutput.Type;
 
 // The operation
@@ -637,12 +610,12 @@ export type InputsDeleteOutput = typeof InputsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsDeleteInput,
   outputSchema: InputsDeleteOutput,
 }));
 // Input Schema
-export const InputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -656,7 +629,7 @@ export const InputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InputsGetInput = typeof InputsGetInput.Type;
 
 // Output Schema
-export const InputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -672,41 +645,39 @@ export type InputsGetOutput = typeof InputsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsGetInput,
   outputSchema: InputsGetOutput,
 }));
 // Input Schema
-export const InputsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs",
-    }),
-  );
+export const InputsListByStreamingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  $select: Schema.optional(Schema.String),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs",
+  }),
+);
 export type InputsListByStreamingJobInput =
   typeof InputsListByStreamingJobInput.Type;
 
 // Output Schema
-export const InputsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const InputsListByStreamingJobOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type InputsListByStreamingJobOutput =
   typeof InputsListByStreamingJobOutput.Type;
 
@@ -720,14 +691,12 @@ export type InputsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InputsListByStreamingJobInput,
-    outputSchema: InputsListByStreamingJobOutput,
-  }),
-);
+export const InputsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InputsListByStreamingJobInput,
+  outputSchema: InputsListByStreamingJobOutput,
+}));
 // Input Schema
-export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -741,7 +710,7 @@ export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InputsTestInput = typeof InputsTestInput.Type;
 
 // Output Schema
-export const InputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -761,12 +730,12 @@ export type InputsTestOutput = typeof InputsTestOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsTestInput,
   outputSchema: InputsTestOutput,
 }));
 // Input Schema
-export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -780,7 +749,7 @@ export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InputsUpdateInput = typeof InputsUpdateInput.Type;
 
 // Output Schema
-export const InputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -797,12 +766,12 @@ export type InputsUpdateOutput = typeof InputsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsUpdateInput,
   outputSchema: InputsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -813,7 +782,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -840,33 +809,31 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OutputsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
-    }),
-  );
+export const OutputsCreateOrReplaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+  }),
+);
 export type OutputsCreateOrReplaceInput =
   typeof OutputsCreateOrReplaceInput.Type;
 
 // Output Schema
-export const OutputsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const OutputsCreateOrReplaceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type OutputsCreateOrReplaceOutput =
   typeof OutputsCreateOrReplaceOutput.Type;
 
@@ -881,14 +848,12 @@ export type OutputsCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutputsCreateOrReplaceInput,
-    outputSchema: OutputsCreateOrReplaceOutput,
-  }),
-);
+export const OutputsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutputsCreateOrReplaceInput,
+  outputSchema: OutputsCreateOrReplaceOutput,
+}));
 // Input Schema
-export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -902,7 +867,7 @@ export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OutputsDeleteInput = typeof OutputsDeleteInput.Type;
 
 // Output Schema
-export const OutputsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const OutputsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type OutputsDeleteOutput = typeof OutputsDeleteOutput.Type;
 
 // The operation
@@ -914,12 +879,12 @@ export type OutputsDeleteOutput = typeof OutputsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsDeleteInput,
   outputSchema: OutputsDeleteOutput,
 }));
 // Input Schema
-export const OutputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -933,7 +898,7 @@ export const OutputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OutputsGetInput = typeof OutputsGetInput.Type;
 
 // Output Schema
-export const OutputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -949,41 +914,39 @@ export type OutputsGetOutput = typeof OutputsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsGetInput,
   outputSchema: OutputsGetOutput,
 }));
 // Input Schema
-export const OutputsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs",
-    }),
-  );
+export const OutputsListByStreamingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  $select: Schema.optional(Schema.String),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs",
+  }),
+);
 export type OutputsListByStreamingJobInput =
   typeof OutputsListByStreamingJobInput.Type;
 
 // Output Schema
-export const OutputsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const OutputsListByStreamingJobOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type OutputsListByStreamingJobOutput =
   typeof OutputsListByStreamingJobOutput.Type;
 
@@ -997,14 +960,12 @@ export type OutputsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutputsListByStreamingJobInput,
-    outputSchema: OutputsListByStreamingJobOutput,
-  }),
-);
+export const OutputsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutputsListByStreamingJobInput,
+  outputSchema: OutputsListByStreamingJobOutput,
+}));
 // Input Schema
-export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1018,7 +979,7 @@ export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OutputsTestInput = typeof OutputsTestInput.Type;
 
 // Output Schema
-export const OutputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -1038,12 +999,12 @@ export type OutputsTestOutput = typeof OutputsTestOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsTestInput,
   outputSchema: OutputsTestOutput,
 }));
 // Input Schema
-export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1057,7 +1018,7 @@ export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OutputsUpdateInput = typeof OutputsUpdateInput.Type;
 
 // Output Schema
-export const OutputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1074,33 +1035,33 @@ export type OutputsUpdateOutput = typeof OutputsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsUpdateInput,
   outputSchema: OutputsUpdateOutput,
 }));
 // Input Schema
-export const PrivateEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
-    }),
-  );
+export const PrivateEndpointsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+  }),
+);
 export type PrivateEndpointsCreateOrUpdateInput =
   typeof PrivateEndpointsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PrivateEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointsCreateOrUpdateOutput =
   typeof PrivateEndpointsCreateOrUpdateOutput.Type;
 
@@ -1115,30 +1076,27 @@ export type PrivateEndpointsCreateOrUpdateOutput =
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
  */
-export const PrivateEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointsCreateOrUpdateInput,
-    outputSchema: PrivateEndpointsCreateOrUpdateOutput,
-  }));
+export const PrivateEndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointsCreateOrUpdateInput,
+  outputSchema: PrivateEndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PrivateEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
-    }),
-  );
+export const PrivateEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+  }),
+);
 export type PrivateEndpointsDeleteInput =
   typeof PrivateEndpointsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointsDeleteOutput =
   typeof PrivateEndpointsDeleteOutput.Type;
 
@@ -1151,34 +1109,30 @@ export type PrivateEndpointsDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateEndpointsDeleteInput,
-    outputSchema: PrivateEndpointsDeleteOutput,
+export const PrivateEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointsDeleteInput,
+  outputSchema: PrivateEndpointsDeleteOutput,
+}));
+// Input Schema
+export const PrivateEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
   }),
 );
-// Input Schema
-export const PrivateEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
-    }),
-  );
 export type PrivateEndpointsGetInput = typeof PrivateEndpointsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateEndpointsGetOutput = typeof PrivateEndpointsGetOutput.Type;
 
 // The operation
@@ -1190,40 +1144,38 @@ export type PrivateEndpointsGetOutput = typeof PrivateEndpointsGetOutput.Type;
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateEndpointsGetInput,
   outputSchema: PrivateEndpointsGetOutput,
 }));
 // Input Schema
-export const PrivateEndpointsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints",
-    }),
-  );
+export const PrivateEndpointsListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints",
+  }),
+);
 export type PrivateEndpointsListByClusterInput =
   typeof PrivateEndpointsListByClusterInput.Type;
 
 // Output Schema
-export const PrivateEndpointsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const PrivateEndpointsListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateEndpointsListByClusterOutput =
   typeof PrivateEndpointsListByClusterOutput.Type;
 
@@ -1236,34 +1188,31 @@ export type PrivateEndpointsListByClusterOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointsListByClusterInput,
-    outputSchema: PrivateEndpointsListByClusterOutput,
-  }));
+export const PrivateEndpointsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointsListByClusterInput,
+  outputSchema: PrivateEndpointsListByClusterOutput,
+}));
 // Input Schema
-export const StreamingJobsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
-    }),
-  );
+export const StreamingJobsCreateOrReplaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+  }),
+);
 export type StreamingJobsCreateOrReplaceInput =
   typeof StreamingJobsCreateOrReplaceInput.Type;
 
 // Output Schema
-export const StreamingJobsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const StreamingJobsCreateOrReplaceOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type StreamingJobsCreateOrReplaceOutput =
   typeof StreamingJobsCreateOrReplaceOutput.Type;
 
@@ -1278,29 +1227,26 @@ export type StreamingJobsCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StreamingJobsCreateOrReplaceInput,
-    outputSchema: StreamingJobsCreateOrReplaceOutput,
-  }));
+export const StreamingJobsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StreamingJobsCreateOrReplaceInput,
+  outputSchema: StreamingJobsCreateOrReplaceOutput,
+}));
 // Input Schema
-export const StreamingJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
-    }),
-  );
+export const StreamingJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+  }),
+);
 export type StreamingJobsDeleteInput = typeof StreamingJobsDeleteInput.Type;
 
 // Output Schema
-export const StreamingJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StreamingJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StreamingJobsDeleteOutput = typeof StreamingJobsDeleteOutput.Type;
 
 // The operation
@@ -1312,12 +1258,12 @@ export type StreamingJobsDeleteOutput = typeof StreamingJobsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsDeleteInput,
   outputSchema: StreamingJobsDeleteOutput,
 }));
 // Input Schema
-export const StreamingJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StreamingJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1332,13 +1278,11 @@ export const StreamingJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StreamingJobsGetInput = typeof StreamingJobsGetInput.Type;
 
 // Output Schema
-export const StreamingJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const StreamingJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type StreamingJobsGetOutput = typeof StreamingJobsGetOutput.Type;
 
 // The operation
@@ -1351,18 +1295,16 @@ export type StreamingJobsGetOutput = typeof StreamingJobsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsGetInput,
   outputSchema: StreamingJobsGetOutput,
 }));
 // Input Schema
-export const StreamingJobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const StreamingJobsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/streamingjobs",
@@ -1371,19 +1313,18 @@ export const StreamingJobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StreamingJobsListInput = typeof StreamingJobsListInput.Type;
 
 // Output Schema
-export const StreamingJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const StreamingJobsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StreamingJobsListOutput = typeof StreamingJobsListOutput.Type;
 
 // The operation
@@ -1394,13 +1335,13 @@ export type StreamingJobsListOutput = typeof StreamingJobsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const StreamingJobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsListInput,
   outputSchema: StreamingJobsListOutput,
 }));
 // Input Schema
 export const StreamingJobsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -1416,7 +1357,7 @@ export type StreamingJobsListByResourceGroupInput =
 
 // Output Schema
 export const StreamingJobsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1440,28 +1381,26 @@ export type StreamingJobsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StreamingJobsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StreamingJobsListByResourceGroupInput,
-    outputSchema: StreamingJobsListByResourceGroupOutput,
-  }));
+export const StreamingJobsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StreamingJobsListByResourceGroupInput,
+  outputSchema: StreamingJobsListByResourceGroupOutput,
+}));
 // Input Schema
-export const StreamingJobsScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/scale",
-    }),
-  );
+export const StreamingJobsScaleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/scale",
+  }),
+);
 export type StreamingJobsScaleInput = typeof StreamingJobsScaleInput.Type;
 
 // Output Schema
-export const StreamingJobsScaleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StreamingJobsScaleOutput = /*@__PURE__*/ Schema.Void;
 export type StreamingJobsScaleOutput = typeof StreamingJobsScaleOutput.Type;
 
 // The operation
@@ -1473,27 +1412,26 @@ export type StreamingJobsScaleOutput = typeof StreamingJobsScaleOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsScale = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsScale = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsScaleInput,
   outputSchema: StreamingJobsScaleOutput,
 }));
 // Input Schema
-export const StreamingJobsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/start",
-    }),
-  );
+export const StreamingJobsStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/start",
+  }),
+);
 export type StreamingJobsStartInput = typeof StreamingJobsStartInput.Type;
 
 // Output Schema
-export const StreamingJobsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StreamingJobsStartOutput = /*@__PURE__*/ Schema.Void;
 export type StreamingJobsStartOutput = typeof StreamingJobsStartOutput.Type;
 
 // The operation
@@ -1505,19 +1443,17 @@ export type StreamingJobsStartOutput = typeof StreamingJobsStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsStartInput,
   outputSchema: StreamingJobsStartOutput,
 }));
 // Input Schema
-export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const StreamingJobsStopInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/stop",
@@ -1526,7 +1462,7 @@ export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StreamingJobsStopInput = typeof StreamingJobsStopInput.Type;
 
 // Output Schema
-export const StreamingJobsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StreamingJobsStopOutput = /*@__PURE__*/ Schema.Void;
 export type StreamingJobsStopOutput = typeof StreamingJobsStopOutput.Type;
 
 // The operation
@@ -1538,32 +1474,30 @@ export type StreamingJobsStopOutput = typeof StreamingJobsStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsStopInput,
   outputSchema: StreamingJobsStopOutput,
 }));
 // Input Schema
-export const StreamingJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
-    }),
-  );
+export const StreamingJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+  }),
+);
 export type StreamingJobsUpdateInput = typeof StreamingJobsUpdateInput.Type;
 
 // Output Schema
-export const StreamingJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const StreamingJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type StreamingJobsUpdateOutput = typeof StreamingJobsUpdateOutput.Type;
 
 // The operation
@@ -1576,38 +1510,36 @@ export type StreamingJobsUpdateOutput = typeof StreamingJobsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsUpdateInput,
   outputSchema: StreamingJobsUpdateOutput,
 }));
 // Input Schema
-export const SubscriptionsListQuotasInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/locations/{location}/quotas",
-    }),
-  );
+export const SubscriptionsListQuotasInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/locations/{location}/quotas",
+  }),
+);
 export type SubscriptionsListQuotasInput =
   typeof SubscriptionsListQuotasInput.Type;
 
 // Output Schema
-export const SubscriptionsListQuotasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SubscriptionsListQuotasOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type SubscriptionsListQuotasOutput =
   typeof SubscriptionsListQuotasOutput.Type;
 
@@ -1619,35 +1551,33 @@ export type SubscriptionsListQuotasOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SubscriptionsListQuotas = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionsListQuotasInput,
-    outputSchema: SubscriptionsListQuotasOutput,
+export const SubscriptionsListQuotas = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionsListQuotasInput,
+  outputSchema: SubscriptionsListQuotasOutput,
+}));
+// Input Schema
+export const TransformationsCreateOrReplaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
   }),
 );
-// Input Schema
-export const TransformationsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
-    }),
-  );
 export type TransformationsCreateOrReplaceInput =
   typeof TransformationsCreateOrReplaceInput.Type;
 
 // Output Schema
-export const TransformationsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransformationsCreateOrReplaceOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type TransformationsCreateOrReplaceOutput =
   typeof TransformationsCreateOrReplaceOutput.Type;
 
@@ -1662,33 +1592,30 @@ export type TransformationsCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const TransformationsCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TransformationsCreateOrReplaceInput,
-    outputSchema: TransformationsCreateOrReplaceOutput,
-  }));
+export const TransformationsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransformationsCreateOrReplaceInput,
+  outputSchema: TransformationsCreateOrReplaceOutput,
+}));
 // Input Schema
-export const TransformationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
-    }),
-  );
+export const TransformationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
+  }),
+);
 export type TransformationsGetInput = typeof TransformationsGetInput.Type;
 
 // Output Schema
-export const TransformationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const TransformationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TransformationsGetOutput = typeof TransformationsGetOutput.Type;
 
 // The operation
@@ -1700,32 +1627,30 @@ export type TransformationsGetOutput = typeof TransformationsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const TransformationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransformationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransformationsGetInput,
   outputSchema: TransformationsGetOutput,
 }));
 // Input Schema
-export const TransformationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
-    }),
-  );
+export const TransformationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
+  }),
+);
 export type TransformationsUpdateInput = typeof TransformationsUpdateInput.Type;
 
 // Output Schema
-export const TransformationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const TransformationsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TransformationsUpdateOutput =
   typeof TransformationsUpdateOutput.Type;
 
@@ -1739,9 +1664,7 @@ export type TransformationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const TransformationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TransformationsUpdateInput,
-    outputSchema: TransformationsUpdateOutput,
-  }),
-);
+export const TransformationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransformationsUpdateInput,
+  outputSchema: TransformationsUpdateOutput,
+}));

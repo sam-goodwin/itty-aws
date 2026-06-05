@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1DiffABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1DiffABranchInput = /*@__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   included_schemas: Schema.optional(Schema.String),
   pgdelta: Schema.optional(Schema.Boolean),
@@ -14,7 +14,7 @@ export const V1DiffABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1DiffABranchInput = typeof V1DiffABranchInput.Type;
 
 // Output Schema
-export const V1DiffABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1DiffABranchOutput = /*@__PURE__*/ Schema.Void;
 export type V1DiffABranchOutput = typeof V1DiffABranchOutput.Type;
 
 // The operation
@@ -26,7 +26,7 @@ export type V1DiffABranchOutput = typeof V1DiffABranchOutput.Type;
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  * @param pgdelta - Use pg-delta instead of Migra for diffing when true
  */
-export const v1DiffABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DiffABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DiffABranchInput,
   outputSchema: V1DiffABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

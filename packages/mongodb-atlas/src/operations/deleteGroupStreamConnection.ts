@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
-    }),
-  );
+export const DeleteGroupStreamConnectionInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
+  }),
+);
 export type DeleteGroupStreamConnectionInput =
   typeof DeleteGroupStreamConnectionInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupStreamConnectionOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupStreamConnectionOutput =
   typeof DeleteGroupStreamConnectionOutput.Type;
 
@@ -40,10 +38,8 @@ export type DeleteGroupStreamConnectionOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param connectionName - Label that identifies the stream connection.
  */
-export const deleteGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupStreamConnectionInput,
-    outputSchema: DeleteGroupStreamConnectionOutput,
-    errors: [Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const deleteGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupStreamConnectionInput,
+  outputSchema: DeleteGroupStreamConnectionOutput,
+  errors: [Forbidden, NotFound, Conflict] as const,
+}));

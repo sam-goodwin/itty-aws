@@ -4,51 +4,47 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const UserlandUsersControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-    organization: Schema.optional(Schema.String),
-    organization_id: Schema.optional(Schema.String),
-    email: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/users" }));
+export const UserlandUsersControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+  organization: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/user_management/users" }));
 export type UserlandUsersControllerListInput =
   typeof UserlandUsersControllerListInput.Type;
 
 // Output Schema
-export const UserlandUsersControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          first_name: Schema.optional(Schema.NullOr(Schema.String)),
-          last_name: Schema.optional(Schema.NullOr(Schema.String)),
-          profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
-          email: Schema.optional(Schema.String),
-          email_verified: Schema.optional(Schema.Boolean),
-          external_id: Schema.optional(Schema.NullOr(Schema.String)),
-          metadata: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
-          locale: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+export const UserlandUsersControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        first_name: Schema.optional(Schema.NullOr(Schema.String)),
+        last_name: Schema.optional(Schema.NullOr(Schema.String)),
+        profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
+        email: Schema.optional(Schema.String),
+        email_verified: Schema.optional(Schema.Boolean),
+        external_id: Schema.optional(Schema.NullOr(Schema.String)),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
+        locale: Schema.optional(Schema.NullOr(Schema.String)),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type UserlandUsersControllerListOutput =
   typeof UserlandUsersControllerListOutput.Type;
 
@@ -66,10 +62,8 @@ export type UserlandUsersControllerListOutput =
  * @param organization_id - Filter users by the organization they are a member of.
  * @param email - Filter users by their email address.
  */
-export const UserlandUsersControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserlandUsersControllerListInput,
-    outputSchema: UserlandUsersControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const UserlandUsersControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUsersControllerListInput,
+  outputSchema: UserlandUsersControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

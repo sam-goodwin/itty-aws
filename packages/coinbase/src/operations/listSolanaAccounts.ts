@@ -3,27 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListSolanaAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    pageToken: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v2/solana/accounts" }));
+export const ListSolanaAccountsInput = /*@__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/v2/solana/accounts" }));
 export type ListSolanaAccountsInput = typeof ListSolanaAccountsInput.Type;
 
 // Output Schema
-export const ListSolanaAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accounts: Schema.Array(
-      Schema.Struct({
-        address: Schema.String,
-        name: Schema.optional(Schema.String),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  });
+export const ListSolanaAccountsOutput = /*@__PURE__*/ Schema.Struct({
+  accounts: Schema.Array(
+    Schema.Struct({
+      address: Schema.String,
+      name: Schema.optional(Schema.String),
+      policies: Schema.optional(Schema.Array(Schema.String)),
+      createdAt: Schema.optional(Schema.String),
+      updatedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+});
 export type ListSolanaAccountsOutput = typeof ListSolanaAccountsOutput.Type;
 
 // The operation
@@ -37,7 +35,7 @@ export type ListSolanaAccountsOutput = typeof ListSolanaAccountsOutput.Type;
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listSolanaAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listSolanaAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSolanaAccountsInput,
   outputSchema: ListSolanaAccountsOutput,
 }));

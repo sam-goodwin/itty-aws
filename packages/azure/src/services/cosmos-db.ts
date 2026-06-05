@@ -7,39 +7,37 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CassandraClustersCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-    }),
-  );
+export const CassandraClustersCreateUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+  }),
+);
 export type CassandraClustersCreateUpdateInput =
   typeof CassandraClustersCreateUpdateInput.Type;
 
 // Output Schema
-export const CassandraClustersCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
-  });
+export const CassandraClustersCreateUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+    }),
+  ),
+});
 export type CassandraClustersCreateUpdateOutput =
   typeof CassandraClustersCreateUpdateOutput.Type;
 
@@ -51,29 +49,26 @@ export type CassandraClustersCreateUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CassandraClustersCreateUpdateInput,
-    outputSchema: CassandraClustersCreateUpdateOutput,
-  }));
+export const CassandraClustersCreateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersCreateUpdateInput,
+  outputSchema: CassandraClustersCreateUpdateOutput,
+}));
 // Input Schema
-export const CassandraClustersDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
-    }),
-  );
+export const CassandraClustersDeallocateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
+  }),
+);
 export type CassandraClustersDeallocateInput =
   typeof CassandraClustersDeallocateInput.Type;
 
 // Output Schema
-export const CassandraClustersDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CassandraClustersDeallocateOutput = /*@__PURE__*/ Schema.Void;
 export type CassandraClustersDeallocateOutput =
   typeof CassandraClustersDeallocateOutput.Type;
 
@@ -85,30 +80,26 @@ export type CassandraClustersDeallocateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersDeallocateInput,
-    outputSchema: CassandraClustersDeallocateOutput,
+export const CassandraClustersDeallocate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersDeallocateInput,
+  outputSchema: CassandraClustersDeallocateOutput,
+}));
+// Input Schema
+export const CassandraClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
   }),
 );
-// Input Schema
-export const CassandraClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-    }),
-  );
 export type CassandraClustersDeleteInput =
   typeof CassandraClustersDeleteInput.Type;
 
 // Output Schema
-export const CassandraClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CassandraClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CassandraClustersDeleteOutput =
   typeof CassandraClustersDeleteOutput.Type;
 
@@ -120,42 +111,38 @@ export type CassandraClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersDeleteInput,
-    outputSchema: CassandraClustersDeleteOutput,
+export const CassandraClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersDeleteInput,
+  outputSchema: CassandraClustersDeleteOutput,
+}));
+// Input Schema
+export const CassandraClustersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
   }),
 );
-// Input Schema
-export const CassandraClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-    }),
-  );
 export type CassandraClustersGetInput = typeof CassandraClustersGetInput.Type;
 
 // Output Schema
-export const CassandraClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
-  });
+export const CassandraClustersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+    }),
+  ),
+});
 export type CassandraClustersGetOutput = typeof CassandraClustersGetOutput.Type;
 
 // The operation
@@ -166,30 +153,26 @@ export type CassandraClustersGetOutput = typeof CassandraClustersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersGetInput,
-    outputSchema: CassandraClustersGetOutput,
+export const CassandraClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersGetInput,
+  outputSchema: CassandraClustersGetOutput,
+}));
+// Input Schema
+export const CassandraClustersInvokeCommandInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
   }),
 );
-// Input Schema
-export const CassandraClustersInvokeCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
-    }),
-  );
 export type CassandraClustersInvokeCommandInput =
   typeof CassandraClustersInvokeCommandInput.Type;
 
 // Output Schema
-export const CassandraClustersInvokeCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CassandraClustersInvokeCommandOutput = /*@__PURE__*/ Schema.Void;
 export type CassandraClustersInvokeCommandOutput =
   typeof CassandraClustersInvokeCommandOutput.Type;
 
@@ -201,14 +184,13 @@ export type CassandraClustersInvokeCommandOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersInvokeCommand =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CassandraClustersInvokeCommandInput,
-    outputSchema: CassandraClustersInvokeCommandOutput,
-  }));
+export const CassandraClustersInvokeCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersInvokeCommandInput,
+  outputSchema: CassandraClustersInvokeCommandOutput,
+}));
 // Input Schema
 export const CassandraClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -223,7 +205,7 @@ export type CassandraClustersListByResourceGroupInput =
 
 // Output Schema
 export const CassandraClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -256,14 +238,15 @@ export type CassandraClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraClustersListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraClustersListByResourceGroupInput,
     outputSchema: CassandraClustersListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -277,7 +260,7 @@ export type CassandraClustersListBySubscriptionInput =
 
 // Output Schema
 export const CassandraClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -309,29 +292,28 @@ export type CassandraClustersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraClustersListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraClustersListBySubscriptionInput,
     outputSchema: CassandraClustersListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CassandraClustersStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
-    }),
-  );
+export const CassandraClustersStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
+  }),
+);
 export type CassandraClustersStartInput =
   typeof CassandraClustersStartInput.Type;
 
 // Output Schema
-export const CassandraClustersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CassandraClustersStartOutput = /*@__PURE__*/ Schema.Void;
 export type CassandraClustersStartOutput =
   typeof CassandraClustersStartOutput.Type;
 
@@ -343,112 +325,108 @@ export type CassandraClustersStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersStartInput,
-    outputSchema: CassandraClustersStartOutput,
+export const CassandraClustersStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersStartInput,
+  outputSchema: CassandraClustersStartOutput,
+}));
+// Input Schema
+export const CassandraClustersStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
   }),
 );
-// Input Schema
-export const CassandraClustersStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
-    }),
-  );
 export type CassandraClustersStatusInput =
   typeof CassandraClustersStatusInput.Type;
 
 // Output Schema
-export const CassandraClustersStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eTag: Schema.optional(Schema.String),
-    reaperStatus: Schema.optional(
+export const CassandraClustersStatusOutput = /*@__PURE__*/ Schema.Struct({
+  eTag: Schema.optional(Schema.String),
+  reaperStatus: Schema.optional(
+    Schema.Struct({
+      healthy: Schema.optional(Schema.Boolean),
+      repairRunIds: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      repairSchedules: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ),
+  connectionErrors: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        healthy: Schema.optional(Schema.Boolean),
-        repairRunIds: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+        connectionState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "OK",
+            "OperatorToDataCenterNetworkError",
+            "DatacenterToDatacenterNetworkError",
+            "InternalOperatorToDataCenterCertificateError",
+            "InternalError",
+          ]),
         ),
-        repairSchedules: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+        iPFrom: Schema.optional(Schema.String),
+        iPTo: Schema.optional(Schema.String),
+        port: Schema.optional(Schema.Number),
+        exception: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  errors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        additionalErrorInfo: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  dataCenters: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        seedNodes: Schema.optional(Schema.Array(Schema.String)),
+        nodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              address: Schema.optional(Schema.String),
+              state: Schema.optional(
+                Schema.Literals([
+                  "Normal",
+                  "Leaving",
+                  "Joining",
+                  "Moving",
+                  "Stopped",
+                ]),
+              ),
+              status: Schema.optional(Schema.String),
+              cassandraProcessStatus: Schema.optional(Schema.String),
+              load: Schema.optional(Schema.String),
+              tokens: Schema.optional(Schema.Array(Schema.String)),
+              size: Schema.optional(Schema.Number),
+              hostID: Schema.optional(Schema.String),
+              rack: Schema.optional(Schema.String),
+              timestamp: Schema.optional(Schema.String),
+              diskUsedKB: Schema.optional(Schema.Number),
+              diskFreeKB: Schema.optional(Schema.Number),
+              memoryUsedKB: Schema.optional(Schema.Number),
+              memoryBuffersAndCachedKB: Schema.optional(Schema.Number),
+              memoryFreeKB: Schema.optional(Schema.Number),
+              memoryTotalKB: Schema.optional(Schema.Number),
+              cpuUsage: Schema.optional(Schema.Number),
+            }),
+          ),
         ),
       }),
     ),
-    connectionErrors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          connectionState: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "OK",
-              "OperatorToDataCenterNetworkError",
-              "DatacenterToDatacenterNetworkError",
-              "InternalOperatorToDataCenterCertificateError",
-              "InternalError",
-            ]),
-          ),
-          iPFrom: Schema.optional(Schema.String),
-          iPTo: Schema.optional(Schema.String),
-          port: Schema.optional(Schema.Number),
-          exception: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    errors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          target: Schema.optional(Schema.String),
-          additionalErrorInfo: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    dataCenters: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          seedNodes: Schema.optional(Schema.Array(Schema.String)),
-          nodes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                address: Schema.optional(Schema.String),
-                state: Schema.optional(
-                  Schema.Literals([
-                    "Normal",
-                    "Leaving",
-                    "Joining",
-                    "Moving",
-                    "Stopped",
-                  ]),
-                ),
-                status: Schema.optional(Schema.String),
-                cassandraProcessStatus: Schema.optional(Schema.String),
-                load: Schema.optional(Schema.String),
-                tokens: Schema.optional(Schema.Array(Schema.String)),
-                size: Schema.optional(Schema.Number),
-                hostID: Schema.optional(Schema.String),
-                rack: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                diskUsedKB: Schema.optional(Schema.Number),
-                diskFreeKB: Schema.optional(Schema.Number),
-                memoryUsedKB: Schema.optional(Schema.Number),
-                memoryBuffersAndCachedKB: Schema.optional(Schema.Number),
-                memoryFreeKB: Schema.optional(Schema.Number),
-                memoryTotalKB: Schema.optional(Schema.Number),
-                cpuUsage: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-  });
+  ),
+});
 export type CassandraClustersStatusOutput =
   typeof CassandraClustersStatusOutput.Type;
 
@@ -460,43 +438,39 @@ export type CassandraClustersStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersStatusInput,
-    outputSchema: CassandraClustersStatusOutput,
+export const CassandraClustersStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersStatusInput,
+  outputSchema: CassandraClustersStatusOutput,
+}));
+// Input Schema
+export const CassandraClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
   }),
 );
-// Input Schema
-export const CassandraClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-    }),
-  );
 export type CassandraClustersUpdateInput =
   typeof CassandraClustersUpdateInput.Type;
 
 // Output Schema
-export const CassandraClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
-  });
+export const CassandraClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+    }),
+  ),
+});
 export type CassandraClustersUpdateOutput =
   typeof CassandraClustersUpdateOutput.Type;
 
@@ -508,15 +482,13 @@ export type CassandraClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersUpdateInput,
-    outputSchema: CassandraClustersUpdateOutput,
-  }),
-);
+export const CassandraClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersUpdateInput,
+  outputSchema: CassandraClustersUpdateOutput,
+}));
 // Input Schema
 export const CassandraDataCentersCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -531,7 +503,7 @@ export type CassandraDataCentersCreateUpdateInput =
 
 // Output Schema
 export const CassandraDataCentersCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -547,29 +519,26 @@ export type CassandraDataCentersCreateUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraDataCentersCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CassandraDataCentersCreateUpdateInput,
-    outputSchema: CassandraDataCentersCreateUpdateOutput,
-  }));
+export const CassandraDataCentersCreateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersCreateUpdateInput,
+  outputSchema: CassandraDataCentersCreateUpdateOutput,
+}));
 // Input Schema
-export const CassandraDataCentersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-    }),
-  );
+export const CassandraDataCentersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+  }),
+);
 export type CassandraDataCentersDeleteInput =
   typeof CassandraDataCentersDeleteInput.Type;
 
 // Output Schema
-export const CassandraDataCentersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CassandraDataCentersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CassandraDataCentersDeleteOutput =
   typeof CassandraDataCentersDeleteOutput.Type;
 
@@ -581,34 +550,30 @@ export type CassandraDataCentersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraDataCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersDeleteInput,
-    outputSchema: CassandraDataCentersDeleteOutput,
+export const CassandraDataCentersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersDeleteInput,
+  outputSchema: CassandraDataCentersDeleteOutput,
+}));
+// Input Schema
+export const CassandraDataCentersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
   }),
 );
-// Input Schema
-export const CassandraDataCentersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-    }),
-  );
 export type CassandraDataCentersGetInput =
   typeof CassandraDataCentersGetInput.Type;
 
 // Output Schema
-export const CassandraDataCentersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const CassandraDataCentersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CassandraDataCentersGetOutput =
   typeof CassandraDataCentersGetOutput.Type;
 
@@ -620,40 +585,36 @@ export type CassandraDataCentersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraDataCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersGetInput,
-    outputSchema: CassandraDataCentersGetOutput,
+export const CassandraDataCentersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersGetInput,
+  outputSchema: CassandraDataCentersGetOutput,
+}));
+// Input Schema
+export const CassandraDataCentersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
   }),
 );
-// Input Schema
-export const CassandraDataCentersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
-    }),
-  );
 export type CassandraDataCentersListInput =
   typeof CassandraDataCentersListInput.Type;
 
 // Output Schema
-export const CassandraDataCentersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const CassandraDataCentersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type CassandraDataCentersListOutput =
   typeof CassandraDataCentersListOutput.Type;
 
@@ -665,34 +626,30 @@ export type CassandraDataCentersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraDataCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersListInput,
-    outputSchema: CassandraDataCentersListOutput,
+export const CassandraDataCentersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersListInput,
+  outputSchema: CassandraDataCentersListOutput,
+}));
+// Input Schema
+export const CassandraDataCentersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
   }),
 );
-// Input Schema
-export const CassandraDataCentersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-    }),
-  );
 export type CassandraDataCentersUpdateInput =
   typeof CassandraDataCentersUpdateInput.Type;
 
 // Output Schema
-export const CassandraDataCentersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const CassandraDataCentersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CassandraDataCentersUpdateOutput =
   typeof CassandraDataCentersUpdateOutput.Type;
 
@@ -704,15 +661,13 @@ export type CassandraDataCentersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraDataCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersUpdateInput,
-    outputSchema: CassandraDataCentersUpdateOutput,
-  }),
-);
+export const CassandraDataCentersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersUpdateInput,
+  outputSchema: CassandraDataCentersUpdateOutput,
+}));
 // Input Schema
 export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -727,7 +682,7 @@ export type CassandraResourcesCreateUpdateCassandraKeyspaceInput =
 
 // Output Schema
 export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -746,13 +701,13 @@ export type CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesCreateUpdateCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceOutput,
   }));
 // Input Schema
 export const CassandraResourcesCreateUpdateCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -767,7 +722,7 @@ export type CassandraResourcesCreateUpdateCassandraTableInput =
 
 // Output Schema
 export const CassandraResourcesCreateUpdateCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -786,13 +741,13 @@ export type CassandraResourcesCreateUpdateCassandraTableOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesCreateUpdateCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraTableInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraTableOutput,
   }));
 // Input Schema
 export const CassandraResourcesDeleteCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -807,7 +762,7 @@ export type CassandraResourcesDeleteCassandraKeyspaceInput =
 
 // Output Schema
 export const CassandraResourcesDeleteCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CassandraResourcesDeleteCassandraKeyspaceOutput =
   typeof CassandraResourcesDeleteCassandraKeyspaceOutput.Type;
 
@@ -819,14 +774,15 @@ export type CassandraResourcesDeleteCassandraKeyspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesDeleteCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesDeleteCassandraKeyspace = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesDeleteCassandraKeyspaceInput,
     outputSchema: CassandraResourcesDeleteCassandraKeyspaceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesDeleteCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -841,7 +797,7 @@ export type CassandraResourcesDeleteCassandraTableInput =
 
 // Output Schema
 export const CassandraResourcesDeleteCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CassandraResourcesDeleteCassandraTableOutput =
   typeof CassandraResourcesDeleteCassandraTableOutput.Type;
 
@@ -853,14 +809,15 @@ export type CassandraResourcesDeleteCassandraTableOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesDeleteCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesDeleteCassandraTable = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesDeleteCassandraTableInput,
     outputSchema: CassandraResourcesDeleteCassandraTableOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesGetCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -875,7 +832,7 @@ export type CassandraResourcesGetCassandraKeyspaceInput =
 
 // Output Schema
 export const CassandraResourcesGetCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -893,14 +850,15 @@ export type CassandraResourcesGetCassandraKeyspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesGetCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesGetCassandraKeyspace = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesGetCassandraKeyspaceInput,
     outputSchema: CassandraResourcesGetCassandraKeyspaceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -915,7 +873,7 @@ export type CassandraResourcesGetCassandraKeyspaceThroughputInput =
 
 // Output Schema
 export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -934,13 +892,13 @@ export type CassandraResourcesGetCassandraKeyspaceThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesGetCassandraKeyspaceThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraKeyspaceThroughputInput,
     outputSchema: CassandraResourcesGetCassandraKeyspaceThroughputOutput,
   }));
 // Input Schema
 export const CassandraResourcesGetCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -955,7 +913,7 @@ export type CassandraResourcesGetCassandraTableInput =
 
 // Output Schema
 export const CassandraResourcesGetCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -973,14 +931,15 @@ export type CassandraResourcesGetCassandraTableOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesGetCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesGetCassandraTable = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesGetCassandraTableInput,
     outputSchema: CassandraResourcesGetCassandraTableOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesGetCassandraTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -995,7 +954,7 @@ export type CassandraResourcesGetCassandraTableThroughputInput =
 
 // Output Schema
 export const CassandraResourcesGetCassandraTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1014,13 +973,13 @@ export type CassandraResourcesGetCassandraTableThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesGetCassandraTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraTableThroughputInput,
     outputSchema: CassandraResourcesGetCassandraTableThroughputOutput,
   }));
 // Input Schema
 export const CassandraResourcesListCassandraKeyspacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1035,7 +994,7 @@ export type CassandraResourcesListCassandraKeyspacesInput =
 
 // Output Schema
 export const CassandraResourcesListCassandraKeyspacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1059,14 +1018,15 @@ export type CassandraResourcesListCassandraKeyspacesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesListCassandraKeyspaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesListCassandraKeyspaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesListCassandraKeyspacesInput,
     outputSchema: CassandraResourcesListCassandraKeyspacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesListCassandraTablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1081,7 +1041,7 @@ export type CassandraResourcesListCassandraTablesInput =
 
 // Output Schema
 export const CassandraResourcesListCassandraTablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1105,14 +1065,15 @@ export type CassandraResourcesListCassandraTablesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CassandraResourcesListCassandraTables =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CassandraResourcesListCassandraTables = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CassandraResourcesListCassandraTablesInput,
     outputSchema: CassandraResourcesListCassandraTablesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1127,7 +1088,7 @@ export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
 
 // Output Schema
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1146,13 +1107,13 @@ export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput,
     outputSchema: CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput,
   }));
 // Input Schema
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1167,7 +1128,7 @@ export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
 
 // Output Schema
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1186,7 +1147,7 @@ export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput,
     outputSchema:
@@ -1194,7 +1155,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughput =
   }));
 // Input Schema
 export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1209,7 +1170,7 @@ export type CassandraResourcesMigrateCassandraTableToAutoscaleInput =
 
 // Output Schema
 export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1228,13 +1189,13 @@ export type CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesMigrateCassandraTableToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraTableToAutoscaleInput,
     outputSchema: CassandraResourcesMigrateCassandraTableToAutoscaleOutput,
   }));
 // Input Schema
 export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1249,7 +1210,7 @@ export type CassandraResourcesMigrateCassandraTableToManualThroughputInput =
 
 // Output Schema
 export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1268,14 +1229,14 @@ export type CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesMigrateCassandraTableToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraTableToManualThroughputInput,
     outputSchema:
       CassandraResourcesMigrateCassandraTableToManualThroughputOutput,
   }));
 // Input Schema
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1290,7 +1251,7 @@ export type CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
 
 // Output Schema
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1309,13 +1270,13 @@ export type CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesUpdateCassandraKeyspaceThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesUpdateCassandraKeyspaceThroughputInput,
     outputSchema: CassandraResourcesUpdateCassandraKeyspaceThroughputOutput,
   }));
 // Input Schema
 export const CassandraResourcesUpdateCassandraTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1330,7 +1291,7 @@ export type CassandraResourcesUpdateCassandraTableThroughputInput =
 
 // Output Schema
 export const CassandraResourcesUpdateCassandraTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1349,28 +1310,29 @@ export type CassandraResourcesUpdateCassandraTableThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CassandraResourcesUpdateCassandraTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesUpdateCassandraTableThroughputInput,
     outputSchema: CassandraResourcesUpdateCassandraTableThroughputOutput,
   }));
 // Input Schema
-export const CollectionListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CollectionListMetricDefinitionsInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
+  }),
+);
 export type CollectionListMetricDefinitionsInput =
   typeof CollectionListMetricDefinitionsInput.Type;
 
 // Output Schema
 export const CollectionListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1425,67 +1387,64 @@ export type CollectionListMetricDefinitionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CollectionListMetricDefinitionsInput,
-    outputSchema: CollectionListMetricDefinitionsOutput,
-  }));
+export const CollectionListMetricDefinitions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionListMetricDefinitionsInput,
+  outputSchema: CollectionListMetricDefinitionsOutput,
+}));
 // Input Schema
-export const CollectionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-    }),
-  );
+export const CollectionListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+  }),
+);
 export type CollectionListMetricsInput = typeof CollectionListMetricsInput.Type;
 
 // Output Schema
-export const CollectionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const CollectionListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type CollectionListMetricsOutput =
   typeof CollectionListMetricsOutput.Type;
 
@@ -1497,56 +1456,52 @@ export type CollectionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionListMetricsInput,
-    outputSchema: CollectionListMetricsOutput,
+export const CollectionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionListMetricsInput,
+  outputSchema: CollectionListMetricsOutput,
+}));
+// Input Schema
+export const CollectionListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
   }),
 );
-// Input Schema
-export const CollectionListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
-    }),
-  );
 export type CollectionListUsagesInput = typeof CollectionListUsagesInput.Type;
 
 // Output Schema
-export const CollectionListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          quotaPeriod: Schema.optional(Schema.String),
-          limit: Schema.optional(Schema.Number),
-          currentValue: Schema.optional(Schema.Number),
-        }),
-      ),
+export const CollectionListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        quotaPeriod: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        currentValue: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type CollectionListUsagesOutput = typeof CollectionListUsagesOutput.Type;
 
 // The operation
@@ -1557,30 +1512,27 @@ export type CollectionListUsagesOutput = typeof CollectionListUsagesOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionListUsagesInput,
-    outputSchema: CollectionListUsagesOutput,
+export const CollectionListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionListUsagesInput,
+  outputSchema: CollectionListUsagesOutput,
+}));
+// Input Schema
+export const CollectionPartitionListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
   }),
 );
-// Input Schema
-export const CollectionPartitionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
-    }),
-  );
 export type CollectionPartitionListMetricsInput =
   typeof CollectionPartitionListMetricsInput.Type;
 
 // Output Schema
-export const CollectionPartitionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CollectionPartitionListMetricsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1619,7 +1571,8 @@ export const CollectionPartitionListMetricsOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type CollectionPartitionListMetricsOutput =
   typeof CollectionPartitionListMetricsOutput.Type;
 
@@ -1631,56 +1584,53 @@ export type CollectionPartitionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionPartitionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CollectionPartitionListMetricsInput,
-    outputSchema: CollectionPartitionListMetricsOutput,
-  }));
+export const CollectionPartitionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionPartitionListMetricsInput,
+  outputSchema: CollectionPartitionListMetricsOutput,
+}));
 // Input Schema
-export const CollectionPartitionListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
-    }),
-  );
+export const CollectionPartitionListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
+  }),
+);
 export type CollectionPartitionListUsagesInput =
   typeof CollectionPartitionListUsagesInput.Type;
 
 // Output Schema
-export const CollectionPartitionListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          quotaPeriod: Schema.optional(Schema.String),
-          limit: Schema.optional(Schema.Number),
-          currentValue: Schema.optional(Schema.Number),
-        }),
-      ),
+export const CollectionPartitionListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        quotaPeriod: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        currentValue: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type CollectionPartitionListUsagesOutput =
   typeof CollectionPartitionListUsagesOutput.Type;
 
@@ -1692,14 +1642,13 @@ export type CollectionPartitionListUsagesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionPartitionListUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CollectionPartitionListUsagesInput,
-    outputSchema: CollectionPartitionListUsagesOutput,
-  }));
+export const CollectionPartitionListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionPartitionListUsagesInput,
+  outputSchema: CollectionPartitionListUsagesOutput,
+}));
 // Input Schema
 export const CollectionPartitionRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1714,7 +1663,7 @@ export type CollectionPartitionRegionListMetricsInput =
 
 // Output Schema
 export const CollectionPartitionRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1765,68 +1714,67 @@ export type CollectionPartitionRegionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionPartitionRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CollectionPartitionRegionListMetrics = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CollectionPartitionRegionListMetricsInput,
     outputSchema: CollectionPartitionRegionListMetricsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CollectionRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-    }),
-  );
+export const CollectionRegionListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+  }),
+);
 export type CollectionRegionListMetricsInput =
   typeof CollectionRegionListMetricsInput.Type;
 
 // Output Schema
-export const CollectionRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const CollectionRegionListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type CollectionRegionListMetricsOutput =
   typeof CollectionRegionListMetricsOutput.Type;
 
@@ -1838,15 +1786,13 @@ export type CollectionRegionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const CollectionRegionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionRegionListMetricsInput,
-    outputSchema: CollectionRegionListMetricsOutput,
-  }),
-);
+export const CollectionRegionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionRegionListMetricsInput,
+  outputSchema: CollectionRegionListMetricsOutput,
+}));
 // Input Schema
 export const DatabaseAccountRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1861,7 +1807,7 @@ export type DatabaseAccountRegionListMetricsInput =
 
 // Output Schema
 export const DatabaseAccountRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1912,35 +1858,34 @@ export type DatabaseAccountRegionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountRegionListMetricsInput,
-    outputSchema: DatabaseAccountRegionListMetricsOutput,
-  }));
+export const DatabaseAccountRegionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountRegionListMetricsInput,
+  outputSchema: DatabaseAccountRegionListMetricsOutput,
+}));
 // Input Schema
-export const DatabaseAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-    }),
-  );
+export const DatabaseAccountsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+  }),
+);
 export type DatabaseAccountsCreateOrUpdateInput =
   typeof DatabaseAccountsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DatabaseAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabaseAccountsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+  },
+);
 export type DatabaseAccountsCreateOrUpdateOutput =
   typeof DatabaseAccountsCreateOrUpdateOutput.Type;
 
@@ -1952,29 +1897,26 @@ export type DatabaseAccountsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsCreateOrUpdateInput,
-    outputSchema: DatabaseAccountsCreateOrUpdateOutput,
-  }));
+export const DatabaseAccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsCreateOrUpdateInput,
+  outputSchema: DatabaseAccountsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DatabaseAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-    }),
-  );
+export const DatabaseAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+  }),
+);
 export type DatabaseAccountsDeleteInput =
   typeof DatabaseAccountsDeleteInput.Type;
 
 // Output Schema
-export const DatabaseAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabaseAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DatabaseAccountsDeleteOutput =
   typeof DatabaseAccountsDeleteOutput.Type;
 
@@ -1986,15 +1928,13 @@ export type DatabaseAccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsDeleteInput,
-    outputSchema: DatabaseAccountsDeleteOutput,
-  }),
-);
+export const DatabaseAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsDeleteInput,
+  outputSchema: DatabaseAccountsDeleteOutput,
+}));
 // Input Schema
 export const DatabaseAccountsFailoverPriorityChangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2009,7 +1949,7 @@ export type DatabaseAccountsFailoverPriorityChangeInput =
 
 // Output Schema
 export const DatabaseAccountsFailoverPriorityChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DatabaseAccountsFailoverPriorityChangeOutput =
   typeof DatabaseAccountsFailoverPriorityChangeOutput.Type;
 
@@ -2021,34 +1961,33 @@ export type DatabaseAccountsFailoverPriorityChangeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsFailoverPriorityChange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsFailoverPriorityChange = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DatabaseAccountsFailoverPriorityChangeInput,
     outputSchema: DatabaseAccountsFailoverPriorityChangeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DatabaseAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-    }),
-  );
+export const DatabaseAccountsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+  }),
+);
 export type DatabaseAccountsGetInput = typeof DatabaseAccountsGetInput.Type;
 
 // Output Schema
-export const DatabaseAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const DatabaseAccountsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type DatabaseAccountsGetOutput = typeof DatabaseAccountsGetOutput.Type;
 
 // The operation
@@ -2059,28 +1998,29 @@ export type DatabaseAccountsGetOutput = typeof DatabaseAccountsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseAccountsGetInput,
   outputSchema: DatabaseAccountsGetOutput,
 }));
 // Input Schema
-export const DatabaseAccountsGetReadOnlyKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabaseAccountsGetReadOnlyKeysInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
+  }),
+);
 export type DatabaseAccountsGetReadOnlyKeysInput =
   typeof DatabaseAccountsGetReadOnlyKeysInput.Type;
 
 // Output Schema
 export const DatabaseAccountsGetReadOnlyKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
   });
@@ -2095,39 +2035,36 @@ export type DatabaseAccountsGetReadOnlyKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsGetReadOnlyKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsGetReadOnlyKeysInput,
-    outputSchema: DatabaseAccountsGetReadOnlyKeysOutput,
-  }));
+export const DatabaseAccountsGetReadOnlyKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsGetReadOnlyKeysInput,
+  outputSchema: DatabaseAccountsGetReadOnlyKeysOutput,
+}));
 // Input Schema
-export const DatabaseAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
-    }),
-  );
+export const DatabaseAccountsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
+  }),
+);
 export type DatabaseAccountsListInput = typeof DatabaseAccountsListInput.Type;
 
 // Output Schema
-export const DatabaseAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const DatabaseAccountsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseAccountsListOutput = typeof DatabaseAccountsListOutput.Type;
 
 // The operation
@@ -2137,15 +2074,13 @@ export type DatabaseAccountsListOutput = typeof DatabaseAccountsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabaseAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListInput,
-    outputSchema: DatabaseAccountsListOutput,
-  }),
-);
+export const DatabaseAccountsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListInput,
+  outputSchema: DatabaseAccountsListOutput,
+}));
 // Input Schema
 export const DatabaseAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2160,7 +2095,7 @@ export type DatabaseAccountsListByResourceGroupInput =
 
 // Output Schema
 export const DatabaseAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2184,14 +2119,15 @@ export type DatabaseAccountsListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabaseAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DatabaseAccountsListByResourceGroupInput,
     outputSchema: DatabaseAccountsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DatabaseAccountsListConnectionStringsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2206,11 +2142,11 @@ export type DatabaseAccountsListConnectionStringsInput =
 
 // Output Schema
 export const DatabaseAccountsListConnectionStringsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          connectionString: Schema.optional(SensitiveString),
+          connectionString: Schema.optional(SensitiveOutputString),
           description: Schema.optional(Schema.String),
           keyKind: Schema.optional(
             Schema.Literals([
@@ -2248,32 +2184,31 @@ export type DatabaseAccountsListConnectionStringsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListConnectionStrings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsListConnectionStrings = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DatabaseAccountsListConnectionStringsInput,
     outputSchema: DatabaseAccountsListConnectionStringsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DatabaseAccountsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys",
-    }),
-  );
+export const DatabaseAccountsListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys",
+  }),
+);
 export type DatabaseAccountsListKeysInput =
   typeof DatabaseAccountsListKeysInput.Type;
 
 // Output Schema
-export const DatabaseAccountsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryReadonlyMasterKey: Schema.optional(Schema.String),
-    secondaryReadonlyMasterKey: Schema.optional(Schema.String),
-  });
+export const DatabaseAccountsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryReadonlyMasterKey: Schema.optional(Schema.String),
+  secondaryReadonlyMasterKey: Schema.optional(Schema.String),
+});
 export type DatabaseAccountsListKeysOutput =
   typeof DatabaseAccountsListKeysOutput.Type;
 
@@ -2285,15 +2220,13 @@ export type DatabaseAccountsListKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListKeysInput,
-    outputSchema: DatabaseAccountsListKeysOutput,
-  }),
-);
+export const DatabaseAccountsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListKeysInput,
+  outputSchema: DatabaseAccountsListKeysOutput,
+}));
 // Input Schema
 export const DatabaseAccountsListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2308,7 +2241,7 @@ export type DatabaseAccountsListMetricDefinitionsInput =
 
 // Output Schema
 export const DatabaseAccountsListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2363,68 +2296,67 @@ export type DatabaseAccountsListMetricDefinitionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsListMetricDefinitions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DatabaseAccountsListMetricDefinitionsInput,
     outputSchema: DatabaseAccountsListMetricDefinitionsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DatabaseAccountsListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
-    }),
-  );
+export const DatabaseAccountsListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
+  }),
+);
 export type DatabaseAccountsListMetricsInput =
   typeof DatabaseAccountsListMetricsInput.Type;
 
 // Output Schema
-export const DatabaseAccountsListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const DatabaseAccountsListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseAccountsListMetricsOutput =
   typeof DatabaseAccountsListMetricsOutput.Type;
 
@@ -2436,15 +2368,13 @@ export type DatabaseAccountsListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListMetricsInput,
-    outputSchema: DatabaseAccountsListMetricsOutput,
-  }),
-);
+export const DatabaseAccountsListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListMetricsInput,
+  outputSchema: DatabaseAccountsListMetricsOutput,
+}));
 // Input Schema
 export const DatabaseAccountsListReadOnlyKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2459,7 +2389,7 @@ export type DatabaseAccountsListReadOnlyKeysInput =
 
 // Output Schema
 export const DatabaseAccountsListReadOnlyKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
   });
@@ -2474,56 +2404,53 @@ export type DatabaseAccountsListReadOnlyKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListReadOnlyKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsListReadOnlyKeysInput,
-    outputSchema: DatabaseAccountsListReadOnlyKeysOutput,
-  }));
+export const DatabaseAccountsListReadOnlyKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListReadOnlyKeysInput,
+  outputSchema: DatabaseAccountsListReadOnlyKeysOutput,
+}));
 // Input Schema
-export const DatabaseAccountsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
-    }),
-  );
+export const DatabaseAccountsListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
+  }),
+);
 export type DatabaseAccountsListUsagesInput =
   typeof DatabaseAccountsListUsagesInput.Type;
 
 // Output Schema
-export const DatabaseAccountsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          quotaPeriod: Schema.optional(Schema.String),
-          limit: Schema.optional(Schema.Number),
-          currentValue: Schema.optional(Schema.Number),
-        }),
-      ),
+export const DatabaseAccountsListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        quotaPeriod: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        currentValue: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseAccountsListUsagesOutput =
   typeof DatabaseAccountsListUsagesOutput.Type;
 
@@ -2535,30 +2462,26 @@ export type DatabaseAccountsListUsagesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListUsagesInput,
-    outputSchema: DatabaseAccountsListUsagesOutput,
+export const DatabaseAccountsListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListUsagesInput,
+  outputSchema: DatabaseAccountsListUsagesOutput,
+}));
+// Input Schema
+export const DatabaseAccountsOfflineRegionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
   }),
 );
-// Input Schema
-export const DatabaseAccountsOfflineRegionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
-    }),
-  );
 export type DatabaseAccountsOfflineRegionInput =
   typeof DatabaseAccountsOfflineRegionInput.Type;
 
 // Output Schema
-export const DatabaseAccountsOfflineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabaseAccountsOfflineRegionOutput = /*@__PURE__*/ Schema.Void;
 export type DatabaseAccountsOfflineRegionOutput =
   typeof DatabaseAccountsOfflineRegionOutput.Type;
 
@@ -2570,29 +2493,26 @@ export type DatabaseAccountsOfflineRegionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsOfflineRegion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsOfflineRegionInput,
-    outputSchema: DatabaseAccountsOfflineRegionOutput,
-  }));
+export const DatabaseAccountsOfflineRegion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsOfflineRegionInput,
+  outputSchema: DatabaseAccountsOfflineRegionOutput,
+}));
 // Input Schema
-export const DatabaseAccountsOnlineRegionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
-    }),
-  );
+export const DatabaseAccountsOnlineRegionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
+  }),
+);
 export type DatabaseAccountsOnlineRegionInput =
   typeof DatabaseAccountsOnlineRegionInput.Type;
 
 // Output Schema
-export const DatabaseAccountsOnlineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabaseAccountsOnlineRegionOutput = /*@__PURE__*/ Schema.Void;
 export type DatabaseAccountsOnlineRegionOutput =
   typeof DatabaseAccountsOnlineRegionOutput.Type;
 
@@ -2604,29 +2524,26 @@ export type DatabaseAccountsOnlineRegionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsOnlineRegion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsOnlineRegionInput,
-    outputSchema: DatabaseAccountsOnlineRegionOutput,
-  }));
+export const DatabaseAccountsOnlineRegion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsOnlineRegionInput,
+  outputSchema: DatabaseAccountsOnlineRegionOutput,
+}));
 // Input Schema
-export const DatabaseAccountsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
-    }),
-  );
+export const DatabaseAccountsRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
+  }),
+);
 export type DatabaseAccountsRegenerateKeyInput =
   typeof DatabaseAccountsRegenerateKeyInput.Type;
 
 // Output Schema
-export const DatabaseAccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabaseAccountsRegenerateKeyOutput = /*@__PURE__*/ Schema.Void;
 export type DatabaseAccountsRegenerateKeyOutput =
   typeof DatabaseAccountsRegenerateKeyOutput.Type;
 
@@ -2638,35 +2555,32 @@ export type DatabaseAccountsRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseAccountsRegenerateKeyInput,
-    outputSchema: DatabaseAccountsRegenerateKeyOutput,
-  }));
+export const DatabaseAccountsRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsRegenerateKeyInput,
+  outputSchema: DatabaseAccountsRegenerateKeyOutput,
+}));
 // Input Schema
-export const DatabaseAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-    }),
-  );
+export const DatabaseAccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+  }),
+);
 export type DatabaseAccountsUpdateInput =
   typeof DatabaseAccountsUpdateInput.Type;
 
 // Output Schema
-export const DatabaseAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const DatabaseAccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type DatabaseAccountsUpdateOutput =
   typeof DatabaseAccountsUpdateOutput.Type;
 
@@ -2678,73 +2592,69 @@ export type DatabaseAccountsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsUpdateInput,
-    outputSchema: DatabaseAccountsUpdateOutput,
+export const DatabaseAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsUpdateInput,
+  outputSchema: DatabaseAccountsUpdateOutput,
+}));
+// Input Schema
+export const DatabaseListMetricDefinitionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
   }),
 );
-// Input Schema
-export const DatabaseListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
-    }),
-  );
 export type DatabaseListMetricDefinitionsInput =
   typeof DatabaseListMetricDefinitionsInput.Type;
 
 // Output Schema
-export const DatabaseListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          metricAvailabilities: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                timeGrain: Schema.optional(Schema.String),
-                retention: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          primaryAggregationType: Schema.optional(
-            Schema.Literals([
-              "None",
-              "Average",
-              "Total",
-              "Minimum",
-              "Maximum",
-              "Last",
-            ]),
-          ),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          resourceUri: Schema.optional(Schema.String),
-          name: Schema.optional(
+export const DatabaseListMetricDefinitionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        metricAvailabilities: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              timeGrain: Schema.optional(Schema.String),
+              retention: Schema.optional(Schema.String),
             }),
           ),
-        }),
-      ),
+        ),
+        primaryAggregationType: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Average",
+            "Total",
+            "Minimum",
+            "Maximum",
+            "Last",
+          ]),
+        ),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        resourceUri: Schema.optional(Schema.String),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseListMetricDefinitionsOutput =
   typeof DatabaseListMetricDefinitionsOutput.Type;
 
@@ -2756,67 +2666,64 @@ export type DatabaseListMetricDefinitionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabaseListMetricDefinitionsInput,
-    outputSchema: DatabaseListMetricDefinitionsOutput,
-  }));
+export const DatabaseListMetricDefinitions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseListMetricDefinitionsInput,
+  outputSchema: DatabaseListMetricDefinitionsOutput,
+}));
 // Input Schema
-export const DatabaseListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
-    }),
-  );
+export const DatabaseListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
+  }),
+);
 export type DatabaseListMetricsInput = typeof DatabaseListMetricsInput.Type;
 
 // Output Schema
-export const DatabaseListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const DatabaseListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseListMetricsOutput = typeof DatabaseListMetricsOutput.Type;
 
 // The operation
@@ -2827,54 +2734,52 @@ export type DatabaseListMetricsOutput = typeof DatabaseListMetricsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseListMetrics = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListMetricsInput,
   outputSchema: DatabaseListMetricsOutput,
 }));
 // Input Schema
-export const DatabaseListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
-    }),
-  );
+export const DatabaseListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
+  }),
+);
 export type DatabaseListUsagesInput = typeof DatabaseListUsagesInput.Type;
 
 // Output Schema
-export const DatabaseListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          quotaPeriod: Schema.optional(Schema.String),
-          limit: Schema.optional(Schema.Number),
-          currentValue: Schema.optional(Schema.Number),
-        }),
-      ),
+export const DatabaseListUsagesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        quotaPeriod: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        currentValue: Schema.optional(Schema.Number),
+      }),
     ),
-  });
+  ),
+});
 export type DatabaseListUsagesOutput = typeof DatabaseListUsagesOutput.Type;
 
 // The operation
@@ -2885,12 +2790,12 @@ export type DatabaseListUsagesOutput = typeof DatabaseListUsagesOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseListUsages = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListUsagesInput,
   outputSchema: DatabaseListUsagesOutput,
 }));
 // Input Schema
-export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2903,7 +2808,7 @@ export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetCreateInput = typeof FleetCreateInput.Type;
 
 // Output Schema
-export const FleetCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2932,12 +2837,12 @@ export type FleetCreateOutput = typeof FleetCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetCreateInput,
   outputSchema: FleetCreateOutput,
 }));
 // Input Schema
-export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2950,7 +2855,7 @@ export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetDeleteInput = typeof FleetDeleteInput.Type;
 
 // Output Schema
-export const FleetDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FleetDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FleetDeleteOutput = typeof FleetDeleteOutput.Type;
 
 // The operation
@@ -2961,12 +2866,12 @@ export type FleetDeleteOutput = typeof FleetDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetDeleteInput,
   outputSchema: FleetDeleteOutput,
 }));
 // Input Schema
-export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2979,7 +2884,7 @@ export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetGetInput = typeof FleetGetInput.Type;
 
 // Output Schema
-export const FleetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3008,12 +2913,12 @@ export type FleetGetOutput = typeof FleetGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetGetInput,
   outputSchema: FleetGetOutput,
 }));
 // Input Schema
-export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -3025,7 +2930,7 @@ export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetListInput = typeof FleetListInput.Type;
 
 // Output Schema
-export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3070,63 +2975,61 @@ export type FleetListOutput = typeof FleetListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetListInput,
   outputSchema: FleetListOutput,
 }));
 // Input Schema
-export const FleetListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
-    }),
-  );
+export const FleetListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
+  }),
+);
 export type FleetListByResourceGroupInput =
   typeof FleetListByResourceGroupInput.Type;
 
 // Output Schema
-export const FleetListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const FleetListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FleetListByResourceGroupOutput =
   typeof FleetListByResourceGroupOutput.Type;
 
@@ -3138,48 +3041,44 @@ export type FleetListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetListByResourceGroupInput,
-    outputSchema: FleetListByResourceGroupOutput,
+export const FleetListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetListByResourceGroupInput,
+  outputSchema: FleetListByResourceGroupOutput,
+}));
+// Input Schema
+export const FleetspaceAccountCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
   }),
 );
-// Input Schema
-export const FleetspaceAccountCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-    }),
-  );
 export type FleetspaceAccountCreateInput =
   typeof FleetspaceAccountCreateInput.Type;
 
 // Output Schema
-export const FleetspaceAccountCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetspaceAccountCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetspaceAccountCreateOutput =
   typeof FleetspaceAccountCreateOutput.Type;
 
@@ -3191,30 +3090,26 @@ export type FleetspaceAccountCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountCreateInput,
-    outputSchema: FleetspaceAccountCreateOutput,
+export const FleetspaceAccountCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountCreateInput,
+  outputSchema: FleetspaceAccountCreateOutput,
+}));
+// Input Schema
+export const FleetspaceAccountDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
   }),
 );
-// Input Schema
-export const FleetspaceAccountDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-    }),
-  );
 export type FleetspaceAccountDeleteInput =
   typeof FleetspaceAccountDeleteInput.Type;
 
 // Output Schema
-export const FleetspaceAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FleetspaceAccountDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FleetspaceAccountDeleteOutput =
   typeof FleetspaceAccountDeleteOutput.Type;
 
@@ -3226,47 +3121,43 @@ export type FleetspaceAccountDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountDeleteInput,
-    outputSchema: FleetspaceAccountDeleteOutput,
+export const FleetspaceAccountDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountDeleteInput,
+  outputSchema: FleetspaceAccountDeleteOutput,
+}));
+// Input Schema
+export const FleetspaceAccountGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
   }),
 );
-// Input Schema
-export const FleetspaceAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-    }),
-  );
 export type FleetspaceAccountGetInput = typeof FleetspaceAccountGetInput.Type;
 
 // Output Schema
-export const FleetspaceAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FleetspaceAccountGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetspaceAccountGetOutput = typeof FleetspaceAccountGetOutput.Type;
 
 // The operation
@@ -3277,64 +3168,60 @@ export type FleetspaceAccountGetOutput = typeof FleetspaceAccountGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountGetInput,
-    outputSchema: FleetspaceAccountGetOutput,
+export const FleetspaceAccountGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountGetInput,
+  outputSchema: FleetspaceAccountGetOutput,
+}));
+// Input Schema
+export const FleetspaceAccountListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
   }),
 );
-// Input Schema
-export const FleetspaceAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
-    }),
-  );
 export type FleetspaceAccountListInput = typeof FleetspaceAccountListInput.Type;
 
 // Output Schema
-export const FleetspaceAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const FleetspaceAccountListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FleetspaceAccountListOutput =
   typeof FleetspaceAccountListOutput.Type;
 
@@ -3346,14 +3233,12 @@ export type FleetspaceAccountListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountListInput,
-    outputSchema: FleetspaceAccountListOutput,
-  }),
-);
+export const FleetspaceAccountList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountListInput,
+  outputSchema: FleetspaceAccountListOutput,
+}));
 // Input Schema
-export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3366,27 +3251,25 @@ export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetspaceCreateInput = typeof FleetspaceCreateInput.Type;
 
 // Output Schema
-export const FleetspaceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FleetspaceCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetspaceCreateOutput = typeof FleetspaceCreateOutput.Type;
 
 // The operation
@@ -3397,12 +3280,12 @@ export type FleetspaceCreateOutput = typeof FleetspaceCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceCreateInput,
   outputSchema: FleetspaceCreateOutput,
 }));
 // Input Schema
-export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3415,7 +3298,7 @@ export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
 
 // Output Schema
-export const FleetspaceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FleetspaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FleetspaceDeleteOutput = typeof FleetspaceDeleteOutput.Type;
 
 // The operation
@@ -3426,12 +3309,12 @@ export type FleetspaceDeleteOutput = typeof FleetspaceDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceDeleteInput,
   outputSchema: FleetspaceDeleteOutput,
 }));
 // Input Schema
-export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3444,7 +3327,7 @@ export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetspaceGetInput = typeof FleetspaceGetInput.Type;
 
 // Output Schema
-export const FleetspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3473,12 +3356,12 @@ export type FleetspaceGetOutput = typeof FleetspaceGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceGetInput,
   outputSchema: FleetspaceGetOutput,
 }));
 // Input Schema
-export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3491,7 +3374,7 @@ export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetspaceListInput = typeof FleetspaceListInput.Type;
 
 // Output Schema
-export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3537,12 +3420,12 @@ export type FleetspaceListOutput = typeof FleetspaceListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceListInput,
   outputSchema: FleetspaceListOutput,
 }));
 // Input Schema
-export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3555,27 +3438,25 @@ export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetspaceUpdateInput = typeof FleetspaceUpdateInput.Type;
 
 // Output Schema
-export const FleetspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FleetspaceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FleetspaceUpdateOutput = typeof FleetspaceUpdateOutput.Type;
 
 // The operation
@@ -3586,12 +3467,12 @@ export type FleetspaceUpdateOutput = typeof FleetspaceUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceUpdateInput,
   outputSchema: FleetspaceUpdateOutput,
 }));
 // Input Schema
-export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3604,7 +3485,7 @@ export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FleetUpdateInput = typeof FleetUpdateInput.Type;
 
 // Output Schema
-export const FleetUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3633,13 +3514,13 @@ export type FleetUpdateOutput = typeof FleetUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const FleetUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetUpdateInput,
   outputSchema: FleetUpdateOutput,
 }));
 // Input Schema
 export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3654,7 +3535,7 @@ export type GremlinResourcesCreateUpdateGremlinDatabaseInput =
 
 // Output Schema
 export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3673,13 +3554,13 @@ export type GremlinResourcesCreateUpdateGremlinDatabaseOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesCreateUpdateGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinDatabaseInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinDatabaseOutput,
   }));
 // Input Schema
 export const GremlinResourcesCreateUpdateGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3694,7 +3575,7 @@ export type GremlinResourcesCreateUpdateGremlinGraphInput =
 
 // Output Schema
 export const GremlinResourcesCreateUpdateGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3712,14 +3593,15 @@ export type GremlinResourcesCreateUpdateGremlinGraphOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesCreateUpdateGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesCreateUpdateGremlinGraph = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinGraphInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinGraphOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesDeleteGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3734,7 +3616,7 @@ export type GremlinResourcesDeleteGremlinDatabaseInput =
 
 // Output Schema
 export const GremlinResourcesDeleteGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GremlinResourcesDeleteGremlinDatabaseOutput =
   typeof GremlinResourcesDeleteGremlinDatabaseOutput.Type;
 
@@ -3746,14 +3628,15 @@ export type GremlinResourcesDeleteGremlinDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesDeleteGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesDeleteGremlinDatabase = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesDeleteGremlinDatabaseInput,
     outputSchema: GremlinResourcesDeleteGremlinDatabaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesDeleteGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3768,7 +3651,7 @@ export type GremlinResourcesDeleteGremlinGraphInput =
 
 // Output Schema
 export const GremlinResourcesDeleteGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GremlinResourcesDeleteGremlinGraphOutput =
   typeof GremlinResourcesDeleteGremlinGraphOutput.Type;
 
@@ -3780,14 +3663,15 @@ export type GremlinResourcesDeleteGremlinGraphOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesDeleteGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesDeleteGremlinGraph = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesDeleteGremlinGraphInput,
     outputSchema: GremlinResourcesDeleteGremlinGraphOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesGetGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3802,7 +3686,7 @@ export type GremlinResourcesGetGremlinDatabaseInput =
 
 // Output Schema
 export const GremlinResourcesGetGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3820,14 +3704,15 @@ export type GremlinResourcesGetGremlinDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesGetGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesGetGremlinDatabase = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesGetGremlinDatabaseInput,
     outputSchema: GremlinResourcesGetGremlinDatabaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesGetGremlinDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3842,7 +3727,7 @@ export type GremlinResourcesGetGremlinDatabaseThroughputInput =
 
 // Output Schema
 export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3861,28 +3746,29 @@ export type GremlinResourcesGetGremlinDatabaseThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesGetGremlinDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinDatabaseThroughputInput,
     outputSchema: GremlinResourcesGetGremlinDatabaseThroughputOutput,
   }));
 // Input Schema
-export const GremlinResourcesGetGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GremlinResourcesGetGremlinGraphInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+  }),
+);
 export type GremlinResourcesGetGremlinGraphInput =
   typeof GremlinResourcesGetGremlinGraphInput.Type;
 
 // Output Schema
 export const GremlinResourcesGetGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3900,14 +3786,13 @@ export type GremlinResourcesGetGremlinGraphOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesGetGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GremlinResourcesGetGremlinGraphInput,
-    outputSchema: GremlinResourcesGetGremlinGraphOutput,
-  }));
+export const GremlinResourcesGetGremlinGraph = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GremlinResourcesGetGremlinGraphInput,
+  outputSchema: GremlinResourcesGetGremlinGraphOutput,
+}));
 // Input Schema
 export const GremlinResourcesGetGremlinGraphThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3922,7 +3807,7 @@ export type GremlinResourcesGetGremlinGraphThroughputInput =
 
 // Output Schema
 export const GremlinResourcesGetGremlinGraphThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3940,14 +3825,15 @@ export type GremlinResourcesGetGremlinGraphThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesGetGremlinGraphThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesGetGremlinGraphThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesGetGremlinGraphThroughputInput,
     outputSchema: GremlinResourcesGetGremlinGraphThroughputOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesListGremlinDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3962,7 +3848,7 @@ export type GremlinResourcesListGremlinDatabasesInput =
 
 // Output Schema
 export const GremlinResourcesListGremlinDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3986,14 +3872,15 @@ export type GremlinResourcesListGremlinDatabasesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesListGremlinDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GremlinResourcesListGremlinDatabases = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GremlinResourcesListGremlinDatabasesInput,
     outputSchema: GremlinResourcesListGremlinDatabasesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GremlinResourcesListGremlinGraphsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4008,7 +3895,7 @@ export type GremlinResourcesListGremlinGraphsInput =
 
 // Output Schema
 export const GremlinResourcesListGremlinGraphsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4032,14 +3919,13 @@ export type GremlinResourcesListGremlinGraphsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GremlinResourcesListGremlinGraphs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GremlinResourcesListGremlinGraphsInput,
-    outputSchema: GremlinResourcesListGremlinGraphsOutput,
-  }));
+export const GremlinResourcesListGremlinGraphs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GremlinResourcesListGremlinGraphsInput,
+  outputSchema: GremlinResourcesListGremlinGraphsOutput,
+}));
 // Input Schema
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4054,7 +3940,7 @@ export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
 
 // Output Schema
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4073,13 +3959,13 @@ export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput,
     outputSchema: GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput,
   }));
 // Input Schema
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4094,7 +3980,7 @@ export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
 
 // Output Schema
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4113,14 +3999,14 @@ export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput,
     outputSchema:
       GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput,
   }));
 // Input Schema
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4135,7 +4021,7 @@ export type GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
 
 // Output Schema
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4154,13 +4040,13 @@ export type GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesMigrateGremlinGraphToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinGraphToAutoscaleInput,
     outputSchema: GremlinResourcesMigrateGremlinGraphToAutoscaleOutput,
   }));
 // Input Schema
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4175,7 +4061,7 @@ export type GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
 
 // Output Schema
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4194,13 +4080,13 @@ export type GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesMigrateGremlinGraphToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinGraphToManualThroughputInput,
     outputSchema: GremlinResourcesMigrateGremlinGraphToManualThroughputOutput,
   }));
 // Input Schema
 export const GremlinResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4218,7 +4104,7 @@ export type GremlinResourcesRetrieveContinuousBackupInformationInput =
 
 // Output Schema
 export const GremlinResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -4240,13 +4126,13 @@ export type GremlinResourcesRetrieveContinuousBackupInformationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: GremlinResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
 export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4261,7 +4147,7 @@ export type GremlinResourcesUpdateGremlinDatabaseThroughputInput =
 
 // Output Schema
 export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4280,13 +4166,13 @@ export type GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesUpdateGremlinDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesUpdateGremlinDatabaseThroughputInput,
     outputSchema: GremlinResourcesUpdateGremlinDatabaseThroughputOutput,
   }));
 // Input Schema
 export const GremlinResourcesUpdateGremlinGraphThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4301,7 +4187,7 @@ export type GremlinResourcesUpdateGremlinGraphThroughputInput =
 
 // Output Schema
 export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4320,12 +4206,12 @@ export type GremlinResourcesUpdateGremlinGraphThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesUpdateGremlinGraphThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesUpdateGremlinGraphThroughputInput,
     outputSchema: GremlinResourcesUpdateGremlinGraphThroughputOutput,
   }));
 // Input Schema
-export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -4337,7 +4223,7 @@ export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LocationsGetInput = typeof LocationsGetInput.Type;
 
 // Output Schema
-export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4351,12 +4237,12 @@ export type LocationsGetOutput = typeof LocationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetInput,
   outputSchema: LocationsGetOutput,
 }));
 // Input Schema
-export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -4368,7 +4254,7 @@ export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LocationsListInput = typeof LocationsListInput.Type;
 
 // Output Schema
-export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4388,13 +4274,13 @@ export type LocationsListOutput = typeof LocationsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsListInput,
   outputSchema: LocationsListOutput,
 }));
 // Input Schema
 export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4409,7 +4295,7 @@ export type MongoDBResourcesCreateUpdateMongoDBCollectionInput =
 
 // Output Schema
 export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4428,13 +4314,13 @@ export type MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesCreateUpdateMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoDBCollectionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoDBCollectionOutput,
   }));
 // Input Schema
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4449,7 +4335,7 @@ export type MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
 
 // Output Schema
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4468,13 +4354,13 @@ export type MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesCreateUpdateMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoDBDatabaseOutput,
   }));
 // Input Schema
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4490,7 +4376,7 @@ export type MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4508,13 +4394,13 @@ export type MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesCreateUpdateMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput,
   }));
 // Input Schema
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4530,7 +4416,7 @@ export type MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4548,13 +4434,13 @@ export type MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesCreateUpdateMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoUserDefinitionOutput,
   }));
 // Input Schema
 export const MongoDBResourcesDeleteMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4569,7 +4455,7 @@ export type MongoDBResourcesDeleteMongoDBCollectionInput =
 
 // Output Schema
 export const MongoDBResourcesDeleteMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type MongoDBResourcesDeleteMongoDBCollectionOutput =
   typeof MongoDBResourcesDeleteMongoDBCollectionOutput.Type;
 
@@ -4581,14 +4467,15 @@ export type MongoDBResourcesDeleteMongoDBCollectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesDeleteMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesDeleteMongoDBCollection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesDeleteMongoDBCollectionInput,
     outputSchema: MongoDBResourcesDeleteMongoDBCollectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesDeleteMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4603,7 +4490,7 @@ export type MongoDBResourcesDeleteMongoDBDatabaseInput =
 
 // Output Schema
 export const MongoDBResourcesDeleteMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type MongoDBResourcesDeleteMongoDBDatabaseOutput =
   typeof MongoDBResourcesDeleteMongoDBDatabaseOutput.Type;
 
@@ -4615,14 +4502,15 @@ export type MongoDBResourcesDeleteMongoDBDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesDeleteMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesDeleteMongoDBDatabase = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesDeleteMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesDeleteMongoDBDatabaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4638,7 +4526,7 @@ export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesDeleteMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type MongoDBResourcesDeleteMongoRoleDefinitionOutput =
   typeof MongoDBResourcesDeleteMongoRoleDefinitionOutput.Type;
 
@@ -4651,14 +4539,15 @@ export type MongoDBResourcesDeleteMongoRoleDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesDeleteMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesDeleteMongoRoleDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesDeleteMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesDeleteMongoRoleDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesDeleteMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4674,7 +4563,7 @@ export type MongoDBResourcesDeleteMongoUserDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesDeleteMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type MongoDBResourcesDeleteMongoUserDefinitionOutput =
   typeof MongoDBResourcesDeleteMongoUserDefinitionOutput.Type;
 
@@ -4687,14 +4576,15 @@ export type MongoDBResourcesDeleteMongoUserDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesDeleteMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesDeleteMongoUserDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesDeleteMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesDeleteMongoUserDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesGetMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4709,7 +4599,7 @@ export type MongoDBResourcesGetMongoDBCollectionInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4727,14 +4617,15 @@ export type MongoDBResourcesGetMongoDBCollectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesGetMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesGetMongoDBCollection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesGetMongoDBCollectionInput,
     outputSchema: MongoDBResourcesGetMongoDBCollectionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4749,7 +4640,7 @@ export type MongoDBResourcesGetMongoDBCollectionThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4768,13 +4659,13 @@ export type MongoDBResourcesGetMongoDBCollectionThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesGetMongoDBCollectionThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBCollectionThroughputInput,
     outputSchema: MongoDBResourcesGetMongoDBCollectionThroughputOutput,
   }));
 // Input Schema
 export const MongoDBResourcesGetMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4789,7 +4680,7 @@ export type MongoDBResourcesGetMongoDBDatabaseInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4807,14 +4698,15 @@ export type MongoDBResourcesGetMongoDBDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesGetMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesGetMongoDBDatabase = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesGetMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesGetMongoDBDatabaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4829,7 +4721,7 @@ export type MongoDBResourcesGetMongoDBDatabaseThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4848,13 +4740,13 @@ export type MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesGetMongoDBDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBDatabaseThroughputInput,
     outputSchema: MongoDBResourcesGetMongoDBDatabaseThroughputOutput,
   }));
 // Input Schema
 export const MongoDBResourcesGetMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4870,7 +4762,7 @@ export type MongoDBResourcesGetMongoRoleDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4887,14 +4779,15 @@ export type MongoDBResourcesGetMongoRoleDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesGetMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesGetMongoRoleDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesGetMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesGetMongoRoleDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesGetMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4910,7 +4803,7 @@ export type MongoDBResourcesGetMongoUserDefinitionInput =
 
 // Output Schema
 export const MongoDBResourcesGetMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4927,14 +4820,15 @@ export type MongoDBResourcesGetMongoUserDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesGetMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesGetMongoUserDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesGetMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesGetMongoUserDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesListMongoDBCollectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4949,7 +4843,7 @@ export type MongoDBResourcesListMongoDBCollectionsInput =
 
 // Output Schema
 export const MongoDBResourcesListMongoDBCollectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4973,14 +4867,15 @@ export type MongoDBResourcesListMongoDBCollectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesListMongoDBCollections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesListMongoDBCollections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesListMongoDBCollectionsInput,
     outputSchema: MongoDBResourcesListMongoDBCollectionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesListMongoDBDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4995,7 +4890,7 @@ export type MongoDBResourcesListMongoDBDatabasesInput =
 
 // Output Schema
 export const MongoDBResourcesListMongoDBDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5019,14 +4914,15 @@ export type MongoDBResourcesListMongoDBDatabasesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesListMongoDBDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesListMongoDBDatabases = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesListMongoDBDatabasesInput,
     outputSchema: MongoDBResourcesListMongoDBDatabasesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesListMongoRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5042,7 +4938,7 @@ export type MongoDBResourcesListMongoRoleDefinitionsInput =
 
 // Output Schema
 export const MongoDBResourcesListMongoRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5065,14 +4961,15 @@ export type MongoDBResourcesListMongoRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesListMongoRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesListMongoRoleDefinitions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesListMongoRoleDefinitionsInput,
     outputSchema: MongoDBResourcesListMongoRoleDefinitionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesListMongoUserDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5088,7 +4985,7 @@ export type MongoDBResourcesListMongoUserDefinitionsInput =
 
 // Output Schema
 export const MongoDBResourcesListMongoUserDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5111,14 +5008,15 @@ export type MongoDBResourcesListMongoUserDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const MongoDBResourcesListMongoUserDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoDBResourcesListMongoUserDefinitions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: MongoDBResourcesListMongoUserDefinitionsInput,
     outputSchema: MongoDBResourcesListMongoUserDefinitionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5133,7 +5031,7 @@ export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
 
 // Output Schema
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5152,13 +5050,13 @@ export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput,
     outputSchema: MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput,
   }));
 // Input Schema
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5173,7 +5071,7 @@ export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5192,7 +5090,7 @@ export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput,
     outputSchema:
@@ -5200,7 +5098,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughput =
   }));
 // Input Schema
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5215,7 +5113,7 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
 
 // Output Schema
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5234,13 +5132,13 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput,
     outputSchema: MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput,
   }));
 // Input Schema
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5255,7 +5153,7 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5274,14 +5172,14 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput,
     outputSchema:
       MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput,
   }));
 // Input Schema
 export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5299,7 +5197,7 @@ export type MongoDBResourcesRetrieveContinuousBackupInformationInput =
 
 // Output Schema
 export const MongoDBResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -5321,13 +5219,13 @@ export type MongoDBResourcesRetrieveContinuousBackupInformationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: MongoDBResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5342,7 +5240,7 @@ export type MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5361,13 +5259,13 @@ export type MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesUpdateMongoDBCollectionThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesUpdateMongoDBCollectionThroughputInput,
     outputSchema: MongoDBResourcesUpdateMongoDBCollectionThroughputOutput,
   }));
 // Input Schema
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5382,7 +5280,7 @@ export type MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
 
 // Output Schema
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5401,13 +5299,13 @@ export type MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputInput,
     outputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput,
   }));
 // Input Schema
 export const NotebookWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5422,7 +5320,7 @@ export type NotebookWorkspacesCreateOrUpdateInput =
 
 // Output Schema
 export const NotebookWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5438,29 +5336,26 @@ export type NotebookWorkspacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NotebookWorkspacesCreateOrUpdateInput,
-    outputSchema: NotebookWorkspacesCreateOrUpdateOutput,
-  }));
+export const NotebookWorkspacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesCreateOrUpdateInput,
+  outputSchema: NotebookWorkspacesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const NotebookWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-    }),
-  );
+export const NotebookWorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+  }),
+);
 export type NotebookWorkspacesDeleteInput =
   typeof NotebookWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotebookWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NotebookWorkspacesDeleteOutput =
   typeof NotebookWorkspacesDeleteOutput.Type;
 
@@ -5472,33 +5367,29 @@ export type NotebookWorkspacesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesDeleteInput,
-    outputSchema: NotebookWorkspacesDeleteOutput,
+export const NotebookWorkspacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesDeleteInput,
+  outputSchema: NotebookWorkspacesDeleteOutput,
+}));
+// Input Schema
+export const NotebookWorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
   }),
 );
-// Input Schema
-export const NotebookWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-    }),
-  );
 export type NotebookWorkspacesGetInput = typeof NotebookWorkspacesGetInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const NotebookWorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NotebookWorkspacesGetOutput =
   typeof NotebookWorkspacesGetOutput.Type;
 
@@ -5510,15 +5401,13 @@ export type NotebookWorkspacesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesGetInput,
-    outputSchema: NotebookWorkspacesGetOutput,
-  }),
-);
+export const NotebookWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesGetInput,
+  outputSchema: NotebookWorkspacesGetOutput,
+}));
 // Input Schema
 export const NotebookWorkspacesListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5533,7 +5422,7 @@ export type NotebookWorkspacesListByDatabaseAccountInput =
 
 // Output Schema
 export const NotebookWorkspacesListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5555,14 +5444,15 @@ export type NotebookWorkspacesListByDatabaseAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotebookWorkspacesListByDatabaseAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotebookWorkspacesListByDatabaseAccountInput,
     outputSchema: NotebookWorkspacesListByDatabaseAccountOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NotebookWorkspacesListConnectionInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5577,7 +5467,7 @@ export type NotebookWorkspacesListConnectionInfoInput =
 
 // Output Schema
 export const NotebookWorkspacesListConnectionInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authToken: Schema.optional(Schema.String),
     notebookServerEndpoint: Schema.optional(Schema.String),
   });
@@ -5592,14 +5482,15 @@ export type NotebookWorkspacesListConnectionInfoOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesListConnectionInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotebookWorkspacesListConnectionInfo = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotebookWorkspacesListConnectionInfoInput,
     outputSchema: NotebookWorkspacesListConnectionInfoOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NotebookWorkspacesRegenerateAuthTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5614,7 +5505,7 @@ export type NotebookWorkspacesRegenerateAuthTokenInput =
 
 // Output Schema
 export const NotebookWorkspacesRegenerateAuthTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NotebookWorkspacesRegenerateAuthTokenOutput =
   typeof NotebookWorkspacesRegenerateAuthTokenOutput.Type;
 
@@ -5626,29 +5517,28 @@ export type NotebookWorkspacesRegenerateAuthTokenOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesRegenerateAuthToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotebookWorkspacesRegenerateAuthToken = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotebookWorkspacesRegenerateAuthTokenInput,
     outputSchema: NotebookWorkspacesRegenerateAuthTokenOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NotebookWorkspacesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
-    }),
-  );
+export const NotebookWorkspacesStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
+  }),
+);
 export type NotebookWorkspacesStartInput =
   typeof NotebookWorkspacesStartInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotebookWorkspacesStartOutput = /*@__PURE__*/ Schema.Void;
 export type NotebookWorkspacesStartOutput =
   typeof NotebookWorkspacesStartOutput.Type;
 
@@ -5660,14 +5550,12 @@ export type NotebookWorkspacesStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotebookWorkspacesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesStartInput,
-    outputSchema: NotebookWorkspacesStartOutput,
-  }),
-);
+export const NotebookWorkspacesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesStartInput,
+  outputSchema: NotebookWorkspacesStartOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.DocumentDB/operations" }),
@@ -5675,7 +5563,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5701,28 +5589,27 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PartitionKeyRangeIdListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
-    }),
-  );
+export const PartitionKeyRangeIdListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
+  }),
+);
 export type PartitionKeyRangeIdListMetricsInput =
   typeof PartitionKeyRangeIdListMetricsInput.Type;
 
 // Output Schema
-export const PartitionKeyRangeIdListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartitionKeyRangeIdListMetricsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5761,7 +5648,8 @@ export const PartitionKeyRangeIdListMetricsOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type PartitionKeyRangeIdListMetricsOutput =
   typeof PartitionKeyRangeIdListMetricsOutput.Type;
 
@@ -5773,14 +5661,13 @@ export type PartitionKeyRangeIdListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PartitionKeyRangeIdListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PartitionKeyRangeIdListMetricsInput,
-    outputSchema: PartitionKeyRangeIdListMetricsOutput,
-  }));
+export const PartitionKeyRangeIdListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartitionKeyRangeIdListMetricsInput,
+  outputSchema: PartitionKeyRangeIdListMetricsOutput,
+}));
 // Input Schema
 export const PartitionKeyRangeIdRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5795,7 +5682,7 @@ export type PartitionKeyRangeIdRegionListMetricsInput =
 
 // Output Schema
 export const PartitionKeyRangeIdRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5846,67 +5733,66 @@ export type PartitionKeyRangeIdRegionListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PartitionKeyRangeIdRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PartitionKeyRangeIdRegionListMetrics = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PartitionKeyRangeIdRegionListMetricsInput,
     outputSchema: PartitionKeyRangeIdRegionListMetricsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PercentileListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
-    }),
-  );
+export const PercentileListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
+  }),
+);
 export type PercentileListMetricsInput = typeof PercentileListMetricsInput.Type;
 
 // Output Schema
-export const PercentileListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const PercentileListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type PercentileListMetricsOutput =
   typeof PercentileListMetricsOutput.Type;
 
@@ -5918,15 +5804,13 @@ export type PercentileListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PercentileListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PercentileListMetricsInput,
-    outputSchema: PercentileListMetricsOutput,
-  }),
-);
+export const PercentileListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PercentileListMetricsInput,
+  outputSchema: PercentileListMetricsOutput,
+}));
 // Input Schema
 export const PercentileSourceTargetListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -5941,7 +5825,7 @@ export type PercentileSourceTargetListMetricsInput =
 
 // Output Schema
 export const PercentileSourceTargetListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5992,68 +5876,65 @@ export type PercentileSourceTargetListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PercentileSourceTargetListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PercentileSourceTargetListMetricsInput,
-    outputSchema: PercentileSourceTargetListMetricsOutput,
-  }));
+export const PercentileSourceTargetListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PercentileSourceTargetListMetricsInput,
+  outputSchema: PercentileSourceTargetListMetricsOutput,
+}));
 // Input Schema
-export const PercentileTargetListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
-    }),
-  );
+export const PercentileTargetListMetricsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
+  }),
+);
 export type PercentileTargetListMetricsInput =
   typeof PercentileTargetListMetricsInput.Type;
 
 // Output Schema
-export const PercentileTargetListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          timeGrain: Schema.optional(Schema.String),
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountPerSecond",
-              "BytesPerSecond",
-              "Milliseconds",
-            ]),
-          ),
-          name: Schema.optional(
+export const PercentileTargetListMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        timeGrain: Schema.optional(Schema.String),
+        unit: Schema.optional(
+          Schema.Literals([
+            "Count",
+            "Bytes",
+            "Seconds",
+            "Percent",
+            "CountPerSecond",
+            "BytesPerSecond",
+            "Milliseconds",
+          ]),
+        ),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        metricValues: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
+              _count: Schema.optional(Schema.Number),
+              average: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              minimum: Schema.optional(Schema.Number),
+              timestamp: Schema.optional(Schema.String),
+              total: Schema.optional(Schema.Number),
             }),
           ),
-          metricValues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                _count: Schema.optional(Schema.Number),
-                average: Schema.optional(Schema.Number),
-                maximum: Schema.optional(Schema.Number),
-                minimum: Schema.optional(Schema.Number),
-                timestamp: Schema.optional(Schema.String),
-                total: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type PercentileTargetListMetricsOutput =
   typeof PercentileTargetListMetricsOutput.Type;
 
@@ -6065,15 +5946,13 @@ export type PercentileTargetListMetricsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PercentileTargetListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PercentileTargetListMetricsInput,
-    outputSchema: PercentileTargetListMetricsOutput,
-  }),
-);
+export const PercentileTargetListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PercentileTargetListMetricsInput,
+  outputSchema: PercentileTargetListMetricsOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6088,7 +5967,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6104,14 +5983,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6125,8 +6005,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -6138,33 +6017,30 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -6176,14 +6052,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6198,7 +6073,7 @@ export type PrivateEndpointConnectionsListByDatabaseAccountInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6221,32 +6096,30 @@ export type PrivateEndpointConnectionsListByDatabaseAccountOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByDatabaseAccountInput,
     outputSchema: PrivateEndpointConnectionsListByDatabaseAccountOutput,
   }));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -6258,15 +6131,13 @@ export type PrivateLinkResourcesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6281,7 +6152,7 @@ export type PrivateLinkResourcesListByDatabaseAccountInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6303,14 +6174,15 @@ export type PrivateLinkResourcesListByDatabaseAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateLinkResourcesListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkResourcesListByDatabaseAccount = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkResourcesListByDatabaseAccountInput,
     outputSchema: PrivateLinkResourcesListByDatabaseAccountOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RestorableDatabaseAccountsGetByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -6324,7 +6196,7 @@ export type RestorableDatabaseAccountsGetByLocationInput =
 
 // Output Schema
 export const RestorableDatabaseAccountsGetByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         accountName: Schema.optional(Schema.String),
@@ -6368,28 +6240,28 @@ export type RestorableDatabaseAccountsGetByLocationOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableDatabaseAccountsGetByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorableDatabaseAccountsGetByLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RestorableDatabaseAccountsGetByLocationInput,
     outputSchema: RestorableDatabaseAccountsGetByLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RestorableDatabaseAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
-    }),
-  );
+export const RestorableDatabaseAccountsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
+  }),
+);
 export type RestorableDatabaseAccountsListInput =
   typeof RestorableDatabaseAccountsListInput.Type;
 
 // Output Schema
-export const RestorableDatabaseAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorableDatabaseAccountsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6430,7 +6302,8 @@ export const RestorableDatabaseAccountsListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RestorableDatabaseAccountsListOutput =
   typeof RestorableDatabaseAccountsListOutput.Type;
 
@@ -6441,14 +6314,13 @@ export type RestorableDatabaseAccountsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableDatabaseAccountsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableDatabaseAccountsListInput,
-    outputSchema: RestorableDatabaseAccountsListOutput,
-  }));
+export const RestorableDatabaseAccountsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableDatabaseAccountsListInput,
+  outputSchema: RestorableDatabaseAccountsListOutput,
+}));
 // Input Schema
 export const RestorableDatabaseAccountsListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -6462,7 +6334,7 @@ export type RestorableDatabaseAccountsListByLocationInput =
 
 // Output Schema
 export const RestorableDatabaseAccountsListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6514,28 +6386,28 @@ export type RestorableDatabaseAccountsListByLocationOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableDatabaseAccountsListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorableDatabaseAccountsListByLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RestorableDatabaseAccountsListByLocationInput,
     outputSchema: RestorableDatabaseAccountsListByLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RestorableGremlinDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
-    }),
-  );
+export const RestorableGremlinDatabasesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
+  }),
+);
 export type RestorableGremlinDatabasesListInput =
   typeof RestorableGremlinDatabasesListInput.Type;
 
 // Output Schema
-export const RestorableGremlinDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorableGremlinDatabasesListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6568,7 +6440,8 @@ export const RestorableGremlinDatabasesListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RestorableGremlinDatabasesListOutput =
   typeof RestorableGremlinDatabasesListOutput.Type;
 
@@ -6579,61 +6452,58 @@ export type RestorableGremlinDatabasesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableGremlinDatabasesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableGremlinDatabasesListInput,
-    outputSchema: RestorableGremlinDatabasesListOutput,
-  }));
+export const RestorableGremlinDatabasesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableGremlinDatabasesListInput,
+  outputSchema: RestorableGremlinDatabasesListOutput,
+}));
 // Input Schema
-export const RestorableGremlinGraphsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
-    }),
-  );
+export const RestorableGremlinGraphsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
+  }),
+);
 export type RestorableGremlinGraphsListInput =
   typeof RestorableGremlinGraphsListInput.Type;
 
 // Output Schema
-export const RestorableGremlinGraphsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              resource: Schema.optional(
-                Schema.Struct({
-                  _rid: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals([
-                      "Create",
-                      "Replace",
-                      "Delete",
-                      "Recreate",
-                      "SystemOperation",
-                    ]),
-                  ),
-                  canUndelete: Schema.optional(Schema.String),
-                  canUndeleteReason: Schema.optional(Schema.String),
-                  eventTimestamp: Schema.optional(Schema.String),
-                  ownerId: Schema.optional(Schema.String),
-                  ownerResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const RestorableGremlinGraphsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                _rid: Schema.optional(Schema.String),
+                operationType: Schema.optional(
+                  Schema.Literals([
+                    "Create",
+                    "Replace",
+                    "Delete",
+                    "Recreate",
+                    "SystemOperation",
+                  ]),
+                ),
+                canUndelete: Schema.optional(Schema.String),
+                canUndeleteReason: Schema.optional(Schema.String),
+                eventTimestamp: Schema.optional(Schema.String),
+                ownerId: Schema.optional(Schema.String),
+                ownerResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableGremlinGraphsListOutput =
   typeof RestorableGremlinGraphsListOutput.Type;
 
@@ -6644,29 +6514,26 @@ export type RestorableGremlinGraphsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableGremlinGraphsListInput,
-    outputSchema: RestorableGremlinGraphsListOutput,
+export const RestorableGremlinGraphsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableGremlinGraphsListInput,
+  outputSchema: RestorableGremlinGraphsListOutput,
+}));
+// Input Schema
+export const RestorableGremlinResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
   }),
 );
-// Input Schema
-export const RestorableGremlinResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
-    }),
-  );
 export type RestorableGremlinResourcesListInput =
   typeof RestorableGremlinResourcesListInput.Type;
 
 // Output Schema
-export const RestorableGremlinResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorableGremlinResourcesListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6678,7 +6545,8 @@ export const RestorableGremlinResourcesListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RestorableGremlinResourcesListOutput =
   typeof RestorableGremlinResourcesListOutput.Type;
 
@@ -6689,14 +6557,13 @@ export type RestorableGremlinResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableGremlinResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableGremlinResourcesListInput,
-    outputSchema: RestorableGremlinResourcesListOutput,
-  }));
+export const RestorableGremlinResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableGremlinResourcesListInput,
+  outputSchema: RestorableGremlinResourcesListOutput,
+}));
 // Input Schema
 export const RestorableMongodbCollectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -6710,7 +6577,7 @@ export type RestorableMongodbCollectionsListInput =
 
 // Output Schema
 export const RestorableMongodbCollectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6754,28 +6621,26 @@ export type RestorableMongodbCollectionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableMongodbCollectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableMongodbCollectionsListInput,
-    outputSchema: RestorableMongodbCollectionsListOutput,
-  }));
+export const RestorableMongodbCollectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableMongodbCollectionsListInput,
+  outputSchema: RestorableMongodbCollectionsListOutput,
+}));
 // Input Schema
-export const RestorableMongodbDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
-    }),
-  );
+export const RestorableMongodbDatabasesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
+  }),
+);
 export type RestorableMongodbDatabasesListInput =
   typeof RestorableMongodbDatabasesListInput.Type;
 
 // Output Schema
-export const RestorableMongodbDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorableMongodbDatabasesListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6808,7 +6673,8 @@ export const RestorableMongodbDatabasesListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RestorableMongodbDatabasesListOutput =
   typeof RestorableMongodbDatabasesListOutput.Type;
 
@@ -6819,28 +6685,26 @@ export type RestorableMongodbDatabasesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableMongodbDatabasesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableMongodbDatabasesListInput,
-    outputSchema: RestorableMongodbDatabasesListOutput,
-  }));
+export const RestorableMongodbDatabasesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableMongodbDatabasesListInput,
+  outputSchema: RestorableMongodbDatabasesListOutput,
+}));
 // Input Schema
-export const RestorableMongodbResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
-    }),
-  );
+export const RestorableMongodbResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
+  }),
+);
 export type RestorableMongodbResourcesListInput =
   typeof RestorableMongodbResourcesListInput.Type;
 
 // Output Schema
-export const RestorableMongodbResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorableMongodbResourcesListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6852,7 +6716,8 @@ export const RestorableMongodbResourcesListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type RestorableMongodbResourcesListOutput =
   typeof RestorableMongodbResourcesListOutput.Type;
 
@@ -6863,282 +6728,272 @@ export type RestorableMongodbResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableMongodbResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableMongodbResourcesListInput,
-    outputSchema: RestorableMongodbResourcesListOutput,
-  }));
+export const RestorableMongodbResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableMongodbResourcesListInput,
+  outputSchema: RestorableMongodbResourcesListOutput,
+}));
 // Input Schema
-export const RestorableSqlContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
-    }),
-  );
+export const RestorableSqlContainersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
+  }),
+);
 export type RestorableSqlContainersListInput =
   typeof RestorableSqlContainersListInput.Type;
 
 // Output Schema
-export const RestorableSqlContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              resource: Schema.optional(
-                Schema.Struct({
-                  _rid: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals([
-                      "Create",
-                      "Replace",
-                      "Delete",
-                      "Recreate",
-                      "SystemOperation",
-                    ]),
-                  ),
-                  canUndelete: Schema.optional(Schema.String),
-                  canUndeleteReason: Schema.optional(Schema.String),
-                  eventTimestamp: Schema.optional(Schema.String),
-                  ownerId: Schema.optional(Schema.String),
-                  ownerResourceId: Schema.optional(Schema.String),
-                  container: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.String,
-                      indexingPolicy: Schema.optional(
-                        Schema.Struct({
-                          automatic: Schema.optional(Schema.Boolean),
-                          indexingMode: Schema.optional(
-                            Schema.Literals(["consistent", "lazy", "none"]),
-                          ),
-                          includedPaths: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.optional(Schema.String),
-                                indexes: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      dataType: Schema.optional(
-                                        Schema.Literals([
-                                          "String",
-                                          "Number",
-                                          "Point",
-                                          "Polygon",
-                                          "LineString",
-                                          "MultiPolygon",
-                                        ]),
-                                      ),
-                                      precision: Schema.optional(Schema.Number),
-                                      kind: Schema.optional(
-                                        Schema.Literals([
-                                          "Hash",
-                                          "Range",
-                                          "Spatial",
-                                        ]),
-                                      ),
-                                    }),
-                                  ),
-                                ),
-                              }),
-                            ),
-                          ),
-                          excludedPaths: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                          compositeIndexes: Schema.optional(
-                            Schema.Array(
-                              Schema.Array(
-                                Schema.Struct({
-                                  path: Schema.optional(Schema.String),
-                                  order: Schema.optional(
-                                    Schema.Literals([
-                                      "ascending",
-                                      "descending",
-                                    ]),
-                                  ),
-                                }),
-                              ),
-                            ),
-                          ),
-                          spatialIndexes: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.optional(Schema.String),
-                                types: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Literals([
-                                      "Point",
-                                      "LineString",
-                                      "Polygon",
-                                      "MultiPolygon",
-                                    ]),
-                                  ),
-                                ),
-                              }),
-                            ),
-                          ),
-                          vectorIndexes: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.String,
-                                type: Schema.Literals([
-                                  "flat",
-                                  "diskANN",
-                                  "quantizedFlat",
-                                ]),
-                                quantizationByteSize: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                indexingSearchListSize: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                vectorIndexShardKey: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          fullTextIndexes: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.String,
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      partitionKey: Schema.optional(
-                        Schema.Struct({
-                          paths: Schema.optional(Schema.Array(Schema.String)),
-                          kind: Schema.optional(
-                            Schema.Literals(["Hash", "Range", "MultiHash"]),
-                          ),
-                          version: Schema.optional(Schema.Number),
-                          systemKey: Schema.optional(Schema.Boolean),
-                        }),
-                      ),
-                      defaultTtl: Schema.optional(Schema.Number),
-                      uniqueKeyPolicy: Schema.optional(
-                        Schema.Struct({
-                          uniqueKeys: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                paths: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      conflictResolutionPolicy: Schema.optional(
-                        Schema.Struct({
-                          mode: Schema.optional(
-                            Schema.Literals(["LastWriterWins", "Custom"]),
-                          ),
-                          conflictResolutionPath: Schema.optional(
-                            Schema.String,
-                          ),
-                          conflictResolutionProcedure: Schema.optional(
-                            Schema.String,
-                          ),
-                        }),
-                      ),
-                      clientEncryptionPolicy: Schema.optional(
-                        Schema.Struct({
-                          includedPaths: Schema.Array(
+export const RestorableSqlContainersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                _rid: Schema.optional(Schema.String),
+                operationType: Schema.optional(
+                  Schema.Literals([
+                    "Create",
+                    "Replace",
+                    "Delete",
+                    "Recreate",
+                    "SystemOperation",
+                  ]),
+                ),
+                canUndelete: Schema.optional(Schema.String),
+                canUndeleteReason: Schema.optional(Schema.String),
+                eventTimestamp: Schema.optional(Schema.String),
+                ownerId: Schema.optional(Schema.String),
+                ownerResourceId: Schema.optional(Schema.String),
+                container: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.String,
+                    indexingPolicy: Schema.optional(
+                      Schema.Struct({
+                        automatic: Schema.optional(Schema.Boolean),
+                        indexingMode: Schema.optional(
+                          Schema.Literals(["consistent", "lazy", "none"]),
+                        ),
+                        includedPaths: Schema.optional(
+                          Schema.Array(
                             Schema.Struct({
-                              path: Schema.String,
-                              clientEncryptionKeyId: Schema.String,
-                              encryptionType: Schema.String,
-                              encryptionAlgorithm: Schema.String,
+                              path: Schema.optional(Schema.String),
+                              indexes: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    dataType: Schema.optional(
+                                      Schema.Literals([
+                                        "String",
+                                        "Number",
+                                        "Point",
+                                        "Polygon",
+                                        "LineString",
+                                        "MultiPolygon",
+                                      ]),
+                                    ),
+                                    precision: Schema.optional(Schema.Number),
+                                    kind: Schema.optional(
+                                      Schema.Literals([
+                                        "Hash",
+                                        "Range",
+                                        "Spatial",
+                                      ]),
+                                    ),
+                                  }),
+                                ),
+                              ),
                             }),
                           ),
-                          policyFormatVersion: Schema.Number,
-                        }),
-                      ),
-                      analyticalStorageTtl: Schema.optional(Schema.Number),
-                      restoreParameters: Schema.optional(
-                        Schema.Struct({
-                          restoreSource: Schema.optional(Schema.String),
-                          restoreTimestampInUtc: Schema.optional(Schema.String),
-                          restoreWithTtlDisabled: Schema.optional(
-                            Schema.Boolean,
+                        ),
+                        excludedPaths: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.optional(Schema.String),
+                            }),
                           ),
-                        }),
-                      ),
-                      createMode: Schema.optional(
-                        Schema.Literals(["Default", "Restore"]),
-                      ),
-                      computedProperties: Schema.optional(
-                        Schema.Array(
+                        ),
+                        compositeIndexes: Schema.optional(
+                          Schema.Array(
+                            Schema.Array(
+                              Schema.Struct({
+                                path: Schema.optional(Schema.String),
+                                order: Schema.optional(
+                                  Schema.Literals(["ascending", "descending"]),
+                                ),
+                              }),
+                            ),
+                          ),
+                        ),
+                        spatialIndexes: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.optional(Schema.String),
+                              types: Schema.optional(
+                                Schema.Array(
+                                  Schema.Literals([
+                                    "Point",
+                                    "LineString",
+                                    "Polygon",
+                                    "MultiPolygon",
+                                  ]),
+                                ),
+                              ),
+                            }),
+                          ),
+                        ),
+                        vectorIndexes: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.String,
+                              type: Schema.Literals([
+                                "flat",
+                                "diskANN",
+                                "quantizedFlat",
+                              ]),
+                              quantizationByteSize: Schema.optional(
+                                Schema.Number,
+                              ),
+                              indexingSearchListSize: Schema.optional(
+                                Schema.Number,
+                              ),
+                              vectorIndexShardKey: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        fullTextIndexes: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    partitionKey: Schema.optional(
+                      Schema.Struct({
+                        paths: Schema.optional(Schema.Array(Schema.String)),
+                        kind: Schema.optional(
+                          Schema.Literals(["Hash", "Range", "MultiHash"]),
+                        ),
+                        version: Schema.optional(Schema.Number),
+                        systemKey: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    defaultTtl: Schema.optional(Schema.Number),
+                    uniqueKeyPolicy: Schema.optional(
+                      Schema.Struct({
+                        uniqueKeys: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              paths: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    conflictResolutionPolicy: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["LastWriterWins", "Custom"]),
+                        ),
+                        conflictResolutionPath: Schema.optional(Schema.String),
+                        conflictResolutionProcedure: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    clientEncryptionPolicy: Schema.optional(
+                      Schema.Struct({
+                        includedPaths: Schema.Array(
                           Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            query: Schema.optional(Schema.String),
+                            path: Schema.String,
+                            clientEncryptionKeyId: Schema.String,
+                            encryptionType: Schema.String,
+                            encryptionAlgorithm: Schema.String,
                           }),
                         ),
-                      ),
-                      vectorEmbeddingPolicy: Schema.optional(
+                        policyFormatVersion: Schema.Number,
+                      }),
+                    ),
+                    analyticalStorageTtl: Schema.optional(Schema.Number),
+                    restoreParameters: Schema.optional(
+                      Schema.Struct({
+                        restoreSource: Schema.optional(Schema.String),
+                        restoreTimestampInUtc: Schema.optional(Schema.String),
+                        restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    createMode: Schema.optional(
+                      Schema.Literals(["Default", "Restore"]),
+                    ),
+                    computedProperties: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          vectorEmbeddings: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.String,
-                                dataType: Schema.Literals([
-                                  "float32",
-                                  "uint8",
-                                  "int8",
-                                  "float16",
-                                ]),
-                                distanceFunction: Schema.Literals([
-                                  "euclidean",
-                                  "cosine",
-                                  "dotproduct",
-                                ]),
-                                dimensions: Schema.Number,
-                              }),
-                            ),
-                          ),
+                          name: Schema.optional(Schema.String),
+                          query: Schema.optional(Schema.String),
                         }),
                       ),
-                      fullTextPolicy: Schema.optional(
-                        Schema.Struct({
-                          defaultLanguage: Schema.optional(Schema.String),
-                          fullTextPaths: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                path: Schema.String,
-                                language: Schema.optional(Schema.String),
-                              }),
-                            ),
+                    ),
+                    vectorEmbeddingPolicy: Schema.optional(
+                      Schema.Struct({
+                        vectorEmbeddings: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.String,
+                              dataType: Schema.Literals([
+                                "float32",
+                                "uint8",
+                                "int8",
+                                "float16",
+                              ]),
+                              distanceFunction: Schema.Literals([
+                                "euclidean",
+                                "cosine",
+                                "dotproduct",
+                              ]),
+                              dimensions: Schema.Number,
+                            }),
                           ),
-                        }),
-                      ),
-                      _rid: Schema.optional(Schema.String),
-                      _ts: Schema.optional(Schema.Number),
-                      _etag: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+                        ),
+                      }),
+                    ),
+                    fullTextPolicy: Schema.optional(
+                      Schema.Struct({
+                        defaultLanguage: Schema.optional(Schema.String),
+                        fullTextPaths: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.String,
+                              language: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    _rid: Schema.optional(Schema.String),
+                    _ts: Schema.optional(Schema.Number),
+                    _etag: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableSqlContainersListOutput =
   typeof RestorableSqlContainersListOutput.Type;
 
@@ -7149,82 +7004,76 @@ export type RestorableSqlContainersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlContainersListInput,
-    outputSchema: RestorableSqlContainersListOutput,
+export const RestorableSqlContainersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlContainersListInput,
+  outputSchema: RestorableSqlContainersListOutput,
+}));
+// Input Schema
+export const RestorableSqlDatabasesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
   }),
 );
-// Input Schema
-export const RestorableSqlDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
-    }),
-  );
 export type RestorableSqlDatabasesListInput =
   typeof RestorableSqlDatabasesListInput.Type;
 
 // Output Schema
-export const RestorableSqlDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              resource: Schema.optional(
-                Schema.Struct({
-                  _rid: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals([
-                      "Create",
-                      "Replace",
-                      "Delete",
-                      "Recreate",
-                      "SystemOperation",
-                    ]),
-                  ),
-                  canUndelete: Schema.optional(Schema.String),
-                  canUndeleteReason: Schema.optional(Schema.String),
-                  eventTimestamp: Schema.optional(Schema.String),
-                  ownerId: Schema.optional(Schema.String),
-                  ownerResourceId: Schema.optional(Schema.String),
-                  database: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.String,
-                      restoreParameters: Schema.optional(
-                        Schema.Struct({
-                          restoreSource: Schema.optional(Schema.String),
-                          restoreTimestampInUtc: Schema.optional(Schema.String),
-                          restoreWithTtlDisabled: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                        }),
-                      ),
-                      createMode: Schema.optional(
-                        Schema.Literals(["Default", "Restore"]),
-                      ),
-                      _rid: Schema.optional(Schema.String),
-                      _ts: Schema.optional(Schema.Number),
-                      _etag: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const RestorableSqlDatabasesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                _rid: Schema.optional(Schema.String),
+                operationType: Schema.optional(
+                  Schema.Literals([
+                    "Create",
+                    "Replace",
+                    "Delete",
+                    "Recreate",
+                    "SystemOperation",
+                  ]),
+                ),
+                canUndelete: Schema.optional(Schema.String),
+                canUndeleteReason: Schema.optional(Schema.String),
+                eventTimestamp: Schema.optional(Schema.String),
+                ownerId: Schema.optional(Schema.String),
+                ownerResourceId: Schema.optional(Schema.String),
+                database: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.String,
+                    restoreParameters: Schema.optional(
+                      Schema.Struct({
+                        restoreSource: Schema.optional(Schema.String),
+                        restoreTimestampInUtc: Schema.optional(Schema.String),
+                        restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    createMode: Schema.optional(
+                      Schema.Literals(["Default", "Restore"]),
+                    ),
+                    _rid: Schema.optional(Schema.String),
+                    _ts: Schema.optional(Schema.Number),
+                    _etag: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableSqlDatabasesListOutput =
   typeof RestorableSqlDatabasesListOutput.Type;
 
@@ -7235,41 +7084,37 @@ export type RestorableSqlDatabasesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlDatabasesListInput,
-    outputSchema: RestorableSqlDatabasesListOutput,
+export const RestorableSqlDatabasesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlDatabasesListInput,
+  outputSchema: RestorableSqlDatabasesListOutput,
+}));
+// Input Schema
+export const RestorableSqlResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
   }),
 );
-// Input Schema
-export const RestorableSqlResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
-    }),
-  );
 export type RestorableSqlResourcesListInput =
   typeof RestorableSqlResourcesListInput.Type;
 
 // Output Schema
-export const RestorableSqlResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          databaseName: Schema.optional(Schema.String),
-          collectionNames: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+export const RestorableSqlResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        databaseName: Schema.optional(Schema.String),
+        collectionNames: Schema.optional(Schema.Array(Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableSqlResourcesListOutput =
   typeof RestorableSqlResourcesListOutput.Type;
 
@@ -7280,39 +7125,35 @@ export type RestorableSqlResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlResourcesListInput,
-    outputSchema: RestorableSqlResourcesListOutput,
+export const RestorableSqlResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlResourcesListInput,
+  outputSchema: RestorableSqlResourcesListOutput,
+}));
+// Input Schema
+export const RestorableTableResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
   }),
 );
-// Input Schema
-export const RestorableTableResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
-    }),
-  );
 export type RestorableTableResourcesListInput =
   typeof RestorableTableResourcesListInput.Type;
 
 // Output Schema
-export const RestorableTableResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const RestorableTableResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableTableResourcesListOutput =
   typeof RestorableTableResourcesListOutput.Type;
 
@@ -7323,60 +7164,57 @@ export type RestorableTableResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableTableResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableTableResourcesListInput,
-    outputSchema: RestorableTableResourcesListOutput,
-  }));
+export const RestorableTableResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableTableResourcesListInput,
+  outputSchema: RestorableTableResourcesListOutput,
+}));
 // Input Schema
-export const RestorableTablesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
-    }),
-  );
+export const RestorableTablesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
+  }),
+);
 export type RestorableTablesListInput = typeof RestorableTablesListInput.Type;
 
 // Output Schema
-export const RestorableTablesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              resource: Schema.optional(
-                Schema.Struct({
-                  _rid: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals([
-                      "Create",
-                      "Replace",
-                      "Delete",
-                      "Recreate",
-                      "SystemOperation",
-                    ]),
-                  ),
-                  canUndelete: Schema.optional(Schema.String),
-                  canUndeleteReason: Schema.optional(Schema.String),
-                  eventTimestamp: Schema.optional(Schema.String),
-                  ownerId: Schema.optional(Schema.String),
-                  ownerResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const RestorableTablesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                _rid: Schema.optional(Schema.String),
+                operationType: Schema.optional(
+                  Schema.Literals([
+                    "Create",
+                    "Replace",
+                    "Delete",
+                    "Recreate",
+                    "SystemOperation",
+                  ]),
+                ),
+                canUndelete: Schema.optional(Schema.String),
+                canUndeleteReason: Schema.optional(Schema.String),
+                eventTimestamp: Schema.optional(Schema.String),
+                ownerId: Schema.optional(Schema.String),
+                ownerResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type RestorableTablesListOutput = typeof RestorableTablesListOutput.Type;
 
 // The operation
@@ -7386,14 +7224,12 @@ export type RestorableTablesListOutput = typeof RestorableTablesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableTablesListInput,
-    outputSchema: RestorableTablesListOutput,
-  }),
-);
+export const RestorableTablesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableTablesListInput,
+  outputSchema: RestorableTablesListOutput,
+}));
 // Input Schema
-export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -7406,7 +7242,7 @@ export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServiceCreateInput = typeof ServiceCreateInput.Type;
 
 // Output Schema
-export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7421,12 +7257,12 @@ export type ServiceCreateOutput = typeof ServiceCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceCreateInput,
   outputSchema: ServiceCreateOutput,
 }));
 // Input Schema
-export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -7439,7 +7275,7 @@ export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
 
 // Output Schema
-export const ServiceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServiceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServiceDeleteOutput = typeof ServiceDeleteOutput.Type;
 
 // The operation
@@ -7450,12 +7286,12 @@ export type ServiceDeleteOutput = typeof ServiceDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceDeleteInput,
   outputSchema: ServiceDeleteOutput,
 }));
 // Input Schema
-export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -7468,7 +7304,7 @@ export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServiceGetInput = typeof ServiceGetInput.Type;
 
 // Output Schema
-export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7483,12 +7319,12 @@ export type ServiceGetOutput = typeof ServiceGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceGetInput,
   outputSchema: ServiceGetOutput,
 }));
 // Input Schema
-export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -7501,7 +7337,7 @@ export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServiceListInput = typeof ServiceListInput.Type;
 
 // Output Schema
-export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7522,13 +7358,13 @@ export type ServiceListOutput = typeof ServiceListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceListInput,
   outputSchema: ServiceListOutput,
 }));
 // Input Schema
 export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7543,7 +7379,7 @@ export type SqlResourcesCreateUpdateClientEncryptionKeyInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7560,13 +7396,13 @@ export type SqlResourcesCreateUpdateClientEncryptionKeyOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesCreateUpdateClientEncryptionKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateClientEncryptionKeyInput,
     outputSchema: SqlResourcesCreateUpdateClientEncryptionKeyOutput,
   }));
 // Input Schema
 export const SqlResourcesCreateUpdateSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7581,7 +7417,7 @@ export type SqlResourcesCreateUpdateSqlContainerInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7599,14 +7435,15 @@ export type SqlResourcesCreateUpdateSqlContainerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesCreateUpdateSqlContainer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesCreateUpdateSqlContainer = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesCreateUpdateSqlContainerInput,
     outputSchema: SqlResourcesCreateUpdateSqlContainerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesCreateUpdateSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7621,7 +7458,7 @@ export type SqlResourcesCreateUpdateSqlDatabaseInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7639,14 +7476,15 @@ export type SqlResourcesCreateUpdateSqlDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesCreateUpdateSqlDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesCreateUpdateSqlDatabase = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesCreateUpdateSqlDatabaseInput,
     outputSchema: SqlResourcesCreateUpdateSqlDatabaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7662,7 +7500,7 @@ export type SqlResourcesCreateUpdateSqlRoleAssignmentInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7679,14 +7517,15 @@ export type SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesCreateUpdateSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesCreateUpdateSqlRoleAssignment = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesCreateUpdateSqlRoleAssignmentInput,
     outputSchema: SqlResourcesCreateUpdateSqlRoleAssignmentOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7702,7 +7541,7 @@ export type SqlResourcesCreateUpdateSqlRoleDefinitionInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7719,14 +7558,15 @@ export type SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesCreateUpdateSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesCreateUpdateSqlRoleDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesCreateUpdateSqlRoleDefinitionInput,
     outputSchema: SqlResourcesCreateUpdateSqlRoleDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7741,7 +7581,7 @@ export type SqlResourcesCreateUpdateSqlStoredProcedureInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7760,13 +7600,13 @@ export type SqlResourcesCreateUpdateSqlStoredProcedureOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesCreateUpdateSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlStoredProcedureInput,
     outputSchema: SqlResourcesCreateUpdateSqlStoredProcedureOutput,
   }));
 // Input Schema
 export const SqlResourcesCreateUpdateSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7781,7 +7621,7 @@ export type SqlResourcesCreateUpdateSqlTriggerInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7799,14 +7639,15 @@ export type SqlResourcesCreateUpdateSqlTriggerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesCreateUpdateSqlTrigger =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesCreateUpdateSqlTrigger = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesCreateUpdateSqlTriggerInput,
     outputSchema: SqlResourcesCreateUpdateSqlTriggerOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7821,7 +7662,7 @@ export type SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
 
 // Output Schema
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7840,28 +7681,26 @@ export type SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesCreateUpdateSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput,
   }));
 // Input Schema
-export const SqlResourcesDeleteSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-    }),
-  );
+export const SqlResourcesDeleteSqlContainerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+  }),
+);
 export type SqlResourcesDeleteSqlContainerInput =
   typeof SqlResourcesDeleteSqlContainerInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlContainerOutput = /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlContainerOutput =
   typeof SqlResourcesDeleteSqlContainerOutput.Type;
 
@@ -7873,29 +7712,26 @@ export type SqlResourcesDeleteSqlContainerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlContainer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesDeleteSqlContainerInput,
-    outputSchema: SqlResourcesDeleteSqlContainerOutput,
-  }));
+export const SqlResourcesDeleteSqlContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesDeleteSqlContainerInput,
+  outputSchema: SqlResourcesDeleteSqlContainerOutput,
+}));
 // Input Schema
-export const SqlResourcesDeleteSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-    }),
-  );
+export const SqlResourcesDeleteSqlDatabaseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+  }),
+);
 export type SqlResourcesDeleteSqlDatabaseInput =
   typeof SqlResourcesDeleteSqlDatabaseInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlDatabaseOutput = /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlDatabaseOutput =
   typeof SqlResourcesDeleteSqlDatabaseOutput.Type;
 
@@ -7907,14 +7743,13 @@ export type SqlResourcesDeleteSqlDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesDeleteSqlDatabaseInput,
-    outputSchema: SqlResourcesDeleteSqlDatabaseOutput,
-  }));
+export const SqlResourcesDeleteSqlDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesDeleteSqlDatabaseInput,
+  outputSchema: SqlResourcesDeleteSqlDatabaseOutput,
+}));
 // Input Schema
 export const SqlResourcesDeleteSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7930,7 +7765,7 @@ export type SqlResourcesDeleteSqlRoleAssignmentInput =
 
 // Output Schema
 export const SqlResourcesDeleteSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlRoleAssignmentOutput =
   typeof SqlResourcesDeleteSqlRoleAssignmentOutput.Type;
 
@@ -7943,14 +7778,15 @@ export type SqlResourcesDeleteSqlRoleAssignmentOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesDeleteSqlRoleAssignment = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesDeleteSqlRoleAssignmentInput,
     outputSchema: SqlResourcesDeleteSqlRoleAssignmentOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesDeleteSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7966,7 +7802,7 @@ export type SqlResourcesDeleteSqlRoleDefinitionInput =
 
 // Output Schema
 export const SqlResourcesDeleteSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlRoleDefinitionOutput =
   typeof SqlResourcesDeleteSqlRoleDefinitionOutput.Type;
 
@@ -7979,14 +7815,15 @@ export type SqlResourcesDeleteSqlRoleDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesDeleteSqlRoleDefinition = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesDeleteSqlRoleDefinitionInput,
     outputSchema: SqlResourcesDeleteSqlRoleDefinitionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesDeleteSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8001,7 +7838,7 @@ export type SqlResourcesDeleteSqlStoredProcedureInput =
 
 // Output Schema
 export const SqlResourcesDeleteSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlStoredProcedureOutput =
   typeof SqlResourcesDeleteSqlStoredProcedureOutput.Type;
 
@@ -8013,29 +7850,28 @@ export type SqlResourcesDeleteSqlStoredProcedureOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesDeleteSqlStoredProcedure = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesDeleteSqlStoredProcedureInput,
     outputSchema: SqlResourcesDeleteSqlStoredProcedureOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlResourcesDeleteSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
-    }),
-  );
+export const SqlResourcesDeleteSqlTriggerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
+  }),
+);
 export type SqlResourcesDeleteSqlTriggerInput =
   typeof SqlResourcesDeleteSqlTriggerInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlTriggerOutput = /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlTriggerOutput =
   typeof SqlResourcesDeleteSqlTriggerOutput.Type;
 
@@ -8047,14 +7883,13 @@ export type SqlResourcesDeleteSqlTriggerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlTrigger =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesDeleteSqlTriggerInput,
-    outputSchema: SqlResourcesDeleteSqlTriggerOutput,
-  }));
+export const SqlResourcesDeleteSqlTrigger = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesDeleteSqlTriggerInput,
+  outputSchema: SqlResourcesDeleteSqlTriggerOutput,
+}));
 // Input Schema
 export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8069,7 +7904,7 @@ export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
 
 // Output Schema
 export const SqlResourcesDeleteSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlResourcesDeleteSqlUserDefinedFunctionOutput =
   typeof SqlResourcesDeleteSqlUserDefinedFunctionOutput.Type;
 
@@ -8081,14 +7916,15 @@ export type SqlResourcesDeleteSqlUserDefinedFunctionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesDeleteSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesDeleteSqlUserDefinedFunction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesDeleteSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesDeleteSqlUserDefinedFunctionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesGetClientEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8103,7 +7939,7 @@ export type SqlResourcesGetClientEncryptionKeyInput =
 
 // Output Schema
 export const SqlResourcesGetClientEncryptionKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8119,35 +7955,34 @@ export type SqlResourcesGetClientEncryptionKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetClientEncryptionKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesGetClientEncryptionKey = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesGetClientEncryptionKeyInput,
     outputSchema: SqlResourcesGetClientEncryptionKeyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlResourcesGetSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-    }),
-  );
+export const SqlResourcesGetSqlContainerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+  }),
+);
 export type SqlResourcesGetSqlContainerInput =
   typeof SqlResourcesGetSqlContainerInput.Type;
 
 // Output Schema
-export const SqlResourcesGetSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const SqlResourcesGetSqlContainerOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type SqlResourcesGetSqlContainerOutput =
   typeof SqlResourcesGetSqlContainerOutput.Type;
 
@@ -8159,15 +7994,13 @@ export type SqlResourcesGetSqlContainerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlContainerInput,
-    outputSchema: SqlResourcesGetSqlContainerOutput,
-  }),
-);
+export const SqlResourcesGetSqlContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlContainerInput,
+  outputSchema: SqlResourcesGetSqlContainerOutput,
+}));
 // Input Schema
 export const SqlResourcesGetSqlContainerThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8182,7 +8015,7 @@ export type SqlResourcesGetSqlContainerThroughputInput =
 
 // Output Schema
 export const SqlResourcesGetSqlContainerThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8200,35 +8033,34 @@ export type SqlResourcesGetSqlContainerThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlContainerThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesGetSqlContainerThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesGetSqlContainerThroughputInput,
     outputSchema: SqlResourcesGetSqlContainerThroughputOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlResourcesGetSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-    }),
-  );
+export const SqlResourcesGetSqlDatabaseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+  }),
+);
 export type SqlResourcesGetSqlDatabaseInput =
   typeof SqlResourcesGetSqlDatabaseInput.Type;
 
 // Output Schema
-export const SqlResourcesGetSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const SqlResourcesGetSqlDatabaseOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type SqlResourcesGetSqlDatabaseOutput =
   typeof SqlResourcesGetSqlDatabaseOutput.Type;
 
@@ -8240,15 +8072,13 @@ export type SqlResourcesGetSqlDatabaseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlDatabaseInput,
-    outputSchema: SqlResourcesGetSqlDatabaseOutput,
-  }),
-);
+export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlDatabaseInput,
+  outputSchema: SqlResourcesGetSqlDatabaseOutput,
+}));
 // Input Schema
 export const SqlResourcesGetSqlDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8263,7 +8093,7 @@ export type SqlResourcesGetSqlDatabaseThroughputInput =
 
 // Output Schema
 export const SqlResourcesGetSqlDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8281,14 +8111,15 @@ export type SqlResourcesGetSqlDatabaseThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesGetSqlDatabaseThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesGetSqlDatabaseThroughputInput,
     outputSchema: SqlResourcesGetSqlDatabaseThroughputOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesGetSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8304,7 +8135,7 @@ export type SqlResourcesGetSqlRoleAssignmentInput =
 
 // Output Schema
 export const SqlResourcesGetSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8321,14 +8152,13 @@ export type SqlResourcesGetSqlRoleAssignmentOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesGetSqlRoleAssignmentInput,
-    outputSchema: SqlResourcesGetSqlRoleAssignmentOutput,
-  }));
+export const SqlResourcesGetSqlRoleAssignment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlRoleAssignmentInput,
+  outputSchema: SqlResourcesGetSqlRoleAssignmentOutput,
+}));
 // Input Schema
 export const SqlResourcesGetSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8344,7 +8174,7 @@ export type SqlResourcesGetSqlRoleDefinitionInput =
 
 // Output Schema
 export const SqlResourcesGetSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8361,14 +8191,13 @@ export type SqlResourcesGetSqlRoleDefinitionOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesGetSqlRoleDefinitionInput,
-    outputSchema: SqlResourcesGetSqlRoleDefinitionOutput,
-  }));
+export const SqlResourcesGetSqlRoleDefinition = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlRoleDefinitionInput,
+  outputSchema: SqlResourcesGetSqlRoleDefinitionOutput,
+}));
 // Input Schema
 export const SqlResourcesGetSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8383,7 +8212,7 @@ export type SqlResourcesGetSqlStoredProcedureInput =
 
 // Output Schema
 export const SqlResourcesGetSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8401,35 +8230,32 @@ export type SqlResourcesGetSqlStoredProcedureOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesGetSqlStoredProcedureInput,
-    outputSchema: SqlResourcesGetSqlStoredProcedureOutput,
-  }));
+export const SqlResourcesGetSqlStoredProcedure = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlStoredProcedureInput,
+  outputSchema: SqlResourcesGetSqlStoredProcedureOutput,
+}));
 // Input Schema
-export const SqlResourcesGetSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
-    }),
-  );
+export const SqlResourcesGetSqlTriggerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
+  }),
+);
 export type SqlResourcesGetSqlTriggerInput =
   typeof SqlResourcesGetSqlTriggerInput.Type;
 
 // Output Schema
-export const SqlResourcesGetSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const SqlResourcesGetSqlTriggerOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type SqlResourcesGetSqlTriggerOutput =
   typeof SqlResourcesGetSqlTriggerOutput.Type;
 
@@ -8441,15 +8267,13 @@ export type SqlResourcesGetSqlTriggerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlTriggerInput,
-    outputSchema: SqlResourcesGetSqlTriggerOutput,
-  }),
-);
+export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlTriggerInput,
+  outputSchema: SqlResourcesGetSqlTriggerOutput,
+}));
 // Input Schema
 export const SqlResourcesGetSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8464,7 +8288,7 @@ export type SqlResourcesGetSqlUserDefinedFunctionInput =
 
 // Output Schema
 export const SqlResourcesGetSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8482,14 +8306,15 @@ export type SqlResourcesGetSqlUserDefinedFunctionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesGetSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesGetSqlUserDefinedFunction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesGetSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesGetSqlUserDefinedFunctionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesListClientEncryptionKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8504,7 +8329,7 @@ export type SqlResourcesListClientEncryptionKeysInput =
 
 // Output Schema
 export const SqlResourcesListClientEncryptionKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8526,41 +8351,40 @@ export type SqlResourcesListClientEncryptionKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListClientEncryptionKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesListClientEncryptionKeys = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesListClientEncryptionKeysInput,
     outputSchema: SqlResourcesListClientEncryptionKeysOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlResourcesListSqlContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
-    }),
-  );
+export const SqlResourcesListSqlContainersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
+  }),
+);
 export type SqlResourcesListSqlContainersInput =
   typeof SqlResourcesListSqlContainersInput.Type;
 
 // Output Schema
-export const SqlResourcesListSqlContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const SqlResourcesListSqlContainersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type SqlResourcesListSqlContainersOutput =
   typeof SqlResourcesListSqlContainersOutput.Type;
 
@@ -8572,41 +8396,38 @@ export type SqlResourcesListSqlContainersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesListSqlContainersInput,
-    outputSchema: SqlResourcesListSqlContainersOutput,
-  }));
+export const SqlResourcesListSqlContainers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesListSqlContainersInput,
+  outputSchema: SqlResourcesListSqlContainersOutput,
+}));
 // Input Schema
-export const SqlResourcesListSqlDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
-    }),
-  );
+export const SqlResourcesListSqlDatabasesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
+  }),
+);
 export type SqlResourcesListSqlDatabasesInput =
   typeof SqlResourcesListSqlDatabasesInput.Type;
 
 // Output Schema
-export const SqlResourcesListSqlDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const SqlResourcesListSqlDatabasesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type SqlResourcesListSqlDatabasesOutput =
   typeof SqlResourcesListSqlDatabasesOutput.Type;
 
@@ -8618,14 +8439,13 @@ export type SqlResourcesListSqlDatabasesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlResourcesListSqlDatabasesInput,
-    outputSchema: SqlResourcesListSqlDatabasesOutput,
-  }));
+export const SqlResourcesListSqlDatabases = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesListSqlDatabasesInput,
+  outputSchema: SqlResourcesListSqlDatabasesOutput,
+}));
 // Input Schema
 export const SqlResourcesListSqlRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8641,7 +8461,7 @@ export type SqlResourcesListSqlRoleAssignmentsInput =
 
 // Output Schema
 export const SqlResourcesListSqlRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8664,14 +8484,15 @@ export type SqlResourcesListSqlRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesListSqlRoleAssignments = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesListSqlRoleAssignmentsInput,
     outputSchema: SqlResourcesListSqlRoleAssignmentsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesListSqlRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8687,7 +8508,7 @@ export type SqlResourcesListSqlRoleDefinitionsInput =
 
 // Output Schema
 export const SqlResourcesListSqlRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8710,14 +8531,15 @@ export type SqlResourcesListSqlRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesListSqlRoleDefinitions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesListSqlRoleDefinitionsInput,
     outputSchema: SqlResourcesListSqlRoleDefinitionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesListSqlStoredProceduresInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8732,7 +8554,7 @@ export type SqlResourcesListSqlStoredProceduresInput =
 
 // Output Schema
 export const SqlResourcesListSqlStoredProceduresOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8756,41 +8578,40 @@ export type SqlResourcesListSqlStoredProceduresOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlStoredProcedures =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesListSqlStoredProcedures = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesListSqlStoredProceduresInput,
     outputSchema: SqlResourcesListSqlStoredProceduresOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlResourcesListSqlTriggersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
-    }),
-  );
+export const SqlResourcesListSqlTriggersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
+  }),
+);
 export type SqlResourcesListSqlTriggersInput =
   typeof SqlResourcesListSqlTriggersInput.Type;
 
 // Output Schema
-export const SqlResourcesListSqlTriggersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const SqlResourcesListSqlTriggersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type SqlResourcesListSqlTriggersOutput =
   typeof SqlResourcesListSqlTriggersOutput.Type;
 
@@ -8802,15 +8623,13 @@ export type SqlResourcesListSqlTriggersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlTriggers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesListSqlTriggersInput,
-    outputSchema: SqlResourcesListSqlTriggersOutput,
-  }),
-);
+export const SqlResourcesListSqlTriggers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesListSqlTriggersInput,
+  outputSchema: SqlResourcesListSqlTriggersOutput,
+}));
 // Input Schema
 export const SqlResourcesListSqlUserDefinedFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8825,7 +8644,7 @@ export type SqlResourcesListSqlUserDefinedFunctionsInput =
 
 // Output Schema
 export const SqlResourcesListSqlUserDefinedFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8849,14 +8668,15 @@ export type SqlResourcesListSqlUserDefinedFunctionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesListSqlUserDefinedFunctions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesListSqlUserDefinedFunctions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesListSqlUserDefinedFunctionsInput,
     outputSchema: SqlResourcesListSqlUserDefinedFunctionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8871,7 +8691,7 @@ export type SqlResourcesMigrateSqlContainerToAutoscaleInput =
 
 // Output Schema
 export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8890,13 +8710,13 @@ export type SqlResourcesMigrateSqlContainerToAutoscaleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesMigrateSqlContainerToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlContainerToAutoscaleInput,
     outputSchema: SqlResourcesMigrateSqlContainerToAutoscaleOutput,
   }));
 // Input Schema
 export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8911,7 +8731,7 @@ export type SqlResourcesMigrateSqlContainerToManualThroughputInput =
 
 // Output Schema
 export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8930,13 +8750,13 @@ export type SqlResourcesMigrateSqlContainerToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesMigrateSqlContainerToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlContainerToManualThroughputInput,
     outputSchema: SqlResourcesMigrateSqlContainerToManualThroughputOutput,
   }));
 // Input Schema
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8951,7 +8771,7 @@ export type SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
 
 // Output Schema
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8969,14 +8789,15 @@ export type SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesMigrateSqlDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesMigrateSqlDatabaseToAutoscale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesMigrateSqlDatabaseToAutoscaleInput,
     outputSchema: SqlResourcesMigrateSqlDatabaseToAutoscaleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8991,7 +8812,7 @@ export type SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
 
 // Output Schema
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9010,13 +8831,13 @@ export type SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesMigrateSqlDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlDatabaseToManualThroughputInput,
     outputSchema: SqlResourcesMigrateSqlDatabaseToManualThroughputOutput,
   }));
 // Input Schema
 export const SqlResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9034,7 +8855,7 @@ export type SqlResourcesRetrieveContinuousBackupInformationInput =
 
 // Output Schema
 export const SqlResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -9056,13 +8877,13 @@ export type SqlResourcesRetrieveContinuousBackupInformationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: SqlResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
 export const SqlResourcesUpdateSqlContainerThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9077,7 +8898,7 @@ export type SqlResourcesUpdateSqlContainerThroughputInput =
 
 // Output Schema
 export const SqlResourcesUpdateSqlContainerThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9095,14 +8916,15 @@ export type SqlResourcesUpdateSqlContainerThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesUpdateSqlContainerThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesUpdateSqlContainerThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesUpdateSqlContainerThroughputInput,
     outputSchema: SqlResourcesUpdateSqlContainerThroughputOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlResourcesUpdateSqlDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9117,7 +8939,7 @@ export type SqlResourcesUpdateSqlDatabaseThroughputInput =
 
 // Output Schema
 export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9135,29 +8957,31 @@ export type SqlResourcesUpdateSqlDatabaseThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlResourcesUpdateSqlDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlResourcesUpdateSqlDatabaseThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlResourcesUpdateSqlDatabaseThroughputInput,
     outputSchema: SqlResourcesUpdateSqlDatabaseThroughputOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TableResourcesCreateUpdateTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableResourcesCreateUpdateTableInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+  }),
+);
 export type TableResourcesCreateUpdateTableInput =
   typeof TableResourcesCreateUpdateTableInput.Type;
 
 // Output Schema
 export const TableResourcesCreateUpdateTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9175,29 +8999,26 @@ export type TableResourcesCreateUpdateTableOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesCreateUpdateTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TableResourcesCreateUpdateTableInput,
-    outputSchema: TableResourcesCreateUpdateTableOutput,
-  }));
+export const TableResourcesCreateUpdateTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesCreateUpdateTableInput,
+  outputSchema: TableResourcesCreateUpdateTableOutput,
+}));
 // Input Schema
-export const TableResourcesDeleteTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-    }),
-  );
+export const TableResourcesDeleteTableInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+  }),
+);
 export type TableResourcesDeleteTableInput =
   typeof TableResourcesDeleteTableInput.Type;
 
 // Output Schema
-export const TableResourcesDeleteTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TableResourcesDeleteTableOutput = /*@__PURE__*/ Schema.Void;
 export type TableResourcesDeleteTableOutput =
   typeof TableResourcesDeleteTableOutput.Type;
 
@@ -9209,36 +9030,32 @@ export type TableResourcesDeleteTableOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesDeleteTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesDeleteTableInput,
-    outputSchema: TableResourcesDeleteTableOutput,
+export const TableResourcesDeleteTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesDeleteTableInput,
+  outputSchema: TableResourcesDeleteTableOutput,
+}));
+// Input Schema
+export const TableResourcesGetTableInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
   }),
 );
-// Input Schema
-export const TableResourcesGetTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-    }),
-  );
 export type TableResourcesGetTableInput =
   typeof TableResourcesGetTableInput.Type;
 
 // Output Schema
-export const TableResourcesGetTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const TableResourcesGetTableOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type TableResourcesGetTableOutput =
   typeof TableResourcesGetTableOutput.Type;
 
@@ -9250,15 +9067,13 @@ export type TableResourcesGetTableOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesGetTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesGetTableInput,
-    outputSchema: TableResourcesGetTableOutput,
-  }),
-);
+export const TableResourcesGetTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesGetTableInput,
+  outputSchema: TableResourcesGetTableOutput,
+}));
 // Input Schema
 export const TableResourcesGetTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9273,7 +9088,7 @@ export type TableResourcesGetTableThroughputInput =
 
 // Output Schema
 export const TableResourcesGetTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9291,41 +9106,38 @@ export type TableResourcesGetTableThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesGetTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TableResourcesGetTableThroughputInput,
-    outputSchema: TableResourcesGetTableThroughputOutput,
-  }));
+export const TableResourcesGetTableThroughput = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesGetTableThroughputInput,
+  outputSchema: TableResourcesGetTableThroughputOutput,
+}));
 // Input Schema
-export const TableResourcesListTablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
-    }),
-  );
+export const TableResourcesListTablesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
+  }),
+);
 export type TableResourcesListTablesInput =
   typeof TableResourcesListTablesInput.Type;
 
 // Output Schema
-export const TableResourcesListTablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const TableResourcesListTablesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-  });
+  ),
+});
 export type TableResourcesListTablesOutput =
   typeof TableResourcesListTablesOutput.Type;
 
@@ -9337,15 +9149,13 @@ export type TableResourcesListTablesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesListTables = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesListTablesInput,
-    outputSchema: TableResourcesListTablesOutput,
-  }),
-);
+export const TableResourcesListTables = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesListTablesInput,
+  outputSchema: TableResourcesListTablesOutput,
+}));
 // Input Schema
 export const TableResourcesMigrateTableToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9360,7 +9170,7 @@ export type TableResourcesMigrateTableToAutoscaleInput =
 
 // Output Schema
 export const TableResourcesMigrateTableToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9378,14 +9188,15 @@ export type TableResourcesMigrateTableToAutoscaleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesMigrateTableToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableResourcesMigrateTableToAutoscale = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: TableResourcesMigrateTableToAutoscaleInput,
     outputSchema: TableResourcesMigrateTableToAutoscaleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const TableResourcesMigrateTableToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9400,7 +9211,7 @@ export type TableResourcesMigrateTableToManualThroughputInput =
 
 // Output Schema
 export const TableResourcesMigrateTableToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9419,13 +9230,13 @@ export type TableResourcesMigrateTableToManualThroughputOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const TableResourcesMigrateTableToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesMigrateTableToManualThroughputInput,
     outputSchema: TableResourcesMigrateTableToManualThroughputOutput,
   }));
 // Input Schema
 export const TableResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9442,7 +9253,7 @@ export type TableResourcesRetrieveContinuousBackupInformationInput =
 
 // Output Schema
 export const TableResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -9463,13 +9274,13 @@ export type TableResourcesRetrieveContinuousBackupInformationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const TableResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: TableResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
 export const TableResourcesUpdateTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9484,7 +9295,7 @@ export type TableResourcesUpdateTableThroughputInput =
 
 // Output Schema
 export const TableResourcesUpdateTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9502,8 +9313,9 @@ export type TableResourcesUpdateTableThroughputOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const TableResourcesUpdateTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableResourcesUpdateTableThroughput = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: TableResourcesUpdateTableThroughputInput,
     outputSchema: TableResourcesUpdateTableThroughputOutput,
-  }));
+  }),
+);

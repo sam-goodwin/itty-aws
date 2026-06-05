@@ -4,30 +4,28 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    limitName: Schema.Literals([
-      "bytesProcessed.query",
-      "bytesProcessed.daily",
-      "bytesProcessed.weekly",
-      "bytesProcessed.monthly",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
-    }),
-  );
+export const GetGroupDataFederationLimitInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  limitName: Schema.Literals([
+    "bytesProcessed.query",
+    "bytesProcessed.daily",
+    "bytesProcessed.weekly",
+    "bytesProcessed.monthly",
+  ]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
+  }),
+);
 export type GetGroupDataFederationLimitInput =
   typeof GetGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const GetGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupDataFederationLimitOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupDataFederationLimitOutput =
   typeof GetGroupDataFederationLimitOutput.Type;
 
@@ -53,10 +51,8 @@ export type GetGroupDataFederationLimitOutput =
 | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 
  */
-export const getGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupDataFederationLimitInput,
-    outputSchema: GetGroupDataFederationLimitOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupDataFederationLimit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupDataFederationLimitInput,
+  outputSchema: GetGroupDataFederationLimitOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

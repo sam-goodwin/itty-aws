@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTreasuryInboundTransfersInboundTransferCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inbound_transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostTreasuryInboundTransfersInboundTransferCancelInput =
 
 // Output Schema
 export const PostTreasuryInboundTransfersInboundTransferCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -57,7 +57,7 @@ export type PostTreasuryInboundTransfersInboundTransferCancelOutput =
  * <p>Cancels an InboundTransfer.</p>
  */
 export const PostTreasuryInboundTransfersInboundTransferCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryInboundTransfersInboundTransferCancelInput,
     outputSchema: PostTreasuryInboundTransfersInboundTransferCancelOutput,
   }));

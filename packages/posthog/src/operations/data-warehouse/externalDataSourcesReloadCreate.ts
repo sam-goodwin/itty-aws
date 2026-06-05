@@ -5,8 +5,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
-export const ExternalDataSourcesReloadCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExternalDataSourcesReloadCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -179,18 +179,18 @@ export const ExternalDataSourcesReloadCreateInput =
     ),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
     supports_webhooks: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/external_data_sources/{id}/reload/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/external_data_sources/{id}/reload/",
+  }),
+);
 export type ExternalDataSourcesReloadCreateInput =
   typeof ExternalDataSourcesReloadCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesReloadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExternalDataSourcesReloadCreateOutput = /*@__PURE__*/ Schema.Void;
 export type ExternalDataSourcesReloadCreateOutput =
   typeof ExternalDataSourcesReloadCreateOutput.Type;
 
@@ -201,9 +201,8 @@ export type ExternalDataSourcesReloadCreateOutput =
  * @param id - A UUID string identifying this external data source.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesReloadCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ExternalDataSourcesReloadCreateInput,
-    outputSchema: ExternalDataSourcesReloadCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const externalDataSourcesReloadCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalDataSourcesReloadCreateInput,
+  outputSchema: ExternalDataSourcesReloadCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

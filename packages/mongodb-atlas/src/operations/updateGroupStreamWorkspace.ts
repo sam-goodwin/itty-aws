@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupStreamWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
-    }),
-  );
+export const UpdateGroupStreamWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
+  }),
+);
 export type UpdateGroupStreamWorkspaceInput =
   typeof UpdateGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const UpdateGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupStreamWorkspaceOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupStreamWorkspaceOutput =
   typeof UpdateGroupStreamWorkspaceOutput.Type;
 
@@ -38,10 +36,8 @@ export type UpdateGroupStreamWorkspaceOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Label that identifies the stream workspace to update.
  */
-export const updateGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupStreamWorkspaceInput,
-    outputSchema: UpdateGroupStreamWorkspaceOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupStreamWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupStreamWorkspaceInput,
+  outputSchema: UpdateGroupStreamWorkspaceOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

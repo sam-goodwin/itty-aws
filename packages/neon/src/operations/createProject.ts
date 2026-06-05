@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateProjectInput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     settings: Schema.optional(
       Schema.Struct({
@@ -82,7 +82,7 @@ export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateProjectInput = typeof CreateProjectInput.Type;
 
 // Output Schema
-export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -190,10 +190,10 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   connection_uris: Schema.Array(
     Schema.Struct({
-      connection_uri: SensitiveString,
+      connection_uri: SensitiveOutputString,
       connection_parameters: Schema.Struct({
         database: Schema.String,
-        password: SensitiveString,
+        password: SensitiveOutputString,
         role: Schema.String,
         host: Schema.String,
         pooler_host: Schema.String,
@@ -204,7 +204,7 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -253,13 +253,10 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
-        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
-        "finalize_migration",
-        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",
@@ -322,13 +319,6 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
     ),
-    recovery: Schema.optional(
-      Schema.Struct({
-        deleted_at: Schema.String,
-        recoverable_until: Schema.String,
-        deletion_method: Schema.Literals(["user", "ttl"]),
-      }),
-    ),
   }),
   endpoints: Schema.Array(
     Schema.Struct({
@@ -390,7 +380,7 @@ export type CreateProjectOutput = typeof CreateProjectOutput.Type;
  * Neon currently supports PostgreSQL 14, 15, 16, and 17.
  * For supported regions and `region_id` values, see [Regions](https://neon.tech/docs/introduction/regions/).
  */
-export const createProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateProjectInput,
   outputSchema: CreateProjectOutput,
 }));

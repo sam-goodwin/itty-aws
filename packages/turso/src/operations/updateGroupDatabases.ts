@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/organizations/{organizationSlug}/groups/{groupName}/update",
-    }),
-  );
+export const UpdateGroupDatabasesInput = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+  groupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/organizations/{organizationSlug}/groups/{groupName}/update",
+  }),
+);
 export type UpdateGroupDatabasesInput = typeof UpdateGroupDatabasesInput.Type;
 
 // Output Schema
-export const UpdateGroupDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupDatabasesOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupDatabasesOutput = typeof UpdateGroupDatabasesOutput.Type;
 
 // The operation
@@ -30,10 +28,8 @@ export type UpdateGroupDatabasesOutput = typeof UpdateGroupDatabasesOutput.Type;
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const updateGroupDatabases = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupDatabasesInput,
-    outputSchema: UpdateGroupDatabasesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateGroupDatabases = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupDatabasesInput,
+  outputSchema: UpdateGroupDatabasesOutput,
+  errors: [NotFound] as const,
+}));

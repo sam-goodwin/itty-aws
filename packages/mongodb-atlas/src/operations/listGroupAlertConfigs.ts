@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupAlertConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
-    }),
-  );
+export const ListGroupAlertConfigsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
+  }),
+);
 export type ListGroupAlertConfigsInput = typeof ListGroupAlertConfigsInput.Type;
 
 // Output Schema
-export const ListGroupAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupAlertConfigsOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupAlertConfigsOutput =
   typeof ListGroupAlertConfigsOutput.Type;
 
@@ -42,10 +40,8 @@ export type ListGroupAlertConfigsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupAlertConfigs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupAlertConfigsInput,
-    outputSchema: ListGroupAlertConfigsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupAlertConfigs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupAlertConfigsInput,
+  outputSchema: ListGroupAlertConfigsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

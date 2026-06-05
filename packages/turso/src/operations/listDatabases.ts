@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   group: Schema.optional(Schema.String),
   schema: Schema.optional(Schema.String),
@@ -17,7 +17,7 @@ export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDatabasesInput = typeof ListDatabasesInput.Type;
 
 // Output Schema
-export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesOutput = /*@__PURE__*/ Schema.Struct({
   databases: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -56,7 +56,7 @@ export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
  * @param schema - The schema database name that can be used to get databases that belong to that parent schema.
  * @param parent - Filter database branches by using their parent database ID.
  */
-export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listDatabases = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListDatabasesInput,
   outputSchema: ListDatabasesOutput,
 }));

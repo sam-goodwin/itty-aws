@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupProcessCollStatMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type ListGroupProcessCollStatMeasurementsInput =
 
 // Output Schema
 export const ListGroupProcessCollStatMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupProcessCollStatMeasurementsOutput =
   typeof ListGroupProcessCollStatMeasurementsOutput.Type;
 
@@ -48,9 +48,10 @@ export type ListGroupProcessCollStatMeasurementsOutput =
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
-export const listGroupProcessCollStatMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupProcessCollStatMeasurements = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupProcessCollStatMeasurementsInput,
     outputSchema: ListGroupProcessCollStatMeasurementsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

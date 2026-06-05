@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetV2CoreAccountsAccountIdPersonsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -18,7 +18,7 @@ export type GetV2CoreAccountsAccountIdPersonsIdInput =
 
 // Output Schema
 export const GetV2CoreAccountsAccountIdPersonsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -278,8 +278,9 @@ export type GetV2CoreAccountsAccountIdPersonsIdOutput =
  * @param account_id - The Account the Person is associated with.
  * @param id - The ID of the Person to retrieve.
  */
-export const GetV2CoreAccountsAccountIdPersonsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreAccountsAccountIdPersonsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetV2CoreAccountsAccountIdPersonsIdInput,
     outputSchema: GetV2CoreAccountsAccountIdPersonsIdOutput,
-  }));
+  }),
+);

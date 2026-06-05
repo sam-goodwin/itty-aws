@@ -4,42 +4,40 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InsightsBulkUpdateTagsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-    ids: Schema.optional(Schema.Array(Schema.Number)),
-    action: Schema.optional(Schema.Literals(["add", "remove", "set"])),
-    tags: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/insights/bulk_update_tags/",
-    }),
-  );
+export const InsightsBulkUpdateTagsCreateInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  ids: Schema.optional(Schema.Array(Schema.Number)),
+  action: Schema.optional(Schema.Literals(["add", "remove", "set"])),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/insights/bulk_update_tags/",
+  }),
+);
 export type InsightsBulkUpdateTagsCreateInput =
   typeof InsightsBulkUpdateTagsCreateInput.Type;
 
 // Output Schema
-export const InsightsBulkUpdateTagsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updated: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+export const InsightsBulkUpdateTagsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  updated: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        tags: Schema.optional(Schema.Array(Schema.String)),
+      }),
     ),
-    skipped: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+  ),
+  skipped: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        reason: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type InsightsBulkUpdateTagsCreateOutput =
   typeof InsightsBulkUpdateTagsCreateOutput.Type;
 
@@ -55,9 +53,8 @@ export type InsightsBulkUpdateTagsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsBulkUpdateTagsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: InsightsBulkUpdateTagsCreateInput,
-    outputSchema: InsightsBulkUpdateTagsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const insightsBulkUpdateTagsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsBulkUpdateTagsCreateInput,
+  outputSchema: InsightsBulkUpdateTagsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

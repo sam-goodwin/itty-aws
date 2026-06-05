@@ -4,25 +4,24 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ExperimentsCopyToProjectCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    target_team_id: Schema.optional(Schema.Number),
-    feature_flag_key: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/experiments/{id}/copy_to_project/",
-    }),
-  );
+export const ExperimentsCopyToProjectCreateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  target_team_id: Schema.optional(Schema.Number),
+  feature_flag_key: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/experiments/{id}/copy_to_project/",
+  }),
+);
 export type ExperimentsCopyToProjectCreateInput =
   typeof ExperimentsCopyToProjectCreateInput.Type;
 
 // Output Schema
-export const ExperimentsCopyToProjectCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsCopyToProjectCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1006,7 +1005,8 @@ export const ExperimentsCopyToProjectCreateOutput =
     update_feature_flag_params: Schema.optional(Schema.Boolean),
     status: Schema.optional(Schema.Unknown),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-  });
+  },
+);
 export type ExperimentsCopyToProjectCreateOutput =
   typeof ExperimentsCopyToProjectCreateOutput.Type;
 
@@ -1020,9 +1020,8 @@ export type ExperimentsCopyToProjectCreateOutput =
  * @param id - A unique integer value identifying this experiment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsCopyToProjectCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ExperimentsCopyToProjectCreateInput,
-    outputSchema: ExperimentsCopyToProjectCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const experimentsCopyToProjectCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsCopyToProjectCreateInput,
+  outputSchema: ExperimentsCopyToProjectCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

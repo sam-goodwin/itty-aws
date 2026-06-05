@@ -56,32 +56,30 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const StorageTaskAssignmentListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $maxpagesize: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/storageTaskAssignments",
-    }),
-  );
+export const StorageTaskAssignmentListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/storageTaskAssignments",
+  }),
+);
 export type StorageTaskAssignmentListInput =
   typeof StorageTaskAssignmentListInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StorageTaskAssignmentListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageTaskAssignmentListOutput =
   typeof StorageTaskAssignmentListOutput.Type;
 
@@ -100,41 +98,39 @@ export const StorageTaskAssignmentList = /*@__PURE__*/ API.make(() => ({
   outputSchema: StorageTaskAssignmentListOutput,
 }));
 // Input Schema
-export const StorageTasksCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
-    }),
-  );
+export const StorageTasksCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+  }),
+);
 export type StorageTasksCreateInput = typeof StorageTasksCreateInput.Type;
 
 // Output Schema
-export const StorageTasksCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTasksCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTasksCreateOutput = typeof StorageTasksCreateOutput.Type;
 
 // The operation
@@ -151,18 +147,17 @@ export const StorageTasksCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: StorageTasksCreateOutput,
 }));
 // Input Schema
-export const StorageTasksDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
-    }),
-  );
+export const StorageTasksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+  }),
+);
 export type StorageTasksDeleteInput = typeof StorageTasksDeleteInput.Type;
 
 // Output Schema
@@ -232,17 +227,18 @@ export const StorageTasksGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: StorageTasksGetOutput,
 }));
 // Input Schema
-export const StorageTasksListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
+export const StorageTasksListByResourceGroupInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks",
+  }),
+);
 export type StorageTasksListByResourceGroupInput =
   typeof StorageTasksListByResourceGroupInput.Type;
 
@@ -293,28 +289,26 @@ export type StorageTasksListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StorageTasksListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StorageTasksListByResourceGroupInput,
-    outputSchema: StorageTasksListByResourceGroupOutput,
-  }));
+export const StorageTasksListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTasksListByResourceGroupInput,
+  outputSchema: StorageTasksListByResourceGroupOutput,
+}));
 // Input Schema
-export const StorageTasksListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/storageTasks",
-    }),
-  );
+export const StorageTasksListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/storageTasks",
+  }),
+);
 export type StorageTasksListBySubscriptionInput =
   typeof StorageTasksListBySubscriptionInput.Type;
 
 // Output Schema
-export const StorageTasksListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const StorageTasksListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -347,7 +341,8 @@ export const StorageTasksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type StorageTasksListBySubscriptionOutput =
   typeof StorageTasksListBySubscriptionOutput.Type;
 
@@ -358,32 +353,49 @@ export type StorageTasksListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StorageTasksListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StorageTasksListBySubscriptionInput,
-    outputSchema: StorageTasksListBySubscriptionOutput,
-  }));
+export const StorageTasksListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTasksListBySubscriptionInput,
+  outputSchema: StorageTasksListBySubscriptionOutput,
+}));
 // Input Schema
-export const StorageTasksPreviewActionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
-    }),
-  );
+export const StorageTasksPreviewActionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
+  }),
+);
 export type StorageTasksPreviewActionsInput =
   typeof StorageTasksPreviewActionsInput.Type;
 
 // Output Schema
-export const StorageTasksPreviewActionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      container: Schema.Struct({
+export const StorageTasksPreviewActionsOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    container: Schema.Struct({
+      name: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            key: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+    blobs: Schema.Array(
+      Schema.Struct({
         name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
         metadata: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -392,47 +404,25 @@ export const StorageTasksPreviewActionsOutput =
             }),
           ),
         ),
+        tags: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        matchedBlock: Schema.optional(Schema.Literals(["If", "Else", "None"])),
       }),
-      blobs: Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          metadata: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tags: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchedBlock: Schema.optional(
-            Schema.Literals(["If", "Else", "None"]),
-          ),
-        }),
-      ),
-      action: Schema.Struct({
-        if: Schema.Struct({
-          condition: Schema.optional(Schema.String),
-        }),
-        elseBlockExists: Schema.Boolean,
+    ),
+    action: Schema.Struct({
+      if: Schema.Struct({
+        condition: Schema.optional(Schema.String),
       }),
+      elseBlockExists: Schema.Boolean,
     }),
-  });
+  }),
+});
 export type StorageTasksPreviewActionsOutput =
   typeof StorageTasksPreviewActionsOutput.Type;
 
@@ -449,59 +439,47 @@ export const StorageTasksPreviewActions = /*@__PURE__*/ API.make(() => ({
   outputSchema: StorageTasksPreviewActionsOutput,
 }));
 // Input Schema
-export const StorageTasksReportListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $maxpagesize: Schema.optional(Schema.Number),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/reports",
-    }),
-  );
+export const StorageTasksReportListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.Number),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/reports",
+  }),
+);
 export type StorageTasksReportListInput =
   typeof StorageTasksReportListInput.Type;
 
 // Output Schema
-export const StorageTasksReportListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const StorageTasksReportListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageTasksReportListOutput =
   typeof StorageTasksReportListOutput.Type;
 
@@ -521,18 +499,17 @@ export const StorageTasksReportList = /*@__PURE__*/ API.make(() => ({
   outputSchema: StorageTasksReportListOutput,
 }));
 // Input Schema
-export const StorageTasksStopAllAssignmentsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
-    }),
-  );
+export const StorageTasksStopAllAssignmentsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
+  }),
+);
 export type StorageTasksStopAllAssignmentsInput =
   typeof StorageTasksStopAllAssignmentsInput.Type;
 
@@ -550,47 +527,44 @@ export type StorageTasksStopAllAssignmentsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTasksStopAllAssignments =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: StorageTasksStopAllAssignmentsInput,
-    outputSchema: StorageTasksStopAllAssignmentsOutput,
-  }));
+export const StorageTasksStopAllAssignments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTasksStopAllAssignmentsInput,
+  outputSchema: StorageTasksStopAllAssignmentsOutput,
+}));
 // Input Schema
-export const StorageTasksUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
-    }),
-  );
+export const StorageTasksUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageTaskName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+  }),
+);
 export type StorageTasksUpdateInput = typeof StorageTasksUpdateInput.Type;
 
 // Output Schema
-export const StorageTasksUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTasksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTasksUpdateOutput = typeof StorageTasksUpdateOutput.Type;
 
 // The operation

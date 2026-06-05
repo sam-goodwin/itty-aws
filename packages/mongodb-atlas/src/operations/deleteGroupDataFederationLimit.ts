@@ -4,29 +4,27 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    limitName: Schema.Literals([
-      "bytesProcessed.query",
-      "bytesProcessed.daily",
-      "bytesProcessed.weekly",
-      "bytesProcessed.monthly",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
-    }),
-  );
+export const DeleteGroupDataFederationLimitInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  limitName: Schema.Literals([
+    "bytesProcessed.query",
+    "bytesProcessed.daily",
+    "bytesProcessed.weekly",
+    "bytesProcessed.monthly",
+  ]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
+  }),
+);
 export type DeleteGroupDataFederationLimitInput =
   typeof DeleteGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupDataFederationLimitOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupDataFederationLimitOutput =
   typeof DeleteGroupDataFederationLimitOutput.Type;
 
@@ -51,9 +49,8 @@ export type DeleteGroupDataFederationLimitOutput =
 | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 
  */
-export const deleteGroupDataFederationLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupDataFederationLimitInput,
-    outputSchema: DeleteGroupDataFederationLimitOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const deleteGroupDataFederationLimit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDataFederationLimitInput,
+  outputSchema: DeleteGroupDataFederationLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

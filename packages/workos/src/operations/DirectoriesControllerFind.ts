@@ -4,68 +4,66 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DirectoriesControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/directories/{id}" }));
+export const DirectoriesControllerFindInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/directories/{id}" }));
 export type DirectoriesControllerFindInput =
   typeof DirectoriesControllerFindInput.Type;
 
 // Output Schema
-export const DirectoriesControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    organization_id: Schema.optional(Schema.String),
-    external_key: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals([
-        "azure scim v2.0",
-        "bamboohr",
-        "breathe hr",
-        "cezanne hr",
-        "cyberark scim v2.0",
-        "fourth hr",
-        "generic scim v2.0",
-        "gsuite directory",
-        "hibob",
-        "sailpoint scim v2.0",
-        "jump cloud scim v2.0",
-        "okta scim v2.0",
-        "onelogin scim v2.0",
-        "people hr",
-        "personio",
-        "pingfederate scim v2.0",
-        "rippling scim v2.0",
-        "s3",
-        "sftp",
-        "sftp workday",
-        "workday",
-      ]),
-    ),
-    state: Schema.optional(
-      Schema.Literals([
-        "linked",
-        "validating",
-        "invalid_credentials",
-        "unlinked",
-        "deleting",
-      ]),
-    ),
-    name: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        users: Schema.Struct({
-          active: Schema.Number,
-          inactive: Schema.Number,
-        }),
-        groups: Schema.Number,
+export const DirectoriesControllerFindOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String),
+  external_key: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "azure scim v2.0",
+      "bamboohr",
+      "breathe hr",
+      "cezanne hr",
+      "cyberark scim v2.0",
+      "fourth hr",
+      "generic scim v2.0",
+      "gsuite directory",
+      "hibob",
+      "sailpoint scim v2.0",
+      "jump cloud scim v2.0",
+      "okta scim v2.0",
+      "onelogin scim v2.0",
+      "people hr",
+      "personio",
+      "pingfederate scim v2.0",
+      "rippling scim v2.0",
+      "s3",
+      "sftp",
+      "sftp workday",
+      "workday",
+    ]),
+  ),
+  state: Schema.optional(
+    Schema.Literals([
+      "linked",
+      "validating",
+      "invalid_credentials",
+      "unlinked",
+      "deleting",
+    ]),
+  ),
+  name: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      users: Schema.Struct({
+        active: Schema.Number,
+        inactive: Schema.Number,
       }),
-    ),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
+      groups: Schema.Number,
+    }),
+  ),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+});
 export type DirectoriesControllerFindOutput =
   typeof DirectoriesControllerFindOutput.Type;
 
@@ -77,10 +75,8 @@ export type DirectoriesControllerFindOutput =
  *
  * @param id - Unique identifier for the Directory.
  */
-export const DirectoriesControllerFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DirectoriesControllerFindInput,
-    outputSchema: DirectoriesControllerFindOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const DirectoriesControllerFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectoriesControllerFindInput,
+  outputSchema: DirectoriesControllerFindOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

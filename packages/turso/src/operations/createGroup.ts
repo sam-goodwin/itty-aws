@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   location: Schema.String,
@@ -18,7 +18,7 @@ export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupInput = typeof CreateGroupInput.Type;
 
 // Output Schema
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupOutput = /*@__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export type CreateGroupOutput = typeof CreateGroupOutput.Type;
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const createGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupInput,
   outputSchema: CreateGroupOutput,
   errors: [BadRequest, Conflict] as const,

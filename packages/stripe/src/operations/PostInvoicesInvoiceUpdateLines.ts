@@ -3,72 +3,71 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostInvoicesInvoiceUpdateLinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invoice: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    invoice_metadata: Schema.optional(Schema.Unknown),
-    lines: Schema.Array(
-      Schema.Struct({
-        amount: Schema.optional(Schema.Number),
-        description: Schema.optional(Schema.String),
-        discountable: Schema.optional(Schema.Boolean),
-        discounts: Schema.optional(Schema.Unknown),
-        id: Schema.String,
-        metadata: Schema.optional(Schema.Unknown),
-        period: Schema.optional(
-          Schema.Struct({
-            end: Schema.Number,
-            start: Schema.Number,
-          }),
-        ),
-        price_data: Schema.optional(
-          Schema.Struct({
-            currency: Schema.String,
-            product: Schema.optional(Schema.String),
-            product_data: Schema.optional(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                images: Schema.optional(Schema.Array(Schema.String)),
-                metadata: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                name: Schema.String,
-                tax_code: Schema.optional(Schema.String),
-                unit_label: Schema.optional(Schema.String),
-              }),
-            ),
-            tax_behavior: Schema.optional(
-              Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-            ),
-            unit_amount: Schema.optional(Schema.Number),
-            unit_amount_decimal: Schema.optional(Schema.String),
-          }),
-        ),
-        pricing: Schema.optional(
-          Schema.Struct({
-            price: Schema.optional(Schema.String),
-          }),
-        ),
-        quantity: Schema.optional(Schema.Number),
-        quantity_decimal: Schema.optional(Schema.String),
-        tax_amounts: Schema.optional(Schema.Unknown),
-        tax_rates: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/invoices/{invoice}/update_lines",
-      contentType: "form-urlencoded",
+export const PostInvoicesInvoiceUpdateLinesInput = /*@__PURE__*/ Schema.Struct({
+  invoice: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  invoice_metadata: Schema.optional(Schema.Unknown),
+  lines: Schema.Array(
+    Schema.Struct({
+      amount: Schema.optional(Schema.Number),
+      description: Schema.optional(Schema.String),
+      discountable: Schema.optional(Schema.Boolean),
+      discounts: Schema.optional(Schema.Unknown),
+      id: Schema.String,
+      metadata: Schema.optional(Schema.Unknown),
+      period: Schema.optional(
+        Schema.Struct({
+          end: Schema.Number,
+          start: Schema.Number,
+        }),
+      ),
+      price_data: Schema.optional(
+        Schema.Struct({
+          currency: Schema.String,
+          product: Schema.optional(Schema.String),
+          product_data: Schema.optional(
+            Schema.Struct({
+              description: Schema.optional(Schema.String),
+              images: Schema.optional(Schema.Array(Schema.String)),
+              metadata: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              name: Schema.String,
+              tax_code: Schema.optional(Schema.String),
+              unit_label: Schema.optional(Schema.String),
+            }),
+          ),
+          tax_behavior: Schema.optional(
+            Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+          ),
+          unit_amount: Schema.optional(Schema.Number),
+          unit_amount_decimal: Schema.optional(Schema.String),
+        }),
+      ),
+      pricing: Schema.optional(
+        Schema.Struct({
+          price: Schema.optional(Schema.String),
+        }),
+      ),
+      quantity: Schema.optional(Schema.Number),
+      quantity_decimal: Schema.optional(Schema.String),
+      tax_amounts: Schema.optional(Schema.Unknown),
+      tax_rates: Schema.optional(Schema.Unknown),
     }),
-  );
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/invoices/{invoice}/update_lines",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostInvoicesInvoiceUpdateLinesInput =
   typeof PostInvoicesInvoiceUpdateLinesInput.Type;
 
 // Output Schema
-export const PostInvoicesInvoiceUpdateLinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostInvoicesInvoiceUpdateLinesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
@@ -583,7 +582,8 @@ export const PostInvoicesInvoiceUpdateLinesOutput =
       ),
     ),
     webhooks_delivered_at: Schema.NullOr(Schema.Number),
-  });
+  },
+);
 export type PostInvoicesInvoiceUpdateLinesOutput =
   typeof PostInvoicesInvoiceUpdateLinesOutput.Type;
 
@@ -593,8 +593,7 @@ export type PostInvoicesInvoiceUpdateLinesOutput =
  *
  * <p>Updates multiple line items on an invoice. This is only possible when an invoice is still a draft.</p>
  */
-export const PostInvoicesInvoiceUpdateLines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostInvoicesInvoiceUpdateLinesInput,
-    outputSchema: PostInvoicesInvoiceUpdateLinesOutput,
-  }));
+export const PostInvoicesInvoiceUpdateLines = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoiceUpdateLinesInput,
+  outputSchema: PostInvoicesInvoiceUpdateLinesOutput,
+}));

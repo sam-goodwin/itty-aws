@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupClusterBackupRestoreJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export type ListGroupClusterBackupRestoreJobsInput =
 
 // Output Schema
 export const ListGroupClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterBackupRestoreJobsOutput =
   typeof ListGroupClusterBackupRestoreJobsOutput.Type;
 
@@ -44,9 +44,8 @@ export type ListGroupClusterBackupRestoreJobsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster with the restore jobs you want to return.
  */
-export const listGroupClusterBackupRestoreJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterBackupRestoreJobsInput,
-    outputSchema: ListGroupClusterBackupRestoreJobsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listGroupClusterBackupRestoreJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterBackupRestoreJobsInput,
+  outputSchema: ListGroupClusterBackupRestoreJobsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

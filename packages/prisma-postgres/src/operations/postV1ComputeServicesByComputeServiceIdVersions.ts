@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1ComputeServicesByComputeServiceIdVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
     envVars: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     portMapping: Schema.optional(
@@ -25,7 +25,7 @@ export type PostV1ComputeServicesByComputeServiceIdVersionsInput =
 
 // Output Schema
 export const PostV1ComputeServicesByComputeServiceIdVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -45,7 +45,7 @@ export type PostV1ComputeServicesByComputeServiceIdVersionsOutput =
  * Creates a new compute version under the specified compute service. Returns a pre-signed upload URL for the artifact unless `skipCodeUpload` is set (which forks the latest version's artifact). Environment variables are merged with the previous version's variables when one exists.
  */
 export const postV1ComputeServicesByComputeServiceIdVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ComputeServicesByComputeServiceIdVersionsInput,
     outputSchema: PostV1ComputeServicesByComputeServiceIdVersionsOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

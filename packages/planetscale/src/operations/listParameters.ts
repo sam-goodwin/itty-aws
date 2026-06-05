@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListParametersInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListParametersInput = typeof ListParametersInput.Type;
 
 // Output Schema
-export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListParametersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -68,7 +68,7 @@ export type ListParametersOutput = typeof ListParametersOutput.Type;
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const listParameters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listParameters = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListParametersInput,
   outputSchema: ListParametersOutput,
   errors: [Forbidden, NotFound] as const,

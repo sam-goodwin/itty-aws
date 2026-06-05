@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1CreateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateAProjectInput = /*@__PURE__*/ Schema.Struct({
   db_pass: Schema.String,
   name: Schema.String,
   organization_id: Schema.optional(Schema.String),
@@ -62,41 +62,39 @@ export const V1CreateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1CreateAProjectInput = typeof V1CreateAProjectInput.Type;
 
 // Output Schema
-export const V1CreateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    ref: Schema.String,
-    organization_id: Schema.String,
-    organization_slug: Schema.String,
-    name: Schema.String,
-    region: Schema.String,
-    created_at: Schema.String,
-    status: Schema.Literals([
-      "INACTIVE",
-      "ACTIVE_HEALTHY",
-      "ACTIVE_UNHEALTHY",
-      "COMING_UP",
-      "UNKNOWN",
-      "GOING_DOWN",
-      "INIT_FAILED",
-      "REMOVED",
-      "RESTORING",
-      "UPGRADING",
-      "PAUSING",
-      "RESTORE_FAILED",
-      "RESTARTING",
-      "PAUSE_FAILED",
-      "RESIZING",
-    ]),
-  },
-);
+export const V1CreateAProjectOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  ref: Schema.String,
+  organization_id: Schema.String,
+  organization_slug: Schema.String,
+  name: Schema.String,
+  region: Schema.String,
+  created_at: Schema.String,
+  status: Schema.Literals([
+    "INACTIVE",
+    "ACTIVE_HEALTHY",
+    "ACTIVE_UNHEALTHY",
+    "COMING_UP",
+    "UNKNOWN",
+    "GOING_DOWN",
+    "INIT_FAILED",
+    "REMOVED",
+    "RESTORING",
+    "UPGRADING",
+    "PAUSING",
+    "RESTORE_FAILED",
+    "RESTARTING",
+    "PAUSE_FAILED",
+    "RESIZING",
+  ]),
+});
 export type V1CreateAProjectOutput = typeof V1CreateAProjectOutput.Type;
 
 // The operation
 /**
  * Create a project
  */
-export const v1CreateAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateAProjectInput,
   outputSchema: V1CreateAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

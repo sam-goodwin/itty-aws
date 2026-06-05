@@ -4,52 +4,50 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const LogsAlertsEventsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/logs/alerts/{id}/events/",
-    }),
-  );
+export const LogsAlertsEventsListInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/logs/alerts/{id}/events/",
+  }),
+);
 export type LogsAlertsEventsListInput = typeof LogsAlertsEventsListInput.Type;
 
 // Output Schema
-export const LogsAlertsEventsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.optional(Schema.Number),
-    next: Schema.optional(Schema.NullOr(Schema.String)),
-    previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          kind: Schema.optional(
-            Schema.Literals([
-              "check",
-              "reset",
-              "enable",
-              "disable",
-              "snooze",
-              "unsnooze",
-              "threshold_change",
-            ]),
-          ),
-          state_before: Schema.optional(Schema.String),
-          state_after: Schema.optional(Schema.String),
-          threshold_breached: Schema.optional(Schema.Boolean),
-          result_count: Schema.optional(Schema.NullOr(Schema.Number)),
-          error_message: Schema.optional(Schema.NullOr(Schema.String)),
-          query_duration_ms: Schema.optional(Schema.NullOr(Schema.Number)),
-        }),
-      ),
+export const LogsAlertsEventsListOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  next: Schema.optional(Schema.NullOr(Schema.String)),
+  previous: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        kind: Schema.optional(
+          Schema.Literals([
+            "check",
+            "reset",
+            "enable",
+            "disable",
+            "snooze",
+            "unsnooze",
+            "threshold_change",
+          ]),
+        ),
+        state_before: Schema.optional(Schema.String),
+        state_after: Schema.optional(Schema.String),
+        threshold_breached: Schema.optional(Schema.Boolean),
+        result_count: Schema.optional(Schema.NullOr(Schema.Number)),
+        error_message: Schema.optional(Schema.NullOr(Schema.String)),
+        query_duration_ms: Schema.optional(Schema.NullOr(Schema.Number)),
+      }),
     ),
-  });
+  ),
+});
 export type LogsAlertsEventsListOutput = typeof LogsAlertsEventsListOutput.Type;
 
 // The operation
@@ -61,10 +59,8 @@ export type LogsAlertsEventsListOutput = typeof LogsAlertsEventsListOutput.Type;
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsAlertsEventsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsAlertsEventsListInput,
-    outputSchema: LogsAlertsEventsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const logsAlertsEventsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsAlertsEventsListInput,
+  outputSchema: LogsAlertsEventsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

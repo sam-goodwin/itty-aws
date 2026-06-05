@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     permissionSlug: Schema.String.pipe(T.PathParam()),
@@ -20,7 +20,7 @@ export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionIn
 
 // Output Schema
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.optional(Schema.String),
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionOu
  * @param permissionSlug - The slug of the permission to remove.
  */
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermission =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput,
     outputSchema:

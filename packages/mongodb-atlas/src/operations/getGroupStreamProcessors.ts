@@ -4,27 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupStreamProcessorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    includeCount: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors",
-    }),
-  );
+export const GetGroupStreamProcessorsInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  includeCount: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors",
+  }),
+);
 export type GetGroupStreamProcessorsInput =
   typeof GetGroupStreamProcessorsInput.Type;
 
 // Output Schema
-export const GetGroupStreamProcessorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupStreamProcessorsOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupStreamProcessorsOutput =
   typeof GetGroupStreamProcessorsOutput.Type;
 
@@ -44,10 +42,8 @@ export type GetGroupStreamProcessorsOutput =
  * @param includeCount - Flag that indicates whether the response returns the total number of items (`totalCount`) in the response.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const getGroupStreamProcessors = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamProcessorsInput,
-    outputSchema: GetGroupStreamProcessorsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamProcessors = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamProcessorsInput,
+  outputSchema: GetGroupStreamProcessorsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetPaymentMethodDomainsPaymentMethodDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method_domain: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetPaymentMethodDomainsPaymentMethodDomainInput =
 
 // Output Schema
 export const GetPaymentMethodDomainsPaymentMethodDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
       status: Schema.Literals(["active", "inactive"]),
       status_details: Schema.optional(
@@ -87,7 +87,7 @@ export type GetPaymentMethodDomainsPaymentMethodDomainOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetPaymentMethodDomainsPaymentMethodDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetPaymentMethodDomainsPaymentMethodDomainInput,
     outputSchema: GetPaymentMethodDomainsPaymentMethodDomainOutput,
   }));

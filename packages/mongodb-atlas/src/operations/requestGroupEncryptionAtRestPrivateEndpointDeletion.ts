@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
 
 // Output Schema
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
   typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput.Type;
 
@@ -41,7 +41,7 @@ export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
  */
 export const requestGroupEncryptionAtRestPrivateEndpointDeletion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionInput,
     outputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput,
     errors: [Forbidden, NotFound] as const,

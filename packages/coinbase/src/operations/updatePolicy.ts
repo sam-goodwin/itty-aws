@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePolicyInput = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   rules: Schema.Array(Schema.Unknown),
@@ -13,7 +13,7 @@ export const UpdatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdatePolicyInput = typeof UpdatePolicyInput.Type;
 
 // Output Schema
-export const UpdatePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePolicyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.optional(Schema.String),
   scope: Schema.Literals(["project", "account"]),
@@ -35,7 +35,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param policyId - The ID of the policy to update.
  */
-export const updatePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updatePolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatePolicyInput,
   outputSchema: UpdatePolicyOutput,
 }));

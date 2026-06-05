@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const NotebooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksUpdateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   short_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -60,7 +60,7 @@ export const NotebooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NotebooksUpdateInput = typeof NotebooksUpdateInput.Type;
 
 // Output Schema
-export const NotebooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   title: Schema.optional(Schema.NullOr(Schema.String)),
@@ -115,7 +115,7 @@ export type NotebooksUpdateOutput = typeof NotebooksUpdateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const notebooksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotebooksUpdateInput,
   outputSchema: NotebooksUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EnvironmentsSettingsAsOfRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -18,8 +18,7 @@ export type EnvironmentsSettingsAsOfRetrieveInput =
   typeof EnvironmentsSettingsAsOfRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsSettingsAsOfRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EnvironmentsSettingsAsOfRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type EnvironmentsSettingsAsOfRetrieveOutput =
   typeof EnvironmentsSettingsAsOfRetrieveOutput.Type;
 
@@ -33,9 +32,8 @@ export type EnvironmentsSettingsAsOfRetrieveOutput =
  * @param id - A unique integer value identifying this environment (aka team).
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const environmentsSettingsAsOfRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EnvironmentsSettingsAsOfRetrieveInput,
-    outputSchema: EnvironmentsSettingsAsOfRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const environmentsSettingsAsOfRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsSettingsAsOfRetrieveInput,
+  outputSchema: EnvironmentsSettingsAsOfRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

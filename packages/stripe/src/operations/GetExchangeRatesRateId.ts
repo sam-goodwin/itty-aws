@@ -3,27 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetExchangeRatesRateIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rate_id: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/exchange_rates/{rate_id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetExchangeRatesRateIdInput = /*@__PURE__*/ Schema.Struct({
+  rate_id: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/exchange_rates/{rate_id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetExchangeRatesRateIdInput =
   typeof GetExchangeRatesRateIdInput.Type;
 
 // Output Schema
-export const GetExchangeRatesRateIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    object: Schema.Literals(["exchange_rate"]),
-    rates: Schema.Record(Schema.String, Schema.Number),
-  });
+export const GetExchangeRatesRateIdOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  object: Schema.Literals(["exchange_rate"]),
+  rates: Schema.Record(Schema.String, Schema.Number),
+});
 export type GetExchangeRatesRateIdOutput =
   typeof GetExchangeRatesRateIdOutput.Type;
 
@@ -36,9 +34,7 @@ export type GetExchangeRatesRateIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetExchangeRatesRateId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetExchangeRatesRateIdInput,
-    outputSchema: GetExchangeRatesRateIdOutput,
-  }),
-);
+export const GetExchangeRatesRateId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetExchangeRatesRateIdInput,
+  outputSchema: GetExchangeRatesRateIdOutput,
+}));

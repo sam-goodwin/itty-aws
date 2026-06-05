@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteSubscriptionsSubscriptionExposedIdDiscountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription_exposed_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type DeleteSubscriptionsSubscriptionExposedIdDiscountInput =
 
 // Output Schema
 export const DeleteSubscriptionsSubscriptionExposedIdDiscountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checkout_session: Schema.NullOr(Schema.String),
     customer: Schema.Unknown,
     customer_account: Schema.NullOr(Schema.String),
@@ -46,7 +46,7 @@ export type DeleteSubscriptionsSubscriptionExposedIdDiscountOutput =
  * <p>Removes the currently applied discount on a subscription.</p>
  */
 export const DeleteSubscriptionsSubscriptionExposedIdDiscount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSubscriptionsSubscriptionExposedIdDiscountInput,
     outputSchema: DeleteSubscriptionsSubscriptionExposedIdDiscountOutput,
   }));

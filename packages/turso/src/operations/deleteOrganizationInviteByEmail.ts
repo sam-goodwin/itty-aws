@@ -4,22 +4,22 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteOrganizationInviteByEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOrganizationInviteByEmailInput = /*@__PURE__*/ Schema.Struct(
+  {
     organizationSlug: Schema.String.pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/v1/organizations/{organizationSlug}/invites/{email}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/organizations/{organizationSlug}/invites/{email}",
+  }),
+);
 export type DeleteOrganizationInviteByEmailInput =
   typeof DeleteOrganizationInviteByEmailInput.Type;
 
 // Output Schema
-export const DeleteOrganizationInviteByEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOrganizationInviteByEmailOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOrganizationInviteByEmailOutput =
   typeof DeleteOrganizationInviteByEmailOutput.Type;
 
@@ -31,9 +31,8 @@ export type DeleteOrganizationInviteByEmailOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const deleteOrganizationInviteByEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteOrganizationInviteByEmailInput,
-    outputSchema: DeleteOrganizationInviteByEmailOutput,
-    errors: [NotFound] as const,
-  }));
+export const deleteOrganizationInviteByEmail = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrganizationInviteByEmailInput,
+  outputSchema: DeleteOrganizationInviteByEmailOutput,
+  errors: [NotFound] as const,
+}));

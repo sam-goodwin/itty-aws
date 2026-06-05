@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
-export const MultiSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MultiSearchInput = /*@__PURE__*/ Schema.Struct({
   multiSearchParameters: Schema.String,
   union: Schema.optional(Schema.Boolean),
   searches: Schema.Array(
@@ -85,7 +85,7 @@ export const MultiSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MultiSearchInput = typeof MultiSearchInput.Type;
 
 // Output Schema
-export const MultiSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MultiSearchOutput = /*@__PURE__*/ Schema.Struct({
   results: Schema.Array(
     Schema.Struct({
       facet_counts: Schema.optional(
@@ -281,7 +281,7 @@ export type MultiSearchOutput = typeof MultiSearchOutput.Type;
  *
  * This is especially useful to avoid round-trip network latencies incurred otherwise if each of these requests are sent in separate HTTP requests. You can also use this feature to do a federated search across multiple collections in a single HTTP request.
  */
-export const multiSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const multiSearch = /*@__PURE__*/ API.make(() => ({
   inputSchema: MultiSearchInput,
   outputSchema: MultiSearchOutput,
   errors: [BadRequest] as const,

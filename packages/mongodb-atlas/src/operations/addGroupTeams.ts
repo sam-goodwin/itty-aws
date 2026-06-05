@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AddGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddGroupTeamsInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -14,7 +14,7 @@ export const AddGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AddGroupTeamsInput = typeof AddGroupTeamsInput.Type;
 
 // Output Schema
-export const AddGroupTeamsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AddGroupTeamsOutput = /*@__PURE__*/ Schema.Void;
 export type AddGroupTeamsOutput = typeof AddGroupTeamsOutput.Type;
 
 // The operation
@@ -29,7 +29,7 @@ export type AddGroupTeamsOutput = typeof AddGroupTeamsOutput.Type;
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const addGroupTeams = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addGroupTeams = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddGroupTeamsInput,
   outputSchema: AddGroupTeamsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

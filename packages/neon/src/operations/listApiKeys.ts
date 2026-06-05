@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/api_keys" }));
+export const ListApiKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/api_keys" }),
+);
 export type ListApiKeysInput = typeof ListApiKeysInput.Type;
 
 // Output Schema
-export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListApiKeysOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
     name: Schema.String,
@@ -34,7 +34,7 @@ export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
  * API keys can also be managed in the Neon Console.
  * For more information, see [Manage API keys](https://neon.tech/docs/manage/api-keys/).
  */
-export const listApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListApiKeysInput,
   outputSchema: ListApiKeysOutput,
 }));

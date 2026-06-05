@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupClusterCollStatNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     clusterView: Schema.Literals([
@@ -28,7 +28,7 @@ export type GetGroupClusterCollStatNamespacesInput =
 
 // Output Schema
 export const GetGroupClusterCollStatNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterCollStatNamespacesOutput =
   typeof GetGroupClusterCollStatNamespacesOutput.Type;
 
@@ -48,9 +48,8 @@ export type GetGroupClusterCollStatNamespacesOutput =
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
-export const getGroupClusterCollStatNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterCollStatNamespacesInput,
-    outputSchema: GetGroupClusterCollStatNamespacesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const getGroupClusterCollStatNamespaces = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterCollStatNamespacesInput,
+  outputSchema: GetGroupClusterCollStatNamespacesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

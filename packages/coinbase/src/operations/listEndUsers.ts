@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListEndUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEndUsersInput = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
   sort: Schema.optional(Schema.String),
@@ -11,7 +11,7 @@ export const ListEndUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListEndUsersInput = typeof ListEndUsersInput.Type;
 
 // Output Schema
-export const ListEndUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEndUsersOutput = /*@__PURE__*/ Schema.Struct({
   endUsers: Schema.Array(
     Schema.Struct({
       userId: Schema.String,
@@ -71,7 +71,7 @@ export type ListEndUsersOutput = typeof ListEndUsersOutput.Type;
  * @param pageToken - The token for the desired page of end users. Will be empty if there are no more end users to fetch.
  * @param sort - Sort end users. Defaults to ascending order (oldest first).
  */
-export const listEndUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEndUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEndUsersInput,
   outputSchema: ListEndUsersOutput,
 }));

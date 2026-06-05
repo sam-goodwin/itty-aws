@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInvoiceInput = typeof GetInvoiceInput.Type;
 
 // Output Schema
-export const GetInvoiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   total: Schema.String,
   billing_period_start: Schema.String,
@@ -33,7 +33,7 @@ export type GetInvoiceOutput = typeof GetInvoiceOutput.Type;
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param id - Invoice public ID from `list_invoices`. Example: `aabb12123434`.
  */
-export const getInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getInvoice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoiceInput,
   outputSchema: GetInvoiceOutput,
   errors: [Forbidden, NotFound] as const,

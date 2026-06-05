@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListAllSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListAllSecretsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/secrets" }));
 export type V1ListAllSecretsInput = typeof V1ListAllSecretsInput.Type;
 
 // Output Schema
-export const V1ListAllSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListAllSecretsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.String,
     value: Schema.String,
@@ -27,7 +27,7 @@ export type V1ListAllSecretsOutput = typeof V1ListAllSecretsOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListAllSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllSecretsInput,
   outputSchema: V1ListAllSecretsOutput,
   errors: [BadRequest, Forbidden] as const,

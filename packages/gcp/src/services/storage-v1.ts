@@ -48,7 +48,7 @@ export interface BucketAccessControl {
 }
 
 export const BucketAccessControl: Schema.Schema<BucketAccessControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface ObjectAccessControl {
 }
 
 export const ObjectAccessControl: Schema.Schema<ObjectAccessControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -259,191 +259,190 @@ export interface Bucket {
   satisfiesPZI?: boolean;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    acl: Schema.optional(Schema.Array(BucketAccessControl)),
-    billing: Schema.optional(
-      Schema.Struct({ requesterPays: Schema.optional(Schema.Boolean) }),
+export const Bucket: Schema.Schema<Bucket> = /*@__PURE__*/ Schema.Struct({
+  acl: Schema.optional(Schema.Array(BucketAccessControl)),
+  billing: Schema.optional(
+    Schema.Struct({ requesterPays: Schema.optional(Schema.Boolean) }),
+  ),
+  cors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        maxAgeSeconds: Schema.optional(Schema.Number),
+        method: Schema.optional(Schema.Array(Schema.String)),
+        origin: Schema.optional(Schema.Array(Schema.String)),
+        responseHeader: Schema.optional(Schema.Array(Schema.String)),
+      }),
     ),
-    cors: Schema.optional(
-      Schema.Array(
+  ),
+  customPlacementConfig: Schema.optional(
+    Schema.Struct({
+      dataLocations: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  defaultEventBasedHold: Schema.optional(Schema.Boolean),
+  defaultObjectAcl: Schema.optional(Schema.Array(ObjectAccessControl)),
+  encryption: Schema.optional(
+    Schema.Struct({
+      defaultKmsKeyName: Schema.optional(Schema.String),
+      googleManagedEncryptionEnforcementConfig: Schema.optional(
         Schema.Struct({
-          maxAgeSeconds: Schema.optional(Schema.Number),
-          method: Schema.optional(Schema.Array(Schema.String)),
-          origin: Schema.optional(Schema.Array(Schema.String)),
-          responseHeader: Schema.optional(Schema.Array(Schema.String)),
+          restrictionMode: Schema.optional(Schema.String),
+          effectiveTime: Schema.optional(Schema.String),
         }),
       ),
-    ),
-    customPlacementConfig: Schema.optional(
-      Schema.Struct({
-        dataLocations: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    defaultEventBasedHold: Schema.optional(Schema.Boolean),
-    defaultObjectAcl: Schema.optional(Schema.Array(ObjectAccessControl)),
-    encryption: Schema.optional(
-      Schema.Struct({
-        defaultKmsKeyName: Schema.optional(Schema.String),
-        googleManagedEncryptionEnforcementConfig: Schema.optional(
+      customerManagedEncryptionEnforcementConfig: Schema.optional(
+        Schema.Struct({
+          restrictionMode: Schema.optional(Schema.String),
+          effectiveTime: Schema.optional(Schema.String),
+        }),
+      ),
+      customerSuppliedEncryptionEnforcementConfig: Schema.optional(
+        Schema.Struct({
+          restrictionMode: Schema.optional(Schema.String),
+          effectiveTime: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
+  hierarchicalNamespace: Schema.optional(
+    Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
+  ),
+  iamConfiguration: Schema.optional(
+    Schema.Struct({
+      bucketPolicyOnly: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+          lockedTime: Schema.optional(Schema.String),
+        }),
+      ),
+      uniformBucketLevelAccess: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+          lockedTime: Schema.optional(Schema.String),
+        }),
+      ),
+      publicAccessPrevention: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  ipFilter: Schema.optional(
+    Schema.Struct({
+      mode: Schema.optional(Schema.String),
+      publicNetworkSource: Schema.optional(
+        Schema.Struct({
+          allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      vpcNetworkSources: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            restrictionMode: Schema.optional(Schema.String),
-            effectiveTime: Schema.optional(Schema.String),
-          }),
-        ),
-        customerManagedEncryptionEnforcementConfig: Schema.optional(
-          Schema.Struct({
-            restrictionMode: Schema.optional(Schema.String),
-            effectiveTime: Schema.optional(Schema.String),
-          }),
-        ),
-        customerSuppliedEncryptionEnforcementConfig: Schema.optional(
-          Schema.Struct({
-            restrictionMode: Schema.optional(Schema.String),
-            effectiveTime: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    etag: Schema.optional(Schema.String),
-    hierarchicalNamespace: Schema.optional(
-      Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
-    ),
-    iamConfiguration: Schema.optional(
-      Schema.Struct({
-        bucketPolicyOnly: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            lockedTime: Schema.optional(Schema.String),
-          }),
-        ),
-        uniformBucketLevelAccess: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            lockedTime: Schema.optional(Schema.String),
-          }),
-        ),
-        publicAccessPrevention: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    ipFilter: Schema.optional(
-      Schema.Struct({
-        mode: Schema.optional(Schema.String),
-        publicNetworkSource: Schema.optional(
-          Schema.Struct({
+            network: Schema.optional(Schema.String),
             allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
           }),
         ),
-        vpcNetworkSources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              network: Schema.optional(Schema.String),
-              allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+      ),
+      allowCrossOrgVpcs: Schema.optional(Schema.Boolean),
+      allowAllServiceAgentAccess: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  lifecycle: Schema.optional(
+    Schema.Struct({
+      rule: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            action: Schema.optional(
+              Schema.Struct({
+                storageClass: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+            condition: Schema.optional(
+              Schema.Struct({
+                age: Schema.optional(Schema.Number),
+                createdBefore: Schema.optional(Schema.String),
+                customTimeBefore: Schema.optional(Schema.String),
+                daysSinceCustomTime: Schema.optional(Schema.Number),
+                daysSinceNoncurrentTime: Schema.optional(Schema.Number),
+                isLive: Schema.optional(Schema.Boolean),
+                matchesPattern: Schema.optional(Schema.String),
+                matchesPrefix: Schema.optional(Schema.Array(Schema.String)),
+                matchesSuffix: Schema.optional(Schema.Array(Schema.String)),
+                matchesStorageClass: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                noncurrentTimeBefore: Schema.optional(Schema.String),
+                numNewerVersions: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
         ),
-        allowCrossOrgVpcs: Schema.optional(Schema.Boolean),
-        allowAllServiceAgentAccess: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    lifecycle: Schema.optional(
-      Schema.Struct({
-        rule: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.optional(
-                Schema.Struct({
-                  storageClass: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-              condition: Schema.optional(
-                Schema.Struct({
-                  age: Schema.optional(Schema.Number),
-                  createdBefore: Schema.optional(Schema.String),
-                  customTimeBefore: Schema.optional(Schema.String),
-                  daysSinceCustomTime: Schema.optional(Schema.Number),
-                  daysSinceNoncurrentTime: Schema.optional(Schema.Number),
-                  isLive: Schema.optional(Schema.Boolean),
-                  matchesPattern: Schema.optional(Schema.String),
-                  matchesPrefix: Schema.optional(Schema.Array(Schema.String)),
-                  matchesSuffix: Schema.optional(Schema.Array(Schema.String)),
-                  matchesStorageClass: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  noncurrentTimeBefore: Schema.optional(Schema.String),
-                  numNewerVersions: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
-    autoclass: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.optional(Schema.Boolean),
-        toggleTime: Schema.optional(Schema.String),
-        terminalStorageClass: Schema.optional(Schema.String),
-        terminalStorageClassUpdateTime: Schema.optional(Schema.String),
-      }),
-    ),
-    location: Schema.optional(Schema.String),
-    locationType: Schema.optional(Schema.String),
-    logging: Schema.optional(
-      Schema.Struct({
-        logBucket: Schema.optional(Schema.String),
-        logObjectPrefix: Schema.optional(Schema.String),
-      }),
-    ),
-    generation: Schema.optional(Schema.String),
-    metageneration: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    owner: Schema.optional(
-      Schema.Struct({
-        entity: Schema.optional(Schema.String),
-        entityId: Schema.optional(Schema.String),
-      }),
-    ),
-    projectNumber: Schema.optional(Schema.String),
-    retentionPolicy: Schema.optional(
-      Schema.Struct({
-        effectiveTime: Schema.optional(Schema.String),
-        isLocked: Schema.optional(Schema.Boolean),
-        retentionPeriod: Schema.optional(Schema.String),
-      }),
-    ),
-    objectRetention: Schema.optional(
-      Schema.Struct({ mode: Schema.optional(Schema.String) }),
-    ),
-    rpo: Schema.optional(Schema.String),
-    selfLink: Schema.optional(Schema.String),
-    softDeletePolicy: Schema.optional(
-      Schema.Struct({
-        retentionDurationSeconds: Schema.optional(Schema.String),
-        effectiveTime: Schema.optional(Schema.String),
-      }),
-    ),
-    storageClass: Schema.optional(Schema.String),
-    timeCreated: Schema.optional(Schema.String),
-    updated: Schema.optional(Schema.String),
-    softDeleteTime: Schema.optional(Schema.String),
-    hardDeleteTime: Schema.optional(Schema.String),
-    versioning: Schema.optional(
-      Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
-    ),
-    website: Schema.optional(
-      Schema.Struct({
-        mainPageSuffix: Schema.optional(Schema.String),
-        notFoundPage: Schema.optional(Schema.String),
-      }),
-    ),
-    satisfiesPZS: Schema.optional(Schema.Boolean),
-    satisfiesPZI: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Bucket" });
+      ),
+    }),
+  ),
+  autoclass: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Boolean),
+      toggleTime: Schema.optional(Schema.String),
+      terminalStorageClass: Schema.optional(Schema.String),
+      terminalStorageClassUpdateTime: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  locationType: Schema.optional(Schema.String),
+  logging: Schema.optional(
+    Schema.Struct({
+      logBucket: Schema.optional(Schema.String),
+      logObjectPrefix: Schema.optional(Schema.String),
+    }),
+  ),
+  generation: Schema.optional(Schema.String),
+  metageneration: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  owner: Schema.optional(
+    Schema.Struct({
+      entity: Schema.optional(Schema.String),
+      entityId: Schema.optional(Schema.String),
+    }),
+  ),
+  projectNumber: Schema.optional(Schema.String),
+  retentionPolicy: Schema.optional(
+    Schema.Struct({
+      effectiveTime: Schema.optional(Schema.String),
+      isLocked: Schema.optional(Schema.Boolean),
+      retentionPeriod: Schema.optional(Schema.String),
+    }),
+  ),
+  objectRetention: Schema.optional(
+    Schema.Struct({ mode: Schema.optional(Schema.String) }),
+  ),
+  rpo: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  softDeletePolicy: Schema.optional(
+    Schema.Struct({
+      retentionDurationSeconds: Schema.optional(Schema.String),
+      effectiveTime: Schema.optional(Schema.String),
+    }),
+  ),
+  storageClass: Schema.optional(Schema.String),
+  timeCreated: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  softDeleteTime: Schema.optional(Schema.String),
+  hardDeleteTime: Schema.optional(Schema.String),
+  versioning: Schema.optional(
+    Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
+  ),
+  website: Schema.optional(
+    Schema.Struct({
+      mainPageSuffix: Schema.optional(Schema.String),
+      notFoundPage: Schema.optional(Schema.String),
+    }),
+  ),
+  satisfiesPZS: Schema.optional(Schema.Boolean),
+  satisfiesPZI: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Bucket" });
 
 export interface AdvanceRelocateBucketOperationRequest {
   /** Specifies the duration after which the relocation will revert to the sync stage if the relocation hasn't succeeded. Optional, if not supplied, a default value of 12h will be used. */
@@ -453,7 +452,7 @@ export interface AdvanceRelocateBucketOperationRequest {
 }
 
 export const AdvanceRelocateBucketOperationRequest: Schema.Schema<AdvanceRelocateBucketOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdvanceRelocateBucketOperationRequest" });
@@ -488,7 +487,7 @@ export interface AnywhereCache {
 }
 
 export const AnywhereCache: Schema.Schema<AnywhereCache> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -514,7 +513,7 @@ export interface AnywhereCaches {
 }
 
 export const AnywhereCaches: Schema.Schema<AnywhereCaches> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(AnywhereCache)),
@@ -528,7 +527,7 @@ export interface BucketAccessControls {
 }
 
 export const BucketAccessControls: Schema.Schema<BucketAccessControls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(BucketAccessControl)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "BucketAccessControls" });
@@ -549,7 +548,7 @@ export interface BucketStorageLayout {
 }
 
 export const BucketStorageLayout: Schema.Schema<BucketStorageLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     customPlacementConfig: Schema.optional(
       Schema.Struct({
@@ -575,13 +574,12 @@ export interface Buckets {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const Buckets: Schema.Schema<Buckets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.optional(Schema.Array(Bucket)),
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Buckets" });
+export const Buckets: Schema.Schema<Buckets> = /*@__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Bucket)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Buckets" });
 
 export interface Channel {
   /** The address where notifications are delivered for this channel. */
@@ -606,19 +604,18 @@ export interface Channel {
   type?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.optional(Schema.String),
-    expiration: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    payload: Schema.optional(Schema.Boolean),
-    resourceId: Schema.optional(Schema.String),
-    resourceUri: Schema.optional(Schema.String),
-    token: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Channel" });
+export const Channel: Schema.Schema<Channel> = /*@__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+  expiration: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  payload: Schema.optional(Schema.Boolean),
+  resourceId: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface ObjectCustomContextPayload {
   /** The value of the object context. */
@@ -630,7 +627,7 @@ export interface ObjectCustomContextPayload {
 }
 
 export const ObjectCustomContextPayload: Schema.Schema<ObjectCustomContextPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -716,7 +713,7 @@ export interface Storage_Object {
 }
 
 export const Storage_Object: Schema.Schema<Storage_Object> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acl: Schema.optional(Schema.Array(ObjectAccessControl)),
     bucket: Schema.optional(Schema.String),
     cacheControl: Schema.optional(Schema.String),
@@ -794,7 +791,7 @@ export interface ComposeRequest {
 }
 
 export const ComposeRequest: Schema.Schema<ComposeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Storage_Object),
     kind: Schema.optional(Schema.String),
     sourceObjects: Schema.optional(
@@ -834,20 +831,19 @@ export interface Folder {
   pendingRenameInfo?: { operationId?: string };
 }
 
-export const Folder: Schema.Schema<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metageneration: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    selfLink: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    pendingRenameInfo: Schema.optional(
-      Schema.Struct({ operationId: Schema.optional(Schema.String) }),
-    ),
-  }).annotate({ identifier: "Folder" });
+export const Folder: Schema.Schema<Folder> = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metageneration: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  pendingRenameInfo: Schema.optional(
+    Schema.Struct({ operationId: Schema.optional(Schema.String) }),
+  ),
+}).annotate({ identifier: "Folder" });
 
 export interface Folders {
   /** The list of items. */
@@ -858,12 +854,11 @@ export interface Folders {
   nextPageToken?: string;
 }
 
-export const Folders: Schema.Schema<Folders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.optional(Schema.Array(Folder)),
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Folders" });
+export const Folders: Schema.Schema<Folders> = /*@__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Folder)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Folders" });
 
 export interface Expr {
   /** An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -876,13 +871,12 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    expression: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -894,7 +888,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -920,7 +914,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(GoogleRpcStatus),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -940,7 +934,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     kind: Schema.optional(Schema.String),
@@ -970,7 +964,7 @@ export interface HmacKeyMetadata {
 }
 
 export const HmacKeyMetadata: Schema.Schema<HmacKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessId: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -992,12 +986,11 @@ export interface HmacKey {
   secret?: string;
 }
 
-export const HmacKey: Schema.Schema<HmacKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(HmacKeyMetadata),
-    secret: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HmacKey" });
+export const HmacKey: Schema.Schema<HmacKey> = /*@__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(HmacKeyMetadata),
+  secret: Schema.optional(Schema.String),
+}).annotate({ identifier: "HmacKey" });
 
 export interface HmacKeysMetadata {
   /** The list of items. */
@@ -1009,7 +1002,7 @@ export interface HmacKeysMetadata {
 }
 
 export const HmacKeysMetadata: Schema.Schema<HmacKeysMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(HmacKeyMetadata)),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1035,7 +1028,7 @@ export interface ManagedFolder {
 }
 
 export const ManagedFolder: Schema.Schema<ManagedFolder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1056,7 +1049,7 @@ export interface ManagedFolders {
 }
 
 export const ManagedFolders: Schema.Schema<ManagedFolders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ManagedFolder)),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1084,7 +1077,7 @@ export interface Notification {
 }
 
 export const Notification: Schema.Schema<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     custom_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -1106,7 +1099,7 @@ export interface Notifications {
 }
 
 export const Notifications: Schema.Schema<Notifications> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Notification)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "Notifications" });
@@ -1119,7 +1112,7 @@ export interface ObjectAccessControls {
 }
 
 export const ObjectAccessControls: Schema.Schema<ObjectAccessControls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ObjectAccessControl)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ObjectAccessControls" });
@@ -1135,13 +1128,12 @@ export interface Objects {
   prefixes?: ReadonlyArray<string>;
 }
 
-export const Objects: Schema.Schema<Objects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.optional(Schema.Array(Storage_Object)),
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-    prefixes: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Objects" });
+export const Objects: Schema.Schema<Objects> = /*@__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Storage_Object)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  prefixes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Objects" });
 
 export interface Policy {
   /** An association between a role, which comes with a set of permissions, and members who may assume that role. */
@@ -1160,22 +1152,21 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bindings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          condition: Schema.optional(Expr),
-          members: Schema.optional(Schema.Array(Schema.String)),
-          role: Schema.optional(Schema.String),
-        }),
-      ),
+export const Policy: Schema.Schema<Policy> = /*@__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        condition: Schema.optional(Expr),
+        members: Schema.optional(Schema.Array(Schema.String)),
+        role: Schema.optional(Schema.String),
+      }),
     ),
-    etag: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Policy" });
+  ),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Policy" });
 
 export interface RelocateBucketRequest {
   /** The new location the bucket will be relocated to. */
@@ -1189,7 +1180,7 @@ export interface RelocateBucketRequest {
 }
 
 export const RelocateBucketRequest: Schema.Schema<RelocateBucketRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationLocation: Schema.optional(Schema.String),
     destinationCustomPlacementConfig: Schema.optional(
       Schema.Struct({
@@ -1216,7 +1207,7 @@ export interface RewriteResponse {
 }
 
 export const RewriteResponse: Schema.Schema<RewriteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     objectSize: Schema.optional(Schema.String),
@@ -1233,7 +1224,7 @@ export interface ServiceAccount {
 }
 
 export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email_address: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceAccount" });
@@ -1246,7 +1237,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1269,7 +1260,7 @@ export interface BulkRestoreObjectsRequest {
 }
 
 export const BulkRestoreObjectsRequest: Schema.Schema<BulkRestoreObjectsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowOverwrite: Schema.optional(Schema.Boolean),
     softDeletedAfterTime: Schema.optional(Schema.String),
     softDeletedBeforeTime: Schema.optional(Schema.String),
@@ -1340,22 +1331,17 @@ export interface InsertAnywhereCachesRequest {
   body?: AnywhereCache;
 }
 
-export const InsertAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    body: Schema.optional(AnywhereCache).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/anywhereCaches",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertAnywhereCachesRequest>;
+export const InsertAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  body: Schema.optional(AnywhereCache).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "b/{bucket}/anywhereCaches", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<InsertAnywhereCachesRequest>;
 
 export type InsertAnywhereCachesResponse = GoogleLongrunningOperation;
 export const InsertAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type InsertAnywhereCachesError =
   | DefaultErrors
@@ -1370,7 +1356,7 @@ export const insertAnywhereCaches: API.OperationMethod<
   InsertAnywhereCachesResponse,
   InsertAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAnywhereCachesRequest,
   output: InsertAnywhereCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1385,23 +1371,22 @@ export interface UpdateAnywhereCachesRequest {
   body?: AnywhereCache;
 }
 
-export const UpdateAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
-    body: Schema.optional(AnywhereCache).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateAnywhereCachesRequest>;
+export const UpdateAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
+  body: Schema.optional(AnywhereCache).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateAnywhereCachesRequest>;
 
 export type UpdateAnywhereCachesResponse = GoogleLongrunningOperation;
 export const UpdateAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type UpdateAnywhereCachesError =
   | DefaultErrors
@@ -1416,7 +1401,7 @@ export const updateAnywhereCaches: API.OperationMethod<
   UpdateAnywhereCachesResponse,
   UpdateAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnywhereCachesRequest,
   output: UpdateAnywhereCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1429,21 +1414,19 @@ export interface GetAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 
-export const GetAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAnywhereCachesRequest>;
+export const GetAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetAnywhereCachesRequest>;
 
 export type GetAnywhereCachesResponse = AnywhereCache;
-export const GetAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
+export const GetAnywhereCachesResponse = /*@__PURE__*/ AnywhereCache;
 
 export type GetAnywhereCachesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1453,7 +1436,7 @@ export const getAnywhereCaches: API.OperationMethod<
   GetAnywhereCachesResponse,
   GetAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnywhereCachesRequest,
   output: GetAnywhereCachesResponse,
   errors: [NotFound, Forbidden],
@@ -1468,19 +1451,17 @@ export interface ListAnywhereCachesRequest {
   pageToken?: string;
 }
 
-export const ListAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/anywhereCaches" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAnywhereCachesRequest>;
+export const ListAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/anywhereCaches" }),
+  svc,
+) as unknown as Schema.Schema<ListAnywhereCachesRequest>;
 
 export type ListAnywhereCachesResponse = AnywhereCaches;
-export const ListAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnywhereCaches;
+export const ListAnywhereCachesResponse = /*@__PURE__*/ AnywhereCaches;
 
 export type ListAnywhereCachesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1490,7 +1471,7 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
   ListAnywhereCachesResponse,
   ListAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnywhereCachesRequest,
   output: ListAnywhereCachesResponse,
   errors: [NotFound, Forbidden],
@@ -1508,22 +1489,20 @@ export interface PauseAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 
-export const PauseAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/pause",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PauseAnywhereCachesRequest>;
+export const PauseAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/pause",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PauseAnywhereCachesRequest>;
 
 export type PauseAnywhereCachesResponse = AnywhereCache;
-export const PauseAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
+export const PauseAnywhereCachesResponse = /*@__PURE__*/ AnywhereCache;
 
 export type PauseAnywhereCachesError =
   | DefaultErrors
@@ -1538,7 +1517,7 @@ export const pauseAnywhereCaches: API.OperationMethod<
   PauseAnywhereCachesResponse,
   PauseAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseAnywhereCachesRequest,
   output: PauseAnywhereCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1551,22 +1530,20 @@ export interface ResumeAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 
-export const ResumeAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/resume",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ResumeAnywhereCachesRequest>;
+export const ResumeAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/resume",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<ResumeAnywhereCachesRequest>;
 
 export type ResumeAnywhereCachesResponse = AnywhereCache;
-export const ResumeAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
+export const ResumeAnywhereCachesResponse = /*@__PURE__*/ AnywhereCache;
 
 export type ResumeAnywhereCachesError =
   | DefaultErrors
@@ -1581,7 +1558,7 @@ export const resumeAnywhereCaches: API.OperationMethod<
   ResumeAnywhereCachesResponse,
   ResumeAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeAnywhereCachesRequest,
   output: ResumeAnywhereCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1594,22 +1571,20 @@ export interface DisableAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 
-export const DisableAnywhereCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/disable",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DisableAnywhereCachesRequest>;
+export const DisableAnywhereCachesRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  anywhereCacheId: Schema.String.pipe(T.HttpPath("anywhereCacheId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/anywhereCaches/{anywhereCacheId}/disable",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<DisableAnywhereCachesRequest>;
 
 export type DisableAnywhereCachesResponse = AnywhereCache;
-export const DisableAnywhereCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
+export const DisableAnywhereCachesResponse = /*@__PURE__*/ AnywhereCache;
 
 export type DisableAnywhereCachesError =
   | DefaultErrors
@@ -1624,7 +1599,7 @@ export const disableAnywhereCaches: API.OperationMethod<
   DisableAnywhereCachesResponse,
   DisableAnywhereCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAnywhereCachesRequest,
   output: DisableAnywhereCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1639,21 +1614,18 @@ export interface DeleteBucketAccessControlsRequest {
   userProject?: string;
 }
 
-export const DeleteBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "b/{bucket}/acl/{entity}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteBucketAccessControlsRequest>;
+export const DeleteBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "b/{bucket}/acl/{entity}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteBucketAccessControlsRequest>;
 
 export interface DeleteBucketAccessControlsResponse {}
 export const DeleteBucketAccessControlsResponse: Schema.Schema<DeleteBucketAccessControlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteBucketAccessControlsResponse>;
 
@@ -1670,7 +1642,7 @@ export const deleteBucketAccessControls: API.OperationMethod<
   DeleteBucketAccessControlsResponse,
   DeleteBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketAccessControlsRequest,
   output: DeleteBucketAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1685,21 +1657,18 @@ export interface GetBucketAccessControlsRequest {
   userProject?: string;
 }
 
-export const GetBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/acl/{entity}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetBucketAccessControlsRequest>;
+export const GetBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/acl/{entity}" }),
+  svc,
+) as unknown as Schema.Schema<GetBucketAccessControlsRequest>;
 
 export type GetBucketAccessControlsResponse = BucketAccessControl;
 export const GetBucketAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
+  /*@__PURE__*/ BucketAccessControl;
 
 export type GetBucketAccessControlsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1709,7 +1678,7 @@ export const getBucketAccessControls: API.OperationMethod<
   GetBucketAccessControlsResponse,
   GetBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAccessControlsRequest,
   output: GetBucketAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -1724,21 +1693,18 @@ export interface InsertBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 
-export const InsertBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "b/{bucket}/acl", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<InsertBucketAccessControlsRequest>;
+export const InsertBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "b/{bucket}/acl", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<InsertBucketAccessControlsRequest>;
 
 export type InsertBucketAccessControlsResponse = BucketAccessControl;
 export const InsertBucketAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
+  /*@__PURE__*/ BucketAccessControl;
 
 export type InsertBucketAccessControlsError =
   | DefaultErrors
@@ -1753,7 +1719,7 @@ export const insertBucketAccessControls: API.OperationMethod<
   InsertBucketAccessControlsResponse,
   InsertBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertBucketAccessControlsRequest,
   output: InsertBucketAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1766,20 +1732,17 @@ export interface ListBucketAccessControlsRequest {
   userProject?: string;
 }
 
-export const ListBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/acl" }),
-    svc,
-  ) as unknown as Schema.Schema<ListBucketAccessControlsRequest>;
+export const ListBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/acl" }),
+  svc,
+) as unknown as Schema.Schema<ListBucketAccessControlsRequest>;
 
 export type ListBucketAccessControlsResponse = BucketAccessControls;
 export const ListBucketAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketAccessControls;
+  /*@__PURE__*/ BucketAccessControls;
 
 export type ListBucketAccessControlsError =
   | DefaultErrors
@@ -1792,7 +1755,7 @@ export const listBucketAccessControls: API.OperationMethod<
   ListBucketAccessControlsResponse,
   ListBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBucketAccessControlsRequest,
   output: ListBucketAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -1809,22 +1772,19 @@ export interface PatchBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 
-export const PatchBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "b/{bucket}/acl/{entity}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchBucketAccessControlsRequest>;
+export const PatchBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "b/{bucket}/acl/{entity}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchBucketAccessControlsRequest>;
 
 export type PatchBucketAccessControlsResponse = BucketAccessControl;
 export const PatchBucketAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
+  /*@__PURE__*/ BucketAccessControl;
 
 export type PatchBucketAccessControlsError =
   | DefaultErrors
@@ -1839,7 +1799,7 @@ export const patchBucketAccessControls: API.OperationMethod<
   PatchBucketAccessControlsResponse,
   PatchBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchBucketAccessControlsRequest,
   output: PatchBucketAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1856,22 +1816,19 @@ export interface UpdateBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 
-export const UpdateBucketAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "b/{bucket}/acl/{entity}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateBucketAccessControlsRequest>;
+export const UpdateBucketAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(BucketAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PUT", path: "b/{bucket}/acl/{entity}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<UpdateBucketAccessControlsRequest>;
 
 export type UpdateBucketAccessControlsResponse = BucketAccessControl;
 export const UpdateBucketAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
+  /*@__PURE__*/ BucketAccessControl;
 
 export type UpdateBucketAccessControlsError =
   | DefaultErrors
@@ -1886,7 +1843,7 @@ export const updateBucketAccessControls: API.OperationMethod<
   UpdateBucketAccessControlsResponse,
   UpdateBucketAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketAccessControlsRequest,
   output: UpdateBucketAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1903,7 +1860,7 @@ export interface DeleteBucketsRequest {
   userProject?: string;
 }
 
-export const DeleteBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBucketsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
     T.HttpQuery("ifMetagenerationMatch"),
@@ -1919,7 +1876,7 @@ export const DeleteBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteBucketsResponse {}
 export const DeleteBucketsResponse: Schema.Schema<DeleteBucketsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteBucketsResponse>;
 
@@ -1936,7 +1893,7 @@ export const deleteBuckets: API.OperationMethod<
   DeleteBucketsResponse,
   DeleteBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketsRequest,
   output: DeleteBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1953,7 +1910,7 @@ export interface RestoreBucketsRequest {
   userProject?: string;
 }
 
-export const RestoreBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreBucketsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.String.pipe(T.HttpQuery("generation")),
   projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
@@ -1964,7 +1921,7 @@ export const RestoreBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RestoreBucketsRequest>;
 
 export type RestoreBucketsResponse = Bucket;
-export const RestoreBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const RestoreBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type RestoreBucketsError =
   | DefaultErrors
@@ -1979,7 +1936,7 @@ export const restoreBuckets: API.OperationMethod<
   RestoreBucketsResponse,
   RestoreBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreBucketsRequest,
   output: RestoreBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1992,19 +1949,16 @@ export interface RelocateBucketsRequest {
   body?: RelocateBucketRequest;
 }
 
-export const RelocateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    body: Schema.optional(RelocateBucketRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const RelocateBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  body: Schema.optional(RelocateBucketRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/relocate", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<RelocateBucketsRequest>;
 
 export type RelocateBucketsResponse = GoogleLongrunningOperation;
-export const RelocateBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const RelocateBucketsResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RelocateBucketsError =
   | DefaultErrors
@@ -2019,7 +1973,7 @@ export const relocateBuckets: API.OperationMethod<
   RelocateBucketsResponse,
   RelocateBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RelocateBucketsRequest,
   output: RelocateBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2042,7 +1996,7 @@ export interface GetBucketsRequest {
   userProject?: string;
 }
 
-export const GetBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBucketsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
   softDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("softDeleted")),
@@ -2060,7 +2014,7 @@ export const GetBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetBucketsRequest>;
 
 export type GetBucketsResponse = Bucket;
-export const GetBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const GetBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type GetBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2070,7 +2024,7 @@ export const getBuckets: API.OperationMethod<
   GetBucketsResponse,
   GetBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketsRequest,
   output: GetBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -2085,22 +2039,19 @@ export interface GetIamPolicyBucketsRequest {
   userProject?: string;
 }
 
-export const GetIamPolicyBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("optionsRequestedPolicyVersion"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/iam" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBucketsRequest>;
+export const GetIamPolicyBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("optionsRequestedPolicyVersion"),
+  ),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/iam" }),
+  svc,
+) as unknown as Schema.Schema<GetIamPolicyBucketsRequest>;
 
 export type GetIamPolicyBucketsResponse = Policy;
-export const GetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyBucketsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2110,7 +2061,7 @@ export const getIamPolicyBuckets: API.OperationMethod<
   GetIamPolicyBucketsResponse,
   GetIamPolicyBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyBucketsRequest,
   output: GetIamPolicyBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -2123,18 +2074,17 @@ export interface GetStorageLayoutBucketsRequest {
   prefix?: string;
 }
 
-export const GetStorageLayoutBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/storageLayout" }),
-    svc,
-  ) as unknown as Schema.Schema<GetStorageLayoutBucketsRequest>;
+export const GetStorageLayoutBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/storageLayout" }),
+  svc,
+) as unknown as Schema.Schema<GetStorageLayoutBucketsRequest>;
 
 export type GetStorageLayoutBucketsResponse = BucketStorageLayout;
 export const GetStorageLayoutBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BucketStorageLayout;
+  /*@__PURE__*/ BucketStorageLayout;
 
 export type GetStorageLayoutBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2144,7 +2094,7 @@ export const getStorageLayoutBuckets: API.OperationMethod<
   GetStorageLayoutBucketsResponse,
   GetStorageLayoutBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStorageLayoutBucketsRequest,
   output: GetStorageLayoutBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -2180,7 +2130,7 @@ export interface InsertBucketsRequest {
   body?: Bucket;
 }
 
-export const InsertBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertBucketsRequest = /*@__PURE__*/ Schema.Struct({
   predefinedAcl: Schema.optional(Schema.String).pipe(
     T.HttpQuery("predefinedAcl"),
   ),
@@ -2200,7 +2150,7 @@ export const InsertBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<InsertBucketsRequest>;
 
 export type InsertBucketsResponse = Bucket;
-export const InsertBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const InsertBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type InsertBucketsError =
   | DefaultErrors
@@ -2215,7 +2165,7 @@ export const insertBuckets: API.OperationMethod<
   InsertBucketsResponse,
   InsertBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertBucketsRequest,
   output: InsertBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2240,7 +2190,7 @@ export interface ListBucketsRequest {
   returnPartialSuccess?: boolean;
 }
 
-export const ListBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBucketsRequest = /*@__PURE__*/ Schema.Struct({
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
@@ -2257,7 +2207,7 @@ export const ListBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListBucketsRequest>;
 
 export type ListBucketsResponse = Buckets;
-export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Buckets;
+export const ListBucketsResponse = /*@__PURE__*/ Buckets;
 
 export type ListBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2267,7 +2217,7 @@ export const listBuckets: API.PaginatedOperationMethod<
   ListBucketsResponse,
   ListBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
   output: ListBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -2287,27 +2237,23 @@ export interface LockRetentionPolicyBucketsRequest {
   userProject?: string;
 }
 
-export const LockRetentionPolicyBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    ifMetagenerationMatch: Schema.String.pipe(
-      T.HttpQuery("ifMetagenerationMatch"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/lockRetentionPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<LockRetentionPolicyBucketsRequest>;
+export const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  ifMetagenerationMatch: Schema.String.pipe(
+    T.HttpQuery("ifMetagenerationMatch"),
+  ),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/lockRetentionPolicy",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<LockRetentionPolicyBucketsRequest>;
 
 export type LockRetentionPolicyBucketsResponse = Bucket;
-export const LockRetentionPolicyBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const LockRetentionPolicyBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type LockRetentionPolicyBucketsError =
   | DefaultErrors
@@ -2322,7 +2268,7 @@ export const lockRetentionPolicyBuckets: API.OperationMethod<
   LockRetentionPolicyBucketsResponse,
   LockRetentionPolicyBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LockRetentionPolicyBucketsRequest,
   output: LockRetentionPolicyBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2360,7 +2306,7 @@ export interface PatchBucketsRequest {
   body?: Bucket;
 }
 
-export const PatchBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchBucketsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
     T.HttpQuery("ifMetagenerationMatch"),
@@ -2383,7 +2329,7 @@ export const PatchBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchBucketsRequest>;
 
 export type PatchBucketsResponse = Bucket;
-export const PatchBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const PatchBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type PatchBucketsError =
   | DefaultErrors
@@ -2398,7 +2344,7 @@ export const patchBuckets: API.OperationMethod<
   PatchBucketsResponse,
   PatchBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchBucketsRequest,
   output: PatchBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2413,20 +2359,17 @@ export interface SetIamPolicyBucketsRequest {
   body?: Policy;
 }
 
-export const SetIamPolicyBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(Policy).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "b/{bucket}/iam", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBucketsRequest>;
+export const SetIamPolicyBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PUT", path: "b/{bucket}/iam", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<SetIamPolicyBucketsRequest>;
 
 export type SetIamPolicyBucketsResponse = Policy;
-export const SetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyBucketsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyBucketsError =
   | DefaultErrors
@@ -2441,7 +2384,7 @@ export const setIamPolicyBuckets: API.OperationMethod<
   SetIamPolicyBucketsResponse,
   SetIamPolicyBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyBucketsRequest,
   output: SetIamPolicyBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2456,21 +2399,18 @@ export interface TestIamPermissionsBucketsRequest {
   userProject?: string;
 }
 
-export const TestIamPermissionsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    permissions: Schema.Array(Schema.String).pipe(T.HttpQuery("permissions")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/iam/testPermissions" }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBucketsRequest>;
+export const TestIamPermissionsBucketsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  permissions: Schema.Array(Schema.String).pipe(T.HttpQuery("permissions")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/iam/testPermissions" }),
+  svc,
+) as unknown as Schema.Schema<TestIamPermissionsBucketsRequest>;
 
 export type TestIamPermissionsBucketsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsBucketsError =
   | DefaultErrors
@@ -2483,7 +2423,7 @@ export const testIamPermissionsBuckets: API.OperationMethod<
   TestIamPermissionsBucketsResponse,
   TestIamPermissionsBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBucketsRequest,
   output: TestIamPermissionsBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -2521,7 +2461,7 @@ export interface UpdateBucketsRequest {
   body?: Bucket;
 }
 
-export const UpdateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBucketsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
     T.HttpQuery("ifMetagenerationMatch"),
@@ -2544,7 +2484,7 @@ export const UpdateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<UpdateBucketsRequest>;
 
 export type UpdateBucketsResponse = Bucket;
-export const UpdateBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const UpdateBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type UpdateBucketsError =
   | DefaultErrors
@@ -2559,7 +2499,7 @@ export const updateBuckets: API.OperationMethod<
   UpdateBucketsResponse,
   UpdateBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketsRequest,
   output: UpdateBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2572,22 +2512,21 @@ export interface CancelOperationsRequest {
   operationId: string;
 }
 
-export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    operationId: Schema.String.pipe(T.HttpPath("operationId")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/operations/{operationId}/cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+export const CancelOperationsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  operationId: Schema.String.pipe(T.HttpPath("operationId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/operations/{operationId}/cancel",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CancelOperationsRequest>;
 
 export interface CancelOperationsResponse {}
 export const CancelOperationsResponse: Schema.Schema<CancelOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<CancelOperationsResponse>;
 
@@ -2604,7 +2543,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2617,7 +2556,7 @@ export interface GetOperationsRequest {
   operationId: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   operationId: Schema.String.pipe(T.HttpPath("operationId")),
 }).pipe(
@@ -2626,8 +2565,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
 export type GetOperationsResponse = GoogleLongrunningOperation;
-export const GetOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const GetOperationsResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2637,7 +2575,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2653,7 +2591,7 @@ export interface AdvanceRelocateBucketOperationsRequest {
 }
 
 export const AdvanceRelocateBucketOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     operationId: Schema.String.pipe(T.HttpPath("operationId")),
     body: Schema.optional(AdvanceRelocateBucketOperationRequest).pipe(
@@ -2670,7 +2608,7 @@ export const AdvanceRelocateBucketOperationsRequest =
 
 export interface AdvanceRelocateBucketOperationsResponse {}
 export const AdvanceRelocateBucketOperationsResponse: Schema.Schema<AdvanceRelocateBucketOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<AdvanceRelocateBucketOperationsResponse>;
 
@@ -2687,7 +2625,7 @@ export const advanceRelocateBucketOperations: API.OperationMethod<
   AdvanceRelocateBucketOperationsResponse,
   AdvanceRelocateBucketOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdvanceRelocateBucketOperationsRequest,
   output: AdvanceRelocateBucketOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2704,7 +2642,7 @@ export interface ListOperationsRequest {
   pageToken?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2716,7 +2654,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2726,7 +2664,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2741,7 +2679,7 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 
-export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StopChannelsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Channel).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "channels/stop", hasBody: true }),
@@ -2750,9 +2688,7 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<StopChannelsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Schema<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -2767,7 +2703,7 @@ export const stopChannels: API.OperationMethod<
   StopChannelsResponse,
   StopChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2783,7 +2719,7 @@ export interface DeleteDefaultObjectAccessControlsRequest {
 }
 
 export const DeleteDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     entity: Schema.String.pipe(T.HttpPath("entity")),
     userProject: Schema.optional(Schema.String).pipe(
@@ -2796,7 +2732,7 @@ export const DeleteDefaultObjectAccessControlsRequest =
 
 export interface DeleteDefaultObjectAccessControlsResponse {}
 export const DeleteDefaultObjectAccessControlsResponse: Schema.Schema<DeleteDefaultObjectAccessControlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteDefaultObjectAccessControlsResponse>;
 
@@ -2813,7 +2749,7 @@ export const deleteDefaultObjectAccessControls: API.OperationMethod<
   DeleteDefaultObjectAccessControlsResponse,
   DeleteDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDefaultObjectAccessControlsRequest,
   output: DeleteDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2829,7 +2765,7 @@ export interface GetDefaultObjectAccessControlsRequest {
 }
 
 export const GetDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     entity: Schema.String.pipe(T.HttpPath("entity")),
     userProject: Schema.optional(Schema.String).pipe(
@@ -2842,7 +2778,7 @@ export const GetDefaultObjectAccessControlsRequest =
 
 export type GetDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const GetDefaultObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type GetDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -2855,7 +2791,7 @@ export const getDefaultObjectAccessControls: API.OperationMethod<
   GetDefaultObjectAccessControlsResponse,
   GetDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultObjectAccessControlsRequest,
   output: GetDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -2871,7 +2807,7 @@ export interface InsertDefaultObjectAccessControlsRequest {
 }
 
 export const InsertDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     userProject: Schema.optional(Schema.String).pipe(
       T.HttpQuery("userProject"),
@@ -2888,7 +2824,7 @@ export const InsertDefaultObjectAccessControlsRequest =
 
 export type InsertDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertDefaultObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type InsertDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -2903,7 +2839,7 @@ export const insertDefaultObjectAccessControls: API.OperationMethod<
   InsertDefaultObjectAccessControlsResponse,
   InsertDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertDefaultObjectAccessControlsRequest,
   output: InsertDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2921,7 +2857,7 @@ export interface ListDefaultObjectAccessControlsRequest {
 }
 
 export const ListDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
       T.HttpQuery("ifMetagenerationMatch"),
@@ -2939,7 +2875,7 @@ export const ListDefaultObjectAccessControlsRequest =
 
 export type ListDefaultObjectAccessControlsResponse = ObjectAccessControls;
 export const ListDefaultObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControls;
+  /*@__PURE__*/ ObjectAccessControls;
 
 export type ListDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -2952,7 +2888,7 @@ export const listDefaultObjectAccessControls: API.OperationMethod<
   ListDefaultObjectAccessControlsResponse,
   ListDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDefaultObjectAccessControlsRequest,
   output: ListDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -2970,7 +2906,7 @@ export interface PatchDefaultObjectAccessControlsRequest {
 }
 
 export const PatchDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     entity: Schema.String.pipe(T.HttpPath("entity")),
     userProject: Schema.optional(Schema.String).pipe(
@@ -2988,7 +2924,7 @@ export const PatchDefaultObjectAccessControlsRequest =
 
 export type PatchDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchDefaultObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type PatchDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -3003,7 +2939,7 @@ export const patchDefaultObjectAccessControls: API.OperationMethod<
   PatchDefaultObjectAccessControlsResponse,
   PatchDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDefaultObjectAccessControlsRequest,
   output: PatchDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3021,7 +2957,7 @@ export interface UpdateDefaultObjectAccessControlsRequest {
 }
 
 export const UpdateDefaultObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     entity: Schema.String.pipe(T.HttpPath("entity")),
     userProject: Schema.optional(Schema.String).pipe(
@@ -3039,7 +2975,7 @@ export const UpdateDefaultObjectAccessControlsRequest =
 
 export type UpdateDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateDefaultObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type UpdateDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -3054,7 +2990,7 @@ export const updateDefaultObjectAccessControls: API.OperationMethod<
   UpdateDefaultObjectAccessControlsResponse,
   UpdateDefaultObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultObjectAccessControlsRequest,
   output: UpdateDefaultObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3071,7 +3007,7 @@ export interface DeleteFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 
-export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteFoldersRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   folder: Schema.String.pipe(T.HttpPath("folder")),
   ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
@@ -3087,7 +3023,7 @@ export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteFoldersResponse {}
 export const DeleteFoldersResponse: Schema.Schema<DeleteFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteFoldersResponse>;
 
@@ -3104,7 +3040,7 @@ export const deleteFolders: API.OperationMethod<
   DeleteFoldersResponse,
   DeleteFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoldersRequest,
   output: DeleteFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3121,28 +3057,27 @@ export interface DeleteRecursiveFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 
-export const DeleteRecursiveFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    folder: Schema.String.pipe(T.HttpPath("folder")),
-    ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationMatch"),
-    ),
-    ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationNotMatch"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/folders/{folder}/deleteRecursive",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteRecursiveFoldersRequest>;
+export const DeleteRecursiveFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  folder: Schema.String.pipe(T.HttpPath("folder")),
+  ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationMatch"),
+  ),
+  ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationNotMatch"),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/folders/{folder}/deleteRecursive",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteRecursiveFoldersRequest>;
 
 export type DeleteRecursiveFoldersResponse = GoogleLongrunningOperation;
 export const DeleteRecursiveFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteRecursiveFoldersError =
   | DefaultErrors
@@ -3157,7 +3092,7 @@ export const deleteRecursiveFolders: API.OperationMethod<
   DeleteRecursiveFoldersResponse,
   DeleteRecursiveFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecursiveFoldersRequest,
   output: DeleteRecursiveFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3174,7 +3109,7 @@ export interface GetFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 
-export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFoldersRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   folder: Schema.String.pipe(T.HttpPath("folder")),
   ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
@@ -3189,7 +3124,7 @@ export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetFoldersRequest>;
 
 export type GetFoldersResponse = Folder;
-export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+export const GetFoldersResponse = /*@__PURE__*/ Folder;
 
 export type GetFoldersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3199,7 +3134,7 @@ export const getFolders: API.OperationMethod<
   GetFoldersResponse,
   GetFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersRequest,
   output: GetFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3214,7 +3149,7 @@ export interface InsertFoldersRequest {
   body?: Folder;
 }
 
-export const InsertFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertFoldersRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   recursive: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recursive")),
   body: Schema.optional(Folder).pipe(T.HttpBody()),
@@ -3224,7 +3159,7 @@ export const InsertFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<InsertFoldersRequest>;
 
 export type InsertFoldersResponse = Folder;
-export const InsertFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+export const InsertFoldersResponse = /*@__PURE__*/ Folder;
 
 export type InsertFoldersError =
   | DefaultErrors
@@ -3239,7 +3174,7 @@ export const insertFolders: API.OperationMethod<
   InsertFoldersResponse,
   InsertFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertFoldersRequest,
   output: InsertFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3262,7 +3197,7 @@ export interface ListFoldersRequest {
   startOffset?: string;
 }
 
-export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListFoldersRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
   endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
@@ -3276,7 +3211,7 @@ export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListFoldersRequest>;
 
 export type ListFoldersResponse = Folders;
-export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folders;
+export const ListFoldersResponse = /*@__PURE__*/ Folders;
 
 export type ListFoldersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3286,7 +3221,7 @@ export const listFolders: API.PaginatedOperationMethod<
   ListFoldersResponse,
   ListFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3310,7 +3245,7 @@ export interface RenameFoldersRequest {
   sourceFolder: string;
 }
 
-export const RenameFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RenameFoldersRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   destinationFolder: Schema.String.pipe(T.HttpPath("destinationFolder")),
   ifSourceMetagenerationMatch: Schema.optional(Schema.String).pipe(
@@ -3330,8 +3265,7 @@ export const RenameFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RenameFoldersRequest>;
 
 export type RenameFoldersResponse = GoogleLongrunningOperation;
-export const RenameFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const RenameFoldersResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RenameFoldersError =
   | DefaultErrors
@@ -3346,7 +3280,7 @@ export const renameFolders: API.OperationMethod<
   RenameFoldersResponse,
   RenameFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenameFoldersRequest,
   output: RenameFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3365,30 +3299,29 @@ export interface DeleteManagedFoldersRequest {
   allowNonEmpty?: boolean;
 }
 
-export const DeleteManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
-    ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationMatch"),
-    ),
-    ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationNotMatch"),
-    ),
-    allowNonEmpty: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowNonEmpty"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "b/{bucket}/managedFolders/{managedFolder}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteManagedFoldersRequest>;
+export const DeleteManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
+  ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationMatch"),
+  ),
+  ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationNotMatch"),
+  ),
+  allowNonEmpty: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("allowNonEmpty"),
+  ),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "b/{bucket}/managedFolders/{managedFolder}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteManagedFoldersRequest>;
 
 export interface DeleteManagedFoldersResponse {}
 export const DeleteManagedFoldersResponse: Schema.Schema<DeleteManagedFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteManagedFoldersResponse>;
 
@@ -3405,7 +3338,7 @@ export const deleteManagedFolders: API.OperationMethod<
   DeleteManagedFoldersResponse,
   DeleteManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedFoldersRequest,
   output: DeleteManagedFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3422,27 +3355,22 @@ export interface GetManagedFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 
-export const GetManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
-    ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationMatch"),
-    ),
-    ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("ifMetagenerationNotMatch"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "b/{bucket}/managedFolders/{managedFolder}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetManagedFoldersRequest>;
+export const GetManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
+  ifMetagenerationMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationMatch"),
+  ),
+  ifMetagenerationNotMatch: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("ifMetagenerationNotMatch"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/managedFolders/{managedFolder}" }),
+  svc,
+) as unknown as Schema.Schema<GetManagedFoldersRequest>;
 
 export type GetManagedFoldersResponse = ManagedFolder;
-export const GetManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedFolder;
+export const GetManagedFoldersResponse = /*@__PURE__*/ ManagedFolder;
 
 export type GetManagedFoldersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3452,7 +3380,7 @@ export const getManagedFolders: API.OperationMethod<
   GetManagedFoldersResponse,
   GetManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedFoldersRequest,
   output: GetManagedFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3469,27 +3397,23 @@ export interface GetIamPolicyManagedFoldersRequest {
   userProject?: string;
 }
 
-export const GetIamPolicyManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("optionsRequestedPolicyVersion"),
-    ),
-    managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "b/{bucket}/managedFolders/{managedFolder}/iam",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyManagedFoldersRequest>;
+export const GetIamPolicyManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("optionsRequestedPolicyVersion"),
+  ),
+  managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "b/{bucket}/managedFolders/{managedFolder}/iam",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetIamPolicyManagedFoldersRequest>;
 
 export type GetIamPolicyManagedFoldersResponse = Policy;
-export const GetIamPolicyManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyManagedFoldersResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyManagedFoldersError =
   | DefaultErrors
@@ -3502,7 +3426,7 @@ export const getIamPolicyManagedFolders: API.OperationMethod<
   GetIamPolicyManagedFoldersResponse,
   GetIamPolicyManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyManagedFoldersRequest,
   output: GetIamPolicyManagedFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3515,22 +3439,16 @@ export interface InsertManagedFoldersRequest {
   body?: ManagedFolder;
 }
 
-export const InsertManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    body: Schema.optional(ManagedFolder).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/managedFolders",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertManagedFoldersRequest>;
+export const InsertManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  body: Schema.optional(ManagedFolder).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "b/{bucket}/managedFolders", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<InsertManagedFoldersRequest>;
 
 export type InsertManagedFoldersResponse = ManagedFolder;
-export const InsertManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedFolder;
+export const InsertManagedFoldersResponse = /*@__PURE__*/ ManagedFolder;
 
 export type InsertManagedFoldersError =
   | DefaultErrors
@@ -3545,7 +3463,7 @@ export const insertManagedFolders: API.OperationMethod<
   InsertManagedFoldersResponse,
   InsertManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertManagedFoldersRequest,
   output: InsertManagedFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3562,20 +3480,18 @@ export interface ListManagedFoldersRequest {
   prefix?: string;
 }
 
-export const ListManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/managedFolders" }),
-    svc,
-  ) as unknown as Schema.Schema<ListManagedFoldersRequest>;
+export const ListManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/managedFolders" }),
+  svc,
+) as unknown as Schema.Schema<ListManagedFoldersRequest>;
 
 export type ListManagedFoldersResponse = ManagedFolders;
-export const ListManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedFolders;
+export const ListManagedFoldersResponse = /*@__PURE__*/ ManagedFolders;
 
 export type ListManagedFoldersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3585,7 +3501,7 @@ export const listManagedFolders: API.PaginatedOperationMethod<
   ListManagedFoldersResponse,
   ListManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFoldersRequest,
   output: ListManagedFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3607,26 +3523,22 @@ export interface SetIamPolicyManagedFoldersRequest {
   body?: Policy;
 }
 
-export const SetIamPolicyManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(Policy).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "b/{bucket}/managedFolders/{managedFolder}/iam",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyManagedFoldersRequest>;
+export const SetIamPolicyManagedFoldersRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "b/{bucket}/managedFolders/{managedFolder}/iam",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<SetIamPolicyManagedFoldersRequest>;
 
 export type SetIamPolicyManagedFoldersResponse = Policy;
-export const SetIamPolicyManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyManagedFoldersResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyManagedFoldersError =
   | DefaultErrors
@@ -3641,7 +3553,7 @@ export const setIamPolicyManagedFolders: API.OperationMethod<
   SetIamPolicyManagedFoldersResponse,
   SetIamPolicyManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyManagedFoldersRequest,
   output: SetIamPolicyManagedFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3659,7 +3571,7 @@ export interface TestIamPermissionsManagedFoldersRequest {
 }
 
 export const TestIamPermissionsManagedFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     managedFolder: Schema.String.pipe(T.HttpPath("managedFolder")),
     permissions: Schema.Array(Schema.String).pipe(T.HttpQuery("permissions")),
@@ -3677,7 +3589,7 @@ export const TestIamPermissionsManagedFoldersRequest =
 export type TestIamPermissionsManagedFoldersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsManagedFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsManagedFoldersError =
   | DefaultErrors
@@ -3690,7 +3602,7 @@ export const testIamPermissionsManagedFolders: API.OperationMethod<
   TestIamPermissionsManagedFoldersResponse,
   TestIamPermissionsManagedFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsManagedFoldersRequest,
   output: TestIamPermissionsManagedFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -3705,24 +3617,21 @@ export interface DeleteNotificationsRequest {
   userProject?: string;
 }
 
-export const DeleteNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    notification: Schema.String.pipe(T.HttpPath("notification")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "b/{bucket}/notificationConfigs/{notification}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteNotificationsRequest>;
+export const DeleteNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  notification: Schema.String.pipe(T.HttpPath("notification")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "b/{bucket}/notificationConfigs/{notification}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
 export const DeleteNotificationsResponse: Schema.Schema<DeleteNotificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteNotificationsResponse>;
 
@@ -3739,7 +3648,7 @@ export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsResponse,
   DeleteNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationsRequest,
   output: DeleteNotificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3754,24 +3663,20 @@ export interface GetNotificationsRequest {
   userProject?: string;
 }
 
-export const GetNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    notification: Schema.String.pipe(T.HttpPath("notification")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "b/{bucket}/notificationConfigs/{notification}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetNotificationsRequest>;
+export const GetNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  notification: Schema.String.pipe(T.HttpPath("notification")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "b/{bucket}/notificationConfigs/{notification}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetNotificationsRequest>;
 
 export type GetNotificationsResponse = Notification;
-export const GetNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Notification;
+export const GetNotificationsResponse = /*@__PURE__*/ Notification;
 
 export type GetNotificationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3781,7 +3686,7 @@ export const getNotifications: API.OperationMethod<
   GetNotificationsResponse,
   GetNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationsRequest,
   output: GetNotificationsResponse,
   errors: [NotFound, Forbidden],
@@ -3796,25 +3701,21 @@ export interface InsertNotificationsRequest {
   body?: Notification;
 }
 
-export const InsertNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(Notification).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/notificationConfigs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertNotificationsRequest>;
+export const InsertNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(Notification).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "b/{bucket}/notificationConfigs",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<InsertNotificationsRequest>;
 
 export type InsertNotificationsResponse = Notification;
-export const InsertNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Notification;
+export const InsertNotificationsResponse = /*@__PURE__*/ Notification;
 
 export type InsertNotificationsError =
   | DefaultErrors
@@ -3829,7 +3730,7 @@ export const insertNotifications: API.OperationMethod<
   InsertNotificationsResponse,
   InsertNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertNotificationsRequest,
   output: InsertNotificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3842,20 +3743,16 @@ export interface ListNotificationsRequest {
   userProject?: string;
 }
 
-export const ListNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/notificationConfigs" }),
-    svc,
-  ) as unknown as Schema.Schema<ListNotificationsRequest>;
+export const ListNotificationsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/notificationConfigs" }),
+  svc,
+) as unknown as Schema.Schema<ListNotificationsRequest>;
 
 export type ListNotificationsResponse = Notifications;
-export const ListNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Notifications;
+export const ListNotificationsResponse = /*@__PURE__*/ Notifications;
 
 export type ListNotificationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3865,7 +3762,7 @@ export const listNotifications: API.OperationMethod<
   ListNotificationsResponse,
   ListNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
   errors: [NotFound, Forbidden],
@@ -3884,23 +3781,20 @@ export interface DeleteObjectAccessControlsRequest {
   userProject?: string;
 }
 
-export const DeleteObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "b/{bucket}/o/{object}/acl/{entity}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteObjectAccessControlsRequest>;
+export const DeleteObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "b/{bucket}/o/{object}/acl/{entity}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteObjectAccessControlsRequest>;
 
 export interface DeleteObjectAccessControlsResponse {}
 export const DeleteObjectAccessControlsResponse: Schema.Schema<DeleteObjectAccessControlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteObjectAccessControlsResponse>;
 
@@ -3917,7 +3811,7 @@ export const deleteObjectAccessControls: API.OperationMethod<
   DeleteObjectAccessControlsResponse,
   DeleteObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectAccessControlsRequest,
   output: DeleteObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3936,23 +3830,20 @@ export interface GetObjectAccessControlsRequest {
   userProject?: string;
 }
 
-export const GetObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl/{entity}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetObjectAccessControlsRequest>;
+export const GetObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl/{entity}" }),
+  svc,
+) as unknown as Schema.Schema<GetObjectAccessControlsRequest>;
 
 export type GetObjectAccessControlsResponse = ObjectAccessControl;
 export const GetObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type GetObjectAccessControlsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3962,7 +3853,7 @@ export const getObjectAccessControls: API.OperationMethod<
   GetObjectAccessControlsResponse,
   GetObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectAccessControlsRequest,
   output: GetObjectAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -3981,27 +3872,20 @@ export interface InsertObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 
-export const InsertObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "b/{bucket}/o/{object}/acl",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertObjectAccessControlsRequest>;
+export const InsertObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "b/{bucket}/o/{object}/acl", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<InsertObjectAccessControlsRequest>;
 
 export type InsertObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type InsertObjectAccessControlsError =
   | DefaultErrors
@@ -4016,7 +3900,7 @@ export const insertObjectAccessControls: API.OperationMethod<
   InsertObjectAccessControlsResponse,
   InsertObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertObjectAccessControlsRequest,
   output: InsertObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4033,22 +3917,19 @@ export interface ListObjectAccessControlsRequest {
   userProject?: string;
 }
 
-export const ListObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl" }),
-    svc,
-  ) as unknown as Schema.Schema<ListObjectAccessControlsRequest>;
+export const ListObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl" }),
+  svc,
+) as unknown as Schema.Schema<ListObjectAccessControlsRequest>;
 
 export type ListObjectAccessControlsResponse = ObjectAccessControls;
 export const ListObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControls;
+  /*@__PURE__*/ ObjectAccessControls;
 
 export type ListObjectAccessControlsError =
   | DefaultErrors
@@ -4061,7 +3942,7 @@ export const listObjectAccessControls: API.OperationMethod<
   ListObjectAccessControlsResponse,
   ListObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListObjectAccessControlsRequest,
   output: ListObjectAccessControlsResponse,
   errors: [NotFound, Forbidden],
@@ -4082,28 +3963,25 @@ export interface PatchObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 
-export const PatchObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "b/{bucket}/o/{object}/acl/{entity}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchObjectAccessControlsRequest>;
+export const PatchObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "b/{bucket}/o/{object}/acl/{entity}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PatchObjectAccessControlsRequest>;
 
 export type PatchObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type PatchObjectAccessControlsError =
   | DefaultErrors
@@ -4118,7 +3996,7 @@ export const patchObjectAccessControls: API.OperationMethod<
   PatchObjectAccessControlsResponse,
   PatchObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchObjectAccessControlsRequest,
   output: PatchObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4139,28 +4017,25 @@ export interface UpdateObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 
-export const UpdateObjectAccessControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    entity: Schema.String.pipe(T.HttpPath("entity")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "b/{bucket}/o/{object}/acl/{entity}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateObjectAccessControlsRequest>;
+export const UpdateObjectAccessControlsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  entity: Schema.String.pipe(T.HttpPath("entity")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(ObjectAccessControl).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "b/{bucket}/o/{object}/acl/{entity}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateObjectAccessControlsRequest>;
 
 export type UpdateObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateObjectAccessControlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
+  /*@__PURE__*/ ObjectAccessControl;
 
 export type UpdateObjectAccessControlsError =
   | DefaultErrors
@@ -4175,7 +4050,7 @@ export const updateObjectAccessControls: API.OperationMethod<
   UpdateObjectAccessControlsResponse,
   UpdateObjectAccessControlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateObjectAccessControlsRequest,
   output: UpdateObjectAccessControlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4209,7 +4084,7 @@ export interface ComposeObjectsRequest {
   body?: ComposeRequest;
 }
 
-export const ComposeObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ComposeObjectsRequest = /*@__PURE__*/ Schema.Struct({
   destinationBucket: Schema.String.pipe(T.HttpPath("destinationBucket")),
   destinationObject: Schema.String.pipe(T.HttpPath("destinationObject")),
   destinationPredefinedAcl: Schema.optional(Schema.String).pipe(
@@ -4237,8 +4112,7 @@ export const ComposeObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ComposeObjectsRequest>;
 
 export type ComposeObjectsResponse = Storage_Object;
-export const ComposeObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const ComposeObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type ComposeObjectsError =
   | DefaultErrors
@@ -4253,7 +4127,7 @@ export const composeObjects: API.OperationMethod<
   ComposeObjectsResponse,
   ComposeObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ComposeObjectsRequest,
   output: ComposeObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4305,7 +4179,7 @@ export interface CopyObjectsRequest {
   body?: Storage_Object;
 }
 
-export const CopyObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CopyObjectsRequest = /*@__PURE__*/ Schema.Struct({
   destinationBucket: Schema.String.pipe(T.HttpPath("destinationBucket")),
   destinationKmsKeyName: Schema.optional(Schema.String).pipe(
     T.HttpQuery("destinationKmsKeyName"),
@@ -4356,7 +4230,7 @@ export const CopyObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<CopyObjectsRequest>;
 
 export type CopyObjectsResponse = Storage_Object;
-export const CopyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const CopyObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type CopyObjectsError =
   | DefaultErrors
@@ -4371,7 +4245,7 @@ export const copyObjects: API.OperationMethod<
   CopyObjectsResponse,
   CopyObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyObjectsRequest,
   output: CopyObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4396,7 +4270,7 @@ export interface DeleteObjectsRequest {
   userProject?: string;
 }
 
-export const DeleteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
   ifGenerationMatch: Schema.optional(Schema.String).pipe(
@@ -4420,7 +4294,7 @@ export const DeleteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteObjectsResponse {}
 export const DeleteObjectsResponse: Schema.Schema<DeleteObjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteObjectsResponse>;
 
@@ -4437,7 +4311,7 @@ export const deleteObjects: API.OperationMethod<
   DeleteObjectsResponse,
   DeleteObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4468,7 +4342,7 @@ export interface GetObjectsRequest {
   restoreToken?: string;
 }
 
-export const GetObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
   ifGenerationMatch: Schema.optional(Schema.String).pipe(
@@ -4496,7 +4370,7 @@ export const GetObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetObjectsRequest>;
 
 export type GetObjectsResponse = Storage_Object;
-export const GetObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const GetObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type GetObjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4506,7 +4380,7 @@ export const getObjects: API.OperationMethod<
   GetObjectsResponse,
   GetObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectsRequest,
   output: GetObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -4523,21 +4397,18 @@ export interface GetIamPolicyObjectsRequest {
   userProject?: string;
 }
 
-export const GetIamPolicyObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "b/{bucket}/o/{object}/iam" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyObjectsRequest>;
+export const GetIamPolicyObjectsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/o/{object}/iam" }),
+  svc,
+) as unknown as Schema.Schema<GetIamPolicyObjectsRequest>;
 
 export type GetIamPolicyObjectsResponse = Policy;
-export const GetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyObjectsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyObjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4547,7 +4418,7 @@ export const getIamPolicyObjects: API.OperationMethod<
   GetIamPolicyObjectsResponse,
   GetIamPolicyObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyObjectsRequest,
   output: GetIamPolicyObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -4587,7 +4458,7 @@ export interface InsertObjectsRequest {
   body?: Storage_Object;
 }
 
-export const InsertObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   contentEncoding: Schema.optional(Schema.String).pipe(
     T.HttpQuery("contentEncoding"),
@@ -4618,7 +4489,7 @@ export const InsertObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<InsertObjectsRequest>;
 
 export type InsertObjectsResponse = Storage_Object;
-export const InsertObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const InsertObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type InsertObjectsError =
   | DefaultErrors
@@ -4633,7 +4504,7 @@ export const insertObjects: API.OperationMethod<
   InsertObjectsResponse,
   InsertObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertObjectsRequest,
   output: InsertObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4672,7 +4543,7 @@ export interface ListObjectsRequest {
   includeFoldersAsPrefixes?: boolean;
 }
 
-export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
   endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
@@ -4698,7 +4569,7 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListObjectsRequest>;
 
 export type ListObjectsResponse = Objects;
-export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Objects;
+export const ListObjectsResponse = /*@__PURE__*/ Objects;
 
 export type ListObjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4708,7 +4579,7 @@ export const listObjects: API.PaginatedOperationMethod<
   ListObjectsResponse,
   ListObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsRequest,
   output: ListObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -4753,7 +4624,7 @@ export interface PatchObjectsRequest {
   body?: Storage_Object;
 }
 
-export const PatchObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
   ifGenerationMatch: Schema.optional(Schema.String).pipe(
@@ -4784,7 +4655,7 @@ export const PatchObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchObjectsRequest>;
 
 export type PatchObjectsResponse = Storage_Object;
-export const PatchObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const PatchObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type PatchObjectsError =
   | DefaultErrors
@@ -4799,7 +4670,7 @@ export const patchObjects: API.OperationMethod<
   PatchObjectsResponse,
   PatchObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchObjectsRequest,
   output: PatchObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4857,7 +4728,7 @@ export interface RewriteObjectsRequest {
   body?: Storage_Object;
 }
 
-export const RewriteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RewriteObjectsRequest = /*@__PURE__*/ Schema.Struct({
   destinationBucket: Schema.String.pipe(T.HttpPath("destinationBucket")),
   destinationKmsKeyName: Schema.optional(Schema.String).pipe(
     T.HttpQuery("destinationKmsKeyName"),
@@ -4917,8 +4788,7 @@ export const RewriteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RewriteObjectsRequest>;
 
 export type RewriteObjectsResponse = RewriteResponse;
-export const RewriteObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RewriteResponse;
+export const RewriteObjectsResponse = /*@__PURE__*/ RewriteResponse;
 
 export type RewriteObjectsError =
   | DefaultErrors
@@ -4933,7 +4803,7 @@ export const rewriteObjects: API.OperationMethod<
   RewriteObjectsResponse,
   RewriteObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RewriteObjectsRequest,
   output: RewriteObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4968,7 +4838,7 @@ export interface MoveObjectsRequest {
   userProject?: string;
 }
 
-export const MoveObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MoveObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   sourceObject: Schema.String.pipe(T.HttpPath("sourceObject")),
   destinationObject: Schema.String.pipe(T.HttpPath("destinationObject")),
@@ -5008,7 +4878,7 @@ export const MoveObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<MoveObjectsRequest>;
 
 export type MoveObjectsResponse = Storage_Object;
-export const MoveObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const MoveObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type MoveObjectsError =
   | DefaultErrors
@@ -5023,7 +4893,7 @@ export const moveObjects: API.OperationMethod<
   MoveObjectsResponse,
   MoveObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveObjectsRequest,
   output: MoveObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5042,22 +4912,19 @@ export interface SetIamPolicyObjectsRequest {
   body?: Policy;
 }
 
-export const SetIamPolicyObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(Policy).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "b/{bucket}/o/{object}/iam", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyObjectsRequest>;
+export const SetIamPolicyObjectsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PUT", path: "b/{bucket}/o/{object}/iam", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<SetIamPolicyObjectsRequest>;
 
 export type SetIamPolicyObjectsResponse = Policy;
-export const SetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyObjectsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyObjectsError =
   | DefaultErrors
@@ -5072,7 +4939,7 @@ export const setIamPolicyObjects: API.OperationMethod<
   SetIamPolicyObjectsResponse,
   SetIamPolicyObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyObjectsRequest,
   output: SetIamPolicyObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5091,26 +4958,20 @@ export interface TestIamPermissionsObjectsRequest {
   userProject?: string;
 }
 
-export const TestIamPermissionsObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
-    object: Schema.String.pipe(T.HttpPath("object")),
-    permissions: Schema.Array(Schema.String).pipe(T.HttpQuery("permissions")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "b/{bucket}/o/{object}/iam/testPermissions",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsObjectsRequest>;
+export const TestIamPermissionsObjectsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
+  object: Schema.String.pipe(T.HttpPath("object")),
+  permissions: Schema.Array(Schema.String).pipe(T.HttpQuery("permissions")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "b/{bucket}/o/{object}/iam/testPermissions" }),
+  svc,
+) as unknown as Schema.Schema<TestIamPermissionsObjectsRequest>;
 
 export type TestIamPermissionsObjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsObjectsError =
   | DefaultErrors
@@ -5123,7 +4984,7 @@ export const testIamPermissionsObjects: API.OperationMethod<
   TestIamPermissionsObjectsResponse,
   TestIamPermissionsObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsObjectsRequest,
   output: TestIamPermissionsObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -5163,7 +5024,7 @@ export interface UpdateObjectsRequest {
   body?: Storage_Object;
 }
 
-export const UpdateObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.optional(Schema.String).pipe(T.HttpQuery("generation")),
   ifGenerationMatch: Schema.optional(Schema.String).pipe(
@@ -5194,7 +5055,7 @@ export const UpdateObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<UpdateObjectsRequest>;
 
 export type UpdateObjectsResponse = Storage_Object;
-export const UpdateObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const UpdateObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type UpdateObjectsError =
   | DefaultErrors
@@ -5209,7 +5070,7 @@ export const updateObjects: API.OperationMethod<
   UpdateObjectsResponse,
   UpdateObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateObjectsRequest,
   output: UpdateObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5242,34 +5103,28 @@ export interface WatchAllObjectsRequest {
   body?: Channel;
 }
 
-export const WatchAllObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
-    endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
-    includeTrailingDelimiter: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeTrailingDelimiter"),
-    ),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
-    projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
-    startOffset: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("startOffset"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    versions: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("versions")),
-    body: Schema.optional(Channel).pipe(T.HttpBody()),
-  },
-).pipe(
+export const WatchAllObjectsRequest = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
+  endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
+  includeTrailingDelimiter: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("includeTrailingDelimiter"),
+  ),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
+  projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
+  startOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("startOffset")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  versions: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("versions")),
+  body: Schema.optional(Channel).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/o/watch", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<WatchAllObjectsRequest>;
 
 export type WatchAllObjectsResponse = Channel;
-export const WatchAllObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchAllObjectsResponse = /*@__PURE__*/ Channel;
 
 export type WatchAllObjectsError =
   | DefaultErrors
@@ -5284,7 +5139,7 @@ export const watchAllObjects: API.OperationMethod<
   WatchAllObjectsResponse,
   WatchAllObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchAllObjectsRequest,
   output: WatchAllObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5315,7 +5170,7 @@ export interface RestoreObjectsRequest {
   restoreToken?: string;
 }
 
-export const RestoreObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreObjectsRequest = /*@__PURE__*/ Schema.Struct({
   bucket: Schema.String.pipe(T.HttpPath("bucket")),
   generation: Schema.String.pipe(T.HttpQuery("generation")),
   object: Schema.String.pipe(T.HttpPath("object")),
@@ -5349,8 +5204,7 @@ export const RestoreObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RestoreObjectsRequest>;
 
 export type RestoreObjectsResponse = Storage_Object;
-export const RestoreObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
+export const RestoreObjectsResponse = /*@__PURE__*/ Storage_Object;
 
 export type RestoreObjectsError =
   | DefaultErrors
@@ -5365,7 +5219,7 @@ export const restoreObjects: API.OperationMethod<
   RestoreObjectsResponse,
   RestoreObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreObjectsRequest,
   output: RestoreObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5378,18 +5232,17 @@ export interface BulkRestoreObjectsRequest_Op {
   body?: BulkRestoreObjectsRequest;
 }
 
-export const BulkRestoreObjectsRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    body: Schema.optional(BulkRestoreObjectsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "b/{bucket}/o/bulkRestore", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<BulkRestoreObjectsRequest_Op>;
+export const BulkRestoreObjectsRequest_Op = /*@__PURE__*/ Schema.Struct({
+  bucket: Schema.String.pipe(T.HttpPath("bucket")),
+  body: Schema.optional(BulkRestoreObjectsRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "b/{bucket}/o/bulkRestore", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<BulkRestoreObjectsRequest_Op>;
 
 export type BulkRestoreObjectsResponse = GoogleLongrunningOperation;
 export const BulkRestoreObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type BulkRestoreObjectsError =
   | DefaultErrors
@@ -5404,7 +5257,7 @@ export const bulkRestoreObjects: API.OperationMethod<
   BulkRestoreObjectsResponse,
   BulkRestoreObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkRestoreObjectsRequest_Op,
   output: BulkRestoreObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5419,25 +5272,21 @@ export interface CreateProjectsHmacKeysRequest {
   userProject?: string;
 }
 
-export const CreateProjectsHmacKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    serviceAccountEmail: Schema.String.pipe(T.HttpQuery("serviceAccountEmail")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectId}/hmacKeys",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsHmacKeysRequest>;
+export const CreateProjectsHmacKeysRequest = /*@__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  serviceAccountEmail: Schema.String.pipe(T.HttpQuery("serviceAccountEmail")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "projects/{projectId}/hmacKeys",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsHmacKeysRequest>;
 
 export type CreateProjectsHmacKeysResponse = HmacKey;
-export const CreateProjectsHmacKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HmacKey;
+export const CreateProjectsHmacKeysResponse = /*@__PURE__*/ HmacKey;
 
 export type CreateProjectsHmacKeysError =
   | DefaultErrors
@@ -5452,7 +5301,7 @@ export const createProjectsHmacKeys: API.OperationMethod<
   CreateProjectsHmacKeysResponse,
   CreateProjectsHmacKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsHmacKeysRequest,
   output: CreateProjectsHmacKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5467,24 +5316,21 @@ export interface DeleteProjectsHmacKeysRequest {
   userProject?: string;
 }
 
-export const DeleteProjectsHmacKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessId: Schema.String.pipe(T.HttpPath("accessId")),
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "projects/{projectId}/hmacKeys/{accessId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsHmacKeysRequest>;
+export const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ Schema.Struct({
+  accessId: Schema.String.pipe(T.HttpPath("accessId")),
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "projects/{projectId}/hmacKeys/{accessId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsHmacKeysRequest>;
 
 export interface DeleteProjectsHmacKeysResponse {}
 export const DeleteProjectsHmacKeysResponse: Schema.Schema<DeleteProjectsHmacKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<DeleteProjectsHmacKeysResponse>;
 
@@ -5501,7 +5347,7 @@ export const deleteProjectsHmacKeys: API.OperationMethod<
   DeleteProjectsHmacKeysResponse,
   DeleteProjectsHmacKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsHmacKeysRequest,
   output: DeleteProjectsHmacKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5516,21 +5362,17 @@ export interface GetProjectsHmacKeysRequest {
   userProject?: string;
 }
 
-export const GetProjectsHmacKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessId: Schema.String.pipe(T.HttpPath("accessId")),
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys/{accessId}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsHmacKeysRequest>;
+export const GetProjectsHmacKeysRequest = /*@__PURE__*/ Schema.Struct({
+  accessId: Schema.String.pipe(T.HttpPath("accessId")),
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys/{accessId}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsHmacKeysRequest>;
 
 export type GetProjectsHmacKeysResponse = HmacKeyMetadata;
-export const GetProjectsHmacKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HmacKeyMetadata;
+export const GetProjectsHmacKeysResponse = /*@__PURE__*/ HmacKeyMetadata;
 
 export type GetProjectsHmacKeysError = DefaultErrors | NotFound | Forbidden;
 
@@ -5540,7 +5382,7 @@ export const getProjectsHmacKeys: API.OperationMethod<
   GetProjectsHmacKeysResponse,
   GetProjectsHmacKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsHmacKeysRequest,
   output: GetProjectsHmacKeysResponse,
   errors: [NotFound, Forbidden],
@@ -5561,28 +5403,24 @@ export interface ListProjectsHmacKeysRequest {
   userProject?: string;
 }
 
-export const ListProjectsHmacKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    serviceAccountEmail: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("serviceAccountEmail"),
-    ),
-    showDeletedKeys: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("showDeletedKeys"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsHmacKeysRequest>;
+export const ListProjectsHmacKeysRequest = /*@__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  serviceAccountEmail: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("serviceAccountEmail"),
+  ),
+  showDeletedKeys: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("showDeletedKeys"),
+  ),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsHmacKeysRequest>;
 
 export type ListProjectsHmacKeysResponse = HmacKeysMetadata;
-export const ListProjectsHmacKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HmacKeysMetadata;
+export const ListProjectsHmacKeysResponse = /*@__PURE__*/ HmacKeysMetadata;
 
 export type ListProjectsHmacKeysError = DefaultErrors | NotFound | Forbidden;
 
@@ -5592,7 +5430,7 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
   ListProjectsHmacKeysResponse,
   ListProjectsHmacKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHmacKeysRequest,
   output: ListProjectsHmacKeysResponse,
   errors: [NotFound, Forbidden],
@@ -5614,26 +5452,22 @@ export interface UpdateProjectsHmacKeysRequest {
   body?: HmacKeyMetadata;
 }
 
-export const UpdateProjectsHmacKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessId: Schema.String.pipe(T.HttpPath("accessId")),
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    body: Schema.optional(HmacKeyMetadata).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "projects/{projectId}/hmacKeys/{accessId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsHmacKeysRequest>;
+export const UpdateProjectsHmacKeysRequest = /*@__PURE__*/ Schema.Struct({
+  accessId: Schema.String.pipe(T.HttpPath("accessId")),
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+  body: Schema.optional(HmacKeyMetadata).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "projects/{projectId}/hmacKeys/{accessId}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdateProjectsHmacKeysRequest>;
 
 export type UpdateProjectsHmacKeysResponse = HmacKeyMetadata;
-export const UpdateProjectsHmacKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HmacKeyMetadata;
+export const UpdateProjectsHmacKeysResponse = /*@__PURE__*/ HmacKeyMetadata;
 
 export type UpdateProjectsHmacKeysError =
   | DefaultErrors
@@ -5648,7 +5482,7 @@ export const updateProjectsHmacKeys: API.OperationMethod<
   UpdateProjectsHmacKeysResponse,
   UpdateProjectsHmacKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsHmacKeysRequest,
   output: UpdateProjectsHmacKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5661,20 +5495,16 @@ export interface GetProjectsServiceAccountRequest {
   userProject?: string;
 }
 
-export const GetProjectsServiceAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "projects/{projectId}/serviceAccount" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsServiceAccountRequest>;
+export const GetProjectsServiceAccountRequest = /*@__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  userProject: Schema.optional(Schema.String).pipe(T.HttpQuery("userProject")),
+}).pipe(
+  T.Http({ method: "GET", path: "projects/{projectId}/serviceAccount" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsServiceAccountRequest>;
 
 export type GetProjectsServiceAccountResponse = ServiceAccount;
-export const GetProjectsServiceAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
+export const GetProjectsServiceAccountResponse = /*@__PURE__*/ ServiceAccount;
 
 export type GetProjectsServiceAccountError =
   | DefaultErrors
@@ -5687,7 +5517,7 @@ export const getProjectsServiceAccount: API.OperationMethod<
   GetProjectsServiceAccountResponse,
   GetProjectsServiceAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsServiceAccountRequest,
   output: GetProjectsServiceAccountResponse,
   errors: [NotFound, Forbidden],

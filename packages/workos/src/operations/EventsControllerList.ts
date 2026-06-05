@@ -4,43 +4,39 @@ import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const EventsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    before: Schema.optional(Schema.String),
-    after: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-    events: Schema.optional(Schema.String),
-    range_start: Schema.optional(Schema.String),
-    range_end: Schema.optional(Schema.String),
-    organization_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/events" }));
+export const EventsControllerListInput = /*@__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.String),
+  after: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+  events: Schema.optional(Schema.String),
+  range_start: Schema.optional(Schema.String),
+  range_end: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/events" }));
 export type EventsControllerListInput = typeof EventsControllerListInput.Type;
 
 // Output Schema
-export const EventsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.String,
-          id: Schema.String,
-          event: Schema.String,
-          data: Schema.Record(Schema.String, Schema.Unknown),
-          created_at: Schema.String,
-          context: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+export const EventsControllerListOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  data: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        after: Schema.NullOr(Schema.String),
+        object: Schema.String,
+        id: Schema.String,
+        event: Schema.String,
+        data: Schema.Record(Schema.String, Schema.Unknown),
+        created_at: Schema.String,
+        context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
     ),
-  });
+  ),
+  list_metadata: Schema.optional(
+    Schema.Struct({
+      after: Schema.NullOr(Schema.String),
+    }),
+  ),
+});
 export type EventsControllerListOutput = typeof EventsControllerListOutput.Type;
 
 // The operation
@@ -58,10 +54,8 @@ export type EventsControllerListOutput = typeof EventsControllerListOutput.Type;
  * @param range_end - ISO-8601 date string to filter events created before this date.
  * @param organization_id - Filter events by the [Organization](/reference/organization) that the event is associated with.
  */
-export const EventsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsControllerListInput,
-    outputSchema: EventsControllerListOutput,
-    errors: [BadRequest, UnprocessableEntity] as const,
-  }),
-);
+export const EventsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsControllerListInput,
+  outputSchema: EventsControllerListOutput,
+  errors: [BadRequest, UnprocessableEntity] as const,
+}));

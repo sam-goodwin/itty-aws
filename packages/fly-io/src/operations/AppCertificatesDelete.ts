@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    hostname: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/apps/{app_name}/certificates/{hostname}",
-    }),
-  );
+export const AppCertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  hostname: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/apps/{app_name}/certificates/{hostname}",
+  }),
+);
 export type AppCertificatesDeleteInput = typeof AppCertificatesDeleteInput.Type;
 
 // Output Schema
-export const AppCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppCertificatesDeleteOutput =
   typeof AppCertificatesDeleteOutput.Type;
 
@@ -29,10 +27,8 @@ export type AppCertificatesDeleteOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesDeleteInput,
-    outputSchema: AppCertificatesDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesDeleteInput,
+  outputSchema: AppCertificatesDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

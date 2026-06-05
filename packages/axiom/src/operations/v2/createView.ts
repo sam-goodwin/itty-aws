@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import { UnprocessableEntity } from "../../errors.ts";
 import * as T from "../../traits.ts";
+import { UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
 export const CreateViewInput = /*@__PURE__*/ Schema.Struct({

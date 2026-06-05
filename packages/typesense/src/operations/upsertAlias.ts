@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpsertAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertAliasInput = /*@__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
   collection_name: Schema.String,
 }).pipe(T.Http({ method: "PUT", path: "/aliases/{aliasName}" }));
 export type UpsertAliasInput = typeof UpsertAliasInput.Type;
 
 // Output Schema
-export const UpsertAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertAliasOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
 });
@@ -25,7 +25,7 @@ export type UpsertAliasOutput = typeof UpsertAliasOutput.Type;
  *
  * @param aliasName - The name of the alias to create/update
  */
-export const upsertAlias = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertAlias = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertAliasInput,
   outputSchema: UpsertAliasOutput,
   errors: [BadRequest, NotFound] as const,

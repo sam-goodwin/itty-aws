@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesUncordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesUncordonInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const MachinesUncordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesUncordonInput = typeof MachinesUncordonInput.Type;
 
 // Output Schema
-export const MachinesUncordonOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesUncordonOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesUncordonOutput = typeof MachinesUncordonOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type MachinesUncordonOutput = typeof MachinesUncordonOutput.Type;
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesUncordon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesUncordon = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesUncordonInput,
   outputSchema: MachinesUncordonOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

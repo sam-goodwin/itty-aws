@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
-export const UpsertSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertSynonymSetInput = /*@__PURE__*/ Schema.Struct({
   synonymSetName: Schema.String.pipe(T.PathParam()),
   items: Schema.Array(
     Schema.Struct({
@@ -19,20 +19,18 @@ export const UpsertSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpsertSynonymSetInput = typeof UpsertSynonymSetInput.Type;
 
 // Output Schema
-export const UpsertSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    items: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        synonyms: Schema.Array(Schema.String),
-        root: Schema.optional(Schema.String),
-        locale: Schema.optional(Schema.String),
-        symbols_to_index: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    name: Schema.String,
-  },
-);
+export const UpsertSynonymSetOutput = /*@__PURE__*/ Schema.Struct({
+  items: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      synonyms: Schema.Array(Schema.String),
+      root: Schema.optional(Schema.String),
+      locale: Schema.optional(Schema.String),
+      symbols_to_index: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  name: Schema.String,
+});
 export type UpsertSynonymSetOutput = typeof UpsertSynonymSetOutput.Type;
 
 // The operation
@@ -43,7 +41,7 @@ export type UpsertSynonymSetOutput = typeof UpsertSynonymSetOutput.Type;
  *
  * @param synonymSetName - The name of the synonym set to create/update
  */
-export const upsertSynonymSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertSynonymSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertSynonymSetInput,
   outputSchema: UpsertSynonymSetOutput,
   errors: [BadRequest] as const,

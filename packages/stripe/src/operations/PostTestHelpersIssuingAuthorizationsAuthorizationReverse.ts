@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationReverseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     reverse_amount: Schema.optional(Schema.Number),
@@ -20,7 +20,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationReverseInput =
 
 // Output Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationReverseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1273,7 +1273,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationReverseOutput =
  * <p>Reverse a test-mode Authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationReverse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingAuthorizationsAuthorizationReverseInput,
     outputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationReverseOutput,

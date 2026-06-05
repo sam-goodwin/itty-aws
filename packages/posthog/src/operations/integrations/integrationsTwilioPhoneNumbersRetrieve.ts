@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const IntegrationsTwilioPhoneNumbersRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type IntegrationsTwilioPhoneNumbersRetrieveInput =
 
 // Output Schema
 export const IntegrationsTwilioPhoneNumbersRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationsTwilioPhoneNumbersRetrieveOutput =
   typeof IntegrationsTwilioPhoneNumbersRetrieveOutput.Type;
 
@@ -29,9 +29,10 @@ export type IntegrationsTwilioPhoneNumbersRetrieveOutput =
  * @param id - A unique integer value identifying this integration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const integrationsTwilioPhoneNumbersRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const integrationsTwilioPhoneNumbersRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationsTwilioPhoneNumbersRetrieveInput,
     outputSchema: IntegrationsTwilioPhoneNumbersRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1ListActionRunsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListActionRunsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   offset: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
@@ -12,7 +12,7 @@ export const V1ListActionRunsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1ListActionRunsInput = typeof V1ListActionRunsInput.Type;
 
 // Output Schema
-export const V1ListActionRunsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListActionRunsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     branch_id: Schema.String,
@@ -57,7 +57,7 @@ export type V1ListActionRunsOutput = typeof V1ListActionRunsOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1ListActionRuns = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListActionRuns = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListActionRunsInput,
   outputSchema: V1ListActionRunsOutput,
   errors: [BadRequest, Forbidden] as const,

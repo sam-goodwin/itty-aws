@@ -5,7 +5,7 @@ import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerSendEmailChangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     new_email: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type UserlandUsersControllerSendEmailChangeInput =
 
 // Output Schema
 export const UserlandUsersControllerSendEmailChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.Struct({
@@ -53,9 +53,10 @@ export type UserlandUsersControllerSendEmailChangeOutput =
  *
  * @param id - The unique ID of the user.
  */
-export const UserlandUsersControllerSendEmailChange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandUsersControllerSendEmailChange = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandUsersControllerSendEmailChangeInput,
     outputSchema: UserlandUsersControllerSendEmailChangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);

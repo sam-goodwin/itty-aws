@@ -3,33 +3,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateEvmEip7702DelegationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    network: Schema.Literals([
-      "base-sepolia",
-      "base",
-      "arbitrum",
-      "optimism",
-      "polygon",
-      "ethereum",
-      "ethereum-sepolia",
-    ]),
-    enableSpendPermissions: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/evm/accounts/{address}/eip7702/delegation",
-    }),
-  );
+export const CreateEvmEip7702DelegationInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  network: Schema.Literals([
+    "base-sepolia",
+    "base",
+    "arbitrum",
+    "optimism",
+    "polygon",
+    "ethereum",
+    "ethereum-sepolia",
+  ]),
+  enableSpendPermissions: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v2/evm/accounts/{address}/eip7702/delegation",
+  }),
+);
 export type CreateEvmEip7702DelegationInput =
   typeof CreateEvmEip7702DelegationInput.Type;
 
 // Output Schema
-export const CreateEvmEip7702DelegationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    delegationOperationId: Schema.String,
-  });
+export const CreateEvmEip7702DelegationOutput = /*@__PURE__*/ Schema.Struct({
+  delegationOperationId: Schema.String,
+});
 export type CreateEvmEip7702DelegationOutput =
   typeof CreateEvmEip7702DelegationOutput.Type;
 
@@ -55,9 +53,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account to delegate.
  */
-export const createEvmEip7702Delegation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateEvmEip7702DelegationInput,
-    outputSchema: CreateEvmEip7702DelegationOutput,
-  }),
-);
+export const createEvmEip7702Delegation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateEvmEip7702DelegationInput,
+  outputSchema: CreateEvmEip7702DelegationOutput,
+}));

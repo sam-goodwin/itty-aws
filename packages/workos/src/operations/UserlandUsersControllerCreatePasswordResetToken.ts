@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandUsersControllerCreatePasswordResetTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/user_management/password_reset" }));
 export type UserlandUsersControllerCreatePasswordResetTokenInput =
@@ -14,15 +14,15 @@ export type UserlandUsersControllerCreatePasswordResetTokenInput =
 
 // Output Schema
 export const UserlandUsersControllerCreatePasswordResetTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    password_reset_token: Schema.optional(SensitiveString),
-    password_reset_url: Schema.optional(SensitiveString),
+    password_reset_token: Schema.optional(SensitiveOutputString),
+    password_reset_url: Schema.optional(SensitiveOutputString),
   });
 export type UserlandUsersControllerCreatePasswordResetTokenOutput =
   typeof UserlandUsersControllerCreatePasswordResetTokenOutput.Type;
@@ -34,7 +34,7 @@ export type UserlandUsersControllerCreatePasswordResetTokenOutput =
  * Creates a one-time token that can be used to reset a user's password.
  */
 export const UserlandUsersControllerCreatePasswordResetToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerCreatePasswordResetTokenInput,
     outputSchema: UserlandUsersControllerCreatePasswordResetTokenOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

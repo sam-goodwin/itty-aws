@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesWaitInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   version: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesWaitInput = typeof MachinesWaitInput.Type;
 
 // Output Schema
-export const MachinesWaitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesWaitOutput = /*@__PURE__*/ Schema.Struct({
   event_id: Schema.optional(Schema.String),
   ok: Schema.optional(Schema.Boolean),
   state: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export type MachinesWaitOutput = typeof MachinesWaitOutput.Type;
  * @param timeout - wait timeout. default 60s
  * @param state - desired state(s), supports repeated or comma-separated values
  */
-export const MachinesWait = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesWait = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesWaitInput,
   outputSchema: MachinesWaitOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

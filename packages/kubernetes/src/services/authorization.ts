@@ -11,7 +11,7 @@ import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews",
@@ -22,7 +22,7 @@ export type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
 
 // Output Schema
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -139,14 +139,14 @@ export type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
  * create a LocalSubjectAccessReview
  */
 export const createAuthorizationV1NamespacedLocalSubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SelfSubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
@@ -157,7 +157,7 @@ export type CreateAuthorizationV1SelfSubjectAccessReviewInput =
 
 // Output Schema
 export const CreateAuthorizationV1SelfSubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -268,14 +268,14 @@ export type CreateAuthorizationV1SelfSubjectAccessReviewOutput =
  * create a SelfSubjectAccessReview
  */
 export const createAuthorizationV1SelfSubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SelfSubjectRulesReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews",
@@ -286,7 +286,7 @@ export type CreateAuthorizationV1SelfSubjectRulesReviewInput =
 
 // Output Schema
 export const CreateAuthorizationV1SelfSubjectRulesReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -365,14 +365,14 @@ export type CreateAuthorizationV1SelfSubjectRulesReviewOutput =
  * create a SelfSubjectRulesReview
  */
 export const createAuthorizationV1SelfSubjectRulesReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectRulesReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectRulesReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/subjectaccessreviews",
@@ -383,7 +383,7 @@ export type CreateAuthorizationV1SubjectAccessReviewInput =
 
 // Output Schema
 export const CreateAuthorizationV1SubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -499,47 +499,46 @@ export type CreateAuthorizationV1SubjectAccessReviewOutput =
 /**
  * create a SubjectAccessReview
  */
-export const createAuthorizationV1SubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAuthorizationV1SubjectAccessReview = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateAuthorizationV1SubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const GetAuthorizationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/authorization.k8s.io/" }),
-  );
+export const GetAuthorizationAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/authorization.k8s.io/" }));
 export type GetAuthorizationAPIGroupInput =
   typeof GetAuthorizationAPIGroupInput.Type;
 
 // Output Schema
-export const GetAuthorizationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetAuthorizationAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetAuthorizationAPIGroupOutput =
   typeof GetAuthorizationAPIGroupOutput.Type;
 
@@ -547,23 +546,20 @@ export type GetAuthorizationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAuthorizationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAuthorizationAPIGroupInput,
-    outputSchema: GetAuthorizationAPIGroupOutput,
-  }),
-);
+export const getAuthorizationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthorizationAPIGroupInput,
+  outputSchema: GetAuthorizationAPIGroupOutput,
+}));
 // Input Schema
-export const GetAuthorizationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/authorization.k8s.io/v1/" }),
-  );
+export const GetAuthorizationV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/authorization.k8s.io/v1/" }));
 export type GetAuthorizationV1APIResourcesInput =
   typeof GetAuthorizationV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetAuthorizationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAuthorizationV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -581,7 +577,8 @@ export const GetAuthorizationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type GetAuthorizationV1APIResourcesOutput =
   typeof GetAuthorizationV1APIResourcesOutput.Type;
 
@@ -589,8 +586,7 @@ export type GetAuthorizationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getAuthorizationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetAuthorizationV1APIResourcesInput,
-    outputSchema: GetAuthorizationV1APIResourcesOutput,
-  }));
+export const getAuthorizationV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthorizationV1APIResourcesInput,
+  outputSchema: GetAuthorizationV1APIResourcesOutput,
+}));

@@ -5,8 +5,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
-export const UsersTwoFactorBackupCodesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersTwoFactorBackupCodesCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -748,18 +748,18 @@ export const UsersTwoFactorBackupCodesCreateInput =
         }),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/users/{uuid}/two_factor_backup_codes/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/users/{uuid}/two_factor_backup_codes/",
+  }),
+);
 export type UsersTwoFactorBackupCodesCreateInput =
   typeof UsersTwoFactorBackupCodesCreateInput.Type;
 
 // Output Schema
-export const UsersTwoFactorBackupCodesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UsersTwoFactorBackupCodesCreateOutput = /*@__PURE__*/ Schema.Void;
 export type UsersTwoFactorBackupCodesCreateOutput =
   typeof UsersTwoFactorBackupCodesCreateOutput.Type;
 
@@ -767,9 +767,8 @@ export type UsersTwoFactorBackupCodesCreateOutput =
 /**
  * Generate new backup codes, invalidating any existing ones
  */
-export const usersTwoFactorBackupCodesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UsersTwoFactorBackupCodesCreateInput,
-    outputSchema: UsersTwoFactorBackupCodesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const usersTwoFactorBackupCodesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersTwoFactorBackupCodesCreateInput,
+  outputSchema: UsersTwoFactorBackupCodesCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

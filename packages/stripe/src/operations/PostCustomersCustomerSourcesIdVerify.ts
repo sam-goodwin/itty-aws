@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostCustomersCustomerSourcesIdVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     amounts: Schema.optional(Schema.Array(Schema.Number)),
@@ -21,7 +21,7 @@ export type PostCustomersCustomerSourcesIdVerifyInput =
 
 // Output Schema
 export const PostCustomersCustomerSourcesIdVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.Unknown),
     account_holder_name: Schema.NullOr(Schema.String),
     account_holder_type: Schema.NullOr(Schema.String),
@@ -55,8 +55,9 @@ export type PostCustomersCustomerSourcesIdVerifyOutput =
  *
  * <p>Verify a specified bank account for a given customer.</p>
  */
-export const PostCustomersCustomerSourcesIdVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCustomersCustomerSourcesIdVerify = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostCustomersCustomerSourcesIdVerifyInput,
     outputSchema: PostCustomersCustomerSourcesIdVerifyOutput,
-  }));
+  }),
+);

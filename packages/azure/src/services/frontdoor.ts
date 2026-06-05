@@ -9,23 +9,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const EndpointsPurgeContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/purge",
-    }),
-  );
+export const EndpointsPurgeContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/purge",
+  }),
+);
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
 
 // Output Schema
-export const EndpointsPurgeContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EndpointsPurgeContentOutput = /*@__PURE__*/ Schema.Void;
 export type EndpointsPurgeContentOutput =
   typeof EndpointsPurgeContentOutput.Type;
 
@@ -38,38 +36,34 @@ export type EndpointsPurgeContentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const EndpointsPurgeContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsPurgeContentInput,
-    outputSchema: EndpointsPurgeContentOutput,
+export const EndpointsPurgeContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsPurgeContentInput,
+  outputSchema: EndpointsPurgeContentOutput,
+}));
+// Input Schema
+export const ExperimentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
   }),
 );
-// Input Schema
-export const ExperimentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
-    }),
-  );
 export type ExperimentsCreateOrUpdateInput =
   typeof ExperimentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ExperimentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ExperimentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ExperimentsCreateOrUpdateOutput =
   typeof ExperimentsCreateOrUpdateOutput.Type;
 
@@ -83,22 +77,18 @@ export type ExperimentsCreateOrUpdateOutput =
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  * @param experimentName - The Experiment identifier associated with the Experiment
  */
-export const ExperimentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsCreateOrUpdateInput,
-    outputSchema: ExperimentsCreateOrUpdateOutput,
-  }),
-);
+export const ExperimentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsCreateOrUpdateInput,
+  outputSchema: ExperimentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ExperimentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
@@ -107,7 +97,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
 
 // Output Schema
-export const ExperimentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExperimentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
 
 // The operation
@@ -120,12 +110,12 @@ export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  * @param experimentName - The Experiment identifier associated with the Experiment
  */
-export const ExperimentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsDeleteInput,
   outputSchema: ExperimentsDeleteOutput,
 }));
 // Input Schema
-export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -140,7 +130,7 @@ export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExperimentsGetInput = typeof ExperimentsGetInput.Type;
 
 // Output Schema
-export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -159,40 +149,38 @@ export type ExperimentsGetOutput = typeof ExperimentsGetOutput.Type;
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  * @param experimentName - The Experiment identifier associated with the Experiment
  */
-export const ExperimentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsGetInput,
   outputSchema: ExperimentsGetOutput,
 }));
 // Input Schema
-export const ExperimentsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments",
-    }),
-  );
+export const ExperimentsListByProfileInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments",
+  }),
+);
 export type ExperimentsListByProfileInput =
   typeof ExperimentsListByProfileInput.Type;
 
 // Output Schema
-export const ExperimentsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ExperimentsListByProfileOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ExperimentsListByProfileOutput =
   typeof ExperimentsListByProfileOutput.Type;
 
@@ -205,22 +193,18 @@ export type ExperimentsListByProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const ExperimentsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsListByProfileInput,
-    outputSchema: ExperimentsListByProfileOutput,
-  }),
-);
+export const ExperimentsListByProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsListByProfileInput,
+  outputSchema: ExperimentsListByProfileOutput,
+}));
 // Input Schema
-export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ExperimentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
@@ -229,14 +213,13 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
 
 // Output Schema
-export const ExperimentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ExperimentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ExperimentsUpdateOutput = typeof ExperimentsUpdateOutput.Type;
 
 // The operation
@@ -251,32 +234,32 @@ export type ExperimentsUpdateOutput = typeof ExperimentsUpdateOutput.Type;
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  * @param experimentName - The Experiment identifier associated with the Experiment
  */
-export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsUpdateInput,
   outputSchema: ExperimentsUpdateOutput,
 }));
 // Input Schema
-export const FrontDoorNameAvailabilityCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Network/checkFrontDoorNameAvailability",
-    }),
-  );
+export const FrontDoorNameAvailabilityCheckInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Network/checkFrontDoorNameAvailability",
+  }),
+);
 export type FrontDoorNameAvailabilityCheckInput =
   typeof FrontDoorNameAvailabilityCheckInput.Type;
 
 // Output Schema
-export const FrontDoorNameAvailabilityCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorNameAvailabilityCheckOutput = /*@__PURE__*/ Schema.Struct(
+  {
     nameAvailability: Schema.optional(
       Schema.Literals(["Available", "Unavailable"]),
     ),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
+  },
+);
 export type FrontDoorNameAvailabilityCheckOutput =
   typeof FrontDoorNameAvailabilityCheckOutput.Type;
 
@@ -286,14 +269,13 @@ export type FrontDoorNameAvailabilityCheckOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const FrontDoorNameAvailabilityCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontDoorNameAvailabilityCheckInput,
-    outputSchema: FrontDoorNameAvailabilityCheckOutput,
-  }));
+export const FrontDoorNameAvailabilityCheck = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontDoorNameAvailabilityCheckInput,
+  outputSchema: FrontDoorNameAvailabilityCheckOutput,
+}));
 // Input Schema
 export const FrontDoorNameAvailabilityWithSubscriptionCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -307,7 +289,7 @@ export type FrontDoorNameAvailabilityWithSubscriptionCheckInput =
 
 // Output Schema
 export const FrontDoorNameAvailabilityWithSubscriptionCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailability: Schema.optional(
       Schema.Literals(["Available", "Unavailable"]),
     ),
@@ -325,35 +307,33 @@ export type FrontDoorNameAvailabilityWithSubscriptionCheckOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const FrontDoorNameAvailabilityWithSubscriptionCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FrontDoorNameAvailabilityWithSubscriptionCheckInput,
     outputSchema: FrontDoorNameAvailabilityWithSubscriptionCheckOutput,
   }));
 // Input Schema
-export const FrontDoorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
-    }),
-  );
+export const FrontDoorsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+  }),
+);
 export type FrontDoorsCreateOrUpdateInput =
   typeof FrontDoorsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FrontDoorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const FrontDoorsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type FrontDoorsCreateOrUpdateOutput =
   typeof FrontDoorsCreateOrUpdateOutput.Type;
 
@@ -366,14 +346,12 @@ export type FrontDoorsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const FrontDoorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FrontDoorsCreateOrUpdateInput,
-    outputSchema: FrontDoorsCreateOrUpdateOutput,
-  }),
-);
+export const FrontDoorsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontDoorsCreateOrUpdateInput,
+  outputSchema: FrontDoorsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
@@ -387,7 +365,7 @@ export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FrontDoorsDeleteInput = typeof FrontDoorsDeleteInput.Type;
 
 // Output Schema
-export const FrontDoorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FrontDoorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FrontDoorsDeleteOutput = typeof FrontDoorsDeleteOutput.Type;
 
 // The operation
@@ -399,12 +377,12 @@ export type FrontDoorsDeleteOutput = typeof FrontDoorsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const FrontDoorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FrontDoorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FrontDoorsDeleteInput,
   outputSchema: FrontDoorsDeleteOutput,
 }));
 // Input Schema
-export const FrontDoorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
@@ -418,7 +396,7 @@ export const FrontDoorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FrontDoorsGetInput = typeof FrontDoorsGetInput.Type;
 
 // Output Schema
-export const FrontDoorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -436,12 +414,12 @@ export type FrontDoorsGetOutput = typeof FrontDoorsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const FrontDoorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FrontDoorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FrontDoorsGetInput,
   outputSchema: FrontDoorsGetOutput,
 }));
 // Input Schema
-export const FrontDoorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -453,7 +431,7 @@ export const FrontDoorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FrontDoorsListInput = typeof FrontDoorsListInput.Type;
 
 // Output Schema
-export const FrontDoorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -474,39 +452,37 @@ export type FrontDoorsListOutput = typeof FrontDoorsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const FrontDoorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FrontDoorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FrontDoorsListInput,
   outputSchema: FrontDoorsListOutput,
 }));
 // Input Schema
-export const FrontDoorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors",
-    }),
-  );
+export const FrontDoorsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors",
+  }),
+);
 export type FrontDoorsListByResourceGroupInput =
   typeof FrontDoorsListByResourceGroupInput.Type;
 
 // Output Schema
-export const FrontDoorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FrontDoorsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FrontDoorsListByResourceGroupOutput =
   typeof FrontDoorsListByResourceGroupOutput.Type;
 
@@ -518,34 +494,33 @@ export type FrontDoorsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FrontDoorsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontDoorsListByResourceGroupInput,
-    outputSchema: FrontDoorsListByResourceGroupOutput,
-  }));
+export const FrontDoorsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontDoorsListByResourceGroupInput,
+  outputSchema: FrontDoorsListByResourceGroupOutput,
+}));
 // Input Schema
-export const FrontDoorsValidateCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/validateCustomDomain",
-    }),
-  );
+export const FrontDoorsValidateCustomDomainInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/validateCustomDomain",
+  }),
+);
 export type FrontDoorsValidateCustomDomainInput =
   typeof FrontDoorsValidateCustomDomainInput.Type;
 
 // Output Schema
-export const FrontDoorsValidateCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FrontDoorsValidateCustomDomainOutput = /*@__PURE__*/ Schema.Struct(
+  {
     customDomainValidated: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
+  },
+);
 export type FrontDoorsValidateCustomDomainOutput =
   typeof FrontDoorsValidateCustomDomainOutput.Type;
 
@@ -558,31 +533,28 @@ export type FrontDoorsValidateCustomDomainOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const FrontDoorsValidateCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontDoorsValidateCustomDomainInput,
-    outputSchema: FrontDoorsValidateCustomDomainOutput,
-  }));
+export const FrontDoorsValidateCustomDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontDoorsValidateCustomDomainInput,
+  outputSchema: FrontDoorsValidateCustomDomainOutput,
+}));
 // Input Schema
-export const FrontendEndpointsDisableHttpsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
-    }),
-  );
+export const FrontendEndpointsDisableHttpsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  frontendEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
+  }),
+);
 export type FrontendEndpointsDisableHttpsInput =
   typeof FrontendEndpointsDisableHttpsInput.Type;
 
 // Output Schema
-export const FrontendEndpointsDisableHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FrontendEndpointsDisableHttpsOutput = /*@__PURE__*/ Schema.Void;
 export type FrontendEndpointsDisableHttpsOutput =
   typeof FrontendEndpointsDisableHttpsOutput.Type;
 
@@ -596,31 +568,28 @@ export type FrontendEndpointsDisableHttpsOutput =
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param frontendEndpointName - Name of the Frontend endpoint which is unique within the Front Door.
  */
-export const FrontendEndpointsDisableHttps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontendEndpointsDisableHttpsInput,
-    outputSchema: FrontendEndpointsDisableHttpsOutput,
-  }));
+export const FrontendEndpointsDisableHttps = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendEndpointsDisableHttpsInput,
+  outputSchema: FrontendEndpointsDisableHttpsOutput,
+}));
 // Input Schema
-export const FrontendEndpointsEnableHttpsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
-    }),
-  );
+export const FrontendEndpointsEnableHttpsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  frontendEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
+  }),
+);
 export type FrontendEndpointsEnableHttpsInput =
   typeof FrontendEndpointsEnableHttpsInput.Type;
 
 // Output Schema
-export const FrontendEndpointsEnableHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FrontendEndpointsEnableHttpsOutput = /*@__PURE__*/ Schema.Void;
 export type FrontendEndpointsEnableHttpsOutput =
   typeof FrontendEndpointsEnableHttpsOutput.Type;
 
@@ -634,34 +603,31 @@ export type FrontendEndpointsEnableHttpsOutput =
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param frontendEndpointName - Name of the Frontend endpoint which is unique within the Front Door.
  */
-export const FrontendEndpointsEnableHttps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontendEndpointsEnableHttpsInput,
-    outputSchema: FrontendEndpointsEnableHttpsOutput,
-  }));
+export const FrontendEndpointsEnableHttps = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendEndpointsEnableHttpsInput,
+  outputSchema: FrontendEndpointsEnableHttpsOutput,
+}));
 // Input Schema
-export const FrontendEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
-    }),
-  );
+export const FrontendEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  frontendEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
+  }),
+);
 export type FrontendEndpointsGetInput = typeof FrontendEndpointsGetInput.Type;
 
 // Output Schema
-export const FrontendEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const FrontendEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type FrontendEndpointsGetOutput = typeof FrontendEndpointsGetOutput.Type;
 
 // The operation
@@ -674,15 +640,13 @@ export type FrontendEndpointsGetOutput = typeof FrontendEndpointsGetOutput.Type;
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param frontendEndpointName - Name of the Frontend endpoint which is unique within the Front Door.
  */
-export const FrontendEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FrontendEndpointsGetInput,
-    outputSchema: FrontendEndpointsGetOutput,
-  }),
-);
+export const FrontendEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendEndpointsGetInput,
+  outputSchema: FrontendEndpointsGetOutput,
+}));
 // Input Schema
 export const FrontendEndpointsListByFrontDoorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
@@ -698,7 +662,7 @@ export type FrontendEndpointsListByFrontDoorInput =
 
 // Output Schema
 export const FrontendEndpointsListByFrontDoorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -720,38 +684,35 @@ export type FrontendEndpointsListByFrontDoorOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const FrontendEndpointsListByFrontDoor =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: FrontendEndpointsListByFrontDoorInput,
-    outputSchema: FrontendEndpointsListByFrontDoorOutput,
-  }));
+export const FrontendEndpointsListByFrontDoor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendEndpointsListByFrontDoorInput,
+  outputSchema: FrontendEndpointsListByFrontDoorOutput,
+}));
 // Input Schema
-export const ManagedRuleSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallManagedRuleSets",
-    }),
-  );
+export const ManagedRuleSetsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallManagedRuleSets",
+  }),
+);
 export type ManagedRuleSetsListInput = typeof ManagedRuleSetsListInput.Type;
 
 // Output Schema
-export const ManagedRuleSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ManagedRuleSetsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ManagedRuleSetsListOutput = typeof ManagedRuleSetsListOutput.Type;
 
 // The operation
@@ -761,13 +722,13 @@ export type ManagedRuleSetsListOutput = typeof ManagedRuleSetsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ManagedRuleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedRuleSetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedRuleSetsListInput,
   outputSchema: ManagedRuleSetsListOutput,
 }));
 // Input Schema
 export const NetworkExperimentProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -783,7 +744,7 @@ export type NetworkExperimentProfilesCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkExperimentProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -802,30 +763,31 @@ export type NetworkExperimentProfilesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const NetworkExperimentProfilesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkExperimentProfilesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetworkExperimentProfilesCreateOrUpdateInput,
     outputSchema: NetworkExperimentProfilesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NetworkExperimentProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkExperimentProfilesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+  }),
+);
 export type NetworkExperimentProfilesDeleteInput =
   typeof NetworkExperimentProfilesDeleteInput.Type;
 
 // Output Schema
-export const NetworkExperimentProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NetworkExperimentProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NetworkExperimentProfilesDeleteOutput =
   typeof NetworkExperimentProfilesDeleteOutput.Type;
 
@@ -838,36 +800,33 @@ export type NetworkExperimentProfilesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const NetworkExperimentProfilesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkExperimentProfilesDeleteInput,
-    outputSchema: NetworkExperimentProfilesDeleteOutput,
-  }));
+export const NetworkExperimentProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkExperimentProfilesDeleteInput,
+  outputSchema: NetworkExperimentProfilesDeleteOutput,
+}));
 // Input Schema
-export const NetworkExperimentProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
-    }),
-  );
+export const NetworkExperimentProfilesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+  }),
+);
 export type NetworkExperimentProfilesGetInput =
   typeof NetworkExperimentProfilesGetInput.Type;
 
 // Output Schema
-export const NetworkExperimentProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const NetworkExperimentProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type NetworkExperimentProfilesGetOutput =
   typeof NetworkExperimentProfilesGetOutput.Type;
 
@@ -880,39 +839,36 @@ export type NetworkExperimentProfilesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const NetworkExperimentProfilesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkExperimentProfilesGetInput,
-    outputSchema: NetworkExperimentProfilesGetOutput,
-  }));
+export const NetworkExperimentProfilesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkExperimentProfilesGetInput,
+  outputSchema: NetworkExperimentProfilesGetOutput,
+}));
 // Input Schema
-export const NetworkExperimentProfilesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles",
-    }),
-  );
+export const NetworkExperimentProfilesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles",
+  }),
+);
 export type NetworkExperimentProfilesListInput =
   typeof NetworkExperimentProfilesListInput.Type;
 
 // Output Schema
-export const NetworkExperimentProfilesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NetworkExperimentProfilesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NetworkExperimentProfilesListOutput =
   typeof NetworkExperimentProfilesListOutput.Type;
 
@@ -923,14 +879,13 @@ export type NetworkExperimentProfilesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const NetworkExperimentProfilesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkExperimentProfilesListInput,
-    outputSchema: NetworkExperimentProfilesListOutput,
-  }));
+export const NetworkExperimentProfilesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkExperimentProfilesListInput,
+  outputSchema: NetworkExperimentProfilesListOutput,
+}));
 // Input Schema
 export const NetworkExperimentProfilesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -945,7 +900,7 @@ export type NetworkExperimentProfilesListByResourceGroupInput =
 
 // Output Schema
 export const NetworkExperimentProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -969,29 +924,30 @@ export type NetworkExperimentProfilesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkExperimentProfilesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkExperimentProfilesListByResourceGroupInput,
     outputSchema: NetworkExperimentProfilesListByResourceGroupOutput,
   }));
 // Input Schema
-export const NetworkExperimentProfilesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkExperimentProfilesUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+  }),
+);
 export type NetworkExperimentProfilesUpdateInput =
   typeof NetworkExperimentProfilesUpdateInput.Type;
 
 // Output Schema
 export const NetworkExperimentProfilesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1012,36 +968,33 @@ export type NetworkExperimentProfilesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const NetworkExperimentProfilesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkExperimentProfilesUpdateInput,
-    outputSchema: NetworkExperimentProfilesUpdateOutput,
-  }));
+export const NetworkExperimentProfilesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkExperimentProfilesUpdateInput,
+  outputSchema: NetworkExperimentProfilesUpdateOutput,
+}));
 // Input Schema
-export const PoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
-    }),
-  );
+export const PoliciesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+  }),
+);
 export type PoliciesCreateOrUpdateInput =
   typeof PoliciesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const PoliciesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type PoliciesCreateOrUpdateOutput =
   typeof PoliciesCreateOrUpdateOutput.Type;
 
@@ -1054,14 +1007,12 @@ export type PoliciesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the Web Application Firewall Policy.
  */
-export const PoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesCreateOrUpdateInput,
-    outputSchema: PoliciesCreateOrUpdateOutput,
-  }),
-);
+export const PoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesCreateOrUpdateInput,
+  outputSchema: PoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -1075,7 +1026,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
 
 // Output Schema
-export const PoliciesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
 
 // The operation
@@ -1087,12 +1038,12 @@ export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the Web Application Firewall Policy.
  */
-export const PoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesDeleteInput,
   outputSchema: PoliciesDeleteOutput,
 }));
 // Input Schema
-export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -1106,7 +1057,7 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoliciesGetInput = typeof PoliciesGetInput.Type;
 
 // Output Schema
-export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1124,12 +1075,12 @@ export type PoliciesGetOutput = typeof PoliciesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the Web Application Firewall Policy.
  */
-export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesGetInput,
   outputSchema: PoliciesGetOutput,
 }));
 // Input Schema
-export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1142,7 +1093,7 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoliciesListInput = typeof PoliciesListInput.Type;
 
 // Output Schema
-export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1164,38 +1115,36 @@ export type PoliciesListOutput = typeof PoliciesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesListInput,
   outputSchema: PoliciesListOutput,
 }));
 // Input Schema
-export const PoliciesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
-    }),
-  );
+export const PoliciesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+  }),
+);
 export type PoliciesListBySubscriptionInput =
   typeof PoliciesListBySubscriptionInput.Type;
 
 // Output Schema
-export const PoliciesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PoliciesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PoliciesListBySubscriptionOutput =
   typeof PoliciesListBySubscriptionOutput.Type;
 
@@ -1206,14 +1155,12 @@ export type PoliciesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PoliciesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesListBySubscriptionInput,
-    outputSchema: PoliciesListBySubscriptionOutput,
-  }),
-);
+export const PoliciesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesListBySubscriptionInput,
+  outputSchema: PoliciesListBySubscriptionOutput,
+}));
 // Input Schema
-export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -1227,7 +1174,7 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
 
 // Output Schema
-export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1245,40 +1192,38 @@ export type PoliciesUpdateOutput = typeof PoliciesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the Web Application Firewall Policy.
  */
-export const PoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesUpdateInput,
   outputSchema: PoliciesUpdateOutput,
 }));
 // Input Schema
-export const PreconfiguredEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints",
-    }),
-  );
+export const PreconfiguredEndpointsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints",
+  }),
+);
 export type PreconfiguredEndpointsListInput =
   typeof PreconfiguredEndpointsListInput.Type;
 
 // Output Schema
-export const PreconfiguredEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PreconfiguredEndpointsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PreconfiguredEndpointsListOutput =
   typeof PreconfiguredEndpointsListOutput.Type;
 
@@ -1291,41 +1236,37 @@ export type PreconfiguredEndpointsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The Profile identifier associated with the Tenant and Partner
  */
-export const PreconfiguredEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PreconfiguredEndpointsListInput,
-    outputSchema: PreconfiguredEndpointsListOutput,
+export const PreconfiguredEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PreconfiguredEndpointsListInput,
+  outputSchema: PreconfiguredEndpointsListOutput,
+}));
+// Input Schema
+export const ReportsGetLatencyScorecardsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  endDateTimeUTC: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  aggregationInterval: Schema.Literals(["Daily", "Weekly", "Monthly"]),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/latencyScorecard",
   }),
 );
-// Input Schema
-export const ReportsGetLatencyScorecardsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    endDateTimeUTC: Schema.optional(Schema.String),
-    country: Schema.optional(Schema.String),
-    aggregationInterval: Schema.Literals(["Daily", "Weekly", "Monthly"]),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/latencyScorecard",
-    }),
-  );
 export type ReportsGetLatencyScorecardsInput =
   typeof ReportsGetLatencyScorecardsInput.Type;
 
 // Output Schema
-export const ReportsGetLatencyScorecardsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ReportsGetLatencyScorecardsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ReportsGetLatencyScorecardsOutput =
   typeof ReportsGetLatencyScorecardsOutput.Type;
 
@@ -1342,48 +1283,44 @@ export type ReportsGetLatencyScorecardsOutput =
  * @param country - The country associated with the Latency Scorecard. Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html
  * @param aggregationInterval - The aggregation interval of the Latency Scorecard
  */
-export const ReportsGetLatencyScorecards = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsGetLatencyScorecardsInput,
-    outputSchema: ReportsGetLatencyScorecardsOutput,
+export const ReportsGetLatencyScorecards = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsGetLatencyScorecardsInput,
+  outputSchema: ReportsGetLatencyScorecardsOutput,
+}));
+// Input Schema
+export const ReportsGetTimeseriesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  profileName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  startDateTimeUTC: Schema.String,
+  endDateTimeUTC: Schema.String,
+  aggregationInterval: Schema.Literals(["Hourly", "Daily"]),
+  timeseriesType: Schema.Literals([
+    "MeasurementCounts",
+    "LatencyP50",
+    "LatencyP75",
+    "LatencyP95",
+  ]),
+  endpoint: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/timeseries",
   }),
 );
-// Input Schema
-export const ReportsGetTimeseriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    profileName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    startDateTimeUTC: Schema.String,
-    endDateTimeUTC: Schema.String,
-    aggregationInterval: Schema.Literals(["Hourly", "Daily"]),
-    timeseriesType: Schema.Literals([
-      "MeasurementCounts",
-      "LatencyP50",
-      "LatencyP75",
-      "LatencyP95",
-    ]),
-    endpoint: Schema.optional(Schema.String),
-    country: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/timeseries",
-    }),
-  );
 export type ReportsGetTimeseriesInput = typeof ReportsGetTimeseriesInput.Type;
 
 // Output Schema
-export const ReportsGetTimeseriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ReportsGetTimeseriesOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ReportsGetTimeseriesOutput = typeof ReportsGetTimeseriesOutput.Type;
 
 // The operation
@@ -1402,36 +1339,32 @@ export type ReportsGetTimeseriesOutput = typeof ReportsGetTimeseriesOutput.Type;
  * @param endpoint - The specific endpoint
  * @param country - The country associated with the Timeseries. Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html
  */
-export const ReportsGetTimeseries = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsGetTimeseriesInput,
-    outputSchema: ReportsGetTimeseriesOutput,
+export const ReportsGetTimeseries = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsGetTimeseriesInput,
+  outputSchema: ReportsGetTimeseriesOutput,
+}));
+// Input Schema
+export const RulesEnginesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  rulesEngineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
   }),
 );
-// Input Schema
-export const RulesEnginesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    rulesEngineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
-    }),
-  );
 export type RulesEnginesCreateOrUpdateInput =
   typeof RulesEnginesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const RulesEnginesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RulesEnginesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RulesEnginesCreateOrUpdateOutput =
   typeof RulesEnginesCreateOrUpdateOutput.Type;
 
@@ -1445,30 +1378,27 @@ export type RulesEnginesCreateOrUpdateOutput =
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param rulesEngineName - Name of the Rules Engine which is unique within the Front Door.
  */
-export const RulesEnginesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RulesEnginesCreateOrUpdateInput,
-    outputSchema: RulesEnginesCreateOrUpdateOutput,
+export const RulesEnginesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RulesEnginesCreateOrUpdateInput,
+  outputSchema: RulesEnginesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const RulesEnginesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  rulesEngineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
   }),
 );
-// Input Schema
-export const RulesEnginesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    rulesEngineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
-    }),
-  );
 export type RulesEnginesDeleteInput = typeof RulesEnginesDeleteInput.Type;
 
 // Output Schema
-export const RulesEnginesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RulesEnginesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RulesEnginesDeleteOutput = typeof RulesEnginesDeleteOutput.Type;
 
 // The operation
@@ -1481,12 +1411,12 @@ export type RulesEnginesDeleteOutput = typeof RulesEnginesDeleteOutput.Type;
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param rulesEngineName - Name of the Rules Engine which is unique within the Front Door.
  */
-export const RulesEnginesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesEnginesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesEnginesDeleteInput,
   outputSchema: RulesEnginesDeleteOutput,
 }));
 // Input Schema
-export const RulesEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesEnginesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1431,7 @@ export const RulesEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RulesEnginesGetInput = typeof RulesEnginesGetInput.Type;
 
 // Output Schema
-export const RulesEnginesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesEnginesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1518,38 +1448,36 @@ export type RulesEnginesGetOutput = typeof RulesEnginesGetOutput.Type;
  * @param frontDoorName - Name of the Front Door which is globally unique.
  * @param rulesEngineName - Name of the Rules Engine which is unique within the Front Door.
  */
-export const RulesEnginesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesEnginesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesEnginesGetInput,
   outputSchema: RulesEnginesGetOutput,
 }));
 // Input Schema
-export const RulesEnginesListByFrontDoorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines",
-    }),
-  );
+export const RulesEnginesListByFrontDoorInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  frontDoorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines",
+  }),
+);
 export type RulesEnginesListByFrontDoorInput =
   typeof RulesEnginesListByFrontDoorInput.Type;
 
 // Output Schema
-export const RulesEnginesListByFrontDoorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RulesEnginesListByFrontDoorOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RulesEnginesListByFrontDoorOutput =
   typeof RulesEnginesListByFrontDoorOutput.Type;
 
@@ -1562,9 +1490,7 @@ export type RulesEnginesListByFrontDoorOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param frontDoorName - Name of the Front Door which is globally unique.
  */
-export const RulesEnginesListByFrontDoor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RulesEnginesListByFrontDoorInput,
-    outputSchema: RulesEnginesListByFrontDoorOutput,
-  }),
-);
+export const RulesEnginesListByFrontDoor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RulesEnginesListByFrontDoorInput,
+  outputSchema: RulesEnginesListByFrontDoorOutput,
+}));

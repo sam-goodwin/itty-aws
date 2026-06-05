@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InvitesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const InvitesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InvitesDestroyInput = typeof InvitesDestroyInput.Type;
 
 // Output Schema
-export const InvitesDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InvitesDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type InvitesDestroyOutput = typeof InvitesDestroyOutput.Type;
 
 // The operation
@@ -24,7 +24,7 @@ export type InvitesDestroyOutput = typeof InvitesDestroyOutput.Type;
  *
  * @param id - A UUID string identifying this organization invite.
  */
-export const invitesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const invitesDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitesDestroyInput,
   outputSchema: InvitesDestroyOutput,
   errors: [Forbidden, NotFound] as const,

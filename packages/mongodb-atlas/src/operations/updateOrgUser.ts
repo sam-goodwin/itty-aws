@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgUserInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const UpdateOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateOrgUserInput = typeof UpdateOrgUserInput.Type;
 
 // Output Schema
-export const UpdateOrgUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateOrgUserOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateOrgUserOutput = typeof UpdateOrgUserOutput.Type;
 
 // The operation
@@ -34,7 +34,7 @@ export type UpdateOrgUserOutput = typeof UpdateOrgUserOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
  */
-export const updateOrgUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrgUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgUserInput,
   outputSchema: UpdateOrgUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

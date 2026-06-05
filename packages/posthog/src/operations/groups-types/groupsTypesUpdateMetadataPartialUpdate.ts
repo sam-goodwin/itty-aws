@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const GroupsTypesUpdateMetadataPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     group_type: Schema.optional(Schema.String),
     group_type_index: Schema.optional(Schema.Number),
@@ -27,7 +27,7 @@ export type GroupsTypesUpdateMetadataPartialUpdateInput =
 
 // Output Schema
 export const GroupsTypesUpdateMetadataPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GroupsTypesUpdateMetadataPartialUpdateOutput =
   typeof GroupsTypesUpdateMetadataPartialUpdateOutput.Type;
 
@@ -36,9 +36,10 @@ export type GroupsTypesUpdateMetadataPartialUpdateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsTypesUpdateMetadataPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const groupsTypesUpdateMetadataPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GroupsTypesUpdateMetadataPartialUpdateInput,
     outputSchema: GroupsTypesUpdateMetadataPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

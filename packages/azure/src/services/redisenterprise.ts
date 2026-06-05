@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AccessPolicyAssignmentCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -25,7 +25,7 @@ export type AccessPolicyAssignmentCreateUpdateInput =
 
 // Output Schema
 export const AccessPolicyAssignmentCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -41,29 +41,28 @@ export type AccessPolicyAssignmentCreateUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AccessPolicyAssignmentCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyAssignmentCreateUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AccessPolicyAssignmentCreateUpdateInput,
     outputSchema: AccessPolicyAssignmentCreateUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AccessPolicyAssignmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-    }),
-  );
+export const AccessPolicyAssignmentDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+  }),
+);
 export type AccessPolicyAssignmentDeleteInput =
   typeof AccessPolicyAssignmentDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccessPolicyAssignmentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccessPolicyAssignmentDeleteOutput =
   typeof AccessPolicyAssignmentDeleteOutput.Type;
 
@@ -75,33 +74,30 @@ export type AccessPolicyAssignmentDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AccessPolicyAssignmentDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccessPolicyAssignmentDeleteInput,
-    outputSchema: AccessPolicyAssignmentDeleteOutput,
-  }));
+export const AccessPolicyAssignmentDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentDeleteInput,
+  outputSchema: AccessPolicyAssignmentDeleteOutput,
+}));
 // Input Schema
-export const AccessPolicyAssignmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-    }),
-  );
+export const AccessPolicyAssignmentGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+  }),
+);
 export type AccessPolicyAssignmentGetInput =
   typeof AccessPolicyAssignmentGetInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccessPolicyAssignmentGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccessPolicyAssignmentGetOutput =
   typeof AccessPolicyAssignmentGetOutput.Type;
 
@@ -113,41 +109,37 @@ export type AccessPolicyAssignmentGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AccessPolicyAssignmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentGetInput,
-    outputSchema: AccessPolicyAssignmentGetOutput,
+export const AccessPolicyAssignmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentGetInput,
+  outputSchema: AccessPolicyAssignmentGetOutput,
+}));
+// Input Schema
+export const AccessPolicyAssignmentListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments",
   }),
 );
-// Input Schema
-export const AccessPolicyAssignmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments",
-    }),
-  );
 export type AccessPolicyAssignmentListInput =
   typeof AccessPolicyAssignmentListInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AccessPolicyAssignmentListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccessPolicyAssignmentListOutput =
   typeof AccessPolicyAssignmentListOutput.Type;
 
@@ -159,14 +151,12 @@ export type AccessPolicyAssignmentListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentListInput,
-    outputSchema: AccessPolicyAssignmentListOutput,
-  }),
-);
+export const AccessPolicyAssignmentList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentListInput,
+  outputSchema: AccessPolicyAssignmentListOutput,
+}));
 // Input Schema
-export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -179,7 +169,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
 
 // Output Schema
-export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -194,12 +184,12 @@ export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesCreateInput,
   outputSchema: DatabasesCreateOutput,
 }));
 // Input Schema
-export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -212,7 +202,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 
 // The operation
@@ -223,12 +213,12 @@ export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
   outputSchema: DatabasesDeleteOutput,
 }));
 // Input Schema
-export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesExportInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -241,7 +231,7 @@ export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesExportInput = typeof DatabasesExportInput.Type;
 
 // Output Schema
-export const DatabasesExportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesExportOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
 
 // The operation
@@ -252,12 +242,12 @@ export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesExport = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesExportInput,
   outputSchema: DatabasesExportOutput,
 }));
 // Input Schema
-export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesFlushInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -270,7 +260,7 @@ export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesFlushInput = typeof DatabasesFlushInput.Type;
 
 // Output Schema
-export const DatabasesFlushOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesFlushOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesFlushOutput = typeof DatabasesFlushOutput.Type;
 
 // The operation
@@ -281,13 +271,13 @@ export type DatabasesFlushOutput = typeof DatabasesFlushOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesFlushInput,
   outputSchema: DatabasesFlushOutput,
 }));
 // Input Schema
 export const DatabasesForceLinkToReplicationGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -302,7 +292,7 @@ export type DatabasesForceLinkToReplicationGroupInput =
 
 // Output Schema
 export const DatabasesForceLinkToReplicationGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DatabasesForceLinkToReplicationGroupOutput =
   typeof DatabasesForceLinkToReplicationGroupOutput.Type;
 
@@ -314,28 +304,27 @@ export type DatabasesForceLinkToReplicationGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DatabasesForceLinkToReplicationGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesForceLinkToReplicationGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DatabasesForceLinkToReplicationGroupInput,
     outputSchema: DatabasesForceLinkToReplicationGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DatabasesForceUnlinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/forceUnlink",
-    }),
-  );
+export const DatabasesForceUnlinkInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/forceUnlink",
+  }),
+);
 export type DatabasesForceUnlinkInput = typeof DatabasesForceUnlinkInput.Type;
 
 // Output Schema
-export const DatabasesForceUnlinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesForceUnlinkOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesForceUnlinkOutput = typeof DatabasesForceUnlinkOutput.Type;
 
 // The operation
@@ -346,14 +335,12 @@ export type DatabasesForceUnlinkOutput = typeof DatabasesForceUnlinkOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesForceUnlink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesForceUnlinkInput,
-    outputSchema: DatabasesForceUnlinkOutput,
-  }),
-);
+export const DatabasesForceUnlink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesForceUnlinkInput,
+  outputSchema: DatabasesForceUnlinkOutput,
+}));
 // Input Schema
-export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -366,7 +353,7 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
-export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -381,12 +368,12 @@ export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
   outputSchema: DatabasesGetOutput,
 }));
 // Input Schema
-export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesImportInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -399,7 +386,7 @@ export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesImportInput = typeof DatabasesImportInput.Type;
 
 // Output Schema
-export const DatabasesImportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesImportOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
 
 // The operation
@@ -410,39 +397,37 @@ export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesImport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesImport = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesImportInput,
   outputSchema: DatabasesImportOutput,
 }));
 // Input Schema
-export const DatabasesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases",
-    }),
-  );
+export const DatabasesListByClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases",
+  }),
+);
 export type DatabasesListByClusterInput =
   typeof DatabasesListByClusterInput.Type;
 
 // Output Schema
-export const DatabasesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const DatabasesListByClusterOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DatabasesListByClusterOutput =
   typeof DatabasesListByClusterOutput.Type;
 
@@ -454,20 +439,16 @@ export type DatabasesListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesListByClusterInput,
-    outputSchema: DatabasesListByClusterOutput,
-  }),
-);
+export const DatabasesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesListByClusterInput,
+  outputSchema: DatabasesListByClusterOutput,
+}));
 // Input Schema
-export const DatabasesListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const DatabasesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/listKeys",
@@ -476,11 +457,10 @@ export const DatabasesListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DatabasesListKeysInput = typeof DatabasesListKeysInput.Type;
 
 // Output Schema
-export const DatabasesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-  });
+export const DatabasesListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+});
 export type DatabasesListKeysOutput = typeof DatabasesListKeysOutput.Type;
 
 // The operation
@@ -491,31 +471,29 @@ export type DatabasesListKeysOutput = typeof DatabasesListKeysOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesListKeysInput,
   outputSchema: DatabasesListKeysOutput,
 }));
 // Input Schema
-export const DatabasesRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/regenerateKey",
-    }),
-  );
+export const DatabasesRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/regenerateKey",
+  }),
+);
 export type DatabasesRegenerateKeyInput =
   typeof DatabasesRegenerateKeyInput.Type;
 
 // Output Schema
-export const DatabasesRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-  });
+export const DatabasesRegenerateKeyOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+});
 export type DatabasesRegenerateKeyOutput =
   typeof DatabasesRegenerateKeyOutput.Type;
 
@@ -527,14 +505,12 @@ export type DatabasesRegenerateKeyOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesRegenerateKeyInput,
-    outputSchema: DatabasesRegenerateKeyOutput,
-  }),
-);
+export const DatabasesRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesRegenerateKeyInput,
+  outputSchema: DatabasesRegenerateKeyOutput,
+}));
 // Input Schema
-export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -547,7 +523,7 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
 
 // Output Schema
-export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -562,28 +538,26 @@ export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesUpdateInput,
   outputSchema: DatabasesUpdateOutput,
 }));
 // Input Schema
-export const DatabasesUpgradeDBRedisVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/upgradeDBRedisVersion",
-    }),
-  );
+export const DatabasesUpgradeDBRedisVersionInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/upgradeDBRedisVersion",
+  }),
+);
 export type DatabasesUpgradeDBRedisVersionInput =
   typeof DatabasesUpgradeDBRedisVersionInput.Type;
 
 // Output Schema
-export const DatabasesUpgradeDBRedisVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesUpgradeDBRedisVersionOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesUpgradeDBRedisVersionOutput =
   typeof DatabasesUpgradeDBRedisVersionOutput.Type;
 
@@ -595,13 +569,12 @@ export type DatabasesUpgradeDBRedisVersionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesUpgradeDBRedisVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DatabasesUpgradeDBRedisVersionInput,
-    outputSchema: DatabasesUpgradeDBRedisVersionOutput,
-  }));
+export const DatabasesUpgradeDBRedisVersion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesUpgradeDBRedisVersionInput,
+  outputSchema: DatabasesUpgradeDBRedisVersionOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Cache/operations" }),
@@ -609,7 +582,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -640,54 +613,52 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OperationsStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/operationsStatus/{operationId}",
-    }),
-  );
+export const OperationsStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/operationsStatus/{operationId}",
+  }),
+);
 export type OperationsStatusGetInput = typeof OperationsStatusGetInput.Type;
 
 // Output Schema
-export const OperationsStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            details: Schema.optional(Schema.Array(Schema.Unknown)),
-            additionalInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  info: Schema.optional(Schema.Unknown),
-                }),
-              ),
+export const OperationsStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      error: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          details: Schema.optional(Schema.Array(Schema.Unknown)),
+          additionalInfo: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                info: Schema.optional(Schema.Unknown),
+              }),
             ),
-          }),
-        ),
-      }),
-    ),
-  });
+          ),
+        }),
+      ),
+    }),
+  ),
+});
 export type OperationsStatusGetOutput = typeof OperationsStatusGetOutput.Type;
 
 // The operation
@@ -699,13 +670,13 @@ export type OperationsStatusGetOutput = typeof OperationsStatusGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsStatusGetInput,
   outputSchema: OperationsStatusGetOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -720,8 +691,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -734,34 +704,31 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -774,29 +741,27 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -806,7 +771,8 @@ export const PrivateEndpointConnectionsListOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -818,53 +784,50 @@ export type PrivateEndpointConnectionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
+export const PrivateEndpointConnectionsPutInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
         }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected"]),
         ),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
       }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+      ),
     }),
-  );
+  ),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsPutInput =
   typeof PrivateEndpointConnectionsPutInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointConnectionsPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateEndpointConnectionsPutOutput =
   typeof PrivateEndpointConnectionsPutOutput.Type;
 
@@ -878,14 +841,13 @@ export type PrivateEndpointConnectionsPutOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param properties - Resource properties.
  */
-export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsPutInput,
-    outputSchema: PrivateEndpointConnectionsPutOutput,
-  }));
+export const PrivateEndpointConnectionsPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsPutInput,
+  outputSchema: PrivateEndpointConnectionsPutOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -900,7 +862,7 @@ export type PrivateLinkResourcesListByClusterInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -922,32 +884,29 @@ export type PrivateLinkResourcesListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateLinkResourcesListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkResourcesListByClusterInput,
-    outputSchema: PrivateLinkResourcesListByClusterOutput,
-  }));
+export const PrivateLinkResourcesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListByClusterInput,
+  outputSchema: PrivateLinkResourcesListByClusterOutput,
+}));
 // Input Schema
-export const RedisEnterpriseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
-    }),
-  );
+export const RedisEnterpriseCreateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
+  }),
+);
 export type RedisEnterpriseCreateInput = typeof RedisEnterpriseCreateInput.Type;
 
 // Output Schema
-export const RedisEnterpriseCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RedisEnterpriseCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RedisEnterpriseCreateOutput =
   typeof RedisEnterpriseCreateOutput.Type;
 
@@ -959,29 +918,25 @@ export type RedisEnterpriseCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseCreateInput,
-    outputSchema: RedisEnterpriseCreateOutput,
+export const RedisEnterpriseCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseCreateInput,
+  outputSchema: RedisEnterpriseCreateOutput,
+}));
+// Input Schema
+export const RedisEnterpriseDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
   }),
 );
-// Input Schema
-export const RedisEnterpriseDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
-    }),
-  );
 export type RedisEnterpriseDeleteInput = typeof RedisEnterpriseDeleteInput.Type;
 
 // Output Schema
-export const RedisEnterpriseDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RedisEnterpriseDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RedisEnterpriseDeleteOutput =
   typeof RedisEnterpriseDeleteOutput.Type;
 
@@ -993,33 +948,29 @@ export type RedisEnterpriseDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseDeleteInput,
-    outputSchema: RedisEnterpriseDeleteOutput,
+export const RedisEnterpriseDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseDeleteInput,
+  outputSchema: RedisEnterpriseDeleteOutput,
+}));
+// Input Schema
+export const RedisEnterpriseGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
   }),
 );
-// Input Schema
-export const RedisEnterpriseGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
-    }),
-  );
 export type RedisEnterpriseGetInput = typeof RedisEnterpriseGetInput.Type;
 
 // Output Schema
-export const RedisEnterpriseGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RedisEnterpriseGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RedisEnterpriseGetOutput = typeof RedisEnterpriseGetOutput.Type;
 
 // The operation
@@ -1030,37 +981,35 @@ export type RedisEnterpriseGetOutput = typeof RedisEnterpriseGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisEnterpriseGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisEnterpriseGetInput,
   outputSchema: RedisEnterpriseGetOutput,
 }));
 // Input Schema
-export const RedisEnterpriseListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redisEnterprise",
-    }),
-  );
+export const RedisEnterpriseListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redisEnterprise",
+  }),
+);
 export type RedisEnterpriseListInput = typeof RedisEnterpriseListInput.Type;
 
 // Output Schema
-export const RedisEnterpriseListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const RedisEnterpriseListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RedisEnterpriseListOutput = typeof RedisEnterpriseListOutput.Type;
 
 // The operation
@@ -1070,13 +1019,13 @@ export type RedisEnterpriseListOutput = typeof RedisEnterpriseListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisEnterpriseList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisEnterpriseListInput,
   outputSchema: RedisEnterpriseListOutput,
 }));
 // Input Schema
 export const RedisEnterpriseListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1091,7 +1040,7 @@ export type RedisEnterpriseListByResourceGroupInput =
 
 // Output Schema
 export const RedisEnterpriseListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1114,14 +1063,15 @@ export type RedisEnterpriseListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisEnterpriseListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RedisEnterpriseListByResourceGroupInput,
     outputSchema: RedisEnterpriseListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RedisEnterpriseListSkusForScalingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1136,7 +1086,7 @@ export type RedisEnterpriseListSkusForScalingInput =
 
 // Output Schema
 export const RedisEnterpriseListSkusForScalingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skus: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1157,32 +1107,29 @@ export type RedisEnterpriseListSkusForScalingOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseListSkusForScaling =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RedisEnterpriseListSkusForScalingInput,
-    outputSchema: RedisEnterpriseListSkusForScalingOutput,
-  }));
+export const RedisEnterpriseListSkusForScaling = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseListSkusForScalingInput,
+  outputSchema: RedisEnterpriseListSkusForScalingOutput,
+}));
 // Input Schema
-export const RedisEnterpriseUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
-    }),
-  );
+export const RedisEnterpriseUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
+  }),
+);
 export type RedisEnterpriseUpdateInput = typeof RedisEnterpriseUpdateInput.Type;
 
 // Output Schema
-export const RedisEnterpriseUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RedisEnterpriseUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RedisEnterpriseUpdateOutput =
   typeof RedisEnterpriseUpdateOutput.Type;
 
@@ -1194,9 +1141,7 @@ export type RedisEnterpriseUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseUpdateInput,
-    outputSchema: RedisEnterpriseUpdateOutput,
-  }),
-);
+export const RedisEnterpriseUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseUpdateInput,
+  outputSchema: RedisEnterpriseUpdateOutput,
+}));

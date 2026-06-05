@@ -4,22 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupAuditLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/auditLog",
-    }),
-  );
+export const UpdateGroupAuditLogInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/auditLog" }),
+);
 export type UpdateGroupAuditLogInput = typeof UpdateGroupAuditLogInput.Type;
 
 // Output Schema
-export const UpdateGroupAuditLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupAuditLogOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupAuditLogOutput = typeof UpdateGroupAuditLogOutput.Type;
 
 // The operation
@@ -34,7 +29,7 @@ export type UpdateGroupAuditLogOutput = typeof UpdateGroupAuditLogOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupAuditLog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupAuditLog = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupAuditLogInput,
   outputSchema: UpdateGroupAuditLogOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

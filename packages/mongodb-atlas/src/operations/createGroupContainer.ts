@@ -4,22 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/containers",
-    }),
-  );
+export const CreateGroupContainerInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/containers" }),
+);
 export type CreateGroupContainerInput = typeof CreateGroupContainerInput.Type;
 
 // Output Schema
-export const CreateGroupContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupContainerOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupContainerOutput = typeof CreateGroupContainerOutput.Type;
 
 // The operation
@@ -34,10 +29,8 @@ export type CreateGroupContainerOutput = typeof CreateGroupContainerOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupContainerInput,
-    outputSchema: CreateGroupContainerOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupContainerInput,
+  outputSchema: CreateGroupContainerOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

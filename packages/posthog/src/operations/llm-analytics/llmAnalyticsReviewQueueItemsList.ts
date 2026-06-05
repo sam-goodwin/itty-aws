@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueueItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -25,7 +25,7 @@ export type LlmAnalyticsReviewQueueItemsListInput =
 
 // Output Schema
 export const LlmAnalyticsReviewQueueItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -77,9 +77,8 @@ export type LlmAnalyticsReviewQueueItemsListOutput =
  * @param trace_id - Filter by an exact trace ID.
  * @param trace_id__in - Filter by multiple trace IDs separated by commas.
  */
-export const llmAnalyticsReviewQueueItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LlmAnalyticsReviewQueueItemsListInput,
-    outputSchema: LlmAnalyticsReviewQueueItemsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const llmAnalyticsReviewQueueItemsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsReviewQueueItemsListInput,
+  outputSchema: LlmAnalyticsReviewQueueItemsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

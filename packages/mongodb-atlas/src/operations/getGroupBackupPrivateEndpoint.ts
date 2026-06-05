@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupBackupPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
-    endpointId: Schema.String.pipe(T.PathParam()),
-    pretty: Schema.optional(Schema.Boolean),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}",
-    }),
-  );
+export const GetGroupBackupPrivateEndpointInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
+  endpointId: Schema.String.pipe(T.PathParam()),
+  pretty: Schema.optional(Schema.Boolean),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}",
+  }),
+);
 export type GetGroupBackupPrivateEndpointInput =
   typeof GetGroupBackupPrivateEndpointInput.Type;
 
 // Output Schema
-export const GetGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupBackupPrivateEndpointOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupBackupPrivateEndpointOutput =
   typeof GetGroupBackupPrivateEndpointOutput.Type;
 
@@ -40,9 +38,8 @@ export type GetGroupBackupPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint.
  */
-export const getGroupBackupPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupBackupPrivateEndpointInput,
-    outputSchema: GetGroupBackupPrivateEndpointOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const getGroupBackupPrivateEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupBackupPrivateEndpointInput,
+  outputSchema: GetGroupBackupPrivateEndpointOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

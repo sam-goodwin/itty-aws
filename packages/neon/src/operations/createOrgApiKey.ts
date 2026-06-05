@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
   key_name: Schema.String,
   project_id: Schema.optional(Schema.String),
@@ -11,7 +11,7 @@ export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateOrgApiKeyInput = typeof CreateOrgApiKeyInput.Type;
 
 // Output Schema
-export const CreateOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   key: Schema.String,
   name: Schema.String,
@@ -33,7 +33,7 @@ export type CreateOrgApiKeyOutput = typeof CreateOrgApiKeyOutput.Type;
  *
  * @param org_id - The Neon organization ID
  */
-export const createOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgApiKeyInput,
   outputSchema: CreateOrgApiKeyOutput,
 }));

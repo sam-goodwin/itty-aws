@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SurveysResponsesUnarchiveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysResponsesUnarchiveCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     response_uuid: Schema.String.pipe(T.PathParam()),
@@ -121,18 +121,18 @@ export const SurveysResponsesUnarchiveCreateInput =
     translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
     _create_in_folder: Schema.optional(Schema.String),
     form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/surveys/{id}/responses/{response_uuid}/unarchive/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/surveys/{id}/responses/{response_uuid}/unarchive/",
+  }),
+);
 export type SurveysResponsesUnarchiveCreateInput =
   typeof SurveysResponsesUnarchiveCreateInput.Type;
 
 // Output Schema
-export const SurveysResponsesUnarchiveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SurveysResponsesUnarchiveCreateOutput = /*@__PURE__*/ Schema.Void;
 export type SurveysResponsesUnarchiveCreateOutput =
   typeof SurveysResponsesUnarchiveCreateOutput.Type;
 
@@ -143,9 +143,8 @@ export type SurveysResponsesUnarchiveCreateOutput =
  * @param id - A UUID string identifying this survey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysResponsesUnarchiveCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SurveysResponsesUnarchiveCreateInput,
-    outputSchema: SurveysResponsesUnarchiveCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const surveysResponsesUnarchiveCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SurveysResponsesUnarchiveCreateInput,
+  outputSchema: SurveysResponsesUnarchiveCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

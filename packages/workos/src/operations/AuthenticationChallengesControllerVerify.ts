@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthenticationChallengesControllerVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     code: Schema.String,
   }).pipe(T.Http({ method: "POST", path: "/auth/challenges/{id}/verify" }));
@@ -14,7 +14,7 @@ export type AuthenticationChallengesControllerVerifyInput =
 
 // Output Schema
 export const AuthenticationChallengesControllerVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     challenge: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -39,9 +39,10 @@ export type AuthenticationChallengesControllerVerifyOutput =
  *
  * @param id - The unique ID of the Authentication Challenge.
  */
-export const AuthenticationChallengesControllerVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthenticationChallengesControllerVerify = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthenticationChallengesControllerVerifyInput,
     outputSchema: AuthenticationChallengesControllerVerifyOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

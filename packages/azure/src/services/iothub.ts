@@ -9,35 +9,35 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
-    }),
-  );
+export const CertificatesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
+  }),
+);
 export type CertificatesCreateOrUpdateInput =
   typeof CertificatesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const CertificatesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      subject: Schema.optional(Schema.String),
+      expiry: Schema.optional(Schema.String),
+      thumbprint: Schema.optional(Schema.String),
+      isVerified: Schema.optional(Schema.Boolean),
+      created: Schema.optional(Schema.String),
+      updated: Schema.optional(Schema.String),
+      certificate: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CertificatesCreateOrUpdateOutput =
   typeof CertificatesCreateOrUpdateOutput.Type;
 
@@ -54,13 +54,12 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesCreateOrUpdateOutput,
 }));
 // Input Schema
-export const CertificatesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
-    }),
-  );
+export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
+  }),
+);
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
@@ -121,11 +120,12 @@ export type CertificatesGenerateVerificationCodeOutput =
  *
  * @param If-Match - ETag of the Certificate.
  */
-export const CertificatesGenerateVerificationCode =
-  /*@__PURE__*/ API.make(() => ({
+export const CertificatesGenerateVerificationCode = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CertificatesGenerateVerificationCodeInput,
     outputSchema: CertificatesGenerateVerificationCodeOutput,
-  }));
+  }),
+);
 // Input Schema
 export const CertificatesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
@@ -166,41 +166,41 @@ export const CertificatesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
-export const CertificatesListByIotHubInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates",
-    }),
-  );
+export const CertificatesListByIotHubInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates",
+  }),
+);
 export type CertificatesListByIotHubInput =
   typeof CertificatesListByIotHubInput.Type;
 
 // Output Schema
-export const CertificatesListByIotHubOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              subject: Schema.optional(Schema.String),
-              expiry: Schema.optional(Schema.String),
-              thumbprint: Schema.optional(Schema.String),
-              isVerified: Schema.optional(Schema.Boolean),
-              created: Schema.optional(Schema.String),
-              updated: Schema.optional(Schema.String),
-              certificate: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const CertificatesListByIotHubOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            subject: Schema.optional(Schema.String),
+            expiry: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            isVerified: Schema.optional(Schema.Boolean),
+            created: Schema.optional(Schema.String),
+            updated: Schema.optional(Schema.String),
+            certificate: Schema.optional(Schema.String),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        etag: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type CertificatesListByIotHubOutput =
   typeof CertificatesListByIotHubOutput.Type;
 
@@ -215,34 +215,32 @@ export const CertificatesListByIotHub = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesListByIotHubOutput,
 }));
 // Input Schema
-export const CertificatesVerifyInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify",
-    }),
-  );
+export const CertificatesVerifyInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify",
+  }),
+);
 export type CertificatesVerifyInput = typeof CertificatesVerifyInput.Type;
 
 // Output Schema
-export const CertificatesVerifyOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const CertificatesVerifyOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      subject: Schema.optional(Schema.String),
+      expiry: Schema.optional(Schema.String),
+      thumbprint: Schema.optional(Schema.String),
+      isVerified: Schema.optional(Schema.Boolean),
+      created: Schema.optional(Schema.String),
+      updated: Schema.optional(Schema.String),
+      certificate: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CertificatesVerifyOutput = typeof CertificatesVerifyOutput.Type;
 
 // The operation
@@ -258,16 +256,15 @@ export const CertificatesVerify = /*@__PURE__*/ API.make(() => ({
   outputSchema: CertificatesVerifyOutput,
 }));
 // Input Schema
-export const IotHubManualFailoverInput =
-  /*@__PURE__*/ Schema.Struct({
-    iotHubName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover",
-    }),
-  );
+export const IotHubManualFailoverInput = /*@__PURE__*/ Schema.Struct({
+  iotHubName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover",
+  }),
+);
 export type IotHubManualFailoverInput = typeof IotHubManualFailoverInput.Type;
 
 // Output Schema
@@ -314,11 +311,12 @@ export type IotHubResourceCheckNameAvailabilityOutput =
  *
  * Check if an IoT hub name is available.
  */
-export const IotHubResourceCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const IotHubResourceCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotHubResourceCheckNameAvailabilityInput,
     outputSchema: IotHubResourceCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IotHubResourceCreateEventHubConsumerGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -354,31 +352,32 @@ export type IotHubResourceCreateEventHubConsumerGroupOutput =
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to add.
  */
-export const IotHubResourceCreateEventHubConsumerGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const IotHubResourceCreateEventHubConsumerGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotHubResourceCreateEventHubConsumerGroupInput,
     outputSchema: IotHubResourceCreateEventHubConsumerGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IotHubResourceCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
-    }),
-  );
+export const IotHubResourceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
+  }),
+);
 export type IotHubResourceCreateOrUpdateInput =
   typeof IotHubResourceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IotHubResourceCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotHubResourceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotHubResourceCreateOrUpdateOutput =
   typeof IotHubResourceCreateOrUpdateOutput.Type;
 
@@ -390,30 +389,27 @@ export type IotHubResourceCreateOrUpdateOutput =
  *
  * @param If-Match - ETag of the IoT Hub. Do not specify for creating a brand new IoT Hub. Required to update an existing IoT Hub.
  */
-export const IotHubResourceCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceCreateOrUpdateInput,
-    outputSchema: IotHubResourceCreateOrUpdateOutput,
-  }));
+export const IotHubResourceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceCreateOrUpdateInput,
+  outputSchema: IotHubResourceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IotHubResourceDeleteInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
-    }),
-  );
+export const IotHubResourceDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
+  }),
+);
 export type IotHubResourceDeleteInput = typeof IotHubResourceDeleteInput.Type;
 
 // Output Schema
-export const IotHubResourceDeleteOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotHubResourceDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotHubResourceDeleteOutput = typeof IotHubResourceDeleteOutput.Type;
 
 // The operation
@@ -455,56 +451,57 @@ export type IotHubResourceDeleteEventHubConsumerGroupOutput =
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to delete.
  */
-export const IotHubResourceDeleteEventHubConsumerGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const IotHubResourceDeleteEventHubConsumerGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotHubResourceDeleteEventHubConsumerGroupInput,
     outputSchema: IotHubResourceDeleteEventHubConsumerGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IotHubResourceExportDevicesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices",
-    }),
-  );
+export const IotHubResourceExportDevicesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices",
+  }),
+);
 export type IotHubResourceExportDevicesInput =
   typeof IotHubResourceExportDevicesInput.Type;
 
 // Output Schema
-export const IotHubResourceExportDevicesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    jobId: Schema.optional(Schema.String),
-    startTimeUtc: Schema.optional(Schema.String),
-    endTimeUtc: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "export",
-        "import",
-        "backup",
-        "readDeviceProperties",
-        "writeDeviceProperties",
-        "updateDeviceConfiguration",
-        "rebootDevice",
-        "factoryResetDevice",
-        "firmwareUpdate",
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "enqueued",
-        "running",
-        "completed",
-        "failed",
-        "cancelled",
-      ]),
-    ),
-    failureReason: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    parentJobId: Schema.optional(Schema.String),
-  });
+export const IotHubResourceExportDevicesOutput = /*@__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  startTimeUtc: Schema.optional(Schema.String),
+  endTimeUtc: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "export",
+      "import",
+      "backup",
+      "readDeviceProperties",
+      "writeDeviceProperties",
+      "updateDeviceConfiguration",
+      "rebootDevice",
+      "factoryResetDevice",
+      "firmwareUpdate",
+    ]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "enqueued",
+      "running",
+      "completed",
+      "failed",
+      "cancelled",
+    ]),
+  ),
+  failureReason: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  parentJobId: Schema.optional(Schema.String),
+});
 export type IotHubResourceExportDevicesOutput =
   typeof IotHubResourceExportDevicesOutput.Type;
 
@@ -528,14 +525,13 @@ export const IotHubResourceGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type IotHubResourceGetInput = typeof IotHubResourceGetInput.Type;
 
 // Output Schema
-export const IotHubResourceGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotHubResourceGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotHubResourceGetOutput = typeof IotHubResourceGetOutput.Type;
 
 // The operation
@@ -549,16 +545,17 @@ export const IotHubResourceGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceGetOutput,
 }));
 // Input Schema
-export const IotHubResourceGetEndpointHealthInput =
-  /*@__PURE__*/ Schema.Struct({
+export const IotHubResourceGetEndpointHealthInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     iotHubName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth",
+  }),
+);
 export type IotHubResourceGetEndpointHealthInput =
   typeof IotHubResourceGetEndpointHealthInput.Type;
 
@@ -596,11 +593,10 @@ export type IotHubResourceGetEndpointHealthOutput =
  *
  * Get the health for routing endpoints.
  */
-export const IotHubResourceGetEndpointHealth =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceGetEndpointHealthInput,
-    outputSchema: IotHubResourceGetEndpointHealthOutput,
-  }));
+export const IotHubResourceGetEndpointHealth = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetEndpointHealthInput,
+  outputSchema: IotHubResourceGetEndpointHealthOutput,
+}));
 // Input Schema
 export const IotHubResourceGetEventHubConsumerGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -636,57 +632,56 @@ export type IotHubResourceGetEventHubConsumerGroupOutput =
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to retrieve.
  */
-export const IotHubResourceGetEventHubConsumerGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const IotHubResourceGetEventHubConsumerGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotHubResourceGetEventHubConsumerGroupInput,
     outputSchema: IotHubResourceGetEventHubConsumerGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IotHubResourceGetJobInput =
-  /*@__PURE__*/ Schema.Struct({
-    jobId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}",
-    }),
-  );
+export const IotHubResourceGetJobInput = /*@__PURE__*/ Schema.Struct({
+  jobId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}",
+  }),
+);
 export type IotHubResourceGetJobInput = typeof IotHubResourceGetJobInput.Type;
 
 // Output Schema
-export const IotHubResourceGetJobOutput =
-  /*@__PURE__*/ Schema.Struct({
-    jobId: Schema.optional(Schema.String),
-    startTimeUtc: Schema.optional(Schema.String),
-    endTimeUtc: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "export",
-        "import",
-        "backup",
-        "readDeviceProperties",
-        "writeDeviceProperties",
-        "updateDeviceConfiguration",
-        "rebootDevice",
-        "factoryResetDevice",
-        "firmwareUpdate",
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "enqueued",
-        "running",
-        "completed",
-        "failed",
-        "cancelled",
-      ]),
-    ),
-    failureReason: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    parentJobId: Schema.optional(Schema.String),
-  });
+export const IotHubResourceGetJobOutput = /*@__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  startTimeUtc: Schema.optional(Schema.String),
+  endTimeUtc: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "export",
+      "import",
+      "backup",
+      "readDeviceProperties",
+      "writeDeviceProperties",
+      "updateDeviceConfiguration",
+      "rebootDevice",
+      "factoryResetDevice",
+      "firmwareUpdate",
+    ]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "enqueued",
+      "running",
+      "completed",
+      "failed",
+      "cancelled",
+    ]),
+  ),
+  failureReason: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  parentJobId: Schema.optional(Schema.String),
+});
 export type IotHubResourceGetJobOutput = typeof IotHubResourceGetJobOutput.Type;
 
 // The operation
@@ -702,15 +697,16 @@ export const IotHubResourceGetJob = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceGetJobOutput,
 }));
 // Input Schema
-export const IotHubResourceGetKeysForKeyNameInput =
-  /*@__PURE__*/ Schema.Struct({
+export const IotHubResourceGetKeysForKeyNameInput = /*@__PURE__*/ Schema.Struct(
+  {
     keyName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys",
+  }),
+);
 export type IotHubResourceGetKeysForKeyNameInput =
   typeof IotHubResourceGetKeysForKeyNameInput.Type;
 
@@ -749,36 +745,35 @@ export type IotHubResourceGetKeysForKeyNameOutput =
  *
  * @param keyName - The name of the shared access policy.
  */
-export const IotHubResourceGetKeysForKeyName =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceGetKeysForKeyNameInput,
-    outputSchema: IotHubResourceGetKeysForKeyNameOutput,
-  }));
+export const IotHubResourceGetKeysForKeyName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetKeysForKeyNameInput,
+  outputSchema: IotHubResourceGetKeysForKeyNameOutput,
+}));
 // Input Schema
-export const IotHubResourceGetQuotaMetricsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics",
-    }),
-  );
+export const IotHubResourceGetQuotaMetricsInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics",
+  }),
+);
 export type IotHubResourceGetQuotaMetricsInput =
   typeof IotHubResourceGetQuotaMetricsInput.Type;
 
 // Output Schema
-export const IotHubResourceGetQuotaMetricsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          maxValue: Schema.optional(Schema.Number),
-        }),
-      ),
+export const IotHubResourceGetQuotaMetricsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        maxValue: Schema.optional(Schema.Number),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotHubResourceGetQuotaMetricsOutput =
   typeof IotHubResourceGetQuotaMetricsOutput.Type;
 
@@ -788,29 +783,26 @@ export type IotHubResourceGetQuotaMetricsOutput =
  *
  * Get the quota metrics for an IoT hub.
  */
-export const IotHubResourceGetQuotaMetrics =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceGetQuotaMetricsInput,
-    outputSchema: IotHubResourceGetQuotaMetricsOutput,
-  }));
+export const IotHubResourceGetQuotaMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetQuotaMetricsInput,
+  outputSchema: IotHubResourceGetQuotaMetricsOutput,
+}));
 // Input Schema
-export const IotHubResourceGetStatsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats",
-    }),
-  );
+export const IotHubResourceGetStatsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats",
+  }),
+);
 export type IotHubResourceGetStatsInput =
   typeof IotHubResourceGetStatsInput.Type;
 
 // Output Schema
-export const IotHubResourceGetStatsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    totalDeviceCount: Schema.optional(Schema.Number),
-    enabledDeviceCount: Schema.optional(Schema.Number),
-    disabledDeviceCount: Schema.optional(Schema.Number),
-  });
+export const IotHubResourceGetStatsOutput = /*@__PURE__*/ Schema.Struct({
+  totalDeviceCount: Schema.optional(Schema.Number),
+  enabledDeviceCount: Schema.optional(Schema.Number),
+  disabledDeviceCount: Schema.optional(Schema.Number),
+});
 export type IotHubResourceGetStatsOutput =
   typeof IotHubResourceGetStatsOutput.Type;
 
@@ -825,43 +817,41 @@ export const IotHubResourceGetStats = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceGetStatsOutput,
 }));
 // Input Schema
-export const IotHubResourceGetValidSkusInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus",
-    }),
-  );
+export const IotHubResourceGetValidSkusInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus",
+  }),
+);
 export type IotHubResourceGetValidSkusInput =
   typeof IotHubResourceGetValidSkusInput.Type;
 
 // Output Schema
-export const IotHubResourceGetValidSkusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.Struct({
-            name: Schema.Literals(["F1", "S1", "S2", "S3", "B1", "B2", "B3"]),
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Standard", "Basic"]),
-            ),
-            capacity: Schema.optional(Schema.Number),
-          }),
-          capacity: Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "None"]),
-            ),
-          }),
+export const IotHubResourceGetValidSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.Struct({
+          name: Schema.Literals(["F1", "S1", "S2", "S3", "B1", "B2", "B3"]),
+          tier: Schema.optional(Schema.Literals(["Free", "Standard", "Basic"])),
+          capacity: Schema.optional(Schema.Number),
         }),
-      ),
+        capacity: Schema.Struct({
+          minimum: Schema.optional(Schema.Number),
+          maximum: Schema.optional(Schema.Number),
+          default: Schema.optional(Schema.Number),
+          scaleType: Schema.optional(
+            Schema.Literals(["Automatic", "Manual", "None"]),
+          ),
+        }),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotHubResourceGetValidSkusOutput =
   typeof IotHubResourceGetValidSkusOutput.Type;
 
@@ -876,50 +866,50 @@ export const IotHubResourceGetValidSkus = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceGetValidSkusOutput,
 }));
 // Input Schema
-export const IotHubResourceImportDevicesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices",
-    }),
-  );
+export const IotHubResourceImportDevicesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices",
+  }),
+);
 export type IotHubResourceImportDevicesInput =
   typeof IotHubResourceImportDevicesInput.Type;
 
 // Output Schema
-export const IotHubResourceImportDevicesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    jobId: Schema.optional(Schema.String),
-    startTimeUtc: Schema.optional(Schema.String),
-    endTimeUtc: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "export",
-        "import",
-        "backup",
-        "readDeviceProperties",
-        "writeDeviceProperties",
-        "updateDeviceConfiguration",
-        "rebootDevice",
-        "factoryResetDevice",
-        "firmwareUpdate",
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Literals([
-        "unknown",
-        "enqueued",
-        "running",
-        "completed",
-        "failed",
-        "cancelled",
-      ]),
-    ),
-    failureReason: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    parentJobId: Schema.optional(Schema.String),
-  });
+export const IotHubResourceImportDevicesOutput = /*@__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  startTimeUtc: Schema.optional(Schema.String),
+  endTimeUtc: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "export",
+      "import",
+      "backup",
+      "readDeviceProperties",
+      "writeDeviceProperties",
+      "updateDeviceConfiguration",
+      "rebootDevice",
+      "factoryResetDevice",
+      "firmwareUpdate",
+    ]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "enqueued",
+      "running",
+      "completed",
+      "failed",
+      "cancelled",
+    ]),
+  ),
+  failureReason: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  parentJobId: Schema.optional(Schema.String),
+});
 export type IotHubResourceImportDevicesOutput =
   typeof IotHubResourceImportDevicesOutput.Type;
 
@@ -969,11 +959,10 @@ export type IotHubResourceListByResourceGroupOutput =
  *
  * Get all the IoT hubs in a resource group.
  */
-export const IotHubResourceListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceListByResourceGroupInput,
-    outputSchema: IotHubResourceListByResourceGroupOutput,
-  }));
+export const IotHubResourceListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceListByResourceGroupInput,
+  outputSchema: IotHubResourceListByResourceGroupOutput,
+}));
 // Input Schema
 export const IotHubResourceListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1010,11 +999,10 @@ export type IotHubResourceListBySubscriptionOutput =
  *
  * Get all the IoT hubs in a subscription.
  */
-export const IotHubResourceListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: IotHubResourceListBySubscriptionInput,
-    outputSchema: IotHubResourceListBySubscriptionOutput,
-  }));
+export const IotHubResourceListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceListBySubscriptionInput,
+  outputSchema: IotHubResourceListBySubscriptionOutput,
+}));
 // Input Schema
 export const IotHubResourceListEventHubConsumerGroupsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1057,63 +1045,62 @@ export type IotHubResourceListEventHubConsumerGroupsOutput =
  *
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint.
  */
-export const IotHubResourceListEventHubConsumerGroups =
-  /*@__PURE__*/ API.make(() => ({
+export const IotHubResourceListEventHubConsumerGroups = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IotHubResourceListEventHubConsumerGroupsInput,
     outputSchema: IotHubResourceListEventHubConsumerGroupsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IotHubResourceListJobsInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs",
-    }),
-  );
+export const IotHubResourceListJobsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs",
+  }),
+);
 export type IotHubResourceListJobsInput =
   typeof IotHubResourceListJobsInput.Type;
 
 // Output Schema
-export const IotHubResourceListJobsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          jobId: Schema.optional(Schema.String),
-          startTimeUtc: Schema.optional(Schema.String),
-          endTimeUtc: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals([
-              "unknown",
-              "export",
-              "import",
-              "backup",
-              "readDeviceProperties",
-              "writeDeviceProperties",
-              "updateDeviceConfiguration",
-              "rebootDevice",
-              "factoryResetDevice",
-              "firmwareUpdate",
-            ]),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "unknown",
-              "enqueued",
-              "running",
-              "completed",
-              "failed",
-              "cancelled",
-            ]),
-          ),
-          failureReason: Schema.optional(Schema.String),
-          statusMessage: Schema.optional(Schema.String),
-          parentJobId: Schema.optional(Schema.String),
-        }),
-      ),
+export const IotHubResourceListJobsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        jobId: Schema.optional(Schema.String),
+        startTimeUtc: Schema.optional(Schema.String),
+        endTimeUtc: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "unknown",
+            "export",
+            "import",
+            "backup",
+            "readDeviceProperties",
+            "writeDeviceProperties",
+            "updateDeviceConfiguration",
+            "rebootDevice",
+            "factoryResetDevice",
+            "firmwareUpdate",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "unknown",
+            "enqueued",
+            "running",
+            "completed",
+            "failed",
+            "cancelled",
+          ]),
+        ),
+        failureReason: Schema.optional(Schema.String),
+        statusMessage: Schema.optional(Schema.String),
+        parentJobId: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotHubResourceListJobsOutput =
   typeof IotHubResourceListJobsOutput.Type;
 
@@ -1128,47 +1115,45 @@ export const IotHubResourceListJobs = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceListJobsOutput,
 }));
 // Input Schema
-export const IotHubResourceListKeysInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys",
-    }),
-  );
+export const IotHubResourceListKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys",
+  }),
+);
 export type IotHubResourceListKeysInput =
   typeof IotHubResourceListKeysInput.Type;
 
 // Output Schema
-export const IotHubResourceListKeysOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          keyName: Schema.String,
-          primaryKey: Schema.optional(Schema.String),
-          secondaryKey: Schema.optional(Schema.String),
-          rights: Schema.Literals([
-            "RegistryRead",
-            "RegistryWrite",
-            "ServiceConnect",
-            "DeviceConnect",
-            "RegistryRead, RegistryWrite",
-            "RegistryRead, ServiceConnect",
-            "RegistryRead, DeviceConnect",
-            "RegistryWrite, ServiceConnect",
-            "RegistryWrite, DeviceConnect",
-            "ServiceConnect, DeviceConnect",
-            "RegistryRead, RegistryWrite, ServiceConnect",
-            "RegistryRead, RegistryWrite, DeviceConnect",
-            "RegistryRead, ServiceConnect, DeviceConnect",
-            "RegistryWrite, ServiceConnect, DeviceConnect",
-            "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
-          ]),
-        }),
-      ),
+export const IotHubResourceListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        keyName: Schema.String,
+        primaryKey: Schema.optional(Schema.String),
+        secondaryKey: Schema.optional(Schema.String),
+        rights: Schema.Literals([
+          "RegistryRead",
+          "RegistryWrite",
+          "ServiceConnect",
+          "DeviceConnect",
+          "RegistryRead, RegistryWrite",
+          "RegistryRead, ServiceConnect",
+          "RegistryRead, DeviceConnect",
+          "RegistryWrite, ServiceConnect",
+          "RegistryWrite, DeviceConnect",
+          "ServiceConnect, DeviceConnect",
+          "RegistryRead, RegistryWrite, ServiceConnect",
+          "RegistryRead, RegistryWrite, DeviceConnect",
+          "RegistryRead, ServiceConnect, DeviceConnect",
+          "RegistryWrite, ServiceConnect, DeviceConnect",
+          "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
+        ]),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IotHubResourceListKeysOutput =
   typeof IotHubResourceListKeysOutput.Type;
 
@@ -1183,45 +1168,43 @@ export const IotHubResourceListKeys = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceListKeysOutput,
 }));
 // Input Schema
-export const IotHubResourceTestAllRoutesInput =
-  /*@__PURE__*/ Schema.Struct({
-    iotHubName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall",
-    }),
-  );
+export const IotHubResourceTestAllRoutesInput = /*@__PURE__*/ Schema.Struct({
+  iotHubName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall",
+  }),
+);
 export type IotHubResourceTestAllRoutesInput =
   typeof IotHubResourceTestAllRoutesInput.Type;
 
 // Output Schema
-export const IotHubResourceTestAllRoutesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    routes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              source: Schema.Literals([
-                "Invalid",
-                "DeviceMessages",
-                "TwinChangeEvents",
-                "DeviceLifecycleEvents",
-                "DeviceJobLifecycleEvents",
-                "DeviceConnectionStateEvents",
-              ]),
-              condition: Schema.optional(Schema.String),
-              endpointNames: Schema.Array(Schema.String),
-              isEnabled: Schema.Boolean,
-            }),
-          ),
-        }),
-      ),
+export const IotHubResourceTestAllRoutesOutput = /*@__PURE__*/ Schema.Struct({
+  routes: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            source: Schema.Literals([
+              "Invalid",
+              "DeviceMessages",
+              "TwinChangeEvents",
+              "DeviceLifecycleEvents",
+              "DeviceJobLifecycleEvents",
+              "DeviceConnectionStateEvents",
+            ]),
+            condition: Schema.optional(Schema.String),
+            endpointNames: Schema.Array(Schema.String),
+            isEnabled: Schema.Boolean,
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type IotHubResourceTestAllRoutesOutput =
   typeof IotHubResourceTestAllRoutesOutput.Type;
 
@@ -1239,52 +1222,50 @@ export const IotHubResourceTestAllRoutes = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceTestAllRoutesOutput,
 }));
 // Input Schema
-export const IotHubResourceTestRouteInput =
-  /*@__PURE__*/ Schema.Struct({
-    iotHubName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew",
-    }),
-  );
+export const IotHubResourceTestRouteInput = /*@__PURE__*/ Schema.Struct({
+  iotHubName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew",
+  }),
+);
 export type IotHubResourceTestRouteInput =
   typeof IotHubResourceTestRouteInput.Type;
 
 // Output Schema
-export const IotHubResourceTestRouteOutput =
-  /*@__PURE__*/ Schema.Struct({
-    result: Schema.optional(Schema.Literals(["undefined", "false", "true"])),
-    details: Schema.optional(
-      Schema.Struct({
-        compilationErrors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(Schema.String),
-              severity: Schema.optional(Schema.Literals(["error", "warning"])),
-              location: Schema.optional(
-                Schema.Struct({
-                  start: Schema.optional(
-                    Schema.Struct({
-                      line: Schema.optional(Schema.Number),
-                      column: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  end: Schema.optional(
-                    Schema.Struct({
-                      line: Schema.optional(Schema.Number),
-                      column: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
+export const IotHubResourceTestRouteOutput = /*@__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Literals(["undefined", "false", "true"])),
+  details: Schema.optional(
+    Schema.Struct({
+      compilationErrors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.Literals(["error", "warning"])),
+            location: Schema.optional(
+              Schema.Struct({
+                start: Schema.optional(
+                  Schema.Struct({
+                    line: Schema.optional(Schema.Number),
+                    column: Schema.optional(Schema.Number),
+                  }),
+                ),
+                end: Schema.optional(
+                  Schema.Struct({
+                    line: Schema.optional(Schema.Number),
+                    column: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type IotHubResourceTestRouteOutput =
   typeof IotHubResourceTestRouteOutput.Type;
 
@@ -1302,27 +1283,25 @@ export const IotHubResourceTestRoute = /*@__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceTestRouteOutput,
 }));
 // Input Schema
-export const IotHubResourceUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
-    }),
-  );
+export const IotHubResourceUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
+  }),
+);
 export type IotHubResourceUpdateInput = typeof IotHubResourceUpdateInput.Type;
 
 // Output Schema
-export const IotHubResourceUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const IotHubResourceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type IotHubResourceUpdateOutput = typeof IotHubResourceUpdateOutput.Type;
 
 // The operation
@@ -1417,25 +1396,73 @@ export type PrivateEndpointConnectionsDeleteOutput =
  *
  * Delete private endpoint connection with the specified name
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    privateLinkServiceConnectionState: Schema.Struct({
+      status: Schema.Literals([
+        "Pending",
+        "Approved",
+        "Rejected",
+        "Disconnected",
+      ]),
+      description: Schema.String,
+      actionsRequired: Schema.optional(Schema.String),
+    }),
+  }),
+});
+export type PrivateEndpointConnectionsGetOutput =
+  typeof PrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Get private endpoint connection
+ *
+ * Get private endpoint connection properties
+ */
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
+// Input Schema
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections",
+  }),
+);
+export type PrivateEndpointConnectionsListInput =
+  typeof PrivateEndpointConnectionsListInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1456,58 +1483,8 @@ export const PrivateEndpointConnectionsGetOutput =
         actionsRequired: Schema.optional(Schema.String),
       }),
     }),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
-
-// The operation
-/**
- * Get private endpoint connection
- *
- * Get private endpoint connection properties
- */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
-// Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections",
-    }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
-
-// Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      properties: Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-          ]),
-          description: Schema.String,
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-      }),
-    }),
-  );
+  }),
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -1517,11 +1494,10 @@ export type PrivateEndpointConnectionsListOutput =
  *
  * List private endpoint connection properties
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1566,34 +1542,33 @@ export type PrivateEndpointConnectionsUpdateOutput =
  *
  * Update the status of a private endpoint connection with the specified name
  */
-export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsUpdateInput,
-    outputSchema: PrivateEndpointConnectionsUpdateOutput,
-  }));
+export const PrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsUpdateInput,
+  outputSchema: PrivateEndpointConnectionsUpdateOutput,
+}));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources/{groupId}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources/{groupId}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      groupId: Schema.optional(Schema.String),
-      requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-      requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  }),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -1608,34 +1583,34 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: PrivateLinkResourcesGetOutput,
 }));
 // Input Schema
-export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources",
-    }),
-  );
+export const PrivateLinkResourcesListInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources",
+  }),
+);
 export type PrivateLinkResourcesListInput =
   typeof PrivateLinkResourcesListInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.Struct({
-            groupId: Schema.optional(Schema.String),
-            requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-            requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-          }),
+export const PrivateLinkResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        properties: Schema.Struct({
+          groupId: Schema.optional(Schema.String),
+          requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+          requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
         }),
-      ),
+      }),
     ),
-  });
+  ),
+});
 export type PrivateLinkResourcesListOutput =
   typeof PrivateLinkResourcesListOutput.Type;
 

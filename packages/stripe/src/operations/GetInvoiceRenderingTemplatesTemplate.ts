@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetInvoiceRenderingTemplatesTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     template: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -20,7 +20,7 @@ export type GetInvoiceRenderingTemplatesTemplateInput =
 
 // Output Schema
 export const GetInvoiceRenderingTemplatesTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -41,8 +41,9 @@ export type GetInvoiceRenderingTemplatesTemplateOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetInvoiceRenderingTemplatesTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoiceRenderingTemplatesTemplate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetInvoiceRenderingTemplatesTemplateInput,
     outputSchema: GetInvoiceRenderingTemplatesTemplateOutput,
-  }));
+  }),
+);

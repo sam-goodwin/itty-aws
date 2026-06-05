@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListBouncersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBouncersInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -19,8 +19,7 @@ export const ListBouncersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListBouncersInput = typeof ListBouncersInput.Type;
 
 // Output Schema
-export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListBouncersOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -41,7 +40,7 @@ export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       replicas_per_cell: Schema.Number,
       created_at: Schema.String,
       updated_at: Schema.String,
-      deleted_at: Schema.NullOr(Schema.String),
+      deleted_at: Schema.String,
       actor: Schema.Struct({
         id: Schema.String,
         display_name: Schema.String,
@@ -52,7 +51,7 @@ export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
+        deleted_at: Schema.String,
       }),
       parameters: Schema.Array(
         Schema.Struct({
@@ -103,16 +102,14 @@ export type ListBouncersOutput = typeof ListBouncersOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBouncers = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBouncersInput,
-    outputSchema: ListBouncersOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBouncers = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBouncersInput,
+  outputSchema: ListBouncersOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

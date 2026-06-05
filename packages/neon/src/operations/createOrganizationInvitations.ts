@@ -3,35 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateOrganizationInvitationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    org_id: Schema.String.pipe(T.PathParam()),
-    invitations: Schema.Array(
-      Schema.Struct({
-        email: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
-      }),
-    ),
-  }).pipe(
-    T.Http({ method: "POST", path: "/organizations/{org_id}/invitations" }),
-  );
+export const CreateOrganizationInvitationsInput = /*@__PURE__*/ Schema.Struct({
+  org_id: Schema.String.pipe(T.PathParam()),
+  invitations: Schema.Array(
+    Schema.Struct({
+      email: Schema.String,
+      role: Schema.Literals(["admin", "member"]),
+    }),
+  ),
+}).pipe(
+  T.Http({ method: "POST", path: "/organizations/{org_id}/invitations" }),
+);
 export type CreateOrganizationInvitationsInput =
   typeof CreateOrganizationInvitationsInput.Type;
 
 // Output Schema
-export const CreateOrganizationInvitationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invitations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        email: Schema.String,
-        org_id: Schema.String,
-        invited_by: Schema.String,
-        invited_at: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
-      }),
-    ),
-  });
+export const CreateOrganizationInvitationsOutput = /*@__PURE__*/ Schema.Struct({
+  invitations: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      email: Schema.String,
+      org_id: Schema.String,
+      invited_by: Schema.String,
+      invited_at: Schema.String,
+      role: Schema.Literals(["admin", "member"]),
+    }),
+  ),
+});
 export type CreateOrganizationInvitationsOutput =
   typeof CreateOrganizationInvitationsOutput.Type;
 
@@ -46,8 +44,7 @@ export type CreateOrganizationInvitationsOutput =
  *
  * @param org_id - The Neon organization ID
  */
-export const createOrganizationInvitations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateOrganizationInvitationsInput,
-    outputSchema: CreateOrganizationInvitationsOutput,
-  }));
+export const createOrganizationInvitations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateOrganizationInvitationsInput,
+  outputSchema: CreateOrganizationInvitationsOutput,
+}));

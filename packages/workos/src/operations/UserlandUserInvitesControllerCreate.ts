@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserInvitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     role_slug: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export type UserlandUserInvitesControllerCreateInput =
 
 // Output Schema
 export const UserlandUserInvitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -139,9 +139,10 @@ export type UserlandUserInvitesControllerCreateOutput =
  *
  * Sends an invitation email to the recipient.
  */
-export const UserlandUserInvitesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandUserInvitesControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandUserInvitesControllerCreateInput,
     outputSchema: UserlandUserInvitesControllerCreateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

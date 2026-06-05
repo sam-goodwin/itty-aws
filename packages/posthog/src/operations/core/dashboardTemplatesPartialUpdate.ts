@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DashboardTemplatesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardTemplatesPartialUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     template_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -40,18 +40,19 @@ export const DashboardTemplatesPartialUpdateInput =
       Schema.NullOr(Schema.Array(Schema.String)),
     ),
     is_featured: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/projects/{project_id}/dashboard_templates/{id}/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/projects/{project_id}/dashboard_templates/{id}/",
+  }),
+);
 export type DashboardTemplatesPartialUpdateInput =
   typeof DashboardTemplatesPartialUpdateInput.Type;
 
 // Output Schema
 export const DashboardTemplatesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     template_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -95,9 +96,8 @@ export type DashboardTemplatesPartialUpdateOutput =
  * @param id - A UUID string identifying this dashboard template.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardTemplatesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DashboardTemplatesPartialUpdateInput,
-    outputSchema: DashboardTemplatesPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const dashboardTemplatesPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardTemplatesPartialUpdateInput,
+  outputSchema: DashboardTemplatesPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

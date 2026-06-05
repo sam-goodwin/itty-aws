@@ -9,28 +9,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/checkNameAvailability",
-    }),
-  );
+export const AccountsCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/checkNameAvailability",
+  }),
+);
 export type AccountsCheckNameAvailabilityInput =
   typeof AccountsCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-    message: Schema.optional(Schema.String),
-  });
+export const AccountsCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  nameAvailable: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+  message: Schema.optional(Schema.String),
+});
 export type AccountsCheckNameAvailabilityOutput =
   typeof AccountsCheckNameAvailabilityOutput.Type;
 
@@ -43,33 +41,30 @@ export type AccountsCheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccountsCheckNameAvailabilityInput,
-    outputSchema: AccountsCheckNameAvailabilityOutput,
-  }));
+export const AccountsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCheckNameAvailabilityInput,
+  outputSchema: AccountsCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
-    }),
-  );
+export const AccountsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+  }),
+);
 export type AccountsCreateOrUpdateInput =
   typeof AccountsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AccountsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AccountsCreateOrUpdateOutput =
   typeof AccountsCreateOrUpdateOutput.Type;
 
@@ -81,14 +76,12 @@ export type AccountsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsCreateOrUpdateInput,
-    outputSchema: AccountsCreateOrUpdateOutput,
-  }),
-);
+export const AccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCreateOrUpdateInput,
+  outputSchema: AccountsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -101,7 +94,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -112,12 +105,12 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -130,7 +123,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -145,18 +138,16 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
-export const AccountsGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AccountsGetStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/status",
@@ -165,25 +156,24 @@ export const AccountsGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsGetStatusInput = typeof AccountsGetStatusInput.Type;
 
 // Output Schema
-export const AccountsGetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scopesStatuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          scope: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                stage: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
+export const AccountsGetStatusOutput = /*@__PURE__*/ Schema.Struct({
+  scopesStatuses: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        scope: Schema.optional(Schema.String),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              stage: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type AccountsGetStatusOutput = typeof AccountsGetStatusOutput.Type;
 
 // The operation
@@ -194,39 +184,37 @@ export type AccountsGetStatusOutput = typeof AccountsGetStatusOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsGetStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGetStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetStatusInput,
   outputSchema: AccountsGetStatusOutput,
 }));
 // Input Schema
-export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
-    }),
-  );
+export const AccountsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
+  }),
+);
 export type AccountsListByResourceGroupInput =
   typeof AccountsListByResourceGroupInput.Type;
 
 // Output Schema
-export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AccountsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type AccountsListByResourceGroupOutput =
   typeof AccountsListByResourceGroupOutput.Type;
 
@@ -238,40 +226,36 @@ export type AccountsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
+// Input Schema
+export const AccountsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
   }),
 );
-// Input Schema
-export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
-    }),
-  );
 export type AccountsListBySubscriptionInput =
   typeof AccountsListBySubscriptionInput.Type;
 
 // Output Schema
-export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AccountsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type AccountsListBySubscriptionOutput =
   typeof AccountsListBySubscriptionOutput.Type;
 
@@ -282,14 +266,12 @@ export type AccountsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -302,7 +284,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -317,32 +299,30 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const ModelingCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
-    }),
-  );
+export const ModelingCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+  }),
+);
 export type ModelingCreateOrUpdateInput =
   typeof ModelingCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ModelingCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ModelingCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ModelingCreateOrUpdateOutput =
   typeof ModelingCreateOrUpdateOutput.Type;
 
@@ -354,14 +334,12 @@ export type ModelingCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ModelingCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ModelingCreateOrUpdateInput,
-    outputSchema: ModelingCreateOrUpdateOutput,
-  }),
-);
+export const ModelingCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModelingCreateOrUpdateInput,
+  outputSchema: ModelingCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -374,7 +352,7 @@ export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModelingDeleteInput = typeof ModelingDeleteInput.Type;
 
 // Output Schema
-export const ModelingDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ModelingDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ModelingDeleteOutput = typeof ModelingDeleteOutput.Type;
 
 // The operation
@@ -385,12 +363,12 @@ export type ModelingDeleteOutput = typeof ModelingDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ModelingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingDeleteInput,
   outputSchema: ModelingDeleteOutput,
 }));
 // Input Schema
-export const ModelingGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -403,7 +381,7 @@ export const ModelingGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModelingGetInput = typeof ModelingGetInput.Type;
 
 // Output Schema
-export const ModelingGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -418,39 +396,37 @@ export type ModelingGetOutput = typeof ModelingGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ModelingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingGetInput,
   outputSchema: ModelingGetOutput,
 }));
 // Input Schema
-export const ModelingListByAccountResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
-    }),
-  );
+export const ModelingListByAccountResourceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
+  }),
+);
 export type ModelingListByAccountResourceInput =
   typeof ModelingListByAccountResourceInput.Type;
 
 // Output Schema
-export const ModelingListByAccountResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ModelingListByAccountResourceOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ModelingListByAccountResourceOutput =
   typeof ModelingListByAccountResourceOutput.Type;
 
@@ -462,13 +438,12 @@ export type ModelingListByAccountResourceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ModelingListByAccountResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ModelingListByAccountResourceInput,
-    outputSchema: ModelingListByAccountResourceOutput,
-  }));
+export const ModelingListByAccountResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModelingListByAccountResourceInput,
+  outputSchema: ModelingListByAccountResourceOutput,
+}));
 // Input Schema
-export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -481,7 +456,7 @@ export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ModelingUpdateInput = typeof ModelingUpdateInput.Type;
 
 // Output Schema
-export const ModelingUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -496,12 +471,12 @@ export type ModelingUpdateOutput = typeof ModelingUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ModelingUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingUpdateInput,
   outputSchema: ModelingUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -512,7 +487,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -543,81 +518,79 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OperationStatusesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.RecommendationsService/locations/{location}/operationStatuses/{operationId}",
-    }),
-  );
+export const OperationStatusesGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.RecommendationsService/locations/{location}/operationStatuses/{operationId}",
+  }),
+);
 export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
 
 // Output Schema
-export const OperationStatusesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    percentComplete: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const OperationStatusesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
         ),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
 export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
 
 // The operation
@@ -628,34 +601,32 @@ export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationStatusesGetInput,
-    outputSchema: OperationStatusesGetOutput,
+export const OperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusesGetInput,
+  outputSchema: OperationStatusesGetOutput,
+}));
+// Input Schema
+export const ServiceEndpointsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
   }),
 );
-// Input Schema
-export const ServiceEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-    }),
-  );
 export type ServiceEndpointsCreateOrUpdateInput =
   typeof ServiceEndpointsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServiceEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceEndpointsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ServiceEndpointsCreateOrUpdateOutput =
   typeof ServiceEndpointsCreateOrUpdateOutput.Type;
 
@@ -667,29 +638,26 @@ export type ServiceEndpointsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServiceEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ServiceEndpointsCreateOrUpdateInput,
-    outputSchema: ServiceEndpointsCreateOrUpdateOutput,
-  }));
+export const ServiceEndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceEndpointsCreateOrUpdateInput,
+  outputSchema: ServiceEndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServiceEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-    }),
-  );
+export const ServiceEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+  }),
+);
 export type ServiceEndpointsDeleteInput =
   typeof ServiceEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ServiceEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServiceEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServiceEndpointsDeleteOutput =
   typeof ServiceEndpointsDeleteOutput.Type;
 
@@ -701,33 +669,29 @@ export type ServiceEndpointsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServiceEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceEndpointsDeleteInput,
-    outputSchema: ServiceEndpointsDeleteOutput,
+export const ServiceEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceEndpointsDeleteInput,
+  outputSchema: ServiceEndpointsDeleteOutput,
+}));
+// Input Schema
+export const ServiceEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
   }),
 );
-// Input Schema
-export const ServiceEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-    }),
-  );
 export type ServiceEndpointsGetInput = typeof ServiceEndpointsGetInput.Type;
 
 // Output Schema
-export const ServiceEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ServiceEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ServiceEndpointsGetOutput = typeof ServiceEndpointsGetOutput.Type;
 
 // The operation
@@ -738,13 +702,13 @@ export type ServiceEndpointsGetOutput = typeof ServiceEndpointsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServiceEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceEndpointsGetInput,
   outputSchema: ServiceEndpointsGetOutput,
 }));
 // Input Schema
 export const ServiceEndpointsListByAccountResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -759,7 +723,7 @@ export type ServiceEndpointsListByAccountResourceInput =
 
 // Output Schema
 export const ServiceEndpointsListByAccountResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -782,33 +746,32 @@ export type ServiceEndpointsListByAccountResourceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServiceEndpointsListByAccountResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceEndpointsListByAccountResource = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ServiceEndpointsListByAccountResourceInput,
     outputSchema: ServiceEndpointsListByAccountResourceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ServiceEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
-    }),
-  );
+export const ServiceEndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+  }),
+);
 export type ServiceEndpointsUpdateInput =
   typeof ServiceEndpointsUpdateInput.Type;
 
 // Output Schema
-export const ServiceEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ServiceEndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ServiceEndpointsUpdateOutput =
   typeof ServiceEndpointsUpdateOutput.Type;
 
@@ -820,9 +783,7 @@ export type ServiceEndpointsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServiceEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceEndpointsUpdateInput,
-    outputSchema: ServiceEndpointsUpdateOutput,
-  }),
-);
+export const ServiceEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceEndpointsUpdateInput,
+  outputSchema: ServiceEndpointsUpdateOutput,
+}));

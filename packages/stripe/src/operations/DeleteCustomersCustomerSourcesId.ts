@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteCustomersCustomerSourcesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type DeleteCustomersCustomerSourcesIdInput =
 
 // Output Schema
 export const DeleteCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type DeleteCustomersCustomerSourcesIdOutput =
   typeof DeleteCustomersCustomerSourcesIdOutput.Type;
 
@@ -30,8 +30,7 @@ export type DeleteCustomersCustomerSourcesIdOutput =
  *
  * <p>Delete a specified source for a given customer.</p>
  */
-export const DeleteCustomersCustomerSourcesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteCustomersCustomerSourcesIdInput,
-    outputSchema: DeleteCustomersCustomerSourcesIdOutput,
-  }));
+export const DeleteCustomersCustomerSourcesId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCustomersCustomerSourcesIdInput,
+  outputSchema: DeleteCustomersCustomerSourcesIdOutput,
+}));

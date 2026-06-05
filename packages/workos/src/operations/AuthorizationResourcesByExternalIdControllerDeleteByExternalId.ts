@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput 
 
 // Output Schema
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
   typeof AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput.Type;
 
@@ -37,7 +37,7 @@ export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput
  * @param cascade_delete - If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail.
  */
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput,
     outputSchema:

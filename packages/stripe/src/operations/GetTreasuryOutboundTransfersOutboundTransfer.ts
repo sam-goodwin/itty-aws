@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTreasuryOutboundTransfersOutboundTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outbound_transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTreasuryOutboundTransfersOutboundTransferInput =
 
 // Output Schema
 export const GetTreasuryOutboundTransfersOutboundTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -98,7 +98,7 @@ export type GetTreasuryOutboundTransfersOutboundTransferOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryOutboundTransfersOutboundTransfer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryOutboundTransfersOutboundTransferInput,
     outputSchema: GetTreasuryOutboundTransfersOutboundTransferOutput,
   }));

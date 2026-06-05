@@ -4,17 +4,15 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/nl_search_models/{modelId}" }));
+export const DeleteNLSearchModelInput = /*@__PURE__*/ Schema.Struct({
+  modelId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/nl_search_models/{modelId}" }));
 export type DeleteNLSearchModelInput = typeof DeleteNLSearchModelInput.Type;
 
 // Output Schema
-export const DeleteNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  });
+export const DeleteNLSearchModelOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
 export type DeleteNLSearchModelOutput = typeof DeleteNLSearchModelOutput.Type;
 
 // The operation
@@ -25,7 +23,7 @@ export type DeleteNLSearchModelOutput = typeof DeleteNLSearchModelOutput.Type;
  *
  * @param modelId - The ID of the NL search model to delete
  */
-export const deleteNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNLSearchModel = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteNLSearchModelInput,
   outputSchema: DeleteNLSearchModelOutput,
   errors: [NotFound] as const,

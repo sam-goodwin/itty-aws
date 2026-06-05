@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     code_sample: Schema.String,
     file_name: Schema.String,
@@ -22,7 +22,7 @@ export type ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
 
 // Output Schema
 export const ErrorTrackingGitProviderFileLinksResolveGithubRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     found: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export type ErrorTrackingGitProviderFileLinksResolveGithubRetrieveOutput =
  * @param repository - Repository name.
  */
 export const errorTrackingGitProviderFileLinksResolveGithubRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput,
     outputSchema: ErrorTrackingGitProviderFileLinksResolveGithubRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

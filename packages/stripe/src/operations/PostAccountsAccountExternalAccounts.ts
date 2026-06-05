@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostAccountsAccountExternalAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     default_for_currency: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -22,7 +22,7 @@ export type PostAccountsAccountExternalAccountsInput =
 
 // Output Schema
 export const PostAccountsAccountExternalAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type PostAccountsAccountExternalAccountsOutput =
   typeof PostAccountsAccountExternalAccountsOutput.Type;
 
@@ -32,8 +32,9 @@ export type PostAccountsAccountExternalAccountsOutput =
  *
  * <p>Create an external account for a given account.</p>
  */
-export const PostAccountsAccountExternalAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccountsAccountExternalAccounts = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostAccountsAccountExternalAccountsInput,
     outputSchema: PostAccountsAccountExternalAccountsOutput,
-  }));
+  }),
+);

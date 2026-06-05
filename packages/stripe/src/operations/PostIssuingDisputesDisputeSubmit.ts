@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostIssuingDisputesDisputeSubmitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dispute: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Unknown),
@@ -20,7 +20,7 @@ export type PostIssuingDisputesDisputeSubmitInput =
 
 // Output Schema
 export const PostIssuingDisputesDisputeSubmitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.optional(
       Schema.NullOr(
@@ -249,8 +249,7 @@ export type PostIssuingDisputesDisputeSubmitOutput =
  *
  * <p>Submits an Issuing <code>Dispute</code> to the card network. Stripe validates that all evidence fields required for the dispute’s reason are present. For more details, see <a href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute reasons and evidence</a>.</p>
  */
-export const PostIssuingDisputesDisputeSubmit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostIssuingDisputesDisputeSubmitInput,
-    outputSchema: PostIssuingDisputesDisputeSubmitOutput,
-  }));
+export const PostIssuingDisputesDisputeSubmit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingDisputesDisputeSubmitInput,
+  outputSchema: PostIssuingDisputesDisputeSubmitOutput,
+}));

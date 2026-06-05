@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateGroupClusterCollStatPinnedNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type UpdateGroupClusterCollStatPinnedNamespacesInput =
 
 // Output Schema
 export const UpdateGroupClusterCollStatPinnedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UpdateGroupClusterCollStatPinnedNamespacesOutput =
   typeof UpdateGroupClusterCollStatPinnedNamespacesOutput.Type;
 
@@ -37,7 +37,7 @@ export type UpdateGroupClusterCollStatPinnedNamespacesOutput =
  * @param clusterName - Human-readable label that identifies the cluster to pin namespaces to.
  */
 export const updateGroupClusterCollStatPinnedNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterCollStatPinnedNamespacesInput,
     outputSchema: UpdateGroupClusterCollStatPinnedNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

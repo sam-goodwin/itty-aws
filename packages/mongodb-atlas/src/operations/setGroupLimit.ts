@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const SetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SetGroupLimitInput = /*@__PURE__*/ Schema.Struct({
   limitName: Schema.Literals([
     "atlas.project.security.databaseAccess.users",
     "atlas.project.deployment.clusters",
@@ -32,7 +32,7 @@ export const SetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SetGroupLimitInput = typeof SetGroupLimitInput.Type;
 
 // Output Schema
-export const SetGroupLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SetGroupLimitOutput = /*@__PURE__*/ Schema.Void;
 export type SetGroupLimitOutput = typeof SetGroupLimitOutput.Type;
 
 // The operation
@@ -65,7 +65,7 @@ export type SetGroupLimitOutput = typeof SetGroupLimitOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const setGroupLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const setGroupLimit = /*@__PURE__*/ API.make(() => ({
   inputSchema: SetGroupLimitInput,
   outputSchema: SetGroupLimitOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

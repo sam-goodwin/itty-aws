@@ -4,23 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const InsightsSharingPasswordsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsightsSharingPasswordsDestroyInput = /*@__PURE__*/ Schema.Struct(
+  {
     insight_id: Schema.Number.pipe(T.PathParam()),
     password_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/{password_id}/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/{password_id}/",
+  }),
+);
 export type InsightsSharingPasswordsDestroyInput =
   typeof InsightsSharingPasswordsDestroyInput.Type;
 
 // Output Schema
-export const InsightsSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InsightsSharingPasswordsDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type InsightsSharingPasswordsDestroyOutput =
   typeof InsightsSharingPasswordsDestroyOutput.Type;
 
@@ -30,9 +30,8 @@ export type InsightsSharingPasswordsDestroyOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsSharingPasswordsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: InsightsSharingPasswordsDestroyInput,
-    outputSchema: InsightsSharingPasswordsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const insightsSharingPasswordsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsSharingPasswordsDestroyInput,
+  outputSchema: InsightsSharingPasswordsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

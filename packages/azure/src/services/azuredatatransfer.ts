@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AzureDataTransferListApprovedSchemasInput =
@@ -49,21 +49,23 @@ export type AzureDataTransferListApprovedSchemasOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const AzureDataTransferListApprovedSchemas =
-  /*@__PURE__*/ API.make(() => ({
+export const AzureDataTransferListApprovedSchemas = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureDataTransferListApprovedSchemasInput,
     outputSchema: AzureDataTransferListApprovedSchemasOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AzureDataTransferValidateSchemaInput =
-  /*@__PURE__*/ Schema.Struct({
+export const AzureDataTransferValidateSchemaInput = /*@__PURE__*/ Schema.Struct(
+  {
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.AzureDataTransfer/validateSchema",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.AzureDataTransfer/validateSchema",
+  }),
+);
 export type AzureDataTransferValidateSchemaInput =
   typeof AzureDataTransferValidateSchemaInput.Type;
 
@@ -82,48 +84,45 @@ export type AzureDataTransferValidateSchemaOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const AzureDataTransferValidateSchema =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AzureDataTransferValidateSchemaInput,
-    outputSchema: AzureDataTransferValidateSchemaOutput,
-  }));
+export const AzureDataTransferValidateSchema = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureDataTransferValidateSchemaInput,
+  outputSchema: AzureDataTransferValidateSchemaOutput,
+}));
 // Input Schema
-export const ConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
-    }),
-  );
+export const ConnectionsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+  }),
+);
 export type ConnectionsCreateOrUpdateInput =
   typeof ConnectionsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectionsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionsCreateOrUpdateOutput =
   typeof ConnectionsCreateOrUpdateOutput.Type;
 
@@ -270,23 +269,22 @@ export const ConnectionsLink = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsLinkOutput,
 }));
 // Input Schema
-export const ConnectionsListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections",
-    }),
-  );
+export const ConnectionsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections",
+  }),
+);
 export type ConnectionsListByResourceGroupInput =
   typeof ConnectionsListByResourceGroupInput.Type;
 
 // Output Schema
-export const ConnectionsListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ConnectionsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -319,7 +317,8 @@ export const ConnectionsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ConnectionsListByResourceGroupOutput =
   typeof ConnectionsListByResourceGroupOutput.Type;
 
@@ -331,61 +330,48 @@ export type ConnectionsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectionsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ConnectionsListByResourceGroupInput,
-    outputSchema: ConnectionsListByResourceGroupOutput,
-  }));
+export const ConnectionsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsListByResourceGroupInput,
+  outputSchema: ConnectionsListByResourceGroupOutput,
+}));
 // Input Schema
-export const ConnectionsListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/connections",
-    }),
-  );
+export const ConnectionsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/connections",
+  }),
+);
 export type ConnectionsListBySubscriptionInput =
   typeof ConnectionsListBySubscriptionInput.Type;
 
 // Output Schema
-export const ConnectionsListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ConnectionsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConnectionsListBySubscriptionOutput =
   typeof ConnectionsListBySubscriptionOutput.Type;
 
@@ -396,11 +382,10 @@ export type ConnectionsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ConnectionsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ConnectionsListBySubscriptionInput,
-    outputSchema: ConnectionsListBySubscriptionOutput,
-  }));
+export const ConnectionsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsListBySubscriptionInput,
+  outputSchema: ConnectionsListBySubscriptionOutput,
+}));
 // Input Schema
 export const ConnectionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -416,26 +401,25 @@ export const ConnectionsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
 
 // Output Schema
-export const ConnectionsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ConnectionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConnectionsUpdateOutput = typeof ConnectionsUpdateOutput.Type;
 
 // The operation
@@ -452,42 +436,40 @@ export const ConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsUpdateOutput,
 }));
 // Input Schema
-export const FlowsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
-    }),
-  );
+export const FlowsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+  }),
+);
 export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FlowsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FlowsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FlowsCreateOrUpdateOutput = typeof FlowsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -640,43 +622,41 @@ export const FlowsEnable = /*@__PURE__*/ API.make(() => ({
   outputSchema: FlowsEnableOutput,
 }));
 // Input Schema
-export const FlowsGeneratePassphraseInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase",
-    }),
-  );
+export const FlowsGeneratePassphraseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase",
+  }),
+);
 export type FlowsGeneratePassphraseInput =
   typeof FlowsGeneratePassphraseInput.Type;
 
 // Output Schema
-export const FlowsGeneratePassphraseOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FlowsGeneratePassphraseOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FlowsGeneratePassphraseOutput =
   typeof FlowsGeneratePassphraseOutput.Type;
 
@@ -780,33 +760,30 @@ export type FlowsGetDestinationEndpointPortsOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGetDestinationEndpointPorts =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FlowsGetDestinationEndpointPortsInput,
-    outputSchema: FlowsGetDestinationEndpointPortsOutput,
-  }));
+export const FlowsGetDestinationEndpointPorts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsGetDestinationEndpointPortsInput,
+  outputSchema: FlowsGetDestinationEndpointPortsOutput,
+}));
 // Input Schema
-export const FlowsGetDestinationEndpointsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpoints",
-    }),
-  );
+export const FlowsGetDestinationEndpointsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpoints",
+  }),
+);
 export type FlowsGetDestinationEndpointsInput =
   typeof FlowsGetDestinationEndpointsInput.Type;
 
 // Output Schema
-export const FlowsGetDestinationEndpointsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    endpoints: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const FlowsGetDestinationEndpointsOutput = /*@__PURE__*/ Schema.Struct({
+  endpoints: Schema.optional(Schema.Array(Schema.String)),
+});
 export type FlowsGetDestinationEndpointsOutput =
   typeof FlowsGetDestinationEndpointsOutput.Type;
 
@@ -820,33 +797,30 @@ export type FlowsGetDestinationEndpointsOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGetDestinationEndpoints =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FlowsGetDestinationEndpointsInput,
-    outputSchema: FlowsGetDestinationEndpointsOutput,
-  }));
+export const FlowsGetDestinationEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsGetDestinationEndpointsInput,
+  outputSchema: FlowsGetDestinationEndpointsOutput,
+}));
 // Input Schema
-export const FlowsGetSourceAddressesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getSourceAddresses",
-    }),
-  );
+export const FlowsGetSourceAddressesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getSourceAddresses",
+  }),
+);
 export type FlowsGetSourceAddressesInput =
   typeof FlowsGetSourceAddressesInput.Type;
 
 // Output Schema
-export const FlowsGetSourceAddressesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const FlowsGetSourceAddressesOutput = /*@__PURE__*/ Schema.Struct({
+  sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
+});
 export type FlowsGetSourceAddressesOutput =
   typeof FlowsGetSourceAddressesOutput.Type;
 
@@ -865,27 +839,27 @@ export const FlowsGetSourceAddresses = /*@__PURE__*/ API.make(() => ({
   outputSchema: FlowsGetSourceAddressesOutput,
 }));
 // Input Schema
-export const FlowsGetStreamConnectionStringInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getStreamConnectionString",
-    }),
-  );
+export const FlowsGetStreamConnectionStringInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getStreamConnectionString",
+  }),
+);
 export type FlowsGetStreamConnectionStringInput =
   typeof FlowsGetStreamConnectionStringInput.Type;
 
 // Output Schema
-export const FlowsGetStreamConnectionStringOutput =
-  /*@__PURE__*/ Schema.Struct({
-    connectionString: Schema.optional(SensitiveString),
-  });
+export const FlowsGetStreamConnectionStringOutput = /*@__PURE__*/ Schema.Struct(
+  {
+    connectionString: Schema.optional(SensitiveOutputString),
+  },
+);
 export type FlowsGetStreamConnectionStringOutput =
   typeof FlowsGetStreamConnectionStringOutput.Type;
 
@@ -899,11 +873,10 @@ export type FlowsGetStreamConnectionStringOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGetStreamConnectionString =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FlowsGetStreamConnectionStringInput,
-    outputSchema: FlowsGetStreamConnectionStringOutput,
-  }));
+export const FlowsGetStreamConnectionString = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsGetStreamConnectionStringInput,
+  outputSchema: FlowsGetStreamConnectionStringOutput,
+}));
 // Input Schema
 export const FlowsLinkInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -956,56 +929,44 @@ export const FlowsLink = /*@__PURE__*/ API.make(() => ({
   outputSchema: FlowsLinkOutput,
 }));
 // Input Schema
-export const FlowsListByConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows",
-    }),
-  );
+export const FlowsListByConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows",
+  }),
+);
 export type FlowsListByConnectionInput = typeof FlowsListByConnectionInput.Type;
 
 // Output Schema
-export const FlowsListByConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FlowsListByConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FlowsListByConnectionOutput =
   typeof FlowsListByConnectionOutput.Type;
 
@@ -1073,49 +1034,46 @@ export type FlowsSetDestinationEndpointPortsOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsSetDestinationEndpointPorts =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FlowsSetDestinationEndpointPortsInput,
-    outputSchema: FlowsSetDestinationEndpointPortsOutput,
-  }));
+export const FlowsSetDestinationEndpointPorts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsSetDestinationEndpointPortsInput,
+  outputSchema: FlowsSetDestinationEndpointPortsOutput,
+}));
 // Input Schema
-export const FlowsSetDestinationEndpointsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints",
-    }),
-  );
+export const FlowsSetDestinationEndpointsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints",
+  }),
+);
 export type FlowsSetDestinationEndpointsInput =
   typeof FlowsSetDestinationEndpointsInput.Type;
 
 // Output Schema
-export const FlowsSetDestinationEndpointsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FlowsSetDestinationEndpointsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FlowsSetDestinationEndpointsOutput =
   typeof FlowsSetDestinationEndpointsOutput.Type;
 
@@ -1129,48 +1087,45 @@ export type FlowsSetDestinationEndpointsOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsSetDestinationEndpoints =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: FlowsSetDestinationEndpointsInput,
-    outputSchema: FlowsSetDestinationEndpointsOutput,
-  }));
+export const FlowsSetDestinationEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsSetDestinationEndpointsInput,
+  outputSchema: FlowsSetDestinationEndpointsOutput,
+}));
 // Input Schema
-export const FlowsSetPassphraseInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase",
-    }),
-  );
+export const FlowsSetPassphraseInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase",
+  }),
+);
 export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
 
 // Output Schema
-export const FlowsSetPassphraseOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FlowsSetPassphraseOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FlowsSetPassphraseOutput = typeof FlowsSetPassphraseOutput.Type;
 
 // The operation
@@ -1188,43 +1143,41 @@ export const FlowsSetPassphrase = /*@__PURE__*/ API.make(() => ({
   outputSchema: FlowsSetPassphraseOutput,
 }));
 // Input Schema
-export const FlowsSetSourceAddressesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses",
-    }),
-  );
+export const FlowsSetSourceAddressesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  flowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses",
+  }),
+);
 export type FlowsSetSourceAddressesInput =
   typeof FlowsSetSourceAddressesInput.Type;
 
 // Output Schema
-export const FlowsSetSourceAddressesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FlowsSetSourceAddressesOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FlowsSetSourceAddressesOutput =
   typeof FlowsSetSourceAddressesOutput.Type;
 
@@ -1294,65 +1247,63 @@ export const FlowsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: FlowsUpdateOutput,
 }));
 // Input Schema
-export const ListFlowsByPipelineListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listFlows",
-    }),
-  );
+export const ListFlowsByPipelineListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listFlows",
+  }),
+);
 export type ListFlowsByPipelineListInput =
   typeof ListFlowsByPipelineListInput.Type;
 
 // Output Schema
-export const ListFlowsByPipelineListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          flows: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                systemData: Schema.optional(
-                  Schema.Struct({
-                    createdBy: Schema.optional(Schema.String),
-                    createdByType: Schema.optional(
-                      Schema.Literals([
-                        "User",
-                        "Application",
-                        "ManagedIdentity",
-                        "Key",
-                      ]),
-                    ),
-                    createdAt: Schema.optional(Schema.String),
-                    lastModifiedBy: Schema.optional(Schema.String),
-                    lastModifiedByType: Schema.optional(
-                      Schema.Literals([
-                        "User",
-                        "Application",
-                        "ManagedIdentity",
-                        "Key",
-                      ]),
-                    ),
-                    lastModifiedAt: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
+export const ListFlowsByPipelineListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        flows: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type ListFlowsByPipelineListOutput =
   typeof ListFlowsByPipelineListOutput.Type;
 
@@ -1370,188 +1321,41 @@ export const ListFlowsByPipelineList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ListFlowsByPipelineListOutput,
 }));
 // Input Schema
-export const ListPendingConnectionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections",
-    }),
-  );
+export const ListPendingConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections",
+  }),
+);
 export type ListPendingConnectionsListInput =
   typeof ListPendingConnectionsListInput.Type;
 
 // Output Schema
-export const ListPendingConnectionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        subscriptionId: Schema.optional(Schema.String),
-        pipeline: Schema.String,
-        direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-        justification: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals(["InReview", "Approved", "Rejected", "Accepted"]),
+export const ListPendingConnectionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      subscriptionId: Schema.optional(Schema.String),
+      pipeline: Schema.String,
+      direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+      justification: Schema.optional(Schema.String),
+      status: Schema.optional(
+        Schema.Literals(["InReview", "Approved", "Rejected", "Accepted"]),
+      ),
+      forceDisabledStatus: Schema.optional(
+        Schema.Array(
+          Schema.Literals(["ConnectionForceDisabled", "FlowTypeForceDisabled"]),
         ),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        statusReason: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedConnectionId: Schema.optional(Schema.String),
-        flowTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Unknown",
-              "Complex",
-              "DevSecOps",
-              "Messaging",
-              "Mission",
-              "MicrosoftInternal",
-              "BasicFiles",
-              "Data",
-              "Standard",
-              "StreamingVideo",
-              "Opaque",
-              "MissionOpaqueXML",
-              "DiskImages",
-              "API",
-            ]),
-          ),
-        ),
-        requirementId: Schema.optional(Schema.String),
-        remoteSubscriptionId: Schema.optional(Schema.String),
-        approver: Schema.optional(Schema.String),
-        pin: Schema.optional(Schema.String),
-        dateSubmitted: Schema.optional(Schema.String),
-        primaryContact: Schema.optional(Schema.String),
-        secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schemas: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              connectionId: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.Literals(["New", "Approved"])),
-              name: Schema.optional(Schema.String),
-              content: Schema.optional(Schema.String),
-              direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-              schemaUri: Schema.optional(Schema.String),
-              schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-            }),
-          ),
-        ),
-        schemaUris: Schema.optional(Schema.Array(Schema.String)),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
-export type ListPendingConnectionsListOutput =
-  typeof ListPendingConnectionsListOutput.Type;
-
-// The operation
-/**
- * Lists all pending remote connections that are linkable to this connection.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectionName - The name for the connection to perform the operation on.
- */
-export const ListPendingConnectionsList = /*@__PURE__*/ API.make(() => ({
-  inputSchema: ListPendingConnectionsListInput,
-  outputSchema: ListPendingConnectionsListOutput,
-}));
-// Input Schema
-export const ListPendingFlowsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingFlows",
-    }),
-  );
-export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
-
-// Output Schema
-export const ListPendingFlowsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        subscriptionId: Schema.optional(Schema.String),
-        connectionId: Schema.optional(Schema.String),
-        connection: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            subscriptionName: Schema.optional(Schema.String),
-          }),
-        ),
-        flowId: Schema.optional(Schema.String),
-        keyVaultUri: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedFlowId: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        storageAccountName: Schema.optional(Schema.String),
-        storageAccountId: Schema.optional(Schema.String),
-        storageContainerName: Schema.optional(Schema.String),
-        storageTableName: Schema.optional(Schema.String),
-        serviceBusQueueId: Schema.optional(Schema.String),
-        flowType: Schema.optional(
+      ),
+      statusReason: Schema.optional(Schema.String),
+      linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
+      linkedConnectionId: Schema.optional(Schema.String),
+      flowTypes: Schema.optional(
+        Schema.Array(
           Schema.Literals([
             "Unknown",
             "Complex",
@@ -1569,12 +1373,20 @@ export const ListPendingFlowsListOutput =
             "API",
           ]),
         ),
-        dataType: Schema.optional(Schema.Literals(["Blob", "Table"])),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schema: Schema.optional(
+      ),
+      requirementId: Schema.optional(Schema.String),
+      remoteSubscriptionId: Schema.optional(Schema.String),
+      approver: Schema.optional(Schema.String),
+      pin: Schema.optional(Schema.String),
+      dateSubmitted: Schema.optional(Schema.String),
+      primaryContact: Schema.optional(Schema.String),
+      secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+      ),
+      policies: Schema.optional(Schema.Array(Schema.String)),
+      schemas: Schema.optional(
+        Schema.Array(
           Schema.Struct({
             id: Schema.optional(Schema.String),
             connectionId: Schema.optional(Schema.String),
@@ -1586,73 +1398,182 @@ export const ListPendingFlowsListOutput =
             schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
           }),
         ),
-        messagingOptions: Schema.optional(
-          Schema.Struct({
-            billingTier: Schema.optional(
-              Schema.Literals(["BlobTransport", "Standard", "Premium"]),
-            ),
-          }),
+      ),
+      schemaUris: Schema.optional(Schema.Array(Schema.String)),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      location: Schema.String,
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type ListPendingConnectionsListOutput =
+  typeof ListPendingConnectionsListOutput.Type;
+
+// The operation
+/**
+ * Lists all pending remote connections that are linkable to this connection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectionName - The name for the connection to perform the operation on.
+ */
+export const ListPendingConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListPendingConnectionsListInput,
+  outputSchema: ListPendingConnectionsListOutput,
+}));
+// Input Schema
+export const ListPendingFlowsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingFlows",
+  }),
+);
+export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
+
+// Output Schema
+export const ListPendingFlowsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      subscriptionId: Schema.optional(Schema.String),
+      connectionId: Schema.optional(Schema.String),
+      connection: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          id: Schema.String,
+          location: Schema.optional(Schema.String),
+          subscriptionName: Schema.optional(Schema.String),
+        }),
+      ),
+      flowId: Schema.optional(Schema.String),
+      keyVaultUri: Schema.optional(Schema.String),
+      linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
+      linkedFlowId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      forceDisabledStatus: Schema.optional(
+        Schema.Array(
+          Schema.Literals(["ConnectionForceDisabled", "FlowTypeForceDisabled"]),
         ),
-        apiFlowOptions: Schema.optional(
-          Schema.Struct({
-            remoteEndpoint: Schema.optional(Schema.String),
-            cname: Schema.optional(Schema.String),
-            apiMode: Schema.optional(Schema.Literals(["SDK", "Endpoint"])),
-            identityTranslation: Schema.optional(
-              Schema.Literals(["UserIdentity", "ServiceIdentity"]),
-            ),
-            senderClientId: Schema.optional(Schema.String),
-            remoteCallingModeClientId: Schema.optional(Schema.String),
-            audienceOverride: Schema.optional(Schema.String),
-          }),
-        ),
-        customerManagedKeyVaultUri: Schema.optional(Schema.String),
-        streamId: Schema.optional(Schema.String),
-        streamProtocol: Schema.optional(Schema.Literals(["UDP", "SRT", "RTP"])),
-        streamLatency: Schema.optional(Schema.Number),
-        passphrase: Schema.optional(Schema.String),
-        sourceAddresses: Schema.optional(
-          Schema.Struct({
-            sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
-        destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
-        eventHubId: Schema.optional(Schema.String),
-        consumerGroup: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+      ),
+      storageAccountName: Schema.optional(Schema.String),
+      storageAccountId: Schema.optional(Schema.String),
+      storageContainerName: Schema.optional(Schema.String),
+      storageTableName: Schema.optional(Schema.String),
+      serviceBusQueueId: Schema.optional(Schema.String),
+      flowType: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Complex",
+          "DevSecOps",
+          "Messaging",
+          "Mission",
+          "MicrosoftInternal",
+          "BasicFiles",
+          "Data",
+          "Standard",
+          "StreamingVideo",
+          "Opaque",
+          "MissionOpaqueXML",
+          "DiskImages",
+          "API",
+        ]),
+      ),
+      dataType: Schema.optional(Schema.Literals(["Blob", "Table"])),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+      ),
+      policies: Schema.optional(Schema.Array(Schema.String)),
+      schema: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          connectionId: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.Literals(["New", "Approved"])),
+          name: Schema.optional(Schema.String),
+          content: Schema.optional(Schema.String),
+          direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+          schemaUri: Schema.optional(Schema.String),
+          schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
+        }),
+      ),
+      messagingOptions: Schema.optional(
+        Schema.Struct({
+          billingTier: Schema.optional(
+            Schema.Literals(["BlobTransport", "Standard", "Premium"]),
+          ),
+        }),
+      ),
+      apiFlowOptions: Schema.optional(
+        Schema.Struct({
+          remoteEndpoint: Schema.optional(Schema.String),
+          cname: Schema.optional(Schema.String),
+          apiMode: Schema.optional(Schema.Literals(["SDK", "Endpoint"])),
+          identityTranslation: Schema.optional(
+            Schema.Literals(["UserIdentity", "ServiceIdentity"]),
+          ),
+          senderClientId: Schema.optional(Schema.String),
+          remoteCallingModeClientId: Schema.optional(Schema.String),
+          audienceOverride: Schema.optional(Schema.String),
+        }),
+      ),
+      customerManagedKeyVaultUri: Schema.optional(Schema.String),
+      streamId: Schema.optional(Schema.String),
+      streamProtocol: Schema.optional(Schema.Literals(["UDP", "SRT", "RTP"])),
+      streamLatency: Schema.optional(Schema.Number),
+      passphrase: Schema.optional(Schema.String),
+      sourceAddresses: Schema.optional(
+        Schema.Struct({
+          sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+      destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
+      eventHubId: Schema.optional(Schema.String),
+      consumerGroup: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      location: Schema.String,
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ListPendingFlowsListOutput = typeof ListPendingFlowsListOutput.Type;
 
 // The operation
@@ -1762,42 +1683,40 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PipelinesApproveConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection",
-    }),
-  );
+export const PipelinesApproveConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection",
+  }),
+);
 export type PipelinesApproveConnectionInput =
   typeof PipelinesApproveConnectionInput.Type;
 
 // Output Schema
-export const PipelinesApproveConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PipelinesApproveConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PipelinesApproveConnectionOutput =
   typeof PipelinesApproveConnectionOutput.Type;
 
@@ -1815,42 +1734,40 @@ export const PipelinesApproveConnection = /*@__PURE__*/ API.make(() => ({
   outputSchema: PipelinesApproveConnectionOutput,
 }));
 // Input Schema
-export const PipelinesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
-    }),
-  );
+export const PipelinesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+  }),
+);
 export type PipelinesCreateOrUpdateInput =
   typeof PipelinesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PipelinesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PipelinesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PipelinesCreateOrUpdateOutput =
   typeof PipelinesCreateOrUpdateOutput.Type;
 
@@ -1899,42 +1816,40 @@ export const PipelinesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: PipelinesDeleteOutput,
 }));
 // Input Schema
-export const PipelinesExecuteActionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
-    }),
-  );
+export const PipelinesExecuteActionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
+  }),
+);
 export type PipelinesExecuteActionInput =
   typeof PipelinesExecuteActionInput.Type;
 
 // Output Schema
-export const PipelinesExecuteActionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PipelinesExecuteActionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PipelinesExecuteActionOutput =
   typeof PipelinesExecuteActionOutput.Type;
 
@@ -2001,56 +1916,44 @@ export const PipelinesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: PipelinesGetOutput,
 }));
 // Input Schema
-export const PipelinesListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines",
-    }),
-  );
+export const PipelinesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines",
+  }),
+);
 export type PipelinesListByResourceGroupInput =
   typeof PipelinesListByResourceGroupInput.Type;
 
 // Output Schema
-export const PipelinesListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PipelinesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PipelinesListByResourceGroupOutput =
   typeof PipelinesListByResourceGroupOutput.Type;
 
@@ -2062,61 +1965,48 @@ export type PipelinesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PipelinesListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PipelinesListByResourceGroupInput,
-    outputSchema: PipelinesListByResourceGroupOutput,
-  }));
+export const PipelinesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesListByResourceGroupInput,
+  outputSchema: PipelinesListByResourceGroupOutput,
+}));
 // Input Schema
-export const PipelinesListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/pipelines",
-    }),
-  );
+export const PipelinesListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/pipelines",
+  }),
+);
 export type PipelinesListBySubscriptionInput =
   typeof PipelinesListBySubscriptionInput.Type;
 
 // Output Schema
-export const PipelinesListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const PipelinesListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PipelinesListBySubscriptionOutput =
   typeof PipelinesListBySubscriptionOutput.Type;
 
@@ -2132,42 +2022,40 @@ export const PipelinesListBySubscription = /*@__PURE__*/ API.make(() => ({
   outputSchema: PipelinesListBySubscriptionOutput,
 }));
 // Input Schema
-export const PipelinesRejectConnectionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection",
-    }),
-  );
+export const PipelinesRejectConnectionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection",
+  }),
+);
 export type PipelinesRejectConnectionInput =
   typeof PipelinesRejectConnectionInput.Type;
 
 // Output Schema
-export const PipelinesRejectConnectionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PipelinesRejectConnectionOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PipelinesRejectConnectionOutput =
   typeof PipelinesRejectConnectionOutput.Type;
 

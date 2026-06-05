@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProductsIdInput = typeof GetProductsIdInput.Type;
 
 // Output Schema
-export const GetProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsIdOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   created: Schema.Number,
   default_price: Schema.optional(Schema.Unknown),
@@ -51,7 +51,7 @@ export type GetProductsIdOutput = typeof GetProductsIdOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetProductsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetProductsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProductsIdInput,
   outputSchema: GetProductsIdOutput,
 }));

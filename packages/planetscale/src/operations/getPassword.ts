@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const GetPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -19,7 +19,7 @@ export const GetPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPasswordInput = typeof GetPasswordInput.Type;
 
 // Output Schema
-export const GetPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -35,13 +35,11 @@ export const GetPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   access_host_url: Schema.String,
   access_host_regional_url: Schema.String,
   access_host_regional_urls: Schema.Array(Schema.String),
-  actor: Schema.NullOr(
-    Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  ),
+  actor: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
   region: Schema.Struct({
     id: Schema.String,
     provider: Schema.String,
@@ -51,8 +49,6 @@ export const GetPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   username: Schema.String,
   plain_text: SensitiveOutputNullableString,
@@ -77,7 +73,7 @@ export type GetPasswordOutput = typeof GetPasswordOutput.Type;
  * @param branch - The name of the branch the password belongs to
  * @param id - The ID of the password
  */
-export const getPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPasswordInput,
   outputSchema: GetPasswordOutput,
   errors: [Forbidden, NotFound] as const,

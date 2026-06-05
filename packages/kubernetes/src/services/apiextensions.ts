@@ -11,7 +11,7 @@ import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const CreateApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -271,14 +271,14 @@ export type CreateApiextensionsV1CustomResourceDefinitionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: CreateApiextensionsV1CustomResourceDefinitionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -291,7 +291,7 @@ export type DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
 
 // Output Schema
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -340,13 +340,13 @@ export type DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteApiextensionsV1CollectionCustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiextensionsV1CollectionCustomResourceDefinitionInput,
     outputSchema: DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput,
   }));
 // Input Schema
 export const DeleteApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -359,7 +359,7 @@ export type DeleteApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -408,46 +408,44 @@ export type DeleteApiextensionsV1CustomResourceDefinitionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: DeleteApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetApiextensionsAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/" }),
-  );
+export const GetApiextensionsAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/" }));
 export type GetApiextensionsAPIGroupInput =
   typeof GetApiextensionsAPIGroupInput.Type;
 
 // Output Schema
-export const GetApiextensionsAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetApiextensionsAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetApiextensionsAPIGroupOutput =
   typeof GetApiextensionsAPIGroupOutput.Type;
 
@@ -455,23 +453,20 @@ export type GetApiextensionsAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getApiextensionsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetApiextensionsAPIGroupInput,
-    outputSchema: GetApiextensionsAPIGroupOutput,
-  }),
-);
+export const getApiextensionsAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApiextensionsAPIGroupInput,
+  outputSchema: GetApiextensionsAPIGroupOutput,
+}));
 // Input Schema
-export const GetApiextensionsV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/v1/" }),
-  );
+export const GetApiextensionsV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/v1/" }));
 export type GetApiextensionsV1APIResourcesInput =
   typeof GetApiextensionsV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetApiextensionsV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetApiextensionsV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct(
+  {
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -489,7 +484,8 @@ export const GetApiextensionsV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type GetApiextensionsV1APIResourcesOutput =
   typeof GetApiextensionsV1APIResourcesOutput.Type;
 
@@ -497,14 +493,13 @@ export type GetApiextensionsV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getApiextensionsV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetApiextensionsV1APIResourcesInput,
-    outputSchema: GetApiextensionsV1APIResourcesOutput,
-  }));
+export const getApiextensionsV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApiextensionsV1APIResourcesInput,
+  outputSchema: GetApiextensionsV1APIResourcesOutput,
+}));
 // Input Schema
 export const ListApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
@@ -515,7 +510,7 @@ export type ListApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const ListApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -781,13 +776,13 @@ export type ListApiextensionsV1CustomResourceDefinitionOutput =
  * list or watch objects of kind CustomResourceDefinition
  */
 export const listApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ListApiextensionsV1CustomResourceDefinitionOutput,
   }));
 // Input Schema
 export const PatchApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -801,7 +796,7 @@ export type PatchApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const PatchApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1047,14 +1042,14 @@ export type PatchApiextensionsV1CustomResourceDefinitionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1068,7 +1063,7 @@ export type PatchApiextensionsV1CustomResourceDefinitionStatusInput =
 
 // Output Schema
 export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1314,14 +1309,14 @@ export type PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
@@ -1332,7 +1327,7 @@ export type ReadApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const ReadApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1575,14 +1570,14 @@ export type ReadApiextensionsV1CustomResourceDefinitionOutput =
  * read the specified CustomResourceDefinition
  */
 export const readApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
@@ -1593,7 +1588,7 @@ export type ReadApiextensionsV1CustomResourceDefinitionStatusInput =
 
 // Output Schema
 export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1836,14 +1831,14 @@ export type ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
  * read status of the specified CustomResourceDefinition
  */
 export const readApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1857,7 +1852,7 @@ export type ReplaceApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2103,14 +2098,14 @@ export type ReplaceApiextensionsV1CustomResourceDefinitionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2124,7 +2119,7 @@ export type ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
 
 // Output Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2370,14 +2365,14 @@ export type ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}",
@@ -2388,7 +2383,7 @@ export type WatchApiextensionsV1CustomResourceDefinitionInput =
 
 // Output Schema
 export const WatchApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2400,13 +2395,13 @@ export type WatchApiextensionsV1CustomResourceDefinitionOutput =
  * watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: WatchApiextensionsV1CustomResourceDefinitionOutput,
   }));
 // Input Schema
 export const WatchApiextensionsV1CustomResourceDefinitionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions",
@@ -2417,7 +2412,7 @@ export type WatchApiextensionsV1CustomResourceDefinitionListInput =
 
 // Output Schema
 export const WatchApiextensionsV1CustomResourceDefinitionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2429,7 +2424,7 @@ export type WatchApiextensionsV1CustomResourceDefinitionListOutput =
  * watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchApiextensionsV1CustomResourceDefinitionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiextensionsV1CustomResourceDefinitionListInput,
     outputSchema: WatchApiextensionsV1CustomResourceDefinitionListOutput,
   }));

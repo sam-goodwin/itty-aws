@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const ApplicationCredentialsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/connect/client_secrets/{id}" }));
 export type ApplicationCredentialsControllerDeleteInput =
@@ -13,7 +13,7 @@ export type ApplicationCredentialsControllerDeleteInput =
 
 // Output Schema
 export const ApplicationCredentialsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ApplicationCredentialsControllerDeleteOutput =
   typeof ApplicationCredentialsControllerDeleteOutput.Type;
 
@@ -25,9 +25,10 @@ export type ApplicationCredentialsControllerDeleteOutput =
  *
  * @param id - The unique ID of the client secret.
  */
-export const ApplicationCredentialsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationCredentialsControllerDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ApplicationCredentialsControllerDeleteInput,
     outputSchema: ApplicationCredentialsControllerDeleteOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

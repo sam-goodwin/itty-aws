@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
   }).pipe(
@@ -19,7 +19,7 @@ export type AuthorizationRoleAssignmentsControllerAssignRoleInput =
 
 // Output Schema
 export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     role: Schema.optional(
@@ -49,7 +49,7 @@ export type AuthorizationRoleAssignmentsControllerAssignRoleOutput =
  * @param organization_membership_id - The ID of the organization membership.
  */
 export const AuthorizationRoleAssignmentsControllerAssignRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationRoleAssignmentsControllerAssignRoleInput,
     outputSchema: AuthorizationRoleAssignmentsControllerAssignRoleOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

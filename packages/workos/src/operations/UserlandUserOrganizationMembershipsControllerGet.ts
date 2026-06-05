@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserOrganizationMembershipsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type UserlandUserOrganizationMembershipsControllerGetInput =
 
 // Output Schema
 export const UserlandUserOrganizationMembershipsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export type UserlandUserOrganizationMembershipsControllerGetOutput =
  * @param id - The unique ID of the organization membership.
  */
 export const UserlandUserOrganizationMembershipsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerGetInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerGetOutput,
     errors: [NotFound] as const,

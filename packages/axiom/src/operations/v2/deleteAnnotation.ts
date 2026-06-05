@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import { BadRequest, NotFound } from "../../errors.ts";
 import * as T from "../../traits.ts";
+import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const DeleteAnnotationInput = /*@__PURE__*/ Schema.Struct({

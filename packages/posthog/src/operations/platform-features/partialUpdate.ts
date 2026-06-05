@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PartialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartialUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export const PartialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PartialUpdateInput = typeof PartialUpdateInput.Type;
 
 // Output Schema
-export const PartialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartialUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export type PartialUpdateOutput = typeof PartialUpdateOutput.Type;
  *
  * @param id - A UUID string identifying this organization.
  */
-export const partialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const partialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartialUpdateInput,
   outputSchema: PartialUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -3,48 +3,46 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const UserlandSsoControllerAuthorizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code_challenge_method: Schema.optional(Schema.String),
-    code_challenge: Schema.optional(Schema.String),
-    domain_hint: Schema.optional(Schema.String),
-    connection_id: Schema.optional(Schema.String),
-    provider_query_params: Schema.optional(Schema.String),
-    provider_scopes: Schema.optional(Schema.String),
-    invitation_token: Schema.optional(Schema.String),
-    screen_hint: Schema.optional(Schema.Literals(["sign-up", "sign-in"])),
-    login_hint: Schema.optional(Schema.String),
-    provider: Schema.optional(
-      Schema.Literals([
-        "authkit",
-        "AppleOAuth",
-        "BitbucketOAuth",
-        "GitHubOAuth",
-        "GitLabOAuth",
-        "GoogleOAuth",
-        "IntuitOAuth",
-        "LinkedInOAuth",
-        "MicrosoftOAuth",
-        "SalesforceOAuth",
-        "SlackOAuth",
-        "VercelMarketplaceOAuth",
-        "VercelOAuth",
-        "XeroOAuth",
-      ]),
-    ),
-    prompt: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    organization_id: Schema.optional(Schema.String),
-    response_type: Schema.String,
-    redirect_uri: Schema.String,
-    client_id: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/user_management/authorize" }));
+export const UserlandSsoControllerAuthorizeInput = /*@__PURE__*/ Schema.Struct({
+  code_challenge_method: Schema.optional(Schema.String),
+  code_challenge: Schema.optional(Schema.String),
+  domain_hint: Schema.optional(Schema.String),
+  connection_id: Schema.optional(Schema.String),
+  provider_query_params: Schema.optional(Schema.String),
+  provider_scopes: Schema.optional(Schema.String),
+  invitation_token: Schema.optional(Schema.String),
+  screen_hint: Schema.optional(Schema.Literals(["sign-up", "sign-in"])),
+  login_hint: Schema.optional(Schema.String),
+  provider: Schema.optional(
+    Schema.Literals([
+      "authkit",
+      "AppleOAuth",
+      "BitbucketOAuth",
+      "GitHubOAuth",
+      "GitLabOAuth",
+      "GoogleOAuth",
+      "IntuitOAuth",
+      "LinkedInOAuth",
+      "MicrosoftOAuth",
+      "SalesforceOAuth",
+      "SlackOAuth",
+      "VercelMarketplaceOAuth",
+      "VercelOAuth",
+      "XeroOAuth",
+    ]),
+  ),
+  prompt: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String),
+  response_type: Schema.String,
+  redirect_uri: Schema.String,
+  client_id: Schema.String,
+}).pipe(T.Http({ method: "GET", path: "/user_management/authorize" }));
 export type UserlandSsoControllerAuthorizeInput =
   typeof UserlandSsoControllerAuthorizeInput.Type;
 
 // Output Schema
-export const UserlandSsoControllerAuthorizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserlandSsoControllerAuthorizeOutput = /*@__PURE__*/ Schema.Void;
 export type UserlandSsoControllerAuthorizeOutput =
   typeof UserlandSsoControllerAuthorizeOutput.Type;
 
@@ -71,8 +69,7 @@ export type UserlandSsoControllerAuthorizeOutput =
  * @param redirect_uri - The callback URI where the authorization code will be sent after authentication.
  * @param client_id - The unique identifier of the WorkOS environment client.
  */
-export const UserlandSsoControllerAuthorize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserlandSsoControllerAuthorizeInput,
-    outputSchema: UserlandSsoControllerAuthorizeOutput,
-  }));
+export const UserlandSsoControllerAuthorize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandSsoControllerAuthorizeInput,
+  outputSchema: UserlandSsoControllerAuthorizeOutput,
+}));

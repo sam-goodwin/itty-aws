@@ -3,23 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetCustomersCustomerCashBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCustomersCustomerCashBalanceInput = /*@__PURE__*/ Schema.Struct(
+  {
     customer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/customers/{customer}/cash_balance",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/customers/{customer}/cash_balance",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetCustomersCustomerCashBalanceInput =
   typeof GetCustomersCustomerCashBalanceInput.Type;
 
 // Output Schema
 export const GetCustomersCustomerCashBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available: Schema.NullOr(Schema.Record(Schema.String, Schema.Number)),
     customer: Schema.String,
     customer_account: Schema.NullOr(Schema.String),
@@ -41,8 +42,7 @@ export type GetCustomersCustomerCashBalanceOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetCustomersCustomerCashBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetCustomersCustomerCashBalanceInput,
-    outputSchema: GetCustomersCustomerCashBalanceOutput,
-  }));
+export const GetCustomersCustomerCashBalance = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCustomersCustomerCashBalanceInput,
+  outputSchema: GetCustomersCustomerCashBalanceOutput,
+}));

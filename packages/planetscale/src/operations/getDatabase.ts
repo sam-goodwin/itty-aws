@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDatabaseInput = typeof GetDatabaseInput.Type;
 
 // Output Schema
-export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   branches_url: Schema.String,
@@ -24,7 +24,7 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   open_schema_recommendations_count: Schema.optional(Schema.Number),
   development_branches_count: Schema.optional(Schema.Number),
   production_branches_count: Schema.optional(Schema.Number),
-  issues_count: Schema.optional(Schema.NullOr(Schema.Number)),
+  issues_count: Schema.optional(Schema.Number),
   multiple_admins_required_for_deletion: Schema.optional(Schema.Boolean),
   ready: Schema.Boolean,
   at_backup_restore_branches_limit: Schema.optional(Schema.Boolean),
@@ -34,8 +34,8 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         state: Schema.String,
         import_check_errors: Schema.String,
-        started_at: Schema.NullOr(Schema.String),
-        finished_at: Schema.NullOr(Schema.String),
+        started_at: Schema.String,
+        finished_at: Schema.String,
         data_source: Schema.Struct({
           hostname: Schema.String,
           port: Schema.Number,
@@ -53,8 +53,6 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   html_url: Schema.String,
   name: Schema.String,
@@ -89,7 +87,7 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   migration_framework: Schema.optional(Schema.NullOr(Schema.String)),
   created_at: Schema.String,
   updated_at: Schema.String,
-  schema_last_updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+  schema_last_updated_at: Schema.optional(Schema.String),
   kind: Schema.Literals(["mysql", "postgresql"]),
 });
 export type GetDatabaseOutput = typeof GetDatabaseOutput.Type;
@@ -101,7 +99,7 @@ export type GetDatabaseOutput = typeof GetDatabaseOutput.Type;
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const getDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInput,
   outputSchema: GetDatabaseOutput,
   errors: [Forbidden, NotFound] as const,

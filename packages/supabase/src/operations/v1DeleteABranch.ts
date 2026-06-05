@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1DeleteABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1DeleteABranchInput = /*@__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "DELETE", path: "/v1/branches/{branch_id_or_ref}" }));
 export type V1DeleteABranchInput = typeof V1DeleteABranchInput.Type;
 
 // Output Schema
-export const V1DeleteABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1DeleteABranchOutput = /*@__PURE__*/ Schema.Struct({
   message: Schema.Literals(["ok"]),
 });
 export type V1DeleteABranchOutput = typeof V1DeleteABranchOutput.Type;
@@ -25,7 +25,7 @@ export type V1DeleteABranchOutput = typeof V1DeleteABranchOutput.Type;
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  * @param force - If set to false, schedule deletion with 1-hour grace period (only when soft deletion is enabled).
  */
-export const v1DeleteABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteABranchInput,
   outputSchema: V1DeleteABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostIssuingPersonalizationDesignsPersonalizationDesignInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     card_logo: Schema.optional(Schema.Unknown),
     carrier_text: Schema.optional(Schema.Unknown),
@@ -31,7 +31,7 @@ export type PostIssuingPersonalizationDesignsPersonalizationDesignInput =
 
 // Output Schema
 export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.Unknown,
     carrier_text: Schema.Unknown,
     created: Schema.Number,
@@ -87,7 +87,7 @@ export type PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
  * <p>Updates a card personalization object.</p>
  */
 export const PostIssuingPersonalizationDesignsPersonalizationDesign =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIssuingPersonalizationDesignsPersonalizationDesignInput,
     outputSchema: PostIssuingPersonalizationDesignsPersonalizationDesignOutput,
   }));

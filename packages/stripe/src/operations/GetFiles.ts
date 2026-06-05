@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetFilesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const GetFilesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFilesInput = typeof GetFilesInput.Type;
 
 // Output Schema
-export const GetFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       created: Schema.Number,
@@ -118,7 +118,7 @@ export type GetFilesOutput = typeof GetFilesOutput.Type;
  * @param purpose - Filter queries by the file purpose. If you don't provide a purpose, the queries return unfiltered files.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetFiles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFiles = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFilesInput,
   outputSchema: GetFilesOutput,
 }));

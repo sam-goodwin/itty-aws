@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsTicketsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     ticket_number: Schema.optional(Schema.Number),
@@ -77,7 +77,7 @@ export type ConversationsTicketsPartialUpdateInput =
 
 // Output Schema
 export const ConversationsTicketsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     ticket_number: Schema.optional(Schema.Number),
     channel_source: Schema.optional(
@@ -147,9 +147,8 @@ export type ConversationsTicketsPartialUpdateOutput =
  * @param id - A UUID string identifying this ticket.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsTicketsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConversationsTicketsPartialUpdateInput,
-    outputSchema: ConversationsTicketsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const conversationsTicketsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsTicketsPartialUpdateInput,
+  outputSchema: ConversationsTicketsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

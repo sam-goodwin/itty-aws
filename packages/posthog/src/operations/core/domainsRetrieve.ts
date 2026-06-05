@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DomainsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const DomainsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsRetrieveInput = typeof DomainsRetrieveInput.Type;
 
 // Output Schema
-export const DomainsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
   is_verified: Schema.optional(Schema.Boolean),
@@ -40,7 +40,7 @@ export type DomainsRetrieveOutput = typeof DomainsRetrieveOutput.Type;
  *
  * @param id - A UUID string identifying this domain.
  */
-export const domainsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsRetrieveInput,
   outputSchema: DomainsRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

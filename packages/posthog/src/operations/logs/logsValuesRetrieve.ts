@@ -4,33 +4,31 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const LogsValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    attribute_type: Schema.optional(Schema.Literals(["log", "resource"])),
-    dateRange: Schema.optional(Schema.String),
-    filterGroup: Schema.optional(Schema.String),
-    key: Schema.String,
-    serviceNames: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/projects/{project_id}/logs/values/" }),
-  );
+export const LogsValuesRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  attribute_type: Schema.optional(Schema.Literals(["log", "resource"])),
+  dateRange: Schema.optional(Schema.String),
+  filterGroup: Schema.optional(Schema.String),
+  key: Schema.String,
+  serviceNames: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/logs/values/" }),
+);
 export type LogsValuesRetrieveInput = typeof LogsValuesRetrieveInput.Type;
 
 // Output Schema
-export const LogsValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
-      ),
+export const LogsValuesRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
     ),
-    refreshing: Schema.optional(Schema.Boolean),
-  });
+  ),
+  refreshing: Schema.optional(Schema.Boolean),
+});
 export type LogsValuesRetrieveOutput = typeof LogsValuesRetrieveOutput.Type;
 
 // The operation
@@ -47,7 +45,7 @@ export type LogsValuesRetrieveOutput = typeof LogsValuesRetrieveOutput.Type;
  * @param serviceNames - Filter values to those appearing in logs from these services.
  * @param value - Search filter for attribute values
  */
-export const logsValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logsValuesRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogsValuesRetrieveInput,
   outputSchema: LogsValuesRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

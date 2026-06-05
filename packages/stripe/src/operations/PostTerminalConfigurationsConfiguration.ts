@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTerminalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     bbpos_wisepad3: Schema.optional(Schema.Unknown),
     bbpos_wisepos_e: Schema.optional(Schema.Unknown),
@@ -30,7 +30,7 @@ export type PostTerminalConfigurationsConfigurationInput =
 
 // Output Schema
 export const PostTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type PostTerminalConfigurationsConfigurationOutput =
   typeof PostTerminalConfigurationsConfigurationOutput.Type;
 
@@ -40,8 +40,9 @@ export type PostTerminalConfigurationsConfigurationOutput =
  *
  * <p>Updates a new <code>Configuration</code> object.</p>
  */
-export const PostTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTerminalConfigurationsConfiguration = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTerminalConfigurationsConfigurationInput,
     outputSchema: PostTerminalConfigurationsConfigurationOutput,
-  }));
+  }),
+);

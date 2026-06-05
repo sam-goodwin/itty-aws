@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     connectionId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export type GetGroupStreamPrivateLinkConnectionInput =
 
 // Output Schema
 export const GetGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupStreamPrivateLinkConnectionOutput =
   typeof GetGroupStreamPrivateLinkConnectionOutput.Type;
 
@@ -36,9 +36,10 @@ export type GetGroupStreamPrivateLinkConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param connectionId - Unique ID that identifies the Private Link connection.
  */
-export const getGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupStreamPrivateLinkConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetGroupStreamPrivateLinkConnectionInput,
     outputSchema: GetGroupStreamPrivateLinkConnectionOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

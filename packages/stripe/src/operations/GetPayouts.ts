@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPayoutsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPayoutsInput = /*@__PURE__*/ Schema.Struct({
   arrival_date: Schema.optional(Schema.String),
   created: Schema.optional(Schema.String),
   destination: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export const GetPayoutsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPayoutsInput = typeof GetPayoutsInput.Type;
 
 // Output Schema
-export const GetPayoutsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPayoutsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -79,7 +79,7 @@ export type GetPayoutsOutput = typeof GetPayoutsOutput.Type;
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return payouts that have the given status: `pending`, `paid`, `failed`, or `canceled`.
  */
-export const GetPayouts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPayouts = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPayoutsInput,
   outputSchema: GetPayoutsOutput,
 }));

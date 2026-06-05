@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostInvoicesInvoiceLinesLineItemIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     line_item_id: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
@@ -63,7 +63,7 @@ export type PostInvoicesInvoiceLinesLineItemIdInput =
 
 // Output Schema
 export const PostInvoicesInvoiceLinesLineItemIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     description: Schema.NullOr(Schema.String),
@@ -147,8 +147,9 @@ export type PostInvoicesInvoiceLinesLineItemIdOutput =
  * @param invoice - Invoice ID of line item
  * @param line_item_id - Invoice line item ID
  */
-export const PostInvoicesInvoiceLinesLineItemId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostInvoicesInvoiceLinesLineItemId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostInvoicesInvoiceLinesLineItemIdInput,
     outputSchema: PostInvoicesInvoiceLinesLineItemIdOutput,
-  }));
+  }),
+);

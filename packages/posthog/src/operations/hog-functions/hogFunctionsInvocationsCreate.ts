@@ -4,577 +4,555 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const HogFunctionsInvocationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    configuration: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Unknown),
-        name: Schema.optional(Schema.NullOr(Schema.String)),
-        description: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              uuid: Schema.optional(Schema.String),
-              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-              first_name: Schema.optional(Schema.String),
-              last_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              hedgehog_config: Schema.optional(
-                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              role_at_organization: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        updated_at: Schema.optional(Schema.String),
-        enabled: Schema.optional(Schema.Boolean),
-        deleted: Schema.optional(Schema.Boolean),
-        hog: Schema.optional(Schema.String),
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        transpiled: Schema.optional(Schema.NullOr(Schema.String)),
-        inputs_schema: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "string",
-                  "number",
-                  "boolean",
-                  "dictionary",
-                  "choice",
-                  "json",
-                  "integration",
-                  "integration_field",
-                  "email",
-                  "native_email",
-                  "posthog_assignee",
-                  "posthog_ticket_tags",
-                  "posthog_business_hours",
-                ]),
-              ),
-              key: Schema.optional(Schema.String),
-              label: Schema.optional(Schema.String),
-              choices: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              required: Schema.optional(Schema.Boolean),
-              default: Schema.optional(Schema.Unknown),
-              secret: Schema.optional(Schema.Boolean),
-              hidden: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.String),
-              integration: Schema.optional(Schema.String),
-              integration_key: Schema.optional(Schema.String),
-              requires_field: Schema.optional(Schema.String),
-              integration_field: Schema.optional(Schema.String),
-              requiredScopes: Schema.optional(Schema.String),
-              templating: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        inputs: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              value: Schema.optional(Schema.Unknown),
-              templating: Schema.optional(Schema.Literals(["hog", "liquid"])),
-              bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
-              order: Schema.optional(Schema.Number),
-              transpiled: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        filters: Schema.optional(
+export const HogFunctionsInvocationsCreateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  configuration: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      description: Schema.optional(Schema.String),
+      created_at: Schema.optional(Schema.String),
+      created_by: Schema.optional(
+        Schema.NullOr(
           Schema.Struct({
-            source: Schema.optional(
+            id: Schema.optional(Schema.Number),
+            uuid: Schema.optional(Schema.String),
+            distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+            ),
+            role_at_organization: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      updated_at: Schema.optional(Schema.String),
+      enabled: Schema.optional(Schema.Boolean),
+      deleted: Schema.optional(Schema.Boolean),
+      hog: Schema.optional(Schema.String),
+      bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+      transpiled: Schema.optional(Schema.NullOr(Schema.String)),
+      inputs_schema: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(
               Schema.Literals([
-                "events",
-                "person-updates",
-                "data-warehouse-table",
+                "string",
+                "number",
+                "boolean",
+                "dictionary",
+                "choice",
+                "json",
+                "integration",
+                "integration_field",
+                "email",
+                "native_email",
+                "posthog_assignee",
+                "posthog_ticket_tags",
+                "posthog_business_hours",
               ]),
             ),
-            actions: Schema.optional(
+            key: Schema.optional(Schema.String),
+            label: Schema.optional(Schema.String),
+            choices: Schema.optional(
               Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            events: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            data_warehouse: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            properties: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            transpiled: Schema.optional(Schema.Unknown),
-            filter_test_accounts: Schema.optional(Schema.Boolean),
-            bytecode_error: Schema.optional(Schema.String),
+            required: Schema.optional(Schema.Boolean),
+            default: Schema.optional(Schema.Unknown),
+            secret: Schema.optional(Schema.Boolean),
+            hidden: Schema.optional(Schema.Boolean),
+            description: Schema.optional(Schema.String),
+            integration: Schema.optional(Schema.String),
+            integration_key: Schema.optional(Schema.String),
+            requires_field: Schema.optional(Schema.String),
+            integration_field: Schema.optional(Schema.String),
+            requiredScopes: Schema.optional(Schema.String),
+            templating: Schema.optional(Schema.Unknown),
           }),
         ),
-        masking: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              ttl: Schema.optional(Schema.Number),
-              threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-              hash: Schema.optional(Schema.String),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            }),
-          ),
-        ),
-        mappings: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                inputs_schema: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals([
-                          "string",
-                          "number",
-                          "boolean",
-                          "dictionary",
-                          "choice",
-                          "json",
-                          "integration",
-                          "integration_field",
-                          "email",
-                          "native_email",
-                          "posthog_assignee",
-                          "posthog_ticket_tags",
-                          "posthog_business_hours",
-                        ]),
-                      ),
-                      key: Schema.optional(Schema.String),
-                      label: Schema.optional(Schema.String),
-                      choices: Schema.optional(
-                        Schema.Array(
-                          Schema.Record(Schema.String, Schema.Unknown),
-                        ),
-                      ),
-                      required: Schema.optional(Schema.Boolean),
-                      default: Schema.optional(Schema.Unknown),
-                      secret: Schema.optional(Schema.Boolean),
-                      hidden: Schema.optional(Schema.Boolean),
-                      description: Schema.optional(Schema.String),
-                      integration: Schema.optional(Schema.String),
-                      integration_key: Schema.optional(Schema.String),
-                      requires_field: Schema.optional(Schema.String),
-                      integration_field: Schema.optional(Schema.String),
-                      requiredScopes: Schema.optional(Schema.String),
-                      templating: Schema.optional(Schema.Unknown),
-                    }),
-                  ),
-                ),
-                inputs: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.optional(Schema.Unknown),
-                      templating: Schema.optional(
-                        Schema.Literals(["hog", "liquid"]),
-                      ),
-                      bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
-                      order: Schema.optional(Schema.Number),
-                      transpiled: Schema.optional(Schema.Unknown),
-                    }),
-                  ),
-                ),
-                filters: Schema.optional(
-                  Schema.Struct({
-                    source: Schema.optional(
-                      Schema.Literals([
-                        "events",
-                        "person-updates",
-                        "data-warehouse-table",
-                      ]),
-                    ),
-                    actions: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    events: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    data_warehouse: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    properties: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    transpiled: Schema.optional(Schema.Unknown),
-                    filter_test_accounts: Schema.optional(Schema.Boolean),
-                    bytecode_error: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        ),
-        icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-        template: Schema.optional(
+      ),
+      inputs: Schema.optional(
+        Schema.Record(
+          Schema.String,
           Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.NullOr(Schema.String)),
-            code: Schema.optional(Schema.String),
-            code_language: Schema.optional(Schema.String),
-            inputs_schema: Schema.optional(Schema.Unknown),
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.Unknown),
-            free: Schema.optional(Schema.Boolean),
-            icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-            filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            mapping_templates: Schema.optional(
-              Schema.NullOr(
+            value: Schema.optional(Schema.Unknown),
+            templating: Schema.optional(Schema.Literals(["hog", "liquid"])),
+            bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+            order: Schema.optional(Schema.Number),
+            transpiled: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      filters: Schema.optional(
+        Schema.Struct({
+          source: Schema.optional(
+            Schema.Literals([
+              "events",
+              "person-updates",
+              "data-warehouse-table",
+            ]),
+          ),
+          actions: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          events: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          data_warehouse: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          properties: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          transpiled: Schema.optional(Schema.Unknown),
+          filter_test_accounts: Schema.optional(Schema.Boolean),
+          bytecode_error: Schema.optional(Schema.String),
+        }),
+      ),
+      masking: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            ttl: Schema.optional(Schema.Number),
+            threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+            hash: Schema.optional(Schema.String),
+            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          }),
+        ),
+      ),
+      mappings: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              inputs_schema: Schema.optional(
                 Schema.Array(
                   Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    include_by_default: Schema.optional(
-                      Schema.NullOr(Schema.Boolean),
+                    type: Schema.optional(
+                      Schema.Literals([
+                        "string",
+                        "number",
+                        "boolean",
+                        "dictionary",
+                        "choice",
+                        "json",
+                        "integration",
+                        "integration_field",
+                        "email",
+                        "native_email",
+                        "posthog_assignee",
+                        "posthog_ticket_tags",
+                        "posthog_business_hours",
+                      ]),
                     ),
-                    use_all_events_by_default: Schema.optional(
-                      Schema.NullOr(Schema.Boolean),
+                    key: Schema.optional(Schema.String),
+                    label: Schema.optional(Schema.String),
+                    choices: Schema.optional(
+                      Schema.Array(
+                        Schema.Record(Schema.String, Schema.Unknown),
+                      ),
                     ),
-                    filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    inputs_schema: Schema.optional(
-                      Schema.NullOr(Schema.Unknown),
-                    ),
+                    required: Schema.optional(Schema.Boolean),
+                    default: Schema.optional(Schema.Unknown),
+                    secret: Schema.optional(Schema.Boolean),
+                    hidden: Schema.optional(Schema.Boolean),
+                    description: Schema.optional(Schema.String),
+                    integration: Schema.optional(Schema.String),
+                    integration_key: Schema.optional(Schema.String),
+                    requires_field: Schema.optional(Schema.String),
+                    integration_field: Schema.optional(Schema.String),
+                    requiredScopes: Schema.optional(Schema.String),
+                    templating: Schema.optional(Schema.Unknown),
                   }),
                 ),
               ),
-            ),
-          }),
-        ),
-        template_id: Schema.optional(Schema.NullOr(Schema.String)),
-        status: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
-              tokens: Schema.optional(Schema.Number),
+              inputs: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Unknown),
+                    templating: Schema.optional(
+                      Schema.Literals(["hog", "liquid"]),
+                    ),
+                    bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+                    order: Schema.optional(Schema.Number),
+                    transpiled: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+              filters: Schema.optional(
+                Schema.Struct({
+                  source: Schema.optional(
+                    Schema.Literals([
+                      "events",
+                      "person-updates",
+                      "data-warehouse-table",
+                    ]),
+                  ),
+                  actions: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  events: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  data_warehouse: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  properties: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  transpiled: Schema.optional(Schema.Unknown),
+                  filter_test_accounts: Schema.optional(Schema.Boolean),
+                  bytecode_error: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
         ),
-        execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
-        _create_in_folder: Schema.optional(Schema.String),
-        batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
-    globals: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    clickhouse_event: Schema.optional(
-      Schema.Record(Schema.String, Schema.Unknown),
-    ),
-    mock_async_functions: Schema.optional(Schema.Boolean),
-    status: Schema.optional(Schema.String),
-    logs: Schema.optional(Schema.Array(Schema.Unknown)),
-    invocation_id: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
+      ),
+      icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+      template: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.NullOr(Schema.String)),
+          code: Schema.optional(Schema.String),
+          code_language: Schema.optional(Schema.String),
+          inputs_schema: Schema.optional(Schema.Unknown),
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.Unknown),
+          free: Schema.optional(Schema.Boolean),
+          icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          mapping_templates: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  include_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  use_all_events_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                }),
+              ),
+            ),
+          ),
+        }),
+      ),
+      template_id: Schema.optional(Schema.NullOr(Schema.String)),
+      status: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
+            tokens: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
+      _create_in_folder: Schema.optional(Schema.String),
+      batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  );
+  ),
+  globals: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  clickhouse_event: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  mock_async_functions: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  logs: Schema.optional(Schema.Array(Schema.Unknown)),
+  invocation_id: Schema.optional(Schema.NullOr(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
+  }),
+);
 export type HogFunctionsInvocationsCreateInput =
   typeof HogFunctionsInvocationsCreateInput.Type;
 
 // Output Schema
-export const HogFunctionsInvocationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configuration: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Unknown),
-        name: Schema.optional(Schema.NullOr(Schema.String)),
-        description: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              uuid: Schema.optional(Schema.String),
-              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-              first_name: Schema.optional(Schema.String),
-              last_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              hedgehog_config: Schema.optional(
-                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              role_at_organization: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        updated_at: Schema.optional(Schema.String),
-        enabled: Schema.optional(Schema.Boolean),
-        deleted: Schema.optional(Schema.Boolean),
-        hog: Schema.optional(Schema.String),
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        transpiled: Schema.optional(Schema.NullOr(Schema.String)),
-        inputs_schema: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "string",
-                  "number",
-                  "boolean",
-                  "dictionary",
-                  "choice",
-                  "json",
-                  "integration",
-                  "integration_field",
-                  "email",
-                  "native_email",
-                  "posthog_assignee",
-                  "posthog_ticket_tags",
-                  "posthog_business_hours",
-                ]),
-              ),
-              key: Schema.optional(Schema.String),
-              label: Schema.optional(Schema.String),
-              choices: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              required: Schema.optional(Schema.Boolean),
-              default: Schema.optional(Schema.Unknown),
-              secret: Schema.optional(Schema.Boolean),
-              hidden: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.String),
-              integration: Schema.optional(Schema.String),
-              integration_key: Schema.optional(Schema.String),
-              requires_field: Schema.optional(Schema.String),
-              integration_field: Schema.optional(Schema.String),
-              requiredScopes: Schema.optional(Schema.String),
-              templating: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        inputs: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              value: Schema.optional(Schema.Unknown),
-              templating: Schema.optional(Schema.Literals(["hog", "liquid"])),
-              bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
-              order: Schema.optional(Schema.Number),
-              transpiled: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        filters: Schema.optional(
+export const HogFunctionsInvocationsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  configuration: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      description: Schema.optional(Schema.String),
+      created_at: Schema.optional(Schema.String),
+      created_by: Schema.optional(
+        Schema.NullOr(
           Schema.Struct({
-            source: Schema.optional(
+            id: Schema.optional(Schema.Number),
+            uuid: Schema.optional(Schema.String),
+            distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+            ),
+            role_at_organization: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      updated_at: Schema.optional(Schema.String),
+      enabled: Schema.optional(Schema.Boolean),
+      deleted: Schema.optional(Schema.Boolean),
+      hog: Schema.optional(Schema.String),
+      bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+      transpiled: Schema.optional(Schema.NullOr(Schema.String)),
+      inputs_schema: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(
               Schema.Literals([
-                "events",
-                "person-updates",
-                "data-warehouse-table",
+                "string",
+                "number",
+                "boolean",
+                "dictionary",
+                "choice",
+                "json",
+                "integration",
+                "integration_field",
+                "email",
+                "native_email",
+                "posthog_assignee",
+                "posthog_ticket_tags",
+                "posthog_business_hours",
               ]),
             ),
-            actions: Schema.optional(
+            key: Schema.optional(Schema.String),
+            label: Schema.optional(Schema.String),
+            choices: Schema.optional(
               Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            events: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            data_warehouse: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            properties: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            transpiled: Schema.optional(Schema.Unknown),
-            filter_test_accounts: Schema.optional(Schema.Boolean),
-            bytecode_error: Schema.optional(Schema.String),
+            required: Schema.optional(Schema.Boolean),
+            default: Schema.optional(Schema.Unknown),
+            secret: Schema.optional(Schema.Boolean),
+            hidden: Schema.optional(Schema.Boolean),
+            description: Schema.optional(Schema.String),
+            integration: Schema.optional(Schema.String),
+            integration_key: Schema.optional(Schema.String),
+            requires_field: Schema.optional(Schema.String),
+            integration_field: Schema.optional(Schema.String),
+            requiredScopes: Schema.optional(Schema.String),
+            templating: Schema.optional(Schema.Unknown),
           }),
         ),
-        masking: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              ttl: Schema.optional(Schema.Number),
-              threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-              hash: Schema.optional(Schema.String),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            }),
-          ),
-        ),
-        mappings: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                inputs_schema: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals([
-                          "string",
-                          "number",
-                          "boolean",
-                          "dictionary",
-                          "choice",
-                          "json",
-                          "integration",
-                          "integration_field",
-                          "email",
-                          "native_email",
-                          "posthog_assignee",
-                          "posthog_ticket_tags",
-                          "posthog_business_hours",
-                        ]),
-                      ),
-                      key: Schema.optional(Schema.String),
-                      label: Schema.optional(Schema.String),
-                      choices: Schema.optional(
-                        Schema.Array(
-                          Schema.Record(Schema.String, Schema.Unknown),
-                        ),
-                      ),
-                      required: Schema.optional(Schema.Boolean),
-                      default: Schema.optional(Schema.Unknown),
-                      secret: Schema.optional(Schema.Boolean),
-                      hidden: Schema.optional(Schema.Boolean),
-                      description: Schema.optional(Schema.String),
-                      integration: Schema.optional(Schema.String),
-                      integration_key: Schema.optional(Schema.String),
-                      requires_field: Schema.optional(Schema.String),
-                      integration_field: Schema.optional(Schema.String),
-                      requiredScopes: Schema.optional(Schema.String),
-                      templating: Schema.optional(Schema.Unknown),
-                    }),
-                  ),
-                ),
-                inputs: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      value: Schema.optional(Schema.Unknown),
-                      templating: Schema.optional(
-                        Schema.Literals(["hog", "liquid"]),
-                      ),
-                      bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
-                      order: Schema.optional(Schema.Number),
-                      transpiled: Schema.optional(Schema.Unknown),
-                    }),
-                  ),
-                ),
-                filters: Schema.optional(
-                  Schema.Struct({
-                    source: Schema.optional(
-                      Schema.Literals([
-                        "events",
-                        "person-updates",
-                        "data-warehouse-table",
-                      ]),
-                    ),
-                    actions: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    events: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    data_warehouse: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    properties: Schema.optional(
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                    ),
-                    bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    transpiled: Schema.optional(Schema.Unknown),
-                    filter_test_accounts: Schema.optional(Schema.Boolean),
-                    bytecode_error: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        ),
-        icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-        template: Schema.optional(
+      ),
+      inputs: Schema.optional(
+        Schema.Record(
+          Schema.String,
           Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.NullOr(Schema.String)),
-            code: Schema.optional(Schema.String),
-            code_language: Schema.optional(Schema.String),
-            inputs_schema: Schema.optional(Schema.Unknown),
-            type: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.Unknown),
-            free: Schema.optional(Schema.Boolean),
-            icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-            filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            mapping_templates: Schema.optional(
-              Schema.NullOr(
+            value: Schema.optional(Schema.Unknown),
+            templating: Schema.optional(Schema.Literals(["hog", "liquid"])),
+            bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+            order: Schema.optional(Schema.Number),
+            transpiled: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      filters: Schema.optional(
+        Schema.Struct({
+          source: Schema.optional(
+            Schema.Literals([
+              "events",
+              "person-updates",
+              "data-warehouse-table",
+            ]),
+          ),
+          actions: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          events: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          data_warehouse: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          properties: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          transpiled: Schema.optional(Schema.Unknown),
+          filter_test_accounts: Schema.optional(Schema.Boolean),
+          bytecode_error: Schema.optional(Schema.String),
+        }),
+      ),
+      masking: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            ttl: Schema.optional(Schema.Number),
+            threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+            hash: Schema.optional(Schema.String),
+            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          }),
+        ),
+      ),
+      mappings: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              inputs_schema: Schema.optional(
                 Schema.Array(
                   Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    include_by_default: Schema.optional(
-                      Schema.NullOr(Schema.Boolean),
+                    type: Schema.optional(
+                      Schema.Literals([
+                        "string",
+                        "number",
+                        "boolean",
+                        "dictionary",
+                        "choice",
+                        "json",
+                        "integration",
+                        "integration_field",
+                        "email",
+                        "native_email",
+                        "posthog_assignee",
+                        "posthog_ticket_tags",
+                        "posthog_business_hours",
+                      ]),
                     ),
-                    use_all_events_by_default: Schema.optional(
-                      Schema.NullOr(Schema.Boolean),
+                    key: Schema.optional(Schema.String),
+                    label: Schema.optional(Schema.String),
+                    choices: Schema.optional(
+                      Schema.Array(
+                        Schema.Record(Schema.String, Schema.Unknown),
+                      ),
                     ),
-                    filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                    inputs_schema: Schema.optional(
-                      Schema.NullOr(Schema.Unknown),
-                    ),
+                    required: Schema.optional(Schema.Boolean),
+                    default: Schema.optional(Schema.Unknown),
+                    secret: Schema.optional(Schema.Boolean),
+                    hidden: Schema.optional(Schema.Boolean),
+                    description: Schema.optional(Schema.String),
+                    integration: Schema.optional(Schema.String),
+                    integration_key: Schema.optional(Schema.String),
+                    requires_field: Schema.optional(Schema.String),
+                    integration_field: Schema.optional(Schema.String),
+                    requiredScopes: Schema.optional(Schema.String),
+                    templating: Schema.optional(Schema.Unknown),
                   }),
                 ),
               ),
-            ),
-          }),
-        ),
-        template_id: Schema.optional(Schema.NullOr(Schema.String)),
-        status: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
-              tokens: Schema.optional(Schema.Number),
+              inputs: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Unknown),
+                    templating: Schema.optional(
+                      Schema.Literals(["hog", "liquid"]),
+                    ),
+                    bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+                    order: Schema.optional(Schema.Number),
+                    transpiled: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+              filters: Schema.optional(
+                Schema.Struct({
+                  source: Schema.optional(
+                    Schema.Literals([
+                      "events",
+                      "person-updates",
+                      "data-warehouse-table",
+                    ]),
+                  ),
+                  actions: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  events: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  data_warehouse: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  properties: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  ),
+                  bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  transpiled: Schema.optional(Schema.Unknown),
+                  filter_test_accounts: Schema.optional(Schema.Boolean),
+                  bytecode_error: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
         ),
-        execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
-        _create_in_folder: Schema.optional(Schema.String),
-        batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
-    globals: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    clickhouse_event: Schema.optional(
-      Schema.Record(Schema.String, Schema.Unknown),
-    ),
-    mock_async_functions: Schema.optional(Schema.Boolean),
-    status: Schema.optional(Schema.String),
-    logs: Schema.optional(Schema.Array(Schema.Unknown)),
-    invocation_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
+      ),
+      icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+      template: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.NullOr(Schema.String)),
+          code: Schema.optional(Schema.String),
+          code_language: Schema.optional(Schema.String),
+          inputs_schema: Schema.optional(Schema.Unknown),
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.Unknown),
+          free: Schema.optional(Schema.Boolean),
+          icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          mapping_templates: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  include_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  use_all_events_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                }),
+              ),
+            ),
+          ),
+        }),
+      ),
+      template_id: Schema.optional(Schema.NullOr(Schema.String)),
+      status: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
+            tokens: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
+      _create_in_folder: Schema.optional(Schema.String),
+      batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  ),
+  globals: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  clickhouse_event: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  mock_async_functions: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  logs: Schema.optional(Schema.Array(Schema.Unknown)),
+  invocation_id: Schema.optional(Schema.NullOr(Schema.String)),
+});
 export type HogFunctionsInvocationsCreateOutput =
   typeof HogFunctionsInvocationsCreateOutput.Type;
 
@@ -584,9 +562,8 @@ export type HogFunctionsInvocationsCreateOutput =
  * @param id - A UUID string identifying this hog function.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFunctionsInvocationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HogFunctionsInvocationsCreateInput,
-    outputSchema: HogFunctionsInvocationsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const hogFunctionsInvocationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFunctionsInvocationsCreateInput,
+  outputSchema: HogFunctionsInvocationsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

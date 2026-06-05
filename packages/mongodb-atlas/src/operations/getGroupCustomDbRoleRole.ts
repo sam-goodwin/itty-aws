@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupCustomDbRoleRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    roleName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
-    }),
-  );
+export const GetGroupCustomDbRoleRoleInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  roleName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
+  }),
+);
 export type GetGroupCustomDbRoleRoleInput =
   typeof GetGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const GetGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupCustomDbRoleRoleOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupCustomDbRoleRoleOutput =
   typeof GetGroupCustomDbRoleRoleOutput.Type;
 
@@ -38,10 +36,8 @@ export type GetGroupCustomDbRoleRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const getGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupCustomDbRoleRoleInput,
-    outputSchema: GetGroupCustomDbRoleRoleOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupCustomDbRoleRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupCustomDbRoleRoleInput,
+  outputSchema: GetGroupCustomDbRoleRoleOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

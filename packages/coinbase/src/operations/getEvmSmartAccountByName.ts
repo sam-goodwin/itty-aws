@@ -3,25 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetEvmSmartAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({ method: "GET", path: "/v2/evm/smart-accounts/by-name/{name}" }),
-  );
+export const GetEvmSmartAccountByNameInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/evm/smart-accounts/by-name/{name}" }),
+);
 export type GetEvmSmartAccountByNameInput =
   typeof GetEvmSmartAccountByNameInput.Type;
 
 // Output Schema
-export const GetEvmSmartAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String,
-    owners: Schema.Array(Schema.String),
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  });
+export const GetEvmSmartAccountByNameOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  owners: Schema.Array(Schema.String),
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+});
 export type GetEvmSmartAccountByNameOutput =
   typeof GetEvmSmartAccountByNameOutput.Type;
 
@@ -33,9 +31,7 @@ export type GetEvmSmartAccountByNameOutput =
  *
  * @param name - The name of the Smart Account.
  */
-export const getEvmSmartAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetEvmSmartAccountByNameInput,
-    outputSchema: GetEvmSmartAccountByNameOutput,
-  }),
-);
+export const getEvmSmartAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetEvmSmartAccountByNameInput,
+  outputSchema: GetEvmSmartAccountByNameOutput,
+}));

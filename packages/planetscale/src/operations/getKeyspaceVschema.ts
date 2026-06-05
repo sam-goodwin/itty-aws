@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetKeyspaceVschemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    keyspace: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
-    }),
-  );
+export const GetKeyspaceVschemaInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  keyspace: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
+  }),
+);
 export type GetKeyspaceVschemaInput = typeof GetKeyspaceVschemaInput.Type;
 
 // Output Schema
-export const GetKeyspaceVschemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    raw: Schema.String,
-  });
+export const GetKeyspaceVschemaOutput = /*@__PURE__*/ Schema.Struct({
+  raw: Schema.String,
+});
 export type GetKeyspaceVschemaOutput = typeof GetKeyspaceVschemaOutput.Type;
 
 // The operation
@@ -34,7 +32,7 @@ export type GetKeyspaceVschemaOutput = typeof GetKeyspaceVschemaOutput.Type;
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const getKeyspaceVschema = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKeyspaceVschema = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyspaceVschemaInput,
   outputSchema: GetKeyspaceVschemaOutput,
   errors: [Forbidden, NotFound] as const,

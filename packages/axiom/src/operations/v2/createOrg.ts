@@ -3,14 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgInput = /*@__PURE__*/ Schema.Struct({
   edgeDeployment: Schema.optional(Schema.String),
   name: Schema.String,
 }).pipe(T.Http({ method: "POST", path: "/v2/orgs" }));
 export type CreateOrgInput = typeof CreateOrgInput.Type;
 
 // Output Schema
-export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   defaultRegion: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateOrgOutput = typeof CreateOrgOutput.Type;
 
 // The operation
-export const createOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgInput,
   outputSchema: CreateOrgOutput,
 }));

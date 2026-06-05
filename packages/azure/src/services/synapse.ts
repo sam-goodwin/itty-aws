@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AzureADOnlyAuthenticationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -29,7 +29,7 @@ export type AzureADOnlyAuthenticationsCreateInput =
 
 // Output Schema
 export const AzureADOnlyAuthenticationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -49,37 +49,34 @@ export type AzureADOnlyAuthenticationsCreateOutput =
  * @param workspaceName - The name of the workspace.
  * @param azureADOnlyAuthenticationName - name of the property
  */
-export const AzureADOnlyAuthenticationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureADOnlyAuthenticationsCreateInput,
-    outputSchema: AzureADOnlyAuthenticationsCreateOutput,
-  }));
+export const AzureADOnlyAuthenticationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureADOnlyAuthenticationsCreateInput,
+  outputSchema: AzureADOnlyAuthenticationsCreateOutput,
+}));
 // Input Schema
-export const AzureADOnlyAuthenticationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    azureADOnlyAuthenticationName: Schema.Literals(["default"]).pipe(
-      T.PathParam(),
-    ),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
-    }),
-  );
+export const AzureADOnlyAuthenticationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  azureADOnlyAuthenticationName: Schema.Literals(["default"]).pipe(
+    T.PathParam(),
+  ),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
+  }),
+);
 export type AzureADOnlyAuthenticationsGetInput =
   typeof AzureADOnlyAuthenticationsGetInput.Type;
 
 // Output Schema
-export const AzureADOnlyAuthenticationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const AzureADOnlyAuthenticationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AzureADOnlyAuthenticationsGetOutput =
   typeof AzureADOnlyAuthenticationsGetOutput.Type;
 
@@ -95,30 +92,28 @@ export type AzureADOnlyAuthenticationsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param azureADOnlyAuthenticationName - name of the property
  */
-export const AzureADOnlyAuthenticationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureADOnlyAuthenticationsGetInput,
-    outputSchema: AzureADOnlyAuthenticationsGetOutput,
-  }));
+export const AzureADOnlyAuthenticationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureADOnlyAuthenticationsGetInput,
+  outputSchema: AzureADOnlyAuthenticationsGetOutput,
+}));
 // Input Schema
-export const AzureADOnlyAuthenticationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
-    }),
-  );
+export const AzureADOnlyAuthenticationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
+  }),
+);
 export type AzureADOnlyAuthenticationsListInput =
   typeof AzureADOnlyAuthenticationsListInput.Type;
 
 // Output Schema
-export const AzureADOnlyAuthenticationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AzureADOnlyAuthenticationsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -129,7 +124,8 @@ export const AzureADOnlyAuthenticationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type AzureADOnlyAuthenticationsListOutput =
   typeof AzureADOnlyAuthenticationsListOutput.Type;
 
@@ -144,36 +140,33 @@ export type AzureADOnlyAuthenticationsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AzureADOnlyAuthenticationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureADOnlyAuthenticationsListInput,
-    outputSchema: AzureADOnlyAuthenticationsListOutput,
-  }));
+export const AzureADOnlyAuthenticationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureADOnlyAuthenticationsListInput,
+  outputSchema: AzureADOnlyAuthenticationsListOutput,
+}));
 // Input Schema
-export const BigDataPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    force: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
-    }),
-  );
+export const BigDataPoolsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  bigDataPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  force: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+  }),
+);
 export type BigDataPoolsCreateOrUpdateInput =
   typeof BigDataPoolsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BigDataPoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const BigDataPoolsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type BigDataPoolsCreateOrUpdateOutput =
   typeof BigDataPoolsCreateOrUpdateOutput.Type;
 
@@ -190,35 +183,31 @@ export type BigDataPoolsCreateOrUpdateOutput =
  * @param bigDataPoolName - Big Data pool name
  * @param force - Whether to stop any running jobs in the Big Data pool
  */
-export const BigDataPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BigDataPoolsCreateOrUpdateInput,
-    outputSchema: BigDataPoolsCreateOrUpdateOutput,
+export const BigDataPoolsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BigDataPoolsCreateOrUpdateInput,
+  outputSchema: BigDataPoolsCreateOrUpdateOutput,
+}));
+// Input Schema
+export const BigDataPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  bigDataPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
   }),
 );
-// Input Schema
-export const BigDataPoolsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
-    }),
-  );
 export type BigDataPoolsDeleteInput = typeof BigDataPoolsDeleteInput.Type;
 
 // Output Schema
-export const BigDataPoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const BigDataPoolsDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type BigDataPoolsDeleteOutput = typeof BigDataPoolsDeleteOutput.Type;
 
 // The operation
@@ -233,12 +222,12 @@ export type BigDataPoolsDeleteOutput = typeof BigDataPoolsDeleteOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param bigDataPoolName - Big Data pool name
  */
-export const BigDataPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BigDataPoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BigDataPoolsDeleteInput,
   outputSchema: BigDataPoolsDeleteOutput,
 }));
 // Input Schema
-export const BigDataPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BigDataPoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -253,7 +242,7 @@ export const BigDataPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BigDataPoolsGetInput = typeof BigDataPoolsGetInput.Type;
 
 // Output Schema
-export const BigDataPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BigDataPoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -272,40 +261,38 @@ export type BigDataPoolsGetOutput = typeof BigDataPoolsGetOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param bigDataPoolName - Big Data pool name
  */
-export const BigDataPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BigDataPoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BigDataPoolsGetInput,
   outputSchema: BigDataPoolsGetOutput,
 }));
 // Input Schema
-export const BigDataPoolsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
-    }),
-  );
+export const BigDataPoolsListByWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
+  }),
+);
 export type BigDataPoolsListByWorkspaceInput =
   typeof BigDataPoolsListByWorkspaceInput.Type;
 
 // Output Schema
-export const BigDataPoolsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const BigDataPoolsListByWorkspaceOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type BigDataPoolsListByWorkspaceOutput =
   typeof BigDataPoolsListByWorkspaceOutput.Type;
 
@@ -320,35 +307,31 @@ export type BigDataPoolsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BigDataPoolsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BigDataPoolsListByWorkspaceInput,
-    outputSchema: BigDataPoolsListByWorkspaceOutput,
+export const BigDataPoolsListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BigDataPoolsListByWorkspaceInput,
+  outputSchema: BigDataPoolsListByWorkspaceOutput,
+}));
+// Input Schema
+export const BigDataPoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  bigDataPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
   }),
 );
-// Input Schema
-export const BigDataPoolsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
-    }),
-  );
 export type BigDataPoolsUpdateInput = typeof BigDataPoolsUpdateInput.Type;
 
 // Output Schema
-export const BigDataPoolsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const BigDataPoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type BigDataPoolsUpdateOutput = typeof BigDataPoolsUpdateOutput.Type;
 
 // The operation
@@ -363,13 +346,13 @@ export type BigDataPoolsUpdateOutput = typeof BigDataPoolsUpdateOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param bigDataPoolName - Big Data pool name
  */
-export const BigDataPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BigDataPoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BigDataPoolsUpdateInput,
   outputSchema: BigDataPoolsUpdateOutput,
 }));
 // Input Schema
 export const DataMaskingPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -386,7 +369,7 @@ export type DataMaskingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const DataMaskingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -404,35 +387,32 @@ export type DataMaskingPoliciesCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const DataMaskingPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataMaskingPoliciesCreateOrUpdateInput,
-    outputSchema: DataMaskingPoliciesCreateOrUpdateOutput,
-  }));
+export const DataMaskingPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataMaskingPoliciesCreateOrUpdateInput,
+  outputSchema: DataMaskingPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataMaskingPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
-    }),
-  );
+export const DataMaskingPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
+  }),
+);
 export type DataMaskingPoliciesGetInput =
   typeof DataMaskingPoliciesGetInput.Type;
 
 // Output Schema
-export const DataMaskingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const DataMaskingPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DataMaskingPoliciesGetOutput =
   typeof DataMaskingPoliciesGetOutput.Type;
 
@@ -446,37 +426,35 @@ export type DataMaskingPoliciesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const DataMaskingPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataMaskingPoliciesGetInput,
-    outputSchema: DataMaskingPoliciesGetOutput,
+export const DataMaskingPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataMaskingPoliciesGetInput,
+  outputSchema: DataMaskingPoliciesGetOutput,
+}));
+// Input Schema
+export const DataMaskingRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
   }),
 );
-// Input Schema
-export const DataMaskingRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
-    }),
-  );
 export type DataMaskingRulesCreateOrUpdateInput =
   typeof DataMaskingRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataMaskingRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataMaskingRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type DataMaskingRulesCreateOrUpdateOutput =
   typeof DataMaskingRulesCreateOrUpdateOutput.Type;
 
@@ -491,35 +469,32 @@ export type DataMaskingRulesCreateOrUpdateOutput =
  * @param sqlPoolName - SQL pool name
  * @param dataMaskingRuleName - The name of the data masking rule.
  */
-export const DataMaskingRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataMaskingRulesCreateOrUpdateInput,
-    outputSchema: DataMaskingRulesCreateOrUpdateOutput,
-  }));
+export const DataMaskingRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataMaskingRulesCreateOrUpdateInput,
+  outputSchema: DataMaskingRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataMaskingRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
-    }),
-  );
+export const DataMaskingRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
+  }),
+);
 export type DataMaskingRulesGetInput = typeof DataMaskingRulesGetInput.Type;
 
 // Output Schema
-export const DataMaskingRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const DataMaskingRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DataMaskingRulesGetOutput = typeof DataMaskingRulesGetOutput.Type;
 
 // The operation
@@ -533,40 +508,38 @@ export type DataMaskingRulesGetOutput = typeof DataMaskingRulesGetOutput.Type;
  * @param sqlPoolName - SQL pool name
  * @param dataMaskingRuleName - The name of the data masking rule.
  */
-export const DataMaskingRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataMaskingRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataMaskingRulesGetInput,
   outputSchema: DataMaskingRulesGetOutput,
 }));
 // Input Schema
-export const DataMaskingRulesListBySqlPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
-    }),
-  );
+export const DataMaskingRulesListBySqlPoolInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
+  }),
+);
 export type DataMaskingRulesListBySqlPoolInput =
   typeof DataMaskingRulesListBySqlPoolInput.Type;
 
 // Output Schema
-export const DataMaskingRulesListBySqlPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const DataMaskingRulesListBySqlPoolOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type DataMaskingRulesListBySqlPoolOutput =
   typeof DataMaskingRulesListBySqlPoolOutput.Type;
 
@@ -580,14 +553,13 @@ export type DataMaskingRulesListBySqlPoolOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const DataMaskingRulesListBySqlPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataMaskingRulesListBySqlPoolInput,
-    outputSchema: DataMaskingRulesListBySqlPoolOutput,
-  }));
+export const DataMaskingRulesListBySqlPool = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataMaskingRulesListBySqlPoolInput,
+  outputSchema: DataMaskingRulesListBySqlPoolOutput,
+}));
 // Input Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -605,7 +577,7 @@ export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -625,13 +597,13 @@ export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput,
     outputSchema: ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -649,7 +621,7 @@ export type ExtendedSqlPoolBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -668,14 +640,15 @@ export type ExtendedSqlPoolBlobAuditingPoliciesGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
-export const ExtendedSqlPoolBlobAuditingPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtendedSqlPoolBlobAuditingPoliciesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ExtendedSqlPoolBlobAuditingPoliciesGetInput,
     outputSchema: ExtendedSqlPoolBlobAuditingPoliciesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -692,7 +665,7 @@ export type ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput =
 
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -718,32 +691,32 @@ export type ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
  * @param sqlPoolName - SQL pool name
  */
 export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput,
     outputSchema: ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput,
   }));
 // Input Schema
-export const IntegrationRuntimeAuthKeysListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
-    }),
-  );
+export const IntegrationRuntimeAuthKeysListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
+  }),
+);
 export type IntegrationRuntimeAuthKeysListInput =
   typeof IntegrationRuntimeAuthKeysListInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeAuthKeysListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IntegrationRuntimeAuthKeysListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
-  });
+  },
+);
 export type IntegrationRuntimeAuthKeysListOutput =
   typeof IntegrationRuntimeAuthKeysListOutput.Type;
 
@@ -758,14 +731,13 @@ export type IntegrationRuntimeAuthKeysListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeAuthKeysList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationRuntimeAuthKeysListInput,
-    outputSchema: IntegrationRuntimeAuthKeysListOutput,
-  }));
+export const IntegrationRuntimeAuthKeysList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeAuthKeysListInput,
+  outputSchema: IntegrationRuntimeAuthKeysListOutput,
+}));
 // Input Schema
 export const IntegrationRuntimeAuthKeysRegenerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -781,7 +753,7 @@ export type IntegrationRuntimeAuthKeysRegenerateInput =
 
 // Output Schema
 export const IntegrationRuntimeAuthKeysRegenerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
   });
@@ -799,14 +771,15 @@ export type IntegrationRuntimeAuthKeysRegenerateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeAuthKeysRegenerate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeAuthKeysRegenerate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeAuthKeysRegenerateInput,
     outputSchema: IntegrationRuntimeAuthKeysRegenerateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationRuntimeConnectionInfosGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -822,7 +795,7 @@ export type IntegrationRuntimeConnectionInfosGetInput =
 
 // Output Schema
 export const IntegrationRuntimeConnectionInfosGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceToken: Schema.optional(Schema.String),
     identityCertThumbprint: Schema.optional(Schema.String),
     hostServiceUri: Schema.optional(Schema.String),
@@ -844,14 +817,15 @@ export type IntegrationRuntimeConnectionInfosGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeConnectionInfosGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeConnectionInfosGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeConnectionInfosGetInput,
     outputSchema: IntegrationRuntimeConnectionInfosGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationRuntimeCredentialsSyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +841,7 @@ export type IntegrationRuntimeCredentialsSyncInput =
 
 // Output Schema
 export const IntegrationRuntimeCredentialsSyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimeCredentialsSyncOutput =
   typeof IntegrationRuntimeCredentialsSyncOutput.Type;
 
@@ -882,14 +856,13 @@ export type IntegrationRuntimeCredentialsSyncOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeCredentialsSync =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationRuntimeCredentialsSyncInput,
-    outputSchema: IntegrationRuntimeCredentialsSyncOutput,
-  }));
+export const IntegrationRuntimeCredentialsSync = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeCredentialsSyncInput,
+  outputSchema: IntegrationRuntimeCredentialsSyncOutput,
+}));
 // Input Schema
 export const IntegrationRuntimeMonitoringDataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -905,7 +878,7 @@ export type IntegrationRuntimeMonitoringDataListInput =
 
 // Output Schema
 export const IntegrationRuntimeMonitoringDataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(
       Schema.Array(
@@ -936,14 +909,15 @@ export type IntegrationRuntimeMonitoringDataListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeMonitoringDataList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeMonitoringDataList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeMonitoringDataListInput,
     outputSchema: IntegrationRuntimeMonitoringDataListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationRuntimeNodeIpAddressGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -960,7 +934,7 @@ export type IntegrationRuntimeNodeIpAddressGetInput =
 
 // Output Schema
 export const IntegrationRuntimeNodeIpAddressGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
   });
 export type IntegrationRuntimeNodeIpAddressGetOutput =
@@ -978,31 +952,30 @@ export type IntegrationRuntimeNodeIpAddressGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param nodeName - Integration runtime node name
  */
-export const IntegrationRuntimeNodeIpAddressGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeNodeIpAddressGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeNodeIpAddressGetInput,
     outputSchema: IntegrationRuntimeNodeIpAddressGetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationRuntimeNodesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
-    }),
-  );
+export const IntegrationRuntimeNodesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  nodeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+  }),
+);
 export type IntegrationRuntimeNodesDeleteInput =
   typeof IntegrationRuntimeNodesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeNodesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationRuntimeNodesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimeNodesDeleteOutput =
   typeof IntegrationRuntimeNodesDeleteOutput.Type;
 
@@ -1018,62 +991,59 @@ export type IntegrationRuntimeNodesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param nodeName - Integration runtime node name
  */
-export const IntegrationRuntimeNodesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationRuntimeNodesDeleteInput,
-    outputSchema: IntegrationRuntimeNodesDeleteOutput,
-  }));
+export const IntegrationRuntimeNodesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeNodesDeleteInput,
+  outputSchema: IntegrationRuntimeNodesDeleteOutput,
+}));
 // Input Schema
-export const IntegrationRuntimeNodesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
-    }),
-  );
+export const IntegrationRuntimeNodesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  nodeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+  }),
+);
 export type IntegrationRuntimeNodesGetInput =
   typeof IntegrationRuntimeNodesGetInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeNodesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nodeName: Schema.optional(Schema.String),
-    machineName: Schema.optional(Schema.String),
-    hostServiceUri: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NeedRegistration",
-        "Online",
-        "Limited",
-        "Offline",
-        "Upgrading",
-        "Initializing",
-        "InitializeFailed",
-      ]),
-    ),
-    capabilities: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    versionStatus: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    registerTime: Schema.optional(Schema.String),
-    lastConnectTime: Schema.optional(Schema.String),
-    expiryTime: Schema.optional(Schema.String),
-    lastStartTime: Schema.optional(Schema.String),
-    lastStopTime: Schema.optional(Schema.String),
-    lastUpdateResult: Schema.optional(
-      Schema.Literals(["None", "Succeed", "Fail"]),
-    ),
-    lastStartUpdateTime: Schema.optional(Schema.String),
-    lastEndUpdateTime: Schema.optional(Schema.String),
-    isActiveDispatcher: Schema.optional(Schema.Boolean),
-    concurrentJobsLimit: Schema.optional(Schema.Number),
-    maxConcurrentJobs: Schema.optional(Schema.Number),
-  });
+export const IntegrationRuntimeNodesGetOutput = /*@__PURE__*/ Schema.Struct({
+  nodeName: Schema.optional(Schema.String),
+  machineName: Schema.optional(Schema.String),
+  hostServiceUri: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "NeedRegistration",
+      "Online",
+      "Limited",
+      "Offline",
+      "Upgrading",
+      "Initializing",
+      "InitializeFailed",
+    ]),
+  ),
+  capabilities: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  versionStatus: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  registerTime: Schema.optional(Schema.String),
+  lastConnectTime: Schema.optional(Schema.String),
+  expiryTime: Schema.optional(Schema.String),
+  lastStartTime: Schema.optional(Schema.String),
+  lastStopTime: Schema.optional(Schema.String),
+  lastUpdateResult: Schema.optional(
+    Schema.Literals(["None", "Succeed", "Fail"]),
+  ),
+  lastStartUpdateTime: Schema.optional(Schema.String),
+  lastEndUpdateTime: Schema.optional(Schema.String),
+  isActiveDispatcher: Schema.optional(Schema.Boolean),
+  concurrentJobsLimit: Schema.optional(Schema.Number),
+  maxConcurrentJobs: Schema.optional(Schema.Number),
+});
 export type IntegrationRuntimeNodesGetOutput =
   typeof IntegrationRuntimeNodesGetOutput.Type;
 
@@ -1089,63 +1059,59 @@ export type IntegrationRuntimeNodesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param nodeName - Integration runtime node name
  */
-export const IntegrationRuntimeNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimeNodesGetInput,
-    outputSchema: IntegrationRuntimeNodesGetOutput,
+export const IntegrationRuntimeNodesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeNodesGetInput,
+  outputSchema: IntegrationRuntimeNodesGetOutput,
+}));
+// Input Schema
+export const IntegrationRuntimeNodesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  nodeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
   }),
 );
-// Input Schema
-export const IntegrationRuntimeNodesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
-    }),
-  );
 export type IntegrationRuntimeNodesUpdateInput =
   typeof IntegrationRuntimeNodesUpdateInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeNodesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nodeName: Schema.optional(Schema.String),
-    machineName: Schema.optional(Schema.String),
-    hostServiceUri: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NeedRegistration",
-        "Online",
-        "Limited",
-        "Offline",
-        "Upgrading",
-        "Initializing",
-        "InitializeFailed",
-      ]),
-    ),
-    capabilities: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    versionStatus: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    registerTime: Schema.optional(Schema.String),
-    lastConnectTime: Schema.optional(Schema.String),
-    expiryTime: Schema.optional(Schema.String),
-    lastStartTime: Schema.optional(Schema.String),
-    lastStopTime: Schema.optional(Schema.String),
-    lastUpdateResult: Schema.optional(
-      Schema.Literals(["None", "Succeed", "Fail"]),
-    ),
-    lastStartUpdateTime: Schema.optional(Schema.String),
-    lastEndUpdateTime: Schema.optional(Schema.String),
-    isActiveDispatcher: Schema.optional(Schema.Boolean),
-    concurrentJobsLimit: Schema.optional(Schema.Number),
-    maxConcurrentJobs: Schema.optional(Schema.Number),
-  });
+export const IntegrationRuntimeNodesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  nodeName: Schema.optional(Schema.String),
+  machineName: Schema.optional(Schema.String),
+  hostServiceUri: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "NeedRegistration",
+      "Online",
+      "Limited",
+      "Offline",
+      "Upgrading",
+      "Initializing",
+      "InitializeFailed",
+    ]),
+  ),
+  capabilities: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  versionStatus: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  registerTime: Schema.optional(Schema.String),
+  lastConnectTime: Schema.optional(Schema.String),
+  expiryTime: Schema.optional(Schema.String),
+  lastStartTime: Schema.optional(Schema.String),
+  lastStopTime: Schema.optional(Schema.String),
+  lastUpdateResult: Schema.optional(
+    Schema.Literals(["None", "Succeed", "Fail"]),
+  ),
+  lastStartUpdateTime: Schema.optional(Schema.String),
+  lastEndUpdateTime: Schema.optional(Schema.String),
+  isActiveDispatcher: Schema.optional(Schema.Boolean),
+  concurrentJobsLimit: Schema.optional(Schema.Number),
+  maxConcurrentJobs: Schema.optional(Schema.Number),
+});
 export type IntegrationRuntimeNodesUpdateOutput =
   typeof IntegrationRuntimeNodesUpdateOutput.Type;
 
@@ -1161,14 +1127,13 @@ export type IntegrationRuntimeNodesUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param nodeName - Integration runtime node name
  */
-export const IntegrationRuntimeNodesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IntegrationRuntimeNodesUpdateInput,
-    outputSchema: IntegrationRuntimeNodesUpdateOutput,
-  }));
+export const IntegrationRuntimeNodesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeNodesUpdateInput,
+  outputSchema: IntegrationRuntimeNodesUpdateOutput,
+}));
 // Input Schema
 export const IntegrationRuntimeObjectMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1184,7 +1149,7 @@ export type IntegrationRuntimeObjectMetadataListInput =
 
 // Output Schema
 export const IntegrationRuntimeObjectMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1216,14 +1181,15 @@ export type IntegrationRuntimeObjectMetadataListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeObjectMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeObjectMetadataList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeObjectMetadataListInput,
     outputSchema: IntegrationRuntimeObjectMetadataListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationRuntimeObjectMetadataRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1239,7 +1205,7 @@ export type IntegrationRuntimeObjectMetadataRefreshInput =
 
 // Output Schema
 export const IntegrationRuntimeObjectMetadataRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.String),
@@ -1259,34 +1225,33 @@ export type IntegrationRuntimeObjectMetadataRefreshOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeObjectMetadataRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimeObjectMetadataRefresh = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimeObjectMetadataRefreshInput,
     outputSchema: IntegrationRuntimeObjectMetadataRefreshOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationRuntimesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-    }),
-  );
+export const IntegrationRuntimesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+  }),
+);
 export type IntegrationRuntimesCreateInput =
   typeof IntegrationRuntimesCreateInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IntegrationRuntimesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IntegrationRuntimesCreateOutput =
   typeof IntegrationRuntimesCreateOutput.Type;
 
@@ -1302,31 +1267,27 @@ export type IntegrationRuntimesCreateOutput =
  * @param workspaceName - The name of the workspace.
  * @param If-Match - ETag of the integration runtime entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const IntegrationRuntimesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesCreateInput,
-    outputSchema: IntegrationRuntimesCreateOutput,
+export const IntegrationRuntimesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesCreateInput,
+  outputSchema: IntegrationRuntimesCreateOutput,
+}));
+// Input Schema
+export const IntegrationRuntimesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
   }),
 );
-// Input Schema
-export const IntegrationRuntimesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-    }),
-  );
 export type IntegrationRuntimesDeleteInput =
   typeof IntegrationRuntimesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationRuntimesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimesDeleteOutput =
   typeof IntegrationRuntimesDeleteOutput.Type;
 
@@ -1341,15 +1302,13 @@ export type IntegrationRuntimesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesDeleteInput,
-    outputSchema: IntegrationRuntimesDeleteOutput,
-  }),
-);
+export const IntegrationRuntimesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesDeleteInput,
+  outputSchema: IntegrationRuntimesDeleteOutput,
+}));
 // Input Schema
 export const IntegrationRuntimesDisableInteractiveQueryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1365,7 +1324,7 @@ export type IntegrationRuntimesDisableInteractiveQueryInput =
 
 // Output Schema
 export const IntegrationRuntimesDisableInteractiveQueryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimesDisableInteractiveQueryOutput =
   typeof IntegrationRuntimesDisableInteractiveQueryOutput.Type;
 
@@ -1379,13 +1338,13 @@ export type IntegrationRuntimesDisableInteractiveQueryOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const IntegrationRuntimesDisableInteractiveQuery =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesDisableInteractiveQueryInput,
     outputSchema: IntegrationRuntimesDisableInteractiveQueryOutput,
   }));
 // Input Schema
 export const IntegrationRuntimesEnableInteractiveQueryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1401,7 +1360,7 @@ export type IntegrationRuntimesEnableInteractiveQueryInput =
 
 // Output Schema
 export const IntegrationRuntimesEnableInteractiveQueryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimesEnableInteractiveQueryOutput =
   typeof IntegrationRuntimesEnableInteractiveQueryOutput.Type;
 
@@ -1414,34 +1373,33 @@ export type IntegrationRuntimesEnableInteractiveQueryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesEnableInteractiveQuery =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimesEnableInteractiveQuery = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimesEnableInteractiveQueryInput,
     outputSchema: IntegrationRuntimesEnableInteractiveQueryOutput,
-  }));
+  }),
+);
 // Input Schema
-export const IntegrationRuntimesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-    }),
-  );
+export const IntegrationRuntimesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+  }),
+);
 export type IntegrationRuntimesGetInput =
   typeof IntegrationRuntimesGetInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IntegrationRuntimesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IntegrationRuntimesGetOutput =
   typeof IntegrationRuntimesGetOutput.Type;
 
@@ -1457,15 +1415,13 @@ export type IntegrationRuntimesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param If-None-Match - ETag of the integration runtime entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const IntegrationRuntimesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesGetInput,
-    outputSchema: IntegrationRuntimesGetOutput,
-  }),
-);
+export const IntegrationRuntimesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesGetInput,
+  outputSchema: IntegrationRuntimesGetOutput,
+}));
 // Input Schema
 export const IntegrationRuntimesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1481,7 +1437,7 @@ export type IntegrationRuntimesListByWorkspaceInput =
 
 // Output Schema
 export const IntegrationRuntimesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1505,14 +1461,15 @@ export type IntegrationRuntimesListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IntegrationRuntimesListByWorkspace = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationRuntimesListByWorkspaceInput,
     outputSchema: IntegrationRuntimesListByWorkspaceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1528,7 +1485,7 @@ export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
 
 // Output Schema
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1566,51 +1523,49 @@ export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput,
     outputSchema:
       IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
-export const IntegrationRuntimesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/start",
-    }),
-  );
+export const IntegrationRuntimesStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/start",
+  }),
+);
 export type IntegrationRuntimesStartInput =
   typeof IntegrationRuntimesStartInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      type: Schema.Literals(["Managed", "SelfHosted"]),
-      dataFactoryName: Schema.optional(Schema.String),
-      state: Schema.optional(
-        Schema.Literals([
-          "Initial",
-          "Stopped",
-          "Started",
-          "Starting",
-          "Stopping",
-          "NeedRegistration",
-          "Online",
-          "Limited",
-          "Offline",
-          "AccessDenied",
-        ]),
-      ),
-    }),
-  });
+export const IntegrationRuntimesStartOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.Struct({
+    type: Schema.Literals(["Managed", "SelfHosted"]),
+    dataFactoryName: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals([
+        "Initial",
+        "Stopped",
+        "Started",
+        "Starting",
+        "Stopping",
+        "NeedRegistration",
+        "Online",
+        "Limited",
+        "Offline",
+        "AccessDenied",
+      ]),
+    ),
+  }),
+});
 export type IntegrationRuntimesStartOutput =
   typeof IntegrationRuntimesStartOutput.Type;
 
@@ -1625,31 +1580,27 @@ export type IntegrationRuntimesStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesStartInput,
-    outputSchema: IntegrationRuntimesStartOutput,
+export const IntegrationRuntimesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesStartInput,
+  outputSchema: IntegrationRuntimesStartOutput,
+}));
+// Input Schema
+export const IntegrationRuntimesStopInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/stop",
   }),
 );
-// Input Schema
-export const IntegrationRuntimesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/stop",
-    }),
-  );
 export type IntegrationRuntimesStopInput =
   typeof IntegrationRuntimesStopInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationRuntimesStopOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimesStopOutput =
   typeof IntegrationRuntimesStopOutput.Type;
 
@@ -1664,51 +1615,47 @@ export type IntegrationRuntimesStopOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesStopInput,
-    outputSchema: IntegrationRuntimesStopOutput,
+export const IntegrationRuntimesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesStopInput,
+  outputSchema: IntegrationRuntimesStopOutput,
+}));
+// Input Schema
+export const IntegrationRuntimeStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
   }),
 );
-// Input Schema
-export const IntegrationRuntimeStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
-    }),
-  );
 export type IntegrationRuntimeStatusGetInput =
   typeof IntegrationRuntimeStatusGetInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      type: Schema.Literals(["Managed", "SelfHosted"]),
-      dataFactoryName: Schema.optional(Schema.String),
-      state: Schema.optional(
-        Schema.Literals([
-          "Initial",
-          "Stopped",
-          "Started",
-          "Starting",
-          "Stopping",
-          "NeedRegistration",
-          "Online",
-          "Limited",
-          "Offline",
-          "AccessDenied",
-        ]),
-      ),
-    }),
-  });
+export const IntegrationRuntimeStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.Struct({
+    type: Schema.Literals(["Managed", "SelfHosted"]),
+    dataFactoryName: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals([
+        "Initial",
+        "Stopped",
+        "Started",
+        "Starting",
+        "Stopping",
+        "NeedRegistration",
+        "Online",
+        "Limited",
+        "Offline",
+        "AccessDenied",
+      ]),
+    ),
+  }),
+});
 export type IntegrationRuntimeStatusGetOutput =
   typeof IntegrationRuntimeStatusGetOutput.Type;
 
@@ -1723,35 +1670,31 @@ export type IntegrationRuntimeStatusGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimeStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimeStatusGetInput,
-    outputSchema: IntegrationRuntimeStatusGetOutput,
+export const IntegrationRuntimeStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeStatusGetInput,
+  outputSchema: IntegrationRuntimeStatusGetOutput,
+}));
+// Input Schema
+export const IntegrationRuntimesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
   }),
 );
-// Input Schema
-export const IntegrationRuntimesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-    }),
-  );
 export type IntegrationRuntimesUpdateInput =
   typeof IntegrationRuntimesUpdateInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IntegrationRuntimesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IntegrationRuntimesUpdateOutput =
   typeof IntegrationRuntimesUpdateOutput.Type;
 
@@ -1766,31 +1709,27 @@ export type IntegrationRuntimesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesUpdateInput,
-    outputSchema: IntegrationRuntimesUpdateOutput,
+export const IntegrationRuntimesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesUpdateInput,
+  outputSchema: IntegrationRuntimesUpdateOutput,
+}));
+// Input Schema
+export const IntegrationRuntimesUpgradeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
   }),
 );
-// Input Schema
-export const IntegrationRuntimesUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
-    }),
-  );
 export type IntegrationRuntimesUpgradeInput =
   typeof IntegrationRuntimesUpgradeInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IntegrationRuntimesUpgradeOutput = /*@__PURE__*/ Schema.Void;
 export type IntegrationRuntimesUpgradeOutput =
   typeof IntegrationRuntimesUpgradeOutput.Type;
 
@@ -1805,35 +1744,31 @@ export type IntegrationRuntimesUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntegrationRuntimesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesUpgradeInput,
-    outputSchema: IntegrationRuntimesUpgradeOutput,
+export const IntegrationRuntimesUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesUpgradeInput,
+  outputSchema: IntegrationRuntimesUpgradeOutput,
+}));
+// Input Schema
+export const IpFirewallRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
   }),
 );
-// Input Schema
-export const IpFirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-    }),
-  );
 export type IpFirewallRulesCreateOrUpdateInput =
   typeof IpFirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IpFirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IpFirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IpFirewallRulesCreateOrUpdateOutput =
   typeof IpFirewallRulesCreateOrUpdateOutput.Type;
 
@@ -1846,33 +1781,30 @@ export type IpFirewallRulesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IpFirewallRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IpFirewallRulesCreateOrUpdateInput,
-    outputSchema: IpFirewallRulesCreateOrUpdateOutput,
-  }));
+export const IpFirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpFirewallRulesCreateOrUpdateInput,
+  outputSchema: IpFirewallRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IpFirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-    }),
-  );
+export const IpFirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+  }),
+);
 export type IpFirewallRulesDeleteInput = typeof IpFirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const IpFirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IpFirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IpFirewallRulesDeleteOutput =
   typeof IpFirewallRulesDeleteOutput.Type;
 
@@ -1885,34 +1817,30 @@ export type IpFirewallRulesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IpFirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpFirewallRulesDeleteInput,
-    outputSchema: IpFirewallRulesDeleteOutput,
+export const IpFirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpFirewallRulesDeleteInput,
+  outputSchema: IpFirewallRulesDeleteOutput,
+}));
+// Input Schema
+export const IpFirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
   }),
 );
-// Input Schema
-export const IpFirewallRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-    }),
-  );
 export type IpFirewallRulesGetInput = typeof IpFirewallRulesGetInput.Type;
 
 // Output Schema
-export const IpFirewallRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const IpFirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IpFirewallRulesGetOutput = typeof IpFirewallRulesGetOutput.Type;
 
 // The operation
@@ -1924,29 +1852,28 @@ export type IpFirewallRulesGetOutput = typeof IpFirewallRulesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IpFirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpFirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpFirewallRulesGetInput,
   outputSchema: IpFirewallRulesGetOutput,
 }));
 // Input Schema
-export const IpFirewallRulesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
-    }),
-  );
+export const IpFirewallRulesListByWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
+  }),
+);
 export type IpFirewallRulesListByWorkspaceInput =
   typeof IpFirewallRulesListByWorkspaceInput.Type;
 
 // Output Schema
-export const IpFirewallRulesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpFirewallRulesListByWorkspaceOutput = /*@__PURE__*/ Schema.Struct(
+  {
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1957,7 +1884,8 @@ export const IpFirewallRulesListByWorkspaceOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type IpFirewallRulesListByWorkspaceOutput =
   typeof IpFirewallRulesListByWorkspaceOutput.Type;
 
@@ -1970,32 +1898,29 @@ export type IpFirewallRulesListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IpFirewallRulesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IpFirewallRulesListByWorkspaceInput,
-    outputSchema: IpFirewallRulesListByWorkspaceOutput,
-  }));
+export const IpFirewallRulesListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpFirewallRulesListByWorkspaceInput,
+  outputSchema: IpFirewallRulesListByWorkspaceOutput,
+}));
 // Input Schema
-export const IpFirewallRulesReplaceAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/replaceAllIpFirewallRules",
-    }),
-  );
+export const IpFirewallRulesReplaceAllInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/replaceAllIpFirewallRules",
+  }),
+);
 export type IpFirewallRulesReplaceAllInput =
   typeof IpFirewallRulesReplaceAllInput.Type;
 
 // Output Schema
-export const IpFirewallRulesReplaceAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationId: Schema.optional(Schema.String),
-  });
+export const IpFirewallRulesReplaceAllOutput = /*@__PURE__*/ Schema.Struct({
+  operationId: Schema.optional(Schema.String),
+});
 export type IpFirewallRulesReplaceAllOutput =
   typeof IpFirewallRulesReplaceAllOutput.Type;
 
@@ -2008,34 +1933,30 @@ export type IpFirewallRulesReplaceAllOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IpFirewallRulesReplaceAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpFirewallRulesReplaceAllInput,
-    outputSchema: IpFirewallRulesReplaceAllOutput,
+export const IpFirewallRulesReplaceAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpFirewallRulesReplaceAllInput,
+  outputSchema: IpFirewallRulesReplaceAllOutput,
+}));
+// Input Schema
+export const KeysCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
   }),
 );
-// Input Schema
-export const KeysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
-    }),
-  );
 export type KeysCreateOrUpdateInput = typeof KeysCreateOrUpdateInput.Type;
 
 // Output Schema
-export const KeysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const KeysCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type KeysCreateOrUpdateOutput = typeof KeysCreateOrUpdateOutput.Type;
 
 // The operation
@@ -2047,12 +1968,12 @@ export type KeysCreateOrUpdateOutput = typeof KeysCreateOrUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const KeysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysCreateOrUpdateInput,
   outputSchema: KeysCreateOrUpdateOutput,
 }));
 // Input Schema
-export const KeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2066,7 +1987,7 @@ export const KeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeysDeleteInput = typeof KeysDeleteInput.Type;
 
 // Output Schema
-export const KeysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysDeleteOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2082,12 +2003,12 @@ export type KeysDeleteOutput = typeof KeysDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const KeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysDeleteInput,
   outputSchema: KeysDeleteOutput,
 }));
 // Input Schema
-export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2101,7 +2022,7 @@ export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeysGetInput = typeof KeysGetInput.Type;
 
 // Output Schema
-export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2117,39 +2038,37 @@ export type KeysGetOutput = typeof KeysGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const KeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysGetInput,
   outputSchema: KeysGetOutput,
 }));
 // Input Schema
-export const KeysListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
-    }),
-  );
+export const KeysListByWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
+  }),
+);
 export type KeysListByWorkspaceInput = typeof KeysListByWorkspaceInput.Type;
 
 // Output Schema
-export const KeysListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const KeysListByWorkspaceOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type KeysListByWorkspaceOutput = typeof KeysListByWorkspaceOutput.Type;
 
 // The operation
@@ -2161,38 +2080,36 @@ export type KeysListByWorkspaceOutput = typeof KeysListByWorkspaceOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const KeysListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysListByWorkspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysListByWorkspaceInput,
   outputSchema: KeysListByWorkspaceOutput,
 }));
 // Input Schema
-export const LibrariesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
-    }),
-  );
+export const LibrariesListByWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
+  }),
+);
 export type LibrariesListByWorkspaceInput =
   typeof LibrariesListByWorkspaceInput.Type;
 
 // Output Schema
-export const LibrariesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const LibrariesListByWorkspaceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LibrariesListByWorkspaceOutput =
   typeof LibrariesListByWorkspaceOutput.Type;
 
@@ -2207,14 +2124,12 @@ export type LibrariesListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const LibrariesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LibrariesListByWorkspaceInput,
-    outputSchema: LibrariesListByWorkspaceOutput,
-  }),
-);
+export const LibrariesListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LibrariesListByWorkspaceInput,
+  outputSchema: LibrariesListByWorkspaceOutput,
+}));
 // Input Schema
-export const LibraryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LibraryGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2228,7 +2143,7 @@ export const LibraryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LibraryGetInput = typeof LibraryGetInput.Type;
 
 // Output Schema
-export const LibraryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LibraryGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2246,27 +2161,28 @@ export type LibraryGetOutput = typeof LibraryGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const LibraryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LibraryGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LibraryGetInput,
   outputSchema: LibraryGetOutput,
 }));
 // Input Schema
-export const OperationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/checkNameAvailability",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/checkNameAvailability",
+  }),
+);
 export type OperationsCheckNameAvailabilityInput =
   typeof OperationsCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const OperationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     available: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
@@ -2284,14 +2200,13 @@ export type OperationsCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const OperationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OperationsCheckNameAvailabilityInput,
-    outputSchema: OperationsCheckNameAvailabilityOutput,
-  }));
+export const OperationsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsCheckNameAvailabilityInput,
+  outputSchema: OperationsCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export const OperationsGetAzureAsyncHeaderResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2308,7 +2223,7 @@ export type OperationsGetAzureAsyncHeaderResultInput =
 
 // Output Schema
 export const OperationsGetAzureAsyncHeaderResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -2367,14 +2282,15 @@ export type OperationsGetAzureAsyncHeaderResultOutput =
  * @param workspaceName - The name of the workspace.
  * @param operationId - Operation ID
  */
-export const OperationsGetAzureAsyncHeaderResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsGetAzureAsyncHeaderResult = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OperationsGetAzureAsyncHeaderResultInput,
     outputSchema: OperationsGetAzureAsyncHeaderResultOutput,
-  }));
+  }),
+);
 // Input Schema
 export const OperationsGetLocationHeaderResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2391,7 +2307,7 @@ export type OperationsGetLocationHeaderResultInput =
 
 // Output Schema
 export const OperationsGetLocationHeaderResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type OperationsGetLocationHeaderResultOutput =
   typeof OperationsGetLocationHeaderResultOutput.Type;
 
@@ -2407,21 +2323,18 @@ export type OperationsGetLocationHeaderResultOutput =
  * @param workspaceName - The name of the workspace.
  * @param operationId - Operation ID
  */
-export const OperationsGetLocationHeaderResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OperationsGetLocationHeaderResultInput,
-    outputSchema: OperationsGetLocationHeaderResultOutput,
-  }));
+export const OperationsGetLocationHeaderResult = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsGetLocationHeaderResultInput,
+  outputSchema: OperationsGetLocationHeaderResultOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Synapse/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const OperationsListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     display: Schema.optional(
       Schema.Struct({
@@ -2488,13 +2401,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * Get all available operations
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -2523,7 +2436,7 @@ export type PrivateEndpointConnectionsCreateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2536,14 +2449,13 @@ export type PrivateEndpointConnectionsCreateOutput =
  * Approve or reject a private endpoint connection.
  * @param properties - Private endpoint connection properties.
  */
-export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsCreateInput,
-    outputSchema: PrivateEndpointConnectionsCreateOutput,
-  }));
+export const PrivateEndpointConnectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsCreateInput,
+  outputSchema: PrivateEndpointConnectionsCreateOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2553,8 +2465,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2562,29 +2473,28 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Delete a private endpoint connection.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -2592,30 +2502,28 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2626,7 +2534,8 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -2639,14 +2548,13 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsPrivateLinkHubGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2657,7 +2565,7 @@ export type PrivateEndpointConnectionsPrivateLinkHubGetInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsPrivateLinkHubGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -2687,13 +2595,13 @@ export type PrivateEndpointConnectionsPrivateLinkHubGetOutput =
  * Get all PrivateEndpointConnection in the PrivateLinkHub by name
  */
 export const PrivateEndpointConnectionsPrivateLinkHubGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPrivateLinkHubGetInput,
     outputSchema: PrivateEndpointConnectionsPrivateLinkHubGetOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionsPrivateLinkHubListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
@@ -2704,7 +2612,7 @@ export type PrivateEndpointConnectionsPrivateLinkHubListInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsPrivateLinkHubListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2741,13 +2649,13 @@ export type PrivateEndpointConnectionsPrivateLinkHubListOutput =
  * Get all PrivateEndpointConnections in the PrivateLinkHub
  */
 export const PrivateEndpointConnectionsPrivateLinkHubList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPrivateLinkHubListInput,
     outputSchema: PrivateEndpointConnectionsPrivateLinkHubListOutput,
   }));
 // Input Schema
 export const PrivateLinkHubPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2762,7 +2670,7 @@ export type PrivateLinkHubPrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkHubPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2780,14 +2688,15 @@ export type PrivateLinkHubPrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateLinkHubPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkHubPrivateLinkResourcesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkHubPrivateLinkResourcesGetInput,
     outputSchema: PrivateLinkHubPrivateLinkResourcesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateLinkHubPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2802,7 +2711,7 @@ export type PrivateLinkHubPrivateLinkResourcesListInput =
 
 // Output Schema
 export const PrivateLinkHubPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2827,29 +2736,30 @@ export type PrivateLinkHubPrivateLinkResourcesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateLinkHubPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkHubPrivateLinkResourcesList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkHubPrivateLinkResourcesListInput,
     outputSchema: PrivateLinkHubPrivateLinkResourcesListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateLinkHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-    }),
-  );
+export const PrivateLinkHubsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+  }),
+);
 export type PrivateLinkHubsCreateOrUpdateInput =
   typeof PrivateLinkHubsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateLinkHubsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateLinkHubsCreateOrUpdateOutput =
   typeof PrivateLinkHubsCreateOrUpdateOutput.Type;
 
@@ -2857,24 +2767,21 @@ export type PrivateLinkHubsCreateOrUpdateOutput =
 /**
  * Creates or updates a privateLinkHub
  */
-export const PrivateLinkHubsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkHubsCreateOrUpdateInput,
-    outputSchema: PrivateLinkHubsCreateOrUpdateOutput,
-  }));
+export const PrivateLinkHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkHubsCreateOrUpdateInput,
+  outputSchema: PrivateLinkHubsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PrivateLinkHubsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-    }),
-  );
+export const PrivateLinkHubsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+  }),
+);
 export type PrivateLinkHubsDeleteInput = typeof PrivateLinkHubsDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateLinkHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateLinkHubsDeleteOutput =
   typeof PrivateLinkHubsDeleteOutput.Type;
 
@@ -2882,66 +2789,60 @@ export type PrivateLinkHubsDeleteOutput =
 /**
  * Deletes a privateLinkHub
  */
-export const PrivateLinkHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkHubsDeleteInput,
-    outputSchema: PrivateLinkHubsDeleteOutput,
+export const PrivateLinkHubsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkHubsDeleteInput,
+  outputSchema: PrivateLinkHubsDeleteOutput,
+}));
+// Input Schema
+export const PrivateLinkHubsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
   }),
 );
-// Input Schema
-export const PrivateLinkHubsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-    }),
-  );
 export type PrivateLinkHubsGetInput = typeof PrivateLinkHubsGetInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateLinkHubsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateLinkHubsGetOutput = typeof PrivateLinkHubsGetOutput.Type;
 
 // The operation
 /**
  * Gets a privateLinkHub
  */
-export const PrivateLinkHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinkHubsGetInput,
   outputSchema: PrivateLinkHubsGetOutput,
 }));
 // Input Schema
-export const PrivateLinkHubsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/privateLinkHubs",
-    }),
-  );
+export const PrivateLinkHubsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/privateLinkHubs",
+  }),
+);
 export type PrivateLinkHubsListInput = typeof PrivateLinkHubsListInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const PrivateLinkHubsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type PrivateLinkHubsListOutput = typeof PrivateLinkHubsListOutput.Type;
 
 // The operation
@@ -2951,13 +2852,13 @@ export type PrivateLinkHubsListOutput = typeof PrivateLinkHubsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateLinkHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkHubsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinkHubsListInput,
   outputSchema: PrivateLinkHubsListOutput,
 }));
 // Input Schema
 export const PrivateLinkHubsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs",
@@ -2968,7 +2869,7 @@ export type PrivateLinkHubsListByResourceGroupInput =
 
 // Output Schema
 export const PrivateLinkHubsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2987,28 +2888,27 @@ export type PrivateLinkHubsListByResourceGroupOutput =
 /**
  * Returns a list of privateLinkHubs in a resource group
  */
-export const PrivateLinkHubsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkHubsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkHubsListByResourceGroupInput,
     outputSchema: PrivateLinkHubsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateLinkHubsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-    }),
-  );
+export const PrivateLinkHubsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+  }),
+);
 export type PrivateLinkHubsUpdateInput = typeof PrivateLinkHubsUpdateInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateLinkHubsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateLinkHubsUpdateOutput =
   typeof PrivateLinkHubsUpdateOutput.Type;
 
@@ -3016,35 +2916,31 @@ export type PrivateLinkHubsUpdateOutput =
 /**
  * Updates a privateLinkHub
  */
-export const PrivateLinkHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkHubsUpdateInput,
-    outputSchema: PrivateLinkHubsUpdateOutput,
+export const PrivateLinkHubsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkHubsUpdateInput,
+  outputSchema: PrivateLinkHubsUpdateOutput,
+}));
+// Input Schema
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
   }),
 );
-// Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
-    }),
-  );
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -3059,42 +2955,38 @@ export type PrivateLinkResourcesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
+// Input Schema
+export const PrivateLinkResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources",
   }),
 );
-// Input Schema
-export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources",
-    }),
-  );
 export type PrivateLinkResourcesListInput =
   typeof PrivateLinkResourcesListInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const PrivateLinkResourcesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateLinkResourcesListOutput =
   typeof PrivateLinkResourcesListOutput.Type;
 
@@ -3109,36 +3001,32 @@ export type PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
+// Input Schema
+export const RestorableDroppedSqlPoolsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  restorableDroppedSqlPoolId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools/{restorableDroppedSqlPoolId}",
   }),
 );
-// Input Schema
-export const RestorableDroppedSqlPoolsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    restorableDroppedSqlPoolId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools/{restorableDroppedSqlPoolId}",
-    }),
-  );
 export type RestorableDroppedSqlPoolsGetInput =
   typeof RestorableDroppedSqlPoolsGetInput.Type;
 
 // Output Schema
-export const RestorableDroppedSqlPoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const RestorableDroppedSqlPoolsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type RestorableDroppedSqlPoolsGetOutput =
   typeof RestorableDroppedSqlPoolsGetOutput.Type;
 
@@ -3152,14 +3040,13 @@ export type RestorableDroppedSqlPoolsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param restorableDroppedSqlPoolId - The id of the deleted Sql Pool in the form of sqlPoolName,deletionTimeInFileTimeFormat
  */
-export const RestorableDroppedSqlPoolsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RestorableDroppedSqlPoolsGetInput,
-    outputSchema: RestorableDroppedSqlPoolsGetOutput,
-  }));
+export const RestorableDroppedSqlPoolsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableDroppedSqlPoolsGetInput,
+  outputSchema: RestorableDroppedSqlPoolsGetOutput,
+}));
 // Input Schema
 export const RestorableDroppedSqlPoolsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3175,7 +3062,7 @@ export type RestorableDroppedSqlPoolsListByWorkspaceInput =
 
 // Output Schema
 export const RestorableDroppedSqlPoolsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3196,14 +3083,15 @@ export type RestorableDroppedSqlPoolsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const RestorableDroppedSqlPoolsListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorableDroppedSqlPoolsListByWorkspace = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RestorableDroppedSqlPoolsListByWorkspaceInput,
     outputSchema: RestorableDroppedSqlPoolsListByWorkspaceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3221,7 +3109,7 @@ export type SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3242,36 +3130,37 @@ export type SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
  * @param sqlPoolName - SQL pool name
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
-export const SqlPoolBlobAuditingPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolBlobAuditingPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolBlobAuditingPoliciesCreateOrUpdateInput,
     outputSchema: SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolBlobAuditingPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
-    }),
-  );
+export const SqlPoolBlobAuditingPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
+  }),
+);
 export type SqlPoolBlobAuditingPoliciesGetInput =
   typeof SqlPoolBlobAuditingPoliciesGetInput.Type;
 
 // Output Schema
-export const SqlPoolBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolBlobAuditingPoliciesGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
+  },
+);
 export type SqlPoolBlobAuditingPoliciesGetOutput =
   typeof SqlPoolBlobAuditingPoliciesGetOutput.Type;
 
@@ -3288,14 +3177,13 @@ export type SqlPoolBlobAuditingPoliciesGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
-export const SqlPoolBlobAuditingPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolBlobAuditingPoliciesGetInput,
-    outputSchema: SqlPoolBlobAuditingPoliciesGetOutput,
-  }));
+export const SqlPoolBlobAuditingPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolBlobAuditingPoliciesGetInput,
+  outputSchema: SqlPoolBlobAuditingPoliciesGetOutput,
+}));
 // Input Schema
 export const SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3312,7 +3200,7 @@ export type SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
 
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3337,24 +3225,23 @@ export type SqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolBlobAuditingPoliciesListBySqlPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolBlobAuditingPoliciesListBySqlPool = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolBlobAuditingPoliciesListBySqlPoolInput,
     outputSchema: SqlPoolBlobAuditingPoliciesListBySqlPoolOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolColumnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-    tableName: Schema.String.pipe(T.PathParam()),
-    columnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SqlPoolColumnsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+  tableName: Schema.String.pipe(T.PathParam()),
+  columnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}",
@@ -3363,12 +3250,11 @@ export const SqlPoolColumnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SqlPoolColumnsGetInput = typeof SqlPoolColumnsGetInput.Type;
 
 // Output Schema
-export const SqlPoolColumnsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolColumnsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolColumnsGetOutput = typeof SqlPoolColumnsGetOutput.Type;
 
 // The operation
@@ -3384,13 +3270,13 @@ export type SqlPoolColumnsGetOutput = typeof SqlPoolColumnsGetOutput.Type;
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  */
-export const SqlPoolColumnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolColumnsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolColumnsGetInput,
   outputSchema: SqlPoolColumnsGetOutput,
 }));
 // Input Schema
 export const SqlPoolDataWarehouseUserActivitiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3410,7 +3296,7 @@ export type SqlPoolDataWarehouseUserActivitiesGetInput =
 
 // Output Schema
 export const SqlPoolDataWarehouseUserActivitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3431,14 +3317,15 @@ export type SqlPoolDataWarehouseUserActivitiesGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param dataWarehouseUserActivityName - The activity name of the Sql pool.
  */
-export const SqlPoolDataWarehouseUserActivitiesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolDataWarehouseUserActivitiesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolDataWarehouseUserActivitiesGetInput,
     outputSchema: SqlPoolDataWarehouseUserActivitiesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3456,7 +3343,7 @@ export type SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolGeoBackupPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3475,36 +3362,35 @@ export type SqlPoolGeoBackupPoliciesCreateOrUpdateOutput =
  * @param sqlPoolName - SQL pool name
  * @param geoBackupPolicyName - The name of the geo backup policy.
  */
-export const SqlPoolGeoBackupPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolGeoBackupPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolGeoBackupPoliciesCreateOrUpdateInput,
     outputSchema: SqlPoolGeoBackupPoliciesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolGeoBackupPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
-    }),
-  );
+export const SqlPoolGeoBackupPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
+  }),
+);
 export type SqlPoolGeoBackupPoliciesGetInput =
   typeof SqlPoolGeoBackupPoliciesGetInput.Type;
 
 // Output Schema
-export const SqlPoolGeoBackupPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolGeoBackupPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolGeoBackupPoliciesGetOutput =
   typeof SqlPoolGeoBackupPoliciesGetOutput.Type;
 
@@ -3521,42 +3407,38 @@ export type SqlPoolGeoBackupPoliciesGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param geoBackupPolicyName - The name of the geo backup policy.
  */
-export const SqlPoolGeoBackupPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolGeoBackupPoliciesGetInput,
-    outputSchema: SqlPoolGeoBackupPoliciesGetOutput,
+export const SqlPoolGeoBackupPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolGeoBackupPoliciesGetInput,
+  outputSchema: SqlPoolGeoBackupPoliciesGetOutput,
+}));
+// Input Schema
+export const SqlPoolGeoBackupPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies",
   }),
 );
-// Input Schema
-export const SqlPoolGeoBackupPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies",
-    }),
-  );
 export type SqlPoolGeoBackupPoliciesListInput =
   typeof SqlPoolGeoBackupPoliciesListInput.Type;
 
 // Output Schema
-export const SqlPoolGeoBackupPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolGeoBackupPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type SqlPoolGeoBackupPoliciesListOutput =
   typeof SqlPoolGeoBackupPoliciesListOutput.Type;
 
@@ -3572,14 +3454,13 @@ export type SqlPoolGeoBackupPoliciesListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolGeoBackupPoliciesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolGeoBackupPoliciesListInput,
-    outputSchema: SqlPoolGeoBackupPoliciesListOutput,
-  }));
+export const SqlPoolGeoBackupPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolGeoBackupPoliciesListInput,
+  outputSchema: SqlPoolGeoBackupPoliciesListOutput,
+}));
 // Input Schema
 export const SqlPoolMaintenanceWindowOptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3597,7 +3478,7 @@ export type SqlPoolMaintenanceWindowOptionsGetInput =
 
 // Output Schema
 export const SqlPoolMaintenanceWindowOptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3618,14 +3499,15 @@ export type SqlPoolMaintenanceWindowOptionsGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param maintenanceWindowOptionsName - Maintenance window options name.
  */
-export const SqlPoolMaintenanceWindowOptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolMaintenanceWindowOptionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolMaintenanceWindowOptionsGetInput,
     outputSchema: SqlPoolMaintenanceWindowOptionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolMaintenanceWindowsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3643,7 +3525,7 @@ export type SqlPoolMaintenanceWindowsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolMaintenanceWindowsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolMaintenanceWindowsCreateOrUpdateOutput =
   typeof SqlPoolMaintenanceWindowsCreateOrUpdateOutput.Type;
 
@@ -3658,36 +3540,35 @@ export type SqlPoolMaintenanceWindowsCreateOrUpdateOutput =
  * @param sqlPoolName - SQL pool name
  * @param maintenanceWindowName - Maintenance window name.
  */
-export const SqlPoolMaintenanceWindowsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolMaintenanceWindowsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolMaintenanceWindowsCreateOrUpdateInput,
     outputSchema: SqlPoolMaintenanceWindowsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolMaintenanceWindowsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    maintenanceWindowName: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
-    }),
-  );
+export const SqlPoolMaintenanceWindowsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  maintenanceWindowName: Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
+  }),
+);
 export type SqlPoolMaintenanceWindowsGetInput =
   typeof SqlPoolMaintenanceWindowsGetInput.Type;
 
 // Output Schema
-export const SqlPoolMaintenanceWindowsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolMaintenanceWindowsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolMaintenanceWindowsGetOutput =
   typeof SqlPoolMaintenanceWindowsGetOutput.Type;
 
@@ -3702,14 +3583,13 @@ export type SqlPoolMaintenanceWindowsGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param maintenanceWindowName - Maintenance window name.
  */
-export const SqlPoolMaintenanceWindowsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolMaintenanceWindowsGetInput,
-    outputSchema: SqlPoolMaintenanceWindowsGetOutput,
-  }));
+export const SqlPoolMaintenanceWindowsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolMaintenanceWindowsGetInput,
+  outputSchema: SqlPoolMaintenanceWindowsGetOutput,
+}));
 // Input Schema
 export const SqlPoolOperationResultsGetLocationHeaderResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3727,7 +3607,7 @@ export type SqlPoolOperationResultsGetLocationHeaderResultInput =
 
 // Output Schema
 export const SqlPoolOperationResultsGetLocationHeaderResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3749,40 +3629,38 @@ export type SqlPoolOperationResultsGetLocationHeaderResultOutput =
  * @param operationId - Operation ID
  */
 export const SqlPoolOperationResultsGetLocationHeaderResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolOperationResultsGetLocationHeaderResultInput,
     outputSchema: SqlPoolOperationResultsGetLocationHeaderResultOutput,
   }));
 // Input Schema
-export const SqlPoolOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operations",
-    }),
-  );
+export const SqlPoolOperationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operations",
+  }),
+);
 export type SqlPoolOperationsListInput = typeof SqlPoolOperationsListInput.Type;
 
 // Output Schema
-export const SqlPoolOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolOperationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolOperationsListOutput =
   typeof SqlPoolOperationsListOutput.Type;
 
@@ -3798,15 +3676,13 @@ export type SqlPoolOperationsListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolOperationsListInput,
-    outputSchema: SqlPoolOperationsListOutput,
-  }),
-);
+export const SqlPoolOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolOperationsListInput,
+  outputSchema: SqlPoolOperationsListOutput,
+}));
 // Input Schema
 export const SqlPoolRecommendedSensitivityLabelsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3823,7 +3699,7 @@ export type SqlPoolRecommendedSensitivityLabelsUpdateInput =
 
 // Output Schema
 export const SqlPoolRecommendedSensitivityLabelsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolRecommendedSensitivityLabelsUpdateOutput =
   typeof SqlPoolRecommendedSensitivityLabelsUpdateOutput.Type;
 
@@ -3837,14 +3713,15 @@ export type SqlPoolRecommendedSensitivityLabelsUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolRecommendedSensitivityLabelsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolRecommendedSensitivityLabelsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolRecommendedSensitivityLabelsUpdateInput,
     outputSchema: SqlPoolRecommendedSensitivityLabelsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolReplicationLinksGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3862,7 +3739,7 @@ export type SqlPoolReplicationLinksGetByNameInput =
 
 // Output Schema
 export const SqlPoolReplicationLinksGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3883,42 +3760,39 @@ export type SqlPoolReplicationLinksGetByNameOutput =
  * @param sqlPoolName - SQL pool name
  * @param linkId - The ID of the replication link.
  */
-export const SqlPoolReplicationLinksGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolReplicationLinksGetByNameInput,
-    outputSchema: SqlPoolReplicationLinksGetByNameOutput,
-  }));
+export const SqlPoolReplicationLinksGetByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolReplicationLinksGetByNameInput,
+  outputSchema: SqlPoolReplicationLinksGetByNameOutput,
+}));
 // Input Schema
-export const SqlPoolReplicationLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks",
-    }),
-  );
+export const SqlPoolReplicationLinksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks",
+  }),
+);
 export type SqlPoolReplicationLinksListInput =
   typeof SqlPoolReplicationLinksListInput.Type;
 
 // Output Schema
-export const SqlPoolReplicationLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolReplicationLinksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolReplicationLinksListOutput =
   typeof SqlPoolReplicationLinksListOutput.Type;
 
@@ -3934,36 +3808,32 @@ export type SqlPoolReplicationLinksListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolReplicationLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolReplicationLinksListInput,
-    outputSchema: SqlPoolReplicationLinksListOutput,
+export const SqlPoolReplicationLinksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolReplicationLinksListInput,
+  outputSchema: SqlPoolReplicationLinksListOutput,
+}));
+// Input Schema
+export const SqlPoolRestorePointsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
   }),
 );
-// Input Schema
-export const SqlPoolRestorePointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
-    }),
-  );
 export type SqlPoolRestorePointsCreateInput =
   typeof SqlPoolRestorePointsCreateInput.Type;
 
 // Output Schema
-export const SqlPoolRestorePointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolRestorePointsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolRestorePointsCreateOutput =
   typeof SqlPoolRestorePointsCreateOutput.Type;
 
@@ -3977,33 +3847,29 @@ export type SqlPoolRestorePointsCreateOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolRestorePointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolRestorePointsCreateInput,
-    outputSchema: SqlPoolRestorePointsCreateOutput,
+export const SqlPoolRestorePointsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolRestorePointsCreateInput,
+  outputSchema: SqlPoolRestorePointsCreateOutput,
+}));
+// Input Schema
+export const SqlPoolRestorePointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  restorePointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
   }),
 );
-// Input Schema
-export const SqlPoolRestorePointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
-    }),
-  );
 export type SqlPoolRestorePointsDeleteInput =
   typeof SqlPoolRestorePointsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolRestorePointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlPoolRestorePointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SqlPoolRestorePointsDeleteOutput =
   typeof SqlPoolRestorePointsDeleteOutput.Type;
 
@@ -4018,37 +3884,33 @@ export type SqlPoolRestorePointsDeleteOutput =
  * @param sqlPoolName - SQL pool name
  * @param restorePointName - The name of the restore point.
  */
-export const SqlPoolRestorePointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolRestorePointsDeleteInput,
-    outputSchema: SqlPoolRestorePointsDeleteOutput,
+export const SqlPoolRestorePointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolRestorePointsDeleteInput,
+  outputSchema: SqlPoolRestorePointsDeleteOutput,
+}));
+// Input Schema
+export const SqlPoolRestorePointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  restorePointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
   }),
 );
-// Input Schema
-export const SqlPoolRestorePointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
-    }),
-  );
 export type SqlPoolRestorePointsGetInput =
   typeof SqlPoolRestorePointsGetInput.Type;
 
 // Output Schema
-export const SqlPoolRestorePointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolRestorePointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolRestorePointsGetOutput =
   typeof SqlPoolRestorePointsGetOutput.Type;
 
@@ -4063,43 +3925,39 @@ export type SqlPoolRestorePointsGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param restorePointName - The name of the restore point.
  */
-export const SqlPoolRestorePointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolRestorePointsGetInput,
-    outputSchema: SqlPoolRestorePointsGetOutput,
+export const SqlPoolRestorePointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolRestorePointsGetInput,
+  outputSchema: SqlPoolRestorePointsGetOutput,
+}));
+// Input Schema
+export const SqlPoolRestorePointsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
   }),
 );
-// Input Schema
-export const SqlPoolRestorePointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
-    }),
-  );
 export type SqlPoolRestorePointsListInput =
   typeof SqlPoolRestorePointsListInput.Type;
 
 // Output Schema
-export const SqlPoolRestorePointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolRestorePointsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolRestorePointsListOutput =
   typeof SqlPoolRestorePointsListOutput.Type;
 
@@ -4115,23 +3973,19 @@ export type SqlPoolRestorePointsListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolRestorePointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolRestorePointsListInput,
-    outputSchema: SqlPoolRestorePointsListOutput,
-  }),
-);
+export const SqlPoolRestorePointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolRestorePointsListInput,
+  outputSchema: SqlPoolRestorePointsListOutput,
+}));
 // Input Schema
-export const SqlPoolSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SqlPoolSchemasGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}",
@@ -4140,12 +3994,11 @@ export const SqlPoolSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SqlPoolSchemasGetInput = typeof SqlPoolSchemasGetInput.Type;
 
 // Output Schema
-export const SqlPoolSchemasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolSchemasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolSchemasGetOutput = typeof SqlPoolSchemasGetOutput.Type;
 
 // The operation
@@ -4159,41 +4012,39 @@ export type SqlPoolSchemasGetOutput = typeof SqlPoolSchemasGetOutput.Type;
  * @param sqlPoolName - SQL pool name
  * @param schemaName - The name of the schema.
  */
-export const SqlPoolSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolSchemasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolSchemasGetInput,
   outputSchema: SqlPoolSchemasGetOutput,
 }));
 // Input Schema
-export const SqlPoolSchemasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas",
-    }),
-  );
+export const SqlPoolSchemasListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas",
+  }),
+);
 export type SqlPoolSchemasListInput = typeof SqlPoolSchemasListInput.Type;
 
 // Output Schema
-export const SqlPoolSchemasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolSchemasListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolSchemasListOutput = typeof SqlPoolSchemasListOutput.Type;
 
 // The operation
@@ -4209,12 +4060,12 @@ export type SqlPoolSchemasListOutput = typeof SqlPoolSchemasListOutput.Type;
  * @param sqlPoolName - SQL pool name
  * @param $filter - An OData filter expression that filters elements in the collection.
  */
-export const SqlPoolSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolSchemasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolSchemasListInput,
   outputSchema: SqlPoolSchemasListOutput,
 }));
 // Input Schema
-export const SqlPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4229,7 +4080,7 @@ export const SqlPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsCreateInput = typeof SqlPoolsCreateInput.Type;
 
 // Output Schema
-export const SqlPoolsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4248,12 +4099,12 @@ export type SqlPoolsCreateOutput = typeof SqlPoolsCreateOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsCreateInput,
   outputSchema: SqlPoolsCreateOutput,
 }));
 // Input Schema
-export const SqlPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4268,7 +4119,7 @@ export const SqlPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsDeleteInput = typeof SqlPoolsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsDeleteOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4287,13 +4138,13 @@ export type SqlPoolsDeleteOutput = typeof SqlPoolsDeleteOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsDeleteInput,
   outputSchema: SqlPoolsDeleteOutput,
 }));
 // Input Schema
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4311,7 +4162,7 @@ export type SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4333,31 +4184,32 @@ export type SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput =
  * @param securityAlertPolicyName - The name of the security alert policy.
  */
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolSecurityAlertPoliciesCreateOrUpdateInput,
     outputSchema: SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
-export const SqlPoolSecurityAlertPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolSecurityAlertPoliciesGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
+  }),
+);
 export type SqlPoolSecurityAlertPoliciesGetInput =
   typeof SqlPoolSecurityAlertPoliciesGetInput.Type;
 
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4378,14 +4230,13 @@ export type SqlPoolSecurityAlertPoliciesGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param securityAlertPolicyName - The name of the security alert policy.
  */
-export const SqlPoolSecurityAlertPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolSecurityAlertPoliciesGetInput,
-    outputSchema: SqlPoolSecurityAlertPoliciesGetOutput,
-  }));
+export const SqlPoolSecurityAlertPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolSecurityAlertPoliciesGetInput,
+  outputSchema: SqlPoolSecurityAlertPoliciesGetOutput,
+}));
 // Input Schema
 export const SqlPoolSecurityAlertPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4402,7 +4253,7 @@ export type SqlPoolSecurityAlertPoliciesListInput =
 
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4429,14 +4280,13 @@ export type SqlPoolSecurityAlertPoliciesListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolSecurityAlertPoliciesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolSecurityAlertPoliciesListInput,
-    outputSchema: SqlPoolSecurityAlertPoliciesListOutput,
-  }));
+export const SqlPoolSecurityAlertPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolSecurityAlertPoliciesListInput,
+  outputSchema: SqlPoolSecurityAlertPoliciesListOutput,
+}));
 // Input Schema
 export const SqlPoolSensitivityLabelsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4457,7 +4307,7 @@ export type SqlPoolSensitivityLabelsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4479,35 +4329,34 @@ export type SqlPoolSensitivityLabelsCreateOrUpdateOutput =
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
  */
-export const SqlPoolSensitivityLabelsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolSensitivityLabelsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolSensitivityLabelsCreateOrUpdateInput,
     outputSchema: SqlPoolSensitivityLabelsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolSensitivityLabelsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-    tableName: Schema.String.pipe(T.PathParam()),
-    columnName: Schema.String.pipe(T.PathParam()),
-    sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
-    }),
-  );
+export const SqlPoolSensitivityLabelsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+  tableName: Schema.String.pipe(T.PathParam()),
+  columnName: Schema.String.pipe(T.PathParam()),
+  sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+  }),
+);
 export type SqlPoolSensitivityLabelsDeleteInput =
   typeof SqlPoolSensitivityLabelsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SqlPoolSensitivityLabelsDeleteOutput =
   typeof SqlPoolSensitivityLabelsDeleteOutput.Type;
 
@@ -4525,14 +4374,13 @@ export type SqlPoolSensitivityLabelsDeleteOutput =
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
  */
-export const SqlPoolSensitivityLabelsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolSensitivityLabelsDeleteInput,
-    outputSchema: SqlPoolSensitivityLabelsDeleteOutput,
-  }));
+export const SqlPoolSensitivityLabelsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolSensitivityLabelsDeleteInput,
+  outputSchema: SqlPoolSensitivityLabelsDeleteOutput,
+}));
 // Input Schema
 export const SqlPoolSensitivityLabelsDisableRecommendationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4555,7 +4403,7 @@ export type SqlPoolSensitivityLabelsDisableRecommendationInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsDisableRecommendationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolSensitivityLabelsDisableRecommendationOutput =
   typeof SqlPoolSensitivityLabelsDisableRecommendationOutput.Type;
 
@@ -4574,13 +4422,13 @@ export type SqlPoolSensitivityLabelsDisableRecommendationOutput =
  * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const SqlPoolSensitivityLabelsDisableRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolSensitivityLabelsDisableRecommendationInput,
     outputSchema: SqlPoolSensitivityLabelsDisableRecommendationOutput,
   }));
 // Input Schema
 export const SqlPoolSensitivityLabelsEnableRecommendationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4603,7 +4451,7 @@ export type SqlPoolSensitivityLabelsEnableRecommendationInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsEnableRecommendationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolSensitivityLabelsEnableRecommendationOutput =
   typeof SqlPoolSensitivityLabelsEnableRecommendationOutput.Type;
 
@@ -4622,40 +4470,38 @@ export type SqlPoolSensitivityLabelsEnableRecommendationOutput =
  * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const SqlPoolSensitivityLabelsEnableRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolSensitivityLabelsEnableRecommendationInput,
     outputSchema: SqlPoolSensitivityLabelsEnableRecommendationOutput,
   }));
 // Input Schema
-export const SqlPoolSensitivityLabelsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-    tableName: Schema.String.pipe(T.PathParam()),
-    columnName: Schema.String.pipe(T.PathParam()),
-    sensitivityLabelSource: Schema.Literals(["current", "recommended"]).pipe(
-      T.PathParam(),
-    ),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
-    }),
-  );
+export const SqlPoolSensitivityLabelsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+  tableName: Schema.String.pipe(T.PathParam()),
+  columnName: Schema.String.pipe(T.PathParam()),
+  sensitivityLabelSource: Schema.Literals(["current", "recommended"]).pipe(
+    T.PathParam(),
+  ),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+  }),
+);
 export type SqlPoolSensitivityLabelsGetInput =
   typeof SqlPoolSensitivityLabelsGetInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolSensitivityLabelsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolSensitivityLabelsGetOutput =
   typeof SqlPoolSensitivityLabelsGetOutput.Type;
 
@@ -4673,15 +4519,13 @@ export type SqlPoolSensitivityLabelsGetOutput =
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
  */
-export const SqlPoolSensitivityLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolSensitivityLabelsGetInput,
-    outputSchema: SqlPoolSensitivityLabelsGetOutput,
-  }),
-);
+export const SqlPoolSensitivityLabelsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolSensitivityLabelsGetInput,
+  outputSchema: SqlPoolSensitivityLabelsGetOutput,
+}));
 // Input Schema
 export const SqlPoolSensitivityLabelsListCurrentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4699,7 +4543,7 @@ export type SqlPoolSensitivityLabelsListCurrentInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsListCurrentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4727,14 +4571,15 @@ export type SqlPoolSensitivityLabelsListCurrentOutput =
  * @param sqlPoolName - SQL pool name
  * @param $filter - An OData filter expression that filters elements in the collection.
  */
-export const SqlPoolSensitivityLabelsListCurrent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolSensitivityLabelsListCurrent = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolSensitivityLabelsListCurrentInput,
     outputSchema: SqlPoolSensitivityLabelsListCurrentOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolSensitivityLabelsListRecommendedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4754,7 +4599,7 @@ export type SqlPoolSensitivityLabelsListRecommendedInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsListRecommendedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4784,31 +4629,30 @@ export type SqlPoolSensitivityLabelsListRecommendedOutput =
  * @param $skipToken - An OData query option to indicate how many elements to skip in the collection.
  * @param $filter - An OData filter expression that filters elements in the collection.
  */
-export const SqlPoolSensitivityLabelsListRecommended =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolSensitivityLabelsListRecommended = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolSensitivityLabelsListRecommendedInput,
     outputSchema: SqlPoolSensitivityLabelsListRecommendedOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolSensitivityLabelsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
-    }),
-  );
+export const SqlPoolSensitivityLabelsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
+  }),
+);
 export type SqlPoolSensitivityLabelsUpdateInput =
   typeof SqlPoolSensitivityLabelsUpdateInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type SqlPoolSensitivityLabelsUpdateOutput =
   typeof SqlPoolSensitivityLabelsUpdateOutput.Type;
 
@@ -4822,13 +4666,12 @@ export type SqlPoolSensitivityLabelsUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolSensitivityLabelsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolSensitivityLabelsUpdateInput,
-    outputSchema: SqlPoolSensitivityLabelsUpdateOutput,
-  }));
+export const SqlPoolSensitivityLabelsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolSensitivityLabelsUpdateInput,
+  outputSchema: SqlPoolSensitivityLabelsUpdateOutput,
+}));
 // Input Schema
-export const SqlPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4843,7 +4686,7 @@ export const SqlPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsGetInput = typeof SqlPoolsGetInput.Type;
 
 // Output Schema
-export const SqlPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4862,40 +4705,38 @@ export type SqlPoolsGetOutput = typeof SqlPoolsGetOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsGetInput,
   outputSchema: SqlPoolsGetOutput,
 }));
 // Input Schema
-export const SqlPoolsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools",
-    }),
-  );
+export const SqlPoolsListByWorkspaceInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools",
+  }),
+);
 export type SqlPoolsListByWorkspaceInput =
   typeof SqlPoolsListByWorkspaceInput.Type;
 
 // Output Schema
-export const SqlPoolsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolsListByWorkspaceOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type SqlPoolsListByWorkspaceOutput =
   typeof SqlPoolsListByWorkspaceOutput.Type;
 
@@ -4910,14 +4751,12 @@ export type SqlPoolsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SqlPoolsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolsListByWorkspaceInput,
-    outputSchema: SqlPoolsListByWorkspaceOutput,
-  }),
-);
+export const SqlPoolsListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolsListByWorkspaceInput,
+  outputSchema: SqlPoolsListByWorkspaceOutput,
+}));
 // Input Schema
-export const SqlPoolsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsPauseInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4932,7 +4771,7 @@ export const SqlPoolsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsPauseInput = typeof SqlPoolsPauseInput.Type;
 
 // Output Schema
-export const SqlPoolsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsPauseOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4951,12 +4790,12 @@ export type SqlPoolsPauseOutput = typeof SqlPoolsPauseOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsPause = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsPauseInput,
   outputSchema: SqlPoolsPauseOutput,
 }));
 // Input Schema
-export const SqlPoolsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4971,7 +4810,7 @@ export const SqlPoolsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsResumeInput = typeof SqlPoolsResumeInput.Type;
 
 // Output Schema
-export const SqlPoolsResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsResumeOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4990,12 +4829,12 @@ export type SqlPoolsResumeOutput = typeof SqlPoolsResumeOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsResumeInput,
   outputSchema: SqlPoolsResumeOutput,
 }));
 // Input Schema
-export const SqlPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5010,7 +4849,7 @@ export const SqlPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolsUpdateInput = typeof SqlPoolsUpdateInput.Type;
 
 // Output Schema
-export const SqlPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5029,13 +4868,13 @@ export type SqlPoolsUpdateOutput = typeof SqlPoolsUpdateOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolsUpdateInput,
   outputSchema: SqlPoolsUpdateOutput,
 }));
 // Input Schema
 export const SqlPoolTableColumnsListByTableNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5055,7 +4894,7 @@ export type SqlPoolTableColumnsListByTableNameInput =
 
 // Output Schema
 export const SqlPoolTableColumnsListByTableNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5085,13 +4924,14 @@ export type SqlPoolTableColumnsListByTableNameOutput =
  * @param tableName - The name of the table.
  * @param $filter - An OData filter expression that filters elements in the collection.
  */
-export const SqlPoolTableColumnsListByTableName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolTableColumnsListByTableName = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolTableColumnsListByTableNameInput,
     outputSchema: SqlPoolTableColumnsListByTableNameOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolTablesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5108,13 +4948,11 @@ export const SqlPoolTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SqlPoolTablesGetInput = typeof SqlPoolTablesGetInput.Type;
 
 // Output Schema
-export const SqlPoolTablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const SqlPoolTablesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolTablesGetOutput = typeof SqlPoolTablesGetOutput.Type;
 
 // The operation
@@ -5129,43 +4967,41 @@ export type SqlPoolTablesGetOutput = typeof SqlPoolTablesGetOutput.Type;
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  */
-export const SqlPoolTablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolTablesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolTablesGetInput,
   outputSchema: SqlPoolTablesGetOutput,
 }));
 // Input Schema
-export const SqlPoolTablesListBySchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables",
-    }),
-  );
+export const SqlPoolTablesListBySchemaInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  schemaName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables",
+  }),
+);
 export type SqlPoolTablesListBySchemaInput =
   typeof SqlPoolTablesListBySchemaInput.Type;
 
 // Output Schema
-export const SqlPoolTablesListBySchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolTablesListBySchemaOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolTablesListBySchemaOutput =
   typeof SqlPoolTablesListBySchemaOutput.Type;
 
@@ -5183,15 +5019,13 @@ export type SqlPoolTablesListBySchemaOutput =
  * @param schemaName - The name of the schema.
  * @param $filter - An OData filter expression that filters elements in the collection.
  */
-export const SqlPoolTablesListBySchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolTablesListBySchemaInput,
-    outputSchema: SqlPoolTablesListBySchemaOutput,
-  }),
-);
+export const SqlPoolTablesListBySchema = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolTablesListBySchemaInput,
+  outputSchema: SqlPoolTablesListBySchemaOutput,
+}));
 // Input Schema
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5211,7 +5045,7 @@ export type SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5233,13 +5067,13 @@ export type SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput =
  * @param transparentDataEncryptionName - The name of the transparent data encryption configuration.
  */
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolTransparentDataEncryptionsCreateOrUpdateInput,
     outputSchema: SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SqlPoolTransparentDataEncryptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5259,7 +5093,7 @@ export type SqlPoolTransparentDataEncryptionsGetInput =
 
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5280,14 +5114,15 @@ export type SqlPoolTransparentDataEncryptionsGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param transparentDataEncryptionName - The name of the transparent data encryption configuration.
  */
-export const SqlPoolTransparentDataEncryptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolTransparentDataEncryptionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolTransparentDataEncryptionsGetInput,
     outputSchema: SqlPoolTransparentDataEncryptionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolTransparentDataEncryptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5304,7 +5139,7 @@ export type SqlPoolTransparentDataEncryptionsListInput =
 
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5331,21 +5166,20 @@ export type SqlPoolTransparentDataEncryptionsListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolTransparentDataEncryptionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolTransparentDataEncryptionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolTransparentDataEncryptionsListInput,
     outputSchema: SqlPoolTransparentDataEncryptionsListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SqlPoolUsagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/usages",
@@ -5354,21 +5188,20 @@ export const SqlPoolUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SqlPoolUsagesListInput = typeof SqlPoolUsagesListInput.Type;
 
 // Output Schema
-export const SqlPoolUsagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SqlPoolUsagesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      resourceName: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      unit: Schema.optional(Schema.String),
+      nextResetTime: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolUsagesListOutput = typeof SqlPoolUsagesListOutput.Type;
 
 // The operation
@@ -5383,13 +5216,13 @@ export type SqlPoolUsagesListOutput = typeof SqlPoolUsagesListOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolUsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SqlPoolUsagesListInput,
   outputSchema: SqlPoolUsagesListOutput,
 }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5411,7 +5244,7 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5433,14 +5266,14 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule).
  */
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput,
     outputSchema:
       SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5462,7 +5295,7 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput =
   typeof SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput.Type;
 
@@ -5480,13 +5313,13 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput =
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule).
  */
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput,
     outputSchema: SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput,
   }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5508,7 +5341,7 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5530,13 +5363,13 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput =
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for server level rule).
  */
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput,
     outputSchema: SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput,
   }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentScansExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5557,7 +5390,7 @@ export type SqlPoolVulnerabilityAssessmentScansExportInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5577,14 +5410,15 @@ export type SqlPoolVulnerabilityAssessmentScansExportOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
  */
-export const SqlPoolVulnerabilityAssessmentScansExport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentScansExport = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentScansExportInput,
     outputSchema: SqlPoolVulnerabilityAssessmentScansExportOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentScansGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5605,7 +5439,7 @@ export type SqlPoolVulnerabilityAssessmentScansGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5625,14 +5459,15 @@ export type SqlPoolVulnerabilityAssessmentScansGetOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
  */
-export const SqlPoolVulnerabilityAssessmentScansGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentScansGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentScansGetInput,
     outputSchema: SqlPoolVulnerabilityAssessmentScansGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5653,7 +5488,7 @@ export type SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansInitiateScanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanOutput =
   typeof SqlPoolVulnerabilityAssessmentScansInitiateScanOutput.Type;
 
@@ -5670,13 +5505,13 @@ export type SqlPoolVulnerabilityAssessmentScansInitiateScanOutput =
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
  */
 export const SqlPoolVulnerabilityAssessmentScansInitiateScan =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolVulnerabilityAssessmentScansInitiateScanInput,
     outputSchema: SqlPoolVulnerabilityAssessmentScansInitiateScanOutput,
   }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentScansListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5696,7 +5531,7 @@ export type SqlPoolVulnerabilityAssessmentScansListInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5724,14 +5559,15 @@ export type SqlPoolVulnerabilityAssessmentScansListOutput =
  * @param sqlPoolName - SQL pool name
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
-export const SqlPoolVulnerabilityAssessmentScansList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentScansList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentScansListInput,
     outputSchema: SqlPoolVulnerabilityAssessmentScansListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5751,7 +5587,7 @@ export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5773,13 +5609,13 @@ export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput,
     outputSchema: SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5799,7 +5635,7 @@ export type SqlPoolVulnerabilityAssessmentsDeleteInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SqlPoolVulnerabilityAssessmentsDeleteOutput =
   typeof SqlPoolVulnerabilityAssessmentsDeleteOutput.Type;
 
@@ -5816,14 +5652,15 @@ export type SqlPoolVulnerabilityAssessmentsDeleteOutput =
  * @param sqlPoolName - SQL pool name
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
-export const SqlPoolVulnerabilityAssessmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentsDeleteInput,
     outputSchema: SqlPoolVulnerabilityAssessmentsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5843,7 +5680,7 @@ export type SqlPoolVulnerabilityAssessmentsGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5864,14 +5701,15 @@ export type SqlPoolVulnerabilityAssessmentsGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
-export const SqlPoolVulnerabilityAssessmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentsGetInput,
     outputSchema: SqlPoolVulnerabilityAssessmentsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolVulnerabilityAssessmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5888,7 +5726,7 @@ export type SqlPoolVulnerabilityAssessmentsListInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5915,14 +5753,15 @@ export type SqlPoolVulnerabilityAssessmentsListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolVulnerabilityAssessmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolVulnerabilityAssessmentsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolVulnerabilityAssessmentsListInput,
     outputSchema: SqlPoolVulnerabilityAssessmentsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SqlPoolWorkloadClassifierCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5941,7 +5780,7 @@ export type SqlPoolWorkloadClassifierCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolWorkloadClassifierCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5963,14 +5802,15 @@ export type SqlPoolWorkloadClassifierCreateOrUpdateOutput =
  * @param workloadGroupName - The name of the workload group.
  * @param workloadClassifierName - The name of the workload classifier.
  */
-export const SqlPoolWorkloadClassifierCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolWorkloadClassifierCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolWorkloadClassifierCreateOrUpdateInput,
     outputSchema: SqlPoolWorkloadClassifierCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolWorkloadClassifierDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SqlPoolWorkloadClassifierDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5978,18 +5818,18 @@ export const SqlPoolWorkloadClassifierDeleteInput =
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+  }),
+);
 export type SqlPoolWorkloadClassifierDeleteInput =
   typeof SqlPoolWorkloadClassifierDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadClassifierDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlPoolWorkloadClassifierDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SqlPoolWorkloadClassifierDeleteOutput =
   typeof SqlPoolWorkloadClassifierDeleteOutput.Type;
 
@@ -6007,37 +5847,34 @@ export type SqlPoolWorkloadClassifierDeleteOutput =
  * @param workloadGroupName - The name of the workload group.
  * @param workloadClassifierName - The name of the workload classifier.
  */
-export const SqlPoolWorkloadClassifierDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolWorkloadClassifierDeleteInput,
-    outputSchema: SqlPoolWorkloadClassifierDeleteOutput,
-  }));
+export const SqlPoolWorkloadClassifierDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadClassifierDeleteInput,
+  outputSchema: SqlPoolWorkloadClassifierDeleteOutput,
+}));
 // Input Schema
-export const SqlPoolWorkloadClassifierGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
-    workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
-    }),
-  );
+export const SqlPoolWorkloadClassifierGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  workloadGroupName: Schema.String.pipe(T.PathParam()),
+  workloadClassifierName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+  }),
+);
 export type SqlPoolWorkloadClassifierGetInput =
   typeof SqlPoolWorkloadClassifierGetInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadClassifierGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolWorkloadClassifierGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolWorkloadClassifierGetOutput =
   typeof SqlPoolWorkloadClassifierGetOutput.Type;
 
@@ -6055,43 +5892,40 @@ export type SqlPoolWorkloadClassifierGetOutput =
  * @param workloadGroupName - The name of the workload group.
  * @param workloadClassifierName - The name of the workload classifier.
  */
-export const SqlPoolWorkloadClassifierGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolWorkloadClassifierGetInput,
-    outputSchema: SqlPoolWorkloadClassifierGetOutput,
-  }));
+export const SqlPoolWorkloadClassifierGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadClassifierGetInput,
+  outputSchema: SqlPoolWorkloadClassifierGetOutput,
+}));
 // Input Schema
-export const SqlPoolWorkloadClassifierListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
-    }),
-  );
+export const SqlPoolWorkloadClassifierListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  workloadGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
+  }),
+);
 export type SqlPoolWorkloadClassifierListInput =
   typeof SqlPoolWorkloadClassifierListInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadClassifierListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolWorkloadClassifierListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolWorkloadClassifierListOutput =
   typeof SqlPoolWorkloadClassifierListOutput.Type;
 
@@ -6108,14 +5942,13 @@ export type SqlPoolWorkloadClassifierListOutput =
  * @param sqlPoolName - SQL pool name
  * @param workloadGroupName - The name of the workload group.
  */
-export const SqlPoolWorkloadClassifierList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SqlPoolWorkloadClassifierListInput,
-    outputSchema: SqlPoolWorkloadClassifierListOutput,
-  }));
+export const SqlPoolWorkloadClassifierList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadClassifierListInput,
+  outputSchema: SqlPoolWorkloadClassifierListOutput,
+}));
 // Input Schema
 export const SqlPoolWorkloadGroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6133,7 +5966,7 @@ export type SqlPoolWorkloadGroupCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolWorkloadGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6154,32 +5987,31 @@ export type SqlPoolWorkloadGroupCreateOrUpdateOutput =
  * @param sqlPoolName - SQL pool name
  * @param workloadGroupName - The name of the workload group.
  */
-export const SqlPoolWorkloadGroupCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SqlPoolWorkloadGroupCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SqlPoolWorkloadGroupCreateOrUpdateInput,
     outputSchema: SqlPoolWorkloadGroupCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SqlPoolWorkloadGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
-    }),
-  );
+export const SqlPoolWorkloadGroupDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  workloadGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+  }),
+);
 export type SqlPoolWorkloadGroupDeleteInput =
   typeof SqlPoolWorkloadGroupDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SqlPoolWorkloadGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SqlPoolWorkloadGroupDeleteOutput =
   typeof SqlPoolWorkloadGroupDeleteOutput.Type;
 
@@ -6196,37 +6028,33 @@ export type SqlPoolWorkloadGroupDeleteOutput =
  * @param sqlPoolName - SQL pool name
  * @param workloadGroupName - The name of the workload group.
  */
-export const SqlPoolWorkloadGroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolWorkloadGroupDeleteInput,
-    outputSchema: SqlPoolWorkloadGroupDeleteOutput,
+export const SqlPoolWorkloadGroupDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadGroupDeleteInput,
+  outputSchema: SqlPoolWorkloadGroupDeleteOutput,
+}));
+// Input Schema
+export const SqlPoolWorkloadGroupGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  workloadGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
   }),
 );
-// Input Schema
-export const SqlPoolWorkloadGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
-    }),
-  );
 export type SqlPoolWorkloadGroupGetInput =
   typeof SqlPoolWorkloadGroupGetInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const SqlPoolWorkloadGroupGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SqlPoolWorkloadGroupGetOutput =
   typeof SqlPoolWorkloadGroupGetOutput.Type;
 
@@ -6243,43 +6071,39 @@ export type SqlPoolWorkloadGroupGetOutput =
  * @param sqlPoolName - SQL pool name
  * @param workloadGroupName - The name of the workload group.
  */
-export const SqlPoolWorkloadGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolWorkloadGroupGetInput,
-    outputSchema: SqlPoolWorkloadGroupGetOutput,
+export const SqlPoolWorkloadGroupGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadGroupGetInput,
+  outputSchema: SqlPoolWorkloadGroupGetOutput,
+}));
+// Input Schema
+export const SqlPoolWorkloadGroupListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sqlPoolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups",
   }),
 );
-// Input Schema
-export const SqlPoolWorkloadGroupListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups",
-    }),
-  );
 export type SqlPoolWorkloadGroupListInput =
   typeof SqlPoolWorkloadGroupListInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadGroupListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SqlPoolWorkloadGroupListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SqlPoolWorkloadGroupListOutput =
   typeof SqlPoolWorkloadGroupListOutput.Type;
 
@@ -6295,15 +6119,13 @@ export type SqlPoolWorkloadGroupListOutput =
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
  */
-export const SqlPoolWorkloadGroupList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlPoolWorkloadGroupListInput,
-    outputSchema: SqlPoolWorkloadGroupListOutput,
-  }),
-);
+export const SqlPoolWorkloadGroupList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlPoolWorkloadGroupListInput,
+  outputSchema: SqlPoolWorkloadGroupListOutput,
+}));
 // Input Schema
 export const WorkspaceAadAdminsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6319,7 +6141,7 @@ export type WorkspaceAadAdminsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceAadAdminsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6336,30 +6158,27 @@ export type WorkspaceAadAdminsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceAadAdminsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkspaceAadAdminsCreateOrUpdateInput,
-    outputSchema: WorkspaceAadAdminsCreateOrUpdateOutput,
-  }));
+export const WorkspaceAadAdminsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceAadAdminsCreateOrUpdateInput,
+  outputSchema: WorkspaceAadAdminsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WorkspaceAadAdminsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
-    }),
-  );
+export const WorkspaceAadAdminsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+  }),
+);
 export type WorkspaceAadAdminsDeleteInput =
   typeof WorkspaceAadAdminsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceAadAdminsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceAadAdminsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceAadAdminsDeleteOutput =
   typeof WorkspaceAadAdminsDeleteOutput.Type;
 
@@ -6372,34 +6191,30 @@ export type WorkspaceAadAdminsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceAadAdminsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceAadAdminsDeleteInput,
-    outputSchema: WorkspaceAadAdminsDeleteOutput,
+export const WorkspaceAadAdminsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceAadAdminsDeleteInput,
+  outputSchema: WorkspaceAadAdminsDeleteOutput,
+}));
+// Input Schema
+export const WorkspaceAadAdminsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
   }),
 );
-// Input Schema
-export const WorkspaceAadAdminsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
-    }),
-  );
 export type WorkspaceAadAdminsGetInput = typeof WorkspaceAadAdminsGetInput.Type;
 
 // Output Schema
-export const WorkspaceAadAdminsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WorkspaceAadAdminsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceAadAdminsGetOutput =
   typeof WorkspaceAadAdminsGetOutput.Type;
 
@@ -6412,15 +6227,13 @@ export type WorkspaceAadAdminsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceAadAdminsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceAadAdminsGetInput,
-    outputSchema: WorkspaceAadAdminsGetOutput,
-  }),
-);
+export const WorkspaceAadAdminsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceAadAdminsGetInput,
+  outputSchema: WorkspaceAadAdminsGetOutput,
+}));
 // Input Schema
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6436,7 +6249,7 @@ export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6454,14 +6267,14 @@ export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput,
     outputSchema:
       WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceManagedIdentitySqlControlSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6477,7 +6290,7 @@ export type WorkspaceManagedIdentitySqlControlSettingsGetInput =
 
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6495,13 +6308,13 @@ export type WorkspaceManagedIdentitySqlControlSettingsGetOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedIdentitySqlControlSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedIdentitySqlControlSettingsGetInput,
     outputSchema: WorkspaceManagedIdentitySqlControlSettingsGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6518,7 +6331,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6539,7 +6352,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput =
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput,
     outputSchema:
@@ -6547,7 +6360,7 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdate =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6564,7 +6377,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6585,13 +6398,13 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput =
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput,
     outputSchema: WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6607,7 +6420,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6634,7 +6447,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput,
     outputSchema:
@@ -6642,7 +6455,7 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspace =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6659,7 +6472,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6680,7 +6493,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput =
  * @param dedicatedSQLminimalTlsSettingsName - The name of the dedicated sql minimal tls settings.
  */
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput,
     outputSchema:
@@ -6688,7 +6501,7 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGet =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6704,7 +6517,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6731,7 +6544,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput,
     outputSchema:
@@ -6739,7 +6552,7 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsList =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6758,7 +6571,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6779,7 +6592,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput 
  * @param dedicatedSQLminimalTlsSettingsName - The name of the dedicated sql minimal tls settings.
  */
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput,
     outputSchema:
@@ -6787,7 +6600,7 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdate =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6804,7 +6617,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6825,7 +6638,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput =
  * @param encryptionProtectorName - The name of the encryption protector.
  */
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput,
     outputSchema:
@@ -6833,7 +6646,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdate =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6850,7 +6663,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6871,13 +6684,13 @@ export type WorkspaceManagedSqlServerEncryptionProtectorGetOutput =
  * @param encryptionProtectorName - The name of the encryption protector.
  */
 export const WorkspaceManagedSqlServerEncryptionProtectorGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerEncryptionProtectorGetInput,
     outputSchema: WorkspaceManagedSqlServerEncryptionProtectorGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6893,7 +6706,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6920,13 +6733,13 @@ export type WorkspaceManagedSqlServerEncryptionProtectorListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerEncryptionProtectorList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerEncryptionProtectorListInput,
     outputSchema: WorkspaceManagedSqlServerEncryptionProtectorListOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6943,7 +6756,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput =
   typeof WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput.Type;
 
@@ -6960,13 +6773,13 @@ export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput =
  * @param encryptionProtectorName - The name of the encryption protector.
  */
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput,
     outputSchema: WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6983,7 +6796,7 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateI
 
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7004,7 +6817,7 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateO
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateInput,
     outputSchema:
@@ -7012,7 +6825,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7029,7 +6842,7 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7050,14 +6863,14 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput =
  * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput,
     outputSchema:
       WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7073,7 +6886,7 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspace
 
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7100,7 +6913,7 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspace
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceInput,
     outputSchema:
@@ -7108,7 +6921,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspac
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7125,7 +6938,7 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7146,13 +6959,13 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput =
  * @param sqlPoolName - The name of the sql pool
  */
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput,
     outputSchema: WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7168,7 +6981,7 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7195,13 +7008,13 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerRecoverableSqlPoolsListInput,
     outputSchema: WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7218,7 +7031,7 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7239,7 +7052,7 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput =
  * @param securityAlertPolicyName - The name of the security alert policy.
  */
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput,
     outputSchema:
@@ -7247,7 +7060,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdate =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7264,7 +7077,7 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7285,13 +7098,13 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput =
  * @param securityAlertPolicyName - The name of the security alert policy.
  */
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerSecurityAlertPolicyGetInput,
     outputSchema: WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7307,7 +7120,7 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7334,13 +7147,13 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerSecurityAlertPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerSecurityAlertPolicyListInput,
     outputSchema: WorkspaceManagedSqlServerSecurityAlertPolicyListOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerUsagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7356,7 +7169,7 @@ export type WorkspaceManagedSqlServerUsagesListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerUsagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7384,14 +7197,15 @@ export type WorkspaceManagedSqlServerUsagesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceManagedSqlServerUsagesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceManagedSqlServerUsagesList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkspaceManagedSqlServerUsagesListInput,
     outputSchema: WorkspaceManagedSqlServerUsagesListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7410,7 +7224,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7431,7 +7245,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutpu
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput,
     outputSchema:
@@ -7439,7 +7253,7 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate =
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7458,7 +7272,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput =
   typeof WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput.Type;
 
@@ -7475,13 +7289,13 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput,
     outputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7500,7 +7314,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7521,13 +7335,13 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput,
     outputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput,
   }));
 // Input Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7543,7 +7357,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7570,33 +7384,31 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput,
     outputSchema: WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput,
   }));
 // Input Schema
-export const WorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
-    }),
-  );
+export const WorkspacesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+  }),
+);
 export type WorkspacesCreateOrUpdateInput =
   typeof WorkspacesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WorkspacesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
 
@@ -7609,14 +7421,12 @@ export type WorkspacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacesCreateOrUpdateInput,
-    outputSchema: WorkspacesCreateOrUpdateOutput,
-  }),
-);
+export const WorkspacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesCreateOrUpdateInput,
+  outputSchema: WorkspacesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7630,13 +7440,11 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const WorkspacesDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 
 // The operation
@@ -7648,12 +7456,12 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
-export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7667,7 +7475,7 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
-export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7683,12 +7491,12 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
-export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -7700,7 +7508,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;
 
 // Output Schema
-export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -7721,39 +7529,37 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
   outputSchema: WorkspacesListOutput,
 }));
 // Input Schema
-export const WorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces",
-    }),
-  );
+export const WorkspacesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces",
+  }),
+);
 export type WorkspacesListByResourceGroupInput =
   typeof WorkspacesListByResourceGroupInput.Type;
 
 // Output Schema
-export const WorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkspacesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type WorkspacesListByResourceGroupOutput =
   typeof WorkspacesListByResourceGroupOutput.Type;
 
@@ -7765,14 +7571,13 @@ export type WorkspacesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkspacesListByResourceGroupInput,
-    outputSchema: WorkspacesListByResourceGroupOutput,
-  }));
+export const WorkspacesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesListByResourceGroupInput,
+  outputSchema: WorkspacesListByResourceGroupOutput,
+}));
 // Input Schema
 export const WorkspaceSqlAadAdminsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7788,7 +7593,7 @@ export type WorkspaceSqlAadAdminsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceSqlAadAdminsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7805,30 +7610,29 @@ export type WorkspaceSqlAadAdminsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceSqlAadAdminsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceSqlAadAdminsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WorkspaceSqlAadAdminsCreateOrUpdateInput,
     outputSchema: WorkspaceSqlAadAdminsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkspaceSqlAadAdminsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
-    }),
-  );
+export const WorkspaceSqlAadAdminsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+  }),
+);
 export type WorkspaceSqlAadAdminsDeleteInput =
   typeof WorkspaceSqlAadAdminsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceSqlAadAdminsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceSqlAadAdminsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceSqlAadAdminsDeleteOutput =
   typeof WorkspaceSqlAadAdminsDeleteOutput.Type;
 
@@ -7841,35 +7645,31 @@ export type WorkspaceSqlAadAdminsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceSqlAadAdminsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSqlAadAdminsDeleteInput,
-    outputSchema: WorkspaceSqlAadAdminsDeleteOutput,
+export const WorkspaceSqlAadAdminsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSqlAadAdminsDeleteInput,
+  outputSchema: WorkspaceSqlAadAdminsDeleteOutput,
+}));
+// Input Schema
+export const WorkspaceSqlAadAdminsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
   }),
 );
-// Input Schema
-export const WorkspaceSqlAadAdminsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
-    }),
-  );
 export type WorkspaceSqlAadAdminsGetInput =
   typeof WorkspaceSqlAadAdminsGetInput.Type;
 
 // Output Schema
-export const WorkspaceSqlAadAdminsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const WorkspaceSqlAadAdminsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceSqlAadAdminsGetOutput =
   typeof WorkspaceSqlAadAdminsGetOutput.Type;
 
@@ -7882,14 +7682,12 @@ export type WorkspaceSqlAadAdminsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspaceSqlAadAdminsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSqlAadAdminsGetInput,
-    outputSchema: WorkspaceSqlAadAdminsGetOutput,
-  }),
-);
+export const WorkspaceSqlAadAdminsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSqlAadAdminsGetInput,
+  outputSchema: WorkspaceSqlAadAdminsGetOutput,
+}));
 // Input Schema
-export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7903,13 +7701,11 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 
 // Output Schema
-export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const WorkspacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 
 // The operation
@@ -7921,7 +7717,7 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,
   outputSchema: WorkspacesUpdateOutput,
 }));

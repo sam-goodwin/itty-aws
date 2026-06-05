@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoicesInput = /*@__PURE__*/ Schema.Struct({
   collection_method: Schema.optional(
     Schema.Literals(["charge_automatically", "send_invoice"]),
   ),
@@ -29,7 +29,7 @@ export const GetInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInvoicesInput = typeof GetInvoicesInput.Type;
 
 // Output Schema
-export const GetInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoicesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       account_country: Schema.NullOr(Schema.String),
@@ -571,7 +571,7 @@ export type GetInvoicesOutput = typeof GetInvoicesOutput.Type;
  * @param status - The status of the invoice, one of `draft`, `open`, `paid`, `uncollectible`, or `void`. [Learn more](https://docs.stripe.com/billing/invoices/workflow#workflow-overview)
  * @param subscription - Only return invoices for the subscription specified by this subscription ID.
  */
-export const GetInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoices = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoicesInput,
   outputSchema: GetInvoicesOutput,
 }));

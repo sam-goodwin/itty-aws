@@ -4,13 +4,13 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
-export const GetRoleByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleByIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/rbac/roles/{id}" }));
 export type GetRoleByIdInput = typeof GetRoleByIdInput.Type;
 
 // Output Schema
-export const GetRoleByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleByIdOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -105,7 +105,7 @@ export type GetRoleByIdOutput = typeof GetRoleByIdOutput.Type;
  *
  * @param id - Unique identifier of the role to retrieve
  */
-export const getRoleById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getRoleById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRoleByIdInput,
   outputSchema: GetRoleByIdOutput,
   errors: [NotFound] as const,

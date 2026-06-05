@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostShippingRatesShippingRateTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shipping_rate_token: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -39,7 +39,7 @@ export type PostShippingRatesShippingRateTokenInput =
 
 // Output Schema
 export const PostShippingRatesShippingRateTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     created: Schema.Number,
     delivery_estimate: Schema.Unknown,
@@ -82,8 +82,9 @@ export type PostShippingRatesShippingRateTokenOutput =
  *
  * <p>Updates an existing shipping rate object.</p>
  */
-export const PostShippingRatesShippingRateToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostShippingRatesShippingRateToken = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostShippingRatesShippingRateTokenInput,
     outputSchema: PostShippingRatesShippingRateTokenOutput,
-  }));
+  }),
+);

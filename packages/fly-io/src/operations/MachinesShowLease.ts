@@ -4,12 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const MachinesShowLeaseInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/apps/{app_name}/machines/{machine_id}/lease",
@@ -18,14 +16,13 @@ export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type MachinesShowLeaseInput = typeof MachinesShowLeaseInput.Type;
 
 // Output Schema
-export const MachinesShowLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    expires_at: Schema.optional(Schema.Number),
-    nonce: Schema.optional(Schema.String),
-    owner: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-  });
+export const MachinesShowLeaseOutput = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expires_at: Schema.optional(Schema.Number),
+  nonce: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+});
 export type MachinesShowLeaseOutput = typeof MachinesShowLeaseOutput.Type;
 
 // The operation
@@ -37,7 +34,7 @@ export type MachinesShowLeaseOutput = typeof MachinesShowLeaseOutput.Type;
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesShowLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesShowLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesShowLeaseInput,
   outputSchema: MachinesShowLeaseOutput,
   errors: [Forbidden, NotFound] as const,

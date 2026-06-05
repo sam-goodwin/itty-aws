@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const UpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export const UpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateInput = typeof UpdateInput.Type;
 
 // Output Schema
-export const UpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export type UpdateOutput = typeof UpdateOutput.Type;
  *
  * @param id - A UUID string identifying this organization.
  */
-export const update = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const update = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateInput,
   outputSchema: UpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

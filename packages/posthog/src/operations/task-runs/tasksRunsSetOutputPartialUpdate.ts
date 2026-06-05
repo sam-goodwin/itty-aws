@@ -4,24 +4,25 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const TasksRunsSetOutputPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksRunsSetOutputPartialUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
     output: Schema.optional(Schema.Unknown),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_output/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_output/",
+  }),
+);
 export type TasksRunsSetOutputPartialUpdateInput =
   typeof TasksRunsSetOutputPartialUpdateInput.Type;
 
 // Output Schema
 export const TasksRunsSetOutputPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     task: Schema.optional(Schema.String),
     stage: Schema.optional(Schema.NullOr(Schema.String)),
@@ -75,9 +76,8 @@ export type TasksRunsSetOutputPartialUpdateOutput =
  * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsSetOutputPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TasksRunsSetOutputPartialUpdateInput,
-    outputSchema: TasksRunsSetOutputPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const tasksRunsSetOutputPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsSetOutputPartialUpdateInput,
+  outputSchema: TasksRunsSetOutputPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

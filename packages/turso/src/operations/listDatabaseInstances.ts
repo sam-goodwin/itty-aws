@@ -4,33 +4,31 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListDatabaseInstancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationSlug: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances",
-    }),
-  );
+export const ListDatabaseInstancesInput = /*@__PURE__*/ Schema.Struct({
+  organizationSlug: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances",
+  }),
+);
 export type ListDatabaseInstancesInput = typeof ListDatabaseInstancesInput.Type;
 
 // Output Schema
-export const ListDatabaseInstancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instances: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.Literals(["primary", "replica"])),
-          region: Schema.optional(Schema.String),
-          hostname: Schema.optional(Schema.String),
-        }),
-      ),
+export const ListDatabaseInstancesOutput = /*@__PURE__*/ Schema.Struct({
+  instances: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["primary", "replica"])),
+        region: Schema.optional(Schema.String),
+        hostname: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ListDatabaseInstancesOutput =
   typeof ListDatabaseInstancesOutput.Type;
 
@@ -43,10 +41,8 @@ export type ListDatabaseInstancesOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const listDatabaseInstances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListDatabaseInstancesInput,
-    outputSchema: ListDatabaseInstancesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const listDatabaseInstances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListDatabaseInstancesInput,
+  outputSchema: ListDatabaseInstancesOutput,
+  errors: [NotFound] as const,
+}));

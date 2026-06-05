@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type DeleteAccountsAccountExternalAccountsIdInput =
 
 // Output Schema
 export const DeleteAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type DeleteAccountsAccountExternalAccountsIdOutput =
   typeof DeleteAccountsAccountExternalAccountsIdOutput.Type;
 
@@ -31,8 +31,9 @@ export type DeleteAccountsAccountExternalAccountsIdOutput =
  *
  * @param id - Unique identifier for the external account to be deleted.
  */
-export const DeleteAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteAccountsAccountExternalAccountsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteAccountsAccountExternalAccountsIdInput,
     outputSchema: DeleteAccountsAccountExternalAccountsIdOutput,
-  }));
+  }),
+);

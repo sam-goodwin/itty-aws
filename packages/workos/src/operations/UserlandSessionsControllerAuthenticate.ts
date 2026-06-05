@@ -7,11 +7,11 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandSessionsControllerAuthenticateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/user_management/authenticate" }),
   );
 export type UserlandSessionsControllerAuthenticateInput =
@@ -19,7 +19,7 @@ export type UserlandSessionsControllerAuthenticateInput =
 
 // Output Schema
 export const UserlandSessionsControllerAuthenticateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -39,8 +39,8 @@ export const UserlandSessionsControllerAuthenticateOutput =
     ),
     organization_id: Schema.optional(Schema.String),
     authkit_authorization_code: Schema.optional(Schema.String),
-    access_token: Schema.optional(SensitiveString),
-    refresh_token: Schema.optional(SensitiveString),
+    access_token: Schema.optional(SensitiveOutputString),
+    refresh_token: Schema.optional(SensitiveOutputString),
     authentication_method: Schema.optional(
       Schema.Literals([
         "SSO",
@@ -76,8 +76,8 @@ export const UserlandSessionsControllerAuthenticateOutput =
     oauth_tokens: Schema.optional(
       Schema.Struct({
         provider: Schema.String,
-        refresh_token: SensitiveString,
-        access_token: SensitiveString,
+        refresh_token: SensitiveOutputString,
+        access_token: SensitiveOutputString,
         expires_at: Schema.Number,
         scopes: Schema.Array(Schema.String),
       }),
@@ -92,9 +92,10 @@ export type UserlandSessionsControllerAuthenticateOutput =
  *
  * Authenticate a user with a specified [authentication method](/reference/authkit/authentication).
  */
-export const UserlandSessionsControllerAuthenticate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandSessionsControllerAuthenticate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandSessionsControllerAuthenticateInput,
     outputSchema: UserlandSessionsControllerAuthenticateOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

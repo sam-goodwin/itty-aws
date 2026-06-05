@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateOrgResourcePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies",
-    }),
-  );
+export const CreateOrgResourcePolicyInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies",
+  }),
+);
 export type CreateOrgResourcePolicyInput =
   typeof CreateOrgResourcePolicyInput.Type;
 
 // Output Schema
-export const CreateOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateOrgResourcePolicyOutput = /*@__PURE__*/ Schema.Void;
 export type CreateOrgResourcePolicyOutput =
   typeof CreateOrgResourcePolicyOutput.Type;
 
@@ -34,10 +32,8 @@ export type CreateOrgResourcePolicyOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
-export const createOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateOrgResourcePolicyInput,
-    outputSchema: CreateOrgResourcePolicyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createOrgResourcePolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateOrgResourcePolicyInput,
+  outputSchema: CreateOrgResourcePolicyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostTaxIdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxIdsInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   owner: Schema.optional(
     Schema.Struct({
@@ -138,7 +138,7 @@ export const PostTaxIdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostTaxIdsInput = typeof PostTaxIdsInput.Type;
 
 // Output Schema
-export const PostTaxIdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxIdsOutput = /*@__PURE__*/ Schema.Struct({
   country: Schema.NullOr(Schema.String),
   created: Schema.Number,
   customer: Schema.Unknown,
@@ -273,7 +273,7 @@ export type PostTaxIdsOutput = typeof PostTaxIdsOutput.Type;
  *
  * <p>Creates a new account or customer <code>tax_id</code> object.</p>
  */
-export const PostTaxIds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTaxIds = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTaxIdsInput,
   outputSchema: PostTaxIdsOutput,
 }));

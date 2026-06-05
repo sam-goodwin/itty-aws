@@ -9,18 +9,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsChangeKeyVaultInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
-    }),
-  );
+export const AccountsChangeKeyVaultInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
+  }),
+);
 export type AccountsChangeKeyVaultInput =
   typeof AccountsChangeKeyVaultInput.Type;
 
@@ -43,42 +42,40 @@ export const AccountsChangeKeyVault = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsChangeKeyVaultOutput,
 }));
 // Input Schema
-export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
-    }),
-  );
+export const AccountsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
+  }),
+);
 export type AccountsCreateOrUpdateInput =
   typeof AccountsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AccountsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AccountsCreateOrUpdateOutput =
   typeof AccountsCreateOrUpdateOutput.Type;
 
@@ -222,11 +219,12 @@ export type AccountsGetChangeKeyVaultInformationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsGetChangeKeyVaultInformation =
-  /*@__PURE__*/ API.make(() => ({
+export const AccountsGetChangeKeyVaultInformation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AccountsGetChangeKeyVaultInformationInput,
     outputSchema: AccountsGetChangeKeyVaultInformationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -280,55 +278,43 @@ export const AccountsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsListOutput,
 }));
 // Input Schema
-export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
-    }),
-  );
+export const AccountsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
+  }),
+);
 export type AccountsListBySubscriptionInput =
   typeof AccountsListBySubscriptionInput.Type;
 
 // Output Schema
-export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AccountsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccountsListBySubscriptionOutput =
   typeof AccountsListBySubscriptionOutput.Type;
 
@@ -344,18 +330,17 @@ export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsListBySubscriptionOutput,
 }));
 // Input Schema
-export const AccountsRenewCredentialsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
-    }),
-  );
+export const AccountsRenewCredentialsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
+  }),
+);
 export type AccountsRenewCredentialsInput =
   typeof AccountsRenewCredentialsInput.Type;
 
@@ -378,18 +363,17 @@ export const AccountsRenewCredentials = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsRenewCredentialsOutput,
 }));
 // Input Schema
-export const AccountsTransitionToCmkInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
-    }),
-  );
+export const AccountsTransitionToCmkInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
+  }),
+);
 export type AccountsTransitionToCmkInput =
   typeof AccountsTransitionToCmkInput.Type;
 
@@ -461,42 +445,40 @@ export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const BackupPoliciesCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-    }),
-  );
+export const BackupPoliciesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+  }),
+);
 export type BackupPoliciesCreateInput = typeof BackupPoliciesCreateInput.Type;
 
 // Output Schema
-export const BackupPoliciesCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupPoliciesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupPoliciesCreateOutput = typeof BackupPoliciesCreateOutput.Type;
 
 // The operation
@@ -514,19 +496,18 @@ export const BackupPoliciesCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupPoliciesCreateOutput,
 }));
 // Input Schema
-export const BackupPoliciesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-    }),
-  );
+export const BackupPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+  }),
+);
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
 
 // Output Schema
@@ -563,26 +544,25 @@ export const BackupPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
 export type BackupPoliciesGetInput = typeof BackupPoliciesGetInput.Type;
 
 // Output Schema
-export const BackupPoliciesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupPoliciesGetOutput = typeof BackupPoliciesGetOutput.Type;
 
 // The operation
@@ -600,56 +580,44 @@ export const BackupPoliciesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupPoliciesGetOutput,
 }));
 // Input Schema
-export const BackupPoliciesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
-    }),
-  );
+export const BackupPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
+  }),
+);
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
 
 // Output Schema
-export const BackupPoliciesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupPoliciesListOutput = typeof BackupPoliciesListOutput.Type;
 
 // The operation
@@ -666,42 +634,40 @@ export const BackupPoliciesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupPoliciesListOutput,
 }));
 // Input Schema
-export const BackupPoliciesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-    }),
-  );
+export const BackupPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+  }),
+);
 export type BackupPoliciesUpdateInput = typeof BackupPoliciesUpdateInput.Type;
 
 // Output Schema
-export const BackupPoliciesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupPoliciesUpdateOutput = typeof BackupPoliciesUpdateOutput.Type;
 
 // The operation
@@ -860,40 +826,38 @@ export const BackupsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupsGetOutput,
 }));
 // Input Schema
-export const BackupsGetLatestStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
-    }),
-  );
+export const BackupsGetLatestStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
+  }),
+);
 export type BackupsGetLatestStatusInput =
   typeof BackupsGetLatestStatusInput.Type;
 
 // Output Schema
-export const BackupsGetLatestStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    healthy: Schema.optional(Schema.Boolean),
-    relationshipStatus: Schema.optional(
-      Schema.Literals(["Idle", "Transferring", "Failed", "Unknown"]),
-    ),
-    mirrorState: Schema.optional(
-      Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
-    ),
-    unhealthyReason: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-    lastTransferSize: Schema.optional(Schema.Number),
-    lastTransferType: Schema.optional(Schema.String),
-    totalTransferBytes: Schema.optional(Schema.Number),
-    transferProgressBytes: Schema.optional(Schema.Number),
-  });
+export const BackupsGetLatestStatusOutput = /*@__PURE__*/ Schema.Struct({
+  healthy: Schema.optional(Schema.Boolean),
+  relationshipStatus: Schema.optional(
+    Schema.Literals(["Idle", "Transferring", "Failed", "Unknown"]),
+  ),
+  mirrorState: Schema.optional(
+    Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
+  ),
+  unhealthyReason: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  lastTransferSize: Schema.optional(Schema.Number),
+  lastTransferType: Schema.optional(Schema.String),
+  totalTransferBytes: Schema.optional(Schema.Number),
+  transferProgressBytes: Schema.optional(Schema.Number),
+});
 export type BackupsGetLatestStatusOutput =
   typeof BackupsGetLatestStatusOutput.Type;
 
@@ -958,64 +922,53 @@ export type BackupsGetVolumeLatestRestoreStatusOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const BackupsGetVolumeLatestRestoreStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupsGetVolumeLatestRestoreStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupsGetVolumeLatestRestoreStatusInput,
     outputSchema: BackupsGetVolumeLatestRestoreStatusOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BackupsListByVaultInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
-    }),
-  );
+export const BackupsListByVaultInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupVaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
+  }),
+);
 export type BackupsListByVaultInput = typeof BackupsListByVaultInput.Type;
 
 // Output Schema
-export const BackupsListByVaultOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupsListByVaultOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupsListByVaultOutput = typeof BackupsListByVaultOutput.Type;
 
 // The operation
@@ -1064,11 +1017,10 @@ export type BackupsUnderAccountMigrateBackupsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const BackupsUnderAccountMigrateBackups =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsUnderAccountMigrateBackupsInput,
-    outputSchema: BackupsUnderAccountMigrateBackupsOutput,
-  }));
+export const BackupsUnderAccountMigrateBackups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsUnderAccountMigrateBackupsInput,
+  outputSchema: BackupsUnderAccountMigrateBackupsOutput,
+}));
 // Input Schema
 export const BackupsUnderBackupVaultRestoreFilesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1104,11 +1056,12 @@ export type BackupsUnderBackupVaultRestoreFilesOutput =
  * @param backupVaultName - The name of the Backup Vault
  * @param backupName - The name of the backup
  */
-export const BackupsUnderBackupVaultRestoreFiles =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupsUnderBackupVaultRestoreFiles = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupsUnderBackupVaultRestoreFilesInput,
     outputSchema: BackupsUnderBackupVaultRestoreFilesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupsUnderVolumeMigrateBackupsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1143,11 +1096,10 @@ export type BackupsUnderVolumeMigrateBackupsOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const BackupsUnderVolumeMigrateBackups =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupsUnderVolumeMigrateBackupsInput,
-    outputSchema: BackupsUnderVolumeMigrateBackupsOutput,
-  }));
+export const BackupsUnderVolumeMigrateBackups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsUnderVolumeMigrateBackupsInput,
+  outputSchema: BackupsUnderVolumeMigrateBackupsOutput,
+}));
 // Input Schema
 export const BackupsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1202,43 +1154,41 @@ export const BackupsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupsUpdateOutput,
 }));
 // Input Schema
-export const BackupVaultsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-    }),
-  );
+export const BackupVaultsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupVaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+  }),
+);
 export type BackupVaultsCreateOrUpdateInput =
   typeof BackupVaultsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BackupVaultsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupVaultsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupVaultsCreateOrUpdateOutput =
   typeof BackupVaultsCreateOrUpdateOutput.Type;
 
@@ -1257,19 +1207,18 @@ export const BackupVaultsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupVaultsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const BackupVaultsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-    }),
-  );
+export const BackupVaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupVaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+  }),
+);
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
 
 // Output Schema
@@ -1342,18 +1291,19 @@ export const BackupVaultsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupVaultsGetOutput,
 }));
 // Input Schema
-export const BackupVaultsListByNetAppAccountInput =
-  /*@__PURE__*/ Schema.Struct({
+export const BackupVaultsListByNetAppAccountInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
+  }),
+);
 export type BackupVaultsListByNetAppAccountInput =
   typeof BackupVaultsListByNetAppAccountInput.Type;
 
@@ -1405,48 +1355,45 @@ export type BackupVaultsListByNetAppAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const BackupVaultsListByNetAppAccount =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupVaultsListByNetAppAccountInput,
-    outputSchema: BackupVaultsListByNetAppAccountOutput,
-  }));
+export const BackupVaultsListByNetAppAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupVaultsListByNetAppAccountInput,
+  outputSchema: BackupVaultsListByNetAppAccountOutput,
+}));
 // Input Schema
-export const BackupVaultsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-    }),
-  );
+export const BackupVaultsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupVaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+  }),
+);
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
 
 // Output Schema
-export const BackupVaultsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupVaultsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupVaultsUpdateOutput = typeof BackupVaultsUpdateOutput.Type;
 
 // The operation
@@ -1498,11 +1445,12 @@ export type NetAppResourceCheckFilePathAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceCheckFilePathAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceCheckFilePathAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceCheckFilePathAvailabilityInput,
     outputSchema: NetAppResourceCheckFilePathAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetAppResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1538,11 +1486,12 @@ export type NetAppResourceCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceCheckNameAvailabilityInput,
     outputSchema: NetAppResourceCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetAppResourceCheckQuotaAvailabilityInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1578,11 +1527,12 @@ export type NetAppResourceCheckQuotaAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceCheckQuotaAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceCheckQuotaAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceCheckQuotaAvailabilityInput,
     outputSchema: NetAppResourceCheckQuotaAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetAppResourceQueryNetworkSiblingSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1637,50 +1587,49 @@ export type NetAppResourceQueryNetworkSiblingSetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceQueryNetworkSiblingSet =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceQueryNetworkSiblingSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceQueryNetworkSiblingSetInput,
     outputSchema: NetAppResourceQueryNetworkSiblingSetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NetAppResourceQueryRegionInfoInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
-    }),
-  );
+export const NetAppResourceQueryRegionInfoInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
+  }),
+);
 export type NetAppResourceQueryRegionInfoInput =
   typeof NetAppResourceQueryRegionInfoInput.Type;
 
 // Output Schema
-export const NetAppResourceQueryRegionInfoOutput =
-  /*@__PURE__*/ Schema.Struct({
-    storageToNetworkProximity: Schema.optional(
-      Schema.Literals([
-        "Default",
-        "T1",
-        "T2",
-        "AcrossT2",
-        "T1AndT2",
-        "T1AndAcrossT2",
-        "T2AndAcrossT2",
-        "T1AndT2AndAcrossT2",
-      ]),
+export const NetAppResourceQueryRegionInfoOutput = /*@__PURE__*/ Schema.Struct({
+  storageToNetworkProximity: Schema.optional(
+    Schema.Literals([
+      "Default",
+      "T1",
+      "T2",
+      "AcrossT2",
+      "T1AndT2",
+      "T1AndAcrossT2",
+      "T2AndAcrossT2",
+      "T1AndT2AndAcrossT2",
+    ]),
+  ),
+  availabilityZoneMappings: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        availabilityZone: Schema.optional(Schema.String),
+        isAvailable: Schema.optional(Schema.Boolean),
+      }),
     ),
-    availabilityZoneMappings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          availabilityZone: Schema.optional(Schema.String),
-          isAvailable: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
-  });
+  ),
+});
 export type NetAppResourceQueryRegionInfoOutput =
   typeof NetAppResourceQueryRegionInfoOutput.Type;
 
@@ -1694,11 +1643,10 @@ export type NetAppResourceQueryRegionInfoOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceQueryRegionInfo =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NetAppResourceQueryRegionInfoInput,
-    outputSchema: NetAppResourceQueryRegionInfoOutput,
-  }));
+export const NetAppResourceQueryRegionInfo = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceQueryRegionInfoInput,
+  outputSchema: NetAppResourceQueryRegionInfoOutput,
+}));
 // Input Schema
 export const NetAppResourceQuotaLimitsAccountGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1750,11 +1698,12 @@ export type NetAppResourceQuotaLimitsAccountGetOutput =
  * @param accountName - The name of the NetApp account
  * @param quotaLimitName - The name of the Quota Limit
  */
-export const NetAppResourceQuotaLimitsAccountGet =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceQuotaLimitsAccountGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceQuotaLimitsAccountGetInput,
     outputSchema: NetAppResourceQuotaLimitsAccountGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NetAppResourceQuotaLimitsAccountListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1819,48 +1768,47 @@ export type NetAppResourceQuotaLimitsAccountListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const NetAppResourceQuotaLimitsAccountList =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceQuotaLimitsAccountList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceQuotaLimitsAccountListInput,
     outputSchema: NetAppResourceQuotaLimitsAccountListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NetAppResourceQuotaLimitsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    quotaLimitName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
-    }),
-  );
+export const NetAppResourceQuotaLimitsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  quotaLimitName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
+  }),
+);
 export type NetAppResourceQuotaLimitsGetInput =
   typeof NetAppResourceQuotaLimitsGetInput.Type;
 
 // Output Schema
-export const NetAppResourceQuotaLimitsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NetAppResourceQuotaLimitsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NetAppResourceQuotaLimitsGetOutput =
   typeof NetAppResourceQuotaLimitsGetOutput.Type;
 
@@ -1873,62 +1821,49 @@ export type NetAppResourceQuotaLimitsGetOutput =
  * @param location - The name of the Azure region.
  * @param quotaLimitName - The name of the Quota Limit
  */
-export const NetAppResourceQuotaLimitsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NetAppResourceQuotaLimitsGetInput,
-    outputSchema: NetAppResourceQuotaLimitsGetOutput,
-  }));
+export const NetAppResourceQuotaLimitsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceQuotaLimitsGetInput,
+  outputSchema: NetAppResourceQuotaLimitsGetOutput,
+}));
 // Input Schema
-export const NetAppResourceQuotaLimitsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
-    }),
-  );
+export const NetAppResourceQuotaLimitsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
+  }),
+);
 export type NetAppResourceQuotaLimitsListInput =
   typeof NetAppResourceQuotaLimitsListInput.Type;
 
 // Output Schema
-export const NetAppResourceQuotaLimitsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NetAppResourceQuotaLimitsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NetAppResourceQuotaLimitsListOutput =
   typeof NetAppResourceQuotaLimitsListOutput.Type;
 
@@ -1940,47 +1875,44 @@ export type NetAppResourceQuotaLimitsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceQuotaLimitsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NetAppResourceQuotaLimitsListInput,
-    outputSchema: NetAppResourceQuotaLimitsListOutput,
-  }));
+export const NetAppResourceQuotaLimitsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceQuotaLimitsListInput,
+  outputSchema: NetAppResourceQuotaLimitsListOutput,
+}));
 // Input Schema
-export const NetAppResourceRegionInfosGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
-    }),
-  );
+export const NetAppResourceRegionInfosGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
+  }),
+);
 export type NetAppResourceRegionInfosGetInput =
   typeof NetAppResourceRegionInfosGetInput.Type;
 
 // Output Schema
-export const NetAppResourceRegionInfosGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NetAppResourceRegionInfosGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NetAppResourceRegionInfosGetOutput =
   typeof NetAppResourceRegionInfosGetOutput.Type;
 
@@ -1992,62 +1924,49 @@ export type NetAppResourceRegionInfosGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceRegionInfosGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NetAppResourceRegionInfosGetInput,
-    outputSchema: NetAppResourceRegionInfosGetOutput,
-  }));
+export const NetAppResourceRegionInfosGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceRegionInfosGetInput,
+  outputSchema: NetAppResourceRegionInfosGetOutput,
+}));
 // Input Schema
-export const NetAppResourceRegionInfosListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
-    }),
-  );
+export const NetAppResourceRegionInfosListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
+  }),
+);
 export type NetAppResourceRegionInfosListInput =
   typeof NetAppResourceRegionInfosListInput.Type;
 
 // Output Schema
-export const NetAppResourceRegionInfosListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NetAppResourceRegionInfosListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NetAppResourceRegionInfosListOutput =
   typeof NetAppResourceRegionInfosListOutput.Type;
 
@@ -2059,11 +1978,10 @@ export type NetAppResourceRegionInfosListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceRegionInfosList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: NetAppResourceRegionInfosListInput,
-    outputSchema: NetAppResourceRegionInfosListOutput,
-  }));
+export const NetAppResourceRegionInfosList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceRegionInfosListInput,
+  outputSchema: NetAppResourceRegionInfosListOutput,
+}));
 // Input Schema
 export const NetAppResourceUpdateNetworkSiblingSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2118,45 +2036,44 @@ export type NetAppResourceUpdateNetworkSiblingSetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceUpdateNetworkSiblingSet =
-  /*@__PURE__*/ API.make(() => ({
+export const NetAppResourceUpdateNetworkSiblingSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NetAppResourceUpdateNetworkSiblingSetInput,
     outputSchema: NetAppResourceUpdateNetworkSiblingSetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NetAppResourceUsagesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    usageType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
-    }),
-  );
+export const NetAppResourceUsagesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  usageType: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
+  }),
+);
 export type NetAppResourceUsagesGetInput =
   typeof NetAppResourceUsagesGetInput.Type;
 
 // Output Schema
-export const NetAppResourceUsagesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(
-      Schema.Struct({
-        value: Schema.optional(Schema.String),
-        localizedValue: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        unit: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NetAppResourceUsagesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(
+    Schema.Struct({
+      value: Schema.optional(Schema.String),
+      localizedValue: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      currentValue: Schema.optional(Schema.Number),
+      limit: Schema.optional(Schema.Number),
+      unit: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NetAppResourceUsagesGetOutput =
   typeof NetAppResourceUsagesGetOutput.Type;
 
@@ -2176,43 +2093,41 @@ export const NetAppResourceUsagesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: NetAppResourceUsagesGetOutput,
 }));
 // Input Schema
-export const NetAppResourceUsagesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
-    }),
-  );
+export const NetAppResourceUsagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
+  }),
+);
 export type NetAppResourceUsagesListInput =
   typeof NetAppResourceUsagesListInput.Type;
 
 // Output Schema
-export const NetAppResourceUsagesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        properties: Schema.optional(
-          Schema.Struct({
-            currentValue: Schema.optional(Schema.Number),
-            limit: Schema.optional(Schema.Number),
-            unit: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NetAppResourceUsagesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+      properties: Schema.optional(
+        Schema.Struct({
+          currentValue: Schema.optional(Schema.Number),
+          limit: Schema.optional(Schema.Number),
+          unit: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NetAppResourceUsagesListOutput =
   typeof NetAppResourceUsagesListOutput.Type;
 
@@ -2320,42 +2235,40 @@ export const OperationsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PoolsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
-    }),
-  );
+export const PoolsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
+  }),
+);
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PoolsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PoolsCreateOrUpdateOutput = typeof PoolsCreateOrUpdateOutput.Type;
 
 // The operation
@@ -2562,21 +2475,20 @@ export const PoolsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: PoolsUpdateOutput,
 }));
 // Input Schema
-export const RansomwareReportsClearSuspectsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    ransomwareReportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
-    }),
-  );
+export const RansomwareReportsClearSuspectsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  ransomwareReportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
+  }),
+);
 export type RansomwareReportsClearSuspectsInput =
   typeof RansomwareReportsClearSuspectsInput.Type;
 
@@ -2598,50 +2510,47 @@ export type RansomwareReportsClearSuspectsOutput =
  * @param volumeName - The name of the volume
  * @param ransomwareReportName - The name of the ransomware report
  */
-export const RansomwareReportsClearSuspects =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RansomwareReportsClearSuspectsInput,
-    outputSchema: RansomwareReportsClearSuspectsOutput,
-  }));
+export const RansomwareReportsClearSuspects = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RansomwareReportsClearSuspectsInput,
+  outputSchema: RansomwareReportsClearSuspectsOutput,
+}));
 // Input Schema
-export const RansomwareReportsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    ransomwareReportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
-    }),
-  );
+export const RansomwareReportsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  ransomwareReportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
+  }),
+);
 export type RansomwareReportsGetInput = typeof RansomwareReportsGetInput.Type;
 
 // Output Schema
-export const RansomwareReportsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RansomwareReportsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RansomwareReportsGetOutput = typeof RansomwareReportsGetOutput.Type;
 
 // The operation
@@ -2663,58 +2572,46 @@ export const RansomwareReportsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: RansomwareReportsGetOutput,
 }));
 // Input Schema
-export const RansomwareReportsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
-    }),
-  );
+export const RansomwareReportsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
+  }),
+);
 export type RansomwareReportsListInput = typeof RansomwareReportsListInput.Type;
 
 // Output Schema
-export const RansomwareReportsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RansomwareReportsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RansomwareReportsListOutput =
   typeof RansomwareReportsListOutput.Type;
 
@@ -2737,43 +2634,41 @@ export const RansomwareReportsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: RansomwareReportsListOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-    }),
-  );
+export const SnapshotPoliciesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  snapshotPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+  }),
+);
 export type SnapshotPoliciesCreateInput =
   typeof SnapshotPoliciesCreateInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SnapshotPoliciesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotPoliciesCreateOutput =
   typeof SnapshotPoliciesCreateOutput.Type;
 
@@ -2792,19 +2687,18 @@ export const SnapshotPoliciesCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotPoliciesCreateOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-    }),
-  );
+export const SnapshotPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  snapshotPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+  }),
+);
 export type SnapshotPoliciesDeleteInput =
   typeof SnapshotPoliciesDeleteInput.Type;
 
@@ -2828,42 +2722,40 @@ export const SnapshotPoliciesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotPoliciesDeleteOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-    }),
-  );
+export const SnapshotPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  snapshotPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+  }),
+);
 export type SnapshotPoliciesGetInput = typeof SnapshotPoliciesGetInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SnapshotPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotPoliciesGetOutput = typeof SnapshotPoliciesGetOutput.Type;
 
 // The operation
@@ -2881,56 +2773,44 @@ export const SnapshotPoliciesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotPoliciesGetOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
-    }),
-  );
+export const SnapshotPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
+  }),
+);
 export type SnapshotPoliciesListInput = typeof SnapshotPoliciesListInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SnapshotPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SnapshotPoliciesListOutput = typeof SnapshotPoliciesListOutput.Type;
 
 // The operation
@@ -2947,58 +2827,46 @@ export const SnapshotPoliciesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotPoliciesListOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesListVolumesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
-    }),
-  );
+export const SnapshotPoliciesListVolumesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  snapshotPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
+  }),
+);
 export type SnapshotPoliciesListVolumesInput =
   typeof SnapshotPoliciesListVolumesInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesListVolumesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SnapshotPoliciesListVolumesOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SnapshotPoliciesListVolumesOutput =
   typeof SnapshotPoliciesListVolumesOutput.Type;
 
@@ -3017,43 +2885,41 @@ export const SnapshotPoliciesListVolumes = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotPoliciesListVolumesOutput,
 }));
 // Input Schema
-export const SnapshotPoliciesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-    }),
-  );
+export const SnapshotPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  snapshotPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+  }),
+);
 export type SnapshotPoliciesUpdateInput =
   typeof SnapshotPoliciesUpdateInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SnapshotPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotPoliciesUpdateOutput =
   typeof SnapshotPoliciesUpdateOutput.Type;
 
@@ -3277,21 +3143,20 @@ export const SnapshotsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsListOutput,
 }));
 // Input Schema
-export const SnapshotsRestoreFilesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    snapshotName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
-    }),
-  );
+export const SnapshotsRestoreFilesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  snapshotName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
+  }),
+);
 export type SnapshotsRestoreFilesInput = typeof SnapshotsRestoreFilesInput.Type;
 
 // Output Schema
@@ -3518,44 +3383,42 @@ export const SubvolumesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SubvolumesGetOutput,
 }));
 // Input Schema
-export const SubvolumesGetMetadataInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    subvolumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
-    }),
-  );
+export const SubvolumesGetMetadataInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  subvolumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
+  }),
+);
 export type SubvolumesGetMetadataInput = typeof SubvolumesGetMetadataInput.Type;
 
 // Output Schema
-export const SubvolumesGetMetadataOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        path: Schema.optional(Schema.String),
-        parentPath: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.Number),
-        bytesUsed: Schema.optional(Schema.Number),
-        permissions: Schema.optional(Schema.String),
-        creationTimeStamp: Schema.optional(Schema.String),
-        accessedTimeStamp: Schema.optional(Schema.String),
-        modifiedTimeStamp: Schema.optional(Schema.String),
-        changedTimeStamp: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SubvolumesGetMetadataOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      path: Schema.optional(Schema.String),
+      parentPath: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.Number),
+      bytesUsed: Schema.optional(Schema.Number),
+      permissions: Schema.optional(Schema.String),
+      creationTimeStamp: Schema.optional(Schema.String),
+      accessedTimeStamp: Schema.optional(Schema.String),
+      modifiedTimeStamp: Schema.optional(Schema.String),
+      changedTimeStamp: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SubvolumesGetMetadataOutput =
   typeof SubvolumesGetMetadataOutput.Type;
 
@@ -3576,59 +3439,47 @@ export const SubvolumesGetMetadata = /*@__PURE__*/ API.make(() => ({
   outputSchema: SubvolumesGetMetadataOutput,
 }));
 // Input Schema
-export const SubvolumesListByVolumeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
-    }),
-  );
+export const SubvolumesListByVolumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
+  }),
+);
 export type SubvolumesListByVolumeInput =
   typeof SubvolumesListByVolumeInput.Type;
 
 // Output Schema
-export const SubvolumesListByVolumeOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SubvolumesListByVolumeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SubvolumesListByVolumeOutput =
   typeof SubvolumesListByVolumeOutput.Type;
 
@@ -3703,42 +3554,40 @@ export const SubvolumesUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SubvolumesUpdateOutput,
 }));
 // Input Schema
-export const VolumeGroupsCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-    }),
-  );
+export const VolumeGroupsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  volumeGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+  }),
+);
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
 
 // Output Schema
-export const VolumeGroupsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumeGroupsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumeGroupsCreateOutput = typeof VolumeGroupsCreateOutput.Type;
 
 // The operation
@@ -3756,19 +3605,18 @@ export const VolumeGroupsCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsCreateOutput,
 }));
 // Input Schema
-export const VolumeGroupsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-    }),
-  );
+export const VolumeGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  volumeGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+  }),
+);
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
 
 // Output Schema
@@ -3841,18 +3689,19 @@ export const VolumeGroupsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsGetOutput,
 }));
 // Input Schema
-export const VolumeGroupsListByNetAppAccountInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VolumeGroupsListByNetAppAccountInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
+  }),
+);
 export type VolumeGroupsListByNetAppAccountInput =
   typeof VolumeGroupsListByNetAppAccountInput.Type;
 
@@ -3904,51 +3753,48 @@ export type VolumeGroupsListByNetAppAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const VolumeGroupsListByNetAppAccount =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumeGroupsListByNetAppAccountInput,
-    outputSchema: VolumeGroupsListByNetAppAccountOutput,
-  }));
+export const VolumeGroupsListByNetAppAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeGroupsListByNetAppAccountInput,
+  outputSchema: VolumeGroupsListByNetAppAccountOutput,
+}));
 // Input Schema
-export const VolumeQuotaRulesCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-    }),
-  );
+export const VolumeQuotaRulesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+  }),
+);
 export type VolumeQuotaRulesCreateInput =
   typeof VolumeQuotaRulesCreateInput.Type;
 
 // Output Schema
-export const VolumeQuotaRulesCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumeQuotaRulesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumeQuotaRulesCreateOutput =
   typeof VolumeQuotaRulesCreateOutput.Type;
 
@@ -3969,21 +3815,20 @@ export const VolumeQuotaRulesCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumeQuotaRulesCreateOutput,
 }));
 // Input Schema
-export const VolumeQuotaRulesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-    }),
-  );
+export const VolumeQuotaRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+  }),
+);
 export type VolumeQuotaRulesDeleteInput =
   typeof VolumeQuotaRulesDeleteInput.Type;
 
@@ -4009,44 +3854,42 @@ export const VolumeQuotaRulesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumeQuotaRulesDeleteOutput,
 }));
 // Input Schema
-export const VolumeQuotaRulesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-    }),
-  );
+export const VolumeQuotaRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+  }),
+);
 export type VolumeQuotaRulesGetInput = typeof VolumeQuotaRulesGetInput.Type;
 
 // Output Schema
-export const VolumeQuotaRulesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumeQuotaRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumeQuotaRulesGetOutput = typeof VolumeQuotaRulesGetOutput.Type;
 
 // The operation
@@ -4066,59 +3909,47 @@ export const VolumeQuotaRulesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumeQuotaRulesGetOutput,
 }));
 // Input Schema
-export const VolumeQuotaRulesListByVolumeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
-    }),
-  );
+export const VolumeQuotaRulesListByVolumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
+  }),
+);
 export type VolumeQuotaRulesListByVolumeInput =
   typeof VolumeQuotaRulesListByVolumeInput.Type;
 
 // Output Schema
-export const VolumeQuotaRulesListByVolumeOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VolumeQuotaRulesListByVolumeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VolumeQuotaRulesListByVolumeOutput =
   typeof VolumeQuotaRulesListByVolumeOutput.Type;
 
@@ -4133,51 +3964,48 @@ export type VolumeQuotaRulesListByVolumeOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumeQuotaRulesListByVolume =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumeQuotaRulesListByVolumeInput,
-    outputSchema: VolumeQuotaRulesListByVolumeOutput,
-  }));
+export const VolumeQuotaRulesListByVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeQuotaRulesListByVolumeInput,
+  outputSchema: VolumeQuotaRulesListByVolumeOutput,
+}));
 // Input Schema
-export const VolumeQuotaRulesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-    }),
-  );
+export const VolumeQuotaRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+  }),
+);
 export type VolumeQuotaRulesUpdateInput =
   typeof VolumeQuotaRulesUpdateInput.Type;
 
 // Output Schema
-export const VolumeQuotaRulesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumeQuotaRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumeQuotaRulesUpdateOutput =
   typeof VolumeQuotaRulesUpdateOutput.Type;
 
@@ -4234,26 +4062,26 @@ export type VolumesAuthorizeExternalReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesAuthorizeExternalReplication =
-  /*@__PURE__*/ API.make(() => ({
+export const VolumesAuthorizeExternalReplication = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VolumesAuthorizeExternalReplicationInput,
     outputSchema: VolumesAuthorizeExternalReplicationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VolumesAuthorizeReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
-    }),
-  );
+export const VolumesAuthorizeReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
+  }),
+);
 export type VolumesAuthorizeReplicationInput =
   typeof VolumesAuthorizeReplicationInput.Type;
 
@@ -4278,20 +4106,19 @@ export const VolumesAuthorizeReplication = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesAuthorizeReplicationOutput,
 }));
 // Input Schema
-export const VolumesBreakFileLocksInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
-    }),
-  );
+export const VolumesBreakFileLocksInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
+  }),
+);
 export type VolumesBreakFileLocksInput = typeof VolumesBreakFileLocksInput.Type;
 
 // Output Schema
@@ -4315,20 +4142,19 @@ export const VolumesBreakFileLocks = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesBreakFileLocksOutput,
 }));
 // Input Schema
-export const VolumesBreakReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
-    }),
-  );
+export const VolumesBreakReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
+  }),
+);
 export type VolumesBreakReplicationInput =
   typeof VolumesBreakReplicationInput.Type;
 
@@ -4353,43 +4179,41 @@ export const VolumesBreakReplication = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesBreakReplicationOutput,
 }));
 // Input Schema
-export const VolumesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-    }),
-  );
+export const VolumesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+  }),
+);
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VolumesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumesCreateOrUpdateOutput =
   typeof VolumesCreateOrUpdateOutput.Type;
 
@@ -4446,20 +4270,19 @@ export const VolumesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesDeleteOutput,
 }));
 // Input Schema
-export const VolumesDeleteReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
-    }),
-  );
+export const VolumesDeleteReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
+  }),
+);
 export type VolumesDeleteReplicationInput =
   typeof VolumesDeleteReplicationInput.Type;
 
@@ -4518,26 +4341,26 @@ export type VolumesFinalizeExternalReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesFinalizeExternalReplication =
-  /*@__PURE__*/ API.make(() => ({
+export const VolumesFinalizeExternalReplication = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VolumesFinalizeExternalReplicationInput,
     outputSchema: VolumesFinalizeExternalReplicationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VolumesFinalizeRelocationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
-    }),
-  );
+export const VolumesFinalizeRelocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
+  }),
+);
 export type VolumesFinalizeRelocationInput =
   typeof VolumesFinalizeRelocationInput.Type;
 
@@ -4707,56 +4530,55 @@ export type VolumesListGetGroupIdListForLdapUserOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesListGetGroupIdListForLdapUser =
-  /*@__PURE__*/ API.make(() => ({
+export const VolumesListGetGroupIdListForLdapUser = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VolumesListGetGroupIdListForLdapUserInput,
     outputSchema: VolumesListGetGroupIdListForLdapUserOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VolumesListQuotaReportInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
-    }),
-  );
+export const VolumesListQuotaReportInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
+  }),
+);
 export type VolumesListQuotaReportInput =
   typeof VolumesListQuotaReportInput.Type;
 
 // Output Schema
-export const VolumesListQuotaReportOutput =
-  /*@__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        quotaReportRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              quotaType: Schema.optional(
-                Schema.Literals([
-                  "DefaultUserQuota",
-                  "DefaultGroupQuota",
-                  "IndividualUserQuota",
-                  "IndividualGroupQuota",
-                ]),
-              ),
-              quotaTarget: Schema.optional(Schema.String),
-              quotaLimitUsedInKiBs: Schema.optional(Schema.Number),
-              quotaLimitTotalInKiBs: Schema.optional(Schema.Number),
-              percentageUsed: Schema.optional(Schema.Number),
-              isDerivedQuota: Schema.optional(Schema.Boolean),
-            }),
-          ),
+export const VolumesListQuotaReportOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      quotaReportRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            quotaType: Schema.optional(
+              Schema.Literals([
+                "DefaultUserQuota",
+                "DefaultGroupQuota",
+                "IndividualUserQuota",
+                "IndividualGroupQuota",
+              ]),
+            ),
+            quotaTarget: Schema.optional(Schema.String),
+            quotaLimitUsedInKiBs: Schema.optional(Schema.Number),
+            quotaLimitTotalInKiBs: Schema.optional(Schema.Number),
+            percentageUsed: Schema.optional(Schema.Number),
+            isDerivedQuota: Schema.optional(Schema.Boolean),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type VolumesListQuotaReportOutput =
   typeof VolumesListQuotaReportOutput.Type;
 
@@ -4776,44 +4598,42 @@ export const VolumesListQuotaReport = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesListQuotaReportOutput,
 }));
 // Input Schema
-export const VolumesListReplicationsInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
-    }),
-  );
+export const VolumesListReplicationsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
+  }),
+);
 export type VolumesListReplicationsInput =
   typeof VolumesListReplicationsInput.Type;
 
 // Output Schema
-export const VolumesListReplicationsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        replicationId: Schema.optional(Schema.String),
-        endpointType: Schema.optional(Schema.Literals(["src", "dst"])),
-        replicationSchedule: Schema.optional(
-          Schema.Literals(["_10minutely", "hourly", "daily"]),
-        ),
-        remoteVolumeResourceId: Schema.optional(Schema.String),
-        remoteVolumeRegion: Schema.optional(Schema.String),
-        mirrorState: Schema.optional(
-          Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
-        ),
-        replicationCreationTime: Schema.optional(Schema.String),
-        replicationDeletionTime: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VolumesListReplicationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      replicationId: Schema.optional(Schema.String),
+      endpointType: Schema.optional(Schema.Literals(["src", "dst"])),
+      replicationSchedule: Schema.optional(
+        Schema.Literals(["_10minutely", "hourly", "daily"]),
+      ),
+      remoteVolumeResourceId: Schema.optional(Schema.String),
+      remoteVolumeRegion: Schema.optional(Schema.String),
+      mirrorState: Schema.optional(
+        Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
+      ),
+      replicationCreationTime: Schema.optional(Schema.String),
+      replicationDeletionTime: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VolumesListReplicationsOutput =
   typeof VolumesListReplicationsOutput.Type;
 
@@ -4833,28 +4653,26 @@ export const VolumesListReplications = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesListReplicationsOutput,
 }));
 // Input Schema
-export const VolumesPeerExternalClusterInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
-    }),
-  );
+export const VolumesPeerExternalClusterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
+  }),
+);
 export type VolumesPeerExternalClusterInput =
   typeof VolumesPeerExternalClusterInput.Type;
 
 // Output Schema
-export const VolumesPeerExternalClusterOutput =
-  /*@__PURE__*/ Schema.Struct({
-    peerAcceptCommand: Schema.optional(Schema.String),
-  });
+export const VolumesPeerExternalClusterOutput = /*@__PURE__*/ Schema.Struct({
+  peerAcceptCommand: Schema.optional(Schema.String),
+});
 export type VolumesPeerExternalClusterOutput =
   typeof VolumesPeerExternalClusterOutput.Type;
 
@@ -4908,11 +4726,10 @@ export type VolumesPerformReplicationTransferOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesPerformReplicationTransfer =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumesPerformReplicationTransferInput,
-    outputSchema: VolumesPerformReplicationTransferOutput,
-  }));
+export const VolumesPerformReplicationTransfer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesPerformReplicationTransferInput,
+  outputSchema: VolumesPerformReplicationTransferOutput,
+}));
 // Input Schema
 export const VolumesPoolChangeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4949,20 +4766,21 @@ export const VolumesPoolChange = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesPoolChangeOutput,
 }));
 // Input Schema
-export const VolumesPopulateAvailabilityZoneInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VolumesPopulateAvailabilityZoneInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
+  }),
+);
 export type VolumesPopulateAvailabilityZoneInput =
   typeof VolumesPopulateAvailabilityZoneInput.Type;
 
@@ -5001,26 +4819,24 @@ export type VolumesPopulateAvailabilityZoneOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesPopulateAvailabilityZone =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumesPopulateAvailabilityZoneInput,
-    outputSchema: VolumesPopulateAvailabilityZoneOutput,
-  }));
+export const VolumesPopulateAvailabilityZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesPopulateAvailabilityZoneInput,
+  outputSchema: VolumesPopulateAvailabilityZoneOutput,
+}));
 // Input Schema
-export const VolumesReestablishReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
-    }),
-  );
+export const VolumesReestablishReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
+  }),
+);
 export type VolumesReestablishReplicationInput =
   typeof VolumesReestablishReplicationInput.Type;
 
@@ -5040,26 +4856,24 @@ export type VolumesReestablishReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesReestablishReplication =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumesReestablishReplicationInput,
-    outputSchema: VolumesReestablishReplicationOutput,
-  }));
+export const VolumesReestablishReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesReestablishReplicationInput,
+  outputSchema: VolumesReestablishReplicationOutput,
+}));
 // Input Schema
-export const VolumesReInitializeReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
-    }),
-  );
+export const VolumesReInitializeReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
+  }),
+);
 export type VolumesReInitializeReplicationInput =
   typeof VolumesReInitializeReplicationInput.Type;
 
@@ -5079,11 +4893,10 @@ export type VolumesReInitializeReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesReInitializeReplication =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VolumesReInitializeReplicationInput,
-    outputSchema: VolumesReInitializeReplicationOutput,
-  }));
+export const VolumesReInitializeReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesReInitializeReplicationInput,
+  outputSchema: VolumesReInitializeReplicationOutput,
+}));
 // Input Schema
 export const VolumesRelocateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5120,36 +4933,34 @@ export const VolumesRelocate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesRelocateOutput,
 }));
 // Input Schema
-export const VolumesReplicationStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
-    }),
-  );
+export const VolumesReplicationStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
+  }),
+);
 export type VolumesReplicationStatusInput =
   typeof VolumesReplicationStatusInput.Type;
 
 // Output Schema
-export const VolumesReplicationStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    healthy: Schema.optional(Schema.Boolean),
-    relationshipStatus: Schema.optional(
-      Schema.Literals(["Idle", "Transferring"]),
-    ),
-    mirrorState: Schema.optional(
-      Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
-    ),
-    totalProgress: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-  });
+export const VolumesReplicationStatusOutput = /*@__PURE__*/ Schema.Struct({
+  healthy: Schema.optional(Schema.Boolean),
+  relationshipStatus: Schema.optional(
+    Schema.Literals(["Idle", "Transferring"]),
+  ),
+  mirrorState: Schema.optional(
+    Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
+  ),
+  totalProgress: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+});
 export type VolumesReplicationStatusOutput =
   typeof VolumesReplicationStatusOutput.Type;
 
@@ -5169,20 +4980,19 @@ export const VolumesReplicationStatus = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesReplicationStatusOutput,
 }));
 // Input Schema
-export const VolumesResetCifsPasswordInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
-    }),
-  );
+export const VolumesResetCifsPasswordInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
+  }),
+);
 export type VolumesResetCifsPasswordInput =
   typeof VolumesResetCifsPasswordInput.Type;
 
@@ -5207,20 +5017,19 @@ export const VolumesResetCifsPassword = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesResetCifsPasswordOutput,
 }));
 // Input Schema
-export const VolumesResyncReplicationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
-    }),
-  );
+export const VolumesResyncReplicationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
+  }),
+);
 export type VolumesResyncReplicationInput =
   typeof VolumesResyncReplicationInput.Type;
 
@@ -5280,20 +5089,19 @@ export const VolumesRevert = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesRevertOutput,
 }));
 // Input Schema
-export const VolumesRevertRelocationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
-    }),
-  );
+export const VolumesRevertRelocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
+  }),
+);
 export type VolumesRevertRelocationInput =
   typeof VolumesRevertRelocationInput.Type;
 
@@ -5318,44 +5126,42 @@ export const VolumesRevertRelocation = /*@__PURE__*/ API.make(() => ({
   outputSchema: VolumesRevertRelocationOutput,
 }));
 // Input Schema
-export const VolumesSplitCloneFromParentInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
-    }),
-  );
+export const VolumesSplitCloneFromParentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
+  }),
+);
 export type VolumesSplitCloneFromParentInput =
   typeof VolumesSplitCloneFromParentInput.Type;
 
 // Output Schema
-export const VolumesSplitCloneFromParentOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VolumesSplitCloneFromParentOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VolumesSplitCloneFromParentOutput =
   typeof VolumesSplitCloneFromParentOutput.Type;
 

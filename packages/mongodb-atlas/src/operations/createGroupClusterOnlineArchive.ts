@@ -4,24 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupClusterOnlineArchiveInput = /*@__PURE__*/ Schema.Struct(
+  {
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
+  }),
+);
 export type CreateGroupClusterOnlineArchiveInput =
   typeof CreateGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const CreateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterOnlineArchiveOutput =
   typeof CreateGroupClusterOnlineArchiveOutput.Type;
 
@@ -38,9 +38,8 @@ export type CreateGroupClusterOnlineArchiveOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
  */
-export const createGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupClusterOnlineArchiveInput,
-    outputSchema: CreateGroupClusterOnlineArchiveOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const createGroupClusterOnlineArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupClusterOnlineArchiveInput,
+  outputSchema: CreateGroupClusterOnlineArchiveOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

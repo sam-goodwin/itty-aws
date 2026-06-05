@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransfersInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   destination: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export const GetTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTransfersInput = typeof GetTransfersInput.Type;
 
 // Output Schema
-export const GetTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransfersOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -83,7 +83,7 @@ export type GetTransfersOutput = typeof GetTransfersOutput.Type;
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param transfer_group - Only return transfers with the specified transfer group.
  */
-export const GetTransfers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTransfers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTransfersInput,
   outputSchema: GetTransfersOutput,
 }));

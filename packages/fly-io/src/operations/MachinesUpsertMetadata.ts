@@ -4,25 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesUpsertMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-    key: Schema.String.pipe(T.PathParam()),
-    updated_at: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
-    }),
-  );
+export const MachinesUpsertMetadataInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+  key: Schema.String.pipe(T.PathParam()),
+  updated_at: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
+  }),
+);
 export type MachinesUpsertMetadataInput =
   typeof MachinesUpsertMetadataInput.Type;
 
 // Output Schema
-export const MachinesUpsertMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesUpsertMetadataOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesUpsertMetadataOutput =
   typeof MachinesUpsertMetadataOutput.Type;
 
@@ -36,10 +34,8 @@ export type MachinesUpsertMetadataOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesUpsertMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesUpsertMetadataInput,
-    outputSchema: MachinesUpsertMetadataOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesUpsertMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesUpsertMetadataInput,
+  outputSchema: MachinesUpsertMetadataOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

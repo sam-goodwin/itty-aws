@@ -4,25 +4,24 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const LlmSkillsNameFilesRenameCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    skill_name: Schema.String.pipe(T.PathParam()),
-    old_path: Schema.optional(Schema.String),
-    new_path: Schema.optional(Schema.String),
-    base_version: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/environments/{project_id}/llm_skills/name/{skill_name}/files-rename/",
-    }),
-  );
+export const LlmSkillsNameFilesRenameCreateInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  skill_name: Schema.String.pipe(T.PathParam()),
+  old_path: Schema.optional(Schema.String),
+  new_path: Schema.optional(Schema.String),
+  base_version: Schema.optional(Schema.Number),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/environments/{project_id}/llm_skills/name/{skill_name}/files-rename/",
+  }),
+);
 export type LlmSkillsNameFilesRenameCreateInput =
   typeof LlmSkillsNameFilesRenameCreateInput.Type;
 
 // Output Schema
-export const LlmSkillsNameFilesRenameCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LlmSkillsNameFilesRenameCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -72,7 +71,8 @@ export const LlmSkillsNameFilesRenameCreateOutput =
     latest_version: Schema.optional(Schema.Number),
     version_count: Schema.optional(Schema.Number),
     first_version_created_at: Schema.optional(Schema.String),
-  });
+  },
+);
 export type LlmSkillsNameFilesRenameCreateOutput =
   typeof LlmSkillsNameFilesRenameCreateOutput.Type;
 
@@ -81,9 +81,8 @@ export type LlmSkillsNameFilesRenameCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmSkillsNameFilesRenameCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: LlmSkillsNameFilesRenameCreateInput,
-    outputSchema: LlmSkillsNameFilesRenameCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const llmSkillsNameFilesRenameCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmSkillsNameFilesRenameCreateInput,
+  outputSchema: LlmSkillsNameFilesRenameCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

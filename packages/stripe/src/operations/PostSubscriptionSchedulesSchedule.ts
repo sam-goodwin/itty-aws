@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSubscriptionSchedulesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     default_settings: Schema.optional(
       Schema.Struct({
@@ -214,7 +214,7 @@ export type PostSubscriptionSchedulesScheduleInput =
 
 // Output Schema
 export const PostSubscriptionSchedulesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     billing_mode: Schema.Struct({
       flexible: Schema.Unknown,
@@ -545,8 +545,7 @@ export type PostSubscriptionSchedulesScheduleOutput =
  *
  * <p>Updates an existing subscription schedule.</p>
  */
-export const PostSubscriptionSchedulesSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostSubscriptionSchedulesScheduleInput,
-    outputSchema: PostSubscriptionSchedulesScheduleOutput,
-  }));
+export const PostSubscriptionSchedulesSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSubscriptionSchedulesScheduleInput,
+  outputSchema: PostSubscriptionSchedulesScheduleOutput,
+}));

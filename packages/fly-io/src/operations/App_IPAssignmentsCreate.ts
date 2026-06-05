@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_IPAssignmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     org_slug: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -16,7 +16,7 @@ export type App_IPAssignmentsCreateInput =
 
 // Output Schema
 export const App_IPAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
     ip: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -30,9 +30,7 @@ export type App_IPAssignmentsCreateOutput =
 /**
  * Assign new IP address to app
  */
-export const App_IPAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_IPAssignmentsCreateInput,
-    outputSchema: App_IPAssignmentsCreateOutput,
-  }),
-);
+export const App_IPAssignmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_IPAssignmentsCreateInput,
+  outputSchema: App_IPAssignmentsCreateOutput,
+}));

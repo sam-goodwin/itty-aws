@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesDisableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FeaturesDisableInput = typeof FeaturesDisableInput.Type;
 
 // Output Schema
-export const FeaturesDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesDisableOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   resourceId: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -89,12 +89,12 @@ export type FeaturesDisableOutput = typeof FeaturesDisableOutput.Type;
  * @param location - The name of the Azure region.
  * @param featureName - The name of the Feature
  */
-export const FeaturesDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FeaturesDisable = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeaturesDisableInput,
   outputSchema: FeaturesDisableOutput,
 }));
 // Input Schema
-export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesEnableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
@@ -108,7 +108,7 @@ export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FeaturesEnableInput = typeof FeaturesEnableInput.Type;
 
 // Output Schema
-export const FeaturesEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesEnableOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   resourceId: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -174,12 +174,12 @@ export type FeaturesEnableOutput = typeof FeaturesEnableOutput.Type;
  * @param location - The name of the Azure region.
  * @param featureName - The name of the Feature
  */
-export const FeaturesEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FeaturesEnable = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeaturesEnableInput,
   outputSchema: FeaturesEnableOutput,
 }));
 // Input Schema
-export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
@@ -193,7 +193,7 @@ export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FeaturesGetInput = typeof FeaturesGetInput.Type;
 
 // Output Schema
-export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeaturesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -223,13 +223,13 @@ export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param featureName - The name of the Feature
  */
-export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FeaturesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeaturesGetInput,
   outputSchema: FeaturesGetOutput,
 }));
 // Input Schema
 export const FeaturesListBySubscriptionLocationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -244,7 +244,7 @@ export type FeaturesListBySubscriptionLocationResourceInput =
 
 // Output Schema
 export const FeaturesListBySubscriptionLocationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -290,47 +290,45 @@ export type FeaturesListBySubscriptionLocationResourceOutput =
  * @param location - The name of the Azure region.
  */
 export const FeaturesListBySubscriptionLocationResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeaturesListBySubscriptionLocationResourceInput,
     outputSchema: FeaturesListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
-export const GuestSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-    }),
-  );
+export const GuestSubscriptionsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  guestSubscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+  }),
+);
 export type GuestSubscriptionsCreateInput =
   typeof GuestSubscriptionsCreateInput.Type;
 
 // Output Schema
-export const GuestSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GuestSubscriptionsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GuestSubscriptionsCreateOutput =
   typeof GuestSubscriptionsCreateOutput.Type;
 
@@ -343,31 +341,27 @@ export type GuestSubscriptionsCreateOutput =
  * @param location - The name of the Azure region.
  * @param guestSubscriptionId - The name of the GuestSubscription
  */
-export const GuestSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GuestSubscriptionsCreateInput,
-    outputSchema: GuestSubscriptionsCreateOutput,
+export const GuestSubscriptionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GuestSubscriptionsCreateInput,
+  outputSchema: GuestSubscriptionsCreateOutput,
+}));
+// Input Schema
+export const GuestSubscriptionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  guestSubscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
   }),
 );
-// Input Schema
-export const GuestSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-    }),
-  );
 export type GuestSubscriptionsDeleteInput =
   typeof GuestSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const GuestSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GuestSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GuestSubscriptionsDeleteOutput =
   typeof GuestSubscriptionsDeleteOutput.Type;
 
@@ -380,48 +374,44 @@ export type GuestSubscriptionsDeleteOutput =
  * @param location - The name of the Azure region.
  * @param guestSubscriptionId - The name of the GuestSubscription
  */
-export const GuestSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GuestSubscriptionsDeleteInput,
-    outputSchema: GuestSubscriptionsDeleteOutput,
+export const GuestSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GuestSubscriptionsDeleteInput,
+  outputSchema: GuestSubscriptionsDeleteOutput,
+}));
+// Input Schema
+export const GuestSubscriptionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  guestSubscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
   }),
 );
-// Input Schema
-export const GuestSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-    }),
-  );
 export type GuestSubscriptionsGetInput = typeof GuestSubscriptionsGetInput.Type;
 
 // Output Schema
-export const GuestSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GuestSubscriptionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GuestSubscriptionsGetOutput =
   typeof GuestSubscriptionsGetOutput.Type;
 
@@ -434,15 +424,13 @@ export type GuestSubscriptionsGetOutput =
  * @param location - The name of the Azure region.
  * @param guestSubscriptionId - The name of the GuestSubscription
  */
-export const GuestSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GuestSubscriptionsGetInput,
-    outputSchema: GuestSubscriptionsGetOutput,
-  }),
-);
+export const GuestSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GuestSubscriptionsGetInput,
+  outputSchema: GuestSubscriptionsGetOutput,
+}));
 // Input Schema
 export const GuestSubscriptionsListBySubscriptionLocationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -457,7 +445,7 @@ export type GuestSubscriptionsListBySubscriptionLocationResourceInput =
 
 // Output Schema
 export const GuestSubscriptionsListBySubscriptionLocationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -503,12 +491,12 @@ export type GuestSubscriptionsListBySubscriptionLocationResourceOutput =
  * @param location - The name of the Azure region.
  */
 export const GuestSubscriptionsListBySubscriptionLocationResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestSubscriptionsListBySubscriptionLocationResourceInput,
     outputSchema: GuestSubscriptionsListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -519,7 +507,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -550,46 +538,44 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const SharedLimitsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
-    }),
-  );
+export const SharedLimitsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
+  }),
+);
 export type SharedLimitsCreateInput = typeof SharedLimitsCreateInput.Type;
 
 // Output Schema
-export const SharedLimitsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SharedLimitsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SharedLimitsCreateOutput = typeof SharedLimitsCreateOutput.Type;
 
 // The operation
@@ -601,27 +587,26 @@ export type SharedLimitsCreateOutput = typeof SharedLimitsCreateOutput.Type;
  * @param location - The name of the Azure region.
  * @param name - The name of the SharedLimit
  */
-export const SharedLimitsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedLimitsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharedLimitsCreateInput,
   outputSchema: SharedLimitsCreateOutput,
 }));
 // Input Schema
-export const SharedLimitsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
-    }),
-  );
+export const SharedLimitsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
+  }),
+);
 export type SharedLimitsDeleteInput = typeof SharedLimitsDeleteInput.Type;
 
 // Output Schema
-export const SharedLimitsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SharedLimitsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SharedLimitsDeleteOutput = typeof SharedLimitsDeleteOutput.Type;
 
 // The operation
@@ -633,12 +618,12 @@ export type SharedLimitsDeleteOutput = typeof SharedLimitsDeleteOutput.Type;
  * @param location - The name of the Azure region.
  * @param name - The name of the SharedLimit
  */
-export const SharedLimitsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedLimitsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharedLimitsDeleteInput,
   outputSchema: SharedLimitsDeleteOutput,
 }));
 // Input Schema
-export const SharedLimitsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharedLimitsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -652,7 +637,7 @@ export const SharedLimitsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SharedLimitsGetInput = typeof SharedLimitsGetInput.Type;
 
 // Output Schema
-export const SharedLimitsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharedLimitsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -682,13 +667,13 @@ export type SharedLimitsGetOutput = typeof SharedLimitsGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param name - The name of the SharedLimit
  */
-export const SharedLimitsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedLimitsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharedLimitsGetInput,
   outputSchema: SharedLimitsGetOutput,
 }));
 // Input Schema
 export const SharedLimitsListBySubscriptionLocationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -703,7 +688,7 @@ export type SharedLimitsListBySubscriptionLocationResourceInput =
 
 // Output Schema
 export const SharedLimitsListBySubscriptionLocationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -749,12 +734,12 @@ export type SharedLimitsListBySubscriptionLocationResourceOutput =
  * @param location - The name of the Azure region.
  */
 export const SharedLimitsListBySubscriptionLocationResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharedLimitsListBySubscriptionLocationResourceInput,
     outputSchema: SharedLimitsListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
-export const VmFamiliesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmFamiliesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   vmFamilyName: Schema.String.pipe(T.PathParam()),
@@ -768,7 +753,7 @@ export const VmFamiliesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VmFamiliesGetInput = typeof VmFamiliesGetInput.Type;
 
 // Output Schema
-export const VmFamiliesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VmFamiliesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -798,13 +783,13 @@ export type VmFamiliesGetOutput = typeof VmFamiliesGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param vmFamilyName - The name of the VmFamily
  */
-export const VmFamiliesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VmFamiliesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VmFamiliesGetInput,
   outputSchema: VmFamiliesGetOutput,
 }));
 // Input Schema
 export const VmFamiliesListBySubscriptionLocationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -820,7 +805,7 @@ export type VmFamiliesListBySubscriptionLocationResourceInput =
 
 // Output Schema
 export const VmFamiliesListBySubscriptionLocationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -867,7 +852,7 @@ export type VmFamiliesListBySubscriptionLocationResourceOutput =
  * @param $filter - The filter to apply to the list operation. Filter can be applied to the 'category' property. Example: $filter=category eq 'generalPurposeCategory'.
  */
 export const VmFamiliesListBySubscriptionLocationResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmFamiliesListBySubscriptionLocationResourceInput,
     outputSchema: VmFamiliesListBySubscriptionLocationResourceOutput,
   }));

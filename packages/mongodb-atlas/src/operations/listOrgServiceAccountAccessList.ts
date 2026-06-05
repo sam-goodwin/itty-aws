@@ -4,8 +4,8 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListOrgServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgServiceAccountAccessListInput = /*@__PURE__*/ Schema.Struct(
+  {
     orgId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -13,18 +13,18 @@ export const ListOrgServiceAccountAccessListInput =
     itemsPerPage: Schema.optional(Schema.Number),
     pageNum: Schema.optional(Schema.Number),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
+  }),
+);
 export type ListOrgServiceAccountAccessListInput =
   typeof ListOrgServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const ListOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListOrgServiceAccountAccessListOutput = /*@__PURE__*/ Schema.Void;
 export type ListOrgServiceAccountAccessListOutput =
   typeof ListOrgServiceAccountAccessListOutput.Type;
 
@@ -42,9 +42,8 @@ export type ListOrgServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const listOrgServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListOrgServiceAccountAccessListInput,
-    outputSchema: ListOrgServiceAccountAccessListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }));
+export const listOrgServiceAccountAccessList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrgServiceAccountAccessListInput,
+  outputSchema: ListOrgServiceAccountAccessListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

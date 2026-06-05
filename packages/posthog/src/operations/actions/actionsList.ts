@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ActionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
   limit: Schema.optional(Schema.Number),
@@ -13,7 +13,7 @@ export const ActionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ActionsListInput = typeof ActionsListInput.Type;
 
 // Output Schema
-export const ActionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -86,7 +86,7 @@ export type ActionsListOutput = typeof ActionsListOutput.Type;
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const actionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const actionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsListInput,
   outputSchema: ActionsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTreasuryFinancialAccountsFinancialAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.optional(
@@ -103,7 +103,7 @@ export type PostTreasuryFinancialAccountsFinancialAccountInput =
 
 // Output Schema
 export const PostTreasuryFinancialAccountsFinancialAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_features: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -502,7 +502,7 @@ export type PostTreasuryFinancialAccountsFinancialAccountOutput =
  * <p>Updates the details of a FinancialAccount.</p>
  */
 export const PostTreasuryFinancialAccountsFinancialAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryFinancialAccountsFinancialAccountInput,
     outputSchema: PostTreasuryFinancialAccountsFinancialAccountOutput,
   }));

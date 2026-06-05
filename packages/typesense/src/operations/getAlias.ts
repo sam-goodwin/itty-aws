@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAliasInput = /*@__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/aliases/{aliasName}" }));
 export type GetAliasInput = typeof GetAliasInput.Type;
 
 // Output Schema
-export const GetAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAliasOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
 });
@@ -24,7 +24,7 @@ export type GetAliasOutput = typeof GetAliasOutput.Type;
  *
  * @param aliasName - The name of the alias to retrieve
  */
-export const getAlias = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAlias = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAliasInput,
   outputSchema: GetAliasOutput,
   errors: [NotFound] as const,

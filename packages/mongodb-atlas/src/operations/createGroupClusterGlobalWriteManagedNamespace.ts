@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const CreateGroupClusterGlobalWriteManagedNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type CreateGroupClusterGlobalWriteManagedNamespaceInput =
 
 // Output Schema
 export const CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
   typeof CreateGroupClusterGlobalWriteManagedNamespaceOutput.Type;
 
@@ -39,7 +39,7 @@ export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const createGroupClusterGlobalWriteManagedNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterGlobalWriteManagedNamespaceInput,
     outputSchema: CreateGroupClusterGlobalWriteManagedNamespaceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

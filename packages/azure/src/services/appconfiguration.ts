@@ -7,26 +7,26 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const ConfigurationStoresCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-    }),
-  );
+export const ConfigurationStoresCreateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+  }),
+);
 export type ConfigurationStoresCreateInput =
   typeof ConfigurationStoresCreateInput.Type;
 
 // Output Schema
-export const ConfigurationStoresCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConfigurationStoresCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConfigurationStoresCreateOutput =
   typeof ConfigurationStoresCreateOutput.Type;
 
@@ -34,26 +34,24 @@ export type ConfigurationStoresCreateOutput =
 /**
  * Creates a configuration store with the specified parameters.
  */
-export const ConfigurationStoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresCreateInput,
-    outputSchema: ConfigurationStoresCreateOutput,
+export const ConfigurationStoresCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresCreateInput,
+  outputSchema: ConfigurationStoresCreateOutput,
+}));
+// Input Schema
+export const ConfigurationStoresDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
   }),
 );
-// Input Schema
-export const ConfigurationStoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-    }),
-  );
 export type ConfigurationStoresDeleteInput =
   typeof ConfigurationStoresDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationStoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationStoresDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationStoresDeleteOutput =
   typeof ConfigurationStoresDeleteOutput.Type;
 
@@ -61,30 +59,26 @@ export type ConfigurationStoresDeleteOutput =
 /**
  * Deletes a configuration store.
  */
-export const ConfigurationStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresDeleteInput,
-    outputSchema: ConfigurationStoresDeleteOutput,
+export const ConfigurationStoresDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresDeleteInput,
+  outputSchema: ConfigurationStoresDeleteOutput,
+}));
+// Input Schema
+export const ConfigurationStoresGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
   }),
 );
-// Input Schema
-export const ConfigurationStoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-    }),
-  );
 export type ConfigurationStoresGetInput =
   typeof ConfigurationStoresGetInput.Type;
 
 // Output Schema
-export const ConfigurationStoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConfigurationStoresGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConfigurationStoresGetOutput =
   typeof ConfigurationStoresGetOutput.Type;
 
@@ -92,40 +86,38 @@ export type ConfigurationStoresGetOutput =
 /**
  * Gets the properties of the specified configuration store.
  */
-export const ConfigurationStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresGetInput,
-    outputSchema: ConfigurationStoresGetOutput,
+export const ConfigurationStoresGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresGetInput,
+  outputSchema: ConfigurationStoresGetOutput,
+}));
+// Input Schema
+export const ConfigurationStoresGetDeletedInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
   }),
 );
-// Input Schema
-export const ConfigurationStoresGetDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
-    }),
-  );
 export type ConfigurationStoresGetDeletedInput =
   typeof ConfigurationStoresGetDeletedInput.Type;
 
 // Output Schema
-export const ConfigurationStoresGetDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        configurationStoreId: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        deletionDate: Schema.optional(Schema.String),
-        scheduledPurgeDate: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        purgeProtectionEnabled: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  });
+export const ConfigurationStoresGetDeletedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      configurationStoreId: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      deletionDate: Schema.optional(Schema.String),
+      scheduledPurgeDate: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      purgeProtectionEnabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
+});
 export type ConfigurationStoresGetDeletedOutput =
   typeof ConfigurationStoresGetDeletedOutput.Type;
 
@@ -133,38 +125,35 @@ export type ConfigurationStoresGetDeletedOutput =
 /**
  * Gets a deleted Azure app configuration store.
  */
-export const ConfigurationStoresGetDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationStoresGetDeletedInput,
-    outputSchema: ConfigurationStoresGetDeletedOutput,
-  }));
+export const ConfigurationStoresGetDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresGetDeletedInput,
+  outputSchema: ConfigurationStoresGetDeletedOutput,
+}));
 // Input Schema
-export const ConfigurationStoresListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
-    }),
-  );
+export const ConfigurationStoresListInput = /*@__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
+  }),
+);
 export type ConfigurationStoresListInput =
   typeof ConfigurationStoresListInput.Type;
 
 // Output Schema
-export const ConfigurationStoresListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ConfigurationStoresListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationStoresListOutput =
   typeof ConfigurationStoresListOutput.Type;
 
@@ -174,15 +163,13 @@ export type ConfigurationStoresListOutput =
  *
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ConfigurationStoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresListInput,
-    outputSchema: ConfigurationStoresListOutput,
-  }),
-);
+export const ConfigurationStoresList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresListInput,
+  outputSchema: ConfigurationStoresListOutput,
+}));
 // Input Schema
 export const ConfigurationStoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -195,7 +182,7 @@ export type ConfigurationStoresListByResourceGroupInput =
 
 // Output Schema
 export const ConfigurationStoresListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -216,25 +203,27 @@ export type ConfigurationStoresListByResourceGroupOutput =
  *
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ConfigurationStoresListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationStoresListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConfigurationStoresListByResourceGroupInput,
     outputSchema: ConfigurationStoresListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ConfigurationStoresListDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/deletedConfigurationStores",
-    }),
-  );
+export const ConfigurationStoresListDeletedInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/deletedConfigurationStores",
+  }),
+);
 export type ConfigurationStoresListDeletedInput =
   typeof ConfigurationStoresListDeletedInput.Type;
 
 // Output Schema
-export const ConfigurationStoresListDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConfigurationStoresListDeletedOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -257,7 +246,8 @@ export const ConfigurationStoresListDeletedOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ConfigurationStoresListDeletedOutput =
   typeof ConfigurationStoresListDeletedOutput.Type;
 
@@ -265,41 +255,38 @@ export type ConfigurationStoresListDeletedOutput =
 /**
  * Gets information about the deleted configuration stores in a subscription.
  */
-export const ConfigurationStoresListDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationStoresListDeletedInput,
-    outputSchema: ConfigurationStoresListDeletedOutput,
-  }));
+export const ConfigurationStoresListDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresListDeletedInput,
+  outputSchema: ConfigurationStoresListDeletedOutput,
+}));
 // Input Schema
-export const ConfigurationStoresListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeys",
-    }),
-  );
+export const ConfigurationStoresListKeysInput = /*@__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeys",
+  }),
+);
 export type ConfigurationStoresListKeysInput =
   typeof ConfigurationStoresListKeysInput.Type;
 
 // Output Schema
-export const ConfigurationStoresListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-          connectionString: Schema.optional(SensitiveString),
-          lastModified: Schema.optional(Schema.String),
-          readOnly: Schema.optional(Schema.Boolean),
-        }),
-      ),
+export const ConfigurationStoresListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+        connectionString: Schema.optional(SensitiveOutputString),
+        lastModified: Schema.optional(Schema.String),
+        readOnly: Schema.optional(Schema.Boolean),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ConfigurationStoresListKeysOutput =
   typeof ConfigurationStoresListKeysOutput.Type;
 
@@ -309,26 +296,24 @@ export type ConfigurationStoresListKeysOutput =
  *
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ConfigurationStoresListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresListKeysInput,
-    outputSchema: ConfigurationStoresListKeysOutput,
+export const ConfigurationStoresListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresListKeysInput,
+  outputSchema: ConfigurationStoresListKeysOutput,
+}));
+// Input Schema
+export const ConfigurationStoresPurgeDeletedInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
   }),
 );
-// Input Schema
-export const ConfigurationStoresPurgeDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
-    }),
-  );
 export type ConfigurationStoresPurgeDeletedInput =
   typeof ConfigurationStoresPurgeDeletedInput.Type;
 
 // Output Schema
-export const ConfigurationStoresPurgeDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationStoresPurgeDeletedOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationStoresPurgeDeletedOutput =
   typeof ConfigurationStoresPurgeDeletedOutput.Type;
 
@@ -336,14 +321,13 @@ export type ConfigurationStoresPurgeDeletedOutput =
 /**
  * Permanently deletes the specified configuration store.
  */
-export const ConfigurationStoresPurgeDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationStoresPurgeDeletedInput,
-    outputSchema: ConfigurationStoresPurgeDeletedOutput,
-  }));
+export const ConfigurationStoresPurgeDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresPurgeDeletedInput,
+  outputSchema: ConfigurationStoresPurgeDeletedOutput,
+}));
 // Input Schema
 export const ConfigurationStoresRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey",
@@ -354,11 +338,11 @@ export type ConfigurationStoresRegenerateKeyInput =
 
 // Output Schema
 export const ConfigurationStoresRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-    connectionString: Schema.optional(SensitiveString),
+    connectionString: Schema.optional(SensitiveOutputString),
     lastModified: Schema.optional(Schema.String),
     readOnly: Schema.optional(Schema.Boolean),
   });
@@ -369,29 +353,28 @@ export type ConfigurationStoresRegenerateKeyOutput =
 /**
  * Regenerates an access key for the specified configuration store.
  */
-export const ConfigurationStoresRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ConfigurationStoresRegenerateKeyInput,
-    outputSchema: ConfigurationStoresRegenerateKeyOutput,
-  }));
+export const ConfigurationStoresRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresRegenerateKeyInput,
+  outputSchema: ConfigurationStoresRegenerateKeyOutput,
+}));
 // Input Schema
-export const ConfigurationStoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-    }),
-  );
+export const ConfigurationStoresUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+  }),
+);
 export type ConfigurationStoresUpdateInput =
   typeof ConfigurationStoresUpdateInput.Type;
 
 // Output Schema
-export const ConfigurationStoresUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+export const ConfigurationStoresUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ConfigurationStoresUpdateOutput =
   typeof ConfigurationStoresUpdateOutput.Type;
 
@@ -399,44 +382,40 @@ export type ConfigurationStoresUpdateOutput =
 /**
  * Updates a configuration store with the specified parameters.
  */
-export const ConfigurationStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresUpdateInput,
-    outputSchema: ConfigurationStoresUpdateOutput,
+export const ConfigurationStoresUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresUpdateInput,
+  outputSchema: ConfigurationStoresUpdateOutput,
+}));
+// Input Schema
+export const KeyValuesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  keyValueName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
   }),
 );
-// Input Schema
-export const KeyValuesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keyValueName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
-    }),
-  );
 export type KeyValuesCreateOrUpdateInput =
   typeof KeyValuesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const KeyValuesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        key: Schema.optional(Schema.String),
-        label: Schema.optional(Schema.String),
-        value: Schema.optional(Schema.String),
-        contentType: Schema.optional(Schema.String),
-        eTag: Schema.optional(Schema.String),
-        lastModified: Schema.optional(Schema.String),
-        locked: Schema.optional(Schema.Boolean),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-  });
+export const KeyValuesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      key: Schema.optional(Schema.String),
+      label: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
+      contentType: Schema.optional(Schema.String),
+      eTag: Schema.optional(Schema.String),
+      lastModified: Schema.optional(Schema.String),
+      locked: Schema.optional(Schema.Boolean),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+});
 export type KeyValuesCreateOrUpdateOutput =
   typeof KeyValuesCreateOrUpdateOutput.Type;
 
@@ -446,14 +425,12 @@ export type KeyValuesCreateOrUpdateOutput =
  *
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeyValuesCreateOrUpdateInput,
-    outputSchema: KeyValuesCreateOrUpdateOutput,
-  }),
-);
+export const KeyValuesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeyValuesCreateOrUpdateInput,
+  outputSchema: KeyValuesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesDeleteInput = /*@__PURE__*/ Schema.Struct({
   keyValueName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -464,7 +441,7 @@ export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeyValuesDeleteInput = typeof KeyValuesDeleteInput.Type;
 
 // Output Schema
-export const KeyValuesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const KeyValuesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type KeyValuesDeleteOutput = typeof KeyValuesDeleteOutput.Type;
 
 // The operation
@@ -473,12 +450,12 @@ export type KeyValuesDeleteOutput = typeof KeyValuesDeleteOutput.Type;
  *
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeyValuesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeyValuesDeleteInput,
   outputSchema: KeyValuesDeleteOutput,
 }));
 // Input Schema
-export const KeyValuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesGetInput = /*@__PURE__*/ Schema.Struct({
   keyValueName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -489,7 +466,7 @@ export const KeyValuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeyValuesGetInput = typeof KeyValuesGetInput.Type;
 
 // Output Schema
-export const KeyValuesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -514,24 +491,25 @@ export type KeyValuesGetOutput = typeof KeyValuesGetOutput.Type;
  *
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeyValuesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeyValuesGetInput,
   outputSchema: KeyValuesGetOutput,
 }));
 // Input Schema
-export const OperationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability",
-    }),
-  );
+export const OperationsCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability",
+  }),
+);
 export type OperationsCheckNameAvailabilityInput =
   typeof OperationsCheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const OperationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -543,13 +521,12 @@ export type OperationsCheckNameAvailabilityOutput =
 /**
  * Checks whether the configuration store name is available for use.
  */
-export const OperationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: OperationsCheckNameAvailabilityInput,
-    outputSchema: OperationsCheckNameAvailabilityOutput,
-  }));
+export const OperationsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsCheckNameAvailabilityInput,
+  outputSchema: OperationsCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   $skipToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -560,7 +537,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -627,13 +604,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const OperationsRegionalCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/checkNameAvailability",
@@ -644,7 +621,7 @@ export type OperationsRegionalCheckNameAvailabilityInput =
 
 // Output Schema
 export const OperationsRegionalCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -656,14 +633,15 @@ export type OperationsRegionalCheckNameAvailabilityOutput =
 /**
  * Checks whether the configuration store name is available for use.
  */
-export const OperationsRegionalCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsRegionalCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OperationsRegionalCheckNameAvailabilityInput,
     outputSchema: OperationsRegionalCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -676,7 +654,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -723,14 +701,15 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  *
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
-export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -742,8 +721,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -753,64 +731,54 @@ export type PrivateEndpointConnectionsDeleteOutput =
  *
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals([
-              "Pending",
-              "Approved",
-              "Rejected",
-              "Disconnected",
-            ]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(
-            Schema.Literals(["None", "Recreate"]),
-          ),
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
         }),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+        ),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.Literals(["None", "Recreate"])),
       }),
-    ),
-  });
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -820,14 +788,13 @@ export type PrivateEndpointConnectionsGetOutput =
  *
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
@@ -838,7 +805,7 @@ export type PrivateEndpointConnectionsListByConfigurationStoreInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -891,37 +858,35 @@ export type PrivateEndpointConnectionsListByConfigurationStoreOutput =
  * Lists all private endpoint connections for a configuration store.
  */
 export const PrivateEndpointConnectionsListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByConfigurationStoreInput,
     outputSchema: PrivateEndpointConnectionsListByConfigurationStoreOutput,
   }));
 // Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}",
-    }),
-  );
+export const PrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  groupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}",
+  }),
+);
 export type PrivateLinkResourcesGetInput =
   typeof PrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.optional(Schema.String),
-        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  });
+export const PrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      groupId: Schema.optional(Schema.String),
+      requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+      requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -931,15 +896,13 @@ export type PrivateLinkResourcesGetOutput =
  *
  * @param groupName - The name of the private link resource group.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
@@ -950,7 +913,7 @@ export type PrivateLinkResourcesListByConfigurationStoreInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -977,12 +940,12 @@ export type PrivateLinkResourcesListByConfigurationStoreOutput =
  * Gets the private link resources that need to be created for a configuration store.
  */
 export const PrivateLinkResourcesListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByConfigurationStoreInput,
     outputSchema: PrivateLinkResourcesListByConfigurationStoreOutput,
   }));
 // Input Schema
-export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasCreateInput = /*@__PURE__*/ Schema.Struct({
   replicaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -993,7 +956,7 @@ export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReplicasCreateInput = typeof ReplicasCreateInput.Type;
 
 // Output Schema
-export const ReplicasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1035,12 +998,12 @@ export type ReplicasCreateOutput = typeof ReplicasCreateOutput.Type;
  *
  * @param replicaName - The name of the replica.
  */
-export const ReplicasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasCreateInput,
   outputSchema: ReplicasCreateOutput,
 }));
 // Input Schema
-export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasDeleteInput = /*@__PURE__*/ Schema.Struct({
   replicaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1051,7 +1014,7 @@ export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReplicasDeleteInput = typeof ReplicasDeleteInput.Type;
 
 // Output Schema
-export const ReplicasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicasDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicasDeleteOutput = typeof ReplicasDeleteOutput.Type;
 
 // The operation
@@ -1060,12 +1023,12 @@ export type ReplicasDeleteOutput = typeof ReplicasDeleteOutput.Type;
  *
  * @param replicaName - The name of the replica.
  */
-export const ReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasDeleteInput,
   outputSchema: ReplicasDeleteOutput,
 }));
 // Input Schema
-export const ReplicasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasGetInput = /*@__PURE__*/ Schema.Struct({
   replicaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1076,7 +1039,7 @@ export const ReplicasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReplicasGetInput = typeof ReplicasGetInput.Type;
 
 // Output Schema
-export const ReplicasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1118,13 +1081,13 @@ export type ReplicasGetOutput = typeof ReplicasGetOutput.Type;
  *
  * @param replicaName - The name of the replica.
  */
-export const ReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasGetInput,
   outputSchema: ReplicasGetOutput,
 }));
 // Input Schema
 export const ReplicasListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1137,7 +1100,7 @@ export type ReplicasListByConfigurationStoreInput =
 
 // Output Schema
 export const ReplicasListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1197,13 +1160,12 @@ export type ReplicasListByConfigurationStoreOutput =
  *
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ReplicasListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicasListByConfigurationStoreInput,
-    outputSchema: ReplicasListByConfigurationStoreOutput,
-  }));
+export const ReplicasListByConfigurationStore = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicasListByConfigurationStoreInput,
+  outputSchema: ReplicasListByConfigurationStoreOutput,
+}));
 // Input Schema
-export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1216,7 +1178,7 @@ export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;
 
 // Output Schema
-export const SnapshotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1262,12 +1224,12 @@ export type SnapshotsCreateOutput = typeof SnapshotsCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsCreateInput,
   outputSchema: SnapshotsCreateOutput,
 }));
 // Input Schema
-export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1280,7 +1242,7 @@ export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;
 
 // Output Schema
-export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1326,7 +1288,7 @@ export type SnapshotsGetOutput = typeof SnapshotsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsGetInput,
   outputSchema: SnapshotsGetOutput,
 }));

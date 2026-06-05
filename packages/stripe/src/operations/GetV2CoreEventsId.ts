@@ -3,35 +3,32 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetV2CoreEventsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(T.Http({ method: "GET", path: "/v2/core/events/{id}" }));
+export const GetV2CoreEventsIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/v2/core/events/{id}" }));
 export type GetV2CoreEventsIdInput = typeof GetV2CoreEventsIdInput.Type;
 
 // Output Schema
-export const GetV2CoreEventsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    changes: Schema.optional(Schema.Unknown),
-    context: Schema.optional(Schema.String),
-    created: Schema.String,
-    id: Schema.String,
-    livemode: Schema.Boolean,
-    object: Schema.Literals(["v2.core.event"]),
-    reason: Schema.optional(
-      Schema.Struct({
-        request: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            idempotency_key: Schema.String,
-          }),
-        ),
-        type: Schema.Literals(["request"]),
-      }),
-    ),
-    type: Schema.String,
-  });
+export const GetV2CoreEventsIdOutput = /*@__PURE__*/ Schema.Struct({
+  changes: Schema.optional(Schema.Unknown),
+  context: Schema.optional(Schema.String),
+  created: Schema.String,
+  id: Schema.String,
+  livemode: Schema.Boolean,
+  object: Schema.Literals(["v2.core.event"]),
+  reason: Schema.optional(
+    Schema.Struct({
+      request: Schema.optional(
+        Schema.Struct({
+          id: Schema.String,
+          idempotency_key: Schema.String,
+        }),
+      ),
+      type: Schema.Literals(["request"]),
+    }),
+  ),
+  type: Schema.String,
+});
 export type GetV2CoreEventsIdOutput = typeof GetV2CoreEventsIdOutput.Type;
 
 // The operation
@@ -42,7 +39,7 @@ export type GetV2CoreEventsIdOutput = typeof GetV2CoreEventsIdOutput.Type;
  *
  * @param id - Unique identifier for the object.
  */
-export const GetV2CoreEventsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreEventsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreEventsIdInput,
   outputSchema: GetV2CoreEventsIdOutput,
 }));

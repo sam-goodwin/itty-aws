@@ -4,17 +4,15 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSynonymSetInput = /*@__PURE__*/ Schema.Struct({
   synonymSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/synonym_sets/{synonymSetName}" }));
 export type DeleteSynonymSetInput = typeof DeleteSynonymSetInput.Type;
 
 // Output Schema
-export const DeleteSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String,
-  },
-);
+export const DeleteSynonymSetOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String,
+});
 export type DeleteSynonymSetOutput = typeof DeleteSynonymSetOutput.Type;
 
 // The operation
@@ -25,7 +23,7 @@ export type DeleteSynonymSetOutput = typeof DeleteSynonymSetOutput.Type;
  *
  * @param synonymSetName - The name of the synonym set to delete
  */
-export const deleteSynonymSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteSynonymSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteSynonymSetInput,
   outputSchema: DeleteSynonymSetOutput,
   errors: [NotFound] as const,

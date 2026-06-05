@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetOrganizationVPCEndpointDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     region_id: Schema.String.pipe(T.PathParam()),
     vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
@@ -19,7 +19,7 @@ export type GetOrganizationVPCEndpointDetailsInput =
 
 // Output Schema
 export const GetOrganizationVPCEndpointDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpc_endpoint_id: Schema.String,
     label: Schema.String,
     state: Schema.String,
@@ -41,8 +41,7 @@ Azure regions are currently not supported.
 
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
-export const getOrganizationVPCEndpointDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetOrganizationVPCEndpointDetailsInput,
-    outputSchema: GetOrganizationVPCEndpointDetailsOutput,
-  }));
+export const getOrganizationVPCEndpointDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrganizationVPCEndpointDetailsInput,
+  outputSchema: GetOrganizationVPCEndpointDetailsOutput,
+}));

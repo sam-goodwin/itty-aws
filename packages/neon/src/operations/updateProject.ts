@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   project: Schema.Struct({
     settings: Schema.optional(
@@ -66,7 +66,7 @@ export const UpdateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateProjectInput = typeof UpdateProjectInput.Type;
 
 // Output Schema
-export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -204,13 +204,10 @@ export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
-        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
-        "finalize_migration",
-        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",
@@ -242,7 +239,7 @@ export type UpdateProjectOutput = typeof UpdateProjectOutput.Type;
  *
  * @param project_id - The Neon project ID
  */
-export const updateProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateProjectInput,
   outputSchema: UpdateProjectOutput,
   errors: [BadRequest, NotFound] as const,

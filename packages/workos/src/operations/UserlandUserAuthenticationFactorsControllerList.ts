@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserAuthenticationFactorsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type UserlandUserAuthenticationFactorsControllerListInput =
 
 // Output Schema
 export const UserlandUserAuthenticationFactorsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -72,7 +72,7 @@ export type UserlandUserAuthenticationFactorsControllerListOutput =
  * @param order - Order the results by the creation time.
  */
 export const UserlandUserAuthenticationFactorsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserAuthenticationFactorsControllerListInput,
     outputSchema: UserlandUserAuthenticationFactorsControllerListOutput,
     errors: [UnprocessableEntity] as const,

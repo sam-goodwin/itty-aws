@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AccessPolicyAssignmentCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AccessPolicyAssignmentCreateUpdateInput =
 
 // Output Schema
 export const AccessPolicyAssignmentCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,31 +59,30 @@ export type AccessPolicyAssignmentCreateUpdateOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
-export const AccessPolicyAssignmentCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyAssignmentCreateUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AccessPolicyAssignmentCreateUpdateInput,
     outputSchema: AccessPolicyAssignmentCreateUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AccessPolicyAssignmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-    }),
-  );
+export const AccessPolicyAssignmentDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+  }),
+);
 export type AccessPolicyAssignmentDeleteInput =
   typeof AccessPolicyAssignmentDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccessPolicyAssignmentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccessPolicyAssignmentDeleteOutput =
   typeof AccessPolicyAssignmentDeleteOutput.Type;
 
@@ -97,49 +96,46 @@ export type AccessPolicyAssignmentDeleteOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
-export const AccessPolicyAssignmentDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AccessPolicyAssignmentDeleteInput,
-    outputSchema: AccessPolicyAssignmentDeleteOutput,
-  }));
+export const AccessPolicyAssignmentDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentDeleteInput,
+  outputSchema: AccessPolicyAssignmentDeleteOutput,
+}));
 // Input Schema
-export const AccessPolicyAssignmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-    }),
-  );
+export const AccessPolicyAssignmentGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+  }),
+);
 export type AccessPolicyAssignmentGetInput =
   typeof AccessPolicyAssignmentGetInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AccessPolicyAssignmentGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AccessPolicyAssignmentGetOutput =
   typeof AccessPolicyAssignmentGetOutput.Type;
 
@@ -153,64 +149,50 @@ export type AccessPolicyAssignmentGetOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
-export const AccessPolicyAssignmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentGetInput,
-    outputSchema: AccessPolicyAssignmentGetOutput,
+export const AccessPolicyAssignmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentGetInput,
+  outputSchema: AccessPolicyAssignmentGetOutput,
+}));
+// Input Schema
+export const AccessPolicyAssignmentListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments",
   }),
 );
-// Input Schema
-export const AccessPolicyAssignmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments",
-    }),
-  );
 export type AccessPolicyAssignmentListInput =
   typeof AccessPolicyAssignmentListInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AccessPolicyAssignmentListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccessPolicyAssignmentListOutput =
   typeof AccessPolicyAssignmentListOutput.Type;
 
@@ -223,50 +205,46 @@ export type AccessPolicyAssignmentListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentListInput,
-    outputSchema: AccessPolicyAssignmentListOutput,
+export const AccessPolicyAssignmentList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentListInput,
+  outputSchema: AccessPolicyAssignmentListOutput,
+}));
+// Input Schema
+export const AccessPolicyCreateUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  accessPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
   }),
 );
-// Input Schema
-export const AccessPolicyCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    accessPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
-    }),
-  );
 export type AccessPolicyCreateUpdateInput =
   typeof AccessPolicyCreateUpdateInput.Type;
 
 // Output Schema
-export const AccessPolicyCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AccessPolicyCreateUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AccessPolicyCreateUpdateOutput =
   typeof AccessPolicyCreateUpdateOutput.Type;
 
@@ -280,30 +258,27 @@ export type AccessPolicyCreateUpdateOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyCreateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyCreateUpdateInput,
-    outputSchema: AccessPolicyCreateUpdateOutput,
+export const AccessPolicyCreateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyCreateUpdateInput,
+  outputSchema: AccessPolicyCreateUpdateOutput,
+}));
+// Input Schema
+export const AccessPolicyDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  accessPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
   }),
 );
-// Input Schema
-export const AccessPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    accessPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
-    }),
-  );
 export type AccessPolicyDeleteInput = typeof AccessPolicyDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AccessPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AccessPolicyDeleteOutput = typeof AccessPolicyDeleteOutput.Type;
 
 // The operation
@@ -316,12 +291,12 @@ export type AccessPolicyDeleteOutput = typeof AccessPolicyDeleteOutput.Type;
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyDeleteInput,
   outputSchema: AccessPolicyDeleteOutput,
 }));
 // Input Schema
-export const AccessPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -336,7 +311,7 @@ export const AccessPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccessPolicyGetInput = typeof AccessPolicyGetInput.Type;
 
 // Output Schema
-export const AccessPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -367,12 +342,12 @@ export type AccessPolicyGetOutput = typeof AccessPolicyGetOutput.Type;
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyGetInput,
   outputSchema: AccessPolicyGetOutput,
 }));
 // Input Schema
-export const AccessPolicyListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -386,42 +361,30 @@ export const AccessPolicyListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AccessPolicyListInput = typeof AccessPolicyListInput.Type;
 
 // Output Schema
-export const AccessPolicyListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const AccessPolicyListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AccessPolicyListOutput = typeof AccessPolicyListOutput.Type;
 
 // The operation
@@ -433,81 +396,79 @@ export type AccessPolicyListOutput = typeof AccessPolicyListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const AccessPolicyList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyListInput,
   outputSchema: AccessPolicyListOutput,
 }));
 // Input Schema
-export const AsyncOperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
-    }),
-  );
+export const AsyncOperationStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
+  }),
+);
 export type AsyncOperationStatusGetInput =
   typeof AsyncOperationStatusGetInput.Type;
 
 // Output Schema
-export const AsyncOperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.String,
-    percentComplete: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const AsyncOperationStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
         ),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
 export type AsyncOperationStatusGetOutput =
   typeof AsyncOperationStatusGetOutput.Type;
 
@@ -520,50 +481,46 @@ export type AsyncOperationStatusGetOutput =
  * @param operationId - The ID of asynchronous operation
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AsyncOperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AsyncOperationStatusGetInput,
-    outputSchema: AsyncOperationStatusGetOutput,
+export const AsyncOperationStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AsyncOperationStatusGetInput,
+  outputSchema: AsyncOperationStatusGetOutput,
+}));
+// Input Schema
+export const FirewallRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  ruleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
-    }),
-  );
 export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const FirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
 
@@ -577,31 +534,27 @@ export type FirewallRulesCreateOrUpdateOutput =
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  ruleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
   }),
 );
-// Input Schema
-export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
-    }),
-  );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -614,12 +567,12 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -634,27 +587,25 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 
 // Output Schema
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 
 // The operation
@@ -667,19 +618,17 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
-export const FirewallRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const FirewallRulesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules",
@@ -688,41 +637,30 @@ export const FirewallRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type FirewallRulesListInput = typeof FirewallRulesListInput.Type;
 
 // Output Schema
-export const FirewallRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const FirewallRulesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type FirewallRulesListOutput = typeof FirewallRulesListOutput.Type;
 
 // The operation
@@ -734,47 +672,45 @@ export type FirewallRulesListOutput = typeof FirewallRulesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const FirewallRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesListInput,
   outputSchema: FirewallRulesListOutput,
 }));
 // Input Schema
-export const LinkedServerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
-    }),
-  );
+export const LinkedServerCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedServerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+  }),
+);
 export type LinkedServerCreateInput = typeof LinkedServerCreateInput.Type;
 
 // Output Schema
-export const LinkedServerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const LinkedServerCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LinkedServerCreateOutput = typeof LinkedServerCreateOutput.Type;
 
 // The operation
@@ -787,28 +723,27 @@ export type LinkedServerCreateOutput = typeof LinkedServerCreateOutput.Type;
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerCreateInput,
   outputSchema: LinkedServerCreateOutput,
 }));
 // Input Schema
-export const LinkedServerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    linkedServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
-    }),
-  );
+export const LinkedServerDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  linkedServerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+  }),
+);
 export type LinkedServerDeleteInput = typeof LinkedServerDeleteInput.Type;
 
 // Output Schema
-export const LinkedServerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LinkedServerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LinkedServerDeleteOutput = typeof LinkedServerDeleteOutput.Type;
 
 // The operation
@@ -821,12 +756,12 @@ export type LinkedServerDeleteOutput = typeof LinkedServerDeleteOutput.Type;
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerDeleteInput,
   outputSchema: LinkedServerDeleteOutput,
 }));
 // Input Schema
-export const LinkedServerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -841,7 +776,7 @@ export const LinkedServerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkedServerGetInput = typeof LinkedServerGetInput.Type;
 
 // Output Schema
-export const LinkedServerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -872,12 +807,12 @@ export type LinkedServerGetOutput = typeof LinkedServerGetOutput.Type;
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerGetInput,
   outputSchema: LinkedServerGetOutput,
 }));
 // Input Schema
-export const LinkedServerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -891,42 +826,30 @@ export const LinkedServerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LinkedServerListInput = typeof LinkedServerListInput.Type;
 
 // Output Schema
-export const LinkedServerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const LinkedServerListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type LinkedServerListOutput = typeof LinkedServerListOutput.Type;
 
 // The operation
@@ -938,12 +861,12 @@ export type LinkedServerListOutput = typeof LinkedServerListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the redis cache.
  */
-export const LinkedServerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerListInput,
   outputSchema: LinkedServerListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Cache/operations" }),
@@ -951,7 +874,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -975,48 +898,46 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PatchSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
-    }),
-  );
+export const PatchSchedulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  default: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+  }),
+);
 export type PatchSchedulesCreateOrUpdateInput =
   typeof PatchSchedulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PatchSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PatchSchedulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PatchSchedulesCreateOrUpdateOutput =
   typeof PatchSchedulesCreateOrUpdateOutput.Type;
 
@@ -1030,30 +951,27 @@ export type PatchSchedulesCreateOrUpdateOutput =
  * @param name - The name of the redis cache.
  * @param default - The name of the RedisPatchSchedule
  */
-export const PatchSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchSchedulesCreateOrUpdateInput,
-    outputSchema: PatchSchedulesCreateOrUpdateOutput,
-  }));
+export const PatchSchedulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchSchedulesCreateOrUpdateInput,
+  outputSchema: PatchSchedulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PatchSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
-    }),
-  );
+export const PatchSchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  default: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+  }),
+);
 export type PatchSchedulesDeleteInput = typeof PatchSchedulesDeleteInput.Type;
 
 // Output Schema
-export const PatchSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PatchSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PatchSchedulesDeleteOutput = typeof PatchSchedulesDeleteOutput.Type;
 
 // The operation
@@ -1066,22 +984,18 @@ export type PatchSchedulesDeleteOutput = typeof PatchSchedulesDeleteOutput.Type;
  * @param name - The name of the redis cache.
  * @param default - The name of the RedisPatchSchedule
  */
-export const PatchSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchSchedulesDeleteInput,
-    outputSchema: PatchSchedulesDeleteOutput,
-  }),
-);
+export const PatchSchedulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchSchedulesDeleteInput,
+  outputSchema: PatchSchedulesDeleteOutput,
+}));
 // Input Schema
-export const PatchSchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const PatchSchedulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  default: Schema.Literals(["default"]).pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
@@ -1090,26 +1004,25 @@ export const PatchSchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchSchedulesGetInput = typeof PatchSchedulesGetInput.Type;
 
 // Output Schema
-export const PatchSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PatchSchedulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PatchSchedulesGetOutput = typeof PatchSchedulesGetOutput.Type;
 
 // The operation
@@ -1122,13 +1035,13 @@ export type PatchSchedulesGetOutput = typeof PatchSchedulesGetOutput.Type;
  * @param name - The name of the redis cache.
  * @param default - The name of the RedisPatchSchedule
  */
-export const PatchSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PatchSchedulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchSchedulesGetInput,
   outputSchema: PatchSchedulesGetOutput,
 }));
 // Input Schema
 export const PatchSchedulesListByRedisResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1144,7 +1057,7 @@ export type PatchSchedulesListByRedisResourceInput =
 
 // Output Schema
 export const PatchSchedulesListByRedisResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1190,14 +1103,13 @@ export type PatchSchedulesListByRedisResourceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const PatchSchedulesListByRedisResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchSchedulesListByRedisResourceInput,
-    outputSchema: PatchSchedulesListByRedisResourceOutput,
-  }));
+export const PatchSchedulesListByRedisResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchSchedulesListByRedisResourceInput,
+  outputSchema: PatchSchedulesListByRedisResourceOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1213,8 +1125,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1228,49 +1139,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param cacheName - The name of the Redis cache.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -1284,30 +1192,28 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param cacheName - The name of the Redis cache.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1340,7 +1246,8 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -1353,69 +1260,66 @@ export type PrivateEndpointConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
+export const PrivateEndpointConnectionsPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      groupIds: Schema.optional(Schema.Array(Schema.String)),
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
         }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected"]),
         ),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
       }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+      ),
     }),
-  );
+  ),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsPutInput =
   typeof PrivateEndpointConnectionsPutInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsPutOutput =
   typeof PrivateEndpointConnectionsPutOutput.Type;
 
@@ -1430,14 +1334,13 @@ export type PrivateEndpointConnectionsPutOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  * @param properties - Resource properties.
  */
-export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsPutInput,
-    outputSchema: PrivateEndpointConnectionsPutOutput,
-  }));
+export const PrivateEndpointConnectionsPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsPutInput,
+  outputSchema: PrivateEndpointConnectionsPutOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByRedisCacheInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1453,7 +1356,7 @@ export type PrivateLinkResourcesListByRedisCacheInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByRedisCacheOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1499,28 +1402,27 @@ export type PrivateLinkResourcesListByRedisCacheOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const PrivateLinkResourcesListByRedisCache =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinkResourcesListByRedisCache = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateLinkResourcesListByRedisCacheInput,
     outputSchema: PrivateLinkResourcesListByRedisCacheOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RedisCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/checkNameAvailability",
-    }),
-  );
+export const RedisCheckNameAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/checkNameAvailability",
+  }),
+);
 export type RedisCheckNameAvailabilityInput =
   typeof RedisCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const RedisCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RedisCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Void;
 export type RedisCheckNameAvailabilityOutput =
   typeof RedisCheckNameAvailabilityOutput.Type;
 
@@ -1531,14 +1433,12 @@ export type RedisCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RedisCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisCheckNameAvailabilityInput,
-    outputSchema: RedisCheckNameAvailabilityOutput,
-  }),
-);
+export const RedisCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisCheckNameAvailabilityInput,
+  outputSchema: RedisCheckNameAvailabilityOutput,
+}));
 // Input Schema
-export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1552,7 +1452,7 @@ export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisCreateInput = typeof RedisCreateInput.Type;
 
 // Output Schema
-export const RedisCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1582,12 +1482,12 @@ export type RedisCreateOutput = typeof RedisCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisCreateInput,
   outputSchema: RedisCreateOutput,
 }));
 // Input Schema
-export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1601,7 +1501,7 @@ export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisDeleteInput = typeof RedisDeleteInput.Type;
 
 // Output Schema
-export const RedisDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RedisDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RedisDeleteOutput = typeof RedisDeleteOutput.Type;
 
 // The operation
@@ -1613,12 +1513,12 @@ export type RedisDeleteOutput = typeof RedisDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisDeleteInput,
   outputSchema: RedisDeleteOutput,
 }));
 // Input Schema
-export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisExportDataInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1632,7 +1532,7 @@ export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisExportDataInput = typeof RedisExportDataInput.Type;
 
 // Output Schema
-export const RedisExportDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RedisExportDataOutput = /*@__PURE__*/ Schema.Void;
 export type RedisExportDataOutput = typeof RedisExportDataOutput.Type;
 
 // The operation
@@ -1644,12 +1544,12 @@ export type RedisExportDataOutput = typeof RedisExportDataOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisExportData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisExportData = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisExportDataInput,
   outputSchema: RedisExportDataOutput,
 }));
 // Input Schema
-export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisFlushCacheInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1663,7 +1563,7 @@ export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisFlushCacheInput = typeof RedisFlushCacheInput.Type;
 
 // Output Schema
-export const RedisFlushCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisFlushCacheOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   status: Schema.String,
@@ -1727,12 +1627,12 @@ export type RedisFlushCacheOutput = typeof RedisFlushCacheOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const RedisFlushCache = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisFlushCache = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisFlushCacheInput,
   outputSchema: RedisFlushCacheOutput,
 }));
 // Input Schema
-export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisForceRebootInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1746,11 +1646,9 @@ export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisForceRebootInput = typeof RedisForceRebootInput.Type;
 
 // Output Schema
-export const RedisForceRebootOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    message: Schema.optional(Schema.String),
-  },
-);
+export const RedisForceRebootOutput = /*@__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+});
 export type RedisForceRebootOutput = typeof RedisForceRebootOutput.Type;
 
 // The operation
@@ -1762,12 +1660,12 @@ export type RedisForceRebootOutput = typeof RedisForceRebootOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisForceReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisForceReboot = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisForceRebootInput,
   outputSchema: RedisForceRebootOutput,
 }));
 // Input Schema
-export const RedisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1781,7 +1679,7 @@ export const RedisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisGetInput = typeof RedisGetInput.Type;
 
 // Output Schema
-export const RedisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1811,12 +1709,12 @@ export type RedisGetOutput = typeof RedisGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisGetInput,
   outputSchema: RedisGetOutput,
 }));
 // Input Schema
-export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisImportDataInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1830,7 +1728,7 @@ export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisImportDataInput = typeof RedisImportDataInput.Type;
 
 // Output Schema
-export const RedisImportDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RedisImportDataOutput = /*@__PURE__*/ Schema.Void;
 export type RedisImportDataOutput = typeof RedisImportDataOutput.Type;
 
 // The operation
@@ -1842,61 +1740,49 @@ export type RedisImportDataOutput = typeof RedisImportDataOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisImportData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisImportData = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisImportDataInput,
   outputSchema: RedisImportDataOutput,
 }));
 // Input Schema
-export const RedisListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis",
-    }),
-  );
+export const RedisListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis",
+  }),
+);
 export type RedisListByResourceGroupInput =
   typeof RedisListByResourceGroupInput.Type;
 
 // Output Schema
-export const RedisListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RedisListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RedisListByResourceGroupOutput =
   typeof RedisListByResourceGroupOutput.Type;
 
@@ -1908,62 +1794,48 @@ export type RedisListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RedisListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisListByResourceGroupInput,
-    outputSchema: RedisListByResourceGroupOutput,
+export const RedisListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisListByResourceGroupInput,
+  outputSchema: RedisListByResourceGroupOutput,
+}));
+// Input Schema
+export const RedisListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redis",
   }),
 );
-// Input Schema
-export const RedisListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redis",
-    }),
-  );
 export type RedisListBySubscriptionInput =
   typeof RedisListBySubscriptionInput.Type;
 
 // Output Schema
-export const RedisListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RedisListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RedisListBySubscriptionOutput =
   typeof RedisListBySubscriptionOutput.Type;
 
@@ -1974,14 +1846,12 @@ export type RedisListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RedisListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisListBySubscriptionInput,
-    outputSchema: RedisListBySubscriptionOutput,
-  }),
-);
+export const RedisListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisListBySubscriptionInput,
+  outputSchema: RedisListBySubscriptionOutput,
+}));
 // Input Schema
-export const RedisListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisListKeysInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1995,7 +1865,7 @@ export const RedisListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisListKeysInput = typeof RedisListKeysInput.Type;
 
 // Output Schema
-export const RedisListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisListKeysOutput = /*@__PURE__*/ Schema.Struct({
   primaryKey: Schema.optional(Schema.String),
   secondaryKey: Schema.optional(Schema.String),
 });
@@ -2010,41 +1880,39 @@ export type RedisListKeysOutput = typeof RedisListKeysOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisListKeysInput,
   outputSchema: RedisListKeysOutput,
 }));
 // Input Schema
-export const RedisListUpgradeNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    history: Schema.Number,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listUpgradeNotifications",
-    }),
-  );
+export const RedisListUpgradeNotificationsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  history: Schema.Number,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listUpgradeNotifications",
+  }),
+);
 export type RedisListUpgradeNotificationsInput =
   typeof RedisListUpgradeNotificationsInput.Type;
 
 // Output Schema
-export const RedisListUpgradeNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        timestamp: Schema.optional(Schema.String),
-        upsellNotification: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RedisListUpgradeNotificationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      timestamp: Schema.optional(Schema.String),
+      upsellNotification: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RedisListUpgradeNotificationsOutput =
   typeof RedisListUpgradeNotificationsOutput.Type;
 
@@ -2058,32 +1926,29 @@ export type RedisListUpgradeNotificationsOutput =
  * @param name - The name of the RedisResource
  * @param history - how many minutes in past to look for upgrade notifications
  */
-export const RedisListUpgradeNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RedisListUpgradeNotificationsInput,
-    outputSchema: RedisListUpgradeNotificationsOutput,
-  }));
+export const RedisListUpgradeNotifications = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisListUpgradeNotificationsInput,
+  outputSchema: RedisListUpgradeNotificationsOutput,
+}));
 // Input Schema
-export const RedisRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/regenerateKey",
-    }),
-  );
+export const RedisRegenerateKeyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/regenerateKey",
+  }),
+);
 export type RedisRegenerateKeyInput = typeof RedisRegenerateKeyInput.Type;
 
 // Output Schema
-export const RedisRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-  });
+export const RedisRegenerateKeyOutput = /*@__PURE__*/ Schema.Struct({
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+});
 export type RedisRegenerateKeyOutput = typeof RedisRegenerateKeyOutput.Type;
 
 // The operation
@@ -2095,12 +1960,12 @@ export type RedisRegenerateKeyOutput = typeof RedisRegenerateKeyOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisRegenerateKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisRegenerateKeyInput,
   outputSchema: RedisRegenerateKeyOutput,
 }));
 // Input Schema
-export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2114,7 +1979,7 @@ export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RedisUpdateInput = typeof RedisUpdateInput.Type;
 
 // Output Schema
-export const RedisUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2144,7 +2009,7 @@ export type RedisUpdateOutput = typeof RedisUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisUpdateInput,
   outputSchema: RedisUpdateOutput,
 }));

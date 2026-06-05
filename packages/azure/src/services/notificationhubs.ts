@@ -9,40 +9,38 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const NamespacesCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
-    }),
-  );
+export const NamespacesCheckAvailabilityInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
+  }),
+);
 export type NamespacesCheckAvailabilityInput =
   typeof NamespacesCheckAvailabilityInput.Type;
 
 // Output Schema
-export const NamespacesCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NamespacesCheckAvailabilityOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesCheckAvailabilityOutput =
   typeof NamespacesCheckAvailabilityOutput.Type;
 
@@ -53,48 +51,44 @@ export type NamespacesCheckAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCheckAvailabilityInput,
-    outputSchema: NamespacesCheckAvailabilityOutput,
+export const NamespacesCheckAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCheckAvailabilityInput,
+  outputSchema: NamespacesCheckAvailabilityOutput,
+}));
+// Input Schema
+export const NamespacesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
   }),
 );
-// Input Schema
-export const NamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
-    }),
-  );
 export type NamespacesCreateOrUpdateInput =
   typeof NamespacesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const NamespacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NamespacesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
 
@@ -106,15 +100,13 @@ export type NamespacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCreateOrUpdateInput,
-    outputSchema: NamespacesCreateOrUpdateOutput,
-  }),
-);
+export const NamespacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCreateOrUpdateInput,
+  outputSchema: NamespacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -129,7 +121,7 @@ export type NamespacesCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -159,13 +151,14 @@ export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesCreateOrUpdateAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NamespacesCreateOrUpdateAuthorizationRuleInput,
     outputSchema: NamespacesCreateOrUpdateAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -178,7 +171,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -189,13 +182,13 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
 export const NamespacesDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -210,7 +203,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
 
 // Output Schema
 export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -222,13 +215,12 @@ export type NamespacesDeleteAuthorizationRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesDeleteAuthorizationRuleInput,
-    outputSchema: NamespacesDeleteAuthorizationRuleOutput,
-  }));
+export const NamespacesDeleteAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesDeleteAuthorizationRuleInput,
+  outputSchema: NamespacesDeleteAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -241,7 +233,7 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
-export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -270,28 +262,27 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
-export const NamespacesGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
-    }),
-  );
+export const NamespacesGetAuthorizationRuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+  }),
+);
 export type NamespacesGetAuthorizationRuleInput =
   typeof NamespacesGetAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetAuthorizationRuleOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -309,7 +300,8 @@ export const NamespacesGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type NamespacesGetAuthorizationRuleOutput =
   typeof NamespacesGetAuthorizationRuleOutput.Type;
 
@@ -321,47 +313,44 @@ export type NamespacesGetAuthorizationRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesGetAuthorizationRuleInput,
-    outputSchema: NamespacesGetAuthorizationRuleOutput,
-  }));
+export const NamespacesGetAuthorizationRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetAuthorizationRuleInput,
+  outputSchema: NamespacesGetAuthorizationRuleOutput,
+}));
 // Input Schema
-export const NamespacesGetPnsCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
-    }),
-  );
+export const NamespacesGetPnsCredentialsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
+  }),
+);
 export type NamespacesGetPnsCredentialsInput =
   typeof NamespacesGetPnsCredentialsInput.Type;
 
 // Output Schema
-export const NamespacesGetPnsCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NamespacesGetPnsCredentialsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesGetPnsCredentialsOutput =
   typeof NamespacesGetPnsCredentialsOutput.Type;
 
@@ -373,14 +362,12 @@ export type NamespacesGetPnsCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesGetPnsCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesGetPnsCredentialsInput,
-    outputSchema: NamespacesGetPnsCredentialsOutput,
-  }),
-);
+export const NamespacesGetPnsCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesGetPnsCredentialsInput,
+  outputSchema: NamespacesGetPnsCredentialsOutput,
+}));
 // Input Schema
-export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
@@ -395,7 +382,7 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
-export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -443,19 +430,17 @@ export type NamespacesListOutput = typeof NamespacesListOutput.Type;
  * @param $top - Maximum number of results to return.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListInput,
   outputSchema: NamespacesListOutput,
 }));
 // Input Schema
-export const NamespacesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const NamespacesListAllInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/namespaces",
@@ -464,43 +449,42 @@ export const NamespacesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type NamespacesListAllInput = typeof NamespacesListAllInput.Type;
 
 // Output Schema
-export const NamespacesListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const NamespacesListAllOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NamespacesListAllOutput = typeof NamespacesListAllOutput.Type;
 
 // The operation
@@ -512,13 +496,13 @@ export type NamespacesListAllOutput = typeof NamespacesListAllOutput.Type;
  * @param $top - Maximum number of results to return.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListAllInput,
   outputSchema: NamespacesListAllOutput,
 }));
 // Input Schema
 export const NamespacesListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -533,7 +517,7 @@ export type NamespacesListAuthorizationRulesInput =
 
 // Output Schema
 export const NamespacesListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -580,34 +564,31 @@ export type NamespacesListAuthorizationRulesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NamespacesListAuthorizationRulesInput,
-    outputSchema: NamespacesListAuthorizationRulesOutput,
-  }));
+export const NamespacesListAuthorizationRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesListAuthorizationRulesInput,
+  outputSchema: NamespacesListAuthorizationRulesOutput,
+}));
 // Input Schema
-export const NamespacesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+export const NamespacesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
 
 // Output Schema
-export const NamespacesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
 
 // The operation
@@ -618,34 +599,32 @@ export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListKeysInput,
   outputSchema: NamespacesListKeysOutput,
 }));
 // Input Schema
-export const NamespacesRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
+export const NamespacesRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+  }),
+);
 export type NamespacesRegenerateKeysInput =
   typeof NamespacesRegenerateKeysInput.Type;
 
 // Output Schema
-export const NamespacesRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NamespacesRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NamespacesRegenerateKeysOutput =
   typeof NamespacesRegenerateKeysOutput.Type;
 
@@ -657,14 +636,12 @@ export type NamespacesRegenerateKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesRegenerateKeysInput,
-    outputSchema: NamespacesRegenerateKeysOutput,
-  }),
-);
+export const NamespacesRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesRegenerateKeysInput,
+  outputSchema: NamespacesRegenerateKeysOutput,
+}));
 // Input Schema
-export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -677,27 +654,25 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 
 // Output Schema
-export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const NamespacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
 
 // The operation
@@ -708,13 +683,13 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
 export const NotificationHubsCheckNotificationHubAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -729,7 +704,7 @@ export type NotificationHubsCheckNotificationHubAvailabilityInput =
 
 // Output Schema
 export const NotificationHubsCheckNotificationHubAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -760,28 +735,27 @@ export type NotificationHubsCheckNotificationHubAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsCheckNotificationHubAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationHubsCheckNotificationHubAvailabilityInput,
     outputSchema: NotificationHubsCheckNotificationHubAvailabilityOutput,
   }));
 // Input Schema
-export const NotificationHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
-    }),
-  );
+export const NotificationHubsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+  }),
+);
 export type NotificationHubsCreateOrUpdateInput =
   typeof NotificationHubsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const NotificationHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationHubsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -799,7 +773,8 @@ export const NotificationHubsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type NotificationHubsCreateOrUpdateOutput =
   typeof NotificationHubsCreateOrUpdateOutput.Type;
 
@@ -811,14 +786,13 @@ export type NotificationHubsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NotificationHubsCreateOrUpdateInput,
-    outputSchema: NotificationHubsCreateOrUpdateOutput,
-  }));
+export const NotificationHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsCreateOrUpdateInput,
+  outputSchema: NotificationHubsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const NotificationHubsCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -833,7 +807,7 @@ export type NotificationHubsCreateOrUpdateAuthorizationRuleInput =
 
 // Output Schema
 export const NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -864,46 +838,44 @@ export type NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsCreateOrUpdateAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationHubsCreateOrUpdateAuthorizationRuleInput,
     outputSchema: NotificationHubsCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
-export const NotificationHubsDebugSendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/debugsend",
-    }),
-  );
+export const NotificationHubsDebugSendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/debugsend",
+  }),
+);
 export type NotificationHubsDebugSendInput =
   typeof NotificationHubsDebugSendInput.Type;
 
 // Output Schema
-export const NotificationHubsDebugSendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NotificationHubsDebugSendOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NotificationHubsDebugSendOutput =
   typeof NotificationHubsDebugSendOutput.Type;
 
@@ -915,30 +887,26 @@ export type NotificationHubsDebugSendOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsDebugSend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationHubsDebugSendInput,
-    outputSchema: NotificationHubsDebugSendOutput,
+export const NotificationHubsDebugSend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsDebugSendInput,
+  outputSchema: NotificationHubsDebugSendOutput,
+}));
+// Input Schema
+export const NotificationHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
   }),
 );
-// Input Schema
-export const NotificationHubsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
-    }),
-  );
 export type NotificationHubsDeleteInput =
   typeof NotificationHubsDeleteInput.Type;
 
 // Output Schema
-export const NotificationHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotificationHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NotificationHubsDeleteOutput =
   typeof NotificationHubsDeleteOutput.Type;
 
@@ -950,15 +918,13 @@ export type NotificationHubsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationHubsDeleteInput,
-    outputSchema: NotificationHubsDeleteOutput,
-  }),
-);
+export const NotificationHubsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsDeleteInput,
+  outputSchema: NotificationHubsDeleteOutput,
+}));
 // Input Schema
 export const NotificationHubsDeleteAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -973,7 +939,7 @@ export type NotificationHubsDeleteAuthorizationRuleInput =
 
 // Output Schema
 export const NotificationHubsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type NotificationHubsDeleteAuthorizationRuleOutput =
   typeof NotificationHubsDeleteAuthorizationRuleOutput.Type;
 
@@ -985,46 +951,45 @@ export type NotificationHubsDeleteAuthorizationRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsDeleteAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationHubsDeleteAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotificationHubsDeleteAuthorizationRuleInput,
     outputSchema: NotificationHubsDeleteAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NotificationHubsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
-    }),
-  );
+export const NotificationHubsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+  }),
+);
 export type NotificationHubsGetInput = typeof NotificationHubsGetInput.Type;
 
 // Output Schema
-export const NotificationHubsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NotificationHubsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NotificationHubsGetOutput = typeof NotificationHubsGetOutput.Type;
 
 // The operation
@@ -1035,13 +1000,13 @@ export type NotificationHubsGetOutput = typeof NotificationHubsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotificationHubsGetInput,
   outputSchema: NotificationHubsGetOutput,
 }));
 // Input Schema
 export const NotificationHubsGetAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1056,7 +1021,7 @@ export type NotificationHubsGetAuthorizationRuleInput =
 
 // Output Schema
 export const NotificationHubsGetAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1086,14 +1051,15 @@ export type NotificationHubsGetAuthorizationRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsGetAuthorizationRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationHubsGetAuthorizationRule = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotificationHubsGetAuthorizationRuleInput,
     outputSchema: NotificationHubsGetAuthorizationRuleOutput,
-  }));
+  }),
+);
 // Input Schema
 export const NotificationHubsGetPnsCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1108,7 +1074,7 @@ export type NotificationHubsGetPnsCredentialsInput =
 
 // Output Schema
 export const NotificationHubsGetPnsCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1138,65 +1104,62 @@ export type NotificationHubsGetPnsCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsGetPnsCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NotificationHubsGetPnsCredentialsInput,
-    outputSchema: NotificationHubsGetPnsCredentialsOutput,
-  }));
+export const NotificationHubsGetPnsCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsGetPnsCredentialsInput,
+  outputSchema: NotificationHubsGetPnsCredentialsOutput,
+}));
 // Input Schema
-export const NotificationHubsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs",
-    }),
-  );
+export const NotificationHubsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs",
+  }),
+);
 export type NotificationHubsListInput = typeof NotificationHubsListInput.Type;
 
 // Output Schema
-export const NotificationHubsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const NotificationHubsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NotificationHubsListOutput = typeof NotificationHubsListOutput.Type;
 
 // The operation
@@ -1209,15 +1172,13 @@ export type NotificationHubsListOutput = typeof NotificationHubsListOutput.Type;
  * @param $top - Page size.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationHubsListInput,
-    outputSchema: NotificationHubsListOutput,
-  }),
-);
+export const NotificationHubsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsListInput,
+  outputSchema: NotificationHubsListOutput,
+}));
 // Input Schema
 export const NotificationHubsListAuthorizationRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1232,7 +1193,7 @@ export type NotificationHubsListAuthorizationRulesInput =
 
 // Output Schema
 export const NotificationHubsListAuthorizationRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1279,35 +1240,34 @@ export type NotificationHubsListAuthorizationRulesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsListAuthorizationRules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationHubsListAuthorizationRules = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: NotificationHubsListAuthorizationRulesInput,
     outputSchema: NotificationHubsListAuthorizationRulesOutput,
-  }));
+  }),
+);
 // Input Schema
-export const NotificationHubsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/listKeys",
-    }),
-  );
+export const NotificationHubsListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/listKeys",
+  }),
+);
 export type NotificationHubsListKeysInput =
   typeof NotificationHubsListKeysInput.Type;
 
 // Output Schema
-export const NotificationHubsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    primaryConnectionString: Schema.optional(Schema.String),
-    secondaryConnectionString: Schema.optional(Schema.String),
-    primaryKey: Schema.optional(Schema.String),
-    secondaryKey: Schema.optional(Schema.String),
-    keyName: Schema.optional(Schema.String),
-  });
+export const NotificationHubsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  primaryConnectionString: Schema.optional(Schema.String),
+  secondaryConnectionString: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+});
 export type NotificationHubsListKeysOutput =
   typeof NotificationHubsListKeysOutput.Type;
 
@@ -1319,36 +1279,34 @@ export type NotificationHubsListKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationHubsListKeysInput,
-    outputSchema: NotificationHubsListKeysOutput,
+export const NotificationHubsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsListKeysInput,
+  outputSchema: NotificationHubsListKeysOutput,
+}));
+// Input Schema
+export const NotificationHubsRegenerateKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
   }),
 );
-// Input Schema
-export const NotificationHubsRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-    }),
-  );
 export type NotificationHubsRegenerateKeysInput =
   typeof NotificationHubsRegenerateKeysInput.Type;
 
 // Output Schema
-export const NotificationHubsRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationHubsRegenerateKeysOutput = /*@__PURE__*/ Schema.Struct(
+  {
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
+  },
+);
 export type NotificationHubsRegenerateKeysOutput =
   typeof NotificationHubsRegenerateKeysOutput.Type;
 
@@ -1360,47 +1318,44 @@ export type NotificationHubsRegenerateKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsRegenerateKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NotificationHubsRegenerateKeysInput,
-    outputSchema: NotificationHubsRegenerateKeysOutput,
-  }));
+export const NotificationHubsRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsRegenerateKeysInput,
+  outputSchema: NotificationHubsRegenerateKeysOutput,
+}));
 // Input Schema
-export const NotificationHubsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
-    }),
-  );
+export const NotificationHubsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+  }),
+);
 export type NotificationHubsUpdateInput =
   typeof NotificationHubsUpdateInput.Type;
 
 // Output Schema
-export const NotificationHubsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const NotificationHubsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type NotificationHubsUpdateOutput =
   typeof NotificationHubsUpdateOutput.Type;
 
@@ -1412,14 +1367,12 @@ export type NotificationHubsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NotificationHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationHubsUpdateInput,
-    outputSchema: NotificationHubsUpdateOutput,
-  }),
-);
+export const NotificationHubsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationHubsUpdateInput,
+  outputSchema: NotificationHubsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1430,7 +1383,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1495,13 +1448,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1515,8 +1468,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1529,47 +1481,44 @@ This is a public API that can be called directly by Notification Hubs users.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -1582,14 +1531,13 @@ This is a public API that can be called directly by Notification Hubs users.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsGetGroupIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subResourceName: Schema.String.pipe(T.PathParam()),
@@ -1605,7 +1553,7 @@ export type PrivateEndpointConnectionsGetGroupIdInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetGroupIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1640,29 +1588,29 @@ This is a public API required by the Networking RP contract. It can be used dire
  * @param subResourceName - Name of the Private Link sub-resource. The only supported sub-resource is "namespace"
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsGetGroupId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsGetGroupId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsGetGroupIdInput,
     outputSchema: PrivateEndpointConnectionsGetGroupIdOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections",
-    }),
-  );
+export const PrivateEndpointConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections",
+  }),
+);
 export type PrivateEndpointConnectionsListInput =
   typeof PrivateEndpointConnectionsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1697,7 +1645,8 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
 
@@ -1710,14 +1659,13 @@ This is a public API that can be called directly by Notification Hubs users.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsListInput,
-    outputSchema: PrivateEndpointConnectionsListOutput,
-  }));
+export const PrivateEndpointConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsListInput,
+  outputSchema: PrivateEndpointConnectionsListOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListGroupIdsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1732,7 +1680,7 @@ export type PrivateEndpointConnectionsListGroupIdsInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListGroupIdsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1783,14 +1731,15 @@ This is a public API required by the Networking RP contract. It can be used dire
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsListGroupIds =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointConnectionsListGroupIds = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateEndpointConnectionsListGroupIdsInput,
     outputSchema: PrivateEndpointConnectionsListGroupIdsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1805,7 +1754,7 @@ export type PrivateEndpointConnectionsUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1836,8 +1785,7 @@ This is a public API that can be called directly by Notification Hubs users.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsUpdateInput,
-    outputSchema: PrivateEndpointConnectionsUpdateOutput,
-  }));
+export const PrivateEndpointConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsUpdateInput,
+  outputSchema: PrivateEndpointConnectionsUpdateOutput,
+}));

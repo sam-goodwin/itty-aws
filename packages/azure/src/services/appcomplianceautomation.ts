@@ -9,41 +9,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const EvidenceCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    evidenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
-    }),
-  );
+export const EvidenceCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  evidenceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
+  }),
+);
 export type EvidenceCreateOrUpdateInput =
   typeof EvidenceCreateOrUpdateInput.Type;
 
 // Output Schema
-export const EvidenceCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const EvidenceCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EvidenceCreateOrUpdateOutput =
   typeof EvidenceCreateOrUpdateOutput.Type;
 
@@ -171,54 +169,42 @@ export const EvidenceGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: EvidenceGetOutput,
 }));
 // Input Schema
-export const EvidenceListByReportInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
-    }),
-  );
+export const EvidenceListByReportInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
+  }),
+);
 export type EvidenceListByReportInput = typeof EvidenceListByReportInput.Type;
 
 // Output Schema
-export const EvidenceListByReportOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const EvidenceListByReportOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type EvidenceListByReportOutput = typeof EvidenceListByReportOutput.Type;
 
 // The operation
@@ -312,11 +298,12 @@ export type ProviderActionsCheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const ProviderActionsCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const ProviderActionsCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderActionsCheckNameAvailabilityInput,
     outputSchema: ProviderActionsCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProviderActionsGetCollectionCountInput =
   /*@__PURE__*/ Schema.Struct({
@@ -344,11 +331,10 @@ export type ProviderActionsGetCollectionCountOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsGetCollectionCount =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProviderActionsGetCollectionCountInput,
-    outputSchema: ProviderActionsGetCollectionCountOutput,
-  }));
+export const ProviderActionsGetCollectionCount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderActionsGetCollectionCountInput,
+  outputSchema: ProviderActionsGetCollectionCountOutput,
+}));
 // Input Schema
 export const ProviderActionsGetOverviewStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -383,11 +369,10 @@ export type ProviderActionsGetOverviewStatusOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsGetOverviewStatus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProviderActionsGetOverviewStatusInput,
-    outputSchema: ProviderActionsGetOverviewStatusOutput,
-  }));
+export const ProviderActionsGetOverviewStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderActionsGetOverviewStatusInput,
+  outputSchema: ProviderActionsGetOverviewStatusOutput,
+}));
 // Input Schema
 export const ProviderActionsListInUseStorageAccountsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -424,29 +409,28 @@ export type ProviderActionsListInUseStorageAccountsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsListInUseStorageAccounts =
-  /*@__PURE__*/ API.make(() => ({
+export const ProviderActionsListInUseStorageAccounts = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderActionsListInUseStorageAccountsInput,
     outputSchema: ProviderActionsListInUseStorageAccountsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ProviderActionsOnboardInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.AppComplianceAutomation/onboard",
-    }),
-  );
+export const ProviderActionsOnboardInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.AppComplianceAutomation/onboard",
+  }),
+);
 export type ProviderActionsOnboardInput =
   typeof ProviderActionsOnboardInput.Type;
 
 // Output Schema
-export const ProviderActionsOnboardOutput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const ProviderActionsOnboardOutput = /*@__PURE__*/ Schema.Struct({
+  subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+});
 export type ProviderActionsOnboardOutput =
   typeof ProviderActionsOnboardOutput.Type;
 
@@ -508,45 +492,42 @@ export type ProviderActionsTriggerEvaluationOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsTriggerEvaluation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProviderActionsTriggerEvaluationInput,
-    outputSchema: ProviderActionsTriggerEvaluationOutput,
-  }));
+export const ProviderActionsTriggerEvaluation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderActionsTriggerEvaluationInput,
+  outputSchema: ProviderActionsTriggerEvaluationOutput,
+}));
 // Input Schema
-export const ReportCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
-    }),
-  );
+export const ReportCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+  }),
+);
 export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ReportCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReportCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReportCreateOrUpdateOutput = typeof ReportCreateOrUpdateOutput.Type;
 
 // The operation
@@ -663,71 +644,69 @@ export const ReportGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ReportGetOutput,
 }));
 // Input Schema
-export const ReportGetScopingQuestionsInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
-    }),
-  );
+export const ReportGetScopingQuestionsInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
+  }),
+);
 export type ReportGetScopingQuestionsInput =
   typeof ReportGetScopingQuestionsInput.Type;
 
 // Output Schema
-export const ReportGetScopingQuestionsOutput =
-  /*@__PURE__*/ Schema.Struct({
-    questions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          questionId: Schema.String,
-          superiorQuestionId: Schema.optional(Schema.String),
-          inputType: Schema.Literals([
-            "None",
-            "Text",
-            "Email",
-            "MultilineText",
+export const ReportGetScopingQuestionsOutput = /*@__PURE__*/ Schema.Struct({
+  questions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        questionId: Schema.String,
+        superiorQuestionId: Schema.optional(Schema.String),
+        inputType: Schema.Literals([
+          "None",
+          "Text",
+          "Email",
+          "MultilineText",
+          "Url",
+          "Number",
+          "Boolean",
+          "Telephone",
+          "YesNoNa",
+          "Date",
+          "YearPicker",
+          "SingleSelection",
+          "SingleSelectDropdown",
+          "MultiSelectCheckbox",
+          "MultiSelectDropdown",
+          "MultiSelectDropdownCustom",
+          "Group",
+          "Upload",
+        ]),
+        optionIds: Schema.Array(Schema.String),
+        rules: Schema.Array(
+          Schema.Literals([
+            "Required",
+            "CharLength",
             "Url",
-            "Number",
-            "Boolean",
-            "Telephone",
-            "YesNoNa",
-            "Date",
-            "YearPicker",
-            "SingleSelection",
-            "SingleSelectDropdown",
-            "MultiSelectCheckbox",
-            "MultiSelectDropdown",
-            "MultiSelectDropdownCustom",
-            "Group",
-            "Upload",
+            "Urls",
+            "Domains",
+            "USPrivacyShield",
+            "PublicSOX",
+            "CreditCardPCI",
+            "AzureApplication",
+            "ValidGuid",
+            "PublisherVerification",
+            "DynamicDropdown",
+            "PreventNonEnglishChar",
+            "ValidEmail",
           ]),
-          optionIds: Schema.Array(Schema.String),
-          rules: Schema.Array(
-            Schema.Literals([
-              "Required",
-              "CharLength",
-              "Url",
-              "Urls",
-              "Domains",
-              "USPrivacyShield",
-              "PublicSOX",
-              "CreditCardPCI",
-              "AzureApplication",
-              "ValidGuid",
-              "PublisherVerification",
-              "DynamicDropdown",
-              "PreventNonEnglishChar",
-              "ValidEmail",
-            ]),
-          ),
-          showSubQuestionsValue: Schema.optional(Schema.String),
-        }),
-      ),
+        ),
+        showSubQuestionsValue: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type ReportGetScopingQuestionsOutput =
   typeof ReportGetScopingQuestionsOutput.Type;
 
@@ -825,43 +804,42 @@ export type ReportNestedResourceCheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const ReportNestedResourceCheckNameAvailability =
-  /*@__PURE__*/ API.make(() => ({
+export const ReportNestedResourceCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReportNestedResourceCheckNameAvailabilityInput,
     outputSchema: ReportNestedResourceCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReportSyncCertRecordInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
-    }),
-  );
+export const ReportSyncCertRecordInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
+  }),
+);
 export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
 
 // Output Schema
-export const ReportSyncCertRecordOutput =
-  /*@__PURE__*/ Schema.Struct({
-    certRecord: Schema.optional(
-      Schema.Struct({
-        offerGuid: Schema.optional(Schema.String),
-        certificationStatus: Schema.optional(Schema.String),
-        ingestionStatus: Schema.optional(Schema.String),
-        controls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controlId: Schema.optional(Schema.String),
-              controlStatus: Schema.optional(Schema.String),
-            }),
-          ),
+export const ReportSyncCertRecordOutput = /*@__PURE__*/ Schema.Struct({
+  certRecord: Schema.optional(
+    Schema.Struct({
+      offerGuid: Schema.optional(Schema.String),
+      certificationStatus: Schema.optional(Schema.String),
+      ingestionStatus: Schema.optional(Schema.String),
+      controls: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            controlId: Schema.optional(Schema.String),
+            controlStatus: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ReportSyncCertRecordOutput = typeof ReportSyncCertRecordOutput.Type;
 
 // The operation
@@ -997,23 +975,23 @@ export type ScopingConfigurationCreateOrUpdateOutput =
  * @param reportName - Report Name.
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
-export const ScopingConfigurationCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ScopingConfigurationCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ScopingConfigurationCreateOrUpdateInput,
     outputSchema: ScopingConfigurationCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ScopingConfigurationDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
-    }),
-  );
+export const ScopingConfigurationDeleteInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  scopingConfigurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+  }),
+);
 export type ScopingConfigurationDeleteInput =
   typeof ScopingConfigurationDeleteInput.Type;
 
@@ -1035,41 +1013,39 @@ export const ScopingConfigurationDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ScopingConfigurationDeleteOutput,
 }));
 // Input Schema
-export const ScopingConfigurationGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
-    }),
-  );
+export const ScopingConfigurationGetInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  scopingConfigurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+  }),
+);
 export type ScopingConfigurationGetInput =
   typeof ScopingConfigurationGetInput.Type;
 
 // Output Schema
-export const ScopingConfigurationGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ScopingConfigurationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ScopingConfigurationGetOutput =
   typeof ScopingConfigurationGetOutput.Type;
 
@@ -1086,55 +1062,43 @@ export const ScopingConfigurationGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ScopingConfigurationGetOutput,
 }));
 // Input Schema
-export const ScopingConfigurationListInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
-    }),
-  );
+export const ScopingConfigurationListInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
+  }),
+);
 export type ScopingConfigurationListInput =
   typeof ScopingConfigurationListInput.Type;
 
 // Output Schema
-export const ScopingConfigurationListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ScopingConfigurationListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ScopingConfigurationListOutput =
   typeof ScopingConfigurationListOutput.Type;
 
@@ -1326,40 +1290,38 @@ export const SnapshotList = /*@__PURE__*/ API.make(() => ({
   outputSchema: SnapshotListOutput,
 }));
 // Input Schema
-export const WebhookCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    reportName: Schema.String.pipe(T.PathParam()),
-    webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
-    }),
-  );
+export const WebhookCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  reportName: Schema.String.pipe(T.PathParam()),
+  webhookName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+  }),
+);
 export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WebhookCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WebhookCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebhookCreateOrUpdateOutput =
   typeof WebhookCreateOrUpdateOutput.Type;
 

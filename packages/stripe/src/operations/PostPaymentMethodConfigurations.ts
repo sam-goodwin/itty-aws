@@ -3,8 +3,8 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPaymentMethodConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPaymentMethodConfigurationsInput = /*@__PURE__*/ Schema.Struct(
+  {
     acss_debit: Schema.optional(
       Schema.Struct({
         display_preference: Schema.optional(
@@ -521,19 +521,20 @@ export const PostPaymentMethodConfigurationsInput =
         ),
       }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/payment_method_configurations",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/payment_method_configurations",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPaymentMethodConfigurationsInput =
   typeof PostPaymentMethodConfigurationsInput.Type;
 
 // Output Schema
 export const PostPaymentMethodConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
@@ -1102,8 +1103,7 @@ export type PostPaymentMethodConfigurationsOutput =
  *
  * <p>Creates a payment method configuration</p>
  */
-export const PostPaymentMethodConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPaymentMethodConfigurationsInput,
-    outputSchema: PostPaymentMethodConfigurationsOutput,
-  }));
+export const PostPaymentMethodConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentMethodConfigurationsInput,
+  outputSchema: PostPaymentMethodConfigurationsOutput,
+}));

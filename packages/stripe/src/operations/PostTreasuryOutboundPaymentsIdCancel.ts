@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTreasuryOutboundPaymentsIdCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostTreasuryOutboundPaymentsIdCancelInput =
 
 // Output Schema
 export const PostTreasuryOutboundPaymentsIdCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -63,8 +63,9 @@ export type PostTreasuryOutboundPaymentsIdCancelOutput =
  *
  * <p>Cancel an OutboundPayment.</p>
  */
-export const PostTreasuryOutboundPaymentsIdCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTreasuryOutboundPaymentsIdCancel = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTreasuryOutboundPaymentsIdCancelInput,
     outputSchema: PostTreasuryOutboundPaymentsIdCancelOutput,
-  }));
+  }),
+);

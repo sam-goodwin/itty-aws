@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
@@ -82,24 +82,23 @@ export const AvailabilitySetsConvertToVirtualMachineScaleSet =
     outputSchema: AvailabilitySetsConvertToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
-export const AvailabilitySetsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-    }),
-  );
+export const AvailabilitySetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+  }),
+);
 export type AvailabilitySetsCreateOrUpdateInput =
   typeof AvailabilitySetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AvailabilitySetsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const AvailabilitySetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -117,7 +116,8 @@ export const AvailabilitySetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type AvailabilitySetsCreateOrUpdateOutput =
   typeof AvailabilitySetsCreateOrUpdateOutput.Type;
 
@@ -130,24 +130,22 @@ export type AvailabilitySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetName - The name of the availability set.
  */
-export const AvailabilitySetsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: AvailabilitySetsCreateOrUpdateInput,
-    outputSchema: AvailabilitySetsCreateOrUpdateOutput,
-  }));
+export const AvailabilitySetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsCreateOrUpdateInput,
+  outputSchema: AvailabilitySetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AvailabilitySetsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-    }),
-  );
+export const AvailabilitySetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+  }),
+);
 export type AvailabilitySetsDeleteInput =
   typeof AvailabilitySetsDeleteInput.Type;
 
@@ -170,41 +168,39 @@ export const AvailabilitySetsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: AvailabilitySetsDeleteOutput,
 }));
 // Input Schema
-export const AvailabilitySetsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-    }),
-  );
+export const AvailabilitySetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+  }),
+);
 export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
 
 // Output Schema
-export const AvailabilitySetsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AvailabilitySetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
 
 // The operation
@@ -221,55 +217,43 @@ export const AvailabilitySetsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: AvailabilitySetsGetOutput,
 }));
 // Input Schema
-export const AvailabilitySetsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets",
-    }),
-  );
+export const AvailabilitySetsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets",
+  }),
+);
 export type AvailabilitySetsListInput = typeof AvailabilitySetsListInput.Type;
 
 // Output Schema
-export const AvailabilitySetsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const AvailabilitySetsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AvailabilitySetsListOutput = typeof AvailabilitySetsListOutput.Type;
 
 // The operation
@@ -329,11 +313,12 @@ export type AvailabilitySetsListAvailableSizesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetName - The name of the availability set.
  */
-export const AvailabilitySetsListAvailableSizes =
-  /*@__PURE__*/ API.make(() => ({
+export const AvailabilitySetsListAvailableSizes = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilitySetsListAvailableSizesInput,
     outputSchema: AvailabilitySetsListAvailableSizesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AvailabilitySetsListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -396,11 +381,12 @@ export type AvailabilitySetsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param $expand - The expand expression to apply to the operation. Allowed values are 'instanceView'.
  */
-export const AvailabilitySetsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const AvailabilitySetsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AvailabilitySetsListBySubscriptionInput,
     outputSchema: AvailabilitySetsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -438,42 +424,40 @@ export const AvailabilitySetsStartMigrationToVirtualMachineScaleSet =
     outputSchema: AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
-export const AvailabilitySetsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-    }),
-  );
+export const AvailabilitySetsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  availabilitySetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+  }),
+);
 export type AvailabilitySetsUpdateInput =
   typeof AvailabilitySetsUpdateInput.Type;
 
 // Output Schema
-export const AvailabilitySetsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AvailabilitySetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AvailabilitySetsUpdateOutput =
   typeof AvailabilitySetsUpdateOutput.Type;
 
@@ -576,24 +560,26 @@ export type CapacityReservationGroupsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
-export const CapacityReservationGroupsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const CapacityReservationGroupsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CapacityReservationGroupsCreateOrUpdateInput,
     outputSchema: CapacityReservationGroupsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CapacityReservationGroupsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const CapacityReservationGroupsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+  }),
+);
 export type CapacityReservationGroupsDeleteInput =
   typeof CapacityReservationGroupsDeleteInput.Type;
 
@@ -611,49 +597,46 @@ export type CapacityReservationGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
-export const CapacityReservationGroupsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CapacityReservationGroupsDeleteInput,
-    outputSchema: CapacityReservationGroupsDeleteOutput,
-  }));
+export const CapacityReservationGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationGroupsDeleteInput,
+  outputSchema: CapacityReservationGroupsDeleteOutput,
+}));
 // Input Schema
-export const CapacityReservationGroupsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.Literals(["instanceView"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
-    }),
-  );
+export const CapacityReservationGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["instanceView"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+  }),
+);
 export type CapacityReservationGroupsGetInput =
   typeof CapacityReservationGroupsGetInput.Type;
 
 // Output Schema
-export const CapacityReservationGroupsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CapacityReservationGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacityReservationGroupsGetOutput =
   typeof CapacityReservationGroupsGetOutput.Type;
 
@@ -667,11 +650,10 @@ export type CapacityReservationGroupsGetOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the capacity reservations under the capacity reservation group which is a snapshot of the runtime properties of a capacity reservation that is managed by the platform and can change outside of control plane operations.
  */
-export const CapacityReservationGroupsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CapacityReservationGroupsGetInput,
-    outputSchema: CapacityReservationGroupsGetOutput,
-  }));
+export const CapacityReservationGroupsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationGroupsGetInput,
+  outputSchema: CapacityReservationGroupsGetOutput,
+}));
 // Input Schema
 export const CapacityReservationGroupsListByResourceGroupInput =
   /*@__PURE__*/ Schema.Struct({
@@ -827,18 +809,19 @@ export const CapacityReservationGroupsListBySubscription =
     outputSchema: CapacityReservationGroupsListBySubscriptionOutput,
   }));
 // Input Schema
-export const CapacityReservationGroupsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const CapacityReservationGroupsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+  }),
+);
 export type CapacityReservationGroupsUpdateInput =
   typeof CapacityReservationGroupsUpdateInput.Type;
 
@@ -875,11 +858,10 @@ export type CapacityReservationGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
-export const CapacityReservationGroupsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CapacityReservationGroupsUpdateInput,
-    outputSchema: CapacityReservationGroupsUpdateOutput,
-  }));
+export const CapacityReservationGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationGroupsUpdateInput,
+  outputSchema: CapacityReservationGroupsUpdateOutput,
+}));
 // Input Schema
 export const CapacityReservationsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -931,25 +913,25 @@ export type CapacityReservationsCreateOrUpdateOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  * @param capacityReservationName - The name of the capacity reservation.
  */
-export const CapacityReservationsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const CapacityReservationsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CapacityReservationsCreateOrUpdateInput,
     outputSchema: CapacityReservationsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const CapacityReservationsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
-    }),
-  );
+export const CapacityReservationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+  }),
+);
 export type CapacityReservationsDeleteInput =
   typeof CapacityReservationsDeleteInput.Type;
 
@@ -973,44 +955,42 @@ export const CapacityReservationsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: CapacityReservationsDeleteOutput,
 }));
 // Input Schema
-export const CapacityReservationsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.Literals(["instanceView"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
-    }),
-  );
+export const CapacityReservationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["instanceView"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+  }),
+);
 export type CapacityReservationsGetInput =
   typeof CapacityReservationsGetInput.Type;
 
 // Output Schema
-export const CapacityReservationsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CapacityReservationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacityReservationsGetOutput =
   typeof CapacityReservationsGetOutput.Type;
 
@@ -1106,43 +1086,41 @@ export const CapacityReservationsListByCapacityReservationGroup =
     outputSchema: CapacityReservationsListByCapacityReservationGroupOutput,
   }));
 // Input Schema
-export const CapacityReservationsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
-    }),
-  );
+export const CapacityReservationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
+  capacityReservationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+  }),
+);
 export type CapacityReservationsUpdateInput =
   typeof CapacityReservationsUpdateInput.Type;
 
 // Output Schema
-export const CapacityReservationsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CapacityReservationsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CapacityReservationsUpdateOutput =
   typeof CapacityReservationsUpdateOutput.Type;
 
@@ -1161,16 +1139,17 @@ export const CapacityReservationsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: CapacityReservationsUpdateOutput,
 }));
 // Input Schema
-export const ContainerServicesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ContainerServicesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+  }),
+);
 export type ContainerServicesCreateOrUpdateInput =
   typeof ContainerServicesCreateOrUpdateInput.Type;
 
@@ -1195,22 +1174,20 @@ export type ContainerServicesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param containerServiceName - The name of the container service in the specified subscription and resource group.
  */
-export const ContainerServicesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ContainerServicesCreateOrUpdateInput,
-    outputSchema: ContainerServicesCreateOrUpdateOutput,
-  }));
+export const ContainerServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesCreateOrUpdateInput,
+  outputSchema: ContainerServicesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ContainerServicesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
-    }),
-  );
+export const ContainerServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+  }),
+);
 export type ContainerServicesDeleteInput =
   typeof ContainerServicesDeleteInput.Type;
 
@@ -1233,27 +1210,25 @@ export const ContainerServicesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerServicesDeleteOutput,
 }));
 // Input Schema
-export const ContainerServicesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    containerServiceName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
-    }),
-  );
+export const ContainerServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+  }),
+);
 export type ContainerServicesGetInput = typeof ContainerServicesGetInput.Type;
 
 // Output Schema
-export const ContainerServicesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
+export const ContainerServicesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ContainerServicesGetOutput = typeof ContainerServicesGetOutput.Type;
 
 // The operation
@@ -1270,31 +1245,29 @@ export const ContainerServicesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ContainerServicesGetOutput,
 }));
 // Input Schema
-export const ContainerServicesListInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices",
-    }),
-  );
+export const ContainerServicesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices",
+  }),
+);
 export type ContainerServicesListInput = typeof ContainerServicesListInput.Type;
 
 // Output Schema
-export const ContainerServicesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+export const ContainerServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.String,
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ContainerServicesListOutput =
   typeof ContainerServicesListOutput.Type;
 
@@ -1348,11 +1321,12 @@ export type ContainerServicesListByResourceGroupOutput =
  *
  * @param resourceGroupName - The name of the resource group.
  */
-export const ContainerServicesListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const ContainerServicesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ContainerServicesListByResourceGroupInput,
     outputSchema: ContainerServicesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DedicatedHostGroupsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1402,24 +1376,22 @@ export type DedicatedHostGroupsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param hostGroupName - The name of the dedicated host group.
  */
-export const DedicatedHostGroupsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DedicatedHostGroupsCreateOrUpdateInput,
-    outputSchema: DedicatedHostGroupsCreateOrUpdateOutput,
-  }));
+export const DedicatedHostGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostGroupsCreateOrUpdateInput,
+  outputSchema: DedicatedHostGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DedicatedHostGroupsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
-    }),
-  );
+export const DedicatedHostGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+  }),
+);
 export type DedicatedHostGroupsDeleteInput =
   typeof DedicatedHostGroupsDeleteInput.Type;
 
@@ -1442,45 +1414,43 @@ export const DedicatedHostGroupsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHostGroupsDeleteOutput,
 }));
 // Input Schema
-export const DedicatedHostGroupsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["instanceView", "userData", "resiliencyView"]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
-    }),
-  );
+export const DedicatedHostGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(
+    Schema.Literals(["instanceView", "userData", "resiliencyView"]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+  }),
+);
 export type DedicatedHostGroupsGetInput =
   typeof DedicatedHostGroupsGetInput.Type;
 
 // Output Schema
-export const DedicatedHostGroupsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DedicatedHostGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DedicatedHostGroupsGetOutput =
   typeof DedicatedHostGroupsGetOutput.Type;
 
@@ -1560,11 +1530,12 @@ export type DedicatedHostGroupsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DedicatedHostGroupsListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
+export const DedicatedHostGroupsListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DedicatedHostGroupsListByResourceGroupInput,
     outputSchema: DedicatedHostGroupsListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const DedicatedHostGroupsListBySubscriptionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1625,48 +1596,47 @@ export type DedicatedHostGroupsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DedicatedHostGroupsListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
+export const DedicatedHostGroupsListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DedicatedHostGroupsListBySubscriptionInput,
     outputSchema: DedicatedHostGroupsListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DedicatedHostGroupsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
-    }),
-  );
+export const DedicatedHostGroupsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+  }),
+);
 export type DedicatedHostGroupsUpdateInput =
   typeof DedicatedHostGroupsUpdateInput.Type;
 
 // Output Schema
-export const DedicatedHostGroupsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DedicatedHostGroupsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DedicatedHostGroupsUpdateOutput =
   typeof DedicatedHostGroupsUpdateOutput.Type;
 
@@ -1684,43 +1654,41 @@ export const DedicatedHostGroupsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHostGroupsUpdateOutput,
 }));
 // Input Schema
-export const DedicatedHostsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
-    }),
-  );
+export const DedicatedHostsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+  }),
+);
 export type DedicatedHostsCreateOrUpdateInput =
   typeof DedicatedHostsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DedicatedHostsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DedicatedHostsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DedicatedHostsCreateOrUpdateOutput =
   typeof DedicatedHostsCreateOrUpdateOutput.Type;
 
@@ -1734,25 +1702,23 @@ export type DedicatedHostsCreateOrUpdateOutput =
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DedicatedHostsCreateOrUpdateInput,
-    outputSchema: DedicatedHostsCreateOrUpdateOutput,
-  }));
+export const DedicatedHostsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsCreateOrUpdateInput,
+  outputSchema: DedicatedHostsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DedicatedHostsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
-    }),
-  );
+export const DedicatedHostsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+  }),
+);
 export type DedicatedHostsDeleteInput = typeof DedicatedHostsDeleteInput.Type;
 
 // Output Schema
@@ -1792,26 +1758,25 @@ export const DedicatedHostsGetInput = /*@__PURE__*/ Schema.Struct({
 export type DedicatedHostsGetInput = typeof DedicatedHostsGetInput.Type;
 
 // Output Schema
-export const DedicatedHostsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DedicatedHostsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DedicatedHostsGetOutput = typeof DedicatedHostsGetOutput.Type;
 
 // The operation
@@ -1865,63 +1830,50 @@ export type DedicatedHostsListAvailableSizesOutput =
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsListAvailableSizes =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DedicatedHostsListAvailableSizesInput,
-    outputSchema: DedicatedHostsListAvailableSizesOutput,
-  }));
+export const DedicatedHostsListAvailableSizes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsListAvailableSizesInput,
+  outputSchema: DedicatedHostsListAvailableSizesOutput,
+}));
 // Input Schema
-export const DedicatedHostsListByHostGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts",
-    }),
-  );
+export const DedicatedHostsListByHostGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts",
+  }),
+);
 export type DedicatedHostsListByHostGroupInput =
   typeof DedicatedHostsListByHostGroupInput.Type;
 
 // Output Schema
-export const DedicatedHostsListByHostGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const DedicatedHostsListByHostGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DedicatedHostsListByHostGroupOutput =
   typeof DedicatedHostsListByHostGroupOutput.Type;
 
@@ -1934,25 +1886,23 @@ export type DedicatedHostsListByHostGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param hostGroupName - The name of the dedicated host group.
  */
-export const DedicatedHostsListByHostGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DedicatedHostsListByHostGroupInput,
-    outputSchema: DedicatedHostsListByHostGroupOutput,
-  }));
+export const DedicatedHostsListByHostGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsListByHostGroupInput,
+  outputSchema: DedicatedHostsListByHostGroupOutput,
+}));
 // Input Schema
-export const DedicatedHostsRedeployInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
-    }),
-  );
+export const DedicatedHostsRedeployInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
+  }),
+);
 export type DedicatedHostsRedeployInput =
   typeof DedicatedHostsRedeployInput.Type;
 
@@ -1976,19 +1926,18 @@ export const DedicatedHostsRedeploy = /*@__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHostsRedeployOutput,
 }));
 // Input Schema
-export const DedicatedHostsRestartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
-    }),
-  );
+export const DedicatedHostsRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
+  }),
+);
 export type DedicatedHostsRestartInput = typeof DedicatedHostsRestartInput.Type;
 
 // Output Schema
@@ -2011,42 +1960,40 @@ export const DedicatedHostsRestart = /*@__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHostsRestartOutput,
 }));
 // Input Schema
-export const DedicatedHostsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
-    }),
-  );
+export const DedicatedHostsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+  }),
+);
 export type DedicatedHostsUpdateInput = typeof DedicatedHostsUpdateInput.Type;
 
 // Output Schema
-export const DedicatedHostsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DedicatedHostsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DedicatedHostsUpdateOutput = typeof DedicatedHostsUpdateOutput.Type;
 
 // The operation
@@ -2064,41 +2011,39 @@ export const DedicatedHostsUpdate = /*@__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHostsUpdateOutput,
 }));
 // Input Schema
-export const ImagesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
-    }),
-  );
+export const ImagesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  imageName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+  }),
+);
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ImagesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
 
 // The operation
@@ -2247,56 +2192,44 @@ export const ImagesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: ImagesListOutput,
 }));
 // Input Schema
-export const ImagesListByResourceGroupInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images",
-    }),
-  );
+export const ImagesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images",
+  }),
+);
 export type ImagesListByResourceGroupInput =
   typeof ImagesListByResourceGroupInput.Type;
 
 // Output Schema
-export const ImagesListByResourceGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ImagesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ImagesListByResourceGroupOutput =
   typeof ImagesListByResourceGroupOutput.Type;
 
@@ -2396,11 +2329,12 @@ export type LogAnalyticsExportRequestRateByIntervalOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const LogAnalyticsExportRequestRateByInterval =
-  /*@__PURE__*/ API.make(() => ({
+export const LogAnalyticsExportRequestRateByInterval = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LogAnalyticsExportRequestRateByIntervalInput,
     outputSchema: LogAnalyticsExportRequestRateByIntervalOutput,
-  }));
+  }),
+);
 // Input Schema
 export const LogAnalyticsExportThrottledRequestsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2436,11 +2370,12 @@ export type LogAnalyticsExportThrottledRequestsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const LogAnalyticsExportThrottledRequests =
-  /*@__PURE__*/ API.make(() => ({
+export const LogAnalyticsExportThrottledRequests = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LogAnalyticsExportThrottledRequestsInput,
     outputSchema: LogAnalyticsExportThrottledRequestsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
@@ -2534,24 +2469,24 @@ export type ProximityPlacementGroupsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
-export const ProximityPlacementGroupsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ProximityPlacementGroupsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProximityPlacementGroupsCreateOrUpdateInput,
     outputSchema: ProximityPlacementGroupsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ProximityPlacementGroupsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
-    }),
-  );
+export const ProximityPlacementGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+  }),
+);
 export type ProximityPlacementGroupsDeleteInput =
   typeof ProximityPlacementGroupsDeleteInput.Type;
 
@@ -2569,49 +2504,46 @@ export type ProximityPlacementGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
-export const ProximityPlacementGroupsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProximityPlacementGroupsDeleteInput,
-    outputSchema: ProximityPlacementGroupsDeleteOutput,
-  }));
+export const ProximityPlacementGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProximityPlacementGroupsDeleteInput,
+  outputSchema: ProximityPlacementGroupsDeleteOutput,
+}));
 // Input Schema
-export const ProximityPlacementGroupsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    includeColocationStatus: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
-    }),
-  );
+export const ProximityPlacementGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  includeColocationStatus: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+  }),
+);
 export type ProximityPlacementGroupsGetInput =
   typeof ProximityPlacementGroupsGetInput.Type;
 
 // Output Schema
-export const ProximityPlacementGroupsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProximityPlacementGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProximityPlacementGroupsGetOutput =
   typeof ProximityPlacementGroupsGetOutput.Type;
 
@@ -2762,24 +2694,23 @@ export const ProximityPlacementGroupsListBySubscription =
     outputSchema: ProximityPlacementGroupsListBySubscriptionOutput,
   }));
 // Input Schema
-export const ProximityPlacementGroupsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
-    }),
-  );
+export const ProximityPlacementGroupsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+  }),
+);
 export type ProximityPlacementGroupsUpdateInput =
   typeof ProximityPlacementGroupsUpdateInput.Type;
 
 // Output Schema
-export const ProximityPlacementGroupsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ProximityPlacementGroupsUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2797,7 +2728,8 @@ export const ProximityPlacementGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ProximityPlacementGroupsUpdateOutput =
   typeof ProximityPlacementGroupsUpdateOutput.Type;
 
@@ -2810,11 +2742,10 @@ export type ProximityPlacementGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
-export const ProximityPlacementGroupsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProximityPlacementGroupsUpdateInput,
-    outputSchema: ProximityPlacementGroupsUpdateOutput,
-  }));
+export const ProximityPlacementGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProximityPlacementGroupsUpdateInput,
+  outputSchema: ProximityPlacementGroupsUpdateOutput,
+}));
 // Input Schema
 export const RestorePointCollectionsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2864,24 +2795,24 @@ export type RestorePointCollectionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param restorePointCollectionName - The name of the restore point collection.
  */
-export const RestorePointCollectionsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const RestorePointCollectionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RestorePointCollectionsCreateOrUpdateInput,
     outputSchema: RestorePointCollectionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const RestorePointCollectionsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
-    }),
-  );
+export const RestorePointCollectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  restorePointCollectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+  }),
+);
 export type RestorePointCollectionsDeleteInput =
   typeof RestorePointCollectionsDeleteInput.Type;
 
@@ -2899,49 +2830,46 @@ export type RestorePointCollectionsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param restorePointCollectionName - The name of the restore point collection.
  */
-export const RestorePointCollectionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RestorePointCollectionsDeleteInput,
-    outputSchema: RestorePointCollectionsDeleteOutput,
-  }));
+export const RestorePointCollectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorePointCollectionsDeleteInput,
+  outputSchema: RestorePointCollectionsDeleteOutput,
+}));
 // Input Schema
-export const RestorePointCollectionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.Literals(["restorePoints"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
-    }),
-  );
+export const RestorePointCollectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  restorePointCollectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["restorePoints"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+  }),
+);
 export type RestorePointCollectionsGetInput =
   typeof RestorePointCollectionsGetInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RestorePointCollectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RestorePointCollectionsGetOutput =
   typeof RestorePointCollectionsGetOutput.Type;
 
@@ -2960,56 +2888,44 @@ export const RestorePointCollectionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: RestorePointCollectionsGetOutput,
 }));
 // Input Schema
-export const RestorePointCollectionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections",
-    }),
-  );
+export const RestorePointCollectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections",
+  }),
+);
 export type RestorePointCollectionsListInput =
   typeof RestorePointCollectionsListInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RestorePointCollectionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type RestorePointCollectionsListOutput =
   typeof RestorePointCollectionsListOutput.Type;
 
@@ -3026,22 +2942,21 @@ export const RestorePointCollectionsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: RestorePointCollectionsListOutput,
 }));
 // Input Schema
-export const RestorePointCollectionsListAllInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/restorePointCollections",
-    }),
-  );
+export const RestorePointCollectionsListAllInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/restorePointCollections",
+  }),
+);
 export type RestorePointCollectionsListAllInput =
   typeof RestorePointCollectionsListAllInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsListAllOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const RestorePointCollectionsListAllOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3074,7 +2989,8 @@ export const RestorePointCollectionsListAllOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type RestorePointCollectionsListAllOutput =
   typeof RestorePointCollectionsListAllOutput.Type;
 
@@ -3085,48 +3001,45 @@ export type RestorePointCollectionsListAllOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RestorePointCollectionsListAll =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RestorePointCollectionsListAllInput,
-    outputSchema: RestorePointCollectionsListAllOutput,
-  }));
+export const RestorePointCollectionsListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorePointCollectionsListAllInput,
+  outputSchema: RestorePointCollectionsListAllOutput,
+}));
 // Input Schema
-export const RestorePointCollectionsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
-    }),
-  );
+export const RestorePointCollectionsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  restorePointCollectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+  }),
+);
 export type RestorePointCollectionsUpdateInput =
   typeof RestorePointCollectionsUpdateInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RestorePointCollectionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RestorePointCollectionsUpdateOutput =
   typeof RestorePointCollectionsUpdateOutput.Type;
 
@@ -3139,48 +3052,45 @@ export type RestorePointCollectionsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param restorePointCollectionName - The name of the restore point collection.
  */
-export const RestorePointCollectionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: RestorePointCollectionsUpdateInput,
-    outputSchema: RestorePointCollectionsUpdateOutput,
-  }));
+export const RestorePointCollectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorePointCollectionsUpdateInput,
+  outputSchema: RestorePointCollectionsUpdateOutput,
+}));
 // Input Schema
-export const RestorePointsCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
-    }),
-  );
+export const RestorePointsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  restorePointCollectionName: Schema.String.pipe(T.PathParam()),
+  restorePointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
+  }),
+);
 export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
 
 // Output Schema
-export const RestorePointsCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RestorePointsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RestorePointsCreateOutput = typeof RestorePointsCreateOutput.Type;
 
 // The operation
@@ -3198,19 +3108,18 @@ export const RestorePointsCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: RestorePointsCreateOutput,
 }));
 // Input Schema
-export const RestorePointsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
-    }),
-  );
+export const RestorePointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  restorePointCollectionName: Schema.String.pipe(T.PathParam()),
+  restorePointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
+  }),
+);
 export type RestorePointsDeleteInput = typeof RestorePointsDeleteInput.Type;
 
 // Output Schema
@@ -3285,41 +3194,39 @@ export const RestorePointsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: RestorePointsGetOutput,
 }));
 // Input Schema
-export const SpotPlacementScoresGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot",
-    }),
-  );
+export const SpotPlacementScoresGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot",
+  }),
+);
 export type SpotPlacementScoresGetInput =
   typeof SpotPlacementScoresGetInput.Type;
 
 // Output Schema
-export const SpotPlacementScoresGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SpotPlacementScoresGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SpotPlacementScoresGetOutput =
   typeof SpotPlacementScoresGetOutput.Type;
 
@@ -3336,45 +3243,43 @@ export const SpotPlacementScoresGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SpotPlacementScoresGetOutput,
 }));
 // Input Schema
-export const SpotPlacementScoresPostInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
-    }),
-  );
+export const SpotPlacementScoresPostInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
+  }),
+);
 export type SpotPlacementScoresPostInput =
   typeof SpotPlacementScoresPostInput.Type;
 
 // Output Schema
-export const SpotPlacementScoresPostOutput =
-  /*@__PURE__*/ Schema.Struct({
-    desiredLocations: Schema.optional(Schema.Array(Schema.String)),
-    desiredSizes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(Schema.String),
-        }),
-      ),
+export const SpotPlacementScoresPostOutput = /*@__PURE__*/ Schema.Struct({
+  desiredLocations: Schema.optional(Schema.Array(Schema.String)),
+  desiredSizes: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sku: Schema.optional(Schema.String),
+      }),
     ),
-    desiredCount: Schema.optional(Schema.Number),
-    availabilityZones: Schema.optional(Schema.Boolean),
-    placementScores: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          availabilityZone: Schema.optional(Schema.String),
-          score: Schema.optional(Schema.String),
-          isQuotaAvailable: Schema.optional(Schema.Boolean),
-        }),
-      ),
+  ),
+  desiredCount: Schema.optional(Schema.Number),
+  availabilityZones: Schema.optional(Schema.Boolean),
+  placementScores: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sku: Schema.optional(Schema.String),
+        region: Schema.optional(Schema.String),
+        availabilityZone: Schema.optional(Schema.String),
+        score: Schema.optional(Schema.String),
+        isQuotaAvailable: Schema.optional(Schema.Boolean),
+      }),
     ),
-  });
+  ),
+});
 export type SpotPlacementScoresPostOutput =
   typeof SpotPlacementScoresPostOutput.Type;
 
@@ -3391,41 +3296,39 @@ export const SpotPlacementScoresPost = /*@__PURE__*/ API.make(() => ({
   outputSchema: SpotPlacementScoresPostOutput,
 }));
 // Input Schema
-export const SshPublicKeysCreateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
-    }),
-  );
+export const SshPublicKeysCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  sshPublicKeyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+  }),
+);
 export type SshPublicKeysCreateInput = typeof SshPublicKeysCreateInput.Type;
 
 // Output Schema
-export const SshPublicKeysCreateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SshPublicKeysCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SshPublicKeysCreateOutput = typeof SshPublicKeysCreateOutput.Type;
 
 // The operation
@@ -3442,18 +3345,17 @@ export const SshPublicKeysCreate = /*@__PURE__*/ API.make(() => ({
   outputSchema: SshPublicKeysCreateOutput,
 }));
 // Input Schema
-export const SshPublicKeysDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
-    }),
-  );
+export const SshPublicKeysDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  sshPublicKeyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+  }),
+);
 export type SshPublicKeysDeleteInput = typeof SshPublicKeysDeleteInput.Type;
 
 // Output Schema
@@ -3474,28 +3376,26 @@ export const SshPublicKeysDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: SshPublicKeysDeleteOutput,
 }));
 // Input Schema
-export const SshPublicKeysGenerateKeyPairInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}/generateKeyPair",
-    }),
-  );
+export const SshPublicKeysGenerateKeyPairInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  sshPublicKeyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}/generateKeyPair",
+  }),
+);
 export type SshPublicKeysGenerateKeyPairInput =
   typeof SshPublicKeysGenerateKeyPairInput.Type;
 
 // Output Schema
-export const SshPublicKeysGenerateKeyPairOutput =
-  /*@__PURE__*/ Schema.Struct({
-    privateKey: SensitiveString,
-    publicKey: Schema.String,
-    id: Schema.String,
-  });
+export const SshPublicKeysGenerateKeyPairOutput = /*@__PURE__*/ Schema.Struct({
+  privateKey: SensitiveOutputString,
+  publicKey: Schema.String,
+  id: Schema.String,
+});
 export type SshPublicKeysGenerateKeyPairOutput =
   typeof SshPublicKeysGenerateKeyPairOutput.Type;
 
@@ -3508,11 +3408,10 @@ export type SshPublicKeysGenerateKeyPairOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sshPublicKeyName - The name of the SSH public key.
  */
-export const SshPublicKeysGenerateKeyPair =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SshPublicKeysGenerateKeyPairInput,
-    outputSchema: SshPublicKeysGenerateKeyPairOutput,
-  }));
+export const SshPublicKeysGenerateKeyPair = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SshPublicKeysGenerateKeyPairInput,
+  outputSchema: SshPublicKeysGenerateKeyPairOutput,
+}));
 // Input Schema
 export const SshPublicKeysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3624,22 +3523,22 @@ export type SshPublicKeysListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const SshPublicKeysListByResourceGroup =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SshPublicKeysListByResourceGroupInput,
-    outputSchema: SshPublicKeysListByResourceGroupOutput,
-  }));
+export const SshPublicKeysListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SshPublicKeysListByResourceGroupInput,
+  outputSchema: SshPublicKeysListByResourceGroupOutput,
+}));
 // Input Schema
-export const SshPublicKeysListBySubscriptionInput =
-  /*@__PURE__*/ Schema.Struct({
+export const SshPublicKeysListBySubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
+  }),
+);
 export type SshPublicKeysListBySubscriptionInput =
   typeof SshPublicKeysListBySubscriptionInput.Type;
 
@@ -3689,47 +3588,44 @@ export type SshPublicKeysListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SshPublicKeysListBySubscription =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: SshPublicKeysListBySubscriptionInput,
-    outputSchema: SshPublicKeysListBySubscriptionOutput,
-  }));
+export const SshPublicKeysListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SshPublicKeysListBySubscriptionInput,
+  outputSchema: SshPublicKeysListBySubscriptionOutput,
+}));
 // Input Schema
-export const SshPublicKeysUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
-    }),
-  );
+export const SshPublicKeysUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  sshPublicKeyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+  }),
+);
 export type SshPublicKeysUpdateInput = typeof SshPublicKeysUpdateInput.Type;
 
 // Output Schema
-export const SshPublicKeysUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SshPublicKeysUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SshPublicKeysUpdateOutput = typeof SshPublicKeysUpdateOutput.Type;
 
 // The operation
@@ -3837,11 +3733,10 @@ export type VirtualMachineExtensionImagesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineExtensionImagesGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineExtensionImagesGetInput,
-    outputSchema: VirtualMachineExtensionImagesGetOutput,
-  }));
+export const VirtualMachineExtensionImagesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineExtensionImagesGetInput,
+  outputSchema: VirtualMachineExtensionImagesGetOutput,
+}));
 // Input Schema
 export const VirtualMachineExtensionImagesListTypesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3892,11 +3787,12 @@ export type VirtualMachineExtensionImagesListTypesOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineExtensionImagesListTypes =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineExtensionImagesListTypes = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineExtensionImagesListTypesInput,
     outputSchema: VirtualMachineExtensionImagesListTypesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineExtensionImagesListVersionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3952,11 +3848,12 @@ export type VirtualMachineExtensionImagesListVersionsOutput =
  * @param location - The name of Azure region.
  * @param $filter - The filter to apply on the operation.
  */
-export const VirtualMachineExtensionImagesListVersions =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineExtensionImagesListVersions = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineExtensionImagesListVersionsInput,
     outputSchema: VirtualMachineExtensionImagesListVersionsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineExtensionsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4008,25 +3905,25 @@ export type VirtualMachineExtensionsCreateOrUpdateOutput =
  * @param vmName - The name of the virtual machine.
  * @param vmExtensionName - The name of the virtual machine extension.
  */
-export const VirtualMachineExtensionsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineExtensionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineExtensionsCreateOrUpdateInput,
     outputSchema: VirtualMachineExtensionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineExtensionsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
-    }),
-  );
+export const VirtualMachineExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  vmExtensionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+  }),
+);
 export type VirtualMachineExtensionsDeleteInput =
   typeof VirtualMachineExtensionsDeleteInput.Type;
 
@@ -4045,50 +3942,47 @@ export type VirtualMachineExtensionsDeleteOutput =
  * @param vmName - The name of the virtual machine.
  * @param vmExtensionName - The name of the virtual machine extension.
  */
-export const VirtualMachineExtensionsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineExtensionsDeleteInput,
-    outputSchema: VirtualMachineExtensionsDeleteOutput,
-  }));
+export const VirtualMachineExtensionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineExtensionsDeleteInput,
+  outputSchema: VirtualMachineExtensionsDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineExtensionsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
-    }),
-  );
+export const VirtualMachineExtensionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  vmExtensionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+  }),
+);
 export type VirtualMachineExtensionsGetInput =
   typeof VirtualMachineExtensionsGetInput.Type;
 
 // Output Schema
-export const VirtualMachineExtensionsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineExtensionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineExtensionsGetOutput =
   typeof VirtualMachineExtensionsGetOutput.Type;
 
@@ -4108,59 +4002,57 @@ export const VirtualMachineExtensionsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachineExtensionsGetOutput,
 }));
 // Input Schema
-export const VirtualMachineExtensionsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
-    }),
-  );
+export const VirtualMachineExtensionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
+  }),
+);
 export type VirtualMachineExtensionsListInput =
   typeof VirtualMachineExtensionsListInput.Type;
 
 // Output Schema
-export const VirtualMachineExtensionsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const VirtualMachineExtensionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  });
+  ),
+});
 export type VirtualMachineExtensionsListOutput =
   typeof VirtualMachineExtensionsListOutput.Type;
 
@@ -4174,31 +4066,29 @@ export type VirtualMachineExtensionsListOutput =
  * @param vmName - The name of the virtual machine.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineExtensionsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineExtensionsListInput,
-    outputSchema: VirtualMachineExtensionsListOutput,
-  }));
+export const VirtualMachineExtensionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineExtensionsListInput,
+  outputSchema: VirtualMachineExtensionsListOutput,
+}));
 // Input Schema
-export const VirtualMachineExtensionsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
-    }),
-  );
+export const VirtualMachineExtensionsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  vmExtensionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+  }),
+);
 export type VirtualMachineExtensionsUpdateInput =
   typeof VirtualMachineExtensionsUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineExtensionsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineExtensionsUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4216,7 +4106,8 @@ export const VirtualMachineExtensionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type VirtualMachineExtensionsUpdateOutput =
   typeof VirtualMachineExtensionsUpdateOutput.Type;
 
@@ -4230,14 +4121,13 @@ export type VirtualMachineExtensionsUpdateOutput =
  * @param vmName - The name of the virtual machine.
  * @param vmExtensionName - The name of the virtual machine extension.
  */
-export const VirtualMachineExtensionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineExtensionsUpdateInput,
-    outputSchema: VirtualMachineExtensionsUpdateOutput,
-  }));
+export const VirtualMachineExtensionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineExtensionsUpdateInput,
+  outputSchema: VirtualMachineExtensionsUpdateOutput,
+}));
 // Input Schema
-export const VirtualMachineImagesEdgeZoneGetInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineImagesEdgeZoneGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4246,12 +4136,13 @@ export const VirtualMachineImagesEdgeZoneGetInput =
     version: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+  }),
+);
 export type VirtualMachineImagesEdgeZoneGetInput =
   typeof VirtualMachineImagesEdgeZoneGetInput.Type;
 
@@ -4276,11 +4167,10 @@ export type VirtualMachineImagesEdgeZoneGetOutput =
  * @param version - A valid image SKU version.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const VirtualMachineImagesEdgeZoneGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImagesEdgeZoneGetInput,
-    outputSchema: VirtualMachineImagesEdgeZoneGetOutput,
-  }));
+export const VirtualMachineImagesEdgeZoneGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesEdgeZoneGetInput,
+  outputSchema: VirtualMachineImagesEdgeZoneGetOutput,
+}));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4328,11 +4218,10 @@ export type VirtualMachineImagesEdgeZoneListOutput =
  * @param $top - An integer value specifying the number of images to return that matches supplied values.
  * @param $orderby - Specifies the order of the results returned. Formatted as an OData query.
  */
-export const VirtualMachineImagesEdgeZoneList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImagesEdgeZoneListInput,
-    outputSchema: VirtualMachineImagesEdgeZoneListOutput,
-  }));
+export const VirtualMachineImagesEdgeZoneList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesEdgeZoneListInput,
+  outputSchema: VirtualMachineImagesEdgeZoneListOutput,
+}));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListOffersInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4370,11 +4259,12 @@ export type VirtualMachineImagesEdgeZoneListOffersOutput =
  * @param edgeZone - The name of the edge zone.
  * @param publisherName - A valid image publisher.
  */
-export const VirtualMachineImagesEdgeZoneListOffers =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineImagesEdgeZoneListOffers = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImagesEdgeZoneListOffersInput,
     outputSchema: VirtualMachineImagesEdgeZoneListOffersOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListPublishersInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4454,35 +4344,34 @@ export type VirtualMachineImagesEdgeZoneListSkusOutput =
  * @param publisherName - A valid image publisher.
  * @param offer - A valid image publisher offer.
  */
-export const VirtualMachineImagesEdgeZoneListSkus =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineImagesEdgeZoneListSkus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImagesEdgeZoneListSkusInput,
     outputSchema: VirtualMachineImagesEdgeZoneListSkusOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineImagesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    offer: Schema.String.pipe(T.PathParam()),
-    skus: Schema.String.pipe(T.PathParam()),
-    version: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
-    }),
-  );
+export const VirtualMachineImagesGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  offer: Schema.String.pipe(T.PathParam()),
+  skus: Schema.String.pipe(T.PathParam()),
+  version: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+  }),
+);
 export type VirtualMachineImagesGetInput =
   typeof VirtualMachineImagesGetInput.Type;
 
 // Output Schema
-export const VirtualMachineImagesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const VirtualMachineImagesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type VirtualMachineImagesGetOutput =
   typeof VirtualMachineImagesGetOutput.Type;
 
@@ -4503,33 +4392,31 @@ export const VirtualMachineImagesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachineImagesGetOutput,
 }));
 // Input Schema
-export const VirtualMachineImagesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    offer: Schema.String.pipe(T.PathParam()),
-    skus: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
-    }),
-  );
+export const VirtualMachineImagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  offer: Schema.String.pipe(T.PathParam()),
+  skus: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
+  }),
+);
 export type VirtualMachineImagesListInput =
   typeof VirtualMachineImagesListInput.Type;
 
 // Output Schema
-export const VirtualMachineImagesListOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  );
+export const VirtualMachineImagesListOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }),
+);
 export type VirtualMachineImagesListOutput =
   typeof VirtualMachineImagesListOutput.Type;
 
@@ -4589,34 +4476,33 @@ export type VirtualMachineImagesListByEdgeZoneOutput =
  * @param location - The name of Azure region.
  * @param edgeZone - The name of the edge zone.
  */
-export const VirtualMachineImagesListByEdgeZone =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineImagesListByEdgeZone = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImagesListByEdgeZoneInput,
     outputSchema: VirtualMachineImagesListByEdgeZoneOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineImagesListOffersInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers",
-    }),
-  );
+export const VirtualMachineImagesListOffersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers",
+  }),
+);
 export type VirtualMachineImagesListOffersInput =
   typeof VirtualMachineImagesListOffersInput.Type;
 
 // Output Schema
-export const VirtualMachineImagesListOffersOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  );
+export const VirtualMachineImagesListOffersOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }),
+);
 export type VirtualMachineImagesListOffersOutput =
   typeof VirtualMachineImagesListOffersOutput.Type;
 
@@ -4629,11 +4515,10 @@ export type VirtualMachineImagesListOffersOutput =
  * @param location - The name of Azure region.
  * @param publisherName - A valid image publisher.
  */
-export const VirtualMachineImagesListOffers =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImagesListOffersInput,
-    outputSchema: VirtualMachineImagesListOffersOutput,
-  }));
+export const VirtualMachineImagesListOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesListOffersInput,
+  outputSchema: VirtualMachineImagesListOffersOutput,
+}));
 // Input Schema
 export const VirtualMachineImagesListPublishersInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4667,35 +4552,34 @@ export type VirtualMachineImagesListPublishersOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineImagesListPublishers =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineImagesListPublishers = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineImagesListPublishersInput,
     outputSchema: VirtualMachineImagesListPublishersOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineImagesListSkusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    offer: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
-    }),
-  );
+export const VirtualMachineImagesListSkusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  offer: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
+  }),
+);
 export type VirtualMachineImagesListSkusInput =
   typeof VirtualMachineImagesListSkusInput.Type;
 
 // Output Schema
-export const VirtualMachineImagesListSkusOutput =
-  /*@__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  );
+export const VirtualMachineImagesListSkusOutput = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }),
+);
 export type VirtualMachineImagesListSkusOutput =
   typeof VirtualMachineImagesListSkusOutput.Type;
 
@@ -4709,11 +4593,10 @@ export type VirtualMachineImagesListSkusOutput =
  * @param publisherName - A valid image publisher.
  * @param offer - A valid image publisher offer.
  */
-export const VirtualMachineImagesListSkus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineImagesListSkusInput,
-    outputSchema: VirtualMachineImagesListSkusOutput,
-  }));
+export const VirtualMachineImagesListSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesListSkusInput,
+  outputSchema: VirtualMachineImagesListSkusOutput,
+}));
 // Input Schema
 export const VirtualMachineRunCommandsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4765,25 +4648,27 @@ export type VirtualMachineRunCommandsCreateOrUpdateOutput =
  * @param vmName - The name of the VirtualMachine
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
-export const VirtualMachineRunCommandsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineRunCommandsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineRunCommandsCreateOrUpdateInput,
     outputSchema: VirtualMachineRunCommandsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineRunCommandsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineRunCommandsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+  }),
+);
 export type VirtualMachineRunCommandsDeleteInput =
   typeof VirtualMachineRunCommandsDeleteInput.Type;
 
@@ -4802,36 +4687,33 @@ export type VirtualMachineRunCommandsDeleteOutput =
  * @param vmName - The name of the VirtualMachine
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
-export const VirtualMachineRunCommandsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineRunCommandsDeleteInput,
-    outputSchema: VirtualMachineRunCommandsDeleteOutput,
-  }));
+export const VirtualMachineRunCommandsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineRunCommandsDeleteInput,
+  outputSchema: VirtualMachineRunCommandsDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineRunCommandsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    commandId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}",
-    }),
-  );
+export const VirtualMachineRunCommandsGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  commandId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}",
+  }),
+);
 export type VirtualMachineRunCommandsGetInput =
   typeof VirtualMachineRunCommandsGetInput.Type;
 
 // Output Schema
-export const VirtualMachineRunCommandsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    $schema: Schema.String,
-    id: Schema.String,
-    osType: Schema.Literals(["Windows", "Linux"]),
-    label: Schema.String,
-    description: Schema.String,
-  });
+export const VirtualMachineRunCommandsGetOutput = /*@__PURE__*/ Schema.Struct({
+  $schema: Schema.String,
+  id: Schema.String,
+  osType: Schema.Literals(["Windows", "Linux"]),
+  label: Schema.String,
+  description: Schema.String,
+});
 export type VirtualMachineRunCommandsGetOutput =
   typeof VirtualMachineRunCommandsGetOutput.Type;
 
@@ -4844,11 +4726,10 @@ export type VirtualMachineRunCommandsGetOutput =
  * @param commandId - Specifies a commandId of predefined built-in script. Command IDs available for Linux are listed at https://aka.ms/RunCommandManagedLinux#available-commands, Windows at https://aka.ms/RunCommandManagedWindows#available-commands.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const VirtualMachineRunCommandsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineRunCommandsGetInput,
-    outputSchema: VirtualMachineRunCommandsGetOutput,
-  }));
+export const VirtualMachineRunCommandsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineRunCommandsGetInput,
+  outputSchema: VirtualMachineRunCommandsGetOutput,
+}));
 // Input Schema
 export const VirtualMachineRunCommandsGetByVirtualMachineInput =
   /*@__PURE__*/ Schema.Struct({
@@ -4908,34 +4789,32 @@ export const VirtualMachineRunCommandsGetByVirtualMachine =
     outputSchema: VirtualMachineRunCommandsGetByVirtualMachineOutput,
   }));
 // Input Schema
-export const VirtualMachineRunCommandsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands",
-    }),
-  );
+export const VirtualMachineRunCommandsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands",
+  }),
+);
 export type VirtualMachineRunCommandsListInput =
   typeof VirtualMachineRunCommandsListInput.Type;
 
 // Output Schema
-export const VirtualMachineRunCommandsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        $schema: Schema.String,
-        id: Schema.String,
-        osType: Schema.Literals(["Windows", "Linux"]),
-        label: Schema.String,
-        description: Schema.String,
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachineRunCommandsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      $schema: Schema.String,
+      id: Schema.String,
+      osType: Schema.Literals(["Windows", "Linux"]),
+      label: Schema.String,
+      description: Schema.String,
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachineRunCommandsListOutput =
   typeof VirtualMachineRunCommandsListOutput.Type;
 
@@ -4947,11 +4826,10 @@ export type VirtualMachineRunCommandsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineRunCommandsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineRunCommandsListInput,
-    outputSchema: VirtualMachineRunCommandsListOutput,
-  }));
+export const VirtualMachineRunCommandsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineRunCommandsListInput,
+  outputSchema: VirtualMachineRunCommandsListOutput,
+}));
 // Input Schema
 export const VirtualMachineRunCommandsListByVirtualMachineInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5024,19 +4902,20 @@ export const VirtualMachineRunCommandsListByVirtualMachine =
     outputSchema: VirtualMachineRunCommandsListByVirtualMachineOutput,
   }));
 // Input Schema
-export const VirtualMachineRunCommandsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineRunCommandsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+  }),
+);
 export type VirtualMachineRunCommandsUpdateInput =
   typeof VirtualMachineRunCommandsUpdateInput.Type;
 
@@ -5074,92 +4953,89 @@ export type VirtualMachineRunCommandsUpdateOutput =
  * @param vmName - The name of the VirtualMachine
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
-export const VirtualMachineRunCommandsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineRunCommandsUpdateInput,
-    outputSchema: VirtualMachineRunCommandsUpdateOutput,
-  }));
+export const VirtualMachineRunCommandsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineRunCommandsUpdateInput,
+  outputSchema: VirtualMachineRunCommandsUpdateOutput,
+}));
 // Input Schema
-export const VirtualMachinesAssessPatchesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
-    }),
-  );
+export const VirtualMachinesAssessPatchesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
+  }),
+);
 export type VirtualMachinesAssessPatchesInput =
   typeof VirtualMachinesAssessPatchesInput.Type;
 
 // Output Schema
-export const VirtualMachinesAssessPatchesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "InProgress",
-        "Failed",
-        "Succeeded",
-        "CompletedWithWarnings",
-      ]),
-    ),
-    assessmentActivityId: Schema.optional(Schema.String),
-    rebootPending: Schema.optional(Schema.Boolean),
-    criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
-    otherPatchCount: Schema.optional(Schema.Number),
-    startDateTime: Schema.optional(Schema.String),
-    availablePatches: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          patchId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.String),
-          kbId: Schema.optional(Schema.String),
-          classifications: Schema.optional(Schema.Array(Schema.String)),
-          rebootBehavior: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "NeverReboots",
-              "AlwaysRequiresReboot",
-              "CanRequestReboot",
-            ]),
-          ),
-          activityId: Schema.optional(Schema.String),
-          publishedDate: Schema.optional(Schema.String),
-          lastModifiedDateTime: Schema.optional(Schema.String),
-          assessmentState: Schema.optional(
-            Schema.Literals(["Unknown", "Available"]),
-          ),
-        }),
-      ),
-    ),
-    error: Schema.optional(
+export const VirtualMachinesAssessPatchesOutput = /*@__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.Literals([
+      "Unknown",
+      "InProgress",
+      "Failed",
+      "Succeeded",
+      "CompletedWithWarnings",
+    ]),
+  ),
+  assessmentActivityId: Schema.optional(Schema.String),
+  rebootPending: Schema.optional(Schema.Boolean),
+  criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
+  otherPatchCount: Schema.optional(Schema.Number),
+  startDateTime: Schema.optional(Schema.String),
+  availablePatches: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-            }),
-          ),
+        patchId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        kbId: Schema.optional(Schema.String),
+        classifications: Schema.optional(Schema.Array(Schema.String)),
+        rebootBehavior: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "NeverReboots",
+            "AlwaysRequiresReboot",
+            "CanRequestReboot",
+          ]),
         ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            exceptiontype: Schema.optional(Schema.String),
-            errordetail: Schema.optional(Schema.String),
-          }),
+        activityId: Schema.optional(Schema.String),
+        publishedDate: Schema.optional(Schema.String),
+        lastModifiedDateTime: Schema.optional(Schema.String),
+        assessmentState: Schema.optional(
+          Schema.Literals(["Unknown", "Available"]),
         ),
-        code: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
       }),
     ),
-  });
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      details: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      innererror: Schema.optional(
+        Schema.Struct({
+          exceptiontype: Schema.optional(Schema.String),
+          errordetail: Schema.optional(Schema.String),
+        }),
+      ),
+      code: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesAssessPatchesOutput =
   typeof VirtualMachinesAssessPatchesOutput.Type;
 
@@ -5172,11 +5048,10 @@ export type VirtualMachinesAssessPatchesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesAssessPatches =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesAssessPatchesInput,
-    outputSchema: VirtualMachinesAssessPatchesOutput,
-  }));
+export const VirtualMachinesAssessPatches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesAssessPatchesInput,
+  outputSchema: VirtualMachinesAssessPatchesOutput,
+}));
 // Input Schema
 export const VirtualMachinesAttachDetachDataDisksInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5324,11 +5199,12 @@ export type VirtualMachinesAttachDetachDataDisksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesAttachDetachDataDisks =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachinesAttachDetachDataDisks = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachinesAttachDetachDataDisksInput,
     outputSchema: VirtualMachinesAttachDetachDataDisksOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5402,11 +5278,12 @@ export type VirtualMachineScaleSetExtensionsDeleteOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param vmssExtensionName - The name of the VM scale set extension.
  */
-export const VirtualMachineScaleSetExtensionsDelete =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetExtensionsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetExtensionsDeleteInput,
     outputSchema: VirtualMachineScaleSetExtensionsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetExtensionsGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5444,11 +5321,12 @@ export type VirtualMachineScaleSetExtensionsGetOutput =
  * @param vmssExtensionName - The name of the VM scale set extension.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineScaleSetExtensionsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetExtensionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetExtensionsGetInput,
     outputSchema: VirtualMachineScaleSetExtensionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetExtensionsListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5487,11 +5365,12 @@ export type VirtualMachineScaleSetExtensionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetExtensionsList =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetExtensionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetExtensionsListInput,
     outputSchema: VirtualMachineScaleSetExtensionsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetExtensionsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5527,11 +5406,12 @@ export type VirtualMachineScaleSetExtensionsUpdateOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param vmssExtensionName - The name of the VM scale set extension.
  */
-export const VirtualMachineScaleSetExtensionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetExtensionsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetExtensionsUpdateInput,
     outputSchema: VirtualMachineScaleSetExtensionsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetRollingUpgradesCancelInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5819,11 +5699,12 @@ export type VirtualMachineScaleSetsCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachineScaleSetsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsCreateOrUpdateInput,
     outputSchema: VirtualMachineScaleSetsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetsDeallocateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5857,25 +5738,23 @@ export type VirtualMachineScaleSetsDeallocateOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param hibernate - Optional parameter to hibernate a virtual machine from the VM scale set. (This feature is available for VMSS with Flexible OrchestrationMode only)
  */
-export const VirtualMachineScaleSetsDeallocate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsDeallocateInput,
-    outputSchema: VirtualMachineScaleSetsDeallocateOutput,
-  }));
+export const VirtualMachineScaleSetsDeallocate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsDeallocateInput,
+  outputSchema: VirtualMachineScaleSetsDeallocateOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    forceDeletion: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
-    }),
-  );
+export const VirtualMachineScaleSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  forceDeletion: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+  }),
+);
 export type VirtualMachineScaleSetsDeleteInput =
   typeof VirtualMachineScaleSetsDeleteInput.Type;
 
@@ -5894,11 +5773,10 @@ export type VirtualMachineScaleSetsDeleteOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param forceDeletion - Optional parameter to force delete a VM scale set. (Feature in Preview)
  */
-export const VirtualMachineScaleSetsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsDeleteInput,
-    outputSchema: VirtualMachineScaleSetsDeleteOutput,
-  }));
+export const VirtualMachineScaleSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsDeleteInput,
+  outputSchema: VirtualMachineScaleSetsDeleteOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsDeleteInstancesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5932,11 +5810,12 @@ export type VirtualMachineScaleSetsDeleteInstancesOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param forceDeletion - Optional parameter to force delete virtual machines from the VM scale set. (Feature in Preview)
  */
-export const VirtualMachineScaleSetsDeleteInstances =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsDeleteInstances = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsDeleteInstancesInput,
     outputSchema: VirtualMachineScaleSetsDeleteInstancesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkInput =
   /*@__PURE__*/ Schema.Struct({
@@ -5985,43 +5864,41 @@ export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDoma
       VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkOutput,
   }));
 // Input Schema
-export const VirtualMachineScaleSetsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(Schema.Literals(["userData"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
-    }),
-  );
+export const VirtualMachineScaleSetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.Literals(["userData"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+  }),
+);
 export type VirtualMachineScaleSetsGetInput =
   typeof VirtualMachineScaleSetsGetInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineScaleSetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineScaleSetsGetOutput =
   typeof VirtualMachineScaleSetsGetOutput.Type;
 
@@ -6125,11 +6002,12 @@ export type VirtualMachineScaleSetsGetInstanceViewOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsGetInstanceView =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsGetInstanceView = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsGetInstanceViewInput,
     outputSchema: VirtualMachineScaleSetsGetInstanceViewOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6261,56 +6139,44 @@ export const VirtualMachineScaleSetsGetOSUpgradeHistory =
     outputSchema: VirtualMachineScaleSetsGetOSUpgradeHistoryOutput,
   }));
 // Input Schema
-export const VirtualMachineScaleSetsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets",
-    }),
-  );
+export const VirtualMachineScaleSetsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets",
+  }),
+);
 export type VirtualMachineScaleSetsListInput =
   typeof VirtualMachineScaleSetsListInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachineScaleSetsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachineScaleSetsListOutput =
   typeof VirtualMachineScaleSetsListOutput.Type;
 
@@ -6327,22 +6193,21 @@ export const VirtualMachineScaleSetsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachineScaleSetsListOutput,
 }));
 // Input Schema
-export const VirtualMachineScaleSetsListAllInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets",
-    }),
-  );
+export const VirtualMachineScaleSetsListAllInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets",
+  }),
+);
 export type VirtualMachineScaleSetsListAllInput =
   typeof VirtualMachineScaleSetsListAllInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsListAllOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetsListAllOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6375,7 +6240,8 @@ export const VirtualMachineScaleSetsListAllOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type VirtualMachineScaleSetsListAllOutput =
   typeof VirtualMachineScaleSetsListAllOutput.Type;
 
@@ -6386,11 +6252,10 @@ export type VirtualMachineScaleSetsListAllOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const VirtualMachineScaleSetsListAll =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsListAllInput,
-    outputSchema: VirtualMachineScaleSetsListAllOutput,
-  }));
+export const VirtualMachineScaleSetsListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsListAllInput,
+  outputSchema: VirtualMachineScaleSetsListAllOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsListByLocationInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6453,24 +6318,26 @@ export type VirtualMachineScaleSetsListByLocationOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineScaleSetsListByLocation =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsListByLocation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsListByLocationInput,
     outputSchema: VirtualMachineScaleSetsListByLocationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineScaleSetsListSkusInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetsListSkusInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus",
+  }),
+);
 export type VirtualMachineScaleSetsListSkusInput =
   typeof VirtualMachineScaleSetsListSkusInput.Type;
 
@@ -6511,11 +6378,10 @@ export type VirtualMachineScaleSetsListSkusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsListSkus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsListSkusInput,
-    outputSchema: VirtualMachineScaleSetsListSkusOutput,
-  }));
+export const VirtualMachineScaleSetsListSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsListSkusInput,
+  outputSchema: VirtualMachineScaleSetsListSkusOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsPerformMaintenanceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6547,25 +6413,27 @@ export type VirtualMachineScaleSetsPerformMaintenanceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsPerformMaintenance =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsPerformMaintenance = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsPerformMaintenanceInput,
     outputSchema: VirtualMachineScaleSetsPerformMaintenanceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineScaleSetsPowerOffInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetsPowerOffInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     skipShutdown: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
+  }),
+);
 export type VirtualMachineScaleSetsPowerOffInput =
   typeof VirtualMachineScaleSetsPowerOffInput.Type;
 
@@ -6584,24 +6452,22 @@ export type VirtualMachineScaleSetsPowerOffOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param skipShutdown - The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified
  */
-export const VirtualMachineScaleSetsPowerOff =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsPowerOffInput,
-    outputSchema: VirtualMachineScaleSetsPowerOffOutput,
-  }));
+export const VirtualMachineScaleSetsPowerOff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsPowerOffInput,
+  outputSchema: VirtualMachineScaleSetsPowerOffOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsReapplyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
-    }),
-  );
+export const VirtualMachineScaleSetsReapplyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
+  }),
+);
 export type VirtualMachineScaleSetsReapplyInput =
   typeof VirtualMachineScaleSetsReapplyInput.Type;
 
@@ -6619,24 +6485,24 @@ export type VirtualMachineScaleSetsReapplyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsReapply =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsReapplyInput,
-    outputSchema: VirtualMachineScaleSetsReapplyOutput,
-  }));
+export const VirtualMachineScaleSetsReapply = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsReapplyInput,
+  outputSchema: VirtualMachineScaleSetsReapplyOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsRedeployInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetsRedeployInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
+  }),
+);
 export type VirtualMachineScaleSetsRedeployInput =
   typeof VirtualMachineScaleSetsRedeployInput.Type;
 
@@ -6654,24 +6520,22 @@ export type VirtualMachineScaleSetsRedeployOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsRedeploy =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsRedeployInput,
-    outputSchema: VirtualMachineScaleSetsRedeployOutput,
-  }));
+export const VirtualMachineScaleSetsRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsRedeployInput,
+  outputSchema: VirtualMachineScaleSetsRedeployOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsReimageInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
-    }),
-  );
+export const VirtualMachineScaleSetsReimageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
+  }),
+);
 export type VirtualMachineScaleSetsReimageInput =
   typeof VirtualMachineScaleSetsReimageInput.Type;
 
@@ -6689,11 +6553,10 @@ export type VirtualMachineScaleSetsReimageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsReimage =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsReimageInput,
-    outputSchema: VirtualMachineScaleSetsReimageOutput,
-  }));
+export const VirtualMachineScaleSetsReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsReimageInput,
+  outputSchema: VirtualMachineScaleSetsReimageOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsReimageAllInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6725,24 +6588,22 @@ export type VirtualMachineScaleSetsReimageAllOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsReimageAll =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsReimageAllInput,
-    outputSchema: VirtualMachineScaleSetsReimageAllOutput,
-  }));
+export const VirtualMachineScaleSetsReimageAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsReimageAllInput,
+  outputSchema: VirtualMachineScaleSetsReimageAllOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsRestartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
-    }),
-  );
+export const VirtualMachineScaleSetsRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
+  }),
+);
 export type VirtualMachineScaleSetsRestartInput =
   typeof VirtualMachineScaleSetsRestartInput.Type;
 
@@ -6760,24 +6621,24 @@ export type VirtualMachineScaleSetsRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsRestart =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsRestartInput,
-    outputSchema: VirtualMachineScaleSetsRestartOutput,
-  }));
+export const VirtualMachineScaleSetsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsRestartInput,
+  outputSchema: VirtualMachineScaleSetsRestartOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsScaleOutInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetsScaleOutInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
+  }),
+);
 export type VirtualMachineScaleSetsScaleOutInput =
   typeof VirtualMachineScaleSetsScaleOutInput.Type;
 
@@ -6795,11 +6656,10 @@ export type VirtualMachineScaleSetsScaleOutOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsScaleOut =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsScaleOutInput,
-    outputSchema: VirtualMachineScaleSetsScaleOutOutput,
-  }));
+export const VirtualMachineScaleSetsScaleOut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsScaleOutInput,
+  outputSchema: VirtualMachineScaleSetsScaleOutOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6837,18 +6697,17 @@ export const VirtualMachineScaleSetsSetOrchestrationServiceState =
     outputSchema: VirtualMachineScaleSetsSetOrchestrationServiceStateOutput,
   }));
 // Input Schema
-export const VirtualMachineScaleSetsStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
-    }),
-  );
+export const VirtualMachineScaleSetsStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
+  }),
+);
 export type VirtualMachineScaleSetsStartInput =
   typeof VirtualMachineScaleSetsStartInput.Type;
 
@@ -6866,48 +6725,45 @@ export type VirtualMachineScaleSetsStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsStart =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsStartInput,
-    outputSchema: VirtualMachineScaleSetsStartOutput,
-  }));
+export const VirtualMachineScaleSetsStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsStartInput,
+  outputSchema: VirtualMachineScaleSetsStartOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
-    }),
-  );
+export const VirtualMachineScaleSetsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+  }),
+);
 export type VirtualMachineScaleSetsUpdateInput =
   typeof VirtualMachineScaleSetsUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineScaleSetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineScaleSetsUpdateOutput =
   typeof VirtualMachineScaleSetsUpdateOutput.Type;
 
@@ -6922,11 +6778,10 @@ export type VirtualMachineScaleSetsUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachineScaleSetsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetsUpdateInput,
-    outputSchema: VirtualMachineScaleSetsUpdateOutput,
-  }));
+export const VirtualMachineScaleSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsUpdateInput,
+  outputSchema: VirtualMachineScaleSetsUpdateOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsUpdateInstancesInput =
   /*@__PURE__*/ Schema.Struct({
@@ -6958,11 +6813,12 @@ export type VirtualMachineScaleSetsUpdateInstancesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmScaleSetName - The name of the VM scale set.
  */
-export const VirtualMachineScaleSetsUpdateInstances =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetsUpdateInstances = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetsUpdateInstancesInput,
     outputSchema: VirtualMachineScaleSetsUpdateInstancesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7040,11 +6896,12 @@ export type VirtualMachineScaleSetVMExtensionsDeleteOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param vmExtensionName - The name of the virtual machine extension.
  */
-export const VirtualMachineScaleSetVMExtensionsDelete =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMExtensionsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsDeleteInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7084,11 +6941,12 @@ export type VirtualMachineScaleSetVMExtensionsGetOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineScaleSetVMExtensionsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMExtensionsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsGetInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7132,11 +6990,12 @@ export type VirtualMachineScaleSetVMExtensionsListOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineScaleSetVMExtensionsList =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMExtensionsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsListInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7174,11 +7033,12 @@ export type VirtualMachineScaleSetVMExtensionsUpdateOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param vmExtensionName - The name of the virtual machine extension.
  */
-export const VirtualMachineScaleSetVMExtensionsUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMExtensionsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsUpdateInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7272,11 +7132,12 @@ export type VirtualMachineScaleSetVMRunCommandsDeleteOutput =
  * @param instanceId - The name of the VirtualMachineScaleSetVM
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
-export const VirtualMachineScaleSetVMRunCommandsDelete =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMRunCommandsDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsDeleteInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7332,11 +7193,12 @@ export type VirtualMachineScaleSetVMRunCommandsGetOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineScaleSetVMRunCommandsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMRunCommandsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsGetInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsListInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7405,11 +7267,12 @@ export type VirtualMachineScaleSetVMRunCommandsListOutput =
  * @param instanceId - The name of the VirtualMachineScaleSetVM
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineScaleSetVMRunCommandsList =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMRunCommandsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsListInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7463,11 +7326,12 @@ export type VirtualMachineScaleSetVMRunCommandsUpdateOutput =
  * @param instanceId - The name of the VirtualMachineScaleSetVM
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
-export const VirtualMachineScaleSetVMRunCommandsUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMRunCommandsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsUpdateInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
   /*@__PURE__*/ Schema.Struct({
@@ -7693,26 +7557,28 @@ export type VirtualMachineScaleSetVMsDeallocateOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsDeallocate =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMsDeallocate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMsDeallocateInput,
     outputSchema: VirtualMachineScaleSetVMsDeallocateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineScaleSetVMsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetVMsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     forceDeletion: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+  }),
+);
 export type VirtualMachineScaleSetVMsDeleteInput =
   typeof VirtualMachineScaleSetVMsDeleteInput.Type;
 
@@ -7732,52 +7598,49 @@ export type VirtualMachineScaleSetVMsDeleteOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param forceDeletion - Optional parameter to force delete a virtual machine from a VM scale set. (Feature in Preview)
  */
-export const VirtualMachineScaleSetVMsDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsDeleteInput,
-    outputSchema: VirtualMachineScaleSetVMsDeleteOutput,
-  }));
+export const VirtualMachineScaleSetVMsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsDeleteInput,
+  outputSchema: VirtualMachineScaleSetVMsDeleteOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetVMsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["instanceView", "userData", "resiliencyView"]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
-    }),
-  );
+export const VirtualMachineScaleSetVMsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(
+    Schema.Literals(["instanceView", "userData", "resiliencyView"]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+  }),
+);
 export type VirtualMachineScaleSetVMsGetInput =
   typeof VirtualMachineScaleSetVMsGetInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachineScaleSetVMsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachineScaleSetVMsGetOutput =
   typeof VirtualMachineScaleSetVMsGetOutput.Type;
 
@@ -7792,11 +7655,10 @@ export type VirtualMachineScaleSetVMsGetOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsGetInput,
-    outputSchema: VirtualMachineScaleSetVMsGetOutput,
-  }));
+export const VirtualMachineScaleSetVMsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsGetInput,
+  outputSchema: VirtualMachineScaleSetVMsGetOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsGetInstanceViewInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8016,66 +7878,55 @@ export type VirtualMachineScaleSetVMsGetInstanceViewOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsGetInstanceView =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMsGetInstanceView = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMsGetInstanceViewInput,
     outputSchema: VirtualMachineScaleSetVMsGetInstanceViewOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineScaleSetVMsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualMachineScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $select: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines",
-    }),
-  );
+export const VirtualMachineScaleSetVMsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  virtualMachineScaleSetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $select: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines",
+  }),
+);
 export type VirtualMachineScaleSetVMsListInput =
   typeof VirtualMachineScaleSetVMsListInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachineScaleSetVMsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachineScaleSetVMsListOutput =
   typeof VirtualMachineScaleSetVMsListOutput.Type;
 
@@ -8091,11 +7942,10 @@ export type VirtualMachineScaleSetVMsListOutput =
  * @param $select - The list parameters. Allowed values are 'instanceView', 'instanceView/statuses'.
  * @param $expand - The expand expression to apply to the operation. Allowed values are 'instanceView'.
  */
-export const VirtualMachineScaleSetVMsList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsListInput,
-    outputSchema: VirtualMachineScaleSetVMsListOutput,
-  }));
+export const VirtualMachineScaleSetVMsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsListInput,
+  outputSchema: VirtualMachineScaleSetVMsListOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsPerformMaintenanceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8169,11 +8019,10 @@ export type VirtualMachineScaleSetVMsPowerOffOutput =
  * @param instanceId - The instance ID of the virtual machine.
  * @param skipShutdown - The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified
  */
-export const VirtualMachineScaleSetVMsPowerOff =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsPowerOffInput,
-    outputSchema: VirtualMachineScaleSetVMsPowerOffOutput,
-  }));
+export const VirtualMachineScaleSetVMsPowerOff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsPowerOffInput,
+  outputSchema: VirtualMachineScaleSetVMsPowerOffOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsRedeployInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8207,11 +8056,10 @@ export type VirtualMachineScaleSetVMsRedeployOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsRedeploy =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsRedeployInput,
-    outputSchema: VirtualMachineScaleSetVMsRedeployOutput,
-  }));
+export const VirtualMachineScaleSetVMsRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsRedeployInput,
+  outputSchema: VirtualMachineScaleSetVMsRedeployOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsReimageInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8244,11 +8092,10 @@ export type VirtualMachineScaleSetVMsReimageOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsReimage =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsReimageInput,
-    outputSchema: VirtualMachineScaleSetVMsReimageOutput,
-  }));
+export const VirtualMachineScaleSetVMsReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsReimageInput,
+  outputSchema: VirtualMachineScaleSetVMsReimageOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsReimageAllInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8282,11 +8129,12 @@ export type VirtualMachineScaleSetVMsReimageAllOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsReimageAll =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMsReimageAll = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMsReimageAllInput,
     outputSchema: VirtualMachineScaleSetVMsReimageAllOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMsRestartInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8319,11 +8167,10 @@ export type VirtualMachineScaleSetVMsRestartOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsRestart =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsRestartInput,
-    outputSchema: VirtualMachineScaleSetVMsRestartOutput,
-  }));
+export const VirtualMachineScaleSetVMsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsRestartInput,
+  outputSchema: VirtualMachineScaleSetVMsRestartOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8412,11 +8259,12 @@ export type VirtualMachineScaleSetVMsRunCommandOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsRunCommand =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMsRunCommand = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMsRunCommandInput,
     outputSchema: VirtualMachineScaleSetVMsRunCommandOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachineScaleSetVMsSimulateEvictionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -8450,25 +8298,25 @@ export type VirtualMachineScaleSetVMsSimulateEvictionOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsSimulateEviction =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachineScaleSetVMsSimulateEviction = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachineScaleSetVMsSimulateEvictionInput,
     outputSchema: VirtualMachineScaleSetVMsSimulateEvictionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachineScaleSetVMsStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
-    }),
-  );
+export const VirtualMachineScaleSetVMsStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmScaleSetName: Schema.String.pipe(T.PathParam()),
+  instanceId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
+  }),
+);
 export type VirtualMachineScaleSetVMsStartInput =
   typeof VirtualMachineScaleSetVMsStartInput.Type;
 
@@ -8487,25 +8335,25 @@ export type VirtualMachineScaleSetVMsStartOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param instanceId - The instance ID of the virtual machine.
  */
-export const VirtualMachineScaleSetVMsStart =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsStartInput,
-    outputSchema: VirtualMachineScaleSetVMsStartOutput,
-  }));
+export const VirtualMachineScaleSetVMsStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsStartInput,
+  outputSchema: VirtualMachineScaleSetVMsStartOutput,
+}));
 // Input Schema
-export const VirtualMachineScaleSetVMsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachineScaleSetVMsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+  }),
+);
 export type VirtualMachineScaleSetVMsUpdateInput =
   typeof VirtualMachineScaleSetVMsUpdateInput.Type;
 
@@ -8545,32 +8393,29 @@ export type VirtualMachineScaleSetVMsUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachineScaleSetVMsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachineScaleSetVMsUpdateInput,
-    outputSchema: VirtualMachineScaleSetVMsUpdateOutput,
-  }));
+export const VirtualMachineScaleSetVMsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetVMsUpdateInput,
+  outputSchema: VirtualMachineScaleSetVMsUpdateOutput,
+}));
 // Input Schema
-export const VirtualMachinesCaptureInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
-    }),
-  );
+export const VirtualMachinesCaptureInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
+  }),
+);
 export type VirtualMachinesCaptureInput =
   typeof VirtualMachinesCaptureInput.Type;
 
 // Output Schema
-export const VirtualMachinesCaptureOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesCaptureOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
 export type VirtualMachinesCaptureOutput =
   typeof VirtualMachinesCaptureOutput.Type;
 
@@ -8618,48 +8463,47 @@ export type VirtualMachinesConvertToManagedDisksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesConvertToManagedDisks =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachinesConvertToManagedDisks = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachinesConvertToManagedDisksInput,
     outputSchema: VirtualMachinesConvertToManagedDisksOutput,
-  }));
+  }),
+);
 // Input Schema
-export const VirtualMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-    }),
-  );
+export const VirtualMachinesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  }),
+);
 export type VirtualMachinesCreateOrUpdateInput =
   typeof VirtualMachinesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachinesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesCreateOrUpdateOutput =
   typeof VirtualMachinesCreateOrUpdateOutput.Type;
 
@@ -8674,25 +8518,23 @@ export type VirtualMachinesCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachinesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesCreateOrUpdateInput,
-    outputSchema: VirtualMachinesCreateOrUpdateOutput,
-  }));
+export const VirtualMachinesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesCreateOrUpdateInput,
+  outputSchema: VirtualMachinesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const VirtualMachinesDeallocateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    hibernate: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
-    }),
-  );
+export const VirtualMachinesDeallocateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  hibernate: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
+  }),
+);
 export type VirtualMachinesDeallocateInput =
   typeof VirtualMachinesDeallocateInput.Type;
 
@@ -8716,19 +8558,18 @@ export const VirtualMachinesDeallocate = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesDeallocateOutput,
 }));
 // Input Schema
-export const VirtualMachinesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    forceDeletion: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-    }),
-  );
+export const VirtualMachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  forceDeletion: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  }),
+);
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
@@ -8751,18 +8592,17 @@ export const VirtualMachinesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesDeleteOutput,
 }));
 // Input Schema
-export const VirtualMachinesGeneralizeInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize",
-    }),
-  );
+export const VirtualMachinesGeneralizeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize",
+  }),
+);
 export type VirtualMachinesGeneralizeInput =
   typeof VirtualMachinesGeneralizeInput.Type;
 
@@ -8785,44 +8625,42 @@ export const VirtualMachinesGeneralize = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesGeneralizeOutput,
 }));
 // Input Schema
-export const VirtualMachinesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["instanceView", "userData", "resiliencyView"]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-    }),
-  );
+export const VirtualMachinesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(
+    Schema.Literals(["instanceView", "userData", "resiliencyView"]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  }),
+);
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 
 // Output Schema
-export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachinesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
 
 // The operation
@@ -8840,95 +8678,93 @@ export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
-export const VirtualMachinesInstallPatchesInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches",
-    }),
-  );
+export const VirtualMachinesInstallPatchesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches",
+  }),
+);
 export type VirtualMachinesInstallPatchesInput =
   typeof VirtualMachinesInstallPatchesInput.Type;
 
 // Output Schema
-export const VirtualMachinesInstallPatchesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "InProgress",
-        "Failed",
-        "Succeeded",
-        "CompletedWithWarnings",
-      ]),
-    ),
-    installationActivityId: Schema.optional(Schema.String),
-    rebootStatus: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "NotNeeded",
-        "Required",
-        "Started",
-        "Failed",
-        "Completed",
-      ]),
-    ),
-    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
-    excludedPatchCount: Schema.optional(Schema.Number),
-    notSelectedPatchCount: Schema.optional(Schema.Number),
-    pendingPatchCount: Schema.optional(Schema.Number),
-    installedPatchCount: Schema.optional(Schema.Number),
-    failedPatchCount: Schema.optional(Schema.Number),
-    patches: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          patchId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.String),
-          kbId: Schema.optional(Schema.String),
-          classifications: Schema.optional(Schema.Array(Schema.String)),
-          installationState: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "Installed",
-              "Failed",
-              "Excluded",
-              "NotSelected",
-              "Pending",
-            ]),
-          ),
-        }),
-      ),
-    ),
-    startDateTime: Schema.optional(Schema.String),
-    error: Schema.optional(
+export const VirtualMachinesInstallPatchesOutput = /*@__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.Literals([
+      "Unknown",
+      "InProgress",
+      "Failed",
+      "Succeeded",
+      "CompletedWithWarnings",
+    ]),
+  ),
+  installationActivityId: Schema.optional(Schema.String),
+  rebootStatus: Schema.optional(
+    Schema.Literals([
+      "Unknown",
+      "NotNeeded",
+      "Required",
+      "Started",
+      "Failed",
+      "Completed",
+    ]),
+  ),
+  maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+  excludedPatchCount: Schema.optional(Schema.Number),
+  notSelectedPatchCount: Schema.optional(Schema.Number),
+  pendingPatchCount: Schema.optional(Schema.Number),
+  installedPatchCount: Schema.optional(Schema.Number),
+  failedPatchCount: Schema.optional(Schema.Number),
+  patches: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-            }),
-          ),
+        patchId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        kbId: Schema.optional(Schema.String),
+        classifications: Schema.optional(Schema.Array(Schema.String)),
+        installationState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Installed",
+            "Failed",
+            "Excluded",
+            "NotSelected",
+            "Pending",
+          ]),
         ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            exceptiontype: Schema.optional(Schema.String),
-            errordetail: Schema.optional(Schema.String),
-          }),
-        ),
-        code: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
       }),
     ),
-  });
+  ),
+  startDateTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      details: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      innererror: Schema.optional(
+        Schema.Struct({
+          exceptiontype: Schema.optional(Schema.String),
+          errordetail: Schema.optional(Schema.String),
+        }),
+      ),
+      code: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesInstallPatchesOutput =
   typeof VirtualMachinesInstallPatchesOutput.Type;
 
@@ -8941,56 +8777,113 @@ export type VirtualMachinesInstallPatchesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesInstallPatches =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesInstallPatchesInput,
-    outputSchema: VirtualMachinesInstallPatchesOutput,
-  }));
+export const VirtualMachinesInstallPatches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesInstallPatchesInput,
+  outputSchema: VirtualMachinesInstallPatchesOutput,
+}));
 // Input Schema
-export const VirtualMachinesInstanceViewInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
-    }),
-  );
+export const VirtualMachinesInstanceViewInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
+  }),
+);
 export type VirtualMachinesInstanceViewInput =
   typeof VirtualMachinesInstanceViewInput.Type;
 
 // Output Schema
-export const VirtualMachinesInstanceViewOutput =
-  /*@__PURE__*/ Schema.Struct({
-    platformUpdateDomain: Schema.optional(Schema.Number),
-    platformFaultDomain: Schema.optional(Schema.Number),
-    computerName: Schema.optional(Schema.String),
-    osName: Schema.optional(Schema.String),
-    osVersion: Schema.optional(Schema.String),
-    hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-    rdpThumbPrint: Schema.optional(Schema.String),
-    vmAgent: Schema.optional(
+export const VirtualMachinesInstanceViewOutput = /*@__PURE__*/ Schema.Struct({
+  platformUpdateDomain: Schema.optional(Schema.Number),
+  platformFaultDomain: Schema.optional(Schema.Number),
+  computerName: Schema.optional(Schema.String),
+  osName: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+  rdpThumbPrint: Schema.optional(Schema.String),
+  vmAgent: Schema.optional(
+    Schema.Struct({
+      vmAgentVersion: Schema.optional(Schema.String),
+      extensionHandlers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            typeHandlerVersion: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            level: Schema.optional(
+              Schema.Literals(["Info", "Warning", "Error"]),
+            ),
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  maintenanceRedeployStatus: Schema.optional(
+    Schema.Struct({
+      isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
+      preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+      preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+      maintenanceWindowStartTime: Schema.optional(Schema.String),
+      maintenanceWindowEndTime: Schema.optional(Schema.String),
+      lastOperationResultCode: Schema.optional(
+        Schema.Literals([
+          "None",
+          "RetryLater",
+          "MaintenanceAborted",
+          "MaintenanceCompleted",
+        ]),
+      ),
+      lastOperationMessage: Schema.optional(Schema.String),
+    }),
+  ),
+  disks: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        vmAgentVersion: Schema.optional(Schema.String),
-        extensionHandlers: Schema.optional(
+        name: Schema.optional(Schema.String),
+        encryptionSettings: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              type: Schema.optional(Schema.String),
-              typeHandlerVersion: Schema.optional(Schema.String),
-              status: Schema.optional(
+              diskEncryptionKey: Schema.optional(
                 Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
+                  secretUrl: Schema.String,
+                  sourceVault: Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
                 }),
               ),
+              keyEncryptionKey: Schema.optional(
+                Schema.Struct({
+                  keyUrl: Schema.String,
+                  sourceVault: Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                }),
+              ),
+              enabled: Schema.optional(Schema.Boolean),
             }),
           ),
         ),
@@ -9009,234 +8902,27 @@ export const VirtualMachinesInstanceViewOutput =
         ),
       }),
     ),
-    maintenanceRedeployStatus: Schema.optional(
+  ),
+  extensions: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
-        preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-        preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-        maintenanceWindowStartTime: Schema.optional(Schema.String),
-        maintenanceWindowEndTime: Schema.optional(Schema.String),
-        lastOperationResultCode: Schema.optional(
-          Schema.Literals([
-            "None",
-            "RetryLater",
-            "MaintenanceAborted",
-            "MaintenanceCompleted",
-          ]),
-        ),
-        lastOperationMessage: Schema.optional(Schema.String),
-      }),
-    ),
-    disks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          encryptionSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                diskEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    secretUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                keyEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    keyUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        substatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Info", "Warning", "Error"]),
+              ),
+              displayStatus: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
           ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-    extensions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          typeHandlerVersion: Schema.optional(Schema.String),
-          substatuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-    vmHealth: Schema.optional(
-      Schema.Struct({
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
         ),
-      }),
-    ),
-    bootDiagnostics: Schema.optional(
-      Schema.Struct({
-        consoleScreenshotBlobUri: Schema.optional(Schema.String),
-        serialConsoleLogBlobUri: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    assignedHost: Schema.optional(Schema.String),
-    statuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    patchStatus: Schema.optional(
-      Schema.Struct({
-        availablePatchSummary: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "InProgress",
-                "Failed",
-                "Succeeded",
-                "CompletedWithWarnings",
-              ]),
-            ),
-            assessmentActivityId: Schema.optional(Schema.String),
-            rebootPending: Schema.optional(Schema.Boolean),
-            criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
-            otherPatchCount: Schema.optional(Schema.Number),
-            startTime: Schema.optional(Schema.String),
-            lastModifiedTime: Schema.optional(Schema.String),
-            error: Schema.optional(
-              Schema.Struct({
-                details: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                innererror: Schema.optional(
-                  Schema.Struct({
-                    exceptiontype: Schema.optional(Schema.String),
-                    errordetail: Schema.optional(Schema.String),
-                  }),
-                ),
-                code: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        lastPatchInstallationSummary: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "InProgress",
-                "Failed",
-                "Succeeded",
-                "CompletedWithWarnings",
-              ]),
-            ),
-            installationActivityId: Schema.optional(Schema.String),
-            maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
-            notSelectedPatchCount: Schema.optional(Schema.Number),
-            excludedPatchCount: Schema.optional(Schema.Number),
-            pendingPatchCount: Schema.optional(Schema.Number),
-            installedPatchCount: Schema.optional(Schema.Number),
-            failedPatchCount: Schema.optional(Schema.Number),
-            startTime: Schema.optional(Schema.String),
-            lastModifiedTime: Schema.optional(Schema.String),
-            error: Schema.optional(
-              Schema.Struct({
-                details: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                innererror: Schema.optional(
-                  Schema.Struct({
-                    exceptiontype: Schema.optional(Schema.String),
-                    errordetail: Schema.optional(Schema.String),
-                  }),
-                ),
-                code: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        configurationStatuses: Schema.optional(
+        statuses: Schema.optional(
           Schema.Array(
             Schema.Struct({
               code: Schema.optional(Schema.String),
@@ -9251,8 +8937,151 @@ export const VirtualMachinesInstanceViewOutput =
         ),
       }),
     ),
-    isVMInStandbyPool: Schema.optional(Schema.Boolean),
-  });
+  ),
+  vmHealth: Schema.optional(
+    Schema.Struct({
+      status: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
+          displayStatus: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  bootDiagnostics: Schema.optional(
+    Schema.Struct({
+      consoleScreenshotBlobUri: Schema.optional(Schema.String),
+      serialConsoleLogBlobUri: Schema.optional(Schema.String),
+      status: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
+          displayStatus: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  assignedHost: Schema.optional(Schema.String),
+  statuses: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
+        displayStatus: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        time: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  patchStatus: Schema.optional(
+    Schema.Struct({
+      availablePatchSummary: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "InProgress",
+              "Failed",
+              "Succeeded",
+              "CompletedWithWarnings",
+            ]),
+          ),
+          assessmentActivityId: Schema.optional(Schema.String),
+          rebootPending: Schema.optional(Schema.Boolean),
+          criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
+          otherPatchCount: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          lastModifiedTime: Schema.optional(Schema.String),
+          error: Schema.optional(
+            Schema.Struct({
+              details: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              innererror: Schema.optional(
+                Schema.Struct({
+                  exceptiontype: Schema.optional(Schema.String),
+                  errordetail: Schema.optional(Schema.String),
+                }),
+              ),
+              code: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      lastPatchInstallationSummary: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "InProgress",
+              "Failed",
+              "Succeeded",
+              "CompletedWithWarnings",
+            ]),
+          ),
+          installationActivityId: Schema.optional(Schema.String),
+          maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+          notSelectedPatchCount: Schema.optional(Schema.Number),
+          excludedPatchCount: Schema.optional(Schema.Number),
+          pendingPatchCount: Schema.optional(Schema.Number),
+          installedPatchCount: Schema.optional(Schema.Number),
+          failedPatchCount: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          lastModifiedTime: Schema.optional(Schema.String),
+          error: Schema.optional(
+            Schema.Struct({
+              details: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              innererror: Schema.optional(
+                Schema.Struct({
+                  exceptiontype: Schema.optional(Schema.String),
+                  errordetail: Schema.optional(Schema.String),
+                }),
+              ),
+              code: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      configurationStatuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            level: Schema.optional(
+              Schema.Literals(["Info", "Warning", "Error"]),
+            ),
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  isVMInStandbyPool: Schema.optional(Schema.Boolean),
+});
 export type VirtualMachinesInstanceViewOutput =
   typeof VirtualMachinesInstanceViewOutput.Type;
 
@@ -9270,37 +9099,35 @@ export const VirtualMachinesInstanceView = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesInstanceViewOutput,
 }));
 // Input Schema
-export const VirtualMachineSizesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
-    }),
-  );
+export const VirtualMachineSizesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
+  }),
+);
 export type VirtualMachineSizesListInput =
   typeof VirtualMachineSizesListInput.Type;
 
 // Output Schema
-export const VirtualMachineSizesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          numberOfCores: Schema.optional(Schema.Number),
-          osDiskSizeInMB: Schema.optional(Schema.Number),
-          resourceDiskSizeInMB: Schema.optional(Schema.Number),
-          memoryInMB: Schema.optional(Schema.Number),
-          maxDataDiskCount: Schema.optional(Schema.Number),
-        }),
-      ),
+export const VirtualMachineSizesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        numberOfCores: Schema.optional(Schema.Number),
+        osDiskSizeInMB: Schema.optional(Schema.Number),
+        resourceDiskSizeInMB: Schema.optional(Schema.Number),
+        memoryInMB: Schema.optional(Schema.Number),
+        maxDataDiskCount: Schema.optional(Schema.Number),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachineSizesListOutput =
   typeof VirtualMachineSizesListOutput.Type;
 
@@ -9317,57 +9144,45 @@ export const VirtualMachineSizesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachineSizesListOutput,
 }));
 // Input Schema
-export const VirtualMachinesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.Literals(["instanceView"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines",
-    }),
-  );
+export const VirtualMachinesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.Literals(["instanceView"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines",
+  }),
+);
 export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
 
 // Output Schema
-export const VirtualMachinesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
 
 // The operation
@@ -9385,58 +9200,46 @@ export const VirtualMachinesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesListOutput,
 }));
 // Input Schema
-export const VirtualMachinesListAllInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    statusOnly: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.Literals(["instanceView"])),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
-    }),
-  );
+export const VirtualMachinesListAllInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  statusOnly: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.Literals(["instanceView"])),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
+  }),
+);
 export type VirtualMachinesListAllInput =
   typeof VirtualMachinesListAllInput.Type;
 
 // Output Schema
-export const VirtualMachinesListAllOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesListAllOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachinesListAllOutput =
   typeof VirtualMachinesListAllOutput.Type;
 
@@ -9499,62 +9302,49 @@ export type VirtualMachinesListAvailableSizesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesListAvailableSizes =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesListAvailableSizesInput,
-    outputSchema: VirtualMachinesListAvailableSizesOutput,
-  }));
+export const VirtualMachinesListAvailableSizes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesListAvailableSizesInput,
+  outputSchema: VirtualMachinesListAvailableSizesOutput,
+}));
 // Input Schema
-export const VirtualMachinesListByLocationInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines",
-    }),
-  );
+export const VirtualMachinesListByLocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines",
+  }),
+);
 export type VirtualMachinesListByLocationInput =
   typeof VirtualMachinesListByLocationInput.Type;
 
 // Output Schema
-export const VirtualMachinesListByLocationOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const VirtualMachinesListByLocationOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type VirtualMachinesListByLocationOutput =
   typeof VirtualMachinesListByLocationOutput.Type;
 
@@ -9566,11 +9356,10 @@ export type VirtualMachinesListByLocationOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachinesListByLocation =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesListByLocationInput,
-    outputSchema: VirtualMachinesListByLocationOutput,
-  }));
+export const VirtualMachinesListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesListByLocationInput,
+  outputSchema: VirtualMachinesListByLocationOutput,
+}));
 // Input Schema
 export const VirtualMachinesMigrateToVMScaleSetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9602,11 +9391,12 @@ export type VirtualMachinesMigrateToVMScaleSetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesMigrateToVMScaleSet =
-  /*@__PURE__*/ API.make(() => ({
+export const VirtualMachinesMigrateToVMScaleSet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: VirtualMachinesMigrateToVMScaleSetInput,
     outputSchema: VirtualMachinesMigrateToVMScaleSetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const VirtualMachinesPerformMaintenanceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -9638,25 +9428,23 @@ export type VirtualMachinesPerformMaintenanceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesPerformMaintenance =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesPerformMaintenanceInput,
-    outputSchema: VirtualMachinesPerformMaintenanceOutput,
-  }));
+export const VirtualMachinesPerformMaintenance = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesPerformMaintenanceInput,
+  outputSchema: VirtualMachinesPerformMaintenanceOutput,
+}));
 // Input Schema
-export const VirtualMachinesPowerOffInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    skipShutdown: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
-    }),
-  );
+export const VirtualMachinesPowerOffInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  skipShutdown: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
+  }),
+);
 export type VirtualMachinesPowerOffInput =
   typeof VirtualMachinesPowerOffInput.Type;
 
@@ -9680,18 +9468,17 @@ export const VirtualMachinesPowerOff = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesPowerOffOutput,
 }));
 // Input Schema
-export const VirtualMachinesReapplyInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
-    }),
-  );
+export const VirtualMachinesReapplyInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
+  }),
+);
 export type VirtualMachinesReapplyInput =
   typeof VirtualMachinesReapplyInput.Type;
 
@@ -9714,18 +9501,17 @@ export const VirtualMachinesReapply = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesReapplyOutput,
 }));
 // Input Schema
-export const VirtualMachinesRedeployInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
-    }),
-  );
+export const VirtualMachinesRedeployInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
+  }),
+);
 export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
@@ -9748,18 +9534,17 @@ export const VirtualMachinesRedeploy = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesRedeployOutput,
 }));
 // Input Schema
-export const VirtualMachinesReimageInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
-    }),
-  );
+export const VirtualMachinesReimageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
+  }),
+);
 export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
@@ -9782,18 +9567,17 @@ export const VirtualMachinesReimage = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesReimageOutput,
 }));
 // Input Schema
-export const VirtualMachinesRestartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
-    }),
-  );
+export const VirtualMachinesRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
+  }),
+);
 export type VirtualMachinesRestartInput =
   typeof VirtualMachinesRestartInput.Type;
 
@@ -9857,36 +9641,34 @@ export const VirtualMachinesRetrieveBootDiagnosticsData =
     outputSchema: VirtualMachinesRetrieveBootDiagnosticsDataOutput,
   }));
 // Input Schema
-export const VirtualMachinesRunCommandInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
-    }),
-  );
+export const VirtualMachinesRunCommandInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
+  }),
+);
 export type VirtualMachinesRunCommandInput =
   typeof VirtualMachinesRunCommandInput.Type;
 
 // Output Schema
-export const VirtualMachinesRunCommandOutput =
-  /*@__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+export const VirtualMachinesRunCommandOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
+        displayStatus: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        time: Schema.optional(Schema.String),
+      }),
     ),
-  });
+  ),
+});
 export type VirtualMachinesRunCommandOutput =
   typeof VirtualMachinesRunCommandOutput.Type;
 
@@ -9904,18 +9686,19 @@ export const VirtualMachinesRunCommand = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesRunCommandOutput,
 }));
 // Input Schema
-export const VirtualMachinesSimulateEvictionInput =
-  /*@__PURE__*/ Schema.Struct({
+export const VirtualMachinesSimulateEvictionInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction",
+  }),
+);
 export type VirtualMachinesSimulateEvictionInput =
   typeof VirtualMachinesSimulateEvictionInput.Type;
 
@@ -9933,24 +9716,22 @@ export type VirtualMachinesSimulateEvictionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesSimulateEviction =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: VirtualMachinesSimulateEvictionInput,
-    outputSchema: VirtualMachinesSimulateEvictionOutput,
-  }));
+export const VirtualMachinesSimulateEviction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesSimulateEvictionInput,
+  outputSchema: VirtualMachinesSimulateEvictionOutput,
+}));
 // Input Schema
-export const VirtualMachinesStartInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
-    }),
-  );
+export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
+  }),
+);
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
@@ -9971,41 +9752,39 @@ export const VirtualMachinesStart = /*@__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesStartOutput,
 }));
 // Input Schema
-export const VirtualMachinesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-    }),
-  );
+export const VirtualMachinesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  }),
+);
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
 
 // Output Schema
-export const VirtualMachinesUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const VirtualMachinesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type VirtualMachinesUpdateOutput =
   typeof VirtualMachinesUpdateOutput.Type;
 

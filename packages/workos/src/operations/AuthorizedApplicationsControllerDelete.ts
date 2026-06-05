@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuthorizedApplicationsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type AuthorizedApplicationsControllerDeleteInput =
 
 // Output Schema
 export const AuthorizedApplicationsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AuthorizedApplicationsControllerDeleteOutput =
   typeof AuthorizedApplicationsControllerDeleteOutput.Type;
 
@@ -32,9 +32,10 @@ export type AuthorizedApplicationsControllerDeleteOutput =
  * @param application_id - The ID or client ID of the application.
  * @param user_id - The ID of the user.
  */
-export const AuthorizedApplicationsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizedApplicationsControllerDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AuthorizedApplicationsControllerDeleteInput,
     outputSchema: AuthorizedApplicationsControllerDeleteOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

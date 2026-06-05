@@ -11,7 +11,7 @@ import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const CreateCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -94,15 +94,16 @@ export type CreateCoordinationV1NamespacedLeaseOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateCoordinationV1NamespacedLeaseInput,
     outputSchema: CreateCoordinationV1NamespacedLeaseOutput,
     errors: [Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -116,7 +117,7 @@ export type CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -183,14 +184,14 @@ export type CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -204,7 +205,7 @@ export type CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -271,14 +272,14 @@ export type CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteCoordinationV1CollectionNamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -291,7 +292,7 @@ export type DeleteCoordinationV1CollectionNamespacedLeaseInput =
 
 // Output Schema
 export const DeleteCoordinationV1CollectionNamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -340,13 +341,13 @@ export type DeleteCoordinationV1CollectionNamespacedLeaseOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoordinationV1CollectionNamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1CollectionNamespacedLeaseInput,
     outputSchema: DeleteCoordinationV1CollectionNamespacedLeaseOutput,
   }));
 // Input Schema
 export const DeleteCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -359,7 +360,7 @@ export type DeleteCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const DeleteCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -407,15 +408,16 @@ export type DeleteCoordinationV1NamespacedLeaseOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteCoordinationV1NamespacedLeaseInput,
     outputSchema: DeleteCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict] as const,
-  }));
+  }),
+);
 // Input Schema
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -428,7 +430,7 @@ export type DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
 
 // Output Schema
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -477,7 +479,7 @@ export type DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput,
     outputSchema:
@@ -485,7 +487,7 @@ export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate =
   }));
 // Input Schema
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -498,7 +500,7 @@ export type DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -547,14 +549,14 @@ export type DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -567,7 +569,7 @@ export type DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
 
 // Output Schema
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -616,7 +618,7 @@ export type DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput,
     outputSchema:
@@ -624,7 +626,7 @@ export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate =
   }));
 // Input Schema
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -637,7 +639,7 @@ export type DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -686,46 +688,44 @@ export type DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetCoordinationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/coordination.k8s.io/" }),
-  );
+export const GetCoordinationAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/coordination.k8s.io/" }));
 export type GetCoordinationAPIGroupInput =
   typeof GetCoordinationAPIGroupInput.Type;
 
 // Output Schema
-export const GetCoordinationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetCoordinationAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetCoordinationAPIGroupOutput =
   typeof GetCoordinationAPIGroupOutput.Type;
 
@@ -733,41 +733,37 @@ export type GetCoordinationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getCoordinationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCoordinationAPIGroupInput,
-    outputSchema: GetCoordinationAPIGroupOutput,
-  }),
-);
+export const getCoordinationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCoordinationAPIGroupInput,
+  outputSchema: GetCoordinationAPIGroupOutput,
+}));
 // Input Schema
-export const GetCoordinationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/" }),
-  );
+export const GetCoordinationV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/" }));
 export type GetCoordinationV1APIResourcesInput =
   typeof GetCoordinationV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetCoordinationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetCoordinationV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetCoordinationV1APIResourcesOutput =
   typeof GetCoordinationV1APIResourcesOutput.Type;
 
@@ -775,14 +771,13 @@ export type GetCoordinationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCoordinationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetCoordinationV1APIResourcesInput,
-    outputSchema: GetCoordinationV1APIResourcesOutput,
-  }));
+export const getCoordinationV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCoordinationV1APIResourcesInput,
+  outputSchema: GetCoordinationV1APIResourcesOutput,
+}));
 // Input Schema
 export const GetCoordinationV1alpha2APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1alpha2/" }),
   );
 export type GetCoordinationV1alpha2APIResourcesInput =
@@ -790,7 +785,7 @@ export type GetCoordinationV1alpha2APIResourcesInput =
 
 // Output Schema
 export const GetCoordinationV1alpha2APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -816,14 +811,15 @@ export type GetCoordinationV1alpha2APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCoordinationV1alpha2APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCoordinationV1alpha2APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetCoordinationV1alpha2APIResourcesInput,
     outputSchema: GetCoordinationV1alpha2APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GetCoordinationV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1beta1/" }),
   );
 export type GetCoordinationV1beta1APIResourcesInput =
@@ -831,7 +827,7 @@ export type GetCoordinationV1beta1APIResourcesInput =
 
 // Output Schema
 export const GetCoordinationV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -857,14 +853,15 @@ export type GetCoordinationV1beta1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCoordinationV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCoordinationV1beta1APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetCoordinationV1beta1APIResourcesInput,
     outputSchema: GetCoordinationV1beta1APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListCoordinationV1LeaseForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/leases" }),
   );
 export type ListCoordinationV1LeaseForAllNamespacesInput =
@@ -872,7 +869,7 @@ export type ListCoordinationV1LeaseForAllNamespacesInput =
 
 // Output Schema
 export const ListCoordinationV1LeaseForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -959,14 +956,15 @@ export type ListCoordinationV1LeaseForAllNamespacesOutput =
 /**
  * list or watch objects of kind Lease
  */
-export const listCoordinationV1LeaseForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listCoordinationV1LeaseForAllNamespaces = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListCoordinationV1LeaseForAllNamespacesInput,
     outputSchema: ListCoordinationV1LeaseForAllNamespacesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
@@ -977,7 +975,7 @@ export type ListCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const ListCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1064,14 +1062,13 @@ export type ListCoordinationV1NamespacedLeaseOutput =
 /**
  * list or watch objects of kind Lease
  */
-export const listCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListCoordinationV1NamespacedLeaseInput,
-    outputSchema: ListCoordinationV1NamespacedLeaseOutput,
-  }));
+export const listCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoordinationV1NamespacedLeaseInput,
+  outputSchema: ListCoordinationV1NamespacedLeaseOutput,
+}));
 // Input Schema
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/leasecandidates",
@@ -1082,7 +1079,7 @@ export type ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
 
 // Output Schema
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1167,13 +1164,13 @@ export type ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
  * list or watch objects of kind LeaseCandidate
  */
 export const listCoordinationV1alpha2LeaseCandidateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput,
     outputSchema: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
@@ -1184,7 +1181,7 @@ export type ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1269,13 +1266,13 @@ export type ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * list or watch objects of kind LeaseCandidate
  */
 export const listCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ListCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/leasecandidates",
@@ -1286,7 +1283,7 @@ export type ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
 
 // Output Schema
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1371,13 +1368,13 @@ export type ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
  * list or watch objects of kind LeaseCandidate
  */
 export const listCoordinationV1beta1LeaseCandidateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput,
     outputSchema: ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
@@ -1388,7 +1385,7 @@ export type ListCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1473,13 +1470,13 @@ export type ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * list or watch objects of kind LeaseCandidate
  */
 export const listCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ListCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
 export const PatchCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1493,7 +1490,7 @@ export type PatchCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const PatchCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1562,15 +1559,16 @@ export type PatchCoordinationV1NamespacedLeaseOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchCoordinationV1NamespacedLeaseInput,
     outputSchema: PatchCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1584,7 +1582,7 @@ export type PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1651,14 +1649,14 @@ export type PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1672,7 +1670,7 @@ export type PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1739,14 +1737,14 @@ export type PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}",
@@ -1757,7 +1755,7 @@ export type ReadCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const ReadCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1823,15 +1821,14 @@ export type ReadCoordinationV1NamespacedLeaseOutput =
 /**
  * read the specified Lease
  */
-export const readCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadCoordinationV1NamespacedLeaseInput,
-    outputSchema: ReadCoordinationV1NamespacedLeaseOutput,
-    errors: [NotFound] as const,
-  }));
+export const readCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoordinationV1NamespacedLeaseInput,
+  outputSchema: ReadCoordinationV1NamespacedLeaseOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
@@ -1842,7 +1839,7 @@ export type ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1906,14 +1903,14 @@ export type ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * read the specified LeaseCandidate
  */
 export const readCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
@@ -1924,7 +1921,7 @@ export type ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1988,14 +1985,14 @@ export type ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * read the specified LeaseCandidate
  */
 export const readCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2009,7 +2006,7 @@ export type ReplaceCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const ReplaceCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2078,15 +2075,16 @@ export type ReplaceCoordinationV1NamespacedLeaseOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceCoordinationV1NamespacedLeaseInput,
     outputSchema: ReplaceCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2100,7 +2098,7 @@ export type ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2167,14 +2165,14 @@ export type ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2188,7 +2186,7 @@ export type ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2255,14 +2253,14 @@ export type ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchCoordinationV1LeaseListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/leases",
@@ -2273,7 +2271,7 @@ export type WatchCoordinationV1LeaseListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoordinationV1LeaseListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2285,13 +2283,13 @@ export type WatchCoordinationV1LeaseListForAllNamespacesOutput =
  * watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoordinationV1LeaseListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1LeaseListForAllNamespacesInput,
     outputSchema: WatchCoordinationV1LeaseListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}",
@@ -2302,7 +2300,7 @@ export type WatchCoordinationV1NamespacedLeaseInput =
 
 // Output Schema
 export const WatchCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2313,14 +2311,15 @@ export type WatchCoordinationV1NamespacedLeaseOutput =
 /**
  * watch changes to an object of kind Lease. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoordinationV1NamespacedLease = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchCoordinationV1NamespacedLeaseInput,
     outputSchema: WatchCoordinationV1NamespacedLeaseOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchCoordinationV1NamespacedLeaseListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases",
@@ -2331,7 +2330,7 @@ export type WatchCoordinationV1NamespacedLeaseListInput =
 
 // Output Schema
 export const WatchCoordinationV1NamespacedLeaseListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2342,14 +2341,15 @@ export type WatchCoordinationV1NamespacedLeaseListOutput =
 /**
  * watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchCoordinationV1NamespacedLeaseList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoordinationV1NamespacedLeaseList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchCoordinationV1NamespacedLeaseListInput,
     outputSchema: WatchCoordinationV1NamespacedLeaseListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/leasecandidates",
@@ -2360,7 +2360,7 @@ export type WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2372,7 +2372,7 @@ export type WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput =
  * watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput,
     outputSchema:
@@ -2380,7 +2380,7 @@ export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces =
   }));
 // Input Schema
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates/{name}",
@@ -2391,7 +2391,7 @@ export type WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2403,13 +2403,13 @@ export type WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * watch changes to an object of kind LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates",
@@ -2420,7 +2420,7 @@ export type WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
 
 // Output Schema
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2432,13 +2432,13 @@ export type WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput =
  * watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoordinationV1alpha2NamespacedLeaseCandidateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput,
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput,
   }));
 // Input Schema
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/leasecandidates",
@@ -2449,7 +2449,7 @@ export type WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2461,7 +2461,7 @@ export type WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput =
  * watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput,
     outputSchema:
@@ -2469,7 +2469,7 @@ export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces =
   }));
 // Input Schema
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates/{name}",
@@ -2480,7 +2480,7 @@ export type WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
 
 // Output Schema
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2492,13 +2492,13 @@ export type WatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * watch changes to an object of kind LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates",
@@ -2509,7 +2509,7 @@ export type WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
 
 // Output Schema
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -2521,7 +2521,7 @@ export type WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput =
  * watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoordinationV1beta1NamespacedLeaseCandidateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateListInput,
     outputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput,
   }));

@@ -4,21 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1UpdateProjectLegacyApiKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.Http({ method: "PUT", path: "/v1/projects/{ref}/api-keys/legacy" }),
-  );
+export const V1UpdateProjectLegacyApiKeysInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  enabled: Schema.Boolean,
+}).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/api-keys/legacy" }));
 export type V1UpdateProjectLegacyApiKeysInput =
   typeof V1UpdateProjectLegacyApiKeysInput.Type;
 
 // Output Schema
-export const V1UpdateProjectLegacyApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.Boolean,
-  });
+export const V1UpdateProjectLegacyApiKeysOutput = /*@__PURE__*/ Schema.Struct({
+  enabled: Schema.Boolean,
+});
 export type V1UpdateProjectLegacyApiKeysOutput =
   typeof V1UpdateProjectLegacyApiKeysOutput.Type;
 
@@ -29,9 +25,8 @@ export type V1UpdateProjectLegacyApiKeysOutput =
  * @param ref - Project ref
  * @param enabled - Boolean string, true or false
  */
-export const v1UpdateProjectLegacyApiKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1UpdateProjectLegacyApiKeysInput,
-    outputSchema: V1UpdateProjectLegacyApiKeysOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }));
+export const v1UpdateProjectLegacyApiKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateProjectLegacyApiKeysInput,
+  outputSchema: V1UpdateProjectLegacyApiKeysOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

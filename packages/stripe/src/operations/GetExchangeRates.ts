@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetExchangeRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetExchangeRatesInput = /*@__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
@@ -18,20 +18,18 @@ export const GetExchangeRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetExchangeRatesInput = typeof GetExchangeRatesInput.Type;
 
 // Output Schema
-export const GetExchangeRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        object: Schema.Literals(["exchange_rate"]),
-        rates: Schema.Record(Schema.String, Schema.Number),
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  },
-);
+export const GetExchangeRatesOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      object: Schema.Literals(["exchange_rate"]),
+      rates: Schema.Record(Schema.String, Schema.Number),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+});
 export type GetExchangeRatesOutput = typeof GetExchangeRatesOutput.Type;
 
 // The operation
@@ -46,7 +44,7 @@ export type GetExchangeRatesOutput = typeof GetExchangeRatesOutput.Type;
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and total number of supported payout currencies, and the default is the max.
  * @param starting_after - A cursor for use in pagination. `starting_after` is the currency that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with the exchange rate for currency X, your subsequent call can include `starting_after=X` in order to fetch the next page of the list.
  */
-export const GetExchangeRates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetExchangeRates = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetExchangeRatesInput,
   outputSchema: GetExchangeRatesOutput,
 }));

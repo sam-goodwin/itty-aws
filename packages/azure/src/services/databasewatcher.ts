@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AlertRuleResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AlertRuleResourcesCreateOrUpdateInput =
 
 // Output Schema
 export const AlertRuleResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,31 +59,28 @@ export type AlertRuleResourcesCreateOrUpdateOutput =
  * @param watcherName - The database watcher name.
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
-export const AlertRuleResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AlertRuleResourcesCreateOrUpdateInput,
-    outputSchema: AlertRuleResourcesCreateOrUpdateOutput,
-  }));
+export const AlertRuleResourcesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesCreateOrUpdateInput,
+  outputSchema: AlertRuleResourcesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AlertRuleResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    alertRuleResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
-    }),
-  );
+export const AlertRuleResourcesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  alertRuleResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
+  }),
+);
 export type AlertRuleResourcesDeleteInput =
   typeof AlertRuleResourcesDeleteInput.Type;
 
 // Output Schema
-export const AlertRuleResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AlertRuleResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AlertRuleResourcesDeleteOutput =
   typeof AlertRuleResourcesDeleteOutput.Type;
 
@@ -97,49 +94,45 @@ export type AlertRuleResourcesDeleteOutput =
  * @param watcherName - The database watcher name.
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
-export const AlertRuleResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleResourcesDeleteInput,
-    outputSchema: AlertRuleResourcesDeleteOutput,
+export const AlertRuleResourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesDeleteInput,
+  outputSchema: AlertRuleResourcesDeleteOutput,
+}));
+// Input Schema
+export const AlertRuleResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  alertRuleResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
   }),
 );
-// Input Schema
-export const AlertRuleResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    alertRuleResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
-    }),
-  );
 export type AlertRuleResourcesGetInput = typeof AlertRuleResourcesGetInput.Type;
 
 // Output Schema
-export const AlertRuleResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AlertRuleResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AlertRuleResourcesGetOutput =
   typeof AlertRuleResourcesGetOutput.Type;
 
@@ -153,31 +146,28 @@ export type AlertRuleResourcesGetOutput =
  * @param watcherName - The database watcher name.
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
-export const AlertRuleResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleResourcesGetInput,
-    outputSchema: AlertRuleResourcesGetOutput,
+export const AlertRuleResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesGetInput,
+  outputSchema: AlertRuleResourcesGetOutput,
+}));
+// Input Schema
+export const AlertRuleResourcesListByParentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources",
   }),
 );
-// Input Schema
-export const AlertRuleResourcesListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources",
-    }),
-  );
 export type AlertRuleResourcesListByParentInput =
   typeof AlertRuleResourcesListByParentInput.Type;
 
 // Output Schema
-export const AlertRuleResourcesListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRuleResourcesListByParentOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -210,7 +200,8 @@ export const AlertRuleResourcesListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type AlertRuleResourcesListByParentOutput =
   typeof AlertRuleResourcesListByParentOutput.Type;
 
@@ -223,48 +214,45 @@ export type AlertRuleResourcesListByParentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const AlertRuleResourcesListByParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AlertRuleResourcesListByParentInput,
-    outputSchema: AlertRuleResourcesListByParentOutput,
-  }));
+export const AlertRuleResourcesListByParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesListByParentInput,
+  outputSchema: AlertRuleResourcesListByParentOutput,
+}));
 // Input Schema
-export const HealthValidationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    healthValidationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}",
-    }),
-  );
+export const HealthValidationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  healthValidationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}",
+  }),
+);
 export type HealthValidationsGetInput = typeof HealthValidationsGetInput.Type;
 
 // Output Schema
-export const HealthValidationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const HealthValidationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type HealthValidationsGetOutput = typeof HealthValidationsGetOutput.Type;
 
 // The operation
@@ -277,64 +265,50 @@ export type HealthValidationsGetOutput = typeof HealthValidationsGetOutput.Type;
  * @param watcherName - The database watcher name.
  * @param healthValidationName - The health validation resource name.
  */
-export const HealthValidationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HealthValidationsGetInput,
-    outputSchema: HealthValidationsGetOutput,
+export const HealthValidationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthValidationsGetInput,
+  outputSchema: HealthValidationsGetOutput,
+}));
+// Input Schema
+export const HealthValidationsListByParentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations",
   }),
 );
-// Input Schema
-export const HealthValidationsListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations",
-    }),
-  );
 export type HealthValidationsListByParentInput =
   typeof HealthValidationsListByParentInput.Type;
 
 // Output Schema
-export const HealthValidationsListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const HealthValidationsListByParentOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type HealthValidationsListByParentOutput =
   typeof HealthValidationsListByParentOutput.Type;
 
@@ -347,14 +321,13 @@ export type HealthValidationsListByParentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const HealthValidationsListByParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HealthValidationsListByParentInput,
-    outputSchema: HealthValidationsListByParentOutput,
-  }));
+export const HealthValidationsListByParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthValidationsListByParentInput,
+  outputSchema: HealthValidationsListByParentOutput,
+}));
 // Input Schema
 export const HealthValidationsStartValidationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -371,7 +344,7 @@ export type HealthValidationsStartValidationInput =
 
 // Output Schema
 export const HealthValidationsStartValidationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -403,13 +376,12 @@ export type HealthValidationsStartValidationOutput =
  * @param watcherName - The database watcher name.
  * @param healthValidationName - The health validation resource name.
  */
-export const HealthValidationsStartValidation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: HealthValidationsStartValidationInput,
-    outputSchema: HealthValidationsStartValidationOutput,
-  }));
+export const HealthValidationsStartValidation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthValidationsStartValidationInput,
+  outputSchema: HealthValidationsStartValidationOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -420,7 +392,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -451,13 +423,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const SharedPrivateLinkResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -474,7 +446,7 @@ export type SharedPrivateLinkResourcesCreateInput =
 
 // Output Schema
 export const SharedPrivateLinkResourcesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -506,14 +478,13 @@ export type SharedPrivateLinkResourcesCreateOutput =
  * @param watcherName - The database watcher name.
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
-export const SharedPrivateLinkResourcesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharedPrivateLinkResourcesCreateInput,
-    outputSchema: SharedPrivateLinkResourcesCreateOutput,
-  }));
+export const SharedPrivateLinkResourcesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedPrivateLinkResourcesCreateInput,
+  outputSchema: SharedPrivateLinkResourcesCreateOutput,
+}));
 // Input Schema
 export const SharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -529,8 +500,7 @@ export type SharedPrivateLinkResourcesDeleteInput =
   typeof SharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SharedPrivateLinkResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SharedPrivateLinkResourcesDeleteOutput =
   typeof SharedPrivateLinkResourcesDeleteOutput.Type;
 
@@ -544,49 +514,46 @@ export type SharedPrivateLinkResourcesDeleteOutput =
  * @param watcherName - The database watcher name.
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
-export const SharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharedPrivateLinkResourcesDeleteInput,
-    outputSchema: SharedPrivateLinkResourcesDeleteOutput,
-  }));
+export const SharedPrivateLinkResourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedPrivateLinkResourcesDeleteInput,
+  outputSchema: SharedPrivateLinkResourcesDeleteOutput,
+}));
 // Input Schema
-export const SharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
-    }),
-  );
+export const SharedPrivateLinkResourcesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+  }),
+);
 export type SharedPrivateLinkResourcesGetInput =
   typeof SharedPrivateLinkResourcesGetInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SharedPrivateLinkResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SharedPrivateLinkResourcesGetOutput =
   typeof SharedPrivateLinkResourcesGetOutput.Type;
 
@@ -600,14 +567,13 @@ export type SharedPrivateLinkResourcesGetOutput =
  * @param watcherName - The database watcher name.
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
-export const SharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharedPrivateLinkResourcesGetInput,
-    outputSchema: SharedPrivateLinkResourcesGetOutput,
-  }));
+export const SharedPrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedPrivateLinkResourcesGetInput,
+  outputSchema: SharedPrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const SharedPrivateLinkResourcesListByWatcherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -623,7 +589,7 @@ export type SharedPrivateLinkResourcesListByWatcherInput =
 
 // Output Schema
 export const SharedPrivateLinkResourcesListByWatcherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -669,48 +635,47 @@ export type SharedPrivateLinkResourcesListByWatcherOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const SharedPrivateLinkResourcesListByWatcher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharedPrivateLinkResourcesListByWatcher = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SharedPrivateLinkResourcesListByWatcherInput,
     outputSchema: SharedPrivateLinkResourcesListByWatcherOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
-    }),
-  );
+export const TargetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  targetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
+  }),
+);
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const TargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TargetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TargetsCreateOrUpdateOutput =
   typeof TargetsCreateOrUpdateOutput.Type;
 
@@ -724,14 +689,12 @@ export type TargetsCreateOrUpdateOutput =
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TargetsCreateOrUpdateInput,
-    outputSchema: TargetsCreateOrUpdateOutput,
-  }),
-);
+export const TargetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TargetsCreateOrUpdateInput,
+  outputSchema: TargetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -746,7 +709,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
 
 // The operation
@@ -759,12 +722,12 @@ export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsDeleteInput,
   outputSchema: TargetsDeleteOutput,
 }));
 // Input Schema
-export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -779,7 +742,7 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TargetsGetInput = typeof TargetsGetInput.Type;
 
 // Output Schema
-export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -810,61 +773,49 @@ export type TargetsGetOutput = typeof TargetsGetOutput.Type;
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsGetInput,
   outputSchema: TargetsGetOutput,
 }));
 // Input Schema
-export const TargetsListByWatcherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets",
-    }),
-  );
+export const TargetsListByWatcherInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets",
+  }),
+);
 export type TargetsListByWatcherInput = typeof TargetsListByWatcherInput.Type;
 
 // Output Schema
-export const TargetsListByWatcherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TargetsListByWatcherOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TargetsListByWatcherOutput = typeof TargetsListByWatcherOutput.Type;
 
 // The operation
@@ -876,49 +827,45 @@ export type TargetsListByWatcherOutput = typeof TargetsListByWatcherOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const TargetsListByWatcher = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TargetsListByWatcherInput,
-    outputSchema: TargetsListByWatcherOutput,
+export const TargetsListByWatcher = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TargetsListByWatcherInput,
+  outputSchema: TargetsListByWatcherOutput,
+}));
+// Input Schema
+export const WatchersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
   }),
 );
-// Input Schema
-export const WatchersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
-    }),
-  );
 export type WatchersCreateOrUpdateInput =
   typeof WatchersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WatchersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WatchersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WatchersCreateOrUpdateOutput =
   typeof WatchersCreateOrUpdateOutput.Type;
 
@@ -931,14 +878,12 @@ export type WatchersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersCreateOrUpdateInput,
-    outputSchema: WatchersCreateOrUpdateOutput,
-  }),
-);
+export const WatchersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersCreateOrUpdateInput,
+  outputSchema: WatchersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -952,7 +897,7 @@ export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchersDeleteInput = typeof WatchersDeleteInput.Type;
 
 // Output Schema
-export const WatchersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatchersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WatchersDeleteOutput = typeof WatchersDeleteOutput.Type;
 
 // The operation
@@ -964,12 +909,12 @@ export type WatchersDeleteOutput = typeof WatchersDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersDeleteInput,
   outputSchema: WatchersDeleteOutput,
 }));
 // Input Schema
-export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -983,7 +928,7 @@ export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchersGetInput = typeof WatchersGetInput.Type;
 
 // Output Schema
-export const WatchersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1013,61 +958,49 @@ export type WatchersGetOutput = typeof WatchersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersGetInput,
   outputSchema: WatchersGetOutput,
 }));
 // Input Schema
-export const WatchersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers",
-    }),
-  );
+export const WatchersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers",
+  }),
+);
 export type WatchersListByResourceGroupInput =
   typeof WatchersListByResourceGroupInput.Type;
 
 // Output Schema
-export const WatchersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WatchersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WatchersListByResourceGroupOutput =
   typeof WatchersListByResourceGroupOutput.Type;
 
@@ -1079,62 +1012,48 @@ export type WatchersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WatchersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersListByResourceGroupInput,
-    outputSchema: WatchersListByResourceGroupOutput,
+export const WatchersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersListByResourceGroupInput,
+  outputSchema: WatchersListByResourceGroupOutput,
+}));
+// Input Schema
+export const WatchersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DatabaseWatcher/watchers",
   }),
 );
-// Input Schema
-export const WatchersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DatabaseWatcher/watchers",
-    }),
-  );
 export type WatchersListBySubscriptionInput =
   typeof WatchersListBySubscriptionInput.Type;
 
 // Output Schema
-export const WatchersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const WatchersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WatchersListBySubscriptionOutput =
   typeof WatchersListBySubscriptionOutput.Type;
 
@@ -1145,14 +1064,12 @@ export type WatchersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WatchersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersListBySubscriptionInput,
-    outputSchema: WatchersListBySubscriptionOutput,
-  }),
-);
+export const WatchersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersListBySubscriptionInput,
+  outputSchema: WatchersListBySubscriptionOutput,
+}));
 // Input Schema
-export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1166,7 +1083,7 @@ export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchersStartInput = typeof WatchersStartInput.Type;
 
 // Output Schema
-export const WatchersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStartOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1196,12 +1113,12 @@ export type WatchersStartOutput = typeof WatchersStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersStartInput,
   outputSchema: WatchersStartOutput,
 }));
 // Input Schema
-export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1215,7 +1132,7 @@ export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchersStopInput = typeof WatchersStopInput.Type;
 
 // Output Schema
-export const WatchersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStopOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1245,12 +1162,12 @@ export type WatchersStopOutput = typeof WatchersStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersStopInput,
   outputSchema: WatchersStopOutput,
 }));
 // Input Schema
-export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1264,7 +1181,7 @@ export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchersUpdateInput = typeof WatchersUpdateInput.Type;
 
 // Output Schema
-export const WatchersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1294,7 +1211,7 @@ export type WatchersUpdateOutput = typeof WatchersUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersUpdateInput,
   outputSchema: WatchersUpdateOutput,
 }));

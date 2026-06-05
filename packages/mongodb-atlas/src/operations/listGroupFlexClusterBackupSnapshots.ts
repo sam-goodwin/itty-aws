@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupFlexClusterBackupSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export type ListGroupFlexClusterBackupSnapshotsInput =
 
 // Output Schema
 export const ListGroupFlexClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupFlexClusterBackupSnapshotsOutput =
   typeof ListGroupFlexClusterBackupSnapshotsOutput.Type;
 
@@ -44,9 +44,10 @@ export type ListGroupFlexClusterBackupSnapshotsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const listGroupFlexClusterBackupSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupFlexClusterBackupSnapshots = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListGroupFlexClusterBackupSnapshotsInput,
     outputSchema: ListGroupFlexClusterBackupSnapshotsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

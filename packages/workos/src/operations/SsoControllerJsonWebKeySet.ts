@@ -4,31 +4,29 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const SsoControllerJsonWebKeySetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/sso/jwks/{clientId}" }));
+export const SsoControllerJsonWebKeySetInput = /*@__PURE__*/ Schema.Struct({
+  clientId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/sso/jwks/{clientId}" }));
 export type SsoControllerJsonWebKeySetInput =
   typeof SsoControllerJsonWebKeySetInput.Type;
 
 // Output Schema
-export const SsoControllerJsonWebKeySetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keys: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          alg: Schema.String,
-          kty: Schema.String,
-          use: Schema.String,
-          x5c: Schema.Array(Schema.String),
-          n: Schema.String,
-          e: Schema.String,
-          kid: Schema.String,
-          "x5t#S256": Schema.String,
-        }),
-      ),
+export const SsoControllerJsonWebKeySetOutput = /*@__PURE__*/ Schema.Struct({
+  keys: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        alg: Schema.String,
+        kty: Schema.String,
+        use: Schema.String,
+        x5c: Schema.Array(Schema.String),
+        n: Schema.String,
+        e: Schema.String,
+        kid: Schema.String,
+        "x5t#S256": Schema.String,
+      }),
     ),
-  });
+  ),
+});
 export type SsoControllerJsonWebKeySetOutput =
   typeof SsoControllerJsonWebKeySetOutput.Type;
 
@@ -40,10 +38,8 @@ export type SsoControllerJsonWebKeySetOutput =
  *
  * @param clientId - Identifies the application making the request to the WorkOS server. You can obtain your client ID from the [API Keys](https://dashboard.workos.com/api-keys) page in the dashboard.
  */
-export const SsoControllerJsonWebKeySet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SsoControllerJsonWebKeySetInput,
-    outputSchema: SsoControllerJsonWebKeySetOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const SsoControllerJsonWebKeySet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SsoControllerJsonWebKeySetInput,
+  outputSchema: SsoControllerJsonWebKeySetOutput,
+  errors: [NotFound] as const,
+}));

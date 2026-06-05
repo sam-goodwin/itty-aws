@@ -3,44 +3,41 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetOrganizationMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    org_id: Schema.String.pipe(T.PathParam()),
-    sort_by: Schema.optional(Schema.Literals(["email", "role", "joined_at"])),
-    cursor: Schema.optional(Schema.String),
-    sort_order: Schema.optional(Schema.Literals(["asc", "desc"])),
-    limit: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/members" }));
+export const GetOrganizationMembersInput = /*@__PURE__*/ Schema.Struct({
+  org_id: Schema.String.pipe(T.PathParam()),
+  sort_by: Schema.optional(Schema.Literals(["email", "role", "joined_at"])),
+  cursor: Schema.optional(Schema.String),
+  sort_order: Schema.optional(Schema.Literals(["asc", "desc"])),
+  limit: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/members" }));
 export type GetOrganizationMembersInput =
   typeof GetOrganizationMembersInput.Type;
 
 // Output Schema
-export const GetOrganizationMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.Array(
-      Schema.Struct({
-        member: Schema.Struct({
-          id: Schema.String,
-          user_id: Schema.String,
-          org_id: Schema.String,
-          role: Schema.Literals(["admin", "member"]),
-          joined_at: Schema.optional(Schema.String),
-        }),
-        user: Schema.Struct({
-          email: Schema.String,
-          has_mfa: Schema.optional(Schema.Boolean),
-          deactivated_at: Schema.optional(Schema.String),
-        }),
+export const GetOrganizationMembersOutput = /*@__PURE__*/ Schema.Struct({
+  members: Schema.Array(
+    Schema.Struct({
+      member: Schema.Struct({
+        id: Schema.String,
+        user_id: Schema.String,
+        org_id: Schema.String,
+        role: Schema.Literals(["admin", "member"]),
+        joined_at: Schema.optional(Schema.String),
       }),
-    ),
-    pagination: Schema.optional(
-      Schema.Struct({
-        next: Schema.optional(Schema.String),
-        sort_by: Schema.optional(Schema.String),
-        sort_order: Schema.optional(Schema.String),
+      user: Schema.Struct({
+        email: Schema.String,
+        has_mfa: Schema.optional(Schema.Boolean),
       }),
-    ),
-  });
+    }),
+  ),
+  pagination: Schema.optional(
+    Schema.Struct({
+      next: Schema.optional(Schema.String),
+      sort_by: Schema.optional(Schema.String),
+      sort_order: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetOrganizationMembersOutput =
   typeof GetOrganizationMembersOutput.Type;
 
@@ -56,14 +53,13 @@ export type GetOrganizationMembersOutput =
  * @param sort_order - Defines the sorting order of entities.
  * @param limit - The maximum number of members to return in the response
  */
-export const getOrganizationMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-    inputSchema: GetOrganizationMembersInput,
-    outputSchema: GetOrganizationMembersOutput,
-    pagination: {
-      mode: "cursor",
-      inputToken: "cursor",
-      outputToken: "pagination.next",
-      items: "members",
-    },
-  }));
+export const getOrganizationMembers = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: GetOrganizationMembersInput,
+  outputSchema: GetOrganizationMembersOutput,
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "pagination.next",
+    items: "members",
+  },
+}));

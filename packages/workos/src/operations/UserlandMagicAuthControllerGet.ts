@@ -4,16 +4,15 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
-export const UserlandMagicAuthControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/magic_auth/{id}" }));
+export const UserlandMagicAuthControllerGetInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/user_management/magic_auth/{id}" }));
 export type UserlandMagicAuthControllerGetInput =
   typeof UserlandMagicAuthControllerGetInput.Type;
 
 // Output Schema
-export const UserlandMagicAuthControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserlandMagicAuthControllerGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -22,7 +21,8 @@ export const UserlandMagicAuthControllerGetOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
-  });
+  },
+);
 export type UserlandMagicAuthControllerGetOutput =
   typeof UserlandMagicAuthControllerGetOutput.Type;
 
@@ -34,9 +34,8 @@ export type UserlandMagicAuthControllerGetOutput =
  *
  * @param id - The unique ID of the Magic Auth code.
  */
-export const UserlandMagicAuthControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserlandMagicAuthControllerGetInput,
-    outputSchema: UserlandMagicAuthControllerGetOutput,
-    errors: [NotFound] as const,
-  }));
+export const UserlandMagicAuthControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandMagicAuthControllerGetInput,
+  outputSchema: UserlandMagicAuthControllerGetOutput,
+  errors: [NotFound] as const,
+}));

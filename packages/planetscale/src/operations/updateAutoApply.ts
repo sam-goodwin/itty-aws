@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateAutoApplyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAutoApplyInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const UpdateAutoApplyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAutoApplyInput = typeof UpdateAutoApplyInput.Type;
 
 // Output Schema
-export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAutoApplyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   number: Schema.Number,
   actor: Schema.Struct({
@@ -26,28 +26,20 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     display_name: Schema.String,
     avatar_url: Schema.String,
   }),
-  closed_by: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        id: Schema.String,
-        display_name: Schema.String,
-        avatar_url: Schema.String,
-      }),
-    ),
-  ),
+  closed_by: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
   branch: Schema.String,
   branch_id: Schema.String,
   branch_deleted: Schema.Boolean,
-  branch_deleted_by: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        id: Schema.String,
-        display_name: Schema.String,
-        avatar_url: Schema.String,
-      }),
-    ),
-  ),
-  branch_deleted_at: Schema.NullOr(Schema.String),
+  branch_deleted_by: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+  branch_deleted_at: Schema.String,
   into_branch: Schema.String,
   into_branch_sharded: Schema.Boolean,
   into_branch_shard_count: Schema.Number,
@@ -80,13 +72,13 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auto_cutover: Schema.Boolean,
     auto_delete_branch: Schema.Boolean,
     created_at: Schema.String,
-    cutover_at: Schema.NullOr(Schema.String),
+    cutover_at: Schema.String,
     cutover_expiring: Schema.Boolean,
-    deploy_check_errors: Schema.optional(Schema.NullOr(Schema.String)),
-    finished_at: Schema.NullOr(Schema.String),
-    queued_at: Schema.NullOr(Schema.String),
-    ready_to_cutover_at: Schema.NullOr(Schema.String),
-    started_at: Schema.NullOr(Schema.String),
+    deploy_check_errors: Schema.String,
+    finished_at: Schema.String,
+    queued_at: Schema.String,
+    ready_to_cutover_at: Schema.String,
+    started_at: Schema.String,
     state: Schema.Literals([
       "pending",
       "ready",
@@ -109,7 +101,7 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "cancelled",
       "error",
     ]),
-    submitted_at: Schema.NullOr(Schema.String),
+    submitted_at: Schema.String,
     updated_at: Schema.String,
     into_branch: Schema.String,
     deploy_request_number: Schema.Number,
@@ -131,20 +123,20 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         keyspace_name: Schema.String,
         table_name: Schema.String,
         operation_name: Schema.String,
-        eta_seconds: Schema.NullOr(Schema.Number),
-        progress_percentage: Schema.NullOr(Schema.Number),
-        deploy_error_docs_url: Schema.NullOr(Schema.String),
+        eta_seconds: Schema.Number,
+        progress_percentage: Schema.Number,
+        deploy_error_docs_url: Schema.String,
         ddl_statement: Schema.String,
         syntax_highlighted_ddl: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        throttled_at: Schema.NullOr(Schema.String),
+        throttled_at: Schema.String,
         can_drop_data: Schema.Boolean,
         table_locked: Schema.Boolean,
         table_recently_used: Schema.Boolean,
-        table_recently_used_at: Schema.NullOr(Schema.String),
-        removed_foreign_key_names: Schema.NullOr(Schema.Array(Schema.String)),
-        deploy_errors: Schema.NullOr(Schema.String),
+        table_recently_used_at: Schema.String,
+        removed_foreign_key_names: Schema.Array(Schema.String),
+        deploy_errors: Schema.String,
       }),
     ),
     deploy_operation_summaries: Schema.Array(
@@ -166,8 +158,8 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
         syntax_highlighted_ddl: Schema.String,
         table_name: Schema.String,
-        table_recently_used_at: Schema.NullOr(Schema.String),
-        throttled_at: Schema.NullOr(Schema.String),
+        table_recently_used_at: Schema.String,
+        throttled_at: Schema.String,
         removed_foreign_key_names: Schema.Array(Schema.String),
         shard_count: Schema.Number,
         shard_names: Schema.Array(Schema.String),
@@ -199,46 +191,30 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lookup_vindex_operations: Schema.Array(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-    throttler_configurations: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    deployment_revert_request: Schema.NullOr(
+    throttler_configurations: Schema.Array(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-    actor: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-      ),
-    ),
-    cutover_actor: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-      ),
-    ),
-    cancelled_actor: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-      ),
-    ),
-    schema_last_updated_at: Schema.NullOr(Schema.String),
+    deployment_revert_request: Schema.Record(Schema.String, Schema.Unknown),
+    actor: Schema.Struct({
+      id: Schema.String,
+      display_name: Schema.String,
+      avatar_url: Schema.String,
+    }),
+    cutover_actor: Schema.Struct({
+      id: Schema.String,
+      display_name: Schema.String,
+      avatar_url: Schema.String,
+    }),
+    cancelled_actor: Schema.Struct({
+      id: Schema.String,
+      display_name: Schema.String,
+      avatar_url: Schema.String,
+    }),
+    schema_last_updated_at: Schema.String,
     table_locked: Schema.Boolean,
-    locked_table_name: Schema.optional(Schema.NullOr(Schema.String)),
+    locked_table_name: Schema.String,
     instant_ddl: Schema.Boolean,
     instant_ddl_eligible: Schema.Boolean,
-    queue_paused: Schema.Boolean,
-    queue_pause_reason: Schema.String,
   }),
   num_comments: Schema.Number,
   html_url: Schema.String,
@@ -246,8 +222,8 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   html_body: Schema.String,
   created_at: Schema.String,
   updated_at: Schema.String,
-  closed_at: Schema.NullOr(Schema.String),
-  deployed_at: Schema.NullOr(Schema.String),
+  closed_at: Schema.String,
+  deployed_at: Schema.String,
 });
 export type UpdateAutoApplyOutput = typeof UpdateAutoApplyOutput.Type;
 
@@ -262,7 +238,7 @@ export type UpdateAutoApplyOutput = typeof UpdateAutoApplyOutput.Type;
  * @param number - The number of the deploy request
  * @param enable - Whether or not to enable auto-apply for the deploy request
  */
-export const updateAutoApply = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateAutoApply = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateAutoApplyInput,
   outputSchema: UpdateAutoApplyOutput,
   errors: [Forbidden, NotFound] as const,

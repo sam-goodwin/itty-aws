@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPolicyByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPolicyByIdInput = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/policy-engine/policies/{policyId}" }),
@@ -11,7 +11,7 @@ export const GetPolicyByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPolicyByIdInput = typeof GetPolicyByIdInput.Type;
 
 // Output Schema
-export const GetPolicyByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPolicyByIdOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.optional(Schema.String),
   scope: Schema.Literals(["project", "account"]),
@@ -29,7 +29,7 @@ export type GetPolicyByIdOutput = typeof GetPolicyByIdOutput.Type;
  *
  * @param policyId - The ID of the policy to get.
  */
-export const getPolicyById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPolicyById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPolicyByIdInput,
   outputSchema: GetPolicyByIdOutput,
 }));

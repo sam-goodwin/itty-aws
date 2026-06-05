@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetSQLGrammarInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/data/query/grammar" }));
+export const GetSQLGrammarInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/data/query/grammar" }),
+);
 export type GetSQLGrammarInput = typeof GetSQLGrammarInput.Type;
 
 // Output Schema
-export const GetSQLGrammarOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const GetSQLGrammarOutput = /*@__PURE__*/ Schema.String;
 export type GetSQLGrammarOutput = typeof GetSQLGrammarOutput.Type;
 
 // The operation
@@ -21,7 +21,7 @@ export type GetSQLGrammarOutput = typeof GetSQLGrammarOutput.Type;
  * This endpoint returns the ANTLR4 grammar that is used to evaluate the SQL queries so that developers can understand the SQL API and build SQL queries with high confidence and correctness.
  * LLMs interact well with ANTLR4 grammar. You can feed the grammar directly into the LLMs to help generate SQL queries.
  */
-export const getSQLGrammar = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getSQLGrammar = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSQLGrammarInput,
   outputSchema: GetSQLGrammarOutput,
 }));

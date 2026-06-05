@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const CreatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -26,29 +26,27 @@ export const CreatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreatePasswordInput = typeof CreatePasswordInput.Type;
 
 // Output Schema
-export const CreatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
-  cidrs: Schema.NullOr(Schema.Array(Schema.String)),
+  cidrs: Schema.Array(Schema.String),
   created_at: Schema.String,
-  deleted_at: Schema.NullOr(Schema.String),
-  expires_at: Schema.NullOr(Schema.String),
-  last_used_at: Schema.NullOr(Schema.String),
+  deleted_at: Schema.String,
+  expires_at: Schema.String,
+  last_used_at: Schema.String,
   expired: Schema.Boolean,
   direct_vtgate: Schema.Boolean,
   direct_vtgate_addresses: Schema.Array(Schema.String),
-  ttl_seconds: Schema.NullOr(Schema.Number),
+  ttl_seconds: Schema.Number,
   access_host_url: Schema.String,
   access_host_regional_url: Schema.String,
   access_host_regional_urls: Schema.Array(Schema.String),
-  actor: Schema.NullOr(
-    Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  ),
+  actor: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
   region: Schema.Struct({
     id: Schema.String,
     provider: Schema.String,
@@ -58,8 +56,6 @@ export const CreatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   username: Schema.String,
   plain_text: SensitiveOutputString,
@@ -89,7 +85,7 @@ export type CreatePasswordOutput = typeof CreatePasswordOutput.Type;
  * @param cidrs - List of IP addresses or CIDR ranges that can use this password
  * @param direct_vtgate - Whether the password connects directly to a VTGate
  */
-export const createPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createPassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreatePasswordInput,
   outputSchema: CreatePasswordOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

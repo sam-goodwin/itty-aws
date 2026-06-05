@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPricesPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesPriceInput = /*@__PURE__*/ Schema.Struct({
   price: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Boolean),
   currency_options: Schema.optional(Schema.Unknown),
@@ -25,7 +25,7 @@ export const PostPricesPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostPricesPriceInput = typeof PostPricesPriceInput.Type;
 
 // Output Schema
-export const PostPricesPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesPriceOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   billing_scheme: Schema.Literals(["per_unit", "tiered"]),
   created: Schema.Number,
@@ -91,7 +91,7 @@ export type PostPricesPriceOutput = typeof PostPricesPriceOutput.Type;
  *
  * <p>Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.</p>
  */
-export const PostPricesPrice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPricesPrice = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPricesPriceInput,
   outputSchema: PostPricesPriceOutput,
 }));

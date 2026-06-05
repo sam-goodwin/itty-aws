@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const IntegrationsDomainConnectApplyUrlCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
     kind: Schema.optional(
@@ -76,7 +76,7 @@ export type IntegrationsDomainConnectApplyUrlCreateInput =
 
 // Output Schema
 export const IntegrationsDomainConnectApplyUrlCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type IntegrationsDomainConnectApplyUrlCreateOutput =
   typeof IntegrationsDomainConnectApplyUrlCreateOutput.Type;
 
@@ -89,9 +89,10 @@ export type IntegrationsDomainConnectApplyUrlCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const integrationsDomainConnectApplyUrlCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const integrationsDomainConnectApplyUrlCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: IntegrationsDomainConnectApplyUrlCreateInput,
     outputSchema: IntegrationsDomainConnectApplyUrlCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

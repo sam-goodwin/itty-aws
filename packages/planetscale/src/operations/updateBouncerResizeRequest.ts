@@ -4,64 +4,62 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const UpdateBouncerResizeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    bouncer: Schema.String.pipe(T.PathParam()),
-    bouncer_size: Schema.optional(Schema.String),
-    replicas_per_cell: Schema.optional(Schema.Number),
-    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
-    }),
-  );
+export const UpdateBouncerResizeRequestInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  bouncer: Schema.String.pipe(T.PathParam()),
+  bouncer_size: Schema.optional(Schema.String),
+  replicas_per_cell: Schema.optional(Schema.Number),
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
+  }),
+);
 export type UpdateBouncerResizeRequestInput =
   typeof UpdateBouncerResizeRequestInput.Type;
 
 // Output Schema
-export const UpdateBouncerResizeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBouncerResizeRequestOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  state: Schema.Literals(["pending", "resizing", "canceled", "completed"]),
+  replicas_per_cell: Schema.Number,
+  parameters: Schema.Record(Schema.String, Schema.Unknown),
+  previous_replicas_per_cell: Schema.Number,
+  previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
+  started_at: Schema.String,
+  completed_at: Schema.String,
+  created_at: Schema.String,
+  updated_at: Schema.String,
+  actor: Schema.Struct({
     id: Schema.String,
-    state: Schema.Literals(["pending", "resizing", "canceled", "completed"]),
-    replicas_per_cell: Schema.Number,
-    parameters: Schema.Record(Schema.String, Schema.Unknown),
-    previous_replicas_per_cell: Schema.Number,
-    previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
-    started_at: Schema.NullOr(Schema.String),
-    completed_at: Schema.NullOr(Schema.String),
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
+  bouncer: Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    actor: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-    bouncer: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      deleted_at: Schema.NullOr(Schema.String),
-    }),
-    sku: Schema.Struct({
-      name: Schema.String,
-      display_name: Schema.String,
-      cpu: Schema.String,
-      ram: Schema.Number,
-      sort_order: Schema.Number,
-    }),
-    previous_sku: Schema.Struct({
-      name: Schema.String,
-      display_name: Schema.String,
-      cpu: Schema.String,
-      ram: Schema.Number,
-      sort_order: Schema.Number,
-    }),
-  });
+    deleted_at: Schema.String,
+  }),
+  sku: Schema.Struct({
+    name: Schema.String,
+    display_name: Schema.String,
+    cpu: Schema.String,
+    ram: Schema.Number,
+    sort_order: Schema.Number,
+  }),
+  previous_sku: Schema.Struct({
+    name: Schema.String,
+    display_name: Schema.String,
+    cpu: Schema.String,
+    ram: Schema.Number,
+    sort_order: Schema.Number,
+  }),
+});
 export type UpdateBouncerResizeRequestOutput =
   typeof UpdateBouncerResizeRequestOutput.Type;
 
@@ -77,10 +75,8 @@ export type UpdateBouncerResizeRequestOutput =
  * @param replicas_per_cell - The number of PgBouncers per availability zone. Defaults to 1.
  * @param parameters - Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated.
  */
-export const updateBouncerResizeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateBouncerResizeRequestInput,
-    outputSchema: UpdateBouncerResizeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateBouncerResizeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBouncerResizeRequestInput,
+  outputSchema: UpdateBouncerResizeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

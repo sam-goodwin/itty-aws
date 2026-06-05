@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetIssuingCardsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIssuingCardsInput = /*@__PURE__*/ Schema.Struct({
   cardholder: Schema.optional(Schema.String),
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export const GetIssuingCardsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetIssuingCardsInput = typeof GetIssuingCardsInput.Type;
 
 // Output Schema
-export const GetIssuingCardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIssuingCardsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       brand: Schema.String,
@@ -1060,7 +1060,7 @@ export type GetIssuingCardsOutput = typeof GetIssuingCardsOutput.Type;
  * @param status - Only return cards that have the given status. One of `active`, `inactive`, or `canceled`.
  * @param type - Only return cards that have the given type. One of `virtual` or `physical`.
  */
-export const GetIssuingCards = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIssuingCards = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetIssuingCardsInput,
   outputSchema: GetIssuingCardsOutput,
 }));

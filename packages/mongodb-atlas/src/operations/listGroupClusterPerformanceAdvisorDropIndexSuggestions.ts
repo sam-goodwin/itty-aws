@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
 
 // Output Schema
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
   typeof ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput.Type;
 
@@ -35,7 +35,7 @@ export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const listGroupClusterPerformanceAdvisorDropIndexSuggestions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput,
     outputSchema: ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

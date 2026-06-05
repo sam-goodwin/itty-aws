@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const RedirectUrisControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uri: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/user_management/redirect_uris" }));
+export const RedirectUrisControllerCreateInput = /*@__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "POST", path: "/user_management/redirect_uris" }));
 export type RedirectUrisControllerCreateInput =
   typeof RedirectUrisControllerCreateInput.Type;
 
 // Output Schema
-export const RedirectUrisControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    uri: Schema.optional(Schema.String),
-    default: Schema.optional(Schema.Boolean),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
+export const RedirectUrisControllerCreateOutput = /*@__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  default: Schema.optional(Schema.Boolean),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+});
 export type RedirectUrisControllerCreateOutput =
   typeof RedirectUrisControllerCreateOutput.Type;
 
@@ -30,9 +28,8 @@ export type RedirectUrisControllerCreateOutput =
  *
  * Creates a new redirect URI for an environment.
  */
-export const RedirectUrisControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RedirectUrisControllerCreateInput,
-    outputSchema: RedirectUrisControllerCreateOutput,
-    errors: [BadRequest, UnprocessableEntity] as const,
-  }));
+export const RedirectUrisControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedirectUrisControllerCreateInput,
+  outputSchema: RedirectUrisControllerCreateOutput,
+  errors: [BadRequest, UnprocessableEntity] as const,
+}));

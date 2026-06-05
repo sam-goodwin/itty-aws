@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -15,7 +15,7 @@ export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSnapshotInput = typeof DeleteSnapshotInput.Type;
 
 // Output Schema
-export const DeleteSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteSnapshotOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteSnapshotOutput = typeof DeleteSnapshotOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type DeleteSnapshotOutput = typeof DeleteSnapshotOutput.Type;
  * @param project_id - The Neon project ID
  * @param snapshot_id - The snapshot ID
  */
-export const deleteSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteSnapshotInput,
   outputSchema: DeleteSnapshotOutput,
 }));

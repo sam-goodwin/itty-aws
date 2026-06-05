@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RequestEvmFaucetInput = /*@__PURE__*/ Schema.Struct({
   network: Schema.Literals([
     "base-sepolia",
     "ethereum-sepolia",
@@ -15,11 +15,9 @@ export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RequestEvmFaucetInput = typeof RequestEvmFaucetInput.Type;
 
 // Output Schema
-export const RequestEvmFaucetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    transactionHash: Schema.String,
-  },
-);
+export const RequestEvmFaucetOutput = /*@__PURE__*/ Schema.Struct({
+  transactionHash: Schema.String,
+});
 export type RequestEvmFaucetOutput = typeof RequestEvmFaucetOutput.Type;
 
 // The operation
@@ -32,7 +30,7 @@ export type RequestEvmFaucetOutput = typeof RequestEvmFaucetOutput.Type;
  * These limits are applied at both the CDP User level and the blockchain address level.
  * A single blockchain address cannot exceed the specified limits, even if multiple users submit requests to the same address.
  */
-export const requestEvmFaucet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const requestEvmFaucet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RequestEvmFaucetInput,
   outputSchema: RequestEvmFaucetOutput,
 }));

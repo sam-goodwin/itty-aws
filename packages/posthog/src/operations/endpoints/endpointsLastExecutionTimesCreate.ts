@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EndpointsLastExecutionTimesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     names: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type EndpointsLastExecutionTimesCreateInput =
 
 // Output Schema
 export const EndpointsLastExecutionTimesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query_status: Schema.optional(
       Schema.Struct({
         complete: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -58,9 +58,8 @@ export type EndpointsLastExecutionTimesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const endpointsLastExecutionTimesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EndpointsLastExecutionTimesCreateInput,
-    outputSchema: EndpointsLastExecutionTimesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const endpointsLastExecutionTimesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsLastExecutionTimesCreateInput,
+  outputSchema: EndpointsLastExecutionTimesCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -10,23 +10,21 @@ import {
 } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters",
-    }),
-  );
+export const CreateGroupFlexClusterInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/flexClusters",
+  }),
+);
 export type CreateGroupFlexClusterInput =
   typeof CreateGroupFlexClusterInput.Type;
 
 // Output Schema
-export const CreateGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupFlexClusterOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupFlexClusterOutput =
   typeof CreateGroupFlexClusterOutput.Type;
 
@@ -42,16 +40,8 @@ export type CreateGroupFlexClusterOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupFlexClusterInput,
-    outputSchema: CreateGroupFlexClusterOutput,
-    errors: [
-      BadRequest,
-      PaymentRequired,
-      Forbidden,
-      NotFound,
-      Conflict,
-    ] as const,
-  }),
-);
+export const createGroupFlexCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupFlexClusterInput,
+  outputSchema: CreateGroupFlexClusterOutput,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,
+}));

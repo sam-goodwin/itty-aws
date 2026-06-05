@@ -1,43 +1,41 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const ListWebhookSubscriptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    pageToken: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v2/data/webhooks/subscriptions" }));
+export const ListWebhookSubscriptionsInput = /*@__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/v2/data/webhooks/subscriptions" }));
 export type ListWebhookSubscriptionsInput =
   typeof ListWebhookSubscriptionsInput.Type;
 
 // Output Schema
-export const ListWebhookSubscriptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptions: Schema.Array(
-      Schema.Struct({
-        createdAt: Schema.String,
-        updatedAt: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        eventTypes: Schema.Array(Schema.String),
-        isEnabled: Schema.Boolean,
-        metadata: Schema.optional(
-          Schema.Struct({
-            secret: Schema.optional(SensitiveString),
-          }),
-        ),
-        secret: SensitiveString,
-        subscriptionId: Schema.String,
-        target: Schema.Struct({
-          url: Schema.String,
-          headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+export const ListWebhookSubscriptionsOutput = /*@__PURE__*/ Schema.Struct({
+  subscriptions: Schema.Array(
+    Schema.Struct({
+      createdAt: Schema.String,
+      updatedAt: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      eventTypes: Schema.Array(Schema.String),
+      isEnabled: Schema.Boolean,
+      metadata: Schema.optional(
+        Schema.Struct({
+          secret: Schema.optional(SensitiveOutputString),
         }),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      ),
+      secret: SensitiveOutputString,
+      subscriptionId: Schema.String,
+      target: Schema.Struct({
+        url: Schema.String,
+        headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       }),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  });
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+});
 export type ListWebhookSubscriptionsOutput =
   typeof ListWebhookSubscriptionsOutput.Type;
 
@@ -56,9 +54,7 @@ export type ListWebhookSubscriptionsOutput =
  * @param pageSize - The number of subscriptions to return per page.
  * @param pageToken - The token for the next page of subscriptions, if any.
  */
-export const listWebhookSubscriptions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListWebhookSubscriptionsInput,
-    outputSchema: ListWebhookSubscriptionsOutput,
-  }),
-);
+export const listWebhookSubscriptions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListWebhookSubscriptionsInput,
+  outputSchema: ListWebhookSubscriptionsOutput,
+}));

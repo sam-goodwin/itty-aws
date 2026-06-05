@@ -5,7 +5,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const AuditLogExportsControllerExportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
     range_start: Schema.optional(Schema.String),
     range_end: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type AuditLogExportsControllerExportsInput =
 
 // Output Schema
 export const AuditLogExportsControllerExportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     state: Schema.optional(Schema.Literals(["pending", "ready", "error"])),
@@ -37,9 +37,8 @@ export type AuditLogExportsControllerExportsOutput =
  *
  * Create an Audit Log Export. Exports are scoped to a single organization within a specified date range.
  */
-export const AuditLogExportsControllerExports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuditLogExportsControllerExportsInput,
-    outputSchema: AuditLogExportsControllerExportsOutput,
-    errors: [BadRequest, NotFound] as const,
-  }));
+export const AuditLogExportsControllerExports = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuditLogExportsControllerExportsInput,
+  outputSchema: AuditLogExportsControllerExportsOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

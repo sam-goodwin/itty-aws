@@ -3,39 +3,37 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListSolanaTokenBalancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.String.pipe(T.PathParam()),
-    network: Schema.String.pipe(T.PathParam()),
-    pageSize: Schema.optional(Schema.Number),
-    pageToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v2/solana/token-balances/{network}/{address}",
-    }),
-  );
+export const ListSolanaTokenBalancesInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  network: Schema.String.pipe(T.PathParam()),
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v2/solana/token-balances/{network}/{address}",
+  }),
+);
 export type ListSolanaTokenBalancesInput =
   typeof ListSolanaTokenBalancesInput.Type;
 
 // Output Schema
-export const ListSolanaTokenBalancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balances: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          amount: Schema.String,
-          decimals: Schema.Number,
-        }),
-        token: Schema.Struct({
-          symbol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          mintAddress: Schema.String,
-        }),
+export const ListSolanaTokenBalancesOutput = /*@__PURE__*/ Schema.Struct({
+  balances: Schema.Array(
+    Schema.Struct({
+      amount: Schema.Struct({
+        amount: Schema.String,
+        decimals: Schema.Number,
       }),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  });
+      token: Schema.Struct({
+        symbol: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        mintAddress: Schema.String,
+      }),
+    }),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+});
 export type ListSolanaTokenBalancesOutput =
   typeof ListSolanaTokenBalancesOutput.Type;
 
@@ -51,9 +49,7 @@ export type ListSolanaTokenBalancesOutput =
  * @param pageSize - The number of balances to return per page.
  * @param pageToken - The token for the next page of balances. Will be empty if there are no more balances to fetch.
  */
-export const listSolanaTokenBalances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListSolanaTokenBalancesInput,
-    outputSchema: ListSolanaTokenBalancesOutput,
-  }),
-);
+export const listSolanaTokenBalances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListSolanaTokenBalancesInput,
+  outputSchema: ListSolanaTokenBalancesOutput,
+}));

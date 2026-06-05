@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTransfersTransferReversalsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -21,7 +21,7 @@ export type PostTransfersTransferReversalsIdInput =
 
 // Output Schema
 export const PostTransfersTransferReversalsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.Unknown,
     created: Schema.Number,
@@ -43,8 +43,7 @@ export type PostTransfersTransferReversalsIdOutput =
  * <p>Updates the specified reversal by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  * <p>This request only accepts metadata and description as arguments.</p>
  */
-export const PostTransfersTransferReversalsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostTransfersTransferReversalsIdInput,
-    outputSchema: PostTransfersTransferReversalsIdOutput,
-  }));
+export const PostTransfersTransferReversalsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTransfersTransferReversalsIdInput,
+  outputSchema: PostTransfersTransferReversalsIdOutput,
+}));

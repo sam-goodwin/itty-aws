@@ -5,7 +5,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const OrganizationApiKeysControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -20,7 +20,7 @@ export type OrganizationApiKeysControllerCreateInput =
 
 // Output Schema
 export const OrganizationApiKeysControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     owner: Schema.optional(
@@ -48,9 +48,10 @@ export type OrganizationApiKeysControllerCreateOutput =
  *
  * @param organizationId - Unique identifier of the Organization.
  */
-export const OrganizationApiKeysControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationApiKeysControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationApiKeysControllerCreateInput,
     outputSchema: OrganizationApiKeysControllerCreateOutput,
     errors: [NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

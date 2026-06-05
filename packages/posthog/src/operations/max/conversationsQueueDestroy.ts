@@ -4,23 +4,21 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ConversationsQueueDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    conversation: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    queue_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/environments/{project_id}/conversations/{conversation}/queue/{queue_id}/",
-    }),
-  );
+export const ConversationsQueueDestroyInput = /*@__PURE__*/ Schema.Struct({
+  conversation: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  queue_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/environments/{project_id}/conversations/{conversation}/queue/{queue_id}/",
+  }),
+);
 export type ConversationsQueueDestroyInput =
   typeof ConversationsQueueDestroyInput.Type;
 
 // Output Schema
-export const ConversationsQueueDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConversationsQueueDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type ConversationsQueueDestroyOutput =
   typeof ConversationsQueueDestroyOutput.Type;
 
@@ -30,10 +28,8 @@ export type ConversationsQueueDestroyOutput =
  * @param conversation - A UUID string identifying this conversation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsQueueDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConversationsQueueDestroyInput,
-    outputSchema: ConversationsQueueDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const conversationsQueueDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsQueueDestroyInput,
+  outputSchema: ConversationsQueueDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

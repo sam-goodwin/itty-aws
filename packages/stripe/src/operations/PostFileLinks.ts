@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostFileLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFileLinksInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   expires_at: Schema.optional(Schema.Number),
   file: Schema.String,
@@ -18,7 +18,7 @@ export const PostFileLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostFileLinksInput = typeof PostFileLinksInput.Type;
 
 // Output Schema
-export const PostFileLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFileLinksOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   expired: Schema.Boolean,
   expires_at: Schema.NullOr(Schema.Number),
@@ -37,7 +37,7 @@ export type PostFileLinksOutput = typeof PostFileLinksOutput.Type;
  *
  * <p>Creates a new file link object.</p>
  */
-export const PostFileLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostFileLinks = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostFileLinksInput,
   outputSchema: PostFileLinksOutput,
 }));

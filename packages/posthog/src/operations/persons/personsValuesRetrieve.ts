@@ -4,23 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const PersonsValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["csv", "json"])),
-    key: Schema.String,
-    value: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/persons/values/",
-    }),
-  );
+export const PersonsValuesRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  key: Schema.String,
+  value: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/persons/values/" }),
+);
 export type PersonsValuesRetrieveInput = typeof PersonsValuesRetrieveInput.Type;
 
 // Output Schema
-export const PersonsValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PersonsValuesRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type PersonsValuesRetrieveOutput =
   typeof PersonsValuesRetrieveOutput.Type;
 
@@ -32,10 +27,8 @@ export type PersonsValuesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param value - Optional search string to filter values (case-insensitive substring match).
  */
-export const personsValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsValuesRetrieveInput,
-    outputSchema: PersonsValuesRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsValuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsValuesRetrieveInput,
+  outputSchema: PersonsValuesRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

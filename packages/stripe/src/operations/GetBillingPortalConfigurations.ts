@@ -3,27 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetBillingPortalConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    active: Schema.optional(Schema.Boolean),
-    ending_before: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.String),
-    is_default: Schema.optional(Schema.Boolean),
-    limit: Schema.optional(Schema.Number),
-    starting_after: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/billing_portal/configurations",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetBillingPortalConfigurationsInput = /*@__PURE__*/ Schema.Struct({
+  active: Schema.optional(Schema.Boolean),
+  ending_before: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.String),
+  is_default: Schema.optional(Schema.Boolean),
+  limit: Schema.optional(Schema.Number),
+  starting_after: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/billing_portal/configurations",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetBillingPortalConfigurationsInput =
   typeof GetBillingPortalConfigurationsInput.Type;
 
 // Output Schema
-export const GetBillingPortalConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBillingPortalConfigurationsOutput = /*@__PURE__*/ Schema.Struct(
+  {
     data: Schema.Array(
       Schema.Struct({
         active: Schema.Boolean,
@@ -140,7 +139,8 @@ export const GetBillingPortalConfigurationsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
+  },
+);
 export type GetBillingPortalConfigurationsOutput =
   typeof GetBillingPortalConfigurationsOutput.Type;
 
@@ -157,8 +157,7 @@ export type GetBillingPortalConfigurationsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetBillingPortalConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetBillingPortalConfigurationsInput,
-    outputSchema: GetBillingPortalConfigurationsOutput,
-  }));
+export const GetBillingPortalConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBillingPortalConfigurationsInput,
+  outputSchema: GetBillingPortalConfigurationsOutput,
+}));

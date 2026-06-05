@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -50,13 +50,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateStoreAcknowledgeOfferNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -71,7 +71,7 @@ export type PrivateStoreAcknowledgeOfferNotificationInput =
 
 // Output Schema
 export const PrivateStoreAcknowledgeOfferNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PrivateStoreAcknowledgeOfferNotificationOutput =
   typeof PrivateStoreAcknowledgeOfferNotificationOutput.Type;
 
@@ -83,14 +83,15 @@ export type PrivateStoreAcknowledgeOfferNotificationOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreAcknowledgeOfferNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreAcknowledgeOfferNotification = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreAcknowledgeOfferNotificationInput,
     outputSchema: PrivateStoreAcknowledgeOfferNotificationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreAdminRequestApprovalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -104,7 +105,7 @@ export type PrivateStoreAdminRequestApprovalsListInput =
 
 // Output Schema
 export const PrivateStoreAdminRequestApprovalsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -150,14 +151,15 @@ export type PrivateStoreAdminRequestApprovalsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreAdminRequestApprovalsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreAdminRequestApprovalsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreAdminRequestApprovalsListInput,
     outputSchema: PrivateStoreAdminRequestApprovalsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreAnyExistingOffersInTheCollectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -171,7 +173,7 @@ export type PrivateStoreAnyExistingOffersInTheCollectionsInput =
 
 // Output Schema
 export const PrivateStoreAnyExistingOffersInTheCollectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   });
 export type PrivateStoreAnyExistingOffersInTheCollectionsOutput =
@@ -185,29 +187,27 @@ export type PrivateStoreAnyExistingOffersInTheCollectionsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreAnyExistingOffersInTheCollections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreAnyExistingOffersInTheCollectionsInput,
     outputSchema: PrivateStoreAnyExistingOffersInTheCollectionsOutput,
   }));
 // Input Schema
-export const PrivateStoreBillingAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts",
-    }),
-  );
+export const PrivateStoreBillingAccountsInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts",
+  }),
+);
 export type PrivateStoreBillingAccountsInput =
   typeof PrivateStoreBillingAccountsInput.Type;
 
 // Output Schema
-export const PrivateStoreBillingAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccounts: Schema.optional(Schema.Array(Schema.String)),
-  });
+export const PrivateStoreBillingAccountsOutput = /*@__PURE__*/ Schema.Struct({
+  billingAccounts: Schema.optional(Schema.Array(Schema.String)),
+});
 export type PrivateStoreBillingAccountsOutput =
   typeof PrivateStoreBillingAccountsOutput.Type;
 
@@ -218,15 +218,13 @@ export type PrivateStoreBillingAccountsOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreBillingAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreBillingAccountsInput,
-    outputSchema: PrivateStoreBillingAccountsOutput,
-  }),
-);
+export const PrivateStoreBillingAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreBillingAccountsInput,
+  outputSchema: PrivateStoreBillingAccountsOutput,
+}));
 // Input Schema
 export const PrivateStoreBulkCollectionsActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -240,7 +238,7 @@ export type PrivateStoreBulkCollectionsActionInput =
 
 // Output Schema
 export const PrivateStoreBulkCollectionsActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -268,14 +266,13 @@ export type PrivateStoreBulkCollectionsActionOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreBulkCollectionsAction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreBulkCollectionsActionInput,
-    outputSchema: PrivateStoreBulkCollectionsActionOutput,
-  }));
+export const PrivateStoreBulkCollectionsAction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreBulkCollectionsActionInput,
+  outputSchema: PrivateStoreBulkCollectionsActionOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionApproveAllItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -290,7 +287,7 @@ export type PrivateStoreCollectionApproveAllItemsInput =
 
 // Output Schema
 export const PrivateStoreCollectionApproveAllItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -320,14 +317,15 @@ export type PrivateStoreCollectionApproveAllItemsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionApproveAllItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionApproveAllItems = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionApproveAllItemsInput,
     outputSchema: PrivateStoreCollectionApproveAllItemsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreCollectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -342,7 +340,7 @@ export type PrivateStoreCollectionCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateStoreCollectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -372,29 +370,28 @@ export type PrivateStoreCollectionCreateOrUpdateOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionCreateOrUpdateInput,
     outputSchema: PrivateStoreCollectionCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreCollectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
-    }),
-  );
+export const PrivateStoreCollectionDeleteInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  collectionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+  }),
+);
 export type PrivateStoreCollectionDeleteInput =
   typeof PrivateStoreCollectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreCollectionDeleteOutput =
   typeof PrivateStoreCollectionDeleteOutput.Type;
 
@@ -406,14 +403,13 @@ export type PrivateStoreCollectionDeleteOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCollectionDeleteInput,
-    outputSchema: PrivateStoreCollectionDeleteOutput,
-  }));
+export const PrivateStoreCollectionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionDeleteInput,
+  outputSchema: PrivateStoreCollectionDeleteOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionDisableApproveAllItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -428,7 +424,7 @@ export type PrivateStoreCollectionDisableApproveAllItemsInput =
 
 // Output Schema
 export const PrivateStoreCollectionDisableApproveAllItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -459,46 +455,44 @@ export type PrivateStoreCollectionDisableApproveAllItemsOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionDisableApproveAllItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionDisableApproveAllItemsInput,
     outputSchema: PrivateStoreCollectionDisableApproveAllItemsOutput,
   }));
 // Input Schema
-export const PrivateStoreCollectionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
-    }),
-  );
+export const PrivateStoreCollectionGetInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  collectionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+  }),
+);
 export type PrivateStoreCollectionGetInput =
   typeof PrivateStoreCollectionGetInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateStoreCollectionGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateStoreCollectionGetOutput =
   typeof PrivateStoreCollectionGetOutput.Type;
 
@@ -510,64 +504,60 @@ export type PrivateStoreCollectionGetOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionGetInput,
-    outputSchema: PrivateStoreCollectionGetOutput,
+export const PrivateStoreCollectionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionGetInput,
+  outputSchema: PrivateStoreCollectionGetOutput,
+}));
+// Input Schema
+export const PrivateStoreCollectionListInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections",
   }),
 );
-// Input Schema
-export const PrivateStoreCollectionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections",
-    }),
-  );
 export type PrivateStoreCollectionListInput =
   typeof PrivateStoreCollectionListInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const PrivateStoreCollectionListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateStoreCollectionListOutput =
   typeof PrivateStoreCollectionListOutput.Type;
 
@@ -578,15 +568,13 @@ export type PrivateStoreCollectionListOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreCollectionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionListInput,
-    outputSchema: PrivateStoreCollectionListOutput,
-  }),
-);
+export const PrivateStoreCollectionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionListInput,
+  outputSchema: PrivateStoreCollectionListOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionOfferContextsViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -602,7 +590,7 @@ export type PrivateStoreCollectionOfferContextsViewInput =
 
 // Output Schema
 export const PrivateStoreCollectionOfferContextsViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -633,14 +621,15 @@ export type PrivateStoreCollectionOfferContextsViewOutput =
  * @param collectionId - The collection ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreCollectionOfferContextsView =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionOfferContextsView = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionOfferContextsViewInput,
     outputSchema: PrivateStoreCollectionOfferContextsViewOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreCollectionOfferCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -656,7 +645,7 @@ export type PrivateStoreCollectionOfferCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -687,14 +676,15 @@ export type PrivateStoreCollectionOfferCreateOrUpdateOutput =
  * @param collectionId - The collection ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreCollectionOfferCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionOfferCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionOfferCreateOrUpdateInput,
     outputSchema: PrivateStoreCollectionOfferCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreCollectionOfferDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -710,7 +700,7 @@ export type PrivateStoreCollectionOfferDeleteInput =
 
 // Output Schema
 export const PrivateStoreCollectionOfferDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PrivateStoreCollectionOfferDeleteOutput =
   typeof PrivateStoreCollectionOfferDeleteOutput.Type;
 
@@ -723,30 +713,28 @@ export type PrivateStoreCollectionOfferDeleteOutput =
  * @param collectionId - The collection ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreCollectionOfferDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCollectionOfferDeleteInput,
-    outputSchema: PrivateStoreCollectionOfferDeleteOutput,
-  }));
+export const PrivateStoreCollectionOfferDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionOfferDeleteInput,
+  outputSchema: PrivateStoreCollectionOfferDeleteOutput,
+}));
 // Input Schema
-export const PrivateStoreCollectionOfferGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    collectionId: Schema.String.pipe(T.PathParam()),
-    offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
-    }),
-  );
+export const PrivateStoreCollectionOfferGetInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  collectionId: Schema.String.pipe(T.PathParam()),
+  offerId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+  }),
+);
 export type PrivateStoreCollectionOfferGetInput =
   typeof PrivateStoreCollectionOfferGetInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionOfferGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreCollectionOfferGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -764,7 +752,8 @@ export const PrivateStoreCollectionOfferGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type PrivateStoreCollectionOfferGetOutput =
   typeof PrivateStoreCollectionOfferGetOutput.Type;
 
@@ -777,29 +766,29 @@ export type PrivateStoreCollectionOfferGetOutput =
  * @param collectionId - The collection ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreCollectionOfferGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCollectionOfferGetInput,
-    outputSchema: PrivateStoreCollectionOfferGetOutput,
-  }));
+export const PrivateStoreCollectionOfferGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionOfferGetInput,
+  outputSchema: PrivateStoreCollectionOfferGetOutput,
+}));
 // Input Schema
-export const PrivateStoreCollectionOfferListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreCollectionOfferListInput = /*@__PURE__*/ Schema.Struct(
+  {
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers",
+  }),
+);
 export type PrivateStoreCollectionOfferListInput =
   typeof PrivateStoreCollectionOfferListInput.Type;
 
 // Output Schema
 export const PrivateStoreCollectionOfferListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -844,14 +833,13 @@ export type PrivateStoreCollectionOfferListOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionOfferList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCollectionOfferListInput,
-    outputSchema: PrivateStoreCollectionOfferListOutput,
-  }));
+export const PrivateStoreCollectionOfferList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionOfferListInput,
+  outputSchema: PrivateStoreCollectionOfferListOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionOfferListByContextsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -866,7 +854,7 @@ export type PrivateStoreCollectionOfferListByContextsInput =
 
 // Output Schema
 export const PrivateStoreCollectionOfferListByContextsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -934,30 +922,31 @@ export type PrivateStoreCollectionOfferListByContextsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionOfferListByContexts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionOfferListByContexts = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionOfferListByContextsInput,
     outputSchema: PrivateStoreCollectionOfferListByContextsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreCollectionOfferPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreCollectionOfferPostInput = /*@__PURE__*/ Schema.Struct(
+  {
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+  }),
+);
 export type PrivateStoreCollectionOfferPostInput =
   typeof PrivateStoreCollectionOfferPostInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionOfferPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionOfferPostOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreCollectionOfferPostOutput =
   typeof PrivateStoreCollectionOfferPostOutput.Type;
 
@@ -970,14 +959,13 @@ export type PrivateStoreCollectionOfferPostOutput =
  * @param collectionId - The collection ID
  * @param offerId - The offer ID to update or delete
  */
-export const PrivateStoreCollectionOfferPost =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCollectionOfferPostInput,
-    outputSchema: PrivateStoreCollectionOfferPostOutput,
-  }));
+export const PrivateStoreCollectionOfferPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionOfferPostInput,
+  outputSchema: PrivateStoreCollectionOfferPostOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -993,7 +981,7 @@ export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
 
 // Output Schema
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1025,28 +1013,26 @@ export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContext =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput,
     outputSchema: PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput,
   }));
 // Input Schema
-export const PrivateStoreCollectionPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
-    }),
-  );
+export const PrivateStoreCollectionPostInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  collectionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+  }),
+);
 export type PrivateStoreCollectionPostInput =
   typeof PrivateStoreCollectionPostInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionPostOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreCollectionPostOutput =
   typeof PrivateStoreCollectionPostOutput.Type;
 
@@ -1058,15 +1044,13 @@ export type PrivateStoreCollectionPostOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionPostInput,
-    outputSchema: PrivateStoreCollectionPostOutput,
-  }),
-);
+export const PrivateStoreCollectionPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionPostInput,
+  outputSchema: PrivateStoreCollectionPostOutput,
+}));
 // Input Schema
 export const PrivateStoreCollectionsToSubscriptionsMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1080,7 +1064,7 @@ export type PrivateStoreCollectionsToSubscriptionsMappingInput =
 
 // Output Schema
 export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -1102,13 +1086,13 @@ export type PrivateStoreCollectionsToSubscriptionsMappingOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreCollectionsToSubscriptionsMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionsToSubscriptionsMappingInput,
     outputSchema: PrivateStoreCollectionsToSubscriptionsMappingOutput,
   }));
 // Input Schema
 export const PrivateStoreCollectionTransferOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1123,7 +1107,7 @@ export type PrivateStoreCollectionTransferOffersInput =
 
 // Output Schema
 export const PrivateStoreCollectionTransferOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1152,14 +1136,15 @@ export type PrivateStoreCollectionTransferOffersOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionTransferOffers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreCollectionTransferOffers = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreCollectionTransferOffersInput,
     outputSchema: PrivateStoreCollectionTransferOffersOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreCreateApprovalRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1174,7 +1159,7 @@ export type PrivateStoreCreateApprovalRequestInput =
 
 // Output Schema
 export const PrivateStoreCreateApprovalRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1204,28 +1189,25 @@ export type PrivateStoreCreateApprovalRequestOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param requestApprovalId - The request approval ID to get create or update
  */
-export const PrivateStoreCreateApprovalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreCreateApprovalRequestInput,
-    outputSchema: PrivateStoreCreateApprovalRequestOutput,
-  }));
+export const PrivateStoreCreateApprovalRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCreateApprovalRequestInput,
+  outputSchema: PrivateStoreCreateApprovalRequestOutput,
+}));
 // Input Schema
-export const PrivateStoreCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
-    }),
-  );
+export const PrivateStoreCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+  }),
+);
 export type PrivateStoreCreateOrUpdateInput =
   typeof PrivateStoreCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PrivateStoreCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreCreateOrUpdateOutput =
   typeof PrivateStoreCreateOrUpdateOutput.Type;
 
@@ -1236,27 +1218,24 @@ export type PrivateStoreCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCreateOrUpdateInput,
-    outputSchema: PrivateStoreCreateOrUpdateOutput,
+export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCreateOrUpdateInput,
+  outputSchema: PrivateStoreCreateOrUpdateOutput,
+}));
+// Input Schema
+export const PrivateStoreDeleteInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
   }),
 );
-// Input Schema
-export const PrivateStoreDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
-    }),
-  );
 export type PrivateStoreDeleteInput = typeof PrivateStoreDeleteInput.Type;
 
 // Output Schema
-export const PrivateStoreDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreDeleteOutput = typeof PrivateStoreDeleteOutput.Type;
 
 // The operation
@@ -1266,13 +1245,13 @@ export type PrivateStoreDeleteOutput = typeof PrivateStoreDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreDeleteInput,
   outputSchema: PrivateStoreDeleteOutput,
 }));
 // Input Schema
 export const PrivateStoreFetchAllSubscriptionsInTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1286,7 +1265,7 @@ export type PrivateStoreFetchAllSubscriptionsInTenantInput =
 
 // Output Schema
 export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1319,13 +1298,14 @@ export type PrivateStoreFetchAllSubscriptionsInTenantOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param next-page-token - The skip token to get the next page.
  */
-export const PrivateStoreFetchAllSubscriptionsInTenant =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreFetchAllSubscriptionsInTenant = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreFetchAllSubscriptionsInTenantInput,
     outputSchema: PrivateStoreFetchAllSubscriptionsInTenantOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreGetInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1337,7 +1317,7 @@ export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PrivateStoreGetInput = typeof PrivateStoreGetInput.Type;
 
 // Output Schema
-export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1365,13 +1345,13 @@ export type PrivateStoreGetOutput = typeof PrivateStoreGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreGetInput,
   outputSchema: PrivateStoreGetOutput,
 }));
 // Input Schema
 export const PrivateStoreGetAdminRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1387,7 +1367,7 @@ export type PrivateStoreGetAdminRequestApprovalInput =
 
 // Output Schema
 export const PrivateStoreGetAdminRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1418,14 +1398,15 @@ export type PrivateStoreGetAdminRequestApprovalOutput =
  * @param adminRequestApprovalId - The admin request approval ID to get create or update
  * @param publisherId - The publisher id of this offer.
  */
-export const PrivateStoreGetAdminRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreGetAdminRequestApproval = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreGetAdminRequestApprovalInput,
     outputSchema: PrivateStoreGetAdminRequestApprovalOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreGetApprovalRequestsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1439,7 +1420,7 @@ export type PrivateStoreGetApprovalRequestsListInput =
 
 // Output Schema
 export const PrivateStoreGetApprovalRequestsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1485,29 +1466,29 @@ export type PrivateStoreGetApprovalRequestsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreGetApprovalRequestsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreGetApprovalRequestsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreGetApprovalRequestsListInput,
     outputSchema: PrivateStoreGetApprovalRequestsListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreGetRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
-    }),
-  );
+export const PrivateStoreGetRequestApprovalInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  requestApprovalId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
+  }),
+);
 export type PrivateStoreGetRequestApprovalInput =
   typeof PrivateStoreGetRequestApprovalInput.Type;
 
 // Output Schema
-export const PrivateStoreGetRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreGetRequestApprovalOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1525,7 +1506,8 @@ export const PrivateStoreGetRequestApprovalOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type PrivateStoreGetRequestApprovalOutput =
   typeof PrivateStoreGetRequestApprovalOutput.Type;
 
@@ -1537,13 +1519,12 @@ export type PrivateStoreGetRequestApprovalOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param requestApprovalId - The request approval ID to get create or update
  */
-export const PrivateStoreGetRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreGetRequestApprovalInput,
-    outputSchema: PrivateStoreGetRequestApprovalOutput,
-  }));
+export const PrivateStoreGetRequestApproval = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreGetRequestApprovalInput,
+  outputSchema: PrivateStoreGetRequestApprovalOutput,
+}));
 // Input Schema
-export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
   "use-cache": Schema.optional(Schema.String),
 }).pipe(
@@ -1555,42 +1536,30 @@ export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PrivateStoreListInput = typeof PrivateStoreListInput.Type;
 
 // Output Schema
-export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const PrivateStoreListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateStoreListOutput = typeof PrivateStoreListOutput.Type;
 
 // The operation
@@ -1600,13 +1569,13 @@ export type PrivateStoreListOutput = typeof PrivateStoreListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param use-cache - Determines if to use cache or DB for serving this request
  */
-export const PrivateStoreList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreListInput,
   outputSchema: PrivateStoreListOutput,
 }));
 // Input Schema
 export const PrivateStoreListNewPlansNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1620,7 +1589,7 @@ export type PrivateStoreListNewPlansNotificationsInput =
 
 // Output Schema
 export const PrivateStoreListNewPlansNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newPlansNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1651,14 +1620,15 @@ export type PrivateStoreListNewPlansNotificationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreListNewPlansNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreListNewPlansNotifications = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreListNewPlansNotificationsInput,
     outputSchema: PrivateStoreListNewPlansNotificationsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const PrivateStoreListStopSellOffersPlansNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1672,7 +1642,7 @@ export type PrivateStoreListStopSellOffersPlansNotificationsInput =
 
 // Output Schema
 export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1706,13 +1676,13 @@ export type PrivateStoreListStopSellOffersPlansNotificationsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreListStopSellOffersPlansNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreListStopSellOffersPlansNotificationsInput,
     outputSchema: PrivateStoreListStopSellOffersPlansNotificationsOutput,
   }));
 // Input Schema
 export const PrivateStoreListSubscriptionsContextInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1726,7 +1696,7 @@ export type PrivateStoreListSubscriptionsContextInput =
 
 // Output Schema
 export const PrivateStoreListSubscriptionsContextOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionsIds: Schema.optional(Schema.Array(Schema.String)),
   });
 export type PrivateStoreListSubscriptionsContextOutput =
@@ -1739,28 +1709,28 @@ export type PrivateStoreListSubscriptionsContextOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreListSubscriptionsContext =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreListSubscriptionsContext = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreListSubscriptionsContextInput,
     outputSchema: PrivateStoreListSubscriptionsContextOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreQueryApprovedPlansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryApprovedPlans",
-    }),
-  );
+export const PrivateStoreQueryApprovedPlansInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryApprovedPlans",
+  }),
+);
 export type PrivateStoreQueryApprovedPlansInput =
   typeof PrivateStoreQueryApprovedPlansInput.Type;
 
 // Output Schema
-export const PrivateStoreQueryApprovedPlansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreQueryApprovedPlansOutput = /*@__PURE__*/ Schema.Struct(
+  {
     details: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1770,7 +1740,8 @@ export const PrivateStoreQueryApprovedPlansOutput =
         }),
       ),
     ),
-  });
+  },
+);
 export type PrivateStoreQueryApprovedPlansOutput =
   typeof PrivateStoreQueryApprovedPlansOutput.Type;
 
@@ -1781,14 +1752,13 @@ export type PrivateStoreQueryApprovedPlansOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryApprovedPlans =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreQueryApprovedPlansInput,
-    outputSchema: PrivateStoreQueryApprovedPlansOutput,
-  }));
+export const PrivateStoreQueryApprovedPlans = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryApprovedPlansInput,
+  outputSchema: PrivateStoreQueryApprovedPlansOutput,
+}));
 // Input Schema
 export const PrivateStoreQueryNotificationsStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1802,7 +1772,7 @@ export type PrivateStoreQueryNotificationsStateInput =
 
 // Output Schema
 export const PrivateStoreQueryNotificationsStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1871,71 +1841,68 @@ export type PrivateStoreQueryNotificationsStateOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryNotificationsState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreQueryNotificationsState = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreQueryNotificationsStateInput,
     outputSchema: PrivateStoreQueryNotificationsStateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreQueryOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers",
-    }),
-  );
+export const PrivateStoreQueryOffersInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers",
+  }),
+);
 export type PrivateStoreQueryOffersInput =
   typeof PrivateStoreQueryOffersInput.Type;
 
 // Output Schema
-export const PrivateStoreQueryOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uniqueOfferId: Schema.optional(Schema.String),
-          offerDisplayName: Schema.optional(Schema.String),
-          publisherDisplayName: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-          privateStoreId: Schema.optional(Schema.String),
-          createdAt: Schema.optional(Schema.String),
-          modifiedAt: Schema.optional(Schema.String),
-          specificPlanIdsLimitation: Schema.optional(
-            Schema.Array(Schema.String),
+export const PrivateStoreQueryOffersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        uniqueOfferId: Schema.optional(Schema.String),
+        offerDisplayName: Schema.optional(Schema.String),
+        publisherDisplayName: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        privateStoreId: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        modifiedAt: Schema.optional(Schema.String),
+        specificPlanIdsLimitation: Schema.optional(Schema.Array(Schema.String)),
+        updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
+        iconFileUris: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        isStopSell: Schema.optional(Schema.Boolean),
+        plans: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              skuId: Schema.optional(Schema.String),
+              planId: Schema.optional(Schema.String),
+              planDisplayName: Schema.optional(Schema.String),
+              accessibility: Schema.optional(
+                Schema.Literals([
+                  "Unknown",
+                  "Public",
+                  "PrivateTenantOnLevel",
+                  "PrivateSubscriptionOnLevel",
+                ]),
+              ),
+              altStackReference: Schema.optional(Schema.String),
+              stackType: Schema.optional(Schema.String),
+              isStopSell: Schema.optional(Schema.Boolean),
+            }),
           ),
-          updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
-          iconFileUris: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          isStopSell: Schema.optional(Schema.Boolean),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                skuId: Schema.optional(Schema.String),
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-                accessibility: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "Public",
-                    "PrivateTenantOnLevel",
-                    "PrivateSubscriptionOnLevel",
-                  ]),
-                ),
-                altStackReference: Schema.optional(Schema.String),
-                stackType: Schema.optional(Schema.String),
-                isStopSell: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateStoreQueryOffersOutput =
   typeof PrivateStoreQueryOffersOutput.Type;
 
@@ -1946,15 +1913,13 @@ export type PrivateStoreQueryOffersOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreQueryOffersInput,
-    outputSchema: PrivateStoreQueryOffersOutput,
-  }),
-);
+export const PrivateStoreQueryOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryOffersInput,
+  outputSchema: PrivateStoreQueryOffersOutput,
+}));
 // Input Schema
 export const PrivateStoreQueryRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1969,7 +1934,7 @@ export type PrivateStoreQueryRequestApprovalInput =
 
 // Output Schema
 export const PrivateStoreQueryRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uniqueOfferId: Schema.optional(Schema.String),
     plansDetails: Schema.optional(
       Schema.Record(
@@ -2000,71 +1965,66 @@ export type PrivateStoreQueryRequestApprovalOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param requestApprovalId - The request approval ID to get create or update
  */
-export const PrivateStoreQueryRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateStoreQueryRequestApprovalInput,
-    outputSchema: PrivateStoreQueryRequestApprovalOutput,
-  }));
+export const PrivateStoreQueryRequestApproval = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryRequestApprovalInput,
+  outputSchema: PrivateStoreQueryRequestApprovalOutput,
+}));
 // Input Schema
-export const PrivateStoreQueryUserOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserOffers",
-    }),
-  );
+export const PrivateStoreQueryUserOffersInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserOffers",
+  }),
+);
 export type PrivateStoreQueryUserOffersInput =
   typeof PrivateStoreQueryUserOffersInput.Type;
 
 // Output Schema
-export const PrivateStoreQueryUserOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uniqueOfferId: Schema.optional(Schema.String),
-          offerDisplayName: Schema.optional(Schema.String),
-          publisherDisplayName: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-          privateStoreId: Schema.optional(Schema.String),
-          createdAt: Schema.optional(Schema.String),
-          modifiedAt: Schema.optional(Schema.String),
-          specificPlanIdsLimitation: Schema.optional(
-            Schema.Array(Schema.String),
+export const PrivateStoreQueryUserOffersOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        uniqueOfferId: Schema.optional(Schema.String),
+        offerDisplayName: Schema.optional(Schema.String),
+        publisherDisplayName: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        privateStoreId: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        modifiedAt: Schema.optional(Schema.String),
+        specificPlanIdsLimitation: Schema.optional(Schema.Array(Schema.String)),
+        updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
+        iconFileUris: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        isStopSell: Schema.optional(Schema.Boolean),
+        plans: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              skuId: Schema.optional(Schema.String),
+              planId: Schema.optional(Schema.String),
+              planDisplayName: Schema.optional(Schema.String),
+              accessibility: Schema.optional(
+                Schema.Literals([
+                  "Unknown",
+                  "Public",
+                  "PrivateTenantOnLevel",
+                  "PrivateSubscriptionOnLevel",
+                ]),
+              ),
+              altStackReference: Schema.optional(Schema.String),
+              stackType: Schema.optional(Schema.String),
+              isStopSell: Schema.optional(Schema.Boolean),
+            }),
           ),
-          updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
-          iconFileUris: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          isStopSell: Schema.optional(Schema.Boolean),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                skuId: Schema.optional(Schema.String),
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-                accessibility: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "Public",
-                    "PrivateTenantOnLevel",
-                    "PrivateSubscriptionOnLevel",
-                  ]),
-                ),
-                altStackReference: Schema.optional(Schema.String),
-                stackType: Schema.optional(Schema.String),
-                isStopSell: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type PrivateStoreQueryUserOffersOutput =
   typeof PrivateStoreQueryUserOffersOutput.Type;
 
@@ -2075,15 +2035,13 @@ export type PrivateStoreQueryUserOffersOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryUserOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreQueryUserOffersInput,
-    outputSchema: PrivateStoreQueryUserOffersOutput,
-  }),
-);
+export const PrivateStoreQueryUserOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryUserOffersInput,
+  outputSchema: PrivateStoreQueryUserOffersOutput,
+}));
 // Input Schema
 export const PrivateStoreUpdateAdminRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2098,7 +2056,7 @@ export type PrivateStoreUpdateAdminRequestApprovalInput =
 
 // Output Schema
 export const PrivateStoreUpdateAdminRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2128,29 +2086,28 @@ export type PrivateStoreUpdateAdminRequestApprovalOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param adminRequestApprovalId - The admin request approval ID to get create or update
  */
-export const PrivateStoreUpdateAdminRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreUpdateAdminRequestApproval = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PrivateStoreUpdateAdminRequestApprovalInput,
     outputSchema: PrivateStoreUpdateAdminRequestApprovalOutput,
-  }));
+  }),
+);
 // Input Schema
-export const PrivateStoreWithdrawPlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/withdrawPlan",
-    }),
-  );
+export const PrivateStoreWithdrawPlanInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  requestApprovalId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/withdrawPlan",
+  }),
+);
 export type PrivateStoreWithdrawPlanInput =
   typeof PrivateStoreWithdrawPlanInput.Type;
 
 // Output Schema
-export const PrivateStoreWithdrawPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateStoreWithdrawPlanOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateStoreWithdrawPlanOutput =
   typeof PrivateStoreWithdrawPlanOutput.Type;
 
@@ -2162,14 +2119,12 @@ export type PrivateStoreWithdrawPlanOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param requestApprovalId - The request approval ID to get create or update
  */
-export const PrivateStoreWithdrawPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreWithdrawPlanInput,
-    outputSchema: PrivateStoreWithdrawPlanOutput,
-  }),
-);
+export const PrivateStoreWithdrawPlan = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreWithdrawPlanInput,
+  outputSchema: PrivateStoreWithdrawPlanOutput,
+}));
 // Input Schema
-export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRulesInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   collectionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2182,7 +2137,7 @@ export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryRulesInput = typeof QueryRulesInput.Type;
 
 // Output Schema
-export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRulesOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2205,12 +2160,12 @@ export type QueryRulesOutput = typeof QueryRulesOutput.Type;
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const QueryRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryRulesInput,
   outputSchema: QueryRulesOutput,
 }));
 // Input Schema
-export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUserRulesInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2222,7 +2177,7 @@ export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryUserRulesInput = typeof QueryUserRulesInput.Type;
 
 // Output Schema
-export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUserRulesOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2244,26 +2199,25 @@ export type QueryUserRulesOutput = typeof QueryUserRulesOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const QueryUserRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryUserRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryUserRulesInput,
   outputSchema: QueryUserRulesOutput,
 }));
 // Input Schema
-export const SetCollectionRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateStoreId: Schema.String.pipe(T.PathParam()),
-    collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules",
-    }),
-  );
+export const SetCollectionRulesInput = /*@__PURE__*/ Schema.Struct({
+  privateStoreId: Schema.String.pipe(T.PathParam()),
+  collectionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules",
+  }),
+);
 export type SetCollectionRulesInput = typeof SetCollectionRulesInput.Type;
 
 // Output Schema
-export const SetCollectionRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SetCollectionRulesOutput = /*@__PURE__*/ Schema.Void;
 export type SetCollectionRulesOutput = typeof SetCollectionRulesOutput.Type;
 
 // The operation
@@ -2274,7 +2228,7 @@ export type SetCollectionRulesOutput = typeof SetCollectionRulesOutput.Type;
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const SetCollectionRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SetCollectionRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: SetCollectionRulesInput,
   outputSchema: SetCollectionRulesOutput,
 }));

@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AzureTrafficCollectorsByResourceGroupListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -25,7 +25,7 @@ export type AzureTrafficCollectorsByResourceGroupListInput =
 
 // Output Schema
 export const AzureTrafficCollectorsByResourceGroupListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -70,14 +70,15 @@ export type AzureTrafficCollectorsByResourceGroupListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureTrafficCollectorsByResourceGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureTrafficCollectorsByResourceGroupList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureTrafficCollectorsByResourceGroupListInput,
     outputSchema: AzureTrafficCollectorsByResourceGroupListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureTrafficCollectorsBySubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -91,7 +92,7 @@ export type AzureTrafficCollectorsBySubscriptionListInput =
 
 // Output Schema
 export const AzureTrafficCollectorsBySubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -135,14 +136,15 @@ export type AzureTrafficCollectorsBySubscriptionListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AzureTrafficCollectorsBySubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureTrafficCollectorsBySubscriptionList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureTrafficCollectorsBySubscriptionListInput,
     outputSchema: AzureTrafficCollectorsBySubscriptionListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureTrafficCollectorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
@@ -158,7 +160,7 @@ export type AzureTrafficCollectorsCreateOrUpdateInput =
 
 // Output Schema
 export const AzureTrafficCollectorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -189,30 +191,29 @@ export type AzureTrafficCollectorsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  */
-export const AzureTrafficCollectorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureTrafficCollectorsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureTrafficCollectorsCreateOrUpdateInput,
     outputSchema: AzureTrafficCollectorsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AzureTrafficCollectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
-    }),
-  );
+export const AzureTrafficCollectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+  }),
+);
 export type AzureTrafficCollectorsDeleteInput =
   typeof AzureTrafficCollectorsDeleteInput.Type;
 
 // Output Schema
-export const AzureTrafficCollectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AzureTrafficCollectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AzureTrafficCollectorsDeleteOutput =
   typeof AzureTrafficCollectorsDeleteOutput.Type;
 
@@ -225,48 +226,45 @@ export type AzureTrafficCollectorsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  */
-export const AzureTrafficCollectorsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureTrafficCollectorsDeleteInput,
-    outputSchema: AzureTrafficCollectorsDeleteOutput,
-  }));
+export const AzureTrafficCollectorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureTrafficCollectorsDeleteInput,
+  outputSchema: AzureTrafficCollectorsDeleteOutput,
+}));
 // Input Schema
-export const AzureTrafficCollectorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
-    }),
-  );
+export const AzureTrafficCollectorsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+  }),
+);
 export type AzureTrafficCollectorsGetInput =
   typeof AzureTrafficCollectorsGetInput.Type;
 
 // Output Schema
-export const AzureTrafficCollectorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureTrafficCollectorsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureTrafficCollectorsGetOutput =
   typeof AzureTrafficCollectorsGetOutput.Type;
 
@@ -279,15 +277,13 @@ export type AzureTrafficCollectorsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  */
-export const AzureTrafficCollectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureTrafficCollectorsGetInput,
-    outputSchema: AzureTrafficCollectorsGetOutput,
-  }),
-);
+export const AzureTrafficCollectorsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureTrafficCollectorsGetInput,
+  outputSchema: AzureTrafficCollectorsGetOutput,
+}));
 // Input Schema
 export const AzureTrafficCollectorsUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
@@ -303,7 +299,7 @@ export type AzureTrafficCollectorsUpdateTagsInput =
 
 // Output Schema
 export const AzureTrafficCollectorsUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -334,31 +330,31 @@ export type AzureTrafficCollectorsUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  */
-export const AzureTrafficCollectorsUpdateTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureTrafficCollectorsUpdateTagsInput,
-    outputSchema: AzureTrafficCollectorsUpdateTagsOutput,
-  }));
+export const AzureTrafficCollectorsUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureTrafficCollectorsUpdateTagsInput,
+  outputSchema: AzureTrafficCollectorsUpdateTagsOutput,
+}));
 // Input Schema
-export const CollectorPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CollectorPoliciesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+  }),
+);
 export type CollectorPoliciesCreateOrUpdateInput =
   typeof CollectorPoliciesCreateOrUpdateInput.Type;
 
 // Output Schema
 export const CollectorPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -390,31 +386,28 @@ export type CollectorPoliciesCreateOrUpdateOutput =
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  * @param collectorPolicyName - Collector Policy Name
  */
-export const CollectorPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CollectorPoliciesCreateOrUpdateInput,
-    outputSchema: CollectorPoliciesCreateOrUpdateOutput,
-  }));
+export const CollectorPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectorPoliciesCreateOrUpdateInput,
+  outputSchema: CollectorPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CollectorPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
-    }),
-  );
+export const CollectorPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  collectorPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+  }),
+);
 export type CollectorPoliciesDeleteInput =
   typeof CollectorPoliciesDeleteInput.Type;
 
 // Output Schema
-export const CollectorPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CollectorPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CollectorPoliciesDeleteOutput =
   typeof CollectorPoliciesDeleteOutput.Type;
 
@@ -428,49 +421,45 @@ export type CollectorPoliciesDeleteOutput =
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  * @param collectorPolicyName - Collector Policy Name
  */
-export const CollectorPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectorPoliciesDeleteInput,
-    outputSchema: CollectorPoliciesDeleteOutput,
+export const CollectorPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectorPoliciesDeleteInput,
+  outputSchema: CollectorPoliciesDeleteOutput,
+}));
+// Input Schema
+export const CollectorPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  collectorPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
   }),
 );
-// Input Schema
-export const CollectorPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
-    }),
-  );
 export type CollectorPoliciesGetInput = typeof CollectorPoliciesGetInput.Type;
 
 // Output Schema
-export const CollectorPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CollectorPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CollectorPoliciesGetOutput = typeof CollectorPoliciesGetOutput.Type;
 
 // The operation
@@ -483,63 +472,49 @@ export type CollectorPoliciesGetOutput = typeof CollectorPoliciesGetOutput.Type;
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  * @param collectorPolicyName - Collector Policy Name
  */
-export const CollectorPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectorPoliciesGetInput,
-    outputSchema: CollectorPoliciesGetOutput,
+export const CollectorPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectorPoliciesGetInput,
+  outputSchema: CollectorPoliciesGetOutput,
+}));
+// Input Schema
+export const CollectorPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies",
   }),
 );
-// Input Schema
-export const CollectorPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies",
-    }),
-  );
 export type CollectorPoliciesListInput = typeof CollectorPoliciesListInput.Type;
 
 // Output Schema
-export const CollectorPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const CollectorPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CollectorPoliciesListOutput =
   typeof CollectorPoliciesListOutput.Type;
 
@@ -552,50 +527,46 @@ export type CollectorPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  */
-export const CollectorPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectorPoliciesListInput,
-    outputSchema: CollectorPoliciesListOutput,
+export const CollectorPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectorPoliciesListInput,
+  outputSchema: CollectorPoliciesListOutput,
+}));
+// Input Schema
+export const CollectorPoliciesUpdateTagsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
+  collectorPolicyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
   }),
 );
-// Input Schema
-export const CollectorPoliciesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
-    }),
-  );
 export type CollectorPoliciesUpdateTagsInput =
   typeof CollectorPoliciesUpdateTagsInput.Type;
 
 // Output Schema
-export const CollectorPoliciesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CollectorPoliciesUpdateTagsOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CollectorPoliciesUpdateTagsOutput =
   typeof CollectorPoliciesUpdateTagsOutput.Type;
 
@@ -609,45 +580,41 @@ export type CollectorPoliciesUpdateTagsOutput =
  * @param azureTrafficCollectorName - Azure Traffic Collector name
  * @param collectorPolicyName - Collector Policy Name
  */
-export const CollectorPoliciesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectorPoliciesUpdateTagsInput,
-    outputSchema: CollectorPoliciesUpdateTagsOutput,
+export const CollectorPoliciesUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectorPoliciesUpdateTagsInput,
+  outputSchema: CollectorPoliciesUpdateTagsOutput,
+}));
+// Input Schema
+export const NetworkFunctionListOperationsInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.NetworkFunction/operations",
   }),
 );
-// Input Schema
-export const NetworkFunctionListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.NetworkFunction/operations",
-    }),
-  );
 export type NetworkFunctionListOperationsInput =
   typeof NetworkFunctionListOperationsInput.Type;
 
 // Output Schema
-export const NetworkFunctionListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const NetworkFunctionListOperationsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      isDataAction: Schema.optional(Schema.Boolean),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type NetworkFunctionListOperationsOutput =
   typeof NetworkFunctionListOperationsOutput.Type;
 
@@ -657,8 +624,7 @@ export type NetworkFunctionListOperationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkFunctionListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkFunctionListOperationsInput,
-    outputSchema: NetworkFunctionListOperationsOutput,
-  }));
+export const NetworkFunctionListOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFunctionListOperationsInput,
+  outputSchema: NetworkFunctionListOperationsOutput,
+}));

@@ -4,23 +4,22 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const VisualReviewRunsTolerateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    snapshot_id: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/visual_review/runs/{id}/tolerate/",
-    }),
-  );
+export const VisualReviewRunsTolerateCreateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  snapshot_id: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/projects/{project_id}/visual_review/runs/{id}/tolerate/",
+  }),
+);
 export type VisualReviewRunsTolerateCreateInput =
   typeof VisualReviewRunsTolerateCreateInput.Type;
 
 // Output Schema
-export const VisualReviewRunsTolerateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VisualReviewRunsTolerateCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     current_artifact: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -75,7 +74,8 @@ export const VisualReviewRunsTolerateCreateOutput =
     tolerated_hash_id: Schema.optional(Schema.NullOr(Schema.String)),
     is_quarantined: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  });
+  },
+);
 export type VisualReviewRunsTolerateCreateOutput =
   typeof VisualReviewRunsTolerateCreateOutput.Type;
 
@@ -85,9 +85,8 @@ export type VisualReviewRunsTolerateCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visualReviewRunsTolerateCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: VisualReviewRunsTolerateCreateInput,
-    outputSchema: VisualReviewRunsTolerateCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const visualReviewRunsTolerateCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsTolerateCreateInput,
+  outputSchema: VisualReviewRunsTolerateCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

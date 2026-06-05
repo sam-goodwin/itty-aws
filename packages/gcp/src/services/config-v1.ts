@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
+import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import * as T from "../traits.ts";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 
 // Service metadata
 const svc = T.Service({
@@ -31,14 +31,13 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> = /*@__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -53,14 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    error: Schema.optional(Status),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -80,10 +78,9 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
 
 export interface CancelOperationRequest {}
 
@@ -101,12 +98,11 @@ export interface GitSource {
   ref?: string;
 }
 
-export const GitSource: Schema.Schema<GitSource> =
-  /*@__PURE__*/ Schema.Struct({
-    repo: Schema.optional(Schema.String),
-    directory: Schema.optional(Schema.String),
-    ref: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GitSource" });
+export const GitSource: Schema.Schema<GitSource> = /*@__PURE__*/ Schema.Struct({
+  repo: Schema.optional(Schema.String),
+  directory: Schema.optional(Schema.String),
+  ref: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSource" });
 
 export interface TerraformVariable {
   /** Optional. Input variable value. */
@@ -416,30 +412,29 @@ export interface Revision {
   providerConfig?: ProviderConfig;
 }
 
-export const Revision: Schema.Schema<Revision> =
-  /*@__PURE__*/ Schema.Struct({
-    terraformBlueprint: Schema.optional(TerraformBlueprint),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    action: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    applyResults: Schema.optional(ApplyResults),
-    stateDetail: Schema.optional(Schema.String),
-    errorCode: Schema.optional(Schema.String),
-    build: Schema.optional(Schema.String),
-    logs: Schema.optional(Schema.String),
-    tfErrors: Schema.optional(Schema.Array(TerraformError)),
-    errorLogs: Schema.optional(Schema.String),
-    serviceAccount: Schema.optional(Schema.String),
-    importExistingResources: Schema.optional(Schema.Boolean),
-    workerPool: Schema.optional(Schema.String),
-    tfVersionConstraint: Schema.optional(Schema.String),
-    tfVersion: Schema.optional(Schema.String),
-    quotaValidationResults: Schema.optional(Schema.String),
-    quotaValidation: Schema.optional(Schema.String),
-    providerConfig: Schema.optional(ProviderConfig),
-  }).annotate({ identifier: "Revision" });
+export const Revision: Schema.Schema<Revision> = /*@__PURE__*/ Schema.Struct({
+  terraformBlueprint: Schema.optional(TerraformBlueprint),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  applyResults: Schema.optional(ApplyResults),
+  stateDetail: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  build: Schema.optional(Schema.String),
+  logs: Schema.optional(Schema.String),
+  tfErrors: Schema.optional(Schema.Array(TerraformError)),
+  errorLogs: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  importExistingResources: Schema.optional(Schema.Boolean),
+  workerPool: Schema.optional(Schema.String),
+  tfVersionConstraint: Schema.optional(Schema.String),
+  tfVersion: Schema.optional(Schema.String),
+  quotaValidationResults: Schema.optional(Schema.String),
+  quotaValidation: Schema.optional(Schema.String),
+  providerConfig: Schema.optional(ProviderConfig),
+}).annotate({ identifier: "Revision" });
 
 export interface ListRevisionsResponse {
   /** List of Revisions. */
@@ -509,14 +504,13 @@ export interface Resource {
     | (string & {});
 }
 
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    terraformInfo: Schema.optional(ResourceTerraformInfo),
-    caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
-    intent: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Resource" });
+export const Resource: Schema.Schema<Resource> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  terraformInfo: Schema.optional(ResourceTerraformInfo),
+  caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
+  intent: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Resource" });
 
 export interface ListResourcesResponse {
   /** List of Resources. */
@@ -549,10 +543,9 @@ export interface Statefile {
   signedUri?: string;
 }
 
-export const Statefile: Schema.Schema<Statefile> =
-  /*@__PURE__*/ Schema.Struct({
-    signedUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Statefile" });
+export const Statefile: Schema.Schema<Statefile> = /*@__PURE__*/ Schema.Struct({
+  signedUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Statefile" });
 
 export interface ExportRevisionStatefileRequest {}
 
@@ -613,15 +606,14 @@ export interface LockInfo {
   createTime?: string;
 }
 
-export const LockInfo: Schema.Schema<LockInfo> =
-  /*@__PURE__*/ Schema.Struct({
-    lockId: Schema.optional(Schema.String),
-    operation: Schema.optional(Schema.String),
-    info: Schema.optional(Schema.String),
-    who: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LockInfo" });
+export const LockInfo: Schema.Schema<LockInfo> = /*@__PURE__*/ Schema.Struct({
+  lockId: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.String),
+  who: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "LockInfo" });
 
 export interface PreviewArtifacts {
   /** Output only. Location of a blueprint copy and other content in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
@@ -703,30 +695,29 @@ export interface Preview {
   providerConfig?: ProviderConfig;
 }
 
-export const Preview: Schema.Schema<Preview> =
-  /*@__PURE__*/ Schema.Struct({
-    terraformBlueprint: Schema.optional(TerraformBlueprint),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    state: Schema.optional(Schema.String),
-    deployment: Schema.optional(Schema.String),
-    previewMode: Schema.optional(Schema.String),
-    serviceAccount: Schema.optional(Schema.String),
-    artifactsGcsBucket: Schema.optional(Schema.String),
-    workerPool: Schema.optional(Schema.String),
-    errorCode: Schema.optional(Schema.String),
-    errorStatus: Schema.optional(Status),
-    build: Schema.optional(Schema.String),
-    tfErrors: Schema.optional(Schema.Array(TerraformError)),
-    errorLogs: Schema.optional(Schema.String),
-    previewArtifacts: Schema.optional(PreviewArtifacts),
-    logs: Schema.optional(Schema.String),
-    tfVersion: Schema.optional(Schema.String),
-    tfVersionConstraint: Schema.optional(Schema.String),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    providerConfig: Schema.optional(ProviderConfig),
-  }).annotate({ identifier: "Preview" });
+export const Preview: Schema.Schema<Preview> = /*@__PURE__*/ Schema.Struct({
+  terraformBlueprint: Schema.optional(TerraformBlueprint),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  previewMode: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  artifactsGcsBucket: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  errorStatus: Schema.optional(Status),
+  build: Schema.optional(Schema.String),
+  tfErrors: Schema.optional(Schema.Array(TerraformError)),
+  errorLogs: Schema.optional(Schema.String),
+  previewArtifacts: Schema.optional(PreviewArtifacts),
+  logs: Schema.optional(Schema.String),
+  tfVersion: Schema.optional(Schema.String),
+  tfVersionConstraint: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  providerConfig: Schema.optional(ProviderConfig),
+}).annotate({ identifier: "Preview" });
 
 export interface ListPreviewsResponse {
   /** List of Previews. */
@@ -1173,14 +1164,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    locationId: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1206,13 +1196,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> = /*@__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1223,12 +1212,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ Schema.Struct({
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-    condition: Schema.optional(Expr),
-  }).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> = /*@__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1272,13 +1260,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.Number),
-    bindings: Schema.optional(Schema.Array(Binding)),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> = /*@__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1662,23 +1649,22 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+export const ListProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("extraLocationTypes"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/locations" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1686,7 +1672,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -1707,13 +1693,12 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 
-export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+export const GetProjectsLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
@@ -2730,13 +2715,12 @@ export interface GetProjectsLocationsPreviewsRequest {
   name: string;
 }
 
-export const GetProjectsLocationsPreviewsRequest =
-  /*@__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPreviewsRequest>;
+export const GetProjectsLocationsPreviewsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsLocationsPreviewsRequest>;
 
 export type GetProjectsLocationsPreviewsResponse = Preview;
 export const GetProjectsLocationsPreviewsResponse = /*@__PURE__*/ Preview;
@@ -2771,17 +2755,18 @@ export interface ListProjectsLocationsPreviewsRequest {
   orderBy?: string;
 }
 
-export const ListProjectsLocationsPreviewsRequest =
-  /*@__PURE__*/ Schema.Struct({
+export const ListProjectsLocationsPreviewsRequest = /*@__PURE__*/ Schema.Struct(
+  {
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/previews" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPreviewsRequest>;
+  },
+).pipe(
+  T.Http({ method: "GET", path: "v1/{+parent}/previews" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsLocationsPreviewsRequest>;
 
 export type ListProjectsLocationsPreviewsResponse = ListPreviewsResponse;
 export const ListProjectsLocationsPreviewsResponse =

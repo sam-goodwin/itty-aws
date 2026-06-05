@@ -80,10 +80,9 @@ export const BackupEnginesListInput = /*@__PURE__*/ Schema.Struct({
 export type BackupEnginesListInput = typeof BackupEnginesListInput.Type;
 
 // Output Schema
-export const BackupEnginesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupEnginesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupEnginesListOutput = typeof BackupEnginesListOutput.Type;
 
 // The operation
@@ -139,19 +138,18 @@ export const BackupJobsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupJobsListOutput,
 }));
 // Input Schema
-export const BackupOperationResultsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
-    }),
-  );
+export const BackupOperationResultsGetInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
+  }),
+);
 export type BackupOperationResultsGetInput =
   typeof BackupOperationResultsGetInput.Type;
 
@@ -178,50 +176,48 @@ export const BackupOperationResultsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupOperationResultsGetOutput,
 }));
 // Input Schema
-export const BackupOperationStatusesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
-    }),
-  );
+export const BackupOperationStatusesGetInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
+  }),
+);
 export type BackupOperationStatusesGetInput =
   typeof BackupOperationStatusesGetInput.Type;
 
 // Output Schema
-export const BackupOperationStatusesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
-    ),
-  });
+export const BackupOperationStatusesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "Invalid",
+      "InProgress",
+      "Succeeded",
+      "Failed",
+      "Canceled",
+    ]),
+  ),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      objectType: Schema.String,
+    }),
+  ),
+});
 export type BackupOperationStatusesGetOutput =
   typeof BackupOperationStatusesGetOutput.Type;
 
@@ -242,26 +238,24 @@ export const BackupOperationStatusesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupOperationStatusesGetOutput,
 }));
 // Input Schema
-export const BackupPoliciesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
-    }),
-  );
+export const BackupPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
+  }),
+);
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
 
 // Output Schema
-export const BackupPoliciesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupPoliciesListOutput = typeof BackupPoliciesListOutput.Type;
 
 // The operation
@@ -280,28 +274,26 @@ export const BackupPoliciesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupPoliciesListOutput,
 }));
 // Input Schema
-export const BackupProtectableItemsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
-    }),
-  );
+export const BackupProtectableItemsListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
+  }),
+);
 export type BackupProtectableItemsListInput =
   typeof BackupProtectableItemsListInput.Type;
 
 // Output Schema
-export const BackupProtectableItemsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupProtectableItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupProtectableItemsListOutput =
   typeof BackupProtectableItemsListOutput.Type;
 
@@ -322,28 +314,26 @@ export const BackupProtectableItemsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupProtectableItemsListOutput,
 }));
 // Input Schema
-export const BackupProtectedItemsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
-    }),
-  );
+export const BackupProtectedItemsListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
+  }),
+);
 export type BackupProtectedItemsListInput =
   typeof BackupProtectedItemsListInput.Type;
 
 // Output Schema
-export const BackupProtectedItemsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupProtectedItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupProtectedItemsListOutput =
   typeof BackupProtectedItemsListOutput.Type;
 
@@ -363,27 +353,27 @@ export const BackupProtectedItemsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupProtectedItemsListOutput,
 }));
 // Input Schema
-export const BackupProtectionContainersListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
-    }),
-  );
+export const BackupProtectionContainersListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
+  }),
+);
 export type BackupProtectionContainersListInput =
   typeof BackupProtectionContainersListInput.Type;
 
 // Output Schema
-export const BackupProtectionContainersListOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const BackupProtectionContainersListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type BackupProtectionContainersListOutput =
   typeof BackupProtectionContainersListOutput.Type;
 
@@ -397,34 +387,31 @@ export type BackupProtectionContainersListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param $filter - OData filter options.
  */
-export const BackupProtectionContainersList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupProtectionContainersListInput,
-    outputSchema: BackupProtectionContainersListOutput,
-  }));
+export const BackupProtectionContainersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupProtectionContainersListInput,
+  outputSchema: BackupProtectionContainersListOutput,
+}));
 // Input Schema
-export const BackupProtectionIntentListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
-    }),
-  );
+export const BackupProtectionIntentListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
+  }),
+);
 export type BackupProtectionIntentListInput =
   typeof BackupProtectionIntentListInput.Type;
 
 // Output Schema
-export const BackupProtectionIntentListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupProtectionIntentListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupProtectionIntentListOutput =
   typeof BackupProtectionIntentListOutput.Type;
 
@@ -492,11 +479,12 @@ export type BackupResourceEncryptionConfigsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceEncryptionConfigsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupResourceEncryptionConfigsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupResourceEncryptionConfigsGetInput,
     outputSchema: BackupResourceEncryptionConfigsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupResourceEncryptionConfigsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -528,11 +516,12 @@ export type BackupResourceEncryptionConfigsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceEncryptionConfigsUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupResourceEncryptionConfigsUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupResourceEncryptionConfigsUpdateInput,
     outputSchema: BackupResourceEncryptionConfigsUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupResourceStorageConfigsNonCRRGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -582,11 +571,12 @@ export type BackupResourceStorageConfigsNonCRRGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceStorageConfigsNonCRRGet =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupResourceStorageConfigsNonCRRGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupResourceStorageConfigsNonCRRGetInput,
     outputSchema: BackupResourceStorageConfigsNonCRRGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupResourceStorageConfigsNonCRRPatchInput =
   /*@__PURE__*/ Schema.Struct({
@@ -618,11 +608,12 @@ export type BackupResourceStorageConfigsNonCRRPatchOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceStorageConfigsNonCRRPatch =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupResourceStorageConfigsNonCRRPatch = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupResourceStorageConfigsNonCRRPatchInput,
     outputSchema: BackupResourceStorageConfigsNonCRRPatchOutput,
-  }));
+  }),
+);
 // Input Schema
 export const BackupResourceStorageConfigsNonCRRUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -672,48 +663,47 @@ export type BackupResourceStorageConfigsNonCRRUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceStorageConfigsNonCRRUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const BackupResourceStorageConfigsNonCRRUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BackupResourceStorageConfigsNonCRRUpdateInput,
     outputSchema: BackupResourceStorageConfigsNonCRRUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BackupResourceVaultConfigsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-    }),
-  );
+export const BackupResourceVaultConfigsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+  }),
+);
 export type BackupResourceVaultConfigsGetInput =
   typeof BackupResourceVaultConfigsGetInput.Type;
 
 // Output Schema
-export const BackupResourceVaultConfigsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupResourceVaultConfigsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupResourceVaultConfigsGetOutput =
   typeof BackupResourceVaultConfigsGetOutput.Type;
 
@@ -726,48 +716,45 @@ export type BackupResourceVaultConfigsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceVaultConfigsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupResourceVaultConfigsGetInput,
-    outputSchema: BackupResourceVaultConfigsGetOutput,
-  }));
+export const BackupResourceVaultConfigsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupResourceVaultConfigsGetInput,
+  outputSchema: BackupResourceVaultConfigsGetOutput,
+}));
 // Input Schema
-export const BackupResourceVaultConfigsPutInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-    }),
-  );
+export const BackupResourceVaultConfigsPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+  }),
+);
 export type BackupResourceVaultConfigsPutInput =
   typeof BackupResourceVaultConfigsPutInput.Type;
 
 // Output Schema
-export const BackupResourceVaultConfigsPutOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BackupResourceVaultConfigsPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BackupResourceVaultConfigsPutOutput =
   typeof BackupResourceVaultConfigsPutOutput.Type;
 
@@ -780,11 +767,10 @@ export type BackupResourceVaultConfigsPutOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceVaultConfigsPut =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupResourceVaultConfigsPutInput,
-    outputSchema: BackupResourceVaultConfigsPutOutput,
-  }));
+export const BackupResourceVaultConfigsPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupResourceVaultConfigsPutInput,
+  outputSchema: BackupResourceVaultConfigsPutOutput,
+}));
 // Input Schema
 export const BackupResourceVaultConfigsUpdateInput =
   /*@__PURE__*/ Schema.Struct({
@@ -834,11 +820,10 @@ export type BackupResourceVaultConfigsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const BackupResourceVaultConfigsUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: BackupResourceVaultConfigsUpdateInput,
-    outputSchema: BackupResourceVaultConfigsUpdateOutput,
-  }));
+export const BackupResourceVaultConfigsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupResourceVaultConfigsUpdateInput,
+  outputSchema: BackupResourceVaultConfigsUpdateOutput,
+}));
 // Input Schema
 export const BackupStatusGetInput = /*@__PURE__*/ Schema.Struct({
   azureRegion: Schema.String.pipe(T.PathParam()),
@@ -929,28 +914,26 @@ export const BackupsTrigger = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupsTriggerOutput,
 }));
 // Input Schema
-export const BackupUsageSummariesListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
-    }),
-  );
+export const BackupUsageSummariesListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
+  }),
+);
 export type BackupUsageSummariesListInput =
   typeof BackupUsageSummariesListInput.Type;
 
 // Output Schema
-export const BackupUsageSummariesListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupUsageSummariesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupUsageSummariesListOutput =
   typeof BackupUsageSummariesListOutput.Type;
 
@@ -970,30 +953,28 @@ export const BackupUsageSummariesList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupUsageSummariesListOutput,
 }));
 // Input Schema
-export const BackupWorkloadItemsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
-    }),
-  );
+export const BackupWorkloadItemsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
+  }),
+);
 export type BackupWorkloadItemsListInput =
   typeof BackupWorkloadItemsListInput.Type;
 
 // Output Schema
-export const BackupWorkloadItemsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const BackupWorkloadItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type BackupWorkloadItemsListOutput =
   typeof BackupWorkloadItemsListOutput.Type;
 
@@ -1016,18 +997,17 @@ export const BackupWorkloadItemsList = /*@__PURE__*/ API.make(() => ({
   outputSchema: BackupWorkloadItemsListOutput,
 }));
 // Input Schema
-export const BMSPrepareDataMoveInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
-    }),
-  );
+export const BMSPrepareDataMoveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
+  }),
+);
 export type BMSPrepareDataMoveInput = typeof BMSPrepareDataMoveInput.Type;
 
 // Output Schema
@@ -1082,24 +1062,24 @@ export type BMSPrepareDataMoveOperationResultGetOutput =
  * @param vaultName - vaults
  * @param operationId - The name of the BackupResourceConfigResource
  */
-export const BMSPrepareDataMoveOperationResultGet =
-  /*@__PURE__*/ API.make(() => ({
+export const BMSPrepareDataMoveOperationResultGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: BMSPrepareDataMoveOperationResultGetInput,
     outputSchema: BMSPrepareDataMoveOperationResultGetOutput,
-  }));
+  }),
+);
 // Input Schema
-export const BMSTriggerDataMoveInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/triggerDataMove",
-    }),
-  );
+export const BMSTriggerDataMoveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/triggerDataMove",
+  }),
+);
 export type BMSTriggerDataMoveInput = typeof BMSTriggerDataMoveInput.Type;
 
 // Output Schema
@@ -1120,19 +1100,20 @@ export const BMSTriggerDataMove = /*@__PURE__*/ API.make(() => ({
   outputSchema: BMSTriggerDataMoveOutput,
 }));
 // Input Schema
-export const DeletedProtectionContainersListInput =
-  /*@__PURE__*/ Schema.Struct({
+export const DeletedProtectionContainersListInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
+  }),
+);
 export type DeletedProtectionContainersListInput =
   typeof DeletedProtectionContainersListInput.Type;
 
@@ -1154,86 +1135,83 @@ export type DeletedProtectionContainersListOutput =
  * @param vaultName - The name of the recovery services vault.
  * @param $filter - OData filter options.
  */
-export const DeletedProtectionContainersList =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeletedProtectionContainersListInput,
-    outputSchema: DeletedProtectionContainersListOutput,
-  }));
+export const DeletedProtectionContainersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedProtectionContainersListInput,
+  outputSchema: DeletedProtectionContainersListOutput,
+}));
 // Input Schema
-export const ExportJobsOperationResultsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
-    }),
-  );
+export const ExportJobsOperationResultsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
+  }),
+);
 export type ExportJobsOperationResultsGetInput =
   typeof ExportJobsOperationResultsGetInput.Type;
 
 // Output Schema
-export const ExportJobsOperationResultsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    statusCode: Schema.optional(
-      Schema.Literals([
-        "Continue",
-        "SwitchingProtocols",
-        "OK",
-        "Created",
-        "Accepted",
-        "NonAuthoritativeInformation",
-        "NoContent",
-        "ResetContent",
-        "PartialContent",
-        "MultipleChoices",
-        "Ambiguous",
-        "MovedPermanently",
-        "Moved",
-        "Found",
-        "Redirect",
-        "SeeOther",
-        "RedirectMethod",
-        "NotModified",
-        "UseProxy",
-        "Unused",
-        "TemporaryRedirect",
-        "RedirectKeepVerb",
-        "BadRequest",
-        "Unauthorized",
-        "PaymentRequired",
-        "Forbidden",
-        "NotFound",
-        "MethodNotAllowed",
-        "NotAcceptable",
-        "ProxyAuthenticationRequired",
-        "RequestTimeout",
-        "Conflict",
-        "Gone",
-        "LengthRequired",
-        "PreconditionFailed",
-        "RequestEntityTooLarge",
-        "RequestUriTooLong",
-        "UnsupportedMediaType",
-        "RequestedRangeNotSatisfiable",
-        "ExpectationFailed",
-        "UpgradeRequired",
-        "InternalServerError",
-        "NotImplemented",
-        "BadGateway",
-        "ServiceUnavailable",
-        "GatewayTimeout",
-        "HttpVersionNotSupported",
-      ]),
-    ),
-    headers: Schema.optional(
-      Schema.Record(Schema.String, Schema.Array(Schema.String)),
-    ),
-  });
+export const ExportJobsOperationResultsGetOutput = /*@__PURE__*/ Schema.Struct({
+  statusCode: Schema.optional(
+    Schema.Literals([
+      "Continue",
+      "SwitchingProtocols",
+      "OK",
+      "Created",
+      "Accepted",
+      "NonAuthoritativeInformation",
+      "NoContent",
+      "ResetContent",
+      "PartialContent",
+      "MultipleChoices",
+      "Ambiguous",
+      "MovedPermanently",
+      "Moved",
+      "Found",
+      "Redirect",
+      "SeeOther",
+      "RedirectMethod",
+      "NotModified",
+      "UseProxy",
+      "Unused",
+      "TemporaryRedirect",
+      "RedirectKeepVerb",
+      "BadRequest",
+      "Unauthorized",
+      "PaymentRequired",
+      "Forbidden",
+      "NotFound",
+      "MethodNotAllowed",
+      "NotAcceptable",
+      "ProxyAuthenticationRequired",
+      "RequestTimeout",
+      "Conflict",
+      "Gone",
+      "LengthRequired",
+      "PreconditionFailed",
+      "RequestEntityTooLarge",
+      "RequestUriTooLong",
+      "UnsupportedMediaType",
+      "RequestedRangeNotSatisfiable",
+      "ExpectationFailed",
+      "UpgradeRequired",
+      "InternalServerError",
+      "NotImplemented",
+      "BadGateway",
+      "ServiceUnavailable",
+      "GatewayTimeout",
+      "HttpVersionNotSupported",
+    ]),
+  ),
+  headers: Schema.optional(
+    Schema.Record(Schema.String, Schema.Array(Schema.String)),
+  ),
+});
 export type ExportJobsOperationResultsGetOutput =
   typeof ExportJobsOperationResultsGetOutput.Type;
 
@@ -1248,39 +1226,36 @@ export type ExportJobsOperationResultsGetOutput =
  * @param vaultName - vaults
  * @param operationId - The name of the JobResource
  */
-export const ExportJobsOperationResultsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ExportJobsOperationResultsGetInput,
-    outputSchema: ExportJobsOperationResultsGetOutput,
-  }));
+export const ExportJobsOperationResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportJobsOperationResultsGetInput,
+  outputSchema: ExportJobsOperationResultsGetOutput,
+}));
 // Input Schema
-export const FeatureSupportValidateInput =
-  /*@__PURE__*/ Schema.Struct({
-    azureRegion: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
-    }),
-  );
+export const FeatureSupportValidateInput = /*@__PURE__*/ Schema.Struct({
+  azureRegion: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
+  }),
+);
 export type FeatureSupportValidateInput =
   typeof FeatureSupportValidateInput.Type;
 
 // Output Schema
-export const FeatureSupportValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    supportStatus: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "Supported",
-        "DefaultOFF",
-        "DefaultON",
-        "NotSupported",
-      ]),
-    ),
-  });
+export const FeatureSupportValidateOutput = /*@__PURE__*/ Schema.Struct({
+  supportStatus: Schema.optional(
+    Schema.Literals([
+      "Invalid",
+      "Supported",
+      "DefaultOFF",
+      "DefaultON",
+      "NotSupported",
+    ]),
+  ),
+});
 export type FeatureSupportValidateOutput =
   typeof FeatureSupportValidateOutput.Type;
 
@@ -1297,25 +1272,23 @@ export const FeatureSupportValidate = /*@__PURE__*/ API.make(() => ({
   outputSchema: FeatureSupportValidateOutput,
 }));
 // Input Schema
-export const FetchTieringCostPostInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
-    }),
-  );
+export const FetchTieringCostPostInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
+  }),
+);
 export type FetchTieringCostPostInput = typeof FetchTieringCostPostInput.Type;
 
 // Output Schema
-export const FetchTieringCostPostOutput =
-  /*@__PURE__*/ Schema.Struct({
-    objectType: Schema.String,
-  });
+export const FetchTieringCostPostOutput = /*@__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
 export type FetchTieringCostPostOutput = typeof FetchTieringCostPostOutput.Type;
 
 // The operation
@@ -1333,49 +1306,47 @@ export const FetchTieringCostPost = /*@__PURE__*/ API.make(() => ({
   outputSchema: FetchTieringCostPostOutput,
 }));
 // Input Schema
-export const GetOperationStatusInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
-    }),
-  );
+export const GetOperationStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
+  }),
+);
 export type GetOperationStatusInput = typeof GetOperationStatusInput.Type;
 
 // Output Schema
-export const GetOperationStatusOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
-    ),
-  });
+export const GetOperationStatusOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "Invalid",
+      "InProgress",
+      "Succeeded",
+      "Failed",
+      "Canceled",
+    ]),
+  ),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      objectType: Schema.String,
+    }),
+  ),
+});
 export type GetOperationStatusOutput = typeof GetOperationStatusOutput.Type;
 
 // The operation
@@ -1426,11 +1397,10 @@ export type GetTieringCostOperationResultGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the recovery services vault.
  */
-export const GetTieringCostOperationResultGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetTieringCostOperationResultGetInput,
-    outputSchema: GetTieringCostOperationResultGetOutput,
-  }));
+export const GetTieringCostOperationResultGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTieringCostOperationResultGetInput,
+  outputSchema: GetTieringCostOperationResultGetOutput,
+}));
 // Input Schema
 export const ItemLevelRecoveryConnectionsProvisionInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1472,11 +1442,12 @@ export type ItemLevelRecoveryConnectionsProvisionOutput =
  * @param protectedItemName - Backed up item name whose details are to be fetched.
  * @param recoveryPointId - RecoveryPointID represents the backed up data to be fetched.
  */
-export const ItemLevelRecoveryConnectionsProvision =
-  /*@__PURE__*/ API.make(() => ({
+export const ItemLevelRecoveryConnectionsProvision = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ItemLevelRecoveryConnectionsProvisionInput,
     outputSchema: ItemLevelRecoveryConnectionsProvisionOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ItemLevelRecoveryConnectionsRevokeInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1517,25 +1488,25 @@ export type ItemLevelRecoveryConnectionsRevokeOutput =
  * @param protectedItemName - Backed up item name whose details are to be fetched.
  * @param recoveryPointId - RecoveryPointID represents the backed up data to be fetched.
  */
-export const ItemLevelRecoveryConnectionsRevoke =
-  /*@__PURE__*/ API.make(() => ({
+export const ItemLevelRecoveryConnectionsRevoke = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ItemLevelRecoveryConnectionsRevokeInput,
     outputSchema: ItemLevelRecoveryConnectionsRevokeOutput,
-  }));
+  }),
+);
 // Input Schema
-export const JobCancellationsTriggerInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
-    }),
-  );
+export const JobCancellationsTriggerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
+  }),
+);
 export type JobCancellationsTriggerInput =
   typeof JobCancellationsTriggerInput.Type;
 
@@ -1611,20 +1582,19 @@ export const JobDetailsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: JobDetailsGetOutput,
 }));
 // Input Schema
-export const JobOperationResultsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
-    }),
-  );
+export const JobOperationResultsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
+  }),
+);
 export type JobOperationResultsGetInput =
   typeof JobOperationResultsGetInput.Type;
 
@@ -1795,22 +1765,21 @@ export const OperationValidateInput = /*@__PURE__*/ Schema.Struct({
 export type OperationValidateInput = typeof OperationValidateInput.Type;
 
 // Output Schema
-export const OperationValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    validateOperationResponse: Schema.optional(
-      Schema.Struct({
-        validationResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              recommendations: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+export const OperationValidateOutput = /*@__PURE__*/ Schema.Struct({
+  validateOperationResponse: Schema.optional(
+    Schema.Struct({
+      validationResults: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            recommendations: Schema.optional(Schema.Array(Schema.String)),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type OperationValidateOutput = typeof OperationValidateOutput.Type;
 
 // The operation
@@ -1827,19 +1796,20 @@ export const OperationValidate = /*@__PURE__*/ API.make(() => ({
   outputSchema: OperationValidateOutput,
 }));
 // Input Schema
-export const PrivateEndpointConnectionDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const PrivateEndpointConnectionDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
@@ -1858,49 +1828,46 @@ export type PrivateEndpointConnectionDeleteOutput =
  * @param vaultName - The name of the VaultResource
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionDeleteInput,
-    outputSchema: PrivateEndpointConnectionDeleteOutput,
-  }));
+export const PrivateEndpointConnectionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionDeleteInput,
+  outputSchema: PrivateEndpointConnectionDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionGetInput =
   typeof PrivateEndpointConnectionGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionGetOutput =
   typeof PrivateEndpointConnectionGetOutput.Type;
 
@@ -1914,49 +1881,46 @@ export type PrivateEndpointConnectionGetOutput =
  * @param vaultName - The name of the VaultResource
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionGetInput,
-    outputSchema: PrivateEndpointConnectionGetOutput,
-  }));
+export const PrivateEndpointConnectionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionGetInput,
+  outputSchema: PrivateEndpointConnectionGetOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionPutInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionPutInput =
   typeof PrivateEndpointConnectionPutInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionPutOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionPutOutput =
   typeof PrivateEndpointConnectionPutOutput.Type;
 
@@ -1970,11 +1934,10 @@ export type PrivateEndpointConnectionPutOutput =
  * @param vaultName - The name of the VaultResource
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
-export const PrivateEndpointConnectionPut =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionPutInput,
-    outputSchema: PrivateEndpointConnectionPutOutput,
-  }));
+export const PrivateEndpointConnectionPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionPutInput,
+  outputSchema: PrivateEndpointConnectionPutOutput,
+}));
 // Input Schema
 export const PrivateEndpointGetOperationStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2035,34 +1998,31 @@ export type PrivateEndpointGetOperationStatusOutput =
  * @param privateEndpointConnectionName - The name of the PrivateEndpointConnectionResource
  * @param operationId - The name of the PrivateEndpointConnectionResource
  */
-export const PrivateEndpointGetOperationStatus =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointGetOperationStatusInput,
-    outputSchema: PrivateEndpointGetOperationStatusOutput,
-  }));
+export const PrivateEndpointGetOperationStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointGetOperationStatusInput,
+  outputSchema: PrivateEndpointGetOperationStatusOutput,
+}));
 // Input Schema
-export const ProtectableContainersListInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
-    }),
-  );
+export const ProtectableContainersListInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
+  }),
+);
 export type ProtectableContainersListInput =
   typeof ProtectableContainersListInput.Type;
 
 // Output Schema
-export const ProtectableContainersListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProtectableContainersListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProtectableContainersListOutput =
   typeof ProtectableContainersListOutput.Type;
 
@@ -2137,11 +2097,10 @@ export type ProtectedItemOperationResultsGetOutput =
  * @param protectedItemName - The name of the ProtectedItemResource
  * @param operationId - The name of the ProtectedItemResource
  */
-export const ProtectedItemOperationResultsGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectedItemOperationResultsGetInput,
-    outputSchema: ProtectedItemOperationResultsGetOutput,
-  }));
+export const ProtectedItemOperationResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectedItemOperationResultsGetInput,
+  outputSchema: ProtectedItemOperationResultsGetOutput,
+}));
 // Input Schema
 export const ProtectedItemOperationStatusesGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2208,51 +2167,48 @@ export type ProtectedItemOperationStatusesGetOutput =
  * @param protectedItemName - The name of the ProtectedItemResource
  * @param operationId - The name of the ProtectedItemResource
  */
-export const ProtectedItemOperationStatusesGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectedItemOperationStatusesGetInput,
-    outputSchema: ProtectedItemOperationStatusesGetOutput,
-  }));
+export const ProtectedItemOperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectedItemOperationStatusesGetInput,
+  outputSchema: ProtectedItemOperationStatusesGetOutput,
+}));
 // Input Schema
-export const ProtectedItemsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-    }),
-  );
+export const ProtectedItemsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  protectedItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+  }),
+);
 export type ProtectedItemsCreateOrUpdateInput =
   typeof ProtectedItemsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ProtectedItemsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectedItemsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectedItemsCreateOrUpdateOutput =
   typeof ProtectedItemsCreateOrUpdateOutput.Type;
 
@@ -2269,27 +2225,25 @@ export type ProtectedItemsCreateOrUpdateOutput =
  * @param containerName - Name of the container whose details need to be fetched.
  * @param protectedItemName - Backed up item name whose details are to be fetched.
  */
-export const ProtectedItemsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectedItemsCreateOrUpdateInput,
-    outputSchema: ProtectedItemsCreateOrUpdateOutput,
-  }));
+export const ProtectedItemsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectedItemsCreateOrUpdateInput,
+  outputSchema: ProtectedItemsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProtectedItemsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-    }),
-  );
+export const ProtectedItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  protectedItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+  }),
+);
 export type ProtectedItemsDeleteInput = typeof ProtectedItemsDeleteInput.Type;
 
 // Output Schema
@@ -2332,26 +2286,25 @@ export const ProtectedItemsGetInput = /*@__PURE__*/ Schema.Struct({
 export type ProtectedItemsGetInput = typeof ProtectedItemsGetInput.Type;
 
 // Output Schema
-export const ProtectedItemsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectedItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectedItemsGetOutput = typeof ProtectedItemsGetOutput.Type;
 
 // The operation
@@ -2427,11 +2380,12 @@ export type ProtectionContainerOperationResultsGetOutput =
  * @param containerName - The name of the ProtectionContainerResource
  * @param operationId - The name of the ProtectionContainerResource
  */
-export const ProtectionContainerOperationResultsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const ProtectionContainerOperationResultsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProtectionContainerOperationResultsGetInput,
     outputSchema: ProtectionContainerOperationResultsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProtectionContainerRefreshOperationResultsGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -2473,44 +2427,42 @@ export const ProtectionContainerRefreshOperationResultsGet =
     outputSchema: ProtectionContainerRefreshOperationResultsGetOutput,
   }));
 // Input Schema
-export const ProtectionContainersGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-    }),
-  );
+export const ProtectionContainersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+  }),
+);
 export type ProtectionContainersGetInput =
   typeof ProtectionContainersGetInput.Type;
 
 // Output Schema
-export const ProtectionContainersGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectionContainersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectionContainersGetOutput =
   typeof ProtectionContainersGetOutput.Type;
 
@@ -2530,21 +2482,20 @@ export const ProtectionContainersGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionContainersGetOutput,
 }));
 // Input Schema
-export const ProtectionContainersInquireInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
-    }),
-  );
+export const ProtectionContainersInquireInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
+  }),
+);
 export type ProtectionContainersInquireInput =
   typeof ProtectionContainersInquireInput.Type;
 
@@ -2570,20 +2521,19 @@ export const ProtectionContainersInquire = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionContainersInquireOutput,
 }));
 // Input Schema
-export const ProtectionContainersRefreshInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
-    }),
-  );
+export const ProtectionContainersRefreshInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
+  }),
+);
 export type ProtectionContainersRefreshInput =
   typeof ProtectionContainersRefreshInput.Type;
 
@@ -2609,44 +2559,42 @@ export const ProtectionContainersRefresh = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionContainersRefreshOutput,
 }));
 // Input Schema
-export const ProtectionContainersRegisterInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-    }),
-  );
+export const ProtectionContainersRegisterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+  }),
+);
 export type ProtectionContainersRegisterInput =
   typeof ProtectionContainersRegisterInput.Type;
 
 // Output Schema
-export const ProtectionContainersRegisterOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectionContainersRegisterOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectionContainersRegisterOutput =
   typeof ProtectionContainersRegisterOutput.Type;
 
@@ -2663,26 +2611,24 @@ export type ProtectionContainersRegisterOutput =
  * @param fabricName - The name of the BackupFabricResource
  * @param containerName - Name of the container whose details need to be fetched.
  */
-export const ProtectionContainersRegister =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectionContainersRegisterInput,
-    outputSchema: ProtectionContainersRegisterOutput,
-  }));
+export const ProtectionContainersRegister = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectionContainersRegisterInput,
+  outputSchema: ProtectionContainersRegisterOutput,
+}));
 // Input Schema
-export const ProtectionContainersUnregisterInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-    }),
-  );
+export const ProtectionContainersUnregisterInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+  }),
+);
 export type ProtectionContainersUnregisterInput =
   typeof ProtectionContainersUnregisterInput.Type;
 
@@ -2703,32 +2649,30 @@ export type ProtectionContainersUnregisterOutput =
  * @param fabricName - The name of the BackupFabricResource
  * @param containerName - Name of the container whose details need to be fetched.
  */
-export const ProtectionContainersUnregister =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectionContainersUnregisterInput,
-    outputSchema: ProtectionContainersUnregisterOutput,
-  }));
+export const ProtectionContainersUnregister = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectionContainersUnregisterInput,
+  outputSchema: ProtectionContainersUnregisterOutput,
+}));
 // Input Schema
-export const ProtectionIntentCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    intentObjectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-    }),
-  );
+export const ProtectionIntentCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  intentObjectName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+  }),
+);
 export type ProtectionIntentCreateOrUpdateInput =
   typeof ProtectionIntentCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ProtectionIntentCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ProtectionIntentCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2746,7 +2690,8 @@ export const ProtectionIntentCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ProtectionIntentCreateOrUpdateOutput =
   typeof ProtectionIntentCreateOrUpdateOutput.Type;
 
@@ -2761,26 +2706,24 @@ export type ProtectionIntentCreateOrUpdateOutput =
  * @param fabricName - The name of the BackupFabricResource
  * @param intentObjectName - Backed up item name whose details are to be fetched.
  */
-export const ProtectionIntentCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectionIntentCreateOrUpdateInput,
-    outputSchema: ProtectionIntentCreateOrUpdateOutput,
-  }));
+export const ProtectionIntentCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectionIntentCreateOrUpdateInput,
+  outputSchema: ProtectionIntentCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProtectionIntentDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    intentObjectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-    }),
-  );
+export const ProtectionIntentDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  intentObjectName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+  }),
+);
 export type ProtectionIntentDeleteInput =
   typeof ProtectionIntentDeleteInput.Type;
 
@@ -2805,43 +2748,41 @@ export const ProtectionIntentDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionIntentDeleteOutput,
 }));
 // Input Schema
-export const ProtectionIntentGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    intentObjectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-    }),
-  );
+export const ProtectionIntentGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  intentObjectName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+  }),
+);
 export type ProtectionIntentGetInput = typeof ProtectionIntentGetInput.Type;
 
 // Output Schema
-export const ProtectionIntentGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectionIntentGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectionIntentGetOutput = typeof ProtectionIntentGetOutput.Type;
 
 // The operation
@@ -2861,32 +2802,28 @@ export const ProtectionIntentGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionIntentGetOutput,
 }));
 // Input Schema
-export const ProtectionIntentValidateInput =
-  /*@__PURE__*/ Schema.Struct({
-    azureRegion: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection",
-    }),
-  );
+export const ProtectionIntentValidateInput = /*@__PURE__*/ Schema.Struct({
+  azureRegion: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection",
+  }),
+);
 export type ProtectionIntentValidateInput =
   typeof ProtectionIntentValidateInput.Type;
 
 // Output Schema
-export const ProtectionIntentValidateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Invalid", "Succeeded", "Failed"]),
-    ),
-    errorCode: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-    recommendation: Schema.optional(Schema.String),
-    containerName: Schema.optional(Schema.String),
-    protectedItemName: Schema.optional(Schema.String),
-  });
+export const ProtectionIntentValidateOutput = /*@__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.Literals(["Invalid", "Succeeded", "Failed"])),
+  errorCode: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  recommendation: Schema.optional(Schema.String),
+  containerName: Schema.optional(Schema.String),
+  protectedItemName: Schema.optional(Schema.String),
+});
 export type ProtectionIntentValidateOutput =
   typeof ProtectionIntentValidateOutput.Type;
 
@@ -2962,25 +2899,23 @@ export type ProtectionPoliciesCreateOrUpdateOutput =
  * @param vaultName - The name of the VaultResource
  * @param policyName - Backup policy information to be fetched.
  */
-export const ProtectionPoliciesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ProtectionPoliciesCreateOrUpdateInput,
-    outputSchema: ProtectionPoliciesCreateOrUpdateOutput,
-  }));
+export const ProtectionPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProtectionPoliciesCreateOrUpdateInput,
+  outputSchema: ProtectionPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProtectionPoliciesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-    }),
-  );
+export const ProtectionPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+  }),
+);
 export type ProtectionPoliciesDeleteInput =
   typeof ProtectionPoliciesDeleteInput.Type;
 
@@ -3005,42 +2940,40 @@ export const ProtectionPoliciesDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ProtectionPoliciesDeleteOutput,
 }));
 // Input Schema
-export const ProtectionPoliciesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-    }),
-  );
+export const ProtectionPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+  }),
+);
 export type ProtectionPoliciesGetInput = typeof ProtectionPoliciesGetInput.Type;
 
 // Output Schema
-export const ProtectionPoliciesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProtectionPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProtectionPoliciesGetOutput =
   typeof ProtectionPoliciesGetOutput.Type;
 
@@ -3112,11 +3045,12 @@ export type ProtectionPolicyOperationResultsGetOutput =
  * @param policyName - The name of the ProtectionPolicyResource
  * @param operationId - The name of the ProtectionPolicyResource
  */
-export const ProtectionPolicyOperationResultsGet =
-  /*@__PURE__*/ API.make(() => ({
+export const ProtectionPolicyOperationResultsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProtectionPolicyOperationResultsGetInput,
     outputSchema: ProtectionPolicyOperationResultsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProtectionPolicyOperationStatusesGetInput =
   /*@__PURE__*/ Schema.Struct({
@@ -3179,11 +3113,12 @@ export type ProtectionPolicyOperationStatusesGetOutput =
  * @param policyName - The name of the ProtectionPolicyResource
  * @param operationId - The name of the ProtectionPolicyResource
  */
-export const ProtectionPolicyOperationStatusesGet =
-  /*@__PURE__*/ API.make(() => ({
+export const ProtectionPolicyOperationStatusesGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProtectionPolicyOperationStatusesGetInput,
     outputSchema: ProtectionPolicyOperationStatusesGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3203,26 +3138,25 @@ export const RecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
 export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
 
 // Output Schema
-export const RecoveryPointsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RecoveryPointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
 
 // The operation
@@ -3244,29 +3178,27 @@ export const RecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: RecoveryPointsGetOutput,
 }));
 // Input Schema
-export const RecoveryPointsListInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-    protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
-    }),
-  );
+export const RecoveryPointsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+  protectedItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
+  }),
+);
 export type RecoveryPointsListInput = typeof RecoveryPointsListInput.Type;
 
 // Output Schema
-export const RecoveryPointsListOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const RecoveryPointsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type RecoveryPointsListOutput = typeof RecoveryPointsListOutput.Type;
 
 // The operation
@@ -3325,32 +3257,31 @@ export type RecoveryPointsRecommendedForMoveListOutput =
  * @param containerName - Name of the container whose details need to be fetched.
  * @param protectedItemName - Backed up item name whose details are to be fetched.
  */
-export const RecoveryPointsRecommendedForMoveList =
-  /*@__PURE__*/ API.make(() => ({
+export const RecoveryPointsRecommendedForMoveList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RecoveryPointsRecommendedForMoveListInput,
     outputSchema: RecoveryPointsRecommendedForMoveListOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ResourceGuardProxiesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
-    }),
-  );
+export const ResourceGuardProxiesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
+  }),
+);
 export type ResourceGuardProxiesGetInput =
   typeof ResourceGuardProxiesGetInput.Type;
 
 // Output Schema
-export const ResourceGuardProxiesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ResourceGuardProxiesGetOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+});
 export type ResourceGuardProxiesGetOutput =
   typeof ResourceGuardProxiesGetOutput.Type;
 
@@ -3368,19 +3299,18 @@ export const ResourceGuardProxiesGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ResourceGuardProxiesGetOutput,
 }));
 // Input Schema
-export const ResourceGuardProxyDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-    }),
-  );
+export const ResourceGuardProxyDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+  }),
+);
 export type ResourceGuardProxyDeleteInput =
   typeof ResourceGuardProxyDeleteInput.Type;
 
@@ -3403,42 +3333,40 @@ export const ResourceGuardProxyDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: ResourceGuardProxyDeleteOutput,
 }));
 // Input Schema
-export const ResourceGuardProxyGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-    }),
-  );
+export const ResourceGuardProxyGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+  }),
+);
 export type ResourceGuardProxyGetInput = typeof ResourceGuardProxyGetInput.Type;
 
 // Output Schema
-export const ResourceGuardProxyGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ResourceGuardProxyGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ResourceGuardProxyGetOutput =
   typeof ResourceGuardProxyGetOutput.Type;
 
@@ -3456,42 +3384,40 @@ export const ResourceGuardProxyGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ResourceGuardProxyGetOutput,
 }));
 // Input Schema
-export const ResourceGuardProxyPutInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-    }),
-  );
+export const ResourceGuardProxyPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+  }),
+);
 export type ResourceGuardProxyPutInput = typeof ResourceGuardProxyPutInput.Type;
 
 // Output Schema
-export const ResourceGuardProxyPutOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ResourceGuardProxyPutOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ResourceGuardProxyPutOutput =
   typeof ResourceGuardProxyPutOutput.Type;
 
@@ -3510,27 +3436,27 @@ export const ResourceGuardProxyPut = /*@__PURE__*/ API.make(() => ({
   outputSchema: ResourceGuardProxyPutOutput,
 }));
 // Input Schema
-export const ResourceGuardProxyUnlockDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
-    }),
-  );
+export const ResourceGuardProxyUnlockDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
+  }),
+);
 export type ResourceGuardProxyUnlockDeleteInput =
   typeof ResourceGuardProxyUnlockDeleteInput.Type;
 
 // Output Schema
-export const ResourceGuardProxyUnlockDeleteOutput =
-  /*@__PURE__*/ Schema.Struct({
+export const ResourceGuardProxyUnlockDeleteOutput = /*@__PURE__*/ Schema.Struct(
+  {
     unlockDeleteExpiryTime: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ResourceGuardProxyUnlockDeleteOutput =
   typeof ResourceGuardProxyUnlockDeleteOutput.Type;
 
@@ -3543,11 +3469,10 @@ export type ResourceGuardProxyUnlockDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the VaultResource
  */
-export const ResourceGuardProxyUnlockDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ResourceGuardProxyUnlockDeleteInput,
-    outputSchema: ResourceGuardProxyUnlockDeleteOutput,
-  }));
+export const ResourceGuardProxyUnlockDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceGuardProxyUnlockDeleteInput,
+  outputSchema: ResourceGuardProxyUnlockDeleteOutput,
+}));
 // Input Schema
 export const RestoresTriggerInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3624,50 +3549,48 @@ export const SecurityPINsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: SecurityPINsGetOutput,
 }));
 // Input Schema
-export const TieringCostOperationStatusGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
-    }),
-  );
+export const TieringCostOperationStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
+  }),
+);
 export type TieringCostOperationStatusGetInput =
   typeof TieringCostOperationStatusGetInput.Type;
 
 // Output Schema
-export const TieringCostOperationStatusGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
-    ),
-  });
+export const TieringCostOperationStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "Invalid",
+      "InProgress",
+      "Succeeded",
+      "Failed",
+      "Canceled",
+    ]),
+  ),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      objectType: Schema.String,
+    }),
+  ),
+});
 export type TieringCostOperationStatusGetOutput =
   typeof TieringCostOperationStatusGetOutput.Type;
 
@@ -3680,45 +3603,42 @@ export type TieringCostOperationStatusGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the recovery services vault.
  */
-export const TieringCostOperationStatusGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: TieringCostOperationStatusGetInput,
-    outputSchema: TieringCostOperationStatusGetOutput,
-  }));
+export const TieringCostOperationStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TieringCostOperationStatusGetInput,
+  outputSchema: TieringCostOperationStatusGetOutput,
+}));
 // Input Schema
-export const ValidateOperationResultsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
-    }),
-  );
+export const ValidateOperationResultsGetInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
+  }),
+);
 export type ValidateOperationResultsGetInput =
   typeof ValidateOperationResultsGetInput.Type;
 
 // Output Schema
-export const ValidateOperationResultsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    validateOperationResponse: Schema.optional(
-      Schema.Struct({
-        validationResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              recommendations: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+export const ValidateOperationResultsGetOutput = /*@__PURE__*/ Schema.Struct({
+  validateOperationResponse: Schema.optional(
+    Schema.Struct({
+      validationResults: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            recommendations: Schema.optional(Schema.Array(Schema.String)),
+          }),
         ),
-      }),
-    ),
-  });
+      ),
+    }),
+  ),
+});
 export type ValidateOperationResultsGetOutput =
   typeof ValidateOperationResultsGetOutput.Type;
 
@@ -3737,50 +3657,48 @@ export const ValidateOperationResultsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: ValidateOperationResultsGetOutput,
 }));
 // Input Schema
-export const ValidateOperationStatusesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
-    }),
-  );
+export const ValidateOperationStatusesGetInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
+  }),
+);
 export type ValidateOperationStatusesGetInput =
   typeof ValidateOperationStatusesGetInput.Type;
 
 // Output Schema
-export const ValidateOperationStatusesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
-    ),
-  });
+export const ValidateOperationStatusesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "Invalid",
+      "InProgress",
+      "Succeeded",
+      "Failed",
+      "Canceled",
+    ]),
+  ),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      objectType: Schema.String,
+    }),
+  ),
+});
 export type ValidateOperationStatusesGetOutput =
   typeof ValidateOperationStatusesGetOutput.Type;
 
@@ -3796,24 +3714,22 @@ export type ValidateOperationStatusesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param operationId - OperationID represents the operation whose status needs to be fetched.
  */
-export const ValidateOperationStatusesGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ValidateOperationStatusesGetInput,
-    outputSchema: ValidateOperationStatusesGetOutput,
-  }));
+export const ValidateOperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ValidateOperationStatusesGetInput,
+  outputSchema: ValidateOperationStatusesGetOutput,
+}));
 // Input Schema
-export const ValidateOperationTriggerInput =
-  /*@__PURE__*/ Schema.Struct({
-    vaultName: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
-    }),
-  );
+export const ValidateOperationTriggerInput = /*@__PURE__*/ Schema.Struct({
+  vaultName: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
+  }),
+);
 export type ValidateOperationTriggerInput =
   typeof ValidateOperationTriggerInput.Type;
 

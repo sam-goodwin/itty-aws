@@ -11,7 +11,7 @@ import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -190,14 +190,14 @@ export type CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -211,7 +211,7 @@ export type CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -359,7 +359,7 @@ export type CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -368,7 +368,7 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -382,7 +382,7 @@ export type CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -517,7 +517,7 @@ export type CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -525,7 +525,7 @@ export const createAdmissionregistrationV1MutatingWebhookConfiguration =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -539,7 +539,7 @@ export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -733,14 +733,14 @@ export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -754,7 +754,7 @@ export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -901,7 +901,7 @@ export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput 
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -910,7 +910,7 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -924,7 +924,7 @@ export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1058,7 +1058,7 @@ export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -1067,7 +1067,7 @@ export const createAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1081,7 +1081,7 @@ export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1246,7 +1246,7 @@ export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -1255,7 +1255,7 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1269,7 +1269,7 @@ export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInp
 
 // Output Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1417,7 +1417,7 @@ export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOut
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -1426,7 +1426,7 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1440,7 +1440,7 @@ export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1605,7 +1605,7 @@ export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -1613,7 +1613,7 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1627,7 +1627,7 @@ export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInpu
 
 // Output Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1775,7 +1775,7 @@ export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutp
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -1784,7 +1784,7 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1797,7 +1797,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput 
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1846,7 +1846,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -1854,7 +1854,7 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicy =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1867,7 +1867,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindin
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1916,7 +1916,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindin
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -1924,7 +1924,7 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1937,7 +1937,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationI
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1986,7 +1986,7 @@ export type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationO
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput,
     outputSchema:
@@ -1994,7 +1994,7 @@ export const deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2007,7 +2007,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInpu
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2056,7 +2056,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutp
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput,
     outputSchema:
@@ -2064,7 +2064,7 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicy =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2077,7 +2077,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBind
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2126,7 +2126,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBind
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2134,7 +2134,7 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2147,7 +2147,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguratio
 
 // Output Schema
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2196,7 +2196,7 @@ export type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguratio
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput,
     outputSchema:
@@ -2204,7 +2204,7 @@ export const deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2217,7 +2217,7 @@ export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2266,14 +2266,14 @@ export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2286,7 +2286,7 @@ export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2335,7 +2335,7 @@ export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2344,7 +2344,7 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2357,7 +2357,7 @@ export type DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2406,7 +2406,7 @@ export type DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -2414,7 +2414,7 @@ export const deleteAdmissionregistrationV1MutatingWebhookConfiguration =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2427,7 +2427,7 @@ export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2476,14 +2476,14 @@ export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2496,7 +2496,7 @@ export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2545,7 +2545,7 @@ export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput 
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2554,7 +2554,7 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2567,7 +2567,7 @@ export type DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2616,7 +2616,7 @@ export type DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -2625,7 +2625,7 @@ export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2638,7 +2638,7 @@ export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy
 
 // Output Schema
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2687,7 +2687,7 @@ export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -2695,7 +2695,7 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2708,7 +2708,7 @@ export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy
 
 // Output Schema
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2757,7 +2757,7 @@ export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2765,7 +2765,7 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2778,7 +2778,7 @@ export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2827,7 +2827,7 @@ export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -2836,7 +2836,7 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2849,7 +2849,7 @@ export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInp
 
 // Output Schema
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2898,7 +2898,7 @@ export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOut
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2907,7 +2907,7 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2920,7 +2920,7 @@ export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyI
 
 // Output Schema
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2969,7 +2969,7 @@ export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyO
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -2977,7 +2977,7 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2990,7 +2990,7 @@ export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyB
 
 // Output Schema
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3039,7 +3039,7 @@ export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyB
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -3047,7 +3047,7 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3060,7 +3060,7 @@ export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3109,7 +3109,7 @@ export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -3117,7 +3117,7 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3130,7 +3130,7 @@ export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInpu
 
 // Output Schema
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3179,7 +3179,7 @@ export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutp
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -3188,7 +3188,7 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const GetAdmissionregistrationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/" }),
   );
 export type GetAdmissionregistrationAPIGroupInput =
@@ -3196,7 +3196,7 @@ export type GetAdmissionregistrationAPIGroupInput =
 
 // Output Schema
 export const GetAdmissionregistrationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -3228,14 +3228,13 @@ export type GetAdmissionregistrationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAdmissionregistrationAPIGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetAdmissionregistrationAPIGroupInput,
-    outputSchema: GetAdmissionregistrationAPIGroupOutput,
-  }));
+export const getAdmissionregistrationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAdmissionregistrationAPIGroupInput,
+  outputSchema: GetAdmissionregistrationAPIGroupOutput,
+}));
 // Input Schema
 export const GetAdmissionregistrationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/v1/" }),
   );
 export type GetAdmissionregistrationV1APIResourcesInput =
@@ -3243,7 +3242,7 @@ export type GetAdmissionregistrationV1APIResourcesInput =
 
 // Output Schema
 export const GetAdmissionregistrationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -3269,14 +3268,15 @@ export type GetAdmissionregistrationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getAdmissionregistrationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAdmissionregistrationV1APIResources = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetAdmissionregistrationV1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1APIResourcesOutput,
-  }));
+  }),
+);
 // Input Schema
 export const GetAdmissionregistrationV1alpha1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/",
@@ -3287,7 +3287,7 @@ export type GetAdmissionregistrationV1alpha1APIResourcesInput =
 
 // Output Schema
 export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -3314,13 +3314,13 @@ export type GetAdmissionregistrationV1alpha1APIResourcesOutput =
  * get available resources
  */
 export const getAdmissionregistrationV1alpha1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationV1alpha1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1alpha1APIResourcesOutput,
   }));
 // Input Schema
 export const GetAdmissionregistrationV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/",
@@ -3331,7 +3331,7 @@ export type GetAdmissionregistrationV1beta1APIResourcesInput =
 
 // Output Schema
 export const GetAdmissionregistrationV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -3358,13 +3358,13 @@ export type GetAdmissionregistrationV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getAdmissionregistrationV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationV1beta1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1beta1APIResourcesOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
@@ -3375,7 +3375,7 @@ export type ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3562,13 +3562,13 @@ export type ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * list or watch objects of kind MutatingAdmissionPolicy
  */
 export const listAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
@@ -3579,7 +3579,7 @@ export type ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3749,14 +3749,14 @@ export type ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * list or watch objects of kind MutatingAdmissionPolicyBinding
  */
 export const listAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
@@ -3767,7 +3767,7 @@ export type ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3920,13 +3920,13 @@ export type ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * list or watch objects of kind MutatingWebhookConfiguration
  */
 export const listAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema: ListAdmissionregistrationV1MutatingWebhookConfigurationOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
@@ -3937,7 +3937,7 @@ export type ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4153,13 +4153,13 @@ export type ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * list or watch objects of kind ValidatingAdmissionPolicy
  */
 export const listAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings",
@@ -4170,7 +4170,7 @@ export type ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4335,7 +4335,7 @@ export type ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
  * list or watch objects of kind ValidatingAdmissionPolicyBinding
  */
 export const listAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -4343,7 +4343,7 @@ export const listAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations",
@@ -4354,7 +4354,7 @@ export type ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4506,14 +4506,14 @@ export type ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * list or watch objects of kind ValidatingWebhookConfiguration
  */
 export const listAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
@@ -4524,7 +4524,7 @@ export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4711,14 +4711,14 @@ export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * list or watch objects of kind MutatingAdmissionPolicy
  */
 export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
@@ -4729,7 +4729,7 @@ export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput
 
 // Output Schema
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4899,7 +4899,7 @@ export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutpu
  * list or watch objects of kind MutatingAdmissionPolicyBinding
  */
 export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -4907,7 +4907,7 @@ export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
@@ -4918,7 +4918,7 @@ export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5105,13 +5105,13 @@ export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * list or watch objects of kind MutatingAdmissionPolicy
  */
 export const listAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
@@ -5122,7 +5122,7 @@ export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput 
 
 // Output Schema
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5292,7 +5292,7 @@ export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput
  * list or watch objects of kind MutatingAdmissionPolicyBinding
  */
 export const listAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -5300,7 +5300,7 @@ export const listAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -5314,7 +5314,7 @@ export type PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5479,14 +5479,14 @@ export type PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -5500,7 +5500,7 @@ export type PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5648,7 +5648,7 @@ export type PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -5657,7 +5657,7 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -5671,7 +5671,7 @@ export type PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5806,7 +5806,7 @@ export type PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -5814,7 +5814,7 @@ export const patchAdmissionregistrationV1MutatingWebhookConfiguration =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -5828,7 +5828,7 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6022,14 +6022,14 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6043,7 +6043,7 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6190,7 +6190,7 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -6199,7 +6199,7 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6213,7 +6213,7 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6407,7 +6407,7 @@ export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -6416,7 +6416,7 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6430,7 +6430,7 @@ export type PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6564,7 +6564,7 @@ export type PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -6573,7 +6573,7 @@ export const patchAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6587,7 +6587,7 @@ export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6752,7 +6752,7 @@ export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -6760,7 +6760,7 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6774,7 +6774,7 @@ export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInpu
 
 // Output Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6922,7 +6922,7 @@ export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -6931,7 +6931,7 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -6945,7 +6945,7 @@ export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7110,7 +7110,7 @@ export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -7118,7 +7118,7 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -7132,7 +7132,7 @@ export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput
 
 // Output Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7280,7 +7280,7 @@ export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -7289,7 +7289,7 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
@@ -7300,7 +7300,7 @@ export type ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7462,14 +7462,14 @@ export type ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * read the specified MutatingAdmissionPolicy
  */
 export const readAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings/{name}",
@@ -7480,7 +7480,7 @@ export type ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7625,7 +7625,7 @@ export type ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * read the specified MutatingAdmissionPolicyBinding
  */
 export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
@@ -7633,7 +7633,7 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
@@ -7644,7 +7644,7 @@ export type ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7776,14 +7776,14 @@ export type ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * read the specified MutatingWebhookConfiguration
  */
 export const readAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
@@ -7794,7 +7794,7 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7985,14 +7985,14 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * read the specified ValidatingAdmissionPolicy
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings/{name}",
@@ -8003,7 +8003,7 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8147,7 +8147,7 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
  * read the specified ValidatingAdmissionPolicyBinding
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -8156,7 +8156,7 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}/status",
@@ -8167,7 +8167,7 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8358,7 +8358,7 @@ export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
  * read status of the specified ValidatingAdmissionPolicy
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -8367,7 +8367,7 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}",
@@ -8378,7 +8378,7 @@ export type ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8509,7 +8509,7 @@ export type ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * read the specified ValidatingWebhookConfiguration
  */
 export const readAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
@@ -8517,7 +8517,7 @@ export const readAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
@@ -8528,7 +8528,7 @@ export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8690,7 +8690,7 @@ export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * read the specified MutatingAdmissionPolicy
  */
 export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -8698,7 +8698,7 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings/{name}",
@@ -8709,7 +8709,7 @@ export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput
 
 // Output Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8854,7 +8854,7 @@ export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutpu
  * read the specified MutatingAdmissionPolicyBinding
  */
 export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -8863,7 +8863,7 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
@@ -8874,7 +8874,7 @@ export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9036,14 +9036,14 @@ export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * read the specified MutatingAdmissionPolicy
  */
 export const readAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings/{name}",
@@ -9054,7 +9054,7 @@ export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput 
 
 // Output Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9199,7 +9199,7 @@ export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput
  * read the specified MutatingAdmissionPolicyBinding
  */
 export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -9208,7 +9208,7 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9222,7 +9222,7 @@ export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9387,14 +9387,14 @@ export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9408,7 +9408,7 @@ export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9556,7 +9556,7 @@ export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -9565,7 +9565,7 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9579,7 +9579,7 @@ export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9714,7 +9714,7 @@ export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
@@ -9723,7 +9723,7 @@ export const replaceAdmissionregistrationV1MutatingWebhookConfiguration =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9737,7 +9737,7 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9931,14 +9931,14 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9952,7 +9952,7 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput 
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10099,7 +10099,7 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -10108,7 +10108,7 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10122,7 +10122,7 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10316,7 +10316,7 @@ export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput 
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -10325,7 +10325,7 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10339,7 +10339,7 @@ export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10473,7 +10473,7 @@ export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -10482,7 +10482,7 @@ export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10496,7 +10496,7 @@ export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10661,7 +10661,7 @@ export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -10670,7 +10670,7 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10684,7 +10684,7 @@ export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingIn
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10832,7 +10832,7 @@ export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -10841,7 +10841,7 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding 
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10855,7 +10855,7 @@ export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11020,7 +11020,7 @@ export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -11029,7 +11029,7 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -11043,7 +11043,7 @@ export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInp
 
 // Output Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11191,7 +11191,7 @@ export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11200,7 +11200,7 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies/{name}",
@@ -11211,7 +11211,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11223,13 +11223,13 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * watch changes to an object of kind MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicybindings/{name}",
@@ -11240,7 +11240,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11252,7 +11252,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * watch changes to an object of kind MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11260,7 +11260,7 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicybindings",
@@ -11271,7 +11271,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput 
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11283,7 +11283,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput
  * watch individual changes to a list of MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -11291,7 +11291,7 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBindingList =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies",
@@ -11302,7 +11302,7 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11314,13 +11314,13 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
  * watch individual changes to a list of MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput,
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}",
@@ -11331,7 +11331,7 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11343,14 +11343,14 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations",
@@ -11361,7 +11361,7 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11373,7 +11373,7 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
  * watch individual changes to a list of MutatingWebhookConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1MutatingWebhookConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput,
     outputSchema:
@@ -11381,7 +11381,7 @@ export const watchAdmissionregistrationV1MutatingWebhookConfigurationList =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies/{name}",
@@ -11392,7 +11392,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11404,13 +11404,13 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * watch changes to an object of kind ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicybindings/{name}",
@@ -11421,7 +11421,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11433,7 +11433,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
  * watch changes to an object of kind ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11441,7 +11441,7 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicybindings",
@@ -11452,7 +11452,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInpu
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11464,7 +11464,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutp
  * watch individual changes to a list of ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -11472,7 +11472,7 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBindingList =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies",
@@ -11483,7 +11483,7 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11495,14 +11495,14 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
  * watch individual changes to a list of ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput,
     outputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}",
@@ -11513,7 +11513,7 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11525,7 +11525,7 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * watch changes to an object of kind ValidatingWebhookConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -11533,7 +11533,7 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfiguration =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations",
@@ -11544,7 +11544,7 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput 
 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11556,7 +11556,7 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput
  * watch individual changes to a list of ValidatingWebhookConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput,
     outputSchema:
@@ -11564,7 +11564,7 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicies/{name}",
@@ -11575,7 +11575,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11587,14 +11587,14 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * watch changes to an object of kind MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicybindings/{name}",
@@ -11605,7 +11605,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInpu
 
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11617,7 +11617,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
  * watch changes to an object of kind MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11625,7 +11625,7 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicybindings",
@@ -11636,7 +11636,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList
 
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11648,7 +11648,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList
  * watch individual changes to a list of MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -11656,7 +11656,7 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingLis
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicies",
@@ -11667,7 +11667,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11679,7 +11679,7 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput 
  * watch individual changes to a list of MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput,
     outputSchema:
@@ -11687,7 +11687,7 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyList =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicies/{name}",
@@ -11698,7 +11698,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11710,14 +11710,14 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * watch changes to an object of kind MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicybindings/{name}",
@@ -11728,7 +11728,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput
 
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11740,7 +11740,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
  * watch changes to an object of kind MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11748,7 +11748,7 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicybindings",
@@ -11759,7 +11759,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListI
 
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11771,7 +11771,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListO
  * watch individual changes to a list of MutatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -11779,7 +11779,7 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicies",
@@ -11790,7 +11790,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
 
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -11802,7 +11802,7 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
  * watch individual changes to a list of MutatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput,
     outputSchema:

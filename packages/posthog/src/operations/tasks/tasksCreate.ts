@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   task_number: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -59,7 +59,7 @@ export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TasksCreateInput = typeof TasksCreateInput.Type;
 
 // Output Schema
-export const TasksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   task_number: Schema.optional(Schema.NullOr(Schema.Number)),
   slug: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export type TasksCreateOutput = typeof TasksCreateOutput.Type;
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCreateInput,
   outputSchema: TasksCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

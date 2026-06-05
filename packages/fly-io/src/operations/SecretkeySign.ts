@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const SecretkeySignInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySignInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -18,7 +18,7 @@ export const SecretkeySignInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SecretkeySignInput = typeof SecretkeySignInput.Type;
 
 // Output Schema
-export const SecretkeySignOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySignOutput = /*@__PURE__*/ Schema.Struct({
   signature: Schema.optional(Schema.Array(Schema.Number)),
 });
 export type SecretkeySignOutput = typeof SecretkeySignOutput.Type;
@@ -31,7 +31,7 @@ export type SecretkeySignOutput = typeof SecretkeySignOutput.Type;
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeySign = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeySign = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeySignInput,
   outputSchema: SecretkeySignOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

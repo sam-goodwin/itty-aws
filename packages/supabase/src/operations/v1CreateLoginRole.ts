@@ -2,24 +2,21 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const V1CreateLoginRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    read_only: Schema.Boolean,
-  },
-).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/cli/login-role" }));
+export const V1CreateLoginRoleInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  read_only: Schema.Boolean,
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/cli/login-role" }));
 export type V1CreateLoginRoleInput = typeof V1CreateLoginRoleInput.Type;
 
 // Output Schema
-export const V1CreateLoginRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.String,
-    password: SensitiveString,
-    ttl_seconds: Schema.Number,
-  });
+export const V1CreateLoginRoleOutput = /*@__PURE__*/ Schema.Struct({
+  role: Schema.String,
+  password: SensitiveOutputString,
+  ttl_seconds: Schema.Number,
+});
 export type V1CreateLoginRoleOutput = typeof V1CreateLoginRoleOutput.Type;
 
 // The operation
@@ -28,7 +25,7 @@ export type V1CreateLoginRoleOutput = typeof V1CreateLoginRoleOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1CreateLoginRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateLoginRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateLoginRoleInput,
   outputSchema: V1CreateLoginRoleOutput,
   errors: [BadRequest, Forbidden] as const,

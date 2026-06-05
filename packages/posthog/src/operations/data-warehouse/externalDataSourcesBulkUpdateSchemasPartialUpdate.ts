@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
 
 // Output Schema
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -82,7 +82,7 @@ export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
  * @param search - A search term.
  */
 export const externalDataSourcesBulkUpdateSchemasPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput,
     outputSchema: ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

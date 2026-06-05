@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type DeleteGroupPrivateEndpointEndpointServiceInput =
 
 // Output Schema
 export const DeleteGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteGroupPrivateEndpointEndpointServiceOutput =
   typeof DeleteGroupPrivateEndpointEndpointServiceOutput.Type;
 
@@ -40,9 +40,10 @@ export type DeleteGroupPrivateEndpointEndpointServiceOutput =
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
  */
-export const deleteGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupPrivateEndpointEndpointService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DeleteGroupPrivateEndpointEndpointServiceInput,
     outputSchema: DeleteGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

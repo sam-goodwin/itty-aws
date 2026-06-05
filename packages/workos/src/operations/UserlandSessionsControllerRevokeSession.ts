@@ -5,7 +5,7 @@ import { BadRequest } from "../errors.ts";
 
 // Input Schema
 export const UserlandSessionsControllerRevokeSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session_id: Schema.optional(Schema.String),
     return_to: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/user_management/sessions/revoke" }));
@@ -14,7 +14,7 @@ export type UserlandSessionsControllerRevokeSessionInput =
 
 // Output Schema
 export const UserlandSessionsControllerRevokeSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UserlandSessionsControllerRevokeSessionOutput =
   typeof UserlandSessionsControllerRevokeSessionOutput.Type;
 
@@ -24,9 +24,10 @@ export type UserlandSessionsControllerRevokeSessionOutput =
  *
  * Revoke a [user session](/reference/authkit/session).
  */
-export const UserlandSessionsControllerRevokeSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserlandSessionsControllerRevokeSession = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: UserlandSessionsControllerRevokeSessionInput,
     outputSchema: UserlandSessionsControllerRevokeSessionOutput,
     errors: [BadRequest] as const,
-  }));
+  }),
+);

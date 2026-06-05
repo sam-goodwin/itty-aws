@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupAlertInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const GetGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupAlertInput = typeof GetGroupAlertInput.Type;
 
 // Output Schema
-export const GetGroupAlertOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAlertOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupAlertOutput = typeof GetGroupAlertOutput.Type;
 
 // The operation
@@ -35,7 +35,7 @@ export type GetGroupAlertOutput = typeof GetGroupAlertOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const getGroupAlert = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupAlert = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupAlertInput,
   outputSchema: GetGroupAlertOutput,
   errors: [Forbidden, NotFound] as const,

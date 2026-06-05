@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateApiregistrationV1APIServiceInput =
@@ -115,12 +115,11 @@ export type CreateApiregistrationV1APIServiceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CreateApiregistrationV1APIServiceInput,
-    outputSchema: CreateApiregistrationV1APIServiceOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }));
+export const createApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateApiregistrationV1APIServiceInput,
+  outputSchema: CreateApiregistrationV1APIServiceOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const DeleteApiregistrationV1APIServiceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -184,12 +183,11 @@ export type DeleteApiregistrationV1APIServiceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: DeleteApiregistrationV1APIServiceInput,
-    outputSchema: DeleteApiregistrationV1APIServiceOutput,
-    errors: [NotFound, Conflict] as const,
-  }));
+export const deleteApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteApiregistrationV1APIServiceInput,
+  outputSchema: DeleteApiregistrationV1APIServiceOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteApiregistrationV1CollectionAPIServiceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -259,40 +257,38 @@ export const deleteApiregistrationV1CollectionAPIService =
     outputSchema: DeleteApiregistrationV1CollectionAPIServiceOutput,
   }));
 // Input Schema
-export const GetApiregistrationAPIGroupInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/" }),
-  );
+export const GetApiregistrationAPIGroupInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/" }));
 export type GetApiregistrationAPIGroupInput =
   typeof GetApiregistrationAPIGroupInput.Type;
 
 // Output Schema
-export const GetApiregistrationAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetApiregistrationAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetApiregistrationAPIGroupOutput =
   typeof GetApiregistrationAPIGroupOutput.Type;
 
@@ -340,19 +336,19 @@ export type GetApiregistrationV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getApiregistrationV1APIResources =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: GetApiregistrationV1APIResourcesInput,
-    outputSchema: GetApiregistrationV1APIResourcesOutput,
-  }));
+export const getApiregistrationV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApiregistrationV1APIResourcesInput,
+  outputSchema: GetApiregistrationV1APIResourcesOutput,
+}));
 // Input Schema
-export const ListApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apiregistration.k8s.io/v1/apiservices",
-    }),
-  );
+export const ListApiregistrationV1APIServiceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apiregistration.k8s.io/v1/apiservices",
+  }),
+);
 export type ListApiregistrationV1APIServiceInput =
   typeof ListApiregistrationV1APIServiceInput.Type;
 
@@ -466,11 +462,10 @@ export type ListApiregistrationV1APIServiceOutput =
 /**
  * list or watch objects of kind APIService
  */
-export const listApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ListApiregistrationV1APIServiceInput,
-    outputSchema: ListApiregistrationV1APIServiceOutput,
-  }));
+export const listApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListApiregistrationV1APIServiceInput,
+  outputSchema: ListApiregistrationV1APIServiceOutput,
+}));
 // Input Schema
 export const PatchApiregistrationV1APIServiceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -577,12 +572,11 @@ export type PatchApiregistrationV1APIServiceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: PatchApiregistrationV1APIServiceInput,
-    outputSchema: PatchApiregistrationV1APIServiceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+export const patchApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchApiregistrationV1APIServiceInput,
+  outputSchema: PatchApiregistrationV1APIServiceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -689,20 +683,22 @@ export type PatchApiregistrationV1APIServiceStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const patchApiregistrationV1APIServiceStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PatchApiregistrationV1APIServiceStatusInput,
     outputSchema: PatchApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
-export const ReadApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
-    }),
-  );
+export const ReadApiregistrationV1APIServiceInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
+  }),
+);
 export type ReadApiregistrationV1APIServiceInput =
   typeof ReadApiregistrationV1APIServiceInput.Type;
 
@@ -795,12 +791,11 @@ export type ReadApiregistrationV1APIServiceOutput =
 /**
  * read the specified APIService
  */
-export const readApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ReadApiregistrationV1APIServiceInput,
-    outputSchema: ReadApiregistrationV1APIServiceOutput,
-    errors: [NotFound] as const,
-  }));
+export const readApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadApiregistrationV1APIServiceInput,
+  outputSchema: ReadApiregistrationV1APIServiceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -901,12 +896,13 @@ export type ReadApiregistrationV1APIServiceStatusOutput =
 /**
  * read status of the specified APIService
  */
-export const readApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const readApiregistrationV1APIServiceStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadApiregistrationV1APIServiceStatusInput,
     outputSchema: ReadApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceApiregistrationV1APIServiceInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1013,12 +1009,13 @@ export type ReplaceApiregistrationV1APIServiceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceApiregistrationV1APIService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceApiregistrationV1APIServiceInput,
     outputSchema: ReplaceApiregistrationV1APIServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReplaceApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ Schema.Struct({
@@ -1125,12 +1122,13 @@ export type ReplaceApiregistrationV1APIServiceStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ API.make(() => ({
+export const replaceApiregistrationV1APIServiceStatus = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplaceApiregistrationV1APIServiceStatusInput,
     outputSchema: ReplaceApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }));
+  }),
+);
 // Input Schema
 export const WatchApiregistrationV1APIServiceInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1155,11 +1153,10 @@ export type WatchApiregistrationV1APIServiceOutput =
 /**
  * watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchApiregistrationV1APIService =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: WatchApiregistrationV1APIServiceInput,
-    outputSchema: WatchApiregistrationV1APIServiceOutput,
-  }));
+export const watchApiregistrationV1APIService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchApiregistrationV1APIServiceInput,
+  outputSchema: WatchApiregistrationV1APIServiceOutput,
+}));
 // Input Schema
 export const WatchApiregistrationV1APIServiceListInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1184,8 +1181,9 @@ export type WatchApiregistrationV1APIServiceListOutput =
 /**
  * watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchApiregistrationV1APIServiceList =
-  /*@__PURE__*/ API.make(() => ({
+export const watchApiregistrationV1APIServiceList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: WatchApiregistrationV1APIServiceListInput,
     outputSchema: WatchApiregistrationV1APIServiceListOutput,
-  }));
+  }),
+);

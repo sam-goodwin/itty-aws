@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     capture_amount: Schema.optional(Schema.Number),
     close_authorization: Schema.optional(Schema.Boolean),
@@ -137,7 +137,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput =
 
 // Output Schema
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.Unknown,
     approved: Schema.Boolean,
@@ -1390,7 +1390,7 @@ export type PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput =
  * <p>Capture a test-mode authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput,
     outputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput,

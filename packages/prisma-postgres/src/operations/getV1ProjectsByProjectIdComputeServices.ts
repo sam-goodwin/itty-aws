@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GetV1ProjectsByProjectIdComputeServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -20,7 +20,7 @@ export type GetV1ProjectsByProjectIdComputeServicesInput =
 
 // Output Schema
 export const GetV1ProjectsByProjectIdComputeServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -52,9 +52,10 @@ export type GetV1ProjectsByProjectIdComputeServicesOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns all compute services belonging to a project, ordered by creation time (oldest first). Supports cursor-based pagination.
  */
-export const getV1ProjectsByProjectIdComputeServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1ProjectsByProjectIdComputeServices = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetV1ProjectsByProjectIdComputeServicesInput,
     outputSchema: GetV1ProjectsByProjectIdComputeServicesOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }));
+  }),
+);

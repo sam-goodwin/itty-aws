@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const PropertyDefinitionsBulkUpdateTagsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ids: Schema.optional(Schema.Array(Schema.Number)),
     action: Schema.optional(Schema.Literals(["add", "remove", "set"])),
@@ -21,7 +21,7 @@ export type PropertyDefinitionsBulkUpdateTagsCreateInput =
 
 // Output Schema
 export const PropertyDefinitionsBulkUpdateTagsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updated: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -54,9 +54,10 @@ export type PropertyDefinitionsBulkUpdateTagsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const propertyDefinitionsBulkUpdateTagsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const propertyDefinitionsBulkUpdateTagsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PropertyDefinitionsBulkUpdateTagsCreateInput,
     outputSchema: PropertyDefinitionsBulkUpdateTagsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

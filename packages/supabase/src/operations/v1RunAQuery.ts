@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1RunAQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1RunAQueryInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
   parameters: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -13,7 +13,7 @@ export const V1RunAQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1RunAQueryInput = typeof V1RunAQueryInput.Type;
 
 // Output Schema
-export const V1RunAQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1RunAQueryOutput = /*@__PURE__*/ Schema.Void;
 export type V1RunAQueryOutput = typeof V1RunAQueryOutput.Type;
 
 // The operation
@@ -22,7 +22,7 @@ export type V1RunAQueryOutput = typeof V1RunAQueryOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1RunAQuery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RunAQuery = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RunAQueryInput,
   outputSchema: V1RunAQueryOutput,
   errors: [BadRequest, Forbidden] as const,

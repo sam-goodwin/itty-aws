@@ -4,21 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
-export const V1EnableDatabaseWebhookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/projects/{ref}/database/webhooks/enable",
-    }),
-  );
+export const V1EnableDatabaseWebhookInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/projects/{ref}/database/webhooks/enable",
+  }),
+);
 export type V1EnableDatabaseWebhookInput =
   typeof V1EnableDatabaseWebhookInput.Type;
 
 // Output Schema
-export const V1EnableDatabaseWebhookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1EnableDatabaseWebhookOutput = /*@__PURE__*/ Schema.Void;
 export type V1EnableDatabaseWebhookOutput =
   typeof V1EnableDatabaseWebhookOutput.Type;
 
@@ -28,10 +26,8 @@ export type V1EnableDatabaseWebhookOutput =
  *
  * @param ref - Project ref
  */
-export const v1EnableDatabaseWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1EnableDatabaseWebhookInput,
-    outputSchema: V1EnableDatabaseWebhookOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1EnableDatabaseWebhook = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1EnableDatabaseWebhookInput,
+  outputSchema: V1EnableDatabaseWebhookOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

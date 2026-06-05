@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const UpdateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
@@ -15,7 +15,7 @@ export const UpdateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateGroupInput = typeof UpdateGroupInput.Type;
 
 // Output Schema
-export const UpdateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -33,7 +33,7 @@ export type UpdateGroupOutput = typeof UpdateGroupOutput.Type;
  *
  * @param id - Unique identifier of the group to update
  */
-export const updateGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupInput,
   outputSchema: UpdateGroupOutput,
   errors: [NotFound, UnprocessableEntity] as const,

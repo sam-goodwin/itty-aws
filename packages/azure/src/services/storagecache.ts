@@ -9,23 +9,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AmlFilesystemsArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
-    }),
-  );
+export const AmlFilesystemsArchiveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
+  }),
+);
 export type AmlFilesystemsArchiveInput = typeof AmlFilesystemsArchiveInput.Type;
 
 // Output Schema
-export const AmlFilesystemsArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AmlFilesystemsArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type AmlFilesystemsArchiveOutput =
   typeof AmlFilesystemsArchiveOutput.Type;
 
@@ -38,31 +36,27 @@ export type AmlFilesystemsArchiveOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsArchiveInput,
-    outputSchema: AmlFilesystemsArchiveOutput,
+export const amlFilesystemsArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsArchiveInput,
+  outputSchema: AmlFilesystemsArchiveOutput,
+}));
+// Input Schema
+export const AmlFilesystemsCancelArchiveInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive",
   }),
 );
-// Input Schema
-export const AmlFilesystemsCancelArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive",
-    }),
-  );
 export type AmlFilesystemsCancelArchiveInput =
   typeof AmlFilesystemsCancelArchiveInput.Type;
 
 // Output Schema
-export const AmlFilesystemsCancelArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AmlFilesystemsCancelArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type AmlFilesystemsCancelArchiveOutput =
   typeof AmlFilesystemsCancelArchiveOutput.Type;
 
@@ -75,49 +69,45 @@ export type AmlFilesystemsCancelArchiveOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsCancelArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsCancelArchiveInput,
-    outputSchema: AmlFilesystemsCancelArchiveOutput,
+export const amlFilesystemsCancelArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsCancelArchiveInput,
+  outputSchema: AmlFilesystemsCancelArchiveOutput,
+}));
+// Input Schema
+export const AmlFilesystemsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
   }),
 );
-// Input Schema
-export const AmlFilesystemsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
-    }),
-  );
 export type AmlFilesystemsCreateOrUpdateInput =
   typeof AmlFilesystemsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AmlFilesystemsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AmlFilesystemsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AmlFilesystemsCreateOrUpdateOutput =
   typeof AmlFilesystemsCreateOrUpdateOutput.Type;
 
@@ -130,29 +120,26 @@ export type AmlFilesystemsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AmlFilesystemsCreateOrUpdateInput,
-    outputSchema: AmlFilesystemsCreateOrUpdateOutput,
-  }));
+export const amlFilesystemsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsCreateOrUpdateInput,
+  outputSchema: AmlFilesystemsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AmlFilesystemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
-    }),
-  );
+export const AmlFilesystemsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+  }),
+);
 export type AmlFilesystemsDeleteInput = typeof AmlFilesystemsDeleteInput.Type;
 
 // Output Schema
-export const AmlFilesystemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AmlFilesystemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AmlFilesystemsDeleteOutput = typeof AmlFilesystemsDeleteOutput.Type;
 
 // The operation
@@ -164,21 +151,17 @@ export type AmlFilesystemsDeleteOutput = typeof AmlFilesystemsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsDeleteInput,
-    outputSchema: AmlFilesystemsDeleteOutput,
-  }),
-);
+export const amlFilesystemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsDeleteInput,
+  outputSchema: AmlFilesystemsDeleteOutput,
+}));
 // Input Schema
-export const AmlFilesystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AmlFilesystemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
@@ -187,26 +170,25 @@ export const AmlFilesystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AmlFilesystemsGetInput = typeof AmlFilesystemsGetInput.Type;
 
 // Output Schema
-export const AmlFilesystemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AmlFilesystemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AmlFilesystemsGetOutput = typeof AmlFilesystemsGetOutput.Type;
 
 // The operation
@@ -218,61 +200,59 @@ export type AmlFilesystemsGetOutput = typeof AmlFilesystemsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const amlFilesystemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AmlFilesystemsGetInput,
   outputSchema: AmlFilesystemsGetOutput,
 }));
 // Input Schema
-export const AmlFilesystemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
-    }),
-  );
+export const AmlFilesystemsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
+  }),
+);
 export type AmlFilesystemsListInput = typeof AmlFilesystemsListInput.Type;
 
 // Output Schema
-export const AmlFilesystemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const AmlFilesystemsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AmlFilesystemsListOutput = typeof AmlFilesystemsListOutput.Type;
 
 // The operation
@@ -282,13 +262,13 @@ export type AmlFilesystemsListOutput = typeof AmlFilesystemsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const amlFilesystemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const amlFilesystemsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AmlFilesystemsListInput,
   outputSchema: AmlFilesystemsListOutput,
 }));
 // Input Schema
 export const AmlFilesystemsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -303,7 +283,7 @@ export type AmlFilesystemsListByResourceGroupInput =
 
 // Output Schema
 export const AmlFilesystemsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -350,47 +330,44 @@ export type AmlFilesystemsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const amlFilesystemsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AmlFilesystemsListByResourceGroupInput,
-    outputSchema: AmlFilesystemsListByResourceGroupOutput,
-  }));
+export const amlFilesystemsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsListByResourceGroupInput,
+  outputSchema: AmlFilesystemsListByResourceGroupOutput,
+}));
 // Input Schema
-export const AmlFilesystemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
-    }),
-  );
+export const AmlFilesystemsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+  }),
+);
 export type AmlFilesystemsUpdateInput = typeof AmlFilesystemsUpdateInput.Type;
 
 // Output Schema
-export const AmlFilesystemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AmlFilesystemsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AmlFilesystemsUpdateOutput = typeof AmlFilesystemsUpdateOutput.Type;
 
 // The operation
@@ -402,14 +379,12 @@ export type AmlFilesystemsUpdateOutput = typeof AmlFilesystemsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsUpdateInput,
-    outputSchema: AmlFilesystemsUpdateOutput,
-  }),
-);
+export const amlFilesystemsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsUpdateInput,
+  outputSchema: AmlFilesystemsUpdateOutput,
+}));
 // Input Schema
-export const AscOperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscOperationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   operationId: Schema.String.pipe(T.PathParam()),
@@ -423,26 +398,24 @@ export const AscOperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AscOperationsGetInput = typeof AscOperationsGetInput.Type;
 
 // Output Schema
-export const AscOperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        output: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-    ),
-  },
-);
+export const AscOperationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      output: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ),
+});
 export type AscOperationsGetOutput = typeof AscOperationsGetOutput.Type;
 
 // The operation
@@ -454,12 +427,12 @@ export type AscOperationsGetOutput = typeof AscOperationsGetOutput.Type;
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const AscOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AscOperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AscOperationsGetInput,
   outputSchema: AscOperationsGetOutput,
 }));
 // Input Schema
-export const AscUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscUsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -472,7 +445,7 @@ export const AscUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AscUsagesListInput = typeof AscUsagesListInput.Type;
 
 // Output Schema
-export const AscUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscUsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -500,48 +473,46 @@ export type AscUsagesListOutput = typeof AscUsagesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const AscUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AscUsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AscUsagesListInput,
   outputSchema: AscUsagesListOutput,
 }));
 // Input Schema
-export const AutoExportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
-    }),
-  );
+export const AutoExportJobsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoExportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+  }),
+);
 export type AutoExportJobsCreateOrUpdateInput =
   typeof AutoExportJobsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AutoExportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoExportJobsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoExportJobsCreateOrUpdateOutput =
   typeof AutoExportJobsCreateOrUpdateOutput.Type;
 
@@ -555,30 +526,27 @@ export type AutoExportJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutoExportJobsCreateOrUpdateInput,
-    outputSchema: AutoExportJobsCreateOrUpdateOutput,
-  }));
+export const autoExportJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsCreateOrUpdateInput,
+  outputSchema: AutoExportJobsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AutoExportJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
-    }),
-  );
+export const AutoExportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoExportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+  }),
+);
 export type AutoExportJobsDeleteInput = typeof AutoExportJobsDeleteInput.Type;
 
 // Output Schema
-export const AutoExportJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AutoExportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AutoExportJobsDeleteOutput = typeof AutoExportJobsDeleteOutput.Type;
 
 // The operation
@@ -591,22 +559,18 @@ export type AutoExportJobsDeleteOutput = typeof AutoExportJobsDeleteOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoExportJobsDeleteInput,
-    outputSchema: AutoExportJobsDeleteOutput,
-  }),
-);
+export const autoExportJobsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsDeleteInput,
+  outputSchema: AutoExportJobsDeleteOutput,
+}));
 // Input Schema
-export const AutoExportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AutoExportJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoExportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
@@ -615,26 +579,25 @@ export const AutoExportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AutoExportJobsGetInput = typeof AutoExportJobsGetInput.Type;
 
 // Output Schema
-export const AutoExportJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoExportJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoExportJobsGetOutput = typeof AutoExportJobsGetOutput.Type;
 
 // The operation
@@ -647,13 +610,13 @@ export type AutoExportJobsGetOutput = typeof AutoExportJobsGetOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const autoExportJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoExportJobsGetInput,
   outputSchema: AutoExportJobsGetOutput,
 }));
 // Input Schema
 export const AutoExportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -669,7 +632,7 @@ export type AutoExportJobsListByAmlFilesystemInput =
 
 // Output Schema
 export const AutoExportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -717,48 +680,45 @@ export type AutoExportJobsListByAmlFilesystemOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutoExportJobsListByAmlFilesystemInput,
-    outputSchema: AutoExportJobsListByAmlFilesystemOutput,
-  }));
+export const autoExportJobsListByAmlFilesystem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsListByAmlFilesystemInput,
+  outputSchema: AutoExportJobsListByAmlFilesystemOutput,
+}));
 // Input Schema
-export const AutoExportJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
-    }),
-  );
+export const AutoExportJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoExportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+  }),
+);
 export type AutoExportJobsUpdateInput = typeof AutoExportJobsUpdateInput.Type;
 
 // Output Schema
-export const AutoExportJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoExportJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoExportJobsUpdateOutput = typeof AutoExportJobsUpdateOutput.Type;
 
 // The operation
@@ -771,50 +731,46 @@ export type AutoExportJobsUpdateOutput = typeof AutoExportJobsUpdateOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoExportJobsUpdateInput,
-    outputSchema: AutoExportJobsUpdateOutput,
+export const autoExportJobsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsUpdateInput,
+  outputSchema: AutoExportJobsUpdateOutput,
+}));
+// Input Schema
+export const AutoImportJobsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoImportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
   }),
 );
-// Input Schema
-export const AutoImportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
-    }),
-  );
 export type AutoImportJobsCreateOrUpdateInput =
   typeof AutoImportJobsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AutoImportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoImportJobsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoImportJobsCreateOrUpdateOutput =
   typeof AutoImportJobsCreateOrUpdateOutput.Type;
 
@@ -828,30 +784,27 @@ export type AutoImportJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutoImportJobsCreateOrUpdateInput,
-    outputSchema: AutoImportJobsCreateOrUpdateOutput,
-  }));
+export const autoImportJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsCreateOrUpdateInput,
+  outputSchema: AutoImportJobsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AutoImportJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
-    }),
-  );
+export const AutoImportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoImportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+  }),
+);
 export type AutoImportJobsDeleteInput = typeof AutoImportJobsDeleteInput.Type;
 
 // Output Schema
-export const AutoImportJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AutoImportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AutoImportJobsDeleteOutput = typeof AutoImportJobsDeleteOutput.Type;
 
 // The operation
@@ -864,22 +817,18 @@ export type AutoImportJobsDeleteOutput = typeof AutoImportJobsDeleteOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoImportJobsDeleteInput,
-    outputSchema: AutoImportJobsDeleteOutput,
-  }),
-);
+export const autoImportJobsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsDeleteInput,
+  outputSchema: AutoImportJobsDeleteOutput,
+}));
 // Input Schema
-export const AutoImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const AutoImportJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoImportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
@@ -888,26 +837,25 @@ export const AutoImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AutoImportJobsGetInput = typeof AutoImportJobsGetInput.Type;
 
 // Output Schema
-export const AutoImportJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoImportJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoImportJobsGetOutput = typeof AutoImportJobsGetOutput.Type;
 
 // The operation
@@ -920,13 +868,13 @@ export type AutoImportJobsGetOutput = typeof AutoImportJobsGetOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const autoImportJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoImportJobsGetInput,
   outputSchema: AutoImportJobsGetOutput,
 }));
 // Input Schema
 export const AutoImportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -942,7 +890,7 @@ export type AutoImportJobsListByAmlFilesystemInput =
 
 // Output Schema
 export const AutoImportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -990,48 +938,45 @@ export type AutoImportJobsListByAmlFilesystemOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutoImportJobsListByAmlFilesystemInput,
-    outputSchema: AutoImportJobsListByAmlFilesystemOutput,
-  }));
+export const autoImportJobsListByAmlFilesystem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsListByAmlFilesystemInput,
+  outputSchema: AutoImportJobsListByAmlFilesystemOutput,
+}));
 // Input Schema
-export const AutoImportJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
-    }),
-  );
+export const AutoImportJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoImportJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+  }),
+);
 export type AutoImportJobsUpdateInput = typeof AutoImportJobsUpdateInput.Type;
 
 // Output Schema
-export const AutoImportJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AutoImportJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AutoImportJobsUpdateOutput = typeof AutoImportJobsUpdateOutput.Type;
 
 // The operation
@@ -1044,48 +989,44 @@ export type AutoImportJobsUpdateOutput = typeof AutoImportJobsUpdateOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoImportJobsUpdateInput,
-    outputSchema: AutoImportJobsUpdateOutput,
+export const autoImportJobsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsUpdateInput,
+  outputSchema: AutoImportJobsUpdateOutput,
+}));
+// Input Schema
+export const CachesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
   }),
 );
-// Input Schema
-export const CachesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
-    }),
-  );
 export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CachesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CachesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CachesCreateOrUpdateOutput = typeof CachesCreateOrUpdateOutput.Type;
 
 // The operation
@@ -1097,14 +1038,12 @@ export type CachesCreateOrUpdateOutput = typeof CachesCreateOrUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesCreateOrUpdateInput,
-    outputSchema: CachesCreateOrUpdateOutput,
-  }),
-);
+export const CachesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesCreateOrUpdateInput,
+  outputSchema: CachesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesDebugInfoInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1118,7 +1057,7 @@ export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesDebugInfoInput = typeof CachesDebugInfoInput.Type;
 
 // Output Schema
-export const CachesDebugInfoOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesDebugInfoOutput = /*@__PURE__*/ Schema.Void;
 export type CachesDebugInfoOutput = typeof CachesDebugInfoOutput.Type;
 
 // The operation
@@ -1130,12 +1069,12 @@ export type CachesDebugInfoOutput = typeof CachesDebugInfoOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesDebugInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesDebugInfo = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesDebugInfoInput,
   outputSchema: CachesDebugInfoOutput,
 }));
 // Input Schema
-export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1149,7 +1088,7 @@ export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesDeleteInput = typeof CachesDeleteInput.Type;
 
 // Output Schema
-export const CachesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CachesDeleteOutput = typeof CachesDeleteOutput.Type;
 
 // The operation
@@ -1161,12 +1100,12 @@ export type CachesDeleteOutput = typeof CachesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesDeleteInput,
   outputSchema: CachesDeleteOutput,
 }));
 // Input Schema
-export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesFlushInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1180,7 +1119,7 @@ export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesFlushInput = typeof CachesFlushInput.Type;
 
 // Output Schema
-export const CachesFlushOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesFlushOutput = /*@__PURE__*/ Schema.Void;
 export type CachesFlushOutput = typeof CachesFlushOutput.Type;
 
 // The operation
@@ -1192,12 +1131,12 @@ export type CachesFlushOutput = typeof CachesFlushOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesFlushInput,
   outputSchema: CachesFlushOutput,
 }));
 // Input Schema
-export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1211,7 +1150,7 @@ export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesGetInput = typeof CachesGetInput.Type;
 
 // Output Schema
-export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1241,12 +1180,12 @@ export type CachesGetOutput = typeof CachesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesGetInput,
   outputSchema: CachesGetOutput,
 }));
 // Input Schema
-export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1258,7 +1197,7 @@ export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesListInput = typeof CachesListInput.Type;
 
 // Output Schema
-export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1303,63 +1242,61 @@ export type CachesListOutput = typeof CachesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CachesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesListInput,
   outputSchema: CachesListOutput,
 }));
 // Input Schema
-export const CachesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
-    }),
-  );
+export const CachesListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
+  }),
+);
 export type CachesListByResourceGroupInput =
   typeof CachesListByResourceGroupInput.Type;
 
 // Output Schema
-export const CachesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CachesListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CachesListByResourceGroupOutput =
   typeof CachesListByResourceGroupOutput.Type;
 
@@ -1371,30 +1308,26 @@ export type CachesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CachesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesListByResourceGroupInput,
-    outputSchema: CachesListByResourceGroupOutput,
+export const CachesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesListByResourceGroupInput,
+  outputSchema: CachesListByResourceGroupOutput,
+}));
+// Input Schema
+export const CachesPausePrimingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
   }),
 );
-// Input Schema
-export const CachesPausePrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
-    }),
-  );
 export type CachesPausePrimingJobInput = typeof CachesPausePrimingJobInput.Type;
 
 // Output Schema
-export const CachesPausePrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesPausePrimingJobOutput = /*@__PURE__*/ Schema.Void;
 export type CachesPausePrimingJobOutput =
   typeof CachesPausePrimingJobOutput.Type;
 
@@ -1407,31 +1340,27 @@ export type CachesPausePrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesPausePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesPausePrimingJobInput,
-    outputSchema: CachesPausePrimingJobOutput,
+export const CachesPausePrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesPausePrimingJobInput,
+  outputSchema: CachesPausePrimingJobOutput,
+}));
+// Input Schema
+export const CachesResumePrimingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
   }),
 );
-// Input Schema
-export const CachesResumePrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
-    }),
-  );
 export type CachesResumePrimingJobInput =
   typeof CachesResumePrimingJobInput.Type;
 
 // Output Schema
-export const CachesResumePrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesResumePrimingJobOutput = /*@__PURE__*/ Schema.Void;
 export type CachesResumePrimingJobOutput =
   typeof CachesResumePrimingJobOutput.Type;
 
@@ -1444,30 +1373,26 @@ export type CachesResumePrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesResumePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesResumePrimingJobInput,
-    outputSchema: CachesResumePrimingJobOutput,
+export const CachesResumePrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesResumePrimingJobInput,
+  outputSchema: CachesResumePrimingJobOutput,
+}));
+// Input Schema
+export const CachesSpaceAllocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
   }),
 );
-// Input Schema
-export const CachesSpaceAllocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
-    }),
-  );
 export type CachesSpaceAllocationInput = typeof CachesSpaceAllocationInput.Type;
 
 // Output Schema
-export const CachesSpaceAllocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesSpaceAllocationOutput = /*@__PURE__*/ Schema.Void;
 export type CachesSpaceAllocationOutput =
   typeof CachesSpaceAllocationOutput.Type;
 
@@ -1480,14 +1405,12 @@ export type CachesSpaceAllocationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesSpaceAllocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesSpaceAllocationInput,
-    outputSchema: CachesSpaceAllocationOutput,
-  }),
-);
+export const CachesSpaceAllocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesSpaceAllocationInput,
+  outputSchema: CachesSpaceAllocationOutput,
+}));
 // Input Schema
-export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1424,7 @@ export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesStartInput = typeof CachesStartInput.Type;
 
 // Output Schema
-export const CachesStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesStartOutput = /*@__PURE__*/ Schema.Void;
 export type CachesStartOutput = typeof CachesStartOutput.Type;
 
 // The operation
@@ -1513,28 +1436,26 @@ export type CachesStartOutput = typeof CachesStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesStartInput,
   outputSchema: CachesStartOutput,
 }));
 // Input Schema
-export const CachesStartPrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
-    }),
-  );
+export const CachesStartPrimingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
+  }),
+);
 export type CachesStartPrimingJobInput = typeof CachesStartPrimingJobInput.Type;
 
 // Output Schema
-export const CachesStartPrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesStartPrimingJobOutput = /*@__PURE__*/ Schema.Void;
 export type CachesStartPrimingJobOutput =
   typeof CachesStartPrimingJobOutput.Type;
 
@@ -1547,14 +1468,12 @@ export type CachesStartPrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStartPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesStartPrimingJobInput,
-    outputSchema: CachesStartPrimingJobOutput,
-  }),
-);
+export const CachesStartPrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesStartPrimingJobInput,
+  outputSchema: CachesStartPrimingJobOutput,
+}));
 // Input Schema
-export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1568,7 +1487,7 @@ export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesStopInput = typeof CachesStopInput.Type;
 
 // Output Schema
-export const CachesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesStopOutput = /*@__PURE__*/ Schema.Void;
 export type CachesStopOutput = typeof CachesStopOutput.Type;
 
 // The operation
@@ -1580,28 +1499,26 @@ export type CachesStopOutput = typeof CachesStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesStopInput,
   outputSchema: CachesStopOutput,
 }));
 // Input Schema
-export const CachesStopPrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
-    }),
-  );
+export const CachesStopPrimingJobInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
+  }),
+);
 export type CachesStopPrimingJobInput = typeof CachesStopPrimingJobInput.Type;
 
 // Output Schema
-export const CachesStopPrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesStopPrimingJobOutput = /*@__PURE__*/ Schema.Void;
 export type CachesStopPrimingJobOutput = typeof CachesStopPrimingJobOutput.Type;
 
 // The operation
@@ -1613,14 +1530,12 @@ export type CachesStopPrimingJobOutput = typeof CachesStopPrimingJobOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStopPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesStopPrimingJobInput,
-    outputSchema: CachesStopPrimingJobOutput,
-  }),
-);
+export const CachesStopPrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesStopPrimingJobInput,
+  outputSchema: CachesStopPrimingJobOutput,
+}));
 // Input Schema
-export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -1634,7 +1549,7 @@ export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CachesUpdateInput = typeof CachesUpdateInput.Type;
 
 // Output Schema
-export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1664,28 +1579,26 @@ export type CachesUpdateOutput = typeof CachesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesUpdateInput,
   outputSchema: CachesUpdateOutput,
 }));
 // Input Schema
-export const CachesUpgradeFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
-    }),
-  );
+export const CachesUpgradeFirmwareInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
+  }),
+);
 export type CachesUpgradeFirmwareInput = typeof CachesUpgradeFirmwareInput.Type;
 
 // Output Schema
-export const CachesUpgradeFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CachesUpgradeFirmwareOutput = /*@__PURE__*/ Schema.Void;
 export type CachesUpgradeFirmwareOutput =
   typeof CachesUpgradeFirmwareOutput.Type;
 
@@ -1698,19 +1611,15 @@ export type CachesUpgradeFirmwareOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesUpgradeFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesUpgradeFirmwareInput,
-    outputSchema: CachesUpgradeFirmwareOutput,
-  }),
-);
+export const CachesUpgradeFirmware = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesUpgradeFirmwareInput,
+  outputSchema: CachesUpgradeFirmwareOutput,
+}));
 // Input Schema
-export const CheckAmlFSSubnetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CheckAmlFSSubnetsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
@@ -1719,7 +1628,7 @@ export const CheckAmlFSSubnetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CheckAmlFSSubnetsInput = typeof CheckAmlFSSubnetsInput.Type;
 
 // Output Schema
-export const CheckAmlFSSubnetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CheckAmlFSSubnetsOutput = /*@__PURE__*/ Schema.Void;
 export type CheckAmlFSSubnetsOutput = typeof CheckAmlFSSubnetsOutput.Type;
 
 // The operation
@@ -1729,48 +1638,46 @@ export type CheckAmlFSSubnetsOutput = typeof CheckAmlFSSubnetsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const checkAmlFSSubnets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const checkAmlFSSubnets = /*@__PURE__*/ API.make(() => ({
   inputSchema: CheckAmlFSSubnetsInput,
   outputSchema: CheckAmlFSSubnetsOutput,
 }));
 // Input Schema
-export const ExpansionJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
-    }),
-  );
+export const ExpansionJobsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  expansionJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+  }),
+);
 export type ExpansionJobsCreateOrUpdateInput =
   typeof ExpansionJobsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ExpansionJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ExpansionJobsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ExpansionJobsCreateOrUpdateOutput =
   typeof ExpansionJobsCreateOrUpdateOutput.Type;
 
@@ -1784,31 +1691,27 @@ export type ExpansionJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExpansionJobsCreateOrUpdateInput,
-    outputSchema: ExpansionJobsCreateOrUpdateOutput,
+export const expansionJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExpansionJobsCreateOrUpdateInput,
+  outputSchema: ExpansionJobsCreateOrUpdateOutput,
+}));
+// Input Schema
+export const ExpansionJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  expansionJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
   }),
 );
-// Input Schema
-export const ExpansionJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
-    }),
-  );
 export type ExpansionJobsDeleteInput = typeof ExpansionJobsDeleteInput.Type;
 
 // Output Schema
-export const ExpansionJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ExpansionJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ExpansionJobsDeleteOutput = typeof ExpansionJobsDeleteOutput.Type;
 
 // The operation
@@ -1821,12 +1724,12 @@ export type ExpansionJobsDeleteOutput = typeof ExpansionJobsDeleteOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsDeleteInput,
   outputSchema: ExpansionJobsDeleteOutput,
 }));
 // Input Schema
-export const ExpansionJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExpansionJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1841,27 +1744,25 @@ export const ExpansionJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExpansionJobsGetInput = typeof ExpansionJobsGetInput.Type;
 
 // Output Schema
-export const ExpansionJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ExpansionJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ExpansionJobsGetOutput = typeof ExpansionJobsGetOutput.Type;
 
 // The operation
@@ -1874,13 +1775,13 @@ export type ExpansionJobsGetOutput = typeof ExpansionJobsGetOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsGetInput,
   outputSchema: ExpansionJobsGetOutput,
 }));
 // Input Schema
 export const ExpansionJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1896,7 +1797,7 @@ export type ExpansionJobsListByAmlFilesystemInput =
 
 // Output Schema
 export const ExpansionJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1944,48 +1845,45 @@ export type ExpansionJobsListByAmlFilesystemOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ExpansionJobsListByAmlFilesystemInput,
-    outputSchema: ExpansionJobsListByAmlFilesystemOutput,
-  }));
+export const expansionJobsListByAmlFilesystem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExpansionJobsListByAmlFilesystemInput,
+  outputSchema: ExpansionJobsListByAmlFilesystemOutput,
+}));
 // Input Schema
-export const ExpansionJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
-    }),
-  );
+export const ExpansionJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  expansionJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+  }),
+);
 export type ExpansionJobsUpdateInput = typeof ExpansionJobsUpdateInput.Type;
 
 // Output Schema
-export const ExpansionJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ExpansionJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ExpansionJobsUpdateOutput = typeof ExpansionJobsUpdateOutput.Type;
 
 // The operation
@@ -1998,29 +1896,27 @@ export type ExpansionJobsUpdateOutput = typeof ExpansionJobsUpdateOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsUpdateInput,
   outputSchema: ExpansionJobsUpdateOutput,
 }));
 // Input Schema
-export const GetRequiredAmlFSSubnetsSizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize",
-    }),
-  );
+export const GetRequiredAmlFSSubnetsSizeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize",
+  }),
+);
 export type GetRequiredAmlFSSubnetsSizeInput =
   typeof GetRequiredAmlFSSubnetsSizeInput.Type;
 
 // Output Schema
-export const GetRequiredAmlFSSubnetsSizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filesystemSubnetSize: Schema.optional(Schema.Number),
-  });
+export const GetRequiredAmlFSSubnetsSizeOutput = /*@__PURE__*/ Schema.Struct({
+  filesystemSubnetSize: Schema.optional(Schema.Number),
+});
 export type GetRequiredAmlFSSubnetsSizeOutput =
   typeof GetRequiredAmlFSSubnetsSizeOutput.Type;
 
@@ -2031,50 +1927,46 @@ export type GetRequiredAmlFSSubnetsSizeOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const getRequiredAmlFSSubnetsSize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetRequiredAmlFSSubnetsSizeInput,
-    outputSchema: GetRequiredAmlFSSubnetsSizeOutput,
+export const getRequiredAmlFSSubnetsSize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRequiredAmlFSSubnetsSizeInput,
+  outputSchema: GetRequiredAmlFSSubnetsSizeOutput,
+}));
+// Input Schema
+export const ImportJobsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  importJobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
   }),
 );
-// Input Schema
-export const ImportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    importJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
-    }),
-  );
 export type ImportJobsCreateOrUpdateInput =
   typeof ImportJobsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ImportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ImportJobsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ImportJobsCreateOrUpdateOutput =
   typeof ImportJobsCreateOrUpdateOutput.Type;
 
@@ -2088,14 +1980,12 @@ export type ImportJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportJobsCreateOrUpdateInput,
-    outputSchema: ImportJobsCreateOrUpdateOutput,
-  }),
-);
+export const importJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportJobsCreateOrUpdateInput,
+  outputSchema: ImportJobsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -2110,7 +2000,7 @@ export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImportJobsDeleteInput = typeof ImportJobsDeleteInput.Type;
 
 // Output Schema
-export const ImportJobsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ImportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ImportJobsDeleteOutput = typeof ImportJobsDeleteOutput.Type;
 
 // The operation
@@ -2123,12 +2013,12 @@ export type ImportJobsDeleteOutput = typeof ImportJobsDeleteOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsDeleteInput,
   outputSchema: ImportJobsDeleteOutput,
 }));
 // Input Schema
-export const ImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -2143,7 +2033,7 @@ export const ImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImportJobsGetInput = typeof ImportJobsGetInput.Type;
 
 // Output Schema
-export const ImportJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2174,64 +2064,62 @@ export type ImportJobsGetOutput = typeof ImportJobsGetOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsGetInput,
   outputSchema: ImportJobsGetOutput,
 }));
 // Input Schema
-export const ImportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
-    }),
-  );
+export const ImportJobsListByAmlFilesystemInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
+  }),
+);
 export type ImportJobsListByAmlFilesystemInput =
   typeof ImportJobsListByAmlFilesystemInput.Type;
 
 // Output Schema
-export const ImportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ImportJobsListByAmlFilesystemOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ImportJobsListByAmlFilesystemOutput =
   typeof ImportJobsListByAmlFilesystemOutput.Type;
 
@@ -2244,13 +2132,12 @@ export type ImportJobsListByAmlFilesystemOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ImportJobsListByAmlFilesystemInput,
-    outputSchema: ImportJobsListByAmlFilesystemOutput,
-  }));
+export const importJobsListByAmlFilesystem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportJobsListByAmlFilesystemInput,
+  outputSchema: ImportJobsListByAmlFilesystemOutput,
+}));
 // Input Schema
-export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -2265,27 +2152,25 @@ export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImportJobsUpdateInput = typeof ImportJobsUpdateInput.Type;
 
 // Output Schema
-export const ImportJobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ImportJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ImportJobsUpdateOutput = typeof ImportJobsUpdateOutput.Type;
 
 // The operation
@@ -2298,12 +2183,12 @@ export type ImportJobsUpdateOutput = typeof ImportJobsUpdateOutput.Type;
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsUpdateInput,
   outputSchema: ImportJobsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2314,7 +2199,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2395,12 +2280,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2412,7 +2297,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2460,28 +2345,27 @@ export type SkusListOutput = typeof SkusListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
-export const StorageTargetFlushInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
-    }),
-  );
+export const StorageTargetFlushInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
+  }),
+);
 export type StorageTargetFlushInput = typeof StorageTargetFlushInput.Type;
 
 // Output Schema
-export const StorageTargetFlushOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetFlushOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetFlushOutput = typeof StorageTargetFlushOutput.Type;
 
 // The operation
@@ -2494,30 +2378,28 @@ export type StorageTargetFlushOutput = typeof StorageTargetFlushOutput.Type;
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetFlushInput,
   outputSchema: StorageTargetFlushOutput,
 }));
 // Input Schema
-export const StorageTargetInvalidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
-    }),
-  );
+export const StorageTargetInvalidateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
+  }),
+);
 export type StorageTargetInvalidateInput =
   typeof StorageTargetInvalidateInput.Type;
 
 // Output Schema
-export const StorageTargetInvalidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetInvalidateOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetInvalidateOutput =
   typeof StorageTargetInvalidateOutput.Type;
 
@@ -2531,31 +2413,27 @@ export type StorageTargetInvalidateOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetInvalidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetInvalidateInput,
-    outputSchema: StorageTargetInvalidateOutput,
+export const StorageTargetInvalidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetInvalidateInput,
+  outputSchema: StorageTargetInvalidateOutput,
+}));
+// Input Schema
+export const StorageTargetResumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
   }),
 );
-// Input Schema
-export const StorageTargetResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
-    }),
-  );
 export type StorageTargetResumeInput = typeof StorageTargetResumeInput.Type;
 
 // Output Schema
-export const StorageTargetResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetResumeOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetResumeOutput = typeof StorageTargetResumeOutput.Type;
 
 // The operation
@@ -2568,48 +2446,46 @@ export type StorageTargetResumeOutput = typeof StorageTargetResumeOutput.Type;
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetResumeInput,
   outputSchema: StorageTargetResumeOutput,
 }));
 // Input Schema
-export const StorageTargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
-    }),
-  );
+export const StorageTargetsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+  }),
+);
 export type StorageTargetsCreateOrUpdateInput =
   typeof StorageTargetsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const StorageTargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTargetsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTargetsCreateOrUpdateOutput =
   typeof StorageTargetsCreateOrUpdateOutput.Type;
 
@@ -2623,31 +2499,28 @@ export type StorageTargetsCreateOrUpdateOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageTargetsCreateOrUpdateInput,
-    outputSchema: StorageTargetsCreateOrUpdateOutput,
-  }));
+export const StorageTargetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsCreateOrUpdateInput,
+  outputSchema: StorageTargetsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const StorageTargetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    force: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
-    }),
-  );
+export const StorageTargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  force: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+  }),
+);
 export type StorageTargetsDeleteInput = typeof StorageTargetsDeleteInput.Type;
 
 // Output Schema
-export const StorageTargetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetsDeleteOutput = typeof StorageTargetsDeleteOutput.Type;
 
 // The operation
@@ -2661,32 +2534,28 @@ export type StorageTargetsDeleteOutput = typeof StorageTargetsDeleteOutput.Type;
  * @param storageTargetName - Name of Storage Target.
  * @param force - Boolean value requesting the force delete operation for a storage target. Force delete discards unwritten-data in the cache instead of flushing it to back-end storage.
  */
-export const StorageTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsDeleteInput,
-    outputSchema: StorageTargetsDeleteOutput,
+export const StorageTargetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsDeleteInput,
+  outputSchema: StorageTargetsDeleteOutput,
+}));
+// Input Schema
+export const StorageTargetsDnsRefreshInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
   }),
 );
-// Input Schema
-export const StorageTargetsDnsRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
-    }),
-  );
 export type StorageTargetsDnsRefreshInput =
   typeof StorageTargetsDnsRefreshInput.Type;
 
 // Output Schema
-export const StorageTargetsDnsRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetsDnsRefreshOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetsDnsRefreshOutput =
   typeof StorageTargetsDnsRefreshOutput.Type;
 
@@ -2700,22 +2569,18 @@ export type StorageTargetsDnsRefreshOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsDnsRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsDnsRefreshInput,
-    outputSchema: StorageTargetsDnsRefreshOutput,
-  }),
-);
+export const StorageTargetsDnsRefresh = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsDnsRefreshInput,
+  outputSchema: StorageTargetsDnsRefreshOutput,
+}));
 // Input Schema
-export const StorageTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const StorageTargetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
@@ -2724,26 +2589,25 @@ export const StorageTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StorageTargetsGetInput = typeof StorageTargetsGetInput.Type;
 
 // Output Schema
-export const StorageTargetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageTargetsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageTargetsGetOutput = typeof StorageTargetsGetOutput.Type;
 
 // The operation
@@ -2756,64 +2620,62 @@ export type StorageTargetsGetOutput = typeof StorageTargetsGetOutput.Type;
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetsGetInput,
   outputSchema: StorageTargetsGetOutput,
 }));
 // Input Schema
-export const StorageTargetsListByCacheInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
-    }),
-  );
+export const StorageTargetsListByCacheInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
+  }),
+);
 export type StorageTargetsListByCacheInput =
   typeof StorageTargetsListByCacheInput.Type;
 
 // Output Schema
-export const StorageTargetsListByCacheOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const StorageTargetsListByCacheOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageTargetsListByCacheOutput =
   typeof StorageTargetsListByCacheOutput.Type;
 
@@ -2826,32 +2688,28 @@ export type StorageTargetsListByCacheOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const StorageTargetsListByCache = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsListByCacheInput,
-    outputSchema: StorageTargetsListByCacheOutput,
+export const StorageTargetsListByCache = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsListByCacheInput,
+  outputSchema: StorageTargetsListByCacheOutput,
+}));
+// Input Schema
+export const StorageTargetsRestoreDefaultsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
   }),
 );
-// Input Schema
-export const StorageTargetsRestoreDefaultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
-    }),
-  );
 export type StorageTargetsRestoreDefaultsInput =
   typeof StorageTargetsRestoreDefaultsInput.Type;
 
 // Output Schema
-export const StorageTargetsRestoreDefaultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetsRestoreDefaultsOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetsRestoreDefaultsOutput =
   typeof StorageTargetsRestoreDefaultsOutput.Type;
 
@@ -2865,30 +2723,27 @@ export type StorageTargetsRestoreDefaultsOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsRestoreDefaults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: StorageTargetsRestoreDefaultsInput,
-    outputSchema: StorageTargetsRestoreDefaultsOutput,
-  }));
+export const StorageTargetsRestoreDefaults = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsRestoreDefaultsInput,
+  outputSchema: StorageTargetsRestoreDefaultsOutput,
+}));
 // Input Schema
-export const StorageTargetSuspendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
-    }),
-  );
+export const StorageTargetSuspendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
+  }),
+);
 export type StorageTargetSuspendInput = typeof StorageTargetSuspendInput.Type;
 
 // Output Schema
-export const StorageTargetSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageTargetSuspendOutput = /*@__PURE__*/ Schema.Void;
 export type StorageTargetSuspendOutput = typeof StorageTargetSuspendOutput.Type;
 
 // The operation
@@ -2901,14 +2756,12 @@ export type StorageTargetSuspendOutput = typeof StorageTargetSuspendOutput.Type;
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetSuspendInput,
-    outputSchema: StorageTargetSuspendOutput,
-  }),
-);
+export const StorageTargetSuspend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetSuspendInput,
+  outputSchema: StorageTargetSuspendOutput,
+}));
 // Input Schema
-export const UsageModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageModelsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2920,7 +2773,7 @@ export const UsageModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UsageModelsListInput = typeof UsageModelsListInput.Type;
 
 // Output Schema
-export const UsageModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageModelsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2945,7 +2798,7 @@ export type UsageModelsListOutput = typeof UsageModelsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const UsageModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsageModelsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsageModelsListInput,
   outputSchema: UsageModelsListOutput,
 }));

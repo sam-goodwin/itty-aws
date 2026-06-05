@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const DeleteBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteBouncerInput = typeof DeleteBouncerInput.Type;
 
 // Output Schema
-export const DeleteBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteBouncerOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteBouncerOutput = typeof DeleteBouncerOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type DeleteBouncerOutput = typeof DeleteBouncerOutput.Type;
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param bouncer - The name of the bouncer
  */
-export const deleteBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBouncerInput,
   outputSchema: DeleteBouncerOutput,
   errors: [Forbidden, NotFound] as const,

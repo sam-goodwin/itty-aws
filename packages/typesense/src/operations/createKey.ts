@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
 
 // Input Schema
-export const CreateKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateKeyInput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
   actions: Schema.Array(Schema.String),
@@ -14,7 +14,7 @@ export const CreateKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateKeyInput = typeof CreateKeyInput.Type;
 
 // Output Schema
-export const CreateKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateKeyOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
   actions: Schema.Array(Schema.String),
@@ -31,7 +31,7 @@ export type CreateKeyOutput = typeof CreateKeyOutput.Type;
  *
  * Create an API Key with fine-grain access control. You can restrict access on both a per-collection and per-action level. The generated key is returned only during creation. You want to store this key carefully in a secure place.
  */
-export const createKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateKeyInput,
   outputSchema: CreateKeyOutput,
   errors: [BadRequest, Conflict] as const,

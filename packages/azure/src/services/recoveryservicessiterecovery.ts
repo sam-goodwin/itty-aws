@@ -9,49 +9,47 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ClusterRecoveryPointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    replicationProtectionClusterName: Schema.String.pipe(T.PathParam()),
-    recoveryPointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints/{recoveryPointName}",
-    }),
-  );
+export const ClusterRecoveryPointGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  replicationProtectionClusterName: Schema.String.pipe(T.PathParam()),
+  recoveryPointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints/{recoveryPointName}",
+  }),
+);
 export type ClusterRecoveryPointGetInput =
   typeof ClusterRecoveryPointGetInput.Type;
 
 // Output Schema
-export const ClusterRecoveryPointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        recoveryPointTime: Schema.optional(Schema.String),
-        recoveryPointType: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "ApplicationConsistent",
-            "CrashConsistent",
-          ]),
-        ),
-        providerSpecificDetails: Schema.optional(
-          Schema.Struct({
-            instanceType: Schema.String,
-          }),
-        ),
-      }),
-    ),
-  });
+export const ClusterRecoveryPointGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      recoveryPointTime: Schema.optional(Schema.String),
+      recoveryPointType: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "ApplicationConsistent",
+          "CrashConsistent",
+        ]),
+      ),
+      providerSpecificDetails: Schema.optional(
+        Schema.Struct({
+          instanceType: Schema.String,
+        }),
+      ),
+    }),
+  ),
+});
 export type ClusterRecoveryPointGetOutput =
   typeof ClusterRecoveryPointGetOutput.Type;
 
@@ -70,15 +68,13 @@ export type ClusterRecoveryPointGetOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  * @param recoveryPointName - The recovery point name.
  */
-export const ClusterRecoveryPointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClusterRecoveryPointGetInput,
-    outputSchema: ClusterRecoveryPointGetOutput,
-  }),
-);
+export const ClusterRecoveryPointGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClusterRecoveryPointGetInput,
+  outputSchema: ClusterRecoveryPointGetOutput,
+}));
 // Input Schema
 export const ClusterRecoveryPointsListByReplicationProtectionClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -97,7 +93,7 @@ export type ClusterRecoveryPointsListByReplicationProtectionClusterInput =
 
 // Output Schema
 export const ClusterRecoveryPointsListByReplicationProtectionClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -142,51 +138,49 @@ export type ClusterRecoveryPointsListByReplicationProtectionClusterOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ClusterRecoveryPointsListByReplicationProtectionCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterRecoveryPointsListByReplicationProtectionClusterInput,
     outputSchema: ClusterRecoveryPointsListByReplicationProtectionClusterOutput,
   }));
 // Input Schema
-export const MigrationRecoveryPointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    migrationItemName: Schema.String.pipe(T.PathParam()),
-    migrationRecoveryPointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints/{migrationRecoveryPointName}",
-    }),
-  );
+export const MigrationRecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  migrationItemName: Schema.String.pipe(T.PathParam()),
+  migrationRecoveryPointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints/{migrationRecoveryPointName}",
+  }),
+);
 export type MigrationRecoveryPointsGetInput =
   typeof MigrationRecoveryPointsGetInput.Type;
 
 // Output Schema
-export const MigrationRecoveryPointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const MigrationRecoveryPointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MigrationRecoveryPointsGetOutput =
   typeof MigrationRecoveryPointsGetOutput.Type;
 
@@ -203,15 +197,13 @@ export type MigrationRecoveryPointsGetOutput =
  * @param migrationItemName - Migration item name.
  * @param migrationRecoveryPointName - The migration recovery point name.
  */
-export const MigrationRecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MigrationRecoveryPointsGetInput,
-    outputSchema: MigrationRecoveryPointsGetOutput,
-  }),
-);
+export const MigrationRecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationRecoveryPointsGetInput,
+  outputSchema: MigrationRecoveryPointsGetOutput,
+}));
 // Input Schema
 export const MigrationRecoveryPointsListByReplicationMigrationItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -230,7 +222,7 @@ export type MigrationRecoveryPointsListByReplicationMigrationItemsInput =
 
 // Output Schema
 export const MigrationRecoveryPointsListByReplicationMigrationItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -280,12 +272,12 @@ export type MigrationRecoveryPointsListByReplicationMigrationItemsOutput =
  * @param migrationItemName - Migration item name.
  */
 export const MigrationRecoveryPointsListByReplicationMigrationItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationRecoveryPointsListByReplicationMigrationItemsInput,
     outputSchema: MigrationRecoveryPointsListByReplicationMigrationItemsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -298,7 +290,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -328,23 +320,21 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
-    recoveryPointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const RecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
+  recoveryPointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints/{recoveryPointName}",
@@ -353,26 +343,25 @@ export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
 
 // Output Schema
-export const RecoveryPointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RecoveryPointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
 
 // The operation
@@ -390,13 +379,13 @@ export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
  * @param replicatedProtectedItemName - Replication protected item name.
  * @param recoveryPointName - The recovery point name.
  */
-export const RecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoveryPointsGetInput,
   outputSchema: RecoveryPointsGetOutput,
 }));
 // Input Schema
 export const RecoveryPointsListByReplicationProtectedItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -415,7 +404,7 @@ export type RecoveryPointsListByReplicationProtectedItemsInput =
 
 // Output Schema
 export const RecoveryPointsListByReplicationProtectedItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -467,30 +456,29 @@ export type RecoveryPointsListByReplicationProtectedItemsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const RecoveryPointsListByReplicationProtectedItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecoveryPointsListByReplicationProtectedItemsInput,
     outputSchema: RecoveryPointsListByReplicationProtectedItemsOutput,
   }));
 // Input Schema
-export const ReplicationAlertSettingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    alertSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
-    }),
-  );
+export const ReplicationAlertSettingsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  alertSettingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
+  }),
+);
 export type ReplicationAlertSettingsCreateInput =
   typeof ReplicationAlertSettingsCreateInput.Type;
 
 // Output Schema
-export const ReplicationAlertSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationAlertSettingsCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -508,7 +496,8 @@ export const ReplicationAlertSettingsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ReplicationAlertSettingsCreateOutput =
   typeof ReplicationAlertSettingsCreateOutput.Type;
 
@@ -524,49 +513,46 @@ export type ReplicationAlertSettingsCreateOutput =
  * @param resourceName - The name of the Vault
  * @param alertSettingName - The name of the email notification configuration.
  */
-export const ReplicationAlertSettingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationAlertSettingsCreateInput,
-    outputSchema: ReplicationAlertSettingsCreateOutput,
-  }));
+export const ReplicationAlertSettingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAlertSettingsCreateInput,
+  outputSchema: ReplicationAlertSettingsCreateOutput,
+}));
 // Input Schema
-export const ReplicationAlertSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    alertSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
-    }),
-  );
+export const ReplicationAlertSettingsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  alertSettingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
+  }),
+);
 export type ReplicationAlertSettingsGetInput =
   typeof ReplicationAlertSettingsGetInput.Type;
 
 // Output Schema
-export const ReplicationAlertSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationAlertSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationAlertSettingsGetOutput =
   typeof ReplicationAlertSettingsGetOutput.Type;
 
@@ -582,64 +568,50 @@ export type ReplicationAlertSettingsGetOutput =
  * @param resourceName - The name of the Vault
  * @param alertSettingName - The name of the email notification configuration.
  */
-export const ReplicationAlertSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationAlertSettingsGetInput,
-    outputSchema: ReplicationAlertSettingsGetOutput,
+export const ReplicationAlertSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAlertSettingsGetInput,
+  outputSchema: ReplicationAlertSettingsGetOutput,
+}));
+// Input Schema
+export const ReplicationAlertSettingsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings",
   }),
 );
-// Input Schema
-export const ReplicationAlertSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings",
-    }),
-  );
 export type ReplicationAlertSettingsListInput =
   typeof ReplicationAlertSettingsListInput.Type;
 
 // Output Schema
-export const ReplicationAlertSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationAlertSettingsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationAlertSettingsListOutput =
   typeof ReplicationAlertSettingsListOutput.Type;
 
@@ -654,46 +626,43 @@ export type ReplicationAlertSettingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationAlertSettingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationAlertSettingsListInput,
-    outputSchema: ReplicationAlertSettingsListOutput,
-  }));
+export const ReplicationAlertSettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAlertSettingsListInput,
+  outputSchema: ReplicationAlertSettingsListOutput,
+}));
 // Input Schema
-export const ReplicationAppliancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances",
-    }),
-  );
+export const ReplicationAppliancesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances",
+  }),
+);
 export type ReplicationAppliancesListInput =
   typeof ReplicationAppliancesListInput.Type;
 
 // Output Schema
-export const ReplicationAppliancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            providerSpecificDetails: Schema.optional(
-              Schema.Struct({
-                instanceType: Schema.String,
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationAppliancesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      properties: Schema.optional(
+        Schema.Struct({
+          providerSpecificDetails: Schema.optional(
+            Schema.Struct({
+              instanceType: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationAppliancesListOutput =
   typeof ReplicationAppliancesListOutput.Type;
 
@@ -709,15 +678,13 @@ export type ReplicationAppliancesListOutput =
  * @param resourceName - The name of the recovery services vault.
  * @param $filter - OData filter options.
  */
-export const ReplicationAppliancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationAppliancesListInput,
-    outputSchema: ReplicationAppliancesListOutput,
-  }),
-);
+export const ReplicationAppliancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAppliancesListInput,
+  outputSchema: ReplicationAppliancesListOutput,
+}));
 // Input Schema
 export const ReplicationEligibilityResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -732,7 +699,7 @@ export type ReplicationEligibilityResultsGetInput =
 
 // Output Schema
 export const ReplicationEligibilityResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -764,14 +731,13 @@ export type ReplicationEligibilityResultsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ReplicationEligibilityResultsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationEligibilityResultsGetInput,
-    outputSchema: ReplicationEligibilityResultsGetOutput,
-  }));
+export const ReplicationEligibilityResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEligibilityResultsGetInput,
+  outputSchema: ReplicationEligibilityResultsGetOutput,
+}));
 // Input Schema
 export const ReplicationEligibilityResultsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -786,7 +752,7 @@ export type ReplicationEligibilityResultsListInput =
 
 // Output Schema
 export const ReplicationEligibilityResultsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -834,48 +800,45 @@ export type ReplicationEligibilityResultsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ReplicationEligibilityResultsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationEligibilityResultsListInput,
-    outputSchema: ReplicationEligibilityResultsListOutput,
-  }));
+export const ReplicationEligibilityResultsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEligibilityResultsListInput,
+  outputSchema: ReplicationEligibilityResultsListOutput,
+}));
 // Input Schema
-export const ReplicationEventsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    eventName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}",
-    }),
-  );
+export const ReplicationEventsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  eventName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}",
+  }),
+);
 export type ReplicationEventsGetInput = typeof ReplicationEventsGetInput.Type;
 
 // Output Schema
-export const ReplicationEventsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationEventsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationEventsGetOutput = typeof ReplicationEventsGetOutput.Type;
 
 // The operation
@@ -890,64 +853,50 @@ export type ReplicationEventsGetOutput = typeof ReplicationEventsGetOutput.Type;
  * @param resourceName - The name of the Vault
  * @param eventName - The name of the Azure Site Recovery event.
  */
-export const ReplicationEventsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationEventsGetInput,
-    outputSchema: ReplicationEventsGetOutput,
+export const ReplicationEventsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEventsGetInput,
+  outputSchema: ReplicationEventsGetOutput,
+}));
+// Input Schema
+export const ReplicationEventsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents",
   }),
 );
-// Input Schema
-export const ReplicationEventsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents",
-    }),
-  );
 export type ReplicationEventsListInput = typeof ReplicationEventsListInput.Type;
 
 // Output Schema
-export const ReplicationEventsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationEventsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationEventsListOutput =
   typeof ReplicationEventsListOutput.Type;
 
@@ -963,15 +912,13 @@ export type ReplicationEventsListOutput =
  * @param resourceName - The name of the Vault
  * @param $filter - OData filter options.
  */
-export const ReplicationEventsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationEventsListInput,
-    outputSchema: ReplicationEventsListOutput,
-  }),
-);
+export const ReplicationEventsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEventsListInput,
+  outputSchema: ReplicationEventsListOutput,
+}));
 // Input Schema
 export const ReplicationFabricsCheckConsistencyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -988,7 +935,7 @@ export type ReplicationFabricsCheckConsistencyInput =
 
 // Output Schema
 export const ReplicationFabricsCheckConsistencyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1022,49 +969,48 @@ export type ReplicationFabricsCheckConsistencyOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsCheckConsistency =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationFabricsCheckConsistency = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationFabricsCheckConsistencyInput,
     outputSchema: ReplicationFabricsCheckConsistencyOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationFabricsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-    }),
-  );
+export const ReplicationFabricsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
+  }),
+);
 export type ReplicationFabricsCreateInput =
   typeof ReplicationFabricsCreateInput.Type;
 
 // Output Schema
-export const ReplicationFabricsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationFabricsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationFabricsCreateOutput =
   typeof ReplicationFabricsCreateOutput.Type;
 
@@ -1080,32 +1026,28 @@ export type ReplicationFabricsCreateOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsCreateInput,
-    outputSchema: ReplicationFabricsCreateOutput,
+export const ReplicationFabricsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsCreateInput,
+  outputSchema: ReplicationFabricsCreateOutput,
+}));
+// Input Schema
+export const ReplicationFabricsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove",
   }),
 );
-// Input Schema
-export const ReplicationFabricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove",
-    }),
-  );
 export type ReplicationFabricsDeleteInput =
   typeof ReplicationFabricsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationFabricsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationFabricsDeleteOutput =
   typeof ReplicationFabricsDeleteOutput.Type;
 
@@ -1121,50 +1063,46 @@ export type ReplicationFabricsDeleteOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsDeleteInput,
-    outputSchema: ReplicationFabricsDeleteOutput,
+export const ReplicationFabricsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsDeleteInput,
+  outputSchema: ReplicationFabricsDeleteOutput,
+}));
+// Input Schema
+export const ReplicationFabricsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
   }),
 );
-// Input Schema
-export const ReplicationFabricsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-    }),
-  );
 export type ReplicationFabricsGetInput = typeof ReplicationFabricsGetInput.Type;
 
 // Output Schema
-export const ReplicationFabricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationFabricsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationFabricsGetOutput =
   typeof ReplicationFabricsGetOutput.Type;
 
@@ -1181,64 +1119,50 @@ export type ReplicationFabricsGetOutput =
  * @param fabricName - Fabric name.
  * @param $filter - OData filter options.
  */
-export const ReplicationFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsGetInput,
-    outputSchema: ReplicationFabricsGetOutput,
+export const ReplicationFabricsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsGetInput,
+  outputSchema: ReplicationFabricsGetOutput,
+}));
+// Input Schema
+export const ReplicationFabricsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics",
   }),
 );
-// Input Schema
-export const ReplicationFabricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics",
-    }),
-  );
 export type ReplicationFabricsListInput =
   typeof ReplicationFabricsListInput.Type;
 
 // Output Schema
-export const ReplicationFabricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationFabricsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationFabricsListOutput =
   typeof ReplicationFabricsListOutput.Type;
 
@@ -1253,32 +1177,28 @@ export type ReplicationFabricsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsListInput,
-    outputSchema: ReplicationFabricsListOutput,
+export const ReplicationFabricsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsListInput,
+  outputSchema: ReplicationFabricsListOutput,
+}));
+// Input Schema
+export const ReplicationFabricsMigrateToAadInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad",
   }),
 );
-// Input Schema
-export const ReplicationFabricsMigrateToAadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad",
-    }),
-  );
 export type ReplicationFabricsMigrateToAadInput =
   typeof ReplicationFabricsMigrateToAadInput.Type;
 
 // Output Schema
-export const ReplicationFabricsMigrateToAadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationFabricsMigrateToAadOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationFabricsMigrateToAadOutput =
   typeof ReplicationFabricsMigrateToAadOutput.Type;
 
@@ -1294,31 +1214,28 @@ export type ReplicationFabricsMigrateToAadOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsMigrateToAad =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationFabricsMigrateToAadInput,
-    outputSchema: ReplicationFabricsMigrateToAadOutput,
-  }));
+export const ReplicationFabricsMigrateToAad = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsMigrateToAadInput,
+  outputSchema: ReplicationFabricsMigrateToAadOutput,
+}));
 // Input Schema
-export const ReplicationFabricsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-    }),
-  );
+export const ReplicationFabricsPurgeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
+  }),
+);
 export type ReplicationFabricsPurgeInput =
   typeof ReplicationFabricsPurgeInput.Type;
 
 // Output Schema
-export const ReplicationFabricsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationFabricsPurgeOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationFabricsPurgeOutput =
   typeof ReplicationFabricsPurgeOutput.Type;
 
@@ -1334,15 +1251,13 @@ export type ReplicationFabricsPurgeOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsPurgeInput,
-    outputSchema: ReplicationFabricsPurgeOutput,
-  }),
-);
+export const ReplicationFabricsPurge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsPurgeInput,
+  outputSchema: ReplicationFabricsPurgeOutput,
+}));
 // Input Schema
 export const ReplicationFabricsReassociateGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1359,7 +1274,7 @@ export type ReplicationFabricsReassociateGatewayInput =
 
 // Output Schema
 export const ReplicationFabricsReassociateGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1393,31 +1308,30 @@ export type ReplicationFabricsReassociateGatewayOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsReassociateGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationFabricsReassociateGateway = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationFabricsReassociateGatewayInput,
     outputSchema: ReplicationFabricsReassociateGatewayOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationFabricsRemoveInfraInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/removeInfra",
-    }),
-  );
+export const ReplicationFabricsRemoveInfraInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/removeInfra",
+  }),
+);
 export type ReplicationFabricsRemoveInfraInput =
   typeof ReplicationFabricsRemoveInfraInput.Type;
 
 // Output Schema
-export const ReplicationFabricsRemoveInfraOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationFabricsRemoveInfraOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationFabricsRemoveInfraOutput =
   typeof ReplicationFabricsRemoveInfraOutput.Type;
 
@@ -1431,14 +1345,13 @@ export type ReplicationFabricsRemoveInfraOutput =
  * @param resourceName - The name of the recovery services vault.
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsRemoveInfra =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationFabricsRemoveInfraInput,
-    outputSchema: ReplicationFabricsRemoveInfraOutput,
-  }));
+export const ReplicationFabricsRemoveInfra = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsRemoveInfraInput,
+  outputSchema: ReplicationFabricsRemoveInfraOutput,
+}));
 // Input Schema
 export const ReplicationFabricsRenewCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1455,7 +1368,7 @@ export type ReplicationFabricsRenewCertificateInput =
 
 // Output Schema
 export const ReplicationFabricsRenewCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1489,48 +1402,47 @@ export type ReplicationFabricsRenewCertificateOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsRenewCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationFabricsRenewCertificate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationFabricsRenewCertificateInput,
     outputSchema: ReplicationFabricsRenewCertificateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationJobsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel",
-    }),
-  );
+export const ReplicationJobsCancelInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel",
+  }),
+);
 export type ReplicationJobsCancelInput = typeof ReplicationJobsCancelInput.Type;
 
 // Output Schema
-export const ReplicationJobsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationJobsCancelOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationJobsCancelOutput =
   typeof ReplicationJobsCancelOutput.Type;
 
@@ -1546,48 +1458,44 @@ export type ReplicationJobsCancelOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsCancelInput,
-    outputSchema: ReplicationJobsCancelOutput,
+export const ReplicationJobsCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsCancelInput,
+  outputSchema: ReplicationJobsCancelOutput,
+}));
+// Input Schema
+export const ReplicationJobsExportInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export",
   }),
 );
-// Input Schema
-export const ReplicationJobsExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export",
-    }),
-  );
 export type ReplicationJobsExportInput = typeof ReplicationJobsExportInput.Type;
 
 // Output Schema
-export const ReplicationJobsExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationJobsExportOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationJobsExportOutput =
   typeof ReplicationJobsExportOutput.Type;
 
@@ -1602,49 +1510,45 @@ export type ReplicationJobsExportOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationJobsExport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsExportInput,
-    outputSchema: ReplicationJobsExportOutput,
+export const ReplicationJobsExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsExportInput,
+  outputSchema: ReplicationJobsExportOutput,
+}));
+// Input Schema
+export const ReplicationJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}",
   }),
 );
-// Input Schema
-export const ReplicationJobsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}",
-    }),
-  );
 export type ReplicationJobsGetInput = typeof ReplicationJobsGetInput.Type;
 
 // Output Schema
-export const ReplicationJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationJobsGetOutput = typeof ReplicationJobsGetOutput.Type;
 
 // The operation
@@ -1659,62 +1563,50 @@ export type ReplicationJobsGetOutput = typeof ReplicationJobsGetOutput.Type;
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationJobsGetInput,
   outputSchema: ReplicationJobsGetOutput,
 }));
 // Input Schema
-export const ReplicationJobsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs",
-    }),
-  );
+export const ReplicationJobsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs",
+  }),
+);
 export type ReplicationJobsListInput = typeof ReplicationJobsListInput.Type;
 
 // Output Schema
-export const ReplicationJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationJobsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationJobsListOutput = typeof ReplicationJobsListOutput.Type;
 
 // The operation
@@ -1729,48 +1621,46 @@ export type ReplicationJobsListOutput = typeof ReplicationJobsListOutput.Type;
  * @param resourceName - The name of the Vault
  * @param $filter - OData filter options.
  */
-export const ReplicationJobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationJobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationJobsListInput,
   outputSchema: ReplicationJobsListOutput,
 }));
 // Input Schema
-export const ReplicationJobsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart",
-    }),
-  );
+export const ReplicationJobsRestartInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart",
+  }),
+);
 export type ReplicationJobsRestartInput =
   typeof ReplicationJobsRestartInput.Type;
 
 // Output Schema
-export const ReplicationJobsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationJobsRestartOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationJobsRestartOutput =
   typeof ReplicationJobsRestartOutput.Type;
 
@@ -1786,49 +1676,45 @@ export type ReplicationJobsRestartOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsRestartInput,
-    outputSchema: ReplicationJobsRestartOutput,
+export const ReplicationJobsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsRestartInput,
+  outputSchema: ReplicationJobsRestartOutput,
+}));
+// Input Schema
+export const ReplicationJobsResumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume",
   }),
 );
-// Input Schema
-export const ReplicationJobsResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume",
-    }),
-  );
 export type ReplicationJobsResumeInput = typeof ReplicationJobsResumeInput.Type;
 
 // Output Schema
-export const ReplicationJobsResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationJobsResumeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationJobsResumeOutput =
   typeof ReplicationJobsResumeOutput.Type;
 
@@ -1844,51 +1730,47 @@ export type ReplicationJobsResumeOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsResumeInput,
-    outputSchema: ReplicationJobsResumeOutput,
+export const ReplicationJobsResume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsResumeInput,
+  outputSchema: ReplicationJobsResumeOutput,
+}));
+// Input Schema
+export const ReplicationLogicalNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  logicalNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}",
   }),
 );
-// Input Schema
-export const ReplicationLogicalNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    logicalNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}",
-    }),
-  );
 export type ReplicationLogicalNetworksGetInput =
   typeof ReplicationLogicalNetworksGetInput.Type;
 
 // Output Schema
-export const ReplicationLogicalNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationLogicalNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationLogicalNetworksGetOutput =
   typeof ReplicationLogicalNetworksGetOutput.Type;
 
@@ -1905,14 +1787,13 @@ export type ReplicationLogicalNetworksGetOutput =
  * @param fabricName - Fabric name.
  * @param logicalNetworkName - Logical network name.
  */
-export const ReplicationLogicalNetworksGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationLogicalNetworksGetInput,
-    outputSchema: ReplicationLogicalNetworksGetOutput,
-  }));
+export const ReplicationLogicalNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationLogicalNetworksGetInput,
+  outputSchema: ReplicationLogicalNetworksGetOutput,
+}));
 // Input Schema
 export const ReplicationLogicalNetworksListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1929,7 +1810,7 @@ export type ReplicationLogicalNetworksListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationLogicalNetworksListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1979,13 +1860,13 @@ export type ReplicationLogicalNetworksListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationLogicalNetworksListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationLogicalNetworksListByReplicationFabricsInput,
     outputSchema: ReplicationLogicalNetworksListByReplicationFabricsOutput,
   }));
 // Input Schema
-export const ReplicationMigrationItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationMigrationItemsCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1993,18 +1874,19 @@ export const ReplicationMigrationItemsCreateInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     migrationItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
+  }),
+);
 export type ReplicationMigrationItemsCreateInput =
   typeof ReplicationMigrationItemsCreateInput.Type;
 
 // Output Schema
 export const ReplicationMigrationItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2040,14 +1922,13 @@ export type ReplicationMigrationItemsCreateOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsCreateInput,
-    outputSchema: ReplicationMigrationItemsCreateOutput,
-  }));
+export const ReplicationMigrationItemsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsCreateInput,
+  outputSchema: ReplicationMigrationItemsCreateOutput,
+}));
 // Input Schema
-export const ReplicationMigrationItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationMigrationItemsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2056,18 +1937,18 @@ export const ReplicationMigrationItemsDeleteInput =
     migrationItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     deleteOption: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
+  }),
+);
 export type ReplicationMigrationItemsDeleteInput =
   typeof ReplicationMigrationItemsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationMigrationItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationMigrationItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationMigrationItemsDeleteOutput =
   typeof ReplicationMigrationItemsDeleteOutput.Type;
 
@@ -2086,51 +1967,48 @@ export type ReplicationMigrationItemsDeleteOutput =
  * @param migrationItemName - Migration item name.
  * @param deleteOption - The delete option.
  */
-export const ReplicationMigrationItemsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsDeleteInput,
-    outputSchema: ReplicationMigrationItemsDeleteOutput,
-  }));
+export const ReplicationMigrationItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsDeleteInput,
+  outputSchema: ReplicationMigrationItemsDeleteOutput,
+}));
 // Input Schema
-export const ReplicationMigrationItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    migrationItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-    }),
-  );
+export const ReplicationMigrationItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  migrationItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
+  }),
+);
 export type ReplicationMigrationItemsGetInput =
   typeof ReplicationMigrationItemsGetInput.Type;
 
 // Output Schema
-export const ReplicationMigrationItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationMigrationItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationMigrationItemsGetOutput =
   typeof ReplicationMigrationItemsGetOutput.Type;
 
@@ -2146,66 +2024,53 @@ export type ReplicationMigrationItemsGetOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsGetInput,
-    outputSchema: ReplicationMigrationItemsGetOutput,
-  }));
+export const ReplicationMigrationItemsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsGetInput,
+  outputSchema: ReplicationMigrationItemsGetOutput,
+}));
 // Input Schema
-export const ReplicationMigrationItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    skipToken: Schema.optional(Schema.String),
-    takeToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems",
-    }),
-  );
+export const ReplicationMigrationItemsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  skipToken: Schema.optional(Schema.String),
+  takeToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems",
+  }),
+);
 export type ReplicationMigrationItemsListInput =
   typeof ReplicationMigrationItemsListInput.Type;
 
 // Output Schema
-export const ReplicationMigrationItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationMigrationItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationMigrationItemsListOutput =
   typeof ReplicationMigrationItemsListOutput.Type;
 
@@ -2221,14 +2086,13 @@ export type ReplicationMigrationItemsListOutput =
  * @param takeToken - The page size.
  * @param $filter - OData filter options.
  */
-export const ReplicationMigrationItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsListInput,
-    outputSchema: ReplicationMigrationItemsListOutput,
-  }));
+export const ReplicationMigrationItemsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsListInput,
+  outputSchema: ReplicationMigrationItemsListOutput,
+}));
 // Input Schema
 export const ReplicationMigrationItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2249,7 +2113,7 @@ export type ReplicationMigrationItemsListByReplicationProtectionContainersInput 
 
 // Output Schema
 export const ReplicationMigrationItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2303,7 +2167,7 @@ export type ReplicationMigrationItemsListByReplicationProtectionContainersOutput
  * @param $filter - OData filter options.
  */
 export const ReplicationMigrationItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationMigrationItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -2311,7 +2175,7 @@ export const ReplicationMigrationItemsListByReplicationProtectionContainers =
   }));
 // Input Schema
 export const ReplicationMigrationItemsMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2330,7 +2194,7 @@ export type ReplicationMigrationItemsMigrateInput =
 
 // Output Schema
 export const ReplicationMigrationItemsMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2366,14 +2230,13 @@ export type ReplicationMigrationItemsMigrateOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsMigrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsMigrateInput,
-    outputSchema: ReplicationMigrationItemsMigrateOutput,
-  }));
+export const ReplicationMigrationItemsMigrate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsMigrateInput,
+  outputSchema: ReplicationMigrationItemsMigrateOutput,
+}));
 // Input Schema
 export const ReplicationMigrationItemsPauseReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2392,7 +2255,7 @@ export type ReplicationMigrationItemsPauseReplicationInput =
 
 // Output Schema
 export const ReplicationMigrationItemsPauseReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2428,14 +2291,15 @@ export type ReplicationMigrationItemsPauseReplicationOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsPauseReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationMigrationItemsPauseReplication = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationMigrationItemsPauseReplicationInput,
     outputSchema: ReplicationMigrationItemsPauseReplicationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationMigrationItemsResumeReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2454,7 +2318,7 @@ export type ReplicationMigrationItemsResumeReplicationInput =
 
 // Output Schema
 export const ReplicationMigrationItemsResumeReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2491,13 +2355,13 @@ export type ReplicationMigrationItemsResumeReplicationOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsResumeReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsResumeReplicationInput,
     outputSchema: ReplicationMigrationItemsResumeReplicationOutput,
   }));
 // Input Schema
-export const ReplicationMigrationItemsResyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationMigrationItemsResyncInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2505,18 +2369,19 @@ export const ReplicationMigrationItemsResyncInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     migrationItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync",
+  }),
+);
 export type ReplicationMigrationItemsResyncInput =
   typeof ReplicationMigrationItemsResyncInput.Type;
 
 // Output Schema
 export const ReplicationMigrationItemsResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2552,14 +2417,13 @@ export type ReplicationMigrationItemsResyncOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsResync =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsResyncInput,
-    outputSchema: ReplicationMigrationItemsResyncOutput,
-  }));
+export const ReplicationMigrationItemsResync = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsResyncInput,
+  outputSchema: ReplicationMigrationItemsResyncOutput,
+}));
 // Input Schema
 export const ReplicationMigrationItemsTestMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2578,7 +2442,7 @@ export type ReplicationMigrationItemsTestMigrateInput =
 
 // Output Schema
 export const ReplicationMigrationItemsTestMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2614,14 +2478,15 @@ export type ReplicationMigrationItemsTestMigrateOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsTestMigrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationMigrationItemsTestMigrate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationMigrationItemsTestMigrateInput,
     outputSchema: ReplicationMigrationItemsTestMigrateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationMigrationItemsTestMigrateCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2640,7 +2505,7 @@ export type ReplicationMigrationItemsTestMigrateCleanupInput =
 
 // Output Schema
 export const ReplicationMigrationItemsTestMigrateCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2677,13 +2542,13 @@ export type ReplicationMigrationItemsTestMigrateCleanupOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsTestMigrateCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsTestMigrateCleanupInput,
     outputSchema: ReplicationMigrationItemsTestMigrateCleanupOutput,
   }));
 // Input Schema
-export const ReplicationMigrationItemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationMigrationItemsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2691,18 +2556,19 @@ export const ReplicationMigrationItemsUpdateInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     migrationItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
+  }),
+);
 export type ReplicationMigrationItemsUpdateInput =
   typeof ReplicationMigrationItemsUpdateInput.Type;
 
 // Output Schema
 export const ReplicationMigrationItemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2738,14 +2604,13 @@ export type ReplicationMigrationItemsUpdateOutput =
  * @param protectionContainerName - Protection container name.
  * @param migrationItemName - Migration item name.
  */
-export const ReplicationMigrationItemsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationMigrationItemsUpdateInput,
-    outputSchema: ReplicationMigrationItemsUpdateOutput,
-  }));
+export const ReplicationMigrationItemsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationMigrationItemsUpdateInput,
+  outputSchema: ReplicationMigrationItemsUpdateOutput,
+}));
 // Input Schema
 export const ReplicationNetworkMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2764,7 +2629,7 @@ export type ReplicationNetworkMappingsCreateInput =
 
 // Output Schema
 export const ReplicationNetworkMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2800,14 +2665,13 @@ export type ReplicationNetworkMappingsCreateOutput =
  * @param networkName - Primary network name.
  * @param networkMappingName - Network mapping name.
  */
-export const ReplicationNetworkMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationNetworkMappingsCreateInput,
-    outputSchema: ReplicationNetworkMappingsCreateOutput,
-  }));
+export const ReplicationNetworkMappingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworkMappingsCreateInput,
+  outputSchema: ReplicationNetworkMappingsCreateOutput,
+}));
 // Input Schema
 export const ReplicationNetworkMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2825,8 +2689,7 @@ export type ReplicationNetworkMappingsDeleteInput =
   typeof ReplicationNetworkMappingsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationNetworkMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationNetworkMappingsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationNetworkMappingsDeleteOutput =
   typeof ReplicationNetworkMappingsDeleteOutput.Type;
 
@@ -2844,51 +2707,48 @@ export type ReplicationNetworkMappingsDeleteOutput =
  * @param networkName - Primary network name.
  * @param networkMappingName - Network mapping name.
  */
-export const ReplicationNetworkMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationNetworkMappingsDeleteInput,
-    outputSchema: ReplicationNetworkMappingsDeleteOutput,
-  }));
+export const ReplicationNetworkMappingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworkMappingsDeleteInput,
+  outputSchema: ReplicationNetworkMappingsDeleteOutput,
+}));
 // Input Schema
-export const ReplicationNetworkMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    networkName: Schema.String.pipe(T.PathParam()),
-    networkMappingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
-    }),
-  );
+export const ReplicationNetworkMappingsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  networkName: Schema.String.pipe(T.PathParam()),
+  networkMappingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
+  }),
+);
 export type ReplicationNetworkMappingsGetInput =
   typeof ReplicationNetworkMappingsGetInput.Type;
 
 // Output Schema
-export const ReplicationNetworkMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationNetworkMappingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationNetworkMappingsGetOutput =
   typeof ReplicationNetworkMappingsGetOutput.Type;
 
@@ -2906,30 +2766,28 @@ export type ReplicationNetworkMappingsGetOutput =
  * @param networkName - Primary network name.
  * @param networkMappingName - Network mapping name.
  */
-export const ReplicationNetworkMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationNetworkMappingsGetInput,
-    outputSchema: ReplicationNetworkMappingsGetOutput,
-  }));
+export const ReplicationNetworkMappingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworkMappingsGetInput,
+  outputSchema: ReplicationNetworkMappingsGetOutput,
+}));
 // Input Schema
-export const ReplicationNetworkMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings",
-    }),
-  );
+export const ReplicationNetworkMappingsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings",
+  }),
+);
 export type ReplicationNetworkMappingsListInput =
   typeof ReplicationNetworkMappingsListInput.Type;
 
 // Output Schema
-export const ReplicationNetworkMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationNetworkMappingsListOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2962,7 +2820,8 @@ export const ReplicationNetworkMappingsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ReplicationNetworkMappingsListOutput =
   typeof ReplicationNetworkMappingsListOutput.Type;
 
@@ -2977,14 +2836,13 @@ export type ReplicationNetworkMappingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationNetworkMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationNetworkMappingsListInput,
-    outputSchema: ReplicationNetworkMappingsListOutput,
-  }));
+export const ReplicationNetworkMappingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworkMappingsListInput,
+  outputSchema: ReplicationNetworkMappingsListOutput,
+}));
 // Input Schema
 export const ReplicationNetworkMappingsListByReplicationNetworksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3002,7 +2860,7 @@ export type ReplicationNetworkMappingsListByReplicationNetworksInput =
 
 // Output Schema
 export const ReplicationNetworkMappingsListByReplicationNetworksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3053,13 +2911,13 @@ export type ReplicationNetworkMappingsListByReplicationNetworksOutput =
  * @param networkName - Primary network name.
  */
 export const ReplicationNetworkMappingsListByReplicationNetworks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsListByReplicationNetworksInput,
     outputSchema: ReplicationNetworkMappingsListByReplicationNetworksOutput,
   }));
 // Input Schema
 export const ReplicationNetworkMappingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3078,7 +2936,7 @@ export type ReplicationNetworkMappingsUpdateInput =
 
 // Output Schema
 export const ReplicationNetworkMappingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3114,50 +2972,47 @@ export type ReplicationNetworkMappingsUpdateOutput =
  * @param networkName - Primary network name.
  * @param networkMappingName - Network mapping name.
  */
-export const ReplicationNetworkMappingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationNetworkMappingsUpdateInput,
-    outputSchema: ReplicationNetworkMappingsUpdateOutput,
-  }));
+export const ReplicationNetworkMappingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworkMappingsUpdateInput,
+  outputSchema: ReplicationNetworkMappingsUpdateOutput,
+}));
 // Input Schema
-export const ReplicationNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    networkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}",
-    }),
-  );
+export const ReplicationNetworksGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  networkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}",
+  }),
+);
 export type ReplicationNetworksGetInput =
   typeof ReplicationNetworksGetInput.Type;
 
 // Output Schema
-export const ReplicationNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationNetworksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationNetworksGetOutput =
   typeof ReplicationNetworksGetOutput.Type;
 
@@ -3174,64 +3029,50 @@ export type ReplicationNetworksGetOutput =
  * @param fabricName - Fabric name.
  * @param networkName - Primary network name.
  */
-export const ReplicationNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationNetworksGetInput,
-    outputSchema: ReplicationNetworksGetOutput,
+export const ReplicationNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworksGetInput,
+  outputSchema: ReplicationNetworksGetOutput,
+}));
+// Input Schema
+export const ReplicationNetworksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks",
   }),
 );
-// Input Schema
-export const ReplicationNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks",
-    }),
-  );
 export type ReplicationNetworksListInput =
   typeof ReplicationNetworksListInput.Type;
 
 // Output Schema
-export const ReplicationNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationNetworksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationNetworksListOutput =
   typeof ReplicationNetworksListOutput.Type;
 
@@ -3246,15 +3087,13 @@ export type ReplicationNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationNetworksListInput,
-    outputSchema: ReplicationNetworksListOutput,
-  }),
-);
+export const ReplicationNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworksListInput,
+  outputSchema: ReplicationNetworksListOutput,
+}));
 // Input Schema
 export const ReplicationNetworksListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3271,7 +3110,7 @@ export type ReplicationNetworksListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationNetworksListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3321,48 +3160,46 @@ export type ReplicationNetworksListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationNetworksListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworksListByReplicationFabricsInput,
     outputSchema: ReplicationNetworksListByReplicationFabricsOutput,
   }));
 // Input Schema
-export const ReplicationPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-    }),
-  );
+export const ReplicationPoliciesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
+  }),
+);
 export type ReplicationPoliciesCreateInput =
   typeof ReplicationPoliciesCreateInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationPoliciesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationPoliciesCreateOutput =
   typeof ReplicationPoliciesCreateOutput.Type;
 
@@ -3378,32 +3215,28 @@ export type ReplicationPoliciesCreateOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesCreateInput,
-    outputSchema: ReplicationPoliciesCreateOutput,
+export const ReplicationPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesCreateInput,
+  outputSchema: ReplicationPoliciesCreateOutput,
+}));
+// Input Schema
+export const ReplicationPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
   }),
 );
-// Input Schema
-export const ReplicationPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-    }),
-  );
 export type ReplicationPoliciesDeleteInput =
   typeof ReplicationPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationPoliciesDeleteOutput =
   typeof ReplicationPoliciesDeleteOutput.Type;
 
@@ -3419,50 +3252,46 @@ export type ReplicationPoliciesDeleteOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesDeleteInput,
-    outputSchema: ReplicationPoliciesDeleteOutput,
+export const ReplicationPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesDeleteInput,
+  outputSchema: ReplicationPoliciesDeleteOutput,
+}));
+// Input Schema
+export const ReplicationPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
   }),
 );
-// Input Schema
-export const ReplicationPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-    }),
-  );
 export type ReplicationPoliciesGetInput =
   typeof ReplicationPoliciesGetInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationPoliciesGetOutput =
   typeof ReplicationPoliciesGetOutput.Type;
 
@@ -3478,64 +3307,50 @@ export type ReplicationPoliciesGetOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesGetInput,
-    outputSchema: ReplicationPoliciesGetOutput,
+export const ReplicationPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesGetInput,
+  outputSchema: ReplicationPoliciesGetOutput,
+}));
+// Input Schema
+export const ReplicationPoliciesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies",
   }),
 );
-// Input Schema
-export const ReplicationPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies",
-    }),
-  );
 export type ReplicationPoliciesListInput =
   typeof ReplicationPoliciesListInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationPoliciesListOutput =
   typeof ReplicationPoliciesListOutput.Type;
 
@@ -3550,50 +3365,46 @@ export type ReplicationPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesListInput,
-    outputSchema: ReplicationPoliciesListOutput,
+export const ReplicationPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesListInput,
+  outputSchema: ReplicationPoliciesListOutput,
+}));
+// Input Schema
+export const ReplicationPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  policyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
   }),
 );
-// Input Schema
-export const ReplicationPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-    }),
-  );
 export type ReplicationPoliciesUpdateInput =
   typeof ReplicationPoliciesUpdateInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationPoliciesUpdateOutput =
   typeof ReplicationPoliciesUpdateOutput.Type;
 
@@ -3609,34 +3420,31 @@ export type ReplicationPoliciesUpdateOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesUpdateInput,
-    outputSchema: ReplicationPoliciesUpdateOutput,
+export const ReplicationPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesUpdateInput,
+  outputSchema: ReplicationPoliciesUpdateOutput,
+}));
+// Input Schema
+export const ReplicationProtectableItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  protectableItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems/{protectableItemName}",
   }),
 );
-// Input Schema
-export const ReplicationProtectableItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    protectableItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems/{protectableItemName}",
-    }),
-  );
 export type ReplicationProtectableItemsGetInput =
   typeof ReplicationProtectableItemsGetInput.Type;
 
 // Output Schema
-export const ReplicationProtectableItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationProtectableItemsGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3654,7 +3462,8 @@ export const ReplicationProtectableItemsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ReplicationProtectableItemsGetOutput =
   typeof ReplicationProtectableItemsGetOutput.Type;
 
@@ -3672,14 +3481,13 @@ export type ReplicationProtectableItemsGetOutput =
  * @param protectionContainerName - Protection container name.
  * @param protectableItemName - Protectable item name.
  */
-export const ReplicationProtectableItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectableItemsGetInput,
-    outputSchema: ReplicationProtectableItemsGetOutput,
-  }));
+export const ReplicationProtectableItemsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectableItemsGetInput,
+  outputSchema: ReplicationProtectableItemsGetOutput,
+}));
 // Input Schema
 export const ReplicationProtectableItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3700,7 +3508,7 @@ export type ReplicationProtectableItemsListByReplicationProtectionContainersInpu
 
 // Output Schema
 export const ReplicationProtectableItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3754,7 +3562,7 @@ export type ReplicationProtectableItemsListByReplicationProtectionContainersOutp
  * @param $skipToken - skipToken OData query parameter.
  */
 export const ReplicationProtectableItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectableItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -3762,7 +3570,7 @@ export const ReplicationProtectableItemsListByReplicationProtectionContainers =
   }));
 // Input Schema
 export const ReplicationProtectedItemsAddDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3781,7 +3589,7 @@ export type ReplicationProtectedItemsAddDisksInput =
 
 // Output Schema
 export const ReplicationProtectedItemsAddDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3817,14 +3625,13 @@ export type ReplicationProtectedItemsAddDisksOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsAddDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsAddDisksInput,
-    outputSchema: ReplicationProtectedItemsAddDisksOutput,
-  }));
+export const ReplicationProtectedItemsAddDisks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsAddDisksInput,
+  outputSchema: ReplicationProtectedItemsAddDisksOutput,
+}));
 // Input Schema
 export const ReplicationProtectedItemsApplyRecoveryPointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3843,7 +3650,7 @@ export type ReplicationProtectedItemsApplyRecoveryPointInput =
 
 // Output Schema
 export const ReplicationProtectedItemsApplyRecoveryPointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3880,13 +3687,13 @@ export type ReplicationProtectedItemsApplyRecoveryPointOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsApplyRecoveryPoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsApplyRecoveryPointInput,
     outputSchema: ReplicationProtectedItemsApplyRecoveryPointOutput,
   }));
 // Input Schema
-export const ReplicationProtectedItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationProtectedItemsCreateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3894,18 +3701,19 @@ export const ReplicationProtectedItemsCreateInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+  }),
+);
 export type ReplicationProtectedItemsCreateInput =
   typeof ReplicationProtectedItemsCreateInput.Type;
 
 // Output Schema
 export const ReplicationProtectedItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3941,14 +3749,13 @@ export type ReplicationProtectedItemsCreateOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsCreateInput,
-    outputSchema: ReplicationProtectedItemsCreateOutput,
-  }));
+export const ReplicationProtectedItemsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsCreateInput,
+  outputSchema: ReplicationProtectedItemsCreateOutput,
+}));
 // Input Schema
-export const ReplicationProtectedItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationProtectedItemsDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3956,18 +3763,18 @@ export const ReplicationProtectedItemsDeleteInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove",
+  }),
+);
 export type ReplicationProtectedItemsDeleteInput =
   typeof ReplicationProtectedItemsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationProtectedItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectedItemsDeleteOutput =
   typeof ReplicationProtectedItemsDeleteOutput.Type;
 
@@ -3985,14 +3792,13 @@ export type ReplicationProtectedItemsDeleteOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsDeleteInput,
-    outputSchema: ReplicationProtectedItemsDeleteOutput,
-  }));
+export const ReplicationProtectedItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsDeleteInput,
+  outputSchema: ReplicationProtectedItemsDeleteOutput,
+}));
 // Input Schema
 export const ReplicationProtectedItemsFailoverCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4011,7 +3817,7 @@ export type ReplicationProtectedItemsFailoverCancelInput =
 
 // Output Schema
 export const ReplicationProtectedItemsFailoverCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4047,14 +3853,15 @@ export type ReplicationProtectedItemsFailoverCancelOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsFailoverCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsFailoverCancel = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsFailoverCancelInput,
     outputSchema: ReplicationProtectedItemsFailoverCancelOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4073,7 +3880,7 @@ export type ReplicationProtectedItemsFailoverCommitInput =
 
 // Output Schema
 export const ReplicationProtectedItemsFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4109,51 +3916,50 @@ export type ReplicationProtectedItemsFailoverCommitOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsFailoverCommit = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsFailoverCommitInput,
     outputSchema: ReplicationProtectedItemsFailoverCommitOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationProtectedItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-    }),
-  );
+export const ReplicationProtectedItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+  }),
+);
 export type ReplicationProtectedItemsGetInput =
   typeof ReplicationProtectedItemsGetInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationProtectedItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationProtectedItemsGetOutput =
   typeof ReplicationProtectedItemsGetOutput.Type;
 
@@ -4171,65 +3977,52 @@ export type ReplicationProtectedItemsGetOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsGetInput,
-    outputSchema: ReplicationProtectedItemsGetOutput,
-  }));
+export const ReplicationProtectedItemsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsGetInput,
+  outputSchema: ReplicationProtectedItemsGetOutput,
+}));
 // Input Schema
-export const ReplicationProtectedItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems",
-    }),
-  );
+export const ReplicationProtectedItemsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems",
+  }),
+);
 export type ReplicationProtectedItemsListInput =
   typeof ReplicationProtectedItemsListInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationProtectedItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationProtectedItemsListOutput =
   typeof ReplicationProtectedItemsListOutput.Type;
 
@@ -4246,14 +4039,13 @@ export type ReplicationProtectedItemsListOutput =
  * @param skipToken - The pagination token. Possible values: "FabricId" or "FabricId_CloudId" or null.
  * @param $filter - OData filter options.
  */
-export const ReplicationProtectedItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsListInput,
-    outputSchema: ReplicationProtectedItemsListOutput,
-  }));
+export const ReplicationProtectedItemsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsListInput,
+  outputSchema: ReplicationProtectedItemsListOutput,
+}));
 // Input Schema
 export const ReplicationProtectedItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4271,7 +4063,7 @@ export type ReplicationProtectedItemsListByReplicationProtectionContainersInput 
 
 // Output Schema
 export const ReplicationProtectedItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4322,7 +4114,7 @@ export type ReplicationProtectedItemsListByReplicationProtectionContainersOutput
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectedItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectedItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -4330,7 +4122,7 @@ export const ReplicationProtectedItemsListByReplicationProtectionContainers =
   }));
 // Input Schema
 export const ReplicationProtectedItemsPlannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4349,7 +4141,7 @@ export type ReplicationProtectedItemsPlannedFailoverInput =
 
 // Output Schema
 export const ReplicationProtectedItemsPlannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4385,33 +4177,32 @@ export type ReplicationProtectedItemsPlannedFailoverOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsPlannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsPlannedFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsPlannedFailoverInput,
     outputSchema: ReplicationProtectedItemsPlannedFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationProtectedItemsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-    }),
-  );
+export const ReplicationProtectedItemsPurgeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+  }),
+);
 export type ReplicationProtectedItemsPurgeInput =
   typeof ReplicationProtectedItemsPurgeInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationProtectedItemsPurgeOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectedItemsPurgeOutput =
   typeof ReplicationProtectedItemsPurgeOutput.Type;
 
@@ -4429,14 +4220,13 @@ export type ReplicationProtectedItemsPurgeOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsPurgeInput,
-    outputSchema: ReplicationProtectedItemsPurgeOutput,
-  }));
+export const ReplicationProtectedItemsPurge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsPurgeInput,
+  outputSchema: ReplicationProtectedItemsPurgeOutput,
+}));
 // Input Schema
 export const ReplicationProtectedItemsReinstallMobilityServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4455,7 +4245,7 @@ export type ReplicationProtectedItemsReinstallMobilityServiceInput =
 
 // Output Schema
 export const ReplicationProtectedItemsReinstallMobilityServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4492,13 +4282,13 @@ export type ReplicationProtectedItemsReinstallMobilityServiceOutput =
  * @param replicatedProtectedItemName - The name of the protected item on which the agent is to be updated.
  */
 export const ReplicationProtectedItemsReinstallMobilityService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsReinstallMobilityServiceInput,
     outputSchema: ReplicationProtectedItemsReinstallMobilityServiceOutput,
   }));
 // Input Schema
 export const ReplicationProtectedItemsRemoveDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4517,7 +4307,7 @@ export type ReplicationProtectedItemsRemoveDisksInput =
 
 // Output Schema
 export const ReplicationProtectedItemsRemoveDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4553,14 +4343,15 @@ export type ReplicationProtectedItemsRemoveDisksOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsRemoveDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsRemoveDisks = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsRemoveDisksInput,
     outputSchema: ReplicationProtectedItemsRemoveDisksOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsRepairReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4579,7 +4370,7 @@ export type ReplicationProtectedItemsRepairReplicationInput =
 
 // Output Schema
 export const ReplicationProtectedItemsRepairReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4616,13 +4407,13 @@ export type ReplicationProtectedItemsRepairReplicationOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsRepairReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsRepairReplicationInput,
     outputSchema: ReplicationProtectedItemsRepairReplicationOutput,
   }));
 // Input Schema
 export const ReplicationProtectedItemsReprotectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4641,7 +4432,7 @@ export type ReplicationProtectedItemsReprotectInput =
 
 // Output Schema
 export const ReplicationProtectedItemsReprotectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4677,14 +4468,15 @@ export type ReplicationProtectedItemsReprotectOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsReprotect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsReprotect = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsReprotectInput,
     outputSchema: ReplicationProtectedItemsReprotectOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsResolveHealthErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4703,7 +4495,7 @@ export type ReplicationProtectedItemsResolveHealthErrorsInput =
 
 // Output Schema
 export const ReplicationProtectedItemsResolveHealthErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4740,13 +4532,13 @@ export type ReplicationProtectedItemsResolveHealthErrorsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsResolveHealthErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsResolveHealthErrorsInput,
     outputSchema: ReplicationProtectedItemsResolveHealthErrorsOutput,
   }));
 // Input Schema
 export const ReplicationProtectedItemsSwitchProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4765,7 +4557,7 @@ export type ReplicationProtectedItemsSwitchProviderInput =
 
 // Output Schema
 export const ReplicationProtectedItemsSwitchProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4801,14 +4593,15 @@ export type ReplicationProtectedItemsSwitchProviderOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsSwitchProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsSwitchProvider = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsSwitchProviderInput,
     outputSchema: ReplicationProtectedItemsSwitchProviderOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4827,7 +4620,7 @@ export type ReplicationProtectedItemsTestFailoverInput =
 
 // Output Schema
 export const ReplicationProtectedItemsTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4863,14 +4656,15 @@ export type ReplicationProtectedItemsTestFailoverOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsTestFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsTestFailoverInput,
     outputSchema: ReplicationProtectedItemsTestFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4889,7 +4683,7 @@ export type ReplicationProtectedItemsTestFailoverCleanupInput =
 
 // Output Schema
 export const ReplicationProtectedItemsTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4926,13 +4720,13 @@ export type ReplicationProtectedItemsTestFailoverCleanupOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsTestFailoverCleanupInput,
     outputSchema: ReplicationProtectedItemsTestFailoverCleanupOutput,
   }));
 // Input Schema
 export const ReplicationProtectedItemsUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4951,7 +4745,7 @@ export type ReplicationProtectedItemsUnplannedFailoverInput =
 
 // Output Schema
 export const ReplicationProtectedItemsUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4988,13 +4782,13 @@ export type ReplicationProtectedItemsUnplannedFailoverOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUnplannedFailoverInput,
     outputSchema: ReplicationProtectedItemsUnplannedFailoverOutput,
   }));
 // Input Schema
-export const ReplicationProtectedItemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationProtectedItemsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5002,18 +4796,19 @@ export const ReplicationProtectedItemsUpdateInput =
     protectionContainerName: Schema.String.pipe(T.PathParam()),
     replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+  }),
+);
 export type ReplicationProtectedItemsUpdateInput =
   typeof ReplicationProtectedItemsUpdateInput.Type;
 
 // Output Schema
 export const ReplicationProtectedItemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5049,14 +4844,13 @@ export type ReplicationProtectedItemsUpdateOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectedItemsUpdateInput,
-    outputSchema: ReplicationProtectedItemsUpdateOutput,
-  }));
+export const ReplicationProtectedItemsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectedItemsUpdateInput,
+  outputSchema: ReplicationProtectedItemsUpdateOutput,
+}));
 // Input Schema
 export const ReplicationProtectedItemsUpdateApplianceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5075,7 +4869,7 @@ export type ReplicationProtectedItemsUpdateApplianceInput =
 
 // Output Schema
 export const ReplicationProtectedItemsUpdateApplianceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5111,14 +4905,15 @@ export type ReplicationProtectedItemsUpdateApplianceOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicatedProtectedItemName - Replication protected item name.
  */
-export const ReplicationProtectedItemsUpdateAppliance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectedItemsUpdateAppliance = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectedItemsUpdateApplianceInput,
     outputSchema: ReplicationProtectedItemsUpdateApplianceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectedItemsUpdateMobilityServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5137,7 +4932,7 @@ export type ReplicationProtectedItemsUpdateMobilityServiceInput =
 
 // Output Schema
 export const ReplicationProtectedItemsUpdateMobilityServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5174,13 +4969,13 @@ export type ReplicationProtectedItemsUpdateMobilityServiceOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUpdateMobilityService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUpdateMobilityServiceInput,
     outputSchema: ReplicationProtectedItemsUpdateMobilityServiceOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersApplyRecoveryPointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5199,7 +4994,7 @@ export type ReplicationProtectionClustersApplyRecoveryPointInput =
 
 // Output Schema
 export const ReplicationProtectionClustersApplyRecoveryPointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5236,13 +5031,13 @@ export type ReplicationProtectionClustersApplyRecoveryPointOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersApplyRecoveryPoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersApplyRecoveryPointInput,
     outputSchema: ReplicationProtectionClustersApplyRecoveryPointOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5261,7 +5056,7 @@ export type ReplicationProtectionClustersCreateInput =
 
 // Output Schema
 export const ReplicationProtectionClustersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5297,14 +5092,15 @@ export type ReplicationProtectionClustersCreateOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
-export const ReplicationProtectionClustersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionClustersCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionClustersCreateInput,
     outputSchema: ReplicationProtectionClustersCreateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionClustersFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5323,7 +5119,7 @@ export type ReplicationProtectionClustersFailoverCommitInput =
 
 // Output Schema
 export const ReplicationProtectionClustersFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5360,13 +5156,13 @@ export type ReplicationProtectionClustersFailoverCommitOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersFailoverCommitInput,
     outputSchema: ReplicationProtectionClustersFailoverCommitOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5385,7 +5181,7 @@ export type ReplicationProtectionClustersGetInput =
 
 // Output Schema
 export const ReplicationProtectionClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5421,14 +5217,13 @@ export type ReplicationProtectionClustersGetOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
-export const ReplicationProtectionClustersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectionClustersGetInput,
-    outputSchema: ReplicationProtectionClustersGetOutput,
-  }));
+export const ReplicationProtectionClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectionClustersGetInput,
+  outputSchema: ReplicationProtectionClustersGetOutput,
+}));
 // Input Schema
 export const ReplicationProtectionClustersGetOperationResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5448,7 +5243,7 @@ export type ReplicationProtectionClustersGetOperationResultsInput =
 
 // Output Schema
 export const ReplicationProtectionClustersGetOperationResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5486,13 +5281,13 @@ export type ReplicationProtectionClustersGetOperationResultsOutput =
  * @param jobId - job id to track.
  */
 export const ReplicationProtectionClustersGetOperationResults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersGetOperationResultsInput,
     outputSchema: ReplicationProtectionClustersGetOperationResultsOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5510,7 +5305,7 @@ export type ReplicationProtectionClustersListInput =
 
 // Output Schema
 export const ReplicationProtectionClustersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5560,14 +5355,13 @@ export type ReplicationProtectionClustersListOutput =
  * @param skipToken - The pagination token. Possible values: "FabricId" or "FabricId_CloudId" or null.
  * @param $filter - OData filter options.
  */
-export const ReplicationProtectionClustersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectionClustersListInput,
-    outputSchema: ReplicationProtectionClustersListOutput,
-  }));
+export const ReplicationProtectionClustersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectionClustersListInput,
+  outputSchema: ReplicationProtectionClustersListOutput,
+}));
 // Input Schema
 export const ReplicationProtectionClustersListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5585,7 +5379,7 @@ export type ReplicationProtectionClustersListByReplicationProtectionContainersIn
 
 // Output Schema
 export const ReplicationProtectionClustersListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5636,7 +5430,7 @@ export type ReplicationProtectionClustersListByReplicationProtectionContainersOu
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionClustersListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectionClustersListByReplicationProtectionContainersInput,
     outputSchema:
@@ -5644,7 +5438,7 @@ export const ReplicationProtectionClustersListByReplicationProtectionContainers 
   }));
 // Input Schema
 export const ReplicationProtectionClustersPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5663,7 +5457,7 @@ export type ReplicationProtectionClustersPurgeInput =
 
 // Output Schema
 export const ReplicationProtectionClustersPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectionClustersPurgeOutput =
   typeof ReplicationProtectionClustersPurgeOutput.Type;
 
@@ -5681,14 +5475,15 @@ export type ReplicationProtectionClustersPurgeOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
-export const ReplicationProtectionClustersPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionClustersPurge = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionClustersPurgeInput,
     outputSchema: ReplicationProtectionClustersPurgeOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionClustersRepairReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5707,7 +5502,7 @@ export type ReplicationProtectionClustersRepairReplicationInput =
 
 // Output Schema
 export const ReplicationProtectionClustersRepairReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5744,13 +5539,13 @@ export type ReplicationProtectionClustersRepairReplicationOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersRepairReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersRepairReplicationInput,
     outputSchema: ReplicationProtectionClustersRepairReplicationOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5769,7 +5564,7 @@ export type ReplicationProtectionClustersTestFailoverInput =
 
 // Output Schema
 export const ReplicationProtectionClustersTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5805,14 +5600,15 @@ export type ReplicationProtectionClustersTestFailoverOutput =
  * @param protectionContainerName - Protection container name.
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
-export const ReplicationProtectionClustersTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionClustersTestFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionClustersTestFailoverInput,
     outputSchema: ReplicationProtectionClustersTestFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionClustersTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5831,7 +5627,7 @@ export type ReplicationProtectionClustersTestFailoverCleanupInput =
 
 // Output Schema
 export const ReplicationProtectionClustersTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5868,13 +5664,13 @@ export type ReplicationProtectionClustersTestFailoverCleanupOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersTestFailoverCleanupInput,
     outputSchema: ReplicationProtectionClustersTestFailoverCleanupOutput,
   }));
 // Input Schema
 export const ReplicationProtectionClustersUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5893,7 +5689,7 @@ export type ReplicationProtectionClustersUnplannedFailoverInput =
 
 // Output Schema
 export const ReplicationProtectionClustersUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5930,13 +5726,13 @@ export type ReplicationProtectionClustersUnplannedFailoverOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersUnplannedFailoverInput,
     outputSchema: ReplicationProtectionClustersUnplannedFailoverOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5955,7 +5751,7 @@ export type ReplicationProtectionContainerMappingsCreateInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5992,13 +5788,13 @@ export type ReplicationProtectionContainerMappingsCreateOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsCreateInput,
     outputSchema: ReplicationProtectionContainerMappingsCreateOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6017,7 +5813,7 @@ export type ReplicationProtectionContainerMappingsDeleteInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectionContainerMappingsDeleteOutput =
   typeof ReplicationProtectionContainerMappingsDeleteOutput.Type;
 
@@ -6036,13 +5832,13 @@ export type ReplicationProtectionContainerMappingsDeleteOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsDeleteInput,
     outputSchema: ReplicationProtectionContainerMappingsDeleteOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6061,7 +5857,7 @@ export type ReplicationProtectionContainerMappingsGetInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6097,14 +5893,15 @@ export type ReplicationProtectionContainerMappingsGetOutput =
  * @param protectionContainerName - Protection container name.
  * @param mappingName - Protection Container mapping name.
  */
-export const ReplicationProtectionContainerMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionContainerMappingsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionContainerMappingsGetInput,
     outputSchema: ReplicationProtectionContainerMappingsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionContainerMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6120,7 +5917,7 @@ export type ReplicationProtectionContainerMappingsListInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6169,13 +5966,13 @@ export type ReplicationProtectionContainerMappingsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationProtectionContainerMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsListInput,
     outputSchema: ReplicationProtectionContainerMappingsListOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6193,7 +5990,7 @@ export type ReplicationProtectionContainerMappingsListByReplicationProtectionCon
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6244,7 +6041,7 @@ export type ReplicationProtectionContainerMappingsListByReplicationProtectionCon
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectionContainerMappingsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -6252,7 +6049,7 @@ export const ReplicationProtectionContainerMappingsListByReplicationProtectionCo
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6271,7 +6068,7 @@ export type ReplicationProtectionContainerMappingsPurgeInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectionContainerMappingsPurgeOutput =
   typeof ReplicationProtectionContainerMappingsPurgeOutput.Type;
 
@@ -6290,13 +6087,13 @@ export type ReplicationProtectionContainerMappingsPurgeOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsPurgeInput,
     outputSchema: ReplicationProtectionContainerMappingsPurgeOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainerMappingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6315,7 +6112,7 @@ export type ReplicationProtectionContainerMappingsUpdateInput =
 
 // Output Schema
 export const ReplicationProtectionContainerMappingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6352,13 +6149,13 @@ export type ReplicationProtectionContainerMappingsUpdateOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsUpdateInput,
     outputSchema: ReplicationProtectionContainerMappingsUpdateOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6376,7 +6173,7 @@ export type ReplicationProtectionContainersCreateInput =
 
 // Output Schema
 export const ReplicationProtectionContainersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6411,14 +6208,15 @@ export type ReplicationProtectionContainersCreateOutput =
  * @param fabricName - Fabric name.
  * @param protectionContainerName - Protection container name.
  */
-export const ReplicationProtectionContainersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionContainersCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionContainersCreateInput,
     outputSchema: ReplicationProtectionContainersCreateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6436,7 +6234,7 @@ export type ReplicationProtectionContainersDeleteInput =
 
 // Output Schema
 export const ReplicationProtectionContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationProtectionContainersDeleteOutput =
   typeof ReplicationProtectionContainersDeleteOutput.Type;
 
@@ -6453,14 +6251,15 @@ export type ReplicationProtectionContainersDeleteOutput =
  * @param fabricName - Fabric name.
  * @param protectionContainerName - Protection container name.
  */
-export const ReplicationProtectionContainersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionContainersDelete = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionContainersDeleteInput,
     outputSchema: ReplicationProtectionContainersDeleteOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionContainersDiscoverProtectableItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6478,7 +6277,7 @@ export type ReplicationProtectionContainersDiscoverProtectableItemInput =
 
 // Output Schema
 export const ReplicationProtectionContainersDiscoverProtectableItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6514,13 +6313,13 @@ export type ReplicationProtectionContainersDiscoverProtectableItemOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersDiscoverProtectableItem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersDiscoverProtectableItemInput,
     outputSchema: ReplicationProtectionContainersDiscoverProtectableItemOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6538,7 +6337,7 @@ export type ReplicationProtectionContainersGetInput =
 
 // Output Schema
 export const ReplicationProtectionContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6573,14 +6372,15 @@ export type ReplicationProtectionContainersGetOutput =
  * @param fabricName - Fabric name.
  * @param protectionContainerName - Protection container name.
  */
-export const ReplicationProtectionContainersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionContainersGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionContainersGetInput,
     outputSchema: ReplicationProtectionContainersGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6596,7 +6396,7 @@ export type ReplicationProtectionContainersListInput =
 
 // Output Schema
 export const ReplicationProtectionContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6644,14 +6444,15 @@ export type ReplicationProtectionContainersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationProtectionContainersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionContainersList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionContainersListInput,
     outputSchema: ReplicationProtectionContainersListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationProtectionContainersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6668,7 +6469,7 @@ export type ReplicationProtectionContainersListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationProtectionContainersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6718,13 +6519,13 @@ export type ReplicationProtectionContainersListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationProtectionContainersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersListByReplicationFabricsInput,
     outputSchema: ReplicationProtectionContainersListByReplicationFabricsOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainersSwitchClusterProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6742,7 +6543,7 @@ export type ReplicationProtectionContainersSwitchClusterProtectionInput =
 
 // Output Schema
 export const ReplicationProtectionContainersSwitchClusterProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6778,13 +6579,13 @@ export type ReplicationProtectionContainersSwitchClusterProtectionOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersSwitchClusterProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersSwitchClusterProtectionInput,
     outputSchema: ReplicationProtectionContainersSwitchClusterProtectionOutput,
   }));
 // Input Schema
 export const ReplicationProtectionContainersSwitchProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6802,7 +6603,7 @@ export type ReplicationProtectionContainersSwitchProtectionInput =
 
 // Output Schema
 export const ReplicationProtectionContainersSwitchProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6838,13 +6639,13 @@ export type ReplicationProtectionContainersSwitchProtectionOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersSwitchProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersSwitchProtectionInput,
     outputSchema: ReplicationProtectionContainersSwitchProtectionOutput,
   }));
 // Input Schema
 export const ReplicationProtectionIntentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6861,7 +6662,7 @@ export type ReplicationProtectionIntentsCreateInput =
 
 // Output Schema
 export const ReplicationProtectionIntentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6895,31 +6696,33 @@ export type ReplicationProtectionIntentsCreateOutput =
  * @param resourceName - The name of the Vault
  * @param intentObjectName - Replication protection intent name.
  */
-export const ReplicationProtectionIntentsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationProtectionIntentsCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationProtectionIntentsCreateInput,
     outputSchema: ReplicationProtectionIntentsCreateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationProtectionIntentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationProtectionIntentsGetInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     intentObjectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
+  }),
+);
 export type ReplicationProtectionIntentsGetInput =
   typeof ReplicationProtectionIntentsGetInput.Type;
 
 // Output Schema
 export const ReplicationProtectionIntentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6953,14 +6756,13 @@ export type ReplicationProtectionIntentsGetOutput =
  * @param resourceName - The name of the Vault
  * @param intentObjectName - Replication protection intent name.
  */
-export const ReplicationProtectionIntentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectionIntentsGetInput,
-    outputSchema: ReplicationProtectionIntentsGetOutput,
-  }));
+export const ReplicationProtectionIntentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectionIntentsGetInput,
+  outputSchema: ReplicationProtectionIntentsGetOutput,
+}));
 // Input Schema
 export const ReplicationProtectionIntentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6978,7 +6780,7 @@ export type ReplicationProtectionIntentsListInput =
 
 // Output Schema
 export const ReplicationProtectionIntentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7028,31 +6830,29 @@ export type ReplicationProtectionIntentsListOutput =
  * @param skipToken - The pagination token.
  * @param takeToken - The page size.
  */
-export const ReplicationProtectionIntentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationProtectionIntentsListInput,
-    outputSchema: ReplicationProtectionIntentsListOutput,
-  }));
+export const ReplicationProtectionIntentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationProtectionIntentsListInput,
+  outputSchema: ReplicationProtectionIntentsListOutput,
+}));
 // Input Schema
-export const ReplicationRecoveryPlansCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    recoveryPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-    }),
-  );
+export const ReplicationRecoveryPlansCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  recoveryPlanName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+  }),
+);
 export type ReplicationRecoveryPlansCreateInput =
   typeof ReplicationRecoveryPlansCreateInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationRecoveryPlansCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7070,7 +6870,8 @@ export const ReplicationRecoveryPlansCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ReplicationRecoveryPlansCreateOutput =
   typeof ReplicationRecoveryPlansCreateOutput.Type;
 
@@ -7086,31 +6887,28 @@ export type ReplicationRecoveryPlansCreateOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationRecoveryPlansCreateInput,
-    outputSchema: ReplicationRecoveryPlansCreateOutput,
-  }));
+export const ReplicationRecoveryPlansCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansCreateInput,
+  outputSchema: ReplicationRecoveryPlansCreateOutput,
+}));
 // Input Schema
-export const ReplicationRecoveryPlansDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    recoveryPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-    }),
-  );
+export const ReplicationRecoveryPlansDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  recoveryPlanName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+  }),
+);
 export type ReplicationRecoveryPlansDeleteInput =
   typeof ReplicationRecoveryPlansDeleteInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationRecoveryPlansDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationRecoveryPlansDeleteOutput =
   typeof ReplicationRecoveryPlansDeleteOutput.Type;
 
@@ -7126,14 +6924,13 @@ export type ReplicationRecoveryPlansDeleteOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationRecoveryPlansDeleteInput,
-    outputSchema: ReplicationRecoveryPlansDeleteOutput,
-  }));
+export const ReplicationRecoveryPlansDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansDeleteInput,
+  outputSchema: ReplicationRecoveryPlansDeleteOutput,
+}));
 // Input Schema
 export const ReplicationRecoveryPlansFailoverCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7150,7 +6947,7 @@ export type ReplicationRecoveryPlansFailoverCancelInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansFailoverCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7184,14 +6981,15 @@ export type ReplicationRecoveryPlansFailoverCancelOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansFailoverCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryPlansFailoverCancel = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryPlansFailoverCancelInput,
     outputSchema: ReplicationRecoveryPlansFailoverCancelOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryPlansFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7208,7 +7006,7 @@ export type ReplicationRecoveryPlansFailoverCommitInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7242,49 +7040,48 @@ export type ReplicationRecoveryPlansFailoverCommitOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryPlansFailoverCommit = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryPlansFailoverCommitInput,
     outputSchema: ReplicationRecoveryPlansFailoverCommitOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationRecoveryPlansGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    recoveryPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-    }),
-  );
+export const ReplicationRecoveryPlansGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  recoveryPlanName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+  }),
+);
 export type ReplicationRecoveryPlansGetInput =
   typeof ReplicationRecoveryPlansGetInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationRecoveryPlansGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationRecoveryPlansGetOutput =
   typeof ReplicationRecoveryPlansGetOutput.Type;
 
@@ -7300,64 +7097,50 @@ export type ReplicationRecoveryPlansGetOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationRecoveryPlansGetInput,
-    outputSchema: ReplicationRecoveryPlansGetOutput,
+export const ReplicationRecoveryPlansGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansGetInput,
+  outputSchema: ReplicationRecoveryPlansGetOutput,
+}));
+// Input Schema
+export const ReplicationRecoveryPlansListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans",
   }),
 );
-// Input Schema
-export const ReplicationRecoveryPlansListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans",
-    }),
-  );
 export type ReplicationRecoveryPlansListInput =
   typeof ReplicationRecoveryPlansListInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationRecoveryPlansListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationRecoveryPlansListOutput =
   typeof ReplicationRecoveryPlansListOutput.Type;
 
@@ -7372,14 +7155,13 @@ export type ReplicationRecoveryPlansListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationRecoveryPlansList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationRecoveryPlansListInput,
-    outputSchema: ReplicationRecoveryPlansListOutput,
-  }));
+export const ReplicationRecoveryPlansList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansListInput,
+  outputSchema: ReplicationRecoveryPlansListOutput,
+}));
 // Input Schema
 export const ReplicationRecoveryPlansPlannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7396,7 +7178,7 @@ export type ReplicationRecoveryPlansPlannedFailoverInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansPlannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7430,14 +7212,15 @@ export type ReplicationRecoveryPlansPlannedFailoverOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansPlannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryPlansPlannedFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryPlansPlannedFailoverInput,
     outputSchema: ReplicationRecoveryPlansPlannedFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryPlansReprotectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7454,7 +7237,7 @@ export type ReplicationRecoveryPlansReprotectInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansReprotectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7488,14 +7271,13 @@ export type ReplicationRecoveryPlansReprotectOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansReprotect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationRecoveryPlansReprotectInput,
-    outputSchema: ReplicationRecoveryPlansReprotectOutput,
-  }));
+export const ReplicationRecoveryPlansReprotect = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansReprotectInput,
+  outputSchema: ReplicationRecoveryPlansReprotectOutput,
+}));
 // Input Schema
 export const ReplicationRecoveryPlansTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7512,7 +7294,7 @@ export type ReplicationRecoveryPlansTestFailoverInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7546,14 +7328,15 @@ export type ReplicationRecoveryPlansTestFailoverOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryPlansTestFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryPlansTestFailoverInput,
     outputSchema: ReplicationRecoveryPlansTestFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryPlansTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7570,7 +7353,7 @@ export type ReplicationRecoveryPlansTestFailoverCleanupInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7605,13 +7388,13 @@ export type ReplicationRecoveryPlansTestFailoverCleanupOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansTestFailoverCleanupInput,
     outputSchema: ReplicationRecoveryPlansTestFailoverCleanupOutput,
   }));
 // Input Schema
 export const ReplicationRecoveryPlansUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7628,7 +7411,7 @@ export type ReplicationRecoveryPlansUnplannedFailoverInput =
 
 // Output Schema
 export const ReplicationRecoveryPlansUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7662,31 +7445,31 @@ export type ReplicationRecoveryPlansUnplannedFailoverOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryPlansUnplannedFailover = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryPlansUnplannedFailoverInput,
     outputSchema: ReplicationRecoveryPlansUnplannedFailoverOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ReplicationRecoveryPlansUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    recoveryPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-    }),
-  );
+export const ReplicationRecoveryPlansUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  recoveryPlanName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+  }),
+);
 export type ReplicationRecoveryPlansUpdateInput =
   typeof ReplicationRecoveryPlansUpdateInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationRecoveryPlansUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7704,7 +7487,8 @@ export const ReplicationRecoveryPlansUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ReplicationRecoveryPlansUpdateOutput =
   typeof ReplicationRecoveryPlansUpdateOutput.Type;
 
@@ -7720,14 +7504,13 @@ export type ReplicationRecoveryPlansUpdateOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationRecoveryPlansUpdateInput,
-    outputSchema: ReplicationRecoveryPlansUpdateOutput,
-  }));
+export const ReplicationRecoveryPlansUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansUpdateInput,
+  outputSchema: ReplicationRecoveryPlansUpdateOutput,
+}));
 // Input Schema
 export const ReplicationRecoveryServicesProvidersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7745,7 +7528,7 @@ export type ReplicationRecoveryServicesProvidersCreateInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7781,13 +7564,13 @@ export type ReplicationRecoveryServicesProvidersCreateOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersCreateInput,
     outputSchema: ReplicationRecoveryServicesProvidersCreateOutput,
   }));
 // Input Schema
 export const ReplicationRecoveryServicesProvidersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7805,7 +7588,7 @@ export type ReplicationRecoveryServicesProvidersDeleteInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationRecoveryServicesProvidersDeleteOutput =
   typeof ReplicationRecoveryServicesProvidersDeleteOutput.Type;
 
@@ -7823,13 +7606,13 @@ export type ReplicationRecoveryServicesProvidersDeleteOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersDeleteInput,
     outputSchema: ReplicationRecoveryServicesProvidersDeleteOutput,
   }));
 // Input Schema
 export const ReplicationRecoveryServicesProvidersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7847,7 +7630,7 @@ export type ReplicationRecoveryServicesProvidersGetInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7882,14 +7665,15 @@ export type ReplicationRecoveryServicesProvidersGetOutput =
  * @param fabricName - Fabric name.
  * @param providerName - Recovery services provider name.
  */
-export const ReplicationRecoveryServicesProvidersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryServicesProvidersGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryServicesProvidersGetInput,
     outputSchema: ReplicationRecoveryServicesProvidersGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryServicesProvidersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7905,7 +7689,7 @@ export type ReplicationRecoveryServicesProvidersListInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7953,14 +7737,15 @@ export type ReplicationRecoveryServicesProvidersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationRecoveryServicesProvidersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryServicesProvidersList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryServicesProvidersListInput,
     outputSchema: ReplicationRecoveryServicesProvidersListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryServicesProvidersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7977,7 +7762,7 @@ export type ReplicationRecoveryServicesProvidersListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8027,7 +7812,7 @@ export type ReplicationRecoveryServicesProvidersListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationRecoveryServicesProvidersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationRecoveryServicesProvidersListByReplicationFabricsInput,
     outputSchema:
@@ -8035,7 +7820,7 @@ export const ReplicationRecoveryServicesProvidersListByReplicationFabrics =
   }));
 // Input Schema
 export const ReplicationRecoveryServicesProvidersPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8053,7 +7838,7 @@ export type ReplicationRecoveryServicesProvidersPurgeInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationRecoveryServicesProvidersPurgeOutput =
   typeof ReplicationRecoveryServicesProvidersPurgeOutput.Type;
 
@@ -8070,14 +7855,15 @@ export type ReplicationRecoveryServicesProvidersPurgeOutput =
  * @param fabricName - Fabric name.
  * @param providerName - Recovery services provider name.
  */
-export const ReplicationRecoveryServicesProvidersPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationRecoveryServicesProvidersPurge = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationRecoveryServicesProvidersPurgeInput,
     outputSchema: ReplicationRecoveryServicesProvidersPurgeOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationRecoveryServicesProvidersRefreshProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8095,7 +7881,7 @@ export type ReplicationRecoveryServicesProvidersRefreshProviderInput =
 
 // Output Schema
 export const ReplicationRecoveryServicesProvidersRefreshProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8131,13 +7917,13 @@ export type ReplicationRecoveryServicesProvidersRefreshProviderOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersRefreshProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersRefreshProviderInput,
     outputSchema: ReplicationRecoveryServicesProvidersRefreshProviderOutput,
   }));
 // Input Schema
 export const ReplicationStorageClassificationMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8156,7 +7942,7 @@ export type ReplicationStorageClassificationMappingsCreateInput =
 
 // Output Schema
 export const ReplicationStorageClassificationMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8193,13 +7979,13 @@ export type ReplicationStorageClassificationMappingsCreateOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsCreateInput,
     outputSchema: ReplicationStorageClassificationMappingsCreateOutput,
   }));
 // Input Schema
 export const ReplicationStorageClassificationMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8218,7 +8004,7 @@ export type ReplicationStorageClassificationMappingsDeleteInput =
 
 // Output Schema
 export const ReplicationStorageClassificationMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ReplicationStorageClassificationMappingsDeleteOutput =
   typeof ReplicationStorageClassificationMappingsDeleteOutput.Type;
 
@@ -8237,13 +8023,13 @@ export type ReplicationStorageClassificationMappingsDeleteOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsDeleteInput,
     outputSchema: ReplicationStorageClassificationMappingsDeleteOutput,
   }));
 // Input Schema
 export const ReplicationStorageClassificationMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8262,7 +8048,7 @@ export type ReplicationStorageClassificationMappingsGetInput =
 
 // Output Schema
 export const ReplicationStorageClassificationMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8299,13 +8085,13 @@ export type ReplicationStorageClassificationMappingsGetOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsGetInput,
     outputSchema: ReplicationStorageClassificationMappingsGetOutput,
   }));
 // Input Schema
 export const ReplicationStorageClassificationMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8321,7 +8107,7 @@ export type ReplicationStorageClassificationMappingsListInput =
 
 // Output Schema
 export const ReplicationStorageClassificationMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8370,13 +8156,13 @@ export type ReplicationStorageClassificationMappingsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationStorageClassificationMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsListInput,
     outputSchema: ReplicationStorageClassificationMappingsListOutput,
   }));
 // Input Schema
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8394,7 +8180,7 @@ export type ReplicationStorageClassificationMappingsListByReplicationStorageClas
 
 // Output Schema
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8445,7 +8231,7 @@ export type ReplicationStorageClassificationMappingsListByReplicationStorageClas
  * @param storageClassificationName - Storage classification name.
  */
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsInput,
     outputSchema:
@@ -8453,7 +8239,7 @@ export const ReplicationStorageClassificationMappingsListByReplicationStorageCla
   }));
 // Input Schema
 export const ReplicationStorageClassificationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8471,7 +8257,7 @@ export type ReplicationStorageClassificationsGetInput =
 
 // Output Schema
 export const ReplicationStorageClassificationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8506,14 +8292,15 @@ export type ReplicationStorageClassificationsGetOutput =
  * @param fabricName - Fabric name.
  * @param storageClassificationName - Storage classification name.
  */
-export const ReplicationStorageClassificationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationStorageClassificationsGet = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationStorageClassificationsGetInput,
     outputSchema: ReplicationStorageClassificationsGetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationStorageClassificationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8529,7 +8316,7 @@ export type ReplicationStorageClassificationsListInput =
 
 // Output Schema
 export const ReplicationStorageClassificationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8577,14 +8364,15 @@ export type ReplicationStorageClassificationsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationStorageClassificationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationStorageClassificationsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReplicationStorageClassificationsListInput,
     outputSchema: ReplicationStorageClassificationsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ReplicationStorageClassificationsListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8601,7 +8389,7 @@ export type ReplicationStorageClassificationsListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationStorageClassificationsListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8651,48 +8439,46 @@ export type ReplicationStorageClassificationsListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationStorageClassificationsListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationsListByReplicationFabricsInput,
     outputSchema:
       ReplicationStorageClassificationsListByReplicationFabricsOutput,
   }));
 // Input Schema
-export const ReplicationVaultHealthGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth",
-    }),
-  );
+export const ReplicationVaultHealthGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth",
+  }),
+);
 export type ReplicationVaultHealthGetInput =
   typeof ReplicationVaultHealthGetInput.Type;
 
 // Output Schema
-export const ReplicationVaultHealthGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationVaultHealthGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationVaultHealthGetOutput =
   typeof ReplicationVaultHealthGetOutput.Type;
 
@@ -8707,49 +8493,45 @@ export type ReplicationVaultHealthGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationVaultHealthGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultHealthGetInput,
-    outputSchema: ReplicationVaultHealthGetOutput,
+export const ReplicationVaultHealthGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultHealthGetInput,
+  outputSchema: ReplicationVaultHealthGetOutput,
+}));
+// Input Schema
+export const ReplicationVaultHealthRefreshInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
   }),
 );
-// Input Schema
-export const ReplicationVaultHealthRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
-    }),
-  );
 export type ReplicationVaultHealthRefreshInput =
   typeof ReplicationVaultHealthRefreshInput.Type;
 
 // Output Schema
-export const ReplicationVaultHealthRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationVaultHealthRefreshOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationVaultHealthRefreshOutput =
   typeof ReplicationVaultHealthRefreshOutput.Type;
 
@@ -8762,49 +8544,46 @@ export type ReplicationVaultHealthRefreshOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationVaultHealthRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationVaultHealthRefreshInput,
-    outputSchema: ReplicationVaultHealthRefreshOutput,
-  }));
+export const ReplicationVaultHealthRefresh = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultHealthRefreshInput,
+  outputSchema: ReplicationVaultHealthRefreshOutput,
+}));
 // Input Schema
-export const ReplicationVaultSettingCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    vaultSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
-    }),
-  );
+export const ReplicationVaultSettingCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  vaultSettingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
+  }),
+);
 export type ReplicationVaultSettingCreateInput =
   typeof ReplicationVaultSettingCreateInput.Type;
 
 // Output Schema
-export const ReplicationVaultSettingCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationVaultSettingCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationVaultSettingCreateOutput =
   typeof ReplicationVaultSettingCreateOutput.Type;
 
@@ -8820,49 +8599,46 @@ export type ReplicationVaultSettingCreateOutput =
  * @param resourceName - The name of the Vault
  * @param vaultSettingName - Vault setting name.
  */
-export const ReplicationVaultSettingCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplicationVaultSettingCreateInput,
-    outputSchema: ReplicationVaultSettingCreateOutput,
-  }));
+export const ReplicationVaultSettingCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultSettingCreateInput,
+  outputSchema: ReplicationVaultSettingCreateOutput,
+}));
 // Input Schema
-export const ReplicationVaultSettingGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    vaultSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
-    }),
-  );
+export const ReplicationVaultSettingGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  vaultSettingName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
+  }),
+);
 export type ReplicationVaultSettingGetInput =
   typeof ReplicationVaultSettingGetInput.Type;
 
 // Output Schema
-export const ReplicationVaultSettingGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationVaultSettingGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationVaultSettingGetOutput =
   typeof ReplicationVaultSettingGetOutput.Type;
 
@@ -8878,64 +8654,50 @@ export type ReplicationVaultSettingGetOutput =
  * @param resourceName - The name of the Vault
  * @param vaultSettingName - Vault setting name.
  */
-export const ReplicationVaultSettingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultSettingGetInput,
-    outputSchema: ReplicationVaultSettingGetOutput,
+export const ReplicationVaultSettingGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultSettingGetInput,
+  outputSchema: ReplicationVaultSettingGetOutput,
+}));
+// Input Schema
+export const ReplicationVaultSettingListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings",
   }),
 );
-// Input Schema
-export const ReplicationVaultSettingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings",
-    }),
-  );
 export type ReplicationVaultSettingListInput =
   typeof ReplicationVaultSettingListInput.Type;
 
 // Output Schema
-export const ReplicationVaultSettingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationVaultSettingListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationVaultSettingListOutput =
   typeof ReplicationVaultSettingListOutput.Type;
 
@@ -8950,51 +8712,47 @@ export type ReplicationVaultSettingListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationVaultSettingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultSettingListInput,
-    outputSchema: ReplicationVaultSettingListOutput,
+export const ReplicationVaultSettingList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultSettingListInput,
+  outputSchema: ReplicationVaultSettingListOutput,
+}));
+// Input Schema
+export const ReplicationvCentersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
   }),
 );
-// Input Schema
-export const ReplicationvCentersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-    }),
-  );
 export type ReplicationvCentersCreateInput =
   typeof ReplicationvCentersCreateInput.Type;
 
 // Output Schema
-export const ReplicationvCentersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationvCentersCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationvCentersCreateOutput =
   typeof ReplicationvCentersCreateOutput.Type;
 
@@ -9011,33 +8769,29 @@ export type ReplicationvCentersCreateOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersCreateInput,
-    outputSchema: ReplicationvCentersCreateOutput,
+export const ReplicationvCentersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersCreateInput,
+  outputSchema: ReplicationvCentersCreateOutput,
+}));
+// Input Schema
+export const ReplicationvCentersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
   }),
 );
-// Input Schema
-export const ReplicationvCentersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-    }),
-  );
 export type ReplicationvCentersDeleteInput =
   typeof ReplicationvCentersDeleteInput.Type;
 
 // Output Schema
-export const ReplicationvCentersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReplicationvCentersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReplicationvCentersDeleteOutput =
   typeof ReplicationvCentersDeleteOutput.Type;
 
@@ -9054,51 +8808,47 @@ export type ReplicationvCentersDeleteOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersDeleteInput,
-    outputSchema: ReplicationvCentersDeleteOutput,
+export const ReplicationvCentersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersDeleteInput,
+  outputSchema: ReplicationvCentersDeleteOutput,
+}));
+// Input Schema
+export const ReplicationvCentersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
   }),
 );
-// Input Schema
-export const ReplicationvCentersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-    }),
-  );
 export type ReplicationvCentersGetInput =
   typeof ReplicationvCentersGetInput.Type;
 
 // Output Schema
-export const ReplicationvCentersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationvCentersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationvCentersGetOutput =
   typeof ReplicationvCentersGetOutput.Type;
 
@@ -9115,64 +8865,50 @@ export type ReplicationvCentersGetOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersGetInput,
-    outputSchema: ReplicationvCentersGetOutput,
+export const ReplicationvCentersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersGetInput,
+  outputSchema: ReplicationvCentersGetOutput,
+}));
+// Input Schema
+export const ReplicationvCentersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters",
   }),
 );
-// Input Schema
-export const ReplicationvCentersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters",
-    }),
-  );
 export type ReplicationvCentersListInput =
   typeof ReplicationvCentersListInput.Type;
 
 // Output Schema
-export const ReplicationvCentersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ReplicationvCentersListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReplicationvCentersListOutput =
   typeof ReplicationvCentersListOutput.Type;
 
@@ -9187,15 +8923,13 @@ export type ReplicationvCentersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationvCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersListInput,
-    outputSchema: ReplicationvCentersListOutput,
-  }),
-);
+export const ReplicationvCentersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersListInput,
+  outputSchema: ReplicationvCentersListOutput,
+}));
 // Input Schema
 export const ReplicationvCentersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9212,7 +8946,7 @@ export type ReplicationvCentersListByReplicationFabricsInput =
 
 // Output Schema
 export const ReplicationvCentersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9262,49 +8996,47 @@ export type ReplicationvCentersListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationvCentersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationvCentersListByReplicationFabricsInput,
     outputSchema: ReplicationvCentersListByReplicationFabricsOutput,
   }));
 // Input Schema
-export const ReplicationvCentersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-    }),
-  );
+export const ReplicationvCentersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  vcenterName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
+  }),
+);
 export type ReplicationvCentersUpdateInput =
   typeof ReplicationvCentersUpdateInput.Type;
 
 // Output Schema
-export const ReplicationvCentersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ReplicationvCentersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ReplicationvCentersUpdateOutput =
   typeof ReplicationvCentersUpdateOutput.Type;
 
@@ -9321,50 +9053,46 @@ export type ReplicationvCentersUpdateOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersUpdateInput,
-    outputSchema: ReplicationvCentersUpdateOutput,
+export const ReplicationvCentersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersUpdateInput,
+  outputSchema: ReplicationvCentersUpdateOutput,
+}));
+// Input Schema
+export const SupportedOperatingSystemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  instanceType: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems",
   }),
 );
-// Input Schema
-export const SupportedOperatingSystemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    instanceType: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems",
-    }),
-  );
 export type SupportedOperatingSystemsGetInput =
   typeof SupportedOperatingSystemsGetInput.Type;
 
 // Output Schema
-export const SupportedOperatingSystemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SupportedOperatingSystemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SupportedOperatingSystemsGetOutput =
   typeof SupportedOperatingSystemsGetOutput.Type;
 
@@ -9378,14 +9106,13 @@ export type SupportedOperatingSystemsGetOutput =
  * @param resourceName - The name of the recovery services vault.
  * @param instanceType - The instance type.
  */
-export const SupportedOperatingSystemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SupportedOperatingSystemsGetInput,
-    outputSchema: SupportedOperatingSystemsGetOutput,
-  }));
+export const SupportedOperatingSystemsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SupportedOperatingSystemsGetInput,
+  outputSchema: SupportedOperatingSystemsGetOutput,
+}));
 // Input Schema
 export const TargetComputeSizesListByReplicationProtectedItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9404,7 +9131,7 @@ export type TargetComputeSizesListByReplicationProtectedItemsInput =
 
 // Output Schema
 export const TargetComputeSizesListByReplicationProtectedItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9453,7 +9180,7 @@ export type TargetComputeSizesListByReplicationProtectedItemsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const TargetComputeSizesListByReplicationProtectedItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TargetComputeSizesListByReplicationProtectedItemsInput,
     outputSchema: TargetComputeSizesListByReplicationProtectedItemsOutput,
   }));

@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const RequestGroupSampleDatasetLoadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}",
-    }),
-  );
+export const RequestGroupSampleDatasetLoadInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}",
+  }),
+);
 export type RequestGroupSampleDatasetLoadInput =
   typeof RequestGroupSampleDatasetLoadInput.Type;
 
 // Output Schema
-export const RequestGroupSampleDatasetLoadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RequestGroupSampleDatasetLoadOutput = /*@__PURE__*/ Schema.Void;
 export type RequestGroupSampleDatasetLoadOutput =
   typeof RequestGroupSampleDatasetLoadOutput.Type;
 
@@ -36,9 +34,8 @@ export type RequestGroupSampleDatasetLoadOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param name - Human-readable label that identifies the cluster into which you load the sample dataset.
  */
-export const requestGroupSampleDatasetLoad =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RequestGroupSampleDatasetLoadInput,
-    outputSchema: RequestGroupSampleDatasetLoadOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const requestGroupSampleDatasetLoad = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RequestGroupSampleDatasetLoadInput,
+  outputSchema: RequestGroupSampleDatasetLoadOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

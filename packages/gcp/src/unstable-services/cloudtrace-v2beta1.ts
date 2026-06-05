@@ -28,32 +28,24 @@ export interface OutputConfig {
 }
 
 export const OutputConfig: Schema.Schema<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutputConfig" });
 
 export interface TraceSink {
-  /** Required. The export destination. */
-  outputConfig?: OutputConfig;
   /** Identifier. The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. */
   name?: string;
+  /** Required. The export destination. */
+  outputConfig?: OutputConfig;
   /** Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com" */
   writerIdentity?: string;
 }
 
-export const TraceSink: Schema.Schema<TraceSink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    outputConfig: Schema.optional(OutputConfig),
-    name: Schema.optional(Schema.String),
-    writerIdentity: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TraceSink" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
+export const TraceSink: Schema.Schema<TraceSink> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  outputConfig: Schema.optional(OutputConfig),
+  writerIdentity: Schema.optional(Schema.String),
+}).annotate({ identifier: "TraceSink" });
 
 export interface ListTraceSinksResponse {
   /** A list of sinks. */
@@ -63,10 +55,16 @@ export interface ListTraceSinksResponse {
 }
 
 export const ListTraceSinksResponse: Schema.Schema<ListTraceSinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sinks: Schema.optional(Schema.Array(TraceSink)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTraceSinksResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> = /*@__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Empty" });
 
 // ==========================================================================
 // Errors
@@ -123,27 +121,26 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsTraceSinksRequest {
-  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
-  pageToken?: string;
-  /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. */
-  pageSize?: number;
   /** Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" */
   parent: string;
+  /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. */
+  pageSize?: number;
+  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
+  pageToken?: string;
 }
 
-export const ListProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{+parent}/traceSinks" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsTraceSinksRequest>;
+export const ListProjectsTraceSinksRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2beta1/{+parent}/traceSinks" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsTraceSinksRequest>;
 
 export type ListProjectsTraceSinksResponse = ListTraceSinksResponse;
 export const ListProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTraceSinksResponse;
+  /*@__PURE__*/ ListTraceSinksResponse;
 
 export type ListProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
@@ -153,7 +150,7 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   ListProjectsTraceSinksResponse,
   ListProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTraceSinksRequest,
   output: ListProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden],
@@ -163,48 +160,6 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchProjectsTraceSinksRequest {
-  /** Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
-  name: string;
-  /** Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. */
-  updateMask?: string;
-  /** Request body */
-  body?: TraceSink;
-}
-
-export const PatchProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(TraceSink).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2beta1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsTraceSinksRequest>;
-
-export type PatchProjectsTraceSinksResponse = TraceSink;
-export const PatchProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
-
-export type PatchProjectsTraceSinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a sink. This method updates fields in the existing sink according to the provided update mask. The sink's name cannot be changed nor any output-only fields (e.g. the writer_identity). */
-export const patchProjectsTraceSinks: API.OperationMethod<
-  PatchProjectsTraceSinksRequest,
-  PatchProjectsTraceSinksResponse,
-  PatchProjectsTraceSinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsTraceSinksRequest,
-  output: PatchProjectsTraceSinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface CreateProjectsTraceSinksRequest {
   /** Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`. */
   parent: string;
@@ -212,22 +167,20 @@ export interface CreateProjectsTraceSinksRequest {
   body?: TraceSink;
 }
 
-export const CreateProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(TraceSink).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/{+parent}/traceSinks",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsTraceSinksRequest>;
+export const CreateProjectsTraceSinksRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  body: Schema.optional(TraceSink).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "v2beta1/{+parent}/traceSinks",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsTraceSinksRequest>;
 
 export type CreateProjectsTraceSinksResponse = TraceSink;
-export const CreateProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+export const CreateProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
 
 export type CreateProjectsTraceSinksError =
   | DefaultErrors
@@ -242,7 +195,7 @@ export const createProjectsTraceSinks: API.OperationMethod<
   CreateProjectsTraceSinksResponse,
   CreateProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsTraceSinksRequest,
   output: CreateProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -253,17 +206,15 @@ export interface DeleteProjectsTraceSinksRequest {
   name: string;
 }
 
-export const DeleteProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
+export const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
 
 export type DeleteProjectsTraceSinksResponse = Empty;
-export const DeleteProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsTraceSinksResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsTraceSinksError =
   | DefaultErrors
@@ -278,7 +229,7 @@ export const deleteProjectsTraceSinks: API.OperationMethod<
   DeleteProjectsTraceSinksResponse,
   DeleteProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsTraceSinksRequest,
   output: DeleteProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -289,17 +240,15 @@ export interface GetProjectsTraceSinksRequest {
   name: string;
 }
 
-export const GetProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
+export const GetProjectsTraceSinksRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2beta1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
 
 export type GetProjectsTraceSinksResponse = TraceSink;
-export const GetProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+export const GetProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
 
 export type GetProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
@@ -309,8 +258,48 @@ export const getProjectsTraceSinks: API.OperationMethod<
   GetProjectsTraceSinksResponse,
   GetProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsTraceSinksRequest,
   output: GetProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsTraceSinksRequest {
+  /** Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
+  name: string;
+  /** Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. */
+  updateMask?: string;
+  /** Request body */
+  body?: TraceSink;
+}
+
+export const PatchProjectsTraceSinksRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(TraceSink).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v2beta1/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchProjectsTraceSinksRequest>;
+
+export type PatchProjectsTraceSinksResponse = TraceSink;
+export const PatchProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
+
+export type PatchProjectsTraceSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a sink. This method updates fields in the existing sink according to the provided update mask. The sink's name cannot be changed nor any output-only fields (e.g. the writer_identity). */
+export const patchProjectsTraceSinks: API.OperationMethod<
+  PatchProjectsTraceSinksRequest,
+  PatchProjectsTraceSinksResponse,
+  PatchProjectsTraceSinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchProjectsTraceSinksRequest,
+  output: PatchProjectsTraceSinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

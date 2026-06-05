@@ -4,18 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const GetV1DatabasesByDatabaseIdUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1DatabasesByDatabaseIdUsageInput = /*@__PURE__*/ Schema.Struct(
+  {
     databaseId: Schema.String.pipe(T.PathParam()),
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/databases/{databaseId}/usage" }));
+  },
+).pipe(T.Http({ method: "GET", path: "/v1/databases/{databaseId}/usage" }));
 export type GetV1DatabasesByDatabaseIdUsageInput =
   typeof GetV1DatabasesByDatabaseIdUsageInput.Type;
 
 // Output Schema
 export const GetV1DatabasesByDatabaseIdUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     period: Schema.Struct({
       start: Schema.String,
       end: Schema.String,
@@ -41,9 +42,8 @@ export type GetV1DatabasesByDatabaseIdUsageOutput =
  *
  * Returns usage metrics for the specified database.
  */
-export const getV1DatabasesByDatabaseIdUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetV1DatabasesByDatabaseIdUsageInput,
-    outputSchema: GetV1DatabasesByDatabaseIdUsageOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }));
+export const getV1DatabasesByDatabaseIdUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1DatabasesByDatabaseIdUsageInput,
+  outputSchema: GetV1DatabasesByDatabaseIdUsageOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

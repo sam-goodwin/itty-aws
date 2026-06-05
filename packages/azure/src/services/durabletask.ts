@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -51,13 +51,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const RetentionPoliciesCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -73,7 +73,7 @@ export type RetentionPoliciesCreateOrReplaceInput =
 
 // Output Schema
 export const RetentionPoliciesCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -104,30 +104,27 @@ export type RetentionPoliciesCreateOrReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RetentionPoliciesCreateOrReplaceInput,
-    outputSchema: RetentionPoliciesCreateOrReplaceOutput,
-  }));
+export const RetentionPoliciesCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesCreateOrReplaceInput,
+  outputSchema: RetentionPoliciesCreateOrReplaceOutput,
+}));
 // Input Schema
-export const RetentionPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
-    }),
-  );
+export const RetentionPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+  }),
+);
 export type RetentionPoliciesDeleteInput =
   typeof RetentionPoliciesDeleteInput.Type;
 
 // Output Schema
-export const RetentionPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RetentionPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RetentionPoliciesDeleteOutput =
   typeof RetentionPoliciesDeleteOutput.Type;
 
@@ -140,48 +137,44 @@ export type RetentionPoliciesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesDeleteInput,
-    outputSchema: RetentionPoliciesDeleteOutput,
+export const RetentionPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesDeleteInput,
+  outputSchema: RetentionPoliciesDeleteOutput,
+}));
+// Input Schema
+export const RetentionPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
   }),
 );
-// Input Schema
-export const RetentionPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
-    }),
-  );
 export type RetentionPoliciesGetInput = typeof RetentionPoliciesGetInput.Type;
 
 // Output Schema
-export const RetentionPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RetentionPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RetentionPoliciesGetOutput = typeof RetentionPoliciesGetOutput.Type;
 
 // The operation
@@ -193,15 +186,13 @@ export type RetentionPoliciesGetOutput = typeof RetentionPoliciesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesGetInput,
-    outputSchema: RetentionPoliciesGetOutput,
-  }),
-);
+export const RetentionPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesGetInput,
+  outputSchema: RetentionPoliciesGetOutput,
+}));
 // Input Schema
 export const RetentionPoliciesListBySchedulerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -217,7 +208,7 @@ export type RetentionPoliciesListBySchedulerInput =
 
 // Output Schema
 export const RetentionPoliciesListBySchedulerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -263,48 +254,45 @@ export type RetentionPoliciesListBySchedulerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesListByScheduler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RetentionPoliciesListBySchedulerInput,
-    outputSchema: RetentionPoliciesListBySchedulerOutput,
-  }));
+export const RetentionPoliciesListByScheduler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesListBySchedulerInput,
+  outputSchema: RetentionPoliciesListBySchedulerOutput,
+}));
 // Input Schema
-export const RetentionPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
-    }),
-  );
+export const RetentionPoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+  }),
+);
 export type RetentionPoliciesUpdateInput =
   typeof RetentionPoliciesUpdateInput.Type;
 
 // Output Schema
-export const RetentionPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RetentionPoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RetentionPoliciesUpdateOutput =
   typeof RetentionPoliciesUpdateOutput.Type;
 
@@ -317,49 +305,45 @@ export type RetentionPoliciesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesUpdateInput,
-    outputSchema: RetentionPoliciesUpdateOutput,
+export const RetentionPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesUpdateInput,
+  outputSchema: RetentionPoliciesUpdateOutput,
+}));
+// Input Schema
+export const SchedulersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
   }),
 );
-// Input Schema
-export const SchedulersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
-    }),
-  );
 export type SchedulersCreateOrUpdateInput =
   typeof SchedulersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SchedulersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SchedulersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SchedulersCreateOrUpdateOutput =
   typeof SchedulersCreateOrUpdateOutput.Type;
 
@@ -372,15 +356,13 @@ export type SchedulersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersCreateOrUpdateInput,
-    outputSchema: SchedulersCreateOrUpdateOutput,
-  }),
-);
+export const SchedulersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersCreateOrUpdateInput,
+  outputSchema: SchedulersCreateOrUpdateOutput,
+}));
 // Input Schema
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -417,7 +399,7 @@ export type SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
 
 // Output Schema
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -451,12 +433,12 @@ export type SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
  * @param properties - Resource properties.
  */
 export const SchedulersCreateOrUpdatePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersCreateOrUpdatePrivateEndpointConnectionInput,
     outputSchema: SchedulersCreateOrUpdatePrivateEndpointConnectionOutput,
   }));
 // Input Schema
-export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -470,7 +452,7 @@ export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SchedulersDeleteInput = typeof SchedulersDeleteInput.Type;
 
 // Output Schema
-export const SchedulersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SchedulersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SchedulersDeleteOutput = typeof SchedulersDeleteOutput.Type;
 
 // The operation
@@ -482,13 +464,13 @@ export type SchedulersDeleteOutput = typeof SchedulersDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersDeleteInput,
   outputSchema: SchedulersDeleteOutput,
 }));
 // Input Schema
 export const SchedulersDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -505,7 +487,7 @@ export type SchedulersDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const SchedulersDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SchedulersDeletePrivateEndpointConnectionOutput =
   typeof SchedulersDeletePrivateEndpointConnectionOutput.Type;
 
@@ -519,13 +501,14 @@ export type SchedulersDeletePrivateEndpointConnectionOutput =
  * @param schedulerName - The name of the Scheduler
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const SchedulersDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersDeletePrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SchedulersDeletePrivateEndpointConnectionInput,
     outputSchema: SchedulersDeletePrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -539,7 +522,7 @@ export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SchedulersGetInput = typeof SchedulersGetInput.Type;
 
 // Output Schema
-export const SchedulersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -569,13 +552,13 @@ export type SchedulersGetOutput = typeof SchedulersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersGetInput,
   outputSchema: SchedulersGetOutput,
 }));
 // Input Schema
 export const SchedulersGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -592,7 +575,7 @@ export type SchedulersGetPrivateEndpointConnectionInput =
 
 // Output Schema
 export const SchedulersGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -624,49 +607,48 @@ export type SchedulersGetPrivateEndpointConnectionOutput =
  * @param schedulerName - The name of the Scheduler
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const SchedulersGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersGetPrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SchedulersGetPrivateEndpointConnectionInput,
     outputSchema: SchedulersGetPrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SchedulersGetPrivateLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
-    }),
-  );
+export const SchedulersGetPrivateLinkInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  privateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
+  }),
+);
 export type SchedulersGetPrivateLinkInput =
   typeof SchedulersGetPrivateLinkInput.Type;
 
 // Output Schema
-export const SchedulersGetPrivateLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SchedulersGetPrivateLinkOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SchedulersGetPrivateLinkOutput =
   typeof SchedulersGetPrivateLinkOutput.Type;
 
@@ -680,63 +662,49 @@ export type SchedulersGetPrivateLinkOutput =
  * @param schedulerName - The name of the Scheduler
  * @param privateLinkResourceName - The name of the private link associated with the Azure resource.
  */
-export const SchedulersGetPrivateLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersGetPrivateLinkInput,
-    outputSchema: SchedulersGetPrivateLinkOutput,
+export const SchedulersGetPrivateLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersGetPrivateLinkInput,
+  outputSchema: SchedulersGetPrivateLinkOutput,
+}));
+// Input Schema
+export const SchedulersListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers",
   }),
 );
-// Input Schema
-export const SchedulersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers",
-    }),
-  );
 export type SchedulersListByResourceGroupInput =
   typeof SchedulersListByResourceGroupInput.Type;
 
 // Output Schema
-export const SchedulersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SchedulersListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SchedulersListByResourceGroupOutput =
   typeof SchedulersListByResourceGroupOutput.Type;
 
@@ -748,61 +716,48 @@ export type SchedulersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const SchedulersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SchedulersListByResourceGroupInput,
-    outputSchema: SchedulersListByResourceGroupOutput,
-  }));
+export const SchedulersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersListByResourceGroupInput,
+  outputSchema: SchedulersListByResourceGroupOutput,
+}));
 // Input Schema
-export const SchedulersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DurableTask/schedulers",
-    }),
-  );
+export const SchedulersListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DurableTask/schedulers",
+  }),
+);
 export type SchedulersListBySubscriptionInput =
   typeof SchedulersListBySubscriptionInput.Type;
 
 // Output Schema
-export const SchedulersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SchedulersListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SchedulersListBySubscriptionOutput =
   typeof SchedulersListBySubscriptionOutput.Type;
 
@@ -813,14 +768,13 @@ export type SchedulersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SchedulersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SchedulersListBySubscriptionInput,
-    outputSchema: SchedulersListBySubscriptionOutput,
-  }));
+export const SchedulersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersListBySubscriptionInput,
+  outputSchema: SchedulersListBySubscriptionOutput,
+}));
 // Input Schema
 export const SchedulersListPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -836,7 +790,7 @@ export type SchedulersListPrivateEndpointConnectionsInput =
 
 // Output Schema
 export const SchedulersListPrivateEndpointConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -882,63 +836,52 @@ export type SchedulersListPrivateEndpointConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersListPrivateEndpointConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersListPrivateEndpointConnections = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SchedulersListPrivateEndpointConnectionsInput,
     outputSchema: SchedulersListPrivateEndpointConnectionsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const SchedulersListPrivateLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources",
-    }),
-  );
+export const SchedulersListPrivateLinksInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources",
+  }),
+);
 export type SchedulersListPrivateLinksInput =
   typeof SchedulersListPrivateLinksInput.Type;
 
 // Output Schema
-export const SchedulersListPrivateLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const SchedulersListPrivateLinksOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SchedulersListPrivateLinksOutput =
   typeof SchedulersListPrivateLinksOutput.Type;
 
@@ -951,14 +894,12 @@ export type SchedulersListPrivateLinksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersListPrivateLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersListPrivateLinksInput,
-    outputSchema: SchedulersListPrivateLinksOutput,
-  }),
-);
+export const SchedulersListPrivateLinks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersListPrivateLinksInput,
+  outputSchema: SchedulersListPrivateLinksOutput,
+}));
 // Input Schema
-export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -972,27 +913,25 @@ export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SchedulersUpdateInput = typeof SchedulersUpdateInput.Type;
 
 // Output Schema
-export const SchedulersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const SchedulersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SchedulersUpdateOutput = typeof SchedulersUpdateOutput.Type;
 
 // The operation
@@ -1004,13 +943,13 @@ export type SchedulersUpdateOutput = typeof SchedulersUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersUpdateInput,
   outputSchema: SchedulersUpdateOutput,
 }));
 // Input Schema
 export const SchedulersUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1027,7 +966,7 @@ export type SchedulersUpdatePrivateEndpointConnectionInput =
 
 // Output Schema
 export const SchedulersUpdatePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1059,49 +998,48 @@ export type SchedulersUpdatePrivateEndpointConnectionOutput =
  * @param schedulerName - The name of the Scheduler
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const SchedulersUpdatePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersUpdatePrivateEndpointConnection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SchedulersUpdatePrivateEndpointConnectionInput,
     outputSchema: SchedulersUpdatePrivateEndpointConnectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TaskHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    taskHubName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
-    }),
-  );
+export const TaskHubsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  taskHubName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+  }),
+);
 export type TaskHubsCreateOrUpdateInput =
   typeof TaskHubsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const TaskHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const TaskHubsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TaskHubsCreateOrUpdateOutput =
   typeof TaskHubsCreateOrUpdateOutput.Type;
 
@@ -1115,14 +1053,12 @@ export type TaskHubsCreateOrUpdateOutput =
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TaskHubsCreateOrUpdateInput,
-    outputSchema: TaskHubsCreateOrUpdateOutput,
-  }),
-);
+export const TaskHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TaskHubsCreateOrUpdateInput,
+  outputSchema: TaskHubsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1137,7 +1073,7 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TaskHubsDeleteInput = typeof TaskHubsDeleteInput.Type;
 
 // Output Schema
-export const TaskHubsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TaskHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TaskHubsDeleteOutput = typeof TaskHubsDeleteOutput.Type;
 
 // The operation
@@ -1150,12 +1086,12 @@ export type TaskHubsDeleteOutput = typeof TaskHubsDeleteOutput.Type;
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TaskHubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaskHubsDeleteInput,
   outputSchema: TaskHubsDeleteOutput,
 }));
 // Input Schema
-export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1170,7 +1106,7 @@ export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TaskHubsGetInput = typeof TaskHubsGetInput.Type;
 
 // Output Schema
-export const TaskHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1201,62 +1137,50 @@ export type TaskHubsGetOutput = typeof TaskHubsGetOutput.Type;
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TaskHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaskHubsGetInput,
   outputSchema: TaskHubsGetOutput,
 }));
 // Input Schema
-export const TaskHubsListBySchedulerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs",
-    }),
-  );
+export const TaskHubsListBySchedulerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  schedulerName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs",
+  }),
+);
 export type TaskHubsListBySchedulerInput =
   typeof TaskHubsListBySchedulerInput.Type;
 
 // Output Schema
-export const TaskHubsListBySchedulerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const TaskHubsListBySchedulerOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TaskHubsListBySchedulerOutput =
   typeof TaskHubsListBySchedulerOutput.Type;
 
@@ -1269,9 +1193,7 @@ export type TaskHubsListBySchedulerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const TaskHubsListByScheduler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TaskHubsListBySchedulerInput,
-    outputSchema: TaskHubsListBySchedulerOutput,
-  }),
-);
+export const TaskHubsListByScheduler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TaskHubsListBySchedulerInput,
+  outputSchema: TaskHubsListBySchedulerOutput,
+}));

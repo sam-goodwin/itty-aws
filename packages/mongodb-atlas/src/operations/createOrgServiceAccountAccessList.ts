@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const CreateOrgServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export type CreateOrgServiceAccountAccessListInput =
 
 // Output Schema
 export const CreateOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateOrgServiceAccountAccessListOutput =
   typeof CreateOrgServiceAccountAccessListOutput.Type;
 
@@ -42,9 +42,8 @@ export type CreateOrgServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const createOrgServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateOrgServiceAccountAccessListInput,
-    outputSchema: CreateOrgServiceAccountAccessListOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+export const createOrgServiceAccountAccessList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateOrgServiceAccountAccessListInput,
+  outputSchema: CreateOrgServiceAccountAccessListOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

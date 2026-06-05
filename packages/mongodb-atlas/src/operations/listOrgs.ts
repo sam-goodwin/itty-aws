@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgsInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -15,7 +15,7 @@ export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOrgsInput = typeof ListOrgsInput.Type;
 
 // Output Schema
-export const ListOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListOrgsOutput = /*@__PURE__*/ Schema.Void;
 export type ListOrgsOutput = typeof ListOrgsOutput.Type;
 
 // The operation
@@ -31,7 +31,7 @@ export type ListOrgsOutput = typeof ListOrgsOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label of the organization to use to filter the returned list. Performs a case-insensitive search for an organization that starts with the specified name.
  */
-export const listOrgs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgs = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgsInput,
   outputSchema: ListOrgsOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -4,26 +4,24 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const UpdateKeyspaceVschemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    keyspace: Schema.String.pipe(T.PathParam()),
-    vschema: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
-    }),
-  );
+export const UpdateKeyspaceVschemaInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  keyspace: Schema.String.pipe(T.PathParam()),
+  vschema: Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
+  }),
+);
 export type UpdateKeyspaceVschemaInput = typeof UpdateKeyspaceVschemaInput.Type;
 
 // Output Schema
-export const UpdateKeyspaceVschemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    raw: Schema.String,
-  });
+export const UpdateKeyspaceVschemaOutput = /*@__PURE__*/ Schema.Struct({
+  raw: Schema.String,
+});
 export type UpdateKeyspaceVschemaOutput =
   typeof UpdateKeyspaceVschemaOutput.Type;
 
@@ -37,10 +35,8 @@ export type UpdateKeyspaceVschemaOutput =
  * @param keyspace - The name of the keyspace
  * @param vschema - The new VSchema for the keyspace
  */
-export const updateKeyspaceVschema = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateKeyspaceVschemaInput,
-    outputSchema: UpdateKeyspaceVschemaOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateKeyspaceVschema = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateKeyspaceVschemaInput,
+  outputSchema: UpdateKeyspaceVschemaOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

@@ -4,27 +4,25 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const HogFlowsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    after: Schema.optional(Schema.String),
-    before: Schema.optional(Schema.String),
-    instance_id: Schema.optional(Schema.String),
-    level: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    search: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/hog_flows/{id}/logs/",
-    }),
-  );
+export const HogFlowsLogsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  after: Schema.optional(Schema.String),
+  before: Schema.optional(Schema.String),
+  instance_id: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  search: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/hog_flows/{id}/logs/",
+  }),
+);
 export type HogFlowsLogsRetrieveInput = typeof HogFlowsLogsRetrieveInput.Type;
 
 // Output Schema
-export const HogFlowsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const HogFlowsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type HogFlowsLogsRetrieveOutput = typeof HogFlowsLogsRetrieveOutput.Type;
 
 // The operation
@@ -39,10 +37,8 @@ export type HogFlowsLogsRetrieveOutput = typeof HogFlowsLogsRetrieveOutput.Type;
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Case-insensitive substring search across log messages.
  */
-export const hogFlowsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFlowsLogsRetrieveInput,
-    outputSchema: HogFlowsLogsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFlowsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsLogsRetrieveInput,
+  outputSchema: HogFlowsLogsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,22 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1ClaimProjectForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    slug: Schema.String.pipe(T.PathParam()),
-    token: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/organizations/{slug}/project-claim/{token}",
-    }),
-  );
+export const V1ClaimProjectForOrganizationInput = /*@__PURE__*/ Schema.Struct({
+  slug: Schema.String.pipe(T.PathParam()),
+  token: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/organizations/{slug}/project-claim/{token}",
+  }),
+);
 export type V1ClaimProjectForOrganizationInput =
   typeof V1ClaimProjectForOrganizationInput.Type;
 
 // Output Schema
-export const V1ClaimProjectForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1ClaimProjectForOrganizationOutput = /*@__PURE__*/ Schema.Void;
 export type V1ClaimProjectForOrganizationOutput =
   typeof V1ClaimProjectForOrganizationOutput.Type;
 
@@ -29,9 +27,8 @@ export type V1ClaimProjectForOrganizationOutput =
  *
  * @param slug - Organization slug
  */
-export const v1ClaimProjectForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1ClaimProjectForOrganizationInput,
-    outputSchema: V1ClaimProjectForOrganizationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const v1ClaimProjectForOrganization = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ClaimProjectForOrganizationInput,
+  outputSchema: V1ClaimProjectForOrganizationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

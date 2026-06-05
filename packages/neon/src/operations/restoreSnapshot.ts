@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const RestoreSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
@@ -18,7 +18,7 @@ export const RestoreSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RestoreSnapshotInput = typeof RestoreSnapshotInput.Type;
 
 // Output Schema
-export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   branch: Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
@@ -61,13 +61,6 @@ export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           reason: Schema.String,
         }),
       ),
-    ),
-    recovery: Schema.optional(
-      Schema.Struct({
-        deleted_at: Schema.String,
-        recoverable_until: Schema.String,
-        deletion_method: Schema.Literals(["user", "ttl"]),
-      }),
     ),
   }),
   endpoints: Schema.optional(
@@ -149,13 +142,10 @@ export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
-        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
-        "finalize_migration",
-        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",
@@ -191,7 +181,7 @@ export type RestoreSnapshotOutput = typeof RestoreSnapshotOutput.Type;
 A name for the newly restored branch. If omitted, a default name will be generated.
 
  */
-export const restoreSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const restoreSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: RestoreSnapshotInput,
   outputSchema: RestoreSnapshotOutput,
 }));

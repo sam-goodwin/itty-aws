@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -1177,7 +1177,7 @@ export type EnvironmentsDeleteSecretTokenBackupPartialUpdateInput =
 
 // Output Schema
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
   typeof EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput.Type;
 
@@ -1189,7 +1189,7 @@ export type EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDeleteSecretTokenBackupPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDeleteSecretTokenBackupPartialUpdateInput,
     outputSchema: EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

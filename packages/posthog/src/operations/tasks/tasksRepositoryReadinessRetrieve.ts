@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const TasksRepositoryReadinessRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     refresh: Schema.optional(Schema.Boolean),
     repository: Schema.String,
@@ -21,7 +21,7 @@ export type TasksRepositoryReadinessRetrieveInput =
 
 // Output Schema
 export const TasksRepositoryReadinessRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repository: Schema.optional(Schema.String),
     classification: Schema.optional(Schema.String),
     excluded: Schema.optional(Schema.Boolean),
@@ -104,9 +104,8 @@ export type TasksRepositoryReadinessRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param repository - Repository in org/repo format
  */
-export const tasksRepositoryReadinessRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TasksRepositoryReadinessRetrieveInput,
-    outputSchema: TasksRepositoryReadinessRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const tasksRepositoryReadinessRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRepositoryReadinessRetrieveInput,
+  outputSchema: TasksRepositoryReadinessRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

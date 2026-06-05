@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetCustomersCustomerCashBalanceTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type GetCustomersCustomerCashBalanceTransactionsInput =
 
 // Output Schema
 export const GetCustomersCustomerCashBalanceTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         adjusted_for_overdraft: Schema.optional(
@@ -135,7 +135,7 @@ export type GetCustomersCustomerCashBalanceTransactionsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
 export const GetCustomersCustomerCashBalanceTransactions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerCashBalanceTransactionsInput,
     outputSchema: GetCustomersCustomerCashBalanceTransactionsOutput,
   }));

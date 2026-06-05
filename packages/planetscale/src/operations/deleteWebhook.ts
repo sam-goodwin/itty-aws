@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteWebhookInput = typeof DeleteWebhookInput.Type;
 
 // Output Schema
-export const DeleteWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteWebhookOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteWebhookOutput = typeof DeleteWebhookOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type DeleteWebhookOutput = typeof DeleteWebhookOutput.Type;
  * @param database - The name of the database
  * @param id - The ID of the webhook
  */
-export const deleteWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteWebhookInput,
   outputSchema: DeleteWebhookOutput,
   errors: [Forbidden, NotFound] as const,

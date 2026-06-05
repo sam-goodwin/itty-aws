@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
     organization_id: Schema.optional(Schema.String),
@@ -18,7 +18,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
 
 // Output Schema
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   });
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
@@ -33,7 +33,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
  * @param slug - The slug identifier of the provider (e.g., `github`, `slack`, `notion`).
  */
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput,
     outputSchema:
       DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput,

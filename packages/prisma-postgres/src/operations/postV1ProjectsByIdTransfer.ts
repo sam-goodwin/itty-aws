@@ -4,17 +4,15 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const PostV1ProjectsByIdTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-    recipientAccessToken: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/v1/projects/{id}/transfer" }));
+export const PostV1ProjectsByIdTransferInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  recipientAccessToken: Schema.String,
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{id}/transfer" }));
 export type PostV1ProjectsByIdTransferInput =
   typeof PostV1ProjectsByIdTransferInput.Type;
 
 // Output Schema
-export const PostV1ProjectsByIdTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PostV1ProjectsByIdTransferOutput = /*@__PURE__*/ Schema.Void;
 export type PostV1ProjectsByIdTransferOutput =
   typeof PostV1ProjectsByIdTransferOutput.Type;
 
@@ -24,10 +22,8 @@ export type PostV1ProjectsByIdTransferOutput =
  *
  * Transfer the project with the given ID to the new owner's workspace
  */
-export const postV1ProjectsByIdTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1ProjectsByIdTransferInput,
-    outputSchema: PostV1ProjectsByIdTransferOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const postV1ProjectsByIdTransfer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1ProjectsByIdTransferInput,
+  outputSchema: PostV1ProjectsByIdTransferOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

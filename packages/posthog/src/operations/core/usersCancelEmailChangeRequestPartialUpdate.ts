@@ -6,7 +6,7 @@ import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const UsersCancelEmailChangeRequestPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -759,13 +759,13 @@ export type UsersCancelEmailChangeRequestPartialUpdateInput =
 
 // Output Schema
 export const UsersCancelEmailChangeRequestPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UsersCancelEmailChangeRequestPartialUpdateOutput =
   typeof UsersCancelEmailChangeRequestPartialUpdateOutput.Type;
 
 // The operation
 export const usersCancelEmailChangeRequestPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersCancelEmailChangeRequestPartialUpdateInput,
     outputSchema: UsersCancelEmailChangeRequestPartialUpdateOutput,
     errors: [BadRequest, Forbidden] as const,

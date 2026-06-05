@@ -2,11 +2,11 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysAssignCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     provider: Schema.optional(
@@ -61,7 +61,7 @@ export type LlmAnalyticsProviderKeysAssignCreateInput =
 
 // Output Schema
 export const LlmAnalyticsProviderKeysAssignCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     provider: Schema.optional(
       Schema.Literals([
@@ -78,7 +78,7 @@ export const LlmAnalyticsProviderKeysAssignCreateOutput =
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
     ),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
-    api_key: Schema.optional(SensitiveString),
+    api_key: Schema.optional(SensitiveOutputString),
     api_key_masked: Schema.optional(Schema.String),
     azure_endpoint: Schema.optional(Schema.String),
     api_version: Schema.optional(Schema.String),
@@ -115,9 +115,10 @@ export type LlmAnalyticsProviderKeysAssignCreateOutput =
  * @param id - A UUID string identifying this llm provider key.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsProviderKeysAssignCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsProviderKeysAssignCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsProviderKeysAssignCreateInput,
     outputSchema: LlmAnalyticsProviderKeysAssignCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const UpdateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -12,7 +12,7 @@ export const UpdateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateOrgInput = typeof UpdateOrgInput.Type;
 
 // Output Schema
-export const UpdateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateOrgOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateOrgOutput = typeof UpdateOrgOutput.Type;
 
 // The operation
@@ -25,7 +25,7 @@ export type UpdateOrgOutput = typeof UpdateOrgOutput.Type;
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgInput,
   outputSchema: UpdateOrgOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

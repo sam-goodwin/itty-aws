@@ -3,13 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListOrganizationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v1/organizations" }));
+export const ListOrganizationsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v1/organizations" }),
+);
 export type ListOrganizationsInput = typeof ListOrganizationsInput.Type;
 
 // Output Schema
-export const ListOrganizationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListOrganizationsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export type ListOrganizationsOutput = typeof ListOrganizationsOutput.Type;
  *
  * Returns a list of organizations the authenticated user owns or is a member of.
  */
-export const listOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrganizations = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrganizationsInput,
   outputSchema: ListOrganizationsOutput,
 }));

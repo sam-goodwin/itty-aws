@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPricesPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPricesPriceInput = /*@__PURE__*/ Schema.Struct({
   price: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetPricesPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPricesPriceInput = typeof GetPricesPriceInput.Type;
 
 // Output Schema
-export const GetPricesPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPricesPriceOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   billing_scheme: Schema.Literals(["per_unit", "tiered"]),
   created: Schema.Number,
@@ -84,7 +84,7 @@ export type GetPricesPriceOutput = typeof GetPricesPriceOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPricesPrice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPricesPrice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPricesPriceInput,
   outputSchema: GetPricesPriceOutput,
 }));

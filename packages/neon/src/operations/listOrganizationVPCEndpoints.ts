@@ -3,29 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListOrganizationVPCEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    org_id: Schema.String.pipe(T.PathParam()),
-    region_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints",
-    }),
-  );
+export const ListOrganizationVPCEndpointsInput = /*@__PURE__*/ Schema.Struct({
+  org_id: Schema.String.pipe(T.PathParam()),
+  region_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints",
+  }),
+);
 export type ListOrganizationVPCEndpointsInput =
   typeof ListOrganizationVPCEndpointsInput.Type;
 
 // Output Schema
-export const ListOrganizationVPCEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.Array(
-      Schema.Struct({
-        vpc_endpoint_id: Schema.String,
-        label: Schema.String,
-      }),
-    ),
-  });
+export const ListOrganizationVPCEndpointsOutput = /*@__PURE__*/ Schema.Struct({
+  endpoints: Schema.Array(
+    Schema.Struct({
+      vpc_endpoint_id: Schema.String,
+      label: Schema.String,
+    }),
+  ),
+});
 export type ListOrganizationVPCEndpointsOutput =
   typeof ListOrganizationVPCEndpointsOutput.Type;
 
@@ -38,8 +36,7 @@ export type ListOrganizationVPCEndpointsOutput =
  * @param org_id - The Neon organization ID
  * @param region_id - The Neon region ID
  */
-export const listOrganizationVPCEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListOrganizationVPCEndpointsInput,
-    outputSchema: ListOrganizationVPCEndpointsOutput,
-  }));
+export const listOrganizationVPCEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationVPCEndpointsInput,
+  outputSchema: ListOrganizationVPCEndpointsOutput,
+}));

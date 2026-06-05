@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupPeerInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateGroupPeerInput = typeof UpdateGroupPeerInput.Type;
 
 // Output Schema
-export const UpdateGroupPeerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupPeerOutput = /*@__PURE__*/ Schema.Void;
 export type UpdateGroupPeerOutput = typeof UpdateGroupPeerOutput.Type;
 
 // The operation
@@ -34,7 +34,7 @@ export type UpdateGroupPeerOutput = typeof UpdateGroupPeerOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param peerId - Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
  */
-export const updateGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupPeer = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupPeerInput,
   outputSchema: UpdateGroupPeerOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

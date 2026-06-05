@@ -9,41 +9,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ActionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
-    }),
-  );
+export const ActionsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
+  }),
+);
 export type ActionsCreateOrUpdateInput = typeof ActionsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ActionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ActionsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ActionsCreateOrUpdateOutput =
   typeof ActionsCreateOrUpdateOutput.Type;
 
@@ -56,14 +54,12 @@ export type ActionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ActionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActionsCreateOrUpdateInput,
-    outputSchema: ActionsCreateOrUpdateOutput,
-  }),
-);
+export const ActionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActionsCreateOrUpdateInput,
+  outputSchema: ActionsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -77,7 +73,7 @@ export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ActionsDeleteInput = typeof ActionsDeleteInput.Type;
 
 // Output Schema
-export const ActionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ActionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ActionsDeleteOutput = typeof ActionsDeleteOutput.Type;
 
 // The operation
@@ -89,12 +85,12 @@ export type ActionsDeleteOutput = typeof ActionsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsDeleteInput,
   outputSchema: ActionsDeleteOutput,
 }));
 // Input Schema
-export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -108,7 +104,7 @@ export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ActionsGetInput = typeof ActionsGetInput.Type;
 
 // Output Schema
-export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -138,62 +134,50 @@ export type ActionsGetOutput = typeof ActionsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsGetInput,
   outputSchema: ActionsGetOutput,
 }));
 // Input Schema
-export const ActionsListByAlertRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions",
-    }),
-  );
+export const ActionsListByAlertRuleInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions",
+  }),
+);
 export type ActionsListByAlertRuleInput =
   typeof ActionsListByAlertRuleInput.Type;
 
 // Output Schema
-export const ActionsListByAlertRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const ActionsListByAlertRuleOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type ActionsListByAlertRuleOutput =
   typeof ActionsListByAlertRuleOutput.Type;
 
@@ -206,49 +190,45 @@ export type ActionsListByAlertRuleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ActionsListByAlertRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActionsListByAlertRuleInput,
-    outputSchema: ActionsListByAlertRuleOutput,
+export const ActionsListByAlertRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActionsListByAlertRuleInput,
+  outputSchema: ActionsListByAlertRuleOutput,
+}));
+// Input Schema
+export const AlertRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}",
   }),
 );
-// Input Schema
-export const AlertRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}",
-    }),
-  );
 export type AlertRulesCreateOrUpdateInput =
   typeof AlertRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AlertRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AlertRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AlertRulesCreateOrUpdateOutput =
   typeof AlertRulesCreateOrUpdateOutput.Type;
 
@@ -261,14 +241,12 @@ export type AlertRulesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRulesCreateOrUpdateInput,
-    outputSchema: AlertRulesCreateOrUpdateOutput,
-  }),
-);
+export const AlertRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRulesCreateOrUpdateInput,
+  outputSchema: AlertRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -282,7 +260,7 @@ export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertRulesDeleteInput = typeof AlertRulesDeleteInput.Type;
 
 // Output Schema
-export const AlertRulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AlertRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AlertRulesDeleteOutput = typeof AlertRulesDeleteOutput.Type;
 
 // The operation
@@ -294,12 +272,12 @@ export type AlertRulesDeleteOutput = typeof AlertRulesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesDeleteInput,
   outputSchema: AlertRulesDeleteOutput,
 }));
 // Input Schema
-export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -313,7 +291,7 @@ export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertRulesGetInput = typeof AlertRulesGetInput.Type;
 
 // Output Schema
-export const AlertRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -343,12 +321,12 @@ export type AlertRulesGetOutput = typeof AlertRulesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesGetInput,
   outputSchema: AlertRulesGetOutput,
 }));
 // Input Schema
-export const AlertRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -362,7 +340,7 @@ export const AlertRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AlertRulesListInput = typeof AlertRulesListInput.Type;
 
 // Output Schema
-export const AlertRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -397,46 +375,44 @@ export type AlertRulesListOutput = typeof AlertRulesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesListInput,
   outputSchema: AlertRulesListOutput,
 }));
 // Input Schema
-export const AlertRuleTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates/{alertRuleTemplateId}",
-    }),
-  );
+export const AlertRuleTemplatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates/{alertRuleTemplateId}",
+  }),
+);
 export type AlertRuleTemplatesGetInput = typeof AlertRuleTemplatesGetInput.Type;
 
 // Output Schema
-export const AlertRuleTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AlertRuleTemplatesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AlertRuleTemplatesGetOutput =
   typeof AlertRuleTemplatesGetOutput.Type;
 
@@ -449,33 +425,216 @@ export type AlertRuleTemplatesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRuleTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleTemplatesGetInput,
-    outputSchema: AlertRuleTemplatesGetOutput,
+export const AlertRuleTemplatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleTemplatesGetInput,
+  outputSchema: AlertRuleTemplatesGetOutput,
+}));
+// Input Schema
+export const AlertRuleTemplatesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates",
   }),
 );
-// Input Schema
-export const AlertRuleTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates",
-    }),
-  );
 export type AlertRuleTemplatesListInput =
   typeof AlertRuleTemplatesListInput.Type;
 
 // Output Schema
-export const AlertRuleTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
+export const AlertRuleTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
+export type AlertRuleTemplatesListOutput =
+  typeof AlertRuleTemplatesListOutput.Type;
+
+// The operation
+/**
+ * Gets all alert rule templates.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AlertRuleTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleTemplatesListInput,
+  outputSchema: AlertRuleTemplatesListOutput,
+}));
+// Input Schema
+export const AutomationRulesCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+  }),
+);
+export type AutomationRulesCreateOrUpdateInput =
+  typeof AutomationRulesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AutomationRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type AutomationRulesCreateOrUpdateOutput =
+  typeof AutomationRulesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates the automation rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AutomationRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationRulesCreateOrUpdateInput,
+  outputSchema: AutomationRulesCreateOrUpdateOutput,
+}));
+// Input Schema
+export const AutomationRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+  }),
+);
+export type AutomationRulesDeleteInput = typeof AutomationRulesDeleteInput.Type;
+
+// Output Schema
+export const AutomationRulesDeleteOutput = /*@__PURE__*/ Schema.Unknown;
+export type AutomationRulesDeleteOutput =
+  typeof AutomationRulesDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the automation rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AutomationRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationRulesDeleteInput,
+  outputSchema: AutomationRulesDeleteOutput,
+}));
+// Input Schema
+export const AutomationRulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+  }),
+);
+export type AutomationRulesGetInput = typeof AutomationRulesGetInput.Type;
+
+// Output Schema
+export const AutomationRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type AutomationRulesGetOutput = typeof AutomationRulesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the automation rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AutomationRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationRulesGetInput,
+  outputSchema: AutomationRulesGetOutput,
+}));
+// Input Schema
+export const AutomationRulesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
+  }),
+);
+export type AutomationRulesListInput = typeof AutomationRulesListInput.Type;
+
+// Output Schema
+export const AutomationRulesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
@@ -506,219 +665,9 @@ export const AlertRuleTemplatesListOutput =
         ),
       }),
     ),
-  });
-export type AlertRuleTemplatesListOutput =
-  typeof AlertRuleTemplatesListOutput.Type;
-
-// The operation
-/**
- * Gets all alert rule templates.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param workspaceName - The name of the workspace.
- */
-export const AlertRuleTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleTemplatesListInput,
-    outputSchema: AlertRuleTemplatesListOutput,
-  }),
-);
-// Input Schema
-export const AutomationRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
-    }),
-  );
-export type AutomationRulesCreateOrUpdateInput =
-  typeof AutomationRulesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const AutomationRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
-export type AutomationRulesCreateOrUpdateOutput =
-  typeof AutomationRulesCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Creates or updates the automation rule.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param workspaceName - The name of the workspace.
- */
-export const AutomationRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AutomationRulesCreateOrUpdateInput,
-    outputSchema: AutomationRulesCreateOrUpdateOutput,
-  }));
-// Input Schema
-export const AutomationRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
-    }),
-  );
-export type AutomationRulesDeleteInput = typeof AutomationRulesDeleteInput.Type;
-
-// Output Schema
-export const AutomationRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type AutomationRulesDeleteOutput =
-  typeof AutomationRulesDeleteOutput.Type;
-
-// The operation
-/**
- * Delete the automation rule.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param workspaceName - The name of the workspace.
- */
-export const AutomationRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationRulesDeleteInput,
-    outputSchema: AutomationRulesDeleteOutput,
-  }),
-);
-// Input Schema
-export const AutomationRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
-    }),
-  );
-export type AutomationRulesGetInput = typeof AutomationRulesGetInput.Type;
-
-// Output Schema
-export const AutomationRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
-export type AutomationRulesGetOutput = typeof AutomationRulesGetOutput.Type;
-
-// The operation
-/**
- * Gets the automation rule.
- *
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param workspaceName - The name of the workspace.
- */
-export const AutomationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: AutomationRulesGetInput,
-  outputSchema: AutomationRulesGetOutput,
-}));
-// Input Schema
-export const AutomationRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
-    }),
-  );
-export type AutomationRulesListInput = typeof AutomationRulesListInput.Type;
-
-// Output Schema
-export const AutomationRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type AutomationRulesListOutput = typeof AutomationRulesListOutput.Type;
 
 // The operation
@@ -730,47 +679,45 @@ export type AutomationRulesListOutput = typeof AutomationRulesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AutomationRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutomationRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutomationRulesListInput,
   outputSchema: AutomationRulesListOutput,
 }));
 // Input Schema
-export const BookmarksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
-    }),
-  );
+export const BookmarksCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
+  }),
+);
 export type BookmarksCreateOrUpdateInput =
   typeof BookmarksCreateOrUpdateInput.Type;
 
 // Output Schema
-export const BookmarksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const BookmarksCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type BookmarksCreateOrUpdateOutput =
   typeof BookmarksCreateOrUpdateOutput.Type;
 
@@ -783,14 +730,12 @@ export type BookmarksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BookmarksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BookmarksCreateOrUpdateInput,
-    outputSchema: BookmarksCreateOrUpdateOutput,
-  }),
-);
+export const BookmarksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BookmarksCreateOrUpdateInput,
+  outputSchema: BookmarksCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -804,7 +749,7 @@ export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BookmarksDeleteInput = typeof BookmarksDeleteInput.Type;
 
 // Output Schema
-export const BookmarksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BookmarksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BookmarksDeleteOutput = typeof BookmarksDeleteOutput.Type;
 
 // The operation
@@ -816,12 +761,12 @@ export type BookmarksDeleteOutput = typeof BookmarksDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BookmarksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksDeleteInput,
   outputSchema: BookmarksDeleteOutput,
 }));
 // Input Schema
-export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -835,7 +780,7 @@ export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BookmarksGetInput = typeof BookmarksGetInput.Type;
 
 // Output Schema
-export const BookmarksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -865,12 +810,12 @@ export type BookmarksGetOutput = typeof BookmarksGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BookmarksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksGetInput,
   outputSchema: BookmarksGetOutput,
 }));
 // Input Schema
-export const BookmarksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -884,7 +829,7 @@ export const BookmarksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BookmarksListInput = typeof BookmarksListInput.Type;
 
 // Output Schema
-export const BookmarksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -919,46 +864,44 @@ export type BookmarksListOutput = typeof BookmarksListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BookmarksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksListInput,
   outputSchema: BookmarksListOutput,
 }));
 // Input Schema
-export const ContentPackageInstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
-    }),
-  );
+export const ContentPackageInstallInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
+  }),
+);
 export type ContentPackageInstallInput = typeof ContentPackageInstallInput.Type;
 
 // Output Schema
-export const ContentPackageInstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ContentPackageInstallOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ContentPackageInstallOutput =
   typeof ContentPackageInstallOutput.Type;
 
@@ -971,48 +914,44 @@ export type ContentPackageInstallOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentPackageInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentPackageInstallInput,
-    outputSchema: ContentPackageInstallOutput,
+export const ContentPackageInstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentPackageInstallInput,
+  outputSchema: ContentPackageInstallOutput,
+}));
+// Input Schema
+export const ContentPackagesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
   }),
 );
-// Input Schema
-export const ContentPackagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
-    }),
-  );
 export type ContentPackagesGetInput = typeof ContentPackagesGetInput.Type;
 
 // Output Schema
-export const ContentPackagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ContentPackagesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ContentPackagesGetOutput = typeof ContentPackagesGetOutput.Type;
 
 // The operation
@@ -1024,68 +963,56 @@ export type ContentPackagesGetOutput = typeof ContentPackagesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentPackagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentPackagesGetInput,
   outputSchema: ContentPackagesGetOutput,
 }));
 // Input Schema
-export const ContentPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $search: Schema.optional(Schema.String),
-    $count: Schema.optional(Schema.Boolean),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages",
-    }),
-  );
+export const ContentPackagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $search: Schema.optional(Schema.String),
+  $count: Schema.optional(Schema.Boolean),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages",
+  }),
+);
 export type ContentPackagesListInput = typeof ContentPackagesListInput.Type;
 
 // Output Schema
-export const ContentPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const ContentPackagesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type ContentPackagesListOutput = typeof ContentPackagesListOutput.Type;
 
 // The operation
@@ -1104,29 +1031,27 @@ export type ContentPackagesListOutput = typeof ContentPackagesListOutput.Type;
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ContentPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentPackagesListInput,
   outputSchema: ContentPackagesListOutput,
 }));
 // Input Schema
-export const ContentPackageUninstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
-    }),
-  );
+export const ContentPackageUninstallInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
+  }),
+);
 export type ContentPackageUninstallInput =
   typeof ContentPackageUninstallInput.Type;
 
 // Output Schema
-export const ContentPackageUninstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContentPackageUninstallOutput = /*@__PURE__*/ Schema.Void;
 export type ContentPackageUninstallOutput =
   typeof ContentPackageUninstallOutput.Type;
 
@@ -1139,30 +1064,26 @@ export type ContentPackageUninstallOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentPackageUninstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentPackageUninstallInput,
-    outputSchema: ContentPackageUninstallOutput,
+export const ContentPackageUninstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentPackageUninstallInput,
+  outputSchema: ContentPackageUninstallOutput,
+}));
+// Input Schema
+export const ContentTemplateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
   }),
 );
-// Input Schema
-export const ContentTemplateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
-    }),
-  );
 export type ContentTemplateDeleteInput = typeof ContentTemplateDeleteInput.Type;
 
 // Output Schema
-export const ContentTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContentTemplateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ContentTemplateDeleteOutput =
   typeof ContentTemplateDeleteOutput.Type;
 
@@ -1175,48 +1096,44 @@ export type ContentTemplateDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplateDeleteInput,
-    outputSchema: ContentTemplateDeleteOutput,
+export const ContentTemplateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplateDeleteInput,
+  outputSchema: ContentTemplateDeleteOutput,
+}));
+// Input Schema
+export const ContentTemplateGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
   }),
 );
-// Input Schema
-export const ContentTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
-    }),
-  );
 export type ContentTemplateGetInput = typeof ContentTemplateGetInput.Type;
 
 // Output Schema
-export const ContentTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ContentTemplateGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ContentTemplateGetOutput = typeof ContentTemplateGetOutput.Type;
 
 // The operation
@@ -1231,47 +1148,45 @@ export type ContentTemplateGetOutput = typeof ContentTemplateGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentTemplateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentTemplateGetInput,
   outputSchema: ContentTemplateGetOutput,
 }));
 // Input Schema
-export const ContentTemplateInstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
-    }),
-  );
+export const ContentTemplateInstallInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
+  }),
+);
 export type ContentTemplateInstallInput =
   typeof ContentTemplateInstallInput.Type;
 
 // Output Schema
-export const ContentTemplateInstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ContentTemplateInstallOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ContentTemplateInstallOutput =
   typeof ContentTemplateInstallOutput.Type;
 
@@ -1284,71 +1199,57 @@ export type ContentTemplateInstallOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ContentTemplateInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplateInstallInput,
-    outputSchema: ContentTemplateInstallOutput,
+export const ContentTemplateInstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplateInstallInput,
+  outputSchema: ContentTemplateInstallOutput,
+}));
+// Input Schema
+export const ContentTemplatesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $expand: Schema.optional(Schema.String),
+  $search: Schema.optional(Schema.String),
+  $count: Schema.optional(Schema.Boolean),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates",
   }),
 );
-// Input Schema
-export const ContentTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $expand: Schema.optional(Schema.String),
-    $search: Schema.optional(Schema.String),
-    $count: Schema.optional(Schema.Boolean),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates",
-    }),
-  );
 export type ContentTemplatesListInput = typeof ContentTemplatesListInput.Type;
 
 // Output Schema
-export const ContentTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ContentTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ContentTemplatesListOutput = typeof ContentTemplatesListOutput.Type;
 
 // The operation
@@ -1371,15 +1272,13 @@ export type ContentTemplatesListOutput = typeof ContentTemplatesListOutput.Type;
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ContentTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplatesListInput,
-    outputSchema: ContentTemplatesListOutput,
-  }),
-);
+export const ContentTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplatesListInput,
+  outputSchema: ContentTemplatesListOutput,
+}));
 // Input Schema
 export const DataConnectorDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1395,7 +1294,7 @@ export type DataConnectorDefinitionsCreateOrUpdateInput =
 
 // Output Schema
 export const DataConnectorDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1426,30 +1325,29 @@ export type DataConnectorDefinitionsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param api-version - The API version to use for this operation.
  */
-export const DataConnectorDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectorDefinitionsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DataConnectorDefinitionsCreateOrUpdateInput,
     outputSchema: DataConnectorDefinitionsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DataConnectorDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
-    }),
-  );
+export const DataConnectorDefinitionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
+  }),
+);
 export type DataConnectorDefinitionsDeleteInput =
   typeof DataConnectorDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const DataConnectorDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataConnectorDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataConnectorDefinitionsDeleteOutput =
   typeof DataConnectorDefinitionsDeleteOutput.Type;
 
@@ -1462,48 +1360,45 @@ export type DataConnectorDefinitionsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param api-version - The API version to use for this operation.
  */
-export const DataConnectorDefinitionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataConnectorDefinitionsDeleteInput,
-    outputSchema: DataConnectorDefinitionsDeleteOutput,
-  }));
+export const DataConnectorDefinitionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorDefinitionsDeleteInput,
+  outputSchema: DataConnectorDefinitionsDeleteOutput,
+}));
 // Input Schema
-export const DataConnectorDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
-    }),
-  );
+export const DataConnectorDefinitionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
+  }),
+);
 export type DataConnectorDefinitionsGetInput =
   typeof DataConnectorDefinitionsGetInput.Type;
 
 // Output Schema
-export const DataConnectorDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataConnectorDefinitionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataConnectorDefinitionsGetOutput =
   typeof DataConnectorDefinitionsGetOutput.Type;
 
@@ -1516,66 +1411,62 @@ export type DataConnectorDefinitionsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param api-version - The API version to use for this operation.
  */
-export const DataConnectorDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectorDefinitionsGetInput,
-    outputSchema: DataConnectorDefinitionsGetOutput,
+export const DataConnectorDefinitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorDefinitionsGetInput,
+  outputSchema: DataConnectorDefinitionsGetOutput,
+}));
+// Input Schema
+export const DataConnectorDefinitionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions",
   }),
 );
-// Input Schema
-export const DataConnectorDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions",
-    }),
-  );
 export type DataConnectorDefinitionsListInput =
   typeof DataConnectorDefinitionsListInput.Type;
 
 // Output Schema
-export const DataConnectorDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const DataConnectorDefinitionsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type DataConnectorDefinitionsListOutput =
   typeof DataConnectorDefinitionsListOutput.Type;
 
@@ -1588,48 +1479,45 @@ export type DataConnectorDefinitionsListOutput =
  * @param workspaceName - The name of the workspace.
  * @param api-version - The API version to use for this operation.
  */
-export const DataConnectorDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataConnectorDefinitionsListInput,
-    outputSchema: DataConnectorDefinitionsListOutput,
-  }));
+export const DataConnectorDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorDefinitionsListInput,
+  outputSchema: DataConnectorDefinitionsListOutput,
+}));
 // Input Schema
-export const DataConnectorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
-    }),
-  );
+export const DataConnectorsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
+  }),
+);
 export type DataConnectorsCreateOrUpdateInput =
   typeof DataConnectorsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const DataConnectorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataConnectorsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataConnectorsCreateOrUpdateOutput =
   typeof DataConnectorsCreateOrUpdateOutput.Type;
 
@@ -1642,29 +1530,26 @@ export type DataConnectorsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataConnectorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DataConnectorsCreateOrUpdateInput,
-    outputSchema: DataConnectorsCreateOrUpdateOutput,
-  }));
+export const DataConnectorsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorsCreateOrUpdateInput,
+  outputSchema: DataConnectorsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DataConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
-    }),
-  );
+export const DataConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
+  }),
+);
 export type DataConnectorsDeleteInput = typeof DataConnectorsDeleteInput.Type;
 
 // Output Schema
-export const DataConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataConnectorsDeleteOutput = typeof DataConnectorsDeleteOutput.Type;
 
 // The operation
@@ -1676,21 +1561,17 @@ export type DataConnectorsDeleteOutput = typeof DataConnectorsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectorsDeleteInput,
-    outputSchema: DataConnectorsDeleteOutput,
-  }),
-);
+export const DataConnectorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorsDeleteInput,
+  outputSchema: DataConnectorsDeleteOutput,
+}));
 // Input Schema
-export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const DataConnectorsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
@@ -1699,26 +1580,25 @@ export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DataConnectorsGetInput = typeof DataConnectorsGetInput.Type;
 
 // Output Schema
-export const DataConnectorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataConnectorsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataConnectorsGetOutput = typeof DataConnectorsGetOutput.Type;
 
 // The operation
@@ -1730,61 +1610,49 @@ export type DataConnectorsGetOutput = typeof DataConnectorsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataConnectorsGetInput,
   outputSchema: DataConnectorsGetOutput,
 }));
 // Input Schema
-export const DataConnectorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors",
-    }),
-  );
+export const DataConnectorsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors",
+  }),
+);
 export type DataConnectorsListInput = typeof DataConnectorsListInput.Type;
 
 // Output Schema
-export const DataConnectorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const DataConnectorsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type DataConnectorsListOutput = typeof DataConnectorsListOutput.Type;
 
 // The operation
@@ -1796,29 +1664,27 @@ export type DataConnectorsListOutput = typeof DataConnectorsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataConnectorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataConnectorsListInput,
   outputSchema: DataConnectorsListOutput,
 }));
 // Input Schema
-export const EntitiesRunPlaybookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    entityIdentifier: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityIdentifier}/runPlaybook",
-    }),
-  );
+export const EntitiesRunPlaybookInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  entityIdentifier: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityIdentifier}/runPlaybook",
+  }),
+);
 export type EntitiesRunPlaybookInput = typeof EntitiesRunPlaybookInput.Type;
 
 // Output Schema
-export const EntitiesRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EntitiesRunPlaybookOutput = /*@__PURE__*/ Schema.Void;
 export type EntitiesRunPlaybookOutput = typeof EntitiesRunPlaybookOutput.Type;
 
 // The operation
@@ -1831,29 +1697,28 @@ export type EntitiesRunPlaybookOutput = typeof EntitiesRunPlaybookOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param entityIdentifier - Entity ID
  */
-export const EntitiesRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EntitiesRunPlaybook = /*@__PURE__*/ API.make(() => ({
   inputSchema: EntitiesRunPlaybookInput,
   outputSchema: EntitiesRunPlaybookOutput,
 }));
 // Input Schema
-export const IncidentCommentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
-    }),
-  );
+export const IncidentCommentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
+  }),
+);
 export type IncidentCommentsCreateOrUpdateInput =
   typeof IncidentCommentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IncidentCommentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentCommentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1871,7 +1736,8 @@ export const IncidentCommentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type IncidentCommentsCreateOrUpdateOutput =
   typeof IncidentCommentsCreateOrUpdateOutput.Type;
 
@@ -1884,30 +1750,27 @@ export type IncidentCommentsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentCommentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IncidentCommentsCreateOrUpdateInput,
-    outputSchema: IncidentCommentsCreateOrUpdateOutput,
-  }));
+export const IncidentCommentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentCommentsCreateOrUpdateInput,
+  outputSchema: IncidentCommentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IncidentCommentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
-    }),
-  );
+export const IncidentCommentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
+  }),
+);
 export type IncidentCommentsDeleteInput =
   typeof IncidentCommentsDeleteInput.Type;
 
 // Output Schema
-export const IncidentCommentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IncidentCommentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IncidentCommentsDeleteOutput =
   typeof IncidentCommentsDeleteOutput.Type;
 
@@ -1920,48 +1783,44 @@ export type IncidentCommentsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentCommentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentCommentsDeleteInput,
-    outputSchema: IncidentCommentsDeleteOutput,
+export const IncidentCommentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentCommentsDeleteInput,
+  outputSchema: IncidentCommentsDeleteOutput,
+}));
+// Input Schema
+export const IncidentCommentsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
   }),
 );
-// Input Schema
-export const IncidentCommentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
-    }),
-  );
 export type IncidentCommentsGetInput = typeof IncidentCommentsGetInput.Type;
 
 // Output Schema
-export const IncidentCommentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const IncidentCommentsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IncidentCommentsGetOutput = typeof IncidentCommentsGetOutput.Type;
 
 // The operation
@@ -1973,65 +1832,53 @@ export type IncidentCommentsGetOutput = typeof IncidentCommentsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentCommentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentCommentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentCommentsGetInput,
   outputSchema: IncidentCommentsGetOutput,
 }));
 // Input Schema
-export const IncidentCommentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments",
-    }),
-  );
+export const IncidentCommentsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments",
+  }),
+);
 export type IncidentCommentsListInput = typeof IncidentCommentsListInput.Type;
 
 // Output Schema
-export const IncidentCommentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const IncidentCommentsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type IncidentCommentsListOutput = typeof IncidentCommentsListOutput.Type;
 
 // The operation
@@ -2047,31 +1894,30 @@ export type IncidentCommentsListOutput = typeof IncidentCommentsListOutput.Type;
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentCommentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentCommentsListInput,
-    outputSchema: IncidentCommentsListOutput,
-  }),
-);
+export const IncidentCommentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentCommentsListInput,
+  outputSchema: IncidentCommentsListOutput,
+}));
 // Input Schema
-export const IncidentRelationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentRelationsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
+  }),
+);
 export type IncidentRelationsCreateOrUpdateInput =
   typeof IncidentRelationsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const IncidentRelationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2102,30 +1948,27 @@ export type IncidentRelationsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentRelationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: IncidentRelationsCreateOrUpdateInput,
-    outputSchema: IncidentRelationsCreateOrUpdateOutput,
-  }));
+export const IncidentRelationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsCreateOrUpdateInput,
+  outputSchema: IncidentRelationsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IncidentRelationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
-    }),
-  );
+export const IncidentRelationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
+  }),
+);
 export type IncidentRelationsDeleteInput =
   typeof IncidentRelationsDeleteInput.Type;
 
 // Output Schema
-export const IncidentRelationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IncidentRelationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IncidentRelationsDeleteOutput =
   typeof IncidentRelationsDeleteOutput.Type;
 
@@ -2138,48 +1981,44 @@ export type IncidentRelationsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentRelationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsDeleteInput,
-    outputSchema: IncidentRelationsDeleteOutput,
+export const IncidentRelationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsDeleteInput,
+  outputSchema: IncidentRelationsDeleteOutput,
+}));
+// Input Schema
+export const IncidentRelationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
   }),
 );
-// Input Schema
-export const IncidentRelationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
-    }),
-  );
 export type IncidentRelationsGetInput = typeof IncidentRelationsGetInput.Type;
 
 // Output Schema
-export const IncidentRelationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const IncidentRelationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IncidentRelationsGetOutput = typeof IncidentRelationsGetOutput.Type;
 
 // The operation
@@ -2191,67 +2030,53 @@ export type IncidentRelationsGetOutput = typeof IncidentRelationsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentRelationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsGetInput,
-    outputSchema: IncidentRelationsGetOutput,
+export const IncidentRelationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsGetInput,
+  outputSchema: IncidentRelationsGetOutput,
+}));
+// Input Schema
+export const IncidentRelationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations",
   }),
 );
-// Input Schema
-export const IncidentRelationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations",
-    }),
-  );
 export type IncidentRelationsListInput = typeof IncidentRelationsListInput.Type;
 
 // Output Schema
-export const IncidentRelationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const IncidentRelationsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type IncidentRelationsListOutput =
   typeof IncidentRelationsListOutput.Type;
 
@@ -2268,49 +2093,45 @@ export type IncidentRelationsListOutput =
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentRelationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsListInput,
-    outputSchema: IncidentRelationsListOutput,
+export const IncidentRelationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsListInput,
+  outputSchema: IncidentRelationsListOutput,
+}));
+// Input Schema
+export const IncidentsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
   }),
 );
-// Input Schema
-export const IncidentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
-    }),
-  );
 export type IncidentsCreateOrUpdateInput =
   typeof IncidentsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IncidentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const IncidentsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IncidentsCreateOrUpdateOutput =
   typeof IncidentsCreateOrUpdateOutput.Type;
 
@@ -2323,14 +2144,12 @@ export type IncidentsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsCreateOrUpdateInput,
-    outputSchema: IncidentsCreateOrUpdateOutput,
-  }),
-);
+export const IncidentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsCreateOrUpdateInput,
+  outputSchema: IncidentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2344,7 +2163,7 @@ export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IncidentsDeleteInput = typeof IncidentsDeleteInput.Type;
 
 // Output Schema
-export const IncidentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IncidentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IncidentsDeleteOutput = typeof IncidentsDeleteOutput.Type;
 
 // The operation
@@ -2356,12 +2175,12 @@ export type IncidentsDeleteOutput = typeof IncidentsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsDeleteInput,
   outputSchema: IncidentsDeleteOutput,
 }));
 // Input Schema
-export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2375,7 +2194,7 @@ export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IncidentsGetInput = typeof IncidentsGetInput.Type;
 
 // Output Schema
-export const IncidentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2405,12 +2224,12 @@ export type IncidentsGetOutput = typeof IncidentsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsGetInput,
   outputSchema: IncidentsGetOutput,
 }));
 // Input Schema
-export const IncidentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2428,7 +2247,7 @@ export const IncidentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IncidentsListInput = typeof IncidentsListInput.Type;
 
 // Output Schema
-export const IncidentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -2467,60 +2286,48 @@ export type IncidentsListOutput = typeof IncidentsListOutput.Type;
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListInput,
   outputSchema: IncidentsListOutput,
 }));
 // Input Schema
-export const IncidentsListAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/alerts",
-    }),
-  );
+export const IncidentsListAlertsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/alerts",
+  }),
+);
 export type IncidentsListAlertsInput = typeof IncidentsListAlertsInput.Type;
 
 // Output Schema
-export const IncidentsListAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const IncidentsListAlertsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type IncidentsListAlertsOutput = typeof IncidentsListAlertsOutput.Type;
 
 // The operation
@@ -2532,61 +2339,49 @@ export type IncidentsListAlertsOutput = typeof IncidentsListAlertsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsListAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListAlertsInput,
   outputSchema: IncidentsListAlertsOutput,
 }));
 // Input Schema
-export const IncidentsListBookmarksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/bookmarks",
-    }),
-  );
+export const IncidentsListBookmarksInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/bookmarks",
+  }),
+);
 export type IncidentsListBookmarksInput =
   typeof IncidentsListBookmarksInput.Type;
 
 // Output Schema
-export const IncidentsListBookmarksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const IncidentsListBookmarksOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type IncidentsListBookmarksOutput =
   typeof IncidentsListBookmarksOutput.Type;
 
@@ -2599,94 +2394,90 @@ export type IncidentsListBookmarksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsListBookmarks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsListBookmarksInput,
-    outputSchema: IncidentsListBookmarksOutput,
+export const IncidentsListBookmarks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsListBookmarksInput,
+  outputSchema: IncidentsListBookmarksOutput,
+}));
+// Input Schema
+export const IncidentsListEntitiesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/entities",
   }),
 );
-// Input Schema
-export const IncidentsListEntitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/entities",
-    }),
-  );
 export type IncidentsListEntitiesInput = typeof IncidentsListEntitiesInput.Type;
 
 // Output Schema
-export const IncidentsListEntitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entities: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const IncidentsListEntitiesOutput = /*@__PURE__*/ Schema.Struct({
+  entities: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    metaData: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          count: Schema.Number,
-          entityKind: Schema.Literals([
-            "Account",
-            "Host",
-            "File",
-            "AzureResource",
-            "CloudApplication",
-            "DnsResolution",
-            "FileHash",
-            "Ip",
-            "Malware",
-            "Process",
-            "RegistryKey",
-            "RegistryValue",
-            "SecurityGroup",
-            "Url",
-            "IoTDevice",
-            "SecurityAlert",
-            "Bookmark",
-            "Mailbox",
-            "MailCluster",
-            "MailMessage",
-            "SubmissionMail",
-          ]),
-        }),
-      ),
+  ),
+  metaData: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        count: Schema.Number,
+        entityKind: Schema.Literals([
+          "Account",
+          "Host",
+          "File",
+          "AzureResource",
+          "CloudApplication",
+          "DnsResolution",
+          "FileHash",
+          "Ip",
+          "Malware",
+          "Process",
+          "RegistryKey",
+          "RegistryValue",
+          "SecurityGroup",
+          "Url",
+          "IoTDevice",
+          "SecurityAlert",
+          "Bookmark",
+          "Mailbox",
+          "MailCluster",
+          "MailMessage",
+          "SubmissionMail",
+        ]),
+      }),
     ),
-  });
+  ),
+});
 export type IncidentsListEntitiesOutput =
   typeof IncidentsListEntitiesOutput.Type;
 
@@ -2699,31 +2490,27 @@ export type IncidentsListEntitiesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentsListEntities = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsListEntitiesInput,
-    outputSchema: IncidentsListEntitiesOutput,
+export const IncidentsListEntities = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsListEntitiesInput,
+  outputSchema: IncidentsListEntitiesOutput,
+}));
+// Input Schema
+export const IncidentsRunPlaybookInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  incidentIdentifier: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentIdentifier}/runPlaybook",
   }),
 );
-// Input Schema
-export const IncidentsRunPlaybookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    incidentIdentifier: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentIdentifier}/runPlaybook",
-    }),
-  );
 export type IncidentsRunPlaybookInput = typeof IncidentsRunPlaybookInput.Type;
 
 // Output Schema
-export const IncidentsRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IncidentsRunPlaybookOutput = /*@__PURE__*/ Schema.Void;
 export type IncidentsRunPlaybookOutput = typeof IncidentsRunPlaybookOutput.Type;
 
 // The operation
@@ -2736,49 +2523,45 @@ export type IncidentsRunPlaybookOutput = typeof IncidentsRunPlaybookOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param incidentIdentifier - Incident ID
  */
-export const IncidentsRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsRunPlaybookInput,
-    outputSchema: IncidentsRunPlaybookOutput,
+export const IncidentsRunPlaybook = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsRunPlaybookInput,
+  outputSchema: IncidentsRunPlaybookOutput,
+}));
+// Input Schema
+export const IncidentTasksCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
   }),
 );
-// Input Schema
-export const IncidentTasksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
-    }),
-  );
 export type IncidentTasksCreateOrUpdateInput =
   typeof IncidentTasksCreateOrUpdateInput.Type;
 
 // Output Schema
-export const IncidentTasksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const IncidentTasksCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IncidentTasksCreateOrUpdateOutput =
   typeof IncidentTasksCreateOrUpdateOutput.Type;
 
@@ -2791,30 +2574,26 @@ export type IncidentTasksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentTasksCreateOrUpdateInput,
-    outputSchema: IncidentTasksCreateOrUpdateOutput,
+export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentTasksCreateOrUpdateInput,
+  outputSchema: IncidentTasksCreateOrUpdateOutput,
+}));
+// Input Schema
+export const IncidentTasksDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
   }),
 );
-// Input Schema
-export const IncidentTasksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
-    }),
-  );
 export type IncidentTasksDeleteInput = typeof IncidentTasksDeleteInput.Type;
 
 // Output Schema
-export const IncidentTasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IncidentTasksDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IncidentTasksDeleteOutput = typeof IncidentTasksDeleteOutput.Type;
 
 // The operation
@@ -2826,12 +2605,12 @@ export type IncidentTasksDeleteOutput = typeof IncidentTasksDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksDeleteInput,
   outputSchema: IncidentTasksDeleteOutput,
 }));
 // Input Schema
-export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentTasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2845,27 +2624,25 @@ export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IncidentTasksGetInput = typeof IncidentTasksGetInput.Type;
 
 // Output Schema
-export const IncidentTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const IncidentTasksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type IncidentTasksGetOutput = typeof IncidentTasksGetOutput.Type;
 
 // The operation
@@ -2877,19 +2654,17 @@ export type IncidentTasksGetOutput = typeof IncidentTasksGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksGetInput,
   outputSchema: IncidentTasksGetOutput,
 }));
 // Input Schema
-export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const IncidentTasksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks",
@@ -2898,43 +2673,42 @@ export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type IncidentTasksListInput = typeof IncidentTasksListInput.Type;
 
 // Output Schema
-export const IncidentTasksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const IncidentTasksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type IncidentTasksListOutput = typeof IncidentTasksListOutput.Type;
 
 // The operation
@@ -2946,12 +2720,12 @@ export type IncidentTasksListOutput = typeof IncidentTasksListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IncidentTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksListInput,
   outputSchema: IncidentTasksListOutput,
 }));
 // Input Schema
-export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2965,7 +2739,7 @@ export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataCreateInput = typeof MetadataCreateInput.Type;
 
 // Output Schema
-export const MetadataCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2995,12 +2769,12 @@ export type MetadataCreateOutput = typeof MetadataCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const MetadataCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataCreateInput,
   outputSchema: MetadataCreateOutput,
 }));
 // Input Schema
-export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3014,7 +2788,7 @@ export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataDeleteInput = typeof MetadataDeleteInput.Type;
 
 // Output Schema
-export const MetadataDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MetadataDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type MetadataDeleteOutput = typeof MetadataDeleteOutput.Type;
 
 // The operation
@@ -3026,12 +2800,12 @@ export type MetadataDeleteOutput = typeof MetadataDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const MetadataDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataDeleteInput,
   outputSchema: MetadataDeleteOutput,
 }));
 // Input Schema
-export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3045,7 +2819,7 @@ export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataGetInput = typeof MetadataGetInput.Type;
 
 // Output Schema
-export const MetadataGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3075,12 +2849,12 @@ export type MetadataGetOutput = typeof MetadataGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const MetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetInput,
   outputSchema: MetadataGetOutput,
 }));
 // Input Schema
-export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3098,7 +2872,7 @@ export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataListInput = typeof MetadataListInput.Type;
 
 // Output Schema
-export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3137,12 +2911,12 @@ export type MetadataListOutput = typeof MetadataListOutput.Type;
  * @param $top - Returns only the first n results. Optional.
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  */
-export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataListInput,
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
-export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3156,7 +2930,7 @@ export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetadataUpdateInput = typeof MetadataUpdateInput.Type;
 
 // Output Schema
-export const MetadataUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3186,12 +2960,12 @@ export type MetadataUpdateOutput = typeof MetadataUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const MetadataUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataUpdateInput,
   outputSchema: MetadataUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3202,7 +2976,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -3228,19 +3002,17 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ProductPackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages/{packageId}",
@@ -3249,26 +3021,25 @@ export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ProductPackageGetInput = typeof ProductPackageGetInput.Type;
 
 // Output Schema
-export const ProductPackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProductPackageGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProductPackageGetOutput = typeof ProductPackageGetOutput.Type;
 
 // The operation
@@ -3280,66 +3051,54 @@ export type ProductPackageGetOutput = typeof ProductPackageGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ProductPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPackageGetInput,
   outputSchema: ProductPackageGetOutput,
 }));
 // Input Schema
-export const ProductPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-    $search: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages",
-    }),
-  );
+export const ProductPackagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+  $search: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages",
+  }),
+);
 export type ProductPackagesListInput = typeof ProductPackagesListInput.Type;
 
 // Output Schema
-export const ProductPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const ProductPackagesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type ProductPackagesListOutput = typeof ProductPackagesListOutput.Type;
 
 // The operation
@@ -3359,46 +3118,44 @@ export type ProductPackagesListOutput = typeof ProductPackagesListOutput.Type;
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  * @param $search - Searches for a substring in the response. Optional.
  */
-export const ProductPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPackagesListInput,
   outputSchema: ProductPackagesListOutput,
 }));
 // Input Schema
-export const ProductTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentproducttemplates/{templateId}",
-    }),
-  );
+export const ProductTemplateGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentproducttemplates/{templateId}",
+  }),
+);
 export type ProductTemplateGetInput = typeof ProductTemplateGetInput.Type;
 
 // Output Schema
-export const ProductTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ProductTemplateGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ProductTemplateGetOutput = typeof ProductTemplateGetOutput.Type;
 
 // The operation
@@ -3410,68 +3167,56 @@ export type ProductTemplateGetOutput = typeof ProductTemplateGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ProductTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductTemplateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductTemplateGetInput,
   outputSchema: ProductTemplateGetOutput,
 }));
 // Input Schema
-export const ProductTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-    $search: Schema.optional(Schema.String),
-    $count: Schema.optional(Schema.Boolean),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductTemplates",
-    }),
-  );
+export const ProductTemplatesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  $search: Schema.optional(Schema.String),
+  $count: Schema.optional(Schema.Boolean),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductTemplates",
+  }),
+);
 export type ProductTemplatesListInput = typeof ProductTemplatesListInput.Type;
 
 // Output Schema
-export const ProductTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
+export const ProductTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProductTemplatesListOutput = typeof ProductTemplatesListOutput.Type;
 
 // The operation
@@ -3490,15 +3235,13 @@ export type ProductTemplatesListOutput = typeof ProductTemplatesListOutput.Type;
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ProductTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductTemplatesListInput,
-    outputSchema: ProductTemplatesListOutput,
-  }),
-);
+export const ProductTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductTemplatesListInput,
+  outputSchema: ProductTemplatesListOutput,
+}));
 // Input Schema
 export const SecurityMLAnalyticsSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3514,7 +3257,7 @@ export type SecurityMLAnalyticsSettingsCreateOrUpdateInput =
 
 // Output Schema
 export const SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3545,14 +3288,15 @@ export type SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SecurityMLAnalyticsSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecurityMLAnalyticsSettingsCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SecurityMLAnalyticsSettingsCreateOrUpdateInput,
     outputSchema: SecurityMLAnalyticsSettingsCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const SecurityMLAnalyticsSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3568,7 +3312,7 @@ export type SecurityMLAnalyticsSettingsDeleteInput =
 
 // Output Schema
 export const SecurityMLAnalyticsSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SecurityMLAnalyticsSettingsDeleteOutput =
   typeof SecurityMLAnalyticsSettingsDeleteOutput.Type;
 
@@ -3581,30 +3325,28 @@ export type SecurityMLAnalyticsSettingsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SecurityMLAnalyticsSettingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SecurityMLAnalyticsSettingsDeleteInput,
-    outputSchema: SecurityMLAnalyticsSettingsDeleteOutput,
-  }));
+export const SecurityMLAnalyticsSettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityMLAnalyticsSettingsDeleteInput,
+  outputSchema: SecurityMLAnalyticsSettingsDeleteOutput,
+}));
 // Input Schema
-export const SecurityMLAnalyticsSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings/{settingsResourceName}",
-    }),
-  );
+export const SecurityMLAnalyticsSettingsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings/{settingsResourceName}",
+  }),
+);
 export type SecurityMLAnalyticsSettingsGetInput =
   typeof SecurityMLAnalyticsSettingsGetInput.Type;
 
 // Output Schema
-export const SecurityMLAnalyticsSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecurityMLAnalyticsSettingsGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3622,7 +3364,8 @@ export const SecurityMLAnalyticsSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type SecurityMLAnalyticsSettingsGetOutput =
   typeof SecurityMLAnalyticsSettingsGetOutput.Type;
 
@@ -3635,30 +3378,30 @@ export type SecurityMLAnalyticsSettingsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SecurityMLAnalyticsSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SecurityMLAnalyticsSettingsGetInput,
-    outputSchema: SecurityMLAnalyticsSettingsGetOutput,
-  }));
+export const SecurityMLAnalyticsSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityMLAnalyticsSettingsGetInput,
+  outputSchema: SecurityMLAnalyticsSettingsGetOutput,
+}));
 // Input Schema
-export const SecurityMLAnalyticsSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecurityMLAnalyticsSettingsListInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings",
+  }),
+);
 export type SecurityMLAnalyticsSettingsListInput =
   typeof SecurityMLAnalyticsSettingsListInput.Type;
 
 // Output Schema
 export const SecurityMLAnalyticsSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3704,30 +3447,28 @@ export type SecurityMLAnalyticsSettingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SecurityMLAnalyticsSettingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SecurityMLAnalyticsSettingsListInput,
-    outputSchema: SecurityMLAnalyticsSettingsListOutput,
-  }));
+export const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityMLAnalyticsSettingsListInput,
+  outputSchema: SecurityMLAnalyticsSettingsListOutput,
+}));
 // Input Schema
-export const SentinelOnboardingStatesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
-    }),
-  );
+export const SentinelOnboardingStatesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
+  }),
+);
 export type SentinelOnboardingStatesCreateInput =
   typeof SentinelOnboardingStatesCreateInput.Type;
 
 // Output Schema
-export const SentinelOnboardingStatesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SentinelOnboardingStatesCreateOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3745,7 +3486,8 @@ export const SentinelOnboardingStatesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type SentinelOnboardingStatesCreateOutput =
   typeof SentinelOnboardingStatesCreateOutput.Type;
 
@@ -3758,30 +3500,27 @@ export type SentinelOnboardingStatesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SentinelOnboardingStatesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SentinelOnboardingStatesCreateInput,
-    outputSchema: SentinelOnboardingStatesCreateOutput,
-  }));
+export const SentinelOnboardingStatesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SentinelOnboardingStatesCreateInput,
+  outputSchema: SentinelOnboardingStatesCreateOutput,
+}));
 // Input Schema
-export const SentinelOnboardingStatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
-    }),
-  );
+export const SentinelOnboardingStatesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
+  }),
+);
 export type SentinelOnboardingStatesDeleteInput =
   typeof SentinelOnboardingStatesDeleteInput.Type;
 
 // Output Schema
-export const SentinelOnboardingStatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SentinelOnboardingStatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SentinelOnboardingStatesDeleteOutput =
   typeof SentinelOnboardingStatesDeleteOutput.Type;
 
@@ -3794,48 +3533,45 @@ export type SentinelOnboardingStatesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SentinelOnboardingStatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SentinelOnboardingStatesDeleteInput,
-    outputSchema: SentinelOnboardingStatesDeleteOutput,
-  }));
+export const SentinelOnboardingStatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SentinelOnboardingStatesDeleteInput,
+  outputSchema: SentinelOnboardingStatesDeleteOutput,
+}));
 // Input Schema
-export const SentinelOnboardingStatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
-    }),
-  );
+export const SentinelOnboardingStatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
+  }),
+);
 export type SentinelOnboardingStatesGetInput =
   typeof SentinelOnboardingStatesGetInput.Type;
 
 // Output Schema
-export const SentinelOnboardingStatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SentinelOnboardingStatesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SentinelOnboardingStatesGetOutput =
   typeof SentinelOnboardingStatesGetOutput.Type;
 
@@ -3848,63 +3584,49 @@ export type SentinelOnboardingStatesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SentinelOnboardingStatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SentinelOnboardingStatesGetInput,
-    outputSchema: SentinelOnboardingStatesGetOutput,
+export const SentinelOnboardingStatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SentinelOnboardingStatesGetInput,
+  outputSchema: SentinelOnboardingStatesGetOutput,
+}));
+// Input Schema
+export const SentinelOnboardingStatesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates",
   }),
 );
-// Input Schema
-export const SentinelOnboardingStatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates",
-    }),
-  );
 export type SentinelOnboardingStatesListInput =
   typeof SentinelOnboardingStatesListInput.Type;
 
 // Output Schema
-export const SentinelOnboardingStatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const SentinelOnboardingStatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type SentinelOnboardingStatesListOutput =
   typeof SentinelOnboardingStatesListOutput.Type;
 
@@ -3917,40 +3639,37 @@ export type SentinelOnboardingStatesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SentinelOnboardingStatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SentinelOnboardingStatesListInput,
-    outputSchema: SentinelOnboardingStatesListOutput,
-  }));
+export const SentinelOnboardingStatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SentinelOnboardingStatesListInput,
+  outputSchema: SentinelOnboardingStatesListOutput,
+}));
 // Input Schema
-export const SourceControlListRepositoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/listRepositories",
-    }),
-  );
+export const SourceControlListRepositoriesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/listRepositories",
+  }),
+);
 export type SourceControlListRepositoriesInput =
   typeof SourceControlListRepositoriesInput.Type;
 
 // Output Schema
-export const SourceControlListRepositoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-        fullName: Schema.optional(Schema.String),
-        installationId: Schema.optional(Schema.Number),
-        branches: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  });
+export const SourceControlListRepositoriesOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      url: Schema.optional(Schema.String),
+      fullName: Schema.optional(Schema.String),
+      installationId: Schema.optional(Schema.Number),
+      branches: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+});
 export type SourceControlListRepositoriesOutput =
   typeof SourceControlListRepositoriesOutput.Type;
 
@@ -3963,47 +3682,44 @@ export type SourceControlListRepositoriesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlListRepositories =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SourceControlListRepositoriesInput,
-    outputSchema: SourceControlListRepositoriesOutput,
-  }));
+export const SourceControlListRepositories = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlListRepositoriesInput,
+  outputSchema: SourceControlListRepositoriesOutput,
+}));
 // Input Schema
-export const SourceControlsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
-    }),
-  );
+export const SourceControlsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
+  }),
+);
 export type SourceControlsCreateInput = typeof SourceControlsCreateInput.Type;
 
 // Output Schema
-export const SourceControlsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SourceControlsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlsCreateOutput = typeof SourceControlsCreateOutput.Type;
 
 // The operation
@@ -4015,46 +3731,42 @@ export type SourceControlsCreateOutput = typeof SourceControlsCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlsCreateInput,
-    outputSchema: SourceControlsCreateOutput,
+export const SourceControlsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlsCreateInput,
+  outputSchema: SourceControlsCreateOutput,
+}));
+// Input Schema
+export const SourceControlsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}/delete",
   }),
 );
-// Input Schema
-export const SourceControlsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}/delete",
-    }),
-  );
 export type SourceControlsDeleteInput = typeof SourceControlsDeleteInput.Type;
 
 // Output Schema
-export const SourceControlsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    warning: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(
-          Schema.Literals([
-            "SourceControlWarning_DeleteServicePrincipal",
-            "SourceControlWarning_DeletePipelineFromAzureDevOps",
-            "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub",
-            "SourceControlWarning_DeleteRoleAssignment",
-            "SourceControl_DeletedWithWarnings",
-          ]),
-        ),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-      }),
-    ),
-  });
+export const SourceControlsDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  warning: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(
+        Schema.Literals([
+          "SourceControlWarning_DeleteServicePrincipal",
+          "SourceControlWarning_DeletePipelineFromAzureDevOps",
+          "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub",
+          "SourceControlWarning_DeleteRoleAssignment",
+          "SourceControl_DeletedWithWarnings",
+        ]),
+      ),
+      message: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+    }),
+  ),
+});
 export type SourceControlsDeleteOutput = typeof SourceControlsDeleteOutput.Type;
 
 // The operation
@@ -4066,21 +3778,17 @@ export type SourceControlsDeleteOutput = typeof SourceControlsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlsDeleteInput,
-    outputSchema: SourceControlsDeleteOutput,
-  }),
-);
+export const SourceControlsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlsDeleteInput,
+  outputSchema: SourceControlsDeleteOutput,
+}));
 // Input Schema
-export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SourceControlsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
@@ -4089,26 +3797,25 @@ export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SourceControlsGetInput = typeof SourceControlsGetInput.Type;
 
 // Output Schema
-export const SourceControlsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SourceControlsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SourceControlsGetOutput = typeof SourceControlsGetOutput.Type;
 
 // The operation
@@ -4120,61 +3827,49 @@ export type SourceControlsGetOutput = typeof SourceControlsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlsGetInput,
   outputSchema: SourceControlsGetOutput,
 }));
 // Input Schema
-export const SourceControlsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols",
-    }),
-  );
+export const SourceControlsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols",
+  }),
+);
 export type SourceControlsListInput = typeof SourceControlsListInput.Type;
 
 // Output Schema
-export const SourceControlsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const SourceControlsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type SourceControlsListOutput = typeof SourceControlsListOutput.Type;
 
 // The operation
@@ -4186,13 +3881,13 @@ export type SourceControlsListOutput = typeof SourceControlsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlsListInput,
   outputSchema: SourceControlsListOutput,
 }));
 // Input Schema
 export const ThreatIntelligenceIndicatorAppendTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4208,7 +3903,7 @@ export type ThreatIntelligenceIndicatorAppendTagsInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorAppendTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ThreatIntelligenceIndicatorAppendTagsOutput =
   typeof ThreatIntelligenceIndicatorAppendTagsOutput.Type;
 
@@ -4221,14 +3916,15 @@ export type ThreatIntelligenceIndicatorAppendTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorAppendTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ThreatIntelligenceIndicatorAppendTags = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ThreatIntelligenceIndicatorAppendTagsInput,
     outputSchema: ThreatIntelligenceIndicatorAppendTagsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ThreatIntelligenceIndicatorCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4244,7 +3940,7 @@ export type ThreatIntelligenceIndicatorCreateInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4275,14 +3971,13 @@ export type ThreatIntelligenceIndicatorCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ThreatIntelligenceIndicatorCreateInput,
-    outputSchema: ThreatIntelligenceIndicatorCreateOutput,
-  }));
+export const ThreatIntelligenceIndicatorCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ThreatIntelligenceIndicatorCreateInput,
+  outputSchema: ThreatIntelligenceIndicatorCreateOutput,
+}));
 // Input Schema
 export const ThreatIntelligenceIndicatorCreateIndicatorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4298,7 +3993,7 @@ export type ThreatIntelligenceIndicatorCreateIndicatorInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorCreateIndicatorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4330,13 +4025,13 @@ export type ThreatIntelligenceIndicatorCreateIndicatorOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const ThreatIntelligenceIndicatorCreateIndicator =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorCreateIndicatorInput,
     outputSchema: ThreatIntelligenceIndicatorCreateIndicatorOutput,
   }));
 // Input Schema
 export const ThreatIntelligenceIndicatorDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4352,7 +4047,7 @@ export type ThreatIntelligenceIndicatorDeleteInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ThreatIntelligenceIndicatorDeleteOutput =
   typeof ThreatIntelligenceIndicatorDeleteOutput.Type;
 
@@ -4365,30 +4060,28 @@ export type ThreatIntelligenceIndicatorDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ThreatIntelligenceIndicatorDeleteInput,
-    outputSchema: ThreatIntelligenceIndicatorDeleteOutput,
-  }));
+export const ThreatIntelligenceIndicatorDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ThreatIntelligenceIndicatorDeleteInput,
+  outputSchema: ThreatIntelligenceIndicatorDeleteOutput,
+}));
 // Input Schema
-export const ThreatIntelligenceIndicatorGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
-    }),
-  );
+export const ThreatIntelligenceIndicatorGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
+  }),
+);
 export type ThreatIntelligenceIndicatorGetInput =
   typeof ThreatIntelligenceIndicatorGetInput.Type;
 
 // Output Schema
-export const ThreatIntelligenceIndicatorGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ThreatIntelligenceIndicatorGetOutput = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4406,7 +4099,8 @@ export const ThreatIntelligenceIndicatorGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
+  },
+);
 export type ThreatIntelligenceIndicatorGetOutput =
   typeof ThreatIntelligenceIndicatorGetOutput.Type;
 
@@ -4419,14 +4113,13 @@ export type ThreatIntelligenceIndicatorGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ThreatIntelligenceIndicatorGetInput,
-    outputSchema: ThreatIntelligenceIndicatorGetOutput,
-  }));
+export const ThreatIntelligenceIndicatorGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ThreatIntelligenceIndicatorGetInput,
+  outputSchema: ThreatIntelligenceIndicatorGetOutput,
+}));
 // Input Schema
 export const ThreatIntelligenceIndicatorMetricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4442,7 +4135,7 @@ export type ThreatIntelligenceIndicatorMetricsListInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorMetricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -4489,14 +4182,15 @@ export type ThreatIntelligenceIndicatorMetricsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorMetricsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ThreatIntelligenceIndicatorMetricsList = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ThreatIntelligenceIndicatorMetricsListInput,
     outputSchema: ThreatIntelligenceIndicatorMetricsListOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ThreatIntelligenceIndicatorQueryIndicatorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4512,7 +4206,7 @@ export type ThreatIntelligenceIndicatorQueryIndicatorsInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorQueryIndicatorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4559,13 +4253,13 @@ export type ThreatIntelligenceIndicatorQueryIndicatorsOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const ThreatIntelligenceIndicatorQueryIndicators =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorQueryIndicatorsInput,
     outputSchema: ThreatIntelligenceIndicatorQueryIndicatorsOutput,
   }));
 // Input Schema
 export const ThreatIntelligenceIndicatorReplaceTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4581,7 +4275,7 @@ export type ThreatIntelligenceIndicatorReplaceTagsInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorReplaceTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4612,14 +4306,15 @@ export type ThreatIntelligenceIndicatorReplaceTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ThreatIntelligenceIndicatorReplaceTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ThreatIntelligenceIndicatorReplaceTags = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ThreatIntelligenceIndicatorReplaceTagsInput,
     outputSchema: ThreatIntelligenceIndicatorReplaceTagsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ThreatIntelligenceIndicatorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4639,7 +4334,7 @@ export type ThreatIntelligenceIndicatorsListInput =
 
 // Output Schema
 export const ThreatIntelligenceIndicatorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4689,48 +4384,45 @@ export type ThreatIntelligenceIndicatorsListOutput =
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  * @param $orderby - Sorts the results. Optional.
  */
-export const ThreatIntelligenceIndicatorsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ThreatIntelligenceIndicatorsListInput,
-    outputSchema: ThreatIntelligenceIndicatorsListOutput,
-  }));
+export const ThreatIntelligenceIndicatorsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ThreatIntelligenceIndicatorsListInput,
+  outputSchema: ThreatIntelligenceIndicatorsListOutput,
+}));
 // Input Schema
-export const WatchlistItemsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
-    }),
-  );
+export const WatchlistItemsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
+  }),
+);
 export type WatchlistItemsCreateOrUpdateInput =
   typeof WatchlistItemsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WatchlistItemsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WatchlistItemsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WatchlistItemsCreateOrUpdateOutput =
   typeof WatchlistItemsCreateOrUpdateOutput.Type;
 
@@ -4743,29 +4435,26 @@ export type WatchlistItemsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistItemsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchlistItemsCreateOrUpdateInput,
-    outputSchema: WatchlistItemsCreateOrUpdateOutput,
-  }));
+export const WatchlistItemsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchlistItemsCreateOrUpdateInput,
+  outputSchema: WatchlistItemsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WatchlistItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
-    }),
-  );
+export const WatchlistItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
+  }),
+);
 export type WatchlistItemsDeleteInput = typeof WatchlistItemsDeleteInput.Type;
 
 // Output Schema
-export const WatchlistItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatchlistItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WatchlistItemsDeleteOutput = typeof WatchlistItemsDeleteOutput.Type;
 
 // The operation
@@ -4777,21 +4466,17 @@ export type WatchlistItemsDeleteOutput = typeof WatchlistItemsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchlistItemsDeleteInput,
-    outputSchema: WatchlistItemsDeleteOutput,
-  }),
-);
+export const WatchlistItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchlistItemsDeleteInput,
+  outputSchema: WatchlistItemsDeleteOutput,
+}));
 // Input Schema
-export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WatchlistItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
@@ -4800,26 +4485,25 @@ export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WatchlistItemsGetInput = typeof WatchlistItemsGetInput.Type;
 
 // Output Schema
-export const WatchlistItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WatchlistItemsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WatchlistItemsGetOutput = typeof WatchlistItemsGetOutput.Type;
 
 // The operation
@@ -4831,62 +4515,50 @@ export type WatchlistItemsGetOutput = typeof WatchlistItemsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistItemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistItemsGetInput,
   outputSchema: WatchlistItemsGetOutput,
 }));
 // Input Schema
-export const WatchlistItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems",
-    }),
-  );
+export const WatchlistItemsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems",
+  }),
+);
 export type WatchlistItemsListInput = typeof WatchlistItemsListInput.Type;
 
 // Output Schema
-export const WatchlistItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const WatchlistItemsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type WatchlistItemsListOutput = typeof WatchlistItemsListOutput.Type;
 
 // The operation
@@ -4899,47 +4571,45 @@ export type WatchlistItemsListOutput = typeof WatchlistItemsListOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const WatchlistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistItemsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistItemsListInput,
   outputSchema: WatchlistItemsListOutput,
 }));
 // Input Schema
-export const WatchlistsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
-    }),
-  );
+export const WatchlistsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
+  }),
+);
 export type WatchlistsCreateOrUpdateInput =
   typeof WatchlistsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const WatchlistsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const WatchlistsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WatchlistsCreateOrUpdateOutput =
   typeof WatchlistsCreateOrUpdateOutput.Type;
 
@@ -4952,14 +4622,12 @@ export type WatchlistsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchlistsCreateOrUpdateInput,
-    outputSchema: WatchlistsCreateOrUpdateOutput,
-  }),
-);
+export const WatchlistsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchlistsCreateOrUpdateInput,
+  outputSchema: WatchlistsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4973,7 +4641,7 @@ export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchlistsDeleteInput = typeof WatchlistsDeleteInput.Type;
 
 // Output Schema
-export const WatchlistsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WatchlistsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WatchlistsDeleteOutput = typeof WatchlistsDeleteOutput.Type;
 
 // The operation
@@ -4985,12 +4653,12 @@ export type WatchlistsDeleteOutput = typeof WatchlistsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsDeleteInput,
   outputSchema: WatchlistsDeleteOutput,
 }));
 // Input Schema
-export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5004,7 +4672,7 @@ export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchlistsGetInput = typeof WatchlistsGetInput.Type;
 
 // Output Schema
-export const WatchlistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5034,12 +4702,12 @@ export type WatchlistsGetOutput = typeof WatchlistsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WatchlistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsGetInput,
   outputSchema: WatchlistsGetOutput,
 }));
 // Input Schema
-export const WatchlistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5054,7 +4722,7 @@ export const WatchlistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchlistsListInput = typeof WatchlistsListInput.Type;
 
 // Output Schema
-export const WatchlistsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -5090,7 +4758,7 @@ export type WatchlistsListOutput = typeof WatchlistsListOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const WatchlistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsListInput,
   outputSchema: WatchlistsListOutput,
 }));

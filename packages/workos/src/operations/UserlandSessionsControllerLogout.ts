@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandSessionsControllerLogoutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session_id: Schema.String,
     return_to: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "GET", path: "/user_management/sessions/logout" }));
@@ -13,8 +13,7 @@ export type UserlandSessionsControllerLogoutInput =
   typeof UserlandSessionsControllerLogoutInput.Type;
 
 // Output Schema
-export const UserlandSessionsControllerLogoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserlandSessionsControllerLogoutOutput = /*@__PURE__*/ Schema.Void;
 export type UserlandSessionsControllerLogoutOutput =
   typeof UserlandSessionsControllerLogoutOutput.Type;
 
@@ -27,9 +26,8 @@ export type UserlandSessionsControllerLogoutOutput =
  * @param session_id - The ID of the session to revoke. This can be extracted from the `sid` claim of the access token.
  * @param return_to - The URL to redirect the user to after session revocation.
  */
-export const UserlandSessionsControllerLogout =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UserlandSessionsControllerLogoutInput,
-    outputSchema: UserlandSessionsControllerLogoutOutput,
-    errors: [UnprocessableEntity] as const,
-  }));
+export const UserlandSessionsControllerLogout = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandSessionsControllerLogoutInput,
+  outputSchema: UserlandSessionsControllerLogoutOutput,
+  errors: [UnprocessableEntity] as const,
+}));

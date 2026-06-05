@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupTokenInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   expiration: Schema.optional(Schema.String),
@@ -27,11 +27,9 @@ export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupTokenInput = typeof CreateGroupTokenInput.Type;
 
 // Output Schema
-export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    jwt: Schema.optional(Schema.String),
-  },
-);
+export const CreateGroupTokenOutput = /*@__PURE__*/ Schema.Struct({
+  jwt: Schema.optional(Schema.String),
+});
 export type CreateGroupTokenOutput = typeof CreateGroupTokenOutput.Type;
 
 // The operation
@@ -45,7 +43,7 @@ export type CreateGroupTokenOutput = typeof CreateGroupTokenOutput.Type;
  * @param expiration - Expiration time for the token (e.g., 2w1d30m).
  * @param authorization - Authorization level for the token (full-access or read-only).
  */
-export const createGroupToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupTokenInput,
   outputSchema: CreateGroupTokenOutput,
   errors: [BadRequest, NotFound] as const,

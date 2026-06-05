@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteBranchInput = typeof DeleteBranchInput.Type;
 
 // Output Schema
-export const DeleteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteBranchOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteBranchOutput = typeof DeleteBranchOutput.Type;
 
 // The operation
@@ -30,7 +30,7 @@ export type DeleteBranchOutput = typeof DeleteBranchOutput.Type;
  * @param branch - The name of the branch
  * @param delete_descendants - If true, recursively delete all descendant branches along with this branch
  */
-export const deleteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBranchInput,
   outputSchema: DeleteBranchOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

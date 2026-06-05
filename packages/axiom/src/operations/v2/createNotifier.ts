@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import { UnprocessableEntity } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
 import * as T from "../../traits.ts";
+import { UnprocessableEntity } from "../../errors.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const CreateNotifierInput = /*@__PURE__*/ Schema.Struct({
@@ -108,7 +108,7 @@ export const CreateNotifierOutput = /*@__PURE__*/ Schema.Struct({
     ),
     opsgenie: Schema.optional(
       Schema.Struct({
-        apiKey: Schema.optional(SensitiveString),
+        apiKey: Schema.optional(SensitiveOutputString),
         isEU: Schema.optional(Schema.Boolean),
       }),
     ),

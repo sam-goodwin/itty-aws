@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupUsersInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGroupUsersInput = typeof ListGroupUsersInput.Type;
 
 // Output Schema
-export const ListGroupUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupUsersOutput = /*@__PURE__*/ Schema.Void;
 export type ListGroupUsersOutput = typeof ListGroupUsersOutput.Type;
 
 // The operation
@@ -45,7 +45,7 @@ export type ListGroupUsersOutput = typeof ListGroupUsersOutput.Type;
  * @param orgMembershipStatus - Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
  * @param username - Email address to filter users by. Not supported in deprecated versions.
  */
-export const listGroupUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupUsersInput,
   outputSchema: ListGroupUsersOutput,
   errors: [Forbidden, NotFound] as const,

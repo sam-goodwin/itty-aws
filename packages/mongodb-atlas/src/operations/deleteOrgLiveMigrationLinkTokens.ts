@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteOrgLiveMigrationLinkTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -18,8 +18,7 @@ export type DeleteOrgLiveMigrationLinkTokensInput =
   typeof DeleteOrgLiveMigrationLinkTokensInput.Type;
 
 // Output Schema
-export const DeleteOrgLiveMigrationLinkTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOrgLiveMigrationLinkTokensOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOrgLiveMigrationLinkTokensOutput =
   typeof DeleteOrgLiveMigrationLinkTokensOutput.Type;
 
@@ -32,9 +31,8 @@ export type DeleteOrgLiveMigrationLinkTokensOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
-export const deleteOrgLiveMigrationLinkTokens =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteOrgLiveMigrationLinkTokensInput,
-    outputSchema: DeleteOrgLiveMigrationLinkTokensOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const deleteOrgLiveMigrationLinkTokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrgLiveMigrationLinkTokensInput,
+  outputSchema: DeleteOrgLiveMigrationLinkTokensOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

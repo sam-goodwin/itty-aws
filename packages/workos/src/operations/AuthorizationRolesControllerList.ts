@@ -5,7 +5,7 @@ import { Forbidden } from "../errors.ts";
 
 // Input Schema
 export const AuthorizationRolesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/authorization/roles" }),
   );
 export type AuthorizationRolesControllerListInput =
@@ -13,7 +13,7 @@ export type AuthorizationRolesControllerListInput =
 
 // Output Schema
 export const AuthorizationRolesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -43,9 +43,8 @@ export type AuthorizationRolesControllerListOutput =
  *
  * List all environment roles in priority order.
  */
-export const AuthorizationRolesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AuthorizationRolesControllerListInput,
-    outputSchema: AuthorizationRolesControllerListOutput,
-    errors: [Forbidden] as const,
-  }));
+export const AuthorizationRolesControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationRolesControllerListInput,
+  outputSchema: AuthorizationRolesControllerListOutput,
+  errors: [Forbidden] as const,
+}));

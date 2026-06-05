@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const OrganizationsControllerUpdateOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
@@ -35,7 +35,7 @@ export type OrganizationsControllerUpdateOrganizationInput =
 
 // Output Schema
 export const OrganizationsControllerUpdateOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -83,8 +83,8 @@ export type OrganizationsControllerUpdateOrganizationOutput =
  *
  * @param id - Unique identifier of the Organization.
  */
-export const OrganizationsControllerUpdateOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationsControllerUpdateOrganization = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationsControllerUpdateOrganizationInput,
     outputSchema: OrganizationsControllerUpdateOrganizationOutput,
     errors: [
@@ -94,4 +94,5 @@ export const OrganizationsControllerUpdateOrganization =
       Conflict,
       UnprocessableEntity,
     ] as const,
-  }));
+  }),
+);

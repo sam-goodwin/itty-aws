@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteBranchNeonAuthTrustedDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     auth_provider: Schema.Literals([
@@ -29,7 +29,7 @@ export type DeleteBranchNeonAuthTrustedDomainInput =
 
 // Output Schema
 export const DeleteBranchNeonAuthTrustedDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteBranchNeonAuthTrustedDomainOutput =
   typeof DeleteBranchNeonAuthTrustedDomainOutput.Type;
 
@@ -42,8 +42,7 @@ export type DeleteBranchNeonAuthTrustedDomainOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const deleteBranchNeonAuthTrustedDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteBranchNeonAuthTrustedDomainInput,
-    outputSchema: DeleteBranchNeonAuthTrustedDomainOutput,
-  }));
+export const deleteBranchNeonAuthTrustedDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteBranchNeonAuthTrustedDomainInput,
+  outputSchema: DeleteBranchNeonAuthTrustedDomainOutput,
+}));

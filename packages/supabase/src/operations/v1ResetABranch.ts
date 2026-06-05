@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1ResetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ResetABranchInput = /*@__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
 }).pipe(
@@ -13,7 +13,7 @@ export const V1ResetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1ResetABranchInput = typeof V1ResetABranchInput.Type;
 
 // Output Schema
-export const V1ResetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ResetABranchOutput = /*@__PURE__*/ Schema.Struct({
   workflow_run_id: Schema.String,
   message: Schema.Literals(["ok"]),
 });
@@ -27,7 +27,7 @@ export type V1ResetABranchOutput = typeof V1ResetABranchOutput.Type;
  *
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
-export const v1ResetABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ResetABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ResetABranchInput,
   outputSchema: V1ResetABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

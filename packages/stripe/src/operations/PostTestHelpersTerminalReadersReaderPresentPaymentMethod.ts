@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTerminalReadersReaderPresentPaymentMethodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     amount_tip: Schema.optional(Schema.Number),
     card: Schema.optional(
@@ -41,7 +41,7 @@ export type PostTestHelpersTerminalReadersReaderPresentPaymentMethodInput =
 
 // Output Schema
 export const PostTestHelpersTerminalReadersReaderPresentPaymentMethodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -78,7 +78,7 @@ export type PostTestHelpersTerminalReadersReaderPresentPaymentMethodOutput =
  * <p>Presents a payment method on a simulated reader. Can be used to simulate accepting a payment, saving a card or refunding a transaction.</p>
  */
 export const PostTestHelpersTerminalReadersReaderPresentPaymentMethod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTerminalReadersReaderPresentPaymentMethodInput,
     outputSchema:
       PostTestHelpersTerminalReadersReaderPresentPaymentMethodOutput,

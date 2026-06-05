@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
-export const UpdatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export const UpdatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdatePasswordInput = typeof UpdatePasswordInput.Type;
 
 // Output Schema
-export const UpdatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -37,13 +37,11 @@ export const UpdatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   access_host_url: Schema.String,
   access_host_regional_url: Schema.String,
   access_host_regional_urls: Schema.Array(Schema.String),
-  actor: Schema.NullOr(
-    Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  ),
+  actor: Schema.Struct({
+    id: Schema.String,
+    display_name: Schema.String,
+    avatar_url: Schema.String,
+  }),
   region: Schema.Struct({
     id: Schema.String,
     provider: Schema.String,
@@ -53,8 +51,6 @@ export const UpdatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
-    mysql_supported: Schema.Boolean,
-    postgresql_supported: Schema.Boolean,
   }),
   username: Schema.String,
   plain_text: SensitiveOutputNullableString,
@@ -81,7 +77,7 @@ export type UpdatePasswordOutput = typeof UpdatePasswordOutput.Type;
  * @param name - The name for the password
  * @param cidrs - List of IP addresses or CIDR ranges that can use this password
  */
-export const updatePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updatePassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatePasswordInput,
   outputSchema: UpdatePasswordOutput,
   errors: [Forbidden, NotFound] as const,

@@ -3,24 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetApplicationFeesFeeRefundsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fee: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/application_fees/{fee}/refunds/{id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+export const GetApplicationFeesFeeRefundsIdInput = /*@__PURE__*/ Schema.Struct({
+  fee: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/application_fees/{fee}/refunds/{id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetApplicationFeesFeeRefundsIdInput =
   typeof GetApplicationFeesFeeRefundsIdInput.Type;
 
 // Output Schema
-export const GetApplicationFeesFeeRefundsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetApplicationFeesFeeRefundsIdOutput = /*@__PURE__*/ Schema.Struct(
+  {
     amount: Schema.Number,
     balance_transaction: Schema.Unknown,
     created: Schema.Number,
@@ -29,7 +28,8 @@ export const GetApplicationFeesFeeRefundsIdOutput =
     id: Schema.String,
     metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     object: Schema.Literals(["fee_refund"]),
-  });
+  },
+);
 export type GetApplicationFeesFeeRefundsIdOutput =
   typeof GetApplicationFeesFeeRefundsIdOutput.Type;
 
@@ -41,8 +41,7 @@ export type GetApplicationFeesFeeRefundsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetApplicationFeesFeeRefundsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetApplicationFeesFeeRefundsIdInput,
-    outputSchema: GetApplicationFeesFeeRefundsIdOutput,
-  }));
+export const GetApplicationFeesFeeRefundsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApplicationFeesFeeRefundsIdInput,
+  outputSchema: GetApplicationFeesFeeRefundsIdOutput,
+}));

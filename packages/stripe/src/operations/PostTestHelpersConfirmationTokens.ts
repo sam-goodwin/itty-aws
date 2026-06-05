@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersConfirmationTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     payment_method: Schema.optional(Schema.String),
     payment_method_data: Schema.optional(
@@ -386,7 +386,7 @@ export type PostTestHelpersConfirmationTokensInput =
 
 // Output Schema
 export const PostTestHelpersConfirmationTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expires_at: Schema.NullOr(Schema.Number),
     id: Schema.String,
@@ -413,8 +413,7 @@ export type PostTestHelpersConfirmationTokensOutput =
  *
  * <p>Creates a test mode Confirmation Token server side for your integration tests.</p>
  */
-export const PostTestHelpersConfirmationTokens =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostTestHelpersConfirmationTokensInput,
-    outputSchema: PostTestHelpersConfirmationTokensOutput,
-  }));
+export const PostTestHelpersConfirmationTokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTestHelpersConfirmationTokensInput,
+  outputSchema: PostTestHelpersConfirmationTokensOutput,
+}));

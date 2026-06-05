@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerProfileConfigsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     scope: Schema.optional(
@@ -33,7 +33,7 @@ export type CustomerProfileConfigsPartialUpdateInput =
 
 // Output Schema
 export const CustomerProfileConfigsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     scope: Schema.optional(
       Schema.Literals([
@@ -59,9 +59,10 @@ export type CustomerProfileConfigsPartialUpdateOutput =
  * @param id - A UUID string identifying this customer profile config.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const customerProfileConfigsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const customerProfileConfigsPartialUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CustomerProfileConfigsPartialUpdateInput,
     outputSchema: CustomerProfileConfigsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

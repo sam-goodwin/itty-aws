@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const UpdateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export const UpdateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateWebhookInput = typeof UpdateWebhookInput.Type;
 
 // Output Schema
-export const UpdateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -68,7 +68,7 @@ export type UpdateWebhookOutput = typeof UpdateWebhookOutput.Type;
  * @param enabled - Whether the webhook should be enabled
  * @param events - The events this webhook should subscribe to
  */
-export const updateWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateWebhookInput,
   outputSchema: UpdateWebhookOutput,
   errors: [Forbidden, NotFound] as const,

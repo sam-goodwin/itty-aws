@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,7 +18,7 @@ export const DeleteOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteOrgApiKeyInput = typeof DeleteOrgApiKeyInput.Type;
 
 // Output Schema
-export const DeleteOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteOrgApiKeyOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteOrgApiKeyOutput = typeof DeleteOrgApiKeyOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type DeleteOrgApiKeyOutput = typeof DeleteOrgApiKeyOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key.
  */
-export const deleteOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteOrgApiKeyInput,
   outputSchema: DeleteOrgApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

@@ -3,25 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostApplicationFeesFeeRefundsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostApplicationFeesFeeRefundsIdInput = /*@__PURE__*/ Schema.Struct(
+  {
     fee: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Unknown),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/application_fees/{fee}/refunds/{id}",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/application_fees/{fee}/refunds/{id}",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostApplicationFeesFeeRefundsIdInput =
   typeof PostApplicationFeesFeeRefundsIdInput.Type;
 
 // Output Schema
 export const PostApplicationFeesFeeRefundsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.Unknown,
     created: Schema.Number,
@@ -41,8 +42,7 @@ export type PostApplicationFeesFeeRefundsIdOutput =
  * <p>Updates the specified application fee refund by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  * <p>This request only accepts metadata as an argument.</p>
  */
-export const PostApplicationFeesFeeRefundsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostApplicationFeesFeeRefundsIdInput,
-    outputSchema: PostApplicationFeesFeeRefundsIdOutput,
-  }));
+export const PostApplicationFeesFeeRefundsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostApplicationFeesFeeRefundsIdInput,
+  outputSchema: PostApplicationFeesFeeRefundsIdOutput,
+}));

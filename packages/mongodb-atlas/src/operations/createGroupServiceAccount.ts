@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const CreateGroupServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/serviceAccounts",
-    }),
-  );
+export const CreateGroupServiceAccountInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/serviceAccounts",
+  }),
+);
 export type CreateGroupServiceAccountInput =
   typeof CreateGroupServiceAccountInput.Type;
 
 // Output Schema
-export const CreateGroupServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CreateGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
 export type CreateGroupServiceAccountOutput =
   typeof CreateGroupServiceAccountOutput.Type;
 
@@ -36,10 +34,8 @@ export type CreateGroupServiceAccountOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupServiceAccountInput,
-    outputSchema: CreateGroupServiceAccountOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupServiceAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupServiceAccountInput,
+  outputSchema: CreateGroupServiceAccountOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

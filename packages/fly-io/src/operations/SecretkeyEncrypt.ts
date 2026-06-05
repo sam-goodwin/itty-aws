@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeyEncryptInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -19,11 +19,9 @@ export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SecretkeyEncryptInput = typeof SecretkeyEncryptInput.Type;
 
 // Output Schema
-export const SecretkeyEncryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ciphertext: Schema.optional(Schema.Array(Schema.Number)),
-  },
-);
+export const SecretkeyEncryptOutput = /*@__PURE__*/ Schema.Struct({
+  ciphertext: Schema.optional(Schema.Array(Schema.Number)),
+});
 export type SecretkeyEncryptOutput = typeof SecretkeyEncryptOutput.Type;
 
 // The operation
@@ -34,7 +32,7 @@ export type SecretkeyEncryptOutput = typeof SecretkeyEncryptOutput.Type;
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeyEncrypt = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeyEncrypt = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyEncryptInput,
   outputSchema: SecretkeyEncryptOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

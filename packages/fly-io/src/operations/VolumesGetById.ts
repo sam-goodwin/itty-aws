@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const VolumesGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetByIdInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -13,7 +13,7 @@ export const VolumesGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VolumesGetByIdInput = typeof VolumesGetByIdInput.Type;
 
 // Output Schema
-export const VolumesGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetByIdOutput = /*@__PURE__*/ Schema.Struct({
   attached_alloc_id: Schema.optional(Schema.String),
   attached_machine_id: Schema.optional(Schema.String),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
@@ -49,7 +49,7 @@ export type VolumesGetByIdOutput = typeof VolumesGetByIdOutput.Type;
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const VolumesGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesGetById = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesGetByIdInput,
   outputSchema: VolumesGetByIdOutput,
   errors: [Forbidden, NotFound] as const,

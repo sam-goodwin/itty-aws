@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type GetGroupPrivateEndpointEndpointServiceInput =
 
 // Output Schema
 export const GetGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupPrivateEndpointEndpointServiceOutput =
   typeof GetGroupPrivateEndpointEndpointServiceOutput.Type;
 
@@ -40,9 +40,10 @@ export type GetGroupPrivateEndpointEndpointServiceOutput =
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to return.
  */
-export const getGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupPrivateEndpointEndpointService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetGroupPrivateEndpointEndpointServiceInput,
     outputSchema: GetGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

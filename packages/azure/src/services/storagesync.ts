@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CloudEndpointsAfsShareMetadataCertificatePublicKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export type CloudEndpointsAfsShareMetadataCertificatePublicKeysInput =
 
 // Output Schema
 export const CloudEndpointsAfsShareMetadataCertificatePublicKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstKey: Schema.optional(Schema.String),
     secondKey: Schema.optional(Schema.String),
   });
@@ -47,48 +47,46 @@ export type CloudEndpointsAfsShareMetadataCertificatePublicKeysOutput =
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
 export const CloudEndpointsAfsShareMetadataCertificatePublicKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudEndpointsAfsShareMetadataCertificatePublicKeysInput,
     outputSchema: CloudEndpointsAfsShareMetadataCertificatePublicKeysOutput,
   }));
 // Input Schema
-export const CloudEndpointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
-    }),
-  );
+export const CloudEndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+  }),
+);
 export type CloudEndpointsCreateInput = typeof CloudEndpointsCreateInput.Type;
 
 // Output Schema
-export const CloudEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CloudEndpointsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CloudEndpointsCreateOutput = typeof CloudEndpointsCreateOutput.Type;
 
 // The operation
@@ -102,32 +100,28 @@ export type CloudEndpointsCreateOutput = typeof CloudEndpointsCreateOutput.Type;
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsCreateInput,
-    outputSchema: CloudEndpointsCreateOutput,
+export const CloudEndpointsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsCreateInput,
+  outputSchema: CloudEndpointsCreateOutput,
+}));
+// Input Schema
+export const CloudEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
   }),
 );
-// Input Schema
-export const CloudEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
-    }),
-  );
 export type CloudEndpointsDeleteInput = typeof CloudEndpointsDeleteInput.Type;
 
 // Output Schema
-export const CloudEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsDeleteOutput = typeof CloudEndpointsDeleteOutput.Type;
 
 // The operation
@@ -141,23 +135,19 @@ export type CloudEndpointsDeleteOutput = typeof CloudEndpointsDeleteOutput.Type;
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsDeleteInput,
-    outputSchema: CloudEndpointsDeleteOutput,
-  }),
-);
+export const CloudEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsDeleteInput,
+  outputSchema: CloudEndpointsDeleteOutput,
+}));
 // Input Schema
-export const CloudEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CloudEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
@@ -166,26 +156,25 @@ export const CloudEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CloudEndpointsGetInput = typeof CloudEndpointsGetInput.Type;
 
 // Output Schema
-export const CloudEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CloudEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CloudEndpointsGetOutput = typeof CloudEndpointsGetOutput.Type;
 
 // The operation
@@ -199,65 +188,63 @@ export type CloudEndpointsGetOutput = typeof CloudEndpointsGetOutput.Type;
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudEndpointsGetInput,
   outputSchema: CloudEndpointsGetOutput,
 }));
 // Input Schema
-export const CloudEndpointsListBySyncGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
-    }),
-  );
+export const CloudEndpointsListBySyncGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
+  }),
+);
 export type CloudEndpointsListBySyncGroupInput =
   typeof CloudEndpointsListBySyncGroupInput.Type;
 
 // Output Schema
-export const CloudEndpointsListBySyncGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CloudEndpointsListBySyncGroupOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CloudEndpointsListBySyncGroupOutput =
   typeof CloudEndpointsListBySyncGroupOutput.Type;
 
@@ -271,38 +258,35 @@ export type CloudEndpointsListBySyncGroupOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param syncGroupName - Name of Sync Group resource.
  */
-export const CloudEndpointsListBySyncGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CloudEndpointsListBySyncGroupInput,
-    outputSchema: CloudEndpointsListBySyncGroupOutput,
-  }));
+export const CloudEndpointsListBySyncGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsListBySyncGroupInput,
+  outputSchema: CloudEndpointsListBySyncGroupOutput,
+}));
 // Input Schema
-export const CloudEndpointsPostBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
-    }),
-  );
+export const CloudEndpointsPostBackupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
+  }),
+);
 export type CloudEndpointsPostBackupInput =
   typeof CloudEndpointsPostBackupInput.Type;
 
 // Output Schema
-export const CloudEndpointsPostBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupMetadata: Schema.optional(
-      Schema.Struct({
-        cloudEndpointName: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CloudEndpointsPostBackupOutput = /*@__PURE__*/ Schema.Struct({
+  backupMetadata: Schema.optional(
+    Schema.Struct({
+      cloudEndpointName: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CloudEndpointsPostBackupOutput =
   typeof CloudEndpointsPostBackupOutput.Type;
 
@@ -317,33 +301,29 @@ export type CloudEndpointsPostBackupOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsPostBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsPostBackupInput,
-    outputSchema: CloudEndpointsPostBackupOutput,
+export const CloudEndpointsPostBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsPostBackupInput,
+  outputSchema: CloudEndpointsPostBackupOutput,
+}));
+// Input Schema
+export const CloudEndpointsPostRestoreInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
   }),
 );
-// Input Schema
-export const CloudEndpointsPostRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
-    }),
-  );
 export type CloudEndpointsPostRestoreInput =
   typeof CloudEndpointsPostRestoreInput.Type;
 
 // Output Schema
-export const CloudEndpointsPostRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudEndpointsPostRestoreOutput = /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsPostRestoreOutput =
   typeof CloudEndpointsPostRestoreOutput.Type;
 
@@ -358,33 +338,29 @@ export type CloudEndpointsPostRestoreOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsPostRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsPostRestoreInput,
-    outputSchema: CloudEndpointsPostRestoreOutput,
+export const CloudEndpointsPostRestore = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsPostRestoreInput,
+  outputSchema: CloudEndpointsPostRestoreOutput,
+}));
+// Input Schema
+export const CloudEndpointsPreBackupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
   }),
 );
-// Input Schema
-export const CloudEndpointsPreBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
-    }),
-  );
 export type CloudEndpointsPreBackupInput =
   typeof CloudEndpointsPreBackupInput.Type;
 
 // Output Schema
-export const CloudEndpointsPreBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudEndpointsPreBackupOutput = /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsPreBackupOutput =
   typeof CloudEndpointsPreBackupOutput.Type;
 
@@ -399,33 +375,29 @@ export type CloudEndpointsPreBackupOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsPreBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsPreBackupInput,
-    outputSchema: CloudEndpointsPreBackupOutput,
+export const CloudEndpointsPreBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsPreBackupInput,
+  outputSchema: CloudEndpointsPreBackupOutput,
+}));
+// Input Schema
+export const CloudEndpointsPreRestoreInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
   }),
 );
-// Input Schema
-export const CloudEndpointsPreRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
-    }),
-  );
 export type CloudEndpointsPreRestoreInput =
   typeof CloudEndpointsPreRestoreInput.Type;
 
 // Output Schema
-export const CloudEndpointsPreRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudEndpointsPreRestoreOutput = /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsPreRestoreOutput =
   typeof CloudEndpointsPreRestoreOutput.Type;
 
@@ -440,33 +412,29 @@ export type CloudEndpointsPreRestoreOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsPreRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudEndpointsPreRestoreInput,
-    outputSchema: CloudEndpointsPreRestoreOutput,
+export const CloudEndpointsPreRestore = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsPreRestoreInput,
+  outputSchema: CloudEndpointsPreRestoreOutput,
+}));
+// Input Schema
+export const CloudEndpointsRestoreheartbeatInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  cloudEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/restoreheartbeat",
   }),
 );
-// Input Schema
-export const CloudEndpointsRestoreheartbeatInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/restoreheartbeat",
-    }),
-  );
 export type CloudEndpointsRestoreheartbeatInput =
   typeof CloudEndpointsRestoreheartbeatInput.Type;
 
 // Output Schema
-export const CloudEndpointsRestoreheartbeatOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CloudEndpointsRestoreheartbeatOutput = /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsRestoreheartbeatOutput =
   typeof CloudEndpointsRestoreheartbeatOutput.Type;
 
@@ -481,14 +449,13 @@ export type CloudEndpointsRestoreheartbeatOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsRestoreheartbeat =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CloudEndpointsRestoreheartbeatInput,
-    outputSchema: CloudEndpointsRestoreheartbeatOutput,
-  }));
+export const CloudEndpointsRestoreheartbeat = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudEndpointsRestoreheartbeatInput,
+  outputSchema: CloudEndpointsRestoreheartbeatOutput,
+}));
 // Input Schema
 export const CloudEndpointsTriggerChangeDetectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -506,7 +473,7 @@ export type CloudEndpointsTriggerChangeDetectionInput =
 
 // Output Schema
 export const CloudEndpointsTriggerChangeDetectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CloudEndpointsTriggerChangeDetectionOutput =
   typeof CloudEndpointsTriggerChangeDetectionOutput.Type;
 
@@ -521,64 +488,63 @@ export type CloudEndpointsTriggerChangeDetectionOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param cloudEndpointName - Name of Cloud Endpoint object.
  */
-export const CloudEndpointsTriggerChangeDetection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudEndpointsTriggerChangeDetection = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CloudEndpointsTriggerChangeDetectionInput,
     outputSchema: CloudEndpointsTriggerChangeDetectionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const LocationOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
-    }),
-  );
+export const LocationOperationStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
+  }),
+);
 export type LocationOperationStatusInput =
   typeof LocationOperationStatusInput.Type;
 
 // Output Schema
-export const LocationOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            requestUri: Schema.optional(Schema.String),
-            exceptionType: Schema.optional(Schema.String),
-            httpMethod: Schema.optional(Schema.String),
-            hashedMessage: Schema.optional(Schema.String),
-            httpErrorCode: Schema.optional(Schema.String),
-          }),
-        ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            callStack: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            innerException: Schema.optional(Schema.String),
-            innerExceptionCallStack: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    percentComplete: Schema.optional(Schema.Number),
-  });
+export const LocationOperationStatusOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          requestUri: Schema.optional(Schema.String),
+          exceptionType: Schema.optional(Schema.String),
+          httpMethod: Schema.optional(Schema.String),
+          hashedMessage: Schema.optional(Schema.String),
+          httpErrorCode: Schema.optional(Schema.String),
+        }),
+      ),
+      innererror: Schema.optional(
+        Schema.Struct({
+          callStack: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          innerException: Schema.optional(Schema.String),
+          innerExceptionCallStack: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  percentComplete: Schema.optional(Schema.Number),
+});
 export type LocationOperationStatusOutput =
   typeof LocationOperationStatusOutput.Type;
 
@@ -591,14 +557,12 @@ export type LocationOperationStatusOutput =
  * @param locationName - The desired region to obtain information from.
  * @param operationId - operation Id
  */
-export const LocationOperationStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationOperationStatusInput,
-    outputSchema: LocationOperationStatusOutput,
-  }),
-);
+export const LocationOperationStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationOperationStatusInput,
+  outputSchema: LocationOperationStatusOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -609,7 +573,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -669,62 +633,60 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const OperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-    workflowId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
-    }),
-  );
+export const OperationStatusGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+  workflowId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
+  }),
+);
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
 
 // Output Schema
-export const OperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            requestUri: Schema.optional(Schema.String),
-            exceptionType: Schema.optional(Schema.String),
-            httpMethod: Schema.optional(Schema.String),
-            hashedMessage: Schema.optional(Schema.String),
-            httpErrorCode: Schema.optional(Schema.String),
-          }),
-        ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            callStack: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            innerException: Schema.optional(Schema.String),
-            innerExceptionCallStack: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  });
+export const OperationStatusGetOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          requestUri: Schema.optional(Schema.String),
+          exceptionType: Schema.optional(Schema.String),
+          httpMethod: Schema.optional(Schema.String),
+          hashedMessage: Schema.optional(Schema.String),
+          httpErrorCode: Schema.optional(Schema.String),
+        }),
+      ),
+      innererror: Schema.optional(
+        Schema.Struct({
+          callStack: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          innerException: Schema.optional(Schema.String),
+          innerExceptionCallStack: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+});
 export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
 
 // The operation
@@ -738,13 +700,13 @@ export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
  * @param workflowId - workflow Id
  * @param operationId - operation Id
  */
-export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationStatusGetInput,
   outputSchema: OperationStatusGetOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -781,7 +743,7 @@ export type PrivateEndpointConnectionsCreateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -814,14 +776,13 @@ export type PrivateEndpointConnectionsCreateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  * @param properties - Resource properties.
  */
-export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsCreateInput,
-    outputSchema: PrivateEndpointConnectionsCreateOutput,
-  }));
+export const PrivateEndpointConnectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsCreateInput,
+  outputSchema: PrivateEndpointConnectionsCreateOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -837,8 +798,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -852,49 +812,46 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
+export const PrivateEndpointConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsDeleteInput,
+  outputSchema: PrivateEndpointConnectionsDeleteOutput,
+}));
 // Input Schema
-export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
+export const PrivateEndpointConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+  }),
+);
 export type PrivateEndpointConnectionsGetInput =
   typeof PrivateEndpointConnectionsGetInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const PrivateEndpointConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -908,14 +865,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
+export const PrivateEndpointConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointConnectionsGetInput,
+  outputSchema: PrivateEndpointConnectionsGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsListByStorageSyncServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -931,7 +887,7 @@ export type PrivateEndpointConnectionsListByStorageSyncServiceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByStorageSyncServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -980,13 +936,13 @@ export type PrivateEndpointConnectionsListByStorageSyncServiceOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
 export const PrivateEndpointConnectionsListByStorageSyncService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByStorageSyncServiceInput,
     outputSchema: PrivateEndpointConnectionsListByStorageSyncServiceOutput,
   }));
 // Input Schema
 export const PrivateLinkResourcesListByStorageSyncServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -1002,7 +958,7 @@ export type PrivateLinkResourcesListByStorageSyncServiceInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByStorageSyncServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1050,48 +1006,46 @@ export type PrivateLinkResourcesListByStorageSyncServiceOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
 export const PrivateLinkResourcesListByStorageSyncService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByStorageSyncServiceInput,
     outputSchema: PrivateLinkResourcesListByStorageSyncServiceOutput,
   }));
 // Input Schema
-export const RegisteredServersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-    }),
-  );
+export const RegisteredServersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  serverId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+  }),
+);
 export type RegisteredServersCreateInput =
   typeof RegisteredServersCreateInput.Type;
 
 // Output Schema
-export const RegisteredServersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RegisteredServersCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegisteredServersCreateOutput =
   typeof RegisteredServersCreateOutput.Type;
 
@@ -1105,32 +1059,28 @@ export type RegisteredServersCreateOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param serverId - GUID identifying the on-premises server.
  */
-export const RegisteredServersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredServersCreateInput,
-    outputSchema: RegisteredServersCreateOutput,
+export const RegisteredServersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredServersCreateInput,
+  outputSchema: RegisteredServersCreateOutput,
+}));
+// Input Schema
+export const RegisteredServersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  serverId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
   }),
 );
-// Input Schema
-export const RegisteredServersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-    }),
-  );
 export type RegisteredServersDeleteInput =
   typeof RegisteredServersDeleteInput.Type;
 
 // Output Schema
-export const RegisteredServersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegisteredServersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegisteredServersDeleteOutput =
   typeof RegisteredServersDeleteOutput.Type;
 
@@ -1144,49 +1094,45 @@ export type RegisteredServersDeleteOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param serverId - GUID identifying the on-premises server.
  */
-export const RegisteredServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredServersDeleteInput,
-    outputSchema: RegisteredServersDeleteOutput,
+export const RegisteredServersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredServersDeleteInput,
+  outputSchema: RegisteredServersDeleteOutput,
+}));
+// Input Schema
+export const RegisteredServersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  serverId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
   }),
 );
-// Input Schema
-export const RegisteredServersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-    }),
-  );
 export type RegisteredServersGetInput = typeof RegisteredServersGetInput.Type;
 
 // Output Schema
-export const RegisteredServersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RegisteredServersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegisteredServersGetOutput = typeof RegisteredServersGetOutput.Type;
 
 // The operation
@@ -1199,15 +1145,13 @@ export type RegisteredServersGetOutput = typeof RegisteredServersGetOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param serverId - GUID identifying the on-premises server.
  */
-export const RegisteredServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredServersGetInput,
-    outputSchema: RegisteredServersGetOutput,
-  }),
-);
+export const RegisteredServersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredServersGetInput,
+  outputSchema: RegisteredServersGetOutput,
+}));
 // Input Schema
 export const RegisteredServersListByStorageSyncServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -1223,7 +1167,7 @@ export type RegisteredServersListByStorageSyncServiceInput =
 
 // Output Schema
 export const RegisteredServersListByStorageSyncServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1271,14 +1215,15 @@ export type RegisteredServersListByStorageSyncServiceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const RegisteredServersListByStorageSyncService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegisteredServersListByStorageSyncService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: RegisteredServersListByStorageSyncServiceInput,
     outputSchema: RegisteredServersListByStorageSyncServiceOutput,
-  }));
+  }),
+);
 // Input Schema
 export const RegisteredServersTriggerRolloverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -1294,8 +1239,7 @@ export type RegisteredServersTriggerRolloverInput =
   typeof RegisteredServersTriggerRolloverInput.Type;
 
 // Output Schema
-export const RegisteredServersTriggerRolloverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegisteredServersTriggerRolloverOutput = /*@__PURE__*/ Schema.Void;
 export type RegisteredServersTriggerRolloverOutput =
   typeof RegisteredServersTriggerRolloverOutput.Type;
 
@@ -1309,49 +1253,46 @@ export type RegisteredServersTriggerRolloverOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param serverId - GUID identifying the on-premises server.
  */
-export const RegisteredServersTriggerRollover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RegisteredServersTriggerRolloverInput,
-    outputSchema: RegisteredServersTriggerRolloverOutput,
-  }));
+export const RegisteredServersTriggerRollover = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredServersTriggerRolloverInput,
+  outputSchema: RegisteredServersTriggerRolloverOutput,
+}));
 // Input Schema
-export const RegisteredServersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-    }),
-  );
+export const RegisteredServersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  serverId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+  }),
+);
 export type RegisteredServersUpdateInput =
   typeof RegisteredServersUpdateInput.Type;
 
 // Output Schema
-export const RegisteredServersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const RegisteredServersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RegisteredServersUpdateOutput =
   typeof RegisteredServersUpdateOutput.Type;
 
@@ -1365,50 +1306,46 @@ export type RegisteredServersUpdateOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param serverId - GUID identifying the on-premises server.
  */
-export const RegisteredServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredServersUpdateInput,
-    outputSchema: RegisteredServersUpdateOutput,
+export const RegisteredServersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredServersUpdateInput,
+  outputSchema: RegisteredServersUpdateOutput,
+}));
+// Input Schema
+export const ServerEndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  serverEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
   }),
 );
-// Input Schema
-export const ServerEndpointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-    }),
-  );
 export type ServerEndpointsCreateInput = typeof ServerEndpointsCreateInput.Type;
 
 // Output Schema
-export const ServerEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServerEndpointsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServerEndpointsCreateOutput =
   typeof ServerEndpointsCreateOutput.Type;
 
@@ -1423,32 +1360,28 @@ export type ServerEndpointsCreateOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param serverEndpointName - Name of Server Endpoint object.
  */
-export const ServerEndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerEndpointsCreateInput,
-    outputSchema: ServerEndpointsCreateOutput,
+export const ServerEndpointsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerEndpointsCreateInput,
+  outputSchema: ServerEndpointsCreateOutput,
+}));
+// Input Schema
+export const ServerEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  serverEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
   }),
 );
-// Input Schema
-export const ServerEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-    }),
-  );
 export type ServerEndpointsDeleteInput = typeof ServerEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ServerEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServerEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServerEndpointsDeleteOutput =
   typeof ServerEndpointsDeleteOutput.Type;
 
@@ -1463,50 +1396,46 @@ export type ServerEndpointsDeleteOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param serverEndpointName - Name of Server Endpoint object.
  */
-export const ServerEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerEndpointsDeleteInput,
-    outputSchema: ServerEndpointsDeleteOutput,
+export const ServerEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerEndpointsDeleteInput,
+  outputSchema: ServerEndpointsDeleteOutput,
+}));
+// Input Schema
+export const ServerEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  serverEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
   }),
 );
-// Input Schema
-export const ServerEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-    }),
-  );
 export type ServerEndpointsGetInput = typeof ServerEndpointsGetInput.Type;
 
 // Output Schema
-export const ServerEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServerEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServerEndpointsGetOutput = typeof ServerEndpointsGetOutput.Type;
 
 // The operation
@@ -1520,30 +1449,29 @@ export type ServerEndpointsGetOutput = typeof ServerEndpointsGetOutput.Type;
  * @param syncGroupName - Name of Sync Group resource.
  * @param serverEndpointName - Name of Server Endpoint object.
  */
-export const ServerEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServerEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServerEndpointsGetInput,
   outputSchema: ServerEndpointsGetOutput,
 }));
 // Input Schema
-export const ServerEndpointsListBySyncGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
-    }),
-  );
+export const ServerEndpointsListBySyncGroupInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
+  }),
+);
 export type ServerEndpointsListBySyncGroupInput =
   typeof ServerEndpointsListBySyncGroupInput.Type;
 
 // Output Schema
-export const ServerEndpointsListBySyncGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServerEndpointsListBySyncGroupOutput = /*@__PURE__*/ Schema.Struct(
+  {
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1578,7 +1506,8 @@ export const ServerEndpointsListBySyncGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
+  },
+);
 export type ServerEndpointsListBySyncGroupOutput =
   typeof ServerEndpointsListBySyncGroupOutput.Type;
 
@@ -1592,32 +1521,29 @@ export type ServerEndpointsListBySyncGroupOutput =
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param syncGroupName - Name of Sync Group resource.
  */
-export const ServerEndpointsListBySyncGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ServerEndpointsListBySyncGroupInput,
-    outputSchema: ServerEndpointsListBySyncGroupOutput,
-  }));
+export const ServerEndpointsListBySyncGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerEndpointsListBySyncGroupInput,
+  outputSchema: ServerEndpointsListBySyncGroupOutput,
+}));
 // Input Schema
-export const ServerEndpointsRecallActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
-    }),
-  );
+export const ServerEndpointsRecallActionInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  serverEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
+  }),
+);
 export type ServerEndpointsRecallActionInput =
   typeof ServerEndpointsRecallActionInput.Type;
 
 // Output Schema
-export const ServerEndpointsRecallActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServerEndpointsRecallActionOutput = /*@__PURE__*/ Schema.Void;
 export type ServerEndpointsRecallActionOutput =
   typeof ServerEndpointsRecallActionOutput.Type;
 
@@ -1632,50 +1558,46 @@ export type ServerEndpointsRecallActionOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param serverEndpointName - Name of Server Endpoint object.
  */
-export const ServerEndpointsRecallAction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerEndpointsRecallActionInput,
-    outputSchema: ServerEndpointsRecallActionOutput,
+export const ServerEndpointsRecallAction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerEndpointsRecallActionInput,
+  outputSchema: ServerEndpointsRecallActionOutput,
+}));
+// Input Schema
+export const ServerEndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  syncGroupName: Schema.String.pipe(T.PathParam()),
+  serverEndpointName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
   }),
 );
-// Input Schema
-export const ServerEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    syncGroupName: Schema.String.pipe(T.PathParam()),
-    serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-    }),
-  );
 export type ServerEndpointsUpdateInput = typeof ServerEndpointsUpdateInput.Type;
 
 // Output Schema
-export const ServerEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ServerEndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ServerEndpointsUpdateOutput =
   typeof ServerEndpointsUpdateOutput.Type;
 
@@ -1690,15 +1612,13 @@ export type ServerEndpointsUpdateOutput =
  * @param syncGroupName - Name of Sync Group resource.
  * @param serverEndpointName - Name of Server Endpoint object.
  */
-export const ServerEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerEndpointsUpdateInput,
-    outputSchema: ServerEndpointsUpdateOutput,
-  }),
-);
+export const ServerEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerEndpointsUpdateInput,
+  outputSchema: ServerEndpointsUpdateOutput,
+}));
 // Input Schema
 export const StorageSyncServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1713,7 +1633,7 @@ export type StorageSyncServicesCheckNameAvailabilityInput =
 
 // Output Schema
 export const StorageSyncServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -1729,48 +1649,47 @@ export type StorageSyncServicesCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The desired region for the name check.
  */
-export const StorageSyncServicesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageSyncServicesCheckNameAvailability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageSyncServicesCheckNameAvailabilityInput,
     outputSchema: StorageSyncServicesCheckNameAvailabilityOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageSyncServicesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-    }),
-  );
+export const StorageSyncServicesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+  }),
+);
 export type StorageSyncServicesCreateInput =
   typeof StorageSyncServicesCreateInput.Type;
 
 // Output Schema
-export const StorageSyncServicesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageSyncServicesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageSyncServicesCreateOutput =
   typeof StorageSyncServicesCreateOutput.Type;
 
@@ -1783,31 +1702,27 @@ export type StorageSyncServicesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const StorageSyncServicesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageSyncServicesCreateInput,
-    outputSchema: StorageSyncServicesCreateOutput,
+export const StorageSyncServicesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageSyncServicesCreateInput,
+  outputSchema: StorageSyncServicesCreateOutput,
+}));
+// Input Schema
+export const StorageSyncServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
   }),
 );
-// Input Schema
-export const StorageSyncServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-    }),
-  );
 export type StorageSyncServicesDeleteInput =
   typeof StorageSyncServicesDeleteInput.Type;
 
 // Output Schema
-export const StorageSyncServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageSyncServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageSyncServicesDeleteOutput =
   typeof StorageSyncServicesDeleteOutput.Type;
 
@@ -1820,49 +1735,45 @@ export type StorageSyncServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const StorageSyncServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageSyncServicesDeleteInput,
-    outputSchema: StorageSyncServicesDeleteOutput,
+export const StorageSyncServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageSyncServicesDeleteInput,
+  outputSchema: StorageSyncServicesDeleteOutput,
+}));
+// Input Schema
+export const StorageSyncServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
   }),
 );
-// Input Schema
-export const StorageSyncServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-    }),
-  );
 export type StorageSyncServicesGetInput =
   typeof StorageSyncServicesGetInput.Type;
 
 // Output Schema
-export const StorageSyncServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageSyncServicesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageSyncServicesGetOutput =
   typeof StorageSyncServicesGetOutput.Type;
 
@@ -1875,15 +1786,13 @@ export type StorageSyncServicesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const StorageSyncServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageSyncServicesGetInput,
-    outputSchema: StorageSyncServicesGetOutput,
-  }),
-);
+export const StorageSyncServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageSyncServicesGetInput,
+  outputSchema: StorageSyncServicesGetOutput,
+}));
 // Input Schema
 export const StorageSyncServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1898,7 +1807,7 @@ export type StorageSyncServicesListByResourceGroupInput =
 
 // Output Schema
 export const StorageSyncServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1945,14 +1854,15 @@ export type StorageSyncServicesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StorageSyncServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageSyncServicesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageSyncServicesListByResourceGroupInput,
     outputSchema: StorageSyncServicesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const StorageSyncServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1966,7 +1876,7 @@ export type StorageSyncServicesListBySubscriptionInput =
 
 // Output Schema
 export const StorageSyncServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2012,48 +1922,47 @@ export type StorageSyncServicesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StorageSyncServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageSyncServicesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: StorageSyncServicesListBySubscriptionInput,
     outputSchema: StorageSyncServicesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const StorageSyncServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-    }),
-  );
+export const StorageSyncServicesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageSyncServiceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+  }),
+);
 export type StorageSyncServicesUpdateInput =
   typeof StorageSyncServicesUpdateInput.Type;
 
 // Output Schema
-export const StorageSyncServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const StorageSyncServicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageSyncServicesUpdateOutput =
   typeof StorageSyncServicesUpdateOutput.Type;
 
@@ -2066,14 +1975,12 @@ export type StorageSyncServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const StorageSyncServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageSyncServicesUpdateInput,
-    outputSchema: StorageSyncServicesUpdateOutput,
-  }),
-);
+export const StorageSyncServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageSyncServicesUpdateInput,
+  outputSchema: StorageSyncServicesUpdateOutput,
+}));
 // Input Schema
-export const SyncGroupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SyncGroupsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2088,27 +1995,25 @@ export const SyncGroupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SyncGroupsCreateInput = typeof SyncGroupsCreateInput.Type;
 
 // Output Schema
-export const SyncGroupsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const SyncGroupsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SyncGroupsCreateOutput = typeof SyncGroupsCreateOutput.Type;
 
 // The operation
@@ -2121,12 +2026,12 @@ export type SyncGroupsCreateOutput = typeof SyncGroupsCreateOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param syncGroupName - Name of Sync Group resource.
  */
-export const SyncGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SyncGroupsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsCreateInput,
   outputSchema: SyncGroupsCreateOutput,
 }));
 // Input Schema
-export const SyncGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SyncGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2141,7 +2046,7 @@ export const SyncGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SyncGroupsDeleteInput = typeof SyncGroupsDeleteInput.Type;
 
 // Output Schema
-export const SyncGroupsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SyncGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SyncGroupsDeleteOutput = typeof SyncGroupsDeleteOutput.Type;
 
 // The operation
@@ -2154,12 +2059,12 @@ export type SyncGroupsDeleteOutput = typeof SyncGroupsDeleteOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param syncGroupName - Name of Sync Group resource.
  */
-export const SyncGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SyncGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsDeleteInput,
   outputSchema: SyncGroupsDeleteOutput,
 }));
 // Input Schema
-export const SyncGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SyncGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2174,7 +2079,7 @@ export const SyncGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SyncGroupsGetInput = typeof SyncGroupsGetInput.Type;
 
 // Output Schema
-export const SyncGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SyncGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2205,13 +2110,13 @@ export type SyncGroupsGetOutput = typeof SyncGroupsGetOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param syncGroupName - Name of Sync Group resource.
  */
-export const SyncGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SyncGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsGetInput,
   outputSchema: SyncGroupsGetOutput,
 }));
 // Input Schema
 export const SyncGroupsListByStorageSyncServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2227,7 +2132,7 @@ export type SyncGroupsListByStorageSyncServiceInput =
 
 // Output Schema
 export const SyncGroupsListByStorageSyncServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2275,13 +2180,14 @@ export type SyncGroupsListByStorageSyncServiceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const SyncGroupsListByStorageSyncService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SyncGroupsListByStorageSyncService = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SyncGroupsListByStorageSyncServiceInput,
     outputSchema: SyncGroupsListByStorageSyncServiceOutput,
-  }));
+  }),
+);
 // Input Schema
-export const WorkflowsAbortInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsAbortInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2296,7 +2202,7 @@ export const WorkflowsAbortInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsAbortInput = typeof WorkflowsAbortInput.Type;
 
 // Output Schema
-export const WorkflowsAbortOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsAbortOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsAbortOutput = typeof WorkflowsAbortOutput.Type;
 
 // The operation
@@ -2309,12 +2215,12 @@ export type WorkflowsAbortOutput = typeof WorkflowsAbortOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param workflowId - workflow Id
  */
-export const WorkflowsAbort = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsAbort = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsAbortInput,
   outputSchema: WorkflowsAbortOutput,
 }));
 // Input Schema
-export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2329,7 +2235,7 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
 
 // Output Schema
-export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2360,13 +2266,13 @@ export type WorkflowsGetOutput = typeof WorkflowsGetOutput.Type;
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  * @param workflowId - workflow Id
  */
-export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsGetInput,
   outputSchema: WorkflowsGetOutput,
 }));
 // Input Schema
 export const WorkflowsListByStorageSyncServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
@@ -2382,7 +2288,7 @@ export type WorkflowsListByStorageSyncServiceInput =
 
 // Output Schema
 export const WorkflowsListByStorageSyncServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2430,8 +2336,7 @@ export type WorkflowsListByStorageSyncServiceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageSyncServiceName - Name of Storage Sync Service resource.
  */
-export const WorkflowsListByStorageSyncService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WorkflowsListByStorageSyncServiceInput,
-    outputSchema: WorkflowsListByStorageSyncServiceOutput,
-  }));
+export const WorkflowsListByStorageSyncService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListByStorageSyncServiceInput,
+  outputSchema: WorkflowsListByStorageSyncServiceOutput,
+}));

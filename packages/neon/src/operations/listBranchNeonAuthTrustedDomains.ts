@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ListBranchNeonAuthTrustedDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -18,7 +18,7 @@ export type ListBranchNeonAuthTrustedDomainsInput =
 
 // Output Schema
 export const ListBranchNeonAuthTrustedDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.Array(
       Schema.Struct({
         domain: Schema.String,
@@ -43,8 +43,7 @@ export type ListBranchNeonAuthTrustedDomainsOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const listBranchNeonAuthTrustedDomains =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListBranchNeonAuthTrustedDomainsInput,
-    outputSchema: ListBranchNeonAuthTrustedDomainsOutput,
-  }));
+export const listBranchNeonAuthTrustedDomains = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListBranchNeonAuthTrustedDomainsInput,
+  outputSchema: ListBranchNeonAuthTrustedDomainsOutput,
+}));

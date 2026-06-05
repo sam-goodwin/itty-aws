@@ -6,8 +6,8 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
@@ -280,32 +280,31 @@ export const GetPolicyAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GetPolicyAPIGroupInput = typeof GetPolicyAPIGroupInput.Type;
 
 // Output Schema
-export const GetPolicyAPIGroupOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetPolicyAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  });
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetPolicyAPIGroupOutput = typeof GetPolicyAPIGroupOutput.Type;
 
 // The operation
@@ -317,34 +316,32 @@ export const getPolicyAPIGroup = /*@__PURE__*/ API.make(() => ({
   outputSchema: GetPolicyAPIGroupOutput,
 }));
 // Input Schema
-export const GetPolicyV1APIResourcesInput =
-  /*@__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/policy/v1/" }),
-  );
+export const GetPolicyV1APIResourcesInput = /*@__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/apis/policy/v1/" }));
 export type GetPolicyV1APIResourcesInput =
   typeof GetPolicyV1APIResourcesInput.Type;
 
 // Output Schema
-export const GetPolicyV1APIResourcesOutput =
-  /*@__PURE__*/ Schema.Struct({
-    apiVersion: Schema.optional(Schema.String),
-    groupVersion: Schema.String,
-    kind: Schema.optional(Schema.String),
-    resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const GetPolicyV1APIResourcesOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  groupVersion: Schema.String,
+  kind: Schema.optional(Schema.String),
+  resources: Schema.Array(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      group: Schema.optional(Schema.String),
+      kind: Schema.String,
+      name: Schema.String,
+      namespaced: Schema.Boolean,
+      shortNames: Schema.optional(Schema.Array(Schema.String)),
+      singularName: Schema.String,
+      storageVersionHash: Schema.optional(Schema.String),
+      verbs: Schema.Array(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetPolicyV1APIResourcesOutput =
   typeof GetPolicyV1APIResourcesOutput.Type;
 
@@ -492,11 +489,12 @@ export type ListPolicyV1NamespacedPodDisruptionBudgetOutput =
 /**
  * list or watch objects of kind PodDisruptionBudget
  */
-export const listPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ API.make(() => ({
+export const listPolicyV1NamespacedPodDisruptionBudget = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ListPolicyV1NamespacedPodDisruptionBudgetOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(
@@ -1004,12 +1002,13 @@ export type ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
 /**
  * read the specified PodDisruptionBudget
  */
-export const readPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ API.make(() => ({
+export const readPolicyV1NamespacedPodDisruptionBudget = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);
 // Input Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
   /*@__PURE__*/ Schema.Struct({}).pipe(

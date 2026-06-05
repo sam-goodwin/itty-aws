@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const ProxyRecordsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProxyRecordsListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -15,7 +15,7 @@ export const ProxyRecordsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProxyRecordsListInput = typeof ProxyRecordsListInput.Type;
 
 // Output Schema
-export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ProxyRecordsListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.optional(
       Schema.Array(
@@ -50,7 +50,7 @@ export type ProxyRecordsListOutput = typeof ProxyRecordsListOutput.Type;
 /**
  * List all reverse proxies configured for the organization. Returns proxy records along with the maximum number allowed by the current plan.
  */
-export const proxyRecordsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const proxyRecordsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsListInput,
   outputSchema: ProxyRecordsListOutput,
   errors: [Forbidden, NotFound] as const,

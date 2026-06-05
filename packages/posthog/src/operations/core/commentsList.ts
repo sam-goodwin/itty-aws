@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const CommentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   cursor: Schema.optional(Schema.String),
   item_id: Schema.optional(Schema.String),
@@ -17,7 +17,7 @@ export const CommentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CommentsListInput = typeof CommentsListInput.Type;
 
 // Output Schema
-export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsListOutput = /*@__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
@@ -68,7 +68,7 @@ export type CommentsListOutput = typeof CommentsListOutput.Type;
  * @param search - Full-text search within comment content.
  * @param source_comment - Filter replies to a specific parent comment.
  */
-export const commentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const commentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommentsListInput,
   outputSchema: CommentsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

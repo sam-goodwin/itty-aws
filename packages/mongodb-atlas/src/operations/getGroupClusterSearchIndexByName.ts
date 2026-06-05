@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupClusterSearchIndexByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     collectionName: Schema.String.pipe(T.PathParam()),
@@ -23,8 +23,7 @@ export type GetGroupClusterSearchIndexByNameInput =
   typeof GetGroupClusterSearchIndexByNameInput.Type;
 
 // Output Schema
-export const GetGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupClusterSearchIndexByNameOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupClusterSearchIndexByNameOutput =
   typeof GetGroupClusterSearchIndexByNameOutput.Type;
 
@@ -44,9 +43,8 @@ export type GetGroupClusterSearchIndexByNameOutput =
  * @param databaseName - Label that identifies the database that contains the collection with one or more Atlas Search indexes.
  * @param indexName - Name of the Atlas Search index to return.
  */
-export const getGroupClusterSearchIndexByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterSearchIndexByNameInput,
-    outputSchema: GetGroupClusterSearchIndexByNameOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const getGroupClusterSearchIndexByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterSearchIndexByNameInput,
+  outputSchema: GetGroupClusterSearchIndexByNameOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const VolumesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesListInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   summary: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/volumes" }));
 export type VolumesListInput = typeof VolumesListInput.Type;
 
 // Output Schema
-export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const VolumesListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     attached_alloc_id: Schema.optional(Schema.String),
     attached_machine_id: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export type VolumesListOutput = typeof VolumesListOutput.Type;
  * @param app_name - Fly App Name
  * @param summary - Only return summary info about volumes (omit blocks, block size, etc)
  */
-export const VolumesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesListInput,
   outputSchema: VolumesListOutput,
   errors: [Forbidden, NotFound] as const,

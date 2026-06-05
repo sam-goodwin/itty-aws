@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
-export const CreateUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateUserInput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   name: Schema.String,
   role: Schema.String,
@@ -12,7 +12,7 @@ export const CreateUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateUserInput = typeof CreateUserInput.Type;
 
 // Output Schema
-export const CreateUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateUserOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -29,7 +29,7 @@ export type CreateUserOutput = typeof CreateUserOutput.Type;
 /**
  * Create user
  */
-export const createUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateUserInput,
   outputSchema: CreateUserOutput,
   errors: [BadRequest, UnprocessableEntity] as const,

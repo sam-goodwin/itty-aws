@@ -5,7 +5,7 @@ import { Conflict } from "../errors.ts";
 
 // Input Schema
 export const OrganizationDomainsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/organization_domains" }));
@@ -14,7 +14,7 @@ export type OrganizationDomainsControllerCreateInput =
 
 // Output Schema
 export const OrganizationDomainsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     organization_id: Schema.String,
@@ -43,9 +43,10 @@ export type OrganizationDomainsControllerCreateOutput =
  *
  * Creates a new Organization Domain.
  */
-export const OrganizationDomainsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationDomainsControllerCreate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationDomainsControllerCreateInput,
     outputSchema: OrganizationDomainsControllerCreateOutput,
     errors: [Conflict] as const,
-  }));
+  }),
+);

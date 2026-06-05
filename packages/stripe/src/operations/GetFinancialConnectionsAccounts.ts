@@ -3,27 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetFinancialConnectionsAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFinancialConnectionsAccountsInput = /*@__PURE__*/ Schema.Struct(
+  {
     account_holder: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     session: Schema.optional(Schema.String),
     starting_after: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/v1/financial_connections/accounts",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/financial_connections/accounts",
+    contentType: "form-urlencoded",
+  }),
+);
 export type GetFinancialConnectionsAccountsInput =
   typeof GetFinancialConnectionsAccountsInput.Type;
 
 // Output Schema
 export const GetFinancialConnectionsAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account_holder: Schema.Unknown,
@@ -100,8 +101,7 @@ export type GetFinancialConnectionsAccountsOutput =
  * @param session - If present, only return accounts that were collected as part of the given session.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetFinancialConnectionsAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetFinancialConnectionsAccountsInput,
-    outputSchema: GetFinancialConnectionsAccountsOutput,
-  }));
+export const GetFinancialConnectionsAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetFinancialConnectionsAccountsInput,
+  outputSchema: GetFinancialConnectionsAccountsOutput,
+}));

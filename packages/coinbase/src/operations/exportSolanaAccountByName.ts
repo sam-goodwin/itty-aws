@@ -3,24 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ExportSolanaAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    exportEncryptionKey: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v2/solana/accounts/export/by-name/{name}",
-    }),
-  );
+export const ExportSolanaAccountByNameInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  exportEncryptionKey: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/solana/accounts/export/by-name/{name}" }),
+);
 export type ExportSolanaAccountByNameInput =
   typeof ExportSolanaAccountByNameInput.Type;
 
 // Output Schema
-export const ExportSolanaAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptedPrivateKey: Schema.String,
-  });
+export const ExportSolanaAccountByNameOutput = /*@__PURE__*/ Schema.Struct({
+  encryptedPrivateKey: Schema.String,
+});
 export type ExportSolanaAccountByNameOutput =
   typeof ExportSolanaAccountByNameOutput.Type;
 
@@ -40,9 +35,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param name - The name of the Solana account.
  */
-export const exportSolanaAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExportSolanaAccountByNameInput,
-    outputSchema: ExportSolanaAccountByNameOutput,
-  }),
-);
+export const exportSolanaAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportSolanaAccountByNameInput,
+  outputSchema: ExportSolanaAccountByNameOutput,
+}));

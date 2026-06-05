@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListFederationSettingConnectedOrgConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -21,7 +21,7 @@ export type ListFederationSettingConnectedOrgConfigsInput =
 
 // Output Schema
 export const ListFederationSettingConnectedOrgConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ListFederationSettingConnectedOrgConfigsOutput =
   typeof ListFederationSettingConnectedOrgConfigsOutput.Type;
 
@@ -36,9 +36,10 @@ export type ListFederationSettingConnectedOrgConfigsOutput =
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const listFederationSettingConnectedOrgConfigs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listFederationSettingConnectedOrgConfigs = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ListFederationSettingConnectedOrgConfigsInput,
     outputSchema: ListFederationSettingConnectedOrgConfigsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const MachinesCordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesCordonInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const MachinesCordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MachinesCordonInput = typeof MachinesCordonInput.Type;
 
 // Output Schema
-export const MachinesCordonOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesCordonOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesCordonOutput = typeof MachinesCordonOutput.Type;
 
 // The operation
@@ -28,7 +28,7 @@ export type MachinesCordonOutput = typeof MachinesCordonOutput.Type;
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesCordon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesCordon = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesCordonInput,
   outputSchema: MachinesCordonOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

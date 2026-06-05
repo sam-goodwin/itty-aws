@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostV2BillingMeterEventAdjustmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
       identifier: Schema.String,
     }),
@@ -18,7 +18,7 @@ export type PostV2BillingMeterEventAdjustmentsInput =
 
 // Output Schema
 export const PostV2BillingMeterEventAdjustmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
       identifier: Schema.String,
     }),
@@ -39,8 +39,9 @@ export type PostV2BillingMeterEventAdjustmentsOutput =
  *
  * Creates a meter event adjustment to cancel a previously sent meter event.
  */
-export const PostV2BillingMeterEventAdjustments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostV2BillingMeterEventAdjustments = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostV2BillingMeterEventAdjustmentsInput,
     outputSchema: PostV2BillingMeterEventAdjustmentsOutput,
-  }));
+  }),
+);

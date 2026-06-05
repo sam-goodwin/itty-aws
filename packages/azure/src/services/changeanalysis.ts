@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ChangesListChangesByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -25,7 +25,7 @@ export type ChangesListChangesByResourceGroupInput =
 
 // Output Schema
 export const ChangesListChangesByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -48,14 +48,13 @@ export type ChangesListChangesByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ChangesListChangesByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ChangesListChangesByResourceGroupInput,
-    outputSchema: ChangesListChangesByResourceGroupOutput,
-  }));
+export const ChangesListChangesByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangesListChangesByResourceGroupInput,
+  outputSchema: ChangesListChangesByResourceGroupOutput,
+}));
 // Input Schema
 export const ChangesListChangesBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -69,7 +68,7 @@ export type ChangesListChangesBySubscriptionInput =
 
 // Output Schema
 export const ChangesListChangesBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -91,13 +90,12 @@ export type ChangesListChangesBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ChangesListChangesBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ChangesListChangesBySubscriptionInput,
-    outputSchema: ChangesListChangesBySubscriptionOutput,
-  }));
+export const ChangesListChangesBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangesListChangesBySubscriptionInput,
+  outputSchema: ChangesListChangesBySubscriptionOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -108,7 +106,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -134,36 +132,34 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ResourceChangesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges",
-    }),
-  );
+export const ResourceChangesListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges",
+  }),
+);
 export type ResourceChangesListInput = typeof ResourceChangesListInput.Type;
 
 // Output Schema
-export const ResourceChangesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ResourceChangesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ResourceChangesListOutput = typeof ResourceChangesListOutput.Type;
 
 // The operation
@@ -172,7 +168,7 @@ export type ResourceChangesListOutput = typeof ResourceChangesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ResourceChangesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceChangesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceChangesListInput,
   outputSchema: ResourceChangesListOutput,
 }));

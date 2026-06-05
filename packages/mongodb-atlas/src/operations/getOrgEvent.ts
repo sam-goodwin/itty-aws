@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgEventInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -19,7 +19,7 @@ export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgEventInput = typeof GetOrgEventInput.Type;
 
 // Output Schema
-export const GetOrgEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgEventOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgEventOutput = typeof GetOrgEventOutput.Type;
 
 // The operation
@@ -35,7 +35,7 @@ export type GetOrgEventOutput = typeof GetOrgEventOutput.Type;
  * @param eventId - Unique 24-hexadecimal digit string that identifies the event that you want to return.
  * @param includeRaw - Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event.
  */
-export const getOrgEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgEvent = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgEventInput,
   outputSchema: GetOrgEventOutput,
   errors: [Forbidden, NotFound] as const,

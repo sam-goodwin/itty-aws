@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTestHelpersTestClocksTestClockInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTestHelpersTestClocksTestClockInput =
 
 // Output Schema
 export const GetTestHelpersTestClocksTestClockOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deletes_after: Schema.Number,
     frozen_time: Schema.Number,
@@ -47,8 +47,7 @@ export type GetTestHelpersTestClocksTestClockOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTestHelpersTestClocksTestClock =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetTestHelpersTestClocksTestClockInput,
-    outputSchema: GetTestHelpersTestClocksTestClockOutput,
-  }));
+export const GetTestHelpersTestClocksTestClock = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTestHelpersTestClocksTestClockInput,
+  outputSchema: GetTestHelpersTestClocksTestClockOutput,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTaxTransactionsCreateReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     flat_amount: Schema.optional(Schema.Number),
     line_items: Schema.optional(
@@ -43,7 +43,7 @@ export type PostTaxTransactionsCreateReversalInput =
 
 // Output Schema
 export const PostTaxTransactionsCreateReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -226,8 +226,7 @@ export type PostTaxTransactionsCreateReversalOutput =
  *
  * <p>Partially or fully reverses a previously created <code>Transaction</code>.</p>
  */
-export const PostTaxTransactionsCreateReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostTaxTransactionsCreateReversalInput,
-    outputSchema: PostTaxTransactionsCreateReversalOutput,
-  }));
+export const PostTaxTransactionsCreateReversal = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTaxTransactionsCreateReversalInput,
+  outputSchema: PostTaxTransactionsCreateReversalOutput,
+}));

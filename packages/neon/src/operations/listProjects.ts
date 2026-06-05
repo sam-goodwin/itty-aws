@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ListProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProjectsInput = /*@__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   search: Schema.optional(Schema.String),
@@ -14,7 +14,7 @@ export const ListProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListProjectsInput = typeof ListProjectsInput.Type;
 
 // Output Schema
-export const ListProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProjectsOutput = /*@__PURE__*/ Schema.Struct({
   projects: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -138,15 +138,13 @@ If not specified, an implicit implementation defined timeout is chosen with the 
  * @param recoverable - Show only deleted projects within the recovery window.
 
  */
-export const listProjects = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListProjectsInput,
-    outputSchema: ListProjectsOutput,
-    pagination: {
-      mode: "cursor",
-      inputToken: "cursor",
-      outputToken: "pagination.cursor",
-      items: "projects",
-    },
-  }),
-);
+export const listProjects = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListProjectsInput,
+  outputSchema: ListProjectsOutput,
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "pagination.cursor",
+    items: "projects",
+  },
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTerminalReadersReaderSetReaderDisplayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     cart: Schema.optional(
       Schema.Struct({
@@ -34,7 +34,7 @@ export type PostTerminalReadersReaderSetReaderDisplayInput =
 
 // Output Schema
 export const PostTerminalReadersReaderSetReaderDisplayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -70,8 +70,9 @@ export type PostTerminalReadersReaderSetReaderDisplayOutput =
  *
  * <p>Sets the reader display to show <a href="/docs/terminal/features/display">cart details</a>.</p>
  */
-export const PostTerminalReadersReaderSetReaderDisplay =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTerminalReadersReaderSetReaderDisplay = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTerminalReadersReaderSetReaderDisplayInput,
     outputSchema: PostTerminalReadersReaderSetReaderDisplayOutput,
-  }));
+  }),
+);

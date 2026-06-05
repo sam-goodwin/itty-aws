@@ -57,24 +57,26 @@ export type ManufacturingDataServicesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mdsResourceName - Name.
  */
-export const ManufacturingDataServicesCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
+export const ManufacturingDataServicesCreateOrUpdate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ManufacturingDataServicesCreateOrUpdateInput,
     outputSchema: ManufacturingDataServicesCreateOrUpdateOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ManufacturingDataServicesDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ManufacturingDataServicesDeleteInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+  }),
+);
 export type ManufacturingDataServicesDeleteInput =
   typeof ManufacturingDataServicesDeleteInput.Type;
 
@@ -92,48 +94,45 @@ export type ManufacturingDataServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mdsResourceName - Name.
  */
-export const ManufacturingDataServicesDelete =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManufacturingDataServicesDeleteInput,
-    outputSchema: ManufacturingDataServicesDeleteOutput,
-  }));
+export const ManufacturingDataServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManufacturingDataServicesDeleteInput,
+  outputSchema: ManufacturingDataServicesDeleteOutput,
+}));
 // Input Schema
-export const ManufacturingDataServicesGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
-    }),
-  );
+export const ManufacturingDataServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  mdsResourceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+  }),
+);
 export type ManufacturingDataServicesGetInput =
   typeof ManufacturingDataServicesGetInput.Type;
 
 // Output Schema
-export const ManufacturingDataServicesGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const ManufacturingDataServicesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ManufacturingDataServicesGetOutput =
   typeof ManufacturingDataServicesGetOutput.Type;
 
@@ -146,11 +145,10 @@ export type ManufacturingDataServicesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mdsResourceName - Name.
  */
-export const ManufacturingDataServicesGet =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManufacturingDataServicesGetInput,
-    outputSchema: ManufacturingDataServicesGetOutput,
-  }));
+export const ManufacturingDataServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManufacturingDataServicesGetInput,
+  outputSchema: ManufacturingDataServicesGetOutput,
+}));
 // Input Schema
 export const ManufacturingDataServicesListAvailableVersionsInput =
   /*@__PURE__*/ Schema.Struct({
@@ -329,18 +327,19 @@ export const ManufacturingDataServicesListBySubscription =
     outputSchema: ManufacturingDataServicesListBySubscriptionOutput,
   }));
 // Input Schema
-export const ManufacturingDataServicesUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
+export const ManufacturingDataServicesUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+  }),
+);
 export type ManufacturingDataServicesUpdateInput =
   typeof ManufacturingDataServicesUpdateInput.Type;
 
@@ -377,11 +376,10 @@ export type ManufacturingDataServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mdsResourceName - Name.
  */
-export const ManufacturingDataServicesUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: ManufacturingDataServicesUpdateInput,
-    outputSchema: ManufacturingDataServicesUpdateOutput,
-  }));
+export const ManufacturingDataServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManufacturingDataServicesUpdateInput,
+  outputSchema: ManufacturingDataServicesUpdateOutput,
+}));
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,

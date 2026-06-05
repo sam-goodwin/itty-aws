@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
 
 // Input Schema
-export const CreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export const CreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateInput = typeof CreateInput.Type;
 
 // Output Schema
-export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateOutput = typeof CreateOutput.Type;
 
 // The operation
-export const create = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const create = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateInput,
   outputSchema: CreateOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueueItemsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export type LlmAnalyticsReviewQueueItemsRetrieveInput =
 
 // Output Schema
 export const LlmAnalyticsReviewQueueItemsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     queue_id: Schema.optional(Schema.String),
     queue_name: Schema.optional(Schema.String),
@@ -54,9 +54,10 @@ export type LlmAnalyticsReviewQueueItemsRetrieveOutput =
  * @param id - A UUID string identifying this review queue item.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsReviewQueueItemsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmAnalyticsReviewQueueItemsRetrieve = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: LlmAnalyticsReviewQueueItemsRetrieveInput,
     outputSchema: LlmAnalyticsReviewQueueItemsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,
-  }));
+  }),
+);

@@ -23,55 +23,56 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface UserLicense {
+  /** The type of API resource. This is always `appsmarket#userLicense`. */
+  kind?: string;
   /** The ID of the user license. */
   id?: string;
+  /** The email address of the user. */
+  userId?: string;
+  /** (Deprecated) */
+  editionId?: string;
   /** The domain name of the user. */
   customerId?: string;
-  /** The ID of the application corresponding to the license query. */
-  applicationId?: string;
   /** The domain administrator has activated the application for this domain. */
   enabled?: boolean;
   /** The user's licensing status. One of: - `ACTIVE`: The user has a valid license and should be permitted to use the application. - `UNLICENSED`: The administrator of this user's domain never assigned a seat for the application to this user. - `EXPIRED`: The administrator assigned a seat to this user, but the license is expired. */
   state?: string;
-  /** (Deprecated) */
-  editionId?: string;
-  /** The email address of the user. */
-  userId?: string;
-  /** The type of API resource. This is always `appsmarket#userLicense`. */
-  kind?: string;
+  /** The ID of the application corresponding to the license query. */
+  applicationId?: string;
 }
 
 export const UserLicense: Schema.Schema<UserLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    editionId: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
-    applicationId: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     state: Schema.optional(Schema.String),
-    editionId: Schema.optional(Schema.String),
-    userId: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
+    applicationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserLicense" });
 
 export interface Editions {
   /** (Deprecated) */
-  editionId?: string;
-  /** (Deprecated) */
   seatCount?: number;
   /** (Deprecated) */
   assignedSeats?: number;
+  /** (Deprecated) */
+  editionId?: string;
 }
 
-export const Editions: Schema.Schema<Editions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    editionId: Schema.optional(Schema.String),
-    seatCount: Schema.optional(Schema.Number),
-    assignedSeats: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Editions" });
+export const Editions: Schema.Schema<Editions> = /*@__PURE__*/ Schema.Struct({
+  seatCount: Schema.optional(Schema.Number),
+  assignedSeats: Schema.optional(Schema.Number),
+  editionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Editions" });
 
 export interface CustomerLicense {
   /** The type of API resource. This is always `appsmarket#customerLicense`. */
   kind?: string;
+  /** The ID of the customer license. */
+  id?: string;
   /** The customer's license status. One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`: There is no license. Either this customer has never installed your application or has deleted it. */
   state?: string;
   /** The ID of the application corresponding to this license query. */
@@ -80,18 +81,16 @@ export interface CustomerLicense {
   editions?: ReadonlyArray<Editions>;
   /** The domain name of the customer. */
   customerId?: string;
-  /** The ID of the customer license. */
-  id?: string;
 }
 
 export const CustomerLicense: Schema.Schema<CustomerLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     applicationId: Schema.optional(Schema.String),
     editions: Schema.optional(Schema.Array(Editions)),
     customerId: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerLicense" });
 
 // ==========================================================================
@@ -132,7 +131,7 @@ export interface GetUserLicenseRequest {
   userId: string;
 }
 
-export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserLicenseRequest = /*@__PURE__*/ Schema.Struct({
   applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
@@ -144,7 +143,7 @@ export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetUserLicenseRequest>;
 
 export type GetUserLicenseResponse = UserLicense;
-export const GetUserLicenseResponse = /*@__PURE__*/ /*#__PURE__*/ UserLicense;
+export const GetUserLicenseResponse = /*@__PURE__*/ UserLicense;
 
 export type GetUserLicenseError = DefaultErrors | NotFound | Forbidden;
 
@@ -154,7 +153,7 @@ export const getUserLicense: API.OperationMethod<
   GetUserLicenseResponse,
   GetUserLicenseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserLicenseRequest,
   output: GetUserLicenseResponse,
   errors: [NotFound, Forbidden],
@@ -167,21 +166,19 @@ export interface GetCustomerLicenseRequest {
   customerId: string;
 }
 
-export const GetCustomerLicenseRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "appsmarket/v2/customerLicense/{applicationId}/{customerId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetCustomerLicenseRequest>;
+export const GetCustomerLicenseRequest = /*@__PURE__*/ Schema.Struct({
+  applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
+  customerId: Schema.String.pipe(T.HttpPath("customerId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "appsmarket/v2/customerLicense/{applicationId}/{customerId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetCustomerLicenseRequest>;
 
 export type GetCustomerLicenseResponse = CustomerLicense;
-export const GetCustomerLicenseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerLicense;
+export const GetCustomerLicenseResponse = /*@__PURE__*/ CustomerLicense;
 
 export type GetCustomerLicenseError = DefaultErrors | NotFound | Forbidden;
 
@@ -191,7 +188,7 @@ export const getCustomerLicense: API.OperationMethod<
   GetCustomerLicenseResponse,
   GetCustomerLicenseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomerLicenseRequest,
   output: GetCustomerLicenseResponse,
   errors: [NotFound, Forbidden],

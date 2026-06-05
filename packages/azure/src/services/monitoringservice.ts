@@ -9,41 +9,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AzureMonitorWorkspacesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
-    }),
-  );
+export const AzureMonitorWorkspacesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+  }),
+);
 export type AzureMonitorWorkspacesCreateInput =
   typeof AzureMonitorWorkspacesCreateInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureMonitorWorkspacesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureMonitorWorkspacesCreateOutput =
   typeof AzureMonitorWorkspacesCreateOutput.Type;
 
@@ -55,29 +53,26 @@ export type AzureMonitorWorkspacesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesCreateInput,
-    outputSchema: AzureMonitorWorkspacesCreateOutput,
-  }));
+export const AzureMonitorWorkspacesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureMonitorWorkspacesCreateInput,
+  outputSchema: AzureMonitorWorkspacesCreateOutput,
+}));
 // Input Schema
-export const AzureMonitorWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
-    }),
-  );
+export const AzureMonitorWorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+  }),
+);
 export type AzureMonitorWorkspacesDeleteInput =
   typeof AzureMonitorWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AzureMonitorWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AzureMonitorWorkspacesDeleteOutput =
   typeof AzureMonitorWorkspacesDeleteOutput.Type;
 
@@ -89,47 +84,44 @@ export type AzureMonitorWorkspacesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesDeleteInput,
-    outputSchema: AzureMonitorWorkspacesDeleteOutput,
-  }));
+export const AzureMonitorWorkspacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureMonitorWorkspacesDeleteInput,
+  outputSchema: AzureMonitorWorkspacesDeleteOutput,
+}));
 // Input Schema
-export const AzureMonitorWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
-    }),
-  );
+export const AzureMonitorWorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+  }),
+);
 export type AzureMonitorWorkspacesGetInput =
   typeof AzureMonitorWorkspacesGetInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureMonitorWorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureMonitorWorkspacesGetOutput =
   typeof AzureMonitorWorkspacesGetOutput.Type;
 
@@ -141,15 +133,13 @@ export type AzureMonitorWorkspacesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureMonitorWorkspacesGetInput,
-    outputSchema: AzureMonitorWorkspacesGetOutput,
-  }),
-);
+export const AzureMonitorWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureMonitorWorkspacesGetInput,
+  outputSchema: AzureMonitorWorkspacesGetOutput,
+}));
 // Input Schema
 export const AzureMonitorWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -164,7 +154,7 @@ export type AzureMonitorWorkspacesListByResourceGroupInput =
 
 // Output Schema
 export const AzureMonitorWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -209,14 +199,15 @@ export type AzureMonitorWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureMonitorWorkspacesListByResourceGroup = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureMonitorWorkspacesListByResourceGroupInput,
     outputSchema: AzureMonitorWorkspacesListByResourceGroupOutput,
-  }));
+  }),
+);
 // Input Schema
 export const AzureMonitorWorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -230,7 +221,7 @@ export type AzureMonitorWorkspacesListBySubscriptionInput =
 
 // Output Schema
 export const AzureMonitorWorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -274,47 +265,46 @@ export type AzureMonitorWorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AzureMonitorWorkspacesListBySubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: AzureMonitorWorkspacesListBySubscriptionInput,
     outputSchema: AzureMonitorWorkspacesListBySubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const AzureMonitorWorkspacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
-    }),
-  );
+export const AzureMonitorWorkspacesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+  }),
+);
 export type AzureMonitorWorkspacesUpdateInput =
   typeof AzureMonitorWorkspacesUpdateInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AzureMonitorWorkspacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AzureMonitorWorkspacesUpdateOutput =
   typeof AzureMonitorWorkspacesUpdateOutput.Type;
 
@@ -326,45 +316,42 @@ export type AzureMonitorWorkspacesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const AzureMonitorWorkspacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesUpdateInput,
-    outputSchema: AzureMonitorWorkspacesUpdateOutput,
-  }));
+export const AzureMonitorWorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureMonitorWorkspacesUpdateInput,
+  outputSchema: AzureMonitorWorkspacesUpdateOutput,
+}));
 // Input Schema
-export const MonitorOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
-  );
+export const MonitorOperationsListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
+);
 export type MonitorOperationsListInput = typeof MonitorOperationsListInput.Type;
 
 // Output Schema
-export const MonitorOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(
-            Schema.Literals(["user", "system", "user,system"]),
-          ),
-          actionType: Schema.optional(Schema.Literals(["Internal"])),
-        }),
-      ),
+export const MonitorOperationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  });
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type MonitorOperationsListOutput =
   typeof MonitorOperationsListOutput.Type;
 
@@ -374,9 +361,7 @@ export type MonitorOperationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const MonitorOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorOperationsListInput,
-    outputSchema: MonitorOperationsListOutput,
-  }),
-);
+export const MonitorOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorOperationsListInput,
+  outputSchema: MonitorOperationsListOutput,
+}));

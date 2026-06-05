@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
-export const RemoveGroupUserRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    userId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole",
-    }),
-  );
+export const RemoveGroupUserRoleInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  userId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole",
+  }),
+);
 export type RemoveGroupUserRoleInput = typeof RemoveGroupUserRoleInput.Type;
 
 // Output Schema
-export const RemoveGroupUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RemoveGroupUserRoleOutput = /*@__PURE__*/ Schema.Void;
 export type RemoveGroupUserRoleOutput = typeof RemoveGroupUserRoleOutput.Type;
 
 // The operation
@@ -37,7 +35,7 @@ export type RemoveGroupUserRoleOutput = typeof RemoveGroupUserRoleOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
  */
-export const removeGroupUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupUserRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupUserRoleInput,
   outputSchema: RemoveGroupUserRoleOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

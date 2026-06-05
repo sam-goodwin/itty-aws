@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateGroupBackupCompliancePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     overwriteBackupPolicies: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type UpdateGroupBackupCompliancePolicyInput =
 
 // Output Schema
 export const UpdateGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UpdateGroupBackupCompliancePolicyOutput =
   typeof UpdateGroupBackupCompliancePolicyOutput.Type;
 
@@ -38,9 +38,8 @@ export type UpdateGroupBackupCompliancePolicyOutput =
  * @param overwriteBackupPolicies - Flag that indicates whether to overwrite non complying backup policies with the new data protection settings or not.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupBackupCompliancePolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupBackupCompliancePolicyInput,
-    outputSchema: UpdateGroupBackupCompliancePolicyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const updateGroupBackupCompliancePolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupBackupCompliancePolicyInput,
+  outputSchema: UpdateGroupBackupCompliancePolicyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

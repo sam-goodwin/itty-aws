@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetAccountsAccountCapabilitiesCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     capability: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type GetAccountsAccountCapabilitiesCapabilityInput =
 
 // Output Schema
 export const GetAccountsAccountCapabilitiesCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.Unknown,
     future_requirements: Schema.optional(
       Schema.Struct({
@@ -311,8 +311,9 @@ export type GetAccountsAccountCapabilitiesCapabilityOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetAccountsAccountCapabilitiesCapability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAccountsAccountCapabilitiesCapability = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetAccountsAccountCapabilitiesCapabilityInput,
     outputSchema: GetAccountsAccountCapabilitiesCapabilityOutput,
-  }));
+  }),
+);

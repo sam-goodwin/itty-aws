@@ -5,7 +5,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
 export const V1DisableReadonlyModeTemporarilyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,8 +17,7 @@ export type V1DisableReadonlyModeTemporarilyInput =
   typeof V1DisableReadonlyModeTemporarilyInput.Type;
 
 // Output Schema
-export const V1DisableReadonlyModeTemporarilyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1DisableReadonlyModeTemporarilyOutput = /*@__PURE__*/ Schema.Void;
 export type V1DisableReadonlyModeTemporarilyOutput =
   typeof V1DisableReadonlyModeTemporarilyOutput.Type;
 
@@ -28,9 +27,8 @@ export type V1DisableReadonlyModeTemporarilyOutput =
  *
  * @param ref - Project ref
  */
-export const v1DisableReadonlyModeTemporarily =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1DisableReadonlyModeTemporarilyInput,
-    outputSchema: V1DisableReadonlyModeTemporarilyOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }));
+export const v1DisableReadonlyModeTemporarily = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DisableReadonlyModeTemporarilyInput,
+  outputSchema: V1DisableReadonlyModeTemporarilyOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

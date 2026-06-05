@@ -4,29 +4,27 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const BatchExportsRunsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    batch_export_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    after: Schema.optional(Schema.String),
-    before: Schema.optional(Schema.String),
-    instance_id: Schema.optional(Schema.String),
-    level: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    search: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/logs/",
-    }),
-  );
+export const BatchExportsRunsLogsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  batch_export_id: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  after: Schema.optional(Schema.String),
+  before: Schema.optional(Schema.String),
+  instance_id: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  search: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/logs/",
+  }),
+);
 export type BatchExportsRunsLogsRetrieveInput =
   typeof BatchExportsRunsLogsRetrieveInput.Type;
 
 // Output Schema
-export const BatchExportsRunsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BatchExportsRunsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
 export type BatchExportsRunsLogsRetrieveOutput =
   typeof BatchExportsRunsLogsRetrieveOutput.Type;
 
@@ -42,9 +40,8 @@ export type BatchExportsRunsLogsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Case-insensitive substring search across log messages.
  */
-export const batchExportsRunsLogsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: BatchExportsRunsLogsRetrieveInput,
-    outputSchema: BatchExportsRunsLogsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const batchExportsRunsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsRunsLogsRetrieveInput,
+  outputSchema: BatchExportsRunsLogsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

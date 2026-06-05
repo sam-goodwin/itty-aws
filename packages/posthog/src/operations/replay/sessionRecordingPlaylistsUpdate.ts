@@ -4,8 +4,8 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const SessionRecordingPlaylistsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SessionRecordingPlaylistsUpdateInput = /*@__PURE__*/ Schema.Struct(
+  {
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
@@ -60,18 +60,19 @@ export const SessionRecordingPlaylistsUpdateInput =
     type: Schema.optional(Schema.Unknown),
     is_synthetic: Schema.optional(Schema.Boolean),
     _create_in_folder: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/api/projects/{project_id}/session_recording_playlists/{short_id}/",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/api/projects/{project_id}/session_recording_playlists/{short_id}/",
+  }),
+);
 export type SessionRecordingPlaylistsUpdateInput =
   typeof SessionRecordingPlaylistsUpdateInput.Type;
 
 // Output Schema
 export const SessionRecordingPlaylistsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -134,9 +135,8 @@ export type SessionRecordingPlaylistsUpdateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sessionRecordingPlaylistsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SessionRecordingPlaylistsUpdateInput,
-    outputSchema: SessionRecordingPlaylistsUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+export const sessionRecordingPlaylistsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SessionRecordingPlaylistsUpdateInput,
+  outputSchema: SessionRecordingPlaylistsUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetBillingCreditBalanceTransactionsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetBillingCreditBalanceTransactionsIdInput =
 
 // Output Schema
 export const GetBillingCreditBalanceTransactionsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     credit: Schema.Unknown,
     credit_grant: Schema.Unknown,
@@ -43,8 +43,9 @@ export type GetBillingCreditBalanceTransactionsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - Unique identifier for the object.
  */
-export const GetBillingCreditBalanceTransactionsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBillingCreditBalanceTransactionsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetBillingCreditBalanceTransactionsIdInput,
     outputSchema: GetBillingCreditBalanceTransactionsIdOutput,
-  }));
+  }),
+);

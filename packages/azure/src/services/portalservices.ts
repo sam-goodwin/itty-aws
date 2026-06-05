@@ -9,39 +9,37 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const CopilotSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/providers/Microsoft.PortalServices/copilotSettings/default",
-    }),
-  );
+export const CopilotSettingsCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+  }),
+);
 export type CopilotSettingsCreateOrUpdateInput =
   typeof CopilotSettingsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const CopilotSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CopilotSettingsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CopilotSettingsCreateOrUpdateOutput =
   typeof CopilotSettingsCreateOrUpdateOutput.Type;
 
@@ -51,21 +49,19 @@ export type CopilotSettingsCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsCreateOrUpdate =
-  /*@__PURE__*/ API.make(() => ({
-    inputSchema: CopilotSettingsCreateOrUpdateInput,
-    outputSchema: CopilotSettingsCreateOrUpdateOutput,
-  }));
+export const CopilotSettingsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CopilotSettingsCreateOrUpdateInput,
+  outputSchema: CopilotSettingsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CopilotSettingsDeleteInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/providers/Microsoft.PortalServices/copilotSettings/default",
-    }),
-  );
+export const CopilotSettingsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+  }),
+);
 export type CopilotSettingsDeleteInput = typeof CopilotSettingsDeleteInput.Type;
 
 // Output Schema
@@ -84,38 +80,36 @@ export const CopilotSettingsDelete = /*@__PURE__*/ API.make(() => ({
   outputSchema: CopilotSettingsDeleteOutput,
 }));
 // Input Schema
-export const CopilotSettingsGetInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.PortalServices/copilotSettings/default",
-    }),
-  );
+export const CopilotSettingsGetInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+  }),
+);
 export type CopilotSettingsGetInput = typeof CopilotSettingsGetInput.Type;
 
 // Output Schema
-export const CopilotSettingsGetOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CopilotSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CopilotSettingsGetOutput = typeof CopilotSettingsGetOutput.Type;
 
 // The operation
@@ -129,38 +123,36 @@ export const CopilotSettingsGet = /*@__PURE__*/ API.make(() => ({
   outputSchema: CopilotSettingsGetOutput,
 }));
 // Input Schema
-export const CopilotSettingsUpdateInput =
-  /*@__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/providers/Microsoft.PortalServices/copilotSettings/default",
-    }),
-  );
+export const CopilotSettingsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+  }),
+);
 export type CopilotSettingsUpdateInput = typeof CopilotSettingsUpdateInput.Type;
 
 // Output Schema
-export const CopilotSettingsUpdateOutput =
-  /*@__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const CopilotSettingsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CopilotSettingsUpdateOutput =
   typeof CopilotSettingsUpdateOutput.Type;
 

@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const OrganizationsControllerGetByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/external_id/{external_id}" }),
@@ -15,7 +15,7 @@ export type OrganizationsControllerGetByExternalIdInput =
 
 // Output Schema
 export const OrganizationsControllerGetByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -63,9 +63,10 @@ export type OrganizationsControllerGetByExternalIdOutput =
  *
  * @param external_id - The external ID of the Organization.
  */
-export const OrganizationsControllerGetByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationsControllerGetByExternalId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: OrganizationsControllerGetByExternalIdInput,
     outputSchema: OrganizationsControllerGetByExternalIdOutput,
     errors: [NotFound] as const,
-  }));
+  }),
+);

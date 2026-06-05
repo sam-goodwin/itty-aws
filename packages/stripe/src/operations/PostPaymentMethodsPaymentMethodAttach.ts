@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostPaymentMethodsPaymentMethodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method: Schema.String.pipe(T.PathParam()),
     customer: Schema.optional(Schema.String),
     customer_account: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export type PostPaymentMethodsPaymentMethodAttachInput =
 
 // Output Schema
 export const PostPaymentMethodsPaymentMethodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -539,8 +539,9 @@ export type PostPaymentMethodsPaymentMethodAttachOutput =
  * set <a href="/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><code>invoice_settings.default_payment_method</code></a>,
  * on the Customer to the PaymentMethod’s ID.</p>
  */
-export const PostPaymentMethodsPaymentMethodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPaymentMethodsPaymentMethodAttach = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostPaymentMethodsPaymentMethodAttachInput,
     outputSchema: PostPaymentMethodsPaymentMethodAttachOutput,
-  }));
+  }),
+);

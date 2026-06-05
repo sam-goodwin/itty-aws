@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import { NotFound, UnprocessableEntity } from "../../errors.ts";
 import * as T from "../../traits.ts";
+import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
 export const UpdateRoleInput = /*@__PURE__*/ Schema.Struct({

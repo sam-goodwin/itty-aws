@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgUserInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -15,7 +15,7 @@ export const GetOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgUserInput = typeof GetOrgUserInput.Type;
 
 // Output Schema
-export const GetOrgUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetOrgUserOutput = /*@__PURE__*/ Schema.Void;
 export type GetOrgUserOutput = typeof GetOrgUserOutput.Type;
 
 // The operation
@@ -31,7 +31,7 @@ export type GetOrgUserOutput = typeof GetOrgUserOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
  */
-export const getOrgUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgUserInput,
   outputSchema: GetOrgUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

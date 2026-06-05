@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetGroupFlexClusterBackupRestoreJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     restoreJobId: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export type GetGroupFlexClusterBackupRestoreJobInput =
 
 // Output Schema
 export const GetGroupFlexClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GetGroupFlexClusterBackupRestoreJobOutput =
   typeof GetGroupFlexClusterBackupRestoreJobOutput.Type;
 
@@ -40,9 +40,10 @@ export type GetGroupFlexClusterBackupRestoreJobOutput =
  * @param name - Human-readable label that identifies the flex cluster.
  * @param restoreJobId - Unique 24-hexadecimal digit string that identifies the restore job to return.
  */
-export const getGroupFlexClusterBackupRestoreJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupFlexClusterBackupRestoreJob = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetGroupFlexClusterBackupRestoreJobInput,
     outputSchema: GetGroupFlexClusterBackupRestoreJobOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,
-  }));
+  }),
+);

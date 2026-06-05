@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetBillingPortalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetBillingPortalConfigurationsConfigurationInput =
 
 // Output Schema
 export const GetBillingPortalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.Unknown,
     business_profile: Schema.Struct({
@@ -139,7 +139,7 @@ export type GetBillingPortalConfigurationsConfigurationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetBillingPortalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetBillingPortalConfigurationsConfigurationInput,
     outputSchema: GetBillingPortalConfigurationsConfigurationOutput,
   }));

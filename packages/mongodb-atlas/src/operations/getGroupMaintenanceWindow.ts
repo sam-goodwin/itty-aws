@@ -4,23 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const GetGroupMaintenanceWindowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
-    }),
-  );
+export const GetGroupMaintenanceWindowInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
+  }),
+);
 export type GetGroupMaintenanceWindowInput =
   typeof GetGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const GetGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
 export type GetGroupMaintenanceWindowOutput =
   typeof GetGroupMaintenanceWindowOutput.Type;
 
@@ -36,10 +34,8 @@ export type GetGroupMaintenanceWindowOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroupMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupMaintenanceWindowInput,
-    outputSchema: GetGroupMaintenanceWindowOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupMaintenanceWindow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupMaintenanceWindowInput,
+  outputSchema: GetGroupMaintenanceWindowOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

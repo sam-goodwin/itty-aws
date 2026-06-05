@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -22,7 +22,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersStartInput = typeof ServersStartInput.Type;
 
 // Output Schema
-export const ServersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersStartOutput = /*@__PURE__*/ Schema.Void;
 export type ServersStartOutput = typeof ServersStartOutput.Type;
 
 // The operation
@@ -33,12 +33,12 @@ export type ServersStartOutput = typeof ServersStartOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStartInput,
   outputSchema: ServersStartOutput,
 }));
 // Input Schema
-export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -51,7 +51,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersStopInput = typeof ServersStopInput.Type;
 
 // Output Schema
-export const ServersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersStopOutput = /*@__PURE__*/ Schema.Void;
 export type ServersStopOutput = typeof ServersStopOutput.Type;
 
 // The operation
@@ -62,7 +62,7 @@ export type ServersStopOutput = typeof ServersStopOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStopInput,
   outputSchema: ServersStopOutput,
 }));

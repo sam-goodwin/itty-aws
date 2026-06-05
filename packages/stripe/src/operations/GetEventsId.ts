@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetEventsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetEventsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEventsIdInput = typeof GetEventsIdInput.Type;
 
 // Output Schema
-export const GetEventsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsIdOutput = /*@__PURE__*/ Schema.Struct({
   account: Schema.optional(Schema.String),
   api_version: Schema.NullOr(Schema.String),
   context: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export type GetEventsIdOutput = typeof GetEventsIdOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetEventsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetEventsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEventsIdInput,
   outputSchema: GetEventsIdOutput,
 }));

@@ -5,7 +5,7 @@ import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const CreateGroupClusterBackupRestoreJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -21,7 +21,7 @@ export type CreateGroupClusterBackupRestoreJobInput =
 
 // Output Schema
 export const CreateGroupClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type CreateGroupClusterBackupRestoreJobOutput =
   typeof CreateGroupClusterBackupRestoreJobOutput.Type;
 
@@ -39,9 +39,10 @@ export type CreateGroupClusterBackupRestoreJobOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const createGroupClusterBackupRestoreJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupClusterBackupRestoreJob = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: CreateGroupClusterBackupRestoreJobInput,
     outputSchema: CreateGroupClusterBackupRestoreJobOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }));
+  }),
+);

@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
-export const DomainsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const DomainsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DomainsDestroyInput = typeof DomainsDestroyInput.Type;
 
 // Output Schema
-export const DomainsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DomainsDestroyOutput = /*@__PURE__*/ Schema.Void;
 export type DomainsDestroyOutput = typeof DomainsDestroyOutput.Type;
 
 // The operation
@@ -24,7 +24,7 @@ export type DomainsDestroyOutput = typeof DomainsDestroyOutput.Type;
  *
  * @param id - A UUID string identifying this domain.
  */
-export const domainsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsDestroyInput,
   outputSchema: DomainsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

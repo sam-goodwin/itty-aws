@@ -11,7 +11,7 @@ import {
 
 // Input Schema
 export const UnpinGroupClusterFeatureCompatibilityVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export type UnpinGroupClusterFeatureCompatibilityVersionInput =
 
 // Output Schema
 export const UnpinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type UnpinGroupClusterFeatureCompatibilityVersionOutput =
   typeof UnpinGroupClusterFeatureCompatibilityVersionOutput.Type;
 
@@ -45,7 +45,7 @@ export type UnpinGroupClusterFeatureCompatibilityVersionOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const unpinGroupClusterFeatureCompatibilityVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UnpinGroupClusterFeatureCompatibilityVersionInput,
     outputSchema: UnpinGroupClusterFeatureCompatibilityVersionOutput,
     errors: [

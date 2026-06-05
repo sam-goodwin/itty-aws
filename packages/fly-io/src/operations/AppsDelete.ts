@@ -4,13 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/apps/{app_name}" }));
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 
 // The operation
@@ -21,7 +21,7 @@ export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
  *
  * @param app_name - Fly App Name
  */
-export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
   errors: [Forbidden, NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const V1GetAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetAMigrationInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -16,7 +16,7 @@ export const V1GetAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1GetAMigrationInput = typeof V1GetAMigrationInput.Type;
 
 // Output Schema
-export const V1GetAMigrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetAMigrationOutput = /*@__PURE__*/ Schema.Struct({
   version: Schema.String,
   name: Schema.optional(Schema.String),
   statements: Schema.optional(Schema.Array(Schema.String)),
@@ -34,7 +34,7 @@ export type V1GetAMigrationOutput = typeof V1GetAMigrationOutput.Type;
  *
  * @param ref - Project ref
  */
-export const v1GetAMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetAMigration = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetAMigrationInput,
   outputSchema: V1GetAMigrationOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

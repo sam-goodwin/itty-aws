@@ -3,8 +3,8 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostPaymentRecordsReportPaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPaymentRecordsReportPaymentInput = /*@__PURE__*/ Schema.Struct(
+  {
     amount_requested: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -88,19 +88,20 @@ export const PostPaymentRecordsReportPaymentInput =
         phone: Schema.optional(Schema.String),
       }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/payment_records/report_payment",
-      contentType: "form-urlencoded",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/payment_records/report_payment",
+    contentType: "form-urlencoded",
+  }),
+);
 export type PostPaymentRecordsReportPaymentInput =
   typeof PostPaymentRecordsReportPaymentInput.Type;
 
 // Output Schema
 export const PostPaymentRecordsReportPaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -164,8 +165,7 @@ export type PostPaymentRecordsReportPaymentOutput =
  * initialized and later report updates through the other report_* methods, or report Payment
  * Records in a terminal state directly, through this method.</p>
  */
-export const PostPaymentRecordsReportPayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PostPaymentRecordsReportPaymentInput,
-    outputSchema: PostPaymentRecordsReportPaymentOutput,
-  }));
+export const PostPaymentRecordsReportPayment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentRecordsReportPaymentInput,
+  outputSchema: PostPaymentRecordsReportPaymentOutput,
+}));

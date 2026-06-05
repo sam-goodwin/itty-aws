@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetPlansInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPlansInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -17,7 +17,7 @@ export const GetPlansInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPlansInput = typeof GetPlansInput.Type;
 
 // Output Schema
-export const GetPlansOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPlansOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       active: Schema.Boolean,
@@ -72,7 +72,7 @@ export type GetPlansOutput = typeof GetPlansOutput.Type;
  * @param product - Only return plans for the given product.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetPlans = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPlans = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPlansInput,
   outputSchema: GetPlansOutput,
 }));

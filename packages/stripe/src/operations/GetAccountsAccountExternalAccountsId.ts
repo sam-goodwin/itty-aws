@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export type GetAccountsAccountExternalAccountsIdInput =
 
 // Output Schema
 export const GetAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type GetAccountsAccountExternalAccountsIdOutput =
   typeof GetAccountsAccountExternalAccountsIdOutput.Type;
 
@@ -33,8 +33,9 @@ export type GetAccountsAccountExternalAccountsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - Unique identifier for the external account to be retrieved.
  */
-export const GetAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAccountsAccountExternalAccountsId = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetAccountsAccountExternalAccountsIdInput,
     outputSchema: GetAccountsAccountExternalAccountsIdOutput,
-  }));
+  }),
+);

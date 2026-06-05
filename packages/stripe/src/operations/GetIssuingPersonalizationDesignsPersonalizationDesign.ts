@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIssuingPersonalizationDesignsPersonalizationDesignInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetIssuingPersonalizationDesignsPersonalizationDesignInput =
 
 // Output Schema
 export const GetIssuingPersonalizationDesignsPersonalizationDesignOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.Unknown,
     carrier_text: Schema.Unknown,
     created: Schema.Number,
@@ -77,7 +77,7 @@ export type GetIssuingPersonalizationDesignsPersonalizationDesignOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIssuingPersonalizationDesignsPersonalizationDesign =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingPersonalizationDesignsPersonalizationDesignInput,
     outputSchema: GetIssuingPersonalizationDesignsPersonalizationDesignOutput,
   }));

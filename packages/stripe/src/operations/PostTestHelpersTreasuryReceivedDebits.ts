@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTreasuryReceivedDebitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     description: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export type PostTestHelpersTreasuryReceivedDebitsInput =
 
 // Output Schema
 export const PostTestHelpersTreasuryReceivedDebitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -114,8 +114,9 @@ export type PostTestHelpersTreasuryReceivedDebitsOutput =
  *
  * <p>Use this endpoint to simulate a test mode ReceivedDebit initiated by a third party. In live mode, you can’t directly create ReceivedDebits initiated by third parties.</p>
  */
-export const PostTestHelpersTreasuryReceivedDebits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTestHelpersTreasuryReceivedDebits = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: PostTestHelpersTreasuryReceivedDebitsInput,
     outputSchema: PostTestHelpersTreasuryReceivedDebitsOutput,
-  }));
+  }),
+);

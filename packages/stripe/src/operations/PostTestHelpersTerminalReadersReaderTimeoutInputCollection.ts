@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput =
 
 // Output Schema
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -56,7 +56,7 @@ export type PostTestHelpersTerminalReadersReaderTimeoutInputCollectionOutput =
  * <p>Use this endpoint to complete an input collection with a timeout error on a simulated reader.</p>
  */
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput,
     outputSchema:

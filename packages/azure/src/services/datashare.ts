@@ -9,9 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -20,7 +18,7 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -47,14 +45,12 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
  *
  * Create an account
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -63,7 +59,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -91,14 +87,12 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  *
  * DeleteAccount
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -107,7 +101,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -134,59 +128,47 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  *
  * Get an account
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
-export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts",
-    }),
-  );
+export const AccountsListByResourceGroupInput = /*@__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts",
+  }),
+);
 export type AccountsListByResourceGroupInput =
   typeof AccountsListByResourceGroupInput.Type;
 
 // Output Schema
-export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AccountsListByResourceGroupOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdAt: Schema.optional(Schema.String),
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        }),
+      ),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AccountsListByResourceGroupOutput =
   typeof AccountsListByResourceGroupOutput.Type;
 
@@ -198,61 +180,47 @@ export type AccountsListByResourceGroupOutput =
  *
  * @param $skipToken - Continuation token
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
+// Input Schema
+export const AccountsListBySubscriptionInput = /*@__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataShare/accounts",
   }),
 );
-// Input Schema
-export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataShare/accounts",
-    }),
-  );
 export type AccountsListBySubscriptionInput =
   typeof AccountsListBySubscriptionInput.Type;
 
 // Output Schema
-export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const AccountsListBySubscriptionOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdAt: Schema.optional(Schema.String),
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        }),
+      ),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type AccountsListBySubscriptionOutput =
   typeof AccountsListBySubscriptionOutput.Type;
 
@@ -264,16 +232,12 @@ export type AccountsListBySubscriptionOutput =
  *
  * @param $skipToken - Continuation token
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -282,7 +246,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -309,45 +273,43 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  *
  * Patch an account
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const ConsumerInvitationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.PathParam()),
-    invitationId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
-    }),
-  );
+export const ConsumerInvitationsGetInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  invitationId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
+  }),
+);
 export type ConsumerInvitationsGetInput =
   typeof ConsumerInvitationsGetInput.Type;
 
 // Output Schema
-export const ConsumerInvitationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const ConsumerInvitationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type ConsumerInvitationsGetOutput =
   typeof ConsumerInvitationsGetOutput.Type;
 
@@ -360,15 +322,13 @@ export type ConsumerInvitationsGetOutput =
  * @param location - Location of the invitation
  * @param invitationId - An invitation id
  */
-export const ConsumerInvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConsumerInvitationsGetInput,
-    outputSchema: ConsumerInvitationsGetOutput,
-  }),
-);
+export const ConsumerInvitationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsumerInvitationsGetInput,
+  outputSchema: ConsumerInvitationsGetOutput,
+}));
 // Input Schema
 export const ConsumerInvitationsListInvitationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -381,7 +341,7 @@ export type ConsumerInvitationsListInvitationsInput =
 
 // Output Schema
 export const ConsumerInvitationsListInvitationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -426,14 +386,15 @@ export type ConsumerInvitationsListInvitationsOutput =
  *
  * @param $skipToken - The continuation token
  */
-export const ConsumerInvitationsListInvitations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsumerInvitationsListInvitations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConsumerInvitationsListInvitationsInput,
     outputSchema: ConsumerInvitationsListInvitationsOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConsumerInvitationsRejectInvitationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -446,7 +407,7 @@ export type ConsumerInvitationsRejectInvitationInput =
 
 // Output Schema
 export const ConsumerInvitationsRejectInvitationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -476,14 +437,15 @@ export type ConsumerInvitationsRejectInvitationOutput =
  *
  * @param location - Location of the invitation
  */
-export const ConsumerInvitationsRejectInvitation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsumerInvitationsRejectInvitation = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ConsumerInvitationsRejectInvitationInput,
     outputSchema: ConsumerInvitationsRejectInvitationOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ConsumerSourceDataSetsListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -497,7 +459,7 @@ export type ConsumerSourceDataSetsListByShareSubscriptionInput =
 
 // Output Schema
 export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -544,44 +506,42 @@ export type ConsumerSourceDataSetsListByShareSubscriptionOutput =
  * @param $skipToken - Continuation token
  */
 export const ConsumerSourceDataSetsListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConsumerSourceDataSetsListByShareSubscriptionInput,
     outputSchema: ConsumerSourceDataSetsListByShareSubscriptionOutput,
   }));
 // Input Schema
-export const DataSetMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-    dataSetMappingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
-    }),
-  );
+export const DataSetMappingsCreateInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+  dataSetMappingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+  }),
+);
 export type DataSetMappingsCreateInput = typeof DataSetMappingsCreateInput.Type;
 
 // Output Schema
-export const DataSetMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const DataSetMappingsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type DataSetMappingsCreateOutput =
   typeof DataSetMappingsCreateOutput.Type;
 
@@ -595,28 +555,24 @@ Enables copying the data set from source to destination.
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param dataSetMappingName - The name of the data set mapping to be created.
  */
-export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSetMappingsCreateInput,
-    outputSchema: DataSetMappingsCreateOutput,
+export const DataSetMappingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSetMappingsCreateInput,
+  outputSchema: DataSetMappingsCreateOutput,
+}));
+// Input Schema
+export const DataSetMappingsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+  dataSetMappingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
   }),
 );
-// Input Schema
-export const DataSetMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-    dataSetMappingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
-    }),
-  );
 export type DataSetMappingsDeleteInput = typeof DataSetMappingsDeleteInput.Type;
 
 // Output Schema
-export const DataSetMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataSetMappingsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataSetMappingsDeleteOutput =
   typeof DataSetMappingsDeleteOutput.Type;
 
@@ -629,46 +585,42 @@ export type DataSetMappingsDeleteOutput =
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
  */
-export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSetMappingsDeleteInput,
-    outputSchema: DataSetMappingsDeleteOutput,
+export const DataSetMappingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSetMappingsDeleteInput,
+  outputSchema: DataSetMappingsDeleteOutput,
+}));
+// Input Schema
+export const DataSetMappingsGetInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+  dataSetMappingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
   }),
 );
-// Input Schema
-export const DataSetMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-    dataSetMappingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
-    }),
-  );
 export type DataSetMappingsGetInput = typeof DataSetMappingsGetInput.Type;
 
 // Output Schema
-export const DataSetMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const DataSetMappingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
 
 // The operation
@@ -680,13 +632,13 @@ export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
  */
-export const DataSetMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetMappingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetMappingsGetInput,
   outputSchema: DataSetMappingsGetOutput,
 }));
 // Input Schema
 export const DataSetMappingsListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -702,7 +654,7 @@ export type DataSetMappingsListByShareSubscriptionInput =
 
 // Output Schema
 export const DataSetMappingsListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -750,13 +702,14 @@ export type DataSetMappingsListByShareSubscriptionOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const DataSetMappingsListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetMappingsListByShareSubscription = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: DataSetMappingsListByShareSubscriptionInput,
     outputSchema: DataSetMappingsListByShareSubscriptionOutput,
-  }));
+  }),
+);
 // Input Schema
-export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsCreateInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -768,7 +721,7 @@ export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSetsCreateInput = typeof DataSetsCreateInput.Type;
 
 // Output Schema
-export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -798,12 +751,12 @@ export type DataSetsCreateOutput = typeof DataSetsCreateOutput.Type;
  * @param shareName - The name of the share to add the data set to.
  * @param dataSetName - The name of the dataSet.
  */
-export const DataSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsCreateInput,
   outputSchema: DataSetsCreateOutput,
 }));
 // Input Schema
-export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -815,7 +768,7 @@ export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSetsDeleteInput = typeof DataSetsDeleteInput.Type;
 
 // Output Schema
-export const DataSetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DataSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
 
 // The operation
@@ -827,12 +780,12 @@ export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
  */
-export const DataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsDeleteInput,
   outputSchema: DataSetsDeleteOutput,
 }));
 // Input Schema
-export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsGetInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -844,7 +797,7 @@ export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSetsGetInput = typeof DataSetsGetInput.Type;
 
 // Output Schema
-export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -874,61 +827,49 @@ export type DataSetsGetOutput = typeof DataSetsGetOutput.Type;
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
  */
-export const DataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsGetInput,
   outputSchema: DataSetsGetOutput,
 }));
 // Input Schema
-export const DataSetsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets",
-    }),
-  );
+export const DataSetsListByShareInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets",
+  }),
+);
 export type DataSetsListByShareInput = typeof DataSetsListByShareInput.Type;
 
 // Output Schema
-export const DataSetsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const DataSetsListByShareOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdAt: Schema.optional(Schema.String),
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        }),
+      ),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
 
 // The operation
@@ -942,26 +883,27 @@ export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const DataSetsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsListByShare = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsListByShareInput,
   outputSchema: DataSetsListByShareOutput,
 }));
 // Input Schema
-export const EmailRegistrationsActivateEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmailRegistrationsActivateEmailInput = /*@__PURE__*/ Schema.Struct(
+  {
     location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.DataShare/locations/{location}/activateEmail",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.DataShare/locations/{location}/activateEmail",
+  }),
+);
 export type EmailRegistrationsActivateEmailInput =
   typeof EmailRegistrationsActivateEmailInput.Type;
 
 // Output Schema
 export const EmailRegistrationsActivateEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
     activationExpirationDate: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -985,27 +927,27 @@ export type EmailRegistrationsActivateEmailOutput =
  *
  * @param location - Location of the activation.
  */
-export const EmailRegistrationsActivateEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EmailRegistrationsActivateEmailInput,
-    outputSchema: EmailRegistrationsActivateEmailOutput,
-  }));
+export const EmailRegistrationsActivateEmail = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailRegistrationsActivateEmailInput,
+  outputSchema: EmailRegistrationsActivateEmailOutput,
+}));
 // Input Schema
-export const EmailRegistrationsRegisterEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmailRegistrationsRegisterEmailInput = /*@__PURE__*/ Schema.Struct(
+  {
     location: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/providers/Microsoft.DataShare/locations/{location}/registerEmail",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.DataShare/locations/{location}/registerEmail",
+  }),
+);
 export type EmailRegistrationsRegisterEmailInput =
   typeof EmailRegistrationsRegisterEmailInput.Type;
 
 // Output Schema
 export const EmailRegistrationsRegisterEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
     activationExpirationDate: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -1029,18 +971,15 @@ export type EmailRegistrationsRegisterEmailOutput =
  *
  * @param location - Location of the registration
  */
-export const EmailRegistrationsRegisterEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EmailRegistrationsRegisterEmailInput,
-    outputSchema: EmailRegistrationsRegisterEmailOutput,
-  }));
+export const EmailRegistrationsRegisterEmail = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailRegistrationsRegisterEmailInput,
+  outputSchema: EmailRegistrationsRegisterEmailOutput,
+}));
 // Input Schema
-export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    shareName: Schema.String.pipe(T.PathParam()),
-    invitationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const InvitationsCreateInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  invitationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
@@ -1049,26 +988,25 @@ export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InvitationsCreateInput = typeof InvitationsCreateInput.Type;
 
 // Output Schema
-export const InvitationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const InvitationsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
 
 // The operation
@@ -1080,17 +1018,15 @@ export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
  * @param shareName - The name of the share to send the invitation for.
  * @param invitationName - The name of the invitation.
  */
-export const InvitationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsCreateInput,
   outputSchema: InvitationsCreateOutput,
 }));
 // Input Schema
-export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    shareName: Schema.String.pipe(T.PathParam()),
-    invitationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const InvitationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  invitationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
@@ -1099,7 +1035,7 @@ export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InvitationsDeleteInput = typeof InvitationsDeleteInput.Type;
 
 // Output Schema
-export const InvitationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const InvitationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
 
 // The operation
@@ -1111,12 +1047,12 @@ export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
  */
-export const InvitationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsDeleteInput,
   outputSchema: InvitationsDeleteOutput,
 }));
 // Input Schema
-export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitationsGetInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
   invitationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1128,7 +1064,7 @@ export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InvitationsGetInput = typeof InvitationsGetInput.Type;
 
 // Output Schema
-export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1158,62 +1094,50 @@ export type InvitationsGetOutput = typeof InvitationsGetOutput.Type;
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
  */
-export const InvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsGetInput,
   outputSchema: InvitationsGetOutput,
 }));
 // Input Schema
-export const InvitationsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations",
-    }),
-  );
+export const InvitationsListByShareInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations",
+  }),
+);
 export type InvitationsListByShareInput =
   typeof InvitationsListByShareInput.Type;
 
 // Output Schema
-export const InvitationsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const InvitationsListByShareOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdAt: Schema.optional(Schema.String),
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        }),
+      ),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type InvitationsListByShareOutput =
   typeof InvitationsListByShareOutput.Type;
 
@@ -1228,22 +1152,18 @@ export type InvitationsListByShareOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const InvitationsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvitationsListByShareInput,
-    outputSchema: InvitationsListByShareOutput,
-  }),
-);
+export const InvitationsListByShare = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvitationsListByShareInput,
+  outputSchema: InvitationsListByShareOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.DataShare/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -1316,13 +1236,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * List of available operations
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ProviderShareSubscriptionsAdjustInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1336,7 +1256,7 @@ export type ProviderShareSubscriptionsAdjustInput =
 
 // Output Schema
 export const ProviderShareSubscriptionsAdjustOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1367,14 +1287,13 @@ export type ProviderShareSubscriptionsAdjustOutput =
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
  */
-export const ProviderShareSubscriptionsAdjust =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProviderShareSubscriptionsAdjustInput,
-    outputSchema: ProviderShareSubscriptionsAdjustOutput,
-  }));
+export const ProviderShareSubscriptionsAdjust = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderShareSubscriptionsAdjustInput,
+  outputSchema: ProviderShareSubscriptionsAdjustOutput,
+}));
 // Input Schema
 export const ProviderShareSubscriptionsGetByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1388,7 +1307,7 @@ export type ProviderShareSubscriptionsGetByShareInput =
 
 // Output Schema
 export const ProviderShareSubscriptionsGetByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1419,14 +1338,15 @@ export type ProviderShareSubscriptionsGetByShareOutput =
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
  */
-export const ProviderShareSubscriptionsGetByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProviderShareSubscriptionsGetByShare = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderShareSubscriptionsGetByShareInput,
     outputSchema: ProviderShareSubscriptionsGetByShareOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProviderShareSubscriptionsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -1440,7 +1360,7 @@ export type ProviderShareSubscriptionsListByShareInput =
 
 // Output Schema
 export const ProviderShareSubscriptionsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1486,14 +1406,15 @@ export type ProviderShareSubscriptionsListByShareOutput =
  * @param shareName - The name of the share.
  * @param $skipToken - Continuation Token
  */
-export const ProviderShareSubscriptionsListByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProviderShareSubscriptionsListByShare = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderShareSubscriptionsListByShareInput,
     outputSchema: ProviderShareSubscriptionsListByShareOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProviderShareSubscriptionsReinstateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1507,7 +1428,7 @@ export type ProviderShareSubscriptionsReinstateInput =
 
 // Output Schema
 export const ProviderShareSubscriptionsReinstateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1538,14 +1459,15 @@ export type ProviderShareSubscriptionsReinstateOutput =
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
  */
-export const ProviderShareSubscriptionsReinstate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProviderShareSubscriptionsReinstate = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ProviderShareSubscriptionsReinstateInput,
     outputSchema: ProviderShareSubscriptionsReinstateOutput,
-  }));
+  }),
+);
 // Input Schema
 export const ProviderShareSubscriptionsRevokeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1559,7 +1481,7 @@ export type ProviderShareSubscriptionsRevokeInput =
 
 // Output Schema
 export const ProviderShareSubscriptionsRevokeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1590,13 +1512,12 @@ export type ProviderShareSubscriptionsRevokeOutput =
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
  */
-export const ProviderShareSubscriptionsRevoke =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ProviderShareSubscriptionsRevokeInput,
-    outputSchema: ProviderShareSubscriptionsRevokeOutput,
-  }));
+export const ProviderShareSubscriptionsRevoke = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderShareSubscriptionsRevokeInput,
+  outputSchema: ProviderShareSubscriptionsRevokeOutput,
+}));
 // Input Schema
-export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesCreateInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1607,7 +1528,7 @@ export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SharesCreateInput = typeof SharesCreateInput.Type;
 
 // Output Schema
-export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1636,12 +1557,12 @@ export type SharesCreateOutput = typeof SharesCreateOutput.Type;
  *
  * @param shareName - The name of the share.
  */
-export const SharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesCreateInput,
   outputSchema: SharesCreateOutput,
 }));
 // Input Schema
-export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1652,7 +1573,7 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
 
 // Output Schema
-export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -1682,12 +1603,12 @@ export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
  *
  * @param shareName - The name of the share.
  */
-export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesDeleteInput,
   outputSchema: SharesDeleteOutput,
 }));
 // Input Schema
-export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetInput = /*@__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1698,7 +1619,7 @@ export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SharesGetInput = typeof SharesGetInput.Type;
 
 // Output Schema
-export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1727,60 +1648,48 @@ export type SharesGetOutput = typeof SharesGetOutput.Type;
  *
  * @param shareName - The name of the share to retrieve.
  */
-export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesGetInput,
   outputSchema: SharesGetOutput,
 }));
 // Input Schema
-export const SharesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares",
-    }),
-  );
+export const SharesListByAccountInput = /*@__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares",
+  }),
+);
 export type SharesListByAccountInput = typeof SharesListByAccountInput.Type;
 
 // Output Schema
-export const SharesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+export const SharesListByAccountOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdAt: Schema.optional(Schema.String),
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        }),
+      ),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
 
 // The operation
@@ -1793,13 +1702,13 @@ export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const SharesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesListByAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesListByAccountInput,
   outputSchema: SharesListByAccountOutput,
 }));
 // Input Schema
 export const SharesListSynchronizationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1815,7 +1724,7 @@ export type SharesListSynchronizationDetailsInput =
 
 // Output Schema
 export const SharesListSynchronizationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1868,48 +1777,45 @@ export type SharesListSynchronizationDetailsOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const SharesListSynchronizationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SharesListSynchronizationDetailsInput,
-    outputSchema: SharesListSynchronizationDetailsOutput,
-  }));
+export const SharesListSynchronizationDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharesListSynchronizationDetailsInput,
+  outputSchema: SharesListSynchronizationDetailsOutput,
+}));
 // Input Schema
-export const SharesListSynchronizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizations",
-    }),
-  );
+export const SharesListSynchronizationsInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizations",
+  }),
+);
 export type SharesListSynchronizationsInput =
   typeof SharesListSynchronizationsInput.Type;
 
 // Output Schema
-export const SharesListSynchronizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        consumerEmail: Schema.optional(Schema.String),
-        consumerName: Schema.optional(Schema.String),
-        consumerTenantName: Schema.optional(Schema.String),
-        durationMs: Schema.optional(Schema.Number),
-        endTime: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        synchronizationId: Schema.optional(Schema.String),
-        synchronizationMode: Schema.optional(
-          Schema.Literals(["Incremental", "FullSync"]),
-        ),
-      }),
-    ),
-  });
+export const SharesListSynchronizationsOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.Array(
+    Schema.Struct({
+      consumerEmail: Schema.optional(Schema.String),
+      consumerName: Schema.optional(Schema.String),
+      consumerTenantName: Schema.optional(Schema.String),
+      durationMs: Schema.optional(Schema.Number),
+      endTime: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      startTime: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      synchronizationId: Schema.optional(Schema.String),
+      synchronizationMode: Schema.optional(
+        Schema.Literals(["Incremental", "FullSync"]),
+      ),
+    }),
+  ),
+});
 export type SharesListSynchronizationsOutput =
   typeof SharesListSynchronizationsOutput.Type;
 
@@ -1924,15 +1830,13 @@ export type SharesListSynchronizationsOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const SharesListSynchronizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SharesListSynchronizationsInput,
-    outputSchema: SharesListSynchronizationsOutput,
-  }),
-);
+export const SharesListSynchronizations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharesListSynchronizationsInput,
+  outputSchema: SharesListSynchronizationsOutput,
+}));
 // Input Schema
 export const ShareSubscriptionsCancelSynchronizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1945,7 +1849,7 @@ export type ShareSubscriptionsCancelSynchronizationInput =
 
 // Output Schema
 export const ShareSubscriptionsCancelSynchronizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1967,45 +1871,44 @@ export type ShareSubscriptionsCancelSynchronizationOutput =
  *
  * @param shareSubscriptionName - The name of the shareSubscription.
  */
-export const ShareSubscriptionsCancelSynchronization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ShareSubscriptionsCancelSynchronization = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ShareSubscriptionsCancelSynchronizationInput,
     outputSchema: ShareSubscriptionsCancelSynchronizationOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ShareSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
-    }),
-  );
+export const ShareSubscriptionsCreateInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+  }),
+);
 export type ShareSubscriptionsCreateInput =
   typeof ShareSubscriptionsCreateInput.Type;
 
 // Output Schema
-export const ShareSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const ShareSubscriptionsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type ShareSubscriptionsCreateOutput =
   typeof ShareSubscriptionsCreateOutput.Type;
 
@@ -2017,47 +1920,43 @@ export type ShareSubscriptionsCreateOutput =
  *
  * @param shareSubscriptionName - The name of the shareSubscription.
  */
-export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsCreateInput,
-    outputSchema: ShareSubscriptionsCreateOutput,
+export const ShareSubscriptionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsCreateInput,
+  outputSchema: ShareSubscriptionsCreateOutput,
+}));
+// Input Schema
+export const ShareSubscriptionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
   }),
 );
-// Input Schema
-export const ShareSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
-    }),
-  );
 export type ShareSubscriptionsDeleteInput =
   typeof ShareSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const ShareSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.String,
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.String,
-        target: Schema.optional(Schema.String),
-      }),
-    ),
-    startTime: Schema.optional(Schema.String),
-    status: Schema.Literals([
-      "Accepted",
-      "InProgress",
-      "TransientFailure",
-      "Succeeded",
-      "Failed",
-      "Canceled",
-    ]),
-  });
+export const ShareSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.String,
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      message: Schema.String,
+      target: Schema.optional(Schema.String),
+    }),
+  ),
+  startTime: Schema.optional(Schema.String),
+  status: Schema.Literals([
+    "Accepted",
+    "InProgress",
+    "TransientFailure",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+  ]),
+});
 export type ShareSubscriptionsDeleteOutput =
   typeof ShareSubscriptionsDeleteOutput.Type;
 
@@ -2069,45 +1968,41 @@ export type ShareSubscriptionsDeleteOutput =
  *
  * @param shareSubscriptionName - The name of the shareSubscription.
  */
-export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsDeleteInput,
-    outputSchema: ShareSubscriptionsDeleteOutput,
+export const ShareSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsDeleteInput,
+  outputSchema: ShareSubscriptionsDeleteOutput,
+}));
+// Input Schema
+export const ShareSubscriptionsGetInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
   }),
 );
-// Input Schema
-export const ShareSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
-    }),
-  );
 export type ShareSubscriptionsGetInput = typeof ShareSubscriptionsGetInput.Type;
 
 // Output Schema
-export const ShareSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const ShareSubscriptionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type ShareSubscriptionsGetOutput =
   typeof ShareSubscriptionsGetOutput.Type;
 
@@ -2119,30 +2014,29 @@ export type ShareSubscriptionsGetOutput =
  *
  * @param shareSubscriptionName - The name of the shareSubscription.
  */
-export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsGetInput,
-    outputSchema: ShareSubscriptionsGetOutput,
-  }),
-);
+export const ShareSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsGetInput,
+  outputSchema: ShareSubscriptionsGetOutput,
+}));
 // Input Schema
-export const ShareSubscriptionsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ShareSubscriptionsListByAccountInput = /*@__PURE__*/ Schema.Struct(
+  {
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions",
+  }),
+);
 export type ShareSubscriptionsListByAccountInput =
   typeof ShareSubscriptionsListByAccountInput.Type;
 
 // Output Schema
 export const ShareSubscriptionsListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2189,14 +2083,13 @@ export type ShareSubscriptionsListByAccountOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const ShareSubscriptionsListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ShareSubscriptionsListByAccountInput,
-    outputSchema: ShareSubscriptionsListByAccountOutput,
-  }));
+export const ShareSubscriptionsListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsListByAccountInput,
+  outputSchema: ShareSubscriptionsListByAccountOutput,
+}));
 // Input Schema
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -2210,7 +2103,7 @@ export type ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
 
 // Output Schema
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2231,14 +2124,14 @@ export type ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
  * @param $skipToken - Continuation token
  */
 export const ShareSubscriptionsListSourceShareSynchronizationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListSourceShareSynchronizationSettingsInput,
     outputSchema:
       ShareSubscriptionsListSourceShareSynchronizationSettingsOutput,
   }));
 // Input Schema
 export const ShareSubscriptionsListSynchronizationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2254,7 +2147,7 @@ export type ShareSubscriptionsListSynchronizationDetailsInput =
 
 // Output Schema
 export const ShareSubscriptionsListSynchronizationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2308,13 +2201,13 @@ export type ShareSubscriptionsListSynchronizationDetailsOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const ShareSubscriptionsListSynchronizationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListSynchronizationDetailsInput,
     outputSchema: ShareSubscriptionsListSynchronizationDetailsOutput,
   }));
 // Input Schema
 export const ShareSubscriptionsListSynchronizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2330,7 +2223,7 @@ export type ShareSubscriptionsListSynchronizationsInput =
 
 // Output Schema
 export const ShareSubscriptionsListSynchronizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2360,37 +2253,36 @@ export type ShareSubscriptionsListSynchronizationsOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const ShareSubscriptionsListSynchronizations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ShareSubscriptionsListSynchronizations = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: ShareSubscriptionsListSynchronizationsInput,
     outputSchema: ShareSubscriptionsListSynchronizationsOutput,
-  }));
+  }),
+);
 // Input Schema
-export const ShareSubscriptionsSynchronizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/synchronize",
-    }),
-  );
+export const ShareSubscriptionsSynchronizeInput = /*@__PURE__*/ Schema.Struct({
+  shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/synchronize",
+  }),
+);
 export type ShareSubscriptionsSynchronizeInput =
   typeof ShareSubscriptionsSynchronizeInput.Type;
 
 // Output Schema
-export const ShareSubscriptionsSynchronizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    durationMs: Schema.optional(Schema.Number),
-    endTime: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    synchronizationId: Schema.String,
-    synchronizationMode: Schema.optional(
-      Schema.Literals(["Incremental", "FullSync"]),
-    ),
-  });
+export const ShareSubscriptionsSynchronizeOutput = /*@__PURE__*/ Schema.Struct({
+  durationMs: Schema.optional(Schema.Number),
+  endTime: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  synchronizationId: Schema.String,
+  synchronizationMode: Schema.optional(
+    Schema.Literals(["Incremental", "FullSync"]),
+  ),
+});
 export type ShareSubscriptionsSynchronizeOutput =
   typeof ShareSubscriptionsSynchronizeOutput.Type;
 
@@ -2402,46 +2294,43 @@ export type ShareSubscriptionsSynchronizeOutput =
  *
  * @param shareSubscriptionName - The name of share subscription
  */
-export const ShareSubscriptionsSynchronize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ShareSubscriptionsSynchronizeInput,
-    outputSchema: ShareSubscriptionsSynchronizeOutput,
-  }));
+export const ShareSubscriptionsSynchronize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsSynchronizeInput,
+  outputSchema: ShareSubscriptionsSynchronizeOutput,
+}));
 // Input Schema
-export const SynchronizationSettingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    synchronizationSettingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
-    }),
-  );
+export const SynchronizationSettingsCreateInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  synchronizationSettingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+  }),
+);
 export type SynchronizationSettingsCreateInput =
   typeof SynchronizationSettingsCreateInput.Type;
 
 // Output Schema
-export const SynchronizationSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const SynchronizationSettingsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type SynchronizationSettingsCreateOutput =
   typeof SynchronizationSettingsCreateOutput.Type;
 
@@ -2454,47 +2343,44 @@ export type SynchronizationSettingsCreateOutput =
  * @param shareName - The name of the share to add the synchronization setting to.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
  */
-export const SynchronizationSettingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SynchronizationSettingsCreateInput,
-    outputSchema: SynchronizationSettingsCreateOutput,
-  }));
+export const SynchronizationSettingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SynchronizationSettingsCreateInput,
+  outputSchema: SynchronizationSettingsCreateOutput,
+}));
 // Input Schema
-export const SynchronizationSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    synchronizationSettingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
-    }),
-  );
+export const SynchronizationSettingsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  synchronizationSettingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+  }),
+);
 export type SynchronizationSettingsDeleteInput =
   typeof SynchronizationSettingsDeleteInput.Type;
 
 // Output Schema
-export const SynchronizationSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.String,
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.String,
-        target: Schema.optional(Schema.String),
-      }),
-    ),
-    startTime: Schema.optional(Schema.String),
-    status: Schema.Literals([
-      "Accepted",
-      "InProgress",
-      "TransientFailure",
-      "Succeeded",
-      "Failed",
-      "Canceled",
-    ]),
-  });
+export const SynchronizationSettingsDeleteOutput = /*@__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.String,
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      message: Schema.String,
+      target: Schema.optional(Schema.String),
+    }),
+  ),
+  startTime: Schema.optional(Schema.String),
+  status: Schema.Literals([
+    "Accepted",
+    "InProgress",
+    "TransientFailure",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+  ]),
+});
 export type SynchronizationSettingsDeleteOutput =
   typeof SynchronizationSettingsDeleteOutput.Type;
 
@@ -2507,46 +2393,43 @@ export type SynchronizationSettingsDeleteOutput =
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting .
  */
-export const SynchronizationSettingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: SynchronizationSettingsDeleteInput,
-    outputSchema: SynchronizationSettingsDeleteOutput,
-  }));
+export const SynchronizationSettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SynchronizationSettingsDeleteInput,
+  outputSchema: SynchronizationSettingsDeleteOutput,
+}));
 // Input Schema
-export const SynchronizationSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    shareName: Schema.String.pipe(T.PathParam()),
-    synchronizationSettingName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
-    }),
-  );
+export const SynchronizationSettingsGetInput = /*@__PURE__*/ Schema.Struct({
+  shareName: Schema.String.pipe(T.PathParam()),
+  synchronizationSettingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+  }),
+);
 export type SynchronizationSettingsGetInput =
   typeof SynchronizationSettingsGetInput.Type;
 
 // Output Schema
-export const SynchronizationSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  });
+export const SynchronizationSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+});
 export type SynchronizationSettingsGetOutput =
   typeof SynchronizationSettingsGetOutput.Type;
 
@@ -2559,15 +2442,13 @@ export type SynchronizationSettingsGetOutput =
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
  */
-export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SynchronizationSettingsGetInput,
-    outputSchema: SynchronizationSettingsGetOutput,
-  }),
-);
+export const SynchronizationSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SynchronizationSettingsGetInput,
+  outputSchema: SynchronizationSettingsGetOutput,
+}));
 // Input Schema
 export const SynchronizationSettingsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -2581,7 +2462,7 @@ export type SynchronizationSettingsListByShareInput =
 
 // Output Schema
 export const SynchronizationSettingsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2627,13 +2508,14 @@ export type SynchronizationSettingsListByShareOutput =
  * @param shareName - The name of the share.
  * @param $skipToken - continuation token
  */
-export const SynchronizationSettingsListByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SynchronizationSettingsListByShare = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: SynchronizationSettingsListByShareInput,
     outputSchema: SynchronizationSettingsListByShareOutput,
-  }));
+  }),
+);
 // Input Schema
-export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersCreateInput = /*@__PURE__*/ Schema.Struct({
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2645,7 +2527,7 @@ export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TriggersCreateInput = typeof TriggersCreateInput.Type;
 
 // Output Schema
-export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -2675,12 +2557,12 @@ export type TriggersCreateOutput = typeof TriggersCreateOutput.Type;
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param triggerName - The name of the trigger.
  */
-export const TriggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersCreateInput,
   outputSchema: TriggersCreateOutput,
 }));
 // Input Schema
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2692,7 +2574,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -2723,12 +2605,12 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2740,7 +2622,7 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TriggersGetInput = typeof TriggersGetInput.Type;
 
 // Output Schema
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -2770,27 +2652,28 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
 // Input Schema
-export const TriggersListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersListByShareSubscriptionInput = /*@__PURE__*/ Schema.Struct(
+  {
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers",
-    }),
-  );
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers",
+  }),
+);
 export type TriggersListByShareSubscriptionInput =
   typeof TriggersListByShareSubscriptionInput.Type;
 
 // Output Schema
 export const TriggersListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2836,8 +2719,7 @@ export type TriggersListByShareSubscriptionOutput =
  * @param shareSubscriptionName - The name of the share subscription.
  * @param $skipToken - Continuation token
  */
-export const TriggersListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: TriggersListByShareSubscriptionInput,
-    outputSchema: TriggersListByShareSubscriptionOutput,
-  }));
+export const TriggersListByShareSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersListByShareSubscriptionInput,
+  outputSchema: TriggersListByShareSubscriptionOutput,
+}));

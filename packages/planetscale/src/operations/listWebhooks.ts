@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
-export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWebhooksInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -19,8 +19,7 @@ export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListWebhooksInput = typeof ListWebhooksInput.Type;
 
 // Output Schema
-export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.String,
+export const ListWebhooksOutput = /*@__PURE__*/ Schema.Struct({
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -76,16 +75,14 @@ export type ListWebhooksOutput = typeof ListWebhooksOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWebhooks = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListWebhooksInput,
-    outputSchema: ListWebhooksOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listWebhooks = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListWebhooksInput,
+  outputSchema: ListWebhooksOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

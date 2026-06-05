@@ -9,7 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20,7 +20,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -51,13 +51,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesCancelOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -72,7 +72,7 @@ export type ScheduledActionsVirtualMachinesCancelOperationsInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesCancelOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         resourceId: Schema.optional(Schema.String),
@@ -135,13 +135,13 @@ export type ScheduledActionsVirtualMachinesCancelOperationsOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesCancelOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesCancelOperationsInput,
     outputSchema: ScheduledActionsVirtualMachinesCancelOperationsOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesExecuteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -156,7 +156,7 @@ export type ScheduledActionsVirtualMachinesExecuteCreateInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesExecuteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -229,13 +229,13 @@ export type ScheduledActionsVirtualMachinesExecuteCreateOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesExecuteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesExecuteCreateInput,
     outputSchema: ScheduledActionsVirtualMachinesExecuteCreateOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesExecuteDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -250,7 +250,7 @@ export type ScheduledActionsVirtualMachinesExecuteDeallocateInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -323,13 +323,13 @@ export type ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesExecuteDeallocate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesExecuteDeallocateInput,
     outputSchema: ScheduledActionsVirtualMachinesExecuteDeallocateOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesExecuteDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -344,7 +344,7 @@ export type ScheduledActionsVirtualMachinesExecuteDeleteInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesExecuteDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -417,13 +417,13 @@ export type ScheduledActionsVirtualMachinesExecuteDeleteOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesExecuteDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesExecuteDeleteInput,
     outputSchema: ScheduledActionsVirtualMachinesExecuteDeleteOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesExecuteHibernateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -438,7 +438,7 @@ export type ScheduledActionsVirtualMachinesExecuteHibernateInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesExecuteHibernateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -511,13 +511,13 @@ export type ScheduledActionsVirtualMachinesExecuteHibernateOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesExecuteHibernate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesExecuteHibernateInput,
     outputSchema: ScheduledActionsVirtualMachinesExecuteHibernateOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesExecuteStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -532,7 +532,7 @@ export type ScheduledActionsVirtualMachinesExecuteStartInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesExecuteStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -605,13 +605,13 @@ export type ScheduledActionsVirtualMachinesExecuteStartOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesExecuteStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesExecuteStartInput,
     outputSchema: ScheduledActionsVirtualMachinesExecuteStartOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesGetOperationErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -626,7 +626,7 @@ export type ScheduledActionsVirtualMachinesGetOperationErrorsInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         operationId: Schema.optional(Schema.String),
@@ -662,13 +662,13 @@ export type ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesGetOperationErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesGetOperationErrorsInput,
     outputSchema: ScheduledActionsVirtualMachinesGetOperationErrorsOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesGetOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -683,7 +683,7 @@ export type ScheduledActionsVirtualMachinesGetOperationStatusInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesGetOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         resourceId: Schema.optional(Schema.String),
@@ -746,13 +746,13 @@ export type ScheduledActionsVirtualMachinesGetOperationStatusOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesGetOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesGetOperationStatusInput,
     outputSchema: ScheduledActionsVirtualMachinesGetOperationStatusOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesSubmitDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -767,7 +767,7 @@ export type ScheduledActionsVirtualMachinesSubmitDeallocateInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -840,13 +840,13 @@ export type ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesSubmitDeallocate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesSubmitDeallocateInput,
     outputSchema: ScheduledActionsVirtualMachinesSubmitDeallocateOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesSubmitHibernateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -861,7 +861,7 @@ export type ScheduledActionsVirtualMachinesSubmitHibernateInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesSubmitHibernateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -934,13 +934,13 @@ export type ScheduledActionsVirtualMachinesSubmitHibernateOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesSubmitHibernate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesSubmitHibernateInput,
     outputSchema: ScheduledActionsVirtualMachinesSubmitHibernateOutput,
   }));
 // Input Schema
 export const ScheduledActionsVirtualMachinesSubmitStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -955,7 +955,7 @@ export type ScheduledActionsVirtualMachinesSubmitStartInput =
 
 // Output Schema
 export const ScheduledActionsVirtualMachinesSubmitStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -1028,7 +1028,7 @@ export type ScheduledActionsVirtualMachinesSubmitStartOutput =
  * @param locationparameter - The location name.
  */
 export const ScheduledActionsVirtualMachinesSubmitStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledActionsVirtualMachinesSubmitStartInput,
     outputSchema: ScheduledActionsVirtualMachinesSubmitStartOutput,
   }));

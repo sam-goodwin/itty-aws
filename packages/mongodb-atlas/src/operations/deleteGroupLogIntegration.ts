@@ -4,24 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const DeleteGroupLogIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
-    }),
-  );
+export const DeleteGroupLogIntegrationInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
+  }),
+);
 export type DeleteGroupLogIntegrationInput =
   typeof DeleteGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const DeleteGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupLogIntegrationOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteGroupLogIntegrationOutput =
   typeof DeleteGroupLogIntegrationOutput.Type;
 
@@ -38,10 +36,8 @@ export type DeleteGroupLogIntegrationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param id - Unique identifier of the log integration configuration.
  */
-export const deleteGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupLogIntegrationInput,
-    outputSchema: DeleteGroupLogIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupLogIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupLogIntegrationInput,
+  outputSchema: DeleteGroupLogIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

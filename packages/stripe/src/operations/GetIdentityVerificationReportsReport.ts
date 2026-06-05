@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIdentityVerificationReportsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetIdentityVerificationReportsReportInput =
 
 // Output Schema
 export const GetIdentityVerificationReportsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     created: Schema.Number,
     document: Schema.optional(
@@ -117,8 +117,9 @@ export type GetIdentityVerificationReportsReportOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIdentityVerificationReportsReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIdentityVerificationReportsReport = /*@__PURE__*/ API.make(
+  () => ({
     inputSchema: GetIdentityVerificationReportsReportInput,
     outputSchema: GetIdentityVerificationReportsReportOutput,
-  }));
+  }),
+);
